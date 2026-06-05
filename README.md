@@ -14,6 +14,7 @@ GLAW runs legal *matters* (build a company, structure a fund, prosecute or defen
 [![Pipeline](https://img.shields.io/badge/pipeline-8%20stages-3B82F6.svg)](#-the-workflow)
 [![Agent Skills](https://img.shields.io/badge/format-Agent%20Skills-000.svg)](https://agentskills.org)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-22c55e.svg)](CONTRIBUTING.md)
+[![Roadmap](https://img.shields.io/badge/roadmap-autonomous%20agency-8b5cf6.svg)](ROADMAP.md)
 [![Not Legal Advice](https://img.shields.io/badge/%E2%9A%96%EF%B8%8F-not%20legal%20advice-b00020.svg)](#%EF%B8%8F-not-legal-advice-read-this)
 
 </div>
@@ -216,6 +217,20 @@ State lives under `~/.glaw` (`matters/<slug>/` with `matter.md`, `docket.jsonl`,
 GLAW produces **attorney work-product drafts for a licensed attorney to review, sign, and file.** It does **not** form an attorney-client relationship, does **not** practice law, and is **not** a substitute for a lawyer. Laws vary by jurisdiction and change; every output must be verified by qualified counsel before it is relied on or filed. The authors provide this software "as is," without warranty. See [LICENSE](LICENSE).
 
 ---
+
+## 🧭 Where it's going
+
+GLAW is evolving from a *firm* into a self-driving **AI agency** — an organism that senses a
+situation, reasons across departments, drafts and acts, checks itself against its own
+conscience (the gates), and learns. Next stops: an **Autonomy Core** (a goal-driven matter
+loop + docket daemon), **harness integration** (an Extism plugin + conscience adoption for
+autonomous runtimes like `zeroclaw-x0`, plus an MCP server), and new **branches** —
+starting with **Constitutional Law** (`/glaw-constitutional`, `/glaw-legislative`,
+`/glaw-admin-law`, `/glaw-judicial`). Throughout, one rule never bends: **the seal stays in
+human hands** — GLAW prepares, a person commits.
+
+**→ Read the full [ROADMAP.md](ROADMAP.md)** (the organism model, phases, harness wiring,
+gap analysis, and the non-negotiable guardrails).
 
 ## 🤝 Contributing
 
