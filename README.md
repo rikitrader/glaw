@@ -1,6 +1,6 @@
 <div align="center">
 
-![GLAW — The Open-Source Virtual Law Firm](assets/glaw-hero.png)
+![GLAW — The Open-Source Virtual Law Firm](assets/glaw-hero-v2.png)
 
 # GLAW · The Open-Source Virtual Law Firm
 
