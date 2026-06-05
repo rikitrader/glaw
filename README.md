@@ -148,6 +148,14 @@ glaw-review-chain my-contract.docx findings.json --matter acme-msa \
 
 Interoperates with [`legal-redline-tools`](https://github.com/evolsb/legal-redline-tools) (MIT) and [`claude-legal-skill`](https://github.com/evolsb/claude-legal-skill) (MIT).
 
+<div align="center">
+
+![GLAW matter run — review → scorecard → Word tracked changes → publish](assets/glaw-demo.png)
+
+<sub>One prompt → intake → review → an 88/100 CRITICAL scorecard → real Word tracked changes → published to Drive.</sub>
+
+</div>
+
 ---
 
 ## 🚀 Install
@@ -199,7 +207,7 @@ glaw/
 └── <practice-group + bureau + intel + sec + fincen agents>/   # the departments
 ```
 
-State lives under `~/.glaw` (`matters/<slug>/` with `matter.md`, `docket.jsonl`, `timeline.jsonl`). See [`docs/`](docs/) for the deep dive.
+State lives under `~/.glaw` (`matters/<slug>/` with `matter.md`, `docket.jsonl`, `timeline.jsonl`). Deep dives: **[departments reference](docs/departments.md)** · **[toolbelt reference](docs/tools.md)** · [org chart & usage](docs/org-chart-and-usage.md).
 
 ---
 

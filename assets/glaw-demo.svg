@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="600" viewBox="0 0 1000 600" font-family="SF Mono, Menlo, Consolas, monospace">
+  <rect width="1000" height="600" rx="12" fill="#0d1117"/>
+  <rect width="1000" height="40" rx="12" fill="#161b22"/>
+  <rect y="28" width="1000" height="12" fill="#161b22"/>
+  <circle cx="24" cy="20" r="6" fill="#ff5f56"/><circle cx="46" cy="20" r="6" fill="#ffbd2e"/><circle cx="68" cy="20" r="6" fill="#27c93f"/>
+  <text x="500" y="25" text-anchor="middle" font-size="13" fill="#8b949e">glaw — matter: acme-msa</text>
+  <g font-size="16">
+    <text x="24" y="78"><tspan fill="#3fb950">▸ /glaw</tspan><tspan fill="#c9d1d9">  review the Acme MSA from the customer's position, then redline it</tspan></text>
+    <text x="24" y="110" fill="#8b949e">⚖  intake → track: <tspan fill="#c9d1d9">corp/contract</tspan> · conflicts cleared <tspan fill="#3fb950">✓</tspan></text>
+    <text x="24" y="134" fill="#8b949e">📑 contract-review → <tspan fill="#c9d1d9">4 red flags found, 1 critical</tspan></text>
+
+    <text x="24" y="174" fill="#f0d77a" font-weight="bold">  Contract Scorecard — SaaS Master Services Agreement</text>
+    <text x="24" y="200" fill="#8b949e">  Position <tspan fill="#c9d1d9">Customer</tspan>   ·   Counterparty <tspan fill="#c9d1d9">Acme Cloud Inc.</tspan></text>
+    <text x="24" y="232"><tspan fill="#c9d1d9" font-weight="bold">  RISK 88/100  ·  </tspan><tspan fill="#f85149" font-weight="bold">🔴 CRITICAL</tspan><tspan fill="#c9d1d9" font-weight="bold">  ·  GRADE F  ·  4/5 red flags</tspan></text>
+
+    <text x="40" y="266" fill="#f85149">⚠ Uncapped indemnification</text><text x="600" y="266" fill="#8b949e">§11.2   sev 5</text>
+    <text x="40" y="290" fill="#f0883e">⚠ Liability cap &lt; 6 months</text><text x="600" y="290" fill="#8b949e">§10.1   sev 4</text>
+    <text x="40" y="314" fill="#f0883e">⚠ Unilateral price increase</text><text x="600" y="314" fill="#8b949e">§4.3    sev 3</text>
+    <text x="40" y="338" fill="#d29922">⚠ Auto-renewal long notice</text><text x="600" y="338" fill="#8b949e">§8.2    sev 2</text>
+
+    <text x="24" y="378" fill="#8b949e">✍  glaw-redline-docx → <tspan fill="#c9d1d9">real Word tracked changes</tspan> · <tspan fill="#3fb950">4 w:ins + 4 w:del ✓</tspan></text>
+    <text x="24" y="402" fill="#8b949e">   redline: <tspan fill="#f85149">"three (3) months"</tspan> → <tspan fill="#3fb950">"twelve (12) months"</tspan>  (LoL §10.1)</text>
+    <text x="24" y="426" fill="#8b949e">📦 glaw-publish → <tspan fill="#c9d1d9">PDF + Google Doc + Google Slides</tspan> → Drive <tspan fill="#3fb950">✓</tspan></text>
+    <text x="24" y="450" fill="#8b949e">🗂  matter docketed · timeline logged · <tspan fill="#3fb950">HEALTHY ✓</tspan></text>
+
+    <text x="24" y="492" fill="#6e7681" font-size="13">  attorney work-product · not legal advice · verify before filing</text>
+    <text x="24" y="524"><tspan fill="#3fb950">▸ </tspan><tspan fill="#c9d1d9">_</tspan></text>
+  </g>
+</svg>
