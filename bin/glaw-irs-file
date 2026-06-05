@@ -1,0 +1,325 @@
+#!/usr/bin/env python3
+"""glaw-irs-file — IRS information-return transmission scaffold (1099 / W-2 / 941).
+
+GLAW prepares + validates + maps the return to an IRS-authorized transmitter, then:
+  - NO credentials (or no --live)  -> DRY RUN: validate + write the upload payload file. No network.
+  - credentials + --live           -> POST to the transmitter API (you must be enrolled).
+
+IMPORTANT — you cannot e-file directly without authorization:
+  * Information returns (1099/W-2G/1098...) -> IRIS A2A needs a Transmitter Control Code (TCC),
+    or use a commercial transmitter (TaxBandits/Tax1099) REST API with their key.
+  * W-2 -> SSA Business Services Online (not the IRS).
+  * Business income returns (1120-S/1065/941) -> IRS MeF needs an EFIN/ETIN + approved software/ERO;
+    NOT supported here. This tool covers information returns only.
+
+Config (never committed): `glaw config set irs_transmitter taxbandits|iris`,
+`glaw config set irs_api_key <key>` (or env IRS_API_KEY / IRS_TCC).
+
+Usage:
+  glaw-irs-file scaffold <form_type>            # blank payload skeleton (e.g. 1099-NEC)
+  glaw-irs-file submit <payload.json> [--transmitter taxbandits|iris] [--live] [-o outdir]
+"""
+import sys, os, json, subprocess, re, time, hmac, hashlib, base64, urllib.request, urllib.error, urllib.parse
+
+GLAW = os.path.expanduser("~/.claude/skills/glaw/bin/glaw")
+SUPPORTED = {"1099-NEC", "1099-MISC", "1099-K", "W-2", "941"}
+TB_ENDPOINT = {"1099-NEC": "/Form1099NEC/Create", "1099-MISC": "/Form1099MISC/Create",
+               "1099-K": "/Form1099K/Create", "941": "/Form941/Create"}
+
+def cfg(key):
+    try:
+        v = subprocess.run([GLAW, "config", "get", key], capture_output=True, text=True).stdout.strip()
+        return v or None
+    except Exception:
+        return None
+
+# ---- TaxBandits OAuth 2.0 (JWS -> JWT Bearer; verified against developer.taxbandits.com) ----
+def _b64url(b):
+    return base64.urlsafe_b64encode(b).rstrip(b"=").decode()
+
+def _taxbandits_jws(client_id, user_token, client_secret):
+    header = {"alg": "HS256", "typ": "JWT"}
+    payload = {"iss": client_id, "sub": client_id, "aud": user_token, "iat": int(time.time())}
+    seg = _b64url(json.dumps(header, separators=(",", ":")).encode()) + "." + \
+          _b64url(json.dumps(payload, separators=(",", ":")).encode())
+    sig = hmac.new(client_secret.encode(), seg.encode(), hashlib.sha256).digest()
+    return seg + "." + _b64url(sig)
+
+def _taxbandits_token(env):
+    cid, sec, ut = cfg("taxbandits_client_id"), cfg("taxbandits_client_secret"), cfg("taxbandits_user_token")
+    if not (cid and sec and ut):
+        return None, "missing taxbandits_client_id / _client_secret / _user_token (glaw config set ...)"
+    jws = _taxbandits_jws(cid, ut, sec)
+    url = "https://oauth.expressauth.net/v2/tbsauth" if env == "live" else "https://testoauth.expressauth.net/v2/tbsauth"
+    try:
+        req = urllib.request.Request(url, headers={"Authentication": jws})
+        with urllib.request.urlopen(req, timeout=30) as r:
+            d = json.load(r)
+        tok = d.get("AccessToken")
+        return (tok, "ok") if tok else (None, f"no AccessToken in response: {d}")
+    except urllib.error.HTTPError as e:
+        return None, f"auth HTTP {e.code}: {e.read().decode()[:200]}"
+    except Exception as e:
+        return None, f"auth error: {e}"
+
+def _tb_base(env):
+    return "https://api.taxbandits.com/v1.7.3" if env == "live" else "https://testapi.taxbandits.com/v1.7.3"
+
+def _taxbandits_submit(form, payload, env):
+    token, msg = _taxbandits_token(env)
+    if not token:
+        return False, msg
+    ep = TB_ENDPOINT.get(form)
+    if not ep:
+        return False, f"no TaxBandits endpoint mapped for {form}"
+    try:
+        req = urllib.request.Request(_tb_base(env) + ep, data=json.dumps(payload).encode(), method="POST",
+            headers={"Authorization": "Bearer " + token, "Content-Type": "application/json"})
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return True, json.load(r)
+    except urllib.error.HTTPError as e:
+        return False, f"submit HTTP {e.code}: {e.read().decode()[:300]}"
+    except Exception as e:
+        return False, f"submit error: {e}"
+
+def _taxbandits_status(form, submission_id, record_ids, env):
+    """GET /Form.../Status?SubmissionId=&RecordIds= -> federal/state acceptance status."""
+    token, msg = _taxbandits_token(env)
+    if not token:
+        return False, msg
+    path = TB_ENDPOINT.get(form, "/Form1099NEC/Create").replace("/Create", "/Status")
+    q = "SubmissionId=" + urllib.parse.quote(submission_id)
+    if record_ids:
+        q += "&RecordIds=" + urllib.parse.quote(record_ids)
+    try:
+        req = urllib.request.Request(f"{_tb_base(env)}{path}?{q}",
+            headers={"Authorization": "Bearer " + token})
+        with urllib.request.urlopen(req, timeout=60) as r:
+            return True, json.load(r)
+    except urllib.error.HTTPError as e:
+        return False, f"status HTTP {e.code}: {e.read().decode()[:300]}"
+    except Exception as e:
+        return False, f"status error: {e}"
+
+def status(args):
+    """glaw-irs-file status <SubmissionId> [--record <id>] [--form 1099-NEC] [--transmitter taxbandits]"""
+    sub = args[0]
+    form = args[args.index("--form") + 1] if "--form" in args else "1099-NEC"
+    rec = args[args.index("--record") + 1] if "--record" in args else None
+    transmitter = args[args.index("--transmitter") + 1] if "--transmitter" in args else (cfg("irs_transmitter") or "taxbandits")
+    env = (cfg("taxbandits_env") or "sandbox").lower()
+    print(f"== status: {form} submission {sub} via {transmitter} ({env}) ==")
+    if transmitter != "taxbandits":
+        print("  status polling is wired for TaxBandits; IRIS A2A status is retrieved through the IRS gateway client.")
+        return
+    if not all(cfg(k) for k in ("taxbandits_client_id", "taxbandits_client_secret", "taxbandits_user_token")):
+        print("  no TaxBandits credentials — set taxbandits_client_id/_client_secret/_user_token to poll status.")
+        return
+    ok, resp = _taxbandits_status(form, sub, rec, env)
+    if not ok:
+        print(f"  STATUS FAILED ❌ — {resp}"); return
+    print(f"  {json.dumps(resp)[:500]}")
+
+# ---- W-2 -> SSA EFW2 (Pub 42-007 TY2025; 512-char fixed records; BSO upload, no API) ----
+# Field map: (key, start_1indexed, length, kind). kind: const|text|num|money(dollars->cents).
+# Positions verified against SSA Pub 42-007 TY2025.
+EFW2 = {
+    "RA": [("_id",1,2,"RA"), ("submitter_ein",3,9,"num"), ("submitter_name",217,57,"text")],
+    "RE": [("_id",1,2,"RE"), ("tax_year",3,4,"num"), ("employer_ein",8,9,"num"), ("employer_name",40,57,"text")],
+    "RW": [("_id",1,2,"RW"), ("ssn",3,9,"num"), ("first",12,15,"text"), ("middle",27,15,"text"),
+           ("last",42,20,"text"), ("box1",188,11,"money"), ("box2",199,11,"money"),
+           ("box3",210,11,"money"), ("box4",221,11,"money"), ("box5",232,11,"money"), ("box6",243,11,"money")],
+    "RT": [("_id",1,2,"RT"), ("count",3,7,"num"), ("tot_box1",10,15,"money"), ("tot_box2",25,15,"money")],
+    "RF": [("_id",1,2,"RF"), ("count",8,9,"num")],
+}
+
+def _efw2_field(buf, start, length, value, kind):
+    if kind == "text":
+        s = (str(value or "").upper())[:length].ljust(length)
+    elif kind == "money":
+        s = str(int(round(float(value or 0) * 100))).zfill(length)[-length:]   # cents, no decimal
+    else:  # num / const
+        s = str(value or "").zfill(length)[-length:] if kind == "num" else str(value)
+    buf[start-1:start-1+length] = list(s)
+
+def _efw2_record(kind, data):
+    buf = [" "] * 512
+    for spec in EFW2[kind]:
+        key, start, length = spec[0], spec[1], spec[2]
+        k = spec[3] if len(spec) > 3 else "text"
+        if key == "_id":
+            _efw2_field(buf, start, length, length and k, "const"); continue
+        _efw2_field(buf, start, length, data.get(key, ""), k)
+    return "".join(buf)
+
+def efw2(args):
+    """glaw-irs-file efw2 <payload.json> [-o out_dir]  -> EFW2 W2REPORT.txt for BSO upload."""
+    if args and args[0] == "scaffold":
+        print(json.dumps({"tax_year": 2025,
+            "submitter": {"ein": "", "name": ""}, "employer": {"ein": "", "name": ""},
+            "employees": [{"ssn": "", "first": "", "middle": "", "last": "",
+                           "box1": 0.0, "box2": 0.0, "box3": 0.0, "box4": 0.0, "box5": 0.0, "box6": 0.0}]}, indent=2))
+        return
+    p = json.load(open(args[0]))
+    outdir = args[args.index("-o") + 1] if "-o" in args else os.path.dirname(os.path.abspath(args[0]))
+    emps = p.get("employees", [])
+    errs = []
+    if not p.get("submitter", {}).get("ein"): errs.append("submitter.ein required")
+    if not p.get("employer", {}).get("ein"): errs.append("employer.ein required")
+    if not emps: errs.append("at least one employee required")
+    for i, e in enumerate(emps):
+        if not re.fullmatch(r"\d{3}-?\d{2}-?\d{4}", str(e.get("ssn", ""))): errs.append(f"employee[{i}].ssn must be 9 digits")
+    print("== glaw-irs-file: W-2 -> SSA EFW2 (Pub 42-007) ==")
+    if errs:
+        print("INVALID ❌"); [print("  -", x) for x in errs]; sys.exit(2)
+
+    recs = [_efw2_record("RA", {"submitter_ein": re.sub(r"\D","",p["submitter"]["ein"]), "submitter_name": p["submitter"].get("name","")}),
+            _efw2_record("RE", {"tax_year": p["tax_year"], "employer_ein": re.sub(r"\D","",p["employer"]["ein"]), "employer_name": p["employer"].get("name","")})]
+    t1 = t2 = 0.0
+    for e in emps:
+        recs.append(_efw2_record("RW", {**e, "ssn": re.sub(r"\D","",str(e["ssn"]))}))
+        t1 += float(e.get("box1", 0)); t2 += float(e.get("box2", 0))
+    recs.append(_efw2_record("RT", {"count": len(emps), "tot_box1": t1, "tot_box2": t2}))
+    recs.append(_efw2_record("RF", {"count": len(emps)}))
+    outfile = os.path.join(outdir, "W2REPORT.txt")
+    with open(outfile, "w") as f:
+        f.write("\n".join(recs) + "\n")
+    bad = [i for i, r in enumerate(recs) if len(r) != 512]
+    print(f"VALID ✅  {len(emps)} W-2(s), Box1 ${t1:,.2f} / Box2 ${t2:,.2f}")
+    print(f"  EFW2 file -> {outfile}  ({len(recs)} records, all 512 chars: {'YES' if not bad else 'NO @'+str(bad)})")
+    print("  NEXT (manual — W-2 does NOT go to the IRS): 1) validate the file with SSA AccuWage Online;")
+    print("  2) upload at SSA Business Services Online (BSO) ssa.gov/bso. Core records only (RA/RE/RW/RT/RF);")
+    print("  add RS/RV state records + optional RO boxes per Pub 42-007 if your filing needs them. Verify before upload.")
+
+def lst(args):
+    """glaw-irs-file list <tax_year> [--form 1099-NEC] — pull all submissions for a year (TaxBandits)."""
+    year = args[0]
+    form = args[args.index("--form") + 1] if "--form" in args else "1099-NEC"
+    env = (cfg("taxbandits_env") or "sandbox").lower()
+    print(f"== list: {form} submissions for TY{year} (taxbandits {env}) ==")
+    if not all(cfg(k) for k in ("taxbandits_client_id", "taxbandits_client_secret", "taxbandits_user_token")):
+        print("  no TaxBandits credentials — set taxbandits_client_id/_client_secret/_user_token to list."); return
+    token, msg = _taxbandits_token(env)
+    if not token:
+        print(f"  LIST FAILED ❌ — {msg}"); return
+    path = TB_ENDPOINT.get(form, "/Form1099NEC/Create").replace("/Create", "/List")
+    url = f"{_tb_base(env)}{path}?TaxYear={urllib.parse.quote(str(year))}&Page=1&PageSize=100"
+    try:
+        req = urllib.request.Request(url, headers={"Authorization": "Bearer " + token})
+        with urllib.request.urlopen(req, timeout=60) as r:
+            print(f"  {json.dumps(json.load(r))[:600]}")
+    except urllib.error.HTTPError as e:
+        print(f"  LIST FAILED ❌ — HTTP {e.code}: {e.read().decode()[:300]}")
+    except Exception as e:
+        print(f"  LIST FAILED ❌ — {e}")
+
+def scaffold(form):
+    skel = {
+        "form_type": form, "tax_year": 0,
+        "payer": {"name": "", "tin": "", "address": {"street": "", "city": "", "state": "", "zip": ""}},
+        "recipients": [
+            {"name": "", "tin": "", "tin_type": "SSN|EIN",
+             "amounts": ({"box1_nonemployee_comp": 0.0} if form == "1099-NEC"
+                         else {"box": 0.0}), "address": {"street": "", "city": "", "state": "", "zip": ""}}
+        ],
+    }
+    print(json.dumps(skel, indent=2))
+
+def validate(p):
+    errs = []
+    if p.get("form_type") not in SUPPORTED:
+        errs.append(f"form_type must be one of {sorted(SUPPORTED)} (got {p.get('form_type')})")
+    if not p.get("payer", {}).get("tin"):
+        errs.append("payer.tin required")
+    if not re.fullmatch(r"\d{2}-?\d{7}", p.get("payer", {}).get("tin", "")):
+        errs.append("payer.tin must look like an EIN (XX-XXXXXXX)")
+    recips = p.get("recipients", [])
+    if not recips:
+        errs.append("at least one recipient required")
+    for i, r in enumerate(recips):
+        if not r.get("tin"):
+            errs.append(f"recipient[{i}].tin required")
+        if not sum(float(v or 0) for v in r.get("amounts", {}).values()):
+            errs.append(f"recipient[{i}] has no nonzero amount")
+    return errs
+
+def map_payload(p, transmitter):
+    """Map the neutral payload to a transmitter's shape (illustrative)."""
+    if transmitter == "taxbandits":
+        return {  # TaxBandits Form1099NEC/Create shape (illustrative)
+            "SubmissionManifest": {"TaxYear": p["tax_year"], "IsFederalFiling": True},
+            "ReturnHeader": {"Business": {"BusinessNm": p["payer"]["name"], "EINorSSN": p["payer"]["tin"]}},
+            "ReturnData": [
+                {"RecipientId": str(i+1),
+                 "Recipient": {"Name": r["name"], "TINType": r.get("tin_type", "SSN"), "TIN": r["tin"]},
+                 "NECFormData": r["amounts"]} for i, r in enumerate(p["recipients"])
+            ],
+        }
+    # iris A2A-style (illustrative JSON; real IRIS uses an XML schema per Pub 5718)
+    return {
+        "FormType": p["form_type"], "TaxYear": p["tax_year"],
+        "Payer": p["payer"],
+        "Payees": [{"PayeeName": r["name"], "TIN": r["tin"], "Amounts": r["amounts"]} for r in p["recipients"]],
+        "_note": "IRIS A2A requires an XML payload per Pub 5718 + a TCC; this JSON is the staging form.",
+    }
+
+def submit(path, args):
+    p = json.load(open(path))
+    transmitter = args[args.index("--transmitter") + 1] if "--transmitter" in args else (cfg("irs_transmitter") or "iris")
+    outdir = args[args.index("-o") + 1] if "-o" in args else os.path.dirname(os.path.abspath(path))
+    live = "--live" in args
+    env = (cfg("taxbandits_env") or "sandbox").lower()   # sandbox by default; set 'live' to hit production
+
+    errs = validate(p)
+    print(f"== glaw-irs-file: {p.get('form_type')} via {transmitter} ({env}) ==")
+    if errs:
+        print("INVALID ❌"); [print("  -", e) for e in errs]; sys.exit(2)
+    n = len(p["recipients"]); total = sum(sum(float(v or 0) for v in r["amounts"].values()) for r in p["recipients"])
+    print(f"VALID ✅  {n} recipient(s), ${total:,.2f} total")
+
+    payload = map_payload(p, transmitter)
+    outfile = os.path.join(outdir, f"{p['form_type']}-{transmitter}-payload.json")
+    json.dump(payload, open(outfile, "w"), indent=2)
+    print(f"  upload payload -> {outfile}")
+
+    if not live:
+        print("  DRY RUN (no --live) — payload staged, nothing transmitted. Add --live to transmit.")
+        return
+
+    # ---- LIVE ----
+    if transmitter == "taxbandits":
+        has = all(cfg(k) for k in ("taxbandits_client_id", "taxbandits_client_secret", "taxbandits_user_token"))
+        if not has:
+            print("  DRY RUN (no TaxBandits credentials) — set: glaw config set taxbandits_client_id|_client_secret|_user_token,")
+            print("  and optionally `glaw config set taxbandits_env live`. Get keys at the TaxBandits sandbox console.")
+            return
+        ok, resp = _taxbandits_submit(p["form_type"], payload, env)
+        if ok:
+            print(f"  TRANSMITTED ✅ ({env}) — response: {json.dumps(resp)[:400]}")
+        else:
+            print(f"  TRANSMIT FAILED ❌ — {resp}")
+    elif transmitter == "iris":
+        tcc = cfg("irs_tcc") or os.environ.get("IRS_TCC")
+        if not tcc:
+            print("  DRY RUN (no IRS_TCC) — IRIS A2A needs a Transmitter Control Code + the IRS API-gateway client")
+            print("  (mutual-TLS per Pub 5718). Payload staged above; complete A2A enrollment, then transmit.")
+            return
+        print(f"  IRIS A2A staging complete (TCC ...{tcc[-3:]}). Live IRIS transmission uses the IRS gateway's")
+        print("  mutual-TLS + XML submission per Pub 5718 — submit the staged payload through your A2A client.")
+    else:
+        print(f"  unknown transmitter '{transmitter}' — use taxbandits or iris.")
+
+if __name__ == "__main__":
+    a = sys.argv[1:]
+    if len(a) >= 2 and a[0] == "scaffold":
+        scaffold(a[1])
+    elif len(a) >= 2 and a[0] == "submit":
+        submit(a[1], a[2:])
+    elif len(a) >= 2 and a[0] == "status":
+        status(a[1:])
+    elif len(a) >= 2 and a[0] == "efw2":
+        efw2(a[1:])
+    elif len(a) >= 2 and a[0] == "list":
+        lst(a[1:])
+    else:
+        print(__doc__); sys.exit(1)

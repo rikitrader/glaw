@@ -1,0 +1,97 @@
+#!/usr/bin/env python3
+"""glaw-contract-score — the engine's CONTRACT-REVIEW SCORECARD (deterministic).
+
+Turns a contract review's findings (red flags + clause issues) into a transparent
+RISK SCORE (0-100), favorability GRADE (A-F), risk TIER, and a red-flag card — the
+quantified layer on top of /review-contract and /glaw-commercial-contracts. Use it on
+any sample contract a user uploads (extract text first with glaw-doc-extract).
+
+Usage:
+  glaw-contract-score scaffold                 # blank findings template
+  glaw-contract-score <findings.json>          # print the scorecard (markdown)
+
+Score model (transparent): risk = 100 * (severity of red flags FOUND + clause
+severities) / (severity of all evaluated items). Higher score = riskier for you.
+"""
+import sys, json
+
+# default severities (0-5) for the standard red-flag catalog (used if a flag omits one)
+CATALOG = {
+    "liability cap < 6 months": 4, "uncapped indemnification": 5,
+    "unilateral amendment rights": 3, "no termination for convenience": 2,
+    "auto-renewal long notice": 2, "ip assignment to counterparty": 4,
+    "unilateral price increase": 3, "broad warranty disclaimer": 2,
+    "no data/security terms": 3, "no sla or remedies": 3,
+    "unfavorable governing law/venue": 1, "broad confidentiality/non-compete": 2,
+}
+
+def tier(s): return "CRITICAL" if s >= 80 else "HIGH" if s >= 55 else "MEDIUM" if s >= 25 else "LOW"
+def emoji(s): return "🔴" if s >= 80 else "🟠" if s >= 55 else "🟡" if s >= 25 else "🟢"
+def grade(s): return "F" if s > 75 else "D" if s > 55 else "C" if s > 30 else "B" if s > 15 else "A"
+
+def sev(item):
+    if "severity" in item and item["severity"] is not None:
+        return float(item["severity"])
+    return float(CATALOG.get(str(item.get("flag", "")).strip().lower(), 2))
+
+def scaffold():
+    print(json.dumps({
+        "document_type": "SaaS Subscription Agreement", "your_position": "Customer",
+        "counterparty": "", "status": "Draft",
+        "red_flags": [
+            {"flag": "Liability cap < 6 months", "found": True, "location": "Section 10.2", "severity": 4},
+            {"flag": "Uncapped indemnification", "found": False},
+            {"flag": "Unilateral amendment rights", "found": True, "location": "Section 14.1", "severity": 3},
+            {"flag": "No termination for convenience", "found": False}],
+        "clauses": [
+            {"name": "Limitation of Liability", "issue": "3-month cap below market",
+             "market": "12 months' fees", "negotiability": "Medium",
+             "redline": 'Change "three (3) months" -> "twelve (12) months"',
+             "fallback": "Accept 6 months as compromise", "severity": 4}]
+    }, indent=2))
+
+def card(path):
+    d = json.load(open(path))
+    rf = d.get("red_flags", []); cl = d.get("clauses", [])
+    # Score on red flags only (clauses below are the redline detail of those flags,
+    # so scoring both would double-count).
+    found = [f for f in rf if f.get("found")]
+    found_w = sum(sev(f) for f in found)
+    total_w = sum(sev(f) for f in rf)
+    score = round(found_w / total_w * 100) if total_w else 0
+    t = tier(score)
+
+    out = []
+    out.append(f"# Contract Scorecard — {d.get('document_type','Document')}")
+    out.append("")
+    pos = d.get("your_position", "—"); cp = d.get("counterparty") or "—"; st = d.get("status", "—")
+    out.append(f"**Your Position:** {pos}  |  **Counterparty:** *{cp}*  |  **Status:** {st}")
+    out.append("")
+    out.append(f"**RISK SCORE: {score}/100**  ·  **TIER: {emoji(score)} {t}**  ·  **GRADE: {grade(score)}**  ·  **Red flags: {len(found)}/{len(rf)} triggered**")
+    out.append("")
+    out.append("## Red Flags (quick scan)")
+    out.append("| Flag | Found | Location | Severity |")
+    out.append("|------|-------|----------|----------|")
+    for f in rf:
+        mark = "⚠️ Yes" if f.get("found") else "No"
+        loc = f.get("location", "—") if f.get("found") else "—"
+        s = sev(f) if f.get("found") else "—"
+        out.append(f"| {f.get('flag','')} | {mark} | {loc} | {s} |")
+    if cl:
+        out.append("")
+        out.append("## Priority Redlines")
+        for c in sorted(cl, key=lambda x: -float(x.get("severity", 2))):
+            out.append(f"- **{c.get('name','clause')}** — *Issue:* {c.get('issue','')}  ·  "
+                       f"*Market:* {c.get('market','—')}  ·  *Negotiability:* {c.get('negotiability','—')}")
+            if c.get("redline"): out.append(f"  - **Redline:** {c['redline']}")
+            if c.get("fallback"): out.append(f"  - **Fallback:** {c['fallback']}")
+    out.append("")
+    out.append("> Attorney work-product, not legal advice. Score is a triage aid; a licensed "
+               "attorney makes the call. Higher score = higher risk to your position.")
+    print("\n".join(out))
+
+if __name__ == "__main__":
+    a = sys.argv[1:]
+    if a and a[0] == "scaffold": scaffold()
+    elif a and a[0] not in ("-h", "--help"): card(a[0])
+    else: print(__doc__)

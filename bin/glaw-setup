@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+# glaw-setup — deploy GLAW's nested sub-skills as top-level /glaw-* commands,
+# mirroring gstack's ./setup. Creates a real top-level directory per sub-skill
+# with a SKILL.md symlink back to the canonical file under glaw/, so Claude Code
+# discovers each as its own skill (not nested). Idempotent.
+set -euo pipefail
+ROOT="$HOME/.claude/skills"
+SRC="$ROOT/glaw"
+count=0
+for d in "$SRC"/*/; do
+  name="$(basename "$d")"
+  [ -f "$d/SKILL.md" ] || continue            # skip bin/ lib/ (no SKILL.md)
+  top="glaw-$name"
+  mkdir -p "$ROOT/$top"
+  ln -snf "../glaw/$name/SKILL.md" "$ROOT/$top/SKILL.md"
+  count=$((count+1))
+  echo "  /$top"
+done
+echo "deployed $count GLAW sub-skills as top-level commands (orchestrator /glaw already registered)"

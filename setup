@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+# GLAW installer — deploys the firm, creates state, optionally installs the toolbelt.
+#   ./setup              deploy skills + create state dir
+#   ./setup --with-tools also install the Python toolbelt into a venv
+set -euo pipefail
+HERE="$(cd "$(dirname "$0")" && pwd)"
+GLAW_HOME="${GLAW_HOME:-$HOME/.glaw}"
+
+echo "⚖️  GLAW setup"
+echo "   repo: $HERE"
+
+# 1) deploy every sub-skill as a top-level /glaw-* command
+echo "→ deploying skills…"
+bash "$HERE/bin/glaw-setup"
+
+# 2) state dir
+mkdir -p "$GLAW_HOME/tools"
+echo "→ state dir: $GLAW_HOME"
+
+# 3) optional Python toolbelt
+if [[ "${1:-}" == "--with-tools" ]]; then
+  echo "→ installing Python toolbelt…"
+  if command -v python3 >/dev/null; then
+    python3 -m venv "$GLAW_HOME/tools/glaw-venv"
+    "$GLAW_HOME/tools/glaw-venv/bin/pip" install -q --upgrade pip
+    "$GLAW_HOME/tools/glaw-venv/bin/pip" install -q -r "$HERE/requirements.txt" \
+      && echo "  ✅ toolbelt installed → activate with: source $GLAW_HOME/tools/glaw-venv/bin/activate" \
+      || echo "  ⚠️ some tools failed to install — see requirements.txt"
+  else
+    echo "  ⚠️ python3 not found; skipping toolbelt"
+  fi
+  echo "  Note: PDF/Slides + OCR tools also need pandoc, weasyprint, tesseract, poppler (install separately)."
+else
+  echo "→ skipped Python toolbelt (run './setup --with-tools' to install it)"
+fi
+
+# 4) health check
+echo "→ health check…"
+bash "$HERE/bin/glaw-doctor" 2>/dev/null | tail -3 || true
+
+echo ""
+echo "✅ Done. Open a matter with:  /glaw"
+echo "   Verify any time with:      bin/glaw-doctor"

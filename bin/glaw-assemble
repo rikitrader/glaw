@@ -1,0 +1,38 @@
+#!/usr/bin/env python3
+"""glaw-assemble — fill a DOCX template from matter JSON data (docxtpl / Jinja2).
+
+The headless, server-free take on docassemble's document assembly: turn GLAW's
+repeated outputs into reusable DOCX templates with {{ merge_fields }}, then fill
+them from a matter's structured data (e.g. the glaw-tax-report object or any JSON).
+
+Template syntax (inside the .docx): {{ filer.name }}, {{ tax_year }},
+{% if income.business_income %}...{% endif %} — standard Jinja2.
+
+Usage:
+  glaw-assemble vars <template.docx>                 list the {{ variables }} a template needs
+  glaw-assemble <template.docx> <data.json> -o <out.docx>
+"""
+import sys, json
+from docxtpl import DocxTemplate
+
+def cmd_vars(tpl):
+    doc = DocxTemplate(tpl)
+    v = sorted(doc.get_undeclared_template_variables())
+    print(f"{len(v)} template variables:")
+    for x in v: print("  -", x)
+
+def cmd_render(tpl, data_path, out):
+    doc = DocxTemplate(tpl)
+    data = json.load(open(data_path))
+    doc.render(data)
+    doc.save(out)
+    print(f"assembled -> {out}  (from {tpl} + {data_path})")
+
+if __name__ == "__main__":
+    a = sys.argv[1:]
+    if len(a) >= 2 and a[0] == "vars":
+        cmd_vars(a[1])
+    elif len(a) >= 4 and a[-2] == "-o":
+        cmd_render(a[0], a[1], a[-1])
+    else:
+        print(__doc__); sys.exit(1)

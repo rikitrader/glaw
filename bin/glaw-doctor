@@ -1,0 +1,113 @@
+#!/usr/bin/env bash
+# glaw-doctor — GLAW health/smoke harness. Read-only. The automated check the firm
+# was missing. Three assertions:
+#   1. SKILLS RESOLVE  — every glaw/<x>/SKILL.md has valid frontmatter; every deployed
+#                        /glaw-* command symlink resolves; deploy parity (setup ran).
+#   2. TOOLS RUN       — every bin/glaw-* runs a safe smoke command without crashing.
+#   3. NO DANGLING REFS— every /glaw-*, bin/glaw-*, lib/*, and mapped external skill
+#                        referenced in firm-roster.md (and across all SKILL.md) exists.
+# Exit 0 = healthy, 1 = problems found.
+set -uo pipefail
+ROOT="$HOME/.claude/skills"
+GLAW="$ROOT/glaw"
+FAIL=0; WARN=0
+ok(){ printf '  ✅ %s\n' "$1"; }
+bad(){ printf '  ❌ %s\n' "$1"; FAIL=$((FAIL+1)); }
+warn(){ printf '  ⚠️  %s\n' "$1"; WARN=$((WARN+1)); }
+
+echo "═══ GLAW DOCTOR ═══"
+
+# ---- 1. SKILLS RESOLVE ----
+echo "[1/3] skills resolve"
+src_skills=$(find "$GLAW" -name SKILL.md | wc -l | tr -d ' ')
+deployed=$(ls -d "$ROOT"/glaw-*/ 2>/dev/null | wc -l | tr -d ' ')
+# every source SKILL.md has name + description
+nf=0
+for f in $(find "$GLAW" -name SKILL.md); do
+  grep -q '^name:' "$f" && grep -q '^description:' "$f" || { bad "missing frontmatter: ${f#$GLAW/}"; nf=$((nf+1)); }
+done
+[ "$nf" = 0 ] && ok "$src_skills source SKILL.md files, all have name+description"
+# every deployed symlink resolves
+dl=0
+for d in "$ROOT"/glaw-*/; do
+  [ -f "$d/SKILL.md" ] || { bad "dangling deploy: ${d}SKILL.md does not resolve"; dl=$((dl+1)); }
+done
+[ "$dl" = 0 ] && ok "$deployed deployed /glaw-* commands, all symlinks resolve"
+# deploy parity: each sub-skill dir (not orchestrator) should be deployed as glaw-<dir>
+miss=0
+for d in "$GLAW"/*/; do
+  name="$(basename "$d")"; [ -f "$d/SKILL.md" ] || continue
+  [ -e "$ROOT/glaw-$name" ] || { warn "not deployed (run glaw-setup): glaw-$name"; miss=$((miss+1)); }
+done
+[ "$miss" = 0 ] && ok "deploy parity: every sub-skill is a top-level command"
+
+# ---- 2. TOOLS RUN ----
+echo "[2/3] tools run (safe smoke)"
+declare -a TOOLS=(
+  "glaw|version" "glaw-bureau-score|weights" "glaw-tax-report|types"
+  "glaw-irs-file|scaffold 1099-NEC" "glaw-court-scrape|--list __none__"
+  "glaw-compliance-audit|" "glaw-doc-extract|" "glaw-exempt-org|" "glaw-assemble|"
+  "glaw-contract-score|scaffold" "glaw-publish|" "glaw-redline|" "glaw-redline-docx|" "glaw-chief-decision|"
+  "glaw-review-chain|"
+)
+for entry in "${TOOLS[@]}"; do
+  tool="${entry%%|*}"; args="${entry#*|}"
+  bin="$GLAW/bin/$tool"
+  [ -x "$bin" ] || { bad "$tool: not executable"; continue; }
+  err=$("$bin" $args 2>&1 >/dev/null); rc=$?
+  if echo "$err" | grep -qiE 'Traceback|ModuleNotFoundError|No such file|command not found|SyntaxError'; then
+    bad "$tool: crashed — $(echo "$err" | grep -iE 'Error|Traceback' | head -1)"
+  elif [ "$rc" -ge 126 ]; then
+    bad "$tool: exit $rc"
+  else
+    ok "$tool ran (exit $rc)"
+  fi
+done
+# glaw-cites needs stdin
+if printf '' | "$GLAW/bin/glaw-cites" - >/dev/null 2>&1; then ok "glaw-cites ran"; else bad "glaw-cites failed"; fi
+# scripts: syntax-check (don't execute — they mutate/source)
+for s in glaw-setup glaw-preamble.sh; do
+  bash -n "$GLAW/bin/$s" 2>/dev/null && ok "$s syntax OK" || bad "$s syntax error"
+done
+
+# ---- 3. NO DANGLING REFS ----
+echo "[3/3] no dangling references"
+ROSTER="$GLAW/lib/firm-roster.md"
+# 3a. /glaw-* referenced in roster -> dir exists (strip bin/glaw-* tool refs first)
+dang=0
+for ref in $(sed 's#bin/glaw-[a-z.-]*##g' "$ROSTER" 2>/dev/null | grep -oE '/glaw-[a-z-]+' | sed 's#/##' | sort -u); do
+  [ -d "$GLAW/${ref#glaw-}" ] || [ -e "$ROOT/$ref" ] || { bad "roster -> /$ref (no skill)"; dang=$((dang+1)); }
+done
+[ "$dang" = 0 ] && ok "all /glaw-* roster refs resolve"
+# 3b. bin/glaw-* referenced in roster -> file exists
+db=0
+for ref in $(grep -oE 'bin/glaw-[a-z-]+' "$ROSTER" 2>/dev/null | sed 's#bin/##' | sort -u); do
+  [ -e "$GLAW/bin/$ref" ] || { bad "roster -> bin/$ref (missing)"; db=$((db+1)); }
+done
+[ "$db" = 0 ] && ok "all bin/glaw-* roster refs resolve"
+# 3c. lib/ paths referenced -> exist
+dlib=0
+for ref in $(grep -oE 'lib/[a-zA-Z0-9._/-]+' "$ROSTER" 2>/dev/null | sort -u); do
+  [ -e "$GLAW/$ref" ] || { warn "roster -> $ref (missing, maybe templated)"; dlib=$((dlib+1)); }
+done
+[ "$dlib" = 0 ] && ok "all lib/ roster refs resolve"
+# 3d. mapped external seats (existing skills GLAW routes to) exist
+ext=0
+for s in corporate-counsel elite-corporate-counsel pe-vc-counsel fund-regulatory-council \
+         tokenization-compliance institutional-finance tax-strategy tax-compliance tax-relief \
+         tax-legal-intake federal-trial-counsel forensic-case-investigator financial-forensics \
+         roofer-accounting company-valuation mc-cfo-agent contract-review copywriting copy-editing \
+         make-pdf docx document-generate; do
+  [ -e "$ROOT/$s/SKILL.md" ] || { bad "mapped seat missing: $s"; ext=$((ext+1)); }
+done
+[ "$ext" = 0 ] && ok "all mapped external seats installed"
+# 3e. cross-skill /glaw-* references across ALL SKILL.md resolve (catch routing typos)
+xref=0
+for ref in $(cat "$GLAW"/*/SKILL.md 2>/dev/null | sed 's#bin/glaw-[a-z.-]*##g' | grep -oE '/glaw-[a-z-]+' | sed 's#/##' | sort -u); do
+  [ -d "$GLAW/${ref#glaw-}" ] || { warn "skill cross-ref -> /$ref (no such sub-skill)"; xref=$((xref+1)); }
+done
+[ "$xref" = 0 ] && ok "all cross-skill /glaw-* references resolve"
+
+echo "═══ RESULT ═══"
+echo "  failures: $FAIL   warnings: $WARN"
+[ "$FAIL" = 0 ] && { echo "  HEALTHY ✅"; exit 0; } || { echo "  PROBLEMS FOUND ❌"; exit 1; }

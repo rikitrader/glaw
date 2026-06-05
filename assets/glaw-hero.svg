@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" font-family="Helvetica Neue, Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0B1020"/>
+      <stop offset="0.55" stop-color="#0d1b2e"/>
+      <stop offset="1" stop-color="#05070d"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F6D77A"/><stop offset="1" stop-color="#C9A227"/>
+    </linearGradient>
+    <linearGradient id="blue" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#3B82F6"/><stop offset="1" stop-color="#1A3FA0"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.34" r="0.5">
+      <stop offset="0" stop-color="#1A3FA0" stop-opacity="0.45"/><stop offset="1" stop-color="#1A3FA0" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1280" height="640" fill="url(#bg)"/>
+  <rect width="1280" height="640" fill="url(#glow)"/>
+
+  <!-- faint circuit grid -->
+  <g stroke="#2a3a55" stroke-width="1" opacity="0.35">
+    <line x1="0" y1="160" x2="1280" y2="160"/><line x1="0" y1="480" x2="1280" y2="480"/>
+    <line x1="220" y1="0" x2="220" y2="640"/><line x1="1060" y1="0" x2="1060" y2="640"/>
+  </g>
+  <g fill="#3B82F6" opacity="0.5">
+    <circle cx="220" cy="160" r="3"/><circle cx="1060" cy="160" r="3"/>
+    <circle cx="220" cy="480" r="3"/><circle cx="1060" cy="480" r="3"/>
+  </g>
+
+  <!-- scales of justice emblem -->
+  <g transform="translate(640,150)" stroke="url(#gold)" stroke-width="5" fill="none" stroke-linecap="round">
+    <line x1="0" y1="-58" x2="0" y2="46"/>
+    <line x1="-120" y1="-58" x2="120" y2="-58"/>
+    <circle cx="0" cy="-66" r="9" fill="url(#gold)" stroke="none"/>
+    <!-- left pan -->
+    <line x1="-120" y1="-58" x2="-120" y2="-30"/>
+    <path d="M-160 -30 A40 30 0 0 0 -80 -30 Z" fill="url(#gold)" fill-opacity="0.15"/>
+    <line x1="-120" y1="-58" x2="-160" y2="-30"/><line x1="-120" y1="-58" x2="-80" y2="-30"/>
+    <!-- right pan -->
+    <line x1="120" y1="-58" x2="120" y2="-30"/>
+    <path d="M80 -30 A40 30 0 0 0 160 -30 Z" fill="url(#blue)" fill-opacity="0.18"/>
+    <line x1="120" y1="-58" x2="80" y2="-30"/><line x1="120" y1="-58" x2="160" y2="-30"/>
+    <!-- base -->
+    <line x1="-46" y1="46" x2="46" y2="46"/>
+    <!-- AI nodes on the right pan -->
+    <g stroke="#3B82F6" stroke-width="3"><circle cx="120" cy="-44" r="5" fill="#3B82F6"/><circle cx="104" cy="-50" r="3.5" fill="#3B82F6"/><circle cx="136" cy="-50" r="3.5" fill="#3B82F6"/><line x1="104" y1="-50" x2="120" y2="-44"/><line x1="136" y1="-50" x2="120" y2="-44"/></g>
+  </g>
+
+  <!-- wordmark -->
+  <text x="640" y="350" text-anchor="middle" font-size="170" font-weight="800" fill="#FFFFFF" letter-spacing="6">GLAW</text>
+  <rect x="468" y="372" width="344" height="6" rx="3" fill="url(#gold)"/>
+
+  <!-- tagline -->
+  <text x="640" y="432" text-anchor="middle" font-size="30" font-weight="700" fill="#8FB3FF" letter-spacing="7">THE OPEN-SOURCE VIRTUAL LAW FIRM</text>
+  <text x="640" y="470" text-anchor="middle" font-size="20" fill="#9AA8Bd" letter-spacing="1">AI legal departments · matters, not chat · attorney work-product</text>
+
+  <!-- footer stats -->
+  <g text-anchor="middle">
+    <text x="640" y="560" font-size="19" fill="#C9A227" font-weight="700" letter-spacing="2">10 DEPARTMENTS  ·  59 SKILLS  ·  20 TOOLS  ·  8-STAGE PIPELINE  ·  4 HARD GATES</text>
+    <text x="640" y="592" font-size="15" fill="#6b7a90">MIT Licensed  ·  Built on the gstack skill-orchestration methodology</text>
+  </g>
+</svg>

@@ -1,0 +1,42 @@
+{
+  "name": "LLC Compliance Checklist",
+  "entity_type": "llc",
+  "sections": [
+    { "section": "1. Formation & Foundational", "items": [
+      { "id": "articles", "name": "Articles of Organization", "seat": "corporate-counsel", "required": true, "match": ["articles of org", "certificate of formation", "certificate of org"] },
+      { "id": "operating-agmt", "name": "Operating Agreement", "seat": "corporate-counsel", "required": true, "match": ["operating agreement", "operating-agreement"] },
+      { "id": "ein", "name": "EIN (Form SS-4)", "seat": "tax-compliance", "required": true, "match": ["ein", "ss-4"] },
+      { "id": "org-consent", "name": "Organizational consent / initial resolutions", "seat": "corporate-counsel", "required": true, "match": ["organizational", "written consent", "resolution"] },
+      { "id": "member-ledger", "name": "Membership ledger / units cap table", "seat": "corporate-counsel", "required": true, "match": ["membership ledger", "member ledger", "units", "cap table"] },
+      { "id": "reg-agent", "name": "Registered agent designation", "seat": "/glaw-licensing", "required": true, "match": ["registered-agent", "registered agent"] }
+    ]},
+    { "section": "2. Governance", "items": [
+      { "id": "mgmt-structure", "name": "Manager- vs member-managed (in OA)", "seat": "corporate-counsel", "required": true, "match": ["manager-managed", "member-managed", "managed by"] },
+      { "id": "annual-consent", "name": "Annual member/manager consent or minutes (recommended)", "seat": "corporate-counsel", "required": false, "match": ["annual consent", "annual meeting", "written consent"] },
+      { "id": "banking-res", "name": "Banking resolution / authorization", "seat": "corporate-counsel", "required": true, "match": ["banking-resolution", "banking resolution"] },
+      { "id": "minute-book", "name": "Company record book", "seat": "corporate-counsel", "required": false, "match": ["minute-book", "record book"] }
+    ]},
+    { "section": "3. Tax", "items": [
+      { "id": "classification", "name": "Tax classification (default or Form 8832/2553 election)", "seat": "tax-strategy", "required": true, "match": ["8832", "check-the-box", "classification", "2553", "disregarded", "partnership"] },
+      { "id": "return", "name": "Income tax return (1065 / Sch C / 1120-S / 1120 per election)", "seat": "tax-compliance", "required": true, "match": ["1065", "schedule c", "1120", "k-1"] },
+      { "id": "se-tax", "name": "Self-employment / SE-tax posture", "seat": "tax-strategy", "required": false, "type": "action", "match": ["self-employment", "se tax"] },
+      { "id": "payroll", "name": "Form 941 / 940 / W-2 / 1099 (if employees/contractors)", "seat": "tax-compliance", "required": false, "type": "action", "match": ["941", "940", "w-2", "1099"] },
+      { "id": "distributions", "name": "Distributions per Operating Agreement", "seat": "/glaw-accounting", "required": false, "match": ["distribution"] }
+    ]},
+    { "section": "4. State & Local", "items": [
+      { "id": "annual-report", "name": "State annual report / statement of information", "seat": "/glaw-licensing", "required": true, "match": ["annual report", "statement of information", "state-compliance"] },
+      { "id": "franchise-tax", "name": "Franchise/LLC tax or fee", "seat": "tax-compliance", "required": false, "type": "action", "match": ["franchise tax", "llc fee", "llc tax"] },
+      { "id": "sales-tax", "name": "Sales/use-tax determination", "seat": "tax-compliance", "required": false, "match": ["sales-use-tax", "sales tax"] },
+      { "id": "licenses", "name": "Business licenses & permits", "seat": "/glaw-licensing", "required": true, "match": ["business-license", "permit", "license inventory"] }
+    ]},
+    { "section": "5. Recordkeeping & Banking", "items": [
+      { "id": "bank-account", "name": "Separate business bank account (no commingling)", "seat": "/glaw-accounting", "required": true, "type": "action", "match": ["bank account", "no commingl"] },
+      { "id": "retention", "name": "Document retention policy", "seat": "corporate-counsel", "required": false, "match": ["retention"] }
+    ]},
+    { "section": "6. Employment & IP", "items": [
+      { "id": "employment", "name": "Employment / contractor agreements", "seat": "/glaw-employment-counsel", "required": false, "match": ["employment-agreement", "contractor agreement", "independent-contractor"] },
+      { "id": "nda", "name": "NDA / confidentiality", "seat": "/glaw-employment-counsel", "required": false, "match": ["nda", "confidentiality"] },
+      { "id": "ip-assignment", "name": "IP assignment", "seat": "/glaw-ip-counsel", "required": false, "match": ["ip-assignment", "invention assignment"] }
+    ]}
+  ]
+}

@@ -1,0 +1,107 @@
+#!/usr/bin/env python3
+"""glaw-review-chain — one-shot inbound-contract pipeline.
+
+Given a contract (.docx) + ONE findings file (the glaw-redline shape), run the whole
+chain and drop everything in ONE Google Drive folder:
+  contract-review (you supply REVIEW.md) -> glaw-contract-score (scorecard, derived
+  from the findings) -> glaw-redline-docx (real Word tracked changes + PDFs) ->
+  glaw-publish (review + scorecard as PDF/Doc/Slides) -> all in one Drive folder.
+
+Findings file = the glaw-redline array:
+  [{ "id","quote","severity"(critical|important|acceptable),"issue","suggestion" }]
+Scorecard red flags are derived from it (critical=5, important=3, acceptable=1).
+
+Usage:
+  glaw-review-chain <contract.docx> <findings.json> --matter <slug>
+     [--review <REVIEW.md>] [--title T] [--doctype D] [--position P] [--counterparty C]
+     [--folder "<Drive folder name>"] [--local-only]
+"""
+import sys, os, json, subprocess
+
+BIN = os.path.expanduser("~/.claude/skills/glaw/bin")
+HOME = os.path.expanduser("~/.glaw")
+SEV2N = {"critical": 5, "important": 3, "acceptable": 2}
+
+def arg(flag, default=None):
+    a = sys.argv
+    return a[a.index(flag) + 1] if flag in a else default
+
+def main():
+    if len(sys.argv) < 3:
+        print(__doc__); sys.exit(1)
+    contract, findings_p = sys.argv[1], sys.argv[2]
+    slug = arg("--matter") or os.path.splitext(os.path.basename(contract))[0]
+    M = os.path.join(HOME, "matters", slug); os.makedirs(M, exist_ok=True)
+    title = arg("--title", os.path.basename(contract))
+    findings = json.load(open(findings_p))
+
+    # 1) derive + write the scorecard
+    sc = {"document_type": arg("--doctype", title), "your_position": arg("--position", "Reviewing party"),
+          "counterparty": arg("--counterparty", ""), "status": "Under review",
+          "red_flags": [{"flag": (f.get("issue", "")[:58] or f["id"]), "found": True,
+                         "location": f.get("id", ""), "severity": SEV2N.get(f.get("severity"), 3)}
+                        for f in findings],
+          "clauses": []}
+    scf = os.path.join(M, "scorecard-findings.json"); json.dump(sc, open(scf, "w"), indent=2)
+    with open(os.path.join(M, "SCORECARD.md"), "w") as out:
+        subprocess.run([f"{BIN}/glaw-contract-score", scf], stdout=out, check=True)
+    print("  [1/4] scorecard written")
+
+    # 2) review.md (use supplied or stub)
+    rev = arg("--review")
+    if rev and os.path.exists(rev):
+        import shutil; shutil.copy(rev, os.path.join(M, "REVIEW.md"))
+    elif not os.path.exists(os.path.join(M, "REVIEW.md")):
+        open(os.path.join(M, "REVIEW.md"), "w").write(
+            f"# Contract Review: {title}\n\n**Counterparty:** {sc['counterparty']}\n\n"
+            f"See the Scorecard (quantified risk) and the tracked-changes Word file "
+            f"({len(findings)} redlines).\n\n> Attorney work-product, not legal advice.\n")
+    print("  [2/4] review captured")
+
+    # 3) real Word tracked changes
+    base = os.path.join(M, "REDLINE")
+    r = subprocess.run([f"{BIN}/glaw-redline-docx", contract, findings_p, "-o", base,
+                        "--title", title], capture_output=True, text=True)
+    print("  [3/4] " + ("tracked changes generated" if "Applied:" in r.stdout or os.path.exists(base + ".tracked.docx")
+                         else "redline step: " + (r.stdout + r.stderr)[:120]))
+
+    if "--local-only" in sys.argv:
+        print(f"  local-only: {M}"); return
+
+    # 4) publish review+scorecard, then add the tracked-changes files to the SAME folder
+    folder = arg("--folder", f"GLAW — {slug}")
+    pub = subprocess.run([f"{BIN}/glaw-publish", slug, "--folder", folder], capture_output=True, text=True)
+    sys.stdout.write("  [4/4] " + "\n".join(l for l in pub.stdout.splitlines() if "DRIVE FOLDER" in l) + "\n")
+    import re
+    m = re.search(r"folders/([A-Za-z0-9_-]+)", pub.stdout)
+    if not m:
+        print("  publish folder not found:", pub.stdout[-200:]); return
+    fid = m.group(1)
+    _upload_extras(M, base, fid)
+    print(f"  DONE → https://drive.google.com/drive/folders/{fid}")
+
+def _upload_extras(M, base, fid):
+    from google.oauth2.credentials import Credentials
+    from google.auth.transport.requests import Request
+    from googleapiclient.discovery import build
+    from googleapiclient.http import MediaFileUpload
+    c = Credentials.from_authorized_user_file(os.path.expanduser("~/.gcp/token.json"),
+                                              ["https://www.googleapis.com/auth/drive"])
+    if not c.valid: c.refresh(Request())
+    svc = build("drive", "v3", credentials=c)
+    DOCX = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    for path, src, tgt, name in [
+        (base + ".tracked.docx", DOCX, None, "TRACKED CHANGES (open in Word).docx"),
+        (base + ".tracked.docx", DOCX, "application/vnd.google-apps.document", "Tracked (Google Doc)"),
+        (base + ".redline.pdf", "application/pdf", None, "Full redline.pdf"),
+        (base + ".summary.pdf", "application/pdf", None, "Schedule of changes.pdf"),
+        (base + ".memo.pdf", "application/pdf", None, "Internal memo.pdf")]:
+        if not os.path.exists(path): continue
+        body = {"name": name, "parents": [fid]}
+        if tgt: body["mimeType"] = tgt
+        svc.files().create(body=body, media_body=MediaFileUpload(path, mimetype=src, resumable=False),
+                           fields="id").execute()
+        print("       + " + name)
+
+if __name__ == "__main__":
+    main()

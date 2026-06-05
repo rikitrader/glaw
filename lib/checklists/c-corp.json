@@ -1,0 +1,48 @@
+{
+  "name": "C-Corporation Compliance Checklist",
+  "entity_type": "c-corp",
+  "sections": [
+    { "section": "1. Formation & Foundational", "items": [
+      { "id": "articles", "name": "Articles of Incorporation", "seat": "corporate-counsel", "required": true, "match": ["article", "certificate of inc"] },
+      { "id": "bylaws", "name": "Bylaws", "seat": "corporate-counsel", "required": true, "match": ["bylaw"] },
+      { "id": "ein", "name": "EIN (Form SS-4)", "seat": "tax-compliance", "required": true, "match": ["ein", "ss-4"] },
+      { "id": "org-minutes", "name": "Organizational minutes + initial resolutions", "seat": "corporate-counsel", "required": true, "match": ["organizational", "ratifying", "written consent", "resolution"] },
+      { "id": "stock-ledger", "name": "Stock ledger / cap table", "seat": "corporate-counsel", "required": true, "match": ["stock-ledger", "cap table", "capitalization"] },
+      { "id": "stock-cert", "name": "Stock certificates", "seat": "corporate-counsel", "required": false, "match": ["stock-certificate", "stock certificate"] },
+      { "id": "shareholder-agmt", "name": "Shareholder agreement (buy-sell/transfer)", "seat": "/glaw-entity-architect", "required": false, "match": ["shareholder-agreement", "buy-sell"] },
+      { "id": "reg-agent", "name": "Registered agent designation", "seat": "/glaw-licensing", "required": true, "match": ["registered-agent", "registered agent"] }
+    ]},
+    { "section": "2. Governance Formalities", "items": [
+      { "id": "annual-shareholder", "name": "Annual shareholder meeting + minutes", "seat": "corporate-counsel", "required": true, "match": ["annual shareholder", "annual meeting", "annual-minutes"] },
+      { "id": "annual-board", "name": "Annual board of directors meeting + minutes", "seat": "corporate-counsel", "required": true, "match": ["board meeting", "board of directors", "board-minutes"] },
+      { "id": "minute-book", "name": "Minute book", "seat": "corporate-counsel", "required": true, "match": ["minute-book", "minute book"] },
+      { "id": "banking-res", "name": "Banking resolution", "seat": "corporate-counsel", "required": true, "match": ["banking-resolution", "banking resolution"] },
+      { "id": "coi-policy", "name": "Conflict-of-interest / related-party policy", "seat": "corporate-counsel", "required": false, "match": ["conflict-of-interest", "related-party"] },
+      { "id": "indemnification", "name": "Officer/director indemnification", "seat": "corporate-counsel", "required": false, "match": ["indemnification"] }
+    ]},
+    { "section": "3. Federal Tax (entity-level)", "items": [
+      { "id": "1120", "name": "Form 1120 (C-corp income tax return)", "seat": "tax-compliance", "required": true, "match": ["1120 ", "form 1120", "c-corp return"] },
+      { "id": "estimated", "name": "Estimated tax payments (1120-W)", "seat": "tax-compliance", "required": true, "type": "action", "match": ["1120-w", "estimated tax"] },
+      { "id": "dividends", "name": "Dividend declarations + 1099-DIV", "seat": "/glaw-accounting", "required": false, "match": ["dividend", "1099-div"] },
+      { "id": "officer-comp", "name": "Officer compensation (reasonable, deductible)", "seat": "tax-strategy", "required": false, "match": ["officer compensation", "reasonable comp"] },
+      { "id": "payroll", "name": "Form 941 / 940 / W-2 / 1099-NEC", "seat": "tax-compliance", "required": true, "type": "action", "match": ["941", "940", "w-2", "1099"] },
+      { "id": "ae-tax", "name": "Accumulated-earnings / PHC tax review", "seat": "tax-strategy", "required": false, "type": "action", "match": ["accumulated earnings", "personal holding"] }
+    ]},
+    { "section": "4. State & Local", "items": [
+      { "id": "annual-report", "name": "State annual report", "seat": "/glaw-licensing", "required": true, "match": ["annual report", "state-compliance"] },
+      { "id": "franchise-tax", "name": "Franchise tax", "seat": "tax-compliance", "required": false, "type": "action", "match": ["franchise tax"] },
+      { "id": "sales-tax", "name": "Sales/use-tax determination", "seat": "tax-compliance", "required": false, "match": ["sales-use-tax", "sales tax"] },
+      { "id": "licenses", "name": "Business licenses & permits", "seat": "/glaw-licensing", "required": true, "match": ["business-license", "permit", "license inventory"] }
+    ]},
+    { "section": "5. Recordkeeping & Banking", "items": [
+      { "id": "bank-account", "name": "Separate business bank account", "seat": "/glaw-accounting", "required": true, "type": "action", "match": ["bank account", "no commingl"] },
+      { "id": "retention", "name": "Document retention policy", "seat": "corporate-counsel", "required": false, "match": ["retention"] },
+      { "id": "accountable-plan", "name": "Accountable plan", "seat": "tax-strategy", "required": false, "match": ["accountable-plan", "accountable plan"] }
+    ]},
+    { "section": "6. Employment & IP", "items": [
+      { "id": "employment", "name": "Employment agreements", "seat": "/glaw-employment-counsel", "required": false, "match": ["employment-agreement", "employment agreement"] },
+      { "id": "nda", "name": "NDA / confidentiality", "seat": "/glaw-employment-counsel", "required": false, "match": ["nda", "confidentiality"] },
+      { "id": "ip-assignment", "name": "IP assignment", "seat": "/glaw-ip-counsel", "required": false, "match": ["ip-assignment", "invention assignment"] }
+    ]}
+  ]
+}

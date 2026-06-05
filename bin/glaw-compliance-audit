@@ -1,0 +1,92 @@
+#!/usr/bin/env python3
+"""glaw-compliance-audit — reusable corporate-compliance checklist runner.
+
+Points a master checklist at a corp's document folder, matches each item against
+the documents present (by filename + text content), and reports per item:
+  ✅ HAVE  · 🟡 ACTION/needs-data · ❌ GAP
+Generalizes a one-off S-Corp compliance matrix into a tool any matter
+can run. Checklists are data (lib/checklists/<type>.json) — add C-corp / LLC / fund
+by dropping in another JSON.
+
+Usage:
+  glaw-compliance-audit <docs-dir> [--type s-corp] [--checklist <file.json>] [-o out.md]
+
+For PDFs/DOCX, run `glaw-doc-extract <dir> -o <dir>/_extracted` first so the text
+is searchable, then point this at the folder (it greps text files + filenames).
+"""
+import sys, os, json, glob, re
+
+SKILLDIR = os.path.expanduser("~/.claude/skills/glaw")
+
+def load_checklist(args):
+    if "--checklist" in args:
+        return json.load(open(args[args.index("--checklist") + 1]))
+    typ = args[args.index("--type") + 1] if "--type" in args else "s-corp"
+    p = os.path.join(SKILLDIR, "lib", "checklists", f"{typ}.json")
+    return json.load(open(p))
+
+def gather_text(docs_dir):
+    """filenames (lowercased) + concatenated text of text-like files."""
+    names, blob = [], []
+    for f in glob.glob(os.path.join(docs_dir, "**", "*"), recursive=True):
+        if not os.path.isfile(f):
+            continue
+        names.append(os.path.basename(f).lower())
+        if f.lower().endswith((".md", ".txt", ".json", ".csv", ".html")):
+            try:
+                blob.append(open(f, encoding="utf-8", errors="ignore").read().lower())
+            except Exception:
+                pass
+    return " ".join(names), "\n".join(blob)
+
+def status_for(item, names_blob, text_blob):
+    # Recurring/external actions (file 941, get CP261, open bank account) can't be
+    # verified from a doc folder — a mention != done. Always flag for seat confirmation.
+    if item.get("type") == "action":
+        return "🟡 ACTION"
+    hit = any(kw.lower() in names_blob or kw.lower() in text_blob for kw in item.get("match", []))
+    if hit:
+        return "✅ HAVE"
+    return "❌ GAP" if item.get("required") else "⚪ optional-missing"
+
+def run(docs_dir, args):
+    cl = load_checklist(args)
+    names_blob, text_blob = gather_text(docs_dir)
+    out = [f"# Compliance Audit — {cl['name']}",
+           f"_Documents folder:_ `{docs_dir}`\n",
+           "| Status | Item | Section | Owning seat |",
+           "|--------|------|---------|-------------|"]
+    counts = {"✅ HAVE": 0, "🟡 ACTION": 0, "❌ GAP": 0, "⚪ optional-missing": 0}
+    gaps = []
+    for sec in cl["sections"]:
+        for it in sec["items"]:
+            st = status_for(it, names_blob, text_blob)
+            counts[st] = counts.get(st, 0) + 1
+            out.append(f"| {st} | {it['name']} | {sec['section']} | `{it['seat']}` |")
+            if st == "❌ GAP":
+                gaps.append(it["name"])
+    total = sum(counts.values())
+    have = counts["✅ HAVE"]
+    out += ["",
+            f"## Summary",
+            f"- **{have}/{total}** items present ✅",
+            f"- **{counts['❌ GAP']}** required gaps ❌" + (": " + "; ".join(gaps) if gaps else ""),
+            f"- **{counts['🟡 ACTION']}** recurring/external actions 🟡 (file 941/940/W-2, get CP261, open bank account, etc.)",
+            f"- **{counts['⚪ optional-missing']}** optional items not present ⚪",
+            "",
+            "> Attorney work-product, not legal advice. Verify independently. Owning seat fills each gap."]
+    return "\n".join(out)
+
+if __name__ == "__main__":
+    a = sys.argv[1:]
+    if not a or a[0].startswith("-"):
+        print(__doc__); sys.exit(1)
+    docs = a[0]
+    if not os.path.isdir(docs):
+        print(f"not a folder: {docs}"); sys.exit(1)
+    report = run(docs, a[1:])
+    if "-o" in a:
+        outp = a[a.index("-o") + 1]
+        open(outp, "w").write(report)
+        print(f"audit written -> {outp}")
+    print(report)
