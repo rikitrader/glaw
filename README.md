@@ -77,8 +77,14 @@ GLAW ships **59 native skills** organized into ten departments. (It also *routes
 
 Every matter runs the same spine, branched into **three tracks** at intake:
 
-```
-intake → strategy → structure → draft → adversarial → file → docket → close
+```mermaid
+flowchart LR
+    I["📥 Intake<br/>⛔ conflicts gate"] --> S["🎯 Strategy"] --> T["🏗️ Structure"] --> D["✍️ Draft"]
+    D --> A["⚔️ Adversarial<br/>⛔ RED→BLUE gate"] --> F["📑 File<br/>⛔ citations gate"] --> K["🗓️ Docket"] --> C["✅ Close"]
+    classDef stage fill:#0d1b2e,stroke:#3B82F6,color:#fff;
+    classDef gate fill:#3a1414,stroke:#ef4444,color:#fff;
+    class S,T,D,K,C stage
+    class I,A,F gate
 ```
 
 | Track | strategy = | structure = | draft = | adversarial = |
@@ -229,16 +235,42 @@ starting with **Constitutional Law** (`/glaw-constitutional`, `/glaw-legislative
 `/glaw-admin-law`, `/glaw-judicial`). Throughout, one rule never bends: **the seal stays in
 human hands** — GLAW prepares, a person commits.
 
-| Phase | Theme | Headline |
-|---|---|---|
-| **1.0** ✅ | **The Firm** | 59 skills · pipeline · gates · contract chain — shipped |
-| **1.x** | **Autonomy Core** | `glaw-loop` self-driving matter loop + docket daemon + standing goals |
-| **2.0** | **Harness Integration** | Extism plugin + conscience adoption for `zeroclaw-x0`; OpenClaw/ZeroClaw; MCP server |
-| **3.0** | **The Branches** | **Constitutional Law** — `/glaw-constitutional`, `/glaw-legislative`, `/glaw-admin-law`, `/glaw-judicial` |
-| **4.0** | **The Agency** | Treasury · Regulatory rule-making · Justice/enforcement-prep · Diplomacy · FOIA |
-| **5.0** | **Closed Loop + Oversight** | continuous operation under a human Oversight Board · kill-switch · audit ledger |
+```mermaid
+flowchart LR
+    P1["⚖️ 1.0 · The Firm<br/>59 skills · pipeline · 4 gates ✅"]
+    P2["🔄 1.x · Autonomy Core<br/>glaw-loop · docket daemon · goals"]
+    P3["🔌 2.0 · Harness Integration<br/>zeroclaw-x0 plugin · conscience · MCP"]
+    P4["🏛️ 3.0 · The Branches<br/>Constitutional · Legislative · Judicial"]
+    P5["🏦 4.0 · The Agency<br/>Treasury · Regulatory · Justice · FOIA"]
+    P6["🛡️ 5.0 · Closed Loop + Oversight<br/>human board · kill-switch · audit"]
+    P1 --> P2 --> P3 --> P4 --> P5 --> P6
+    classDef done fill:#14532d,stroke:#22c55e,color:#fff;
+    classDef next fill:#15306e,stroke:#3B82F6,color:#fff;
+    classDef future fill:#3b2a5e,stroke:#8b5cf6,color:#fff;
+    class P1 done
+    class P2,P3 next
+    class P4,P5,P6 future
+```
 
-The organism loop: **SENSE → ORIENT → DECIDE → ACT → VERIFY → LEARN**, with the 4 gates as its conscience and matters as its memory. One rule never bends: **the seal stays in human hands** — no autonomous path may file, charge, sanction, pay, or bind anyone.
+**The organism loop** — how it thinks. The 4 gates are its conscience; matters are its memory. The seal stays in human hands: no autonomous path may file, charge, sanction, pay, or bind anyone.
+
+```mermaid
+flowchart LR
+    S["👁️ SENSE<br/>dockets · filings · deadlines"]
+    O["🧭 ORIENT<br/>classify · route to dept"]
+    D["♟️ DECIDE<br/>strategy · the Chief"]
+    A["✍️ ACT<br/>draft · redline · investigate"]
+    V["⚖️ VERIFY<br/>the 4 gates · adversarial"]
+    L["🧠 LEARN<br/>memory · playbooks"]
+    S --> O --> D --> A --> V --> L --> S
+    V -. "fails a gate" .-> H["🙋 HUMAN<br/>holds the seal"]
+    classDef loop fill:#0d1b2e,stroke:#3B82F6,color:#fff;
+    classDef gate fill:#3a1414,stroke:#ef4444,color:#fff;
+    classDef human fill:#3a2e14,stroke:#F2C75B,color:#fff;
+    class S,O,D,A,L loop
+    class V gate
+    class H human
+```
 
 **→ Read the full [ROADMAP.md](ROADMAP.md)** (the organism model, every phase, harness wiring,
 gap analysis, and the non-negotiable guardrails).
