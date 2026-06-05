@@ -229,7 +229,18 @@ starting with **Constitutional Law** (`/glaw-constitutional`, `/glaw-legislative
 `/glaw-admin-law`, `/glaw-judicial`). Throughout, one rule never bends: **the seal stays in
 human hands** — GLAW prepares, a person commits.
 
-**→ Read the full [ROADMAP.md](ROADMAP.md)** (the organism model, phases, harness wiring,
+| Phase | Theme | Headline |
+|---|---|---|
+| **1.0** ✅ | **The Firm** | 59 skills · pipeline · gates · contract chain — shipped |
+| **1.x** | **Autonomy Core** | `glaw-loop` self-driving matter loop + docket daemon + standing goals |
+| **2.0** | **Harness Integration** | Extism plugin + conscience adoption for `zeroclaw-x0`; OpenClaw/ZeroClaw; MCP server |
+| **3.0** | **The Branches** | **Constitutional Law** — `/glaw-constitutional`, `/glaw-legislative`, `/glaw-admin-law`, `/glaw-judicial` |
+| **4.0** | **The Agency** | Treasury · Regulatory rule-making · Justice/enforcement-prep · Diplomacy · FOIA |
+| **5.0** | **Closed Loop + Oversight** | continuous operation under a human Oversight Board · kill-switch · audit ledger |
+
+The organism loop: **SENSE → ORIENT → DECIDE → ACT → VERIFY → LEARN**, with the 4 gates as its conscience and matters as its memory. One rule never bends: **the seal stays in human hands** — no autonomous path may file, charge, sanction, pay, or bind anyone.
+
+**→ Read the full [ROADMAP.md](ROADMAP.md)** (the organism model, every phase, harness wiring,
 gap analysis, and the non-negotiable guardrails).
 
 ## 🤝 Contributing
