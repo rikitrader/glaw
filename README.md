@@ -37,6 +37,18 @@ GLAW turns one prompt into a **staffed engagement**: intake → strategy → str
 
 ---
 
+## ▶️ See a matter run
+
+<div align="center">
+
+![GLAW live matter run — intake → strategy → structure → draft → adversarial → file → docket → close, with every hard gate cleared](assets/glaw-matter-run.gif)
+
+<sub>One prompt → the firm opens the matter and walks all eight stages — clearing the conflicts, RED→BLUE, citations, and UPL gates — to a signature-ready packet. Every line is the real <code>bin/glaw</code> state machine; <a href="demo/glaw-matter-run.tape">re-record with vhs</a>.</sub>
+
+</div>
+
+---
+
 ## 🤔 Why GLAW
 
 Most "AI lawyer" tools are a single prompt that answers one question. A real firm doesn't work that way — it has **departments**, a **pipeline**, **partners who check the associates**, and **deliverables**.
