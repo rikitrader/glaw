@@ -24,7 +24,7 @@ GLAW runs legal *matters* (build a company, structure a fund, prosecute or defen
 
 ```bash
 # 1. install (clone into your Claude Code skills dir)
-git clone https://github.com/USER/glaw ~/.claude/skills/glaw
+git clone https://github.com/rikitrader/glaw ~/.claude/skills/glaw
 cd ~/.claude/skills/glaw && ./setup        # deploys 59 skills + optional tools
 
 # 2. open a matter and let the firm work it
@@ -155,7 +155,7 @@ Interoperates with [`legal-redline-tools`](https://github.com/evolsb/legal-redli
 **Requires** [Claude Code](https://claude.com/claude-code) (or any [Agent Skills](https://agentskills.org)-compatible agent).
 
 ```bash
-git clone https://github.com/USER/glaw ~/.claude/skills/glaw
+git clone https://github.com/rikitrader/glaw ~/.claude/skills/glaw
 cd ~/.claude/skills/glaw
 ./setup
 ```
