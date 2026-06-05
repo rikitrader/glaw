@@ -134,6 +134,33 @@ When an investigation surfaces **red flags past threshold** (fraud tier, sanctio
 
 GLAW's brains are markdown; its hands are small, transparent CLIs in [`bin/`](bin/). The core (matter state) needs nothing but bash. The rest are progressive enhancement.
 
+```mermaid
+flowchart LR
+    subgraph STATE["🗂️ State & Ops"]
+        direction TB
+        s1[glaw] --- s2[glaw-setup] --- s3[glaw-doctor] --- s4[glaw-preamble]
+    end
+    subgraph CONTRACT["✍️ Contract Chain"]
+        direction TB
+        c1[contract-score] --- c2[redline] --- c3[redline-docx] --- c4[review-chain]
+    end
+    subgraph DOCS["📚 Documents & Research"]
+        direction TB
+        d1[doc-extract] --- d2[cites] --- d3[court-scrape] --- d4[assemble] --- d5[publish]
+    end
+    subgraph TAX["🧾 Tax & Regulatory"]
+        direction TB
+        t1[tax-report] --- t2[irs-file] --- t3[compliance-audit] --- t4[exempt-org]
+    end
+    subgraph SCORE["⚖️ Scoring & Sign-off"]
+        direction TB
+        x1[bureau-score] --- x2[chief-decision]
+    end
+    classDef t fill:#15233b,stroke:#3B82F6,color:#cfe0ff;
+    class s1,s2,s3,s4,c1,c2,c3,c4,d1,d2,d3,d4,d5,t1,t2,t3,t4,x1,x2 t
+```
+<sub>All 20 are `glaw-*` CLIs (prefix dropped above for space). The core — `glaw`, `glaw-setup`, `glaw-doctor` — needs only bash; the rest enhance progressively.</sub>
+
 | Tool | Does |
 |---|---|
 | `glaw` | matter lifecycle — `matter new/list/use`, `stage`, `docket`, `timeline-log`, `config` |
