@@ -91,16 +91,20 @@ for ref in $(grep -oE 'lib/[a-zA-Z0-9._/-]+' "$ROSTER" 2>/dev/null | sort -u); d
   [ -e "$GLAW/$ref" ] || { warn "roster -> $ref (missing, maybe templated)"; dlib=$((dlib+1)); }
 done
 [ "$dlib" = 0 ] && ok "all lib/ roster refs resolve"
-# 3d. mapped external seats (existing skills GLAW routes to) exist
-ext=0
+# 3d. mapped external seats (optional companion skills GLAW routes to).
+#     In core mode (GLAW_DOCTOR_CORE=1, e.g. CI on the standalone repo) these are
+#     optional — missing ones warn instead of fail, since they're not bundled.
+ext=0; extwarn=0
 for s in corporate-counsel elite-corporate-counsel pe-vc-counsel fund-regulatory-council \
          tokenization-compliance institutional-finance tax-strategy tax-compliance tax-relief \
          tax-legal-intake federal-trial-counsel forensic-case-investigator financial-forensics \
          roofer-accounting company-valuation mc-cfo-agent contract-review copywriting copy-editing \
          make-pdf docx document-generate; do
-  [ -e "$ROOT/$s/SKILL.md" ] || { bad "mapped seat missing: $s"; ext=$((ext+1)); }
+  [ -e "$ROOT/$s/SKILL.md" ] && continue
+  if [ -n "${GLAW_DOCTOR_CORE:-}" ]; then extwarn=$((extwarn+1)); else bad "mapped seat missing: $s"; ext=$((ext+1)); fi
 done
-[ "$ext" = 0 ] && ok "all mapped external seats installed"
+if [ -n "${GLAW_DOCTOR_CORE:-}" ]; then ok "core mode: $extwarn optional companion seat(s) not installed (ok)";
+elif [ "$ext" = 0 ]; then ok "all mapped external seats installed"; fi
 # 3e. cross-skill /glaw-* references across ALL SKILL.md resolve (catch routing typos)
 xref=0
 for ref in $(cat "$GLAW"/*/SKILL.md 2>/dev/null | sed 's#bin/glaw-[a-z.-]*##g' | grep -oE '/glaw-[a-z-]+' | sed 's#/##' | sort -u); do

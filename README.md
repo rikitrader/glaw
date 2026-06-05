@@ -7,6 +7,7 @@
 **A full AI law firm you install as a skill. Not a chatbot — an org chart.**
 GLAW runs legal *matters* (build a company, structure a fund, prosecute or defend a case, investigate fraud) through an **8-stage pipeline**, routing each step to the right **department**, and produces **attorney work-product** — pleadings, contracts, redlines, dossiers, filings — for a licensed attorney to review and sign.
 
+[![GLAW Doctor](https://github.com/rikitrader/glaw/actions/workflows/ci.yml/badge.svg)](https://github.com/rikitrader/glaw/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-C9A227.svg)](LICENSE)
 [![Skills](https://img.shields.io/badge/skills-59-1A3FA0.svg)](lib/firm-roster.md)
 [![Tools](https://img.shields.io/badge/tools-20-1A3FA0.svg)](#-the-toolbelt-20-clis)
@@ -55,6 +56,29 @@ Built on the **gstack** skill-orchestration methodology: a meta-skill orchestrat
 ## 🏛️ The Departments
 
 GLAW ships **59 native skills** organized into ten departments. (It also *routes to* optional companion seats — e.g. `corporate-counsel`, `pe-vc-counsel`, `tax-strategy`, `financial-forensics` — if you have them installed; GLAW works without them and degrades gracefully.)
+
+```mermaid
+flowchart TD
+    G["⚖️ GLAW — Managing Partner<br/>opens matters · routes work · holds the gates"]
+    G --> A1["🗂️ Firm Management"]
+    G --> A2["🏢 Corporate & Transactional"]
+    G --> A3["📈 Securities · Funds · Capital Markets"]
+    G --> A4["🧾 Tax & IRS"]
+    G --> A5["📊 Accounting & Finance"]
+    G --> A6["⚔️ Litigation & Disputes"]
+    G --> A7["🕵️ Investigations Bureau"]
+    G --> A8["🛰️ Intelligence Super-Structure"]
+    G --> A9["📋 Regulatory & Licensing"]
+    G --> A10["👤 Private Client & Restructuring"]
+    A7 --> B1["FBI-style cells<br/>counterfraud · osint · humint<br/>field · cyber · fusion · prosecutor"]
+    A8 --> B2["FinCEN · Intel · SEC cells<br/>+ /glaw-command fusion"]
+    classDef firm fill:#14532d,stroke:#22c55e,color:#fff;
+    classDef dept fill:#0d1b2e,stroke:#3B82F6,color:#fff;
+    classDef cell fill:#3b2a5e,stroke:#8b5cf6,color:#fff;
+    class G firm
+    class A1,A2,A3,A4,A5,A6,A7,A8,A9,A10 dept
+    class B1,B2 cell
+```
 
 | Department | What it owns | Native seats (a sample) |
 |---|---|---|
@@ -141,10 +165,21 @@ GLAW's brains are markdown; its hands are small, transparent CLIs in [`bin/`](bi
 
 Three open-source projects + GLAW's tooling interlock into one command-driven pipeline — *contract → review → scorecard → real Word tracked changes → published deliverable* — all sharing one severity vocabulary (🔴 critical / 🟡 important / 🟢 acceptable):
 
-```
-contract-review  →  glaw-review-chain ──┬─ glaw-contract-score   (0–100 scorecard)
-(the review brain)                       ├─ glaw-redline-docx      (Word tracked changes + PDFs)
-                                         └─ glaw-publish           (PDF / Doc / Slides)
+```mermaid
+flowchart LR
+    CR["📑 contract-review<br/>the review brain"] --> RC{{"⚙️ glaw-review-chain"}}
+    RC --> SC["📊 glaw-contract-score<br/>0–100 scorecard"]
+    RC --> RD["✍️ glaw-redline-docx<br/>Word tracked changes"]
+    RC --> PB["📦 glaw-publish<br/>PDF · Doc · Slides"]
+    SC --> DR[("☁️ Google Drive")]
+    RD --> DR
+    PB --> DR
+    classDef brain fill:#14532d,stroke:#22c55e,color:#fff;
+    classDef tool fill:#0d1b2e,stroke:#3B82F6,color:#fff;
+    classDef out fill:#3a2e14,stroke:#F2C75B,color:#fff;
+    class CR,RC brain
+    class SC,RD,PB tool
+    class DR out
 ```
 
 ```bash

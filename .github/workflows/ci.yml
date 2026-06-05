@@ -1,0 +1,33 @@
+name: GLAW Doctor
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  doctor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Syntax check (no deps)
+        run: |
+          set -e
+          for f in bin/glaw bin/glaw-setup bin/glaw-doctor bin/glaw-preamble.sh; do bash -n "$f"; done
+          for f in bin/*; do head -1 "$f" | grep -q 'python' && python3 -m py_compile "$f" || true; done
+          echo "syntax OK"
+
+      - name: Install toolbelt deps
+        run: pip install eyecite juriscraper python-docx docxtpl jsonschema requests
+
+      - name: Deploy skills + run glaw-doctor (core mode)
+        run: |
+          mkdir -p ~/.claude/skills
+          ln -s "$GITHUB_WORKSPACE" ~/.claude/skills/glaw
+          bash bin/glaw-setup
+          GLAW_DOCTOR_CORE=1 bash bin/glaw-doctor
