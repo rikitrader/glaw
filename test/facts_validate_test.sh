@@ -15,7 +15,8 @@ run(){
   local TMP; TMP="$(mktemp -d)"
   mkdir -p "$TMP/.glaw/matters/t"
   printf '%s' "$1" > "$TMP/.glaw/matters/t/facts.json"
-  OUT="$(HOME="$TMP" python3 "$GUARD" t 2>&1)"; RC=$?
+  # set GLAW_HOME explicitly: isolates from any ambient GLAW_HOME AND exercises the resolver.
+  OUT="$(HOME="$TMP" GLAW_HOME="$TMP/.glaw" python3 "$GUARD" t 2>&1)"; RC=$?
   rm -rf "$TMP"
 }
 
