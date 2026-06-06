@@ -13,7 +13,7 @@ from googleapiclient.http import MediaInMemoryUpload
 
 import os as _os
 _cssp=_os.path.expanduser("~/.claude/skills/glaw/lib/forms-library/glaw-document-style.css")
-CSS=open(_cssp).read() if _os.path.exists(_cssp) else "body{font-family:'Times New Roman',serif;font-size:12pt;text-align:justify;}"
+CSS=open(_cssp).read() if _os.path.exists(_cssp) else "body{font-family:'Times New Roman',serif;font-size:10pt;line-height:1.15;text-align:justify;}"
 
 def md2html(md):
     L=md.split("\n"); o=[f"<html><head><meta charset='utf-8'><style>{CSS}</style></head><body>"]; i=0

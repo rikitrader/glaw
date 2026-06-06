@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """GLAW ENFORCED-STYLE publisher. Renders a markdown template to a Google Doc using the canonical
-us-law-firm-equity-plan house style (forms-library/glaw-document-style.css). Use for EVERY template.
+us-corporate-legal-instrument house style (forms-library/glaw-document-style.css). Use for EVERY template.
 Create:  publish_legal.py <md> --folder <id> --name "Title"
 Update:  publish_legal.py <md> --update <fileId>      (re-renders an existing doc in place, no dupes)
 """
