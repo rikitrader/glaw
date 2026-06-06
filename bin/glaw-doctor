@@ -81,15 +81,16 @@ for p in "$GLAW"/bin/matter-ops/*.py; do
   python3 -m py_compile "$p" 2>/dev/null || { bad "matter-ops/$(basename "$p") syntax error"; mo_fail=$((mo_fail+1)); }
 done
 [ "$mo_fail" = 0 ] && ok "all $mo_n bin/matter-ops/*.py compile (incl. facts_validate/facts_gate guard)"
-# launch-guard regression test (the safety-critical RUN-vs-WAIT decision)
-if [ -x "$GLAW/test/facts_validate_test.sh" ]; then
-  if "$GLAW/test/facts_validate_test.sh" >/tmp/glaw-guardtest.out 2>&1; then
-    ok "launch-guard test: $(grep -oE '[0-9]+ passed' /tmp/glaw-guardtest.out | head -1)"
+# regression tests (safety-critical paths): launch-guard RUN-vs-WAIT + hard-gate enforcement
+for t in facts_validate_test:launch-guard gate_test:hard-gate; do
+  script="$GLAW/test/${t%%:*}.sh"; name="${t#*:}"
+  [ -x "$script" ] || continue
+  if "$script" >/tmp/glaw-$$.out 2>&1; then
+    ok "$name test: $(grep -oE '[0-9]+ passed' /tmp/glaw-$$.out | head -1)"
   else
-    bad "launch-guard test FAILED — run: $GLAW/test/facts_validate_test.sh"
-    grep -E '✗|FAIL' /tmp/glaw-guardtest.out | sed 's/^/    /'
+    bad "$name test FAILED — run: $script"; grep -E '✗|FAIL' /tmp/glaw-$$.out | sed 's/^/    /'
   fi
-fi
+done; rm -f /tmp/glaw-$$.out
 
 # ---- 3. NO DANGLING REFS ----
 echo "[3/3] no dangling references"
