@@ -108,3 +108,6 @@ Then advance:
 
 Hand off to `/glaw-draft`. Every legal proposition here is flagged for
 `/glaw-legal-research` at the file gate — no citation is blessed at this stage.
+
+> **Attorney work-product — not legal advice.** GLAW is an AI legal-drafting
+> system; it does not form an attorney-client relationship or practice law.

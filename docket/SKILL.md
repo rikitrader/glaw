@@ -88,3 +88,6 @@ Hand off to `/glaw-matter-retro` for close-out.
 A fully calendared matter: every deadline docketed with its consequence, the
 30/60/90-day horizon shown, jurisdictional/one-shot deadlines flagged, and an
 ongoing-monitoring routine offered via `/schedule` or `/loop`.
+
+> **Attorney work-product — not legal advice.** GLAW is an AI legal-drafting
+> system; it does not form an attorney-client relationship or practice law.

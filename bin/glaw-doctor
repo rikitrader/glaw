@@ -1,11 +1,15 @@
 #!/usr/bin/env bash
 # glaw-doctor — GLAW health/smoke harness. Read-only. The automated check the firm
-# was missing. Three assertions:
+# was missing. Five assertions:
 #   1. SKILLS RESOLVE  — every glaw/<x>/SKILL.md has valid frontmatter; every deployed
 #                        /glaw-* command symlink resolves; deploy parity (setup ran).
 #   2. TOOLS RUN       — every bin/glaw-* runs a safe smoke command without crashing.
 #   3. NO DANGLING REFS— every /glaw-*, bin/glaw-*, lib/*, and mapped external skill
 #                        referenced in firm-roster.md (and across all SKILL.md) exists.
+#   4. SKILL CONTRACTS — every skill passes bin/glaw-test (frontmatter, name-parity,
+#                        When-to-invoke, UPL line, non-empty allowed-tools).
+#   5. CAPABILITY HONESTY— bin/glaw-capability-audit: no LoRA/EWC neural-learning
+#                        capability is falsely marked LIVE without the training infra.
 # Exit 0 = healthy, 1 = problems found.
 set -uo pipefail
 ROOT="$HOME/.claude/skills"
@@ -66,16 +70,33 @@ done
 # glaw-cites needs stdin
 if printf '' | "$GLAW/bin/glaw-cites" - >/dev/null 2>&1; then ok "glaw-cites ran"; else bad "glaw-cites failed"; fi
 # scripts: syntax-check (don't execute — they mutate/source)
-for s in glaw-setup glaw-preamble.sh; do
+for s in glaw-setup glaw-preamble.sh glaw-gate; do
   bash -n "$GLAW/bin/$s" 2>/dev/null && ok "$s syntax OK" || bad "$s syntax error"
 done
+# matter-ops/*.py: compile-check (they mutate state / hit network — never execute in doctor).
+# Includes the safety-critical launch-guard engine facts_validate.py + facts_gate.py.
+mo_fail=0; mo_n=0
+for p in "$GLAW"/bin/matter-ops/*.py; do
+  [ -f "$p" ] || continue; mo_n=$((mo_n+1))
+  python3 -m py_compile "$p" 2>/dev/null || { bad "matter-ops/$(basename "$p") syntax error"; mo_fail=$((mo_fail+1)); }
+done
+[ "$mo_fail" = 0 ] && ok "all $mo_n bin/matter-ops/*.py compile (incl. facts_validate/facts_gate guard)"
+# launch-guard regression test (the safety-critical RUN-vs-WAIT decision)
+if [ -x "$GLAW/test/facts_validate_test.sh" ]; then
+  if "$GLAW/test/facts_validate_test.sh" >/tmp/glaw-guardtest.out 2>&1; then
+    ok "launch-guard test: $(grep -oE '[0-9]+ passed' /tmp/glaw-guardtest.out | head -1)"
+  else
+    bad "launch-guard test FAILED — run: $GLAW/test/facts_validate_test.sh"
+    grep -E '✗|FAIL' /tmp/glaw-guardtest.out | sed 's/^/    /'
+  fi
+fi
 
 # ---- 3. NO DANGLING REFS ----
 echo "[3/3] no dangling references"
 ROSTER="$GLAW/lib/firm-roster.md"
 # 3a. /glaw-* referenced in roster -> dir exists (strip bin/glaw-* tool refs first)
 dang=0
-for ref in $(sed 's#bin/glaw-[a-z.-]*##g' "$ROSTER" 2>/dev/null | grep -oE '/glaw-[a-z-]+' | sed 's#/##' | sort -u); do
+for ref in $(sed -E 's#(bin|assets)/glaw-[a-z0-9.-]*##g' "$ROSTER" 2>/dev/null | grep -oE '/glaw-[a-z0-9-]+' | sed 's#/##' | sort -u); do
   [ -d "$GLAW/${ref#glaw-}" ] || [ -e "$ROOT/$ref" ] || { bad "roster -> /$ref (no skill)"; dang=$((dang+1)); }
 done
 [ "$dang" = 0 ] && ok "all /glaw-* roster refs resolve"
@@ -91,26 +112,48 @@ for ref in $(grep -oE 'lib/[a-zA-Z0-9._/-]+' "$ROSTER" 2>/dev/null | sort -u); d
   [ -e "$GLAW/$ref" ] || { warn "roster -> $ref (missing, maybe templated)"; dlib=$((dlib+1)); }
 done
 [ "$dlib" = 0 ] && ok "all lib/ roster refs resolve"
-# 3d. mapped external seats (optional companion skills GLAW routes to).
-#     In core mode (GLAW_DOCTOR_CORE=1, e.g. CI on the standalone repo) these are
-#     optional — missing ones warn instead of fail, since they're not bundled.
-ext=0; extwarn=0
+# 3d. mapped external seats (existing skills GLAW routes to) exist
+ext=0
 for s in corporate-counsel elite-corporate-counsel pe-vc-counsel fund-regulatory-council \
          tokenization-compliance institutional-finance tax-strategy tax-compliance tax-relief \
          tax-legal-intake federal-trial-counsel forensic-case-investigator financial-forensics \
          roofer-accounting company-valuation mc-cfo-agent contract-review copywriting copy-editing \
          make-pdf docx document-generate; do
-  [ -e "$ROOT/$s/SKILL.md" ] && continue
-  if [ -n "${GLAW_DOCTOR_CORE:-}" ]; then extwarn=$((extwarn+1)); else bad "mapped seat missing: $s"; ext=$((ext+1)); fi
+  [ -e "$ROOT/$s/SKILL.md" ] || { bad "mapped seat missing: $s"; ext=$((ext+1)); }
 done
-if [ -n "${GLAW_DOCTOR_CORE:-}" ]; then ok "core mode: $extwarn optional companion seat(s) not installed (ok)";
-elif [ "$ext" = 0 ]; then ok "all mapped external seats installed"; fi
+[ "$ext" = 0 ] && ok "all mapped external seats installed"
 # 3e. cross-skill /glaw-* references across ALL SKILL.md resolve (catch routing typos)
 xref=0
-for ref in $(cat "$GLAW"/*/SKILL.md 2>/dev/null | sed 's#bin/glaw-[a-z.-]*##g' | grep -oE '/glaw-[a-z-]+' | sed 's#/##' | sort -u); do
-  [ -d "$GLAW/${ref#glaw-}" ] || { warn "skill cross-ref -> /$ref (no such sub-skill)"; xref=$((xref+1)); }
+for ref in $(cat "$GLAW"/*/SKILL.md 2>/dev/null | sed -E 's#(bin|assets)/glaw-[a-z0-9.-]*##g' | grep -oE '/glaw-[a-z0-9-]+' | sed 's#/##' | sort -u); do
+  [ -d "$GLAW/${ref#glaw-}" ] || [ -e "$ROOT/$ref" ] || { warn "skill cross-ref -> /$ref (no such sub-skill)"; xref=$((xref+1)); }
 done
 [ "$xref" = 0 ] && ok "all cross-skill /glaw-* references resolve"
+
+# ---- 4. SKILL CONTRACTS (per-skill, the ~40 personas) ----
+echo "[4/5] skill contracts (glaw-test)"
+if [ -x "$GLAW/bin/glaw-test" ]; then
+  if "$GLAW/bin/glaw-test" >/tmp/glaw-test.out 2>&1; then
+    ok "$(grep -oE 'passed: [0-9]+' /tmp/glaw-test.out | head -1) — all skill contracts pass"
+  else
+    bad "skill contracts FAILED — run: $GLAW/bin/glaw-test"
+    grep -E '✗|violations:' /tmp/glaw-test.out | sed 's/^/    /'
+  fi
+else
+  warn "glaw-test not found/executable (skipping contract check)"
+fi
+
+# ---- 5. CAPABILITY HONESTY (no false LIVE claims for LoRA/EWC neural learning) ----
+echo "[5/5] capability honesty (glaw-capability-audit)"
+if [ -x "$GLAW/bin/glaw-capability-audit" ]; then
+  if "$GLAW/bin/glaw-capability-audit" >/tmp/glaw-cap.out 2>&1; then
+    ok "no false LIVE claims — LoRA/EWC honestly scoped (📐 DESIGNED)"
+  else
+    bad "FALSE capability claim detected — run: $GLAW/bin/glaw-capability-audit"
+    grep -E '❌|FALSE' /tmp/glaw-cap.out | sed 's/^/    /'
+  fi
+else
+  warn "glaw-capability-audit not found/executable (skipping honesty check)"
+fi
 
 echo "═══ RESULT ═══"
 echo "  failures: $FAIL   warnings: $WARN"

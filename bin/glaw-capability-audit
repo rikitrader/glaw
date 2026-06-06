@@ -1,0 +1,100 @@
+#!/usr/bin/env bash
+# glaw-capability-audit — Continual-Learning status auditor & honest-capability ENFORCER.
+# Read-only. Runs a real DEPENDENCY AUDIT and assigns status honestly:
+#   🟢 LIVE  🟡 PARTIAL  📐 DESIGNED  🔴 MISSING
+#
+# HARD RULE (fail-closed): LoRA / EWC++ may be LIVE only if EVERY required dependency
+# is present. If ANY is false -> 📐 DESIGNED. Memory/RAG/Qdrant/reflection are NOT
+# neural learning and must never be reported as LoRA/EWC.
+#
+# ENFORCEMENT: exits non-zero ONLY if a FALSE CLAIM is detected — i.e. the architecture
+# doc marks LoRA/EWC as LIVE while the training infrastructure is absent. An honest
+# "📐 DESIGNED" is exit 0. This is the check glaw-doctor relies on so status can never
+# silently inflate to LIVE without the infra actually existing.
+set -uo pipefail
+GLAW="${GLAW_SKILL_DIR:-$HOME/.claude/skills/glaw}"
+GLAW_HOME="${GLAW_HOME:-$HOME/.glaw}"
+DOC="$GLAW/AI-CORP-ARCHITECTURE.md"
+PY_SYS="python3"
+PY_VENV="$GLAW_HOME/tools/flp-venv/bin/python3"
+
+yes_no(){ [ "$1" = 1 ] && echo "[✓]" || echo "[✗]"; }
+has_pkg(){ # has_pkg <module> — true if importable in system OR venv python
+  "$PY_SYS" -c "import $1" 2>/dev/null && return 0
+  [ -x "$PY_VENV" ] && "$PY_VENV" -c "import $1" 2>/dev/null && return 0
+  return 1
+}
+
+echo "═══════════════════════════════════════════════════"
+echo "   GLAW CONTINUAL-LEARNING CAPABILITY AUDIT"
+echo "═══════════════════════════════════════════════════"
+
+# ---- DEPENDENCY PROBES ----
+GPU=0; command -v nvidia-smi >/dev/null 2>&1 && nvidia-smi -L >/dev/null 2>&1 && GPU=1
+ACCEL=$(system_profiler SPDisplaysDataType 2>/dev/null | grep -m1 -i "Chipset Model" | sed 's/.*: //')
+FW=0; for m in torch peft trl transformers accelerate; do has_pkg "$m" && FW=1; done
+AXO=0; { has_pkg axolotl || has_pkg unsloth; } && AXO=1
+DATASET=0; [ -s "$GLAW_HOME/learnings/learnings.jsonl" ] && DATASET=1
+DSN=$(wc -l < "$GLAW_HOME/learnings/learnings.jsonl" 2>/dev/null | tr -d ' '); DSN=${DSN:-0}
+CKPT=0; for d in checkpoints adapters models lora; do [ -d "$GLAW_HOME/$d" ] && CKPT=1; done
+MODEL=0; { [ -d "$GLAW_HOME/models" ] && [ -n "$(ls -A "$GLAW_HOME/models" 2>/dev/null)" ]; } && MODEL=1
+WEIGHTS=$MODEL   # open-model weights on disk = model present
+TRAIN_EXEC=0; [ "$FW" = 1 ] && [ "$GPU" = 1 ] && TRAIN_EXEC=1
+DEPLOY=0; [ -d "$GLAW_HOME/adapters" ] && [ -n "$(ls -A "$GLAW_HOME/adapters" 2>/dev/null)" ] && DEPLOY=1
+
+# ---- LoRA status (LIVE only if ALL true) ----
+LORA_OK=1
+for v in "$FW" "$MODEL" "$WEIGHTS" "$GPU" "$DATASET" "$CKPT" "$TRAIN_EXEC" "$DEPLOY"; do [ "$v" = 1 ] || LORA_OK=0; done
+LORA_STATUS=$([ "$LORA_OK" = 1 ] && echo "🟢 LIVE" || echo "📐 DESIGNED")
+
+# ---- EWC++ status (LIVE only if ALL true) — none of these components exist as code ----
+FISHER=0; importance=0; PROTECT=0; CONTINUAL=0
+[ -d "$GLAW_HOME/ewc" ] && FISHER=1
+EWC_OK=1
+for v in "$WEIGHTS" "$FISHER" "$importance" "$PROTECT" "$CONTINUAL" "$CKPT" "$DEPLOY"; do [ "$v" = 1 ] || EWC_OK=0; done
+EWC_STATUS=$([ "$EWC_OK" = 1 ] && echo "🟢 LIVE" || echo "📐 DESIGNED")
+
+# ---- LIVE memory side (evidence) ----
+QDRANT=$(curl -s -m3 -o /dev/null -w "%{http_code}" http://localhost:6333/ 2>/dev/null)
+AGENTDB=0; [ -f "$GLAW_HOME/agentdb/glaw.db" ] && AGENTDB=1
+LEDGER=0; [ -x "$GLAW/bin/glaw-learnings" ] && LEDGER=1
+REFLECT=0; [ -x "$GLAW/bin/glaw-reflect" ] && REFLECT=1
+
+echo
+echo "🟢 LIVE — Memory / Retrieval / Reflection (NOT weight learning)"
+[ "$LEDGER" = 1 ]  && echo "   ✅ learnings ledger ($DSN entries) + preflight retrieval"
+[ "$REFLECT" = 1 ] && echo "   ✅ reflection / meta-rule synthesis (glaw-reflect)"
+[ "$QDRANT" = 200 ]&& echo "   ✅ Qdrant vector memory (:6333 http 200)"
+[ "$AGENTDB" = 1 ] && echo "   ✅ AgentDB vector store initialized (glaw.db)"
+echo "   ⓘ  Memory ≠ Learning · RAG ≠ Fine-Tuning · Qdrant ≠ Neural Training"
+
+echo
+echo "📐 DESIGNED — Neural weight learning (architecture only, no infra)"
+echo "   LoRA Fine-Tuning ...... $LORA_STATUS"
+echo "      $(yes_no $FW) training framework (torch/peft/trl/transformers)   $(yes_no $AXO) axolotl|unsloth"
+echo "      $(yes_no $MODEL) trainable model      $(yes_no $WEIGHTS) weight access      $(yes_no $GPU) CUDA GPU  (accel: ${ACCEL:-unknown})"
+echo "      $(yes_no $DATASET) dataset pipeline ($DSN ex)   $(yes_no $CKPT) checkpoint store   $(yes_no $TRAIN_EXEC) train-exec   $(yes_no $DEPLOY) adapter deploy"
+echo "   EWC++ Continual Learning  $EWC_STATUS"
+echo "      $(yes_no $WEIGHTS) weights  $(yes_no $FISHER) fisher  $(yes_no $importance) importance  $(yes_no $PROTECT) weight-protect  $(yes_no $CONTINUAL) continual-pipeline  $(yes_no $CKPT) ckpt  $(yes_no $DEPLOY) deploy"
+
+# ---- ENFORCEMENT: detect FALSE LIVE claims in the architecture doc ----
+echo
+echo "── ENFORCEMENT: false-claim scan ──"
+FALSE=0
+if [ -f "$DOC" ]; then
+  # lines naming LoRA/EWC/fine-tuning AND asserting LIVE/✅ but NOT marked DESIGNED
+  while IFS= read -r line; do
+    echo "$line" | grep -qiE 'designed' && continue
+    echo "   ❌ FALSE CLAIM in AI-CORP-ARCHITECTURE.md: $line"
+    FALSE=$((FALSE+1))
+  done < <(grep -iE '(lora|ewc|fine-tun|weight-?train|gradient)' "$DOC" 2>/dev/null | grep -E 'LIVE|✅')
+fi
+if [ "$LORA_OK" = 0 ] && [ "$EWC_OK" = 0 ] && [ "$FALSE" = 0 ]; then
+  echo "   ✅ no false LIVE claims — LoRA/EWC honestly scoped as 📐 DESIGNED"
+fi
+# If infra is actually absent but the audit somehow computed LIVE, that's also a violation.
+{ [ "$LORA_OK" = 1 ] && [ "$TRAIN_EXEC" = 0 ]; } && { echo "   ❌ INCONSISTENT: LoRA=LIVE but train cannot execute"; FALSE=$((FALSE+1)); }
+
+echo
+echo "CONFIDENCE: High (direct GPU/framework/filesystem probes)"
+[ "$FALSE" = 0 ] && { echo "RESULT: HONEST ✅"; exit 0; } || { echo "RESULT: FALSE CLAIM(S) DETECTED ❌ ($FALSE)"; exit 1; }

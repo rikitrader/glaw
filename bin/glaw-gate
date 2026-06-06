@@ -1,0 +1,63 @@
+#!/usr/bin/env bash
+# glaw-gate — code-ENFORCEMENT of the firm's hard gates (was prose-only in SKILL.md).
+# A stage transition is BLOCKED unless the gate events required to enter it are present
+# in the matter's timeline.jsonl. Fail-closed: if the required event is absent, exit 1.
+#
+# GATES (mirror CLAUDE.md "Hard gates"):
+#   enter strategy  ⇐ conflicts_cleared            (gate 1: conflicts before strategy)
+#   enter file      ⇐ citations_verified           (gate 2: cites verified before file)
+#                   ⇐ adversarial_done             (gate 3: RED→BLUE before file)
+# (UPL footer = gate 4, a per-document content gate enforced at draft/publish, not here.)
+#
+# Usage:
+#   glaw-gate check <target-stage> [slug]   # exit 0 = clear, 1 = blocked
+#   glaw-gate status [slug]                 # show every gate's state for the matter
+set -uo pipefail
+GLAW_HOME="${GLAW_HOME:-$HOME/.glaw}"
+MATTERS="$GLAW_HOME/matters"
+
+# stage -> space-separated required timeline events
+_required_events() {
+  case "$1" in
+    strategy) echo "conflicts_cleared" ;;
+    file)     echo "citations_verified adversarial_done" ;;
+    *)        echo "" ;;   # unguarded transition
+  esac
+}
+
+_has_event() {  # _has_event <timeline-file> <event>
+  [ -f "$1" ] && grep -q "\"event\":\"$2\"" "$1"
+}
+
+_slug() { local s="${1:-}"; [ -n "$s" ] && { echo "$s"; return; }; [ -f "$GLAW_HOME/.active" ] && cat "$GLAW_HOME/.active" || echo ""; }
+
+action="${1:-status}"; shift || true
+
+case "$action" in
+  check)
+    target="${1:-}"; slug="$(_slug "${2:-}")"
+    [ -z "$target" ] && { echo "usage: glaw-gate check <stage> [slug]"; exit 2; }
+    [ -z "$slug" ] && { echo "GATE: no active matter"; exit 2; }
+    tl="$MATTERS/$slug/timeline.jsonl"
+    req="$(_required_events "$target")"
+    [ -z "$req" ] && { echo "GATE CLEAR: entering '$target' has no prerequisite gate"; exit 0; }
+    missing=""
+    for ev in $req; do _has_event "$tl" "$ev" || missing="$missing $ev"; done
+    if [ -n "$missing" ]; then
+      echo "GATE BLOCKED: cannot enter '$target' for [$slug] — missing required gate event(s):$missing"
+      echo "  satisfy by logging the gate, e.g.: glaw timeline-log <event>  (after the real gate work)"
+      exit 1
+    fi
+    echo "GATE CLEAR: '$target' prerequisites satisfied ($req)"
+    exit 0 ;;
+  status)
+    slug="$(_slug "${1:-}")"
+    [ -z "$slug" ] && { echo "GATE: no active matter"; exit 2; }
+    tl="$MATTERS/$slug/timeline.jsonl"
+    echo "═══ GATE STATUS — $slug ═══"
+    for pair in "conflicts_cleared:before strategy" "citations_verified:before file" "adversarial_done:before file"; do
+      ev="${pair%%:*}"; desc="${pair#*:}"
+      if _has_event "$tl" "$ev"; then echo "  ✅ $ev ($desc)"; else echo "  ❌ $ev ($desc) — NOT yet cleared"; fi
+    done ;;
+  *) echo "usage: glaw-gate check <stage> [slug] | status [slug]"; exit 2 ;;
+esac

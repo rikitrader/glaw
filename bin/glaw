@@ -100,9 +100,24 @@ EOF
     use)
       local slug="${1:-}"; [ -d "$MATTERS/$slug" ] && echo "$slug" > "$GLAW_HOME/.active" && echo "ACTIVE $slug" || echo "(no matter: $slug)" ;;
     stage)
-      local slug; slug="$(_active_slug)"; local set="${1:-}"
+      local slug; slug="$(_active_slug)"; local set="${1:-}"; local force="${2:-}"
       [ -z "$slug" ] && { echo ""; return 0; }
-      if [ -n "$set" ]; then echo "$set" > "$MATTERS/$slug/.stage"; cmd_timeline "stage_$set"; fi
+      if [ -n "$set" ]; then
+        # HARD-GATE ENFORCEMENT: block advance to a guarded stage unless its gate is clear.
+        local gate; gate="$(dirname "$0")/glaw-gate"
+        if [ -x "$gate" ] && ! "$gate" check "$set" "$slug" >/tmp/glaw-gate.$$  2>&1; then
+          if [ "$force" = "--force" ]; then
+            cmd_timeline "gate_override" "\"stage\":\"$set\",\"by\":\"--force\""
+            echo "GATE OVERRIDE (logged): advancing to '$set' despite unmet gate." >&2
+          else
+            cat /tmp/glaw-gate.$$ >&2; rm -f /tmp/glaw-gate.$$
+            echo "Refusing to advance. Clear the gate, or override with: glaw stage $set --force" >&2
+            return 1
+          fi
+        fi
+        rm -f /tmp/glaw-gate.$$ 2>/dev/null || true
+        echo "$set" > "$MATTERS/$slug/.stage"; cmd_timeline "stage_$set"
+      fi
       cat "$MATTERS/$slug/.stage" 2>/dev/null || echo "intake" ;;
   esac
 }
