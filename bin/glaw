@@ -1,0 +1,194 @@
+#!/usr/bin/env bash
+# glaw — virtual corporate law firm state machinery.
+# Mirrors gstack's config/slug/timeline helpers, but the unit of work is a MATTER
+# (a litigation case OR a corp/fund build) instead of a code repo.
+#
+# State lives under $GLAW_HOME (default ~/.glaw):
+#   config.yaml                       firm-wide settings (flat key: value)
+#   matters/<slug>/matter.md          matter charter (type, parties, jurisdiction, goal)
+#   matters/<slug>/docket.jsonl       deadlines (one JSON object per line)
+#   matters/<slug>/timeline.jsonl     append-only event log
+#   matters/<slug>/.stage             current pipeline stage
+#   .active                           slug of the active matter
+#
+# Pure bash + standard coreutils. No external deps. Safe to call from any skill
+# preamble; every subcommand degrades quietly (never blocks a skill on error).
+
+set -euo pipefail
+GLAW_HOME="${GLAW_HOME:-$HOME/.glaw}"
+CONFIG="$GLAW_HOME/config.yaml"
+MATTERS="$GLAW_HOME/matters"
+mkdir -p "$MATTERS" 2>/dev/null || true
+
+_now() { date -u +%Y-%m-%dT%H:%M:%SZ; }
+_slugify() { echo "$1" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+|-+$//g'; }
+
+_active_slug() { [ -f "$GLAW_HOME/.active" ] && cat "$GLAW_HOME/.active" 2>/dev/null || echo ""; }
+
+cmd_config() {
+  local action="${1:-get}"; shift || true
+  case "$action" in
+    get)
+      local key="${1:-}"; [ -z "$key" ] && { [ -f "$CONFIG" ] && cat "$CONFIG"; return 0; }
+      grep -E "^${key}:" "$CONFIG" 2>/dev/null | head -1 | sed -E "s/^${key}:[[:space:]]*//" || true ;;
+    set)
+      local key="${1:-}" val="${2:-}"; [ -z "$key" ] && return 1
+      touch "$CONFIG"
+      if grep -qE "^${key}:" "$CONFIG" 2>/dev/null; then
+        local tmp; tmp="$(mktemp)"; grep -vE "^${key}:" "$CONFIG" > "$tmp" || true; mv "$tmp" "$CONFIG"
+      fi
+      echo "${key}: ${val}" >> "$CONFIG" ;;
+  esac
+}
+
+cmd_matter() {
+  local action="${1:-list}"; shift || true
+  case "$action" in
+    new)
+      local name="${*:-}"; [ -z "$name" ] && { echo "usage: glaw matter new <name>"; return 1; }
+      local slug; slug="$(_slugify "$name")"
+      local dir="$MATTERS/$slug"
+      if [ -d "$dir" ]; then echo "EXISTS $slug"; echo "$slug" > "$GLAW_HOME/.active"; return 0; fi
+      mkdir -p "$dir"
+      cat > "$dir/matter.md" <<EOF
+---
+slug: $slug
+name: $name
+type: unset            # litigation | corp-build
+status: open
+jurisdiction: unset
+opened: $(_now)
+---
+
+# Matter: $name
+
+## Parties
+- (client)
+- (adverse / counterparties)
+
+## Goal / Relief sought
+
+## Key facts
+
+## Conflicts check
+- status: PENDING   # cleared | conflict | waived
+
+## Engagement
+- engagement letter: PENDING
+EOF
+      : > "$dir/docket.jsonl"
+      : > "$dir/timeline.jsonl"
+      echo "intake" > "$dir/.stage"
+      echo "$slug" > "$GLAW_HOME/.active"
+      printf '{"ts":"%s","event":"matter_opened","slug":"%s"}\n' "$(_now)" "$slug" >> "$dir/timeline.jsonl"
+      echo "OPENED $slug"
+      echo "DIR $dir" ;;
+    list)
+      [ -d "$MATTERS" ] || { echo "(no matters)"; return 0; }
+      local active; active="$(_active_slug)"
+      for d in "$MATTERS"/*/; do
+        [ -d "$d" ] || continue
+        local s; s="$(basename "$d")"
+        local st; st="$(cat "$d/.stage" 2>/dev/null || echo "?")"
+        local ty; ty="$(grep -E '^type:' "$d/matter.md" 2>/dev/null | sed -E 's/^type:[[:space:]]*//; s/[[:space:]]*#.*//' || echo "?")"
+        local mark=" "; [ "$s" = "$active" ] && mark="*"
+        printf '%s %-28s stage=%-13s type=%s\n' "$mark" "$s" "$st" "$ty"
+      done ;;
+    show)
+      local slug="${1:-$(_active_slug)}"
+      [ -n "$slug" ] && [ -f "$MATTERS/$slug/matter.md" ] && cat "$MATTERS/$slug/matter.md" || echo "(no matter: $slug)" ;;
+    use)
+      local slug="${1:-}"; [ -d "$MATTERS/$slug" ] && echo "$slug" > "$GLAW_HOME/.active" && echo "ACTIVE $slug" || echo "(no matter: $slug)" ;;
+    stage)
+      local slug; slug="$(_active_slug)"; local set="${1:-}"; local force="${2:-}"
+      [ -z "$slug" ] && { echo ""; return 0; }
+      if [ -n "$set" ]; then
+        # HARD-GATE ENFORCEMENT: block advance to a guarded stage unless its gate is clear.
+        local gate; gate="$(dirname "$0")/glaw-gate"
+        if [ -x "$gate" ] && ! "$gate" check "$set" "$slug" >/tmp/glaw-gate.$$  2>&1; then
+          if [ "$force" = "--force" ]; then
+            cmd_timeline "gate_override" "\"stage\":\"$set\",\"by\":\"--force\""
+            echo "GATE OVERRIDE (logged): advancing to '$set' despite unmet gate." >&2
+          else
+            cat /tmp/glaw-gate.$$ >&2; rm -f /tmp/glaw-gate.$$
+            echo "Refusing to advance. Clear the gate, or override with: glaw stage $set --force" >&2
+            return 1
+          fi
+        fi
+        rm -f /tmp/glaw-gate.$$ 2>/dev/null || true
+        echo "$set" > "$MATTERS/$slug/.stage"; cmd_timeline "stage_$set"
+      fi
+      cat "$MATTERS/$slug/.stage" 2>/dev/null || echo "intake" ;;
+  esac
+}
+
+cmd_docket() {
+  local action="${1:-list}"; shift || true
+  local slug; slug="$(_active_slug)"
+  [ -z "$slug" ] && { echo "(no active matter)"; return 0; }
+  local f="$MATTERS/$slug/docket.jsonl"
+  case "$action" in
+    add)  # glaw docket add <due-YYYY-MM-DD> <description...>
+      local due="${1:-}"; shift || true; local desc="${*:-}"
+      [ -z "$due" ] && { echo "usage: glaw docket add <YYYY-MM-DD> <desc>"; return 1; }
+      printf '{"ts":"%s","due":"%s","desc":"%s","status":"open"}\n' "$(_now)" "$due" "$(echo "$desc" | sed 's/"/\\"/g')" >> "$f"
+      echo "DOCKETED $due — $desc" ;;
+    list)
+      [ -s "$f" ] || { echo "(docket empty)"; return 0; }
+      sort -t'"' -k8 "$f" 2>/dev/null || cat "$f" ;;
+    upcoming)  # deadlines within N days (default 30)
+      local days="${1:-30}"
+      local cutoff; cutoff="$(date -u -v+"${days}"d +%Y-%m-%d 2>/dev/null || date -u -d "+${days} days" +%Y-%m-%d 2>/dev/null || echo "9999-12-31")"
+      local today; today="$(date -u +%Y-%m-%d)"
+      [ -s "$f" ] || { echo "(docket empty)"; return 0; }
+      while IFS= read -r line; do
+        local due; due="$(echo "$line" | sed -E 's/.*"due":"([^"]*)".*/\1/')"
+        [ "$due" \> "$today" ] || [ "$due" = "$today" ] || continue
+        [ "$due" \< "$cutoff" ] || [ "$due" = "$cutoff" ] || continue
+        echo "$line"
+      done < "$f" | sort -t'"' -k4 ;;
+  esac
+}
+
+cmd_timeline() {  # glaw timeline-log <event> [json-extra]
+  local slug; slug="$(_active_slug)"
+  [ -z "$slug" ] && return 0
+  local ev="${1:-event}"; local extra="${2:-}"
+  local f="$MATTERS/$slug/timeline.jsonl"
+  if [ -n "$extra" ]; then
+    printf '{"ts":"%s","event":"%s",%s}\n' "$(_now)" "$ev" "$extra" >> "$f"
+  else
+    printf '{"ts":"%s","event":"%s"}\n' "$(_now)" "$ev" >> "$f"
+  fi
+}
+
+cmd_slug() { _active_slug; }
+
+case "${1:-help}" in
+  config)        shift; cmd_config "$@" ;;
+  matter)        shift; cmd_matter "$@" ;;
+  docket)        shift; cmd_docket "$@" ;;
+  timeline-log)  shift; cmd_timeline "$@" ;;
+  stage)         shift; cmd_matter stage "$@" ;;
+  slug)          cmd_slug ;;
+  home)          echo "$GLAW_HOME" ;;
+  version)       cat "$(dirname "$0")/../VERSION" 2>/dev/null || echo "unknown" ;;
+  help|*)
+    cat <<'EOF'
+glaw — virtual corporate law firm state machinery
+
+  glaw matter new <name>        open a matter (litigation or corp-build), make it active
+  glaw matter list              list all matters (* = active)
+  glaw matter show [slug]       print a matter's charter
+  glaw matter use <slug>        switch the active matter
+  glaw stage [new-stage]        get/set the active matter's pipeline stage
+  glaw docket add <date> <desc> add a deadline (YYYY-MM-DD)
+  glaw docket list              list all deadlines
+  glaw docket upcoming [days]   deadlines due within N days (default 30)
+  glaw timeline-log <event>     append an event to the matter timeline
+  glaw config get|set <k> [v]   firm settings
+  glaw slug                     print the active matter slug
+  glaw home                     print $GLAW_HOME
+EOF
+    ;;
+esac

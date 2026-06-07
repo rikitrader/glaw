@@ -1,0 +1,320 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/tax-reporting-templates/schemas/tax-report",
+  "title": "Tax Report (GLAW-extended)",
+  "description": "A structured tax reporting document for compliance and regulatory purposes, supporting US federal and state tax filing workflows.",
+  "type": "object",
+  "required": [
+    "report_type",
+    "tax_year",
+    "filer"
+  ],
+  "properties": {
+    "report_type": {
+      "type": "string",
+      "description": "Type of tax report",
+      "enum": [
+        "1040",
+        "1120",
+        "1065",
+        "W-2",
+        "1099-NEC",
+        "1099-MISC",
+        "941",
+        "940",
+        "720",
+        "2290",
+        "8849",
+        "sales-tax",
+        "1120-S",
+        "Schedule K-1"
+      ]
+    },
+    "tax_year": {
+      "type": "integer",
+      "description": "Tax year covered by this report",
+      "minimum": 2000,
+      "maximum": 2100
+    },
+    "period": {
+      "type": "string",
+      "description": "Reporting period (annual, quarterly, monthly)",
+      "enum": [
+        "annual",
+        "q1",
+        "q2",
+        "q3",
+        "q4",
+        "monthly"
+      ]
+    },
+    "filing_status": {
+      "type": "string",
+      "description": "Current status of the filing",
+      "enum": [
+        "draft",
+        "prepared",
+        "submitted",
+        "accepted",
+        "rejected",
+        "amended"
+      ]
+    },
+    "filer": {
+      "$ref": "#/$defs/Filer"
+    },
+    "income": {
+      "$ref": "#/$defs/IncomeSection"
+    },
+    "deductions": {
+      "$ref": "#/$defs/DeductionSection"
+    },
+    "taxes": {
+      "$ref": "#/$defs/TaxSection"
+    },
+    "payments": {
+      "$ref": "#/$defs/PaymentSection"
+    },
+    "metadata": {
+      "$ref": "#/$defs/ReportMetadata"
+    }
+  },
+  "$defs": {
+    "Filer": {
+      "type": "object",
+      "description": "Entity or individual filing the tax report",
+      "required": [
+        "name",
+        "tin_type",
+        "tin"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Legal name of filer"
+        },
+        "tin_type": {
+          "type": "string",
+          "enum": [
+            "SSN",
+            "EIN",
+            "ITIN"
+          ],
+          "description": "Type of taxpayer identification number"
+        },
+        "tin": {
+          "type": "string",
+          "description": "Taxpayer identification number",
+          "pattern": "^[0-9]{3}-?[0-9]{2}-?[0-9]{4}$|^[0-9]{2}-?[0-9]{7}$"
+        },
+        "address": {
+          "$ref": "#/$defs/Address"
+        },
+        "filing_type": {
+          "type": "string",
+          "enum": [
+            "individual",
+            "joint",
+            "married-separate",
+            "corporation",
+            "partnership",
+            "s-corp",
+            "llc"
+          ],
+          "description": "Tax filing type"
+        }
+      }
+    },
+    "Address": {
+      "type": "object",
+      "properties": {
+        "street": {
+          "type": "string"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$"
+        },
+        "zip": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string",
+          "default": "US"
+        }
+      }
+    },
+    "IncomeSection": {
+      "type": "object",
+      "description": "Income sources for the tax period",
+      "properties": {
+        "wages": {
+          "type": "number",
+          "description": "W-2 wages and salaries",
+          "minimum": 0
+        },
+        "interest": {
+          "type": "number",
+          "description": "Taxable interest income",
+          "minimum": 0
+        },
+        "dividends": {
+          "type": "number",
+          "description": "Ordinary dividends",
+          "minimum": 0
+        },
+        "capital_gains": {
+          "type": "number",
+          "description": "Net capital gains or losses"
+        },
+        "business_income": {
+          "type": "number",
+          "description": "Schedule C business income or loss"
+        },
+        "rental_income": {
+          "type": "number",
+          "description": "Net rental real estate income or loss"
+        },
+        "other_income": {
+          "type": "number",
+          "description": "Other taxable income"
+        },
+        "total_income": {
+          "type": "number",
+          "description": "Total gross income before adjustments"
+        }
+      }
+    },
+    "DeductionSection": {
+      "type": "object",
+      "description": "Tax deductions claimed",
+      "properties": {
+        "standard_deduction": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Standard deduction amount"
+        },
+        "itemized_deductions": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Total itemized deductions"
+        },
+        "qualified_business_income": {
+          "type": "number",
+          "minimum": 0,
+          "description": "QBI deduction (Sec. 199A)"
+        },
+        "total_deductions": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Total deductions claimed"
+        }
+      }
+    },
+    "TaxSection": {
+      "type": "object",
+      "description": "Tax liability calculations",
+      "properties": {
+        "taxable_income": {
+          "type": "number",
+          "description": "Adjusted gross income minus deductions"
+        },
+        "regular_tax": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Regular income tax liability"
+        },
+        "amt": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Alternative minimum tax if applicable"
+        },
+        "self_employment_tax": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Self-employment tax"
+        },
+        "credits": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Total tax credits"
+        },
+        "total_tax": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Total tax liability after credits"
+        },
+        "effective_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "Effective tax rate (0-1)"
+        }
+      }
+    },
+    "PaymentSection": {
+      "type": "object",
+      "description": "Payments made toward tax liability",
+      "properties": {
+        "withholding": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Federal income tax withheld"
+        },
+        "estimated_payments": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Total estimated tax payments"
+        },
+        "total_payments": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Total payments made"
+        },
+        "refund_due": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Refund amount if overpaid"
+        },
+        "balance_due": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Amount owed if underpaid"
+        }
+      }
+    },
+    "ReportMetadata": {
+      "type": "object",
+      "description": "Report generation and tracking metadata",
+      "properties": {
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "modified_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "preparer_name": {
+          "type": "string",
+          "description": "Tax preparer name if applicable"
+        },
+        "preparer_tin": {
+          "type": "string",
+          "description": "Preparer tax identification number (PTIN)"
+        },
+        "software": {
+          "type": "string",
+          "description": "Software used to prepare the return"
+        },
+        "submission_id": {
+          "type": "string",
+          "description": "IRS MeF submission ID if e-filed"
+        }
+      }
+    }
+  }
+}

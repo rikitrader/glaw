@@ -1,0 +1,95 @@
+#!/usr/bin/env python3
+"""glaw-exempt-org — single tax-exempt org lookup + 990 financial history.
+
+Hits ProPublica's free Nonprofit Explorer API (IRS BMF + Form 990 data). No key,
+no bulk download. Use for foundation/nonprofit diligence (pairs with
+/glaw-estate-trusts charitable structuring and /glaw-investigations follow-the-money).
+
+Usage:
+  glaw-exempt-org search "<name>" [--state FL]    find orgs + EINs
+  glaw-exempt-org <EIN>                            org profile + 990 financial history
+  glaw-exempt-org <EIN> --json                     raw JSON
+"""
+import sys, json, urllib.request, urllib.parse
+
+API = "https://projects.propublica.org/nonprofits/api/v2"
+SUBSECTION = {3: "501(c)(3)", 4: "501(c)(4)", 6: "501(c)(6)", 19: "501(c)(19)"}
+
+def get(url):
+    req = urllib.request.Request(url, headers={"User-Agent": "GLAW/1.0"})
+    with urllib.request.urlopen(req, timeout=30) as r:
+        return json.load(r)
+
+def search(q, state=None):
+    url = f"{API}/search.json?q={urllib.parse.quote(q)}"
+    if state: url += f"&state%5Bid%5D={state}"
+    d = get(url)
+    orgs = d.get("organizations", [])
+    print(f"{d.get('total_results', len(orgs))} results (showing {len(orgs)}):")
+    for o in orgs[:25]:
+        print(f"  EIN {o.get('ein'):<11} {o.get('name','')[:48]:<48} {o.get('state','')}  NTEE:{o.get('ntee_code') or '-'}")
+
+def profile(ein, as_json=False):
+    ein = ein.replace("-", "").strip()
+    d = get(f"{API}/organizations/{ein}.json")
+    if as_json:
+        print(json.dumps(d, indent=2)); return
+    o = d.get("organization", {})
+    sub = o.get("subsection_code")
+    print(f"=== {o.get('name','?')}  (EIN {o.get('ein')}) ===")
+    print(f"  status        : {SUBSECTION.get(sub, sub)}  ruling {o.get('ruling_date') or '?'}")
+    print(f"  address       : {o.get('address','')}, {o.get('city','')}, {o.get('state','')} {o.get('zipcode','')}")
+    print(f"  NTEE          : {o.get('ntee_code') or '-'}  classification {o.get('classification_codes') or '-'}")
+    print(f"  foundation    : {o.get('foundation_code') or '-'}  (PF codes 02-04 = private foundation)")
+    print(f"  assets (BMF)  : ${ (o.get('asset_amount') or 0):,}    income (BMF): ${ (o.get('income_amount') or 0):,}")
+    fwd = d.get("filings_with_data", [])
+    if fwd:
+        print("  990 financial history (filings with data):")
+        print(f"    {'year':<6}{'total revenue':>16}{'total expenses':>16}{'net assets EOY':>16}")
+        for f in sorted(fwd, key=lambda x: x.get('tax_prd_yr', 0), reverse=True)[:8]:
+            print(f"    {f.get('tax_prd_yr','?'):<6}{(f.get('totrevenue') or 0):>16,}{(f.get('totfuncexpns') or 0):>16,}{(f.get('totnetassetsend') or 0):>16,}")
+    if fwd:
+        risk_panel(fwd, o.get("foundation_code"))
+    pdfs = [f for f in d.get("filings_without_data", []) if f.get("pdf_url")][:5]
+    if pdfs:
+        print("  recent 990 PDFs:")
+        for f in pdfs:
+            print(f"    {f.get('tax_prd_yr','?')}  {f.get('pdf_url')}")
+
+def risk_panel(fwd, foundation_code):
+    """Transparent financial-risk read from 990 history (documented ratios, no ML).
+    Inspired by the nonprofit-financial-risk-index concept, implemented explainably."""
+    rows = sorted([f for f in fwd if f.get("totrevenue")], key=lambda x: x.get("tax_prd_yr", 0))
+    if not rows:
+        return
+    is_pf = str(foundation_code or "") in ("2", "3", "4", "02", "03", "04")
+    latest = rows[-1]
+    rev, exp = (latest.get("totrevenue") or 0), (latest.get("totfuncexpns") or 0)
+    op_margin = (rev - exp) / rev if rev else 0
+    exp_ratio = exp / rev if rev else 0
+    deficits = sum(1 for r in rows if (r.get("totfuncexpns") or 0) > (r.get("totrevenue") or 0))
+    first_rev = rows[0].get("totrevenue") or 0
+    rev_trend = (rev - first_rev) / first_rev if first_rev else 0
+    flags = []
+    if op_margin < 0: flags.append("negative operating margin (deficit year)")
+    if exp_ratio > 1.10: flags.append(f"expenses {exp_ratio:.0%} of revenue")
+    if deficits >= 3: flags.append(f"{deficits}/{len(rows)} years in deficit")
+    if rev_trend < -0.20: flags.append(f"revenue down {abs(rev_trend):.0%} over {len(rows)} filings")
+    tier = ["LOW", "MODERATE", "ELEVATED", "HIGH"][min(len(flags), 3)]
+    print("  --- financial-risk read (transparent ratios from 990) ---")
+    print(f"    operating margin (latest): {op_margin:+.1%}   expense ratio: {exp_ratio:.0%}")
+    print(f"    deficit years: {deficits}/{len(rows)}   revenue trend: {rev_trend:+.0%}")
+    print(f"    RISK TIER: {tier}" + (f"  flags: {'; '.join(flags)}" if flags else "  (no distress flags)"))
+    if is_pf:
+        print("    NOTE: private foundation — ~5% mandatory payout means 'deficits' (distributing")
+        print("          endowment) are normal; weight liquidity/endowment drawdown, not margin alone.")
+
+if __name__ == "__main__":
+    a = sys.argv[1:]
+    if not a: print(__doc__); sys.exit(1)
+    if a[0] == "search":
+        st = a[a.index("--state")+1] if "--state" in a else None
+        terms = [x for x in a[1:] if not x.startswith("--") and x != st]
+        search(" ".join(terms), st)
+    else:
+        profile(a[0], as_json=("--json" in a))

@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+"""glaw-redline — highlight a contract's problem clauses with accept/deny tracking.
+
+Takes a contract + review findings (from contract-review / glaw-contract-score) and produces a
+HIGHLIGHTED copy: each flagged clause is marked in the text, with a comment + the suggested
+rewrite, and an ACCEPT / DENY status you control. The redline is itself a deliverable (publish it).
+
+  annotate <contract.(md|txt)> <findings.json> [--out <base>]
+     findings.json = [{ "id":"R1", "quote":"<verbatim clause text to highlight>",
+                        "severity":"critical|important|acceptable",
+                        "issue":"why it's a problem", "suggestion":"proposed rewrite" }, ...]
+     → writes <base>.html (highlighted + side comments) and <base>.decisions.json (all PENDING).
+       Default <base> = matters/<active>/redlines/<contract-stem> when a matter is active.
+
+  decide <base>.decisions.json <id> accept|deny [--note "..."]   → set a change's status, re-render
+  status <base>.decisions.json                                    → counts (accepted/denied/pending)
+"""
+import os, sys, json, html, re, datetime
+
+HOME = os.environ.get("GLAW_HOME", os.path.expanduser("~/.glaw"))
+SEV = {"critical":"#b00020","important":"#c77700","acceptable":"#2e7d32"}
+
+def active_slug():
+    p=os.path.join(HOME,".active"); return open(p).read().strip() if os.path.exists(p) else ""
+
+def render(contract_text, findings, decisions, base):
+    esc = html.escape(contract_text)
+    # highlight each finding's verbatim quote (first occurrence), in order
+    notfound=[]
+    for fi in findings:
+        q = fi.get("quote","")
+        if not q: notfound.append(fi["id"]); continue
+        eq = html.escape(q)
+        sev = fi.get("severity","important")
+        st = decisions.get(fi["id"],{}).get("status","pending")
+        color = SEV.get(sev,"#c77700")
+        deco = "line-through" if st=="accepted" else "none"
+        mark = (f'<mark id="{fi["id"]}" title="{sev}: {html.escape(fi.get("issue",""))}" '
+                f'style="background:{color}33;border-bottom:2px solid {color};text-decoration:{deco}">'
+                f'{eq}<sup style="color:{color};font-weight:700">[{fi["id"]}]</sup></mark>')
+        if eq in esc: esc = esc.replace(eq, mark, 1)
+        else: notfound.append(fi["id"])
+    # side panel
+    rows=[]
+    for fi in findings:
+        st = decisions.get(fi["id"],{}).get("status","pending")
+        note = decisions.get(fi["id"],{}).get("note","")
+        sev = fi.get("severity","important"); color=SEV.get(sev,"#c77700")
+        badge = {"accepted":"✅ ACCEPTED","denied":"⛔ DENIED","pending":"🟡 PENDING"}[st]
+        miss = " (⚠ clause text not located in contract)" if fi["id"] in notfound else ""
+        rows.append(f"""<div style="border-left:4px solid {color};padding:8px 12px;margin:10px 0;background:#fafafa">
+          <b>[{fi['id']}] {sev.upper()}</b> &nbsp; <span>{badge}</span>{miss}<br>
+          <i>Issue:</i> {html.escape(fi.get('issue',''))}<br>
+          <i>Suggested rewrite:</i> {html.escape(fi.get('suggestion',''))}<br>
+          {('<i>Note:</i> '+html.escape(note)+'<br>') if note else ''}
+          <small>accept/deny via: <code>glaw-redline decide {os.path.basename(base)}.decisions.json {fi['id']} accept|deny</code></small>
+        </div>""")
+    acc=sum(1 for v in decisions.values() if v.get("status")=="accepted")
+    den=sum(1 for v in decisions.values() if v.get("status")=="denied")
+    pen=len(findings)-acc-den
+    doc=f"""<!doctype html><meta charset=utf-8><title>Redline</title>
+<body style="font:14px/1.6 Helvetica,Arial;margin:0">
+<div style="position:sticky;top:0;background:#0b1020;color:#fff;padding:10px 16px">
+  <b>GLAW Redline</b> — {html.escape(os.path.basename(base))} &nbsp; | &nbsp;
+  ✅ {acc} accepted · ⛔ {den} denied · 🟡 {pen} pending · {len(findings)} changes</div>
+<div style="display:flex;gap:0;align-items:flex-start">
+  <pre style="flex:1;white-space:pre-wrap;padding:18px;border-right:1px solid #ddd;margin:0">{esc}</pre>
+  <div style="width:42%;padding:14px"><h3>Proposed changes</h3>{''.join(rows)}</div>
+</div></body>"""
+    with open(base+".html","w") as f: f.write(doc)
+    return acc,den,pen,notfound
+
+def main():
+    a=sys.argv[1:]
+    if not a or a[0] in ("-h","--help"): print(__doc__); return 2
+    cmd=a[0]
+    if cmd=="annotate":
+        contract, findings_p = a[1], a[2]
+        base=None
+        if "--out" in a: base=a[a.index("--out")+1]
+        text=open(contract,encoding="utf-8",errors="replace").read()
+        findings=json.load(open(findings_p))
+        for i,fi in enumerate(findings): fi.setdefault("id", f"R{i+1}")
+        if not base:
+            slug=active_slug()
+            stem=os.path.splitext(os.path.basename(contract))[0]
+            d=os.path.join(HOME,"matters",slug,"redlines") if slug else os.path.join(os.getcwd(),"redlines")
+            os.makedirs(d,exist_ok=True); base=os.path.join(d,stem)
+        decisions={fi["id"]:{"status":"pending","note":"","severity":fi.get("severity"),
+                             "issue":fi.get("issue",""),"suggestion":fi.get("suggestion","")} for fi in findings}
+        json.dump({"contract":os.path.abspath(contract),"findings":findings,"decisions":decisions},
+                  open(base+".decisions.json","w"), indent=2)
+        acc,den,pen,nf=render(text,findings,decisions,base)
+        print(f"ANNOTATED → {base}.html   ({len(findings)} changes; {pen} pending)")
+        if nf: print(f"  ⚠ clause text not located for: {', '.join(nf)} (listed in panel, not highlighted)")
+        return 0
+    if cmd=="decide":
+        dp, cid, action = a[1], a[2], a[3]
+        if action not in ("accept","deny"): print("action must be accept|deny"); return 2
+        note=a[a.index("--note")+1] if "--note" in a else ""
+        data=json.load(open(dp))
+        if cid not in data["decisions"]: print(f"no such change: {cid}"); return 1
+        data["decisions"][cid]["status"]= "accepted" if action=="accept" else "denied"
+        if note: data["decisions"][cid]["note"]=note
+        json.dump(data, open(dp,"w"), indent=2)
+        base=dp[:-len(".decisions.json")]
+        text=open(data["contract"],encoding="utf-8",errors="replace").read()
+        render(text, data["findings"], data["decisions"], base)
+        print(f"{cid} → {'ACCEPTED' if action=='accept' else 'DENIED'}   (re-rendered {base}.html)")
+        return 0
+    if cmd=="status":
+        data=json.load(open(a[1])); dec=data["decisions"]
+        for cid,v in dec.items(): print(f"  {cid:6} {v['status']:9} {v.get('issue','')[:60]}")
+        acc=sum(1 for v in dec.values() if v['status']=='accepted')
+        den=sum(1 for v in dec.values() if v['status']=='denied')
+        print(f"  ── {acc} accepted · {den} denied · {len(dec)-acc-den} pending")
+        return 0
+    print(__doc__); return 2
+
+if __name__ == "__main__":
+    raise SystemExit(main())

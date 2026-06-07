@@ -1,0 +1,82 @@
+#!/usr/bin/env python3
+"""glaw-redline-docx — turn GLAW findings into a REAL Word tracked-changes file.
+
+Bridges GLAW's review findings into legal-redline-tools (evolsb/legal-redline-tools, MIT)
+so a contract review becomes a lawyer-/counterparty-ready deliverable:
+  • <out>.tracked.docx  — real Word track-changes (w:ins/w:del) — accept/reject in Word
+  • <out>.redline.pdf    — full-document redline (strikethrough/underline/change bars)
+  • <out>.summary.pdf    — clean schedule of changes for the counterparty
+  • <out>.memo.pdf       — internal tier-grouped analysis + rationale
+
+Findings = the same array glaw-redline uses: [{id, quote, severity, issue, suggestion}].
+Each becomes a tracked REPLACE (quote -> suggestion). Smart/straight quotes are
+auto-reconciled so clauses actually match the .docx text.
+
+Usage:
+  glaw-redline-docx <contract.docx> <findings.json> [-o <out-prefix>] [--author NAME] [--title T]
+"""
+import sys, os, json, subprocess
+
+VENV = os.path.expanduser("~/.glaw/tools/flp-venv")
+LEGAL_REDLINE = f"{VENV}/bin/legal-redline"
+
+def _norm(s):  # 1-char-for-1-char so indices/lengths are preserved
+    return (s.replace("’", "'").replace("‘", "'")
+             .replace("“", '"').replace("”", '"').replace("–", "-").replace("—", "-"))
+
+def docx_text(path):
+    from docx import Document
+    return "\n".join(p.text for p in Document(path).paragraphs)
+
+def real_substring(doc, quote):
+    """Find quote in doc ignoring smart-vs-straight punctuation; return the REAL doc substring."""
+    nd, nq = _norm(doc), _norm(quote)
+    i = nd.find(nq)
+    return doc[i:i + len(quote)] if i >= 0 else None
+
+def main():
+    a = sys.argv[1:]
+    if len(a) < 2:
+        print(__doc__); sys.exit(1)
+    docx, findings_p = a[0], a[1]
+    out = a[a.index("-o") + 1] if "-o" in a else os.path.splitext(docx)[0]
+    author = a[a.index("--author") + 1] if "--author" in a else "GLAW (attorney review required)"
+    title = a[a.index("--title") + 1] if "--title" in a else os.path.basename(docx)
+
+    findings = json.load(open(findings_p))
+    text = docx_text(docx)
+    redlines, missing = [], []
+    for f in findings:
+        q = f.get("quote", ""); new = f.get("suggestion") or f.get("rewrite") or ""
+        if not q or not new:
+            continue
+        old = real_substring(text, q)
+        if not old:
+            missing.append(f.get("id", q[:30])); continue
+        redlines.append({"type": "replace", "old": old, "new": new,
+                         "section": f.get("id", ""), "tier": f.get("severity", "important"),
+                         "rationale": f.get("issue", "")})
+    rl_json = out + ".redlines.json"
+    json.dump(redlines, open(rl_json, "w"), indent=2)
+    print(f"bridged {len(redlines)}/{len(findings)} findings -> tracked changes"
+          + (f"  (⚠ clause text not located: {', '.join(missing)})" if missing else ""))
+    if not redlines:
+        print("  nothing to apply (no clause text matched the .docx)."); sys.exit(2)
+
+    cmd = [LEGAL_REDLINE, "apply", docx, out + ".tracked.docx",
+           "--from-json", rl_json, "--author", author, "--mode", "internal",
+           "--doc-title", title,
+           "--pdf", out + ".redline.pdf",
+           "--summary-pdf", out + ".summary.pdf",
+           "--memo-pdf", out + ".memo.pdf"]
+    r = subprocess.run(cmd, capture_output=True, text=True)
+    sys.stdout.write(r.stdout)
+    if r.returncode != 0:
+        sys.stderr.write(r.stderr); sys.exit(r.returncode)
+    for suffix in (".tracked.docx", ".redline.pdf", ".summary.pdf", ".memo.pdf"):
+        p = out + suffix
+        if os.path.exists(p):
+            print(f"  {os.path.basename(p)}  ({os.path.getsize(p)//1024}KB)")
+
+if __name__ == "__main__":
+    main()

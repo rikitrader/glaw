@@ -1,0 +1,5 @@
+GLAW Bookkeeping Engine (lib/bookkeeping/glaw_engine)
+Rebranded under GLAW from upstream: https://github.com/sebastienrousseau/bankstatementparser (Apache-2.0)
+Pinned commit: 5bdabd92de0c367f542848afd8f1e1ee2ae8ac4b
+Vendored + renamed (bankstatementparser -> glaw_engine) on: 2026-06-07
+See UPSTREAM-LICENSE-Apache-2.0.txt for the original license.

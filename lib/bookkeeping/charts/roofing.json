@@ -1,0 +1,22 @@
+{
+  "_comment": "GLAW bundled chart of accounts — roofing / restoration contractor. First match wins. Use: --chart roofing",
+  "default": "Expenses:Uncategorized",
+  "rules": [
+    {"pattern": "INSURANCE CLAIM|STATE FARM|ALLSTATE|CLAIM PROCEEDS|CARRIER PAYMENT|SUPPLEMENT", "account": "Income:InsuranceProceeds"},
+    {"pattern": "DEPOSIT|CUSTOMER PAYMENT|JOB PAYMENT|INVOICE|RETAINAGE RELEASE|ACH CREDIT", "account": "Income:JobRevenue"},
+    {"pattern": "FINANCING|GREENSKY|SERVICE FINANCE|LOAN PROCEEDS", "account": "Income:FinancedJobs"},
+    {"pattern": "ABC SUPPLY|SRS|BEACON|HOME DEPOT|LOWES|MATERIAL|SHINGLE|GAF|OWENS CORNING", "account": "Expenses:Materials"},
+    {"pattern": "PAYROLL|ADP|GUSTO|CREW|LABOR", "account": "Expenses:Payroll:Crew"},
+    {"pattern": "SUBCONTRACTOR|1099|SUB PAYMENT|INSTALLER", "account": "Expenses:Subcontractors"},
+    {"pattern": "FUEL|SHELL|CHEVRON|GAS|WEX|FLEET", "account": "Expenses:Auto:Fuel"},
+    {"pattern": "TRUCK|VEHICLE|EQUIPMENT|RENTAL|DUMPSTER|TOOL", "account": "Expenses:Equipment"},
+    {"pattern": "PERMIT|CITY OF|COUNTY|INSPECTION", "account": "Expenses:Permits"},
+    {"pattern": "WORKERS COMP|WORKERS' COMP|LIABILITY INS|INSURANCE", "account": "Expenses:Insurance"},
+    {"pattern": "ADVERTISING|GOOGLE ADS|FACEBOOK|LEAD|ANGI|YELP|MARKETING", "account": "Expenses:Marketing:Leads"},
+    {"pattern": "COMMISSION|SALES REP", "account": "Expenses:Commissions"},
+    {"pattern": "LEGAL|ATTORNEY|LIEN|COUNSEL", "account": "Expenses:Professional:Legal"},
+    {"pattern": "CPA|ACCOUNTING|BOOKKEEP|TAX PREP", "account": "Expenses:Professional:Accounting"},
+    {"pattern": "BANK FEE|SERVICE CHARGE|MERCHANT FEE|STRIPE|SQUARE", "account": "Expenses:Bank:Fees"},
+    {"pattern": "TRANSFER TO|INTERNAL TRANSFER|OWNER DRAW", "account": "Equity:OwnerDraw"}
+  ]
+}

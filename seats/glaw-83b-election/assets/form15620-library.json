@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "IRS Form 15620 Section 83(b) Election — Fill Library",
+  "form": "Form 15620 (Rev. April 2025), OMB 1545-0074",
+  "transferor_role": "person performing services (founder/employee/contractor) who received restricted stock",
+  "deadline": {
+    "rule": "file no later than 30 days after the transfer date (Box 3)",
+    "day0_excluded": true,
+    "calendar_days": true,
+    "weekend_holiday_rollover": "IRC 7503 - next business day",
+    "late_relief": "none"
+  },
+  "questionnaire": [
+    {"q": 1, "ask": "Full legal name of the transferor?", "maps_to": ["box1.name"]},
+    {"q": 2, "ask": "Taxpayer ID (SSN or ITIN)?", "maps_to": ["box1.tin"]},
+    {"q": 3, "ask": "Mailing address (street, city, state/province, ZIP/postal, country)?", "maps_to": ["box1.address"]},
+    {"q": 4, "ask": "Number of shares, class, and company?", "maps_to": ["box2.property", "box6.quantity", "box7.quantity"]},
+    {"q": 5, "ask": "Transfer date (RSPA signed + shares issued)? = Day 0", "maps_to": ["box3.date"]},
+    {"q": 6, "ask": "Your taxable year containing the transfer date?", "maps_to": ["box4.taxable_year"]},
+    {"q": 7, "ask": "Describe the vesting/forfeiture restrictions?", "maps_to": ["box5.restrictions"]},
+    {"q": 8, "ask": "Fair market value per share at transfer (ignore lapse restrictions)?", "maps_to": ["box6.value_per_item"]},
+    {"q": 9, "ask": "Price paid per share?", "maps_to": ["box7.price_per_item"]},
+    {"q": 10, "ask": "Company (service recipient) name, EIN, address? (optional)", "maps_to": ["box9.name", "box9.tin", "box9.address"]}
+  ],
+  "fields": {
+    "box1": {"label": "Taxpayer name, TIN, address", "required": true, "source": [1,2,3]},
+    "box2": {"label": "Property + quantity", "required": true, "source": [4], "example": "8,000,000 shares of Common Stock of Example Holdings, Inc."},
+    "box3": {"label": "Date property transferred", "required": true, "type": "date", "source": [5]},
+    "box4": {"label": "Taxable year of election", "required": true, "source": [6], "example": "calendar year 2026"},
+    "box5": {"label": "Restrictions", "required": true, "source": [7], "example": "4-yr vesting, 1-yr cliff; unvested shares forfeited at cost if service ends"},
+    "box6": {"label": "FMV at transfer", "required": true,
+      "value_per_item": {"source": 8}, "quantity": {"source": 4},
+      "total_fair_market_value": {"formula": "value_per_item * quantity"},
+      "note": "FMV determined without regard to lapse restrictions (Treas. Reg. 1.83-3(i))"},
+    "box7": {"label": "Amount paid", "required": true,
+      "price_per_item": {"source": 9}, "quantity": {"source": 4},
+      "total_price_paid": {"formula": "price_per_item * quantity"}},
+    "box8": {"label": "Amount to include in gross income", "required": true,
+      "formula": "box6.total_fair_market_value - box7.total_price_paid",
+      "note": "approximately 0 for founder stock at formation"},
+    "box9": {"label": "Service recipient (company)", "required": false, "source": [10]},
+    "signature": {"label": "Taxpayer signature + date", "required": true, "penalties_of_perjury": true}
+  },
+  "example_filled_roof10x_founder": {
+    "box1": {"name": "Jane Founder", "tin": "XXX-XX-XXXX", "address": "[address]"},
+    "box2": "8,000,000 shares of Common Stock of Example Holdings, Inc.",
+    "box3": "2026-06-15",
+    "box4": "calendar year 2026",
+    "box5": "Shares subject to a Company repurchase option at cost lapsing over a 4-year vesting schedule (1-year cliff, then monthly); unvested shares forfeited on termination of service.",
+    "box6": {"value_per_item": 0.00001, "quantity": 8000000, "total_fair_market_value": 80.00},
+    "box7": {"price_per_item": 0.00001, "quantity": 8000000, "total_price_paid": 80.00},
+    "box8": 0.00,
+    "box9": {"name": "Example Holdings, Inc.", "tin": "XX-XXXXXXX", "address": "[address]"}
+  },
+  "filing_workflow": [
+    "1. Confirm Box 3 transfer date; compute 30-day deadline (exclude Day 0; rollover weekends/holidays).",
+    "2. Complete + sign Form 15620 from fields above.",
+    "3. File ONE way: electronic via IRS portal (ID.me, allow 1-2 days) OR paper certified mail to your IRS service center.",
+    "4. Post-Dec-24-2025: hand paper to USPS clerk for same-day postmark; no collection boxes.",
+    "5. Deliver a copy to the company (required).",
+    "6. Keep copy + proof (e-file confirmation or certified receipt) indefinitely.",
+    "7. Log in cap table + corporate data room."
+  ]
+}

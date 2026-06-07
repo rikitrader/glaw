@@ -1,0 +1,57 @@
+#!/usr/bin/env python3
+"""glaw-court-scrape — pull opinions/dockets straight from court websites
+(Free Law Project juriscraper, 319 court scrapers + PACER). Complements
+/glaw-court-records' CourtListener API: juriscraper hits the SOURCE court site,
+covering many state courts CourtListener indexes slowly or not at all.
+
+Usage:
+  glaw-court-scrape --list [filter]      list available court scraper ids (offline)
+  glaw-court-scrape <court_id>           run that scraper LIVE (network) and print
+                                         case names / dates / download URLs as JSON
+
+  <court_id> = dotted path under juriscraper.opinions, e.g.
+               united_states.federal_appellate.ca11
+               united_states.state.fla
+NOTE: running a scraper makes a live request to the court's website. Respect their
+terms and rate limits. For PACER (paid) use juriscraper.pacer with your creds.
+"""
+import sys, os, json, glob, importlib
+import juriscraper
+
+BASE = os.path.dirname(juriscraper.__file__)
+OPDIR = os.path.join(BASE, "opinions")
+
+def list_courts(flt=None):
+    out = []
+    for f in glob.glob(os.path.join(OPDIR, "**", "*.py"), recursive=True):
+        if "__init__" in f or "__pycache__" in f or "template" in f:
+            continue
+        rel = os.path.relpath(f, OPDIR)[:-3].replace(os.sep, ".")
+        if not flt or flt.lower() in rel.lower():
+            out.append(rel)
+    return sorted(out)
+
+def run_court(cid):
+    mod = importlib.import_module(f"juriscraper.opinions.{cid}")
+    site = mod.Site()
+    site.parse()
+    n = len(site.case_names)
+    cases = []
+    for i in range(n):
+        cases.append({
+            "case_name": site.case_names[i],
+            "date": str(site.case_dates[i]) if site.case_dates else None,
+            "url": site.download_urls[i] if site.download_urls else None,
+            "citation": (site.citations[i] if getattr(site, "citations", None) else None),
+        })
+    return {"court": cid, "count": n, "cases": cases}
+
+if __name__ == "__main__":
+    if len(sys.argv) < 2 or sys.argv[1] == "--list":
+        flt = sys.argv[2] if len(sys.argv) > 2 else None
+        ids = list_courts(flt)
+        print(f"{len(ids)} court scrapers" + (f" matching {flt!r}" if flt else "") + ":")
+        for i in ids:
+            print("  " + i)
+    else:
+        print(json.dumps(run_court(sys.argv[1]), indent=2, default=str))

@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# glaw-doc-extract — GLAW's universal evidence/document ingestion router.
+# Routes by file type:
+#   .pdf  -> opendataloader-pdf  (layout-faithful Markdown)
+#   else  -> Apache Tika         (1000+ formats: email .eml/.msg/.pst, Office,
+#                                 images+OCR via Tesseract, HTML, zip) =>
+#                                 <stem>.txt (text) + <stem>.meta.json (forensic metadata)
+# Metadata (author, created/modified dates, software) is the forensic payload the
+# litigation seats use to flag backdated/altered instruments.
+#
+# Usage:  glaw-doc-extract <file|dir> [-o OUTDIR]
+set -uo pipefail
+TIKA_JAR="$HOME/.glaw/tools/tika-app.jar"
+JAVA="${JAVA:-java}"
+ODL="$(command -v opendataloader-pdf 2>/dev/null || true)"
+
+usage(){ sed -n '2,12p' "$0" | sed 's/^# \{0,1\}//'; }
+[ $# -lt 1 ] && { usage; exit 1; }
+SRC="$1"; shift || true
+OUT="."
+while [ $# -gt 0 ]; do case "${1:-}" in -o) OUT="${2:-.}"; shift 2;; *) shift;; esac; done
+mkdir -p "$OUT"
+
+tika(){ "$JAVA" -jar "$TIKA_JAR" "$@" 2>/dev/null; }
+
+extract_one(){
+  local f="$1" base stem ext
+  base="$(basename "$f")"; stem="${base%.*}"
+  ext="$(echo "${base##*.}" | tr 'A-Z' 'a-z')"
+  if [ "$ext" = "pdf" ] && [ -n "$ODL" ]; then
+    printf 'PDF  %-40s -> opendataloader-pdf\n' "$base"
+    "$ODL" "$f" -o "$OUT" -f markdown -q >/dev/null 2>&1
+    if [ ! -f "$OUT/$stem.md" ]; then
+      printf '     (no MD produced; Tika fallback + OCR)\n'
+      tika --text "$f" > "$OUT/$stem.txt"
+    fi
+    # always capture forensic metadata, even for PDFs
+    tika --json "$f" > "$OUT/$stem.meta.json" 2>/dev/null || true
+  else
+    printf 'DOC  %-40s -> tika (%s)\n' "$base" "$ext"
+    tika --text "$f" > "$OUT/$stem.txt"
+    tika --json "$f" > "$OUT/$stem.meta.json"
+  fi
+}
+
+if [ -d "$SRC" ]; then
+  find "$SRC" -type f ! -name '.*' | while IFS= read -r f; do extract_one "$f"; done
+elif [ -f "$SRC" ]; then
+  extract_one "$SRC"
+else
+  echo "not found: $SRC"; exit 1
+fi
+echo "extracted -> $OUT"

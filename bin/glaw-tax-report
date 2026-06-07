@@ -1,0 +1,55 @@
+#!/usr/bin/env python3
+"""glaw-tax-report — GLAW's structured tax-compliance data object.
+
+Schema vendored + extended from api-evangelist/tax-reporting-templates
+(lib/schemas/tax-report-schema.json; GLAW added 1120-S / Schedule K-1 for
+pass-throughs). Gives the Tax & IRS division a machine-VALIDATABLE object to sit
+under the prose memos and the docket — and a clean handoff to tax software.
+
+Usage:
+  glaw-tax-report types               list valid report_type values
+  glaw-tax-report validate <file>     validate a tax-report JSON against the schema
+  glaw-tax-report scaffold <type>     print a blank report skeleton for a report_type
+"""
+import sys, json, os
+from jsonschema import Draft202012Validator
+
+SCHEMA = os.path.expanduser("~/.claude/skills/glaw/lib/schemas/tax-report-schema.json")
+
+def load(): return json.load(open(SCHEMA))
+
+def cmd_types():
+    s = load()
+    print("valid report_type values:")
+    for t in s["properties"]["report_type"]["enum"]:
+        print("  -", t)
+
+def cmd_validate(path):
+    s = load()
+    data = json.load(open(path))
+    errs = sorted(Draft202012Validator(s).iter_errors(data), key=lambda e: list(e.path))
+    if not errs:
+        print(f"VALID ✅  {os.path.basename(path)}  (report_type={data.get('report_type')}, tax_year={data.get('tax_year')})")
+        return 0
+    print(f"INVALID ❌  {os.path.basename(path)} — {len(errs)} error(s):")
+    for e in errs[:12]:
+        print("  -", list(e.path) or "(root)", ":", e.message)
+    return 2
+
+def cmd_scaffold(rtype):
+    s = load()
+    skel = {"report_type": rtype, "tax_year": 0, "period": "annual",
+            "filing_status": "draft",
+            "filer": {"name": "", "tin_type": "EIN", "tin": "",
+                      "filing_type": "s-corp",
+                      "address": {"street": "", "city": "", "state": "", "zip": "", "country": "US"}},
+            "income": {}, "deductions": {}, "taxes": {}, "payments": {},
+            "metadata": {"preparer_name": "GLAW (attorney/CPA review required)"}}
+    print(json.dumps(skel, indent=2))
+
+if __name__ == "__main__":
+    a = sys.argv[1:]
+    if not a or a[0] == "types": cmd_types()
+    elif a[0] == "validate" and len(a) > 1: sys.exit(cmd_validate(a[1]))
+    elif a[0] == "scaffold" and len(a) > 1: cmd_scaffold(a[1])
+    else: print(__doc__)

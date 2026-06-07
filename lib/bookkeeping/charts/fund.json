@@ -1,0 +1,21 @@
+{
+  "_comment": "GLAW bundled chart of accounts — PE/VC/private fund. First match wins. Use: --chart fund",
+  "default": "Expenses:Uncategorized",
+  "rules": [
+    {"pattern": "CAPITAL CALL|LP CONTRIB|SUBSCRIPTION|DRAWDOWN", "account": "Equity:LP:Contributions"},
+    {"pattern": "DISTRIBUTION|REDEMPTION|RETURN OF CAPITAL", "account": "Equity:LP:Distributions"},
+    {"pattern": "MANAGEMENT FEE|MGMT FEE", "account": "Income:ManagementFees"},
+    {"pattern": "CARRY|CARRIED INTEREST|PERFORMANCE FEE|INCENTIVE", "account": "Income:CarriedInterest"},
+    {"pattern": "INTEREST INCOME|SWEEP|MONEY MARKET|DIVIDEND", "account": "Income:Investment"},
+    {"pattern": "ACQUISITION|PORTFOLIO|INVESTMENT IN|EQUITY PURCHASE|DEAL FUNDING", "account": "Assets:Investments:Portfolio"},
+    {"pattern": "WIRE FEE|BANK FEE|SERVICE CHARGE", "account": "Expenses:Bank:Fees"},
+    {"pattern": "LEGAL|COUNSEL|LAW|ATTORNEY", "account": "Expenses:Professional:Legal"},
+    {"pattern": "AUDIT|ACCOUNTING|CPA|TAX PREP", "account": "Expenses:Professional:Accounting"},
+    {"pattern": "FUND ADMIN|ADMINISTRATOR|NAV|TRANSFER AGENT", "account": "Expenses:FundAdministration"},
+    {"pattern": "INSURANCE|D&O|E&O", "account": "Expenses:Insurance"},
+    {"pattern": "SOFTWARE|SUBSCRIPTION|SAAS|DATA", "account": "Expenses:Technology"},
+    {"pattern": "TRAVEL|AIRFARE|HOTEL|UBER|LYFT", "account": "Expenses:Travel"},
+    {"pattern": "PAYROLL|SALARY|ADP|GUSTO", "account": "Expenses:Payroll"},
+    {"pattern": "TRANSFER TO|INTERNAL TRANSFER", "account": "Assets:Bank:Transfers"}
+  ]
+}

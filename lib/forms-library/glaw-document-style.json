@@ -1,0 +1,19 @@
+{
+  "documentStyle": "us-corporate-legal-instrument",
+  "source": "Reconstructed from a filed Delaware bylaws instrument (typography report 2026-06-06). UNIVERSAL default for ALL GLAW documents.",
+  "ENFORCE": "ALL GLAW templates/documents render in this style, with EVERY clause present and 100% template-adjusted ([BRACKETS]) — never summarized.",
+  "page": { "size": "letter", "margins_in": { "top": 1.0, "bottom": 1.14, "left": 1.0, "right": 0.98 }, "columns": 1, "textColumn_in": 6.5 },
+  "font": { "family": "Times New Roman", "bodySize_pt": 10, "color": "#000000" },
+  "body": { "alignment": "justify", "lineSpacing": 1.15, "leading_pt": 11.5, "spaceAfter_pt": 6, "spaceBefore_pt": 0, "firstLineIndent_in": 0 },
+  "title": { "case": "UPPER", "bold": true, "align": "center", "stacked": true, "size_pt": 10, "spaceAfter_pt": 12 },
+  "headings": {
+    "article": { "level": "H1", "numberFormat": "ARTICLE {UPPER_ROMAN}", "text": { "bold": true, "case": "UPPER", "align": "center" }, "spaceBefore_pt": 12, "spaceAfter_pt": 6 },
+    "section": { "level": "H2", "numberFormat": "Section {N}.", "runInHeading": { "bold": true, "case": "Title", "endPunctuation": ".", "bodyContinuesInline": true }, "spaceBefore_pt": 6 },
+    "subsection": { "level": "H3", "numberFormat": "({lower_alpha})", "runInHeading": { "bold": true, "bodyContinuesInline": true } },
+    "subsubsection": { "level": "H4", "numberFormat": "({lower_roman}) | ({N})" }
+  },
+  "definedTerm": { "bold": true, "italic": true, "quoted": true },
+  "numbering": { "scheme": "corporate-outline", "levels": ["ARTICLE I", "Section 1.", "(a)", "(i) / (1)"] },
+  "header": "none",
+  "footer": "none (no page numbers — match source instrument)"
+}

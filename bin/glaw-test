@@ -1,0 +1,54 @@
+#!/usr/bin/env bash
+# glaw-test — per-skill CONTRACT test harness (read-only, ZERO spend, no LLM calls).
+# Closes the "breadth >> validation" gap: glaw-doctor smoke-tests parity/refs/tools;
+# THIS asserts the contract of EVERY skill (the ~40 personas + stages + orchestrator),
+# so a malformed/typo'd/disclaimer-less skill fails CI instead of shipping silently.
+#
+# Per skill SKILL.md it asserts:
+#   1. frontmatter complete: name, version, description, allowed-tools, triggers
+#   2. name matches its deployed command (glaw-<dir>, or 'glaw' for the orchestrator)
+#   3. a "## When to invoke/use" section exists
+#   4. the load-bearing UPL / not-legal-advice line is present (firm hard gate #4)
+#   5. allowed-tools is a non-empty list
+# Exit 0 = all contracts pass, 1 = at least one violation.
+set -uo pipefail
+GLAW="${GLAW_SKILL_DIR:-$HOME/.claude/skills/glaw}"
+PASS=0; FAILS=0
+red(){ printf '  \033[31m✗ %s\033[0m\n' "$1"; FAILS=$((FAILS+1)); }
+grn(){ PASS=$((PASS+1)); }
+
+echo "═══ GLAW SKILL-CONTRACT TEST ═══"
+total=0
+for f in $(find "$GLAW" -name SKILL.md | sort); do
+  total=$((total+1))
+  rel="${f#$GLAW/}"
+  dir="${rel%/SKILL.md}"
+  fm=$(awk 'NR==1&&/^---/{p=1;next} p&&/^---/{exit} p' "$f")   # frontmatter block
+  errs=()
+  for field in name version description allowed-tools triggers; do
+    printf '%s\n' "$fm" | grep -q "^${field}:" || errs+=("missing frontmatter: $field")
+  done
+  # expected deployed name: orchestrator (SKILL.md at root) = glaw; else glaw-<dir basename>
+  if [ "$dir" = "$rel" ] || [ -z "$dir" ]; then want="glaw"; else want="glaw-$(basename "$dir")"; fi
+  got=$(printf '%s\n' "$fm" | sed -n 's/^name:[[:space:]]*//p' | tr -d '"'"'"' ' | head -1)
+  [ "$got" = "$want" ] || errs+=("name '$got' != expected '$want'")
+  grep -qiE '^##.*[Ww]hen to (invoke|use)' "$f" || errs+=("no '## When to invoke' section")
+  grep -qiE 'not legal advice|attorney work-product|work-product, not|does not (form|constitute)|UPL' "$f" \
+    || errs+=("no UPL / not-legal-advice line (hard gate #4)")
+  # allowed-tools must list at least one tool — either a block list ('  - Tool' lines under it)
+  # or inline ('allowed-tools: [Tool, ...]'). BSD-awk-safe: POSIX classes only, no \S.
+  if printf '%s\n' "$fm" | grep -q '^allowed-tools:'; then
+    block=$(printf '%s\n' "$fm" | sed -n '/^allowed-tools:/,/^[a-zA-Z][a-zA-Z-]*:/p')
+    nt=$(printf '%s\n' "$block" | grep -cE '^[[:space:]]+-[[:space:]]*[^[:space:]]')
+    inline=$(printf '%s\n' "$fm" | grep -cE '^allowed-tools:[[:space:]]*\[[^]]+\]')
+    [ "${nt:-0}" -gt 0 ] || [ "${inline:-0}" -gt 0 ] || errs+=("allowed-tools is empty")
+  fi
+  if [ ${#errs[@]} -eq 0 ]; then grn; else
+    printf '  %s\n' "$dir"
+    for e in "${errs[@]}"; do red "$e"; done
+  fi
+done
+
+echo "═══ RESULT ═══"
+echo "  skills checked: $total   passed: $PASS   violations: $FAILS"
+[ "$FAILS" = 0 ] && { echo "  ALL CONTRACTS PASS ✅"; exit 0; } || { echo "  CONTRACT VIOLATIONS ❌"; exit 1; }

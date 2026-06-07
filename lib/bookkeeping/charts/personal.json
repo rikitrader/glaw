@@ -1,0 +1,21 @@
+{
+  "_comment": "GLAW bundled chart of accounts — personal / household (litigation discovery, asset tracing). First match wins. Use: --chart personal",
+  "default": "Expenses:Uncategorized",
+  "rules": [
+    {"pattern": "PAYROLL|SALARY|DIRECT DEP|ADP|GUSTO|PENSION|SOCIAL SECURITY", "account": "Income:Wages"},
+    {"pattern": "ZELLE|VENMO|CASH APP|PAYPAL|TRANSFER FROM", "account": "Income:Transfers"},
+    {"pattern": "INTEREST|DIVIDEND|REFUND|IRS|TAX REF", "account": "Income:Other"},
+    {"pattern": "MORTGAGE|RENT|HOA|PROPERTY TAX", "account": "Expenses:Housing"},
+    {"pattern": "ELECTRIC|WATER|GAS COMPANY|UTILITY|COMCAST|VERIZON|AT&T|INTERNET|PHONE", "account": "Expenses:Utilities"},
+    {"pattern": "KROGER|PUBLIX|WHOLE FOODS|SAFEWAY|GROCERY|WALMART|TARGET|COSTCO", "account": "Expenses:Groceries"},
+    {"pattern": "RESTAURANT|STARBUCKS|MCDONALD|UBER EATS|DOORDASH|CHIPOTLE|COFFEE", "account": "Expenses:Dining"},
+    {"pattern": "SHELL|CHEVRON|EXXON|FUEL|GAS STATION|UBER|LYFT|PARKING", "account": "Expenses:Transportation"},
+    {"pattern": "AMAZON|APPLE|BEST BUY|SHOPPING|RETAIL", "account": "Expenses:Shopping"},
+    {"pattern": "DOCTOR|PHARMACY|CVS|WALGREENS|MEDICAL|DENTAL|HOSPITAL|INSURANCE", "account": "Expenses:Health"},
+    {"pattern": "NETFLIX|SPOTIFY|HULU|SUBSCRIPTION|GYM|MEMBERSHIP", "account": "Expenses:Subscriptions"},
+    {"pattern": "TUITION|SCHOOL|UNIVERSITY|STUDENT LOAN", "account": "Expenses:Education"},
+    {"pattern": "ATM|CASH WITHDRAWAL|WITHDRAWAL", "account": "Assets:Cash:Withdrawals"},
+    {"pattern": "VENMO|ZELLE|CASH APP|PAYPAL|TRANSFER TO", "account": "Expenses:Transfers"},
+    {"pattern": "BANK FEE|OVERDRAFT|SERVICE CHARGE|NSF", "account": "Expenses:Bank:Fees"}
+  ]
+}

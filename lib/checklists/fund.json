@@ -1,0 +1,40 @@
+{
+  "name": "Private Fund Compliance Checklist (PE/VC/Hedge)",
+  "entity_type": "fund",
+  "sections": [
+    { "section": "1. Fund & Manager Formation", "items": [
+      { "id": "fund-cert", "name": "Fund entity formation (LP cert / LLC certificate)", "seat": "pe-vc-counsel", "required": true, "match": ["certificate of limited partnership", "certificate of formation", "fund formation"] },
+      { "id": "lpa", "name": "Limited Partnership Agreement (LPA) / Operating Agreement", "seat": "pe-vc-counsel", "required": true, "match": ["limited partnership agreement", "lpa", "operating agreement"] },
+      { "id": "gp-entity", "name": "GP entity formation + agreement", "seat": "/glaw-entity-architect", "required": true, "match": ["general partner", "gp entity", "gp llc"] },
+      { "id": "mgmt-co", "name": "Management company entity + management agreement", "seat": "pe-vc-counsel", "required": true, "match": ["management company", "management agreement", "management co"] },
+      { "id": "ein", "name": "EIN(s) for fund + GP + mgmt co", "seat": "tax-compliance", "required": true, "match": ["ein", "ss-4"] }
+    ]},
+    { "section": "2. Offering Documents", "items": [
+      { "id": "ppm", "name": "Private Placement Memorandum (PPM)", "seat": "pe-vc-counsel", "required": true, "match": ["private placement memorandum", "ppm", "offering memorandum"] },
+      { "id": "sub-agmt", "name": "Subscription agreement + investor questionnaire", "seat": "pe-vc-counsel", "required": true, "match": ["subscription agreement", "investor questionnaire"] },
+      { "id": "side-letters", "name": "Side letters (MFN tracked)", "seat": "pe-vc-counsel", "required": false, "match": ["side letter", "side-letter", "mfn"] }
+    ]},
+    { "section": "3. Securities Compliance", "items": [
+      { "id": "form-d", "name": "Form D (Reg D 506(b)/(c)) on EDGAR", "seat": "fund-regulatory-council", "required": true, "match": ["form d", "reg d", "506(b)", "506(c)"] },
+      { "id": "blue-sky", "name": "Blue Sky state notice filings", "seat": "fund-regulatory-council", "required": true, "match": ["blue sky", "blue-sky", "state notice"] },
+      { "id": "ica-exclusion", "name": "ICA exclusion analysis 3(c)(1) / 3(c)(7)", "seat": "pe-vc-counsel", "required": true, "match": ["3(c)(1)", "3(c)(7)", "investment company act", "ica exclusion"] },
+      { "id": "form-adv", "name": "Form ADV (if RIA/ERA)", "seat": "fund-regulatory-council", "required": false, "type": "action", "match": ["form adv", "adv"] },
+      { "id": "form-pf", "name": "Form PF (if thresholds met)", "seat": "fund-regulatory-council", "required": false, "type": "action", "match": ["form pf"] }
+    ]},
+    { "section": "4. Investor Onboarding (KYC/AML)", "items": [
+      { "id": "accredited", "name": "Accredited-investor / QP verification", "seat": "/glaw-regulatory-aml", "required": true, "match": ["accredited investor", "qualified purchaser", "verification"] },
+      { "id": "kyc-aml", "name": "KYC / AML program + screening", "seat": "/glaw-regulatory-aml", "required": true, "match": ["kyc", "aml", "know your customer"] }
+    ]},
+    { "section": "5. Ongoing Compliance", "items": [
+      { "id": "custody", "name": "Qualified custodian / custody-rule (206(4)-2)", "seat": "fund-regulatory-council", "required": true, "match": ["custodian", "custody rule", "206(4)-2"] },
+      { "id": "audit", "name": "Annual audited financial statements", "seat": "/glaw-audit-assurance", "required": true, "type": "action", "match": ["audited financial", "annual audit"] },
+      { "id": "k1s", "name": "Partnership return (1065) + investor K-1s", "seat": "tax-compliance", "required": true, "match": ["1065", "k-1", "schedule k-1"] },
+      { "id": "valuation", "name": "Valuation policy + capital account statements", "seat": "institutional-finance", "required": true, "match": ["valuation policy", "capital account", "nav"] },
+      { "id": "compliance-manual", "name": "Compliance manual + CCO designation", "seat": "fund-regulatory-council", "required": false, "match": ["compliance manual", "chief compliance", "cco"] }
+    ]},
+    { "section": "6. Governance & Conflicts", "items": [
+      { "id": "lpac", "name": "LP Advisory Committee (LPAC) charter", "seat": "pe-vc-counsel", "required": false, "match": ["lpac", "advisory committee"] },
+      { "id": "conflicts", "name": "Conflicts-of-interest + fee/expense disclosure policy", "seat": "fund-regulatory-council", "required": true, "match": ["conflict", "fee and expense", "expense allocation"] }
+    ]}
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "name": "S-Corporation Compliance Checklist",
+  "entity_type": "s-corp",
+  "source": "Generalized from a standard S-Corp compliance checklist",
+  "sections": [
+    { "section": "1. Formation & Foundational", "items": [
+      { "id": "articles", "name": "Articles of Incorporation", "seat": "corporate-counsel", "required": true, "match": ["article", "certificate of inc", "articles of org"] },
+      { "id": "bylaws", "name": "Bylaws / Operating Agreement", "seat": "corporate-counsel", "required": true, "match": ["bylaw", "operating agreement", "ratifying"] },
+      { "id": "ein", "name": "EIN (Form SS-4)", "seat": "tax-compliance", "required": true, "match": ["ein", "ss-4", "employer identification"] },
+      { "id": "org-resolutions", "name": "Organizational / ratifying resolutions + minutes", "seat": "corporate-counsel", "required": true, "match": ["ratifying", "organizational", "written consent", "resolution"] },
+      { "id": "stock-ledger", "name": "Stock ledger / capitalization table", "seat": "corporate-counsel", "required": true, "match": ["stock-ledger", "cap table", "capitalization"] },
+      { "id": "stock-cert", "name": "Stock certificate(s)", "seat": "corporate-counsel", "required": false, "match": ["stock-certificate", "stock certificate"] },
+      { "id": "shareholder-agmt", "name": "Shareholder agreement", "seat": "/glaw-entity-architect", "required": false, "match": ["shareholder-agreement", "shareholder agreement", "buy-sell"] },
+      { "id": "reg-agent", "name": "Registered agent designation", "seat": "/glaw-licensing", "required": true, "match": ["registered-agent", "registered agent"] }
+    ]},
+    { "section": "2. S-Election & Eligibility", "items": [
+      { "id": "form2553", "name": "Form 2553 S-election + eligibility memo", "seat": "tax-strategy", "required": true, "match": ["2553", "s-election", "s election"] },
+      { "id": "cp261", "name": "IRS CP261 acceptance letter", "seat": "tax-compliance", "required": true, "type": "action", "match": ["cp261", "acceptance letter"] }
+    ]},
+    { "section": "3. Governance Formalities", "items": [
+      { "id": "annual-minutes", "name": "Annual minutes / written consent", "seat": "corporate-counsel", "required": true, "match": ["annual-minutes", "annual meeting", "written consent"] },
+      { "id": "minute-book", "name": "Minute book index", "seat": "corporate-counsel", "required": true, "match": ["minute-book", "minute book"] },
+      { "id": "banking-res", "name": "Banking resolution + no-commingling", "seat": "corporate-counsel", "required": true, "match": ["banking-resolution", "banking resolution"] },
+      { "id": "coi-policy", "name": "Conflict-of-interest / related-party policy", "seat": "corporate-counsel", "required": false, "match": ["conflict-of-interest", "related-party", "related party"] },
+      { "id": "indemnification", "name": "Officer/director indemnification agreement", "seat": "corporate-counsel", "required": false, "match": ["indemnification"] }
+    ]},
+    { "section": "4. Federal Tax Filings", "items": [
+      { "id": "1120s", "name": "Form 1120-S + K-1 (annual)", "seat": "tax-compliance", "required": true, "match": ["1120-s", "1120s", "s-election-compliance"] },
+      { "id": "941", "name": "Form 941 (quarterly payroll)", "seat": "tax-compliance", "required": true, "type": "action", "match": ["941"] },
+      { "id": "940", "name": "Form 940 (FUTA annual)", "seat": "tax-compliance", "required": true, "type": "action", "match": ["940"] },
+      { "id": "w2-1099", "name": "W-2 / W-3 + 1099-NEC", "seat": "tax-compliance", "required": true, "type": "action", "match": ["w-2", "1099"] },
+      { "id": "reasonable-comp", "name": "Reasonable compensation memo + resolution", "seat": "tax-strategy", "required": true, "match": ["reasonable-compensation", "reasonable comp"] },
+      { "id": "distributions", "name": "Distribution policy + log + AAA", "seat": "/glaw-accounting", "required": true, "match": ["distribution-policy", "distribution policy", "aaa"] }
+    ]},
+    { "section": "5. State & Local", "items": [
+      { "id": "annual-report", "name": "State annual report / compliance worksheet", "seat": "/glaw-licensing", "required": true, "match": ["state-compliance", "annual report", "fl-state"] },
+      { "id": "sales-tax", "name": "Sales/use-tax determination", "seat": "tax-compliance", "required": false, "match": ["sales-use-tax", "sales tax", "dr-1"] },
+      { "id": "licenses", "name": "Business license & permit inventory", "seat": "/glaw-licensing", "required": true, "match": ["business-license", "license inventory", "permit"] }
+    ]},
+    { "section": "6. Recordkeeping & Banking", "items": [
+      { "id": "accountable-plan", "name": "Accountable plan resolution", "seat": "tax-strategy", "required": false, "match": ["accountable-plan", "accountable plan"] },
+      { "id": "retention", "name": "Document retention policy", "seat": "corporate-counsel", "required": false, "match": ["retention"] },
+      { "id": "bank-account", "name": "Separate business bank account (no commingling)", "seat": "/glaw-accounting", "required": true, "type": "action", "match": ["bank account", "no commingl"] }
+    ]},
+    { "section": "7. Employment & IP", "items": [
+      { "id": "employment", "name": "Employment agreement (officer/employee)", "seat": "/glaw-employment-counsel", "required": false, "match": ["employment-agreement", "employment agreement"] },
+      { "id": "nda", "name": "NDA / confidentiality", "seat": "/glaw-employment-counsel", "required": false, "match": ["nda", "confidentiality", "non-disclosure"] },
+      { "id": "noncompete", "name": "Non-compete / non-solicit", "seat": "/glaw-employment-counsel", "required": false, "match": ["noncompete", "non-compete", "non-solicit"] },
+      { "id": "ip-assignment", "name": "IP assignment", "seat": "/glaw-ip-counsel", "required": false, "match": ["ip-assignment", "ip assignment", "invention assignment"] },
+      { "id": "contractor", "name": "Independent contractor agreement + classification", "seat": "/glaw-employment-counsel", "required": false, "match": ["independent-contractor", "contractor agreement"] }
+    ]}
+  ]
+}

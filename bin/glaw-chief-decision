@@ -1,0 +1,93 @@
+#!/usr/bin/env python3
+"""glaw-chief-decision — record a Chief decision card to the active GLAW matter.
+
+Writes the card three ways (no fabrication; you pass the real score/decision):
+  - appends a JSON event to  matters/<slug>/timeline.jsonl   (event: chief_decision)
+  - appends the structured card to matters/<slug>/decisions.jsonl
+  - renders a markdown card to matters/<slug>/decisions/<ts>-<chief-slug>.md
+
+Pair with score.py: pass its grade/score/recommendation in. Non-blocking by design —
+this records the Chief's PROCEED / WITH-FIXES / WITH-CONDITIONS decision; it never halts.
+
+Usage:
+  glaw-chief-decision --chief "Chief Tax Strategist" --score 73 --grade C \
+     --decision "PROCEED WITH FIXES" \
+     --risks "assignment-of-income; non-grantor drafting; valuation" \
+     --conditions "complete gifts before LOI; estate-attorney non-grantor confirm; 709 appraisal" \
+     [--rationale "..."] [--matter <slug>] [--signoff]
+"""
+import os, sys, json, datetime, re
+
+HOME = os.environ.get("GLAW_HOME", os.path.expanduser("~/.glaw"))
+MATTERS = os.path.join(HOME, "matters")
+
+def now(): return datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
+def slugify(s): return re.sub(r"[^a-z0-9]+","-", s.lower()).strip("-")
+
+def active_slug():
+    p = os.path.join(HOME, ".active")
+    return open(p).read().strip() if os.path.exists(p) else ""
+
+def parse(argv):
+    d = {"chief":"","score":"","grade":"","decision":"","risks":"","conditions":"",
+         "rationale":"","matter":"","signoff":False}
+    i=0
+    while i < len(argv):
+        a=argv[i].lstrip("-")
+        if a=="signoff": d["signoff"]=True; i+=1
+        elif a in d: d[a]=argv[i+1]; i+=2
+        else: i+=1
+    return d
+
+def main():
+    if len(sys.argv)<2 or "-h" in sys.argv or "--help" in sys.argv:
+        print(__doc__); return 2
+    d = parse(sys.argv[1:])
+    slug = d["matter"] or active_slug()
+    if not slug:
+        print("No active matter. Run `glaw matter new \"<name>\"` first, or pass --matter <slug>.")
+        return 1
+    mdir = os.path.join(MATTERS, slug)
+    if not os.path.isdir(mdir):
+        print(f"No such matter: {slug} (under {MATTERS})"); return 1
+    if not d["chief"] or not d["decision"]:
+        print("Need at least --chief and --decision."); return 2
+
+    ts = now()
+    risks = [r.strip() for r in re.split(r"[;\n]", d["risks"]) if r.strip()]
+    conds = [c.strip() for c in re.split(r"[;\n]", d["conditions"]) if c.strip()]
+    card = {
+        "ts": ts, "chief": d["chief"],
+        "score": d["score"], "grade": d["grade"],
+        "decision": d["decision"], "signoff_required": d["signoff"],
+        "top_risks": risks, "conditions": conds, "rationale": d["rationale"],
+    }
+
+    # 1) timeline event
+    with open(os.path.join(mdir,"timeline.jsonl"),"a") as f:
+        f.write(json.dumps({"ts":ts,"event":"chief_decision","chief":d["chief"],
+                            "grade":d["grade"],"score":d["score"],"decision":d["decision"]})+"\n")
+    # 2) decisions ledger
+    with open(os.path.join(mdir,"decisions.jsonl"),"a") as f:
+        f.write(json.dumps(card)+"\n")
+    # 3) markdown card
+    ddir = os.path.join(mdir,"decisions"); os.makedirs(ddir, exist_ok=True)
+    mdfile = os.path.join(ddir, f"{ts.replace(':','')}-{slugify(d['chief'])}.md")
+    with open(mdfile,"w") as f:
+        f.write(f"# Chief Decision Card\n\n")
+        f.write(f"- **Chief:** {d['chief']}\n- **Matter:** {slug}\n- **Date:** {ts}\n")
+        f.write(f"- **Position-Strength:** {d['score']}/100  (Grade {d['grade']})\n")
+        f.write(f"- **DECISION:** {d['decision']}\n")
+        if d["signoff"]: f.write(f"- **⚠ Human/attorney sign-off required.**\n")
+        if risks: f.write("\n## Top surviving risks\n"+"".join(f"- {r}\n" for r in risks))
+        if conds: f.write("\n## Conditions / sign-off\n"+"".join(f"- [ ] {c}\n" for c in conds))
+        if d["rationale"]: f.write(f"\n## Rationale\n{d['rationale']}\n")
+        f.write("\n*Recorded by glaw-chief-decision. Non-blocking; workflow completes with these conditions.*\n")
+
+    print(f"RECORDED chief decision for matter '{slug}'")
+    print(f"  timeline.jsonl + decisions.jsonl appended")
+    print(f"  card → {mdfile}")
+    return 0
+
+if __name__ == "__main__":
+    raise SystemExit(main())

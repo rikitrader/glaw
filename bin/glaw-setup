@@ -1,0 +1,35 @@
+#!/usr/bin/env bash
+# glaw-setup — deploy GLAW's nested sub-skills as top-level /glaw-* commands,
+# mirroring gstack's ./setup. Creates a real top-level directory per sub-skill
+# with a SKILL.md symlink back to the canonical file under glaw/, so Claude Code
+# discovers each as its own skill (not nested). Idempotent.
+set -euo pipefail
+ROOT="$HOME/.claude/skills"
+SRC="$ROOT/glaw"
+count=0
+for d in "$SRC"/*/; do
+  name="$(basename "$d")"
+  [ "$name" = "seats" ] && continue           # vendored seats handled below
+  [ -f "$d/SKILL.md" ] || continue            # skip bin/ lib/ (no SKILL.md)
+  top="glaw-$name"
+  mkdir -p "$ROOT/$top"
+  ln -snf "../glaw/$name/SKILL.md" "$ROOT/$top/SKILL.md"
+  count=$((count+1))
+  echo "  /$top"
+done
+echo "deployed $count GLAW sub-skills as top-level commands (orchestrator /glaw already registered)"
+
+# Deploy vendored seats (skills GLAW routes to) as top-level siblings, NON-destructively:
+# never clobber a seat the user already has installed — their copy wins.
+seatc=0
+if [ -d "$SRC/seats" ]; then
+  for d in "$SRC"/seats/*/; do
+    name="$(basename "$d")"
+    [ -f "$d/SKILL.md" ] || continue
+    [ -e "$ROOT/$name" ] && continue          # already installed → leave it
+    ln -snf "glaw/seats/$name" "$ROOT/$name"  # symlink the whole seat dir
+    seatc=$((seatc+1))
+    echo "  /$name (vendored seat)"
+  done
+  echo "deployed $seatc vendored seats (skipped any already installed)"
+fi

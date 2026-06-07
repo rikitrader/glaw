@@ -1,0 +1,716 @@
+[
+ {
+  "file": "glaw-amended-restated-coi-master.md",
+  "form": "glaw-amended-restated-coi",
+  "jurisdiction": "DE",
+  "bytes": 3450
+ },
+ {
+  "file": "glaw-bylaws-florida-master.md",
+  "form": "glaw-bylaws",
+  "jurisdiction": "FL",
+  "bytes": 44941
+ },
+ {
+  "file": "glaw-bylaws-master.md",
+  "form": "glaw-bylaws",
+  "jurisdiction": "DE",
+  "bytes": 44060
+ },
+ {
+  "file": "glaw-bylaws-texas-master.md",
+  "form": "glaw-bylaws",
+  "jurisdiction": "TX",
+  "bytes": 46823
+ },
+ {
+  "file": "glaw-certificate-of-designations-florida-master.md",
+  "form": "glaw-certificate-of-designations",
+  "jurisdiction": "FL",
+  "bytes": 5621
+ },
+ {
+  "file": "glaw-certificate-of-designations-master.md",
+  "form": "glaw-certificate-of-designations",
+  "jurisdiction": "DE",
+  "bytes": 4573
+ },
+ {
+  "file": "glaw-certificate-of-designations-texas-master.md",
+  "form": "glaw-certificate-of-designations",
+  "jurisdiction": "TX",
+  "bytes": 7312
+ },
+ {
+  "file": "glaw-ciiaa-florida-master.md",
+  "form": "glaw-ciiaa",
+  "jurisdiction": "FL",
+  "bytes": 4460
+ },
+ {
+  "file": "glaw-ciiaa-master.md",
+  "form": "glaw-ciiaa",
+  "jurisdiction": "DE",
+  "bytes": 4004
+ },
+ {
+  "file": "glaw-ciiaa-texas-master.md",
+  "form": "glaw-ciiaa",
+  "jurisdiction": "TX",
+  "bytes": 4463
+ },
+ {
+  "file": "glaw-common-stock-warrant-florida-master.md",
+  "form": "glaw-common-stock-warrant",
+  "jurisdiction": "FL",
+  "bytes": 1819
+ },
+ {
+  "file": "glaw-common-stock-warrant-master.md",
+  "form": "glaw-common-stock-warrant",
+  "jurisdiction": "DE",
+  "bytes": 1571
+ },
+ {
+  "file": "glaw-common-stock-warrant-texas-master.md",
+  "form": "glaw-common-stock-warrant",
+  "jurisdiction": "TX",
+  "bytes": 1818
+ },
+ {
+  "file": "glaw-convertible-note-florida-master.md",
+  "form": "glaw-convertible-note",
+  "jurisdiction": "FL",
+  "bytes": 3105
+ },
+ {
+  "file": "glaw-convertible-note-master.md",
+  "form": "glaw-convertible-note",
+  "jurisdiction": "DE",
+  "bytes": 2650
+ },
+ {
+  "file": "glaw-convertible-note-texas-master.md",
+  "form": "glaw-convertible-note",
+  "jurisdiction": "TX",
+  "bytes": 3106
+ },
+ {
+  "file": "glaw-delaware-certificate-master.md",
+  "form": "glaw-delaware-certificate",
+  "jurisdiction": "DE",
+  "bytes": 1498
+ },
+ {
+  "file": "glaw-do-indemnity-agreement-arizona-master.md",
+  "form": "glaw-do-indemnity-agreement",
+  "jurisdiction": "AZ",
+  "bytes": 31635
+ },
+ {
+  "file": "glaw-equity-incentive-plan-florida-master.md",
+  "form": "glaw-equity-incentive-plan",
+  "jurisdiction": "FL",
+  "bytes": 7477
+ },
+ {
+  "file": "glaw-equity-incentive-plan-master.md",
+  "form": "glaw-equity-incentive-plan",
+  "jurisdiction": "DE",
+  "bytes": 7021
+ },
+ {
+  "file": "glaw-equity-incentive-plan-texas-master.md",
+  "form": "glaw-equity-incentive-plan",
+  "jurisdiction": "TX",
+  "bytes": 7480
+ },
+ {
+  "file": "glaw-escrow-agreement-florida-master.md",
+  "form": "glaw-escrow-agreement",
+  "jurisdiction": "FL",
+  "bytes": 2658
+ },
+ {
+  "file": "glaw-escrow-agreement-master.md",
+  "form": "glaw-escrow-agreement",
+  "jurisdiction": "DE",
+  "bytes": 2202
+ },
+ {
+  "file": "glaw-escrow-agreement-texas-master.md",
+  "form": "glaw-escrow-agreement",
+  "jurisdiction": "TX",
+  "bytes": 2661
+ },
+ {
+  "file": "glaw-florida-articles-of-incorporation-master.md",
+  "form": "glaw-articles-of-incorporation",
+  "jurisdiction": "FL",
+  "bytes": 6129
+ },
+ {
+  "file": "glaw-form-10q-exemplar.md",
+  "form": "glaw-form-10q-exemplar",
+  "jurisdiction": "EX",
+  "bytes": 54088
+ },
+ {
+  "file": "glaw-indemnification-agreement-florida-master.md",
+  "form": "glaw-indemnification-agreement",
+  "jurisdiction": "FL",
+  "bytes": 15758
+ },
+ {
+  "file": "glaw-indemnification-agreement-master.md",
+  "form": "glaw-indemnification-agreement",
+  "jurisdiction": "DE",
+  "bytes": 15548
+ },
+ {
+  "file": "glaw-indemnification-agreement-texas-master.md",
+  "form": "glaw-indemnification-agreement",
+  "jurisdiction": "TX",
+  "bytes": 17855
+ },
+ {
+  "file": "glaw-investment-advisory-agreement-florida-master.md",
+  "form": "glaw-investment-advisory-agreement",
+  "jurisdiction": "FL",
+  "bytes": 20489
+ },
+ {
+  "file": "glaw-investment-advisory-agreement-master.md",
+  "form": "glaw-investment-advisory-agreement",
+  "jurisdiction": "DE",
+  "bytes": 20241
+ },
+ {
+  "file": "glaw-investment-advisory-agreement-texas-master.md",
+  "form": "glaw-investment-advisory-agreement",
+  "jurisdiction": "TX",
+  "bytes": 20488
+ },
+ {
+  "file": "glaw-investor-rights-agreement-florida-master.md",
+  "form": "glaw-investor-rights-agreement",
+  "jurisdiction": "FL",
+  "bytes": 6789
+ },
+ {
+  "file": "glaw-investor-rights-agreement-master.md",
+  "form": "glaw-investor-rights-agreement",
+  "jurisdiction": "DE",
+  "bytes": 5618
+ },
+ {
+  "file": "glaw-investor-rights-agreement-texas-master.md",
+  "form": "glaw-investor-rights-agreement",
+  "jurisdiction": "TX",
+  "bytes": 7242
+ },
+ {
+  "file": "glaw-joint-written-consent-board-and-shareholders-florida-master.md",
+  "form": "glaw-joint-written-consent-board-and-shareholders",
+  "jurisdiction": "FL",
+  "bytes": 9527
+ },
+ {
+  "file": "glaw-joint-written-consent-board-and-shareholders-texas-master.md",
+  "form": "glaw-joint-written-consent-board-and-shareholders",
+  "jurisdiction": "TX",
+  "bytes": 10544
+ },
+ {
+  "file": "glaw-joint-written-consent-board-and-stockholders-master.md",
+  "form": "glaw-joint-written-consent-board-and-stockholders",
+  "jurisdiction": "DE",
+  "bytes": 9558
+ },
+ {
+  "file": "glaw-limited-partnership-agreement-florida-master.md",
+  "form": "glaw-limited-partnership-agreement",
+  "jurisdiction": "FL",
+  "bytes": 6727
+ },
+ {
+  "file": "glaw-limited-partnership-agreement-master.md",
+  "form": "glaw-limited-partnership-agreement",
+  "jurisdiction": "DE",
+  "bytes": 5322
+ },
+ {
+  "file": "glaw-limited-partnership-agreement-texas-master.md",
+  "form": "glaw-limited-partnership-agreement",
+  "jurisdiction": "TX",
+  "bytes": 9782
+ },
+ {
+  "file": "glaw-llc-operating-agreement-florida-master.md",
+  "form": "glaw-llc-operating-agreement",
+  "jurisdiction": "FL",
+  "bytes": 141131
+ },
+ {
+  "file": "glaw-llc-operating-agreement-master.md",
+  "form": "glaw-llc-operating-agreement",
+  "jurisdiction": "DE",
+  "bytes": 139628
+ },
+ {
+  "file": "glaw-llc-operating-agreement-texas-master.md",
+  "form": "glaw-llc-operating-agreement",
+  "jurisdiction": "TX",
+  "bytes": 141828
+ },
+ {
+  "file": "glaw-offshore-fund-ppm-master.md",
+  "form": "glaw-offshore-fund-ppm",
+  "jurisdiction": "DE",
+  "bytes": 2838
+ },
+ {
+  "file": "glaw-partnership-subscription-questionnaire-florida-master.md",
+  "form": "glaw-partnership-subscription-questionnaire",
+  "jurisdiction": "FL",
+  "bytes": 3275
+ },
+ {
+  "file": "glaw-partnership-subscription-questionnaire-master.md",
+  "form": "glaw-partnership-subscription-questionnaire",
+  "jurisdiction": "DE",
+  "bytes": 2819
+ },
+ {
+  "file": "glaw-partnership-subscription-questionnaire-texas-master.md",
+  "form": "glaw-partnership-subscription-questionnaire",
+  "jurisdiction": "TX",
+  "bytes": 3278
+ },
+ {
+  "file": "glaw-pledge-security-agreement-florida-master.md",
+  "form": "glaw-pledge-security-agreement",
+  "jurisdiction": "FL",
+  "bytes": 3609
+ },
+ {
+  "file": "glaw-pledge-security-agreement-master.md",
+  "form": "glaw-pledge-security-agreement",
+  "jurisdiction": "DE",
+  "bytes": 3153
+ },
+ {
+  "file": "glaw-pledge-security-agreement-texas-master.md",
+  "form": "glaw-pledge-security-agreement",
+  "jurisdiction": "TX",
+  "bytes": 3612
+ },
+ {
+  "file": "glaw-ppm-florida-master.md",
+  "form": "glaw-ppm",
+  "jurisdiction": "FL",
+  "bytes": 3846
+ },
+ {
+  "file": "glaw-ppm-llc-operating-company-florida-master.md",
+  "form": "glaw-ppm-llc-operating-company",
+  "jurisdiction": "FL",
+  "bytes": 55119
+ },
+ {
+  "file": "glaw-ppm-llc-operating-company-master.md",
+  "form": "glaw-ppm-llc-operating-company",
+  "jurisdiction": "DE",
+  "bytes": 54871
+ },
+ {
+  "file": "glaw-ppm-llc-operating-company-texas-master.md",
+  "form": "glaw-ppm-llc-operating-company",
+  "jurisdiction": "TX",
+  "bytes": 55118
+ },
+ {
+  "file": "glaw-ppm-master.md",
+  "form": "glaw-ppm",
+  "jurisdiction": "DE",
+  "bytes": 3390
+ },
+ {
+  "file": "glaw-ppm-real-estate-florida-master.md",
+  "form": "glaw-ppm-real-estate",
+  "jurisdiction": "FL",
+  "bytes": 177814
+ },
+ {
+  "file": "glaw-ppm-real-estate-master.md",
+  "form": "glaw-ppm-real-estate",
+  "jurisdiction": "DE",
+  "bytes": 177567
+ },
+ {
+  "file": "glaw-ppm-real-estate-texas-master.md",
+  "form": "glaw-ppm-real-estate",
+  "jurisdiction": "TX",
+  "bytes": 177811
+ },
+ {
+  "file": "glaw-ppm-texas-master.md",
+  "form": "glaw-ppm",
+  "jurisdiction": "TX",
+  "bytes": 3849
+ },
+ {
+  "file": "glaw-release-indemnity-agreement-florida-master.md",
+  "form": "glaw-release-indemnity-agreement",
+  "jurisdiction": "FL",
+  "bytes": 2038
+ },
+ {
+  "file": "glaw-release-indemnity-agreement-master.md",
+  "form": "glaw-release-indemnity-agreement",
+  "jurisdiction": "DE",
+  "bytes": 1582
+ },
+ {
+  "file": "glaw-release-indemnity-agreement-texas-master.md",
+  "form": "glaw-release-indemnity-agreement",
+  "jurisdiction": "TX",
+  "bytes": 2041
+ },
+ {
+  "file": "glaw-restricted-stock-purchase-agreement-florida-master.md",
+  "form": "glaw-restricted-stock-purchase-agreement",
+  "jurisdiction": "FL",
+  "bytes": 4641
+ },
+ {
+  "file": "glaw-restricted-stock-purchase-agreement-master.md",
+  "form": "glaw-restricted-stock-purchase-agreement",
+  "jurisdiction": "DE",
+  "bytes": 3964
+ },
+ {
+  "file": "glaw-restricted-stock-purchase-agreement-texas-master.md",
+  "form": "glaw-restricted-stock-purchase-agreement",
+  "jurisdiction": "TX",
+  "bytes": 5254
+ },
+ {
+  "file": "glaw-retail-fund-prospectus-drafting-guide.md",
+  "form": "glaw-retail-fund-prospectus-drafting-guide",
+  "jurisdiction": "EX",
+  "bytes": 22801
+ },
+ {
+  "file": "glaw-rofr-cosale-agreement-florida-master.md",
+  "form": "glaw-rofr-cosale-agreement",
+  "jurisdiction": "FL",
+  "bytes": 7102
+ },
+ {
+  "file": "glaw-rofr-cosale-agreement-master.md",
+  "form": "glaw-rofr-cosale-agreement",
+  "jurisdiction": "DE",
+  "bytes": 3911
+ },
+ {
+  "file": "glaw-rofr-cosale-agreement-texas-master.md",
+  "form": "glaw-rofr-cosale-agreement",
+  "jurisdiction": "TX",
+  "bytes": 5404
+ },
+ {
+  "file": "glaw-rsu-award-agreement-florida-master.md",
+  "form": "glaw-rsu-award-agreement",
+  "jurisdiction": "FL",
+  "bytes": 5761
+ },
+ {
+  "file": "glaw-rsu-award-agreement-master.md",
+  "form": "glaw-rsu-award-agreement",
+  "jurisdiction": "DE",
+  "bytes": 5305
+ },
+ {
+  "file": "glaw-rsu-award-agreement-texas-master.md",
+  "form": "glaw-rsu-award-agreement",
+  "jurisdiction": "TX",
+  "bytes": 5764
+ },
+ {
+  "file": "glaw-safe-florida-master.md",
+  "form": "glaw-safe",
+  "jurisdiction": "FL",
+  "bytes": 3528
+ },
+ {
+  "file": "glaw-safe-master.md",
+  "form": "glaw-safe",
+  "jurisdiction": "DE",
+  "bytes": 3073
+ },
+ {
+  "file": "glaw-safe-texas-master.md",
+  "form": "glaw-safe",
+  "jurisdiction": "TX",
+  "bytes": 3529
+ },
+ {
+  "file": "glaw-selected-dealer-agreement-florida-master.md",
+  "form": "glaw-selected-dealer-agreement",
+  "jurisdiction": "FL",
+  "bytes": 2614
+ },
+ {
+  "file": "glaw-selected-dealer-agreement-master.md",
+  "form": "glaw-selected-dealer-agreement",
+  "jurisdiction": "DE",
+  "bytes": 2158
+ },
+ {
+  "file": "glaw-selected-dealer-agreement-texas-master.md",
+  "form": "glaw-selected-dealer-agreement",
+  "jurisdiction": "TX",
+  "bytes": 2617
+ },
+ {
+  "file": "glaw-series-a-closing-binder-florida-master.md",
+  "form": "glaw-series-a-closing-binder",
+  "jurisdiction": "FL",
+  "bytes": 6565
+ },
+ {
+  "file": "glaw-series-a-closing-binder-master.md",
+  "form": "glaw-series-a-closing-binder",
+  "jurisdiction": "DE",
+  "bytes": 5342
+ },
+ {
+  "file": "glaw-series-a-closing-binder-texas-master.md",
+  "form": "glaw-series-a-closing-binder",
+  "jurisdiction": "TX",
+  "bytes": 8540
+ },
+ {
+  "file": "glaw-share-purchase-agreement-florida-master.md",
+  "form": "glaw-share-purchase-agreement",
+  "jurisdiction": "FL",
+  "bytes": 12299
+ },
+ {
+  "file": "glaw-share-purchase-agreement-master.md",
+  "form": "glaw-share-purchase-agreement",
+  "jurisdiction": "DE",
+  "bytes": 9336
+ },
+ {
+  "file": "glaw-share-purchase-agreement-texas-master.md",
+  "form": "glaw-share-purchase-agreement",
+  "jurisdiction": "TX",
+  "bytes": 12350
+ },
+ {
+  "file": "glaw-shareholder-action-by-written-consent-florida-master.md",
+  "form": "glaw-shareholder-action-by-written-consent",
+  "jurisdiction": "FL",
+  "bytes": 7221
+ },
+ {
+  "file": "glaw-shareholder-action-by-written-consent-texas-master.md",
+  "form": "glaw-shareholder-action-by-written-consent",
+  "jurisdiction": "TX",
+  "bytes": 7863
+ },
+ {
+  "file": "glaw-shareholder-written-consent-in-lieu-florida-master.md",
+  "form": "glaw-shareholder-written-consent-in-lieu",
+  "jurisdiction": "FL",
+  "bytes": 4370
+ },
+ {
+  "file": "glaw-shareholder-written-consent-in-lieu-master.md",
+  "form": "glaw-shareholder-written-consent-in-lieu",
+  "jurisdiction": "DE",
+  "bytes": 4510
+ },
+ {
+  "file": "glaw-shareholder-written-consent-in-lieu-texas-master.md",
+  "form": "glaw-shareholder-written-consent-in-lieu",
+  "jurisdiction": "TX",
+  "bytes": 5139
+ },
+ {
+  "file": "glaw-shareholders-agreement-florida-master.md",
+  "form": "glaw-shareholders-agreement",
+  "jurisdiction": "FL",
+  "bytes": 55206
+ },
+ {
+  "file": "glaw-shareholders-agreement-master.md",
+  "form": "glaw-shareholders-agreement",
+  "jurisdiction": "DE",
+  "bytes": 52898
+ },
+ {
+  "file": "glaw-shareholders-agreement-texas-master.md",
+  "form": "glaw-shareholders-agreement",
+  "jurisdiction": "TX",
+  "bytes": 56242
+ },
+ {
+  "file": "glaw-stock-option-agreement-florida-master.md",
+  "form": "glaw-stock-option-agreement",
+  "jurisdiction": "FL",
+  "bytes": 11609
+ },
+ {
+  "file": "glaw-stock-option-agreement-master.md",
+  "form": "glaw-stock-option-agreement",
+  "jurisdiction": "DE",
+  "bytes": 11154
+ },
+ {
+  "file": "glaw-stock-option-agreement-texas-master.md",
+  "form": "glaw-stock-option-agreement",
+  "jurisdiction": "TX",
+  "bytes": 11610
+ },
+ {
+  "file": "glaw-stockholder-action-by-written-consent-master.md",
+  "form": "glaw-stockholder-action-by-written-consent",
+  "jurisdiction": "DE",
+  "bytes": 7171
+ },
+ {
+  "file": "glaw-subscription-agreement-florida-master.md",
+  "form": "glaw-subscription-agreement",
+  "jurisdiction": "FL",
+  "bytes": 3223
+ },
+ {
+  "file": "glaw-subscription-agreement-master.md",
+  "form": "glaw-subscription-agreement",
+  "jurisdiction": "DE",
+  "bytes": 2767
+ },
+ {
+  "file": "glaw-subscription-agreement-pe-fund-florida-master.md",
+  "form": "glaw-subscription-agreement-pe-fund",
+  "jurisdiction": "FL",
+  "bytes": 56641
+ },
+ {
+  "file": "glaw-subscription-agreement-pe-fund-master.md",
+  "form": "glaw-subscription-agreement-pe-fund",
+  "jurisdiction": "DE",
+  "bytes": 56393
+ },
+ {
+  "file": "glaw-subscription-agreement-pe-fund-texas-master.md",
+  "form": "glaw-subscription-agreement-pe-fund",
+  "jurisdiction": "TX",
+  "bytes": 56640
+ },
+ {
+  "file": "glaw-subscription-agreement-texas-master.md",
+  "form": "glaw-subscription-agreement",
+  "jurisdiction": "TX",
+  "bytes": 3226
+ },
+ {
+  "file": "glaw-texas-certificate-of-formation-master.md",
+  "form": "glaw-certificate-of-formation",
+  "jurisdiction": "TX",
+  "bytes": 8642
+ },
+ {
+  "file": "glaw-voting-agreement-florida-master.md",
+  "form": "glaw-voting-agreement",
+  "jurisdiction": "FL",
+  "bytes": 7575
+ },
+ {
+  "file": "glaw-voting-agreement-master.md",
+  "form": "glaw-voting-agreement",
+  "jurisdiction": "DE",
+  "bytes": 3725
+ },
+ {
+  "file": "glaw-voting-agreement-texas-master.md",
+  "form": "glaw-voting-agreement",
+  "jurisdiction": "TX",
+  "bytes": 5317
+ },
+ {
+  "file": "glaw-warrant-agreement-florida-master.md",
+  "form": "glaw-warrant-agreement",
+  "jurisdiction": "FL",
+  "bytes": 2431
+ },
+ {
+  "file": "glaw-warrant-agreement-master.md",
+  "form": "glaw-warrant-agreement",
+  "jurisdiction": "DE",
+  "bytes": 2183
+ },
+ {
+  "file": "glaw-warrant-agreement-texas-master.md",
+  "form": "glaw-warrant-agreement",
+  "jurisdiction": "TX",
+  "bytes": 2430
+ },
+ {
+  "file": "glaw-warrant-certificate-florida-master.md",
+  "form": "glaw-warrant-certificate",
+  "jurisdiction": "FL",
+  "bytes": 1718
+ },
+ {
+  "file": "glaw-warrant-certificate-master.md",
+  "form": "glaw-warrant-certificate",
+  "jurisdiction": "DE",
+  "bytes": 1470
+ },
+ {
+  "file": "glaw-warrant-certificate-texas-master.md",
+  "form": "glaw-warrant-certificate",
+  "jurisdiction": "TX",
+  "bytes": 1717
+ },
+ {
+  "file": "glaw-warrant-exchange-agreement-florida-master.md",
+  "form": "glaw-warrant-exchange-agreement",
+  "jurisdiction": "FL",
+  "bytes": 1800
+ },
+ {
+  "file": "glaw-warrant-exchange-agreement-master.md",
+  "form": "glaw-warrant-exchange-agreement",
+  "jurisdiction": "DE",
+  "bytes": 1552
+ },
+ {
+  "file": "glaw-warrant-exchange-agreement-texas-master.md",
+  "form": "glaw-warrant-exchange-agreement",
+  "jurisdiction": "TX",
+  "bytes": 1799
+ },
+ {
+  "file": "glaw-warrant-standalone-florida-master.md",
+  "form": "glaw-warrant-standalone",
+  "jurisdiction": "FL",
+  "bytes": 1840
+ },
+ {
+  "file": "glaw-warrant-standalone-master.md",
+  "form": "glaw-warrant-standalone",
+  "jurisdiction": "DE",
+  "bytes": 1592
+ },
+ {
+  "file": "glaw-warrant-standalone-texas-master.md",
+  "form": "glaw-warrant-standalone",
+  "jurisdiction": "TX",
+  "bytes": 1839
+ }
+]

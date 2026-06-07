@@ -1,0 +1,70 @@
+#!/usr/bin/env python3
+"""glaw-bureau-score — deterministic scoring for the GLAW Investigations Bureau.
+
+Two transparent scorers (no black box):
+  competency  — FBI Core Competencies weighted scorecard (case/agent readiness)
+  fraud       — weighted Fraud Score (0-100) from indicator components
+
+Usage:
+  glaw-bureau-score competency <scores.json>     # {"Communication":85,"Leadership":78,...} 0-100 each
+  glaw-bureau-score fraud <indicators.json>      # {"badges_of_fraud":4,"money_flow_anomalies":5,...} 0-5 each
+  glaw-bureau-score weights                       # print the rubrics
+"""
+import sys, json
+
+COMPETENCY_W = {  # sum = 100
+    "Communication": 15, "Leadership": 15, "Organizing & Planning": 15,
+    "Problem Solving / Judgment": 15, "Collaboration": 10,
+    "Flexibility / Adaptability": 10, "Initiative": 10, "Interpersonal Ability": 10,
+}
+FRAUD_W = {  # weights sum = 100; each indicator scored 0-5
+    "badges_of_fraud": 20, "money_flow_anomalies": 20, "shell_or_straw_entities": 15,
+    "document_contradictions": 15, "concealment": 15, "timeline_proximity_to_harm": 15,
+}
+
+def tier_competency(s):
+    return ("EXEMPLARY" if s >= 90 else "READY" if s >= 75 else
+            "DEVELOPING" if s >= 60 else "NOT READY")
+
+def tier_fraud(s):
+    return ("HIGH" if s >= 75 else "ELEVATED" if s >= 50 else
+            "MODERATE" if s >= 25 else "LOW")
+
+def score(data, weights, scale):
+    total = wsum = 0.0
+    rows = []
+    for k, w in weights.items():
+        v = float(data.get(k, 0))
+        norm = (v / scale) * 100
+        total += norm * w
+        wsum += w
+        rows.append((k, v, w, norm))
+    overall = total / wsum if wsum else 0
+    return overall, rows
+
+def run(kind, path):
+    data = json.load(open(path))
+    if kind == "competency":
+        w, sc, tier = COMPETENCY_W, 100, tier_competency
+        title = "FBI Core Competencies Scorecard"
+    else:
+        w, sc, tier = FRAUD_W, 5, tier_fraud
+        title = "Fraud Score"
+    overall, rows = score(data, w, sc)
+    print(f"=== {title} ===")
+    print(f"  {'component':<32}{'raw':>6}{'wt':>6}{'contrib':>9}")
+    for k, v, wt, norm in rows:
+        print(f"  {k:<32}{v:>6}{wt:>5}%{(norm*wt/100):>9.1f}")
+    print(f"  {'-'*53}")
+    print(f"  OVERALL: {overall:.1f}/100   TIER: {tier(overall)}")
+    return overall
+
+if __name__ == "__main__":
+    a = sys.argv[1:]
+    if a and a[0] == "weights":
+        print("Competency weights:", json.dumps(COMPETENCY_W, indent=2))
+        print("Fraud indicator weights (0-5 each):", json.dumps(FRAUD_W, indent=2))
+    elif len(a) >= 2 and a[0] in ("competency", "fraud"):
+        run(a[0], a[1])
+    else:
+        print(__doc__); sys.exit(1)

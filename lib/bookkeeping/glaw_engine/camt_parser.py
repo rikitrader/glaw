@@ -1,0 +1,972 @@
+# Copyright (C) 2023-2026 Bank Statement Parser. All rights reserved.
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
+# implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+"""
+camt_parser.py
+
+Provides a class CamtParser for parsing CAMT format bank statement files.
+"""
+
+import logging
+import re
+from collections.abc import Generator
+from io import BytesIO
+from pathlib import Path
+from typing import Optional, Union
+
+import pandas as pd
+from lxml import etree
+
+from .base_parser import BankStatementParser
+from .input_validator import InputValidator, ValidationError
+from .record_types import (
+    BalanceRecord,
+    StatementStatsRecord,
+    SummaryRecord,
+    TransactionRecord,
+)
+
+# Configuring the logging
+logger = logging.getLogger(__name__)
+
+CAMT_NAMESPACE_PATTERN = re.compile(
+    r'\s+xmlns="urn:iso:std:iso:20022:tech:xsd:camt\.\d{3}\.\d{3}\.\d{2}"'
+)
+
+
+class CamtParser(BankStatementParser):
+    """
+    Class to parse CAMT format bank statement files.
+
+    Attributes:
+        tree (etree.Element): The Element object representing the parsed XML
+        file.
+        definitions (dict): Dictionary mapping balance codes to descriptions.
+    """
+
+    _file_path: Optional[str]
+    _source_name: str
+    _source_is_memory: bool
+    _xml_bytes: bytes
+
+    def __init__(self, file_name: Union[str, Path]) -> None:
+        """
+        Initializes the parser with the given file.
+
+        Parameters:
+            file_name (str): Path to the CAMT format statement file.
+
+        Raises:
+            FileNotFoundError: If file does not exist.
+            ValidationError: If file validation fails.
+            etree.XMLSyntaxError: If there is an issue parsing the XML.
+        """
+        super().__init__(file_name)
+        self._initialize_from_file(file_name)
+        self._set_definitions()
+
+    @classmethod
+    def from_string(
+        cls,
+        xml_content: str,
+        *,
+        source_name: str = "<memory>",
+        max_bytes: Optional[int] = None,
+    ) -> "CamtParser":
+        """Create a parser from an in-memory XML string."""
+        return cls._from_memory(
+            xml_content, source_name=source_name, max_bytes=max_bytes
+        )
+
+    @classmethod
+    def from_bytes(
+        cls,
+        xml_content: bytes,
+        *,
+        source_name: str = "<memory>",
+        max_bytes: Optional[int] = None,
+    ) -> "CamtParser":
+        """Create a parser from in-memory XML bytes."""
+        return cls._from_memory(
+            xml_content, source_name=source_name, max_bytes=max_bytes
+        )
+
+    @classmethod
+    def _from_memory(
+        cls,
+        xml_content: Union[str, bytes],
+        *,
+        source_name: str,
+        max_bytes: Optional[int],
+    ) -> "CamtParser":
+        """Internal constructor for memory-backed XML sources."""
+        validator = InputValidator(max_file_size=max_bytes)
+        raw_bytes, safe_source_name = validator.validate_xml_content(
+            xml_content, source_name=source_name
+        )
+
+        parser = cls.__new__(cls)
+        BankStatementParser.__init__(parser, safe_source_name)
+        parser._original_file_name = safe_source_name
+        parser._file_path = None
+        parser._source_name = safe_source_name
+        parser._source_is_memory = True
+        parser._xml_bytes = parser._normalize_xml_bytes(raw_bytes)
+        parser.tree = parser._parse_xml_bytes(
+            parser._xml_bytes, parser._source_name
+        )
+        parser._set_definitions()
+        return parser
+
+    def _initialize_from_file(
+        self, file_name: Union[str, Path]
+    ) -> None:
+        """Initialize parser state from a validated filesystem path."""
+        validator = InputValidator()
+        validated_path: Union[str, Path] = file_name
+
+        if isinstance(file_name, str):
+            try:
+                validated_path = validator.validate_input_file_path(
+                    file_name
+                )
+                logger.info("Input file validated: %s", validated_path)
+            except (ValidationError, FileNotFoundError) as e:
+                logger.error(
+                    "File validation failed for %s: %s", file_name, e
+                )
+                raise
+
+        self._original_file_name = file_name
+        self._file_path = str(validated_path)
+        self._source_name = str(validated_path)
+        self._source_is_memory = False
+
+        raw_bytes = self._read_xml_file_bytes(self._file_path)
+        self._xml_bytes = self._normalize_xml_bytes(raw_bytes)
+        self.tree = self._parse_xml_bytes(
+            self._xml_bytes, self._source_name
+        )
+
+    def _set_definitions(self) -> None:
+        """Set static balance code definitions."""
+        self.definitions = {
+            "OPBD": "Opening Booked balance",
+            "CLBD": "Closing Booked balance",
+            "CLAV": "Closing Available balance",
+            "PRCD": "Previously Closed Booked balance",
+            "FWAV": "Forward Available balance",
+        }
+
+    def _read_xml_file_bytes(self, file_name: str) -> bytes:
+        """Read XML file bytes without exposing payload contents in errors."""
+        try:
+            with open(file_name, "rb") as f:
+                return f.read()
+        except FileNotFoundError as exc:
+            logger.error("File %s not found!", file_name)
+            raise FileNotFoundError(
+                f"CAMT file not found: {file_name}"
+            ) from exc
+        except PermissionError as exc:
+            logger.error(
+                "Permission denied reading file: %s", file_name
+            )
+            raise ValidationError(
+                f"Permission denied reading file: {file_name}"
+            ) from exc
+        except OSError as e:
+            logger.error(
+                "An error occurred while reading the file: %s", str(e)
+            )
+            raise ValidationError(
+                f"Error reading file {file_name}: {str(e)}"
+            ) from e
+
+    def _normalize_xml_bytes(self, raw_bytes: bytes) -> bytes:
+        """Normalize namespace handling while preserving UTF-8-only parsing."""
+        validator = InputValidator()
+        validated_bytes, _safe_source = validator.validate_xml_content(
+            raw_bytes, source_name=self._source_name
+        )
+        data = validated_bytes.decode("utf-8")
+        data = CAMT_NAMESPACE_PATTERN.sub("", data)
+        return data.encode("utf-8")
+
+    def _parse_xml_bytes(
+        self, data_bytes: bytes, source_name: str
+    ) -> etree._Element:
+        """Parse normalized XML bytes with hardened lxml settings."""
+        try:
+            strict_parser = etree.XMLParser(
+                recover=False,
+                encoding="utf-8",
+                resolve_entities=False,
+                load_dtd=False,
+                no_network=True,
+                huge_tree=False,
+            )
+            try:
+                return etree.fromstring(data_bytes, strict_parser)
+            except etree.XMLSyntaxError as strict_err:
+                error_msg = str(strict_err).lower()
+                is_entity_error = any(
+                    kw in error_msg
+                    for kw in [
+                        "entity",
+                        "doctype",
+                        "dtd",
+                        "undefined entity",
+                        "internal error",
+                        "undeclared entity",
+                    ]
+                )
+                if is_entity_error:
+                    recovery_parser = etree.XMLParser(
+                        recover=True,
+                        encoding="utf-8",
+                        resolve_entities=False,
+                        load_dtd=False,
+                        no_network=True,
+                        huge_tree=False,
+                    )
+                    return etree.fromstring(data_bytes, recovery_parser)
+                raise
+        except etree.XMLSyntaxError as e:
+            logger.error(
+                "XML syntax error in %s: %s", source_name, str(e)
+            )
+            raise
+        except Exception as e:
+            logger.error(
+                "An error occurred while parsing XML from %s: %s",
+                source_name,
+                str(e),
+            )
+            raise
+
+    def get_account_balances(
+        self, redact_pii: bool = False
+    ) -> pd.DataFrame:
+        """
+        Returns a DataFrame with balances by account.
+
+        Returns:
+            pd.DataFrame: Dataframe with columns:
+                Amount, Currency, Code, Description, DrCr, Date, AccountId.
+
+        Raises:
+            ValueError: If a statement contains balance-like elements but no
+                properly structured Bal elements.
+        """
+        # Find all bank statements in the XML
+        statements = self.tree.xpath(".//Stmt")
+        balances = []
+
+        # Iterate through each statement to gather balance information
+        for statement in statements:
+            # Get the balances for the current statement
+            bal_list = self._get_balances_for_statement(statement)
+
+            # Validate: if statement has child elements but no proper balances
+            # and no proper account structure, it may be malformed
+            if not bal_list and len(statement) > 0:
+                has_account = bool(statement.xpath("./Acct"))
+                has_entries = bool(statement.xpath("./Ntry"))
+                has_bal = bool(statement.xpath(".//Bal"))
+                # If statement has children but no standard CAMT elements,
+                # it's likely a malformed structure
+                if not has_account and not has_entries and not has_bal:
+                    raise ValueError(
+                        "Malformed CAMT statement structure: "
+                        "statement contains unrecognized elements"
+                    )
+
+            # Get the account ID for the current statement
+            account_id = self._get_account_id(statement)
+
+            # Add the account ID to each balance entry
+            for bal in bal_list:
+                bal["AccountId"] = account_id
+
+            # Add the balances to the list
+            balances.extend(bal_list)
+
+        # Convert the list of balances to a DataFrame and return
+        return pd.DataFrame.from_records(balances)
+
+    def _get_balances_for_statement(
+        self, statement: etree._Element
+    ) -> list[BalanceRecord]:
+        """
+        Helper method to extract balances for a single statement.
+
+        Parameters:
+            statement (etree.Element): XML Element representing the statement.
+
+        Returns:
+            list: List of parsed balance dictionaries.
+        """
+        # Find all balance elements in the statement
+        bal_elems = statement.xpath(".//Bal")
+
+        if not bal_elems:
+            return []
+
+        balances: list[BalanceRecord] = []
+
+        for elem in bal_elems:
+            # Safely extract required fields, skipping malformed balance elements
+            code_elems = elem.xpath(".//Cd")
+            prtry_elems = elem.xpath(".//Prtry")
+            amt_elems = elem.xpath(".//Amt")
+            ccy_elems = elem.xpath(".//Amt/@Ccy")
+            cdt_dbt_elems = elem.xpath(".//CdtDbtInd")
+            date_elems = elem.xpath("./Dt/Dt|./Dt/DtTm")
+
+            if (
+                not amt_elems
+                or not ccy_elems
+                or not cdt_dbt_elems
+                or not date_elems
+            ):
+                logger.warning(
+                    "Skipping malformed balance element: missing required fields"
+                )
+                continue
+
+            # ISO 20022: Type element contains either Cd or Prtry
+            if code_elems:
+                code = code_elems[0].text
+            elif prtry_elems:
+                code = f"Proprietary: {prtry_elems[0].text}"
+            else:
+                logger.warning(
+                    "Balance element missing both Cd and Prtry type elements, using N/A"
+                )
+                code = "N/A"
+            amount = float(amt_elems[0].text)
+            currency = ccy_elems[0]
+            cdt_dbt = cdt_dbt_elems[0].text
+            date = date_elems[0].text
+            # Apply debit sign adjustment
+            if cdt_dbt == "DBIT":
+                amount = -amount
+
+            description = self.definitions.get(code, "Unknown code")
+
+            balances.append(
+                {
+                    "Amount": amount,
+                    "Currency": currency,
+                    "Code": code,
+                    "Description": description,
+                    "DrCr": cdt_dbt,
+                    "Date": date,
+                }
+            )
+
+        return balances
+
+    def get_transactions(
+        self, redact_pii: bool = False
+    ) -> pd.DataFrame:
+        """
+        Returns a DataFrame with transactions by account.
+
+        Returns:
+            pd.DataFrame: Dataframe with columns:
+                Amount, Currency, DrCr, Debtor, Creditor, Reference,
+                ValDt, BookgDt, AccountId.
+        """
+        # Find all bank statements in the XML
+        statements = self.tree.xpath(".//Stmt")
+        transactions = []
+
+        # Iterate through each statement to gather transaction information
+        for statement in statements:
+            # Get the transactions for the current statement
+            tx_list = self._get_transactions_for_statement(
+                statement, redact_pii
+            )
+
+            # Get the account ID for the current statement
+            account_id = self._get_account_id(statement)
+
+            # Add the account ID to each transaction entry
+            for tx in tx_list:
+                tx["AccountId"] = account_id
+
+            # Add the transactions to the list
+            transactions.extend(tx_list)
+
+        # Convert the list of transactions to a DataFrame and return
+        return pd.DataFrame.from_records(transactions)
+
+    def _get_transactions_for_statement(
+        self, statement: etree._Element, redact_pii: bool = False
+    ) -> list[TransactionRecord]:
+        """
+        Helper method to extract transactions for a single statement.
+
+        Parameters:
+            statement (etree.Element): XML Element representing the statement.
+            redact_pii (bool): Whether to redact PII data (address fields).
+
+        Returns:
+            list: List of parsed transaction dictionaries.
+        """
+        # Find all entry elements (transactions) in the statement
+        entries = statement.xpath("./Ntry")
+
+        if not entries:
+            return []
+
+        # Batch XPath queries to eliminate N+1 pattern
+        # Pre-extract all data with single queries per field type
+        amounts = []
+        currencies = []
+        cdt_dbt_inds = []
+        debtors = []
+        creditors = []
+        references = []
+        value_dates = []
+        booking_dates = []
+        debtor_addresses = []
+        creditor_addresses = []
+
+        for entry in entries:
+            # Essential transaction fields - skip entries missing required fields
+            amount_elems = entry.xpath("./Amt")
+            currency_elems = entry.xpath("./Amt/@Ccy")
+            cdt_dbt_elems = entry.xpath("./CdtDbtInd")
+
+            if (
+                not amount_elems
+                or not currency_elems
+                or not cdt_dbt_elems
+            ):
+                logger.warning(
+                    "Skipping malformed transaction entry: missing required fields"
+                )
+                continue
+
+            amounts.append(float(amount_elems[0].text))
+            currencies.append(currency_elems[0])
+            cdt_dbt_inds.append(cdt_dbt_elems[0].text)
+
+            # Party information
+            debtor_elems = entry.xpath(".//Dbtr/Nm")
+            debtors.append(debtor_elems[0].text if debtor_elems else "")
+
+            creditor_elems = entry.xpath(".//Cdtr/Nm")
+            creditors.append(
+                creditor_elems[0].text if creditor_elems else ""
+            )
+
+            # References
+            ref_elems = entry.xpath(".//Ustrd")
+            references.append(
+                "".join([ref.text for ref in ref_elems if ref.text])
+            )
+
+            # Dates
+            val_date_elems = entry.xpath("./ValDt/Dt")
+            if not val_date_elems:
+                val_date_elems = entry.xpath("./ValDt/DtTm")
+            value_dates.append(
+                val_date_elems[0].text if val_date_elems else ""
+            )
+
+            booking_date_elems = entry.xpath("./BookgDt/Dt")
+            if not booking_date_elems:
+                booking_date_elems = entry.xpath("./BookgDt/DtTm")
+            booking_dates.append(
+                booking_date_elems[0].text if booking_date_elems else ""
+            )
+
+            # Address information
+            debtor_addr_elems = entry.xpath(".//Dbtr/PstlAdr/AdrLine")
+            if not debtor_addr_elems:
+                debtor_addr_elems = entry.xpath(
+                    ".//Dbtr/PstlAdr/StrtNm"
+                )
+            debtor_addr = (
+                debtor_addr_elems[0].text if debtor_addr_elems else ""
+            )
+            debtor_addresses.append(debtor_addr)
+
+            creditor_addr_elems = entry.xpath(".//Cdtr/PstlAdr/AdrLine")
+            if not creditor_addr_elems:
+                creditor_addr_elems = entry.xpath(
+                    ".//Cdtr/PstlAdr/StrtNm"
+                )
+            creditor_addr = (
+                creditor_addr_elems[0].text
+                if creditor_addr_elems
+                else ""
+            )
+            creditor_addresses.append(creditor_addr)
+
+        transactions: list[TransactionRecord] = []
+
+        # Reconstruct transactions from batched data
+        for _i, (
+            amount,
+            currency,
+            cdt_dbt,
+            debtor,
+            creditor,
+            reference,
+            val_date,
+            book_date,
+            debtor_addr,
+            creditor_addr,
+        ) in enumerate(
+            zip(
+                amounts,
+                currencies,
+                cdt_dbt_inds,
+                debtors,
+                creditors,
+                references,
+                value_dates,
+                booking_dates,
+                debtor_addresses,
+                creditor_addresses,
+                strict=False,
+            )
+        ):
+            # Apply debit sign adjustment
+            if cdt_dbt == "DBIT":
+                amount = -amount
+
+            # Apply PII redaction if requested
+            if redact_pii:
+                if debtor_addr:
+                    debtor_addr = "***REDACTED***"
+                if creditor_addr:
+                    creditor_addr = "***REDACTED***"
+
+            # Build transaction dictionary
+            result: TransactionRecord = {
+                "Amount": amount,
+                "Currency": currency,
+                "DrCr": cdt_dbt,
+                "Debtor": debtor,
+                "Creditor": creditor,
+                "Reference": reference,
+                "ValDt": val_date,
+                "BookgDt": book_date,
+            }
+
+            # Only add address fields if they exist
+            if debtor_addr:
+                result["DebtorAddress"] = debtor_addr
+            if creditor_addr:
+                result["CreditorAddress"] = creditor_addr
+
+            transactions.append(result)
+
+        return transactions
+
+    def _get_element_text(
+        self, parent: etree._Element, xpath: str
+    ) -> str:
+        """
+        Helper method to safely get text content of an XML element.
+
+        Parameters:
+            parent (etree.Element): Parent XML element.
+            xpath (str): XPath expression to find the child element.
+
+        Returns:
+            str: Text content of the child element if it exists, else an empty
+            string.
+        """
+        element = parent.xpath(xpath)
+        return element[0].text if element else ""
+
+    def _get_account_id(self, statement: etree._Element) -> str:
+        """
+        Extracts the account ID from a bank statement.
+
+        Parameters:
+            statement (etree.Element): XML Element representing the bank
+            statement.
+
+        Returns:
+            str: Account ID.
+        """
+        id_elems = statement.xpath("./Acct/Id/IBAN|./Acct/Id/Othr/Id")
+        return id_elems[0].text if id_elems else ""
+
+    def get_statement_stats(
+        self, redact_pii: bool = False
+    ) -> pd.DataFrame:
+        """
+        Returns a DataFrame with statistics for each bank statement.
+
+        Returns:
+            pd.DataFrame: Dataframe with columns:
+                AccountId, StatementCreated, NumTransactions, NetAmount.
+        """
+        # Find all bank statements in the XML
+        statements = self.tree.xpath(".//Stmt")
+        stats = []
+
+        # Iterate through each statement to gather statistics
+        for statement in statements:
+            stmt_stats = self._get_statement_stats(
+                statement, redact_pii
+            )
+            stats.append(stmt_stats)
+
+        # Convert the list of statistics to a DataFrame and return
+        return pd.DataFrame.from_records(stats)
+
+    def _get_statement_stats(
+        self, statement: etree._Element, redact_pii: bool = False
+    ) -> StatementStatsRecord:
+        """
+        Extracts statistics for a single bank statement.
+
+        Parameters:
+            statement (etree.Element): XML Element representing the bank
+            statement.
+            redact_pii (bool): Whether to redact PII data (address fields).
+
+        Returns:
+            dict: Statement statistics.
+        """
+        # Extract basic information about the statement with batched XPath queries
+        account_id = self._get_account_id(statement)
+
+        # Batch these queries instead of calling _get_element_text multiple times
+        id_elems = statement.xpath("./Id")
+        statement_id = id_elems[0].text if id_elems else ""
+
+        created_elems = statement.xpath("./CreDtTm")
+        created = created_elems[0].text if created_elems else ""
+
+        # Optimize: calculate transaction stats directly from XPath rather than
+        # reprocessing through _get_transactions_for_statement
+        entry_elems = statement.xpath("./Ntry")
+        num_transactions = len(entry_elems)
+
+        # Calculate net amount directly without full transaction parsing
+        net_amount = 0.0
+        if entry_elems:
+            for entry in entry_elems:
+                amount_elems = entry.xpath("./Amt")
+                cdt_dbt_elems = entry.xpath("./CdtDbtInd")
+
+                if amount_elems and cdt_dbt_elems:
+                    amount = float(amount_elems[0].text)
+                    if cdt_dbt_elems[0].text == "DBIT":
+                        amount = -amount
+                    net_amount += amount
+
+        # Return the statistics as a dictionary
+        return {
+            "StatementId": statement_id,
+            "AccountId": account_id,
+            "StatementCreated": created,
+            "NumTransactions": num_transactions,
+            "NetAmount": net_amount,
+        }
+
+    def __repr__(self) -> str:
+        """
+        Returns a string representation of the parsed data.
+
+        Returns:
+            str: String representation.
+        """
+        return str(self.get_statement_stats())
+
+    def parse(self, redact_pii: bool = False) -> pd.DataFrame:
+        """
+        Parse the CAMT file and return transaction data.
+
+        Parameters:
+            redact_pii (bool): Whether to redact PII data (address fields).
+
+        Returns:
+            pd.DataFrame: Parsed transaction data with standardized columns.
+        """
+        return self.get_transactions(redact_pii=redact_pii)
+
+    def parse_streaming(
+        self, redact_pii: bool = False
+    ) -> Generator[TransactionRecord, None, None]:
+        """
+        Parse the CAMT file using streaming XML parsing for large files.
+        Yields transaction data incrementally to keep memory usage low.
+
+        Parameters:
+            redact_pii (bool): Whether to redact PII data (address fields).
+
+        Yields:
+            Dict[str, Any]: Individual transaction data with standardized structure.
+        """
+        source_stream = BytesIO(self._xml_bytes)
+
+        current_statement = None
+        current_account_id = ""
+
+        for event, elem in etree.iterparse(
+            source_stream,
+            events=("start", "end"),
+            resolve_entities=False,
+            load_dtd=False,
+            no_network=True,
+            huge_tree=False,
+        ):
+            if event == "start" and elem.tag == "Stmt":
+                current_statement = elem
+
+            elif (
+                event == "end"
+                and elem.tag == "Stmt"
+                and current_statement is not None
+            ):
+                id_elems = current_statement.xpath(
+                    "./Acct/Id/IBAN|./Acct/Id/Othr/Id"
+                )
+                current_account_id = (
+                    id_elems[0].text if id_elems else ""
+                )
+                current_statement = None
+
+            elif event == "end" and elem.tag == "Ntry":
+                try:
+                    transaction_data = (
+                        self._parse_streaming_transaction(
+                            elem, current_account_id, redact_pii
+                        )
+                    )
+                    yield transaction_data
+                except Exception as e:
+                    logger.warning("Error parsing transaction: %s", e)
+                    continue
+                finally:
+                    elem.clear()
+                    while elem.getprevious() is not None:
+                        del elem.getparent()[0]
+
+    def _parse_streaming_transaction(
+        self,
+        entry_elem: etree._Element,
+        account_id: str,
+        redact_pii: bool = False,
+    ) -> TransactionRecord:
+        """
+        Parse a single transaction entry element for streaming mode.
+
+        Parameters:
+            entry_elem (etree.Element): XML element representing a transaction entry.
+            account_id (str): Account ID for this transaction.
+            redact_pii (bool): Whether to redact PII data (address fields).
+
+        Returns:
+            Dict[str, Any]: Parsed transaction data.
+        """
+        # Fast-path extraction using find/findtext instead of xpath.
+        # find() uses direct tree traversal — ~5x faster than xpath().
+        amt_elem = entry_elem.find("Amt")
+        amount = (
+            float(amt_elem.text) if amt_elem is not None else 0.0
+        )
+        currency = (
+            amt_elem.get("Ccy", "") if amt_elem is not None else ""
+        )
+
+        cdt_dbt_elem = entry_elem.find("CdtDbtInd")
+        cdt_dbt = (
+            cdt_dbt_elem.text
+            if cdt_dbt_elem is not None
+            else ""
+        )
+
+        if cdt_dbt == "DBIT":
+            amount = -amount
+
+        # Party information — single find() per field.
+        debtor = ""
+        creditor = ""
+        reference = ""
+        debtor_addr = ""
+        creditor_addr = ""
+
+        tx_dtls = entry_elem.find("NtryDtls/TxDtls")
+        if tx_dtls is not None:
+            dbtr = tx_dtls.find("RltdPties/Dbtr/Nm")
+            if dbtr is not None:
+                debtor = dbtr.text or ""
+            cdtr = tx_dtls.find("RltdPties/Cdtr/Nm")
+            if cdtr is not None:
+                creditor = cdtr.text or ""
+            ustrd = tx_dtls.find("RmtInf/Ustrd")
+            if ustrd is not None and ustrd.text:
+                reference = ustrd.text
+
+            da = tx_dtls.find(
+                "RltdPties/Dbtr/PstlAdr/AdrLine"
+            )
+            if da is None:
+                da = tx_dtls.find(
+                    "RltdPties/Dbtr/PstlAdr/StrtNm"
+                )
+            if da is not None:
+                debtor_addr = da.text or ""
+
+            ca = tx_dtls.find(
+                "RltdPties/Cdtr/PstlAdr/AdrLine"
+            )
+            if ca is None:
+                ca = tx_dtls.find(
+                    "RltdPties/Cdtr/PstlAdr/StrtNm"
+                )
+            if ca is not None:
+                creditor_addr = ca.text or ""
+
+        # Fallback for CAMT dialects with Ustrd outside TxDtls
+        if not reference:
+            ustrd_fb = entry_elem.find(".//Ustrd")
+            if ustrd_fb is not None and ustrd_fb.text:
+                reference = ustrd_fb.text
+
+        # Dates — direct child lookup
+        val_date_elem = entry_elem.find("ValDt/Dt")
+        if val_date_elem is None:
+            val_date_elem = entry_elem.find("ValDt/DtTm")
+        val_date = (
+            val_date_elem.text
+            if val_date_elem is not None
+            else ""
+        )
+
+        booking_date_elem = entry_elem.find("BookgDt/Dt")
+        if booking_date_elem is None:
+            booking_date_elem = entry_elem.find("BookgDt/DtTm")
+        booking_date = (
+            booking_date_elem.text
+            if booking_date_elem is not None
+            else ""
+        )
+
+        # Apply PII redaction if requested
+        if redact_pii:
+            if debtor_addr:
+                debtor_addr = "***REDACTED***"
+            if creditor_addr:
+                creditor_addr = "***REDACTED***"
+
+        # Build transaction dictionary
+        result: TransactionRecord = {
+            "Amount": amount,
+            "Currency": currency,
+            "DrCr": cdt_dbt,
+            "Debtor": debtor,
+            "Creditor": creditor,
+            "Reference": reference,
+            "ValDt": val_date,
+            "BookgDt": booking_date,
+            "AccountId": account_id,
+        }
+
+        # Only add address fields if they exist
+        if debtor_addr:
+            result["DebtorAddress"] = debtor_addr
+        if creditor_addr:
+            result["CreditorAddress"] = creditor_addr
+
+        return result
+
+    def get_summary(self) -> SummaryRecord:
+        """
+        Get a summary of the parsed CAMT statement data.
+
+        Returns:
+            Dict[str, Any]: Summary information including account details,
+            transaction counts, and balance information.
+        """
+        stats_df = self.get_statement_stats()
+        balances_df = self.get_account_balances()
+
+        # Get the first statement's summary (most files have one statement)
+        summary: SummaryRecord = {}
+        if not stats_df.empty:
+            first_stat = stats_df.iloc[0]
+            summary = {
+                "account_id": first_stat.get("AccountId", "Unknown"),
+                "statement_date": first_stat.get(
+                    "StatementCreated", "Unknown"
+                ),
+                "transaction_count": first_stat.get(
+                    "NumTransactions", 0
+                ),
+                "total_amount": first_stat.get("NetAmount", 0.0),
+                "currency": "Unknown",  # Will be extracted from first transaction if available
+            }
+
+            # Extract currency from first transaction
+            transactions = self.get_transactions()
+            if not transactions.empty:
+                summary["currency"] = transactions.iloc[0].get(
+                    "Currency", "Unknown"
+                )
+
+        # Add balance information if available
+        if not balances_df.empty:
+            # Find opening and closing balances
+            opening_balance = balances_df[balances_df["Code"] == "OPBD"]
+            closing_balance = balances_df[balances_df["Code"] == "CLBD"]
+
+            if not opening_balance.empty:
+                summary["opening_balance"] = opening_balance.iloc[0][
+                    "Amount"
+                ]
+            if not closing_balance.empty:
+                summary["closing_balance"] = closing_balance.iloc[0][
+                    "Amount"
+                ]
+
+        return summary
+
+    def camt_to_excel(self, filename: str) -> None:
+        """
+        Exports parsed CAMT data to an Excel file.
+
+        Parameters:
+            filename (str): Path to the output Excel file.
+        """
+        # Retrieve dataframes for balances, transactions, and statement
+        # statistics
+        balances = self.get_account_balances()
+        transactions = self.get_transactions()
+        stats = self.get_statement_stats()
+
+        # Write the dataframes to the Excel file using the openpyxl engine
+        # pylint: disable=E0110
+        with pd.ExcelWriter(filename, engine="openpyxl") as writer:
+            balances.to_excel(
+                writer, sheet_name="Balances", index=False
+            )
+            transactions.to_excel(
+                writer, sheet_name="Transactions", index=False
+            )
+            stats.to_excel(writer, sheet_name="Stats", index=False)

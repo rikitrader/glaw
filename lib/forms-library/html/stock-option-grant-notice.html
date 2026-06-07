@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Stock Option Grant Notice</title>
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --content-width: 6.5in;
+  --intro-indent: 0.5in;          /* intro first-line indent */
+  --deflist-indent: 0.75in;       /* definition-list block indent */
+  --def-value-tab: 3.65in;        /* definition label cell width -> value tab */
+  --type-opt1-tab: 1.40in;        /* Type of Grant: first option */
+  --type-opt2-tab: 4.00in;        /* Type of Grant: second option */
+  --term-content-tab: 3.40in;     /* generic term content tab */
+  --term-row-gap: 14pt;           /* gap between term rows */
+  --terms-dead-gap: 2.0in;        /* large dead-gap before the terms section */
+}
+/* ============ PAGE & CANVAS ============ */
+@page{ size: 8.5in 11in; margin: 0; }
+html,body{ margin:0; }
+body{
+  background:#525659;                /* dark gray screen backdrop */
+  font-family:"Times New Roman","Liberation Serif",Times,serif;
+  font-size:10pt; line-height:1.15; color:#000;   /* us-corporate-legal-instrument house style */
+}
+.page{
+  position:relative;
+  width:8.5in; min-height:11in; box-sizing:border-box;
+  margin:24px auto; padding:1in;
+  background:#fff;
+  box-shadow:0 2px 14px rgba(0,0,0,.45);
+}
+@media print{
+  body{ background:#fff; }
+  .page{ margin:0; box-shadow:none; }
+}
+/* ============ TITLE ============ */
+.title{ text-align:center; margin-bottom:24pt; }
+.title > div{
+  font-weight:700; font-variant:small-caps; letter-spacing:.2px; line-height:1.25;
+}
+/* ============ INTRO ============ */
+.intro{ text-align:justify; text-indent:var(--intro-indent); margin:0 0 22pt; }
+/* ============ DEFINITION LIST ============ */
+.deflist{ border-collapse:collapse; margin:0 0 var(--terms-dead-gap) var(--deflist-indent); }
+.deflist td{ padding:0; vertical-align:top; white-space:nowrap; }
+.deflist td.label{ width:var(--def-value-tab); }
+/* ============ TERM ROWS ============ */
+.term{ display:grid; grid-template-columns:var(--term-content-tab) 1fr; margin-bottom:var(--term-row-gap); }
+.term .k{ font-weight:700; white-space:nowrap; }
+.term.type{ grid-template-columns:var(--type-opt1-tab) calc(var(--type-opt2-tab) - var(--type-opt1-tab)) 1fr; align-items:baseline; }
+.term.type .k{ font-weight:700; white-space:nowrap; }
+.term.type span{ white-space:nowrap; }
+sup{ font-size:.72em; line-height:0; vertical-align:super; }
+/* ============ ADDITIONAL TERMS ============ */
+.addl{ text-align:justify; margin-top:10pt; }
+.addl b{ font-weight:700; }
+/* ============ FOOTER / FOOTNOTES ============ */
+.footer{ position:absolute; left:1in; right:1in; bottom:1in; }
+.footer hr{ border:0; border-top:1px solid #000; width:2in; margin:0 0 8pt; }
+.footer p{ font-size:10.5pt; line-height:1.25; text-align:justify; margin:0 0 10pt; }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- TITLE -->
+  <div class="title">
+    <div>MMRGlobal, Inc.</div>
+    <div>Stock Option Grant Notice</div>
+    <div>(2011 Equity Incentive Plan)</div>
+  </div>
+
+  <!-- INTRO -->
+  <p class="intro">MMRGLOBAL, INC. hereby grants to Optionholder an option to purchase shares of the Company&rsquo;s
+  common stock under and pursuant to the Company&rsquo;s 2011 Equity Incentive Plan (the &ldquo;Plan&rdquo;), as set
+  forth below and in the Stock Option Agreement, which is attached hereto and incorporated herein in its entirety.</p>
+
+  <!-- DEFINITION LIST -->
+  <table class="deflist">
+    <tr><td class="label">Optionholder:</td><td>Robert H. Lorsch</td></tr>
+    <tr><td class="label">Date of Grant:</td><td>April 6, 2012</td></tr>
+    <tr><td class="label">Vesting Commencement Date:</td><td>April 6, 2012</td></tr>
+    <tr><td class="label">Number of Shares Subject to Option:</td><td>1,250,000</td></tr>
+    <tr><td class="label">Exercise Price (Per Share):</td><td>$0.06</td></tr>
+    <tr><td class="label">Total Exercise Price:</td><td>$75,000.00</td></tr>
+    <tr><td class="label">Expiration Date:</td><td>April 6, 2022</td></tr>
+  </table>
+
+  <!-- TERM ROWS -->
+  <div class="term"><span class="k">Exercise Schedule:</span><span></span></div>
+  <div class="term"><span class="k">Vesting Schedule:</span><span>Options vest annually over two years (2)</span></div>
+  <div class="term type"><span class="k">Type of Grant:</span><span>X&nbsp;&nbsp;Incentive Stock Option<sup>1</sup></span><span>Nonstatutory Stock Option</span></div>
+  <div class="term"><span class="k">Payment:</span><span>By one or a combination of the following items (described in the Stock Option Agreement): By cash or check</span></div>
+
+  <!-- ADDITIONAL TERMS -->
+  <p class="addl"><b>Additional Terms/Acknowledgements</b>: The undersigned Optionholder acknowledges receipt of, and
+  understands and agrees to, this Grant Notice, the Stock Option Agreement and the Plan. Optionholder further
+  acknowledges that as of the Date of Grant, this Grant Notice, the Stock Option Agreement and the Plan set forth the
+  entire understanding between Optionholder and the Company regarding the acquisition of stock and supersede all prior
+  oral and written agreements on that subject with the exception of the following agreements only:</p>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <hr>
+    <p><sup>1</sup> If this is an incentive stock option, it (plus your other outstanding incentive stock options)
+    cannot be first <u>exercisable</u> for more than $100,000 in any calendar year. Any excess over $100,000 is a
+    nonstatutory option.</p>
+    <p>2 <em>provided, however,</em> that should a Change in Control occur (as such term is defined in the
+    Company&rsquo;s 2011 Equity Incentive Plan), then vesting shall immediately accelerate such that all shares shall
+    be immediately exercisable.</p>
+  </div>
+
+</div>
+</body>
+</html>
