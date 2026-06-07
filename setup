@@ -17,7 +17,20 @@ bash "$HERE/bin/glaw-setup"
 mkdir -p "$GLAW_HOME/tools"
 echo "→ state dir: $GLAW_HOME"
 
-# 3) optional Python toolbelt
+# 3) bookkeeping engine venv (self-contained; makes bin/glaw-bank-ingest work out of the box)
+if command -v python3 >/dev/null; then
+  echo "→ building the bookkeeping engine venv…"
+  BK_VENV="$HERE/lib/bookkeeping/.venv"
+  python3 -m venv "$BK_VENV" 2>/dev/null \
+    && "$BK_VENV/bin/pip" install -q --upgrade pip >/dev/null 2>&1 \
+    && "$BK_VENV/bin/pip" install -q -r "$HERE/lib/bookkeeping/requirements.txt" >/dev/null 2>&1 \
+    && echo "  ✅ glaw_engine ready → glaw-bank-ingest works" \
+    || echo "  ⚠️ bookkeeping venv build failed; build manually: python3 -m venv $BK_VENV && $BK_VENV/bin/pip install -r lib/bookkeeping/requirements.txt"
+else
+  echo "  ⚠️ python3 not found; skipping bookkeeping engine (glaw-bank-ingest will need it)"
+fi
+
+# 4) optional Python toolbelt (citations, court scraping, Word redlines)
 if [[ "${1:-}" == "--with-tools" ]]; then
   echo "→ installing Python toolbelt…"
   if command -v python3 >/dev/null; then

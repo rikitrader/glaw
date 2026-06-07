@@ -3,7 +3,7 @@
 # unified ledger using the vendored glaw_engine engine.
 #
 # Engine source (Apache-2.0): ~/.claude/skills/glaw/lib/bookkeeping/glaw_engine
-# Upstream: https://github.com/sebastienrousseau/glaw_engine
+# Upstream: https://github.com/sebastienrousseau/bankstatementparser
 #
 # Usage:
 #   glaw-bank-ingest <file-or-dir> [--matter <slug>] [--map rules.json]
