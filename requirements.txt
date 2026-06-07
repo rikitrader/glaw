@@ -17,6 +17,10 @@ requests>=2.31
 # real Word tracked-changes + redline PDFs (pulls python-docx, fpdf2, lxml)
 legal-redline-tools @ git+https://github.com/evolsb/legal-redline-tools.git
 
+# Bookkeeping engine (glaw-bank-ingest) has its OWN isolated venv + deps —
+# pydantic, lxml, defusedxml, pandas, pypdf, google-api-python-client.
+# `./setup` builds it automatically; see lib/bookkeeping/requirements.txt.
+
 # System dependencies (install separately, not via pip):
 #   pandoc, weasyprint         -> PDF / Slides publishing (glaw-publish)
 #   tesseract, poppler         -> OCR + PDF rasterization (glaw-doc-extract)

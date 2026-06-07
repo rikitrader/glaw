@@ -397,8 +397,17 @@ gap analysis, and the non-negotiable guardrails).
 
 GLAW grows by adding **seats** (new SKILL.md departments) and **tools** (new CLIs) — never by letting a stage freelance a position. See [CONTRIBUTING.md](CONTRIBUTING.md). New skills must pass `bin/glaw-doctor`.
 
+## 🔐 Security
+
+GLAW ships **no secrets and no personal data**, and CI enforces it — `glaw-doctor [6/6]`
+fails the build on any live key, credential file, or real client data. Keep matters under
+`~/.glaw/` (git-ignored), never in the skill tree. Report vulnerabilities privately — see
+[SECURITY.md](SECURITY.md).
+
 ## 📜 License
 
-[MIT](LICENSE) — use it, fork it, build your own firm on it. GLAW stands on the [gstack](https://github.com/garrytan/gstack) methodology and interoperates with [legal-redline-tools](https://github.com/evolsb/legal-redline-tools) and [claude-legal-skill](https://github.com/evolsb/claude-legal-skill).
+[MIT](LICENSE) — use it, fork it, build your own firm on it. GLAW **vendors** some
+third-party components (the Apache-2.0 bookkeeping engine, MIT seats) — each keeps its own
+license; full credits in [ATTRIBUTIONS.md](ATTRIBUTIONS.md). GLAW stands on the [gstack](https://github.com/garrytan/gstack) methodology and interoperates with [legal-redline-tools](https://github.com/evolsb/legal-redline-tools) and [claude-legal-skill](https://github.com/evolsb/claude-legal-skill).
 
 <div align="center"><sub>GLAW · matters, not chat · ⚖️ + 🤖</sub></div>

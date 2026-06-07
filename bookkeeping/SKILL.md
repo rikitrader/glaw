@@ -48,7 +48,7 @@ The parsing engine lives **inside** the GLAW repo — not as an external depende
 
 ```
 lib/bookkeeping/
-├── glaw_engine/          # vendored Apache-2.0 engine (sebastienrousseau/glaw_engine)
+├── glaw_engine/          # vendored Apache-2.0 engine (sebastienrousseau/bankstatementparser)
 ├── .venv/                        # dedicated venv (pydantic, lxml, defusedxml, pandas, pypdf)
 ├── runner.py                     # GLAW orchestration over the engine
 ├── UPSTREAM.txt                  # pinned commit + provenance
