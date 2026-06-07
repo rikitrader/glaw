@@ -1,0 +1,788 @@
+# OPERATING AGREEMENT OF [NAME OF COMPANY], LLC
+
+> GLAW MASTER FORM — genericized template rendered in the GLAW house style. ATTORNEY WORK-PRODUCT; counsel must adapt. Not legal advice.
+
+OPERATING AGREEMENT OF
+[NAME OF COMPANY], LLC
+
+This Operating Agreement (this “Agreement”) of (the “Company”) is entered into as of [DATE], by and among the Company and the undersigned Persons whose names, addresses and taxpayer identification numbers are listed on Appendix B attached hereto, and includes any persons hereafter admitted to the Company as Members pursuant to this Agreement. Unless otherwise indicated, capitalized words and phrases in this Agreement shall have the meanings set forth in Article I.
+
+Recitals
+
+The parties have agreed to organize and operate a limited liability company under the laws of the State of Delaware in accordance with the terms and subject to the conditions set forth in this Agreement.
+
+As of the date hereof, the Members are the holders of the amount of membership interests in the Company (the “Interests”) as detailed in Appendix B, expressed as a number of Units and as a Percentage.
+
+NOW, THEREFORE, for good and valuable consideration, the parties, intending legally to be bound, agree as follows:
+
+
+Defined Terms
+The following capitalized terms shall have the meanings specified in this Article I. Other terms are defined in the text of this Agreement and, throughout this Agreement, those terms shall have the meanings respectively ascribed to them.
+
+“Accrued Preferred Return” of a Member holding Convertible Preferred Units, as of a particular date, means the aggregate amount of preferred return accrued on such Member’s Convertible Preferred Units through such date pursuant to the terms of such Units.
+
+“Act” means the Delaware Limited Liability Company Act, 6 Del. C. §18-101, et seq., as amended from time to time.
+
+“Additional Capital Contribution” shall mean that amount of money or other property, if any, that the Members may, but are not obligated to, contribute to the Company for additional capital, if any, to be used for operating capital.COLUMBUS/1734787v.10
+
+
+“Adjusted Capital Account Balance” has the meaning set forth in Article 1 of Appendix A.
+
+“Adjustment Year” has the meaning set forth in Section 9.6.2 below.
+
+“Affiliate” means, with respect to any Member, any Person: (i) that owns more than 50% of the voting interests in the Member; or (ii) in which the Member owns more than 50% of the voting interests; or (iii) in which more than 50% of the voting interests are owned by a Person who has a relationship with the Member described in clause (i) or (ii) above.
+
+“Agreement” means this Agreement, as amended from time to time.
+
+ “Board” shall mean the Board of Managers of the Company.
+
+“Book” means the method of accounting required to comply with Articles 2 and 3 of Appendix A, as distinguished from any accounting method that the Company may adopt for financial reporting or other purposes.
+
+ “Book Value” has the meaning set forth in Article 1 of Appendix A.
+
+“Capital Account” means the capital account of any Member as determined in accordance with Article 2 of Appendix A.
+
+“Capital Contribution” means the total amount of cash and the fair market value of any other assets contributed (or deemed contributed under Regulations Section 1.7041(b)(2)(iv)(d)) to the Company by a Member, net of liabilities assumed or to which the assets are subject. The assumption of a liability of the Company by a Member, other than in connection with the contribution of property to the capital of the Company, will be included in that Member's Capital Account in accordance with Section
+**2.1** of Appendix A but, unless the Manager determines otherwise, will not be included in that Member's Capital Contributions to the Company until (and only to the extent that) the Member makes payments on that liability. Any reference to the Capital Contribution of a Member shall include any Additional Capital Contribution made by the Member as well as the Capital Contribution made by a predecessor holder of the Interest of such Member.
+
+“Certificate” means the Certificate of Formation of the Company, as they may be amended from time to time. 
+
+“Code” means the Internal Revenue Code of 1986, as amended, or any corresponding provision of any succeeding law.
+
+“Common Units” has the meaning assigned in Section 3.8.2(a) hereof.
+
+“Company” means the limited liability company formed in accordance with this Agreement.
+
+“Convertible Preferred Units” means Units entitled to a specified rate of return on contributed capital and convertible into Common Units.
+
+ “Co-Sale Rightholder” has the meaning assigned in Section
+**6.5** hereof.
+
+“Distributable Cash” means that portion of the cash then on hand or in bank accounts of the Company which the Board deems available for distribution, taking into account (a) the amount of cash required for the payment of all current expenses, liabilities and obligations of the Company (whether for expense items, management fees, capital expenditures, improvements, retirement of indebtedness or otherwise); and (b) the amount of cash which the Board deems necessary to establish reasonable reserves for the payment of future capital expenditures, improvements, retirements of indebtedness, operations and contingencies, known or unknown, liquidated or unliquidated.
+
+“Equity Securities” means any Interests (including any Units) or similar security, any Profits Interest Units, warrants or other rights to directly or indirectly acquire Units or Interests, securities or instruments exchangeable or convertible, directly or indirectly, with or without consideration, into or for Interests or Units (including convertible notes), or any combination of the foregoing, consisting either of the Units authorized hereby or as otherwise may be authorized in accordance with the terms hereof.
+
+“Fiscal Year” means the fiscal year of the Company as determined by the Board from time to time, and, initially, means a fiscal year ending on December 31. 
+
+“Fully-Diluted Basis” means (i) the number of shares of capital stock of Licensee outstanding, assuming conversion of all issued and outstanding securities convertible or exchangeable into capital stock of Licensee, and the exercise of all then outstanding options, warrants and other rights to acquire capital stock of Licensee, whether or not then exercisable, exchangeable, or convertible; and (ii) the number of shares of capital stock of Licensee that have been, or in the future may be, authorized or reserved for issuance or award under Licensee’s stock option plan pool or other equity compensation plan.
+
+“Indemnified Person” shall mean each individual serving as a Manager or Officer at any time after the date of this Agreement and each Person designated as an Indemnified Person at any time by the Board.
+
+“Interest” or “Interests” means a Member’s share of the profits and losses of, and the right to receive distributions from the Company, which interest, expressed as a number of Units and as a percentage, shall (absent proof to the contrary) be as set forth on Appendix B attached hereto or in an amendment thereto.
+
+“Involuntary Withdrawal” means, with respect to any Member, the occurrence of any of the events set forth in Section 18-304 of the Act.
+
+“Manager” shall have the meaning set forth in Section 5.1.1 below. 
+
+“Member” means each Person signing this Agreement and any Person who subsequently is admitted as a member of the Company in compliance with the terms of this Agreement. 
+
+“Membership Rights” means the rights attributable to an ownership interest of a Member in the Company at any particular time, including the right of such Member to any and all benefits to which such Member may be entitled as provided in this Agreement and in the Act, together with the obligation of such Member to comply with all the provisions of this Agreement and of the Act.
+
+“New Securities” has the meaning defined in Section
+**3.8** below.
+
+ “Officer” shall mean an officer of the Company elected in accordance with Section
+**5.3** below.
+
+“Partnership Representative” shall have the meaning set forth in Section 9.6.1 below.
+
+“Percentage” means, as to a Member, the percentage Interest set forth after the Member’s name on Appendix B.
+
+“Permitted Transferee” shall mean: (a) with respect to [DESIGNATED MEMBER], to any Affiliate of [DESIGNATED MEMBER]; (b) with respect to each Member other than [DESIGNATED MEMBER], to a member of an individual Member’s immediate family, the immediate family of such Member’s spouse, or a trust, the beneficiaries of which are exclusively the Member and/or one or more of such Member’s immediate family or the immediate family of such Member’s spouse (for purposes hereof, a person’s “immediate family” includes such person’s spouse, lineal descendants, father, mother, grandfather, grandmother, brother(s) or sister(s)); and (c) to any third party pursuant to a merger, consolidation or other business combination of the Company with such third party purchaser that has been approved in compliance with Section 6.1.1 of this Agreement; provided, however, that in each such case, the Permitted Transferee has agreed to become a Member for purposes of this Agreement and has executed and delivered to the Company a counterpart joinder to this Agreement agreeing to be subject to the restrictions and obligations of a Member hereunder and to hold the transferee’s Interest in accordance herewith. 
+
+“Person” means and includes an individual, corporation, partnership, association, limited liability company, trust, estate, or other entity.
+
+“Profits Interest Units” means Units of the Company, if any, that represent a proportionate ownership interest in the future profits, losses, growth and appreciation in value of the Company that are issued to employees, consultants, Managers, Officers or independent contractors of the Company, without the requirement of a Capital Contribution, but that do not represent any interest in the capital of the Company as of the date they are issued, are not entitled to voting rights in the management or affairs of the Company, and are intended to qualify as a “profits interest” as described in Revenue Procedure 93-27, 1993-2 C.B. 343, June 9, 1993 and Revenue Procedure 2001-43, 2001-34 I.R.B. 191, August 2, 2001.
+
+“Reviewed Year” shall have the meaning set forth in Section 9.6.2 below.
+
+“Sale of the Company” shall mean the lease, license, sale, exchange, transfer or other disposition of the Company pursuant to which the purchaser or purchasers acquire (i) equity securities of the Company constituting a majority of the Voting Interests of the Company (whether by merger, consolidation, or sale or Transfer of the Voting Interests or otherwise) or (ii) all or substantially all of the Company’s assets determined on a consolidated basis, including the sale or other transfer, however effected, of a majority in interest of the voting securities, or substantially all the assets, of any Subsidiary of the Company which constitutes substantially all of the Company’s assets determined on a consolidated basis.
+
+“Substitute Member” means any Person admitted to the Company pursuant to Article VI.
+
+“Supermajority Approval” means approval of individuals or entities holding at least two-thirds (2/3) of the Company’s issued and outstanding Voting Interests. 
+ 
+“Top Marginal Rate” means a blended Federal, state and local tax rate, determined as if the Members were individuals resident in the City of Columbus, Ohio and taxed at the highest marginal Federal, state and local tax rate for each category of income, taking into account the deductibility, where applicable, of state and local taxes for Federal income tax purposes.
+
+“Transfer” means, when used as a noun, any sale, hypothecation, pledge, assignment, attachment or other transfer, and, when used as a verb, means to sell, hypothecate, pledge, assign, or otherwise transfer.
+
+“Triggering Event” means, with respect to a Convertible Preferred Unit, the event after which the Unit may no longer be converted into Common Units.
+
+“Unit” means a Unit of Interest in the Company, as further defined in Section 3.7.
+
+“Unpaid Preferred Contributions” of a Member holding Convertible Preferred Units, as of a particular date, means (i) the aggregate amount of Capital Contributions made by such Member with respect to such Member’s Convertible Preferred Units, reduced by (ii) aggregate distributions previously made to such Member pursuant to Section 4.3.1(b).
+
+“Unpaid Preferred Return” of a Member holding Convertible Preferred Units, as of a particular date, means (i) the Accrued Preferred Return on such Member’s Convertible Preferred Units through such date, reduced by (ii) aggregate distributions made to such Member pursuant to Section 4.3.1(a) prior to such date. 
+
+“Voluntary Withdrawal” means a Member’s dissociation with the Company by means other than a Transfer or an Involuntary Withdrawal.
+
+“Voting Interests” means those Interests that have the right to participate and vote in the management and governance affairs of the Company, which are all the Interests except for those Interests allocated to the Profits Interest Units.
+
+
+
+Formation and Name; Office; Purpose; Term
+Organization. The Members hereby organize the Company as a limited liability company under the provisions of the Act and in accordance with the terms and provisions hereof, and for that purpose, have caused the Certificate to be executed and filed with the Delaware Secretary of State in conformity with the Act. Each of the Members shall execute or cause to be executed from time to time all other instruments, certificates, notices and documents, and shall do or cause to be done all such filing, recording, publishing and other acts, in each case, as may be necessary or appropriate from time to time to comply with all applicable requirements for the formation and/or operation and, when appropriate, termination of a limited liability company in the State of Delaware and all other jurisdictions where the Company shall desire to conduct its business.
+Name of the Company. The name of the Company shall be “[COMPANY NAME], LLC.” The Company may do business under that name and under any other name or names upon which the Members agree. If the Company does business under a name other than that set forth in its Certificate of Formation, then the Company shall file a fictitious name certificate as required by law.
+Purpose. The purposes of the Company shall be (a) [GENERALLY DESCRIBE BUSINESS PURPOSE], (b) to invest and reinvest, in any manner and in any real or personal property which the Members deem appropriate; and (c) to conduct any other business, activity or make any investment which a limited liability company may conduct, undertake or make under Delaware law. Any provision to the contrary notwithstanding, no part of the activities of the Company shall be the carrying on of propaganda, or otherwise attempting to influence legislation, and the Company shall not participate in, or intervene in, an political campaign on behalf of or in opposition to any candidate for public office.
+Period of Existence. The Company commenced upon the filing of the Certificate with the Secretary of State of Delaware and shall remain in existence until it disposes of all of its assets or is sooner terminated pursuant to Article VIII of this Agreement.
+Principal Office. The principal office of the Company shall be located at [ADDRESS OF PRINCIPAL OFFICE] or at any other place within or outside of the State of Delaware upon which the Members (by vote or consent of Members holding a majority of the Percentages) agree in writing.
+Statutory Agent. The name and address of the Company’s statutory agent in the State of Delaware shall be [NAME AND ADDRESS OF STATUTORY AGENT]. The Members may appoint a subsequent statutory agent upon the resignation or removal of the initial statutory agent.
+Members. The name, present mailing address, and Percentage of each Member are set forth on Appendix B. Upon admission of additional or Substitute Members in accordance with this Agreement, or upon receipt by the Company from a Member of a written notice of change in such Member’s contact information, the Board shall instruct an Officer of the Company to update Appendix B to reflect the then current membership and notice information for the Members of the Company. No such update shall be considered an amendment to this Agreement. 
+
+Members; Capital; Capital Accounts
+Initial Capital Contributions. Upon the execution of this Agreement, the Members shall contribute to the Company cash and property in the amounts set forth opposite their respective names on Appendix B. 
+Additional Capital Contributions. Members shall be permitted, but not required, to make voluntary Additional Capital Contributions on a pro rata or nonpro rata basis. Any Member that makes an Additional Capital Contribution pursuant to this Section
+**3.2** will receive an additional number of Units as determined by agreement between such Member and the Company. Such voluntary Additional Capital Contributions by a Member will be subject to: (a) approval by the Board; and (b) the availability of additional authorized and unissued Units. Any Units issued to a Member pursuant to this Section
+**3.2** shall be “New Securities” and shall be subject to the procedures for issuing New Securities set forth in Section 3.8. In the event of any Additional Capital Contributions, the Company will update Exhibit B of this Agreement to reflect accurate Unit ownership and Capital Contributions of each Member and will provide a copy of such revised Exhibit B to each Member of the Company. 
+No Interest on Capital Contributions. The Company shall not pay Members interest on their Capital Contributions.
+No Withdrawal; Return of Capital Contributions; No Dissenter’s Rights. No Member has the right of Voluntary Withdrawal as a Member. Except as otherwise provided in this Agreement, no Member shall have the right to receive the return of any Capital Contribution. If a Member is entitled to receive a return of a Capital Contribution, the Member shall not have the right to receive anything but cash in return of the Member’s Capital Contribution. Each Member hereby acknowledges and agrees that such Member is not entitled to relief as a dissenting member, to appraisal rights or to any similar rights under Section 18-210 of the Act or otherwise. 
+Transfer of Interest. No Member shall have the right to sell, assign, or transfer such Person’s Interest in the Company, except as provided in this Agreement. 
+Capital Accounts. A separate Capital Account shall be maintained for each Member as set forth in Article 2 of Appendix A. The initial Capital Account of each Member shall be as reflected on Appendix B.
+Units of Interest. Each Member’s Interest shall be denominated in Units, and the relative rights, privileges, preferences and obligations with respect to each Member’s Interest shall be determined as provided in this Agreement. The total authorized number of Units of the Company shall be [100] Units, as set forth on Appendix B attached hereto, as amended from time to time by the Board. 
+Issuance of New Securities. 
+Subject to Section 3.8.2 and to the availability of authorized, but unissued Units, the Board may from time to time authorize and cause the Company to issue additional Equity Securities (collectively, “New Securities”), and with such terms and conditions and in exchange for such cash or other lawful consideration as it may determine; provided, however, no Member shall have any obligation to contribute additional capital to the Company or to purchase any New Securities offered by the Company. Any such New Securities will be issued pursuant to subscription agreements and such other documents deemed appropriate by the Board. Any such New Securities shall be subject to the pre-emptive rights set forth in Article VII of this Agreement. Notwithstanding any terms or provisions to the contrary, the following shall not be “New Securities” and shall not be subject to, and may be issued without regard to, the terms of this Section 3.8.1: 
+Equity Securities issued on the date of this Agreement; 
+Equity Securities issued as payment or consideration for goods or services provided to the Company or any of its Subsidiaries in connection with borrowings, credit arrangements, equipment leasing or financings, or similar transactions with third party lenders; 
+Equity Securities issued in connection with an initial public offering of the Company or a reorganization of the Company in connection with an initial public offering; 
+Equity Securities approved by the Board for issuance to any Manager as consideration for serving on the Board; 
+Units issued to [DESIGNATED MEMBER] pursuant to Section
+**7.3** of this Agreement, which shall be issued as provided in Section 7.3; 
+Profits Interest Units issued pursuant to Section
+**3.9** of this Agreement, which shall be issued as provided in Section
+**3.9** or the Company’s equity incentive plan adopted and approved by the Board; and
+Equity Securities that are issued, sold or transferred with respect to which each Member with preemptive rights under Section
+**7.1** has waived such preemptive rights in writing. 
+No Company Unit shall be issued after the date hereof (other than pursuant to Section
+**3.9** or Section 7.3) unless either (i) all of the following conditions are met, or (ii) all of the Members consent to such issuance in writing:
+(a) This Agreement shall be amended or amended and restated to reflect the new economic and non-economic rights and privileges of any Units issued that are not the same class of Unit as those Units issued and outstanding on the date hereof (“Common Units”) or Profits Interest Units; 
+
+(b) Upon the issuance of any New Securities, the Adjusted Fair Market Value of the Company property shall be adjusted pursuant to Section 2.02(a) of the Appendix A; and
+
+(c) Immediately prior to the issuance of the Unit, the Company shall issue to [DESIGNATED MEMBER], as royalties under the license between the Company and [DESIGNATED MEMBER], any additional Units required to be issued pursuant to Section 7.3.
+The example contained in Appendix D hereto illustrates the operation of this Section 3.8.2. Upon the issuance of any New Securities in accordance with this Agreement, the Persons to whom such New Securities have been issued shall be automatically admitted to the Company as Members with respect to such additional Units, subject to the terms of this Agreement, as amended from time to time.
+
+Profits Interest Units. The Members shall establish a pool of Authorized Units to be reserved for issuance as Profits Interest Units, which pool shall be set forth on Exhibit B attached hereto, and as updated from time to time. Upon the approval of the Board, and subject to the availability of authorized but unissued Profits Interest Units from the pool, the Company may grant employees, consultants, Managers, Officers and independent contractors of the Company the right to acquire Profits Interest Units on such terms and conditions as the Board may determine in its sole discretion without further action by the Members. Unless the Board determines otherwise, (a) such Profits Interest Units shall generally be subject to vesting requirements, a distribution threshold and rights of repurchase by the Company in the event of termination of service and such other terms and conditions as the Board may determine and as set forth in any agreement or grant of rights to acquire such Interests; and (b) such Profits Interest Units shall not entitle the holder thereof to vote on any matters to be approved by the Members. 
+
+Allocations and Distributions
+Allocations of Profit and Loss. Except as stated in Article 3 of Appendix A, all Profit and Loss of the Company shall be allocated among the Capital Accounts of the Members in accordance with this Section 4.1.
+Profit for any fiscal year shall be allocated to the Members in the following order and priority:
+First, to each Member holding Common Units, in an amount equal to, and in proportion to, the excess, if any, of (i) the aggregate amount of Loss previously allocated to each such Member pursuant to Sections 4.1.2(e), over (ii) the aggregate amount of Profit previously allocated to such Member pursuant to this Section 4.1.1(a); 
+Second, to each Member holding Convertible Preferred Units, in an amount equal to, and in proportion to: 
+(i) prior to the Triggering Event with respect to such Units, the excess of (1) the aggregate amount previously distributed to such Member pursuant to Section 4.3.1(a), over (2) the aggregate amount of Profit previously allocated to such Member pursuant to this Section 4.1.1(b); and, 
+(ii) after the Triggering Event with respect to such Units, the excess of (1) the sum of the Accrued Preferred Return of such Member and the aggregate amount of Loss previously allocated to such Member pursuant to Section 4.1.2(d), over (2) the aggregate amount of Profit previously allocated to such Member pursuant to this Section 4.1.1(b);
+Third, to each Member holding Convertible Preferred Units, in an amount equal to, and in proportion to, the excess, if any, of (i) the aggregate amount of Loss previously allocated to each such Member pursuant to Section 4.1.2(c), over (ii) the aggregate amount of Profit previously allocated to such Member pursuant to this Section 4.1.1(c);
+Fourth, to [DESIGNATED MEMBER] (or its Permitted Transferee(s)), in an amount equal to, and in proportion to, the excess, if any, of (i) the aggregate amount of Loss previously allocated to each such Member pursuant to Section 4.1.2(b), over (ii) the aggregate amount of Profit previously allocated to such Member pursuant to this Section 4.1.1(d); 
+Fifth, to each Member holding Profits Interest Units and/or Common Units, in an amount equal, and in proportion to, the excess, if any, of (i) the aggregate amount of Loss previously allocated to each such Member pursuant to Section 4.1.2(a), over (ii) the aggregate amount of Profit previously allocated to such Member pursuant to this Section 4.1.1(c); and
+Thereafter, to each Member holding vested Profits Interest Units and/or Common Units, in proportion to the respective number of such Units held by each such Member.
+Subject to the loss limitation rule set forth in Section
+**3.05** of the Appendix, Loss for any fiscal year shall be allocated to the Members in the following order and priority:
+First, to the Members holding vested Profits Interest Units and/or Common Units, in proportion to the respective number of such Units held by each such Member until the Capital Account balance of each such Member with respect to such Units is equal to zero; provided that, prior to the Equity Financing Threshold Date, no Loss shall be allocated to [DESIGNATED MEMBER] (or its Permitted Transferee(s)) pursuant to this Section 4.1.2 which shall cause the ratio of the aggregate Capital Account balances of such Members over the aggregate Capital Account balances of all of the Members to be less than the Percentage Threshold;
+Second, to [DESIGNATED MEMBER] (or its Permitted Transferee(s)), in proportion to their respective Units until the Capital Account balance of each such Member is equal to zero; 
+Third, to each Member holding Convertible Preferred Units, in an amount equal to, and in proportion to, the excess, if any, of (i) the sum of the aggregate amount of Profit previously allocated to such Member pursuant to Section 4.1.1(c) and the Unpaid Preferred Contributions of each such Member, over (ii) the aggregate amount of Loss previously allocated to such Member pursuant to this Section 4.1.2(c);
+Fourth, to each Member holding Convertible Preferred Units, in an amount equal to, and in proportion to, the excess, if any, of (i) the excess of the aggregate amount of Profit previously allocated to such Member pursuant to Section 4.1.1(b) over the amount previously distributed to such Member pursuant to Section 4.3.1(a), over (ii) the aggregate amount of Loss previously allocated to such Member pursuant to this Section 4.1.2(d); and,
+Thereafter, to the Members holding Common Units, in proportion to the respective number of such Units held by each such Member.[footnoteRef:1] [1: Consideration will need to be given to Section
+**4.1** to make certain that it is properly coordinated with respect to particular Convertible Preferred Unit terms. In particular, this provision has been prepared with the expectation that the preferred member will not be entitled to roll over accrued preferred return into common equity.] 
+
+Tax Allocations. Except as stated in Article 4 of Appendix A, each item of income, gain, loss, and deduction will be allocated for Federal income tax purposes in the same manner as the corresponding allocation for Book purposes.
+Distribution Policy. Distributions of Distributable Cash from the Company may be made at any time as determined by the Board, in their sole and absolute discretion. Distributions will only be made to the extent Distributable Cash is available to the Company, as determined by the Board in its sole and absolute discretion, without requiring (i) the sale or pledge of Company assets at a time or on terms that the Board believes are not in the best interests of the Company, or (ii) a reduction in reserves that the Board determines are necessary or desirable for working capital or other Company purposes.
+Distributions of Distributable Cash. Except as provided in Sections
+**4.4** and 4.5, all distributions of Distributable Cash shall be made to the Members in the following order of priority:
+First, to Members holding Convertible Preferred Units, in proportion to, and up to amounts equal to, the Unpaid Preferred Returns of each such Member, if any;
+Second, to Members holding Convertible Preferred Units in proportion to, and up to amounts equal to, the Unpaid Preferred Contributions of each such Member, if any;
+Third, to the Members holding Common Units and/or Profits Interest Units, in proportion to, and up to amounts equal to, the positive Capital Account balances of each such Member; and
+Thereafter, to the Members holding Common Units and/or Profits Interest Units, in proportion to the respective number of such Units held by each such Member.[footnoteRef:2] [2: Consideration will need to be given to Section
+**4.3** to make certain that it is properly coordinated with respect to particular Convertible Preferred Unit terms. ] 
+
+Tax Payment Distributions. 
+Subject to second sentence of Section 4.3, the Board shall cause the Company to distribute Distributable Cash to each Member, from time to time, on the dates that the Board reasonably determines are required to enable each Member to pay Federal, state and local taxes (including any estimated tax payments) with respect to taxable income allocated to that Member under this Agreement, in an amount equal to the product of (i) the Top Marginal Rate and (ii) the taxable income allocated to that Member. Taxable income allocated to a Member means, for distributions relating to the first three quarters of the Fiscal Year, the taxable income that the Board reasonably expects to allocate to that Member for the relevant fiscal period, and, for distributions relating to the last quarter of the Fiscal Year, the actual income allocated or to be allocated to the Member for the prior Fiscal Year.
+Amounts distributed pursuant to Section 4.4.1. shall be deemed as having been distributed under Section
+**4.3** and shall be taken into account in determining subsequent distributions under Section 4.3. 
+Liquidation and Dissolution. 
+Subject to Article VIII, if the Company is liquidated, the Board of Directors shall take full account of the Company assets and its liabilities and shall cause the Company assets or the proceeds from the sale thereof, to the extent sufficient therefor, to be applied and distributed, to the maximum extent permitted by law, in the following order:
+First, to creditors (including Members who are creditors, to the extent otherwise permitted by law) in satisfaction of all of the Company’s debts and other liabilities (whether by payment or the making of reasonable provision for payment thereof); and
+Second, to the Members in proportion to and to the extent of their positive Capital Account balances, determined after giving effect to all contributions, distributions and allocations for all periods.
+No Member shall be obligated to restore a negative Capital Account balance. 
+ In addition, the Company may offset any amounts due to any Member under this Section
+**4.5** by any amount owed by a Member to the Company.
+
+Management: Rights, Powers, and Duties
+Management. 
+All of the business and affairs of the Company shall be managed by the Board. The Company and the Members shall take such actions as may be required to ensure that the number of persons constituting the Board (each, a “Manager” and collectively, the “Board” or the “Managers”) is at all times not less than three (3) and not more than nine (9) persons. Without amendment of this Agreement, the number of Managers, subject to the foregoing limitations, may be fixed or changed by resolution adopted by the Members at any meeting. No reduction of the number of Managers shall have the effect of removing any Manager prior to the expiration of his or her term of office. The Board shall be comprised as follows:
+two persons designated by the Members, who shall initially be [NAME] and [NAME]; and,
+one independent Manager (the “Independent Manager”) who will be appointed by the other Manager(s). Initially, the Independent Manager shall be [NAME]. 
+At its discretion, [DESIGNATED MEMBER] may exercise observer rights at meetings of the Board. [DESIGNATED MEMBER], at its sole expense, may appoint one representative (the “Observer”) to attend and observe all meetings of the Board in a non-voting observer capacity. The Observer shall be entitled to receive copies of all notices, minutes, written consents, and other materials that the Company provides to members of the Board (the “Board Materials”). In the sole discretion of the Board, the Company may withhold from the Observer certain privileged information or materials furnished or made available to the Board and may exclude the Observer from executive sessions of the Board. 
+
+The Members agree to vote, execute or give such consents, and take such further actions as may be reasonably requested by the Company or the Board to elect and/or appoint such persons as members of the Board. Any Member or group of Members having the right to designate a Manager may do so at any time, upon notice to all of the other Members. Any Member or group of Members having the right to designate a Manager shall also have the power to remove or replace such Manager at any time, with or without cause, upon notice to all of the other Members. Notwithstanding the foregoing, a Manager may be removed with cause and replaced, at any time, by Supermajority Approval. Each Manager shall hold office from the time such Manager is designated until such time as such Manager resigns, ceases to be capable of serving as a Manager, is removed or replaced by the designation of a successor Manager. Managers shall not be required to also be Members.
+
+ Nothing in this Section
+**5.1** shall affect or supersede any such restrictions imposed on a Manager by any other contract or agreement to which both the Company and/or any of its Affiliates, and such Manager are a party, including any employment agreement between the Company and the Manager if the Manager is also an Officer or employee of the Company.
+
+ There shall be no restriction in any way under this Agreement or pursuant to the Act of the rights of any Manager to conduct any other business or activity whatsoever, and the Managers shall not be accountable to the Company or to any other Member with respect to that business or activity, nor shall such business or activity of a Manager who is also a Member be deemed to violate any duty of care, duty of loyalty or other duty owed under Section 18-1101 of the Act. Each Member waives any rights the Member might otherwise have to share or participate in such other interests or activities of any Manager or such Manager’s Affiliates. 
+Decisions of the Board within its scope of authority shall be binding upon the Company and each Member. Except where approval of the Voting Interests is expressly required by this Agreement or by non-waivable provisions of applicable law, including the Act, the Board shall have full and complete authority, power and discretion (including power to delegate powers and duties to the Officers) to manage and control the business, affairs and properties of the Company, to make all decisions regarding the business, affairs and properties of the Company and to perform any and all other acts and activities customary or incident to the management of the Company’s business, including:
+preparing or contracting for the preparation of, all requisite reports on behalf of the Company;
+acquiring by purchase, lease or otherwise, any real or personal property, tangible or intangible;
+selling, disposing, trading, or exchanging Company assets in the ordinary course of the Company’s business;
+authorizing agreements and contracts and giving receipts, releases, and discharges;
+pledging material assets of, and borrowing money for and on behalf of, the Company;
+purchasing liability and other insurance to protect the Company’s properties and business;
+making any and all expenditures which the Board, in its sole discretion, deems necessary or appropriate in connection with the management of the affairs of the Company and the carrying out of its obligations and responsibilities under this Agreement, including, all legal, accounting and other related expenses incurred in connection with the organization and financing and operation of the Company;
+employing, terminating, appointing or renewing or extending the employment of or entering into or amending an employment agreement (or committing the Company to do any of the foregoing) with any person;
+directly or indirectly declaring or making any distributions upon any of the Interests or other equity securities, except as expressly provided otherwise by this Agreement;
+directly or indirectly redeeming, purchasing or otherwise acquiring any of the Interests or other equity securities, except as expressly provided otherwise by this Agreement;
+authorizing, issuing or entering into any agreement providing for the issuance (contingent or otherwise) of (A) any notes or debt securities containing equity features (including, any notes or debt securities convertible into or exchangeable for equity securities, issued in connection with the issuance of equity securities or containing profit participation features), or (B) any Interests or other equity securities (or any securities convertible into or exchangeable for any Interests or other equity securities), except as expressly provided otherwise by this Agreement; 
+issuing Profits Interest Units to employees, consultants, independent contractors, Managers or Officers of the Company; provided, however, that for Officers who are also Managers, such compensation is subject to Section 5.1.4 below; and,
+directing or delegating any Person to take all actions and execute all documents or instruments as are necessary to carry out the intentions and purposes of the above duties and powers.
+Notwithstanding anything to the contrary contained in this Agreement, the Managers will not, and will not cause the Company to, do any of the following without Supermajority Approval of the Members:
+Amend this Agreement, except as otherwise provided in this Agreement; 
+Authorize New Securities of the Company;
+Remove a Manager from the Board of Managers, subject to 5.1.1;
+Approve or effect a Sale of the Company; 
+Approve or effect an acquisition of another entity (by merger, stock purchase, consolidation, asset purchase of substantially all of such entity’s assets or otherwise);
+Advance, lend, or contribute to the capital of another Person any funds of the Company;
+Set employment compensation and issue Profits Interest Units to any Manager (who is not also an employee or Officer of the Company);
+Make a public offering or sale of securities pursuant to a registration statement under the Securities Act; 
+File an election or take any other action that would cause the Company to be taxed as a corporation under the Code; or 
+Dissolve, liquidate and wind up the Company, or commence an action seeking to accomplish the same, except as otherwise provided in this Agreement.
+Any transaction between the Company and a Manager or Affiliate thereof, including any of the actions described above, must be (a) reviewed and approved by a majority of the disinterested Managers and a majority of the issued and outstanding Voting Interests held by disinterested Members, and (b) on terms that are no less favorable than those the Company could obtain from unrelated third parties in the city in which the Company is headquartered.
+Subject to the other provisions of this Agreement, any vacancy or vacancies in the Board may be filled by the majority vote of the Members. Any Manager elected to fill a vacancy shall be elected for the remainder of the term being filled.
+Subject to Section 5.1.4, the Managers shall have authority to establish reasonable compensation, which may include pension, disability, death benefits, and Units, for services to the Company by Managers and Officers and reasonable reimbursement procedures for expenses incurred in performing their duties hereunder, or to delegate such authority to one or more Officers or Managers. Authority to establish reasonable compensation and reimbursement procedures under this Section 5.1.7 shall be exercised by the affirmative vote of a majority of disinterested Managers then in office, on a case by case basis. No Manager shall be precluded from also serving the Company as an Officer or in any other capacity, or from receiving compensation therefor.
+Meetings of the Board.
+Regular meetings of the Board shall take place on the first business day of each calendar quarter or such other date as the Managers may agree, but not less than quarterly. Special meetings of the Board may be called by the Board, the President, any Manager or any Member or group of Members holding 20% or more of the Voting Interests. Meetings of the Board shall be held at the principal place of business of the Company or at any other place in or outside the state of Delaware as shall be agreed by a majority of the Managers, or specified or fixed in the notices or waivers of notice thereof, provided that if authorized by a majority of the Managers, and subject to such procedures as the Board may adopt, meetings of the Board may be held not at any physical place, but solely by means of remote electronic or telephonic communication so long as all parties participating in the meeting can both speak and hear each other.
+Written notice of any special meeting of the Board shall be delivered to each Manager to such Manager’s last known address as it is shown on the records of the Company, or communicated to each Manager by email or facsimile transmission (at the email address or fax number last provided by the Manager to the Company), at least five (5) business days prior to the meeting. 
+The transactions carried out at any meeting of the Board, however called and noticed or wherever held, shall be valid as though carried out at a meeting regularly called and noticed if at least a quorum of the Managers is present.
+Each Manager shall be entitled to one vote on each matter submitted to the vote of the Board or in a written consent to take action without a meeting of the Board. At least a majority of the Managers, present in person (including presence by participation pursuant to Section 5.2.1), shall constitute a quorum for the transaction of business, and other than as set forth in this Agreement, the affirmative vote of a majority of the Managers present at any meeting at which there is a quorum, when duly assembled, is required for an action to be valid. In the absence of a quorum at any meeting of the Board, a majority of those present may adjourn and postpone the meeting to a time no earlier than two (2) business days after written notice of such postponement has been given to the Managers. The Managers shall act only collectively as a board. Individual Managers shall have no power as such.
+In lieu of holding a meeting, the Board may vote or otherwise take action by a written instrument setting forth the action so taken and indicating the unanimous consent of the Board. Whenever action is taken by written consent, a meeting of the Board need not be called or notice given. The written consent may be executed in one or more counterparts and by letter or facsimile or email transmission, and each such consent so executed shall be deemed an original. All written consents shall be filed with the other records of the Company and copies shall be provided to each Manager.
+Officers. The officers of the Company (the “Officers”) shall initially consist of a President, a Treasurer, a Secretary and such Vice Presidents and other such officers, with such duties and powers, as the Board may determine from time to time. An Officer shall remain in office unless and until removed by a majority vote of the Board (with or without cause) or his or her resignation, death or incapacity. Designation of an Officer shall not, of itself, create any contractual or employment rights. These offices shall initially be filled as follows: 
+_________________ President
+__________________ Treasurer
+__________________ Secretary
+The Officers of the Company shall be appointed from time to time by the Board as it shall determine, and new offices may be created and filled at any meeting of the Board. Each Officer shall hold office until his or her successor shall have been appointed, or such Officer resigns, dies or is removed. Any Officer or assistant Officer may resign at any time by giving written notice to the Board, or to the President or Secretary of the Company. A resignation shall take effect at the time specified therein, and, unless otherwise specified therein, shall become effective upon delivery. The acceptance of such resignation shall not be necessary to make it effective unless so specified in the resignation. Any Officer or assistant Officer may be removed by the Board with or without cause whenever in its judgment the best interests of the Company would be served thereby.
+If the office of any Officer becomes vacant by reason of death, resignation, removal, or otherwise, the Board shall elect a successor to the office by majority vote.
+The President shall be the chief executive officer of the Company, and shall preside at all meetings of Members and, unless another person is designated by the Board, all meetings of the Board, provided, however, that the Managers may exclude the President from the executive sessions of the Board.
+The Treasurer shall have supervision of all funds of the Company. The Treasurer shall have such other authorities and duties as are delegated by this Agreement or as may be delegated from time to time by the Board.
+The Secretary shall take or cause to be taken minutes of all meetings of the Board. The Secretary shall be the custodian of all records and reports of the Board. The Secretary shall have such other authorities and duties as are delegated by this Agreement or as may be delegated from time to time by the Board.
+The President, Treasurer and any Officer later designated by the Board shall have the authority to sign, execute and deliver in the name of the Company any deed, mortgage, bond, instrument, agreement or other document evidencing any transaction authorized by the Board, except where the signing or execution thereof shall have been expressly delegated to another Officer or person on the Company’s behalf.
+Notwithstanding any provision of this Agreement to the contrary, in the absence of any officer or assistant officer or for any other reason which the Board may deem sufficient, the Board may delegate the authorities and duties of any Officer, or any assistant Officer to any other Officer, assistant Officer or to any Manager.
+In addition to the foregoing, each Officer or assistant Officer shall perform all duties as may from time to time be delegated to each of them by this Agreement or by the Board or any committee of Managers as provided herein.
+Meetings of Members.
+An annual meeting of Members, for the election of Managers, for the consideration of any reports and for the transaction of such other business as may be brought before the meeting, shall be held on such date as may be designated by the Board of Managers. If the annual meeting is not held or if Managers are not elected at the meeting, the Managers may be elected at any special meeting called and held for that purpose.
+A meeting of the Members may be called at any time by a majority of the Board, by the President, or by any other officer authorized to call such a meeting, or by Members holding at least twenty percent (20%) of the Voting Interests. Meetings of Members shall be held at the Company’s principal place of business or at any other place within the state of Delaware designated by the Person calling the meeting. Not less than seven (7) nor more than sixty (60) days before each meeting, the Person calling the meeting shall give written notice of the meeting to each Member holding Voting Interests at the meeting. The notice shall state the time, place, and purpose of the meeting. Notwithstanding the foregoing provisions, each Member who is entitled to notice waives notice if, before or after the meeting, the Member signs a waiver of the notice which is filed with the records of Members’ meetings, or is present at the meeting in person or by proxy. Any notice required to be sent to a Member under this Section shall be sent to the address of such Member as set forth on Appendix B.
+Members may participate in and hold a meeting by means of conference telephone or similar communications equipment by which all persons participating in the meeting can both speak and hear each other. Other suitable electronic communications systems may be used, including videoconferencing technology or the Internet, but only if (i) each Member entitled to participate in the meeting consents to the meeting being held by means of that system and (ii) the system provides access to the meeting in a manner or using a method by which each Member participating in the meeting can communicate concurrently with each other participant. Participation in such meeting shall constitute attendance and presence in person at such meeting, except where a person participates in the meeting for the express purpose of objecting to the transaction of any business on the ground that the meeting is not lawfully called or convened. The Managers may adopt guidelines and procedures for the use of communications equipment in connection with a meeting of Members to permit the Company to verify that a person is a Member and to maintain a record of any vote or other action.
+Any action required or permitted to be taken by Members may be taken without a meeting if the action is evidenced by a written instrument describing the action taken and signed by the requisite number of Members necessary to approve the action to be taken. The written consent may be executed in one or more counterparts and by letter or facsimile or email transmission, and each such consent so executed shall be deemed an original. The action taken pursuant to a written consent shall be effective on the date when the required number of Members have signed the consent, unless the consent specifies a different effective date. All written consents shall be filed with the other records of the Company and copies shall be provided to any Member who did not sign such written consent.
+Voting of Members and Quorum
+Except as otherwise provided in this Agreement, wherever this Agreement requires the consent or approval of the Members, the affirmative vote of a majority or more of the Voting Interests then held by Members shall be required to approve the matter, unless otherwise stated or required by the Act. 
+At any meeting of Members, any person who is entitled to attend, or to vote thereat, or to execute consents, waivers or releases, may be represented at such meeting or vote thereat, and execute consents, waivers and releases, and exercise any of his other rights, by proxy or proxies appointed by writing signed by such person or appointed by a verifiable communication authorized by such person. Voting by proxy or proxies shall be governed by all of the provisions of the laws of the State of Delaware, including the provisions relating to the sufficiency of the writing, the duration of the validity of the proxy or proxies, and the power of substitution and revocation.
+Those Members present in person, by proxy or by the use of communications equipment entitling them to exercise a majority of the Voting Interests shall constitute a quorum for any meeting of Members. In the event of an absence of a quorum at any meeting or at any adjournment thereof, a majority of those present in person or by proxy and entitled to vote may adjourn such meeting from time to time. At any adjourned meeting at which a quorum may be present, any business may be transacted which might have been transacted at the meeting as originally called. A Member may vote either in person or by written proxy signed by the Member or by his or her duly authorized attorney in fact. 
+Other Business Interests and Conflicts of Interest 
+Personal Services. No Member shall be required to perform services for the Company solely by virtue of being a Member. Unless approved by the Board, no Member shall be entitled to compensation for services performed for the Company. However, upon substantiation of the amount and purpose thereof in accordance with the policies of the Company, the Members shall be entitled to reimbursement for expenses reasonably incurred in connection with the activities of the Company.
+Interests Similar to the Company. It is acknowledged that the Members may in the future, from time to time, obtain additional opportunities similar to the purpose of the Company. Each Member shall be free to pursue such interests or acquire such interests in other property as such Member may in such Member’s sole discretion deem desirable without having to offer the opportunities or interests in such property to the other Members or the Company, and such action on the part of any Member shall not be deemed a breach of any fiduciary relationship owed by that Member to the other Members or the Company. Notwithstanding the provisions of Section 18-1101 of the Act, participation in the Company shall not in any way act as a restraint on the other present or future business activities or investments of a Member (or any Affiliate of a Member), or any employee, officer, director, member, manager, or shareholder of a Member, provided that no Member shall, directly or indirectly, for the Member’s benefit or the benefit of others, either as principal, agent, manager, officer, consultant, owner, shareholder, employee, or otherwise, engage in any work or activity involving the promotion, marketing, solicitation or sale of any product or service that competes with any of the products or services developed, marketed or sold by the Company, except that a Member may own stock or other equity securities of such a competitive business if such investment does not result in the Member beneficially owning five percent (5%) or more of the equity securities of such business. As a result of this Agreement, no Member (or Affiliate of any Member), shall be obligated or bound to offer the Company or any of the other Members any business opportunity presented to or offered to them or the Company as a prerequisite to the acquisition of or investment in such business opportunity by such Member (or any Affiliate of a Member), or any employee, officer, director, member, manager, or shareholder of such Member for its account or the account of others, unless such business activity in which a Member (or any Affiliate of a Member), or any employee, officer, director, member, manager, or shareholder of a Member engages, conducts, or participates outside the Company shall be a business activity in competition with the Company. Any such business or activity of a Member (or any Affiliate of a Member), or any employee, officer, director, member, manager, or shareholder of a Member may be undertaken with or without prior notice to or participation therein by the Company or the other Member, unless such business activity in which a Member (or any Affiliate of a Member), or any employee, officer, director, member, manager, or shareholder of a Member engages, conducts, or participates outside the Company shall be a business activity in competition with the Company. Each Member and the Company hereby waive any right or claim such Member or the Company may have against a Member (or any Affiliate of a Member), or any employee, officer, director, member, manager, or shareholder of a Member with respect to such business or activity or the income or profits thereof, unless such business activity in which a Member (or any Affiliate of a Member), or any employee, officer, director, member, manager, or shareholder of a Member engages, conducts, or participates outside the Company shall be a business activity in competition with the Company. Notwithstanding the foregoing, the restrictive provisions of this Section 5.6.2 concerning competitive activities do not apply to [DESIGNATED MEMBER].
+Dealings between the Company and Members. Each Member understands and acknowledges that the conduct of the Company’s business may involve business dealings and undertakings with Members and their Affiliates. With the approval of the disinterested Managers and the consent of the disinterested Members holding a majority of the Voting Interests held by all disinterested Members, the Company may contract with any of the Members or their Affiliates for the purchase of goods and service for the benefit of the company at any time provided that the compensation paid to such Person shall be commensurate with rates prevailing for such services at the time such services are performed in the city in which the Company is headquartered, and any charges so incurred shall be deemed expenses of the company. With the consent of the disinterested Members holding a majority of the Voting Interests held by all disinterested Members, the Company shall have the authority to enter into any transaction despite the fact that another party to the transaction may be (a) a trust of which a Member is a trustee or beneficiary; (b) an estate of which a Member is a personal representative or beneficiary; (c) a business controlled by one or more Members or a business of which any Member is also a director, officer, partner, member, manager or employee; (d) any Affiliate, employee, stockholder, associate, manager, partner, or business associate of any Member; (e) any Member, acting individually; or (f) any relative of a Member; provided the terms of the transaction are no less favorable than those the Company could obtain from unrelated third parties in the city in which the Company is headquartered.
+Nothing in this Section
+**5.6** shall affect or supersede any such restrictions imposed on a Manager by any other contract or agreement to which both the Company and/or any of its Affiliates, and such Manager are a party, including any employment agreement between the Company and the Manager if the Manager is also an Officer or employee of the Company. 
+
+
+Transfer of Interests and Withdrawals of Members
+Transfers. Transfer of Members’ Interests in the Company. 
+Except for a Transfer to a Permitted Transferee, no Person may make a Transfer of all or any portion of any interest or rights in the Person’s Interest without the approval of a majority of the Voting Interests, and any such Transfer is subject to the terms and conditions of this Article VI. The Board, in its sole discretion, may require as a condition to such Transfer that the transferor shall deliver to the Company an opinion of counsel or other evidence (reasonably acceptable in form and substance to the Board) that neither registration nor qualification under the Securities Act and applicable state securities laws is required in connection with such Transfer.
+Any Transfer permitted under this Article VI shall be valid and effective as to the Company and all other Members only when a written instrument of transfer, in form reasonably satisfactory to the other Members is executed and filed with the Company, and payment is made to the Company of its reasonable expenses in connection with the Transfer, provided that the following conditions are met:
+The Transfer will not require registration of Interests or Membership Rights under any federal or state securities laws;
+The transferee delivers to the Company a written instrument agreeing to be bound by the terms of this Agreement; 
+The Transfer will not result in the Company being subject to the Investment Company Act of 1940, as amended; and,
+The transferor or the transferee delivers the following information to the Company: (i) the transferee’s taxpayer identification number; and (ii) the transferee’s initial tax basis in the transferred Interest.
+Upon satisfaction of the foregoing conditions, the Company may distribute to the transferee (without liability to the transferor) all further amounts due on account of the Interest transferred.
+
+A Transfer by a Member of all or any part of his Interest shall not dissolve the Company. 
+Each Member hereby acknowledges the reasonableness of the prohibition contained in this Section
+**6.1** in view of the purposes of the Company and the relationship of the Members. The Transfer of any Membership Rights or Interests in violation of the prohibition contained in this Section
+**6.1** shall be deemed invalid, null and void, and of no force or effect. Any Person to whom Membership Rights or Interests are attempted to be transferred in violation of this Section
+**6.1** shall not be entitled to vote on matters coming before the Members, participate in the management of the Company, act as an agent of the Company, receive distributions from the Company, or have any other rights in or with respect to the Membership Rights or Interests.
+Death, Dissolution or Incompetency of a Member. 
+The death, dissolution or adjudication of incompetency by any court of competent jurisdiction of a Member shall not dissolve the Company, but the business of the Company shall continue, with the name and other property of the Company on the same terms and conditions as are set forth in this Agreement.
+If any Member dissolves, dies or is adjudicated incompetent by any court of competent jurisdiction and, as a result of such event, someone other than a Permitted Transferee would otherwise succeed to such Interest and no proposed transfer is submitted pursuant to Section 6.3, below, within nine (9) months of the dissolution, death or adjudication of incompetency, the Company shall have the right to purchase the Interest of such Member on the terms and conditions that are set forth below. The Company may exercise the aforesaid right by delivering notice of its exercise to the receiver, liquidator or other person responsible for the winding up of a dissolved Member’s affairs, or the personal representative of the deceased or incompetent Member, within thirty (30) days after being notified of the applicable event.
+If the Company elects to purchase the Interest of such Member, the price to be paid for the Member’s Interest in the Company shall be the lesser of the fair market value of such Interest as determined by an independent appraiser chosen by a majority of the Voting Interests, (a) as of the last day of the month immediately preceding the date of death or adjudication of incompetency of the Member, adjusted for distributions subsequent thereto, or (b) as of the last day of the month immediately preceding the distribution. No allowance shall be made for goodwill or other intangible assets, except as those assets have been reflected on the Company’s books immediately prior thereto. The purchase shall be closed within thirty (30) days after the election is made and the price has been determined.
+The purchase price to be paid by the Company shall be paid as follows: ten percent (10%) at closing, and the balance in five (5) equal annual installments commencing one year after the closing. The portions of the purchase price remaining unpaid from time to time after closing shall bear annual, non-compounding interest at a rate equal to one and one-half percent (1.5%) per annum, from the date of closing until paid, but may be prepaid in whole or in part at any time or times without penalty. Interest shall be payable at the same times as, but in addition to, installments of principal. All payments shall be credited, first, to interest due on or before the dates made, and, second, to installments of principal in order of maturity. The balance of the purchase price, plus accrued interest, may be prepaid by the Company at any time without penalty.
+If the Company fails or refuses to exercise its right to purchase the Interest of such Member, the other Members holding Voting Interests may choose to either permit the Transfer of the Interest to the transferee otherwise entitled by law to receive such Interests, or, dissolve and liquidate the Company pursuant to Section 8.1.2. If the Transfer is permitted, the transferee shall succeed to all of the financial interests of the transferor, but shall not become a Substitute Member unless approved by the unanimous consent of the other Members.
+Right of First Refusal. 
+If any Member desires to sell all or any portion of such Member’s Interest in the Company, such Member shall first (a) obtain the approval of the Voting Interests pursuant to Section 6.1.1., and (b) comply with the terms and conditions of this Section 6.3. Such Member must notify the Company and the other Members in writing of such Member’s desire to sell, the proposed transferee, the proposed purchase price, and terms and conditions of sale (“Sale Notice”). The Company and the other Members shall have the right to purchase all, but not less than all, of the Interest of such Member proposed to be sold on the terms and conditions set forth in the Sale Notice and as provided in this Section
+**6.3** which shall be irrevocable unless and until the rights of first refusal provided for herein shall have been waived in writing or shall have expired. The Company shall have the first right to purchase the Interest offered by the selling Member by delivering notice of exercise to such selling Member, and the other Members, within twenty (20) days after delivery of the Sale Notice (“Election Period”). At such closing, the selling Member shall accept such payment as is due at closing and shall deliver to the Company in exchange therefor duly executed instruments of transfer.
+If the Company fails or refuses to deliver a notice of exercise of the right to purchase the Interest of the selling Member by the expiration of the Election Period, or is otherwise prohibited by law or this Agreement from doing so, the other Members shall have the right to purchase the offered Interest of the selling Member by delivering notice of exercise to such selling Member and the other Members within ten (10) days after expiration of the Election Period (such ten-day notice period being defined as the “Member Notice Period”). Such right must be exercised as to the entire Interest offered for sale and, unless otherwise agreed by the Members electing to purchase the offered Interest, shall be apportioned among those Members electing to purchase the Interest in proportion to their Percentages.
+If the other Members fail to timely elect or refuse to exercise their rights to purchase the Interest of the selling Member offered under Section 6.3.1, subject to the co-sale rights of the Members in Section 6.5, the selling Member may proceed to sell all, but not less than all, of such offered Interest in accordance with the notice, provided that the transferee agrees to become a party to and be bound by the terms, conditions and restrictions set forth in this Agreement. The purchase price of any Interest to be acquired pursuant to this Section 6.3.3 shall be payable on the terms offered to the selling Member by the proposed transferee (provided, however, that the Company and the Members shall not be required to meet any non-monetary terms of the proposed transfer, including, without limitation, delivery of other securities in exchange for the Interest proposed to be sold, including any consulting or similar agreements or restrictive covenants). If such sale is not closed within sixty (60) days of such failure or refusal, the selling Member shall not transfer Interest without again complying with the provisions of this Section 6.3.
+Drag-Along Rights
+Upon the election by the Members (“Electing Members”) pursuant to Section 5.1.4 of this Agreement to consummate a Sale of the Company or a sale of the Electing Members’ Interests of the Company (collectively, a “Sale Transaction”) and provided that the purchaser is a bona fide third-party and the price, terms and condition for the Sale Transaction are identical for each Member, then: 
+Each Member shall take all necessary or desirable action within such person’s control (including, without limitation, the removal and election of Managers and the execution of written consents in lieu of meetings) such that any proposal or resolution requested by such Members in connection therewith shall be implemented by the Company; 
+ If the Members are entitled to vote on any such matter, whether by law, under the Company’s code or regulations or otherwise, all of the Interests over which such Member has voting control shall be voted in favor of the proposal or resolution in connection with such Sale Transaction; 
+Each Member will consent to and raise no objections against such Sale Transaction; 
+If such Sale Transaction is structured as a sale of Interests, each Member shall sell the Interests held by him, her or it on the terms and conditions approved by the Board and the Electing Members; and, 
+Each Member will take all action necessary and desirable in connection with the consummation of the Sale Transaction, including, without limitation, the waiver of all appraisal or dissenter’s rights available to any such Member under applicable law. 
+Each Member will bear its pro rata share (based upon the number of Interests held on a fully diluted basis) of the cost of any sale of Interests pursuant to a Sale Transaction to the extent such costs are incurred for the benefit of all Members and are not otherwise paid by the Company or the acquiring party. Costs incurred by Members on their own behalf will not be considered costs of the transaction hereunder. 
+Notwithstanding the foregoing, a Member (i) shall not be required to give disproportionately greater or more onerous representations, warranties, indemnities or covenants than the Electing Members; (ii) shall only make representations, warranties, indemnities and covenants severally and in its capacity as a member concerning its valid ownership of interests of the Company, free of all liens, and its authority, power, and right to enter into and consummate such purchase and sale without violating any other agreements to which it is a party or its assets are bound; (iii) shall not be obligated to bear more than its pro rata share of any expenses or any indemnification liability up to the net cash proceeds received by such Member in connection with the sale and (iv) shall provide any customary restrictive covenants required in connection with such Sale Transaction.
+Co-Sale Rights.
+If a selling Member proposes to proceed with the sale of the selling Member’s offered Interest pursuant to Section 6.3.3, then during the fifteen (15) day period following the Member Notice Period (the “Cutoff Date”), each Member other than the selling Member (each, a “Co-Sale Rightholder”) shall have the right to sell to the purchaser named in the notice delivered pursuant to Section 6.3.1, upon the terms set forth in the notice delivered thereunder, that number of Units held by such Co-Sale Rightholder determined by multiplying the number of Units that the purchaser is willing to purchase by a fraction, (i) the numerator of which is the number of Units such Co-Sale Rightholder has proposed to sell to the purchaser, and (ii) the denominator of which is the total number of Units that all Members have proposed to sell to the Purchaser, as further provided in Section 6.5.2. The Co-Sale Rightholder(s) exercising their rights pursuant to this Section
+**6.5** shall sell the number of Units required to be sold by such Co-Sale Rightholder(s) pursuant to this Section 6.5.1, and the number of Units to be sold to such purchaser by the selling Member shall be reduced accordingly. The transaction contemplated by this Section
+**6.5** shall be consummated not later than 90 days after the Cutoff Date.
+A selling Member shall give notice to each Co-Sale Rightholder of each proposed sale by it of an Interest which gives rise to the rights of the Co-Sale Rightholders set forth in this Section 6.5, at least fifteen (15) days prior to the proposed consummation date of such sale, such date to be at least 15 days after the expiration of all rights of first refusal pursuant to Sections 6.3.1. and 6.3.2. herein setting forth the name of such selling Member, the number of Units of Interest proposed to be sold, the name and address of the proposed purchaser, the proposed amount and form of consideration and terms and conditions of payment offered by such purchaser, and the percentage of Units that such Co-Sale Rightholder may sell to such Third Party Purchaser (determined in accordance with Section 6.5.1.), provided that any Co-Sale Rightholder may waive its rights under this Section
+**6.5** prior to the expiration of such period by giving written notice to the selling Member, with a copy to the Company. 
+The Co-Sale Rights provided by this Section
+**6.5** must be exercised by any Co-Sale Rightholder wishing to sell its Units within 10 days following receipt of the notice required by Section 6.5.2, by delivery of a written notice to the selling Member indicating such Co-Sale Rightholder wishes to exercise its rights and specifying the number of Units (up to the maximum number of Units owned by such Co-Sale Rightholder required to be purchased by such purchaser) it wishes to sell, provided that any Co-Sale Rightholder may waive its rights under this Section
+**6.5** prior to the expiration of such 10-day period by giving written notice to the selling Member, with a copy to the Company. The failure of a Co-Sale Rightholder to respond within such 10-day period shall be deemed to be a waiver of such Co-Sale Rightholder’s rights under this Section 6.5. 
+Each selling Co-Sale Rightholder shall sell, at the price per Unit and on the terms set forth in the notice, a number of Units held by such selling Co-Sale Rightholder up to such selling Co-Sale Rightholder’s percentage as defined in Section 6.5.1. Each selling Co-Sale Rightholder which has so notified the selling Member of its intention to sell Units in the transaction prior to the expiration of the notice period shall be entitled to do so, subject to the terms set forth in this section 6.5.4; provided, however, that if such sale is not closed within ninety (90) days of such failure or refusal, the selling Member shall not transfer Interest without again complying with the provisions of this Section 6.5. If the purchaser fails to purchase Units from any Co-Sale Rightholder that has properly exercised its co-sale rights pursuant to this Section 6.5.4, then the selling Member shall not be permitted to consummate the proposed sale of the selling Member’s offered Interest, and any such attempted sale shall be null and void ab initio. 
+Notwithstanding the foregoing, a selling Co-Sale Rightholder (i) shall not be required to give disproportionately greater or more onerous representations, warranties, indemnities or covenants than the selling Member, (ii) shall only make representations, warranties, indemnities and covenants severally and in its capacity as a member concerning its valid ownership of membership rights or interests of the Company, free of all liens, and its authority, power and right to enter into and consummate such purchase and sale without violating any other agreements to which it is a party or its assets are bound, (iii) shall not be obligated to bear more than its pro rata share of any expenses or any indemnification liability up to the net cash proceeds received by such selling Co-Sale Rightholder in connection with the sale, and (iv) shall provide any customary restrictive covenants required in connection with such Sale Transaction.
+
+Preemptive Rights and Anti-Dilution Rights
+Preemptive Rights. If, at any time, the Company proposes to issue or sell any New Securities to any Person, whether or not a Member, then, not less than fifteen (15) days nor more than one hundred twenty (120) days prior to the consummation of such transaction, the Company shall give notice thereof (“Preemptive Rights Notice”) to each Member who holds Interests (individually, “Participating Member,” and collectively, “Participating Members”). Each Preemptive Rights Notice shall:
+Specify in reasonable detail (i) the number and type of New Securities which the Company proposes to issue or sell, and (ii) the time within which, the price at which, and all other material terms and conditions upon which, the Company proposes to issue or sell such New Securities; and,
+Make explicit reference to this Article VII and state that the right of each Participating Member to purchase any of such New Securities under this Article VII shall expire unless exercised with twenty (20) days of the Preemptive Rights Notice.
+Notwithstanding anything contrary to the foregoing, [DESIGNATED MEMBER] has the right to assign [DESIGNATED MEMBER]’s preemptive rights under this Agreement, with any exercise of such assignment being evidenced by an executed assignment (of a form attached hereto as Exhibit C) filed with the Company and maintained in the company minute book. Upon [DESIGNATED MEMBER]’s exercise of such assignment right, the assignee and not [DESIGNATED MEMBER] shall be deemed the “Participating Member” pursuant to this Article VII. 
+Each Participating Member shall have the right, in the nature of a preemptive right, but no obligation, to purchase up to all of its Preemptive Rights Pro Rata Amount (as defined below) of such New Securities as described in Section
+**7.1** above. As used herein, the term “Preemptive Rights Pro Rata Amount,” as applied to any Participating Member on any date, shall mean a fraction (expressed as a percentage), the numerator of which is the Interest of the Company then held by such Participating Member and the denominator of which is the outstanding Interests of the Company, in each case, excluding the New Securities to be issued.
+Each Participating Member must notify the Company within twenty (20) business days of receiving the Preemptive Rights Notice, if such Participating Member desires to exercise its purchase rights under this Article VII by executing and returning the form of acceptance provided with the twenty (20) business day period. Failure of the Participating Member to respond shall, for purposes of this Article VII, be deemed to constitute a waiver by such Participating Member of its right to purchase any portion of the New Securities specified in such Preemptive Rights Notice. If a Participating Member elects to purchase its Preemptive Rights Pro Rata Amount of the New Securities, it shall comply with the terms stated in the Preemptive Rights Notice.
+[DESIGNATED MEMBER] Anti-Dilution. The Company and the Members agree that, as required by the license between the Company and [DESIGNATED MEMBER], the aggregate Interest in the Company held by [DESIGNATED MEMBER] and its Permitted Transferees shall not fall below [xx]% (“Percentage Threshold”) on a Fully-Diluted Basis (after accounting for the issued and vested Profits Interest Units identified in Appendix B, if any, as such number of Profit Interest Units may be adjusted, from time to time) until the Company receives investment, in the aggregate, by way of a single transaction or a series of transactions, in an amount equal to or exceeding [DOLLAR AMOUNT] ($XX,XXX,XXX) (the “Equity Financing Threshold”).
+For purposes of this Section
+**7.3** only, a cash investment in exchange for convertible securities shall not contribute to the Equity Financing Threshold at the time of issuance of such convertible securities, but instead shall contribute to the Equity Financing Threshold only at the time that (i) the convertible securities (other than convertible notes) are convertible or exchangeable into Equity Securities; and, (ii) the convertible notes are converted into Equity Securities. 
+
+In the event the Company receives Equity Financing in a certain transaction, a portion of which (the “Applicable Portion”), when added to the prior aggregate amount of Equity Financing received by the Company, brings the total amount of Equity Financing received by the Company up to the Equity Financing Threshold and a portion of which (the “Excess Portion”), when added to the aggregate amount of Equity Financing received by the Company (inclusive of the Applicable Portion), brings the total amount of Equity Financing received by the Company above the Equity Financing Threshold, then the anti-dilution provisions contained in this Section
+**7.3** shall apply only to the Applicable Portion and not to the Excess Portion. An “Equity Financing” shall mean a cash investment in exchange for any Interests subject to the limitations set forth in the this Section 7.3. Simultaneous with the closing of any Equity Financing, the Company shall issue to [DESIGNATED MEMBER], as additional royalties under the license between the Company and [DESIGNATED MEMBER], that additional number of Units necessary so that the aggregate Membership Interest in the Company held by [DESIGNATED MEMBER] and its Permitted Transferees shall not fall below the Percentage Threshold. Such Units shall have a related Capital Account balance sufficient so that the fraction where the numerator is the aggregate Capital Account balances of [DESIGNATED MEMBER] and its Permitted Transferees, and the denominator is the aggregate Capital Account balances of all of the Members, shall not be less than the fraction where the numerator is the number of outstanding Units held by [DESIGNATED MEMBER] and its Permitted Transferees, and the denominator is the aggregate number of outstanding Units held by all of the Members. The Capital Account balances related to the Membership Interests outstanding prior to the Equity Financing shall be reduced accordingly, as illustrated in Appendix D. Once the Company meets the Equity Financing Threshold, [DESIGNATED MEMBER] shall have the right to participate in any sales of New Securities of the Company pursuant to Section 7.1, so as to maintain its then Interest in the Company. All Units issued to [DESIGNATED MEMBER] under this Section
+**7.3** will be considered fully paid, non-assessable, and have no requirement of contribution of any kind to the Company by [DESIGNATED MEMBER]. The example contained in Appendix D illustrates the operation of this Section 7.3.
+
+
+Dissolution, Liquidation and Termination of the Company
+Events of Dissolution. The Company shall be dissolved upon the happening of any of the following events, whether or not such occurrences would cause dissolution pursuant to the Act:
+The sale, transfer or other disposition of all or substantially all the assets of the Company;
+The vote, consent or agreement of a Supermajority Approval to dissolve the Company; 
+An entry of a decree of judicial dissolution of the Company; or
+The occurrence of any other event specified under the Act as an event effecting such dissolution or at any time there are no Members; unless within 120 days after the occurrence of the event that terminated the continued membership of the last remaining Member, the personal representative of the last remaining Member agrees to continue the Company and to the admission of the personal representative of such Member or its nominee or designee to the Company as a Member, effective as of the occurrence of the event that terminated the continued membership of the last remaining Member.
+Procedure for Winding Up and Liquidation. If the Company is dissolved, the Board shall wind up its affairs and make distributions to it Members pursuant to Section 4.6. 
+Filing of Certificate of Cancellation. If the Company is dissolved, the Board shall promptly file a Certificate of Cancellation with the Delaware Secretary of State. If there are no remaining Managers, the Certificate shall be filed by the last Person to be a Manager; if there are no remaining Managers, or a Person who last was a Manager, the Certificate shall be filed by the Members or the Person who last was a Member.
+Closing of Affairs. In the event of the cancellation of the Company for any reason, and in the absence of an election to continue the business of the Company, the Board shall commence to close the affairs of the Company, to liquidate its investments and to terminate the Company. The Board shall have full right and unlimited discretion to manage the business of the Company during the period of closing the affairs of the Company and to determine the time, manner and terms of any sale or sales of Company property pursuant to such liquidation.
+Orderly Liquidation. A reasonable time shall be allowed for the orderly liquidation of the assets of the Company and the discharge of liabilities so as to minimize the losses normally attendant upon a liquidation.
+Deficit Upon Liquidation. Except to the extent otherwise provided in this Agreement, upon liquidation, none of the Members shall be liable to the Company for any deficit in its Capital Account, nor shall such deficits be deemed assets of the Company.
+
+Books, Records, Accounting, and Tax Elections
+Bank Accounts. All funds of the Company shall be deposited in a bank account or accounts opened in the Company’s name. The Board shall determine the institution or institutions at which the accounts will be opened and maintained, the types of accounts, and the Persons who will have authority with respect to the accounts and the funds therein.
+Books and Records. The Board shall keep or cause to be kept complete and accurate books and records of the Company, including all such documentation and information required by Section 18-305 of the Act. The books and records shall be maintained in accordance with sound accounting principles and practices and shall be available at the Company’s principal office for examination by any Member or the Member’s duly authorized representative at any and all reasonable times during normal business hours.
+Annual Accounting Period. The annual accounting period of the Company shall be its fiscal year; the Company’s taxable year shall be the same as its fiscal year, subject to the requirements and limitations of the Code.
+Reports. Within one hundred twenty (120) days after the end of each taxable year of the Company, the Board shall cause to be sent to each Person who was a Member at any time during such year the financial statements of the Company for such year. In addition, the Board shall cause to be sent to each Person who was a Member at any time during any taxable year of the Company, within seventyfive (75) days after the end of such taxable year, a schedule K-1 and other tax information concerning the Company which is necessary for preparing the Member’s income tax returns for that year. At the request of any Member, and at the requesting Member’s expense, the Board shall cause an audit of the Company’s books and records to be prepared by independent accountants for the period requested by the Member.
+Confidentiality. Except as otherwise required by law or judicial order or decree or by any governmental agency or authority, each Member shall use its commercially reasonable best efforts to maintain the confidentiality of all nonpublic information obtained by it hereunder; provided that the Members may disclose such information in connection with the Transfer or proposed Transfer of any Interests as permitted under Article VI, if the transferee or proposed transferee agrees in writing to be bound by the provisions hereof. Nothing in this Agreement shall limit or restrict the rights of any Member granted pursuant to Section 18-305 of the Act.
+Tax Proceedings. 
+With respect to tax returns filed for the Company the partnership representative, pursuant to Section 6223 of the Code[footnoteRef:3] (as effective for such tax returns) (the “Partnership Representative”), shall be designated and, from time to time, replaced by the Board and shall serve in such capacity at the pleasure of the Board. The initial Partnership Representative shall be [NAME]. The Partnership Representative shall represent the Company and the Members, at the Company’s expense, in any administrative or judicial proceeding with the Internal Revenue Service. If an administrative proceeding results in the issuance of a final partnership administrative adjustment (“FPAA”), the Partnership Representative shall determine whether the Company shall seek judicial review of such FPAA. If the Partnership Representative determines that the Company shall not seek judicial review, he, she or it shall promptly notify all the other Members of this determination. Any amounts paid by the Partnership Representative on behalf of the Company in connection with any administrative or judicial proceeding shall be considered a loan to the Company, and not a contribution to capital. The Partnership Representative shall not be liable to the Company or the Members for any action he, she or it takes or fails to take in connection with any such judicial or administrative proceeding, including, without limitation, the agreement to or failure to agree to a settlement or the extension of, or failure to extend the relevant statutes of limitations, unless such action or failure constitutes willful misconduct, fraud or gross negligence. For tax returns relating to taxable years of the Company beginning on or before December 31, 2017, each Member may, at its own expense, and the Board may, at the Company’s expense, participate in any proceeding relating to such tax return and otherwise pursue whatever rights it may have, to the extent permitted by the Code. [3: NOTE TO [DESIGNATED MEMBER]: This will be a newly formed LLC in 2019, so prior law does not apply in this context. Provision was updated to reflect the facts of this entity. ] 
+
+In the event that the Internal Revenue Service adjusts any item(s) of income, gain, loss, deduction or credit of the Company with respect to a taxable year beginning after the date hereof (the “Reviewed Year”) and such adjustment results in an assessment against the Company, or a Company tax refund or tax benefit, in a subsequent taxable year (the “Adjustment Year”) pursuant to Section 6225 or 6227 of the Code, then: (i) in the event of a positive adjustment, each Person who was a Member of the Company in the Reviewed Year shall make a payment to the Company in an amount equal to the portion of the assessment related to such Member’s distributive share of such adjustment as determined by applying the adjustment to the Reviewed Year (taking into account modifications of the assessment under Section 6225(c) related to such portion), and (ii) in the event of a negative adjustment, the Company shall make a payment to each person who was a Member of the Company in the Reviewed Year in an amount equal to the portion of the Member’s tax refund or tax benefit related to such Member’s distributive share of such adjustment as determined by applying the adjustment to the Reviewed Year (taking into account modifications of the tax refund or tax benefit under Sections 6227 and 6225(c) related to such portion); provided, however, that no payment is required to be made by, or to, a Person who files an amended return for the Reviewed Year with respect to such person’s distributive share of the adjustment, which amended return satisfies the requirements of Section 6225(c)(2)(A) and is taken into account in determining the amount of the Company assessment, or the Company tax refund or tax benefit, in accordance with Sections 6227 and 6225(c). For the avoidance of doubt, payments made to or by a Person who is a Member at the time of the payment shall be treated as made to or by a Person who is not a partner for federal income tax purposes. Any dispute regarding a Member’s distributive share or the amount of the tax liability, tax refund or tax benefit attributable thereto shall be determined by the Partnership Representative, or an independent accounting firm agreed to by the applicable Persons. Notwithstanding anything in this Agreement to the contrary, all rights and obligations of a Member under this Section 9.6(b) shall survive both the Member’s ceasing to be a member of the Company, and the dissolution of the Company.
+Tax Elections. The Board shall have the authority to make all Company elections permitted under the Code and applicable state law; provided that the Board shall not elect to treat the Company as a corporation for tax purposes without the prior written approval of the Members as provided in Section 5.1.5(i) and that the Board shall make the election provided under Section 754 of the Code (and any corresponding provision of foreign, state or local law) upon the request of any Member. Each Member agrees to file such Member’s federal, state and local income tax returns on a basis consistent with any election made by the Board under this Section 9.7.
+
+Liability; Indemnification
+Limitation of Liability.
+Except as otherwise provided by the Act, no Person shall be obligated personally for any debt, obligation or liability of the Company solely by reason of being a Member or a Manager. To the maximum extent permitted by law, the failure to observe any formalities relating to the business or affairs of the Company shall not be grounds for imposing on any Member or Manager personal liability to third parties for the debts, obligations or liabilities of the Company. 
+Unless otherwise expressly specified in this Agreement, any determination, decision, consent, vote or judgment of, or exercise of discretion by, or action taken or omitted to be taken by the Managers or Officers under this Agreement shall be made, given, exercised, taken or omitted as the Managers or Officers shall determine in their sole and absolute discretion. In connection with the foregoing, each Manager shall be entitled to consider such interests and factors as such Manager deems appropriate, including the interests of the Members and their respective Affiliates, as applicable, and to act in the best interests of the Members and their respective Affiliates, as applicable, provided that they act in good faith and not in willful violation of this Agreement. 
+Indemnification. 
+In the absence of fraud, gross negligence, willful misconduct, an intentional violation of a material provision of this Agreement, or a bad faith violation of the implied contractual covenant of good faith and fair dealing on the part of an Indemnified Person (which malfeasance shall have given rise to the matter at issue) and to the extent indemnification is not inconsistent with the Act, the Company shall indemnify and hold each Indemnified Person harmless from and against any and all losses, claims, damages, judgments, fines, liabilities, actions or proceedings (whether commenced or threatened), reasonable costs (including, without limitation, reasonable costs of preparation and reasonable attorney’s fees) and reasonable expenses (including reasonable expenses of investigation) (collectively, “Losses”) incurred by such Indemnified Person in connection with or resulting from any claim, actions, suits or proceedings by reason of any acts, omissions or alleged acts or omissions arising out of any activity performed or not performed by, for, on behalf of or otherwise in furtherance of the interests of the Company by such Indemnified Person, provided that such Indemnified Person acted in good faith and in a manner such Indemnified Person reasonably believed to be in or not opposed to the best interests of the Company or such Indemnified Person was wholly successful on the merits with respect to such claim, action, suit or proceeding; provided, however, that the Company shall not be required to indemnify or hold an Indemnified Person harmless from and against any amount agreed to be paid by such Indemnified Person in connection with the settlement of a claim unless the Company consents to such settlement and such settlement amount, which consent shall not be unreasonably withheld or delayed; and provided, further, that this Section
+**10.2** shall not apply with respect to a claim asserted against (or by) an Indemnified Person by (or against) the Company or another Manager or Member. Indemnification under this Section
+**10.2** shall include (a) payment of reasonable attorneys’ fees and other expenses incurred in defending, contesting or settling any claim or threatened action or in connection with any legal proceeding and (b) the removal of liens affecting the property of an Indemnified Person.
+The Company shall indemnify any other person to the extent such person shall be entitled to indemnification under the laws of the State of Delaware by reason of being successful on the merits or otherwise in defense of an action to which such person is named a party by reason of being an employee or other agent of the Company, and the Company may further indemnify any such person if it is determined on a case by case basis by the Board of Managers that indemnification is proper in the specific case.
+Notwithstanding anything to the contrary, no Person shall be indemnified to the extent, if any, it is determined by written opinion of legal counsel designated by the Board of Managers for such purpose that indemnification is contrary to applicable law.
+Advancement of Expenses. The expenses of any Indemnified Person incurred in defending a civil or criminal action, suit or proceeding may be paid by the Company as they are incurred and/or in advance of the final disposition of the action, suit or proceeding, upon receipt of an undertaking by or on behalf of the Indemnified Person to (a) repay the amount if it is ultimately determined by a court of competent jurisdiction that such Indemnified Person is not entitled to be indemnified by the Company and (b) reasonably cooperate with the Company concerning such action, suit or proceeding. The provisions of this Section
+**10.3** do not affect any rights to advancement of expenses to which personnel of the Company other than such Indemnified Person may be entitled under any contract or otherwise.
+Insurance. The Company may purchase and maintain insurance on behalf of any Person that is or was a Member, Manager, Officer, fiduciary, employee or agent of the Company against any claims, demands, losses, damages, liabilities or expenses incurred by such Person in such capacity or arising out of such Person’s status as a Member, Manager, Officer, fiduciary, employee or agent of the Company, whether or not the Company would have the power to indemnify such Person under the provisions of Section
+**10.2** or under the Act.
+
+General Provisions
+Assurances. Except as otherwise provided in this Agreement, each Member shall execute all such certificates and other documents and shall do all such filing, recording, publishing, and other acts as the Board deems appropriate to comply with the requirements of law for the formation and operation of the Company and to comply with any laws, rules, and regulations relating to the acquisition, operation, or holding of the property of the Company.
+Notifications. Any notice, demand, consent, election, offer, approval, request, or other communication (collectively, a “notice”) required or permitted under this Agreement must be in writing, addressed to the Member at the Member’s address on the records of the Company (and initially as set forth on Exhibit B), and any applicable time period shall commence when the notice is (a) delivered by hand (with written confirmation of receipt), (b) when received by the addressee if sent by a nationally recognized overnight courier service (costs prepaid), (c) transmitted electronically to the Member’s facsimile number or e-mail address as last provided to the Company by the Member, with confirmation of receipt of transmission, (d) on the date sent by facsimile or email of a PDF document (with confirmation of transmission) if sent during normal business hours of the recipient, and on the next business day if sent after normal business hours of the recipient, or (e) on the third day after the date mailed by certified or registered mail, postage prepaid, return receipt requested. A notice to the Company must be addressed to the Company’s principal office. Any party may designate, by notice to all of the others, substitute addresses or addressees, facsimile numbers or email addresses for notices; and, thereafter, notices are to be directed to those substitute addresses or addressees, facsimile numbers or email addresses.
+Equitable Relief. The parties recognize that irreparable injury will result from a breach of any provision of this Agreement and that money damages will be inadequate to fully remedy the injury. Accordingly, in the event of a breach or threatened breach of one or more of the provisions of this Agreement, any party who may be injured (in addition to any other remedies which may be available to that party) shall be entitled to one or more preliminary or permanent orders (a) restraining and enjoining any act which would constitute a breach or (b) compelling the performance of any obligation which, if not performed, would constitute a breach.
+Complete Agreement. This Agreement constitutes the complete and exclusive statement of the agreement among the Members. It supersedes all prior written and oral statements, including any prior representation, statement, condition, or warranty. 
+Amendment and Modification; Waiver. 
+This Agreement may be amended, modified or supplemented only by (a) the Supermajority Approval, or an agreement in writing signed by each Member or their respective successors thereto; and (b) approval of the Company’s Board of Managers; provided, however, that no such amendment, modification or supplement may create an additional liability or obligation of any Member, including, without limitation, by increasing the initial Capital Contribution of any Member, or remove a right or create a disproportionate adverse effect on any Member without the prior written consent of such Member. No waiver by any party of any of the provisions hereof shall be effective unless explicitly set forth in writing and signed by the party so waiving. The waiver by any party hereto of a breach of any provision of this Agreement shall not operate or be construed as a waiver of any other breach. No failure to exercise, or delay in exercising, any right, remedy, power or privilege arising from this Agreement shall operate or be construed as a waiver thereof; nor shall any single or partial exercise of any right, remedy, power or privilege hereunder preclude any other or further exercise thereof or the exercise of any other right, remedy, power or privilege. Notwithstanding the foregoing, each Member acknowledges and agrees that the Board may amend Appendix B from time to time as necessary to reflect changes to Unit ownership effective in accordance with the terms of this Agreement or as otherwise appropriate to update the information set forth thereon, and such changes to Appendix B will not require the approval of the Members but instead constitute an administrative function to be performed by the Board rather than by an amendment to this Agreement.
+Notwithstanding the foregoing, the Board shall have the right, without the consent of the Members (provided notice is given to the Members), to amend this Agreement, including Appendix B hereto, in such fashion as may be required to: (a) reflect the admission of new or additional Members in accordance with the terms of this Agreement and any corresponding modifications of the Interests as a result of any additional Capital Contributions pursuant to Section
+**3.2** or the issuance of New Securities pursuant to Section 3.8; (b) reflect the issuance and terms of new Interests issued pursuant to Sections
+**3.2** and 3.8; (c) cure any immaterial ambiguity or to correct or supplement any immaterial provision herein that may be inconsistent with any other immaterial provision herein; (d) prevent the Company from in any manner being (i) deemed an “investment company” subject to the provisions of the Investment Company Act of 1940, as amended, (ii) treated as a “publicly traded partnership” for purposes of Code Section 7704, or (iii) subject to federal income taxes as an association taxable as a corporation; or (e) delete or add any provision in this Agreement required to be deleted or added by a state “Blue Sky” commissioner or similar such official, which deletion or addition is deemed by such official to be for the benefit of all of the Members; provided, however, that no such amendment may be adopted if such amendment would alter the limited liability of any Member or change the status of the Company as a partnership for tax purposes. No alteration or amendment made by the Managers pursuant to this Section
+**11.5** shall be altered or amended by the Members without the approval of the Managers. The Members hereby specifically consent to an amendment of this Agreement from time to time in such manner as is reasonably determined by the Managers, upon the advice of counsel for the Company, to be necessary or reasonably helpful to ensure that the allocations of Book income and loss and other tax items are given effect for federal income tax purposes, including any amendments determined by the Managers, in consultation with counsel to the Company, to be necessary to comply with the Regulations under Section 704 of the Code. 
+Applicable Law. All questions concerning the construction, validity, and interpretation of this Agreement and the performance of the obligations imposed by this Agreement shall be governed by the internal law, not the law of conflicts, of the State of Delaware.
+Section Titles. The headings herein are inserted as a matter of convenience only and do not define, limit or describe the scope of this Agreement or the intent of the provisions hereof.
+Binding Provisions. This Agreement is binding upon, and inures to the benefit of, the parties hereto and their respective heirs, successors, and permitted assigns.
+Jurisdiction and Venue. Any action, suit or proceeding involving any dispute or matter arising under this Agreement or the transactions contemplated hereby may only be brought in the courts of the State of Ohio, Franklin County. All Members hereby consent to the exercise of personal jurisdiction by any such court with respect to any such proceeding.
+Waiver of Jury Trial. THE PARTIES HEREBY WAIVE ANY RIGHT TO TRIAL BY JURY IN ANY PROCEEDING ARISING OUT OF OR RELATING TO THIS AGREEMENT, THE OPERATION, DISSOLUTION OR LIQUIDATION OF THE COMPANY, OR THE OWNERSHIP OR DISPOSITION OF ANY INTEREST THEREIN, WHETHER NOW EXISTING OR HEREAFTER ARISING, AND WHETHER SOUNDING IN CONTRACT, TORT OR OTHERWISE. THE PARTIES AGREE THAT ANY OF THEM MAY FILE A COPY OF THIS PARAGRAPH WITH ANY COURT AS WRITTEN EVIDENCE OF THE KNOWING, VOLUNTARY AND BARGAINED-FOR AGREEMENT AMONG THE PARTIES IRREVOCABLY TO WAIVE TRIAL BY JURY AND THAT ANY PROCEEDING WHATSOEVER BETWEEN THEM RELATING TO THIS AGREEMENT OR THE COMPANY SHALL INSTEAD BE TRIED IN A COURT OF COMPETENT JURISDICTION BY A JUDGE SITTING WITHOUT A JURY.
+Terms. Common nouns and pronouns shall be deemed to refer to the masculine, feminine, neuter, singular, and plural, as the identity of the Person may in the context require.
+Severability of Provisions. If any term or provision of this Agreement is invalid, illegal or unenforceable in any jurisdiction, such invalidity, illegality or unenforceability shall not affect any other term or provision of this Agreement or invalidate or render unenforceable such term or provision in any other jurisdiction. Upon such determination that any term or other provision is invalid, illegal or unenforceable, the parties hereto shall negotiate in good faith to modify this Agreement so as to effect the original intent of the parties as closely as possible in a mutually acceptable manner in order that the transactions contemplated hereby be consummated as originally contemplated to the greatest extent possible.
+Counterparts. This Agreement may be executed simultaneously in two or more counterparts, each of which shall be deemed an original and all of which, when taken together, constitute one and the same document. The signature of any party to any counterpart shall be deemed a signature to, and may be appended to, any other counterpart. A signed copy of this Agreement delivered by facsimile, email or other means of electronic transmission shall be deemed to have the same legal effect as delivery of an original signed copy of this Agreement.
+Legal Counsel. Any legal counsel engaged by the Company shall not be deemed, by virtue of such representation, also to be representing the Members, partners, or Affiliates of the Company. Such Law Firm will undertake no professional responsibility to such Members, partners, shareholders or Affiliates, and any such person who develops an individual interest or need for legal services in connection with any Legal Matter must engage at his, her or its own expense, separate legal counsel (other than the legal counsel retained by the Company) for such representation. No Member shall use the fact of legal counsel’s representation of the Company in any legal matter as a basis to object to, or otherwise seek disqualification of, such legal counsel’s representation or appearance on behalf of the Company in any other present or future legal matter.
+[Signature Pages Follow]
+
+IN WITNESS WHEREOF, the parties have executed, or caused this Operating Agreement to be executed by a duly authorized representative, as of the date first set forth above.
+
+ MEMBERS:
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+OHIO STATE INNOVATION FOUNDATION
+ 
+
+ By: 
+
+ Its: 
+
+
+
+THE LIMITED LIABILITY COMPANY MEMBERSHIP UNITS REPRESENTED BY THIS OPERATING AGREEMENT HAVE NOT BEEN REGISTERED WITH THE SECURITIES AND EXCHANGE COMMISSION UNDER THE SECURITIES ACT OF 1933, AS AMENDED, OR UNDER THE SECURITIES ACTS OR LAWS OF ANY STATE IN RELIANCE UPON EXEMPTIONS UNDER THOSE ACTS. THE SALE OR OTHER DISPOSITION OF SUCH MEMBERSHIP UNITS IS RESTRICTED AS STATED IN THIS OPERATING AGREEMENT, AND IN ANY EVENT IS PROHIBITED UNLESS THE COMPANY RECEIVES AN OPINION OF COUNSEL SATISFACTORY TO IT AND ITS COUNSEL THAT SUCH SALE OR OTHER DISPOSITION CAN BE MADE WITHOUT REGISTRATION UNDER THE SECURITIES ACT OF 1933, AS AMENDED, AND ANY APPLICABLE STATE SECURITIES ACTS AND LAWS. BY ACQUIRING MEMBERSHIP UNITS REPRESENTED BY THIS OPERATING AGREEMENT, EACH MEMBER REPRESENTS THAT IT WILL NOT SELL OR OTHERWISE DISPOSE OF ITS MEMBERSHIP UNITS WITHOUT COMPLIANCE WITH THE PROVISIONS OF THE OPERATING AGREEMENT AND REGISTRATION OR OTHER COMPLIANCE WITH THE AFORESAID ACTS AND THE RULES AND REGULATIONS ISSUED THEREUNDER.
+
+
+1
+
+2
+
+APPENDIX A
+
+[COMPANY NAME], LLC
+
+TAX MATTERS
+
+This Appendix is attached to and is a part of the operating agreement (the “Agreement”) of [COMPANY NAME], LLC (the “Company”). The parties to the Agreement intend that the Company be classified as a partnership for Federal income tax purposes pursuant to Section 7701(a)(2) of the Code and the regulations thereunder. The provisions of this Appendix are intended to comply with the requirements of Treas. Reg. §1.704-1 (b)(2)(iv) and Treas. Reg. §1.704-2 with respect to maintenance of capital accounts and allocations, and shall be interpreted and applied accordingly.
+
+## ARTICLE 1
+DEFINITIONS
+
+ 1.01. Definitions. For purposes of this Appendix, the capitalized terms listed below shall have the meanings indicated. Capitalized terms not listed below and not otherwise defined in this Appendix shall have the meanings specified in the Agreement.
+
+ “Account Reduction Item” means (i) any adjustment described in Treas. Reg. §1.704-1(b)(2)(ii)(d)(4); (ii) any allocation described in Treas. Reg. §1.704-1 (b)(2)(ii)(d)(5); or (iii) any distribution described in Treas. Reg. §1.704-1(b)(2)(ii)(d)(6).
+
+ “Adjusted Capital Account Balance” means, as of the end of any taxable year, a Member’s Capital Account balance as of the end of such taxable year (taking into account all contributions made by such Member and distributions made to such Member during such taxable year and any special allocations required by Sections 3.02, 3.03, 3.04(a), (b), and (d), and
+**3.06** of this Appendix, increased by the sum of (i) such Member’s share of Company Minimum Gain and (ii) such Member’s share of Member Nonrecourse Debt Minimum Gain, both determined after taking into account any such special allocations.
+
+ “Adjusted Fair Market Value” of an item of Company property means the greater of (i) the fair market value of such property or (ii) the amount of any nonrecourse indebtedness to which such property is subject within the meaning of Section 7701 (g) of the Code.
+
+ “Book” means the method of accounting prescribed for compliance with the capital account maintenance rules set forth in Treas. Reg. §1.704-1(b)(2)(iv) as reflected in Articles 2 and 3 of this Appendix, as distinguished from any accounting method which the Company may adopt for other purposes such as financial reporting
+
+ “Book Value” means, with respect to any item of Company property, the book value of such property within the meaning of Treas. Reg. §1.704-1(b)(2)(iv)(g)(3); provided, however, that if the Company adopts the remedial allocation method described in Treas. Reg. §1.704-3(d) with respect to any item of Company property, the Book Value of such property shall be its book basis determined in accordance with Treas. Reg. §1.704-3(d)(2).
+
+ “Company Minimum Gain” means partnership minimum gain determined pursuant to Treas. Reg. §1.704-2(d) and Section
+**5.02** of this Appendix.
+
+ “Equity Financing Threshold Date” means the date that the Equity Financing Threshold is met.
+
+ “Excess Deficit Balance” means the amount, if any, by which the balance in a Member’s Capital Account as of the end of the relevant taxable year is more negative than the amount, if any, of such negative balance that such Member is treated as obligated to restore to the Company pursuant to Treas. Reg. §1.704-1(b)(2)(ii)(c), Treas. Reg. §1.704-1(b)(2)(ii)(h), Treas. Reg. §1.704-2(g)(1), or Treas. Reg. §1.704-2(i)(5). Solely for purposes of computing a Member’s Excess Deficit Balance, such Member’s Capital Account shall be reduced by the amount of any Account Reduction Items that are reasonably expected as of the end of such taxable year.
+
+ “Excess Nonrecourse Liabilities” means excess nonrecourse liabilities within the meaning of Treas. Reg. §1.752-3(a)(3).
+
+ “Exculpatory Liability” means a liability that is recourse to the Company as an entity, and for which no Member or Related Person bears the economic risk of loss under Treas. Reg. §1.752-2.
+
+ “Member Nonrecourse Debt” means any liability of the Company that is a partner nonrecourse debt within the meaning of Treas. Reg. §1.704-2(b)(4).
+
+ “Member Nonrecourse Debt Minimum Gain” means minimum gain attributable to Member Nonrecourse Debt pursuant to Treas. Reg. §1.704-2(i)(3).
+
+ “Member Nonrecourse Deduction” means any item of Book loss or deduction that is a partner nonrecourse deduction within the meaning of Treas. Reg. §1.704-2(i)(1) and (2).
+
+ “Member Nonrecourse Distribution” means a distribution to a Member that is allocable to a net increase in such Member’s share of Member Nonrecourse Debt Minimum Gain pursuant to Treas. Reg. §1.704-2(i)(6).
+
+ “Nonrecourse Deduction” means, subject to Section
+**5.02** of this Appendix, a nonrecourse deduction determined pursuant to Treas. Reg. §1.704-2(b)(1) and Treas. Reg. §1.704-2(c).
+
+ “Nonrecourse Distribution” means a distribution to a Member that is allocable to a net increase in Company Minimum Gain pursuant to Treas. Reg. §1.704-2(h)(1).
+
+“Profit and Loss” has the meaning set forth in Section 3.01(a) of this Appendix. 
+
+ “Related Person” means, with respect to a Member, a person that is related to such Member pursuant to Treas. Reg. §1.752-4(b).
+
+ “Revaluation Event” means (i) a liquidation of the Company (within the meaning of Treas. Reg. §1.704-1 (b)(2)(ii)(g)); (ii) a contribution of more than a de minimis amount of money or other property to the Company by a new or existing Member or a distribution of more than a de minimis amount of money or other property to a retiring or continuing Member where such contribution or distribution alters the Percentage of any Member; (iii) the grant of an interest in the Company as consideration for the provisions of services to or for the benefit of the Company; or (iv) the issuance of additional Common Units to [DESIGNATED MEMBER] pursuant to the [DESIGNATED MEMBER] License (and as described under Section
+**7.3** of this Agreement).
+
+ “Section 705(a)(2)(B) Expenditures” means non-deductible expenditures of the Company that are described in Section 705(a)(2)(B) of the Code, and organization and syndication expenditures and disallowed losses to the extent that such expenditures or losses are treated as expenditures described in Section 705(a)(2)(B) of the Code pursuant to Treas. Reg. §1.704-1(b)(2)(iv)(i).
+
+ “Section 751 Property” means unrealized receivables and substantially appreciated inventory items within the meaning of Treas. Reg. §1.751-1(a)(1).
+
+ “Tax Basis” means, with respect to any item of Company property, the adjusted basis of such property as determined in accordance with the Code.
+
+ “Treasury Regulation” or “Treas. Reg.” means the temporary or final regulation(s) promulgated pursuant to the Code by the U.S. Department of the Treasury, as amended, and any successor regulation(s).
+
+## ARTICLE 2
+CAPITAL ACCOUNTS
+
+ 2.01. Maintenance.
+
+ (a) A single Capital Account shall be maintained for each Member in accordance with this Article 2.
+
+ (b) Each Member’s Capital Account shall from time to time be increased by:
+
+ (i) the amount of money contributed by such Member to the Company (including the amount of any Company liabilities which the Member assumes (within the meaning of Treas. Reg. §1.704-1 (b)(2)(iv)(c)), but excluding liabilities assumed in connection with the distribution of Company property and excluding increases in such Member’s share of Company liabilities pursuant to Section 752 of the Code);
+
+ (ii) the fair market value of property contributed by such Member to the Company (net of any liabilities secured by such property that the Company is considered to assume or take subject to under Section 752 of the Code); 
+
+ (iii) allocations to such Member of Company Profit (or the amount of any item or items of income or gain included therein), including, without limitation, upon the revaluation of any Company property pursuant to Section 2.02(a) of this Appendix, the Book gain (if any) that would have been allocated to such Member if such Company property had been sold at its Adjusted Fair Market Value as of the date of such revaluation; and
+
+(iv) except as otherwise set forth herein, any item of income or gain allocated to such Member pursuant to Sections 3.02-3.06 of this Appendix.
+
+ (c) Each Member’s Capital Account shall from time to time be reduced by:
+
+ (i) the amount of money distributed to such Member by the Company (including the amount of such Member’s individual liabilities for which the Company becomes personally and primarily liable but excluding liabilities assumed in connection with the contribution of property to the Company and excluding decreases in such Member’s share of Company liabilities pursuant to Section 752 of the Code);
+
+ (ii) the fair market value of property distributed to such Member by the Company (net of any liabilities secured by such property that such Member is considered to assume or take subject to pursuant to Section 752 of the Code); 
+
+ (iii) allocations to such Member of Company Loss (or items thereof), including, without limitation, upon the revaluation of any Company property pursuant to Section 2.02(a) of this Appendix, the Book loss (if any) that would have been allocated to such Member if such Company property had been sold at its Adjusted Fair Market Value as of the date of such revaluation; and
+
+(iv) except as otherwise set forth herein, any item of loss or deduction allocated to such Member pursuant to Sections 3.02-3.06 of this Appendix.
+
+ (d) The Company shall make such other adjustments to the Capital Accounts of the Members as are necessary to comply with the provisions of Treas. Reg. §1.704-1(b)(2)(iv).
+
+ 2.02. Revaluation of Company Property.
+
+ (a) Upon the occurrence of a Revaluation Event, the Board may revalue all Company property (whether tangible or intangible) for Book purposes to reflect the Adjusted Fair Market Value of Company property immediately prior to the Revaluation Event. In the event that Company property is so revalued, the Capital Accounts of the Members shall be adjusted in accordance with Treas. Reg. §1.704-1(b)(2)(iv)(f). Upon the exercise of a noncompensatory option, the Board will revalue all Company property (whether tangible or intangible) in accordance with Treasury Regulation Section 1.704-1(b)(2)(iv)(s).
+
+ (b) Upon the distribution of Company property to a Member, if Company property is not revalued pursuant to Section 2.02(a) of this Appendix, the property to be distributed shall be revalued for Book purposes to reflect the Adjusted Fair Market Value of such property immediately prior to such distribution, and the Capital Accounts of all Members shall be adjusted in accordance with Treas. Reg. §1.704-1(b)(2)(iv)(e).
+
+ 2.03. Restoration of Negative Balances. No Member with a deficit balance in its Capital Account shall have any obligation to the Company, to any other Member or to any third party to restore or repay said deficit balance.
+
+ 2.04. Transfers of Interests.
+
+ (a) Upon the transfer of a Member’s entire Interest in the Company, the Capital Account of such Member shall carry over to the transferee.
+
+ (b) Upon the transfer of a portion of a Member’s Interest in the Company, the portion of such Member’s Capital Account attributable to the transferred portion shall carry over to the transferee. In the event that the document effecting such transfer specifies the portion of such Member’s Capital Account to be transferred, such portion shall be deemed to be the portion attributable to the transferred portion of such Member’s Interest for purposes of this Section 2.04(b).
+
+## ARTICLE 3
+ALLOCATION OF PROFIT AND LOSS
+
+ 3.01. Profit And Loss.
+
+ (a) The Profit and Loss of the Company for purposes of determining allocations to the Capital Accounts of the Members shall be determined in the same manner as the determination of the Company’s taxable income pursuant to Section 703(a) of the Code, except that (i) items that are required by Section 703(a)(1) of the Code to be separately stated shall be included; (ii) items of income that are exempt from inclusion in gross income for Federal income tax purposes shall be treated as Book income, and related deductions that are disallowed under Section 265 of the Code shall be treated as Book deductions; (iii) Section 705(a)(2)(B) Expenditures shall be treated as deductions; (iv) items of gain, loss, depreciation, amortization, or depletion that would be computed for Federal income tax purposes by reference to the Tax Basis of an item of Company property shall be determined by reference to the Book Value of such item of property; (v) the effects of upward and downward revaluations of Company property pursuant to Section
+**2.02** of this Appendix shall be treated as gain or loss respectively from the sale of such property; and (vi) any items that are specially allocated pursuant to Section
+**3.04** of this Appendix shall not be taken into account in computing Profit or Loss, but the amounts of those items are to be determined by applying rules comparable to those provided in subparagraphs (i) through (v) above, and clause (b) below.
+
+ (b) In the event that the Book Value of any item of Company property differs from its Tax Basis, the amount of Book depreciation, depletion, or amortization for a period with respect to such property shall be computed so as to bear the same relationship to the Book Value of such property as the depreciation, depletion, or amortization computed for tax purposes with respect to such property for such period bears to the Tax Basis of such property. If the Tax Basis of such property is zero, the Book depreciation, depletion, or amortization with respect to such property shall be computed by using a method consistent with the method that would be used for tax purposes if the Tax Basis of such property were greater than zero.
+
+ (c) Allocations to the Capital Accounts of the Members shall be based on the Profit or Loss of the Company as determined pursuant to this Section 3.01. Such allocations shall be made as provided in the Agreement except to the extent modified by the provisions of this Article 3.
+
+ 3.02. Allocation of Nonrecourse Deductions. Notwithstanding any other provisions of the Agreement, Nonrecourse Deductions shall be allocated among the Members in proportion to their respective Percentages.
+
+ 3.03. Allocation of Member Nonrecourse Deductions. Notwithstanding any other provisions of the Agreement, any item of Member Nonrecourse Deduction with respect to a Member Nonrecourse Debt shall be allocated to the Member or Members who bear the economic risk of loss for such Member Nonrecourse Debt in accordance with Treas. Reg. §1.704-2(i).
+
+ 3.04. Chargebacks of Income and Gain. Notwithstanding any other provisions of the Agreement:
+
+ (a) Company Minimum Gain. In the event that there is a net decrease in Company Minimum Gain for a taxable year of the Company, then before any other allocations are made for such taxable year, each Member shall be allocated items of Book income and gain for such year (and, if necessary, for subsequent years) to the extent required by Treas. Reg. §1.704-2(f).
+
+ (b) Member Nonrecourse Debt Minimum Gain. In the event that there is a net decrease in Member Nonrecourse Debt Minimum Gain for a taxable year of the Company, then after taking into account allocations pursuant to paragraph (a) immediately preceding, but before any other allocations are made for such taxable year, each Member with a share of Member Nonrecourse Debt Minimum Gain at the beginning of such year shall be allocated items of Book income and gain for such year (and, if necessary, for subsequent years) to the extent required by Treas. Reg. §1.704-2(i)(4).
+
+ (c) Application for Waiver. In the event that the Board determines that the application of the provisions of Section 3.04(a) or Section 3.04(b) of this Appendix would cause a distortion in the economic arrangement among the Members, the Board may, on behalf of the Company, request a waiver of the application of either or both of such provisions pursuant to Treas. Reg. §1.704-2(f)(4) or Treas. Reg. §1.704-2(i)(4).
+
+ (d) Qualified Income Offset. In the event that any Member unexpectedly receives any Account Reduction Item that results in an Excess Deficit Balance at the end of any taxable year after taking into account all other allocations and adjustments under this Agreement other than allocations under Section 3.04(e) of this Appendix, then items of Book income and gain for such year (and, if necessary, for subsequent years) will be reallocated to each such Member in the amount and in the proportions needed to eliminate such Excess Deficit Balance as quickly as possible.
+
+ (e) Gross Income Allocation. If, at the end of any taxable year, the Capital Accounts of any Members have Excess Deficit Balances after taking into account all other allocations and adjustments under this Agreement, then items of Book income and gain for such year will be reallocated to such Members in the amount and in the proportions needed to eliminate such Excess Deficit Balances as quickly as possible.
+
+ 3.05. Reallocation to Avoid Excess Deficit Balances. Notwithstanding any other provisions of the Agreement, no Loss shall be allocated to any Member to the extent that such allocation would cause or increase an Excess Deficit Balance in the Capital Account of such Member. Such Loss shall be reallocated away from such Member and to the other Members in accordance with the Agreement, but only to the extent that such reallocation would not cause or increase Excess Deficit Balances in the Capital Accounts of such other Members.
+
+ 3.06. Corrective Allocation. Subject to the provisions of Sections 3.02, 3.03, 3.04, and
+**3.05** of this Appendix (the “Regulatory Allocations”), but notwithstanding any other provision of the Agreement, in the event that any Regulatory Allocation is made pursuant to this Appendix for any taxable year, the Manager shall make such offsetting special allocations in whatever manner they determine appropriate so that, after such offsetting allocations are made, each Member’s Capital Account balance is, to the extent possible, equal to the Capital Account balance such Member would have had if the Regulatory Allocations were not part of this Agreement and all Company items were allocated pursuant to Section 4.1. In exercising its discretion under this Section
+**3.06** of the Appendix, the Manager may take into account future Regulatory Allocations under Sections 3.04(a) and (b) of this Appendix that, although not yet made, are likely to offset other Regulatory Allocations previously made under Sections
+**3.02** and
+**3.03** of this Appendix, respectively.
+
+ 3.07. Other Allocations.
+
+ (a) If during any taxable year of the Company there is a change in any Member’s interest in the Company, allocations of Book income or loss for such taxable year shall take into account the varying interests of the Members in the Company in a manner consistent with the requirements of Section 706 of the Code.
+
+(b) Except as otherwise provided in this Agreement, all items of Company Book income, gain, loss, deduction, and any other allocations not otherwise provided for will be divided among the Members in the same proportions as they share Profits or Losses, as the case may be, for the taxable year of the Company.
+
+(c) Notwithstanding anything in this Agreement to the contrary, the Company may take any such actions as it deems necessary in order to comply with the requirements of the Treasury Regulations under Section 704(b) of the Code relating to noncompensatory options (the “Noncompensatory Option Regulations”), including, without limitation, (i) the special allocation of items of income, gain, loss or deduction, as well as Company capital, among the Members in connection with the exercise of a Company noncompensatory option, and (ii) the corrective allocation for tax purposes of gross income, gain, loss or deduction in the event of a reallocation of Company capital in accordance with the Noncompensatory Option Regulations.
+
+## ARTICLE 4
+ALLOCATION OF TAX ITEMS
+
+ 4.01. In General. Except as otherwise provided in this Article 4, all items of income, gain, loss, and deduction shall be allocated among the Members for Federal income tax purposes in the same manner as the corresponding allocation for Book purposes.
+
+ 4.02. Section 704(c) Allocations. In the event that the Book Value of an item of Company property differs from its Tax Basis, allocations of depreciation, depletion, amortization, gain, and loss with respect to such property will be made for Federal income tax purposes in a manner that takes account of the variation between the Tax Basis and Book Value of such property in accordance with Section 704(c)(1)(A) of the Code and Treas. Reg. §1.704-1(b)(4)(i). The Board may select any reasonable method or methods for making such allocations, including, without limitation, any method described in Treas. Reg. §1.704-3(b), (c), or (d).
+
+ 4.03. Tax Credits. Tax credits shall be allocated among the Members in accordance with Treas. Reg. §1.704-1(b)(4)(ii).
+
+## ARTICLE 5
+OTHER TAX MATTERS
+
+ 5.01. Excess Nonrecourse Liabilities. For the purpose of determining the Members’ shares of the Company’s Excess Nonrecourse Liabilities pursuant to Treas. Reg. §§1.752-3(a)(3) and 1.707-5(a)(2)(ii), and solely for such purpose, the Members’ interests in profits are hereby specified to be their respective Percentages.
+
+ 5.02. Exculpatory Liabilities. The Board may (a) treat deductions attributable to Exculpatory Liabilities as deductions that are not Nonrecourse Deductions, and (b) disregard Exculpatory Liabilities in the determination of Company Minimum Gain.
+
+ 5.03. Treatment of Certain Distributions.
+
+ (a) In the event that (i) the Company makes a distribution that would (but for this Subsection (a)) be treated as a Nonrecourse Distribution; and (ii) such distribution does not cause or increase a deficit balance in the Capital Account of the Member receiving such distribution as of the end of the Company’s taxable year in which such distribution occurs; then the Board may treat such distribution as not constituting a Nonrecourse Distribution to the extent permitted by Treas. Reg. §1.704-2(h)(3).
+
+ (b) In the event that (i) the Company makes a distribution that would (but for this Subsection (b)) be treated as a Member Nonrecourse Distribution; and (ii) such distribution does not cause or increase a deficit balance in the Capital Account of the Member receiving such distribution as of the end of the Company’s taxable year in which such distribution occurs; then the Board may treat such distribution as not constituting a Member Nonrecourse Distribution to the extent permitted by Treas. Reg. §1.704-2(i)(6).
+
+ 5.04. Reduction Of Basis. In the event that a Member’s interest in the Company may be treated in whole or in part as depreciable property for purposes of reducing such Member’s basis in such interest pursuant to Section 1017(b)(3)(C) of the Code, the Board may, upon the request of such Member, make a corresponding reduction in the basis of the Company’s depreciable property with respect to such Member. Such request shall be submitted to the Company in writing, and shall include such information as may be reasonably required in order to effect such reduction in basis.
+
+ 5.05. Entity Classification. Neither the Company nor any Member shall file or cause to be filed any election, the effect of which would be to cause the Company to be classified as other than a partnership for Federal income tax purposes, without the prior written consent of all Members.
+
+
+[Remainder of Page Intentionally Blank]
+
+
+
+
+
+
+A-8
+APPENDIX B
+
+[COMPANY NAME], LLC
+Operating Agreement
+
+List of Members, Capital, and Interests
+
+ 
+Name and Address
+ 
+Common
+Units
+ Initial Capital Contribution
+ Initial Capital Account Balance
+ 
+Voting Interest
+ Profits Interest Units
+ 
+Percentage 
+ Effective Date of Unit Ownership
+
+ MEMBERS:
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ [DESIGNATED MEMBER], DESIGNEE of [DESIGNATED MEMBER]
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ TOTAL:
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+Authorized Units
+ Authorized Common Units 
+ 
+
+ Authorized Profits Interest Units
+ 
+
+ Total Authorized Units
+ 
+
+
+
+
+
+APPENDIX C
+Preemptive Rights Assignment Agreement
+See attached.
+
+ 
+APPENDIX D
+Example Illustrating Application of Section
+**7.3** 
+On date 1, Founder A contributes $5,000 to LLC for 40 Common Units, Founder B contributes $5,000 to LLC for 40 Common Units, [DESIGNATED MEMBER] enters into a license for 10 Common Units, and 10 Profit Interest Units are issued to Service Provider. The initial Capital Account balances of the Members are as follows: 
+
+ Member Capital Account Units
+ Founder A: $4,500 40 Common Units 
+ Founder B: $4,500 40 Common Units
+ [DESIGNATED MEMBER]: $1,000 10 Common Units
+ Service Provider: $0 10 Profits Interest Units
+
+On date 2, a Triggering Event occurs. As a result of the Triggering Event, [DESIGNATED MEMBER] is entitled to receive an additional 10 Common Units under the [DESIGNATED MEMBER] License (the “Additional Issuance”). The fair market value of LLC immediately prior to the Additional Issuance is $100,000.
+
+The Capital Accounts of the Members are adjusted immediately before the Additional Issuance to $100,000 in accordance with Section
+**2.02** of Appendix A. After this adjustment (without taking into account additional Units issued to [DESIGNATED MEMBER] pursuant to the Additional Issuance) the Capital Account balances of the Members are:
+
+Member Capital Account Units
+Founder A: $40,500 40 Common Units
+Founder B: $40,500 40 Common Units
+[DESIGNATED MEMBER]: $10,000 10 Common Units
+Service Provider: $9,000 10 Profit Interest Units 
+
+Pursuant to Section
+**7.3** of this Agreement, upon the Additional Issuance to [DESIGNATED MEMBER] of 10 Common Units, [DESIGNATED MEMBER]’s aggregate Capital Account must equal 18.1818% of the aggregate Capital Account balances of all of the Members (i.e., 18.1818% x $100,000 = $18,181.82). Therefore, $8,181.82 of capital must be attributed to the new Common Units issued to [DESIGNATED MEMBER]. As a result, after the issuances and adjustments described above, the Capital Account balances and Units of the Members are:
+
+ Member Capital Account Units
+ Founder A: $36,863.64 40 Common Units
+ Founder B: $36,863.64 40 Common Units
+ [DESIGNATED MEMBER]: $18,181.82 20 Common Units
+ Service Provider: $8,090.91 10 Profit Interest Units $100,000 110 Units
+
+
+
+

@@ -1,0 +1,39 @@
+/* GLAW ENFORCED HOUSE STYLE — us-corporate-legal-instrument (UNIVERSAL).
+   Apply to EVERY GLAW template/published document. Reconstructed from a filed Delaware
+   bylaws instrument (typography report 2026-06-06): Times New Roman 10pt, justified,
+   x1.15 leading, ARTICLE I / Section 1. / (a) / (i) outline, run-in bold section heads,
+   centered all-caps bold title block, NO header/footer/page numbers. */
+@page { size: letter; margin: 1in 0.98in 1.14in 1in; }   /* top right bottom left */
+body {
+  font: 10pt/1.15 "Times New Roman", Georgia, serif;
+  color: #000; text-align: justify;
+  max-width: 6.5in; margin: 0 auto;
+}
+/* Title block: stacked, centered, ALL CAPS, bold (e.g. BYLAWS / OF / [COMPANY], INC. / (A DELAWARE CORPORATION)) */
+h1 {
+  font-size: 10pt; font-weight: bold; text-transform: uppercase;
+  text-align: center; text-decoration: none; line-height: 1.3;
+  margin: 0 0 12pt;
+}
+/* Article heading (de-facto H1 within the body): centered, ALL CAPS, bold */
+h2 {
+  font-size: 10pt; font-weight: bold; text-transform: uppercase;
+  text-align: center; text-decoration: none; margin: 12pt 0 6pt;
+}
+/* Subsection heading line (rare; sections normally run in): bold, flush-left, Title Case */
+h3 {
+  font-size: 10pt; font-weight: bold; text-transform: none;
+  text-align: left; text-decoration: none; text-indent: 0; margin: 6pt 0 0;
+}
+/* Body: block paragraphs, NO first-line indent, ~6pt after, run-in heads start flush */
+p { text-indent: 0; margin: 0 0 6pt; }
+/* Run-in headings: **Section 1. Registered Office.** / **(a)** / **(g) Insurance.** */
+b, strong { font-weight: bold; }
+/* Defined terms: "**Term**" -> bold italic in quotes */
+.defterm { font-weight: bold; font-style: italic; }
+/* Minimal fallbacks (the instrument format uses none of these, but keep robust at 10pt) */
+blockquote { font-style: italic; color: #333; border-left: 2px solid #999; padding: 3pt 8pt; text-align: left; text-indent: 0; margin: 6pt 0; }
+table { border-collapse: collapse; width: 100%; font-size: 10pt; margin: 6pt 0; }
+td, th { border: 1px solid #000; padding: 3pt 6pt; text-align: left; text-indent: 0; }
+th { background: #eee; }
+hr { border: 0; border-top: 1px solid #000; margin: 6pt 0; }

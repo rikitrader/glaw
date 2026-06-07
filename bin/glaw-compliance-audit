@@ -4,7 +4,7 @@
 Points a master checklist at a corp's document folder, matches each item against
 the documents present (by filename + text content), and reports per item:
   ✅ HAVE  · 🟡 ACTION/needs-data · ❌ GAP
-Generalizes a one-off S-Corp compliance matrix into a tool any matter
+Generalizes the one-off Blackstone S-Corp Compliance Matrix into a tool any matter
 can run. Checklists are data (lib/checklists/<type>.json) — add C-corp / LLC / fund
 by dropping in another JSON.
 

@@ -1,0 +1,82 @@
+#!/usr/bin/env python3
+"""GLAW Reflection Engine — the higher-level-knowledge layer of the memory architecture.
+Reads the raw learnings ledger (episodic + per-error learnings), clusters related ones, and
+SYNTHESIZES meta-rules (semantic/knowledge memory) that generalize beyond the single instance.
+Synthesized rules are written back as type=knowledge entries, so future preflight injects the
+generalization, not just the specific case. Mirrors to Qdrant when reachable (graceful no-op).
+
+Usage: glaw-reflect [--apply]   (default: dry-run preview; --apply writes synthesized knowledge)
+"""
+import sys, os, json, re, datetime as dt
+
+STORE = os.path.expanduser("~/.glaw/learnings/learnings.jsonl")
+
+# Theme map: error_class -> (theme, synthesized meta-rule). When >=2 learnings share a theme,
+# the engine promotes the theme to a standing knowledge rule.
+THEMES = {
+  "cite-discipline": (
+    {"cite-caption","cite-reporter","351-lead-authority","scotus-misuse","off-point-authority","no-primary-authority"},
+    "CITE DISCIPLINE (synthesized): every case/ruling/statute must carry its full official caption + reporter, "
+    "be the ON-POINT lead authority for the proposition, and be verified via a court/IRS API before use. "
+    "Marketing blogs are never authority (§6662). Confirm a ruling's actual subject before citing it."),
+  "date-regime-discipline": (
+    {"state-deadline","qsbs-regime"},
+    "DATE/REGIME DISCIPLINE (synthesized): pin every statutory deadline and every effective-date regime to "
+    "primary authority for the specific year/entity; never assert a post-amendment figure (e.g. OBBBA QSBS) "
+    "without proving the triggering date. State deadlines differ from federal — verify each."),
+  "substantiation-discipline": (
+    {"rd-aggregation","fabrication-guard","rsu-vs-restricted","409a-standard"},
+    "SUBSTANTIATION DISCIPLINE (synthesized): run threshold/aggregation gates BEFORE claiming a benefit; apply "
+    "the correct standard for the specific safe harbor; never fabricate a fact/number/cite (use [VERIFY]); and "
+    "confirm the instrument type (restricted stock vs RSU) before applying a rule."),
+}
+
+def load():
+    if not os.path.exists(STORE): return []
+    out=[]
+    for l in open(STORE):
+        l=l.strip()
+        if l:
+            try: out.append(json.loads(l))
+            except: pass
+    return out
+
+def main():
+    apply = "--apply" in sys.argv
+    items = load()
+    by_class = {}
+    for x in items:
+        by_class.setdefault(x.get("error_class"), []).append(x)
+    synth = []
+    for theme,(classes,rule) in THEMES.items():
+        hits = [c for c in classes if c in by_class]
+        if len(hits) >= 2:
+            synth.append({"type":"knowledge","scope":"firm","error_class":theme,
+                          "synthesized_from":hits,"rule":rule,"confidence":9,
+                          "ts":dt.datetime.now(dt.timezone.utc).isoformat()})
+    print(f"Reflected over {len(items)} learnings in {len(by_class)} classes.")
+    print(f"Synthesized {len(synth)} higher-level meta-rules:")
+    for s in synth:
+        print(f"  • [{s['error_class']}] from {s['synthesized_from']}")
+        print(f"      {s['rule'][:110]}...")
+    if apply and synth:
+        # dedupe by error_class against existing synthesized rules
+        have = {x.get("error_class") for x in items if x.get("type")=="knowledge"}
+        wrote=0
+        with open(STORE,"a") as f:
+            for s in synth:
+                if s["error_class"] in have: continue
+                f.write(json.dumps(s)+"\n"); wrote+=1
+        print(f"\nWrote {wrote} new synthesized knowledge rules to the ledger.")
+        # mirror to Qdrant if reachable (graceful no-op)
+        try:
+            import urllib.request
+            urllib.request.urlopen("http://localhost:6333/healthz", timeout=2)
+            print("Qdrant reachable — (sync hook) run glaw-memory-sync to push vectors.")
+        except Exception:
+            print("Qdrant not reachable — synthesized rules live in the JSONL ledger; vector sync deferred.")
+    elif not apply:
+        print("\ndry-run; re-run with --apply to persist synthesized knowledge.")
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,98 @@
+#!/usr/bin/env python3
+"""GLAW self-learning ledger — institutional memory so the same defect never recurs.
+Every Chief-Counsel run APPENDS the defects it found + the fix; every future run READS the
+ledger first (preflight) so adversarial/remediation/draft agents pre-empt known errors at
+draft time. The new-error count trends to zero across runs = the alignment curve.
+
+Store: ~/.glaw/learnings/learnings.jsonl  (append-only)
+
+Usage:
+  glaw-learnings add '<json>'                 # {error_class,where,wrong,fix,authority,confidence,matter,run_id}
+  glaw-learnings preflight [matter]           # formatted "KNOWN DEFECTS — DO NOT REPEAT" digest for injection
+  glaw-learnings search "<query>"             # matching learnings
+  glaw-learnings list [--limit N]
+  glaw-learnings stats                        # count by error_class (the curve)
+"""
+import sys, os, json, datetime as dt, re
+
+STORE = os.path.expanduser("~/.glaw/learnings/learnings.jsonl")
+os.makedirs(os.path.dirname(STORE), exist_ok=True)
+
+def _load():
+    if not os.path.exists(STORE): return []
+    out = []
+    for line in open(STORE):
+        line = line.strip()
+        if not line: continue
+        try: out.append(json.loads(line))
+        except: pass
+    return out
+
+def add(js):
+    try: d = json.loads(js)
+    except Exception as e:
+        print("bad json:", e); sys.exit(1)
+    d.setdefault("ts", dt.datetime.now(dt.timezone.utc).isoformat())
+    d.setdefault("confidence", 8)
+    # dedupe on (error_class, where) — update instead of duplicating
+    existing = _load()
+    key = (d.get("error_class"), d.get("where"))
+    if any((x.get("error_class"), x.get("where")) == key for x in existing):
+        print(f"learning already known: {key} (not duplicated)")
+        return
+    with open(STORE, "a") as f:
+        f.write(json.dumps(d) + "\n")
+    print(f"LEARNED: [{d.get('error_class')}] {d.get('wrong','')[:60]}")
+
+def preflight(matter=None):
+    # RuFlo-aligned outcome-aware retrieval: firm-scope + this-matter namespace, ranked by
+    # importance (confidence) desc so the highest-signal defects lead. Synthesized meta-rules first.
+    items = _load()
+    if matter:
+        items = [x for x in items if x.get("scope") == "firm" or (x.get("matter") and matter in str(x.get("matter")))] or items
+    if not items:
+        print("KNOWN DEFECTS — none recorded yet (first run).")
+        return
+    meta = [x for x in items if x.get("type") == "knowledge" and x.get("rule")]
+    specs = [x for x in items if not (x.get("type") == "knowledge" and x.get("rule"))]
+    specs.sort(key=lambda x: -float(x.get("confidence", 8)))
+    print(f"KNOWN DEFECTS — DO NOT REPEAT ({len(items)} memories; pre-empt each at draft time):")
+    if meta:
+        print("  ── synthesized meta-rules (reflection engine) ──")
+        for m in meta: print(f"  ★ {m.get('rule')}")
+        print("  ── specific prior defects (by importance) ──")
+    for x in specs:
+        print(f"- [{x.get('error_class')}] WRONG: {x.get('wrong','')}  →  FIX: {x.get('fix','')}"
+              + (f"  (authority: {x.get('authority')})" if x.get('authority') else ""))
+
+def search(q):
+    q = q.lower()
+    for x in _load():
+        blob = json.dumps(x).lower()
+        if q in blob:
+            print(json.dumps(x, indent=2))
+
+def stats():
+    items = _load()
+    by = {}
+    for x in items: by[x.get("error_class","?")] = by.get(x.get("error_class","?"),0)+1
+    print(f"total learnings: {len(items)}")
+    for k,v in sorted(by.items(), key=lambda kv:-kv[1]): print(f"  {v:3d}  {k}")
+
+def main():
+    if len(sys.argv) < 2:
+        print(__doc__); sys.exit(0)
+    cmd = sys.argv[1]
+    if cmd == "add" and len(sys.argv) > 2: add(sys.argv[2])
+    elif cmd == "preflight": preflight(sys.argv[2] if len(sys.argv) > 2 else None)
+    elif cmd == "search" and len(sys.argv) > 2: search(sys.argv[2])
+    elif cmd == "list":
+        lim = 50
+        m = re.search(r"--limit\s+(\d+)", " ".join(sys.argv))
+        if m: lim = int(m.group(1))
+        for x in _load()[-lim:]: print(json.dumps(x))
+    elif cmd == "stats": stats()
+    else: print(__doc__)
+
+if __name__ == "__main__":
+    main()

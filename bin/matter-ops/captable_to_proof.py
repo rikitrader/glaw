@@ -12,7 +12,7 @@ from google.oauth2.credentials import Credentials
 from google.auth.transport.requests import Request
 from googleapiclient.discovery import build
 
-SHEET = os.environ.get("GLAW_CAPTABLE_SHEET", "YOUR_CAP_TABLE_SHEET_ID")  # set GLAW_CAPTABLE_SHEET to your Google Sheet
+SHEET = os.environ.get("GLAW_CAPTABLE_SHEET", "YOUR_CAP_TABLE_SHEET_ID")  # set GLAW_CAPTABLE_SHEET
 TAB = "Cap Table View"
 
 def num(s):

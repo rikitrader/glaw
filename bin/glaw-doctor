@@ -125,7 +125,7 @@ done
 [ "$ext" = 0 ] && ok "all mapped external seats installed"
 # 3e. cross-skill /glaw-* references across ALL SKILL.md resolve (catch routing typos)
 xref=0
-for ref in $(cat "$GLAW"/*/SKILL.md 2>/dev/null | sed -E 's#(bin|assets)/glaw-[a-z0-9.-]*##g' | grep -oE '/glaw-[a-z0-9-]+' | sed 's#/##' | sort -u); do
+for ref in $(cat "$GLAW"/*/SKILL.md 2>/dev/null | sed -E 's#(bin|assets|forms-library)/glaw-[a-z0-9.-]*##g' | grep -oE '/glaw-[a-z0-9-]+' | sed 's#/##' | sort -u); do
   [ -d "$GLAW/${ref#glaw-}" ] || [ -e "$ROOT/$ref" ] || { warn "skill cross-ref -> /$ref (no such sub-skill)"; xref=$((xref+1)); }
 done
 [ "$xref" = 0 ] && ok "all cross-skill /glaw-* references resolve"

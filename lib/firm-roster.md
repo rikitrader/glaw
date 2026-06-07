@@ -10,6 +10,10 @@ domain below maps to a seat.
 | Seat | Skill | Role |
 |------|-------|------|
 | Managing Partner | `/glaw` | Opens matter, drives the pipeline, assigns seats |
+| **Chief Counsel (autonomous decision authority)** | `/glaw-chief-counsel` | Runs the loop-until-bulletproof multi-persona debate (relentless IRS/government lead adversary with veto), verifies every cite, ingests Drive comments, routes fixes to seats, and issues the result-oriented file-readiness decision ("yes, we are ready"). Engine: `assets/glaw-chief-counsel-loop.js` |
+| Consensus gate | `/glaw-consensus` | Reusable scored gate (panel 0-10 + IRS veto) → BULLETPROOF / DRAFTING-CLEAN / NEEDS-WORK; logic unit-tested in `glaw-chief-counsel/test/loop-selftest.mjs` |
+| ReasoningBank | `/glaw-reasoningbank` | Trajectory store (task→verdict→outcome→score) + outcome-aware retrieval; distills to `glaw-learnings`, mirrors to Qdrant/AgentDB |
+| Forms library + fill-engine | `/glaw-forms` | Picks the right SEC-derived master (option/plan/RSU/SAFE/note), fills from the cap table, renders house style, gates issuance |
 | Review bench | `/glaw-autocounsel` | Runs strategy + structure + adversarial back-to-back |
 | General Counsel | `/glaw-ethics-conflicts` | Conflicts, engagement letters, RPC ethics, UPL gate |
 | Legal Research | `/glaw-legal-research` | Citation verification — anti-hallucination guardrail |
@@ -73,6 +77,7 @@ Covers: **Corporate**, entity structuring, IP, contracts, employment, real estat
 | ↳ *one-shot orchestrator:* `bin/glaw-review-chain <contract.docx> <findings.json> --matter <slug>` runs the whole chain in one command — derives the scorecard, generates the Word tracked changes + PDFs, publishes review+scorecard, and drops everything (review + scorecard ×3 formats + tracked-changes Word + redline/summary/memo PDFs) into ONE Drive folder. **"Review this Drive contract" action:** download → `contract-review` produces findings → `glaw-review-chain` does the rest. | (pipeline) |
 | Employment & labor | `/glaw-employment-counsel` |
 | Real estate | `/glaw-real-estate-counsel` |
+| §83(b) elections + founder restricted stock + IRS Form 15620 + cap table + Drive comment-review loop | `/glaw-83b-election` |
 
 ## Securities, Funds & Capital Markets Division
 Covers: **VC fund**, **Private Equity**, **Fund Management**, **SEC compliance**.
@@ -88,8 +93,11 @@ Covers: **IRS**, tax planning, tax controversy.
 | Seat | Skill |
 |------|-------|
 | Proactive tax minimization, QSBS §1202, asset protection, wealth | `tax-strategy` |
+| **Full tax-credit/incentive STRATEGY DOSSIER** (roadmap + step-by-step + deadlines + per-credit requirements: QSBS §1202, §83(b)/15620, §351, §409A, R&D §41/§174A, NOLs, §195/§248, ISOs) | `/glaw-credit-strategy` |
 | Back taxes, non-filers, penalty abatement, OIC, IRS collections defense | `tax-compliance`, `tax-relief` |
 | Tax-matter intake / triage | `tax-legal-intake` |
+| **IP + 409A valuation engine** (audit-ready DRAFT FMV + strike via real OPM/Black-Scholes `bin/opm.py`; IP valuation; equity allocation OPM/PWERM + DLOM; risk scorecard) — fills facts #4/#8 pending appraiser sign-off | `/glaw-valuation-409a` |
+| **Valuation adversary** (IRS valuation-examiner RED-team: attacks FMV/DLOM/sigma/backsolve/comps; defensibility 0-10 + sensitivity) — mandatory pass before any valuation is "ready" | `/glaw-valuation-adversary` |
 | IRS-audit-shield reconstruction (forensic numbers) | `financial-forensics` |
 | **Structured tax-report object** (machine-validatable; sits under the prose memos) | `bin/glaw-tax-report` → schema `lib/schemas/tax-report-schema.json` |
 
@@ -200,6 +208,7 @@ Covers: estate/trusts, restructuring, immigration, international.
 | Seat | Skill |
 |------|-------|
 | Estate planning, trusts, succession, asset protection | `/glaw-estate-trusts` |
+| **Asset-protection STRUCTURES + trust documents + exempt-asset planning** (DAPT/third-party/DING, spendthrift, trust protector, 401k/IRA/life-ins exemptions, custodian) — fills the trust docs + runs the 5-dept compliance gate (FUFTA/solvency/IRS/FinCEN-OFAC/ethics) so nothing raises a red flag | `/glaw-asset-protection` |
 | Bankruptcy, workouts, creditor rights | `/glaw-restructuring` |
 | Business/founder immigration | `/glaw-immigration` |
 | Cross-border / offshore structuring | `/glaw-international` |
@@ -285,3 +294,26 @@ output through these seats. Advice stays in the custom suite; math/build goes to
 GLAW produces attorney work-product drafts for a licensed attorney to review, sign,
 and file. It does not form an attorney-client relationship and does not substitute
 for a member of the bar. The UPL guardrail lives in `/glaw-ethics-conflicts`.
+
+
+## SEC Enforcement & Investigations Division
+
+The securities-enforcement bench. Eleven requested seats, mapped to GLAW skills (★ = new 2026-06-06).
+
+| Seat | Skill |
+|---|---|
+| SEC Enforcement Attorney | `/glaw-sec-enforcement` |
+| SEC Investigator ★ | `/glaw-sec-investigator` |
+| Forensic Accountant | `financial-forensics` + `/glaw-accounting` |
+| Market Manipulation Analyst | `/glaw-sec-marketabuse` |
+| Insider Trading Analyst | `/glaw-sec-insider` |
+| FCPA Investigator ★ | `/glaw-sec-fcpa` |
+| Whistleblower Analyst ★ | `/glaw-sec-whistleblower` |
+| Litigation Support Specialist | `/glaw-evidence-timeline` + `/glaw-case-law-research` + `forensic-case-investigator` |
+| Expert Witness Report Generator ★ | `/glaw-expert-witness` |
+| Wells Notice Response Generator ★ | `/glaw-sec-wells-response` |
+| 10-K / 10-Q Risk Analyzer ★ | `/glaw-disclosure-risk-analyzer` |
+
+Also available: `sec-enforcement-swarm` (user-built skill) for multi-agent enforcement sweeps;
+the **due-diligence-agents** framework (cloned at `~/.claude/skills-repos/due-diligence-agents`,
+a Python DD/reporting engine) is wired as an optional DD execution + report-generation layer.
