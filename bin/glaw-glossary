@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# glaw-glossary — look up / search GLAW's original accounting knowledge base.
+#   glaw-glossary lookup accrual
+#   glaw-glossary search depreciation
+#   glaw-glossary list
+set -euo pipefail
+GLAW_LIB="$HOME/.claude/skills/glaw/lib/bookkeeping"
+PY="$GLAW_LIB/.venv/bin/python"; command -v "$PY" >/dev/null 2>&1 || PY=python3
+exec "$PY" "$GLAW_LIB/glossary.py" "$@"

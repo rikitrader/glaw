@@ -40,3 +40,4 @@ jobs:
           /tmp/bkv/bin/python lib/bookkeeping/test_finance.py
           /tmp/bkv/bin/python lib/bookkeeping/test_finance2.py
           GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_ledger.py
+          /tmp/bkv/bin/python lib/bookkeeping/test_glossary.py

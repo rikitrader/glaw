@@ -127,6 +127,7 @@ Covers: **Financial**, accounting, CFO, valuation, audit/assurance.
 | **Controller (Accounting Agent)** — keeps & closes the books: posts adjustments, ties subledgers, clears the gate, prepares the draft; the BLUE preparer the panel challenges | `/glaw-controller` |
 | **CFO (chief financial orchestrator)** — runs the loop: draft → adversarial panel attacks → collect comments → redirect re-writes → re-gate → **until passed & agreed** → sign-off | `/glaw-cfo` |
 | **Audit Agent** — independent rebuild from source, tie-out, integrity, anomaly, **adversarial consensus loop** (CPA + IRS + financial-lawyer), audit opinion | `/glaw-audit` |
+| **Accounting glossary** — original bookkeeping/accounting/CPA reference; look up/search any term (`bin/glaw-glossary`) | `/glaw-glossary` |
 
 **Bookkeeping engine + finance tools:**
 | Seat | Skill |
