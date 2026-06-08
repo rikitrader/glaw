@@ -101,6 +101,9 @@ Covers: **IRS**, tax planning, tax controversy.
 | **IP + 409A valuation engine** (audit-ready DRAFT FMV + strike via real OPM/Black-Scholes `bin/opm.py`; IP valuation; equity allocation OPM/PWERM + DLOM; risk scorecard) — fills facts #4/#8 pending appraiser sign-off | `/glaw-valuation-409a` |
 | **Valuation adversary** (IRS valuation-examiner RED-team: attacks FMV/DLOM/sigma/backsolve/comps; defensibility 0-10 + sensitivity) — mandatory pass before any valuation is "ready" | `/glaw-valuation-adversary` |
 | IRS-audit-shield reconstruction (forensic numbers) | `glaw-financial-forensics` |
+| **Entity-specific computation** — S-corp basis Form 7203 (`bin/glaw-scorp-basis`), AAA §1368 (`bin/glaw-scorp-aaa`), partner basis §704(d) (`bin/glaw-partner-basis`), accumulated-earnings §531 + PHC §541 (`bin/glaw-penalty-taxes`), estate/trust 1041 DNI (`bin/glaw-form1041`) | `glaw-tax-strategy` |
+| **State & local tax** — state income tax (`bin/glaw-state-tax`), PTET SALT-cap (`bin/glaw-ptet`), franchise/margin DE/TX/CA (`bin/glaw-franchise-tax`), combined/unitary (`bin/glaw-combined-unitary`), P.L. 86-272 nexus (`bin/glaw-income-nexus`), sourcing + throwback (`bin/glaw-sourcing`) | `glaw-tax-strategy` |
+| **International** — GILTI §951A (`bin/glaw-gilti`), Subpart F (`bin/glaw-subpart-f`), FDII (`bin/glaw-fdii`), BEAT §59A (`bin/glaw-beat`), §163(j) (`bin/glaw-sec163j`), 5471/5472 (`bin/glaw-intl-forms`) | `glaw-tax-strategy`, `/glaw-international` |
 | **Structured tax-report object** (machine-validatable; sits under the prose memos) | `bin/glaw-tax-report` → schema `lib/schemas/tax-report-schema.json` |
 
 Tax-report data object (`bin/glaw-tax-report types|validate|scaffold`): JSON Schema
@@ -121,6 +124,8 @@ MeF via EFIN/approved software, NOT this tool. W-2 → SSA BSO.
 
 ## Accounting & Finance Division → lead `/glaw-accounting`
 | **Forensic reconstruction (re-runnable)** — rebuild gapless, fully-reconciled, audit-ready books from raw bank statements: month-by-month reconstruction → tamper-evident double-entry GL + chart of accounts (`bin/glaw-forensic-pipeline`) → 3-statement + SEC/IRS footnotes → credits + IRS-audit-readiness + forms package + error/resolution log + CFO/CEO reports; forensic-auditor adversarial gate | `/glaw-forensic-reconstruction` |
+| **Forensic period reports + trace** — monthly/yearly P&L + full transaction trace, every posting tied to its source statement + tamper-evident hash (`bin/glaw-forensic-reports`); wires categorized by their real ORIG:/BNF: counterparty | `/glaw-forensic-reconstruction` |
+| **Executable adversarial gate** — deterministic enforcement red-team (IRS Revenue Agent / forensic accountant / BSA examiner) → chief verdict; AUDIT-READY only when every critical/high finding is cleared (`bin/glaw-forensic-adversarial`) | `/glaw-forensic-reconstruction`, `/glaw-adversarial` |
 Covers: **Financial**, accounting, CFO, valuation, audit/assurance.
 
 **The book of record + the agent loop** (the whole accounting is rebuilt, gated, and adversarially agreed here):
