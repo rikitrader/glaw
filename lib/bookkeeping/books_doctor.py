@@ -137,13 +137,79 @@ def run(payload: dict, *, allow_negative_cash: bool = False, rec: dict | None = 
     return 0 if FAIL == 0 else 1
 
 
+def run_ledger(book: str, *, as_of: str | None = None, allow_negative_cash: bool = False) -> int:
+    """The control gate over a posted general-ledger book (the book of record)."""
+    import hashlib
+    import ledger as _L
+    led = _L.Ledger(book)
+    entries = led.entries(as_of)
+    postings = [{"account": p["account"], "amount": p["amount"], "id": p["id"]}
+                for p in led.postings(as_of)]
+    s = S.build(postings=postings)
+    tb, bs = s["trial_balance"], s["balance_sheet"]
+    print(f"═══ GLAW BOOKS DOCTOR (book: {book}, {len(entries)} entries) ═══")
+    print("[1/6] trial balance")
+    ok(f"debits == credits ({S._m(tb['total_debit'])})") if tb["balanced"] else \
+        bad(f"OUT OF BALANCE: {S._m(tb['total_debit'])} != {S._m(tb['total_credit'])}")
+    print("[2/6] balance-sheet identity")
+    ok("Assets == Liabilities + Equity + Net Income") if bs["balances"] else \
+        bad("balance sheet does not balance")
+    print("[3/6] account classification")
+    if s["unclassified_accounts"]:
+        for acc in s["unclassified_accounts"]:
+            bad(f"unclassified account: {acc}")
+    else:
+        ok("every account maps to a known statement root")
+    print("[4/6] cash position")
+    bal = _L.Ledger(book).balances(as_of)
+    neg = [(acc, b) for acc, b in bal.items() if acc.startswith(S._CASH_HINTS) and b < 0]
+    if neg and not allow_negative_cash:
+        for acc, b in neg:
+            bad(f"negative cash: {acc} = {S._m(b)}")
+    else:
+        ok("no negative cash balances")
+    print("[5/6] entry integrity (tamper-evident + each entry balances)")
+    bad_e = []
+    for e in entries:
+        rec = hashlib.sha256(json.dumps({k: e[k] for k in ("id", "date", "memo", "lines")},
+                             sort_keys=True, default=str).encode()).hexdigest()[:16]
+        if e.get("entry_hash") and e["entry_hash"] != rec:
+            bad_e.append(e["id"])
+        if sum(_dec(l["debit"]) for l in e["lines"]) != sum(_dec(l["credit"]) for l in e["lines"]):
+            bad_e.append(e["id"])
+    bad(f"tampered/unbalanced entries: {sorted(set(bad_e))}") if bad_e else \
+        ok(f"all {len(entries)} entries intact and balanced")
+    print("[6/6] anomaly scan")
+    import monitor as _M
+    # represent entries as rows for the monitor (payee = memo, amount = signed cash leg)
+    rows = []
+    for e in entries:
+        cash = sum((_dec(l["debit"]) - _dec(l["credit"]) for l in e["lines"]
+                    if str(l["account"]).startswith(S._CASH_HINTS)), Decimal("0"))
+        if cash != 0:
+            rows.append({"booking_date": e["date"], "amount": str(cash),
+                         "description": e["memo"], "normalized_description": (e["memo"] or "").upper(),
+                         "counterparty": (e["memo"] or "").upper()})
+    anom = _M.scan(rows)
+    ok("no near-duplicate / anomalous payments") if anom["clean"] else \
+        [warn(f"{f['reason']}: {f.get('payee','')[:30]} {f.get('amount','')}") for f in anom["flags"][:5]]
+    print("═══ RESULT ═══")
+    print(f"  failures: {FAIL}   warnings: {WARN}")
+    print("  \U0001f6e1️  BOOKS ARE BULLETPROOF" if FAIL == 0 else "  ❌ PROBLEMS FOUND")
+    return 0 if FAIL == 0 else 1
+
+
 def main() -> int:
     import argparse
     ap = argparse.ArgumentParser(prog="glaw-books-doctor")
     ap.add_argument("json", nargs="?", default="-", help="glaw-bank-ingest --format json (or '-')")
+    ap.add_argument("--book", default=None, help="run the gate over a posted ledger book")
+    ap.add_argument("--as-of", default=None)
     ap.add_argument("--allow-negative-cash", action="store_true")
     ap.add_argument("--rec", default=None, help="bank reconciliation JSON (from glaw-bank-rec)")
     a = ap.parse_args()
+    if a.book:
+        return run_ledger(a.book, as_of=a.as_of, allow_negative_cash=a.allow_negative_cash)
     raw = sys.stdin.read() if a.json in (None, "-") else open(a.json, encoding="utf-8").read()
     payload = json.loads(raw)
     rec = json.load(open(a.rec, encoding="utf-8")) if a.rec else None

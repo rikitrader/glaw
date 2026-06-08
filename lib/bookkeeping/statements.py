@@ -143,16 +143,68 @@ def cash_flow(rows: Iterable[dict]) -> dict:
             "net_change_in_cash": op + inv + fin}
 
 
-def build(rows: list[dict], *, bank_account: str = "Assets:Bank:Checking") -> dict:
-    bal = account_balances(rows, bank_account=bank_account)
+def balances_from_postings(postings: list[dict]) -> dict[str, Decimal]:
+    """Sum signed postings ({account, amount}, debit positive) → {account: balance}.
+    This is how statements compute from the POSTED general ledger."""
+    bal: dict[str, Decimal] = defaultdict(lambda: Decimal("0"))
+    for p in postings:
+        bal[p["account"]] += _dec(p.get("amount"))
+    return dict(bal)
+
+
+def _cash_flow_from_postings(postings: list[dict], *, cash_roots=_CASH_HINTS) -> dict:
+    """Direct cash flow from posted GL: cash change is the net posting to cash accounts;
+    classify the OTHER legs of cash-touching entries by activity. Falls back to a
+    balance-based split when entry grouping is unavailable."""
+    op = inv = fin = Decimal("0")
+    # group by entry id so we can see the non-cash legs of each cash movement
+    by_id: dict = defaultdict(list)
+    has_ids = all("id" in p for p in postings) and bool(postings)
+    if has_ids:
+        for p in postings:
+            by_id[p["id"]].append(p)
+        for legs in by_id.values():
+            cash_delta = sum((_dec(l["amount"]) for l in legs
+                              if str(l["account"]).startswith(cash_roots)), Decimal("0"))
+            if cash_delta == 0:
+                continue
+            for l in legs:
+                if str(l["account"]).startswith(cash_roots):
+                    continue
+                root = _root(l["account"])
+                contra_cash = -_dec(l["amount"])   # the cash effect attributable to this leg
+                if root in _INCOME_ROOTS or root == "Expenses":
+                    op += contra_cash
+                elif root == "Assets":
+                    inv += contra_cash
+                elif root in ("Liabilities", "Equity"):
+                    fin += contra_cash
+                else:
+                    op += contra_cash
+    return {"operating": op, "investing": inv, "financing": fin,
+            "net_change_in_cash": op + inv + fin}
+
+
+def build(rows: list[dict] | None = None, *, postings: list[dict] | None = None,
+          bank_account: str = "Assets:Bank:Checking") -> dict:
+    """Build the four statements. Source is EITHER `postings` (from the posted general
+    ledger — the book of record) OR `rows` (glaw-bank-ingest output, bank+contra synthesis)."""
+    if postings is not None:
+        bal = balances_from_postings(postings)
+        cf = _cash_flow_from_postings(postings)
+        n = len({p.get("id") for p in postings}) if postings and "id" in postings[0] else len(postings)
+    else:
+        rows = rows or []
+        bal = account_balances(rows, bank_account=bank_account)
+        cf = cash_flow(rows)
+        n = len(rows)
     tb = trial_balance(bal)
     pl = profit_loss(bal)
     bs = balance_sheet(bal, pl["net_income"])
-    cf = cash_flow(rows)
     unclassified = sorted(a for a in bal if _root(a) == "Unclassified" and bal[a] != 0)
     return {"trial_balance": tb, "profit_loss": pl, "balance_sheet": bs,
             "cash_flow": cf, "unclassified_accounts": unclassified,
-            "transaction_count": len(rows)}
+            "transaction_count": n}
 
 
 def _m(d: Decimal) -> str:
@@ -226,12 +278,19 @@ def main() -> int:
     ap = argparse.ArgumentParser(prog="glaw-statements")
     ap.add_argument("json", nargs="?", default="-",
                     help="glaw-bank-ingest --format json file (or '-' for stdin)")
+    ap.add_argument("--book", default=None, help="compute from a posted general-ledger book (the book of record)")
+    ap.add_argument("--as-of", default=None, help="statements as-of this date (with --book)")
     ap.add_argument("--account", default="Assets:Bank:Checking", help="bank account name")
     ap.add_argument("--currency", default="USD")
     ap.add_argument("--format", default="text", choices=["text", "json"])
     a = ap.parse_args()
-    rows = _load_rows(a.json)
-    s = build(rows, bank_account=a.account)
+    if a.book:
+        import ledger as _L
+        postings = [{"account": p["account"], "amount": p["amount"], "id": p["id"]}
+                    for p in _L.Ledger(a.book).postings(a.as_of)]
+        s = build(postings=postings)
+    else:
+        s = build(_load_rows(a.json), bank_account=a.account)
     if a.format == "json":
         print(json.dumps(s, indent=2, default=str))
     else:

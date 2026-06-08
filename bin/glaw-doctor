@@ -87,6 +87,11 @@ if [ -x "$GLAW/lib/bookkeeping/.venv/bin/python" ]; then
   else
     bad "close-cycle tools smoke FAILED — run: $_BKPY $GLAW/lib/bookkeeping/test_finance2.py"
   fi
+  if GLAW_HOME="$(mktemp -d)" "$_BKPY" "$GLAW/lib/bookkeeping/test_ledger.py" >/dev/null 2>&1; then
+    ok "general-ledger smoke passed (balanced JEs + non-cash + as-of + lock + close + audit)"
+  else
+    bad "general-ledger smoke FAILED — run: GLAW_HOME=\$(mktemp -d) $_BKPY $GLAW/lib/bookkeeping/test_ledger.py"
+  fi
 else
   warn "bookkeeping engine venv not built (run ./setup) — skipping engine + finance smokes"
 fi

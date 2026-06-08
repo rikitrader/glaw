@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# glaw-ledger — the persistent general ledger CLI (post/import-bank/rebuild/balances/gl/
+# statements/audit/lock/close-year/status). The book of record.
+set -euo pipefail
+GLAW_LIB="$HOME/.claude/skills/glaw/lib/bookkeeping"
+VENV_PY="$GLAW_LIB/.venv/bin/python"
+[[ -x "$VENV_PY" ]] || { echo "ERROR: bookkeeping venv missing — run ./setup" >&2; exit 2; }
+exec "$VENV_PY" "$GLAW_LIB/ledger_cli.py" "$@"
