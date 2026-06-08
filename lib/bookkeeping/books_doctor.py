@@ -196,8 +196,8 @@ def run_ledger(book: str, *, as_of: str | None = None, allow_negative_cash: bool
     print("[7/7] single reporting currency")
     currencies = {e["currency"] for e in entries if e.get("currency")}
     if len(currencies) > 1:
-        bad(f"multi-currency book ({', '.join(sorted(currencies))}) — revalue to one reporting "
-            f"currency first (glaw-fx-reval); the GL cannot sum mixed currencies")
+        bad(f"multi-currency book ({', '.join(sorted(currencies))}) — translate to one reporting "
+            f"currency first (glaw-fx-report); the GL cannot sum mixed currencies")
     else:
         ok(f"single reporting currency ({next(iter(currencies)) if currencies else 'reporting'})")
     print("═══ RESULT ═══")
