@@ -21,6 +21,8 @@ def _q(d: Decimal) -> Decimal:
 
 
 def ratable(amount: Decimal, periods: int) -> list[Decimal]:
+    if periods <= 0:
+        raise SystemExit("ERROR: --periods must be > 0 for ratable recognition")
     per = _q(amount / periods)
     out, accum = [], Decimal("0")
     for i in range(periods):

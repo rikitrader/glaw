@@ -20,6 +20,8 @@ def _q(d: Decimal) -> Decimal:
 
 
 def loan_schedule(principal: Decimal, annual_rate_pct: Decimal, n_payments: int) -> dict:
+    if n_payments <= 0:
+        raise SystemExit("ERROR: --payments must be > 0")
     r = (annual_rate_pct / Decimal("100")) / Decimal("12")    # monthly rate
     if r == 0:
         pmt = _q(principal / n_payments)
@@ -48,6 +50,8 @@ def loan_schedule(principal: Decimal, annual_rate_pct: Decimal, n_payments: int)
 
 
 def prepaid_schedule(amount: Decimal, n_periods: int, *, label: str = "prepaid") -> dict:
+    if n_periods <= 0:
+        raise SystemExit("ERROR: --periods must be > 0")
     per = _q(amount / n_periods)
     rows, accum = [], Decimal("0")
     for i in range(1, n_periods + 1):
