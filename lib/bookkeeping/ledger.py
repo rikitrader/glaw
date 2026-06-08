@@ -56,6 +56,26 @@ def _home() -> Path:
     return Path(os.environ.get("GLAW_HOME", str(Path.home() / ".glaw")))
 
 
+def _parse_jsonl(lines: list[str]) -> list[dict]:
+    """Parse JSONL ledger lines, tolerating a TORN TRAILING line — an in-flight append by a
+    concurrent post() in another process leaves the last line incomplete (a read racing the
+    write). Since appends only happen at EOF, only the last line can be torn: skip it (it will
+    be read once committed). A malformed NON-final line is real corruption and is raised."""
+    out: list[dict] = []
+    cleaned = [s.strip() for s in lines]
+    last = max((i for i, s in enumerate(cleaned) if s), default=-1)
+    for i, s in enumerate(cleaned):
+        if not s:
+            continue
+        try:
+            out.append(json.loads(s))
+        except json.JSONDecodeError:
+            if i == last:                      # torn in-flight append — skip, not corruption
+                break
+            raise LedgerError(f"corrupt ledger line {i + 1}: not valid JSON")
+    return out
+
+
 class LedgerError(Exception):
     pass
 
@@ -220,8 +240,7 @@ class Ledger:
             if not self.path.exists():
                 self._entries_cache = []
             else:
-                self._entries_cache = [json.loads(s) for s in
-                                       (ln.strip() for ln in self.path.read_text().splitlines()) if s]
+                self._entries_cache = _parse_jsonl(self.path.read_text().splitlines())
         if as_of is None:
             return self._entries_cache
         cutoff = date.fromisoformat(as_of[:10])
@@ -346,17 +365,25 @@ class Ledger:
         if through > size:                                # file shrank (rebuilt/tampered) → rebuild
             through, bal = 0, {}
         if through < size:
-            with self.path.open("r") as fh:
+            with self.path.open("rb") as fh:
                 fh.seek(through)
-                for line in fh:
-                    line = line.strip()
-                    if not line:
-                        continue
+                chunk = fh.read(size - through)
+            # only lines terminated by a newline are committed; a trailing partial line is an
+            # in-flight append by a concurrent post() — leave it for the next read.
+            nl = chunk.rfind(b"\n")
+            consumed = nl + 1 if nl != -1 else 0
+            for line in chunk[:consumed].decode("utf-8", "replace").splitlines():
+                line = line.strip()
+                if not line:
+                    continue
+                try:
                     e = json.loads(line)
-                    for ln in e["lines"]:
-                        a = ln["account"]
-                        bal[a] = bal.get(a, Decimal("0")) + _dec(ln["debit"]) - _dec(ln["credit"])
-                through = fh.tell()
+                except json.JSONDecodeError:
+                    raise LedgerError("corrupt ledger line in balance-index delta")
+                for ln in e["lines"]:
+                    a = ln["account"]
+                    bal[a] = bal.get(a, Decimal("0")) + _dec(ln["debit"]) - _dec(ln["credit"])
+            through += consumed
             self._save_index({"through_offset": through, "balances": {a: str(v) for a, v in bal.items()}})
         return bal
 
