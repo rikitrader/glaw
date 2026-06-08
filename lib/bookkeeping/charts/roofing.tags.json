@@ -1,0 +1,29 @@
+{
+  "name": "roofing",
+  "description": "Current/non-current and cash-flow tags for the roofing chart of accounts. Overrides the keyword defaults; longest matching prefix wins.",
+  "accounts": [
+    {"match": "Assets:Bank", "current": true, "cashflow": "cash"},
+    {"match": "Assets:Cash", "current": true, "cashflow": "cash"},
+    {"match": "Assets:AR", "current": true, "cashflow": "operating"},
+    {"match": "Assets:Receivable", "current": true, "cashflow": "operating"},
+    {"match": "Assets:Retainage", "current": true, "cashflow": "operating"},
+    {"match": "Assets:Inventory", "current": true, "cashflow": "operating"},
+    {"match": "Assets:WIP", "current": true, "cashflow": "operating"},
+    {"match": "Assets:Prepaid", "current": true, "cashflow": "operating"},
+    {"match": "Assets:Equipment", "current": false, "cashflow": "investing"},
+    {"match": "Assets:Vehicles", "current": false, "cashflow": "investing"},
+    {"match": "Assets:Accumulated Depreciation", "current": false, "cashflow": "operating"},
+    {"match": "Liabilities:AP", "current": true, "cashflow": "operating"},
+    {"match": "Liabilities:Payable", "current": true, "cashflow": "operating"},
+    {"match": "Liabilities:Accrued", "current": true, "cashflow": "operating"},
+    {"match": "Liabilities:Deferred Revenue", "current": true, "cashflow": "operating"},
+    {"match": "Liabilities:Sales Tax", "current": true, "cashflow": "operating"},
+    {"match": "Liabilities:Card", "current": true, "cashflow": "operating"},
+    {"match": "Liabilities:Loan", "current": false, "cashflow": "financing"},
+    {"match": "Liabilities:Note", "current": false, "cashflow": "financing"},
+    {"match": "Liabilities:Line of Credit", "current": true, "cashflow": "financing"},
+    {"match": "Equity", "current": null, "cashflow": "financing"},
+    {"match": "Income", "current": null, "cashflow": "operating"},
+    {"match": "Expenses", "current": null, "cashflow": "operating"}
+  ]
+}
