@@ -152,6 +152,11 @@ if [ -x "$GLAW/lib/bookkeeping/.venv/bin/python" ]; then
   else
     bad "NCI/equity-method smoke FAILED — run: GLAW_HOME=\$(mktemp -d) $_BKPY $GLAW/lib/bookkeeping/test_finance15.py"
   fi
+  if "$_BKPY" "$GLAW/lib/bookkeeping/test_finance16.py" >/dev/null 2>&1; then
+    ok "invoice/bill extractor smoke passed (vendor + line items + tax + draft AP entry)"
+  else
+    bad "invoice extractor smoke FAILED — run: $_BKPY $GLAW/lib/bookkeeping/test_finance16.py"
+  fi
   if "$_BKPY" "$GLAW/lib/bookkeeping/test_glossary.py" >/dev/null 2>&1; then
     ok "accounting glossary smoke passed (terms indexed, core terms resolve)"
   else
