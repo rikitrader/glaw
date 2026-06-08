@@ -110,9 +110,19 @@ def main() -> int:
     ap.add_argument("--rules", default=None, help="rules JSON (default: built-in tax_rules.default.json)")
     ap.add_argument("--as-of", default=None)
     ap.add_argument("--tax-depreciation", default=None, help="total tax/MACRS depreciation for the period")
+    ap.add_argument("--assets", default=None, help="asset register JSON — compute tax depreciation via MACRS")
+    ap.add_argument("--year", default=None, type=int, help="calendar year for --assets MACRS depreciation")
     ap.add_argument("--format", default="text", choices=["text", "json"])
     a = ap.parse_args()
     td = _dec(a.tax_depreciation) if a.tax_depreciation is not None else None
+    if a.assets:                                              # derive tax depreciation from MACRS
+        import depreciation as DEP
+        assets = json.loads(Path(a.assets).read_text(encoding="utf-8"))
+        if a.year is not None:
+            td = DEP.tax_depreciation_for_year(assets, a.year)
+        else:                                                # no year → sum the whole register
+            td = sum((Decimal(v) for v in DEP.register(assets)["tax_depreciation_by_year"].values()),
+                     Decimal("0"))
     d = book_to_tax(a.book, load_rules(a.rules), as_of=a.as_of, tax_depreciation=td)
     print(json.dumps(d, indent=2, default=str) if a.format == "json" else render_text(d))
     return 0
