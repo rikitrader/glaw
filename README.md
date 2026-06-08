@@ -10,7 +10,7 @@ GLAW runs legal *matters* (build a company, structure a fund, prosecute or defen
 [![GLAW Doctor](https://github.com/rikitrader/glaw/actions/workflows/ci.yml/badge.svg)](https://github.com/rikitrader/glaw/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-C9A227.svg)](LICENSE)
 [![Skills](https://img.shields.io/badge/skills-127-1A3FA0.svg)](lib/firm-roster.md)
-[![Tools](https://img.shields.io/badge/tools-21-1A3FA0.svg)](#-the-toolbelt-21-clis)
+[![Tools](https://img.shields.io/badge/tools-24-1A3FA0.svg)](#-the-toolbelt-24-clis)
 [![Departments](https://img.shields.io/badge/departments-10-3B82F6.svg)](#%EF%B8%8F-the-departments)
 [![Pipeline](https://img.shields.io/badge/pipeline-8%20stages-3B82F6.svg)](#-the-workflow)
 [![Agent Skills](https://img.shields.io/badge/format-Agent%20Skills-000.svg)](https://agentskills.org)
@@ -142,7 +142,7 @@ When an investigation surfaces **red flags past threshold** (fraud tier, sanctio
 
 ---
 
-## 🧰 The Toolbelt (21 CLIs)
+## 🧰 The Toolbelt (24 CLIs)
 
 GLAW's brains are markdown; its hands are small, transparent CLIs in [`bin/`](bin/). The core (matter state) needs nothing but bash. The rest are progressive enhancement.
 
@@ -196,6 +196,9 @@ flowchart LR
 | `glaw-exempt-org` | nonprofit / 990 lookup + financial-risk read (ProPublica API) |
 | **Bookkeeping & finance** | |
 | `glaw-bank-ingest` | bank/card statements (CSV·OFX·QFX·MT940·CAMT·PAIN·**PDF**) → deduped, **balance-verified** ledger → hledger / beancount / **Google Sheet**. Scanned PDFs via Tesseract OCR. Engine: bundled [`glaw_engine`](lib/bookkeeping). |
+| `glaw-statements` | native **P&L / Balance Sheet / Cash Flow / Trial Balance** from the ledger (no hledger dep). Exits non-zero if the books don't balance. |
+| `glaw-books-doctor` | the **bulletproof finance control gate** — TB balances, BS identity, Golden Rule, classified, cash≥0, dedup, anomaly scan, reconciled → "books are bulletproof, or fail." |
+| `glaw-bank-rec` | true **bank reconciliation** — line-matches books vs bank, surfaces outstanding/unpresented checks + bank-only fees/interest. |
 | **Scoring & sign-off** | |
 | `glaw-bureau-score` | fraud score + FBI competency scorecard (deterministic) |
 | `glaw-chief-decision` | records the Chief's PROCEED / WITH-FIXES / WITH-CONDITIONS sign-off card |
@@ -313,7 +316,7 @@ Run `bin/glaw-doctor` any time to confirm the whole firm is healthy.
 ```
 glaw/
 ├── SKILL.md              # /glaw — the Managing Partner (orchestrator)
-├── bin/                  # 21 CLIs: state machinery + the toolbelt + glaw-bank-ingest
+├── bin/                  # 24 CLIs: state machinery + toolbelt + bookkeeping + finance control
 ├── seats/                # 62 SELF-CONTAINED specialist seats (glaw-*) + MANIFEST
 │                         #   every skill the firm routes to — zero external deps
 ├── lib/
