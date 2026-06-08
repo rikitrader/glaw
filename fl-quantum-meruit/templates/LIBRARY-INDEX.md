@@ -91,7 +91,7 @@ TRO, PI. Pair one with every motion (FL judges expect a proposed order).
 | Claim of Lien / NTO / lien foreclosure count | `/glaw-recover-payment` (Ch. 713 workflow) |
 
 ## 9. CLAIM ENGINE (for "any other sue")
-`federal-library/../scripts/federal_pleading_engine` — 40+ causes of action with
+`~/.claude/skills/federal-trial-counsel/scripts/federal_pleading_engine` — 40+ causes of action with
 elements, fact-to-element mapping, Rule 9(b) detection, and MTD risk scoring (incl.
 RICO, conversion, fraud). Use it to draft/score companion federal counts; route to
 `glaw-federal-trial-counsel`.
