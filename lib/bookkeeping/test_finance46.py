@@ -36,7 +36,7 @@ def test_partner_basis():
 def test_penalty_taxes():
     t = PT.accumulated_earnings_tax(500000)
     assert t["accumulated_earnings_credit"] == "250000.00" and t["accumulated_earnings_tax"] == "50000.00"
-    assert PT.accumulated_earnings_tax(500000, is_psc=True)["accumulated_earnings_credit"] == "250000.00"  # min still 250k vs needs
+    assert PT.accumulated_earnings_tax(500000, is_psc=True)["accumulated_earnings_credit"] == "150000.00"  # PSC min credit is 150k
     assert PT.phc_tax(100000)["personal_holding_company_tax"] == "20000.00"
     print("  ✓ penalty taxes: accumulated-earnings §531 (250k credit, 20%) + PHC §541 (20%)")
 
