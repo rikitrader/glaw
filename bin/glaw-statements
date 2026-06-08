@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+# glaw-statements — render P&L / Balance Sheet / Cash Flow / Trial Balance from a
+# GLAW ledger, natively (no hledger). Consumes `glaw-bank-ingest --format json`.
+#
+# Usage:
+#   glaw-bank-ingest stmt.csv --map coa.json --format json | glaw-statements -
+#   glaw-statements ingest.json --format text|json [--currency USD] [--account "Assets:Bank:Checking"]
+#
+# Exit 0 only if the trial balance balances AND Assets = Liabilities + Equity.
+
+set -euo pipefail
+GLAW_LIB="$HOME/.claude/skills/glaw/lib/bookkeeping"
+VENV_PY="$GLAW_LIB/.venv/bin/python"
+if [[ ! -x "$VENV_PY" ]]; then
+  echo "ERROR: bookkeeping venv missing — run ./setup (or: python3 -m venv $GLAW_LIB/.venv && $GLAW_LIB/.venv/bin/pip install -r $GLAW_LIB/requirements.txt)" >&2
+  exit 2
+fi
+exec "$VENV_PY" "$GLAW_LIB/statements.py" "$@"

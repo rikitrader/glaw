@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+# glaw-bank-rec — true bank reconciliation: line-match the books against the bank
+# statement, surfacing book-only (deposits in transit / outstanding checks) and
+# bank-only (fees / interest to record) items. Exit 0 only if fully reconciled.
+#
+# Usage:
+#   glaw-bank-rec --books books.json   --bank statement.json
+#   glaw-bank-rec --books books.csv    --bank bank.ofx        # raw statements auto-ingested
+#   glaw-bank-rec --books b.json --bank k.json --window 7 --format json
+#
+# --books / --bank accept either a glaw-bank-ingest JSON or a raw statement file
+# (CSV/OFX/QFX/MT940/CAMT/PAIN/PDF), which is ingested to JSON first.
+
+set -euo pipefail
+GLAW_LIB="$HOME/.claude/skills/glaw/lib/bookkeeping"
+VENV_PY="$GLAW_LIB/.venv/bin/python"
+INGEST="$HOME/.claude/skills/glaw/bin/glaw-bank-ingest"
+[[ -x "$VENV_PY" ]] || { echo "ERROR: bookkeeping venv missing — run ./setup" >&2; exit 2; }
+
+BOOKS=""; BANK=""; PASS=()
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --books) BOOKS="$2"; shift 2;;
+    --bank)  BANK="$2";  shift 2;;
+    *) PASS+=("$1"); shift;;
+  esac
+done
+[[ -n "$BOOKS" && -n "$BANK" ]] || { echo "ERROR: --books and --bank are required" >&2; exit 2; }
+
+TMP="$(mktemp -d)"; trap 'rm -rf "$TMP"' EXIT
+# Convert a raw statement to ingest JSON; pass .json through unchanged.
+to_json() {
+  case "$1" in
+    *.json) printf '%s' "$1";;
+    *) "$INGEST" "$1" --format json >"$TMP/$2.json" 2>/dev/null; printf '%s' "$TMP/$2.json";;
+  esac
+}
+BJ="$(to_json "$BOOKS" books)"
+KJ="$(to_json "$BANK" bank)"
+exec "$VENV_PY" "$GLAW_LIB/bank_rec.py" --books "$BJ" --bank "$KJ" ${PASS[@]+"${PASS[@]}"}

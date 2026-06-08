@@ -122,6 +122,9 @@ Covers: **Financial**, accounting, CFO, valuation, audit/assurance.
 | Seat | Skill |
 |------|-------|
 | Bookkeeping: parse bank/card statements (CSV/OFX/QFX/MT940/CAMT/PAIN/PDF) → deduped, balance-verified ledger; hledger/beancount export; account mapping. Engine vendored at `lib/bookkeeping/`, driver `bin/glaw-bank-ingest`. Feeds the seats below. | `/glaw-bookkeeping` |
+| **Financial statements** — native P&L / Balance Sheet / Cash Flow / Trial Balance from the ledger (no hledger dep) | `bin/glaw-statements` |
+| **Books control gate (bulletproof)** — deterministic finance doctor: TB balances, BS identity, Golden Rule, classified, cash≥0, dedup, anomaly scan, reconciled | `bin/glaw-books-doctor` |
+| **Bank reconciliation** — line-match books vs bank; surfaces outstanding/unpresented + bank-only items | `bin/glaw-bank-rec` |
 | Forensic reconstruction of financials from raw records, fraud detection, QoE | `glaw-financial-forensics` |
 | Audit-readiness, internal controls (COSO/SOX), GAAP/IFRS, ASC 606/842 | `/glaw-audit-assurance` |
 | Institutional CFO modeling, 3-statement, LBO/waterfall, EBITDA normalization | `glaw-institutional-finance` |

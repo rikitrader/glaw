@@ -32,8 +32,9 @@ jobs:
           bash bin/glaw-setup
           GLAW_DOCTOR_CORE=1 bash bin/glaw-doctor
 
-      - name: Bookkeeping engine smoke (parse + dedup + Golden-Rule verify + exports)
+      - name: Bookkeeping engine + finance tools smoke
         run: |
           python3 -m venv /tmp/bkv
           /tmp/bkv/bin/pip install -q -r lib/bookkeeping/requirements.txt
           /tmp/bkv/bin/python lib/bookkeeping/test_smoke.py
+          /tmp/bkv/bin/python lib/bookkeeping/test_finance.py
