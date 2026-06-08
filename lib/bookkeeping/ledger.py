@@ -84,6 +84,8 @@ def validate_entry(je: dict) -> dict:
         tot_d += deb
         tot_c += cred
         nl = {"account": acct, "debit": str(deb), "credit": str(cred), "memo": ln.get("memo", "")}
+        if ln.get("fx_amount") is not None:   # foreign amount this (reporting-valued) leg represents
+            nl["fx_amount"] = str(ln["fx_amount"])
         if ln.get("currency"):                  # preserve per-line currency (FX/cross-currency entries)
             nl["currency"] = ln["currency"]
         norm_lines.append(nl)
