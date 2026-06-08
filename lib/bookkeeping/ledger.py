@@ -77,8 +77,10 @@ def validate_entry(je: dict) -> dict:
             raise LedgerError(f"line {i} ({acct}): exactly one of debit/credit must be > 0")
         tot_d += deb
         tot_c += cred
-        norm_lines.append({"account": acct, "debit": str(deb), "credit": str(cred),
-                           "memo": ln.get("memo", "")})
+        nl = {"account": acct, "debit": str(deb), "credit": str(cred), "memo": ln.get("memo", "")}
+        if ln.get("currency"):                  # preserve per-line currency (FX/cross-currency entries)
+            nl["currency"] = ln["currency"]
+        norm_lines.append(nl)
     if tot_d != tot_c:
         raise LedgerError(f"entry does not balance: debits {tot_d} != credits {tot_c}")
     if tot_d == 0:

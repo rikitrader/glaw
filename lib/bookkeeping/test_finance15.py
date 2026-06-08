@@ -53,11 +53,18 @@ def test_equity_method_rollforward():
     assert d["equity_method_income"] == Decimal("12000.00")
     assert d["dividends_received"] == Decimal("3000.00")
     assert d["ending_investment"] == Decimal("109000.00")
+    assert d["suspended_losses"] == Decimal("0.00")
     # both entries balance
     for e in d["entries"]:
         dr = sum(Decimal(l["debit"]) for l in e["lines"]); cr = sum(Decimal(l["credit"]) for l in e["lines"])
         assert dr == cr
-    print("  ✓ equity-method: cost 100k + 12k income − 3k dividends = 109k investment; entries balance")
+    # ASC 323: a loss cannot take the investment below zero — it floors at 0 and suspends the excess
+    loss = CON.equity_method(Decimal("100000"), Decimal("0.30"), Decimal("-500000"), Decimal("0"))
+    assert loss["ending_investment"] == Decimal("0.00")
+    assert loss["suspended_losses"] == Decimal("50000.00")
+    assert loss["equity_method_income"] == Decimal("-100000.00")   # recognized only to a zero balance
+    assert any("Loss" in l["account"] for l in loss["entries"][0]["lines"])
+    print("  ✓ equity-method: 109k investment; a big loss floors at 0 + suspends 50k (ASC 323)")
 
 
 def main() -> int:
