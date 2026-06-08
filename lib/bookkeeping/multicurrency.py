@@ -51,7 +51,13 @@ def balances_by_currency(book: str, *, as_of: str | None = None,
         ecy = e.get("currency") or reporting
         for ln in e["lines"]:
             ccy = ln.get("currency") or ecy
-            out[ccy][ln["account"]] += _dec(ln["debit"]) - _dec(ln["credit"])
+            if ln.get("fx_amount") is not None:
+                # a multi-currency leg: track the FOREIGN amount in its currency (debit/credit
+                # carry the reporting value; fx_amount carries the foreign amount)
+                signed = _dec(ln["fx_amount"]) if _dec(ln["debit"]) > 0 else -_dec(ln["fx_amount"])
+                out[ccy][ln["account"]] += signed
+            else:
+                out[ccy][ln["account"]] += _dec(ln["debit"]) - _dec(ln["credit"])
     return {c: dict(v) for c, v in out.items()}
 
 
