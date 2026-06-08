@@ -86,10 +86,19 @@ The pipeline's `error_log.json` lists every exception (unmapped category, gap, r
 gets a documented corporate-level resolution so nothing stays open. Then `/glaw-cfo` (position,
 ratios, risks) and a CEO summary (`/glaw-narrative`) close it out.
 
-## ⛔ Gates (every deliverable)
-Conflicts cleared · citations verified · **forensic-auditor / IRS-examiner adversarial RED→BLUE**
-(`/glaw-adversarial`) · UPL footer. Nothing is "audit-ready" until the firm's own
-forensic-auditor adversary has tried to break it and failed.
+## ⛔ Adversarial gate (EXECUTABLE — red-team → chief resolution)
+This is wired, not advisory. After reconstruction, run the executable enforcement red-team:
+```bash
+~/.claude/skills/glaw/bin/glaw-forensic-adversarial --book <book> \
+  --documented-loan-notes <$> --job-cost-gross-profit <$> --resolutions <resolutions.json>
+```
+It deterministically raises every finding an IRS Revenue Agent / forensic accountant / BSA examiner
+would raise (naked loan vs documented notes, §274(d) unsubstantiated spend, reasonable comp, missing
+months, engineered-loss-vs-job-cost, same-day washes, structuring), then the CHIEF issues a verdict:
+**AUDIT-READY only when every critical/high finding is cleared** in the resolutions file (which the
+client extends as each issue is cured). Exit code is non-zero until AUDIT-READY. The deeper LLM
+adversarial debate (`/glaw-adversarial` → `/glaw-chief-decision`) layers on top for judgment calls.
+Conflicts cleared · citations verified · UPL footer also apply to every deliverable.
 
 ## Route to the bench
 Numbers + statements → `/glaw-accounting`, `/glaw-cfo`; tax issues → `/glaw-irs-audit`,

@@ -191,6 +191,7 @@ Covers: **Civil** litigation, trial, disputes.
 | Seat | Skill |
 |------|-------|
 | Commercial litigation, MCA/usury, fraud-on-court, FUFTA, civil theft, veil-piercing | `glaw-elite-corporate-counsel` |
+| **Nonpayment / money recovery** — sue & collect unpaid debts (homeowner/contractor/vendor/freelancer): breach + quantum meruit + unjust enrichment + account stated + construction lien + Prompt Payment; demand → complaint → judgment → execution/garnishment/FUFTA. Helper `bin/glaw-recover` (assess/claims/deadlines) | `/glaw-recover-payment` |
 | Federal litigation & trial counsel | `glaw-federal-trial-counsel` |
 | Pleadings/motions/discovery drafting | `/glaw-draft` (litigation track) |
 
