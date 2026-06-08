@@ -168,6 +168,7 @@ Covers: **Financial**, accounting, CFO, valuation, audit/assurance.
 | **Recurring entries** — standard period-end JE templates, validated balanced, posted to the ledger | `bin/glaw-recurring` |
 | **Subledgers (auto-post)** — fixed-asset / deferred-revenue / loan schedules that auto-post each close (`bin/glaw-subledger`) | `/glaw-fixed-assets` |
 | **Audit preparation** — PBC list, workpapers, tie-outs, audit readiness → hands to `/glaw-audit` | `/glaw-audit-prep` |
+| **JE forensics** — SAS-99 journal-entry tests + Benford's-law digit analysis (`bin/glaw-je-test`) | `/glaw-audit` |
 
 **Core accounting seats:**
 | Seat | Skill |
