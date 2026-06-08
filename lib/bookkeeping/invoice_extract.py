@@ -118,8 +118,6 @@ def parse_invoice(text: str) -> dict:
         low = ln.lower()
         if any(k in low for k in _TOTAL_KW + _TAX_KW + _SUBTOTAL_KW):
             continue
-        if low == "" or all(k in low for k in ()) :
-            pass
         if sum(k in low for k in _HEADER_KW) >= 2 and not _AMT.search(ln):
             continue                                   # a column-header row
         amts = _amounts(ln)
@@ -146,6 +144,11 @@ def to_bill_je(inv: dict, *, ap_account: str = "Liabilities:AP",
     total = _dec(inv.get("total"))
     tax = _dec(inv.get("tax"))
     items = inv.get("line_items") or []
+    # nothing extractable → no postable entry (do NOT emit a degenerate single-line/zero JE)
+    if not items and tax == 0 and total == 0:
+        return {"date": inv.get("date"), "memo": "Bill — (not extractable)", "source": "invoice",
+                "lines": [], "reconciles": False, "postable": False, "total": "0",
+                "note": "no line items, tax, or total found — extraction failed; review the source"}
     lines, dr = [], Decimal("0")
     for it in items:
         amt = _dec(it["amount"])
@@ -166,7 +169,7 @@ def to_bill_je(inv: dict, *, ap_account: str = "Liabilities:AP",
     vendor = (inv.get("vendor") or "vendor").strip()
     lines.append({"account": f"{ap_account}:{vendor[:30]}", "debit": "0", "credit": str(total)})
     return {"date": inv.get("date"), "memo": f"Bill — {vendor} {inv.get('invoice_number') or ''}".strip(),
-            "source": "invoice", "lines": lines, "reconciles": reconciles,
+            "source": "invoice", "lines": lines, "reconciles": reconciles, "postable": True,
             "total": str(total)}
 
 

@@ -44,8 +44,12 @@ def test_per_currency_and_translation():
     # mixed rates → CTA plug of -100 makes it balance
     assert tr["cta"] == Decimal("-100.00")
     assert tr["balanced"] is True
+    assert tr["rates_complete"] is True and tr["missing_rates"] == []
     assert sum(tr["balances"].values()) == 0
-    print("  ✓ multi-currency: EUR bank@closing 5,500, income@avg, CTA −100 balances the translation")
+    # a MISSING rate must be flagged, never silently defaulted to 1.0
+    bad = MC.translate(by, {}, reporting="USD")
+    assert bad["rates_complete"] is False and bad["missing_rates"] == ["EUR"]
+    print("  ✓ multi-currency: EUR bank@closing 5,500, CTA −100 balances; missing rate flagged (not silent)")
 
 
 def test_report_statements_in_reporting_currency():
