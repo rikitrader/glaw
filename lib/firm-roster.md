@@ -120,6 +120,7 @@ API key (`glaw config set irs_transmitter|irs_api_key`). Income returns (1120-S/
 MeF via EFIN/approved software, NOT this tool. W-2 → SSA BSO.
 
 ## Accounting & Finance Division → lead `/glaw-accounting`
+| **Forensic reconstruction (re-runnable)** — rebuild gapless, fully-reconciled, audit-ready books from raw bank statements: month-by-month reconstruction → tamper-evident double-entry GL + chart of accounts (`bin/glaw-forensic-pipeline`) → 3-statement + SEC/IRS footnotes → credits + IRS-audit-readiness + forms package + error/resolution log + CFO/CEO reports; forensic-auditor adversarial gate | `/glaw-forensic-reconstruction` |
 Covers: **Financial**, accounting, CFO, valuation, audit/assurance.
 
 **The book of record + the agent loop** (the whole accounting is rebuilt, gated, and adversarially agreed here):
