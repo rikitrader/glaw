@@ -61,10 +61,11 @@ COA_RULES = [
     ("TAX", "Expenses:Taxes"),
     # review categories — mapped to explicit REVIEW accounts, never guessed to revenue/expense
     ("CASH WITHDRAWAL", "Expenses:Cash-Withdrawals (REVIEW — substantiate)"),
-    ("FINANCING/WIRE-IN", "Liabilities:Loans-Payable (REVIEW — loan vs revenue)"),
+    # FINANCING/WIRE-IN: characterized as REVENUE per client direction (payments for work) — 2026-06-08
+    ("FINANCING/WIRE-IN", "Income:Revenue:Construction (wire — payments for work)"),
     ("WIRE/BOOK-OUT", "Expenses:Wire-Out (REVIEW — purpose unstated)"),
     ("WIRE", "Expenses:Wire-Out (REVIEW — purpose unstated)"),
-    ("FINANCING", "Liabilities:Loans-Payable (REVIEW — loan vs revenue)"),
+    ("FINANCING", "Income:Revenue:Construction (wire — payments for work)"),
 ]
 
 
