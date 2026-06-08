@@ -128,7 +128,11 @@ def test_year_end_close():
     assert bal.get("Expenses:Rent", Decimal("0")) == 0
     assert bal["Equity:RetainedEarnings"] == Decimal("-700")  # credit-normal
     assert sum(bal.values()) == 0  # still balanced
-    print("  ✓ ledger: year-end close zeroes I/E, nets 700 to Retained Earnings, stays balanced")
+    # idempotency: re-closing the same year must NOT double-close (it would crash before the fix)
+    res2 = led.close_year(2026)
+    assert res2["closed"] is False, "re-closing an already-closed year must be a no-op, not a crash"
+    assert bal == led.balances(), "second close must not change the books"
+    print("  ✓ ledger: year-end close zeroes I/E → 700 to Retained Earnings; re-close is a safe no-op")
 
 
 def test_statements_from_ledger():

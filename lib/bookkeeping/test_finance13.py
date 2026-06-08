@@ -58,7 +58,10 @@ def test_false_audit_ready_is_dead():
     assert res["audit_ready"] is False, "no closing balance MUST NOT be audit-ready"
     assert res["tie_out"]["all_tied"] is False
     assert res["tie_out"]["accounts"][0]["statement_closing"] is None
-    print("  ✓ false-audit-ready killed: account with no statement closing → NOT audit-ready")
+    # an EMPTY reconstruction (no sources) must also not be a vacuous pass
+    empty = R.reconstruct({"book": "empty", "sources": []})
+    assert empty["audit_ready"] is False, "an empty reconstruction must NOT be audit-ready"
+    print("  ✓ false-audit-ready killed: no-closing account AND empty manifest → NOT audit-ready")
 
 
 def test_multi_currency_flagged():

@@ -263,8 +263,6 @@ class Ledger:
             root = p["account"].split(":", 1)[0]
             if root in ("Income", "Revenue", "Expenses"):
                 ytd[p["account"]] = ytd.get(p["account"], Decimal("0")) + p["amount"]
-        if not ytd:
-            return {"closed": False, "reason": "no income/expense activity in year"}
         lines, net = [], Decimal("0")
         for acct, bal in sorted(ytd.items()):
             if bal == 0:
@@ -275,6 +273,9 @@ class Ledger:
             else:
                 lines.append({"account": acct, "debit": -bal, "credit": 0})
             net += -bal   # net income = -(sum of I/E signed balances)
+        # no non-zero income/expense to close (no activity, or the year is already closed)
+        if not lines:
+            return {"closed": False, "reason": "no income/expense activity to close (already closed?)"}
         # plug to retained earnings
         if net >= 0:
             lines.append({"account": retained, "debit": 0, "credit": net})
