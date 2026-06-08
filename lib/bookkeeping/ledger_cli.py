@@ -121,23 +121,12 @@ def cmd_statements(led: L.Ledger, a):
 
 
 def cmd_audit(led: L.Ledger, a):
-    """Audit pack: statements + integrity (tamper check, TB/BS balance) + per-entry trace."""
-    import hashlib
+    """Audit pack: statements + integrity (tamper-evident chain, TB/BS balance) + per-entry trace."""
     entries = led.entries(a.as_of)
     s = S.build(postings=led.postings(a.as_of))
-    # integrity: recompute each entry hash; flag tampering
-    tampered = []
-    for e in entries:
-        recomputed = hashlib.sha256(json.dumps(
-            {k: e[k] for k in ("id", "date", "memo", "lines")}, sort_keys=True, default=str
-        ).encode()).hexdigest()[:16]
-        if e.get("entry_hash") and e["entry_hash"] != recomputed:
-            tampered.append(e["id"])
-        # each entry balances
-        td = sum(L._dec(l["debit"]) for l in e["lines"])
-        tc = sum(L._dec(l["credit"]) for l in e["lines"])
-        if td != tc:
-            tampered.append(e["id"])
+    # integrity: the chained hash-verify (catches edits, currency tamper, deletion, insertion)
+    problems = L.verify_integrity(entries)
+    tampered = sorted({eid for eid, _ in problems})
     pack = {
         "book": led.book, "as_of": a.as_of, "entries": len(entries),
         "trial_balance_balanced": s["trial_balance"]["balanced"],

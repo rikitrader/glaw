@@ -89,6 +89,48 @@ def validate_entry(je: dict) -> dict:
             "lines": norm_lines}
 
 
+GENESIS = "GENESIS:glaw-ledger"   # the chain's seed (prev_hash of the very first entry)
+
+
+def _entry_hash(e: dict, prev_hash: str) -> str:
+    """Tamper-evident, CHAINED entry hash. Covers every financially-material field — including
+    currency and source — plus the previous entry's hash, so editing a field, changing a
+    currency, deleting, inserting, or reordering an entry all break the chain."""
+    content = {k: e.get(k) for k in ("id", "date", "memo", "source", "currency", "lines")}
+    content["prev_hash"] = prev_hash
+    return hashlib.sha256(json.dumps(content, sort_keys=True, default=str).encode()).hexdigest()[:16]
+
+
+def _legacy_hash(e: dict) -> str:
+    """The pre-chain hash (id/date/memo/lines only) — for verifying entries written before the
+    chain existed, so old books still self-verify."""
+    return hashlib.sha256(json.dumps({k: e[k] for k in ("id", "date", "memo", "lines")},
+                          sort_keys=True, default=str).encode()).hexdigest()[:16]
+
+
+def verify_integrity(entries: list[dict]) -> list[tuple]:
+    """Return [(entry_id, reason), ...] for every integrity violation. Detects content edits
+    (incl. currency), AND — via the chain — deletions, insertions, and reordering. Entries with
+    no prev_hash (legacy) fall back to the self-hash check; the chain continues across them."""
+    problems = []
+    prev = GENESIS
+    for e in entries:
+        eid = e.get("id")
+        if "prev_hash" in e:                                   # chained entry
+            if e["prev_hash"] != prev:
+                problems.append((eid, "chain break (entry deleted, inserted, or reordered)"))
+            if e.get("entry_hash") != _entry_hash(e, e["prev_hash"]):
+                problems.append((eid, "content/currency tampered (hash mismatch)"))
+        else:                                                  # legacy self-hash
+            if e.get("entry_hash") and e["entry_hash"] != _legacy_hash(e):
+                problems.append((eid, "content tampered (legacy hash mismatch)"))
+        # each entry must also balance
+        if sum(_dec(l["debit"]) for l in e["lines"]) != sum(_dec(l["credit"]) for l in e["lines"]):
+            problems.append((eid, "entry does not balance"))
+        prev = e.get("entry_hash") or prev
+    return problems
+
+
 def bank_rows_to_entries(rows: list[dict], *, bank_account: str = "Assets:Bank:Checking") -> list[dict]:
     """Convert glaw-bank-ingest rows into balanced journal entries (bank leg + contra)."""
     from statements import _resolve_contra  # local module
@@ -162,14 +204,19 @@ class Ledger:
             payload["transaction_hash"] = je["transaction_hash"]
         if je.get("currency"):
             payload["currency"] = je["currency"]
-        # tamper-evident: hash the entry content
-        payload["entry_hash"] = hashlib.sha256(
-            json.dumps({k: payload[k] for k in ("id", "date", "memo", "lines")},
-                       sort_keys=True, default=str).encode()).hexdigest()[:16]
+        # tamper-evident CHAIN: prev = the head of the chain. Bridge once from the last existing
+        # entry's hash for a legacy book that has no last_hash recorded yet.
+        prev = meta.get("last_hash")
+        if prev is None:
+            existing = self.entries()
+            prev = existing[-1].get("entry_hash") if existing else GENESIS
+        payload["prev_hash"] = prev
+        payload["entry_hash"] = _entry_hash(payload, prev)
         self.dir.mkdir(parents=True, exist_ok=True)
         with self.path.open("a") as fh:
             fh.write(json.dumps(payload, default=str) + "\n")
         meta["next_id"] = eid + 1
+        meta["last_hash"] = payload["entry_hash"]
         if dedupe_hash:
             meta.setdefault("seen_hashes", []).append(dedupe_hash)
         self._write_meta(meta)
