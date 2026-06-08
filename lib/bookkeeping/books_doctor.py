@@ -168,17 +168,13 @@ def run_ledger(book: str, *, as_of: str | None = None, allow_negative_cash: bool
             bad(f"negative cash: {acc} = {S._m(b)}")
     else:
         ok("no negative cash balances")
-    print("[5/7] entry integrity (tamper-evident + each entry balances)")
-    bad_e = []
-    for e in entries:
-        rec = hashlib.sha256(json.dumps({k: e[k] for k in ("id", "date", "memo", "lines")},
-                             sort_keys=True, default=str).encode()).hexdigest()[:16]
-        if e.get("entry_hash") and e["entry_hash"] != rec:
-            bad_e.append(e["id"])
-        if sum(_dec(l["debit"]) for l in e["lines"]) != sum(_dec(l["credit"]) for l in e["lines"]):
-            bad_e.append(e["id"])
-    bad(f"tampered/unbalanced entries: {sorted(set(bad_e))}") if bad_e else \
-        ok(f"all {len(entries)} entries intact and balanced")
+    print("[5/7] entry integrity (tamper-evident chain + each entry balances)")
+    problems = _L.verify_integrity(entries)
+    if problems:
+        for eid, reason in problems[:8]:
+            bad(f"entry {eid}: {reason}")
+    else:
+        ok(f"all {len(entries)} entries hash-chain intact and balanced")
     print("[6/7] anomaly scan")
     import monitor as _M
     # represent entries as rows for the monitor (payee = memo, amount = signed cash leg)
