@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+# glaw-close-run — run the period close non-interactively (cron-safe). Exit 0 only if
+# the books-doctor gate passes. Writes a dated close package with --out.
+#   glaw-close-run --book acme --period 2026-06 --out ~/closes --lock
+#   # cron (1st of month, close prior month):  0 6 1 * *  glaw-close-run --book acme --out ~/closes --lock
+set -euo pipefail
+GLAW_LIB="$HOME/.claude/skills/glaw/lib/bookkeeping"
+VENV_PY="$GLAW_LIB/.venv/bin/python"
+[[ -x "$VENV_PY" ]] || { echo "ERROR: bookkeeping venv missing — run ./setup" >&2; exit 2; }
+exec "$VENV_PY" "$GLAW_LIB/close_run.py" "$@"
