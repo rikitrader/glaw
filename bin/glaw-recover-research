@@ -1,0 +1,162 @@
+#!/usr/bin/env python3
+"""glaw-recover-research — case-law hunter for nonpayment / money-recovery matters.
+
+Specializes in the hard scenario: a SUBCONTRACTOR (or supplier) was never paid
+because the GENERAL CONTRACTOR took the money and ran, and the sub wants to sue the
+HOMEOWNER / OWNER directly under quantum meruit / unjust enrichment.
+
+  glaw-recover-research brief                 print the legal-issue brief + lead authority (offline)
+  glaw-recover-research queries [pack]        print curated CourtListener / Scholar search strings
+  glaw-recover-research search "<query>"      LIVE CourtListener opinion search (urllib, stdlib)
+        [--court fla,fladistctapp] [--limit 10] [--json]
+
+Auth: set COURTLISTENER_TOKEN for higher rate limits (works unauthenticated too).
+Reads packs: sub-v-owner (default), quantum-meruit, unjust-enrichment, account-stated.
+This tool FINDS candidates; it does NOT verify them. Every hit must be read and
+confirmed via /glaw-legal-research before it enters a filing. NOT legal advice.
+"""
+import sys, os, json, argparse, urllib.parse, urllib.request
+
+CL_API = "https://www.courtlistener.com/api/rest/v4/search/"
+# Common Florida CourtListener court slugs (verify; pass --court to override):
+#   fla          = Supreme Court of Florida
+#   fladistctapp = Florida District Court of Appeal (all DCAs)
+FL_COURTS = "fla,fladistctapp"
+
+# ---------------------------------------------------------------------------
+BRIEF = """\
+=== ISSUE BRIEF — UNPAID SUB vs. OWNER AFTER THE GC ABSCONDED (Florida) ===
+
+THE QUESTION
+  Can a subcontractor/supplier who was never paid (because the GC took the money
+  and disappeared) recover directly from the homeowner/owner under quantum meruit
+  or unjust enrichment?
+
+THE HARD TRUTH (read before you sue the owner)
+  In Florida, this is an UPHILL claim. Unjust enrichment requires that the OWNER
+  was *unjustly* enriched — i.e., the owner got the benefit of your work WITHOUT
+  paying for it. If the owner ALREADY PAID the GC in full for that work, courts
+  generally hold the owner was NOT unjustly enriched: the owner paid once; the
+  loss falls on the party who dealt with the absconding GC, not the owner. The
+  sub's remedy in that case runs against the GC (and any payment bond), not the HO.
+
+  >> THE DISPOSITIVE FACT: HAS THE OWNER ALREADY PAID THE GC FOR YOUR WORK?
+     - Owner has NOT paid the GC (or paid less than your value) -> UE claim is
+       VIABLE up to the amount the owner still holds / saved.
+     - Owner ALREADY PAID the GC in full -> UE claim against the owner usually
+       FAILS for lack of inequity. Pursue the GC / bond / your lien instead.
+
+LEAD AUTHORITY TO PULL AND VERIFY (do NOT cite without reading it first)
+  * Commerce Partnership 8098 Ltd. P'ship v. Equity Contracting Co.,
+    695 So. 2d 383 (Fla. 4th DCA 1997) — the leading Florida case on a
+    subcontractor's unjust-enrichment claim against an owner; sets the elements
+    and the "owner must not have already paid" limitation. START HERE.
+  Then Shepardize/KeyCite it and find your DCA's treatment of it.
+
+WHY THE LIEN MATTERS MORE THAN UE HERE
+  A timely Construction Lien (Ch. 713) secures you against the PROPERTY regardless
+  of whether the owner paid the GC (subject to the owner's proper-payment defense
+  under the lien statute). That is why preserving NTO (45d) / Claim of Lien (90d)
+  is the sub's primary play; UE is the fallback when the lien lapsed.
+
+WHAT TO PROVE IF YOU PROCEED ON UE
+  1. You conferred a benefit on the owner (your labor/materials in their property).
+  2. The owner knew of and accepted/retained the benefit.
+  3. It would be inequitable for the owner to keep it WITHOUT PAYING ITS VALUE —
+     which in practice means proving the owner has NOT already paid the GC for it.
+"""
+
+PACKS = {
+    "sub-v-owner": [
+        'subcontractor unjust enrichment owner "had not paid" general contractor',
+        'subcontractor "quantum meruit" homeowner general contractor insolvent',
+        'unjust enrichment owner subcontractor "paid the general contractor"',
+        '"Commerce Partnership" "Equity Contracting" unjust enrichment subcontractor',
+        'subcontractor benefit conferred owner direct contractual relationship absent',
+        'materialman supplier unjust enrichment owner contractor absconded',
+    ],
+    "quantum-meruit": [
+        '"quantum meruit" reasonable value services no express contract Florida',
+        'quantum meruit barred "express contract" same subject matter',
+        'quantum meruit elements services accepted benefit conferred construction',
+    ],
+    "unjust-enrichment": [
+        'unjust enrichment elements benefit conferred retained inequitable Florida',
+        'unjust enrichment barred adequate remedy "express contract"',
+        'unjust enrichment construction owner double payment defense',
+    ],
+    "account-stated": [
+        'account stated invoices silence assent balance Florida construction',
+        'account stated "objected" "reasonable time" presumption',
+    ],
+}
+
+def print_brief():
+    print(BRIEF)
+
+def print_queries(pack):
+    keys = [pack] if pack else ["sub-v-owner"]
+    if pack == "all":
+        keys = list(PACKS)
+    for k in keys:
+        if k not in PACKS:
+            print(f"(unknown pack '{k}'; available: {', '.join(PACKS)} ,all)"); continue
+        print(f"=== query pack: {k} ===")
+        for q in PACKS[k]:
+            print(f"  CL:      {q}")
+            scholar = "https://scholar.google.com/scholar?as_sdt=4,10&q=" + urllib.parse.quote(q)
+            print(f"  Scholar: {scholar}")
+        print()
+    print("Run a live search:  glaw-recover-research search \"<query>\" --court", FL_COURTS)
+    print("Then VERIFY every hit via /glaw-legal-research before citing.")
+
+def search(query, court, limit, as_json):
+    params = {"q": query, "type": "o", "order_by": "score desc"}
+    if court:
+        params["court"] = court
+    url = CL_API + "?" + urllib.parse.urlencode(params)
+    req = urllib.request.Request(url, headers={"User-Agent": "glaw-recover-research/1.0"})
+    tok = os.environ.get("COURTLISTENER_TOKEN", "").strip()
+    if tok:
+        req.add_header("Authorization", f"Token {tok}")
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            data = json.load(r)
+    except Exception as e:
+        sys.exit(f"ERROR: CourtListener request failed: {e}\nURL: {url}")
+    results = (data.get("results") or [])[:limit]
+    if as_json:
+        print(json.dumps(results, indent=2)); return
+    if not results:
+        print("(no results — broaden the query or drop --court)"); return
+    print(f"=== {len(results)} hit(s) for: {query} ===\n")
+    for i, o in enumerate(results, 1):
+        name = o.get("caseName") or o.get("caseNameFull") or "(unnamed)"
+        cite = ", ".join(o.get("citation") or []) or o.get("citeCount", "")
+        court_s = o.get("court") or o.get("court_id") or ""
+        dd = o.get("dateFiled") or ""
+        url_o = "https://www.courtlistener.com" + (o.get("absolute_url") or "")
+        print(f"{i}. {name}")
+        print(f"   {cite}  |  {court_s}  |  {dd}")
+        print(f"   {url_o}\n")
+    print("NOTE: candidates only — read each and confirm via /glaw-legal-research.")
+
+p = argparse.ArgumentParser(prog="glaw-recover-research")
+sub = p.add_subparsers(dest="cmd", required=True)
+sub.add_parser("brief", help="legal-issue brief + lead authority (offline)")
+pq = sub.add_parser("queries", help="curated search strings")
+pq.add_argument("pack", nargs="?", default="sub-v-owner",
+                help="sub-v-owner|quantum-meruit|unjust-enrichment|account-stated|all")
+ps = sub.add_parser("search", help="live CourtListener opinion search")
+ps.add_argument("query")
+ps.add_argument("--court", default=FL_COURTS, help="comma slugs; '' to drop filter")
+ps.add_argument("--limit", type=int, default=10)
+ps.add_argument("--json", action="store_true")
+
+a = p.parse_args()
+if a.cmd == "brief":
+    print_brief()
+elif a.cmd == "queries":
+    print_queries(a.pack)
+elif a.cmd == "search":
+    search(a.query, a.court or None, a.limit, a.json)
