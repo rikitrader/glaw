@@ -118,3 +118,5 @@ Index DB of all 36 Title VI chapters + a pleadable skeleton for every cause of a
 | Master intake + claim routing | `title6/intake-questions.md` |
 | Cross-action discovery set (RFP/Rogs/RFA) | `title6/discovery-set.md` |
 | Subpoena pack (trial/deposition/duces tecum party + non-party, Rule 1.410/1.351) | `title6/subpoenas.md` |
+| ↳ dedicated ready-to-file complaints | `title6/complaint-statutory-lien-foreclosure.md`, `complaint-replevin.md`, `complaint-quiet-title.md`, `complaint-declaratory-judgment.md`, `complaint-ejectment.md`, `complaint-reestablish-lost-instrument.md` |
+| ↳ judgment-enforcement pack | `title6/enforcement-proceedings-supplementary.md` (§56.29 — verified), `enforcement-garnishment.md` (Ch.77) |

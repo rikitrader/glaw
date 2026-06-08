@@ -140,6 +140,8 @@ skeleton for every Title VI claim, a cross-action discovery set, a routing intak
 | Need | File |
 |---|---|
 | Pleadable skeleton for any Title VI cause (replevin, ejectment, quiet title, partition, declaratory judgment, injunction/nuisance, lost-instrument reestablishment, dishonored check, statutory-lien foreclosure, attachment, garnishment, proceedings supplementary, domesticate a judgment, eviction, unlawful detainer) | `templates/title6/causes-of-action-catalog.md` |
+| **Dedicated, ready-to-file complaints** — construction-lien foreclosure (Ch. 713/85), replevin, quiet title, declaratory judgment, ejectment, reestablish a lost note/deed (§71.011 + UCC §673.3091) | `templates/title6/complaint-*.md` |
+| **Judgment-ENFORCEMENT pack** — proceedings supplementary + implead/unwind transfers (§56.29, verified text: 7-business-day Notice to Appear, money judgment vs. transferee) and writ of garnishment + §77.041 exemption notice | `templates/title6/enforcement-*.md` |
 | Master intake + claim-routing triage | `templates/title6/intake-questions.md` |
 | Cross-action discovery (RFP / Rogs / RFA) | `templates/title6/discovery-set.md` |
 | Subpoenas — trial, deposition, duces tecum to party + **non-party** (Rule 1.351/1.410) | `templates/title6/subpoenas.md` |
