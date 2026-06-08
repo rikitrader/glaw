@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# glaw-forensic-adversarial — executable enforcement red-team + chief resolution gate on the GL.
+set -euo pipefail
+GLAW_LIB="$HOME/.claude/skills/glaw/lib/bookkeeping"
+VENV_PY="$GLAW_LIB/.venv/bin/python"
+[[ -x "$VENV_PY" ]] || { echo "ERROR: bookkeeping venv missing — run ./setup" >&2; exit 2; }
+exec "$VENV_PY" "$GLAW_LIB/forensic_adversarial.py" "$@"
