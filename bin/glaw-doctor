@@ -69,6 +69,16 @@ for entry in "${TOOLS[@]}"; do
 done
 # glaw-cites needs stdin
 if printf '' | "$GLAW/bin/glaw-cites" - >/dev/null 2>&1; then ok "glaw-cites ran"; else bad "glaw-cites failed"; fi
+# glaw-bank-ingest: run the engine smoke if its venv is built (else note, don't fail)
+if [ -x "$GLAW/lib/bookkeeping/.venv/bin/python" ]; then
+  if "$GLAW/lib/bookkeeping/.venv/bin/python" "$GLAW/lib/bookkeeping/test_smoke.py" >/dev/null 2>&1; then
+    ok "glaw-bank-ingest engine smoke passed (parse + dedup + Golden-Rule verify)"
+  else
+    bad "glaw-bank-ingest engine smoke FAILED — run: $GLAW/lib/bookkeeping/.venv/bin/python $GLAW/lib/bookkeeping/test_smoke.py"
+  fi
+else
+  warn "bookkeeping engine venv not built (run ./setup) — skipping engine smoke"
+fi
 # scripts: syntax-check (don't execute — they mutate/source)
 for s in glaw-setup glaw-preamble.sh glaw-gate; do
   bash -n "$GLAW/bin/$s" 2>/dev/null && ok "$s syntax OK" || bad "$s syntax error"
