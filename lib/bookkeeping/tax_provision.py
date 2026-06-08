@@ -93,6 +93,8 @@ def main() -> int:
     ap.add_argument("--as-of", default=None, help="as-of date for --book")
     ap.add_argument("--permanent", default="0", help="permanent differences (net)")
     ap.add_argument("--temporary", default="0", help="temporary differences (net; +ve → DTL)")
+    ap.add_argument("--rules", default=None, help="book-to-tax rules JSON — auto-derive perm/temp from --book")
+    ap.add_argument("--tax-depreciation", default=None, help="total tax/MACRS depreciation (for --rules)")
     ap.add_argument("--rate", required=True, help="statutory tax rate %%")
     ap.add_argument("--post", action="store_true", help="post the provision JE back to --book")
     ap.add_argument("--date", default=None, help="date for the posted provision entry")
@@ -101,7 +103,18 @@ def main() -> int:
     if a.pretax is None and not a.book:
         ap.error("provide --pretax or --book")
     pretax = Decimal(a.pretax) if a.pretax is not None else pretax_from_ledger(a.book, a.as_of)
-    d = provision(pretax, Decimal(a.permanent), Decimal(a.temporary), Decimal(a.rate))
+    permanent, temporary = Decimal(a.permanent), Decimal(a.temporary)
+    if a.rules is not None:
+        if not a.book:
+            ap.error("--rules requires --book (it derives perm/temp from the GL)")
+        import sys
+        from pathlib import Path
+        sys.path.insert(0, str(Path(__file__).parent))
+        import book_to_tax as BT
+        td = Decimal(a.tax_depreciation) if a.tax_depreciation is not None else None
+        m1 = BT.book_to_tax(a.book, BT.load_rules(a.rules), as_of=a.as_of, tax_depreciation=td)
+        permanent, temporary = m1["permanent"], m1["temporary"]
+    d = provision(pretax, permanent, temporary, Decimal(a.rate))
     if a.post:
         if not a.book:
             ap.error("--post requires --book")
