@@ -156,12 +156,14 @@ Covers: **Financial**, accounting, CFO, valuation, audit/assurance.
 **Specialized accounting (Tier 3):**
 | Seat | Skill |
 |------|-------|
-| **Revenue recognition (ASC 606)** — 5-step model, deferred revenue, contract assets/liabilities | `/glaw-revenue` |
-| **Income tax provision (ASC 740)** — current + deferred tax, ETR reconciliation, M-1/M-3 | `/glaw-tax-provision` |
-| **Inventory & COGS** — perpetual/periodic, FIFO/WAC, LCNRV, cost of goods sold | `/glaw-inventory` |
-| **FX & multi-currency** — functional vs reporting currency, period-end revaluation, CTA | `/glaw-fx` |
-| **Consolidation** — multi-entity combine + intercompany eliminations + NCI | `/glaw-consolidation` |
+| **Revenue recognition (ASC 606)** — 5-step model, deferred revenue, contract assets/liabilities (`bin/glaw-revrec`) | `/glaw-revenue` |
+| **Income tax provision (ASC 740)** — current + deferred tax, ETR reconciliation, M-1/M-3 (`bin/glaw-tax-provision`) | `/glaw-tax-provision` |
+| **Inventory & COGS** — perpetual/periodic, FIFO/WAC, LCNRV, cost of goods sold (`bin/glaw-inventory`) | `/glaw-inventory` |
+| **FX & multi-currency** — functional vs reporting currency, period-end revaluation, CTA (`bin/glaw-fx-reval`) | `/glaw-fx` |
+| **Consolidation** — multi-entity combine + intercompany eliminations + NCI (`bin/glaw-consolidate`) | `/glaw-consolidation` |
 | **Amortization** — loan (interest/principal split) + prepaid/deferral schedules | `bin/glaw-amortize` |
+| **Cash application** — match incoming receipts to open AR invoices (closes the AR loop) | `bin/glaw-cash-apply` |
+| **Recurring entries** — standard period-end JE templates, validated balanced, posted to the ledger | `bin/glaw-recurring` |
 | **Audit preparation** — PBC list, workpapers, tie-outs, audit readiness → hands to `/glaw-audit` | `/glaw-audit-prep` |
 
 **Core accounting seats:**
