@@ -31,3 +31,9 @@ jobs:
           ln -s "$GITHUB_WORKSPACE" ~/.claude/skills/glaw
           bash bin/glaw-setup
           GLAW_DOCTOR_CORE=1 bash bin/glaw-doctor
+
+      - name: Bookkeeping engine smoke (parse + dedup + Golden-Rule verify + exports)
+        run: |
+          python3 -m venv /tmp/bkv
+          /tmp/bkv/bin/pip install -q -r lib/bookkeeping/requirements.txt
+          /tmp/bkv/bin/python lib/bookkeeping/test_smoke.py
