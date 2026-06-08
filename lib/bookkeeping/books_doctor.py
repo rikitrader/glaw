@@ -196,6 +196,19 @@ def run_ledger(book: str, *, as_of: str | None = None, allow_negative_cash: bool
             f"currency first (glaw-fx-report); the GL cannot sum mixed currencies")
     else:
         ok(f"single reporting currency ({next(iter(currencies)) if currencies else 'reporting'})")
+
+    print("[8/8] income-tax provision tie-out")
+    import tax_tieout as TT
+    ic = TT.internal_consistency(book, as_of)
+    if not ic["has_tax"]:
+        ok("no income-tax provision posted (nothing to tie out)")
+    elif ic["consistent"]:
+        ok(f"tax provision internally consistent (expense {_dec(ic['income_tax_expense']):,.2f} "
+           f"== payable + deferred)")
+    else:
+        bad(f"tax provision MISMATCH — Expenses:Income Tax {_dec(ic['income_tax_expense']):,.2f} "
+            f"≠ payable + deferred {_dec(ic['expense_should_equal']):,.2f} "
+            f"(a tax payment can shift this; re-check before relying on the provision)")
     print("═══ RESULT ═══")
     print(f"  failures: {FAIL}   warnings: {WARN}")
     print("  \U0001f6e1️  BOOKS ARE BULLETPROOF" if FAIL == 0 else "  ❌ PROBLEMS FOUND")

@@ -227,6 +227,11 @@ if [ -x "$GLAW/lib/bookkeeping/.venv/bin/python" ]; then
   else
     bad "QBI FAILED — run: GLAW_HOME=\$(mktemp -d) $_BKPY $GLAW/lib/bookkeeping/test_finance25.py"
   fi
+  if GLAW_HOME="$(mktemp -d)" "$_BKPY" "$GLAW/lib/bookkeeping/test_finance26.py" >/dev/null 2>&1; then
+    ok "tax tie-out passed (posted provision ties; books-doctor [8/8] catches tampering)"
+  else
+    bad "tax-tieout FAILED — run: GLAW_HOME=\$(mktemp -d) $_BKPY $GLAW/lib/bookkeeping/test_finance26.py"
+  fi
   if "$_BKPY" "$GLAW/lib/bookkeeping/test_wiring.py" >/dev/null 2>&1; then
     ok "orchestrator-wiring lock passed (/glaw-accounting routes to the finance subsystem)"
   else
