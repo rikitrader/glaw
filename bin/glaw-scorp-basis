@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# glaw-scorp-basis — S-corp shareholder stock+debt basis (Form 7203) + loss limit.
+set -euo pipefail
+GLAW_LIB="$HOME/.claude/skills/glaw/lib/bookkeeping"
+VENV_PY="$GLAW_LIB/.venv/bin/python"
+[[ -x "$VENV_PY" ]] || { echo "ERROR: bookkeeping venv missing — run ./setup" >&2; exit 2; }
+exec "$VENV_PY" "$GLAW_LIB/scorp_basis.py" "$@"
