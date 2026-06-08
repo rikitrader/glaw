@@ -67,6 +67,15 @@ and (if the matter needs it) to `/glaw-institutional-finance` for the 3-statemen
 Each material unfavorable variance becomes an action with an owner (the seat that controls
 that line — payroll → `/glaw-payroll`, materials → `/glaw-roofer-accounting`, etc.).
 
+### 6 — ⛔ Adversarial challenge of the budget & forecast (before it's relied on)
+A budget/forecast is only as good as its assumptions, so it goes through the same loop the
+statements do: the CFO chief orchestrator (`/glaw-cfo`) dispatches it to the adversarial panel
+(`/glaw-adversarial`) — a skeptical CFO + FP&A lead attack every assumption, the variance
+"explanations" (real driver vs hand-wave), and whether the re-forecast is achievable or
+wishful. Comments route back to the owning seat to fix; re-run; converge with `/glaw-consensus`
+until the panel agrees. A forecast the firm's own adversary destroys is reset, not relied on.
+Record the sign-off with `/glaw-chief-decision`.
+
 ## Deliverables
 A variance report (every account, with breaches flagged), a written commentary on the
 material variances, and an updated forecast — the budget loop closed for the period.

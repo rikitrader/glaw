@@ -118,5 +118,10 @@ Then advance:
 Hand off to `/glaw-structure`. No citations are blessed here — every legal
 proposition is flagged for `/glaw-legal-research` at the file gate.
 
+**Adversarial gate (downstream, hard):** the strategy is not relied on for filing until it
+survives the firm's `/glaw-adversarial` RED→BLUE pass — opposing counsel / IRS / SEC attack
+every theory and only the survivors stand. Write the strategy to *invite* that attack
+(name the weakest link in each theory), since the orchestrator runs that gate before `file`.
+
 > **Attorney work-product — not legal advice.** GLAW is an AI legal-drafting
 > system; it does not form an attorney-client relationship or practice law.
