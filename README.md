@@ -9,8 +9,8 @@ GLAW runs legal *matters* (build a company, structure a fund, prosecute or defen
 
 [![GLAW Doctor](https://github.com/rikitrader/glaw/actions/workflows/ci.yml/badge.svg)](https://github.com/rikitrader/glaw/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-C9A227.svg)](LICENSE)
-[![Skills](https://img.shields.io/badge/skills-140-1A3FA0.svg)](lib/firm-roster.md)
-[![Tools](https://img.shields.io/badge/tools-33-1A3FA0.svg)](#-the-toolbelt-33-clis)
+[![Skills](https://img.shields.io/badge/skills-149-1A3FA0.svg)](lib/firm-roster.md)
+[![Tools](https://img.shields.io/badge/tools-36-1A3FA0.svg)](#-the-toolbelt-36-clis)
 [![Departments](https://img.shields.io/badge/departments-10-3B82F6.svg)](#%EF%B8%8F-the-departments)
 [![Pipeline](https://img.shields.io/badge/pipeline-8%20stages-3B82F6.svg)](#-the-workflow)
 [![Agent Skills](https://img.shields.io/badge/format-Agent%20Skills-000.svg)](https://agentskills.org)
@@ -27,7 +27,7 @@ GLAW runs legal *matters* (build a company, structure a fund, prosecute or defen
 ```bash
 # 1. install (clone into your Claude Code skills dir)
 git clone https://github.com/rikitrader/glaw ~/.claude/skills/glaw
-cd ~/.claude/skills/glaw && ./setup        # deploys 140 skills (78 native + 62 vendored seats) + tools
+cd ~/.claude/skills/glaw && ./setup        # deploys 149 skills (87 native + 62 vendored seats) + tools
 
 # 2. open a matter and let the firm work it
 /glaw                                       # "form a Delaware C-corp with a SAFE round"
@@ -67,7 +67,7 @@ Built on the **gstack** skill-orchestration methodology: a meta-skill orchestrat
 
 ## 🏛️ The Departments
 
-GLAW ships **78 native skills** organized into ten departments **plus 62 self-contained specialist seats** vendored under [`seats/`](seats/) — `glaw-corporate-counsel`, `glaw-pe-vc-counsel`, `glaw-tax-strategy`, `glaw-financial-forensics`, the `glaw-fs-*` finance models, and more. **Zero external skill dependencies:** every seat the firm routes to travels with the repo and is deployed by `./setup`. A deterministic gate (`glaw-doctor`) proves it — every routed skill resolves, or CI fails.
+GLAW ships **87 native skills** organized into ten departments **plus 62 self-contained specialist seats** vendored under [`seats/`](seats/) — `glaw-corporate-counsel`, `glaw-pe-vc-counsel`, `glaw-tax-strategy`, `glaw-financial-forensics`, the `glaw-fs-*` finance models, and more. **Zero external skill dependencies:** every seat the firm routes to travels with the repo and is deployed by `./setup`. A deterministic gate (`glaw-doctor`) proves it — every routed skill resolves, or CI fails.
 
 ```mermaid
 flowchart TD
@@ -142,7 +142,7 @@ When an investigation surfaces **red flags past threshold** (fraud tier, sanctio
 
 ---
 
-## 🧰 The Toolbelt (33 CLIs)
+## 🧰 The Toolbelt (36 CLIs)
 
 GLAW's brains are markdown; its hands are small, transparent CLIs in [`bin/`](bin/). The core (matter state) needs nothing but bash. The rest are progressive enhancement.
 
@@ -198,6 +198,9 @@ flowchart LR
 | `glaw-ledger` | the **persistent double-entry general ledger** (book of record) — post/import/rebuild, balances/GL as-of any date, period lock, year-end close, and an **`audit`** pack (tie-out + tamper-evidence + entry-to-source trace). |
 | `glaw-journal` | post a **balanced** manual/adjusting journal entry (cash *or* non-cash — depreciation, accruals, reclasses). |
 | `glaw-coa` | chart-of-accounts validator + ledger classification check (no `Uncategorized` leakage). |
+| `glaw-comparative` | **comparative P&L** — MTD / prior period / YTD / budget side-by-side from the ledger. |
+| `glaw-amortize` | **loan** amortization (interest/principal split) + **prepaid/deferral** release schedules. |
+| `glaw-narrative` | **SEC-filing-style narrative** — MD&A + notes to the financial statements, generated from the posted ledger. |
 | `glaw-bank-ingest` | bank/card statements (CSV·OFX·QFX·MT940·CAMT·PAIN·**PDF**) → deduped, **balance-verified** ledger → hledger / beancount / **Google Sheet**. Scanned PDFs via Tesseract OCR. Engine: bundled [`glaw_engine`](lib/bookkeeping). |
 | `glaw-statements` | native **P&L / Balance Sheet / Cash Flow / Trial Balance** from the ledger (no hledger dep). Exits non-zero if the books don't balance. |
 | `glaw-books-doctor` | the **bulletproof finance control gate** — TB balances, BS identity, Golden Rule, classified, cash≥0, dedup, anomaly scan, reconciled → "books are bulletproof, or fail." |

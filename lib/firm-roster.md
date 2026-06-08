@@ -144,6 +144,29 @@ Covers: **Financial**, accounting, CFO, valuation, audit/assurance.
 | **Treasury** — 13-week cash-flow forecast, runway, covenant/min-cash monitoring (`bin/glaw-cashflow-13w`) | `/glaw-treasury` |
 | **Sales & use tax / VAT** — nexus, taxability, accrual, multi-jurisdiction filing calendar | `/glaw-sales-tax` |
 | **Ledger monitor** — continuous transaction anomaly/fraud scan (`bin/glaw-ledger-monitor`) | `/glaw-ledger-monitor` |
+
+**Reporting, framework & narrative (make the books legible — toward an SEC-style filing):**
+| Seat | Skill |
+|------|-------|
+| **Conceptual Framework** — the objective, qualitative characteristics, elements, recognition & measurement underlying financial reporting | `/glaw-conceptual-framework` |
+| **Financial narrative / MD&A** — SEC-filing-style report: overview, MD&A, notes to the financial statements (`bin/glaw-narrative`) | `/glaw-narrative` |
+| **Comparative reporting** — MTD / prior / YTD / budget side-by-side from the ledger | `bin/glaw-comparative` |
+| **Management dashboard** — KPI pack (margins, liquidity, DSO/DPO, leverage, burn) + period-over-period story | `/glaw-dashboard` |
+
+**Specialized accounting (Tier 3):**
+| Seat | Skill |
+|------|-------|
+| **Revenue recognition (ASC 606)** — 5-step model, deferred revenue, contract assets/liabilities | `/glaw-revenue` |
+| **Income tax provision (ASC 740)** — current + deferred tax, ETR reconciliation, M-1/M-3 | `/glaw-tax-provision` |
+| **Inventory & COGS** — perpetual/periodic, FIFO/WAC, LCNRV, cost of goods sold | `/glaw-inventory` |
+| **FX & multi-currency** — functional vs reporting currency, period-end revaluation, CTA | `/glaw-fx` |
+| **Consolidation** — multi-entity combine + intercompany eliminations + NCI | `/glaw-consolidation` |
+| **Amortization** — loan (interest/principal split) + prepaid/deferral schedules | `bin/glaw-amortize` |
+| **Audit preparation** — PBC list, workpapers, tie-outs, audit readiness → hands to `/glaw-audit` | `/glaw-audit-prep` |
+
+**Core accounting seats:**
+| Seat | Skill |
+|------|-------|
 | Forensic reconstruction of financials from raw records, fraud detection, QoE | `glaw-financial-forensics` |
 | Audit-readiness, internal controls (COSO/SOX), GAAP/IFRS, ASC 606/842 | `/glaw-audit-assurance` |
 | Institutional CFO modeling, 3-statement, LBO/waterfall, EBITDA normalization | `glaw-institutional-finance` |
