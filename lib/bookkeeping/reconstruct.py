@@ -144,7 +144,7 @@ def reconstruct(manifest: dict, *, capture=True) -> dict:
         "golden_rule": {"all_verified": golden_rule_ok},
         "control_gate": {"passed": gate_passed, "failures": BD.FAIL, "warnings": BD.WARN,
                          "report": buf.getvalue() if capture else None},
-        "audit_ready": (cont["complete"] and golden_rule_ok and tie_ok
+        "audit_ready": (len(cash_accounts) > 0 and cont["complete"] and golden_rule_ok and tie_ok
                         and len(tieouts) == len(dict.fromkeys(cash_accounts)) and gate_passed),
     }
     return result

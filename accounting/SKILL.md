@@ -54,7 +54,13 @@ Read `~/.claude/skills/glaw/lib/firm-roster.md` before assigning a seat.
 
 | Need | Seat (delegate via Skill tool) |
 |------|--------------------------------|
-| **Bookkeeping front-door** — parse raw bank/card statements (CSV/OFX/QFX/MT940/CAMT/PAIN/PDF) into a deduped, balance-verified, account-mapped ledger (hledger/beancount). Run this FIRST when the source records are statements; its journal feeds the reconstruction seats below. | `/glaw-bookkeeping` |
+| **Bookkeeping front-door** — parse raw bank/card statements (CSV/OFX/QFX/MT940/CAMT/PAIN/PDF) into a deduped, balance-verified, account-mapped ledger. Run this FIRST when the source records are statements; its journal feeds the seats below. | `/glaw-bookkeeping` |
+| **General ledger (book of record)** — persistent double-entry GL: post balanced/non-cash journal entries, period lock, year-end close, as-of balances/statements. Everything is computed from here. | `/glaw-ledger` |
+| **Controller** — keeps & closes the books: posts adjustments, ties subledgers, clears the books-doctor gate, prepares the draft | `/glaw-controller` |
+| **CFO (chief orchestrator)** — drives the draft → adversarial panel → fix → re-gate loop **until the numbers are agreed**; signs off | `/glaw-cfo` |
+| **Audit Agent** — independent rebuild, tie-out, integrity, **adversarial CPA/IRS consensus loop**, opinion | `/glaw-audit` |
+| **Reconstruction workflow** — rebuild audited books from MANY statements across MULTIPLE accounts/formats (continuity + transfer-netting + per-account tie-out + adversarial loop) | `/glaw-reconstruct` |
+| **Period close** (month-end) / **budget vs actual** / specialized: revenue (ASC 606), tax provision (ASC 740), inventory, FX, consolidation, fixed assets, AP/AR, payroll, treasury, sales tax | `/glaw-close`, `/glaw-budget`, `/glaw-revenue`, `/glaw-tax-provision`, `/glaw-inventory`, `/glaw-fx`, `/glaw-consolidation`, `/glaw-fixed-assets`, `/glaw-ap-ar`, `/glaw-payroll`, `/glaw-treasury`, `/glaw-sales-tax` |
 | Reconstruct P&L / balance sheet / cash flow / GL from raw bank + card + processor records; IRS-audit review; fraud detection; QoE | `glaw-financial-forensics` |
 | Construction / roofing / contractor CFO: job costing, WIP, percentage-of-completion, crew profitability, Xactimate, supplements | `glaw-roofer-accounting` |
 | Institutional CFO modeling: 3-statement, LBO/waterfall, fund tiers (GP/LP/SPV/feeder), NAV, EBITDA normalization, M&A/roll-up, structured finance | `glaw-institutional-finance` |
@@ -79,11 +85,17 @@ reconstruct all years in scope and reconcile to the returns; if you model the ca
 table, model every round and the dilution; if you set the tax posture, run the
 elections AND the downstream consequences.
 
-**When the raw records are bank/card statements, ingest before you reconstruct.**
-Run `/glaw-bookkeeping` (driver `bin/glaw-bank-ingest`) first to produce a deduped,
-balance-verified journal, then hand that journal to `glaw-financial-forensics` /
-`glaw-roofer-accounting` / `glaw-institutional-finance` rather than making them parse raw
-statements. Surface any Golden-Rule `discrepancy` from the ingest as a finding.
+**When the raw records are bank/card statements, reconstruct on the book of record.**
+The modern path is the general ledger, not a one-off parse:
+- **One account, quick parse** → `/glaw-bookkeeping` (driver `bin/glaw-bank-ingest`).
+- **A full audited reconstruction (the default for real engagements)** → `/glaw-reconstruct`:
+  it ingests every statement across **all accounts** into the persistent GL (`/glaw-ledger`),
+  runs the continuity (completeness) gate, nets inter-account transfers, ties each account to
+  its statement closing, clears `/glaw-books-doctor`, and drives the **CFO + Audit adversarial
+  consensus loop** until the numbers are agreed. This is what makes the books audit-ready.
+Then hand the posted ledger to `glaw-financial-forensics` / `glaw-roofer-accounting` /
+`glaw-institutional-finance` for the deeper read. Surface any Golden-Rule `discrepancy` or
+NOT-audit-ready result as a finding — never bury it.
 
 ### Step 3 — Reconcile + cross-check
 Tie the seats together: do the forensic financials reconcile to the tax filings?
