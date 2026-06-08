@@ -149,7 +149,7 @@ Covers: **Financial**, accounting, CFO, valuation, audit/assurance.
 | Seat | Skill |
 |------|-------|
 | **Conceptual Framework** — the objective, qualitative characteristics, elements, recognition & measurement underlying financial reporting | `/glaw-conceptual-framework` |
-| **Financial narrative / MD&A** — SEC-filing-style report: overview, MD&A, notes to the financial statements (`bin/glaw-narrative`) | `/glaw-narrative` |
+| **Financial narrative / MD&A** — SEC-filing-style report: overview, MD&A, notes (`bin/glaw-narrative`); printable HTML/PDF + Sheets export (`bin/glaw-export`) | `/glaw-narrative` |
 | **Comparative reporting** — MTD / prior / YTD / budget side-by-side from the ledger | `bin/glaw-comparative` |
 | **Statement of cash flows (indirect)** — tag-aware, self-reconciling to Δcash | `bin/glaw-cashflow` |
 | **Tagged chart of accounts** — account type / current / cash-flow tags → exact ratios + cash flow (`glaw-coa tags`) | `bin/glaw-coa` |
