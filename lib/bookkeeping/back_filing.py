@@ -56,7 +56,7 @@ def back_filing(years: list[dict], *, rate_pct="21", interest_rate="8") -> dict:
                      "unpaid": str(_q(unpaid)), "months_late": months,
                      "penalties": str(_q(pen)), "interest": str(_q(intr)),
                      "total_due": str(_q(unpaid + pen + intr))})
-    grand = _q(sum(_dec(r["total_due"]) for r in rows))
+    grand = _q(sum((_dec(r["total_due"]) for r in rows), Decimal("0")))
     return {"years": rows, "total_tax": str(_q(tot_tax)), "total_penalties": str(_q(tot_pen)),
             "total_interest": str(_q(tot_int)), "grand_total_due": str(grand)}
 

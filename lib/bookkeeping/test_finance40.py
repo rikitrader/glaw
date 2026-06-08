@@ -17,7 +17,9 @@ def test_back_filing_multiyear():
     assert d["total_tax"] == "30000.00"
     assert Decimal(d["grand_total_due"]) > Decimal("35000")   # + penalties + interest
     assert len(d["years"]) == 3
-    print("  ✓ back-filing: 3 delinquent years rolled to a grand total (tax 30k + pen + int)")
+    # empty input must not crash (regression: sum() returned int 0 → _q crashed)
+    assert BF.back_filing([])["grand_total_due"] == "0.00"
+    print("  ✓ back-filing: 3 delinquent years rolled to a grand total; empty input → 0.00 (no crash)")
 
 
 def test_sfr_replacement_saves():
