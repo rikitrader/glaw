@@ -67,7 +67,22 @@ def main() -> int:
     p = sub.add_parser("validate"); p.add_argument("chart"); p.add_argument("--format", default="text", choices=["text", "json"])
     p = sub.add_parser("check-ledger"); p.add_argument("--book", default="default")
     p.add_argument("--format", default="text", choices=["text", "json"])
+    p = sub.add_parser("tags"); p.add_argument("--book", default=None)
+    p.add_argument("--chart", default=None, help="chart tags name")
+    p.add_argument("--format", default="text", choices=["text", "json"])
     a = ap.parse_args()
+
+    if a.cmd == "tags":
+        import coa_tags as T
+        ov = T.load_chart_tags(a.chart)
+        accounts = sorted(L.Ledger(a.book).balances()) if a.book else sorted({r["match"] for r in ov})
+        rows = [{"account": acc, **T.classify(acc, ov)} for acc in accounts]
+        if a.format == "json":
+            print(json.dumps(rows, indent=2)); return 0
+        print(f"  {'Account':<40}{'Type':<12}{'Current':<9}{'Cash flow'}")
+        for r in rows:
+            print(f"  {r['account'][:39]:<40}{r['type']:<12}{str(r['current']):<9}{r['cashflow']}")
+        return 0
 
     if a.cmd == "validate":
         res = validate_chart(json.load(open(a.chart, encoding="utf-8")))

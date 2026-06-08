@@ -37,7 +37,7 @@ def _r2(x):
 
 
 def compute(book: str, *, as_of: str | None = None, days: int = 365,
-            prior_cash: Decimal | None = None) -> dict:
+            prior_cash: Decimal | None = None, chart: str | None = None) -> dict:
     led = L.Ledger(book)
     postings = [{"account": p["account"], "amount": p["amount"], "id": p["id"]}
                 for p in led.postings(as_of)]
@@ -53,10 +53,21 @@ def compute(book: str, *, as_of: str | None = None, days: int = 365,
     cogs = sum((r["amount"] for r in pl["expenses"] if _has(r["account"], _COGS)), Decimal("0"))
     gross_profit = rev - cogs if cogs else None
 
-    cur_assets = sum((b for a, b in bal.items()
-                      if a.split(":", 1)[0] == "Assets" and _has(a, _CUR_ASSET)), Decimal("0"))
-    cur_liab = sum((-b for a, b in bal.items()
-                    if a.split(":", 1)[0] == "Liabilities" and _has(a, _CUR_LIAB)), Decimal("0"))
+    # current vs non-current: exact via chart tags when provided, else keyword heuristic
+    if chart is not None:
+        import coa_tags as T
+        ov = T.load_chart_tags(chart)
+        cur_assets = sum((b for a, b in bal.items()
+                          if T.classify(a, ov)["type"] == "asset" and T.classify(a, ov)["current"]), Decimal("0"))
+        cur_liab = sum((-b for a, b in bal.items()
+                        if T.classify(a, ov)["type"] == "liability" and T.classify(a, ov)["current"]), Decimal("0"))
+        tag_mode = f"chart:{chart}"
+    else:
+        cur_assets = sum((b for a, b in bal.items()
+                          if a.split(":", 1)[0] == "Assets" and _has(a, _CUR_ASSET)), Decimal("0"))
+        cur_liab = sum((-b for a, b in bal.items()
+                        if a.split(":", 1)[0] == "Liabilities" and _has(a, _CUR_LIAB)), Decimal("0"))
+        tag_mode = "keyword-heuristic"
     total_liab = bs["liabilities_total"]
     equity = bs["equity_total"]      # already includes current-period net income
 
@@ -82,8 +93,10 @@ def compute(book: str, *, as_of: str | None = None, days: int = 365,
               "inventory": _r2(inventory), "current_assets": _r2(cur_assets),
               "current_liabilities": _r2(cur_liab), "total_liabilities": _r2(total_liab),
               "equity": _r2(equity)}
+    note = ("current/non-current from chart tags (exact)" if chart is not None
+            else "current/non-current classified by account-name keyword (heuristic)")
     return {"book": book, "as_of": as_of, "days": days, "kpis": kpis, "inputs": inputs,
-            "note": "current/non-current classified by account-name keyword (heuristic)"}
+            "classification": tag_mode, "note": note}
 
 
 def render_text(d: dict) -> str:
@@ -120,9 +133,10 @@ def main() -> int:
     ap.add_argument("--book", required=True)
     ap.add_argument("--as-of", default=None)
     ap.add_argument("--days", type=int, default=365, help="period length for DSO/DPO/burn (default 365)")
+    ap.add_argument("--chart", default=None, help="chart tags name for exact current/non-current")
     ap.add_argument("--format", default="text", choices=["text", "json"])
     a = ap.parse_args()
-    d = compute(a.book, as_of=a.as_of, days=a.days)
+    d = compute(a.book, as_of=a.as_of, days=a.days, chart=a.chart)
     print(json.dumps(d, indent=2, default=str) if a.format == "json" else render_text(d))
     return 0
 

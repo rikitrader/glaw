@@ -185,6 +185,45 @@ def _cash_flow_from_postings(postings: list[dict], *, cash_roots=_CASH_HINTS) ->
             "net_change_in_cash": op + inv + fin}
 
 
+def cash_flow_indirect(opening: dict, closing: dict, classify_fn) -> dict:
+    """Indirect-method cash flow from two balance snapshots (signed, debit-positive).
+    Cash impact of any non-cash account's change is −Δ; every account is bucketed by its
+    cash-flow tag, so operating+investing+financing == Δcash by the ledger's zero-sum
+    property (debits == credits at all times). Self-reconciling."""
+    accounts = set(opening) | set(closing)
+    dcash = Decimal("0")
+    net_income = Decimal("0")
+    op_adjust: list[dict] = []
+    investing: list[dict] = []
+    financing: list[dict] = []
+    for a in sorted(accounts):
+        delta = _dec(closing.get(a, 0)) - _dec(opening.get(a, 0))
+        tag = classify_fn(a)
+        if tag["cashflow"] == "cash":
+            dcash += delta
+            continue
+        impact = -delta                              # cash impact of this account's change
+        if impact == 0:
+            continue
+        if tag["type"] in ("income", "expense"):
+            net_income += impact                     # −Δ(I/E) sums to net income
+        elif tag["cashflow"] == "operating":
+            op_adjust.append({"account": a, "amount": impact})
+        elif tag["cashflow"] == "investing":
+            investing.append({"account": a, "amount": impact})
+        else:
+            financing.append({"account": a, "amount": impact})
+    op_total = net_income + sum((r["amount"] for r in op_adjust), Decimal("0"))
+    inv_total = sum((r["amount"] for r in investing), Decimal("0"))
+    fin_total = sum((r["amount"] for r in financing), Decimal("0"))
+    net_change = op_total + inv_total + fin_total
+    return {"net_income": net_income, "operating_adjustments": op_adjust,
+            "operating": op_total, "investing": investing, "investing_total": inv_total,
+            "financing": financing, "financing_total": fin_total,
+            "net_change_in_cash": net_change, "change_in_cash": dcash,
+            "reconciles": net_change == dcash}
+
+
 def build(rows: list[dict] | None = None, *, postings: list[dict] | None = None,
           bank_account: str = "Assets:Bank:Checking") -> dict:
     """Build the four statements. Source is EITHER `postings` (from the posted general
