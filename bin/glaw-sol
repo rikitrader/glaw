@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# glaw-sol — IRS assessment (§6501) + refund (§6511) statute-of-limitations dates.
+set -euo pipefail
+GLAW_LIB="$HOME/.claude/skills/glaw/lib/bookkeeping"
+VENV_PY="$GLAW_LIB/.venv/bin/python"
+[[ -x "$VENV_PY" ]] || { echo "ERROR: bookkeeping venv missing — run ./setup" >&2; exit 2; }
+exec "$VENV_PY" "$GLAW_LIB/statute_of_limitations.py" "$@"
