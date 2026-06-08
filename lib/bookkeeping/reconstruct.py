@@ -46,12 +46,17 @@ def _dec(v):
         return Decimal("0")
 
 
-def _ingest(path: str, chart: str | None, mapfile: str | None) -> dict:
+def _ingest(path: str, chart: str | None, mapfile: str | None,
+            opening=None, closing=None) -> dict:
     cmd = [sys.executable, RUNNER, path, "--format", "json"]
     if chart:
         cmd += ["--chart", chart]
     if mapfile:
         cmd += ["--map", mapfile]
+    if opening is not None:
+        cmd += ["--open", str(opening)]
+    if closing is not None:
+        cmd += ["--close", str(closing)]
     out = subprocess.run(cmd, capture_output=True, text=True)
     if not out.stdout.strip():
         raise SystemExit(f"ingest produced nothing for {path}: {out.stderr.strip()[:200]}")
@@ -65,11 +70,29 @@ def reconstruct(manifest: dict, *, capture=True) -> dict:
     sources_report, continuity_records = [], []
 
     # 1 — ingest every source into its own cash account
+    opened: set[str] = set()
+    golden_rule_ok = True
     for src in manifest["sources"]:
-        payload = _ingest(src["path"], src.get("chart"), src.get("map"))
+        payload = _ingest(src["path"], src.get("chart"), src.get("map"),
+                          opening=src.get("opening"), closing=src.get("closing"))
         rows = payload.get("rows", [])
+        if src.get("invert"):       # normalize a charges-positive statement (e.g. some cards)
+            rows = [{**r, "amount": str(-_dec(r.get("amount")))} for r in rows]
+        # post the opening balance once per account (first statement), before its transactions
+        acct_type = src.get("type", "asset")
+        au0 = (payload.get("audit") or [{}])[0]
+        if src["account"] not in opened and au0.get("opening_balance") not in (None, "None"):
+            opening = _dec(src.get("opening") if src.get("opening") is not None else au0.get("opening_balance"))
+            first_date = au0.get("period_start") or (rows[0]["booking_date"][:10] if rows else None)
+            if opening != 0 and first_date:
+                from datetime import date as _d, timedelta
+                as_of = (_d.fromisoformat(first_date[:10]) - timedelta(days=1)).isoformat()
+                led.post_opening(src["account"], opening, as_of, account_type=acct_type)
+            opened.add(src["account"])
         imp = led.import_bank(rows, bank_account=src["account"])
         for au in payload.get("audit", []):
+            if au.get("balance_status") not in (None, "verified"):
+                golden_rule_ok = False
             continuity_records.append({"account": src["account"], **{
                 k: au.get(k) for k in ("period_start", "period_end", "opening_balance",
                                        "closing_balance", "balance_status")}})
@@ -82,15 +105,23 @@ def reconstruct(manifest: dict, *, capture=True) -> dict:
     # 3 — inter-account transfer reclassification
     tr = TR.reclassify(book, window_days=window)
 
-    # 4 — per-account tie-out: GL balance == latest statement closing balance
+    # 4 — per-account tie-out: EVERY cash account with statements must have a closing AND tie.
+    # An account with statements but no closing-to-tie is a FAILURE, not a vacuous pass.
     bal = led.balances()
     tieouts, tie_ok = [], True
+    cash_accounts = [s["account"] for s in manifest["sources"]]
     latest_close: dict[str, Decimal] = {}
     for r in sorted(continuity_records, key=lambda x: str(x.get("period_end") or "")):
-        if r.get("closing_balance") is not None:
+        if r.get("closing_balance") not in (None, "None"):
             latest_close[r["account"]] = _dec(r["closing_balance"])
-    for acct, close in latest_close.items():
+    for acct in dict.fromkeys(cash_accounts):          # de-dup, preserve order
         gl = bal.get(acct, Decimal("0"))
+        if acct not in latest_close:
+            tie_ok = False
+            tieouts.append({"account": acct, "gl_balance": str(gl), "statement_closing": None,
+                            "difference": None, "tied": False, "reason": "no statement closing balance to tie to"})
+            continue
+        close = latest_close[acct]
         ok = gl == close
         tie_ok = tie_ok and ok
         tieouts.append({"account": acct, "gl_balance": str(gl), "statement_closing": str(close),
@@ -109,10 +140,12 @@ def reconstruct(manifest: dict, *, capture=True) -> dict:
         "sources": sources_report,
         "continuity": {"complete": cont["complete"], "accounts": cont["accounts"]},
         "transfers": {"found": tr["transfers_found"], "reclassified": tr["reclassified"], "pairs": tr["pairs"]},
-        "tie_out": {"all_tied": tie_ok, "accounts": tieouts},
+        "tie_out": {"all_tied": tie_ok, "accounts_checked": len(tieouts), "accounts": tieouts},
+        "golden_rule": {"all_verified": golden_rule_ok},
         "control_gate": {"passed": gate_passed, "failures": BD.FAIL, "warnings": BD.WARN,
                          "report": buf.getvalue() if capture else None},
-        "audit_ready": cont["complete"] and tie_ok and gate_passed,
+        "audit_ready": (cont["complete"] and golden_rule_ok and tie_ok
+                        and len(tieouts) == len(dict.fromkeys(cash_accounts)) and gate_passed),
     }
     return result
 
@@ -129,10 +162,16 @@ def render_text(r: dict) -> str:
     o.append(f"  TRANSFERS: {r['transfers']['reclassified']} reclassified (of {r['transfers']['found']} found)")
     for p in r["transfers"]["pairs"]:
         o.append(f"     {_dec(p['amount']):>12,.2f}  {p['from']} → {p['to']}")
-    o.append(f"  TIE-OUT: {'✅ all accounts tie to statement closing' if r['tie_out']['all_tied'] else '❌ tie-out break'}")
+    gr = r.get("golden_rule", {})
+    o.append(f"  GOLDEN RULE: {'✅ every source verified' if gr.get('all_verified') else '❌ a source has a balance discrepancy'}")
+    o.append(f"  TIE-OUT: {'✅ all accounts tie to statement closing' if r['tie_out']['all_tied'] else '❌ tie-out break'}"
+             f"  ({r['tie_out'].get('accounts_checked', 0)} account(s) checked)")
     for t in r["tie_out"]["accounts"]:
         mark = "✓" if t["tied"] else "✗"
-        o.append(f"     {mark} {t['account']:<30} GL {_dec(t['gl_balance']):>14,.2f}  stmt {_dec(t['statement_closing']):>14,.2f}")
+        if t["statement_closing"] is None:
+            o.append(f"     {mark} {t['account']:<30} GL {_dec(t['gl_balance']):>14,.2f}  — {t.get('reason','no closing balance')}")
+        else:
+            o.append(f"     {mark} {t['account']:<30} GL {_dec(t['gl_balance']):>14,.2f}  stmt {_dec(t['statement_closing']):>14,.2f}")
     g = r["control_gate"]
     o.append(f"  CONTROL GATE: {'✅ bulletproof' if g['passed'] else '❌ problems'} (failures {g['failures']}, warnings {g['warnings']})")
     o.append("-" * 68)

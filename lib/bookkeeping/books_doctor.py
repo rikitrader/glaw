@@ -148,19 +148,19 @@ def run_ledger(book: str, *, as_of: str | None = None, allow_negative_cash: bool
     s = S.build(postings=postings)
     tb, bs = s["trial_balance"], s["balance_sheet"]
     print(f"═══ GLAW BOOKS DOCTOR (book: {book}, {len(entries)} entries) ═══")
-    print("[1/6] trial balance")
+    print("[1/7] trial balance")
     ok(f"debits == credits ({S._m(tb['total_debit'])})") if tb["balanced"] else \
         bad(f"OUT OF BALANCE: {S._m(tb['total_debit'])} != {S._m(tb['total_credit'])}")
-    print("[2/6] balance-sheet identity")
+    print("[2/7] balance-sheet identity")
     ok("Assets == Liabilities + Equity + Net Income") if bs["balances"] else \
         bad("balance sheet does not balance")
-    print("[3/6] account classification")
+    print("[3/7] account classification")
     if s["unclassified_accounts"]:
         for acc in s["unclassified_accounts"]:
             bad(f"unclassified account: {acc}")
     else:
         ok("every account maps to a known statement root")
-    print("[4/6] cash position")
+    print("[4/7] cash position")
     bal = _L.Ledger(book).balances(as_of)
     neg = [(acc, b) for acc, b in bal.items() if acc.startswith(S._CASH_HINTS) and b < 0]
     if neg and not allow_negative_cash:
@@ -168,7 +168,7 @@ def run_ledger(book: str, *, as_of: str | None = None, allow_negative_cash: bool
             bad(f"negative cash: {acc} = {S._m(b)}")
     else:
         ok("no negative cash balances")
-    print("[5/6] entry integrity (tamper-evident + each entry balances)")
+    print("[5/7] entry integrity (tamper-evident + each entry balances)")
     bad_e = []
     for e in entries:
         rec = hashlib.sha256(json.dumps({k: e[k] for k in ("id", "date", "memo", "lines")},
@@ -179,7 +179,7 @@ def run_ledger(book: str, *, as_of: str | None = None, allow_negative_cash: bool
             bad_e.append(e["id"])
     bad(f"tampered/unbalanced entries: {sorted(set(bad_e))}") if bad_e else \
         ok(f"all {len(entries)} entries intact and balanced")
-    print("[6/6] anomaly scan")
+    print("[6/7] anomaly scan")
     import monitor as _M
     # represent entries as rows for the monitor (payee = memo, amount = signed cash leg)
     rows = []
@@ -193,6 +193,13 @@ def run_ledger(book: str, *, as_of: str | None = None, allow_negative_cash: bool
     anom = _M.scan(rows)
     ok("no near-duplicate / anomalous payments") if anom["clean"] else \
         [warn(f"{f['reason']}: {f.get('payee','')[:30]} {f.get('amount','')}") for f in anom["flags"][:5]]
+    print("[7/7] single reporting currency")
+    currencies = {e["currency"] for e in entries if e.get("currency")}
+    if len(currencies) > 1:
+        bad(f"multi-currency book ({', '.join(sorted(currencies))}) — revalue to one reporting "
+            f"currency first (glaw-fx-reval); the GL cannot sum mixed currencies")
+    else:
+        ok(f"single reporting currency ({next(iter(currencies)) if currencies else 'reporting'})")
     print("═══ RESULT ═══")
     print(f"  failures: {FAIL}   warnings: {WARN}")
     print("  \U0001f6e1️  BOOKS ARE BULLETPROOF" if FAIL == 0 else "  ❌ PROBLEMS FOUND")

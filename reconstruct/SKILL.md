@@ -63,14 +63,28 @@ bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATT
 ```bash
 ~/.claude/skills/glaw/bin/glaw-reconstruct manifest.json --out ~/recon --format text
 ```
-Manifest:
+Manifest (each source = one account; **give the statement's `opening`/`closing` so the books
+tie** — an ongoing company never starts at zero):
 ```json
 {"book":"acme","entity":"Acme LLC","window":5,
- "sources":[{"path":"checking/","account":"Assets:Bank:Checking","chart":"roofing"},
-            {"path":"amex.csv","account":"Liabilities:CreditCard:Amex","chart":"roofing"}]}
+ "sources":[{"path":"checking/","account":"Assets:Bank:Checking","chart":"roofing",
+             "opening":"50000","closing":"61200"},
+            {"path":"amex.csv","account":"Liabilities:CreditCard:Amex","chart":"roofing",
+             "type":"liability","opening":"0","closing":"-3400"}]}
 ```
-Exit 0 only when continuity is complete, transfers are netted, every account ties, and the
-control gate is bulletproof. Anything short → **not audit-ready**; the chief routes the fix.
+- **`opening`/`closing`** — the statement's balances. The first statement's `opening` posts as an
+  **Opening Balance Equity** entry so the GL reflects the true starting position; `closing` drives
+  the per-account tie-out and the Golden Rule.
+- **`type`** — `asset` (default) or `liability` (credit cards, lines of credit) for correct
+  opening-balance sign.
+- **`invert`** — set `true` only for a statement that shows charges as **positive** (the default,
+  charges-negative, posts correctly).
+
+⛔ **Exit 0 only when** continuity is complete, **every source's Golden Rule verified**, every cash
+account has a closing balance **and ties**, the book is single-currency, and the control gate is
+bulletproof. A vacuous pass is impossible: an account with statements but **no closing to tie to is
+a FAILURE**, not a silent OK. A multi-currency book fails — revalue to one reporting currency
+(`/glaw-fx`) first. Anything short → **not audit-ready**; the chief routes the fix.
 
 ### The adversarial consensus loop (step 6 — never skipped)
 Hand the reconstructed statements to `/glaw-audit`, which runs the same loop-until-agreed
