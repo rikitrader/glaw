@@ -153,11 +153,20 @@ def main() -> int:
         warns = list(getattr(r, "warnings", []) or [])
         if id(r) in notes:
             warns.append(notes[id(r)])
+        _txs = getattr(r, "transactions", []) or []
+        _dates = sorted(str(getattr(t, "booking_date", "") or "")[:10] for t in _txs if getattr(t, "booking_date", None))
         audit.append({
             "source": notes.get(id(r)) or getattr(r, "source_path", None) or str(in_path),
             "method": getattr(r, "source_method", None),
-            "rows": len(getattr(r, "transactions", []) or []),
+            "rows": len(_txs),
             "balance_status": getattr(getattr(v, "status", None), "value", None),
+            # per-statement metadata for continuity / per-account tie-out
+            "opening_balance": (str(v.opening_balance) if v is not None and v.opening_balance is not None else None),
+            "closing_balance": (str(v.closing_balance) if v is not None and v.closing_balance is not None else None),
+            "total_credits": (str(getattr(v, "total_credits", None)) if v is not None else None),
+            "total_debits": (str(getattr(v, "total_debits", None)) if v is not None else None),
+            "period_start": (_dates[0] if _dates else None),
+            "period_end": (_dates[-1] if _dates else None),
             "warnings": warns,
         })
 
