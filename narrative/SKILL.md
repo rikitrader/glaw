@@ -95,7 +95,9 @@ results, written specifically to this entity rather than as boilerplate.
 
 ### 7 — Hand to the bench for review
 - Disclosure judgment — what must be disclosed, materiality, completeness → `/glaw-audit`
-- SEC-style review where the deliverable is meant to read like a filing → `/glaw-sec`
+- **When the deliverable is an actual SEC filing** (10-K/10-Q/8-K/S-1 — filer status, Regulation
+  S-X form & content, S-K/MD&A items, XBRL) → `/glaw-sec-reporting`
+- SEC-style review and securities-law disclosure → `/glaw-sec`, `/glaw-sec-disclosure`
 - Independent verification that the cited numbers match the books → `/glaw-audit`
 - Where the report supports an offering or institutional readers → `/glaw-institutional-finance`
 
