@@ -10,7 +10,7 @@ GLAW runs legal *matters* (build a company, structure a fund, prosecute or defen
 [![GLAW Doctor](https://github.com/rikitrader/glaw/actions/workflows/ci.yml/badge.svg)](https://github.com/rikitrader/glaw/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-C9A227.svg)](LICENSE)
 [![Skills](https://img.shields.io/badge/skills-149-1A3FA0.svg)](lib/firm-roster.md)
-[![Tools](https://img.shields.io/badge/tools-44-1A3FA0.svg)](#-the-toolbelt-44-clis)
+[![Tools](https://img.shields.io/badge/tools-45-1A3FA0.svg)](#-the-toolbelt-45-clis)
 [![Departments](https://img.shields.io/badge/departments-10-3B82F6.svg)](#%EF%B8%8F-the-departments)
 [![Pipeline](https://img.shields.io/badge/pipeline-8%20stages-3B82F6.svg)](#-the-workflow)
 [![Agent Skills](https://img.shields.io/badge/format-Agent%20Skills-000.svg)](https://agentskills.org)
@@ -142,7 +142,7 @@ When an investigation surfaces **red flags past threshold** (fraud tier, sanctio
 
 ---
 
-## 🧰 The Toolbelt (44 CLIs)
+## 🧰 The Toolbelt (45 CLIs)
 
 GLAW's brains are markdown; its hands are small, transparent CLIs in [`bin/`](bin/). The core (matter state) needs nothing but bash. The rest are progressive enhancement.
 
@@ -199,6 +199,7 @@ flowchart LR
 | `glaw-journal` | post a **balanced** manual/adjusting journal entry (cash *or* non-cash — depreciation, accruals, reclasses). |
 | `glaw-coa` | chart-of-accounts validator + ledger classification check (no `Uncategorized` leakage). |
 | `glaw-comparative` | **comparative P&L** — MTD / prior period / YTD / budget side-by-side from the ledger. |
+| `glaw-close-run` | **scheduled/automated close** (cron-safe) — runs the whole close on a book, writes a dated package, locks only if the gate passes; exit code reflects the gate. |
 | `glaw-dashboard` | **management KPI pack** — margins, current/quick ratio, working capital, DSO/DPO, debt/equity, burn/runway, from the ledger. |
 | `glaw-amortize` | **loan** amortization (interest/principal split) + **prepaid/deferral** release schedules. |
 | `glaw-narrative` | **SEC-filing-style narrative** — MD&A + notes to the financial statements, generated from the posted ledger. |
