@@ -166,6 +166,7 @@ Covers: **Financial**, accounting, CFO, valuation, audit/assurance.
 | **Amortization** — loan (interest/principal split) + prepaid/deferral schedules | `bin/glaw-amortize` |
 | **Cash application** — match incoming receipts to open AR invoices (closes the AR loop) | `bin/glaw-cash-apply` |
 | **Recurring entries** — standard period-end JE templates, validated balanced, posted to the ledger | `bin/glaw-recurring` |
+| **Subledgers (auto-post)** — fixed-asset / deferred-revenue / loan schedules that auto-post each close (`bin/glaw-subledger`) | `/glaw-fixed-assets` |
 | **Audit preparation** — PBC list, workpapers, tie-outs, audit readiness → hands to `/glaw-audit` | `/glaw-audit-prep` |
 
 **Core accounting seats:**
