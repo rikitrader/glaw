@@ -10,7 +10,7 @@ GLAW runs legal *matters* (build a company, structure a fund, prosecute or defen
 [![GLAW Doctor](https://github.com/rikitrader/glaw/actions/workflows/ci.yml/badge.svg)](https://github.com/rikitrader/glaw/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-C9A227.svg)](LICENSE)
 [![Skills](https://img.shields.io/badge/skills-150-1A3FA0.svg)](lib/firm-roster.md)
-[![Tools](https://img.shields.io/badge/tools-52-1A3FA0.svg)](#-the-toolbelt-52-clis)
+[![Tools](https://img.shields.io/badge/tools-53-1A3FA0.svg)](#-the-toolbelt-53-clis)
 [![Departments](https://img.shields.io/badge/departments-10-3B82F6.svg)](#%EF%B8%8F-the-departments)
 [![Pipeline](https://img.shields.io/badge/pipeline-8%20stages-3B82F6.svg)](#-the-workflow)
 [![Agent Skills](https://img.shields.io/badge/format-Agent%20Skills-000.svg)](https://agentskills.org)
@@ -142,7 +142,7 @@ When an investigation surfaces **red flags past threshold** (fraud tier, sanctio
 
 ---
 
-## 🧰 The Toolbelt (52 CLIs)
+## 🧰 The Toolbelt (53 CLIs)
 
 GLAW's brains are markdown; its hands are small, transparent CLIs in [`bin/`](bin/). The core (matter state) needs nothing but bash. The rest are progressive enhancement.
 
@@ -208,7 +208,8 @@ flowchart LR
 | `glaw-revrec` | **revenue recognition (ASC 606)** — deferred-revenue release schedule (ratable / milestone) + entries. |
 | `glaw-tax-provision` | **income tax provision (ASC 740)** — current + deferred tax, ETR reconciliation, provision entry. |
 | `glaw-inventory` | **inventory & COGS** — FIFO / weighted-average cost, ending inventory, gross margin. |
-| `glaw-fx-reval` | **FX revaluation** — restate monetary foreign-currency balances to closing rate, gain/loss entry. |
+| `glaw-fx-reval` | **FX revaluation** — restate monetary foreign-currency balances to closing rate, gain/loss entry (asset vs liability). |
+| `glaw-fx-report` | **multi-currency GL** — per-currency balances + **current-rate translation** to a reporting currency (BS@closing, P&L@average) with a balancing **CTA**. |
 | `glaw-consolidate` | **consolidation** — combine multiple entity ledgers + intercompany eliminations → consolidated TB. |
 | `glaw-cash-apply` | **cash application** — match incoming receipts to open AR invoices (paid / partial / open). |
 | `glaw-recurring` | **recurring entries** — standard period-end JE templates, validated balanced, posted to the ledger. |

@@ -162,7 +162,7 @@ Covers: **Financial**, accounting, CFO, valuation, audit/assurance.
 | **Revenue recognition (ASC 606)** — 5-step model, deferred revenue, contract assets/liabilities (`bin/glaw-revrec`) | `/glaw-revenue` |
 | **Income tax provision (ASC 740)** — current + deferred tax, ETR reconciliation, M-1/M-3 (`bin/glaw-tax-provision`) | `/glaw-tax-provision` |
 | **Inventory & COGS** — perpetual/periodic, FIFO/WAC, LCNRV, cost of goods sold (`bin/glaw-inventory`) | `/glaw-inventory` |
-| **FX & multi-currency** — functional vs reporting currency, period-end revaluation, CTA (`bin/glaw-fx-reval`) | `/glaw-fx` |
+| **FX & multi-currency** — functional/reporting currency, period-end revaluation, **per-currency GL + current-rate translation + CTA** (`bin/glaw-fx-reval`, `bin/glaw-fx-report`) | `/glaw-fx` |
 | **Consolidation** — multi-entity combine + intercompany eliminations + NCI (`bin/glaw-consolidate`) | `/glaw-consolidation` |
 | **Amortization** — loan (interest/principal split) + prepaid/deferral schedules | `bin/glaw-amortize` |
 | **Cash application** — match incoming receipts to open AR invoices (closes the AR loop) | `bin/glaw-cash-apply` |
