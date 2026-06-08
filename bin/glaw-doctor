@@ -172,6 +172,11 @@ if [ -x "$GLAW/lib/bookkeeping/.venv/bin/python" ]; then
   else
     bad "concurrency FAILED — run: GLAW_HOME=\$(mktemp -d) $_BKPY $GLAW/lib/bookkeeping/test_concurrency.py"
   fi
+  if GLAW_HOME="$(mktemp -d)" "$_BKPY" "$GLAW/lib/bookkeeping/test_scale.py" >/dev/null 2>&1; then
+    ok "ledger scale passed (entries memo + O(1) dedup, chain holds over 500)"
+  else
+    bad "scale FAILED — run: GLAW_HOME=\$(mktemp -d) $_BKPY $GLAW/lib/bookkeeping/test_scale.py"
+  fi
   if "$_BKPY" "$GLAW/lib/bookkeeping/test_wiring.py" >/dev/null 2>&1; then
     ok "orchestrator-wiring lock passed (/glaw-accounting routes to the finance subsystem)"
   else
