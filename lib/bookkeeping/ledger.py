@@ -113,8 +113,11 @@ def validate_entry(je: dict) -> dict:
         raise LedgerError(f"entry does not balance: debits {tot_d} != credits {tot_c}")
     if tot_d == 0:
         raise LedgerError("entry has zero value")
-    return {"date": d.isoformat(), "memo": je.get("memo", ""), "source": je.get("source", "manual"),
-            "lines": norm_lines}
+    out = {"date": d.isoformat(), "memo": je.get("memo", ""), "source": je.get("source", "manual"),
+           "lines": norm_lines}
+    if je.get("vendor"):                 # payee tag (for 1099-NEC information returns)
+        out["vendor"] = je["vendor"]
+    return out
 
 
 GENESIS = "GENESIS:glaw-ledger"   # the chain's seed (prev_hash of the very first entry)

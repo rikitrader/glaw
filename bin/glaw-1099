@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# glaw-1099 — build 1099-NEC information returns from vendor payments in the GL (feeds glaw-irs-file).
+set -euo pipefail
+GLAW_LIB="$HOME/.claude/skills/glaw/lib/bookkeeping"
+VENV_PY="$GLAW_LIB/.venv/bin/python"
+[[ -x "$VENV_PY" ]] || { echo "ERROR: bookkeeping venv missing — run ./setup" >&2; exit 2; }
+exec "$VENV_PY" "$GLAW_LIB/info_returns.py" "$@"
