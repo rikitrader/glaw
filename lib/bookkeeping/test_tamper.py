@@ -38,7 +38,25 @@ def _write(led, lines):
 def test_clean_book_passes():
     L, led = _fresh()
     assert L.verify_integrity(led.entries()) == [], "a clean chained book must verify"
-    print("  ✓ tamper: clean book — chain verifies (4 entries)")
+    # the hash must be full SHA-256 (256-bit) — a 64-bit truncation is the weak link
+    assert len(led.entries()[0]["entry_hash"]) == 64, "entry hash must be full 256-bit (64 hex)"
+    print("  ✓ tamper: clean book verifies; entry hash is full 256-bit (64 hex)")
+
+
+def test_legacy_short_hash_still_verifies():
+    import hashlib
+    import json as _json
+    L, led = _fresh()
+    # synthesize a pre-chain legacy entry with a 16-hex hash (the old scheme)
+    e = {"id": 99, "date": "2026-02-01", "memo": "legacy",
+         "lines": [{"account": "Assets:Bank:Checking", "debit": "5", "credit": "0", "memo": ""},
+                   {"account": "Income:Sales", "debit": "0", "credit": "5", "memo": ""}]}
+    e["entry_hash"] = hashlib.sha256(_json.dumps(
+        {k: e[k] for k in ("id", "date", "memo", "lines")}, sort_keys=True, default=str
+    ).encode()).hexdigest()[:16]
+    led.path.write_text(_json.dumps(e) + "\n"); led._entries_cache = None
+    assert L.verify_integrity(led.entries()) == [], "a legacy 16-hex entry must still self-verify"
+    print("  ✓ tamper: legacy 16-hex entries still verify (recomputed at their stored length)")
 
 
 def test_detects_field_and_currency_edit():
@@ -97,6 +115,7 @@ def test_books_doctor_fails_on_tamper():
 
 def main() -> int:
     test_clean_book_passes()
+    test_legacy_short_hash_still_verifies()
     test_detects_field_and_currency_edit()
     test_detects_deletion()
     test_detects_insertion_and_reorder()

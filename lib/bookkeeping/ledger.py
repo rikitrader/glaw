@@ -98,20 +98,25 @@ def validate_entry(je: dict) -> dict:
 GENESIS = "GENESIS:glaw-ledger"   # the chain's seed (prev_hash of the very first entry)
 
 
-def _entry_hash(e: dict, prev_hash: str) -> str:
+HASH_LEN = 64   # full SHA-256 hex (256-bit). New entries use this; legacy entries verify at
+                # whatever length they were stored with (backward compatible).
+
+
+def _entry_hash(e: dict, prev_hash: str, n: int = HASH_LEN) -> str:
     """Tamper-evident, CHAINED entry hash. Covers every financially-material field — including
     currency and source — plus the previous entry's hash, so editing a field, changing a
-    currency, deleting, inserting, or reordering an entry all break the chain."""
+    currency, deleting, inserting, or reordering an entry all break the chain. Full 256-bit by
+    default (64 hex); 64-bit truncation was the weak link for an audit-grade tamper claim."""
     content = {k: e.get(k) for k in ("id", "date", "memo", "source", "currency", "lines")}
     content["prev_hash"] = prev_hash
-    return hashlib.sha256(json.dumps(content, sort_keys=True, default=str).encode()).hexdigest()[:16]
+    return hashlib.sha256(json.dumps(content, sort_keys=True, default=str).encode()).hexdigest()[:n]
 
 
-def _legacy_hash(e: dict) -> str:
+def _legacy_hash(e: dict, n: int = HASH_LEN) -> str:
     """The pre-chain hash (id/date/memo/lines only) — for verifying entries written before the
     chain existed, so old books still self-verify."""
     return hashlib.sha256(json.dumps({k: e[k] for k in ("id", "date", "memo", "lines")},
-                          sort_keys=True, default=str).encode()).hexdigest()[:16]
+                          sort_keys=True, default=str).encode()).hexdigest()[:n]
 
 
 def verify_integrity(entries: list[dict]) -> list[tuple]:
@@ -122,13 +127,15 @@ def verify_integrity(entries: list[dict]) -> list[tuple]:
     prev = GENESIS
     for e in entries:
         eid = e.get("id")
+        stored = e.get("entry_hash") or ""
+        n = len(stored) or HASH_LEN                            # verify at the stored length (legacy compat)
         if "prev_hash" in e:                                   # chained entry
             if e["prev_hash"] != prev:
                 problems.append((eid, "chain break (entry deleted, inserted, or reordered)"))
-            if e.get("entry_hash") != _entry_hash(e, e["prev_hash"]):
+            if stored != _entry_hash(e, e["prev_hash"], n):
                 problems.append((eid, "content/currency tampered (hash mismatch)"))
         else:                                                  # legacy self-hash
-            if e.get("entry_hash") and e["entry_hash"] != _legacy_hash(e):
+            if stored and stored != _legacy_hash(e, n):
                 problems.append((eid, "content tampered (legacy hash mismatch)"))
         # each entry must also balance
         if sum(_dec(l["debit"]) for l in e["lines"]) != sum(_dec(l["credit"]) for l in e["lines"]):
