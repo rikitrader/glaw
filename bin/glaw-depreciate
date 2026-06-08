@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# glaw-depreciate — asset depreciation schedule (MACRS GDS half-year or straight-line),
+# with §179 expensing + bonus depreciation. IRS Pub 946 Table A-1 percentages.
+#   glaw-depreciate --cost 50000 --method macrs --life 5
+#   glaw-depreciate --cost 50000 --method macrs --life 5 --section-179 25000 --bonus-pct 60
+#   glaw-depreciate --cost 12000 --method straight-line --life 5 --salvage 2000
+set -euo pipefail
+GLAW_LIB="$HOME/.claude/skills/glaw/lib/bookkeeping"
+VENV_PY="$GLAW_LIB/.venv/bin/python"
+[[ -x "$VENV_PY" ]] || { echo "ERROR: bookkeeping venv missing — run ./setup" >&2; exit 2; }
+exec "$VENV_PY" "$GLAW_LIB/depreciate.py" "$@"

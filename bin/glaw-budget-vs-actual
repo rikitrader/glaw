@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+# glaw-budget-vs-actual — variance analysis: a budget ({account: amount} JSON) vs
+# actuals from a GLAW ledger (glaw-bank-ingest --format json). Flags expense
+# over-runs and income shortfalls past --threshold. Exit 0 only if on budget.
+#
+# Usage:
+#   glaw-bank-ingest stmt.csv --map coa.json --format json > actual.json
+#   glaw-budget-vs-actual --budget budget.json --actual actual.json [--threshold 10]
+
+set -euo pipefail
+GLAW_LIB="$HOME/.claude/skills/glaw/lib/bookkeeping"
+VENV_PY="$GLAW_LIB/.venv/bin/python"
+[[ -x "$VENV_PY" ]] || { echo "ERROR: bookkeeping venv missing — run ./setup" >&2; exit 2; }
+exec "$VENV_PY" "$GLAW_LIB/budget.py" "$@"

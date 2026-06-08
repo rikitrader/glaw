@@ -125,6 +125,14 @@ Covers: **Financial**, accounting, CFO, valuation, audit/assurance.
 | **Financial statements** — native P&L / Balance Sheet / Cash Flow / Trial Balance from the ledger (no hledger dep) | `bin/glaw-statements` |
 | **Books control gate (bulletproof)** — deterministic finance doctor: TB balances, BS identity, Golden Rule, classified, cash≥0, dedup, anomaly scan, reconciled | `bin/glaw-books-doctor` |
 | **Bank reconciliation** — line-match books vs bank; surfaces outstanding/unpresented + bank-only items | `bin/glaw-bank-rec` |
+| **Period close** — orchestrated month-end: ingest → reconcile → adjust → books-doctor gate → statements → sign-off → lock | `/glaw-close` |
+| **Budget vs actual** — variance cycle; flags expense over-runs / income shortfalls past threshold (`bin/glaw-budget-vs-actual`) | `/glaw-budget` |
+| **AP / AR** — vendor & customer subledgers, aging buckets, 3-way match, 1099 tracking (`bin/glaw-aging`) | `/glaw-ap-ar` |
+| **Payroll accounting** — register, gross-to-net, employer taxes, payroll JE, 941↔W-2 tie-out | `/glaw-payroll` |
+| **Fixed assets** — asset register + depreciation (MACRS/SL, §179/bonus) (`bin/glaw-depreciate`) | `/glaw-fixed-assets` |
+| **Treasury** — 13-week cash-flow forecast, runway, covenant/min-cash monitoring (`bin/glaw-cashflow-13w`) | `/glaw-treasury` |
+| **Sales & use tax / VAT** — nexus, taxability, accrual, multi-jurisdiction filing calendar | `/glaw-sales-tax` |
+| **Ledger monitor** — continuous transaction anomaly/fraud scan (`bin/glaw-ledger-monitor`) | `/glaw-ledger-monitor` |
 | Forensic reconstruction of financials from raw records, fraud detection, QoE | `glaw-financial-forensics` |
 | Audit-readiness, internal controls (COSO/SOX), GAAP/IFRS, ASC 606/842 | `/glaw-audit-assurance` |
 | Institutional CFO modeling, 3-statement, LBO/waterfall, EBITDA normalization | `glaw-institutional-finance` |

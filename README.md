@@ -9,8 +9,8 @@ GLAW runs legal *matters* (build a company, structure a fund, prosecute or defen
 
 [![GLAW Doctor](https://github.com/rikitrader/glaw/actions/workflows/ci.yml/badge.svg)](https://github.com/rikitrader/glaw/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-C9A227.svg)](LICENSE)
-[![Skills](https://img.shields.io/badge/skills-127-1A3FA0.svg)](lib/firm-roster.md)
-[![Tools](https://img.shields.io/badge/tools-24-1A3FA0.svg)](#-the-toolbelt-24-clis)
+[![Skills](https://img.shields.io/badge/skills-135-1A3FA0.svg)](lib/firm-roster.md)
+[![Tools](https://img.shields.io/badge/tools-29-1A3FA0.svg)](#-the-toolbelt-29-clis)
 [![Departments](https://img.shields.io/badge/departments-10-3B82F6.svg)](#%EF%B8%8F-the-departments)
 [![Pipeline](https://img.shields.io/badge/pipeline-8%20stages-3B82F6.svg)](#-the-workflow)
 [![Agent Skills](https://img.shields.io/badge/format-Agent%20Skills-000.svg)](https://agentskills.org)
@@ -27,7 +27,7 @@ GLAW runs legal *matters* (build a company, structure a fund, prosecute or defen
 ```bash
 # 1. install (clone into your Claude Code skills dir)
 git clone https://github.com/rikitrader/glaw ~/.claude/skills/glaw
-cd ~/.claude/skills/glaw && ./setup        # deploys 127 skills (65 native + 62 vendored seats) + tools
+cd ~/.claude/skills/glaw && ./setup        # deploys 135 skills (73 native + 62 vendored seats) + tools
 
 # 2. open a matter and let the firm work it
 /glaw                                       # "form a Delaware C-corp with a SAFE round"
@@ -67,7 +67,7 @@ Built on the **gstack** skill-orchestration methodology: a meta-skill orchestrat
 
 ## 🏛️ The Departments
 
-GLAW ships **65 native skills** organized into ten departments **plus 62 self-contained specialist seats** vendored under [`seats/`](seats/) — `glaw-corporate-counsel`, `glaw-pe-vc-counsel`, `glaw-tax-strategy`, `glaw-financial-forensics`, the `glaw-fs-*` finance models, and more. **Zero external skill dependencies:** every seat the firm routes to travels with the repo and is deployed by `./setup`. A deterministic gate (`glaw-doctor`) proves it — every routed skill resolves, or CI fails.
+GLAW ships **73 native skills** organized into ten departments **plus 62 self-contained specialist seats** vendored under [`seats/`](seats/) — `glaw-corporate-counsel`, `glaw-pe-vc-counsel`, `glaw-tax-strategy`, `glaw-financial-forensics`, the `glaw-fs-*` finance models, and more. **Zero external skill dependencies:** every seat the firm routes to travels with the repo and is deployed by `./setup`. A deterministic gate (`glaw-doctor`) proves it — every routed skill resolves, or CI fails.
 
 ```mermaid
 flowchart TD
@@ -142,7 +142,7 @@ When an investigation surfaces **red flags past threshold** (fraud tier, sanctio
 
 ---
 
-## 🧰 The Toolbelt (24 CLIs)
+## 🧰 The Toolbelt (29 CLIs)
 
 GLAW's brains are markdown; its hands are small, transparent CLIs in [`bin/`](bin/). The core (matter state) needs nothing but bash. The rest are progressive enhancement.
 
@@ -199,6 +199,11 @@ flowchart LR
 | `glaw-statements` | native **P&L / Balance Sheet / Cash Flow / Trial Balance** from the ledger (no hledger dep). Exits non-zero if the books don't balance. |
 | `glaw-books-doctor` | the **bulletproof finance control gate** — TB balances, BS identity, Golden Rule, classified, cash≥0, dedup, anomaly scan, reconciled → "books are bulletproof, or fail." |
 | `glaw-bank-rec` | true **bank reconciliation** — line-matches books vs bank, surfaces outstanding/unpresented checks + bank-only fees/interest. |
+| `glaw-budget-vs-actual` | variance analysis — budget vs actuals, flags expense over-runs / income shortfalls past a threshold (drives `/glaw-budget`). |
+| `glaw-depreciate` | depreciation schedules — **MACRS GDS** (IRS Pub 946) + straight-line, **§179** + bonus (drives `/glaw-fixed-assets`). |
+| `glaw-aging` | AR/AP **aging buckets** (0-30 / 31-60 / 61-90 / 90+) per party (drives `/glaw-ap-ar`). |
+| `glaw-cashflow-13w` | **13-week cash-flow** projection — running balance, trough, min-cash/covenant breach weeks (drives `/glaw-treasury`). |
+| `glaw-ledger-monitor` | continuous **anomaly/fraud scan** — duplicate payments, round-dollar, weekend entries, lone-large-vendor (drives `/glaw-ledger-monitor`). |
 | **Scoring & sign-off** | |
 | `glaw-bureau-score` | fraud score + FBI competency scorecard (deterministic) |
 | `glaw-chief-decision` | records the Chief's PROCEED / WITH-FIXES / WITH-CONDITIONS sign-off card |

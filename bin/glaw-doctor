@@ -82,6 +82,11 @@ if [ -x "$GLAW/lib/bookkeeping/.venv/bin/python" ]; then
   else
     bad "finance tools smoke FAILED — run: $_BKPY $GLAW/lib/bookkeeping/test_finance.py"
   fi
+  if "$_BKPY" "$GLAW/lib/bookkeeping/test_finance2.py" >/dev/null 2>&1; then
+    ok "close-cycle tools smoke passed (depreciate + aging + cashflow + budget + monitor)"
+  else
+    bad "close-cycle tools smoke FAILED — run: $_BKPY $GLAW/lib/bookkeeping/test_finance2.py"
+  fi
 else
   warn "bookkeeping engine venv not built (run ./setup) — skipping engine + finance smokes"
 fi
