@@ -20,12 +20,18 @@ GLAW_HOME defaults to ~/.glaw (matches the rest of GLAW's state).
 """
 from __future__ import annotations
 
+import contextlib
 import hashlib
 import json
 import os
 from datetime import date, datetime, timezone
 from decimal import Decimal
 from pathlib import Path
+
+try:
+    import fcntl   # POSIX advisory file locking (macOS/Linux)
+except ImportError:   # pragma: no cover — non-POSIX: degrade to no-op
+    fcntl = None
 
 # Account-root → (type, normal-balance-sign). Debit-normal accounts carry positive
 # balances; credit-normal carry negative (the signed-amount convention statements uses).
@@ -171,6 +177,22 @@ class Ledger:
         self.dir.mkdir(parents=True, exist_ok=True)
         self.meta_path.write_text(json.dumps(m, indent=2))
 
+    @contextlib.contextmanager
+    def _lock(self):
+        """Exclusive advisory lock around the read-meta → append → write-meta critical section,
+        so a scheduled-close cron and a manual post can't race (id collision / corrupt meta).
+        No-op on non-POSIX platforms (best effort)."""
+        if fcntl is None:
+            yield
+            return
+        self.dir.mkdir(parents=True, exist_ok=True)
+        with (self.dir / ".lock").open("w") as lf:
+            fcntl.flock(lf, fcntl.LOCK_EX)
+            try:
+                yield
+            finally:
+                fcntl.flock(lf, fcntl.LOCK_UN)
+
     def entries(self, as_of: str | None = None) -> list[dict]:
         if not self.path.exists():
             return []
@@ -188,39 +210,40 @@ class Ledger:
 
     # ---- posting -----------------------------------------------------------
     def post(self, je: dict, *, dedupe_hash: str | None = None) -> dict:
-        norm = validate_entry(je)
-        meta = self._meta()
-        # period lock: cannot post into or before a locked period
-        if meta.get("locked_through"):
-            if date.fromisoformat(norm["date"]) <= date.fromisoformat(meta["locked_through"]):
-                raise LedgerError(f"period locked through {meta['locked_through']}; "
-                                  f"cannot post entry dated {norm['date']} (use a reversing entry in an open period)")
-        if dedupe_hash and dedupe_hash in meta.get("seen_hashes", []):
-            return {"skipped": True, "reason": "duplicate", "hash": dedupe_hash}
-        eid = meta.get("next_id", 1)
-        posted_at = datetime.now(timezone.utc).isoformat()
-        payload = {"id": eid, "posted_at": posted_at, **norm}
-        if je.get("transaction_hash"):
-            payload["transaction_hash"] = je["transaction_hash"]
-        if je.get("currency"):
-            payload["currency"] = je["currency"]
-        # tamper-evident CHAIN: prev = the head of the chain. Bridge once from the last existing
-        # entry's hash for a legacy book that has no last_hash recorded yet.
-        prev = meta.get("last_hash")
-        if prev is None:
-            existing = self.entries()
-            prev = existing[-1].get("entry_hash") if existing else GENESIS
-        payload["prev_hash"] = prev
-        payload["entry_hash"] = _entry_hash(payload, prev)
-        self.dir.mkdir(parents=True, exist_ok=True)
-        with self.path.open("a") as fh:
-            fh.write(json.dumps(payload, default=str) + "\n")
-        meta["next_id"] = eid + 1
-        meta["last_hash"] = payload["entry_hash"]
-        if dedupe_hash:
-            meta.setdefault("seen_hashes", []).append(dedupe_hash)
-        self._write_meta(meta)
-        return {"id": eid, "entry_hash": payload["entry_hash"], "date": norm["date"]}
+        norm = validate_entry(je)                              # pure validation — no lock needed
+        with self._lock():                                    # serialize the read→append→write
+            meta = self._meta()
+            # period lock: cannot post into or before a locked period
+            if meta.get("locked_through"):
+                if date.fromisoformat(norm["date"]) <= date.fromisoformat(meta["locked_through"]):
+                    raise LedgerError(f"period locked through {meta['locked_through']}; "
+                                      f"cannot post entry dated {norm['date']} (use a reversing entry in an open period)")
+            if dedupe_hash and dedupe_hash in meta.get("seen_hashes", []):
+                return {"skipped": True, "reason": "duplicate", "hash": dedupe_hash}
+            eid = meta.get("next_id", 1)
+            posted_at = datetime.now(timezone.utc).isoformat()
+            payload = {"id": eid, "posted_at": posted_at, **norm}
+            if je.get("transaction_hash"):
+                payload["transaction_hash"] = je["transaction_hash"]
+            if je.get("currency"):
+                payload["currency"] = je["currency"]
+            # tamper-evident CHAIN: prev = the head of the chain. Bridge once from the last
+            # existing entry's hash for a legacy book that has no last_hash recorded yet.
+            prev = meta.get("last_hash")
+            if prev is None:
+                existing = self.entries()
+                prev = existing[-1].get("entry_hash") if existing else GENESIS
+            payload["prev_hash"] = prev
+            payload["entry_hash"] = _entry_hash(payload, prev)
+            self.dir.mkdir(parents=True, exist_ok=True)
+            with self.path.open("a") as fh:
+                fh.write(json.dumps(payload, default=str) + "\n")
+            meta["next_id"] = eid + 1
+            meta["last_hash"] = payload["entry_hash"]
+            if dedupe_hash:
+                meta.setdefault("seen_hashes", []).append(dedupe_hash)
+            self._write_meta(meta)
+            return {"id": eid, "entry_hash": payload["entry_hash"], "date": norm["date"]}
 
     def import_bank(self, rows: list[dict], *, bank_account: str = "Assets:Bank:Checking") -> dict:
         posted, skipped = 0, 0
