@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# glaw-fl-statute — query the Florida Statutes Title VI (Civil Practice & Procedure) index DB.
+set -euo pipefail
+exec python3 "$HOME/.claude/skills/glaw/fl-quantum-meruit/lib/fl_title6.py" "$@"

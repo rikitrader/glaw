@@ -106,3 +106,15 @@ For Florida-state specifics, layer the rule conversions at the top of this file.
 
 > Every external deliverable carries the UPL/work-product footer (`/glaw-ethics-conflicts`).
 > Attorney work-product — verify all cites; not legal advice.
+
+
+## 9. TITLE VI LIBRARY (full Florida Civil Practice & Procedure)
+Index DB of all 36 Title VI chapters + a pleadable skeleton for every cause of action. Query:
+`glaw-fl-statute list | causes | chapter <N> | search <term>`.
+| Document | Source |
+|---|---|
+| Index DB (all chapters, kinds, key sections) | `../lib/fl-title6-index.json` |
+| Cause-of-action catalog (replevin, ejectment, quiet title, partition, declaratory, injunction, lost instrument, dishonored check, statutory lien, attachment, garnishment, proceedings supplementary, eviction, unlawful detainer) | `title6/causes-of-action-catalog.md` |
+| Master intake + claim routing | `title6/intake-questions.md` |
+| Cross-action discovery set (RFP/Rogs/RFA) | `title6/discovery-set.md` |
+| Subpoena pack (trial/deposition/duces tecum party + non-party, Rule 1.410/1.351) | `title6/subpoenas.md` |
