@@ -1,0 +1,207 @@
+#!/usr/bin/env bash
+# glaw-recover — money-recovery toolkit for the nonpayment / collections seat.
+#   assess     compute principal + prejudgment interest + total demand
+#   claims     score which causes of action apply (alternative-pleading matrix)
+#   deadlines  statute-of-limitations + construction-lien clocks
+# Stdlib-only Python; no venv. Florida defaults. ALWAYS verify rates/dates.
+set -euo pipefail
+exec python3 - "$@" <<'PY'
+import argparse, json, sys
+from datetime import date, datetime, timedelta
+
+# ---------------------------------------------------------------------------
+# Florida statute-of-limitations table (Fla. Stat. § 95.11). VERIFY current.
+# ---------------------------------------------------------------------------
+SOL_YEARS = {
+    "written_contract": 5,      # § 95.11(2)(b)
+    "oral_contract": 4,         # § 95.11(3)(k)
+    "open_account": 4,          # § 95.11(3)(k)
+    "account_stated": 4,        # treated as on the account
+    "quantum_meruit": 4,        # implied contract / quasi-contract
+    "unjust_enrichment": 4,
+    "promissory_estoppel": 4,
+    "goods_sold": 4,            # UCC 4-yr (§ 672.725)
+    "construction_lien": 1,     # foreclosure: 1 yr from recording (§ 713.22)
+}
+
+# Florida statutory prejudgment-interest rate is set QUARTERLY by the CFO
+# (Fla. Stat. § 55.03). This is a placeholder — confirm the rate(s) for each
+# quarter the debt was outstanding at myfloridacfo.com before relying on it.
+DEFAULT_RATE = 0.1112  # ~ recent annual rate; OVERRIDE with --rate
+
+def parse_date(s):
+    return datetime.strptime(s, "%Y-%m-%d").date()
+
+def money(x):
+    return f"${x:,.2f}"
+
+# ---------------------------------------------------------------------------
+def cmd_assess(a):
+    due = parse_date(a.due) if a.due else None
+    asof = parse_date(a.asof) if a.asof else date.today()
+    principal = a.principal
+    late = a.late_fees
+    days = (asof - due).days if due else 0
+    days = max(days, 0)
+    interest = principal * a.rate * days / 365.0 if due else 0.0
+    total = principal + late + interest
+    out = {
+        "principal": round(principal, 2),
+        "late_fees": round(late, 2),
+        "prejudgment_interest": round(interest, 2),
+        "interest_basis": {
+            "rate_annual": a.rate,
+            "from": a.due, "to": asof, "days": days,
+            "note": "FL § 55.03 rate is set quarterly — verify per-quarter rate(s).",
+        },
+        "total_demand": round(total, 2),
+    }
+    if a.json:
+        print(json.dumps(out, indent=2)); return
+    print("=== RECOVERY ASSESSMENT (Florida) ===")
+    print(f"  Principal owed .............. {money(principal)}")
+    print(f"  Contractual late fees ....... {money(late)}")
+    if due:
+        print(f"  Prejudgment interest ........ {money(interest)}")
+        print(f"     ({days} days @ {a.rate*100:.2f}%/yr from {a.due} to {asof})")
+        print(f"     NOTE: FL § 55.03 rate changes quarterly — verify each quarter.")
+    else:
+        print(f"  Prejudgment interest ........ (pass --due to compute)")
+    print(f"  ------------------------------------------")
+    print(f"  TOTAL DEMAND ................ {money(total)}")
+    print(f"\n  Add recoverable on judgment: court costs, and attorney's fees IF a")
+    print(f"  fee statute/contract applies (e.g. § 57.105, § 713.29 lien, § 95.11,")
+    print(f"  a contractual fee clause, or a § 768.79 proposal for settlement).")
+
+# ---------------------------------------------------------------------------
+def cmd_claims(a):
+    f = {k: getattr(a, k) for k in
+         ("written","oral","performed","accepted","benefited","unpaid",
+          "invoices","silence","promise","reliance","real_property",
+          "nto_served","bonded")}
+    rows = []
+    def add(name, ok, why, statute=""):
+        rows.append((name, ok, why, statute))
+
+    has_contract = f["written"] or f["oral"]
+    add("Breach of Contract", has_contract and f["performed"] and f["unpaid"],
+        "valid contract + you performed + nonpayment + damages",
+        "§ 95.11(2)(b) written / (3) oral")
+    add("Quantum Meruit (alt.)",
+        f["performed"] and f["accepted"] and f["unpaid"] and not f["written"],
+        "services provided + knowingly accepted + reasonable value unpaid; "
+        "plead ONLY in the alternative — barred if a valid express contract governs",
+        "implied-in-law / quasi-contract")
+    add("Unjust Enrichment (alt.)",
+        f["benefited"] and f["accepted"] and f["unpaid"] and not f["written"],
+        "benefit conferred + knowingly retained + inequitable to keep unpaid; "
+        "companion to quantum meruit; barred by an adequate express contract")
+    add("Account Stated",
+        f["invoices"] and f["unpaid"],
+        "prior dealings + statement of balance rendered + assent (express or by "
+        "silence) + nonpayment" + (" — silence supports assent" if f["silence"] else ""))
+    add("Open Account / Goods Sold",
+        f["invoices"] and f["unpaid"] and not has_contract,
+        "running unpaid balance from itemized transactions",
+        "§ 95.11(3)(k); UCC § 672.725")
+    add("Promissory Estoppel (alt.)",
+        f["promise"] and f["reliance"] and f["unpaid"],
+        "clear promise + reasonable detrimental reliance + injustice absent enforcement")
+    add("Construction Lien / Foreclosure",
+        f["real_property"] and f["performed"] and f["unpaid"],
+        "improvement to real property; preserve via NTO (45d) + Claim of Lien (90d), "
+        "foreclose within 1 yr" + ("" if f["nto_served"] else " — NTO NOT marked served!"),
+        "Fla. Stat. Ch. 713")
+    add("Action on Payment Bond",
+        f["bonded"] and f["performed"] and f["unpaid"],
+        "bonded/public job — sue the surety on the payment bond",
+        "§ 713.23 (private) / § 255.05 (public)")
+    add("Prompt Payment Act",
+        f["performed"] and f["unpaid"],
+        "statutory interest/penalty for late payment on construction & public contracts",
+        "§ 715.12 private / §§ 218.70-.80 public")
+
+    if a.json:
+        print(json.dumps([{"count":n,"applies":bool(ok),"basis":w,"authority":s}
+                          for n,ok,w,s in rows], indent=2)); return
+    print("=== CLAIM-SELECTION MATRIX (plead strong claims; quasi-contract in the ALTERNATIVE) ===\n")
+    for n, ok, w, s in rows:
+        mark = "✅ PLEAD" if ok else "—  skip "
+        print(f"{mark}  {n}")
+        print(f"          {w}")
+        if s: print(f"          authority: {s}")
+        print()
+    print("STRATEGY: Florida allows alternative pleading. Lead with Breach of Contract")
+    print("where a contract exists; plead Quantum Meruit + Unjust Enrichment as")
+    print("ALTERNATIVE counts (they are barred where a valid express contract governs")
+    print("the same subject). Add Account Stated/Open Account when invoices exist.")
+    print("Beware election of remedies at trial and accord-and-satisfaction defenses.")
+
+# ---------------------------------------------------------------------------
+def cmd_deadlines(a):
+    base = parse_date(a.accrued)  # date the cause of action accrued (breach/last work)
+    print("=== STATUTE OF LIMITATIONS (Fla. Stat. § 95.11) — VERIFY current periods ===")
+    for k, yrs in SOL_YEARS.items():
+        if k == "construction_lien":
+            continue
+        dl = date(base.year + yrs, base.month, min(base.day, 28))
+        left = (dl - date.today()).days
+        flag = "  ⚠ EXPIRED/CLOSE" if left < 60 else ""
+        print(f"  {k:<22} {yrs}y  -> bar date {dl}  ({left} days left){flag}")
+    if a.first_work or a.last_work:
+        print("\n=== CONSTRUCTION LIEN CLOCKS (Fla. Stat. Ch. 713) ===")
+        if a.first_work:
+            fw = parse_date(a.first_work)
+            nto = fw + timedelta(days=45)
+            print(f"  Notice to Owner (NTO) ....... by {nto}  (45d from first work {fw})")
+        if a.last_work:
+            lw = parse_date(a.last_work)
+            col = lw + timedelta(days=90)
+            print(f"  Record Claim of Lien ........ by {col}  (90d from last work {lw})")
+            fc = date(lw.year + 1, lw.month, min(lw.day, 28))
+            print(f"  Foreclose lien .............. within 1y of RECORDING the lien (≈ {fc})")
+        print("  WARNING: a willfully exaggerated lien forfeits the lien and is a")
+        print("  felony (§ 713.31). Verify amounts before recording.")
+
+# ---------------------------------------------------------------------------
+p = argparse.ArgumentParser(prog="glaw-recover")
+sub = p.add_subparsers(dest="cmd", required=True)
+
+pa = sub.add_parser("assess", help="principal + prejudgment interest + total demand")
+pa.add_argument("--principal", type=float, required=True)
+pa.add_argument("--late-fees", dest="late_fees", type=float, default=0.0)
+pa.add_argument("--due", help="date payment was due / breach (YYYY-MM-DD)")
+pa.add_argument("--asof", help="compute interest to this date (default today)")
+pa.add_argument("--rate", type=float, default=DEFAULT_RATE, help="annual interest rate (decimal)")
+pa.add_argument("--json", action="store_true")
+pa.set_defaults(func=cmd_assess)
+
+pc = sub.add_parser("claims", help="alternative-pleading claim matrix")
+for flag, help_ in [
+    ("written","a signed written contract exists"),
+    ("oral","an oral/verbal agreement exists"),
+    ("performed","you performed the work/services"),
+    ("accepted","the other side accepted/used the work"),
+    ("benefited","the other side received a benefit"),
+    ("unpaid","you were not paid the reasonable value"),
+    ("invoices","invoices/statements were sent"),
+    ("silence","they stayed silent after invoices"),
+    ("promise","a clear promise was made"),
+    ("reliance","you relied to your detriment"),
+    ("real-property","work improved real property"),
+    ("nto-served","Notice to Owner was timely served"),
+    ("bonded","the job was bonded / public"),
+]:
+    pc.add_argument(f"--{flag}", dest=flag.replace("-","_"), action="store_true", help=help_)
+pc.add_argument("--json", action="store_true")
+pc.set_defaults(func=cmd_claims)
+
+pd = sub.add_parser("deadlines", help="SOL + construction-lien clocks")
+pd.add_argument("--accrued", required=True, help="date claim accrued (YYYY-MM-DD)")
+pd.add_argument("--first-work", dest="first_work", help="first day of work (lien NTO clock)")
+pd.add_argument("--last-work", dest="last_work", help="last day of work (lien clock)")
+pd.set_defaults(func=cmd_deadlines)
+
+args = p.parse_args()
+args.func(args)
+PY
