@@ -1,0 +1,18 @@
+{
+  "_comment": "Default book-to-tax (Schedule M-1) rules. 'match' is an account-prefix. Permanent: deductible_pct<100 adds back the disallowed portion; exclude_income subtracts book income that isn't taxable. Temporary: depreciation (book vs supplied tax depreciation) and accrual (book-expensed, not yet tax-deductible) create deferred tax.",
+  "permanent": [
+    {"match": "Expenses:Meals", "deductible_pct": 50, "label": "Meals (50% limit) — add back disallowed half"},
+    {"match": "Expenses:Entertainment", "deductible_pct": 0, "label": "Entertainment (non-deductible)"},
+    {"match": "Expenses:Penalties", "deductible_pct": 0, "label": "Fines & penalties (non-deductible)"},
+    {"match": "Expenses:Fines", "deductible_pct": 0, "label": "Fines (non-deductible)"},
+    {"match": "Expenses:Political", "deductible_pct": 0, "label": "Political contributions (non-deductible)"},
+    {"match": "Expenses:Federal Income Tax", "deductible_pct": 0, "label": "Federal income tax (non-deductible)"},
+    {"match": "Income:Tax-Exempt Interest", "exclude_income": true, "label": "Tax-exempt interest (book income, not taxable)"}
+  ],
+  "temporary": [
+    {"match": "Expenses:Depreciation", "kind": "depreciation", "label": "Book vs tax (MACRS) depreciation"},
+    {"match": "Expenses:Accrued Bonus", "kind": "accrual", "label": "Accrued bonus not yet paid (§461)"},
+    {"match": "Expenses:Warranty", "kind": "accrual", "label": "Warranty reserve (not yet incurred)"},
+    {"match": "Expenses:Bad Debt", "kind": "accrual", "label": "Bad-debt reserve (book reserve vs tax direct write-off)"}
+  ]
+}
