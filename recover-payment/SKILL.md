@@ -180,6 +180,41 @@ This is why we're here. Once you have a final judgment:
   insiders → coordinate `/glaw-investigations` + `/glaw-veil-piercing`.
 - Track every post-judgment deadline in `/glaw-docket`.
 
+## Case-law research — the subcontractor-vs-homeowner scenario (GC absconded)
+
+A recurring, hard fact pattern: **the GC took the money and ran, the sub/supplier
+was never paid, and the sub wants to sue the homeowner/owner directly** under
+quantum meruit / unjust enrichment. This seat carries a dedicated research helper
+and a frank issue brief, because the law here is **not** automatically on the sub's
+side.
+
+```bash
+~/.claude/skills/glaw/bin/glaw-recover-research brief      # the issue + lead authority
+~/.claude/skills/glaw/bin/glaw-recover-research queries    # curated CL/Scholar search strings
+~/.claude/skills/glaw/bin/glaw-recover-research search "<query>" --court fla,fladistctapp
+```
+
+**The dispositive fact — establish it first: *has the owner already paid the GC for
+your work?*** Unjust enrichment requires that the owner was *unjustly* enriched. If
+the owner **already paid the GC in full**, Florida courts generally hold the owner
+was **not** unjustly enriched (they paid once; the loss falls on whoever dealt with
+the absconding GC) — and the UE claim against the owner fails. If the owner has
+**not** paid (or paid less than your value), the claim is viable up to what the owner
+still holds. The leading case to pull and **verify before citing** is *Commerce
+Partnership 8098 Ltd. P'ship v. Equity Contracting Co.*, 695 So. 2d 383 (Fla. 4th DCA
+1997) — the helper's `brief` explains the elements and limitation.
+
+**Why the lien usually beats the UE claim here:** a timely **Construction Lien**
+(Ch. 713) secures you against the *property* even when the owner paid the GC (subject
+to the statute's proper-payment defense). That is why preserving NTO (45d) / Claim of
+Lien (90d) is the sub's primary play and UE is the *fallback* once the lien lapsed.
+
+The helper **finds candidates only**. Hand the issue to `/glaw-case-law-research`
+(which adds CourtListener/Scholar/web + the `deep-research` engine and ranks
+binding vs. persuasive), extract cites with `bin/glaw-cites`, then **verify every one
+via `/glaw-legal-research` before it enters a filing.** This seat does not cite a case
+it has not read.
+
 ## Handoffs
 - **Pierce to the owner / alter-ego** → `/glaw-veil-piercing`.
 - **Asset trace, fraud, FUFTA, RICO** → `/glaw-investigations` / `glaw-forensic-case-investigator`.
@@ -187,12 +222,14 @@ This is why we're here. Once you have a final judgment:
 - **Contract drafting/interpretation issues** → `/glaw-commercial-contracts`.
 - **Real-property / lease nonpayment specifics** → `/glaw-real-estate-counsel`.
 - **Federal venue / diversity** → `glaw-federal-trial-counsel`.
+- **Find on-point precedent** → `/glaw-case-law-research` (+ `deep-research`); **PACER/CourtListener dockets** → `/glaw-court-records`.
 - **Pleading & motion mechanics** → `/glaw-draft`; **all cites** → `/glaw-legal-research` before file.
 
 ## Deliverables
 - A **recovery assessment** (principal + interest + total demand).
 - A **claim-selection matrix** mapping facts → counts (alternative pleading).
 - A **deadline calendar** (SOL + lien/bond clocks) docketed.
+- An **authority memo** for the sub-vs-owner scenario (lead case + on-point hits, verified) when the matter involves an absconding GC.
 - A **pre-suit demand letter** and, where applicable, a recorded Claim of Lien.
 - A **multi-count Florida complaint** with alternative quasi-contract counts and a
   fee/interest/foreclosure demand.
