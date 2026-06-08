@@ -51,10 +51,16 @@ parties, dates, amounts, or evidence. Florida formatting: caption, numbered para
 **facts → cause of action → damages**, prayer for relief, certificate of service. Pleads
 quantum meruit and unjust enrichment **in the alternative** (they are barred where a
 valid express contract governs the same subject — *Commerce P'ship 8098 v. Equity
-Contracting*, 695 So. 2d 383). Flags the two dispositive gates every time:
+Contracting*, 695 So. 2d 383). Flags the **three dispositive gates** every time:
 **(1) § 489.128 licensing** (an unlicensed contractor, where a license was required,
-cannot enforce — verify FIRST) and **(2)** for a subcontractor suing an owner, the
-**"owner already paid the GC" defeats unjust enrichment** limitation.
+cannot enforce — verify FIRST); **(2)** for a subcontractor suing an owner, the
+**"owner already paid the GC" defeats unjust enrichment** limitation; and
+**(3) pay-if-paid vs. pay-when-paid** — for a subcontractor suing a GC, a **clear,
+unambiguous "pay-if-paid" clause is a condition precedent** that bars/defers payment
+until the GC is paid by the owner, but an ambiguous one is read as a mere **"pay-when-paid"
+timing** provision (the sub still recovers) — *DEC Elec., Inc. v. Raphael Constr. Corp.*,
+558 So. 2d 427 (Fla. 1990); the **burden of clear expression is on the GC**. Pull the
+subcontract and read the payment clause before pleading a contract count against a GC.
 
 ## STEP 1 — INTAKE (collect, never assume)
 
@@ -66,6 +72,8 @@ Payments_Received:         Outstanding_Amount:        Communications_Summary:
 Evidence_List:             Witnesses:                 Contract_Exists: yes/no/partial
 Defendant_Type:            (individual / LLC / corp; owner / GC / other)
 Licensed_If_Required:      yes/no/NA   (§489.128 gate)
+Subcontract_Payment_Clause: none / pay-when-paid / pay-if-paid / unclear   (DEC Electric gate — sub-vs-GC)
+Owner_Paid_GC:             yes/no/unknown   (Commerce gate — sub-vs-owner)
 ```
 Scaffold the intake and compute the money with the helper:
 ```bash
@@ -119,10 +127,14 @@ Quantum meruit rarely travels alone. Add or route the matching claim:
 
 ## STEP 5 — GATES BEFORE FILING
 1. **§ 489.128 license** confirmed (dispositive on contract/QM enforceability).
-2. **Limitations**: QM/UE 4 yrs; written K 5 yrs; oral 4 yrs (verify — `glaw-recover deadlines`).
-3. **Civil-theft 30-day demand** sent before any §772.11 count.
-4. Every cite verified (`/glaw-legal-research`); RED→BLUE (`/glaw-adversarial`).
-5. **UPL/work-product footer** on every external deliverable.
+2. **"Owner paid the GC"** checked (sub-vs-owner UE limitation, *Commerce*).
+3. **Pay-if-paid vs. pay-when-paid** (sub-vs-GC) — read the subcontract's payment clause;
+   a clear "condition precedent" pay-if-paid bars/defers the contract count (*DEC Electric*).
+   QM/UE against the GC may survive, but plead it knowing the clause exists.
+4. **Limitations**: QM/UE 4 yrs; written K 5 yrs; oral 4 yrs (verify — `glaw-recover deadlines`).
+5. **Civil-theft 30-day demand** sent before any §772.11 count.
+6. Every cite verified (`/glaw-legal-research`); RED→BLUE (`/glaw-adversarial`).
+7. **UPL/work-product footer** on every external deliverable.
 
 ## Deliverables
 A complete, bracketed-but-court-ready case file (Modules 1–9), a leverage scorecard
