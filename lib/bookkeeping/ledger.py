@@ -173,6 +173,7 @@ class Ledger:
         self.dir = (home or _home()) / "books" / book
         self.path = self.dir / "ledger.jsonl"
         self.meta_path = self.dir / "meta.json"
+        self.index_path = self.dir / "balance-index.json"   # persistent cross-process balance cache
         self._entries_cache: list[dict] | None = None   # per-instance parse memo (see entries())
 
     # ---- persistence -------------------------------------------------------
@@ -305,9 +306,56 @@ class Ledger:
         return out
 
     def balances(self, as_of: str | None = None) -> dict[str, Decimal]:
-        bal: dict[str, Decimal] = {}
-        for p in self.postings(as_of):
-            bal[p["account"]] = bal.get(p["account"], Decimal("0")) + p["amount"]
+        # historical as-of queries use the full path; the persistent index serves CURRENT balances
+        # incrementally (read only the bytes appended since the index was last built — cross-process,
+        # self-healing, and provably equal to the full recompute).
+        if as_of is not None:
+            bal: dict[str, Decimal] = {}
+            for p in self.postings(as_of):
+                bal[p["account"]] = bal.get(p["account"], Decimal("0")) + p["amount"]
+            return bal
+        return self._current_balances_via_index()
+
+    def _load_index(self) -> dict:
+        if self.index_path.exists():
+            try:
+                idx = json.loads(self.index_path.read_text())
+                if isinstance(idx, dict) and "through_offset" in idx:
+                    return idx
+            except Exception:
+                pass
+        return {"through_offset": 0, "balances": {}}
+
+    def _save_index(self, idx: dict) -> None:
+        try:                                              # atomic write; best-effort (a cache)
+            tmp = self.index_path.with_suffix(".json.tmp")
+            tmp.write_text(json.dumps(idx))
+            tmp.replace(self.index_path)
+        except Exception:
+            pass
+
+    def _current_balances_via_index(self) -> dict[str, Decimal]:
+        if not self.path.exists():
+            return {}
+        idx = self._load_index()
+        through = int(idx.get("through_offset", 0))
+        bal = {a: Decimal(v) for a, v in idx.get("balances", {}).items()}
+        size = self.path.stat().st_size
+        if through > size:                                # file shrank (rebuilt/tampered) → rebuild
+            through, bal = 0, {}
+        if through < size:
+            with self.path.open("r") as fh:
+                fh.seek(through)
+                for line in fh:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    e = json.loads(line)
+                    for ln in e["lines"]:
+                        a = ln["account"]
+                        bal[a] = bal.get(a, Decimal("0")) + _dec(ln["debit"]) - _dec(ln["credit"])
+                through = fh.tell()
+            self._save_index({"through_offset": through, "balances": {a: str(v) for a, v in bal.items()}})
         return bal
 
     def gl(self, account: str, frm: str | None = None, to: str | None = None) -> dict:
