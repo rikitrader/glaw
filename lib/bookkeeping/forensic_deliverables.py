@@ -139,9 +139,12 @@ def deliverables(book: str, out_dir: str, *, entity: str = "Entity", ein: str = 
            f"Reconstruction spans {recon['span'][0] if recon['span'] else '?'}–{recon['span'][-1] if recon['span'] else '?'}.",
            "2. **Gaps.** Statement months without a source document are disclosed in deliverable 01 and carried, "
            "not estimated. The reconstruction is complete except for those disclosed months.",
-           "3. **Wire receipts characterized as revenue.** $1,566,103.64 of inbound wires were characterized by the "
-           "client as PAYMENTS FOR WORK and are booked to construction revenue (not loans); they are included in "
-           "taxable income. Retain the underlying invoices/contracts to substantiate on audit.",
+           "3. **Inbound wires — financing vs revenue.** $700,000 of Dealyze advances (01/08/24 $500,000; 02/01/24 "
+           "$100,000; 02/08/24 $100,000) are booked as LOANS, not revenue — supported by the signed promissory note "
+           "(Dealyze-Promissory-Note-200k-SIGNED-2024-02-08) and consistent with the merchant-cash-advance-as-loan "
+           "position in the Dealyze litigation; net of ~$140,010 in repayments the outstanding balance is ~$559,990. "
+           "The remaining inbound wires are construction revenue (payments for work). Retain the notes + invoices to "
+           "substantiate on audit.",
            "4. **Owner transactions.** Owner draws and contributions are tracked in equity (see trial balance).",
            "5. **Revenue recognition.** Construction receipts recognized on the cash basis as deposited; a percentage-"
            "of-completion or accrual conversion is a [VERIFY] item with the engagement CPA."]
@@ -191,7 +194,7 @@ def deliverables(book: str, out_dir: str, *, entity: str = "Entity", ein: str = 
         fp.append(f"| {ln['line']} | {ln['label']} | {_f(ln['amount'])} |")
     fp += ["", "## Filing checklist",
            "- [ ] Confirm entity type + EIN (S-corp election Form 2553 on file?) [VERIFY]",
-           "- [ ] Resolve the $1.57M financing-wire characterization (loan vs revenue)",
+           "- [ ] Attach Dealyze promissory notes substantiating the $700K loan (per merchant-cash-advance position)",
            "- [ ] Schedule K-1s to each shareholder (glaw-k1)",
            "- [ ] 1099-NEC for crew/contractors ≥ $600 (glaw-1099 — from the GL)",
            "- [ ] Form 941 payroll reconciliation (glaw-payroll-tax) if W-2 employees",
@@ -206,8 +209,10 @@ def deliverables(book: str, out_dir: str, *, entity: str = "Entity", ein: str = 
           "nothing remains open.", "", "| # | Issue | Resolution |", "|---|---|---|",
           f"| 1 | {len(recon['gap_months'])} missing statement months ({', '.join(recon['gap_months']) or 'none'}) | "
           "Disclosed in deliverable 01; balances carried with note; obtain from BofA to fully close. |",
-          "| 2 | $1,566,103.64 inbound wires (loan vs revenue) | RESOLVED — characterized by client as payments for "
-          "work; booked to construction revenue (taxable). Retain invoices/contracts for substantiation. |",
+          "| 2 | Dealyze advances $700,000 (loan vs revenue) | RESOLVED — booked as LOANS per the signed $200K "
+          "promissory note (2024-02-08) + the MCA-as-loan position; net ~$559,990 outstanding after ~$140,010 "
+          "repayments. NOT revenue. The 06/14/24 $50,000 wire was misclassified as COGS-Materials and is corrected "
+          "to a Dealyze loan repayment. |",
           "| 3 | $686K external transfers | Identify payees; confirm business purpose vs owner/related-party. |",
           "| 4 | $1.1M card/POS uncategorized | Re-class from card descriptions; §274(d) logs for meals/travel. |",
           "| 5 | Cash withdrawals (undocumented) | Substantiate business purpose or treat as owner draw. |",
@@ -225,12 +230,13 @@ def deliverables(book: str, out_dir: str, *, entity: str = "Entity", ein: str = 
           f"- Cash (bank accounts): {_f(sum((v for a, v in bal.items() if a.startswith('Assets:Bank')), Decimal('0')))}",
           "- Largest cost: COGS materials + crew labor (construction). Owner draws tracked in equity.",
           "- **Risks:** (1) substantiation of the $1.1M card/POS spend under §274(d); (2) the disclosed statement "
-          "gaps; (3) retaining invoices/contracts for the $1.57M wire receipts now booked as revenue.",
+          "gaps; (3) retaining the Dealyze promissory notes to support the $700K loan (MCA-as-loan) characterization.",
           "", "## CEO Report — position, risks, resolutions",
-          f"- The business moved {_f(rev)} of receipts over the reconstructed period and reconstructed to a clean, "
-          "tamper-evident set of books with the trial balance in balance and the hash chain intact.",
+          f"- The business moved {_f(rev)} of construction revenue over the reconstructed period and reconstructed "
+          "to a clean, tamper-evident set of books with the trial balance in balance and the hash chain intact. The "
+          "$700K of Dealyze advances are correctly carried as a loan (~$559,990 outstanding), not income.",
           "- **Two things to close to be bulletproof:** pull the missing bank months; substantiate the $1.1M "
-          "card/cash spend (the $1.57M wire receipts are resolved — booked as revenue per your direction).",
+          "card/cash spend (the Dealyze loan-vs-revenue question is resolved — booked as loans per the signed notes).",
           "- Everything is reconciled and disclosed — nothing is hidden, nothing is fabricated. The open items are "
           "judgment calls with the facts, not accounting errors."]
     w("08_executive_cfo_ceo.md", "\n".join(ex))
