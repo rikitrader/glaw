@@ -76,5 +76,6 @@ jobs:
           GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance32.py
           GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance33.py
           GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance34.py
+          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance35.py
           /tmp/bkv/bin/python lib/bookkeeping/test_wiring.py
           /tmp/bkv/bin/python lib/bookkeeping/test_bin_scorers.py
