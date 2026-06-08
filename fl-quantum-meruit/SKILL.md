@@ -125,6 +125,26 @@ Quantum meruit rarely travels alone. Add or route the matching claim:
 | 60+ jobs / fraud pattern | **Federal civil RICO** → `glaw-federal-trial-counsel` (viability memo first) |
 | Need precedent | `/glaw-case-law-research` + `bin/glaw-recover-research` → verify via `/glaw-legal-research` |
 
+## TITLE VI LIBRARY — the full Florida civil-practice toolkit
+
+Beyond quantum meruit, this skill carries the complete **Florida Statutes Title VI (Civil Practice
+and Procedure)** library: an index DB of all 36 chapters, a cause-of-action catalog with a pleadable
+skeleton for every Title VI claim, a cross-action discovery set, a routing intake, and a subpoena pack.
+
+```bash
+~/.claude/skills/glaw/bin/glaw-fl-statute list            # every Title VI chapter
+~/.claude/skills/glaw/bin/glaw-fl-statute causes          # every cause of action / remedy / writ
+~/.claude/skills/glaw/bin/glaw-fl-statute chapter 78      # one chapter — causes, elements, sections
+~/.claude/skills/glaw/bin/glaw-fl-statute search "lien"   # search titles/causes/sections
+```
+| Need | File |
+|---|---|
+| Pleadable skeleton for any Title VI cause (replevin, ejectment, quiet title, partition, declaratory judgment, injunction/nuisance, lost-instrument reestablishment, dishonored check, statutory-lien foreclosure, attachment, garnishment, proceedings supplementary, domesticate a judgment, eviction, unlawful detainer) | `templates/title6/causes-of-action-catalog.md` |
+| Master intake + claim-routing triage | `templates/title6/intake-questions.md` |
+| Cross-action discovery (RFP / Rogs / RFA) | `templates/title6/discovery-set.md` |
+| Subpoenas — trial, deposition, duces tecum to party + **non-party** (Rule 1.351/1.410) | `templates/title6/subpoenas.md` |
+| The index DB itself | `lib/fl-title6-index.json` |
+
 ## STEP 5 — GATES BEFORE FILING
 1. **§ 489.128 license** confirmed (dispositive on contract/QM enforceability).
 2. **"Owner paid the GC"** checked (sub-vs-owner UE limitation, *Commerce*).
