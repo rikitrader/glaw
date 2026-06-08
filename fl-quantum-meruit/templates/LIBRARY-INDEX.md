@@ -38,9 +38,12 @@ When you pull any `federal-library/...` template, convert it:
 ## 3. DISCOVERY (full package)
 | Document | Source |
 |---|---|
-| Interrogatories (≤30, Rule 1.340) | `federal-library/discovery/interrogatories_first_set.md` (adapt) + `recover-payment` GC/HO sets |
-| Request for Production (Rule 1.350) | `federal-library/discovery/requests_for_production.md` (adapt) |
-| Requests for Admission (Rule 1.370) | `federal-library/discovery/requests_for_admission.md` (adapt) |
+| **Request for Production (Rule 1.350)** — QM-tailored | `03a-request-for-production.md` *(this folder)* |
+| **Interrogatories (≤30, Rule 1.340)** — QM-tailored | `03b-interrogatories.md` *(this folder)* |
+| **Requests for Admission (Rule 1.370)** — QM-tailored | `03c-requests-for-admission.md` *(this folder)* |
+| ↳ broader/oppositional discovery (depo, subpoena, expert, responses) | `federal-library/discovery/*.md` (adapt) + `recover-payment` GC/HO sets |
+| Notice of Deposition (Rule 1.310) | `federal-library/discovery/deposition_notice.md` (adapt) |
+| Subpoena duces tecum to non-party (carrier/lender/bank) | `federal-library/discovery/subpoena_third_party.md` (adapt) |
 | Notice of Deposition (Rule 1.310) | `federal-library/discovery/deposition_notice.md` (adapt) |
 | Subpoena duces tecum to non-party (carrier/lender/bank) | `federal-library/discovery/subpoena_third_party.md` (adapt) |
 | Expert disclosure (Rule 1.280(b)) | `federal-library/discovery/expert_disclosure.md` (adapt) |
