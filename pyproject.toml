@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "glaw"
-version = "1.0.0"
+version = "1.1.0"
 description = "GLAW — a virtual corporate law firm as a Claude Code skill suite (corporate/securities/fund + SEC enforcement, DE/FL/TX forms)"
 readme = "PYPI_README.md"
 license = "MIT"
