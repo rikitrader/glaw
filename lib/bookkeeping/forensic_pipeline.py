@@ -61,10 +61,11 @@ COA_RULES = [
     ("TAX", "Expenses:Taxes"),
     # review categories — mapped to explicit REVIEW accounts, never guessed to revenue/expense
     ("CASH WITHDRAWAL", "Expenses:Cash-Withdrawals (REVIEW — substantiate)"),
-    ("FINANCING/WIRE-IN", "Liabilities:Loans-Payable (REVIEW — loan vs revenue)"),
+    # FINANCING/WIRE-IN: characterized as REVENUE per client direction (payments for work) — 2026-06-08
+    ("FINANCING/WIRE-IN", "Income:Revenue:Construction (wire — payments for work)"),
     ("WIRE/BOOK-OUT", "Expenses:Wire-Out (REVIEW — purpose unstated)"),
     ("WIRE", "Expenses:Wire-Out (REVIEW — purpose unstated)"),
-    ("FINANCING", "Liabilities:Loans-Payable (REVIEW — loan vs revenue)"),
+    ("FINANCING", "Income:Revenue:Construction (wire — payments for work)"),
 ]
 
 
@@ -77,15 +78,30 @@ def map_account(category: str) -> tuple[str, bool]:
     return "Expenses:Uncategorized", False
 
 
-def ingest(csv_path: str, *, book: str = "blackstone") -> dict:
+def _load_loan_lenders(loan_lenders) -> list:
+    """Loan lenders → list of UPPERCASE name substrings. Any transaction whose bank-description names
+    a loan lender is booked to that lender's loan liability — an INBOUND wire is loan proceeds
+    (credit the liability), an OUTBOUND wire is a repayment (debit the liability) — handled naturally
+    by the double entry. Re-runnable: the client extends the lender list as advances are confirmed.
+    Accepts a JSON path, a list of names, or None."""
+    if loan_lenders is None:
+        return []
+    items = loan_lenders
+    if isinstance(loan_lenders, str):
+        items = json.loads(Path(loan_lenders).read_text(encoding="utf-8"))
+    return [str(x).upper() for x in items]
+
+
+def ingest(csv_path: str, *, book: str = "blackstone", loan_lenders=None) -> dict:
     """Post every CSV row to the GLAW ledger as a balanced double entry. Returns a build report."""
     sys.path.insert(0, str(Path(__file__).parent))
     import ledger as L
 
+    lenders = _load_loan_lenders(loan_lenders)
     led = L.Ledger(book)
     rows = list(csv.DictReader(open(csv_path, encoding="utf-8", errors="replace")))
     errors, unmapped_cats = [], set()
-    posted = 0
+    posted, loan_hits = 0, 0
     bank_seen = set()
     for i, r in enumerate(rows):
         amt = _dec(r.get("amount"))
@@ -96,9 +112,15 @@ def ingest(csv_path: str, *, book: str = "blackstone") -> dict:
         bank = f"Assets:Bank:BofA-{acct_no}"
         bank_seen.add(bank)
         contra, mapped = map_account(r.get("category", ""))
+        date = _norm_date(r.get("date", ""), r.get("stmt", ""))
+        # loan-lender override: any wire naming a loan lender → that lender's loan liability
+        # (inbound = proceeds / outbound = repayment, by the natural double entry)
+        desc_up = (r.get("desc", "") or "").upper()
+        hit = next((ln for ln in lenders if ln in desc_up), None)
+        if hit:
+            contra, mapped, loan_hits = f"Liabilities:Loans-Payable:{hit.title()}", True, loan_hits + 1
         if not mapped:
             unmapped_cats.add(r.get("category", ""))
-        date = _norm_date(r.get("date", ""), r.get("stmt", ""))
         memo = (r.get("desc", "") or "")[:120]
         src = r.get("file", "")
         # deposit (amount > 0): Dr bank / Cr contra ;  withdrawal (< 0): Dr contra / Cr bank
@@ -114,7 +136,7 @@ def ingest(csv_path: str, *, book: str = "blackstone") -> dict:
             posted += 1
         except Exception as e:                       # never silently drop — log it
             errors.append({"row": i + 2, "issue": f"post failed: {e}", "desc": memo})
-    return {"book": book, "rows": len(rows), "posted": posted,
+    return {"book": book, "rows": len(rows), "posted": posted, "loan_hits": loan_hits,
             "bank_accounts": sorted(bank_seen), "errors": errors,
             "unmapped_categories": sorted(unmapped_cats)}
 
@@ -132,12 +154,12 @@ def _norm_date(date_str: str, stmt: str) -> str:
         return f"{st}-01" if len(st) == 7 else "2021-01-01"
 
 
-def reconstruct(csv_path: str, *, book: str = "blackstone") -> dict:
+def reconstruct(csv_path: str, *, book: str = "blackstone", loan_lenders=None) -> dict:
     sys.path.insert(0, str(Path(__file__).parent))
     import ledger as L
     import statements as S
 
-    build = ingest(csv_path, book=book)
+    build = ingest(csv_path, book=book, loan_lenders=loan_lenders)
     led = L.Ledger(book)
     bal = led.balances()
     stmts = S.build(postings=led.postings())
@@ -172,10 +194,11 @@ def main() -> int:
     ap = argparse.ArgumentParser(prog="glaw-forensic-pipeline")
     ap.add_argument("csv", help="master-ledger CSV (acct,stmt,date,section,category,amount,desc,file)")
     ap.add_argument("--book", default="blackstone")
+    ap.add_argument("--loan-lenders", default=None, help="JSON list of lender names (e.g. [\"DEALYZE\"]) whose wires are loans, not revenue/expense")
     ap.add_argument("--out", default=None, help="write JSON deliverables to this directory")
     ap.add_argument("--format", default="text", choices=["text", "json"])
     a = ap.parse_args()
-    d = reconstruct(a.csv, book=a.book)
+    d = reconstruct(a.csv, book=a.book, loan_lenders=a.loan_lenders)
     if a.out:
         outd = Path(a.out); outd.mkdir(parents=True, exist_ok=True)
         (outd / "reconstruction.json").write_text(json.dumps(d, indent=2, default=str))

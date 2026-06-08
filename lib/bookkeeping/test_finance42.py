@@ -57,13 +57,44 @@ def test_idempotent_rerun():
 def test_map_account():
     import forensic_pipeline as FP
     assert FP.map_account("REVENUE — other credit") == ("Income:Revenue", True)
-    assert FP.map_account("FINANCING/WIRE-IN (review: loan vs revenue)")[0].startswith("Liabilities:Loans")
+    # financing wires default to revenue (payments for work) unless a loan lender matches
+    assert FP.map_account("FINANCING/WIRE-IN (review)")[0].startswith("Income:Revenue:Construction")
     assert FP.map_account("something brand new") == ("Expenses:Uncategorized", False)
     print("  ✓ pipeline: category→CoA map faithful; unknown → Uncategorized (flagged), never guessed")
 
 
+def test_loan_lender_override():
+    """A wire naming a loan lender is booked to that lender's loan liability — inbound = proceeds
+    (credit), outbound = repayment (debit) — not revenue/expense."""
+    import os, tempfile, csv as _csv
+    os.environ["GLAW_HOME"] = tempfile.mkdtemp(prefix="glaw-loan-")
+    import importlib, ledger as L, forensic_pipeline as FP
+    importlib.reload(L); importlib.reload(FP)
+    p = Path(os.environ["GLAW_HOME"]) / "m.csv"
+    rows = [
+        {"acct": "1", "stmt": "2024-01", "date": "01/08/24", "section": "DEPOSIT",
+         "category": "FINANCING/WIRE-IN (review)", "amount": "100000",
+         "desc": "WIRE IN FROM DEALYZE", "file": "e.pdf"},                 # loan proceeds
+        {"acct": "1", "stmt": "2024-06", "date": "06/14/24", "section": "WITHDRAWAL",
+         "category": "COGS — Materials", "amount": "-30000",
+         "desc": "WIRE OUT TO DEALYZE", "file": "e.pdf"},                  # repayment (was mis-COGS)
+        {"acct": "1", "stmt": "2024-02", "date": "02/01/24", "section": "DEPOSIT",
+         "category": "FINANCING/WIRE-IN (review)", "amount": "5000",
+         "desc": "wire from a customer", "file": "e.pdf"},                 # NOT a loan → revenue
+    ]
+    with open(p, "w", newline="") as fh:
+        w = _csv.DictWriter(fh, fieldnames=list(rows[0].keys())); w.writeheader(); w.writerows(rows)
+    d = FP.reconstruct(str(p), book="t", loan_lenders=["DEALYZE"])
+    assert d["build"]["loan_hits"] == 2                                    # the 2 Dealyze wires
+    bal = L.Ledger("t").balances()
+    assert bal.get("Liabilities:Loans-Payable:Dealyze") == Decimal("-70000")   # 100k proceeds − 30k repaid
+    assert bal.get("Income:Revenue:Construction (wire — payments for work)") == Decimal("-5000")
+    assert d["trial_balance_balanced"] and d["chain_intact"]
+    print("  ✓ pipeline: Dealyze wires → loan liability (−70k net); non-lender wire stays revenue")
+
+
 def main() -> int:
-    test_reconstruct_balances_and_maps(); test_idempotent_rerun(); test_map_account()
+    test_reconstruct_balances_and_maps(); test_idempotent_rerun(); test_map_account(); test_loan_lender_override()
     print("OK: forensic reconstruction pipeline passed")
     return 0
 
