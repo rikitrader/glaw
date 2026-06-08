@@ -95,6 +95,7 @@ Covers: **IRS**, tax planning, tax controversy.
 | Proactive tax minimization, QSBS §1202, asset protection, wealth | `glaw-tax-strategy` |
 | **Full tax-credit/incentive STRATEGY DOSSIER** (roadmap + step-by-step + deadlines + per-credit requirements: QSBS §1202, §83(b)/15620, §351, §409A, R&D §41/§174A, NOLs, §195/§248, ISOs) | `/glaw-credit-strategy` |
 | Back taxes, non-filers, penalty abatement, OIC, IRS collections defense | `glaw-tax-compliance`, `glaw-tax-relief` |
+| **IRS audit defense (exam → Appeals → Tax Court)** — triage notice + SOL clock (`bin/glaw-sol`), transcript reconstruction (`bin/glaw-transcript`), GL-tied substantiation + Form 4549 recompute (`bin/glaw-audit-package`), penalty abatement (`bin/glaw-abatement`); IRS-examiner adversarial gate | `/glaw-irs-audit` |
 | Tax-matter intake / triage | `glaw-tax-legal-intake` |
 | **IP + 409A valuation engine** (audit-ready DRAFT FMV + strike via real OPM/Black-Scholes `bin/opm.py`; IP valuation; equity allocation OPM/PWERM + DLOM; risk scorecard) — fills facts #4/#8 pending appraiser sign-off | `/glaw-valuation-409a` |
 | **Valuation adversary** (IRS valuation-examiner RED-team: attacks FMV/DLOM/sigma/backsolve/comps; defensibility 0-10 + sensitivity) — mandatory pass before any valuation is "ready" | `/glaw-valuation-adversary` |
