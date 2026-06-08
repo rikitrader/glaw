@@ -38,3 +38,4 @@ jobs:
           /tmp/bkv/bin/pip install -q -r lib/bookkeeping/requirements.txt
           /tmp/bkv/bin/python lib/bookkeeping/test_smoke.py
           /tmp/bkv/bin/python lib/bookkeeping/test_finance.py
+          /tmp/bkv/bin/python lib/bookkeeping/test_finance2.py
