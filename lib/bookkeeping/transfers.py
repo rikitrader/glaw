@@ -38,6 +38,19 @@ def _is_cash(acct: str) -> bool:
             or "credit card" in a or "creditcard" in a or ":card" in a or "credit:card" in a)
 
 
+_XFER_KW = ("transfer", "xfer", "tfr", "to savings", "from savings", "to checking",
+            "from checking", "internal", "move to", "sweep", "online transfer",
+            "wire to", "between accounts")
+
+
+def _looks_like_transfer(*memos) -> bool:
+    return any(any(k in (m or "").lower() for k in _XFER_KW) for m in memos)
+
+
+def _is_default_contra(acct: str) -> bool:
+    return "uncategorized" in (acct or "").lower() or (acct or "").endswith(":Misc")
+
+
 def _bank_leg(entry: dict):
     """Return (cash_account, signed_cash, contra_account) for a simple 2-leg bank entry, else None."""
     if len(entry["lines"]) != 2:
@@ -82,19 +95,31 @@ def detect(book: str, *, window_days: int = 5) -> list[dict]:
             if key in done:
                 continue
             used_in.add(i["id"])
+            # CONFIDENT only with positive evidence it's a transfer (a transfer-like memo, or both
+            # legs landed in the default/uncategorized bucket). Without evidence, a same-amount
+            # expense + income pair is NOT auto-netted — that would corrupt the P&L.
+            # evidence = a transfer-like memo OR a contra account already categorized as a
+            # transfer, OR both legs in the default/uncategorized bucket.
+            confident = (_looks_like_transfer(o["memo"], i["memo"], o["contra"], i["contra"])
+                         or (_is_default_contra(o["contra"]) and _is_default_contra(i["contra"])))
             pairs.append({"amount": str(i["signed"]), "from": o["acct"], "to": i["acct"],
                           "out_id": o["id"], "in_id": i["id"],
                           "out_contra": o["contra"], "in_contra": i["contra"],
-                          "out_date": o["date"], "in_date": i["date"]})
+                          "out_date": o["date"], "in_date": i["date"],
+                          "out_memo": o["memo"], "in_memo": i["memo"], "confident": confident})
             break
     return pairs
 
 
-def reclassify(book: str, *, window_days: int = 5) -> dict:
+def reclassify(book: str, *, window_days: int = 5, apply_all: bool = False) -> dict:
+    """Net confident inter-account transfers. Pairs WITHOUT transfer evidence are returned as
+    `candidates` (flagged for review), NOT auto-posted, unless apply_all=True."""
     led = L.Ledger(book)
     pairs = detect(book, window_days=window_days)
+    to_post = [p for p in pairs if (p["confident"] or apply_all)]
+    candidates = [p for p in pairs if not p["confident"] and not apply_all]
     posted = []
-    for p in pairs:
+    for p in to_post:
         amt = _dec(p["amount"])
         # zero the bogus income (in_contra) and expense (out_contra); cash legs already correct
         led.post({"date": p["in_date"], "memo": f"Transfer reclass {p['from']} → {p['to']}",
@@ -106,7 +131,8 @@ def reclassify(book: str, *, window_days: int = 5) -> dict:
     done |= set(posted)
     _store(book).parent.mkdir(parents=True, exist_ok=True)
     _store(book).write_text(json.dumps([list(x) for x in done]))
-    return {"book": book, "transfers_found": len(pairs), "reclassified": len(posted), "pairs": pairs}
+    return {"book": book, "transfers_found": len(pairs), "reclassified": len(posted),
+            "candidates": candidates, "pairs": to_post}
 
 
 def main() -> int:
@@ -114,19 +140,25 @@ def main() -> int:
     ap.add_argument("--book", required=True)
     ap.add_argument("--window", type=int, default=5)
     ap.add_argument("--apply", action="store_true", help="post the reclassification entries (else dry-run)")
+    ap.add_argument("--apply-all", action="store_true", help="also apply low-confidence matches (no transfer evidence)")
     ap.add_argument("--format", default="text", choices=["text", "json"])
     a = ap.parse_args()
-    if a.apply:
-        res = reclassify(a.book, window_days=a.window)
+    if a.apply or a.apply_all:
+        res = reclassify(a.book, window_days=a.window, apply_all=a.apply_all)
     else:
-        res = {"book": a.book, "transfers_found": len(detect(a.book, window_days=a.window)),
-               "reclassified": 0, "pairs": detect(a.book, window_days=a.window)}
+        pairs = detect(a.book, window_days=a.window)
+        res = {"book": a.book, "transfers_found": len(pairs), "reclassified": 0,
+               "pairs": [p for p in pairs if p["confident"]],
+               "candidates": [p for p in pairs if not p["confident"]]}
     if a.format == "json":
         print(json.dumps(res, indent=2, default=str))
     else:
         print(f"transfers found: {res['transfers_found']}   reclassified: {res['reclassified']}")
-        for p in res["pairs"]:
-            print(f"  {p['out_date']}  {_dec(p['amount']):>12,.2f}  {p['from']} → {p['to']}")
+        for p in res.get("pairs", []):
+            print(f"  ✓ {p['out_date']}  {_dec(p['amount']):>12,.2f}  {p['from']} → {p['to']}")
+        for p in res.get("candidates", []):
+            print(f"  ? {p['out_date']}  {_dec(p['amount']):>12,.2f}  {p['from']} → {p['to']}  "
+                  f"(no transfer evidence — REVIEW; --apply-all to net)")
     return 0
 
 

@@ -50,6 +50,21 @@ def test_transfer_reclassification():
     print("  ✓ transfers: 3k Checking→Savings netted (revenue 10k not 13k), cash intact, idempotent")
 
 
+def test_transfer_false_positive_guard():
+    L, TR = _fresh()
+    led = L.Ledger("fp")
+    # a real rent expense + a real sale, same amount/window, NO transfer evidence — must NOT net
+    led.post({"date": "2026-01-05", "lines": [{"account": "Expenses:Rent", "debit": 3000},
+                                              {"account": "Assets:Bank:Checking", "credit": 3000}]})
+    led.post({"date": "2026-01-06", "lines": [{"account": "Assets:Bank:Savings", "debit": 3000},
+                                              {"account": "Income:Sales", "credit": 3000}]})
+    r = TR.reclassify("fp")
+    assert r["reclassified"] == 0, "unrelated expense+income must NOT be auto-netted as a transfer"
+    assert len(r["candidates"]) == 1, "the ambiguous pair must be flagged for review"
+    assert led.balances()["Income:Sales"] == Decimal("-3000")   # real income untouched
+    print("  ✓ transfers: unrelated expense+income flagged (not netted) — P&L not corrupted")
+
+
 def test_continuity():
     import continuity as C
     good = [{"account": "Checking", "period_start": "2026-01-01", "period_end": "2026-01-31",
@@ -96,6 +111,7 @@ def test_reconstruct_orchestrator():
 
 def main() -> int:
     test_transfer_reclassification()
+    test_transfer_false_positive_guard()
     test_continuity()
     test_reconstruct_orchestrator()
     print("OK: multi-account reconstruction smoke passed (transfers + continuity + orchestrator)")

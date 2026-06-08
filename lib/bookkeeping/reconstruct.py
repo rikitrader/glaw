@@ -139,7 +139,8 @@ def reconstruct(manifest: dict, *, capture=True) -> dict:
         "book": book, "entity": manifest.get("entity", "the Company"),
         "sources": sources_report,
         "continuity": {"complete": cont["complete"], "accounts": cont["accounts"]},
-        "transfers": {"found": tr["transfers_found"], "reclassified": tr["reclassified"], "pairs": tr["pairs"]},
+        "transfers": {"found": tr["transfers_found"], "reclassified": tr["reclassified"],
+                      "pairs": tr["pairs"], "candidates": tr.get("candidates", [])},
         "tie_out": {"all_tied": tie_ok, "accounts_checked": len(tieouts), "accounts": tieouts},
         "golden_rule": {"all_verified": golden_rule_ok},
         "control_gate": {"passed": gate_passed, "failures": BD.FAIL, "warnings": BD.WARN,
@@ -159,9 +160,13 @@ def render_text(r: dict) -> str:
     for a in r["continuity"]["accounts"]:
         if not a["continuous"]:
             o.append(f"     ✗ {a['account']}: {len(a['breaks'])} break(s), {len(a['gaps'])} gap(s)")
-    o.append(f"  TRANSFERS: {r['transfers']['reclassified']} reclassified (of {r['transfers']['found']} found)")
+    cand = r["transfers"].get("candidates", [])
+    o.append(f"  TRANSFERS: {r['transfers']['reclassified']} reclassified (of {r['transfers']['found']} found)"
+             + (f"  ⚠️ {len(cand)} candidate(s) flagged for review" if cand else ""))
     for p in r["transfers"]["pairs"]:
-        o.append(f"     {_dec(p['amount']):>12,.2f}  {p['from']} → {p['to']}")
+        o.append(f"     ✓ {_dec(p['amount']):>12,.2f}  {p['from']} → {p['to']}")
+    for p in cand:
+        o.append(f"     ? {_dec(p['amount']):>12,.2f}  {p['from']} → {p['to']}  (no transfer evidence — for the adversarial panel to clear)")
     gr = r.get("golden_rule", {})
     o.append(f"  GOLDEN RULE: {'✅ every source verified' if gr.get('all_verified') else '❌ a source has a balance discrepancy'}")
     o.append(f"  TIE-OUT: {'✅ all accounts tie to statement closing' if r['tie_out']['all_tied'] else '❌ tie-out break'}"
