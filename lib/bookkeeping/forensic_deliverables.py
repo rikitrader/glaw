@@ -139,12 +139,13 @@ def deliverables(book: str, out_dir: str, *, entity: str = "Entity", ein: str = 
            f"Reconstruction spans {recon['span'][0] if recon['span'] else '?'}–{recon['span'][-1] if recon['span'] else '?'}.",
            "2. **Gaps.** Statement months without a source document are disclosed in deliverable 01 and carried, "
            "not estimated. The reconstruction is complete except for those disclosed months.",
-           "3. **Inbound wires — financing vs revenue.** $700,000 of Dealyze advances (01/08/24 $500,000; 02/01/24 "
-           "$100,000; 02/08/24 $100,000) are booked as LOANS, not revenue — supported by the signed promissory note "
-           "(Dealyze-Promissory-Note-200k-SIGNED-2024-02-08) and consistent with the merchant-cash-advance-as-loan "
-           "position in the Dealyze litigation; net of ~$140,010 in repayments the outstanding balance is ~$559,990. "
-           "The remaining inbound wires are construction revenue (payments for work). Retain the notes + invoices to "
-           "substantiate on audit.",
+           "3. **Wires booked by counterparty (traceable to ORIG:/BNF:).** Each wire is booked to the account its "
+           "actual counterparty implies, from the bank description — not a guessed category. DEALYZE, INC. advances "
+           "($700,000 of merchant-cash-advance proceeds; $500K advanced to cover an unpaid Nationwide invoice) are "
+           "LOANS, not revenue — supported by the signed Dealyze promissory note (2024-02-08) and the MCA-as-loan "
+           "position in the Dealyze litigation; net of ~$140,010 in repayments to Dealyze the outstanding balance is "
+           "~$559,990. NATIONWIDE GENERAL CONTRACTORS / NATIONWIDE EXTERIORS wires are construction revenue. "
+           "FLORIDA ROOFING OUTLET / BEACON wires are COGS materials; APD EXCELLENT REPAIRS is subcontractor labor.",
            "4. **Owner transactions.** Owner draws and contributions are tracked in equity (see trial balance).",
            "5. **Revenue recognition.** Construction receipts recognized on the cash basis as deposited; a percentage-"
            "of-completion or accrual conversion is a [VERIFY] item with the engagement CPA."]

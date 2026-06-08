@@ -78,6 +78,34 @@ def map_account(category: str) -> tuple[str, bool]:
     return "Expenses:Uncategorized", False
 
 
+def counterparty(desc: str) -> str:
+    """Extract the wire counterparty from the bank description: ORIG:<name> for an inbound wire,
+    BNF:<name> for an outbound. This is the traceable bookkeeping source — every wire is booked to
+    the account its real counterparty implies, not to a guessed category."""
+    d = (desc or "").upper()
+    for tag in ("ORIG:", "BNF:"):
+        if tag in d:
+            after = d.split(tag, 1)[1]
+            # the name runs up to the next " ID:" / " BK:" / "SND" token
+            for stop in (" ID:", " BNF BK:", " SND BK:", " SND ", " BK:", " PMT", " RELATED"):
+                if stop in after:
+                    after = after.split(stop, 1)[0]
+            return after.strip()
+    return ""
+
+
+def map_counterparty(desc: str, rules: list) -> str | None:
+    """counterparty name → account via the client's counterparty rules (substring match). Returns
+    None when no rule matches (falls back to the category mapping). rules: [[substr, account], ...]."""
+    cp = counterparty(desc)
+    if not cp:
+        return None
+    for sub, acct in rules:
+        if sub.upper() in cp:
+            return acct
+    return None
+
+
 def _load_loan_lenders(loan_lenders) -> list:
     """Loan lenders → list of UPPERCASE name substrings. Any transaction whose bank-description names
     a loan lender is booked to that lender's loan liability — an INBOUND wire is loan proceeds
@@ -92,16 +120,35 @@ def _load_loan_lenders(loan_lenders) -> list:
     return [str(x).upper() for x in items]
 
 
-def ingest(csv_path: str, *, book: str = "blackstone", loan_lenders=None) -> dict:
+def _load_overrides(overrides) -> dict:
+    """Per-wire characterization → {(YYYY-MM-DD, amount-string): account}. The CLIENT decides each
+    material wire's treatment (e.g. an advance payment vs a loan) in a file and re-runs; this takes
+    precedence over the category and loan-lender mappings. Accepts a JSON path, a list of
+    {date, amount, account, note?}, or None."""
+    out = {}
+    if overrides is None:
+        return out
+    items = overrides
+    if isinstance(overrides, str):
+        items = json.loads(Path(overrides).read_text(encoding="utf-8"))
+    for it in items:
+        out[(str(it["date"])[:10], str(_q(_dec(it["amount"]))))] = it["account"]
+    return out
+
+
+def ingest(csv_path: str, *, book: str = "blackstone", loan_lenders=None, overrides=None, counterparty_rules=None) -> dict:
     """Post every CSV row to the GLAW ledger as a balanced double entry. Returns a build report."""
     sys.path.insert(0, str(Path(__file__).parent))
     import ledger as L
 
     lenders = _load_loan_lenders(loan_lenders)
+    ovr = _load_overrides(overrides)
+    cp_rules = (json.loads(Path(counterparty_rules).read_text(encoding="utf-8"))
+                if isinstance(counterparty_rules, str) else (counterparty_rules or []))
     led = L.Ledger(book)
     rows = list(csv.DictReader(open(csv_path, encoding="utf-8", errors="replace")))
     errors, unmapped_cats = [], set()
-    posted, loan_hits = 0, 0
+    posted, loan_hits, override_hits, cp_hits = 0, 0, 0, 0
     bank_seen = set()
     for i, r in enumerate(rows):
         amt = _dec(r.get("amount"))
@@ -113,12 +160,20 @@ def ingest(csv_path: str, *, book: str = "blackstone", loan_lenders=None) -> dic
         bank_seen.add(bank)
         contra, mapped = map_account(r.get("category", ""))
         date = _norm_date(r.get("date", ""), r.get("stmt", ""))
-        # loan-lender override: any wire naming a loan lender → that lender's loan liability
-        # (inbound = proceeds / outbound = repayment, by the natural double entry)
-        desc_up = (r.get("desc", "") or "").upper()
+        desc = r.get("desc", "") or ""
+        # COUNTERPARTY rule (traceable to the wire's ORIG:/BNF:) — the primary, document-driven map
+        cp_acct = map_counterparty(desc, cp_rules)
+        if cp_acct:
+            contra, mapped, cp_hits = cp_acct, True, cp_hits + 1
+        # loan-lender fallback: a wire naming a loan lender → that lender's loan liability
+        desc_up = desc.upper()
         hit = next((ln for ln in lenders if ln in desc_up), None)
-        if hit:
+        if hit and not cp_acct:
             contra, mapped, loan_hits = f"Liabilities:Loans-Payable:{hit.title()}", True, loan_hits + 1
+        # per-wire client characterization takes final precedence (date + amount match)
+        key = (date, str(_q(abs(amt))))
+        if key in ovr:
+            contra, mapped, override_hits = ovr[key], True, override_hits + 1
         if not mapped:
             unmapped_cats.add(r.get("category", ""))
         memo = (r.get("desc", "") or "")[:120]
@@ -136,7 +191,7 @@ def ingest(csv_path: str, *, book: str = "blackstone", loan_lenders=None) -> dic
             posted += 1
         except Exception as e:                       # never silently drop — log it
             errors.append({"row": i + 2, "issue": f"post failed: {e}", "desc": memo})
-    return {"book": book, "rows": len(rows), "posted": posted, "loan_hits": loan_hits,
+    return {"book": book, "rows": len(rows), "posted": posted, "loan_hits": loan_hits, "override_hits": override_hits, "counterparty_hits": cp_hits,
             "bank_accounts": sorted(bank_seen), "errors": errors,
             "unmapped_categories": sorted(unmapped_cats)}
 
@@ -154,12 +209,12 @@ def _norm_date(date_str: str, stmt: str) -> str:
         return f"{st}-01" if len(st) == 7 else "2021-01-01"
 
 
-def reconstruct(csv_path: str, *, book: str = "blackstone", loan_lenders=None) -> dict:
+def reconstruct(csv_path: str, *, book: str = "blackstone", loan_lenders=None, overrides=None, counterparty_rules=None) -> dict:
     sys.path.insert(0, str(Path(__file__).parent))
     import ledger as L
     import statements as S
 
-    build = ingest(csv_path, book=book, loan_lenders=loan_lenders)
+    build = ingest(csv_path, book=book, loan_lenders=loan_lenders, overrides=overrides, counterparty_rules=counterparty_rules)
     led = L.Ledger(book)
     bal = led.balances()
     stmts = S.build(postings=led.postings())
@@ -194,11 +249,13 @@ def main() -> int:
     ap = argparse.ArgumentParser(prog="glaw-forensic-pipeline")
     ap.add_argument("csv", help="master-ledger CSV (acct,stmt,date,section,category,amount,desc,file)")
     ap.add_argument("--book", default="blackstone")
-    ap.add_argument("--loan-lenders", default=None, help="JSON list of lender names (e.g. [\"DEALYZE\"]) whose wires are loans, not revenue/expense")
+    ap.add_argument("--loan-lenders", default=None, help="JSON list of lender names (e.g. [\"DEALYZE\"]) whose wires are loans")
+    ap.add_argument("--overrides", default=None, help="JSON [{date, amount, account, note}] — per-wire client characterization")
+    ap.add_argument("--counterparty-rules", default=None, help="JSON [[substr, account]] — map a wire ORIG:/BNF: counterparty to an account (traceable)")
     ap.add_argument("--out", default=None, help="write JSON deliverables to this directory")
     ap.add_argument("--format", default="text", choices=["text", "json"])
     a = ap.parse_args()
-    d = reconstruct(a.csv, book=a.book, loan_lenders=a.loan_lenders)
+    d = reconstruct(a.csv, book=a.book, loan_lenders=a.loan_lenders, overrides=a.overrides, counterparty_rules=a.counterparty_rules)
     if a.out:
         outd = Path(a.out); outd.mkdir(parents=True, exist_ok=True)
         (outd / "reconstruction.json").write_text(json.dumps(d, indent=2, default=str))
