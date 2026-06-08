@@ -50,7 +50,7 @@ def _ded_line(acct: str):
 
 
 def map_return(book: str, form: str = "1120", *, m1: dict | None = None,
-               as_of: str | None = None) -> dict:
+               as_of: str | None = None, nol_carryforwards: list | None = None) -> dict:
     bal = L.Ledger(book).balances(as_of)
     gross_receipts = Decimal("0")
     other_income = Decimal("0")
@@ -93,10 +93,24 @@ def map_return(book: str, form: str = "1120", *, m1: dict | None = None,
     if m1:
         lines += [{"line": "M-1", "label": "+ permanent differences", "amount": str(perm)},
                   {"line": "M-1", "label": "− temporary differences", "amount": str(-temp)}]
+    taxable_before_nol = taxable
+    nol_deduction = Decimal("0")
+    nol_result = None
+    if nol_carryforwards is not None:
+        import nol as NOL
+        nol_result = NOL.apply_nol(taxable, nol_carryforwards)
+        nol_deduction = Decimal(nol_result["nol_deduction"])
+        taxable = Decimal(nol_result["taxable_income_after_nol"])
+        lines.append({"line": "29a", "label": "Taxable income before NOL", "amount": str(taxable_before_nol)})
+        lines.append({"line": "29c", "label": "NOL deduction", "amount": str(nol_deduction)})
     lines.append({"line": "30", "label": _FINAL.get(form, "Taxable income"), "amount": str(taxable)})
-    return {"form": form, "book": book, "book_pretax": str(book_pretax),
-            "permanent": str(perm), "temporary": str(temp), "taxable_income": str(taxable),
-            "lines": lines}
+    out = {"form": form, "book": book, "book_pretax": str(book_pretax),
+           "permanent": str(perm), "temporary": str(temp),
+           "taxable_income_before_nol": str(taxable_before_nol),
+           "nol_deduction": str(nol_deduction), "taxable_income": str(taxable), "lines": lines}
+    if nol_result:
+        out["nol_remaining_carryforward"] = nol_result["remaining_carryforward"]
+    return out
 
 
 def render_text(d: dict) -> str:
@@ -113,6 +127,7 @@ def main() -> int:
     ap.add_argument("--form", default="1120", choices=list(_FINAL))
     ap.add_argument("--rules", default=None, help="apply book-to-tax M-1 rules (default: built-in)")
     ap.add_argument("--tax-depreciation", default=None)
+    ap.add_argument("--nol", default=None, help="NOL carryforwards JSON: [{year, amount, pre_tcja?}]")
     ap.add_argument("--as-of", default=None)
     ap.add_argument("--format", default="text", choices=["text", "json"])
     a = ap.parse_args()
@@ -121,7 +136,8 @@ def main() -> int:
         import book_to_tax as BT
         td = Decimal(a.tax_depreciation) if a.tax_depreciation is not None else None
         m1 = BT.book_to_tax(a.book, BT.load_rules(a.rules), as_of=a.as_of, tax_depreciation=td)
-    d = map_return(a.book, a.form, m1=m1, as_of=a.as_of)
+    nol_cf = json.loads(Path(a.nol).read_text(encoding="utf-8")) if a.nol else None
+    d = map_return(a.book, a.form, m1=m1, as_of=a.as_of, nol_carryforwards=nol_cf)
     print(json.dumps(d, indent=2, default=str) if a.format == "json" else render_text(d))
     return 0
 
