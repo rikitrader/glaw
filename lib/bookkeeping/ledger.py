@@ -166,12 +166,21 @@ class Ledger:
         self.dir = (home or _home()) / "books" / book
         self.path = self.dir / "ledger.jsonl"
         self.meta_path = self.dir / "meta.json"
+        self._entries_cache: list[dict] | None = None   # per-instance parse memo (see entries())
 
     # ---- persistence -------------------------------------------------------
     def _meta(self) -> dict:
         if self.meta_path.exists():
-            return json.loads(self.meta_path.read_text())
-        return {"locked_through": None, "next_id": 1, "seen_hashes": []}
+            m = json.loads(self.meta_path.read_text())
+        else:
+            m = {"locked_through": None, "next_id": 1, "seen_hashes": {}}
+        # seen_hashes: O(1) dict membership. Convert a legacy list in place.
+        sh = m.get("seen_hashes")
+        if isinstance(sh, list):
+            m["seen_hashes"] = {h: 1 for h in sh}
+        elif sh is None:
+            m["seen_hashes"] = {}
+        return m
 
     def _write_meta(self, m: dict) -> None:
         self.dir.mkdir(parents=True, exist_ok=True)
@@ -194,19 +203,19 @@ class Ledger:
                 fcntl.flock(lf, fcntl.LOCK_UN)
 
     def entries(self, as_of: str | None = None) -> list[dict]:
-        if not self.path.exists():
-            return []
-        out = []
-        cutoff = date.fromisoformat(as_of[:10]) if as_of else None
-        for line in self.path.read_text().splitlines():
-            line = line.strip()
-            if not line:
-                continue
-            e = json.loads(line)
-            if cutoff and date.fromisoformat(e["date"]) > cutoff:
-                continue
-            out.append(e)
-        return out
+        # parse the file at most once per instance; a single statement/audit op reads it via
+        # balances()+postings()+build() — without the memo that re-parses the whole file 3×.
+        # Invalidated on post()/import; callers treat the result read-only.
+        if self._entries_cache is None:
+            if not self.path.exists():
+                self._entries_cache = []
+            else:
+                self._entries_cache = [json.loads(s) for s in
+                                       (ln.strip() for ln in self.path.read_text().splitlines()) if s]
+        if as_of is None:
+            return self._entries_cache
+        cutoff = date.fromisoformat(as_of[:10])
+        return [e for e in self._entries_cache if date.fromisoformat(e["date"]) <= cutoff]
 
     # ---- posting -----------------------------------------------------------
     def post(self, je: dict, *, dedupe_hash: str | None = None) -> dict:
@@ -241,8 +250,9 @@ class Ledger:
             meta["next_id"] = eid + 1
             meta["last_hash"] = payload["entry_hash"]
             if dedupe_hash:
-                meta.setdefault("seen_hashes", []).append(dedupe_hash)
+                meta.setdefault("seen_hashes", {})[dedupe_hash] = 1
             self._write_meta(meta)
+            self._entries_cache = None                # invalidate the parse memo
             return {"id": eid, "entry_hash": payload["entry_hash"], "date": norm["date"]}
 
     def import_bank(self, rows: list[dict], *, bank_account: str = "Assets:Bank:Checking") -> dict:
