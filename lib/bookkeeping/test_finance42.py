@@ -63,6 +63,26 @@ def test_map_account():
     print("  ✓ pipeline: category→CoA map faithful; unknown → Uncategorized (flagged), never guessed")
 
 
+def test_per_wire_override():
+    """A per-wire client characterization (date+amount) takes precedence over category + loan-lender."""
+    import os, tempfile, csv as _csv
+    os.environ["GLAW_HOME"] = tempfile.mkdtemp(prefix="glaw-ovr-")
+    import importlib, ledger as L, forensic_pipeline as FP
+    importlib.reload(L); importlib.reload(FP)
+    p = Path(os.environ["GLAW_HOME"]) / "m.csv"
+    rows = [{"acct": "1", "stmt": "2024-01", "date": "01/08/24", "section": "DEPOSIT",
+             "category": "FINANCING/WIRE-IN", "amount": "500000", "desc": "WIRE IN FROM DEALYZE", "file": "e.pdf"}]
+    with open(p, "w", newline="") as fh:
+        w = _csv.DictWriter(fh, fieldnames=list(rows[0].keys())); w.writeheader(); w.writerows(rows)
+    # without override, DEALYZE → loan; with override, → revenue (advance payment)
+    d = FP.reconstruct(str(p), book="t", loan_lenders=["DEALYZE"],
+                       overrides=[{"date": "2024-01-08", "amount": "500000", "account": "Income:Revenue:Advance"}])
+    assert d["build"]["override_hits"] == 1
+    assert L.Ledger("t").balances().get("Income:Revenue:Advance") == Decimal("-500000")
+    assert "Liabilities:Loans-Payable:Dealyze" not in L.Ledger("t").balances()  # override beat the loan-lender
+    print("  ✓ pipeline: per-wire override beats loan-lender + category (client characterization wins)")
+
+
 def test_loan_lender_override():
     """A wire naming a loan lender is booked to that lender's loan liability — inbound = proceeds
     (credit), outbound = repayment (debit) — not revenue/expense."""
@@ -93,8 +113,22 @@ def test_loan_lender_override():
     print("  ✓ pipeline: Dealyze wires → loan liability (−70k net); non-lender wire stays revenue")
 
 
+def test_counterparty_mapping():
+    """Wires are booked to the account their ORIG:/BNF: counterparty implies — the traceable,
+    document-driven map — taking precedence over the category guess."""
+    import forensic_pipeline as FP
+    # extract counterparty from real BofA wire-description format
+    assert FP.counterparty("WIRE IN ... ORIG:DEALYZE, INC. ID:80002030238 SND BK:FIRST REPUBLIC") == "DEALYZE, INC."
+    assert FP.counterparty("BOOK OUT ... BNF:FLORIDA ROOFING OUTLET INC ID:898111175146 PMT DET:X") == "FLORIDA ROOFING OUTLET INC"
+    rules = [["DEALYZE", "Liabilities:Loans-Payable:Dealyze"], ["FLORIDA ROOFING", "Expenses:COGS:Materials"]]
+    assert FP.map_counterparty("ORIG:DEALYZE, INC. ID:1", rules) == "Liabilities:Loans-Payable:Dealyze"
+    assert FP.map_counterparty("BNF:FLORIDA ROOFING OUTLET ID:2", rules) == "Expenses:COGS:Materials"
+    assert FP.map_counterparty("ORIG:SOME RANDOM CUSTOMER ID:3", rules) is None   # no rule → fall back
+    print("  ✓ pipeline: wires booked by their real ORIG:/BNF: counterparty (Dealyze→loan, FRO→COGS)")
+
+
 def main() -> int:
-    test_reconstruct_balances_and_maps(); test_idempotent_rerun(); test_map_account(); test_loan_lender_override()
+    test_reconstruct_balances_and_maps(); test_idempotent_rerun(); test_map_account(); test_loan_lender_override(); test_per_wire_override(); test_counterparty_mapping()
     print("OK: forensic reconstruction pipeline passed")
     return 0
 
