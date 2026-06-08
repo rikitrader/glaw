@@ -82,8 +82,10 @@ def test_reconstruct_orchestrator():
         '{"pattern":"MATERIALS","account":"Expenses:Materials"},{"pattern":"XFER TO","account":"Expenses:Transfers"},'
         '{"pattern":"XFER FROM","account":"Income:Transfers"}]}')
     manifest = {"book": "acme", "entity": "Acme LLC", "window": 5, "sources": [
-        {"path": str(Path(d, "checking.csv")), "account": "Assets:Bank:Checking", "map": str(coa)},
-        {"path": str(Path(d, "savings.csv")), "account": "Assets:Bank:Savings", "map": str(coa)}]}
+        {"path": str(Path(d, "checking.csv")), "account": "Assets:Bank:Checking", "map": str(coa),
+         "opening": "0", "closing": "5000"},
+        {"path": str(Path(d, "savings.csv")), "account": "Assets:Bank:Savings", "map": str(coa),
+         "opening": "0", "closing": "3000"}]}
     res = R.reconstruct(manifest)
     assert res["audit_ready"] is True, res
     assert res["transfers"]["reclassified"] == 1

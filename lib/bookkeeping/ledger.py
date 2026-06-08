@@ -105,7 +105,8 @@ def bank_rows_to_entries(rows: list[dict], *, bank_account: str = "Assets:Bank:C
             lines = [{"account": bank_account, "debit": 0, "credit": -amt},
                      {"account": contra, "debit": -amt, "credit": 0}]
         out.append({"date": d, "memo": memo, "source": r.get("source_method", "bank"),
-                    "lines": lines, "transaction_hash": r.get("transaction_hash")})
+                    "lines": lines, "transaction_hash": r.get("transaction_hash"),
+                    "currency": r.get("currency")})
     return out
 
 
@@ -157,6 +158,8 @@ class Ledger:
         payload = {"id": eid, "posted_at": posted_at, **norm}
         if je.get("transaction_hash"):
             payload["transaction_hash"] = je["transaction_hash"]
+        if je.get("currency"):
+            payload["currency"] = je["currency"]
         # tamper-evident: hash the entry content
         payload["entry_hash"] = hashlib.sha256(
             json.dumps({k: payload[k] for k in ("id", "date", "memo", "lines")},
@@ -179,6 +182,27 @@ class Ledger:
             else:
                 posted += 1
         return {"posted": posted, "skipped_duplicates": skipped}
+
+    def post_opening(self, account: str, amount, as_of: str, *, account_type: str = "asset",
+                     equity: str = "Equity:Opening Balance Equity") -> dict:
+        """Post an account's opening balance against Opening Balance Equity so the GL reflects
+        the true starting position (an ongoing company's books don't start at zero).
+        `amount` is the natural-balance magnitude: a debit balance for assets, a credit
+        balance (amount owed) for liabilities. Idempotent per (account, as_of)."""
+        amt = _dec(amount)
+        if amt == 0:
+            return {"skipped": True, "reason": "zero opening"}
+        h = f"opening:{account}:{as_of}"
+        if h in self._meta().get("seen_hashes", []):
+            return {"skipped": True, "reason": "opening already posted"}
+        if account_type == "liability":          # credit-normal: Cr the account, Dr OBE
+            lines = [{"account": equity, "debit": amt, "credit": 0},
+                     {"account": account, "debit": 0, "credit": amt}]
+        else:                                    # asset (debit-normal): Dr the account, Cr OBE
+            lines = [{"account": account, "debit": amt, "credit": 0},
+                     {"account": equity, "debit": 0, "credit": amt}]
+        return self.post({"date": as_of, "memo": f"Opening balance — {account}",
+                          "source": "opening-balance", "lines": lines}, dedupe_hash=h)
 
     # ---- queries -----------------------------------------------------------
     def postings(self, as_of: str | None = None) -> list[dict]:
