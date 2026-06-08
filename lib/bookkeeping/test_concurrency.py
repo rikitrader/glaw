@@ -53,9 +53,45 @@ def test_threaded_posts_are_serialized():
     print(f"  ✓ concurrency: {T} threads × {N} posts → 100 unique contiguous ids, chain intact, balanced")
 
 
+def test_read_survives_torn_inflight_append():
+    """A read (balances/entries) racing a post() in another process can see a torn trailing line
+    (in-flight append). It must SURVIVE (skip the incomplete last line), still flag real mid-file
+    corruption, and pick up the entry once it commits."""
+    os.environ["GLAW_HOME"] = tempfile.mkdtemp(prefix="glaw-torn-")
+    import importlib
+    import ledger as L
+    importlib.reload(L)
+    led = L.Ledger("t")
+    for _ in range(3):
+        led.post({"date": "2026-01-01", "lines": [{"account": "Assets:Bank:Checking", "debit": 10},
+                                                  {"account": "Income:Sales", "credit": 10}]})
+    # torn trailing line (no newline) — an append mid-flight
+    with led.path.open("a") as fh:
+        fh.write('{"id":4,"date":"2026-01-02","memo":"par')
+    led._entries_cache = None
+    assert led.balances()["Assets:Bank:Checking"] == Decimal("30"), "read must survive a torn line"
+    assert len(led.entries()) == 3
+    # commit the append → the 4th entry is now folded in
+    with led.path.open("a") as fh:
+        fh.write('t","lines":[{"account":"Assets:Bank:Checking","debit":"5","credit":"0"},'
+                 '{"account":"Income:Sales","debit":"0","credit":"5"}]}\n')
+    led._entries_cache = None
+    assert led.balances()["Assets:Bank:Checking"] == Decimal("35")
+    # a MID-FILE corrupt line is still flagged (not silently swallowed)
+    lines = led.path.read_text().splitlines(); lines[1] = "{garbage"
+    led.path.write_text("\n".join(lines) + "\n"); led._entries_cache = None
+    try:
+        led.entries()
+        raise AssertionError("mid-file corruption must be flagged")
+    except L.LedgerError:
+        pass
+    print("  ✓ concurrency: read survives a torn in-flight append; mid-file corruption still flagged")
+
+
 def main() -> int:
     test_threaded_posts_are_serialized()
-    print("OK: ledger concurrency (flock) test passed")
+    test_read_survives_torn_inflight_append()
+    print("OK: ledger concurrency (flock + torn-line) test passed")
     return 0
 
 
