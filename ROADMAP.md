@@ -183,7 +183,7 @@ orchestrator to consume.
 - **CLI bridge** — every capability is already a `bin/` CLI with JSON I/O; that's the
   lowest-common-denominator integration for any harness.
 
-> Integration spec lives in [`docs/integration.md`](docs/integration.md) (Phase 3).
+> Integration spec is planned for Phase 3 (a forthcoming `docs/integration.md`).
 
 ---
 
