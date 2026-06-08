@@ -212,6 +212,11 @@ if [ -x "$GLAW/lib/bookkeeping/.venv/bin/python" ]; then
   else
     bad "MACRS FAILED — run: GLAW_HOME=\$(mktemp -d) $_BKPY $GLAW/lib/bookkeeping/test_finance22.py"
   fi
+  if GLAW_HOME="$(mktemp -d)" "$_BKPY" "$GLAW/lib/bookkeeping/test_finance23.py" >/dev/null 2>&1; then
+    ok "NOL carryforward passed (80% cap, FIFO, wired into the return)"
+  else
+    bad "NOL FAILED — run: GLAW_HOME=\$(mktemp -d) $_BKPY $GLAW/lib/bookkeeping/test_finance23.py"
+  fi
   if "$_BKPY" "$GLAW/lib/bookkeeping/test_wiring.py" >/dev/null 2>&1; then
     ok "orchestrator-wiring lock passed (/glaw-accounting routes to the finance subsystem)"
   else
