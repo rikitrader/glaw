@@ -52,6 +52,20 @@ def test_per_currency_and_translation():
     print("  ✓ multi-currency: EUR bank@closing 5,500, CTA −100 balances; missing rate flagged (not silent)")
 
 
+def test_per_line_currency_buckets():
+    L, MC = _fresh()
+    led = L.Ledger("x")
+    # a cross-currency FX-conversion entry: legs in different currencies via per-line currency
+    led.post({"date": "2026-01-01", "memo": "FX convert", "lines": [
+        {"account": "Assets:Bank:USD", "debit": 110, "currency": "USD"},
+        {"account": "Assets:Bank:EUR", "credit": 100, "currency": "EUR"},
+        {"account": "Income:FX", "credit": 10, "currency": "USD"}]})
+    by = MC.balances_by_currency("x")
+    assert "Assets:Bank:USD" in by["USD"] and "Assets:Bank:EUR" in by["EUR"]
+    assert "Assets:Bank:USD" not in by.get("EUR", {})   # USD leg must NOT bucket under EUR
+    print("  ✓ multi-currency: per-line currency buckets each leg of a cross-currency entry correctly")
+
+
 def test_report_statements_in_reporting_currency():
     L, MC = _fresh()
     led = L.Ledger("g")
@@ -68,6 +82,7 @@ def test_report_statements_in_reporting_currency():
 
 def main() -> int:
     test_per_currency_and_translation()
+    test_per_line_currency_buckets()
     test_report_statements_in_reporting_currency()
     print("OK: multi-currency GL smoke passed (per-currency balances + current-rate translation + CTA)")
     return 0

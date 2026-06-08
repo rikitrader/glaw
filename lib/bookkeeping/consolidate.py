@@ -44,20 +44,39 @@ def equity_method(cost: Decimal, ownership: Decimal, net_income: Decimal,
     """Equity-method roll-forward for a 20-50% investee (significant influence, no control):
     the investee is NOT consolidated; the parent carries an investment that rolls forward as
       Investment = cost + ownership × cumulative net income − ownership × dividends,
-    recognizing ownership × NI as equity-method income."""
-    income = (ownership * net_income).quantize(Decimal("0.01"))
-    div_share = (ownership * dividends).quantize(Decimal("0.01"))
-    ending = (cost + income - div_share).quantize(Decimal("0.01"))
+    recognizing ownership × NI as equity-method income.
+
+    Per ASC 323, equity-method LOSSES are recognized only down to a zero carrying value; the
+    investment cannot go negative. Losses beyond that are SUSPENDED (recognized later against
+    future income), so ending_investment floors at 0 and `suspended_losses` reports the excess."""
+    _c = Decimal("0.01")
+    share_ni = (ownership * net_income).quantize(_c)
+    div_share = (ownership * dividends).quantize(_c)
+    pre = cost + share_ni - div_share
+    if pre < 0:                                  # loss would take the investment below zero
+        suspended = (-pre).quantize(_c)
+        ending = Decimal("0.00")
+        income = (share_ni + suspended).quantize(_c)   # recognize only down to a zero balance
+    else:
+        suspended = Decimal("0.00")
+        ending = pre.quantize(_c)
+        income = share_ni
+    # income entry (sign-aware: a recognized loss debits an expense and credits the investment)
+    if income >= 0:
+        inc_entry = {"memo": "equity-method income",
+                     "lines": [{"account": "Assets:Investment in Affiliate", "debit": str(income), "credit": "0"},
+                               {"account": "Income:Equity-Method Income", "debit": "0", "credit": str(income)}]}
+    else:
+        inc_entry = {"memo": "equity-method loss",
+                     "lines": [{"account": "Expenses:Equity-Method Loss", "debit": str(-income), "credit": "0"},
+                               {"account": "Assets:Investment in Affiliate", "debit": "0", "credit": str(-income)}]}
     return {"cost": cost, "ownership": ownership, "equity_method_income": income,
             "dividends_received": div_share, "ending_investment": ending,
-            "entries": [
-                {"memo": "equity-method income",
-                 "lines": [{"account": "Assets:Investment in Affiliate", "debit": str(income), "credit": "0"},
-                           {"account": "Income:Equity-Method Income", "debit": "0", "credit": str(income)}]},
-                {"memo": "dividends received (reduce investment)",
-                 "lines": [{"account": "Assets:Bank:Checking", "debit": str(div_share), "credit": "0"},
-                           {"account": "Assets:Investment in Affiliate", "debit": "0", "credit": str(div_share)}]},
-            ]}
+            "suspended_losses": suspended,
+            "entries": [inc_entry,
+                        {"memo": "dividends received (reduce investment)",
+                         "lines": [{"account": "Assets:Bank:Checking", "debit": str(div_share), "credit": "0"},
+                                   {"account": "Assets:Investment in Affiliate", "debit": "0", "credit": str(div_share)}]}]}
 
 
 def consolidate(books: list[str], eliminations: list[dict] | None = None,

@@ -42,12 +42,15 @@ def _dec(v) -> Decimal:
 
 def balances_by_currency(book: str, *, as_of: str | None = None,
                          reporting: str = "USD") -> dict[str, dict[str, Decimal]]:
-    """{currency: {account: signed_balance}} — each entry's currency tags its postings.
-    Entries with no currency are treated as the reporting currency."""
+    """{currency: {account: signed_balance}}. A posting's currency is its LINE currency if set,
+    else the entry currency, else the reporting currency — so a cross-currency entry (an FX
+    conversion whose legs are in different currencies) buckets each leg correctly rather than
+    forcing every leg into one currency."""
     out: dict[str, dict[str, Decimal]] = defaultdict(lambda: defaultdict(Decimal))
     for e in L.Ledger(book).entries(as_of):
-        ccy = e.get("currency") or reporting
+        ecy = e.get("currency") or reporting
         for ln in e["lines"]:
+            ccy = ln.get("currency") or ecy
             out[ccy][ln["account"]] += _dec(ln["debit"]) - _dec(ln["credit"])
     return {c: dict(v) for c, v in out.items()}
 
