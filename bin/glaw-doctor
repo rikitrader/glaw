@@ -242,6 +242,11 @@ if [ -x "$GLAW/lib/bookkeeping/.venv/bin/python" ]; then
   else
     bad "penalties FAILED — run: GLAW_HOME=\$(mktemp -d) $_BKPY $GLAW/lib/bookkeeping/test_finance28.py"
   fi
+  if GLAW_HOME="$(mktemp -d)" "$_BKPY" "$GLAW/lib/bookkeeping/test_finance29.py" >/dev/null 2>&1; then
+    ok "1099-NEC from GL passed (vendor payments >= \$600 aggregated)"
+  else
+    bad "1099 FAILED — run: GLAW_HOME=\$(mktemp -d) $_BKPY $GLAW/lib/bookkeeping/test_finance29.py"
+  fi
   if "$_BKPY" "$GLAW/lib/bookkeeping/test_wiring.py" >/dev/null 2>&1; then
     ok "orchestrator-wiring lock passed (/glaw-accounting routes to the finance subsystem)"
   else
