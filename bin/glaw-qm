@@ -1,0 +1,95 @@
+#!/usr/bin/env bash
+# glaw-qm — Florida Quantum Meruit Litigation Agent helper.
+#   intake     print the case-intake parameter checklist (collect, never assume)
+#   damages    work value - payments + FL §55.03 prejudgment interest = judgment sought
+#   leverage   0-100 settlement/MSJ leverage score from case-strength flags
+# Stdlib Python; Florida defaults. ALWAYS verify rates/limits. NOT legal advice.
+set -euo pipefail
+exec python3 - "$@" <<'PY'
+import argparse, sys
+from datetime import datetime, date
+
+DEFAULT_RATE = 0.1112  # FL §55.03 placeholder — set quarterly by CFO; VERIFY per quarter.
+
+def cmd_intake(a):
+    print("=== QUANTUM MERUIT CASE INTAKE (fill every field; leave unknowns as [BRACKET]) ===")
+    for f in ["Plaintiff_Name","Defendant_Name","County_Florida","Work_Performed",
+              "Dates_of_Work","Agreed_Price_or_None","Payments_Received",
+              "Outstanding_Amount","Communications_Summary","Evidence_List","Witnesses",
+              "Contract_Exists (yes/no/partial)","Defendant_Type (individual/LLC/corp; owner/GC)",
+              "Licensed_If_Required (yes/no/NA  <-- §489.128 GATE)"]:
+        print(f"  {f}: ____________________")
+    print("\nGATES: (1) §489.128 license — if required & unlicensed, claims may be BARRED.")
+    print("       (2) sub-vs-owner: 'owner already paid the GC' defeats unjust enrichment.")
+
+def cmd_damages(a):
+    val, paid = a.value, a.paid
+    out = val - paid
+    interest = 0.0; days = 0
+    if a.due:
+        due = datetime.strptime(a.due, "%Y-%m-%d").date()
+        asof = datetime.strptime(a.asof, "%Y-%m-%d").date() if a.asof else date.today()
+        days = max((asof - due).days, 0)
+        interest = out * a.rate * days / 365.0
+    total = out + interest
+    print("=== DAMAGES / JUDGMENT SOUGHT (Florida) ===")
+    print(f"  Reasonable value of work ..... ${val:,.2f}")
+    print(f"  Less payments received ....... -${paid:,.2f}")
+    print(f"  Outstanding balance .......... ${out:,.2f}")
+    if a.due:
+        print(f"  Prejudgment interest ......... ${interest:,.2f}  ({days}d @ {a.rate*100:.2f}%/yr)")
+        print(f"     NOTE: FL §55.03 rate changes quarterly — verify each quarter.")
+    print(f"  ----------------------------------------")
+    print(f"  TOTAL JUDGMENT SOUGHT ........ ${total:,.2f}")
+    print(f"  + taxable costs; + attorney's fees IF a fee statute/contract applies.")
+
+LEV = [
+    ("work_proof",   20, "documented proof work was performed (photos/invoices/permits)"),
+    ("accepted",     15, "defendant accepted / used / benefited from the work"),
+    ("writings",     20, "written admissions or promises to pay (emails/texts)"),
+    ("liquidated",   10, "damages are liquidated / clearly calculable"),
+    ("witnesses",    10, "credible witness support"),
+    ("solvent",      15, "defendant solvent / collectable"),
+    ("no_express_k", 10, "no valid express contract barring QM (or pleaded in alt.)"),
+]
+
+def cmd_leverage(a):
+    if a.license_bar:
+        print("=== LEVERAGE: 0/100 — §489.128 LICENSING BAR TRIGGERED ===")
+        print("  Unlicensed where a license was required → contract/QM claims likely")
+        print("  unenforceable. Resolve the license question before spending on suit.")
+        return
+    score = sum(pts for flag, pts, _ in LEV if getattr(a, flag))
+    print("=== CASE STRATEGY / SETTLEMENT-LEVERAGE SCORE ===")
+    for flag, pts, desc in LEV:
+        mark = f"+{pts}" if getattr(a, flag) else "  0"
+        print(f"  [{mark:>3}]  {desc}")
+    band = ("STRONG" if score >= 70 else "MODERATE" if score >= 40 else "WEAK")
+    print(f"  ----------------------------------------")
+    print(f"  SCORE: {score}/100  →  {band}")
+    if score >= 70:
+        print("  MSJ-viable; demand at/near full value + interest + fees.")
+    elif score >= 40:
+        print("  Triable; pursue discovery to close gaps, then re-score; mid-range demand.")
+    else:
+        print("  Evidence-thin; shore up proof/witnesses before filing or settle modestly.")
+    print("  (Strategy engine: weighs implied-contract strength, evidence sufficiency,")
+    print("   witness credibility, MSJ likelihood, and settlement leverage.)")
+
+p = argparse.ArgumentParser(prog="glaw-qm")
+sub = p.add_subparsers(dest="cmd", required=True)
+sub.add_parser("intake").set_defaults(func=cmd_intake)
+pd = sub.add_parser("damages")
+pd.add_argument("--value", type=float, required=True)
+pd.add_argument("--paid", type=float, default=0.0)
+pd.add_argument("--due"); pd.add_argument("--asof")
+pd.add_argument("--rate", type=float, default=DEFAULT_RATE)
+pd.set_defaults(func=cmd_damages)
+pl = sub.add_parser("leverage")
+for flag, _, help_ in LEV:
+    pl.add_argument(f"--{flag.replace('_','-')}", dest=flag, action="store_true", help=help_)
+pl.add_argument("--license-bar", dest="license_bar", action="store_true",
+                help="§489.128 license bar triggered (caps score to 0)")
+pl.set_defaults(func=cmd_leverage)
+a = p.parse_args(); a.func(a)
+PY

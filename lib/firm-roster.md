@@ -199,6 +199,7 @@ Covers: **Civil** litigation, trial, disputes.
 | **Nonpayment / money recovery** — sue & collect unpaid debts (homeowner/contractor/vendor/freelancer): breach + quantum meruit + unjust enrichment + account stated + construction lien + Prompt Payment; demand → complaint → judgment → execution/garnishment/FUFTA. Helper `bin/glaw-recover` (assess/claims/deadlines) | `/glaw-recover-payment` |
 | Federal litigation & trial counsel | `glaw-federal-trial-counsel` |
 | Pleadings/motions/discovery drafting | `/glaw-draft` (litigation track) |
+| **Quantum meruit / construction non-payment** — full FL civil case (QM + unjust-enrichment complaint, summons/service, discovery pack, MSJ + affidavit, trial brief, damages worksheet w/ §55.03 interest, proposed judgment) + 0-100 settlement-leverage score; extends to breach/account-stated/Ch.713 lien/§772.11 civil theft/FUFTA/RICO (`bin/glaw-qm`) | `/glaw-fl-quantum-meruit` |
 
 ## Litigation Support Division (the 10 named agents)
 Covers: contract review, case-law research, court records, fraud detection, veil
