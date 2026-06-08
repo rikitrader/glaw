@@ -63,10 +63,20 @@ def test_non_reconciling_is_flagged():
     print("  ✓ invoice: a non-reconciling bill is flagged (plug + reconciles=False), entry still balances")
 
 
+def test_empty_invoice_not_postable():
+    # garbage / empty text must NOT produce a degenerate single-line JE that can't post
+    je = IV.to_bill_je(IV.parse_invoice(""))
+    assert je["postable"] is False and je["lines"] == []
+    good = IV.to_bill_je(IV.parse_invoice("Vendor\nInvoice #: A1\nWidget 100.00\nTotal Due 100.00\n"))
+    assert good["postable"] is True and len(good["lines"]) >= 2
+    print("  ✓ invoice: empty/garbage → postable=False (no degenerate JE); real bill → postable")
+
+
 def main() -> int:
     test_parse()
     test_draft_je_balances_and_reconciles()
     test_non_reconciling_is_flagged()
+    test_empty_invoice_not_postable()
     print("OK: invoice/bill extractor smoke passed")
     return 0
 

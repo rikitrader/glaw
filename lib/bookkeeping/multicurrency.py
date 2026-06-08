@@ -59,6 +59,7 @@ def translate(by_ccy: dict[str, dict[str, Decimal]], rates: dict, *,
     default to closing). The plug to balance = the CTA."""
     rep: dict[str, Decimal] = defaultdict(Decimal)
     used = {}
+    missing = [c for c in by_ccy if c != reporting and not (rates.get(c) or {}).get("closing")]
     for ccy, accts in by_ccy.items():
         if ccy == reporting:
             for a, b in accts.items():
@@ -83,7 +84,8 @@ def translate(by_ccy: dict[str, dict[str, Decimal]], rates: dict, *,
     cta = -imbalance
     if cta != 0:
         rep[cta_account] += cta
-    return {"reporting": reporting, "rates_used": used,
+    return {"reporting": reporting, "rates_used": used, "missing_rates": missing,
+            "rates_complete": not missing,
             "balances": {a: b for a, b in rep.items() if b != 0},
             "cta": _q(cta), "balanced": sum(rep.values(), Decimal("0")) == 0}
 
@@ -99,6 +101,7 @@ def report(book: str, *, reporting: str = "USD", rates: dict | None = None,
             "by_currency": {c: {a: str(b) for a, b in v.items()} for c, v in by_ccy.items()},
             "translated": {a: str(b) for a, b in tr["balances"].items()},
             "cta": str(tr["cta"]), "translated_balances": tr["balanced"],
+            "missing_rates": tr["missing_rates"], "rates_complete": tr["rates_complete"],
             "trial_balance_balanced": stmts["trial_balance"]["balanced"],
             "net_income": str(stmts["profit_loss"]["net_income"])}
 
@@ -117,6 +120,9 @@ def render_text(r: dict) -> str:
     for a, b in sorted(r["translated"].items()):
         o.append(f"     {a:<38}{_dec(b):>16,.2f}")
     o.append(f"  CTA (cumulative translation adjustment): {_dec(r['cta']):,.2f}")
+    if r.get("missing_rates"):
+        o.append(f"  ❌ MISSING RATES for {', '.join(r['missing_rates'])} — those balances are UNTRANSLATED "
+                 f"(rate assumed 1.0); supply --rates before relying on this report")
     o.append(f"  translated TB balances: {'✓' if r['trial_balance_balanced'] else '✗'}   "
              f"net income: {_dec(r['net_income']):,.2f}")
     o.append("=" * 64)
@@ -134,7 +140,8 @@ def main() -> int:
     rates = json.load(open(a.rates, encoding="utf-8")) if a.rates else {}
     r = report(a.book, reporting=a.reporting, rates=rates, as_of=a.as_of)
     print(json.dumps(r, indent=2, default=str) if a.format == "json" else render_text(r))
-    return 0 if r["trial_balance_balanced"] else 1
+    # a translation with a missing rate is not reliable — fail so a caller/cron notices
+    return 0 if (r["trial_balance_balanced"] and r["rates_complete"]) else 1
 
 
 if __name__ == "__main__":
