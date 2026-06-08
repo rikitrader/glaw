@@ -46,9 +46,17 @@ def _period_end(period: str) -> str:
 
 def run_close(book: str, *, period: str | None = None, as_of: str | None = None,
               out_dir: str | None = None, lock: bool = False, entity: str = "the Company",
-              ingest: str | None = None, chart: str | None = None, mapfile: str | None = None) -> dict:
+              ingest: str | None = None, chart: str | None = None, mapfile: str | None = None,
+              post_subledgers: bool = False) -> dict:
     log: list[str] = []
     artifacts: dict[str, str] = {}
+
+    # 0a — auto-post the period's registered subledger entries (depreciation, deferred rev, loans)
+    if post_subledgers:
+        import subledger as SUB
+        through = as_of or (_period_end(period) if period else date.today().isoformat())
+        sr = SUB.post_due(book, through)
+        log.append(f"subledgers: {sr['posted']} entries posted through {sr['through']}")
 
     # 0 — optional ingest of new statements (reuses the tested glaw-ledger rebuild)
     if ingest:
@@ -124,12 +132,14 @@ def main() -> int:
     ap.add_argument("--lock", action="store_true", help="lock the period if the gate passes")
     ap.add_argument("--entity", default="the Company")
     ap.add_argument("--ingest", default=None, help="rebuild from new statements (dir or file) before closing")
+    ap.add_argument("--post-subledgers", action="store_true", help="auto-post registered subledger entries for the period")
     ap.add_argument("--chart", default=None)
     ap.add_argument("--map", dest="mapfile", default=None)
     ap.add_argument("--format", default="text", choices=["text", "json"])
     a = ap.parse_args()
     res = run_close(a.book, period=a.period, as_of=a.as_of, out_dir=a.out, lock=a.lock,
-                    entity=a.entity, ingest=a.ingest, chart=a.chart, mapfile=a.mapfile)
+                    entity=a.entity, ingest=a.ingest, chart=a.chart, mapfile=a.mapfile,
+                    post_subledgers=a.post_subledgers)
     if a.format == "json":
         print(json.dumps(res, indent=2, default=str))
     else:

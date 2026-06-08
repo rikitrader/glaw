@@ -117,6 +117,11 @@ if [ -x "$GLAW/lib/bookkeeping/.venv/bin/python" ]; then
   else
     bad "tagged-COA smoke FAILED — run: GLAW_HOME=\$(mktemp -d) $_BKPY $GLAW/lib/bookkeeping/test_finance8.py"
   fi
+  if GLAW_HOME="$(mktemp -d)" "$_BKPY" "$GLAW/lib/bookkeeping/test_finance9.py" >/dev/null 2>&1; then
+    ok "subledger auto-post smoke passed (depreciation/deferred-rev/loan, idempotent)"
+  else
+    bad "subledger smoke FAILED — run: GLAW_HOME=\$(mktemp -d) $_BKPY $GLAW/lib/bookkeeping/test_finance9.py"
+  fi
   if "$_BKPY" "$GLAW/lib/bookkeeping/test_glossary.py" >/dev/null 2>&1; then
     ok "accounting glossary smoke passed (terms indexed, core terms resolve)"
   else
