@@ -34,7 +34,9 @@ def score(data, weights, scale):
     total = wsum = 0.0
     rows = []
     for k, w in weights.items():
-        v = float(data.get(k, 0))
+        # clamp each raw value to its valid [0, scale] range so an out-of-range input
+        # can't push a component over 100% (or below 0) and silently mislabel the tier
+        v = max(0.0, min(float(data.get(k, 0)), float(scale)))
         norm = (v / scale) * 100
         total += norm * w
         wsum += w

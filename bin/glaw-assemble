@@ -13,7 +13,10 @@ Usage:
   glaw-assemble <template.docx> <data.json> -o <out.docx>
 """
 import sys, json
-from docxtpl import DocxTemplate
+try:
+    from docxtpl import DocxTemplate
+except ModuleNotFoundError:
+    sys.exit("ERROR: glaw-assemble requires 'docxtpl' — install it: pip install docxtpl")
 
 def cmd_vars(tpl):
     doc = DocxTemplate(tpl)

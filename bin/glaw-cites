@@ -11,7 +11,10 @@ Usage:
   cat brief.txt | glaw-cites - --json
 """
 import sys, json, argparse
-from eyecite import get_citations, clean_text
+try:
+    from eyecite import get_citations, clean_text
+except ModuleNotFoundError:
+    sys.exit("ERROR: glaw-cites requires 'eyecite' — install it: pip install eyecite")
 
 ap = argparse.ArgumentParser()
 ap.add_argument("path", nargs="?", default="-", help="file to scan (or - for stdin)")
