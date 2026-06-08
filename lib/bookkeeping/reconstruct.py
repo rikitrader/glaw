@@ -36,7 +36,7 @@ import continuity as CONT     # noqa: E402
 import transfers as TR        # noqa: E402
 import books_doctor as BD     # noqa: E402
 
-INGEST = str(Path.home() / ".claude/skills/glaw/bin/glaw-bank-ingest")
+RUNNER = str(HERE / "runner.py")    # run with the SAME interpreter, not the venv-locked wrapper
 
 
 def _dec(v):
@@ -47,7 +47,7 @@ def _dec(v):
 
 
 def _ingest(path: str, chart: str | None, mapfile: str | None) -> dict:
-    cmd = [INGEST, path, "--format", "json"]
+    cmd = [sys.executable, RUNNER, path, "--format", "json"]
     if chart:
         cmd += ["--chart", chart]
     if mapfile:
