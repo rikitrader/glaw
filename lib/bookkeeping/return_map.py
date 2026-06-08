@@ -50,7 +50,8 @@ def _ded_line(acct: str):
 
 
 def map_return(book: str, form: str = "1120", *, m1: dict | None = None,
-               as_of: str | None = None, nol_carryforwards: list | None = None) -> dict:
+               as_of: str | None = None, nol_carryforwards: list | None = None,
+               k1_owners: list | None = None, k1_separately_stated: dict | None = None) -> dict:
     bal = L.Ledger(book).balances(as_of)
     gross_receipts = Decimal("0")
     other_income = Decimal("0")
@@ -110,6 +111,10 @@ def map_return(book: str, form: str = "1120", *, m1: dict | None = None,
            "nol_deduction": str(nol_deduction), "taxable_income": str(taxable), "lines": lines}
     if nol_result:
         out["nol_remaining_carryforward"] = nol_result["remaining_carryforward"]
+    if k1_owners and form in ("1065", "1120-S"):
+        import k1 as K1
+        out["k1"] = K1.allocate(taxable, k1_owners, form=form,
+                                separately_stated=k1_separately_stated)
     return out
 
 
@@ -128,6 +133,7 @@ def main() -> int:
     ap.add_argument("--rules", default=None, help="apply book-to-tax M-1 rules (default: built-in)")
     ap.add_argument("--tax-depreciation", default=None)
     ap.add_argument("--nol", default=None, help="NOL carryforwards JSON: [{year, amount, pre_tcja?}]")
+    ap.add_argument("--k1-owners", default=None, help="(1065/1120-S) owners JSON [{owner, pct}] → K-1s")
     ap.add_argument("--as-of", default=None)
     ap.add_argument("--format", default="text", choices=["text", "json"])
     a = ap.parse_args()
@@ -137,7 +143,8 @@ def main() -> int:
         td = Decimal(a.tax_depreciation) if a.tax_depreciation is not None else None
         m1 = BT.book_to_tax(a.book, BT.load_rules(a.rules), as_of=a.as_of, tax_depreciation=td)
     nol_cf = json.loads(Path(a.nol).read_text(encoding="utf-8")) if a.nol else None
-    d = map_return(a.book, a.form, m1=m1, as_of=a.as_of, nol_carryforwards=nol_cf)
+    owners = json.loads(Path(a.k1_owners).read_text(encoding="utf-8")) if a.k1_owners else None
+    d = map_return(a.book, a.form, m1=m1, as_of=a.as_of, nol_carryforwards=nol_cf, k1_owners=owners)
     print(json.dumps(d, indent=2, default=str) if a.format == "json" else render_text(d))
     return 0
 
