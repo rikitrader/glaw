@@ -119,6 +119,16 @@ MeF via EFIN/approved software, NOT this tool. W-2 → SSA BSO.
 
 ## Accounting & Finance Division → lead `/glaw-accounting`
 Covers: **Financial**, accounting, CFO, valuation, audit/assurance.
+
+**The book of record + the agent loop** (the whole accounting is rebuilt, gated, and adversarially agreed here):
+| Seat | Skill |
+|------|-------|
+| **General ledger (book of record)** — persistent double-entry GL: post balanced/non-cash journal entries, import bank as JEs, chart of accounts, as-of balances/GL, period lock, year-end close. Tools `bin/glaw-ledger` · `bin/glaw-journal` · `bin/glaw-coa`. | `/glaw-ledger` |
+| **Controller (Accounting Agent)** — keeps & closes the books: posts adjustments, ties subledgers, clears the gate, prepares the draft; the BLUE preparer the panel challenges | `/glaw-controller` |
+| **CFO (chief financial orchestrator)** — runs the loop: draft → adversarial panel attacks → collect comments → redirect re-writes → re-gate → **until passed & agreed** → sign-off | `/glaw-cfo` |
+| **Audit Agent** — independent rebuild from source, tie-out, integrity, anomaly, **adversarial consensus loop** (CPA + IRS + financial-lawyer), audit opinion | `/glaw-audit` |
+
+**Bookkeeping engine + finance tools:**
 | Seat | Skill |
 |------|-------|
 | Bookkeeping: parse bank/card statements (CSV/OFX/QFX/MT940/CAMT/PAIN/PDF) → deduped, balance-verified ledger; hledger/beancount export; account mapping. Engine vendored at `lib/bookkeeping/`, driver `bin/glaw-bank-ingest`. Feeds the seats below. | `/glaw-bookkeeping` |
