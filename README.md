@@ -210,7 +210,7 @@ flowchart LR
 | `glaw-inventory` | **inventory & COGS** — FIFO / weighted-average cost, ending inventory, gross margin. |
 | `glaw-fx-reval` | **FX revaluation** — restate monetary foreign-currency balances to closing rate, gain/loss entry (asset vs liability). |
 | `glaw-fx-report` | **multi-currency GL** — per-currency balances + **current-rate translation** to a reporting currency (BS@closing, P&L@average) with a balancing **CTA**. |
-| `glaw-consolidate` | **consolidation** — combine multiple entity ledgers + intercompany eliminations → consolidated TB. |
+| `glaw-consolidate` | **consolidation** — combine entity ledgers + intercompany eliminations + **NCI** (minority interest) + **equity-method** (20-50%% investee) roll-forward. |
 | `glaw-cash-apply` | **cash application** — match incoming receipts to open AR invoices (paid / partial / open). |
 | `glaw-recurring` | **recurring entries** — standard period-end JE templates, validated balanced, posted to the ledger. |
 | `glaw-subledger` | **subledger auto-posting** — register fixed-asset / deferred-revenue / loan schedules; each close auto-posts the due entry (idempotent). |
