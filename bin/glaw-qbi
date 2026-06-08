@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# glaw-qbi — §199A 20% qualified business income deduction (wage/UBIA limit + SSTB phase-out).
+set -euo pipefail
+GLAW_LIB="$HOME/.claude/skills/glaw/lib/bookkeeping"
+VENV_PY="$GLAW_LIB/.venv/bin/python"
+[[ -x "$VENV_PY" ]] || { echo "ERROR: bookkeeping venv missing — run ./setup" >&2; exit 2; }
+exec "$VENV_PY" "$GLAW_LIB/qbi.py" "$@"
