@@ -36,12 +36,19 @@ def test_revrec():
 
 
 def test_fx():
-    # EUR 100,000 booked @1.05, closing @1.10 → +5,000 gain
+    # ASSET: EUR 100,000 AR booked @1.05, closing @1.10 → +5,000 GAIN (worth more)
     d = FX.revalue([{"account": "Assets:AR:EUR", "currency": "EUR", "foreign_amount": 100000,
                      "booked_rate": "1.05", "closing_rate": "1.10", "monetary": True}])
     assert d["net_fx_gain"] == Decimal("5000.00") and d["result"] == "gain"
     assert _je_balances(d["entry"])
-    print("  ✓ fx-reval: EUR 100k @1.05→1.10 = +5,000 gain, entry balances")
+    # LIABILITY: same EUR move on a loan → −5,000 LOSS (you owe more), and the liability is CREDITED
+    liab = FX.revalue([{"account": "Liabilities:EUR Loan", "currency": "EUR", "foreign_amount": 100000,
+                        "booked_rate": "1.05", "closing_rate": "1.10", "monetary": True}])
+    assert liab["net_fx_gain"] == Decimal("-5000.00") and liab["result"] == "loss", liab["net_fx_gain"]
+    assert _je_balances(liab["entry"])
+    liab_line = next(l for l in liab["entry"] if l["account"] == "Liabilities:EUR Loan")
+    assert Decimal(liab_line["credit"]) == Decimal("5000.00")   # liability grows (credit)
+    print("  ✓ fx-reval: asset rate-up = +5k gain; liability rate-up = −5k loss (liability credited)")
 
 
 def test_inventory():
@@ -115,9 +122,25 @@ def test_recurring():
     print("  ✓ recurring: balanced template stamps to a JE, unbalanced rejected")
 
 
+def test_zero_input_guards():
+    import amortize as A, depreciate as DEP
+    # invalid periods/payments/life must error gracefully (SystemExit), not crash (ZeroDivisionError)
+    for fn in (lambda: RR.ratable(Decimal("100"), 0),
+               lambda: A.loan_schedule(Decimal("100"), Decimal("5"), 0),
+               lambda: A.prepaid_schedule(Decimal("100"), 0),
+               lambda: DEP.straight_line(Decimal("100"), Decimal("0"), 0)):
+        try:
+            fn(); raise AssertionError("expected a graceful SystemExit for zero periods/life")
+        except SystemExit:
+            pass
+        except ZeroDivisionError:
+            raise AssertionError("zero input crashed with ZeroDivisionError instead of a clear error")
+    print("  ✓ guards: zero periods/payments/life error gracefully (no ZeroDivisionError)")
+
+
 def main() -> int:
     test_revrec(); test_fx(); test_inventory(); test_tax_provision()
-    test_consolidate(); test_cash_apply(); test_recurring()
+    test_consolidate(); test_cash_apply(); test_recurring(); test_zero_input_guards()
     print("OK: Tier 2/3 calc tools passed (revrec, fx, inventory, tax-provision, "
           "consolidate, cash-apply, recurring)")
     return 0

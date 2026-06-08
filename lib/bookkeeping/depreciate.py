@@ -41,6 +41,8 @@ def _q(d: Decimal) -> Decimal:
 
 
 def straight_line(cost: Decimal, salvage: Decimal, life_years: int) -> list[dict]:
+    if life_years <= 0:
+        raise SystemExit("ERROR: --life must be > 0 years")
     base = cost - salvage
     annual = _q(base / life_years)
     sched, accum = [], Decimal("0")

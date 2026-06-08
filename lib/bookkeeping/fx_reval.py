@@ -37,24 +37,36 @@ def revalue(items: list[dict]) -> dict:
         fa = _dec(it.get("foreign_amount"))
         booked = _dec(it.get("booked_rate"))
         closing = _dec(it.get("closing_rate"))
+        # account type drives the gain/loss sign: a higher home-currency value is a GAIN on an
+        # asset (worth more) but a LOSS on a liability (you owe more). Default asset.
+        is_liab = (it.get("type") or "asset").lower().startswith("liab") \
+            or str(it.get("account") or "").startswith("Liabilities")
         old_home = _q(fa * booked)
         new_home = _q(fa * closing)
-        delta = new_home - old_home                    # +ve = asset gain / liability needs care
-        net_gain += delta
+        delta = new_home - old_home                    # change in home-currency carrying value
+        pnl = -delta if is_liab else delta             # P&L effect (gain +, loss −)
+        net_gain += pnl
         rows.append({"account": it.get("account"), "currency": it.get("currency"),
+                     "type": "liability" if is_liab else "asset",
                      "foreign_amount": _q(fa), "booked_rate": booked, "closing_rate": closing,
-                     "carrying_old": old_home, "carrying_new": new_home, "fx_adjustment": _q(delta)})
-    # build the net revaluation entry: adjust accounts, offset to FX gain/loss
+                     "carrying_old": old_home, "carrying_new": new_home,
+                     "fx_adjustment": _q(delta), "fx_pnl": _q(pnl)})
+    # build the net revaluation entry. The account's carrying value moves by `delta`:
+    #   asset      → Dr when delta>0 (asset grows), Cr when delta<0
+    #   liability  → Cr when delta>0 (liability grows), Dr when delta<0
     lines = []
     for r in rows:
         adj = r["fx_adjustment"]
         if adj == 0:
             continue
-        if adj > 0:
-            lines.append({"account": r["account"], "debit": str(adj), "credit": "0"})
+        grows = adj > 0
+        if r["type"] == "liability":
+            lines.append({"account": r["account"], "debit": "0", "credit": str(adj)} if grows
+                         else {"account": r["account"], "debit": str(-adj), "credit": "0"})
         else:
-            lines.append({"account": r["account"], "debit": "0", "credit": str(-adj)})
-    if net_gain > 0:      # net debit to assets → credit FX gain (income)
+            lines.append({"account": r["account"], "debit": str(adj), "credit": "0"} if grows
+                         else {"account": r["account"], "debit": "0", "credit": str(-adj)})
+    if net_gain > 0:      # net gain → credit FX gain (income)
         lines.append({"account": "Income:FX Gain/Loss", "debit": "0", "credit": str(_q(net_gain))})
     elif net_gain < 0:
         lines.append({"account": "Expenses:FX Gain/Loss", "debit": str(_q(-net_gain)), "credit": "0"})
