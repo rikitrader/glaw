@@ -161,7 +161,8 @@ Covers: **Financial**, accounting, CFO, valuation, audit/assurance.
 | Seat | Skill |
 |------|-------|
 | **Revenue recognition (ASC 606)** — 5-step model, deferred revenue, contract assets/liabilities (`bin/glaw-revrec`) | `/glaw-revenue` |
-| **Income tax provision (ASC 740)** — current + deferred tax, ETR reconciliation, M-1/M-3 (`bin/glaw-tax-provision`) | `/glaw-tax-provision` |
+| **Income tax provision (ASC 740)** — current + deferred tax, ETR reconciliation, M-1/M-3 (`bin/glaw-tax-provision`; `--book` derives pretax from the GL, `--rules` auto-derives M-1, `--post` books the JE back) | `/glaw-tax-provision` |
+| **Tax engine (GL→tax→GL)** — book-to-tax M-1 from the accounts (`bin/glaw-book-to-tax`), deferred-tax basis roll-forward (`bin/glaw-deferred-tax`), and 1120/1120-S/1065/Sch-C return lines off the trial balance (`bin/glaw-return-map`) | `/glaw-tax-provision` |
 | **Inventory & COGS** — perpetual/periodic, FIFO/WAC, LCNRV, cost of goods sold (`bin/glaw-inventory`) | `/glaw-inventory` |
 | **FX & multi-currency** — functional/reporting currency, period-end revaluation, **per-currency GL + current-rate translation + CTA + realized-FX conversion** (`bin/glaw-fx-reval`, `bin/glaw-fx-report`, `bin/glaw-fx-convert`) | `/glaw-fx` |
 | **Consolidation** — multi-entity combine + intercompany eliminations + **non-controlling interest** + **equity-method** roll-forward (`bin/glaw-consolidate`) | `/glaw-consolidation` |
