@@ -223,6 +223,7 @@ Covers: **Criminal**, fraud investigation, forensic case-building.
 | Criminal + civil exposure mapping, FUFTA, fraud on the court | `glaw-elite-corporate-counsel` |
 | Federal criminal / trial posture | `glaw-federal-trial-counsel` |
 | Fraudulent-transfer avoidance (§548) | `/glaw-restructuring` |
+| **Due-diligence HTML report** — render a self-contained interactive DD report from a findings JSON (graceful if the dd-agents engine isn't installed) | `bin/glaw-dd-report` |
 
 ## Intelligence Super-Structure → Master Command `/glaw-command`
 Four bureaus under one fusion command. **`/glaw-command` triages every case, always
