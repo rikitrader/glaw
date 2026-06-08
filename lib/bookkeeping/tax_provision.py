@@ -51,6 +51,20 @@ def provision(pretax_book: Decimal, permanent: Decimal, temporary: Decimal,
             "entry": lines}
 
 
+def pretax_from_ledger(book: str, as_of: str | None = None) -> Decimal:
+    """Pretax BOOK income from the posted GL = P&L net income with any already-posted income-tax
+    expense added back (so it's pretax, and re-running after a posted provision is idempotent)."""
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parent))
+    import ledger as L          # noqa: E402
+    import statements as S      # noqa: E402
+    bal = L.Ledger(book).balances(as_of)
+    ni = S.profit_loss(bal)["net_income"]
+    tax_already = bal.get("Expenses:Income Tax", Decimal("0"))   # debit-normal → positive
+    return _q(ni + tax_already)
+
+
 def render_text(d: dict) -> str:
     return "\n".join([
         "=" * 56, "INCOME TAX PROVISION (ASC 740)", "-" * 56,
@@ -74,13 +88,32 @@ def render_text(d: dict) -> str:
 def main() -> int:
     import argparse
     ap = argparse.ArgumentParser(prog="glaw-tax-provision")
-    ap.add_argument("--pretax", required=True, help="pretax book income")
+    ap.add_argument("--pretax", help="pretax book income (omit when --book derives it from the GL)")
+    ap.add_argument("--book", help="derive pretax book income from this ledger book's P&L")
+    ap.add_argument("--as-of", default=None, help="as-of date for --book")
     ap.add_argument("--permanent", default="0", help="permanent differences (net)")
     ap.add_argument("--temporary", default="0", help="temporary differences (net; +ve → DTL)")
     ap.add_argument("--rate", required=True, help="statutory tax rate %%")
+    ap.add_argument("--post", action="store_true", help="post the provision JE back to --book")
+    ap.add_argument("--date", default=None, help="date for the posted provision entry")
     ap.add_argument("--format", default="text", choices=["text", "json"])
     a = ap.parse_args()
-    d = provision(Decimal(a.pretax), Decimal(a.permanent), Decimal(a.temporary), Decimal(a.rate))
+    if a.pretax is None and not a.book:
+        ap.error("provide --pretax or --book")
+    pretax = Decimal(a.pretax) if a.pretax is not None else pretax_from_ledger(a.book, a.as_of)
+    d = provision(pretax, Decimal(a.permanent), Decimal(a.temporary), Decimal(a.rate))
+    if a.post:
+        if not a.book:
+            ap.error("--post requires --book")
+        import sys
+        from pathlib import Path
+        from datetime import date as _date
+        sys.path.insert(0, str(Path(__file__).parent))
+        import ledger as L
+        entry = {"date": a.date or _date.today().isoformat(), "source": "tax-provision",
+                 "memo": f"income tax provision @ {a.rate}% (ASC 740)", "lines": d["entry"]}
+        res = L.Ledger(a.book).post(entry)
+        d["posted_entry_id"] = res.get("id")
     print(json.dumps(d, indent=2, default=str) if a.format == "json" else render_text(d))
     return 0
 
