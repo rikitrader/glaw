@@ -12,7 +12,10 @@ Usage:
   glaw-tax-report scaffold <type>     print a blank report skeleton for a report_type
 """
 import sys, json, os
-from jsonschema import Draft202012Validator
+try:
+    from jsonschema import Draft202012Validator
+except ModuleNotFoundError:
+    sys.exit("ERROR: glaw-tax-report requires 'jsonschema' — install it: pip install jsonschema")
 
 SCHEMA = os.path.expanduser("~/.claude/skills/glaw/lib/schemas/tax-report-schema.json")
 

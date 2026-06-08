@@ -16,7 +16,10 @@ NOTE: running a scraper makes a live request to the court's website. Respect the
 terms and rate limits. For PACER (paid) use juriscraper.pacer with your creds.
 """
 import sys, os, json, glob, importlib
-import juriscraper
+try:
+    import juriscraper
+except ModuleNotFoundError:
+    sys.exit("ERROR: glaw-court-scrape requires 'juriscraper' — install it: pip install juriscraper")
 
 BASE = os.path.dirname(juriscraper.__file__)
 OPDIR = os.path.join(BASE, "opinions")
