@@ -102,6 +102,11 @@ if [ -x "$GLAW/lib/bookkeeping/.venv/bin/python" ]; then
   else
     bad "tier 2/3 calc smoke FAILED — run: GLAW_HOME=\$(mktemp -d) $_BKPY $GLAW/lib/bookkeeping/test_finance5.py"
   fi
+  if GLAW_HOME="$(mktemp -d)" "$_BKPY" "$GLAW/lib/bookkeeping/test_finance6.py" >/dev/null 2>&1; then
+    ok "dashboard KPI smoke passed (margins + liquidity + DSO/DPO + leverage)"
+  else
+    bad "dashboard KPI smoke FAILED — run: GLAW_HOME=\$(mktemp -d) $_BKPY $GLAW/lib/bookkeeping/test_finance6.py"
+  fi
   if "$_BKPY" "$GLAW/lib/bookkeeping/test_glossary.py" >/dev/null 2>&1; then
     ok "accounting glossary smoke passed (terms indexed, core terms resolve)"
   else

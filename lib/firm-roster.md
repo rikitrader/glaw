@@ -151,7 +151,7 @@ Covers: **Financial**, accounting, CFO, valuation, audit/assurance.
 | **Conceptual Framework** — the objective, qualitative characteristics, elements, recognition & measurement underlying financial reporting | `/glaw-conceptual-framework` |
 | **Financial narrative / MD&A** — SEC-filing-style report: overview, MD&A, notes to the financial statements (`bin/glaw-narrative`) | `/glaw-narrative` |
 | **Comparative reporting** — MTD / prior / YTD / budget side-by-side from the ledger | `bin/glaw-comparative` |
-| **Management dashboard** — KPI pack (margins, liquidity, DSO/DPO, leverage, burn) + period-over-period story | `/glaw-dashboard` |
+| **Management dashboard** — KPI pack (margins, liquidity, DSO/DPO, leverage, burn) + period-over-period story (`bin/glaw-dashboard`) | `/glaw-dashboard` |
 
 **Specialized accounting (Tier 3):**
 | Seat | Skill |

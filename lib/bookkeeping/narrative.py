@@ -88,7 +88,7 @@ def generate(book: str, *, period: str | None = None, as_of: str | None = None,
     o += ["### 2.2 Liquidity & capital resources", "",
           f"Cash and cash equivalents stood at **{_m(cash)}**. Total assets were {_m(assets)} "
           f"against total liabilities of {_m(liabilities)}, leaving equity (incl. current-period "
-          f"earnings) of {_m(bs['equity_total'] + ni)}. Net cash flow for the period was "
+          f"earnings) of {_m(bs['equity_total'])}. Net cash flow for the period was "
           f"{_m(cf['net_change_in_cash'])} (operating {_m(cf['operating'])}, investing "
           f"{_m(cf['investing'])}, financing {_m(cf['financing'])}).", ""]
 
