@@ -116,7 +116,14 @@ IRAC/CRAC. State the standard honestly. Draft the proposed order and certificate
   correct pin cites) → `/glaw-legal-research`. An unverifiable cite is struck, not softened.
 - **Substantive litigation judgment** (should we file, will it survive, what's the risk)
   → `glaw-federal-trial-counsel` + `glaw-elite-corporate-counsel`.
-- **Final wording, Bluebook, persuasion polish** → `/glaw-legal-writing`.
+- **Final wording, Bluebook, persuasion polish** → `/glaw-legal-writing`, applying the **Court
+  Motion Style Sheet** (`lib/style/court-motion-style-sheet.md`): the 6-section structure, the
+  COMES-NOW opening, topic-sentence-first paragraphs, Rule→Authority→Application→Conclusion,
+  15–25-word sentences (40 max), the prohibited-phrase list, and a specific WHEREFORE that
+  matches the argument.
+- **Deterministic QC gate (run before handoff):** `~/.claude/skills/glaw/bin/glaw-writing-check
+  <motion.md> --motion` — flags passive voice, clichés, hedging, over-long sentences, missing
+  motion sections, and any legal assertion lacking a citation. Clear the flags before `/glaw-file`.
 
 ```bash
 ~/.claude/skills/glaw/bin/glaw timeline-log motion_drafted 2>/dev/null || true

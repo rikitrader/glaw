@@ -347,6 +347,11 @@ if [ -x "$GLAW/lib/bookkeeping/.venv/bin/python" ]; then
   else
     bad "federal-causes FAILED — run: python3 $GLAW/lib/federal-litigation/test_fed_causes.py"
   fi
+  if printf '' | "$GLAW/bin/glaw-writing-check" - >/dev/null 2>&1 && python3 "$GLAW/lib/writing/test_writing_check.py" >/dev/null 2>&1; then
+    ok "legal-writing QC passed (glaw-writing-check linter + motion profile)"
+  else
+    bad "writing-check FAILED — run: python3 $GLAW/lib/writing/test_writing_check.py"
+  fi
   if "$_BKPY" "$GLAW/lib/bookkeeping/test_wiring.py" >/dev/null 2>&1; then
     ok "orchestrator-wiring lock passed (/glaw-accounting routes to the finance subsystem)"
   else

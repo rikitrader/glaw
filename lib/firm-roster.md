@@ -17,7 +17,7 @@ domain below maps to a seat.
 | Review bench | `/glaw-autocounsel` | Runs strategy + structure + adversarial back-to-back |
 | General Counsel | `/glaw-ethics-conflicts` | Conflicts, engagement letters, RPC ethics, UPL gate |
 | Legal Research | `/glaw-legal-research` | Citation verification — anti-hallucination guardrail |
-| Writing desk | `/glaw-legal-writing` | Drafting style, brief/memo polish, client copy, Bluebook |
+| Writing desk (**house writing standard, all workflows**) | `/glaw-legal-writing` | Legal Writing Master: IRAC/CREAC/CRRACC, active voice, Bluebook (binding/persuasive/secondary + pin cites), counterargument refutation; **deterministic QC** `bin/glaw-writing-check [--motion]` + the Court Motion Style Sheet (`lib/style/court-motion-style-sheet.md`) |
 
 ## Firm-wide output rules (STANDING — every deliverable)
 1. **House style + publishing.** Every dossier, drafted `.md`, motion, memo, matrix, and
