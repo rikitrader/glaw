@@ -87,11 +87,20 @@ Drive the document set off the structure memo's org chart and cap table.
 
 Drive the document set off the parties-to-claims matrix.
 
+> **Florida civil matter? Use the Title VI document factory first.** Select the cause(s) of action
+> with `glaw-fl-statute causes` (or `chapter <N>` / `search <term>`), then draft from the ready-to-file
+> **`/glaw-fl-quantum-meruit`** library: quantum-meruit/unjust-enrichment (`fl-quantum-meruit/templates/0*`)
+> and the full Title VI set (`fl-quantum-meruit/templates/title6/complaint-*.md`, `enforcement-*.md`,
+> `petition-*.md`, `motion-*.md`) + the discovery/intake/subpoena packs. **Run the dispositive-gate
+> checks for the chosen cause** (e.g. §489.128 licensing, *Commerce* express-contract bar, pay-if-paid
+> *DEC Electric*, §713.22 lien clock, §68.065 demand, §70.001 150-day presuit) before the count is drafted.
+
 1. **Complaint or answer.** Complaint: caption, jurisdiction+venue allegations,
    parties, factual background, then one count per claim from the matrix — each
    pleading its elements against the pleaded facts — and a prayer for relief tracking
    the damages theory. Answer: responses + every affirmative defense + counterclaims.
-   Route to **`glaw-federal-trial-counsel`** and **`glaw-elite-corporate-counsel`**.
+   Route to **`/glaw-fl-quantum-meruit`** (FL civil), **`glaw-federal-trial-counsel`** (federal),
+   and **`glaw-elite-corporate-counsel`**.
 2. **Motions.** Whatever the posture calls for — motion to dismiss, for summary
    judgment, to vacate (Rule 1.540 / fraud-on-court), preliminary injunction/TRO.
    Route to **`glaw-elite-corporate-counsel`** / **`glaw-federal-trial-counsel`**.
