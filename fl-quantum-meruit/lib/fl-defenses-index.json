@@ -3,55 +3,559 @@
   "note": "Original index of Florida affirmative defenses and threshold/defensive doctrines, authored from public Florida law (Fla. R. Civ. P. 1.110(d) & 1.140(b), the Florida Statutes, and case law). Each defense lists what the defendant must show, who bears the BURDEN (defendant unless noted), the authority, and the claim types it commonly defeats. Affirmative defenses must be pleaded (1.110(d)) or are waived. 'cat': procedural | contract | tort | equitable | statutory | constitutional. VERIFY each against current law.",
   "rule_note": "Fla. R. Civ. P. 1.110(d) enumerated affirmative defenses: accord and satisfaction, arbitration and award, assumption of risk, comparative negligence, discharge in bankruptcy, duress, estoppel, failure of consideration, fraud, illegality, injury by fellow servant, laches, license, payment, release, res judicata, statute of frauds, statute of limitations, waiver — and any other matter constituting an avoidance or affirmative defense. Rule 1.140(b) threshold defenses (MTD): lack of subject-matter / personal jurisdiction, improper venue, insufficiency of process / service, failure to state a cause of action, failure to join indispensable parties.",
   "defenses": [
-    {"d":"Statute of Limitations","cat":"procedural","show":["the claim accrued more than the limitations period before suit (§ 95.11)","accrual not delayed by the discovery rule / tolling"],"burden":"defendant (plaintiff rebuts tolling)","defeats":"any time-barred claim","basis":"§ 95.11; 1.110(d)"},
-    {"d":"Statute of Repose","cat":"procedural","show":["the absolute outer period ran (e.g., products § 95.031(2); construction/design § 95.11(3)(c) 10-yr from completion)","runs regardless of discovery"],"burden":"defendant","defeats":"products liability, construction defect","basis":"§ 95.031; § 95.11(3)(c)"},
-    {"d":"Failure to State a Cause of Action","cat":"procedural","show":["the complaint, on its four corners, omits an essential element of the claim"],"burden":"defendant (movant) — facts taken as true","defeats":"any deficiently pleaded claim","basis":"Rule 1.140(b)(6)"},
-    {"d":"Lack of Subject-Matter Jurisdiction","cat":"procedural","show":["the court has no power over the case type/amount (e.g., county vs. circuit threshold)"],"burden":"non-waivable; raised anytime","defeats":"any","basis":"Rule 1.140(b)(1); (h)(2)"},
-    {"d":"Lack of Personal Jurisdiction","cat":"procedural","show":["no long-arm act (§ 48.193) AND/OR insufficient minimum contacts (Venetian Salami two-step)"],"burden":"plaintiff pleads basis; defendant contests by affidavit","defeats":"claims vs. a nonresident","basis":"§ 48.193; Venetian Salami; Rule 1.140(b)(2)"},
-    {"d":"Improper Venue","cat":"procedural","show":["venue is not where the cause accrued / property lies / defendant resides (Ch. 47)"],"burden":"defendant","defeats":"misvenued action (transfer, not dismissal)","basis":"Ch. 47; Rule 1.140(b)(3)"},
-    {"d":"Insufficiency of Process / Service of Process","cat":"procedural","show":["the summons/complaint or the manner of service did not comply with Ch. 48/49"],"burden":"defendant","defeats":"improperly served action (quash service)","basis":"Ch. 48/49; Rule 1.140(b)(4)-(5)"},
-    {"d":"Failure to Join an Indispensable Party","cat":"procedural","show":["a party whose interest is so connected that complete relief is impossible without it (e.g., a cotenant, a record lienholder)"],"burden":"defendant","defeats":"partition, quiet title, declaratory","basis":"Rule 1.140(b)(7); 1.210"},
-    {"d":"Lack of Standing / Capacity","cat":"procedural","show":["plaintiff suffered no injury / is not the real party in interest (e.g., not the note holder; not the PR for wrongful death)"],"burden":"defendant (often a 1.140(b)(6)/MSJ issue)","defeats":"note enforcement, wrongful death, assignments","basis":"Rule 1.210; case law"},
-    {"d":"Res Judicata (claim preclusion)","cat":"procedural","show":["a prior final judgment on the merits","same parties/privies","same cause of action (identity of thing sued for, cause, persons, quality)"],"burden":"defendant","defeats":"a re-litigated claim","basis":"case law; 1.110(d)"},
-    {"d":"Collateral Estoppel (issue preclusion)","cat":"procedural","show":["the identical issue was actually litigated and decided","necessary to the prior judgment","mutuality of parties (Florida)"],"burden":"defendant","defeats":"re-litigation of a decided issue","basis":"case law"},
-    {"d":"Prior Pending Action / Abatement","cat":"procedural","show":["an earlier action between the same parties on the same subject is pending"],"burden":"defendant","defeats":"the duplicative second action","basis":"case law"},
-    {"d":"Accord and Satisfaction","cat":"contract","show":["a bona fide dispute","an agreement to settle it","performance of the new agreement (often a 'payment in full' check cashed)"],"burden":"defendant","defeats":"breach of contract / debt","basis":"§ 673.3111; 1.110(d)"},
-    {"d":"Payment","cat":"contract","show":["the obligation was paid/discharged (proof of payment)"],"burden":"defendant","defeats":"any debt/contract claim","basis":"1.110(d)"},
-    {"d":"Release","cat":"contract","show":["a valid release/settlement of the claim, supported by consideration"],"burden":"defendant","defeats":"the released claim","basis":"1.110(d); case law"},
-    {"d":"Novation","cat":"contract","show":["a valid new contract","that extinguished and replaced the old obligation","mutual assent of all parties"],"burden":"defendant","defeats":"the original contract claim","basis":"case law"},
-    {"d":"Waiver","cat":"contract","show":["the voluntary, intentional relinquishment of a known right (by word or conduct)"],"burden":"defendant","defeats":"enforcement of the waived right","basis":"1.110(d); case law"},
-    {"d":"Estoppel (equitable)","cat":"equitable","show":["a representation contrary to a later position","reliance","a detrimental change of position"],"burden":"defendant","defeats":"a claim inconsistent with the representation","basis":"1.110(d); case law"},
-    {"d":"Failure of Consideration","cat":"contract","show":["the bargained-for consideration failed/was not given"],"burden":"defendant","defeats":"contract enforcement","basis":"1.110(d)"},
-    {"d":"Statute of Frauds","cat":"contract","show":["the contract is within § 725.01 (land, > 1 year, guaranty, etc.) and not in a signed writing"],"burden":"defendant","defeats":"oral land/long-term/guaranty contracts","basis":"§ 725.01; 1.110(d)"},
-    {"d":"Illegality","cat":"contract","show":["the contract's object or performance is illegal/against public policy"],"burden":"defendant","defeats":"the illegal contract (incl. usurious, unlicensed § 489.128)","basis":"1.110(d); Ch. 687; § 489.128"},
-    {"d":"Duress / Undue Influence","cat":"contract","show":["a wrongful act/threat","that overcame the party's free will","inducing the agreement"],"burden":"defendant","defeats":"contract / release formation","basis":"1.110(d); case law"},
-    {"d":"Fraud (in the inducement/execution)","cat":"contract","show":["a false material statement","scienter","reliance inducing the contract"],"burden":"defendant (plead with particularity)","defeats":"contract enforcement","basis":"1.110(d); Rule 1.120(b)"},
-    {"d":"Unilateral / Mutual Mistake","cat":"equitable","show":["(mutual) both parties mistaken about a basic assumption; (unilateral) one party's mistake + inequity/knowledge"],"burden":"defendant","defeats":"reformation/rescission target","basis":"case law"},
-    {"d":"Unclean Hands","cat":"equitable","show":["the plaintiff's own inequitable conduct directly related to the claim"],"burden":"defendant","defeats":"any EQUITABLE claim (specific performance, injunction, quiet title)","basis":"case law"},
-    {"d":"Laches","cat":"equitable","show":["an unreasonable delay in asserting the right","with knowledge","prejudice to the defendant"],"burden":"defendant","defeats":"equitable claims (where SOL not strictly applicable)","basis":"1.110(d); case law"},
-    {"d":"Adequate Remedy at Law","cat":"equitable","show":["money damages would fully compensate the plaintiff"],"burden":"defendant","defeats":"injunction, specific performance, accounting, constructive trust","basis":"case law"},
-    {"d":"Election of Remedies","cat":"equitable","show":["the plaintiff pursued an inconsistent remedy to conclusion (e.g., affirmed the contract, then sued to rescind)"],"burden":"defendant","defeats":"the inconsistent second remedy","basis":"case law"},
-    {"d":"Set-Off / Recoupment","cat":"contract","show":["(recoupment) a claim arising from the same transaction reducing the recovery; (set-off) a mutual debt from a different transaction"],"burden":"defendant (counterclaim)","defeats":"reduces/eliminates the money judgment","basis":"case law"},
-    {"d":"Comparative Fault","cat":"tort","show":["the plaintiff's own negligence contributed to the harm","(2023) plaintiff > 50% at fault BARS recovery in negligence"],"burden":"defendant","defeats":"reduces/bars negligence recovery","basis":"§ 768.81 (modified 2023); 1.110(d)"},
-    {"d":"Assumption of Risk","cat":"tort","show":["the plaintiff knew of and voluntarily exposed itself to a specific risk (express, or limited implied — contact sports)"],"burden":"defendant","defeats":"negligence (largely merged into comparative fault)","basis":"§ 768.81; 1.110(d); case law"},
-    {"d":"Economic Loss Rule","cat":"tort","show":["the only loss is to the product itself / the subject of the contract","no independent tort duty or personal injury/other-property damage"],"burden":"defendant","defeats":"tort claims duplicating a contract (products line; Tiara narrowed it)","basis":"Tiara Condominium; case law"},
-    {"d":"Impact Rule","cat":"tort","show":["no physical impact and no recognized exception (e.g., not in the zone of danger / no IIED/defamation exception)"],"burden":"defendant","defeats":"NIED / standalone emotional-distress claims","basis":"case law (R.J. v. Humana)"},
-    {"d":"Privilege (absolute / qualified)","cat":"tort","show":["(absolute) statements in judicial/legislative proceedings; (qualified) good-faith on a subject of common interest, not abused by malice"],"burden":"defendant","defeats":"defamation, tortious interference","basis":"case law"},
-    {"d":"Truth / Substantial Truth","cat":"tort","show":["the gist of the statement is true"],"burden":"defendant","defeats":"defamation","basis":"case law"},
-    {"d":"Consent","cat":"tort","show":["the plaintiff consented to the conduct (contact, entry, use of likeness)"],"burden":"defendant","defeats":"battery, trespass, conversion, appropriation","basis":"case law"},
-    {"d":"Self-Defense / Defense of Others / Property","cat":"tort","show":["a reasonable belief of imminent harm and proportional force"],"burden":"defendant","defeats":"assault, battery","basis":"case law; Ch. 776 (principles)"},
-    {"d":"Justification / Competition Privilege","cat":"tort","show":["legitimate competition or a financial/contractual interest justified the interference"],"burden":"defendant","defeats":"tortious interference","basis":"case law"},
-    {"d":"Probable Cause / Advice of Counsel","cat":"tort","show":["probable cause for the prior proceeding, or full disclosure to and reliance on counsel"],"burden":"defendant","defeats":"malicious prosecution","basis":"case law"},
-    {"d":"Discharge in Bankruptcy","cat":"statutory","show":["the debt was discharged in the defendant's bankruptcy (and is not a § 523 nondischargeable debt)"],"burden":"defendant","defeats":"the discharged debt","basis":"11 U.S.C. § 524; 1.110(d)"},
-    {"d":"Sovereign Immunity","cat":"constitutional","show":["a governmental defendant + no § 768.28 waiver / the planning-level or discretionary-function bar / caps ($200k/$300k) + presuit notice not met"],"burden":"defendant","defeats":"tort claims vs. the state/subdivisions","basis":"§ 768.28"},
-    {"d":"Workers' Compensation Immunity","cat":"statutory","show":["an employer/co-employee + a work injury within § 440 + no intentional-tort/gross-negligence exception"],"burden":"defendant","defeats":"negligence vs. employer","basis":"§ 440.11"},
-    {"d":"Arbitration and Award / Agreement to Arbitrate","cat":"procedural","show":["a valid arbitration agreement covering the dispute (motion to compel/stay)"],"burden":"defendant","defeats":"litigation of an arbitrable claim (stays it)","basis":"§ 682; FAA; 1.110(d)"},
-    {"d":"Mitigation of Damages","cat":"contract","show":["the plaintiff failed to take reasonable steps to reduce its damages"],"burden":"defendant","defeats":"reduces recoverable damages","basis":"case law"},
-    {"d":"§ 489.128 Unlicensed Contractor","cat":"statutory","show":["a license was required for the work","the plaintiff was unlicensed when contracting/performing"],"burden":"defendant","defeats":"contract AND quantum-meruit recovery by an unlicensed contractor","basis":"§ 489.128"},
-    {"d":"Express-Contract Bar (to quasi-contract)","cat":"contract","show":["a valid express contract governs the same subject matter"],"burden":"defendant","defeats":"quantum meruit / unjust enrichment / quasi-contract","basis":"Commerce P'ship 8098"},
-    {"d":"Pay-If-Paid Condition Precedent","cat":"contract","show":["the subcontract clearly and unambiguously conditions payment on the GC's receipt of payment from the owner","the owner has not paid"],"burden":"defendant (GC)","defeats":"a subcontractor's payment claim vs. the GC (until owner pays)","basis":"DEC Electric v. Raphael (558 So. 2d 427)"},
-    {"d":"Owner Paid the GC (to sub's UE)","cat":"contract","show":["the owner already paid the general contractor in full for the work"],"burden":"defendant (owner)","defeats":"a subcontractor's unjust-enrichment claim vs. the owner","basis":"Commerce P'ship 8098"},
-    {"d":"Good-Faith Error (statutory)","cat":"statutory","show":["the violation was unintentional and resulted from a bona fide error despite procedures to avoid it"],"burden":"defendant","defeats":"FCCPA (§ 559.77(3)) / FDCPA","basis":"§ 559.77(3)"},
-    {"d":"FDUTPA Exemption","cat":"statutory","show":["the practice/actor is exempt under § 501.212 (regulated industry, expressly permitted conduct)"],"burden":"defendant","defeats":"FDUTPA","basis":"§ 501.212"}
+    {
+      "d": "Statute of Limitations",
+      "cat": "procedural",
+      "show": [
+        "the claim accrued more than the limitations period before suit (§ 95.11)",
+        "accrual not delayed by the discovery rule / tolling"
+      ],
+      "burden": "defendant (plaintiff rebuts tolling)",
+      "defeats": "any time-barred claim",
+      "basis": "§ 95.11; 1.110(d)"
+    },
+    {
+      "d": "Statute of Repose",
+      "cat": "procedural",
+      "show": [
+        "the absolute outer period ran (e.g., products § 95.031(2); construction/design § 95.11(3)(c) 10-yr from completion)",
+        "runs regardless of discovery"
+      ],
+      "burden": "defendant",
+      "defeats": "products liability, construction defect",
+      "basis": "§ 95.031; § 95.11(3)(c)"
+    },
+    {
+      "d": "Failure to State a Cause of Action",
+      "cat": "procedural",
+      "show": [
+        "the complaint, on its four corners, omits an essential element of the claim"
+      ],
+      "burden": "defendant (movant) — facts taken as true",
+      "defeats": "any deficiently pleaded claim",
+      "basis": "Rule 1.140(b)(6)"
+    },
+    {
+      "d": "Lack of Subject-Matter Jurisdiction",
+      "cat": "procedural",
+      "show": [
+        "the court has no power over the case type/amount (e.g., county vs. circuit threshold)"
+      ],
+      "burden": "non-waivable; raised anytime",
+      "defeats": "any",
+      "basis": "Rule 1.140(b)(1); (h)(2)"
+    },
+    {
+      "d": "Lack of Personal Jurisdiction",
+      "cat": "procedural",
+      "show": [
+        "no long-arm act (§ 48.193) AND/OR insufficient minimum contacts (Venetian Salami two-step)"
+      ],
+      "burden": "plaintiff pleads basis; defendant contests by affidavit",
+      "defeats": "claims vs. a nonresident",
+      "basis": "§ 48.193; Venetian Salami; Rule 1.140(b)(2)"
+    },
+    {
+      "d": "Improper Venue",
+      "cat": "procedural",
+      "show": [
+        "venue is not where the cause accrued / property lies / defendant resides (Ch. 47)"
+      ],
+      "burden": "defendant",
+      "defeats": "misvenued action (transfer, not dismissal)",
+      "basis": "Ch. 47; Rule 1.140(b)(3)"
+    },
+    {
+      "d": "Insufficiency of Process / Service of Process",
+      "cat": "procedural",
+      "show": [
+        "the summons/complaint or the manner of service did not comply with Ch. 48/49"
+      ],
+      "burden": "defendant",
+      "defeats": "improperly served action (quash service)",
+      "basis": "Ch. 48/49; Rule 1.140(b)(4)-(5)"
+    },
+    {
+      "d": "Failure to Join an Indispensable Party",
+      "cat": "procedural",
+      "show": [
+        "a party whose interest is so connected that complete relief is impossible without it (e.g., a cotenant, a record lienholder)"
+      ],
+      "burden": "defendant",
+      "defeats": "partition, quiet title, declaratory",
+      "basis": "Rule 1.140(b)(7); 1.210"
+    },
+    {
+      "d": "Lack of Standing / Capacity",
+      "cat": "procedural",
+      "show": [
+        "plaintiff suffered no injury / is not the real party in interest (e.g., not the note holder; not the PR for wrongful death)"
+      ],
+      "burden": "defendant (often a 1.140(b)(6)/MSJ issue)",
+      "defeats": "note enforcement, wrongful death, assignments",
+      "basis": "Rule 1.210; case law"
+    },
+    {
+      "d": "Res Judicata (claim preclusion)",
+      "cat": "procedural",
+      "show": [
+        "a prior final judgment on the merits",
+        "same parties/privies",
+        "same cause of action (identity of thing sued for, cause, persons, quality)"
+      ],
+      "burden": "defendant",
+      "defeats": "a re-litigated claim",
+      "basis": "case law; 1.110(d)"
+    },
+    {
+      "d": "Collateral Estoppel (issue preclusion)",
+      "cat": "procedural",
+      "show": [
+        "the identical issue was actually litigated and decided",
+        "necessary to the prior judgment",
+        "mutuality of parties (Florida)"
+      ],
+      "burden": "defendant",
+      "defeats": "re-litigation of a decided issue",
+      "basis": "case law"
+    },
+    {
+      "d": "Prior Pending Action / Abatement",
+      "cat": "procedural",
+      "show": [
+        "an earlier action between the same parties on the same subject is pending"
+      ],
+      "burden": "defendant",
+      "defeats": "the duplicative second action",
+      "basis": "case law"
+    },
+    {
+      "d": "Accord and Satisfaction",
+      "cat": "contract",
+      "show": [
+        "a bona fide dispute",
+        "an agreement to settle it",
+        "performance of the new agreement (often a 'payment in full' check cashed)"
+      ],
+      "burden": "defendant",
+      "defeats": "breach of contract / debt",
+      "basis": "§ 673.3111; 1.110(d)"
+    },
+    {
+      "d": "Payment",
+      "cat": "contract",
+      "show": [
+        "the obligation was paid/discharged (proof of payment)"
+      ],
+      "burden": "defendant",
+      "defeats": "any debt/contract claim",
+      "basis": "1.110(d)"
+    },
+    {
+      "d": "Release",
+      "cat": "contract",
+      "show": [
+        "a valid release/settlement of the claim, supported by consideration"
+      ],
+      "burden": "defendant",
+      "defeats": "the released claim",
+      "basis": "1.110(d); case law"
+    },
+    {
+      "d": "Novation",
+      "cat": "contract",
+      "show": [
+        "a valid new contract",
+        "that extinguished and replaced the old obligation",
+        "mutual assent of all parties"
+      ],
+      "burden": "defendant",
+      "defeats": "the original contract claim",
+      "basis": "case law"
+    },
+    {
+      "d": "Waiver",
+      "cat": "contract",
+      "show": [
+        "the voluntary, intentional relinquishment of a known right (by word or conduct)"
+      ],
+      "burden": "defendant",
+      "defeats": "enforcement of the waived right",
+      "basis": "1.110(d); case law"
+    },
+    {
+      "d": "Estoppel (equitable)",
+      "cat": "equitable",
+      "show": [
+        "a representation contrary to a later position",
+        "reliance",
+        "a detrimental change of position"
+      ],
+      "burden": "defendant",
+      "defeats": "a claim inconsistent with the representation",
+      "basis": "1.110(d); case law"
+    },
+    {
+      "d": "Failure of Consideration",
+      "cat": "contract",
+      "show": [
+        "the bargained-for consideration failed/was not given"
+      ],
+      "burden": "defendant",
+      "defeats": "contract enforcement",
+      "basis": "1.110(d)"
+    },
+    {
+      "d": "Statute of Frauds",
+      "cat": "contract",
+      "show": [
+        "the contract is within § 725.01 (land, > 1 year, guaranty, etc.) and not in a signed writing"
+      ],
+      "burden": "defendant",
+      "defeats": "oral land/long-term/guaranty contracts",
+      "basis": "§ 725.01; 1.110(d)"
+    },
+    {
+      "d": "Illegality",
+      "cat": "contract",
+      "show": [
+        "the contract's object or performance is illegal/against public policy"
+      ],
+      "burden": "defendant",
+      "defeats": "the illegal contract (incl. usurious, unlicensed § 489.128)",
+      "basis": "1.110(d); Ch. 687; § 489.128"
+    },
+    {
+      "d": "Duress / Undue Influence",
+      "cat": "contract",
+      "show": [
+        "a wrongful act/threat",
+        "that overcame the party's free will",
+        "inducing the agreement"
+      ],
+      "burden": "defendant",
+      "defeats": "contract / release formation",
+      "basis": "1.110(d); case law"
+    },
+    {
+      "d": "Fraud (in the inducement/execution)",
+      "cat": "contract",
+      "show": [
+        "a false material statement",
+        "scienter",
+        "reliance inducing the contract"
+      ],
+      "burden": "defendant (plead with particularity)",
+      "defeats": "contract enforcement",
+      "basis": "1.110(d); Rule 1.120(b)"
+    },
+    {
+      "d": "Unilateral / Mutual Mistake",
+      "cat": "equitable",
+      "show": [
+        "(mutual) both parties mistaken about a basic assumption; (unilateral) one party's mistake + inequity/knowledge"
+      ],
+      "burden": "defendant",
+      "defeats": "reformation/rescission target",
+      "basis": "case law"
+    },
+    {
+      "d": "Unclean Hands",
+      "cat": "equitable",
+      "show": [
+        "the plaintiff's own inequitable conduct directly related to the claim"
+      ],
+      "burden": "defendant",
+      "defeats": "any EQUITABLE claim (specific performance, injunction, quiet title)",
+      "basis": "case law"
+    },
+    {
+      "d": "Laches",
+      "cat": "equitable",
+      "show": [
+        "an unreasonable delay in asserting the right",
+        "with knowledge",
+        "prejudice to the defendant"
+      ],
+      "burden": "defendant",
+      "defeats": "equitable claims (where SOL not strictly applicable)",
+      "basis": "1.110(d); case law"
+    },
+    {
+      "d": "Adequate Remedy at Law",
+      "cat": "equitable",
+      "show": [
+        "money damages would fully compensate the plaintiff"
+      ],
+      "burden": "defendant",
+      "defeats": "injunction, specific performance, accounting, constructive trust",
+      "basis": "case law"
+    },
+    {
+      "d": "Election of Remedies",
+      "cat": "equitable",
+      "show": [
+        "the plaintiff pursued an inconsistent remedy to conclusion (e.g., affirmed the contract, then sued to rescind)"
+      ],
+      "burden": "defendant",
+      "defeats": "the inconsistent second remedy",
+      "basis": "case law"
+    },
+    {
+      "d": "Set-Off / Recoupment",
+      "cat": "contract",
+      "show": [
+        "(recoupment) a claim arising from the same transaction reducing the recovery; (set-off) a mutual debt from a different transaction"
+      ],
+      "burden": "defendant (counterclaim)",
+      "defeats": "reduces/eliminates the money judgment",
+      "basis": "case law"
+    },
+    {
+      "d": "Comparative Fault",
+      "cat": "tort",
+      "show": [
+        "the plaintiff's own negligence contributed to the harm",
+        "(2023) plaintiff > 50% at fault BARS recovery in negligence"
+      ],
+      "burden": "defendant",
+      "defeats": "reduces/bars negligence recovery",
+      "basis": "§ 768.81 (modified 2023); 1.110(d)"
+    },
+    {
+      "d": "Assumption of Risk",
+      "cat": "tort",
+      "show": [
+        "the plaintiff knew of and voluntarily exposed itself to a specific risk (express, or limited implied — contact sports)"
+      ],
+      "burden": "defendant",
+      "defeats": "negligence (largely merged into comparative fault)",
+      "basis": "§ 768.81; 1.110(d); case law"
+    },
+    {
+      "d": "Economic Loss Rule",
+      "cat": "tort",
+      "show": [
+        "the only loss is to the product itself / the subject of the contract",
+        "no independent tort duty or personal injury/other-property damage"
+      ],
+      "burden": "defendant",
+      "defeats": "tort claims duplicating a contract (products line; Tiara narrowed it)",
+      "basis": "Tiara Condominium; case law"
+    },
+    {
+      "d": "Impact Rule",
+      "cat": "tort",
+      "show": [
+        "no physical impact and no recognized exception (e.g., not in the zone of danger / no IIED/defamation exception)"
+      ],
+      "burden": "defendant",
+      "defeats": "NIED / standalone emotional-distress claims",
+      "basis": "case law (R.J. v. Humana)"
+    },
+    {
+      "d": "Privilege (absolute / qualified)",
+      "cat": "tort",
+      "show": [
+        "(absolute) statements in judicial/legislative proceedings; (qualified) good-faith on a subject of common interest, not abused by malice"
+      ],
+      "burden": "defendant",
+      "defeats": "defamation, tortious interference",
+      "basis": "case law"
+    },
+    {
+      "d": "Truth / Substantial Truth",
+      "cat": "tort",
+      "show": [
+        "the gist of the statement is true"
+      ],
+      "burden": "defendant",
+      "defeats": "defamation",
+      "basis": "case law"
+    },
+    {
+      "d": "Consent",
+      "cat": "tort",
+      "show": [
+        "the plaintiff consented to the conduct (contact, entry, use of likeness)"
+      ],
+      "burden": "defendant",
+      "defeats": "battery, trespass, conversion, appropriation",
+      "basis": "case law"
+    },
+    {
+      "d": "Self-Defense / Defense of Others / Property",
+      "cat": "tort",
+      "show": [
+        "a reasonable belief of imminent harm and proportional force"
+      ],
+      "burden": "defendant",
+      "defeats": "assault, battery",
+      "basis": "case law; Ch. 776 (principles)"
+    },
+    {
+      "d": "Justification / Competition Privilege",
+      "cat": "tort",
+      "show": [
+        "legitimate competition or a financial/contractual interest justified the interference"
+      ],
+      "burden": "defendant",
+      "defeats": "tortious interference",
+      "basis": "case law"
+    },
+    {
+      "d": "Probable Cause / Advice of Counsel",
+      "cat": "tort",
+      "show": [
+        "probable cause for the prior proceeding, or full disclosure to and reliance on counsel"
+      ],
+      "burden": "defendant",
+      "defeats": "malicious prosecution",
+      "basis": "case law"
+    },
+    {
+      "d": "Discharge in Bankruptcy",
+      "cat": "statutory",
+      "show": [
+        "the debt was discharged in the defendant's bankruptcy (and is not a § 523 nondischargeable debt)"
+      ],
+      "burden": "defendant",
+      "defeats": "the discharged debt",
+      "basis": "11 U.S.C. § 524; 1.110(d)"
+    },
+    {
+      "d": "Sovereign Immunity",
+      "cat": "constitutional",
+      "show": [
+        "a governmental defendant + no § 768.28 waiver / the planning-level or discretionary-function bar / caps ($200k/$300k) + presuit notice not met"
+      ],
+      "burden": "defendant",
+      "defeats": "tort claims vs. the state/subdivisions",
+      "basis": "§ 768.28"
+    },
+    {
+      "d": "Workers' Compensation Immunity",
+      "cat": "statutory",
+      "show": [
+        "an employer/co-employee + a work injury within § 440 + no intentional-tort/gross-negligence exception"
+      ],
+      "burden": "defendant",
+      "defeats": "negligence vs. employer",
+      "basis": "§ 440.11"
+    },
+    {
+      "d": "Arbitration and Award / Agreement to Arbitrate",
+      "cat": "procedural",
+      "show": [
+        "a valid arbitration agreement covering the dispute (motion to compel/stay)"
+      ],
+      "burden": "defendant",
+      "defeats": "litigation of an arbitrable claim (stays it)",
+      "basis": "§ 682; FAA; 1.110(d)"
+    },
+    {
+      "d": "Mitigation of Damages",
+      "cat": "contract",
+      "show": [
+        "the plaintiff failed to take reasonable steps to reduce its damages"
+      ],
+      "burden": "defendant",
+      "defeats": "reduces recoverable damages",
+      "basis": "case law"
+    },
+    {
+      "d": "§ 489.128 Unlicensed Contractor",
+      "cat": "statutory",
+      "show": [
+        "a license was required for the work",
+        "the plaintiff was unlicensed when contracting/performing"
+      ],
+      "burden": "defendant",
+      "defeats": "contract AND quantum-meruit recovery by an unlicensed contractor",
+      "basis": "§ 489.128"
+    },
+    {
+      "d": "Express-Contract Bar (to quasi-contract)",
+      "cat": "contract",
+      "show": [
+        "a valid express contract governs the same subject matter"
+      ],
+      "burden": "defendant",
+      "defeats": "quantum meruit / unjust enrichment / quasi-contract",
+      "basis": "Commerce P'ship 8098"
+    },
+    {
+      "d": "Pay-If-Paid Condition Precedent",
+      "cat": "contract",
+      "show": [
+        "the subcontract clearly and unambiguously conditions payment on the GC's receipt of payment from the owner",
+        "the owner has not paid"
+      ],
+      "burden": "defendant (GC)",
+      "defeats": "a subcontractor's payment claim vs. the GC (until owner pays)",
+      "basis": "DEC Electric v. Raphael (558 So. 2d 427)"
+    },
+    {
+      "d": "Owner Paid the GC (to sub's UE)",
+      "cat": "contract",
+      "show": [
+        "the owner already paid the general contractor in full for the work"
+      ],
+      "burden": "defendant (owner)",
+      "defeats": "a subcontractor's unjust-enrichment claim vs. the owner",
+      "basis": "Commerce P'ship 8098"
+    },
+    {
+      "d": "Good-Faith Error (statutory)",
+      "cat": "statutory",
+      "show": [
+        "the violation was unintentional and resulted from a bona fide error despite procedures to avoid it"
+      ],
+      "burden": "defendant",
+      "defeats": "FCCPA (§ 559.77(3)) / FDCPA",
+      "basis": "§ 559.77(3)"
+    },
+    {
+      "d": "FDUTPA Exemption",
+      "cat": "statutory",
+      "show": [
+        "the practice/actor is exempt under § 501.212 (regulated industry, expressly permitted conduct)"
+      ],
+      "burden": "defendant",
+      "defeats": "FDUTPA",
+      "basis": "§ 501.212"
+    },
+    {
+      "d": "Good-Faith Transferee for Reasonably Equivalent Value (FUFTA § 726.109)",
+      "cat": "statutory",
+      "show": [
+        "the transferee took the asset in good faith",
+        "and gave reasonably equivalent value",
+        "(or is a protected subsequent transferee)"
+      ],
+      "burden": "transferee",
+      "defeats": "FUFTA actual-intent avoidance (§ 726.105(1)(a)); limits recovery; yields a retained lien to the extent of value given",
+      "basis": "§ 726.109(1),(4); FUFTA"
+    },
+    {
+      "d": "FUFTA Extinguishment / Limitations (§ 726.110)",
+      "cat": "statutory",
+      "show": [
+        "the FUFTA action was filed > 4 years after the transfer (constructive), or > 4 yr AND > 1 yr after discovery (actual intent), or > 1 yr (§ 726.106(2) insider)"
+      ],
+      "burden": "defendant",
+      "defeats": "time-barred fraudulent-transfer claims",
+      "basis": "§ 726.110 (extinguishment, not mere limitation)"
+    },
+    {
+      "d": "Reasonably Equivalent Value (FUFTA)",
+      "cat": "statutory",
+      "show": [
+        "the debtor received reasonably equivalent value in exchange for the transfer (e.g., dollar-for-dollar, a genuine sale, satisfaction of an antecedent debt)"
+      ],
+      "burden": "defendant/transferee",
+      "defeats": "constructive fraudulent transfer (§ 726.105(1)(b), § 726.106(1)) and rebuts a badge under § 726.105(2)(h)",
+      "basis": "§§ 726.104, 726.105, 726.106; cf. 608 Hoffner (sale at ~appraised value = REV)"
+    }
   ]
 }
