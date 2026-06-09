@@ -95,6 +95,8 @@ Drive the document set off the parties-to-claims matrix.
 > checks for the chosen cause** (e.g. §489.128 licensing, *Commerce* express-contract bar, pay-if-paid
 > *DEC Electric*, §713.22 lien clock, §68.065 demand, §70.001 150-day presuit) before the count is drafted.
 
+> **Federal matter?** Select the claim(s) with **`glaw-fed-cause`** (56 federal causes — elements/SOL/defenses) and draft from the federal templates (`lib/federal-litigation/templates/complaint-*.md`: civil RICO, §1983/Monell, 10b-5, FCA qui tam, FLSA, Title VII, FDCPA/TCPA, Lanham); verify cites against `lib/federal-litigation/statute-text/federal-excerpts.md`; the answer/defenses come from `glaw-fed-defense`.
+
 1. **Complaint or answer.** Complaint: caption, jurisdiction+venue allegations,
    parties, factual background, then one count per claim from the matrix — each
    pleading its elements against the pleaded facts — and a prayer for relief tracking

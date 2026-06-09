@@ -1,0 +1,1152 @@
+{
+  "name": "Federal Causes of Action index (civil + criminal-referral + regulatory)",
+  "note": "Original index of federal causes of action, authored by a multi-agent panel and adversarially verified, from public federal law (the U.S. Code, FRCP/FRE, and leading Supreme Court / circuit cases). Element formulations and limitations periods are the law, not protected expression. Cites marked [VERIFY] were not confirmed verbatim and must be checked. SOL varies (often borrowed state periods for §1983/Bivens/§1985); confirm accrual + tolling. Each cause: n, cat, sol_years, elements, defenses (cross-reference glaw-fed-defense), basis (statute + leading case).",
+  "categories": [
+    "antitrust",
+    "civil-rights",
+    "consumer",
+    "employment",
+    "fraud-federal",
+    "ip",
+    "labor-benefits",
+    "qui-tam-govt",
+    "rico",
+    "securities"
+  ],
+  "causes": [
+    {
+      "n": "42 U.S.C. § 1983 — Deprivation of Federal Rights Under Color of State Law",
+      "cat": "civil-rights",
+      "sol_years": "borrowed state PI SOL (commonly 2–4)",
+      "elements": [
+        "Defendant is a 'person' acting under color of state law (state/local official, or private party who is a willful state participant)",
+        "Conduct deprived plaintiff of a right, privilege, or immunity secured by the Constitution or federal law",
+        "The deprivation was caused by the defendant's conduct (causation)",
+        "Resulting injury / damages (or entitlement to declaratory/injunctive relief)"
+      ],
+      "defenses": [
+        "Qualified immunity (no clearly established right)",
+        "Absolute immunity (judicial, prosecutorial, legislative, witness)",
+        "Twombly/Iqbal plausibility — no plausible deprivation pleaded",
+        "Article III standing / mootness",
+        "§1983 SOL borrowed from forum-state personal-injury statute (Wilson v. Garcia); Eleventh Amendment bars §1983 damages vs. the State / state officials in official capacity (Will v. Michigan Dep't of State Police)"
+      ],
+      "basis": "42 U.S.C. § 1983; Monroe v. Pape, 365 U.S. 167 (1961); West v. Atkins, 487 U.S. 42 (1988); accrual/SOL per Wallace v. Kato, 549 U.S. 384 (2007); Will v. Michigan Dep't of State Police, 491 U.S. 58 (1989)"
+    },
+    {
+      "n": "Bivens — Implied Damages Action Against Federal Officers for Constitutional Violations",
+      "cat": "civil-rights",
+      "sol_years": "borrowed state PI SOL (commonly 2–4)",
+      "elements": [
+        "Defendant is a federal officer/agent acting under color of federal authority",
+        "Violation of a constitutional right (recognized Bivens contexts: 4th Am. unreasonable search/seizure (Bivens), 5th Am. due-process/sex discrimination in employment (Davis v. Passman), 8th Am. deliberate indifference to serious medical needs (Carlson v. Green))",
+        "The claim arises in a context not 'new' — or, if new, no special factors counsel hesitation and no alternative remedial scheme exists (Ziglar two-step)",
+        "Causation and personal involvement of the individual defendant",
+        "Resulting injury / damages"
+      ],
+      "defenses": [
+        "No Bivens remedy — 'new context' + special factors / alternative remedy (Ziglar; Egbert)",
+        "Qualified immunity (no clearly established right)",
+        "Twombly/Iqbal plausibility",
+        "Article III standing",
+        "No respondeat superior; no Bivens action against the United States or federal agencies (FDIC v. Meyer)",
+        "Borrowed state personal-injury SOL"
+      ],
+      "basis": "Bivens v. Six Unknown Named Agents, 403 U.S. 388 (1971); Davis v. Passman, 442 U.S. 228 (1979); Carlson v. Green, 446 U.S. 14 (1980); Ziglar v. Abbasi, 582 U.S. 120 (2017); Egbert v. Boule, 596 U.S. 482 (2022)"
+    },
+    {
+      "n": "42 U.S.C. § 1985(3) — Conspiracy to Deprive Equal Protection / Privileges and Immunities",
+      "cat": "civil-rights",
+      "sol_years": "borrowed state PI SOL (commonly 2–4)",
+      "elements": [
+        "A conspiracy (agreement of two or more persons)",
+        "For the purpose of depriving, directly or indirectly, any person or class of equal protection of the laws or equal privileges and immunities",
+        "Motivated by some racial or otherwise class-based, invidiously discriminatory animus",
+        "An act in furtherance of the conspiracy",
+        "Resulting injury to person/property or deprivation of a right or privilege of a U.S. citizen"
+      ],
+      "defenses": [
+        "No class-based invidious discriminatory animus (Griffin; Bray)",
+        "No underlying substantive right reached — where the right asserted (e.g., 14th Am. equal protection) requires state action, a purely private conspiracy is not actionable (United Brotherhood of Carpenters v. Scott)",
+        "Intracorporate-conspiracy doctrine (single entity cannot conspire with itself)",
+        "Twombly/Iqbal plausibility — conspiracy pleaded conclusorily",
+        "Article III standing",
+        "Borrowed state personal-injury SOL"
+      ],
+      "basis": "42 U.S.C. § 1985(3); Griffin v. Breckenridge, 403 U.S. 88 (1971); United Brotherhood of Carpenters v. Scott, 463 U.S. 825 (1983); Bray v. Alexandria Women's Health Clinic, 506 U.S. 263 (1993)"
+    },
+    {
+      "n": "Monell — Municipal/Local-Government Liability Under § 1983",
+      "cat": "civil-rights",
+      "sol_years": "borrowed state PI SOL (commonly 2–4)",
+      "elements": [
+        "An underlying deprivation of a constitutional right",
+        "By an official municipal policy, custom, or practice (or single act of a final policymaker)",
+        "That is the 'moving force' behind the constitutional violation (causation); for failure-to-train/supervise, deliberate indifference to a known/obvious risk",
+        "Plaintiff is not relying solely on respondeat superior"
+      ],
+      "defenses": [
+        "No official policy/custom or final-policymaker act (Monell; Pembaur v. City of Cincinnati)",
+        "No 'moving force' causation; failure-to-train lacks deliberate indifference (City of Canton; Connick v. Thompson)",
+        "No respondeat superior liability",
+        "Twombly/Iqbal plausibility",
+        "No underlying constitutional violation (Los Angeles v. Heller bars Monell claim); municipalities have no qualified immunity but are not liable for punitive damages (City of Newport v. Fact Concerts)"
+      ],
+      "basis": "Monell v. Dep't of Social Servs., 436 U.S. 658 (1978); City of Canton v. Harris, 489 U.S. 378 (1989); Connick v. Thompson, 563 U.S. 51 (2011); City of Los Angeles v. Heller, 475 U.S. 796 (1986)"
+    },
+    {
+      "n": "42 U.S.C. § 1981 — Race Discrimination in the Making and Enforcement of Contracts",
+      "cat": "civil-rights",
+      "sol_years": "4 (post-1990 claims, 28 U.S.C. § 1658) / borrowed state PI SOL for claims actionable under §1981 as it existed pre-1991 amendment",
+      "elements": [
+        "Plaintiff is a member of a racial/ethnic group protected by the statute — §1981 protects all persons against intentional discrimination on the basis of race or ancestry/ethnicity, including white plaintiffs (McDonald v. Santa Fe Trail Transp. Co.)",
+        "Intent to discriminate on the basis of race",
+        "Discrimination concerns one or more activities enumerated in the statute (make, perform, modify, terminate contracts; enjoy benefits/terms/conditions of the contractual relationship)",
+        "Race was the but-for cause of the injury (Comcast)"
+      ],
+      "defenses": [
+        "No but-for causation (Comcast v. National Assn. of African American-Owned Media)",
+        "No intentional discrimination — only disparate impact (§1981 reaches intent only, General Building Contractors v. Pennsylvania)",
+        "Twombly/Iqbal plausibility",
+        "4-year catch-all SOL (§1658) applies only to claims made possible by the 1991 amendment vs. borrowed state SOL for pre-amendment-actionable claims (Jones v. R.R. Donnelley)",
+        "Article III standing"
+      ],
+      "basis": "42 U.S.C. § 1981; McDonald v. Santa Fe Trail Transp. Co., 427 U.S. 273 (1976); Comcast Corp. v. Nat'l Assn. of African American-Owned Media, 589 U.S. 327 (2020); Jones v. R.R. Donnelley & Sons, 541 U.S. 369 (2004)"
+    },
+    {
+      "n": "Americans with Disabilities Act, Title II — Discrimination by Public Entities",
+      "cat": "civil-rights",
+      "sol_years": "borrowed state PI SOL (commonly 2–4; no express federal SOL)",
+      "elements": [
+        "Plaintiff is a 'qualified individual with a disability' (42 U.S.C. § 12131)",
+        "Defendant is a public entity (state/local government, department, or instrumentality)",
+        "Plaintiff was excluded from participation in or denied the benefits of services, programs, or activities, or was otherwise discriminated against",
+        "By reason of the disability; reasonable modification/accommodation was denied where required",
+        "For compensatory damages: intentional discrimination / deliberate indifference"
+      ],
+      "defenses": [
+        "Not a 'qualified individual' or not disabled under the ADA",
+        "Requested modification would fundamentally alter the program or pose undue burden",
+        "Sovereign immunity — Eleventh Amendment (abrogation valid as applied only where Title II enforces an actual 14th Am. right, Tennessee v. Lane / United States v. Georgia)",
+        "Twombly/Iqbal plausibility",
+        "Article III standing (no injury-in-fact / no real threat of future harm for injunctive relief)"
+      ],
+      "basis": "42 U.S.C. §§ 12131–12134; Tennessee v. Lane, 541 U.S. 509 (2004); United States v. Georgia, 546 U.S. 151 (2006)"
+    },
+    {
+      "n": "Americans with Disabilities Act, Title III — Discrimination in Places of Public Accommodation",
+      "cat": "civil-rights",
+      "sol_years": "borrowed state PI SOL (commonly 2–4; no express federal SOL)",
+      "elements": [
+        "Plaintiff is disabled within the meaning of the ADA",
+        "Defendant owns, leases, or operates a place of public accommodation (42 U.S.C. § 12181(7))",
+        "Plaintiff was denied full and equal enjoyment of the goods, services, facilities, or accommodations on the basis of disability",
+        "Defendant failed to make reasonable modifications, provide auxiliary aids, or remove architectural barriers where readily achievable (for existing facilities) / failed to design/construct accessibly",
+        "Standing: plaintiff encountered the barrier and faces a real and immediate threat of future injury (private plaintiffs limited to injunctive relief + attorney's fees under 42 U.S.C. § 12188 — no compensatory damages)"
+      ],
+      "defenses": [
+        "Not a place of public accommodation / not covered entity",
+        "Barrier removal not 'readily achievable'; modification would fundamentally alter goods/services or pose direct threat",
+        "Article III standing — no concrete intent to return / no imminent future injury",
+        "No private damages available (injunctive + attorney's fees only; DOJ may seek civil penalties)",
+        "Twombly/Iqbal plausibility"
+      ],
+      "basis": "42 U.S.C. §§ 12181–12189; 42 U.S.C. § 12188 (private remedy); PGA Tour, Inc. v. Martin, 532 U.S. 661 (2001); standing per Spokeo, Inc. v. Robins, 578 U.S. 330 (2016)"
+    },
+    {
+      "n": "Fair Housing Act — Discrimination in the Sale, Rental, or Financing of Housing",
+      "cat": "civil-rights",
+      "sol_years": "2 (private civil action, 42 U.S.C. § 3613(a)(1)(A), measured from occurrence/termination of the discriminatory practice; period a HUD administrative complaint is pending is excluded)",
+      "elements": [
+        "Defendant engaged in a prohibited practice (refusal to sell/rent, discriminatory terms, discriminatory advertising, steering, blockbusting, or discriminatory lending/appraisal)",
+        "On the basis of a protected characteristic (race, color, religion, sex, familial status, national origin, or disability)",
+        "Plaintiff is an aggrieved person (applicant, resident, tester, or fair-housing organization with diversion-of-resources injury)",
+        "Disparate-treatment intent OR disparate impact (robust causal connection to a facially neutral policy under HUD's burden-shifting rule); for disability, failure to make reasonable accommodation/modification or accessible design"
+      ],
+      "defenses": [
+        "Disparate-impact — no 'robust causality' or valid legitimate, nondiscriminatory business justification not served by a less discriminatory alternative (Inclusive Communities)",
+        "Article III standing (esp. organizational/tester standing; Havens Realty)",
+        "2-year SOL (§3613(a)(1)(A)); for the HUD administrative track, the §3610 1-year filing deadline",
+        "Twombly/Iqbal plausibility",
+        "Reasonable-accommodation request not necessary or imposes undue burden / fundamental alteration"
+      ],
+      "basis": "42 U.S.C. §§ 3604, 3605, 3613; Texas Dep't of Housing & Cmty. Affairs v. Inclusive Communities Project, 576 U.S. 519 (2015); Havens Realty Corp. v. Coleman, 455 U.S. 363 (1982)"
+    },
+    {
+      "n": "§10(b) of the Securities Exchange Act of 1934 & SEC Rule 10b-5",
+      "cat": "securities",
+      "sol_years": "2/5 (28 U.S.C. §1658(b): 2 yrs from discovery, 5 yr repose)",
+      "elements": [
+        "A material misrepresentation or omission (or other manipulative/deceptive device) by the defendant",
+        "Made in connection with the purchase or sale of a security",
+        "Scienter — intent to deceive, manipulate, or defraud (or recklessness)",
+        "Reliance (private actions; presumed under fraud-on-the-market for efficient markets per Basic, or under Affiliated Ute for omissions)",
+        "Economic loss",
+        "Loss causation — a causal connection between the misrepresentation and the loss",
+        "Use of an instrumentality of interstate commerce, the mails, or a national securities exchange"
+      ],
+      "defenses": [
+        "Rule 9(b)/PSLRA heightened pleading — failure to plead scienter with particularity giving rise to a strong inference (Tellabs)",
+        "Twombly/Iqbal plausibility",
+        "Loss-causation failure (Dura Pharmaceuticals)",
+        "Lack of materiality / statements were puffery or protected by the PSLRA safe harbor for forward-looking statements",
+        "Statute of limitations / repose under 28 U.S.C. §1658(b) (Merck v. Reynolds; CalPERS v. ANZ repose)"
+      ],
+      "basis": "15 U.S.C. §78j(b); 17 C.F.R. §240.10b-5; SOL 28 U.S.C. §1658(b); Stoneridge Inv. Partners v. Scientific-Atlanta, 552 U.S. 148 (2008); Basic Inc. v. Levinson, 485 U.S. 224 (1988)"
+    },
+    {
+      "n": "§17(a) of the Securities Act of 1933",
+      "cat": "securities",
+      "sol_years": "5 (28 U.S.C. §2462 for civil penalties; equitable disgorgement now within §2462 per Kokesh)",
+      "elements": [
+        "In the offer or sale of any security",
+        "By use of the means or instruments of interstate commerce or the mails",
+        "§17(a)(1): employing a device, scheme, or artifice to defraud (requires scienter)",
+        "§17(a)(2): obtaining money or property by means of an untrue statement of material fact or material omission (negligence suffices)",
+        "§17(a)(3): engaging in a transaction, practice, or course of business that operates as a fraud or deceit (negligence suffices)",
+        "Materiality of the misstatement or omission"
+      ],
+      "defenses": [
+        "No private right of action — enforceable only by the SEC/DOJ (Touche Ross v. Redington; Maldonado v. Dominguez (1st Cir.) [VERIFY])",
+        "§2462/Jarkesy — five-year limitations bar on penalties; jury-trial / Article III challenge to in-house adjudication of fraud penalties (SEC must bring such actions in an Article III court)",
+        "Lack of materiality",
+        "Failure to plead fraud with particularity under Rule 9(b) (for §17(a)(1) scienter prong)",
+        "Transaction not 'in the offer or sale' of a security"
+      ],
+      "basis": "15 U.S.C. §77q(a); Aaron v. SEC, 446 U.S. 680 (1980) (scienter required only for (a)(1); negligence suffices for (a)(2) and (a)(3)); SEC v. Jarkesy, 603 U.S. 109 (2024); penalty SOL 28 U.S.C. §2462; Gabelli v. SEC, 568 U.S. 442 (2013)"
+    },
+    {
+      "n": "§11 of the Securities Act of 1933 (false registration statement)",
+      "cat": "securities",
+      "sol_years": "1/3 (1 yr from discovery, 3 yr repose from when the security was bona fide offered to the public; 15 U.S.C. §77m)",
+      "elements": [
+        "A registration statement contained a material misstatement or omission at the time it became effective",
+        "Plaintiff acquired a security traceable to that registration statement (standing/tracing requirement, Slack Technologies v. Pirani)",
+        "Defendant is a statutorily enumerated party (issuer, signer, director, named expert, or underwriter)",
+        "Damages (computed per §11(e))",
+        "No scienter or reliance required for plaintiff's prima facie case (issuer liability is virtually strict); reliance required only if plaintiff acquired after an earnings statement covering at least 12 months post-effective-date was made generally available (§11(a))"
+      ],
+      "defenses": [
+        "Due diligence / reasonable investigation defense for non-issuer defendants (§11(b)(3); Escott v. BarChris)",
+        "Negative loss causation — defendant proves the depreciation resulted from factors other than the misstatement (§11(e))",
+        "Failure to establish traceability/standing to a defective registration statement (Slack Technologies v. Pirani)",
+        "Statute of limitations / repose under 15 U.S.C. §77m (one-year/three-year)",
+        "Immateriality of the alleged misstatement or omission"
+      ],
+      "basis": "15 U.S.C. §77k; SOL 15 U.S.C. §77m; Herman & MacLean v. Huddleston, 459 U.S. 375 (1983); Slack Technologies, LLC v. Pirani, 598 U.S. 759 (2023); Omnicare, Inc. v. Laborers Dist. Council Constr. Indus. Pension Fund, 575 U.S. 175 (2015)"
+    },
+    {
+      "n": "§12(a)(2) of the Securities Act of 1933 (prospectus/oral-communication misstatement)",
+      "cat": "securities",
+      "sol_years": "1/3 (1 yr from discovery, 3 yr repose from sale; 15 U.S.C. §77m)",
+      "elements": [
+        "Defendant sold or offered a security by means of a prospectus or oral communication (in a public offering, per Gustafson)",
+        "The prospectus or communication contained an untrue statement of material fact or omitted a material fact necessary to make statements not misleading",
+        "Defendant is a statutory seller — one who passed title or solicited the purchase motivated at least in part by a desire to serve his own or the securities owner's financial interest (Pinter v. Dahl)",
+        "Plaintiff did not know of the untruth or omission",
+        "Use of interstate commerce or the mails; remedy is rescission (return of consideration) if plaintiff still owns the security, or damages if it has been sold"
+      ],
+      "defenses": [
+        "Communication was not a 'prospectus' in a public offering — bars private secondary-market/private-placement claims (Gustafson v. Alloyd Co.)",
+        "Defendant is not a statutory 'seller' (Pinter v. Dahl)",
+        "Reasonable care defense — seller did not know and in the exercise of reasonable care could not have known of the untruth (§12(a)(2))",
+        "Negative loss causation (§12(b)) — depreciation not caused by the misstatement",
+        "Statute of limitations / repose under 15 U.S.C. §77m; plaintiff's actual knowledge of the untruth"
+      ],
+      "basis": "15 U.S.C. §77l(a)(2); SOL 15 U.S.C. §77m; Gustafson v. Alloyd Co., 513 U.S. 561 (1995); Pinter v. Dahl, 486 U.S. 622 (1988)"
+    },
+    {
+      "n": "§20(a) of the Securities Exchange Act of 1934 (control-person liability)",
+      "cat": "securities",
+      "sol_years": "2/5 (derivative of the §10(b) predicate; 28 U.S.C. §1658(b))",
+      "elements": [
+        "A primary violation of the Exchange Act (typically §10(b)/Rule 10b-5) by a controlled person",
+        "The defendant exercised actual control or power over the primary violator",
+        "In some circuits, the controlling person was a culpable participant in the underlying violation (culpable-participation circuits, e.g., 2d/3d Cir.) — other circuits require only control plus a good-faith burden-shift to the defendant",
+        "Joint and several liability with the controlled person, subject to the good-faith affirmative defense"
+      ],
+      "defenses": [
+        "No predicate primary violation survives (defeats derivative §20(a) liability)",
+        "Good-faith defense — controlling person acted in good faith and did not directly or indirectly induce the violative acts (statutory affirmative defense)",
+        "Lack of actual control / no culpable participation (circuit-dependent, e.g., Lustgraaf v. Behrens, 619 F.3d 867 (8th Cir. 2010) [VERIFY])",
+        "Twombly/Iqbal plausibility as to control and culpable participation",
+        "PSLRA scienter failure as to the underlying §10(b) claim"
+      ],
+      "basis": "15 U.S.C. §78t(a); derivative SOL via 28 U.S.C. §1658(b); Howard v. Everex Sys., Inc., 228 F.3d 1057 (9th Cir. 2000) [VERIFY]"
+    },
+    {
+      "n": "§14(a) of the Securities Exchange Act of 1934 & SEC Rule 14a-9 (proxy solicitation fraud)",
+      "cat": "securities",
+      "sol_years": "borrowed/equitable — no express limitations period; courts borrow from analogous law or apply laches (some circuits borrow the §18(c) 1-yr/3-yr or §1658(b) 2-yr/5-yr period)",
+      "elements": [
+        "A proxy statement or solicitation contained a material misstatement or omission (materiality per TSC Industries v. Northway — substantial likelihood a reasonable shareholder would consider it important)",
+        "The defendant solicited proxies subject to §14(a) using the mails or instrumentalities of interstate commerce",
+        "The misstatement or omission was made with at least negligence (most circuits; scienter not required)",
+        "The proxy solicitation was an essential link in the accomplishment of the transaction causing injury — transaction causation (Mills v. Electric Auto-Lite)",
+        "Resulting injury / loss causation to shareholders"
+      ],
+      "defenses": [
+        "Lack of materiality under the TSC Industries standard (and Virginia Bankshares for opinion/belief statements)",
+        "No transaction causation — the proxy was not an 'essential link' / votes of the deceived minority were not legally required to effect the transaction (Virginia Bankshares v. Sandberg)",
+        "Loss-causation failure",
+        "Twombly/Iqbal plausibility and Rule 9(b) where fraud is alleged",
+        "No actionable statement — mere statements of reason/opinion/belief not objectively and subjectively false (Virginia Bankshares)"
+      ],
+      "basis": "15 U.S.C. §78n(a); 17 C.F.R. §240.14a-9; J.I. Case Co. v. Borak, 377 U.S. 426 (1964) (implied private right); TSC Industries, Inc. v. Northway, Inc., 426 U.S. 438 (1976); Virginia Bankshares, Inc. v. Sandberg, 501 U.S. 1083 (1991); Mills v. Elec. Auto-Lite Co., 396 U.S. 375 (1970); SOL borrowed from analogous law (no express limitations period)"
+    },
+    {
+      "n": "Mail Fraud",
+      "cat": "fraud-federal",
+      "sol_years": 5,
+      "elements": [
+        "A scheme or artifice to defraud, or to obtain money or property by materially false or fraudulent pretenses, representations, or promises",
+        "Materiality of the falsehood (a natural tendency to influence, or capable of influencing, the decision of the person to whom addressed)",
+        "Specific intent to defraud (knowing and willful participation with intent to deceive or cheat)",
+        "Object of the scheme is money or property in the victim's hands (post-Cleveland; intangible rights insufficient absent honest-services theory under Sec. 1346)",
+        "Use of the United States mails or a private/commercial interstate carrier in furtherance of, or incident to, the scheme (the mailing need not contain the false statement and may be routine)"
+      ],
+      "defenses": [
+        "No specific intent to defraud / good-faith belief in truth of representations",
+        "Immateriality of the misrepresentation (Neder)",
+        "Scheme did not target money or property — only intangible interest (Cleveland v. United States; Kelly v. United States)",
+        "Mailing not in furtherance of the scheme (causation under Schmuck) or scheme had reached fruition before the mailing (United States v. Maze)",
+        "Sec. 3282 5-year statute of limitations; Twombly/Iqbal plausibility (civil RICO predicate) and Rule 9(b) particularity",
+        "Statute reaches only schemes to defraud — mere breach of contract or non-fraudulent failure to perform is insufficient"
+      ],
+      "basis": "18 U.S.C. Sec. 1341 (limitations: 18 U.S.C. Sec. 3282); Neder v. United States, 527 U.S. 1 (1999); Schmuck v. United States, 489 U.S. 705 (1989); Cleveland v. United States, 531 U.S. 12 (2000); Kelly v. United States, 590 U.S. 391 (2020); United States v. Maze, 414 U.S. 395 (1974)"
+    },
+    {
+      "n": "Wire Fraud",
+      "cat": "fraud-federal",
+      "sol_years": 5,
+      "elements": [
+        "A scheme or artifice to defraud, or to obtain money or property by materially false or fraudulent pretenses, representations, or promises",
+        "Materiality of the false statement (Neder)",
+        "Specific intent to defraud (willful participation with knowledge and intent to deceive)",
+        "Object of the scheme is the victim's money or property (Ciminelli — no 'right to control' theory)",
+        "Transmission, or causing transmission, by means of wire, radio, or television communication in interstate or foreign commerce in furtherance of the scheme"
+      ],
+      "defenses": [
+        "Absence of specific intent / good-faith reliance on counsel or honest belief",
+        "Immateriality (Neder)",
+        "No money-or-property object — 'right to control' / intangible economic-information theory rejected (Ciminelli v. United States, 598 U.S. 306 (2023))",
+        "Wire transmission not interstate/foreign or not in furtherance of the scheme",
+        "Sec. 3282 5-year limitations (10 years if the offense affects a financial institution under 18 U.S.C. Sec. 3293); Rule 9(b)/PSLRA scienter where pleaded with securities claims",
+        "Property interest must be traditional money or property; deprivation of intangible interests (e.g., regulatory approvals) insufficient (Kelly v. United States; Cleveland v. United States)"
+      ],
+      "basis": "18 U.S.C. Sec. 1343 (limitations: 18 U.S.C. Sec. 3282; Sec. 3293 where a financial institution is affected); Neder v. United States, 527 U.S. 1 (1999); Ciminelli v. United States, 598 U.S. 306 (2023); Carpenter v. United States, 484 U.S. 19 (1987); Kelly v. United States, 590 U.S. 391 (2020)"
+    },
+    {
+      "n": "Bank Fraud",
+      "cat": "fraud-federal",
+      "sol_years": 10,
+      "elements": [
+        "A scheme or artifice (1) to defraud a financial institution, or (2) to obtain moneys, funds, credits, assets, securities, or other property owned by or under the custody/control of a financial institution by materially false or fraudulent pretenses, representations, or promises",
+        "The institution is a 'financial institution' federally insured (FDIC/NCUA) or otherwise within 18 U.S.C. Sec. 20",
+        "Knowing execution or attempted execution of the scheme",
+        "Intent to defraud — under prong (2), Loughrin holds the Government need not prove intent to defraud the bank itself, only intent to obtain bank-custodied property by means of false or fraudulent representations; under prong (1), intent to victimize the bank is required",
+        "Materiality of the false pretense (Neder applies)"
+      ],
+      "defenses": [
+        "No knowing execution / good-faith intent absent willful deception",
+        "Institution not a covered 'financial institution' under 18 U.S.C. Sec. 20",
+        "Property not owned by or under custody/control of the bank (prong 2) and bank not the target (prong 1) (Loughrin v. United States, 573 U.S. 351 (2014))",
+        "Immateriality of the representation (Neder)",
+        "Sec. 3293 extended 10-year statute of limitations defense (timing/accrual); Twombly/Iqbal and Rule 9(b) in civil contexts",
+        "Intent-to-deceive but not intent-to-cause-financial-loss is sufficient (Shaw); conversely, no scheme exposing the bank to risk of loss or reaching bank-controlled property defeats the charge"
+      ],
+      "basis": "18 U.S.C. Sec. 1344 (limitations: 18 U.S.C. Sec. 3293); Loughrin v. United States, 573 U.S. 351 (2014); Shaw v. United States, 580 U.S. 63 (2016); Neder v. United States, 527 U.S. 1 (1999)"
+    },
+    {
+      "n": "Securities Fraud (18 U.S.C. Sec. 1348)",
+      "cat": "fraud-federal",
+      "sol_years": 6,
+      "elements": [
+        "A scheme or artifice (1) to defraud any person in connection with a covered security (any security of an issuer with a class registered under Sec. 12 of the Securities Exchange Act of 1934 or required to file reports under Sec. 15(d)), or (2) to obtain, by materially false or fraudulent pretenses, money or property in connection with the purchase or sale of such a security",
+        "Knowing and willful participation in the scheme",
+        "Specific intent to defraud",
+        "Materiality (a natural tendency to influence a reasonable investor)",
+        "Nexus 'in connection with' the purchase or sale of a covered security; execution or attempted execution of the scheme (no reliance, no purchase/sale by the defendant, and no use of an instrumentality of interstate commerce is required — broader than Rule 10b-5)"
+      ],
+      "defenses": [
+        "No specific intent / good-faith belief in the accuracy of statements",
+        "Immateriality under the reasonable-investor standard (Basic Inc. v. Levinson; Matrixx Initiatives v. Siracusano)",
+        "Security not 'covered' / no requisite issuer-reporting nexus (statutory scope)",
+        "No fraudulent scheme — mere puffery, opinion, or forward-looking statement (Omnicare; PSLRA safe harbor in parallel civil claims)",
+        "6-year statute of limitations under 18 U.S.C. Sec. 3301; Rule 9(b)/PSLRA heightened pleading and SEC v. Jarkesy / 28 U.S.C. Sec. 2462 5-year limit in parallel civil/administrative enforcement"
+      ],
+      "basis": "18 U.S.C. Sec. 1348 (limitations: 18 U.S.C. Sec. 3301); United States v. Mahaffy, 693 F.3d 113 (2d Cir. 2012); United States v. Motz, 652 F. Supp. 2d 284 (E.D.N.Y. 2009) [VERIFY]; Matrixx Initiatives, Inc. v. Siracusano, 563 U.S. 27 (2011); Basic Inc. v. Levinson, 485 U.S. 224 (1988)"
+    },
+    {
+      "n": "Honest-Services Fraud (18 U.S.C. Sec. 1346)",
+      "cat": "fraud-federal",
+      "sol_years": 5,
+      "elements": [
+        "A scheme or artifice to defraud executed via the mails (Sec. 1341) or wires (Sec. 1343) — Sec. 1346 is not a stand-alone offense but defines 'scheme or artifice to defraud' to include a scheme to deprive another of the intangible right of honest services",
+        "The deprivation of honest services consists of bribery or a kickback (Skilling narrowing — undisclosed self-dealing/conflict-of-interest theories are unconstitutionally vague and excluded)",
+        "A fiduciary or trust relationship (e.g., employee-employer or public official-public) owing a duty of honest services to the victim",
+        "Specific intent to defraud / corrupt intent to participate in the bribe-or-kickback scheme",
+        "Materiality and, in the public-official context, a quid pro quo involving an 'official act' (McDonnell narrows the meaning of 'official act')"
+      ],
+      "defenses": [
+        "Conduct outside the bribe-or-kickback core — void-for-vagueness as applied (Skilling v. United States, 561 U.S. 358 (2010))",
+        "No 'official act' / no quid pro quo agreement (McDonnell v. United States, 579 U.S. 550 (2016))",
+        "No fiduciary duty owed, or duty not breached for private gain",
+        "Absence of corrupt specific intent / good faith; by analogy to Snyder v. United States, 603 U.S. 1 (2024) (a 18 U.S.C. Sec. 666 case), an after-the-fact gratuity is not a bribe — though Snyder construes Sec. 666, not Sec. 1346, so the analogy is contestable",
+        "Sec. 3282 5-year statute of limitations; Twombly/Iqbal and Rule 9(b) where pleaded as a civil RICO predicate"
+      ],
+      "basis": "18 U.S.C. Sec. 1346 (charged in conjunction with Sec. 1341/Sec. 1343; limitations: 18 U.S.C. Sec. 3282); Skilling v. United States, 561 U.S. 358 (2010); McDonnell v. United States, 579 U.S. 550 (2016); Snyder v. United States, 603 U.S. 1 (2024) (Sec. 666 gratuity case, cited by analogy)"
+    },
+    {
+      "n": "Civil RICO — 18 U.S.C. §1962(c) (Conduct/Participation in Affairs of Enterprise Through Pattern of Racketeering)",
+      "cat": "rico",
+      "sol_years": 4,
+      "elements": [
+        "Existence of an 'enterprise' affecting interstate or foreign commerce (individual, partnership, corporation, association, or union-in-fact; the enterprise must be distinct from the defendant 'person')",
+        "Defendant was 'employed by or associated with' the enterprise",
+        "Defendant 'conducted or participated, directly or indirectly, in the conduct of' the enterprise's affairs — i.e., had some part in directing the affairs (the Reves 'operation or management' test)",
+        "Through a 'pattern of racketeering activity' (or collection of unlawful debt): at least two predicate acts, the last of which occurred within 10 years after a prior act (§1961(5)), exhibiting both relatedness and continuity (closed- or open-ended) per H.J. Inc.",
+        "Each predicate act is an indictable offense listed in §1961(1) (e.g., mail/wire fraud, extortion, bribery, money laundering)",
+        "Plaintiff was 'injured in his business or property' (§1964(c)) — concrete financial loss, not personal injury",
+        "The RICO violation was the proximate cause of plaintiff's injury (Holmes direct-relation requirement; Anza)"
+      ],
+      "defenses": [
+        "RICO enterprise/pattern (no continuity; single scheme; enterprise not distinct from person under Cedric Kushner)",
+        "Twombly/Iqbal plausibility",
+        "Rule 9(b)/PSLRA scienter (fraud predicates must be pleaded with particularity)",
+        "scienter/materiality/reliance/loss-causation (no proximate cause; injury too remote under Holmes/Anza/Hemi)",
+        "Civil RICO 4-year SOL (judge-made limitations period running from injury-discovery under Rotella/Klehr; Agency Holding/Malley-Duff)",
+        "Article III standing"
+      ],
+      "basis": "18 U.S.C. §1962(c), §1961, §1964(c); Reves v. Ernst & Young, 507 U.S. 170 (1993); H.J. Inc. v. Nw. Bell, 492 U.S. 229 (1989); Cedric Kushner Promotions v. King, 533 U.S. 158 (2001); Holmes v. SIPC, 503 U.S. 258 (1992); Agency Holding Corp. v. Malley-Duff, 483 U.S. 143 (1987) (4-yr SOL)"
+    },
+    {
+      "n": "Civil RICO — 18 U.S.C. §1962(a) (Investment of Racketeering Income in an Enterprise)",
+      "cat": "rico",
+      "sol_years": 4,
+      "elements": [
+        "Defendant received income 'derived, directly or indirectly, from a pattern of racketeering activity' or collection of unlawful debt",
+        "Defendant 'used or invested' any part of that income (or its proceeds) in the acquisition, establishment, or operation of an enterprise",
+        "The enterprise is engaged in, or its activities affect, interstate or foreign commerce",
+        "A 'pattern of racketeering activity' (two+ related predicate acts with continuity) underlies the income",
+        "Plaintiff was injured in business or property (§1964(c)) — most circuits require an 'investment injury' distinct from injury caused by the predicate acts themselves",
+        "Proximate causation between the use/investment of racketeering income and plaintiff's injury"
+      ],
+      "defenses": [
+        "scienter/materiality/reliance/loss-causation (no separate 'investment injury'; injury flows from predicate acts, not the investment)",
+        "RICO enterprise/pattern (no continuity/relatedness)",
+        "Twombly/Iqbal plausibility",
+        "Rule 9(b)/PSLRA scienter (fraud predicates)",
+        "Civil RICO 4-year SOL (Agency Holding/Malley-Duff; Rotella/Klehr accrual)",
+        "Article III standing"
+      ],
+      "basis": "18 U.S.C. §1962(a), §1964(c); Agency Holding Corp. v. Malley-Duff, 483 U.S. 143 (1987); H.J. Inc. v. Nw. Bell, 492 U.S. 229 (1989); Holmes v. SIPC, 503 U.S. 258 (1992); investment-injury rule e.g. Ouaknine v. MacFarlane, 897 F.2d 75 (2d Cir. 1990)"
+    },
+    {
+      "n": "Civil RICO — 18 U.S.C. §1962(b) (Acquisition or Maintenance of Interest in or Control of an Enterprise)",
+      "cat": "rico",
+      "sol_years": 4,
+      "elements": [
+        "Defendant acquired or maintained, 'directly or indirectly, any interest in or control of' an enterprise",
+        "Through a 'pattern of racketeering activity' or collection of unlawful debt (two+ related predicate acts with continuity)",
+        "The enterprise is engaged in or affects interstate or foreign commerce",
+        "Plaintiff was injured in business or property (§1964(c)) — most circuits require an 'acquisition/control injury' caused by the defendant's acquisition or maintenance of an interest in the enterprise, distinct from injury caused by the predicate acts",
+        "Proximate causation between the acquisition/maintenance of the interest or control and plaintiff's injury"
+      ],
+      "defenses": [
+        "scienter/materiality/reliance/loss-causation (no distinct 'acquisition/control injury'; lack of proximate cause)",
+        "RICO enterprise/pattern (no pattern; no acquisition or control of the enterprise)",
+        "Twombly/Iqbal plausibility",
+        "Rule 9(b)/PSLRA scienter (fraud predicates)",
+        "Civil RICO 4-year SOL (Agency Holding/Malley-Duff; Rotella/Klehr accrual)"
+      ],
+      "basis": "18 U.S.C. §1962(b), §1964(c); Agency Holding Corp. v. Malley-Duff, 483 U.S. 143 (1987); H.J. Inc. v. Nw. Bell, 492 U.S. 229 (1989); Holmes v. SIPC, 503 U.S. 258 (1992); acquisition-injury rule e.g. Compagnie De Reassurance v. New England Reins., 57 F.3d 56 (1st Cir. 1995) [VERIFY]"
+    },
+    {
+      "n": "Civil RICO Conspiracy — 18 U.S.C. §1962(d)",
+      "cat": "rico",
+      "sol_years": 4,
+      "elements": [
+        "Existence of an agreement to violate a substantive provision of §1962(a), (b), or (c)",
+        "Defendant knowingly agreed to the overall objective of the conspiracy, or agreed to commit (or facilitate) two predicate acts — i.e., adopted the goal of furthering or facilitating the endeavor (Salinas: no requirement that the defendant personally commit or agree to personally commit two predicate acts)",
+        "Underlying conspiracy contemplated conduct that, if carried out, would satisfy the elements of a substantive §1962 violation",
+        "Plaintiff was injured in business or property 'by reason of' the conspiracy — the injury must flow from an act that is itself an act of racketeering or otherwise wrongful under RICO (Beck v. Prupis: injury from an overt act that is not a predicate act is not actionable)",
+        "Proximate causation (Holmes direct-relation requirement)"
+      ],
+      "defenses": [
+        "scienter/materiality/reliance/loss-causation (injury not caused by a predicate/racketeering act under Beck v. Prupis; no proximate cause)",
+        "RICO enterprise/pattern (no viable underlying substantive §1962 violation; if substantive claim fails, conspiracy claim fails)",
+        "Twombly/Iqbal plausibility (conclusory allegation of agreement insufficient)",
+        "Rule 9(b)/PSLRA scienter (where fraud predicates underlie the conspiracy)",
+        "Civil RICO 4-year SOL (Agency Holding/Malley-Duff; Rotella/Klehr accrual)"
+      ],
+      "basis": "18 U.S.C. §1962(d), §1964(c); Salinas v. United States, 522 U.S. 52 (1997); Beck v. Prupis, 529 U.S. 494 (2000); Agency Holding Corp. v. Malley-Duff, 483 U.S. 143 (1987)"
+    },
+    {
+      "n": "Criminal RICO — 18 U.S.C. §1962(c) prosecuted under 18 U.S.C. §1963 (Conduct of Enterprise Affairs Through a Pattern of Racketeering)",
+      "cat": "rico",
+      "sol_years": 5,
+      "elements": [
+        "Existence of an 'enterprise' (legal entity or association-in-fact with a purpose, relationships, and longevity sufficient to pursue the purpose — Boyle) engaged in or affecting interstate or foreign commerce",
+        "Defendant was employed by or associated with the enterprise",
+        "Defendant knowingly conducted or participated in the conduct of the enterprise's affairs (Reves operation-or-management test)",
+        "Through a 'pattern of racketeering activity' (or collection of unlawful debt): the Government must prove at least two predicate racketeering acts, the last within 10 years of a prior act (§1961(5)), that are related and amount to or threaten continued criminal activity (H.J. Inc.)",
+        "Each predicate act proved beyond a reasonable doubt; jury unanimity as to which predicate acts were committed (extending the Richardson v. United States, 526 U.S. 813 (1999) CCE-unanimity rationale to RICO predicates) [VERIFY]",
+        "Government carries the burden beyond a reasonable doubt as to every element"
+      ],
+      "defenses": [
+        "RICO enterprise/pattern (no association-in-fact enterprise under Boyle; no continuity; enterprise-defendant distinctness)",
+        "§3282 SOL (5-year general criminal limitations period)",
+        "scienter/materiality (Government failed to prove knowing participation; insufficiency of the evidence on predicate acts under Jackson v. Virginia)",
+        "Indictment sufficiency under FRCP 7(c) / United States v. Resendiz-Ponce",
+        "lack of subject-matter jurisdiction (no effect on interstate commerce)"
+      ],
+      "basis": "18 U.S.C. §1962(c) (offense) & §1963 (penalties/forfeiture); 18 U.S.C. §3282 (5-yr SOL); United States v. Turkette, 452 U.S. 576 (1981); Boyle v. United States, 556 U.S. 938 (2009); Reves v. Ernst & Young, 507 U.S. 170 (1993); H.J. Inc. v. Nw. Bell, 492 U.S. 229 (1989)"
+    },
+    {
+      "n": "Criminal RICO Conspiracy — 18 U.S.C. §1962(d) prosecuted under 18 U.S.C. §1963",
+      "cat": "rico",
+      "sol_years": 5,
+      "elements": [
+        "Existence of an enterprise affecting interstate or foreign commerce (Boyle / Turkette)",
+        "An agreement between two or more persons to conduct or participate in the affairs of the enterprise through a pattern of racketeering activity",
+        "Defendant knowingly and intentionally joined the agreement, adopting the goal of furthering or facilitating the criminal endeavor — the defendant need not personally commit or agree to personally commit two predicate acts (Salinas)",
+        "Defendant agreed that some member of the conspiracy (not necessarily the defendant) would commit at least two predicate acts",
+        "No overt act is required for a §1962(d) RICO conspiracy (Salinas; unlike a §371 conspiracy)",
+        "Government must prove every element beyond a reasonable doubt"
+      ],
+      "defenses": [
+        "RICO enterprise/pattern (no enterprise; no agreement to commit the requisite pattern; mere association insufficient)",
+        "§3282 SOL (5-year general criminal limitations period; conspiracy continues until objectives accomplished or abandoned)",
+        "scienter/materiality (Government failed to prove the defendant knowingly joined with intent to further the endeavor; insufficiency of evidence under Jackson v. Virginia)",
+        "lack of subject-matter jurisdiction (no interstate-commerce nexus)",
+        "Indictment sufficiency under FRCP 7(c)"
+      ],
+      "basis": "18 U.S.C. §1962(d) & §1963; 18 U.S.C. §3282 (5-yr SOL); Salinas v. United States, 522 U.S. 52 (1997); United States v. Turkette, 452 U.S. 576 (1981); Boyle v. United States, 556 U.S. 938 (2009)"
+    },
+    {
+      "n": "Sherman Act §1 — Restraint of Trade (per se & rule of reason)",
+      "cat": "antitrust",
+      "sol_years": 4,
+      "elements": [
+        "(1) A contract, combination, or conspiracy — i.e., concerted action between two or more separate economic actors (no unilateral conduct; Copperweld bars intra-enterprise conspiracy between a parent and its wholly owned subsidiary)",
+        "(2) That unreasonably restrains trade — either per se illegal (horizontal price-fixing, bid-rigging, horizontal market/customer allocation, certain group boycotts) or unreasonable under the rule of reason (anticompetitive effect in a relevant product and geographic market not outweighed by procompetitive justifications); note vertical restraints, including vertical price-fixing/RPM, are judged under the rule of reason after Leegin",
+        "(3) The restraint affects interstate (or foreign) commerce",
+        "(4) Antitrust injury — injury of the type the antitrust laws were intended to prevent, flowing from the unlawful conduct (private plaintiffs; Brunswick); plus business-or-property injury under §4 of the Clayton Act (15 U.S.C. §15)"
+      ],
+      "defenses": [
+        "Twombly/Iqbal plausibility — a §1 conspiracy claim requires factual allegations of an agreement plausibly suggesting concerted action, not mere parallel conduct (Bell Atlantic v. Twombly is the governing standard)",
+        "4-year statute of limitations under 15 U.S.C. §15b (continuing-violation restarts the clock for each overt act causing new injury; fraudulent-concealment tolling contested)",
+        "Article III / antitrust standing — no antitrust injury, indirect purchaser bar (Illinois Brick), or remoteness (Associated General Contractors)",
+        "Rule of reason / procompetitive justification — net procompetitive effect, no market power in a properly defined relevant market",
+        "Noerr-Pennington (petitioning immunity), state-action immunity (Parker), or implied/statutory exemption"
+      ],
+      "basis": "15 U.S.C. §1; Standard Oil Co. of New Jersey v. United States, 221 U.S. 1 (1911) (rule of reason); per se: United States v. Socony-Vacuum Oil Co., 310 U.S. 150 (1940); pleading: Bell Atlantic Corp. v. Twombly, 550 U.S. 544 (2007); concerted-action: Copperweld Corp. v. Independence Tube Corp., 467 U.S. 752 (1984); vertical RPM rule of reason: Leegin Creative Leather Products, Inc. v. PSKS, Inc., 551 U.S. 877 (2007)"
+    },
+    {
+      "n": "Sherman Act §2 — Monopolization / Attempted Monopolization",
+      "cat": "antitrust",
+      "sol_years": 4,
+      "elements": [
+        "Monopolization: (1) possession of monopoly power in a properly defined relevant product and geographic market; and (2) willful acquisition or maintenance of that power by exclusionary or anticompetitive conduct, as distinguished from growth or development as a consequence of a superior product, business acumen, or historic accident (Grinnell)",
+        "Attempted monopolization: (1) predatory or anticompetitive conduct; (2) specific intent to monopolize; and (3) a dangerous probability of achieving monopoly power (Spectrum Sports)",
+        "(For private suits) antitrust injury and business-or-property damage causally linked to the exclusionary conduct (Brunswick; §4 Clayton Act, 15 U.S.C. §15)",
+        "Effect on interstate or foreign commerce"
+      ],
+      "defenses": [
+        "Twombly/Iqbal plausibility — failure to plead a plausible relevant market or exclusionary conduct",
+        "No monopoly power / mis-defined relevant market — absence of durable market power or barriers to entry",
+        "Conduct is competition on the merits — legitimate business justification; general right to unilaterally refuse to deal (Trinko; Colgate); no general duty to aid rivals (narrow Aspen Skiing exception)",
+        "4-year statute of limitations under 15 U.S.C. §15b",
+        "Article III / antitrust standing and antitrust injury (Brunswick; indirect-purchaser bar under Illinois Brick); Noerr-Pennington or state-action immunity"
+      ],
+      "basis": "15 U.S.C. §2; United States v. Grinnell Corp., 384 U.S. 563 (1966) (monopolization two-part test); attempt: Spectrum Sports, Inc. v. McQuillan, 506 U.S. 447 (1993); refusal-to-deal limits: Verizon Communications Inc. v. Law Offices of Curtis V. Trinko, LLP, 540 U.S. 398 (2004); refusal-to-deal exception: Aspen Skiing Co. v. Aspen Highlands Skiing Corp., 472 U.S. 585 (1985)"
+    },
+    {
+      "n": "Clayton Act §7 — Anticompetitive Merger or Acquisition",
+      "cat": "antitrust",
+      "sol_years": 4,
+      "elements": [
+        "(1) An acquisition of the stock or assets of another person engaged in commerce (or in activity affecting commerce)",
+        "(2) The effect of the acquisition may be substantially to lessen competition or tend to create a monopoly in any line of commerce in any section of the country",
+        "(3) Proof of a relevant product and geographic market and an undue increase in concentration creating a presumption of anticompetitive effect (Philadelphia National Bank), or other evidence of likely competitive harm (unilateral effects, coordinated effects, vertical foreclosure)",
+        "(4) Incipiency standard — the statute reaches probable future harm; the government/plaintiff need only show a reasonable probability, not certainty, of substantial lessening of competition"
+      ],
+      "defenses": [
+        "Rebuttal of the structural presumption — ease of entry, expansion by rivals, or evidence the market-share statistics overstate the acquisition's probable competitive effect (United States v. Baker Hughes)",
+        "Failing-firm defense — the acquired firm faces a grave probability of imminent business failure, with no reasonable prospect of reorganization, and no other less-anticompetitive purchaser is available (International Shoe; Citizen Publishing)",
+        "Procompetitive efficiencies / merger-specific benefits that offset the likely harm",
+        "Improper relevant-market definition — plaintiff failed to prove the line of commerce or section of the country",
+        "(Private suits) Article III / antitrust standing and threatened antitrust injury for injunctive relief under §16 of the Clayton Act (15 U.S.C. §26); 4-year SOL (15 U.S.C. §15b) for §4 damages (no fixed limitations period bars government enforcement)"
+      ],
+      "basis": "15 U.S.C. §18; United States v. Philadelphia National Bank, 374 U.S. 321 (1963) (structural presumption); rebuttal framework: United States v. Baker Hughes Inc., 908 F.2d 981 (D.C. Cir. 1990); incipiency / line of commerce / section of the country: Brown Shoe Co. v. United States, 370 U.S. 294 (1962); failing-firm: Citizen Publishing Co. v. United States, 394 U.S. 131 (1969)"
+    },
+    {
+      "n": "Robinson-Patman Act — Price Discrimination (Clayton Act §2(a))",
+      "cat": "antitrust",
+      "sol_years": 4,
+      "elements": [
+        "(1) Two or more completed, contemporaneous sales by the same seller to two or more different purchasers",
+        "(2) Of commodities (tangible goods, not services or intangibles) of like grade and quality",
+        "(3) At different prices",
+        "(4) Where at least one of the two sales was made in interstate commerce (the in-commerce/'jurisdictional' requirement; both transactions need not cross state lines but at least one must)",
+        "(5) Resulting in a reasonable probability of competitive injury — primary-line (harm to the seller's own competitors; predatory-pricing showing of below-cost price plus a dangerous probability of recoupment per Brooke Group) or secondary-line (harm to competition between the favored and disfavored purchasers; a price difference sustained over time between competing buyers supports an inference of injury under Morton Salt)",
+        "(For damages) actual antitrust injury and quantifiable loss, not merely the statutory Morton Salt inference of injury (Volvo Trucks; J. Truett Payne)"
+      ],
+      "defenses": [
+        "Cost-justification defense — the price differential makes only due allowance for differences in the cost of manufacture, sale, or delivery resulting from differing methods or quantities (§2(a) proviso)",
+        "Meeting-competition defense — the lower price was made in good faith to meet an equally low price of a competitor (§2(b); Standard Oil Co. v. FTC)",
+        "No competitive injury / no antitrust injury — disfavored and favored buyers do not actually compete at the same functional level, or recoupment is not shown in primary-line cases (Brooke Group; Volvo)",
+        "Goods are not of 'like grade and quality,' the sales are not contemporaneous, or the item is a service or intangible rather than a commodity (statute does not reach services)",
+        "4-year statute of limitations under 15 U.S.C. §15b; Article III / antitrust standing"
+      ],
+      "basis": "15 U.S.C. §13(a)–(b); FTC v. Morton Salt Co., 334 U.S. 37 (1948) (secondary-line injury inference); primary-line/predatory: Brooke Group Ltd. v. Brown & Williamson Tobacco Corp., 509 U.S. 209 (1993); injury/damages requirement: Volvo Trucks North America, Inc. v. Reeder-Simco GMC, Inc., 546 U.S. 164 (2006); J. Truett Payne Co. v. Chrysler Motors Corp., 451 U.S. 557 (1981)"
+    },
+    {
+      "n": "Title VII – Disparate Treatment Discrimination",
+      "cat": "employment",
+      "sol_years": "0.49/0.82 (180/300 days to EEOC, then 90 days to sue)",
+      "elements": [
+        "Plaintiff is a member of a protected class (race, color, religion, sex, or national origin)",
+        "Plaintiff suffered an adverse employment action (e.g., termination, demotion, failure to hire/promote; note Muldrow v. City of St. Louis (2024) lowered the harm threshold — plaintiff need only show some disadvantageous change in an identifiable term or condition, not 'significant' or 'material' harm)",
+        "Plaintiff was qualified for the position or performing satisfactorily",
+        "Circumstances give rise to an inference of intentional discrimination because of the protected characteristic (e.g., similarly situated comparators outside the class treated more favorably, or position filled by/remained open to someone outside the class)",
+        "Causation: the protected trait was a motivating factor (mixed-motive, §2000e-2(m)) OR, under McDonnell Douglas, the but-for/pretext theory, in the challenged decision",
+        "Statutory predicate: covered employer (15+ employees) and timely-exhausted EEOC charge"
+      ],
+      "defenses": [
+        "Failure to exhaust administrative remedies / untimely EEOC charge (Title VII charge-filing and 90-day suit deadlines) — note exhaustion is a non-jurisdictional claim-processing rule subject to waiver/forfeiture (Fort Bend County v. Davis, 2019)",
+        "Legitimate, non-discriminatory reason for the action with no pretext (McDonnell Douglas burden-shifting)",
+        "Same-actor inference / no inference of discrimination; comparators not similarly situated",
+        "Twombly/Iqbal plausibility (failure to plead facts supporting intentional discrimination)",
+        "Lack of Article III standing"
+      ],
+      "basis": "42 U.S.C. §2000e-2(a); McDonnell Douglas Corp. v. Green, 411 U.S. 792 (1973); Texas Dep't of Cmty. Affairs v. Burdine, 450 U.S. 248 (1981); St. Mary's Honor Ctr. v. Hicks, 509 U.S. 502 (1993); Muldrow v. City of St. Louis, 601 U.S. 346 (2024); Fort Bend County v. Davis, 587 U.S. 541 (2019)"
+    },
+    {
+      "n": "Title VII – Retaliation",
+      "cat": "employment",
+      "sol_years": "0.49/0.82 (180/300 days to EEOC, then 90 days to sue)",
+      "elements": [
+        "Plaintiff engaged in protected activity (opposition to an unlawful employment practice, or participation in a Title VII charge, investigation, or proceeding)",
+        "Employer took a materially adverse action — one that would dissuade a reasonable worker from making or supporting a charge (broader than the ultimate-employment-action standard; Burlington N. v. White)",
+        "Causal connection between the protected activity and the adverse action",
+        "But-for causation: the protected activity was the but-for cause of the adverse action (not merely a motivating factor)",
+        "Statutory predicate: covered employer and timely-exhausted EEOC charge"
+      ],
+      "defenses": [
+        "But-for causation not met / intervening legitimate reason (University of Texas SW Med. Ctr. v. Nassar standard)",
+        "No protected activity or employer lacked knowledge of it; temporal gap too attenuated to infer causation",
+        "Legitimate, non-retaliatory reason with no pretext (McDonnell Douglas)",
+        "Failure to exhaust / untimely EEOC charge (non-jurisdictional, waivable — Fort Bend County v. Davis)",
+        "Twombly/Iqbal plausibility; lack of Article III standing"
+      ],
+      "basis": "42 U.S.C. §2000e-3(a); Univ. of Tex. SW Med. Ctr. v. Nassar, 570 U.S. 338 (2013); Burlington N. & Santa Fe Ry. v. White, 548 U.S. 53 (2006)"
+    },
+    {
+      "n": "Title VII – Hostile Work Environment",
+      "cat": "employment",
+      "sol_years": "0.49/0.82 (180/300 days to EEOC, then 90 days to sue; continuing-violation rule applies to hostile-environment claims)",
+      "elements": [
+        "Plaintiff belongs to a protected class and was subjected to unwelcome harassment",
+        "The harassment was based on a protected characteristic (race, sex, religion, national origin, color)",
+        "The harassment was sufficiently severe or pervasive to alter the conditions of employment and create an abusive working environment, judged both subjectively and objectively",
+        "A basis for employer liability: for supervisor harassment, vicarious liability subject to the Faragher/Ellerth affirmative defense (absent a tangible employment action); for co-worker harassment, employer negligence (knew or should have known and failed to take prompt remedial action); 'supervisor' limited to those empowered to take tangible employment actions (Vance v. Ball State Univ.)",
+        "At least one contributing act fell within the charge-filing period (continuing violation; Nat'l R.R. Passenger Corp. v. Morgan)"
+      ],
+      "defenses": [
+        "Faragher/Ellerth affirmative defense (employer exercised reasonable care to prevent/correct harassment and plaintiff unreasonably failed to use available remedies) — available only absent a tangible employment action",
+        "Conduct not severe or pervasive; isolated or non-actionable 'ordinary tribulations of the workplace'",
+        "Harassment not based on a protected characteristic",
+        "Prompt remedial action / no employer notice (co-worker harassment); alleged harasser not a 'supervisor' under Vance",
+        "Failure to exhaust / untimely charge; Twombly/Iqbal plausibility"
+      ],
+      "basis": "42 U.S.C. §2000e-2(a); Meritor Sav. Bank v. Vinson, 477 U.S. 57 (1986); Harris v. Forklift Sys., Inc., 510 U.S. 17 (1993); Faragher v. City of Boca Raton, 524 U.S. 775 (1998); Burlington Indus. v. Ellerth, 524 U.S. 742 (1998); Nat'l R.R. Passenger Corp. v. Morgan, 536 U.S. 101 (2002); Vance v. Ball State Univ., 570 U.S. 421 (2013)"
+    },
+    {
+      "n": "Age Discrimination in Employment Act (ADEA)",
+      "cat": "employment",
+      "sol_years": "0.49/0.82 (180/300 days to EEOC, then 90 days to sue)",
+      "elements": [
+        "Plaintiff was at least 40 years old (protected age group)",
+        "Plaintiff suffered an adverse employment action (discharge, demotion, failure to hire/promote)",
+        "Plaintiff was qualified for the position / meeting legitimate expectations",
+        "Plaintiff was treated less favorably than substantially younger, similarly situated employees, or replaced by a substantially younger worker, giving rise to an inference of age discrimination (replacement need not be outside the protected class — O'Connor v. Consol. Coin)",
+        "But-for causation: age was the but-for cause of the adverse action (Gross v. FBL)",
+        "Statutory predicate: covered employer (20+ employees) and timely-exhausted EEOC charge"
+      ],
+      "defenses": [
+        "But-for causation not satisfied (Gross v. FBL — no mixed-motive liability under ADEA)",
+        "Reasonable factors other than age (RFOA) / bona fide occupational qualification; legitimate non-discriminatory reason with no pretext (McDonnell Douglas framework applied to ADEA)",
+        "Bona fide seniority system or bona fide employee benefit plan (29 U.S.C. §623(f))",
+        "Failure to exhaust / untimely EEOC charge",
+        "Twombly/Iqbal plausibility; lack of Article III standing"
+      ],
+      "basis": "29 U.S.C. §§621–634 (esp. §623(a), §631(a)); Gross v. FBL Fin. Servs., Inc., 557 U.S. 167 (2009); O'Connor v. Consol. Coin Caterers Corp., 517 U.S. 308 (1996)"
+    },
+    {
+      "n": "Americans with Disabilities Act – Title I (Disability Discrimination & Failure to Accommodate)",
+      "cat": "employment",
+      "sol_years": "0.49/0.82 (180/300 days to EEOC, then 90 days to sue)",
+      "elements": [
+        "Plaintiff is an individual with a disability — a physical or mental impairment that substantially limits a major life activity, a record of such impairment, or being regarded as having one (post-ADAAA, construed broadly; mitigating measures disregarded except ordinary eyeglasses)",
+        "Plaintiff is 'qualified': able to perform the essential functions of the job with or without reasonable accommodation",
+        "Employer knew of the disability and the need for accommodation",
+        "Employer discriminated by taking an adverse action because of the disability, or failed to provide a reasonable accommodation / refused to engage in the interactive process",
+        "Causation linking the disability to the adverse action or the failure to accommodate (note: 'regarded as' claims do not entitle plaintiff to a reasonable accommodation, 42 U.S.C. §12201(h))",
+        "Statutory predicate: covered employer (15+ employees) and timely-exhausted EEOC charge"
+      ],
+      "defenses": [
+        "Undue hardship — significant difficulty or expense (42 U.S.C. §12111(10))",
+        "Plaintiff not a 'qualified individual' — cannot perform essential functions even with accommodation; direct-threat defense (§12113(b))",
+        "No reasonable accommodation existed / plaintiff caused breakdown of the interactive process",
+        "Legitimate non-discriminatory reason with no pretext (McDonnell Douglas)",
+        "Failure to exhaust / untimely charge; Twombly/Iqbal plausibility"
+      ],
+      "basis": "42 U.S.C. §§12111–12112; US Airways, Inc. v. Barnett, 535 U.S. 391 (2002); Sutton v. United Air Lines, Inc., 527 U.S. 471 (1999) (superseded in part by ADA Amendments Act of 2008); School Bd. of Nassau Cty. v. Arline, 480 U.S. 273 (1987)"
+    },
+    {
+      "n": "Fair Labor Standards Act – Minimum Wage & Overtime (Collective Action)",
+      "cat": "employment",
+      "sol_years": "2/3 (willful) — 29 U.S.C. §255(a); no administrative exhaustion required",
+      "elements": [
+        "An employer-employee relationship existed and the employee was 'employed' (suffered or permitted to work)",
+        "Enterprise or individual coverage under the FLSA (engaged in commerce or in the production of goods for commerce; enterprise coverage requires $500,000 annual gross volume)",
+        "The employee performed compensable work for which they were not paid the federal minimum wage, or worked more than 40 hours in a workweek without overtime at one-and-one-half times the regular rate",
+        "The employee is non-exempt (no applicable exemption — e.g., not a bona fide executive, administrative, or professional employee)",
+        "Damages: unpaid wages/overtime, plus liquidated damages equal to the unpaid amount absent a good-faith defense",
+        "For collective treatment: other employees are 'similarly situated' and affirmatively opt in by written consent under §216(b)"
+      ],
+      "defenses": [
+        "Applicable exemption (white-collar / §13 exemptions; employer bears the burden, no longer narrowly construed per Encino Motorcars)",
+        "Good-faith reliance on a written DOL ruling/regulation (Portal-to-Portal Act, 29 U.S.C. §259) and good-faith reasonable belief barring liquidated damages (§260)",
+        "Two-year statute of limitations absent proof of a willful violation (29 U.S.C. §255(a))",
+        "De minimis non-compensable time; preliminary/postliminary activity not integral and indispensable (Integrity Staffing v. Busk)",
+        "Employees not similarly situated (decertification); lack of FLSA coverage; lack of Article III standing"
+      ],
+      "basis": "29 U.S.C. §§206, 207, 216(b), 255(a), 259–260; Anderson v. Mt. Clemens Pottery Co., 328 U.S. 680 (1946); Integrity Staffing Solutions, Inc. v. Busk, 574 U.S. 27 (2014); Encino Motorcars, LLC v. Navarro, 138 S. Ct. 1134 (2018)"
+    },
+    {
+      "n": "Family and Medical Leave Act (Interference & Retaliation)",
+      "cat": "employment",
+      "sol_years": "2/3 (willful) — 29 U.S.C. §2617(c)",
+      "elements": [
+        "Eligible employee: worked 12+ months and 1,250+ hours for the employer in the prior 12 months, at a worksite with 50+ employees within 75 miles",
+        "Employer is covered (50+ employees within 75 miles, for 20+ workweeks in the current or preceding year)",
+        "Plaintiff was entitled to FMLA leave for a qualifying reason (serious health condition of self or family member, birth/placement of a child, qualifying military exigency/caregiver)",
+        "Plaintiff gave adequate notice of intent to take leave",
+        "Interference theory: employer denied, restrained, or interfered with the exercise of FMLA rights (including failure to reinstate to the same/equivalent position) and the employee was prejudiced; OR Retaliation theory: employer took an adverse action because the employee exercised FMLA rights"
+      ],
+      "defenses": [
+        "Employee not eligible / employer not covered (hours, tenure, or 50/75-mile thresholds not met)",
+        "No serious health condition or qualifying reason; inadequate notice",
+        "Employee would have been terminated regardless of leave (legitimate reason; reinstatement not owed where position eliminated in a RIF)",
+        "Two-year limitations absent a willful violation (29 U.S.C. §2617(c))",
+        "Twombly/Iqbal plausibility; no prejudice / no entitlement to relief (Ragsdale)"
+      ],
+      "basis": "29 U.S.C. §§2611–2615, 2617; Ragsdale v. Wolverine World Wide, Inc., 535 U.S. 81 (2002); Nevada Dep't of Human Res. v. Hibbs, 538 U.S. 721 (2003)"
+    },
+    {
+      "n": "42 U.S.C. §1981 – Race Discrimination in the Making/Enforcement of Contracts",
+      "cat": "employment",
+      "sol_years": "4 (for post-formation claims under 28 U.S.C. §1658) / borrowed state personal-injury period for pre-1991-Act conduct (e.g., contract-formation/failure-to-hire claims) per Jones v. R.R. Donnelley",
+      "elements": [
+        "Plaintiff is a member of a racial minority (or asserts race-based discrimination, which §1981 reaches for any race, including reverse-discrimination claims)",
+        "Defendant intended to discriminate on the basis of race",
+        "The discrimination concerned an activity enumerated in §1981 — the making, performance, modification, termination, or enjoyment of all benefits/conditions of a contractual relationship (including the at-will employment contract)",
+        "But-for causation: race was the but-for cause of the plaintiff's injury, at every stage including pleading (Comcast v. NAAAOM)",
+        "No EEOC exhaustion required (distinguishing §1981 from Title VII); reaches private actors directly without state action"
+      ],
+      "defenses": [
+        "But-for causation not satisfied (Comcast Corp. v. National Association of African American-Owned Media)",
+        "No intentional race discrimination; legitimate non-discriminatory reason with no pretext (McDonnell Douglas framework applies to §1981)",
+        "No contractual relationship impaired / claim not within §1981's enumerated activities",
+        "Statute of limitations (4-year §1658 catch-all for claims made possible by the 1991 Civil Rights Act vs. borrowed state PI period for contract-formation claims; Jones v. R.R. Donnelley)",
+        "Twombly/Iqbal plausibility; lack of Article III standing"
+      ],
+      "basis": "42 U.S.C. §1981; Comcast Corp. v. Nat'l Ass'n of African American-Owned Media, 140 S. Ct. 1009 (2020); Jones v. R.R. Donnelley & Sons Co., 541 U.S. 369 (2004); Patterson v. McLean Credit Union, 491 U.S. 164 (1989) (superseded in part by Civil Rights Act of 1991)"
+    },
+    {
+      "n": "Equal Pay Act (EPA)",
+      "cat": "employment",
+      "sol_years": "2/3 (willful) — 29 U.S.C. §255(a); each discriminatory paycheck is a fresh violation",
+      "elements": [
+        "Employer pays different wages to employees of opposite sexes",
+        "For equal work on jobs requiring equal skill, effort, and responsibility",
+        "Performed under similar working conditions",
+        "Within the same establishment",
+        "Prima facie case requires no proof of discriminatory intent and no EEOC exhaustion (suit may be filed directly); plaintiff need only identify a comparator of the opposite sex paid more for substantially equal work"
+      ],
+      "defenses": [
+        "One of the four statutory affirmative defenses (employer's burden): (i) a seniority system, (ii) a merit system, (iii) a system measuring earnings by quantity/quality of production, or (iv) a differential based on any factor other than sex (29 U.S.C. §206(d)(1))",
+        "Jobs not 'substantially equal' in skill, effort, responsibility, or working conditions",
+        "Comparator not within the same establishment",
+        "Two-year limitations absent a willful violation (29 U.S.C. §255(a))",
+        "Good-faith defense barring liquidated damages (§260); lack of Article III standing"
+      ],
+      "basis": "29 U.S.C. §206(d); Corning Glass Works v. Brennan, 417 U.S. 188 (1974); County of Washington v. Gunther, 452 U.S. 161 (1981)"
+    },
+    {
+      "n": "Fair Debt Collection Practices Act (FDCPA)",
+      "cat": "consumer",
+      "sol_years": 1,
+      "elements": [
+        "Plaintiff is a 'consumer' — a natural person obligated or allegedly obligated to pay a 'debt' (15 USC §1692a(3), (5))",
+        "The obligation is a 'debt' arising out of a transaction primarily for personal, family, or household purposes (§1692a(5))",
+        "Defendant is a 'debt collector' — one whose principal business is debt collection or who regularly collects debts owed another, including those who acquired the debt in default (§1692a(6); Henson v. Santander)",
+        "Defendant, in connection with the collection of the debt, engaged in conduct prohibited by the Act — e.g., false/misleading representations (§1692e), unfair practices (§1692f), harassment/abuse (§1692d), or failure to give required validation notices (§1692g)",
+        "Conduct evaluated from the perspective of the 'least sophisticated consumer'"
+      ],
+      "defenses": [
+        "Article III standing — no concrete injury from bare statutory/procedural violation (Spokeo v. Robins; TransUnion v. Ramirez)",
+        "Defendant is not a 'debt collector' (e.g., creditor collecting own debt, or loan servicer not in default at acquisition) (Henson v. Santander Consumer USA)",
+        "Bona fide error defense — §1692k(c): violation unintentional and resulted from a bona fide error despite procedures reasonably adapted to avoid it (Jerman v. Carlisle limits it to clerical, not legal, errors)",
+        "§1692k(d) one-year statute of limitations runs from the date of the violation (Rotkiske v. Klemm — no discovery rule)",
+        "Twombly/Iqbal plausibility — failure to plausibly allege debt-collector status or a qualifying communication"
+      ],
+      "basis": "15 USC §1692 et seq.; Henson v. Santander Consumer USA, Inc., 582 U.S. 79 (2017); Jerman v. Carlisle, McNellie, Rini, Kramer & Ulrich LPA, 559 U.S. 573 (2010); Rotkiske v. Klemm, 589 U.S. 8 (2019)"
+    },
+    {
+      "n": "Fair Credit Reporting Act (FCRA)",
+      "cat": "consumer",
+      "sol_years": "2/5 (discovery/repose)",
+      "elements": [
+        "Defendant is a 'consumer reporting agency' (§1681a(f)), a 'user' of consumer reports, or a 'furnisher' of information to a CRA",
+        "A 'consumer report' bearing on creditworthiness, character, or reputation was prepared, used, or furnished (§1681a(d))",
+        "Defendant violated a duty under the Act — e.g., failure to follow reasonable procedures to assure maximum possible accuracy (§1681e(b)); failure to reasonably reinvestigate a disputed item after notice (§1681i); furnisher failure to investigate after CRA notice of dispute (§1681s-2(b)); impermissible-purpose access (§1681b)",
+        "For willful claims (§1681n): the violation was willful — knowing or in reckless disregard of the law (Safeco v. Burr). For negligent claims (§1681o): the violation was negligent",
+        "Actual damages (negligence) or willfulness supporting statutory ($100–$1,000) and punitive damages; causation"
+      ],
+      "defenses": [
+        "Article III standing — dissemination/concrete harm required; mere inaccuracy or internal-file error without publication is not enough (TransUnion v. Ramirez, 594 U.S. 413 (2021); Spokeo v. Robins)",
+        "No willfulness — reading of the statute was 'objectively reasonable,' defeating §1681n (Safeco Ins. Co. v. Burr, 551 U.S. 47 (2007))",
+        "Inaccuracy must be of a 'factual,' not 'legal,' nature; reasonable procedures were followed under §1681e(b)",
+        "§1681p limitations — 2 years from discovery, 5 years from the violation (statute of repose)",
+        "Twombly/Iqbal plausibility — failure to plausibly allege furnisher received notice from a CRA (private cause of action under §1681s-2(b) only, not (a))"
+      ],
+      "basis": "15 USC §1681 et seq.; TransUnion LLC v. Ramirez, 594 U.S. 413 (2021); Safeco Ins. Co. of America v. Burr, 551 U.S. 47 (2007); Spokeo, Inc. v. Robins, 578 U.S. 330 (2016)"
+    },
+    {
+      "n": "Telephone Consumer Protection Act (TCPA)",
+      "cat": "consumer",
+      "sol_years": 4,
+      "elements": [
+        "Defendant made a 'call' or sent a text (treated as a call) to the plaintiff (47 USC §227(b))",
+        "The call was made using an 'automatic telephone dialing system' (ATDS) — equipment with the capacity to store or produce numbers using a random or sequential number generator (Facebook v. Duguid) — or used an artificial or prerecorded voice",
+        "The call was made to a cellular telephone (or other protected line under §227(b)(1)(A)) — OR, for the DNC claim (§227(c)), to a residential number on the National Do-Not-Call Registry (two+ calls in 12 months)",
+        "The call was made without the plaintiff's prior express consent (prior express written consent for marketing under FCC rules)",
+        "Statutory damages of $500 per violation, trebled to $1,500 for knowing or willful violations"
+      ],
+      "defenses": [
+        "Equipment did not qualify as an ATDS — no random or sequential number generator (Facebook, Inc. v. Duguid, 592 U.S. 395 (2021))",
+        "Prior express (written) consent given and not revoked",
+        "Article III standing — though receipt of an unwanted call/text generally suffices (TransUnion v. Ramirez; cf. unsolicited-fax cases)",
+        "First Amendment / content-neutrality challenge post-Barr v. AAPC (severance of government-debt exception); established business relationship or emergency-purpose exemptions",
+        "47 USC §227 four-year default federal limitations period (28 USC §1658)"
+      ],
+      "basis": "47 USC §227; Facebook, Inc. v. Duguid, 592 U.S. 395 (2021); Barr v. American Assn. of Political Consultants, Inc., 591 U.S. 610 (2020); 28 USC §1658 (4-yr SOL)"
+    },
+    {
+      "n": "Truth in Lending Act (TILA)",
+      "cat": "consumer",
+      "sol_years": "1/3 (damages/rescission)",
+      "elements": [
+        "The transaction is a 'consumer credit' transaction — credit extended to a natural person primarily for personal, family, or household purposes (15 USC §1602; Reg Z, 12 CFR pt. 1026)",
+        "Defendant is a 'creditor' who regularly extends credit and to whom the debt is initially payable (§1602(g))",
+        "Defendant failed to make a required, accurate, and clear-and-conspicuous disclosure — e.g., the finance charge, annual percentage rate, amount financed, or payment schedule (§1638; §1632)",
+        "For rescission claims (§1635): a security interest taken in the consumer's principal dwelling and failure to provide required material disclosures or notice of the right to rescind",
+        "Resulting statutory damages (§1640) and/or, for rescission, timely exercise of the right (written notice within 3 years voids security interest — Jesinoski v. Countrywide)"
+      ],
+      "defenses": [
+        "Transaction is exempt — business/commercial/agricultural purpose, or exceeds the threshold for non-real-estate credit (not 'consumer' credit)",
+        "Defendant is not a 'creditor' as defined (does not regularly extend credit / debt not initially payable to it)",
+        "§1640(e) one-year limitations for damages; rescission absolutely barred after 3 years (statute of repose) (Beach v. Ocwen Fed. Bank, 523 U.S. 410 (1998))",
+        "Bona fide error / good-faith conformity with an FRB/CFPB rule, regulation, or interpretation (§1640(c), (f))",
+        "Twombly/Iqbal plausibility — disclosure was in fact clear and conspicuous and compliant with Reg Z"
+      ],
+      "basis": "15 USC §1601 et seq.; 12 CFR pt. 1026 (Reg Z); Jesinoski v. Countrywide Home Loans, Inc., 574 U.S. 259 (2015); Beach v. Ocwen Fed. Bank, 523 U.S. 410 (1998)"
+    },
+    {
+      "n": "Electronic Fund Transfer Act (EFTA)",
+      "cat": "consumer",
+      "sol_years": 1,
+      "elements": [
+        "An 'electronic fund transfer' occurred — a transfer initiated through an electronic terminal, phone, computer, or magnetic tape that debits or credits a consumer's account (15 USC §1693a(7); Reg E, 12 CFR pt. 1005)",
+        "The account is held by a 'financial institution' and established primarily for personal, family, or household purposes",
+        "Defendant violated an EFTA duty — e.g., failure to provide required disclosures (§1693c); imposing liability on the consumer for unauthorized transfers beyond §1693g limits; failure to investigate/resolve a notified error within statutory timelines (§1693f); or conditioning credit on preauthorized EFT repayment (§1693k compulsory-use)",
+        "For unauthorized-transfer claims: transfer initiated by a person without actual authority and from which the consumer received no benefit (§1693a(12)); timely notice to the institution",
+        "Actual damages, plus statutory damages ($100–$1,000), costs, and attorney's fees (§1693m)"
+      ],
+      "defenses": [
+        "Consumer authorized the transfer, or it is excluded from 'unauthorized' (e.g., furnished access device to another) (§1693a(12))",
+        "Financial institution complied with §1693g and Reg E error-resolution procedures; consumer failed to give timely notice",
+        "Bona fide error defense / good-faith conformity with a CFPB rule or interpretation (§1693m(c), (d))",
+        "§1693m(g) one-year statute of limitations from the date of the violation",
+        "Article III standing — bare procedural disclosure violation without concrete harm (TransUnion v. Ramirez)"
+      ],
+      "basis": "15 USC §1693 et seq.; 12 CFR pt. 1005 (Reg E); TransUnion LLC v. Ramirez, 594 U.S. 413 (2021)"
+    },
+    {
+      "n": "Real Estate Settlement Procedures Act (RESPA)",
+      "cat": "consumer",
+      "sol_years": "1/3 (varies by section)",
+      "elements": [
+        "A 'federally related mortgage loan' secured by a first or subordinate lien on residential real property (1-4 family) is involved (12 USC §2602; Reg X, 12 CFR pt. 1024)",
+        "Defendant is a lender, mortgage servicer, settlement-service provider, or other covered person",
+        "Defendant violated a RESPA duty — e.g., gave or accepted a kickback/fee for the referral of settlement-service business or split unearned fees (§2607); failed to timely and adequately respond to a 'qualified written request' / notice of error or information request (§2605(e); Reg X §1024.35–.36); or failed to comply with loss-mitigation/dual-tracking servicing rules (§1024.41)",
+        "Causation — actual damages flowing from the violation (and, under §2605, a pattern or practice to support statutory damages up to $2,000)",
+        "For §2607 (Section 8): a referral agreement and a thing of value exchanged for that referral (Freeman v. Quicken — undivided unearned fees not actionable)"
+      ],
+      "defenses": [
+        "No 'federally related mortgage loan' or transaction is exempt (e.g., business-purpose loan)",
+        "Section 8 safe harbors — bona fide payment for goods/services actually furnished or facilities actually provided (§2607(c)); Freeman v. Quicken Loans, 566 U.S. 624 (2012) (no liability for undivided unearned fee)",
+        "No actual damages caused by the violation; QWR did not relate to loan servicing or was not a proper QWR (§2605(e))",
+        "Limitations — §2614: 1 year for §2607/§2608 (kickback/title) violations; 3 years for §2605 (servicing) violations",
+        "Twombly/Iqbal plausibility — failure to plausibly allege the referral agreement (§2607) or actual damages causally tied to the servicing violation"
+      ],
+      "basis": "12 USC §2601 et seq.; 12 CFR pt. 1024 (Reg X); Freeman v. Quicken Loans, Inc., 566 U.S. 624 (2012); 12 USC §2614 (limitations)"
+    },
+    {
+      "n": "Copyright Infringement",
+      "cat": "ip",
+      "sol_years": 3,
+      "elements": [
+        "Ownership of a valid copyright in an original work of authorship fixed in a tangible medium of expression (17 U.S.C. §§102, 410(c) — registration certificate made before or within five years of first publication is prima facie evidence of validity)",
+        "Registration of the copyright (or refusal of registration) before suit, a precondition to filing the infringement action (17 U.S.C. §411(a); the Supreme Court in Fourth Estate held registration occurs when the Copyright Office acts on the application, but treated §411(a) as a non-jurisdictional claim-processing prerequisite, not a true jurisdictional bar — Reed Elsevier v. Muchnick, 559 U.S. 154 (2010))",
+        "Copying of constituent elements of the work that are original — proven by (a) defendant's access to the work plus (b) substantial similarity between the protected expression in the two works, or by direct evidence of copying",
+        "Violation of one or more of the copyright owner's §106 exclusive rights (reproduction, derivative works, distribution, public performance, public display)",
+        "For statutory damages/attorney's fees: timely registration under 17 U.S.C. §412"
+      ],
+      "defenses": [
+        "Fair use (17 U.S.C. §107 — purpose/character incl. transformativeness, nature of work, amount used, market effect)",
+        "§507(b) three-year statute of limitations (separate-accrual/discovery rule; Petrella bars laches as a defense to claims within the limitations period but laches/equitable estoppel may limit relief; Warner Chappell Music v. Nealy, 601 U.S. 366 (2024), holds damages reach back to all timely claims with no separate three-year damages cap)",
+        "Independent creation / lack of access / no substantial similarity (idea-expression dichotomy, scenes a faire, merger)",
+        "Invalid or fraudulently procured registration; failure to register before suit (Rule 12(b)(6) / failure to satisfy statutory prerequisite under Fourth Estate; note Unicolors v. H&M, 595 U.S. 178 (2022) — §411(b) knowledge requirement includes mistakes of law)",
+        "License, implied license, first-sale doctrine (§109), or DMCA §512 safe harbor"
+      ],
+      "basis": "17 U.S.C. §501; §507(b); Feist Publications, Inc. v. Rural Telephone Service Co., 499 U.S. 340 (1991); Fourth Estate Public Benefit Corp. v. Wall-Street.com, LLC, 586 U.S. 296 (2019); Petrella v. Metro-Goldwyn-Mayer, Inc., 572 U.S. 663 (2014); Andy Warhol Foundation for the Visual Arts, Inc. v. Goldsmith, 598 U.S. 508 (2023); Warner Chappell Music, Inc. v. Nealy, 601 U.S. 366 (2024)"
+    },
+    {
+      "n": "Patent Infringement",
+      "cat": "ip",
+      "sol_years": "6 (damages look-back, 35 U.S.C. §286; no statute of limitations to file suit)",
+      "elements": [
+        "Plaintiff owns (or, as exclusive licensee with all substantial rights, has standing to sue for) a valid and enforceable U.S. patent (35 U.S.C. §§261, 281)",
+        "Construction of the asserted claims (a question of law for the court under Markman; subsidiary factual findings reviewed for clear error under Teva)",
+        "Direct infringement: defendant, without authority, makes, uses, offers to sell, sells, or imports within the U.S. a product/process that meets every limitation of an asserted claim, literally or under the doctrine of equivalents (35 U.S.C. §271(a))",
+        "For indirect infringement: an underlying act of direct infringement plus, for inducement (§271(b)) or contributory infringement (§271(c)), knowledge of the patent and knowledge that the induced/contributed acts constitute infringement (Global-Tech / Commil)",
+        "For enhanced damages/willfulness: egregious, deliberate or flagrant infringement (Halo)"
+      ],
+      "defenses": [
+        "Invalidity — anticipation §102, obviousness §103 (Graham/KSR), or §112 indefiniteness/written description/enablement (35 U.S.C. §282(b) defense; invalidity must be proven by clear and convincing evidence under Microsoft v. i4i)",
+        "Patent-ineligible subject matter under §101 (Alice/Mayo two-step abstract-idea/law-of-nature framework)",
+        "Non-infringement (claim does not read on accused product literally or under equivalents; prosecution history estoppel under Festo)",
+        "Inequitable conduct / unenforceability (Therasense but-for materiality + specific intent to deceive PTO)",
+        "§286 six-year damages limitation; §287 marking/notice limit on damages; license, patent exhaustion (Quanta/Impression Products), or experimental-use/prior-commercial-use (§273) defense"
+      ],
+      "basis": "35 U.S.C. §271; §282; §286; Markman v. Westview Instruments, Inc., 517 U.S. 370 (1996); Alice Corp. v. CLS Bank Int'l, 573 U.S. 208 (2014); KSR Int'l Co. v. Teleflex Inc., 550 U.S. 398 (2007); Halo Electronics, Inc. v. Pulse Electronics, Inc., 579 U.S. 93 (2016); SCA Hygiene Products Aktiebolag v. First Quality Baby Products, LLC, 580 U.S. 328 (2017) (no laches defense against damages within the §286 period)"
+    },
+    {
+      "n": "Lanham Act §32 Trademark Infringement",
+      "cat": "ip",
+      "sol_years": "none (no federal statute of limitations; laches gauged by analogous state SOL)",
+      "elements": [
+        "Plaintiff owns a valid, federally registered trademark (15 U.S.C. §1057(b) — registration is prima facie evidence of validity, ownership, and the exclusive right to use the mark in commerce); mark is distinctive (inherently or via secondary meaning) and not generic",
+        "Defendant used in commerce, without consent, a reproduction/counterfeit/copy/colorable imitation of the registered mark",
+        "Use in connection with the sale, offering for sale, distribution, or advertising of goods or services",
+        "Likelihood of confusion as to source, sponsorship, or affiliation (multi-factor test — e.g., Polaroid/Sleekcraft/DuPont factors: strength of mark, similarity of marks, proximity of goods, defendant's intent, actual confusion, etc.)"
+      ],
+      "defenses": [
+        "No likelihood of confusion (multi-factor analysis fails)",
+        "Mark invalidity — genericness, mere descriptiveness without secondary meaning, abandonment, functionality, or fraud on the PTO",
+        "Fair use / nominative fair use; First Amendment / expressive use (after Jack Daniel's, the Rogers v. Grimaldi threshold test does not apply when the mark is used as a source identifier)",
+        "Laches and acquiescence (no statutory SOL; analogous state limitations period as a guide / presumption)",
+        "Lack of use in commerce; prior use / senior user or limited-area defense (§1115(b)); absence of standing or trademark ownership"
+      ],
+      "basis": "15 U.S.C. §1114; 15 U.S.C. §1057(b); Two Pesos, Inc. v. Taco Cabana, Inc., 505 U.S. 763 (1992); KP Permanent Make-Up, Inc. v. Lasting Impression I, Inc., 543 U.S. 111 (2004); Jack Daniel's Properties, Inc. v. VIP Products LLC, 599 U.S. 140 (2023); Polaroid Corp. v. Polarad Electronics Corp., 287 F.2d 492 (2d Cir. 1961)"
+    },
+    {
+      "n": "Lanham Act §43(a) False Advertising / Trade Dress",
+      "cat": "ip",
+      "sol_years": "none (no federal statute of limitations; laches gauged by analogous state SOL)",
+      "elements": [
+        "A false or misleading statement of fact in commercial advertising or promotion (false advertising), OR a protectable trade dress / unregistered mark used in a manner likely to cause confusion (15 U.S.C. §1125(a))",
+        "For false advertising: the statement was literally false or, though literally true, likely to mislead/confuse; the statement actually deceived or has a tendency to deceive a substantial segment of the audience; the deception is material (likely to influence purchasing decisions); the goods/services entered interstate commerce; and plaintiff has been or is likely to be injured",
+        "For trade dress: the trade dress is distinctive (inherently, or — for product design and color — only via secondary meaning), is non-functional (plaintiff bears the burden of proving non-functionality, 15 U.S.C. §1125(a)(3)), and defendant's use causes a likelihood of confusion",
+        "Plaintiff falls within the Lanham Act's zone of interests and shows commercial/reputational injury proximately caused by the deception (Lexmark statutory-standing analysis)"
+      ],
+      "defenses": [
+        "Statement is non-actionable puffery, true, or adequately substantiated (no falsity / no material deception)",
+        "Trade dress is functional (utilitarian functionality under TrafFix, or aesthetic functionality) or lacks secondary meaning (Wal-Mart product-design rule requires secondary meaning)",
+        "Lack of Lanham Act statutory standing — outside the zone of interests or no proximate cause (Lexmark)",
+        "Laches / acquiescence (analogous state SOL); no use in commerce; no likelihood of confusion",
+        "First Amendment / non-commercial-speech protection"
+      ],
+      "basis": "15 U.S.C. §1125(a); Lexmark Int'l, Inc. v. Static Control Components, Inc., 572 U.S. 118 (2014); Wal-Mart Stores, Inc. v. Samara Bros., 529 U.S. 205 (2000); TrafFix Devices, Inc. v. Marketing Displays, Inc., 532 U.S. 23 (2001); Two Pesos, Inc. v. Taco Cabana, Inc., 505 U.S. 763 (1992)"
+    },
+    {
+      "n": "Defend Trade Secrets Act (18 U.S.C. §1836)",
+      "cat": "ip",
+      "sol_years": 3,
+      "elements": [
+        "Existence of a trade secret — information (financial, business, scientific, technical, economic, or engineering, including patterns, plans, compilations, programs, devices, formulas, methods, techniques, or processes) that derives independent economic value, actual or potential, from not being generally known to, and not being readily ascertainable through proper means by, another person who can obtain economic value from its disclosure or use (18 U.S.C. §1839(3)(B))",
+        "Owner took reasonable measures under the circumstances to keep the information secret (18 U.S.C. §1839(3)(A))",
+        "The trade secret is related to a product or service used in, or intended for use in, interstate or foreign commerce (federal jurisdictional nexus, 18 U.S.C. §1836(b)(1))",
+        "Misappropriation — acquisition by improper means, or disclosure/use without consent by one who used improper means to acquire it or who knew or had reason to know it was derived from a person who acquired it by improper means or owed a duty to maintain its secrecy (18 U.S.C. §1839(5)–(6))",
+        "Resulting damages, unjust enrichment, or threatened misappropriation warranting injunctive relief"
+      ],
+      "defenses": [
+        "Information is not a trade secret — generally known, readily ascertainable by proper means, or lacks independent economic value",
+        "Owner failed to take reasonable secrecy measures (18 U.S.C. §1839(3)(A))",
+        "Proper acquisition — independent development, reverse engineering, or other lawful/proper means (no improper means, hence no misappropriation; §1839(6)(B))",
+        "18 U.S.C. §1836(d) three-year statute of limitations (accrues on discovery or when misappropriation should have been discovered by reasonable diligence; a continuing misappropriation is a single claim)",
+        "DTSA whistleblower immunity (§1833(b)); no improper means; failure to identify the trade secret with sufficient particularity (Twombly/Iqbal plausibility); note DTSA does not preempt state trade-secret law"
+      ],
+      "basis": "18 U.S.C. §1836(b); §1839; §1836(d) (3-year SOL); Defend Trade Secrets Act of 2016, Pub. L. No. 114-153, 130 Stat. 376; see, e.g., Attia v. Google LLC, 983 F.3d 420 (9th Cir. 2020) [VERIFY]"
+    },
+    {
+      "n": "False Claims Act — Qui Tam (31 U.S.C. §§3729-3730)",
+      "cat": "qui-tam-govt",
+      "sol_years": "6/10 (§3731(b))",
+      "elements": [
+        "Defendant presented, or caused to be presented, a claim for payment or approval to the United States (or made/used a false record or statement material to such a claim, or to an obligation to pay money to the Government — reverse false claim)",
+        "The claim or statement was false or fraudulent",
+        "Falsity was material to the Government's payment decision (Escobar materiality — natural tendency to influence, not minor/insubstantial)",
+        "Defendant acted with scienter: actual knowledge, deliberate ignorance, or reckless disregard of truth/falsity (no specific intent to defraud required)",
+        "The false claim caused the United States to pay money or forgo money owed (damages — trebled — plus per-claim civil penalties)",
+        "For relator standing/recovery: action filed under seal, served on the Government with a written disclosure of material evidence (§3730(b)(2)); first-to-file and public-disclosure bars not triggered (or relator is an original source)"
+      ],
+      "defenses": [
+        "Rule 9(b) particularity for the fraud claim (who/what/when/where/how; reliable indicia an actual false claim was submitted)",
+        "scienter/materiality (Escobar materiality; Government's continued payment with knowledge defeats materiality; Safeco objective-reasonableness on knowledge per SuperValu)",
+        "§3730(e) public-disclosure bar / first-to-file bar / Government-action bar; relator not an original source",
+        "lack of subject-matter jurisdiction / Article III standing (and Government dismissal authority under §3730(c)(2)(A) per Polansky)",
+        "§3731(b) statute of limitations (6 years from violation / 3 years from Government knowledge, capped at 10 years)"
+      ],
+      "basis": "31 U.S.C. §§3729-3730; Universal Health Servs., Inc. v. United States ex rel. Escobar, 579 U.S. 176 (2016); United States ex rel. Schutte v. SuperValu Inc., 598 U.S. 739 (2023); United States ex rel. Polansky v. Exec. Health Res., Inc., 599 U.S. 419 (2023)"
+    },
+    {
+      "n": "Tucker Act — Contract Claim Against the United States (28 U.S.C. §1491)",
+      "cat": "qui-tam-govt",
+      "sol_years": 6,
+      "elements": [
+        "Plaintiff asserts a claim against the United States founded upon an express or implied-in-fact contract with the Government, the Constitution, a money-mandating statute, or a regulation (the Tucker Act waives sovereign immunity but creates no substantive right — a separate money-mandating source is required)",
+        "Existence of a contract: mutual intent to contract, offer and acceptance, consideration, and a Government representative with actual authority to bind the United States",
+        "Plaintiff performed its obligations (or tendered/was excused from performance)",
+        "The United States breached a contractual or other money-mandating duty",
+        "The breach caused damages, and the claim sounds in money (Court of Federal Claims jurisdiction; over $10,000 exclusive of district-court 'Little Tucker Act' concurrent jurisdiction up to $10,000)"
+      ],
+      "defenses": [
+        "lack of subject-matter jurisdiction (no money-mandating source; claim sounds in tort, not contract; sovereign immunity not waived for the asserted right)",
+        "lack of actual authority of the Government agent to bind the United States (no implied/apparent-authority estoppel against the Government)",
+        "28 U.S.C. §2501 six-year statute of limitations (jurisdictional, not subject to equitable tolling per John R. Sand)",
+        "failure to exhaust required contractual/CDA dispute procedures (Contract Disputes Act, 41 U.S.C. §7101 et seq., where applicable)",
+        "Twombly/Iqbal plausibility (no plausible allegation of an enforceable contract or breach)"
+      ],
+      "basis": "28 U.S.C. §1491 (and §1346(a)(2) Little Tucker Act); United States v. Mitchell, 463 U.S. 206 (1983); John R. Sand & Gravel Co. v. United States, 552 U.S. 130 (2008)"
+    },
+    {
+      "n": "Federal Tort Claims Act (28 U.S.C. §§1346(b), 2671-2680)",
+      "cat": "qui-tam-govt",
+      "sol_years": "2/0.5 (admin claim 2 yrs; suit 6 mo. after denial)",
+      "elements": [
+        "The claim is for injury or loss of property, or personal injury or death",
+        "Caused by the negligent or wrongful act or omission of a federal employee (not an independent contractor) acting within the scope of office or employment",
+        "Under circumstances where the United States, if a private person, would be liable to the claimant in accordance with the law of the place where the act or omission occurred (state substantive tort law supplies the cause of action)",
+        "Jurisdictional exhaustion: claimant presented the claim in writing to the appropriate federal agency for a sum certain within 2 years, and the agency finally denied it (or 6 months elapsed) before suit (§2675)",
+        "No enumerated §2680 exception applies (notably no discretionary-function, intentional-tort, or other bar)"
+      ],
+      "defenses": [
+        "lack of subject-matter jurisdiction (failure to exhaust the §2675 administrative claim; sum-certain defect — jurisdictional)",
+        "§2680 exceptions — discretionary-function exception (Berkovitz/Gaubert two-step), intentional-tort, misrepresentation, and other enumerated bars",
+        "Feres doctrine (no liability for service-members' injuries incident to military service); independent-contractor exclusion",
+        "§2401(b) statute of limitations (2-year administrative-claim bar / 6-month post-denial suit bar; non-jurisdictional and equitably tollable per Wong)",
+        "no private-person analog liability under the law of the place; substantive state-law tort defenses"
+      ],
+      "basis": "28 U.S.C. §§1346(b), 2671-2680; United States v. Gaubert, 499 U.S. 315 (1991); United States v. Wong, 575 U.S. 402 (2015); Feres v. United States, 340 U.S. 135 (1950)"
+    },
+    {
+      "n": "APA §706 Judicial Review of Agency Action (5 U.S.C. §§701-706)",
+      "cat": "qui-tam-govt",
+      "sol_years": 6,
+      "elements": [
+        "Plaintiff suffered legal wrong because of, or is adversely affected/aggrieved by, final agency action (or agency action unlawfully withheld/unreasonably delayed)",
+        "The challenged action is 'final agency action' (consummation of decisionmaking from which rights/obligations flow per Bennett v. Spear) for which there is no other adequate remedy in a court (§704)",
+        "Plaintiff falls within the zone of interests protected by the statute and has Article III standing; the action is reviewable (not committed to agency discretion by law and not statutorily precluded, §701(a))",
+        "Plaintiff has exhausted required administrative remedies / the claim is ripe",
+        "The agency action is arbitrary, capricious, an abuse of discretion, otherwise not in accordance with law, contrary to constitutional right, in excess of statutory authority, or without observance of procedure required by law (§706(2)) — reviewed on the administrative record"
+      ],
+      "defenses": [
+        "lack of subject-matter jurisdiction / no final agency action (§704) / action committed to agency discretion or statutorily precluded (§701(a))",
+        "Article III standing (injury-in-fact, causation, redressability) and prudential zone-of-interests / ripeness / mootness",
+        "failure to exhaust administrative remedies",
+        "deferential standard of review (arbitrary-and-capricious / Loper Bright de novo on questions of law; record-review limits the challenge)",
+        "28 U.S.C. §2401(a) six-year default statute of limitations (accrues when the right of action first accrues per Corner Post)"
+      ],
+      "basis": "5 U.S.C. §§701-706; Bennett v. Spear, 520 U.S. 154 (1997); Motor Vehicle Mfrs. Ass'n v. State Farm, 463 U.S. 29 (1983); Loper Bright Enters. v. Raimondo, 603 U.S. 369 (2024); Corner Post, Inc. v. Bd. of Governors of the FRS, 603 U.S. 799 (2024)"
+    },
+    {
+      "n": "28 U.S.C. §2255 Motion to Vacate Sentence / Federal Habeas (28 U.S.C. §2254)",
+      "cat": "qui-tam-govt",
+      "sol_years": "1 (§2255(f) / §2244(d))",
+      "elements": [
+        "Movant is a federal prisoner in custody under sentence of a federal court (for §2254, a person in custody pursuant to a state-court judgment)",
+        "A ground for relief: the sentence was imposed in violation of the Constitution or laws of the United States; the court lacked jurisdiction; the sentence exceeded the maximum authorized by law; or the sentence/conviction is otherwise subject to collateral attack",
+        "For non-defaulted constitutional claims (e.g., ineffective assistance under Strickland): deficient performance plus prejudice (reasonable probability of a different result)",
+        "Procedural prerequisites: claim not procedurally defaulted (or cause-and-prejudice / actual-innocence excuse shown); not a successive petition absent court-of-appeals authorization (§2255(h)); filed within the 1-year limitations period (§2255(f))",
+        "For §2254: exhaustion of available state remedies and, on adjudicated claims, the AEDPA §2254(d) showing that the state decision was contrary to/unreasonable application of clearly established Supreme Court law or based on an unreasonable determination of fact"
+      ],
+      "defenses": [
+        "§2255(f) / §2244(d) one-year statute of limitations (no equitable tolling absent diligence + extraordinary circumstance per Holland)",
+        "procedural default (cause and prejudice or actual-innocence gateway required) / failure to exhaust state remedies (§2254)",
+        "§2255(h) / §2244(b) bar on second-or-successive petitions absent court-of-appeals certification",
+        "AEDPA §2254(d) deference (Harrington v. Richter — no fairminded jurist could disagree) and Teague non-retroactivity",
+        "lack of subject-matter jurisdiction / no cognizable constitutional or jurisdictional defect (non-constitutional, non-jurisdictional errors generally not cognizable absent a fundamental defect)"
+      ],
+      "basis": "28 U.S.C. §2255 (and §2254 / §2244 AEDPA); Strickland v. Washington, 466 U.S. 668 (1984); Harrington v. Richter, 562 U.S. 86 (2011); Holland v. Florida, 560 U.S. 631 (2010)"
+    },
+    {
+      "n": "ERISA § 502(a)(1)(B) — Recovery of Plan Benefits Due",
+      "cat": "labor-benefits",
+      "sol_years": "varies by analogous state contract SOL (commonly 4-6); plan may set shorter contractual limit (enforceable per Heimeshoff)",
+      "elements": [
+        "Plaintiff is a participant or beneficiary of an ERISA-governed employee benefit plan (29 U.S.C. § 1132(a)(1)(B))",
+        "An ERISA plan exists and the claim arises under its terms (not a payroll practice or other ERISA-exempt arrangement)",
+        "Plaintiff was entitled to a benefit under the express terms of the plan",
+        "Plaintiff exhausted the plan's internal administrative claims-and-appeals procedures (or exhaustion is excused/futile)",
+        "The plan administrator or fiduciary denied, reduced, or failed to pay the benefit due, or failed to enforce/clarify rights under the plan terms",
+        "Where the plan grants the administrator discretionary authority, the denial was arbitrary and capricious (abuse of discretion); absent such a grant, the denial was wrong under de novo review (Firestone)"
+      ],
+      "defenses": [
+        "Failure to exhaust ERISA plan administrative remedies (administrative-exhaustion bar)",
+        "Plan-imposed contractual limitations period bars suit (Heimeshoff)",
+        "Twombly/Iqbal plausibility — complaint fails to identify the specific plan terms entitling plaintiff to benefits",
+        "Arbitrary-and-capricious / abuse-of-discretion deference where plan confers discretionary authority on administrator (Firestone); structural conflict weighed as a factor (Glenn)",
+        "Lack of statutory standing — plaintiff is not a 'participant' or 'beneficiary'"
+      ],
+      "basis": "29 U.S.C. § 1132(a)(1)(B); Firestone Tire & Rubber Co. v. Bruch, 489 U.S. 101 (1989); Heimeshoff v. Hartford Life & Accident Ins. Co., 571 U.S. 99 (2013); Metropolitan Life Ins. Co. v. Glenn, 554 U.S. 105 (2008)"
+    },
+    {
+      "n": "ERISA § 502(a)(3) — Breach of Fiduciary Duty / Other Equitable Relief",
+      "cat": "labor-benefits",
+      "sol_years": "6 years from the breach/violation, OR 3 years from the date plaintiff had actual knowledge of the breach if that occurs first (29 U.S.C. § 1113); 6-year limit extended to 6 years from discovery in cases of fraud or concealment",
+      "elements": [
+        "Defendant is a fiduciary — i.e., exercises discretionary authority/control over plan management, administration, or assets (29 U.S.C. § 1002(21)(A))",
+        "Defendant breached an ERISA fiduciary duty: loyalty (solely in participants'/beneficiaries' interest), prudence (prudent-expert standard), diversification, or adherence to plan documents (29 U.S.C. § 1104(a)), or engaged in a prohibited transaction (§ 1106)",
+        "Plaintiff (participant, beneficiary, or fiduciary) seeks 'appropriate equitable relief' — e.g., surcharge, equitable estoppel, reformation, injunction, restitution (equitable, against identifiable property), constructive trust, disgorgement of profits",
+        "The relief sought is typically equitable in nature, not legal damages (Mertens; Great-West Life v. Knudson)",
+        "The § 502(a)(3) 'catchall' claim is appropriate because § 502(a)(1)(B) or another subsection does not provide adequate relief (Varity)",
+        "Causal connection between the breach/violation and the loss or unjust enrichment to be remedied"
+      ],
+      "defenses": [
+        "Adequate relief available under § 502(a)(1)(B) bars duplicative 'catchall' equitable claim (Varity Corp. v. Howe)",
+        "Relief sought is legal (money damages) rather than 'appropriate equitable relief,' and is therefore unavailable (Mertens; Great-West Life v. Knudson)",
+        "ERISA § 1113 statute of limitations/repose — 6 years from breach or 3 years from actual knowledge, whichever is earlier (no actionable claim outside the window)",
+        "Article III standing — no concrete particularized injury or loss to the plan/participant, particularly in a defined-benefit plan (Thole v. U.S. Bank)",
+        "Twombly/Iqbal plausibility — failure to plead specific imprudent conduct rather than merely a poor investment outcome (Hughes v. Northwestern Univ.)",
+        "Defendant is not an ERISA fiduciary, or is a non-fiduciary who cannot be liable for 'knowing participation' in monetary terms under § 502(a)(3) (Mertens)"
+      ],
+      "basis": "29 U.S.C. § 1132(a)(3); 29 U.S.C. §§ 1104, 1106, 1109, 1113; Mertens v. Hewitt Associates, 508 U.S. 248 (1993); Varity Corp. v. Howe, 516 U.S. 489 (1996); Great-West Life & Annuity Ins. Co. v. Knudson, 534 U.S. 204 (2002); CIGNA Corp. v. Amara, 563 U.S. 421 (2011); Hughes v. Northwestern Univ., 595 U.S. 170 (2022); Thole v. U.S. Bank N.A., 590 U.S. 538 (2020)"
+    }
+  ]
+}
