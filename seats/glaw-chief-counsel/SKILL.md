@@ -68,8 +68,11 @@ Each position is attacked, in rounds, by adversaries with **distinct identities,
 | **SEC Enforcement** | securities | Reg D, QSBS original-issuance, transfer restrictions |
 | **FinCEN / OFAC Examiner** | AML / sanctions | source-of-funds, BOI, OFAC nexus (e.g., Venezuela) |
 | **M&A Diligence Counsel** | buyer's skeptic | clean title, §351 chain, cap-table integrity |
+| **FL Defense Counsel** | civil-litigation (Title VI) | dispositive gates per cause — §489.128 licensing, *Commerce* express-contract bar + pay-if-paid *DEC Electric*, statutory prerequisites (§713.22 lien clock, §68.065 demand, §70.001 150-day, UEFJA, §72.011), standing/venue/long-arm, limitations; motion-to-dismiss + element-by-element attack via `/glaw-fl-quantum-meruit` |
 
 **Convergence rule:** each round, every relevant adversary attacks; defense (BLUE) rebuts and re-scores.
+For a Florida civil-litigation matter, **FL Defense Counsel is a required attacker** — a Title VI
+complaint is not file-ready until it survives every dispositive gate for its cause of action.
 A position is **BULLETPROOF** only when a full round produces **no surviving critical/high attack** from ANY
 adversary (the position "defeats" them all) — or after `maxRounds` (then it is NEEDS-WORK / DO-NOT-FILE, never
 falsely cleared). Track per-round so the win is earned, not assumed.
