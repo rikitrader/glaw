@@ -1,6 +1,6 @@
 {
   "name": "Federal Causes of Action index (civil + criminal-referral + regulatory)",
-  "note": "Original index of federal causes of action, authored by a multi-agent panel and adversarially verified, from public federal law (the U.S. Code, FRCP/FRE, and leading Supreme Court / circuit cases). Element formulations and limitations periods are the law, not protected expression. Cites marked [VERIFY] were not confirmed verbatim and must be checked. SOL varies (often borrowed state periods for §1983/Bivens/§1985); confirm accrual + tolling. Each cause: n, cat, sol_years, elements, defenses (cross-reference glaw-fed-defense), basis (statute + leading case).",
+  "note": "Original index of federal causes of action, authored by a multi-agent panel and adversarially verified, from public federal law (the U.S. Code, FRCP/FRE, and leading Supreme Court / circuit cases). Element formulations and limitations periods are the law, not protected expression. Cites marked [VERIFY] were not confirmed verbatim and must be checked. SOL varies (often borrowed state periods for §1983/Bivens/§1985); confirm accrual + tolling. Each cause: n, cat, sol_years, elements, defenses (cross-reference glaw-fed-defense), basis (statute + leading case). RICO entries enriched 2026-06-09 from the DOJ Civil RICO Manual (reference/doj-civil-rico-manual.md): Reves operation-or-management, Anza proximate cause, 4-yr SOL (Agency Holding), no private injunction (§1964(c) treble only), Boyle association-in-fact.",
   "categories": [
     "antitrust",
     "civil-rights",
@@ -416,9 +416,15 @@
         "Rule 9(b)/PSLRA scienter (fraud predicates must be pleaded with particularity)",
         "scienter/materiality/reliance/loss-causation (no proximate cause; injury too remote under Holmes/Anza/Hemi)",
         "Civil RICO 4-year SOL (judge-made limitations period running from injury-discovery under Rotella/Klehr; Agency Holding/Malley-Duff)",
-        "Article III standing"
+        "Article III standing",
+        "enterprise not distinct from the defendant person (§1962(c))",
+        "no pattern — two acts necessary but not sufficient; fails H.J. Inc. continuity+relationship (492 U.S. 229)",
+        "no proximate cause — derivative/indirect injury too remote (Anza v. Ideal Steel 547 U.S. 451; Holmes v. SIPC 503 U.S. 258)",
+        "4-year SOL (Agency Holding v. Malley-Duff 483 U.S. 143; accrual Rotella v. Wood 528 U.S. 549)",
+        "Reves operation-or-management test (defendant must operate/manage the enterprise, not merely provide services) — Reves v. Ernst & Young, 507 U.S. 170 (1993)",
+        "NO private injunctive relief — a private plaintiff gets §1964(c) treble damages only; injunctions are the US's §1964(a) lane (Sedima 473 U.S. 479)"
       ],
-      "basis": "18 U.S.C. §1962(c), §1961, §1964(c); Reves v. Ernst & Young, 507 U.S. 170 (1993); H.J. Inc. v. Nw. Bell, 492 U.S. 229 (1989); Cedric Kushner Promotions v. King, 533 U.S. 158 (2001); Holmes v. SIPC, 503 U.S. 258 (1992); Agency Holding Corp. v. Malley-Duff, 483 U.S. 143 (1987) (4-yr SOL)"
+      "basis": "18 U.S.C. §1962(c), §1961, §1964(c); Reves v. Ernst & Young, 507 U.S. 170 (1993); H.J. Inc. v. Nw. Bell, 492 U.S. 229 (1989); Cedric Kushner Promotions v. King, 533 U.S. 158 (2001); Holmes v. SIPC, 503 U.S. 258 (1992); Agency Holding Corp. v. Malley-Duff, 483 U.S. 143 (1987) (4-yr SOL); enterprise/pattern per H.J. Inc. 492 U.S. 229, Boyle 556 U.S. 938; DOJ Civil RICO Manual"
     },
     {
       "n": "Civil RICO — 18 U.S.C. §1962(a) (Investment of Racketeering Income in an Enterprise)",
@@ -438,9 +444,14 @@
         "Twombly/Iqbal plausibility",
         "Rule 9(b)/PSLRA scienter (fraud predicates)",
         "Civil RICO 4-year SOL (Agency Holding/Malley-Duff; Rotella/Klehr accrual)",
-        "Article III standing"
+        "Article III standing",
+        "enterprise not distinct from the defendant person (§1962(c))",
+        "no pattern — two acts necessary but not sufficient; fails H.J. Inc. continuity+relationship (492 U.S. 229)",
+        "no proximate cause — derivative/indirect injury too remote (Anza v. Ideal Steel 547 U.S. 451; Holmes v. SIPC 503 U.S. 258)",
+        "4-year SOL (Agency Holding v. Malley-Duff 483 U.S. 143; accrual Rotella v. Wood 528 U.S. 549)",
+        "NO private injunctive relief — a private plaintiff gets §1964(c) treble damages only; injunctions are the US's §1964(a) lane (Sedima 473 U.S. 479)"
       ],
-      "basis": "18 U.S.C. §1962(a), §1964(c); Agency Holding Corp. v. Malley-Duff, 483 U.S. 143 (1987); H.J. Inc. v. Nw. Bell, 492 U.S. 229 (1989); Holmes v. SIPC, 503 U.S. 258 (1992); investment-injury rule e.g. Ouaknine v. MacFarlane, 897 F.2d 75 (2d Cir. 1990)"
+      "basis": "18 U.S.C. §1962(a), §1964(c); Agency Holding Corp. v. Malley-Duff, 483 U.S. 143 (1987); H.J. Inc. v. Nw. Bell, 492 U.S. 229 (1989); Holmes v. SIPC, 503 U.S. 258 (1992); investment-injury rule e.g. Ouaknine v. MacFarlane, 897 F.2d 75 (2d Cir. 1990); enterprise/pattern per H.J. Inc. 492 U.S. 229, Boyle 556 U.S. 938; DOJ Civil RICO Manual"
     },
     {
       "n": "Civil RICO — 18 U.S.C. §1962(b) (Acquisition or Maintenance of Interest in or Control of an Enterprise)",
@@ -458,9 +469,14 @@
         "RICO enterprise/pattern (no pattern; no acquisition or control of the enterprise)",
         "Twombly/Iqbal plausibility",
         "Rule 9(b)/PSLRA scienter (fraud predicates)",
-        "Civil RICO 4-year SOL (Agency Holding/Malley-Duff; Rotella/Klehr accrual)"
+        "Civil RICO 4-year SOL (Agency Holding/Malley-Duff; Rotella/Klehr accrual)",
+        "enterprise not distinct from the defendant person (§1962(c))",
+        "no pattern — two acts necessary but not sufficient; fails H.J. Inc. continuity+relationship (492 U.S. 229)",
+        "no proximate cause — derivative/indirect injury too remote (Anza v. Ideal Steel 547 U.S. 451; Holmes v. SIPC 503 U.S. 258)",
+        "4-year SOL (Agency Holding v. Malley-Duff 483 U.S. 143; accrual Rotella v. Wood 528 U.S. 549)",
+        "NO private injunctive relief — a private plaintiff gets §1964(c) treble damages only; injunctions are the US's §1964(a) lane (Sedima 473 U.S. 479)"
       ],
-      "basis": "18 U.S.C. §1962(b), §1964(c); Agency Holding Corp. v. Malley-Duff, 483 U.S. 143 (1987); H.J. Inc. v. Nw. Bell, 492 U.S. 229 (1989); Holmes v. SIPC, 503 U.S. 258 (1992); acquisition-injury rule e.g. Compagnie De Reassurance v. New England Reins., 57 F.3d 56 (1st Cir. 1995) [VERIFY]"
+      "basis": "18 U.S.C. §1962(b), §1964(c); Agency Holding Corp. v. Malley-Duff, 483 U.S. 143 (1987); H.J. Inc. v. Nw. Bell, 492 U.S. 229 (1989); Holmes v. SIPC, 503 U.S. 258 (1992); acquisition-injury rule e.g. Compagnie De Reassurance v. New England Reins., 57 F.3d 56 (1st Cir. 1995) [VERIFY]; enterprise/pattern per H.J. Inc. 492 U.S. 229, Boyle 556 U.S. 938; DOJ Civil RICO Manual"
     },
     {
       "n": "Civil RICO Conspiracy — 18 U.S.C. §1962(d)",
@@ -478,9 +494,15 @@
         "RICO enterprise/pattern (no viable underlying substantive §1962 violation; if substantive claim fails, conspiracy claim fails)",
         "Twombly/Iqbal plausibility (conclusory allegation of agreement insufficient)",
         "Rule 9(b)/PSLRA scienter (where fraud predicates underlie the conspiracy)",
-        "Civil RICO 4-year SOL (Agency Holding/Malley-Duff; Rotella/Klehr accrual)"
+        "Civil RICO 4-year SOL (Agency Holding/Malley-Duff; Rotella/Klehr accrual)",
+        "enterprise not distinct from the defendant person (§1962(c))",
+        "no pattern — two acts necessary but not sufficient; fails H.J. Inc. continuity+relationship (492 U.S. 229)",
+        "no proximate cause — derivative/indirect injury too remote (Anza v. Ideal Steel 547 U.S. 451; Holmes v. SIPC 503 U.S. 258)",
+        "4-year SOL (Agency Holding v. Malley-Duff 483 U.S. 143; accrual Rotella v. Wood 528 U.S. 549)",
+        "Reves operation-or-management test (defendant must operate/manage the enterprise, not merely provide services) — Reves v. Ernst & Young, 507 U.S. 170 (1993)",
+        "NO private injunctive relief — a private plaintiff gets §1964(c) treble damages only; injunctions are the US's §1964(a) lane (Sedima 473 U.S. 479)"
       ],
-      "basis": "18 U.S.C. §1962(d), §1964(c); Salinas v. United States, 522 U.S. 52 (1997); Beck v. Prupis, 529 U.S. 494 (2000); Agency Holding Corp. v. Malley-Duff, 483 U.S. 143 (1987)"
+      "basis": "18 U.S.C. §1962(d), §1964(c); Salinas v. United States, 522 U.S. 52 (1997); Beck v. Prupis, 529 U.S. 494 (2000); Agency Holding Corp. v. Malley-Duff, 483 U.S. 143 (1987); enterprise/pattern per H.J. Inc. 492 U.S. 229, Boyle 556 U.S. 938; DOJ Civil RICO Manual"
     },
     {
       "n": "Criminal RICO — 18 U.S.C. §1962(c) prosecuted under 18 U.S.C. §1963 (Conduct of Enterprise Affairs Through a Pattern of Racketeering)",
@@ -499,7 +521,10 @@
         "§3282 SOL (5-year general criminal limitations period)",
         "scienter/materiality (Government failed to prove knowing participation; insufficiency of the evidence on predicate acts under Jackson v. Virginia)",
         "Indictment sufficiency under FRCP 7(c) / United States v. Resendiz-Ponce",
-        "lack of subject-matter jurisdiction (no effect on interstate commerce)"
+        "lack of subject-matter jurisdiction (no effect on interstate commerce)",
+        "enterprise not distinct from the defendant person (§1962(c))",
+        "no pattern — two acts necessary but not sufficient; fails H.J. Inc. continuity+relationship (492 U.S. 229)",
+        "Reves operation-or-management test (defendant must operate/manage the enterprise, not merely provide services) — Reves v. Ernst & Young, 507 U.S. 170 (1993)"
       ],
       "basis": "18 U.S.C. §1962(c) (offense) & §1963 (penalties/forfeiture); 18 U.S.C. §3282 (5-yr SOL); United States v. Turkette, 452 U.S. 576 (1981); Boyle v. United States, 556 U.S. 938 (2009); Reves v. Ernst & Young, 507 U.S. 170 (1993); H.J. Inc. v. Nw. Bell, 492 U.S. 229 (1989)"
     },
@@ -520,7 +545,10 @@
         "§3282 SOL (5-year general criminal limitations period; conspiracy continues until objectives accomplished or abandoned)",
         "scienter/materiality (Government failed to prove the defendant knowingly joined with intent to further the endeavor; insufficiency of evidence under Jackson v. Virginia)",
         "lack of subject-matter jurisdiction (no interstate-commerce nexus)",
-        "Indictment sufficiency under FRCP 7(c)"
+        "Indictment sufficiency under FRCP 7(c)",
+        "enterprise not distinct from the defendant person (§1962(c))",
+        "no pattern — two acts necessary but not sufficient; fails H.J. Inc. continuity+relationship (492 U.S. 229)",
+        "Reves operation-or-management test (defendant must operate/manage the enterprise, not merely provide services) — Reves v. Ernst & Young, 507 U.S. 170 (1993)"
       ],
       "basis": "18 U.S.C. §1962(d) & §1963; 18 U.S.C. §3282 (5-yr SOL); Salinas v. United States, 522 U.S. 52 (1997); United States v. Turkette, 452 U.S. 576 (1981); Boyle v. United States, 556 U.S. 938 (2009)"
     },
