@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# glaw-fed-defense — query the federal litigation defenses index (civil/criminal/regulatory).
+set -euo pipefail
+exec python3 "$HOME/.claude/skills/glaw/lib/federal-litigation/fed_defenses.py" "$@"
