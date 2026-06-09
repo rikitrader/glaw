@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# glaw-fl-defense — query the Florida affirmative-defenses index.
+set -euo pipefail
+exec python3 "$HOME/.claude/skills/glaw/fl-quantum-meruit/lib/fl_defenses.py" "$@"
