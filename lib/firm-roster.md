@@ -214,6 +214,16 @@ Covers: **Civil** litigation, trial, disputes.
 | **Florida Title VI civil-practice library** — index DB of all 36 chapters + every cause of action with a ready-to-file complaint/enforcement/petition template, the dispositive-gate checks, discovery/intake/subpoena packs, and a damages+leverage helper + a **110-cause Florida claims library** (every cause's elements/SOL/defenses/authority + legal standards) + a **50-defense affirmative-defenses library** + answer template (`bin/glaw-fl-defense`) (`bin/glaw-fl-cause`, `bin/glaw-fl-statute`, `bin/glaw-qm`) | `/glaw-fl-quantum-meruit` |
 | **Federal litigation defenses/adversary library** — the defenses + dispositive attacks a federal adversary brings (civil FRCP: Twombly/Iqbal, SMJ/standing, Daubert, Rule 56/11, qualified immunity; criminal: §3282 SOL, mens rea/Cheek, suppression, Brady, entrapment; regulatory: SEC §2462/Jarkesy, FCPA, AML, RICO) — powers the gate's **Federal Defense Counsel** + **DOJ/AUSA Prosecutor** adversaries (`bin/glaw-fed-defense`) + a **56-cause federal claims library** (elements/SOL/defenses + 22 ready-to-file complaints, a causes catalog, an answer/affirmative-defenses template, a motions pack (12(b)(6)/Rule 56/Daubert), FRCP discovery + Rule 45 subpoena + intake, and verbatim statute excerpts) (`bin/glaw-fed-cause`) | `/glaw-federal-trial-counsel`, `/glaw-investigations`, `/glaw-sec-enforcement`, `/glaw-adversarial` |
 | **Florida Title XLI — Fraudulent Transfers (FUFTA Ch. 726) + Statute of Frauds (725) + ABC (727)** — verbatim statute text, FUFTA actual/constructive + ABC causes, the § 726.109 good-faith-transferee + REV + § 726.110 SOL defenses, the badges scorecard, a FUFTA complaint + civil/adversarial review workflow (verbatim statute text + `glaw-fl-cause` / `glaw-fl-defense`) | `/glaw-fl-quantum-meruit`, `/glaw-elite-corporate-counsel`, `/glaw-veil-piercing`, `receivables-assignment-counsel`, `/glaw-adversarial` |
+| **Assignment & receivables transfer** — assignability (FL/DE), assignment + corporate authorization + §679.4061 notice or a true-sale Receivables Transfer Agreement, real-party-in-interest (FRCP 17 / Fla. R. Civ. P. 1.210), true-sale-vs-disguised-loan; RED-teams FUFTA / anti-assignment / champerty / non-assignable; wraps the `fl-claims-assignment` engine | `/glaw-receivables-assignment` |
+| **Appellate practice** — notice-of-appeal jurisdictional clock, appealability/finality, preservation + standard-of-review map, record designation, initial/answer/reply briefs + rehearing / discretionary-review / cert petitions (FL DCAs & Supreme + federal circuits); appellate-panel adversarial gate | `/glaw-appellate` |
+| **Insurance coverage & bad-faith (policyholder)** — policy parse (grant/exclusions/conditions), duty-to-defend vs -indemnify, appraisal vs suit, first-/third-party bad faith + FL §624.155 Civil Remedy Notice; pairs with `/glaw-roofer-accounting` for Xactimate/restoration claims | `/glaw-insurance-coverage` |
+| **Consumer protection / debt-collection defense** — FDCPA §1692, FCRA §1681 (credit disputes), TCPA §227, FL FDUTPA + FCCPA §559; debt validation, statutory+actual damages, dispute letter / answer + counterclaim; consumer-side mirror of creditor `/glaw-recover-payment` | `/glaw-consumer-protection` |
+
+## Family & Domestic Relations Division
+Covers: divorce/dissolution, child custody & support, marital property, marital agreements.
+| Seat | Skill |
+|------|-------|
+| **Divorce, custody/support, alimony, property division, pre/post-nup, protective orders** — petition → temporary orders → financial disclosure → parenting plan → property division → decree; TX community-property + ch.154 child-support engine (`bin/glaw-child-support`) vs FL §61.075 equitable distribution; QDRO + tax + estate-cleanup routed out | `/glaw-family-law` |
 
 ## Litigation Support Division (the 10 named agents)
 Covers: contract review, case-law research, court records, fraud detection, veil
@@ -361,6 +371,11 @@ output through these seats. Advice stays in the custom suite; math/build goes to
 | IRS whistleblower / Form 211 / §7623 award | Tax & IRS (`/glaw-irs-whistleblower`) |
 | Criminal / white-collar | Investigations & White-Collar Crime (`/glaw-investigations`) |
 | Civil | Litigation & Dispute Resolution (`glaw-elite-corporate-counsel`, `glaw-federal-trial-counsel`) |
+| Family / divorce / custody / child support / alimony / prenup | Family & Domestic Relations (`/glaw-family-law`) |
+| Assign a claim or receivable / real party in interest / true sale | Litigation (`/glaw-receivables-assignment`) |
+| Appeal / notice of appeal / appellate brief / standard of review | Litigation (`/glaw-appellate`) |
+| Insurance claim denial / coverage dispute / bad faith / CRN | Litigation (`/glaw-insurance-coverage`) |
+| Consumer / FDCPA / FCRA / TCPA / debt-collection defense | Litigation (`/glaw-consumer-protection`) |
 | Copywriter / drafting | Legal Writing & Document Production (`/glaw-legal-writing`) |
 | Licensing | Regulatory, Licensing & Compliance (`/glaw-licensing`) |
 

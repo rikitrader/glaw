@@ -1,5 +1,33 @@
 # Changelog
 
+## Unreleased — 5 new practice-area seats (firm-wide gap close)
+
+Closes the highest-relevance non-tax coverage gaps from a firm-wide review. Each is a
+firm-authored native seat (deployed `/glaw-*`, routed in `lib/firm-roster.md`, 0 contract
+violations; `glaw-doctor` HEALTHY 0/0, contracts 105/105):
+
+- **`/glaw-family-law`** — divorce/dissolution, custody/conservatorship & support, alimony,
+  property division (TX community-property vs FL §61.075 equitable distribution), pre/post-nup,
+  protective orders. Ships a Texas ch.154 child-support guideline engine (`bin/glaw-child-support`,
+  incl. the §154.129 multiple-family table). New division: **Family & Domestic Relations**.
+- **`/glaw-receivables-assignment`** — assignability (FL/DE) + assignment/authorization/§679.4061
+  notice or a true-sale Receivables Transfer Agreement + real-party-in-interest (FRCP 17 / 1.210)
+  + true-sale-vs-disguised-loan; RED-teams FUFTA/anti-assignment/champerty/non-assignable. Wraps the
+  `fl-claims-assignment` engine in the firm workflow.
+- **`/glaw-appellate`** — notice-of-appeal jurisdictional clock, appealability/finality,
+  preservation + standard-of-review map, record designation, briefs + rehearing/discretionary/cert
+  petitions (FL DCAs & Supreme + federal circuits). Complements the trial seats + `/glaw-tax-court`.
+- **`/glaw-insurance-coverage`** — policyholder coverage disputes, duty-to-defend vs -indemnify,
+  appraisal vs suit, first-/third-party bad faith + FL §624.155 Civil Remedy Notice. Pairs with
+  `/glaw-roofer-accounting` for Xactimate/restoration claims.
+- **`/glaw-consumer-protection`** — FDCPA/FCRA/TCPA + FL FDUTPA/FCCPA; debt validation, statutory
+  damages, dispute letter / answer + counterclaim, collection-lawsuit defense. Consumer-side mirror
+  of `/glaw-recover-payment`.
+
+`glaw-cites` re-pointed to the bookkeeping venv (Python 3.12 w/ eyecite) via the bin-wrapper idiom —
+the system python3 is Homebrew 3.14 (PEP 668 externally-managed; eyecite/lxml unsupported), so the
+bare-python shebang fails the doctor smoke test. Logic moved to `lib/bookkeeping/cites.py`.
+
 ## Unreleased — Tax & IRS coverage: 5 new seats + doctor green
 
 Closes five IRS/tax gaps from a coverage review. Each is a new firm-authored native seat
