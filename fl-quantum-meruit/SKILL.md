@@ -140,8 +140,9 @@ skeleton for every Title VI claim, a cross-action discovery set, a routing intak
 | Need | File |
 |---|---|
 | Pleadable skeleton for any Title VI cause (replevin, ejectment, quiet title, partition, declaratory judgment, injunction/nuisance, lost-instrument reestablishment, dishonored check, statutory-lien foreclosure, attachment, garnishment, proceedings supplementary, domesticate a judgment, eviction, unlawful detainer) | `templates/title6/causes-of-action-catalog.md` |
-| **Dedicated, ready-to-file complaints** — construction-lien foreclosure (Ch. 713/85), replevin, quiet title, declaratory judgment, ejectment, reestablish a lost note/deed (§71.011 + UCC §673.3091) | `templates/title6/complaint-*.md` |
-| **Judgment-ENFORCEMENT pack** — proceedings supplementary + implead/unwind transfers (§56.29, verified text: 7-business-day Notice to Appear, money judgment vs. transferee) and writ of garnishment + §77.041 exemption notice | `templates/title6/enforcement-*.md` |
+| **Dedicated, ready-to-file complaints (all causes)** — construction-lien foreclosure (713/85), replevin, quiet title, declaratory judgment, ejectment, reestablish lost note/deed (§71.011+UCC §673.3091), partition, eviction (Ch.83), unlawful detainer (Ch.82), injunction/TRO (Ch.60+Rule 1.610), dishonored check (§68.065 treble), inverse condemnation/Bert Harris (Ch.73/70), state tax contest (§72.011) | `templates/title6/complaint-*.md` |
+| **Extraordinary writs + receiver** — quo warranto / prohibition / habeas (Ch.79-81); appointment of a receiver (§69.011) | `templates/title6/petition-extraordinary-writs.md`, `motion-appoint-receiver.md` |
+| **Judgment-ENFORCEMENT pack** — writ of execution + levy (Ch.56), garnishment + §77.041 notice (Ch.77), prejudgment attachment (Ch.76), proceedings supplementary §56.29 (verified text: 7-business-day Notice to Appear, money judgment vs. transferee, FUFTA unwind), domesticate a sister-state (UEFJA) or foreign-country judgment (Ch.55) | `templates/title6/enforcement-*.md` |
 | Master intake + claim-routing triage | `templates/title6/intake-questions.md` |
 | Cross-action discovery (RFP / Rogs / RFA) | `templates/title6/discovery-set.md` |
 | Subpoenas — trial, deposition, duces tecum to party + **non-party** (Rule 1.351/1.410) | `templates/title6/subpoenas.md` |
