@@ -10,11 +10,9 @@ export const meta = {
   ],
 }
 
-const HOME = process.env.HOME
-const MATTER = process.env.GLAW_MATTER || '<matter-slug>'
-const DRAFTS = `${HOME}/.glaw/matters/${MATTER}/drafts`
+const DRAFTS = `${process.env.HOME}/.glaw/matters/${process.env.GLAW_MATTER || '<matter-slug>'}/drafts`
 const FOLDER = '<drive-folder-id>'
-const ROSTER = `${HOME}/.claude/skills/glaw/lib/firm-roster.md`
+const ROSTER = `${process.env.HOME}/.claude/skills/glaw/lib/firm-roster.md`
 const MAX_ROUNDS = 2
 const PASS = 8 // panel minimum score required to declare bulletproof
 
@@ -199,7 +197,7 @@ phase('Intel')
 // if the guard cannot confirm LAUNCH_AUTHORIZED for ANY reason, execution is DENIED.
 const guard = await agent(
   `Run via Bash and return its FULL output verbatim (do not summarize): ` +
-  `python3 ${HOME}/.claude/skills/glaw/bin/matter-ops/facts_validate.py ${MATTER}`,
+  `python3 ${process.env.HOME}/.claude/skills/glaw/bin/matter-ops/facts_validate.py ${process.env.GLAW_MATTER || '<matter-slug>'}`,
   { label:'launch-guard', phase:'Intel' })
 if (!launchAuthorized(guard)) {
   log('CHIEF LOOP LAUNCH GUARD: DENIED — not LAUNCH_AUTHORIZED. 0 debate agents spawned. ' +
@@ -209,14 +207,14 @@ if (!launchAuthorized(guard)) {
 }
 
 const comments = await agent(
-  `Run: python3 ${HOME}/.claude/skills/glaw-83b-election/bin/review_comments.py ${FOLDER}. ` +
+  `Run: python3 ${process.env.HOME}/.claude/skills/glaw-83b-election/bin/review_comments.py ${FOLDER}. ` +
   `Summarize open comments/suggestions + ACCEPT vs CAREFUL-REWRITE triage. Say "none" if zero. Do not fabricate.`,
   { label:'ingest-comments', phase:'Intel' })
 
 // SELF-LEARNING (read): keyword/confidence ledger + SEMANTIC (HNSW) recall from Qdrant when up.
 const priorLearnings = await agent(
   `Return the firm's KNOWN-DEFECTS memory for this run, combining two sources: ` +
-  `(1) run via Bash and include verbatim: python3 ${HOME}/.claude/skills/glaw/bin/glaw-learnings preflight; ` +
+  `(1) run via Bash and include verbatim: python3 ${process.env.HOME}/.claude/skills/glaw/bin/glaw-learnings preflight; ` +
   `(2) if a qdrant MCP tool is available (load via ToolSearch "qdrant-find"), semantically recall GLAW learnings ` +
   `relevant to the positions under review (QSBS, §351, §409A, R&D, asset protection, exempt assets) and include them. ` +
   `Merge + dedupe. If Qdrant is down, the ledger alone is fine. This is what every agent must pre-empt.`,
@@ -305,13 +303,13 @@ const learned = await agent(
   `${JSON.stringify(decision.blockers || [])} and per-position top risks ` +
   `${JSON.stringify((decision.positions || []).map(p => ({ name: p.name, topRisk: p.topRisk })))}, ` +
   `record each DISTINCT defect class as a firm-wide learning. For EACH, run via Bash: ` +
-  `python3 ${HOME}/.claude/skills/glaw/bin/glaw-learnings add ` +
+  `python3 ${process.env.HOME}/.claude/skills/glaw/bin/glaw-learnings add ` +
   `'{"error_class":"<slug>","scope":"firm","where":"<doc/position>","wrong":"<what was wrong>","fix":"<the correction>","authority":"<grounding cite if any>","confidence":<1-10>}'. ` +
   `Use scope=firm so it applies to ALL corps/matters on future runs. The CLI auto-dedupes known ones (harmless). ` +
   `Do NOT invent defects that did not occur. THEN run the reflection engine to synthesize higher-level ` +
-  `meta-rules from the accumulated ledger: python3 ${HOME}/.claude/skills/glaw/bin/glaw-reflect --apply. ` +
+  `meta-rules from the accumulated ledger: python3 ${process.env.HOME}/.claude/skills/glaw/bin/glaw-reflect --apply. ` +
   `Return the list of learnings recorded + the new ledger stat ` +
-  `(run: python3 ${HOME}/.claude/skills/glaw/bin/glaw-learnings stats).`,
+  `(run: python3 ${process.env.HOME}/.claude/skills/glaw/bin/glaw-learnings stats).`,
   { label:'learnings-write', phase:'Decide' })
 
 // FINALIZE: the Chief converges when NO position is NEEDS-WORK (drafting is provably done). Positions are either
@@ -331,11 +329,11 @@ if (allClear){
     `(2) ${DRAFTS}/30-remediation-faq.md — macro rounds (${macro}), errors found per round, and an FAQ of EXACTLY ` +
     `what the agents corrected, from this ledger: ${JSON.stringify(ledger)}. ` +
     `(3) THEN assemble the date+time-stamped final package by running via Bash: ` +
-    `bash ${HOME}/.claude/skills/glaw/bin/matter-ops/assemble_package.sh ` +
-    `${HOME}/.glaw/matters/${MATTER} /private/tmp/irs_forms ` +
+    `bash ${process.env.HOME}/.claude/skills/glaw/bin/matter-ops/assemble_package.sh ` +
+    `${process.env.HOME}/.glaw/matters/${process.env.GLAW_MATTER || '<matter-slug>'} /private/tmp/irs_forms ` +
     `— this puts all documents, IRS forms, filings, dossier + FAQ + manifest into one timestamped subfolder. ` +
     `Use the Write tool for both. THEN publish them to Drive by running, via Bash: ` +
-    `python3 ${HOME}/.claude/skills/glaw/bin/matter-ops/publish_drafts_to_drive.py ${FOLDER} ` +
+    `python3 ${process.env.HOME}/.claude/skills/glaw/bin/matter-ops/publish_drafts_to_drive.py ${FOLDER} ` +
     `${DRAFTS}/29-final-dossier.md ${DRAFTS}/30-remediation-faq.md  (GAP 3 auto-publish). ` +
     `Then return a one-paragraph summary including the published Drive links.`,
     { label:'finalize', phase:'Decide' })
