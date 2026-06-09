@@ -59,11 +59,13 @@ _ABBR = (r"Fla|Tex|Cal|Ala|Ariz|Ark|Colo|Conn|Del|Ga|Ill|Ind|Iowa|Kan|Ky|La|Md|M
          r"e\.g|i\.e|cf|see|accord|Stip")
 _SENT = re.compile(r"(?<=[.!?])\s+(?=[A-Z\"\(])")
 def _is_heading(s):
-    # markdown heading, or a short ALL-CAPS caption/heading line (no lowercase letters)
+    # markdown heading, or an ALL-CAPS caption/heading line (court captions can be long, so no
+    # word cap). A line with any lowercase (e.g. "COMES NOW the Plaintiff", "WHEREFORE, Plaintiff
+    # requests") is prose and stays analyzable.
     if s.startswith("#"):
         return True
     letters = [c for c in s if c.isalpha()]
-    return bool(letters) and len(s.split()) <= 12 and not any(c.islower() for c in s)
+    return bool(letters) and not any(c.islower() for c in s)
 
 def sentences(text):
     # drop heading / ALL-CAPS caption lines so they aren't analyzed as prose (fragments/run-ons)
