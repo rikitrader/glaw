@@ -1,6 +1,3 @@
-I'll draft this complaint template directly as a markdown document.
-
-```markdown
 # COMPLAINT — FDCPA & TCPA (CONSUMER PROTECTION) — FILING TEMPLATE
 
 ---
@@ -268,4 +265,3 @@ GENERAL PLEADING:
 UPL / attorney work-product — NOT legal advice; verify every statute and cite before filing.
 ============================================================================================================
 -->
-```

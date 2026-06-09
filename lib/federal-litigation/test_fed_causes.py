@@ -21,13 +21,23 @@ def main():
     for cmd in (["list"],["category","rico"],["show","wire fraud"],["search","fraud"],["sol","4"]):
         o=subprocess.run([sys.executable,str(HERE/"fed_causes.py")]+cmd,capture_output=True,text=True)
         assert o.returncode==0 and o.stdout.strip(), cmd
-    # templates
+    # templates: complaints carry a court caption; reference docs are checked separately below
     tdir=HERE/"templates"; tmpls=list(tdir.glob("*.md"))
     assert len(tmpls)>=8, len(tmpls)
-    for t in tmpls:
+    for t in tdir.glob("complaint-*.md"):
         x=t.read_text()
-        assert "UNITED STATES DISTRICT COURT" in x and "[" in x, t.name
+        assert ("UNITED STATES DISTRICT COURT" in x or "COURT OF FEDERAL CLAIMS" in x) and "[" in x, t.name
         assert ("NOT legal advice" in x or "work-product" in x or "UPL" in x), t.name
+    # supporting templates (parity with the FL side)
+    names={f.name for f in tdir.glob("*.md")}
+    for must in ("federal-causes-catalog.md","answer-affirmative-defenses-federal.md","motions-pack-federal.md","discovery-federal.md","intake-federal.md","subpoena-federal.md"):
+        assert must in names, must
+    assert len([f for f in tdir.glob("complaint-*.md")])>=20, "complaints"
+    cat=(tdir/"federal-causes-catalog.md").read_text(); assert "SHARED FEDERAL CAPTION" in cat and "RICO" in cat
+    mot=(tdir/"motions-pack-federal.md").read_text()
+    for m in ("Twombly","Celotex","FRE 702","Rule 11","§ 1447","9 U.S.C"):
+        assert m in mot, m
+    ans=(tdir/"answer-affirmative-defenses-federal.md").read_text(); assert "Rule 8(c)" in ans and "COUNTERCLAIM" in ans
     # statute excerpts
     se=(HERE/"statute-text"/"federal-excerpts.md").read_text()
     for s in ("1962","1343","1983","3729","3282"):

@@ -1,6 +1,3 @@
-Now I have the context. Returning the complete template.
-
-```markdown
 IN THE UNITED STATES DISTRICT COURT FOR THE [DISTRICT] DISTRICT OF [STATE]
 
 [__________ DIVISION]
@@ -205,4 +202,3 @@ VERIFY every statute, rule, case citation, circuit-specific confusion test, and 
 
 UPL / attorney work-product — NOT legal advice; verify every statute and cite before filing.
 -->
-```
