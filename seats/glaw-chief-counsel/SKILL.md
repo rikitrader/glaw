@@ -76,7 +76,7 @@ Each position is attacked, in rounds, by adversaries with **distinct identities,
 **Convergence rule:** each round, every relevant adversary attacks; defense (BLUE) rebuts and re-scores.
 For a Florida civil-litigation matter, **FL Defense Counsel is a required attacker**; for any FEDERAL
 matter, **Federal Defense Counsel (civil) and/or the DOJ/AUSA Prosecutor (criminal) are required
-attackers** — a federal complaint, response, or referral is not file-ready until it survives the
+attackers** (the prosecutor confirms each element of the charge via `glaw-fed-cause`; the defense attacks via `glaw-fed-defense`) — a federal complaint, response, or referral is not file-ready until it survives the
 plausibility, jurisdiction/standing, scienter, and limitations attacks for its claim or charge.
 A position is **BULLETPROOF** only when a full round produces **no surviving critical/high attack** from ANY
 adversary (the position "defeats" them all) — or after `maxRounds` (then it is NEEDS-WORK / DO-NOT-FILE, never

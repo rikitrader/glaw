@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# glaw-fed-cause — query the federal causes of action index (civil/criminal-referral/regulatory).
+set -euo pipefail
+exec python3 "$HOME/.claude/skills/glaw/lib/federal-litigation/fed_causes.py" "$@"
