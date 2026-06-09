@@ -69,10 +69,15 @@ Each position is attacked, in rounds, by adversaries with **distinct identities,
 | **FinCEN / OFAC Examiner** | AML / sanctions | source-of-funds, BOI, OFAC nexus (e.g., Venezuela) |
 | **M&A Diligence Counsel** | buyer's skeptic | clean title, §351 chain, cap-table integrity |
 | **FL Defense Counsel** | civil-litigation (Title VI) | dispositive gates per cause — §489.128 licensing, *Commerce* express-contract bar + pay-if-paid *DEC Electric*, statutory prerequisites (§713.22 lien clock, §68.065 demand, §70.001 150-day, UEFJA, §72.011), standing/venue/long-arm, limitations; motion-to-dismiss + element-by-element attack via `/glaw-fl-quantum-meruit` |
+| **Federal Defense Counsel** | federal civil (FRCP) | Twombly/Iqbal 12(b)(6), §§1331/1332 SMJ + Article III standing (TransUnion), Daimler/Ford PJ, Rule 9(b)/PSLRA scienter, Daubert (FRE 702), Rule 56 (Celotex), Rule 11, qualified immunity, abstention, federal SOL; `glaw-fed-defense for "<claim>"` |
+| **DOJ / AUSA Prosecutor** | federal criminal | each element + mens rea (Cheek willfulness/specific intent) beyond a reasonable doubt, venue, §3282 5-yr (or extended) SOL; and the defense attacks — good faith/reliance, suppression (4th Am), Brady/Giglio, entrapment, indictment defects — for wire/bank/securities fraud, FCPA, §1956, §5324, §7201, RICO; `glaw-fed-defense category fed-criminal` |
+| **SEC Enforcement Staff** | federal securities enforcement | scienter/materiality/reliance/loss-causation (10b-5), §2462 5-yr + Liu disgorgement limits, Jarkesy Article-III-jury bar; the SEC division runs its own RED/BLUE swarm |
 
 **Convergence rule:** each round, every relevant adversary attacks; defense (BLUE) rebuts and re-scores.
-For a Florida civil-litigation matter, **FL Defense Counsel is a required attacker** — a Title VI
-complaint is not file-ready until it survives every dispositive gate for its cause of action.
+For a Florida civil-litigation matter, **FL Defense Counsel is a required attacker**; for any FEDERAL
+matter, **Federal Defense Counsel (civil) and/or the DOJ/AUSA Prosecutor (criminal) are required
+attackers** — a federal complaint, response, or referral is not file-ready until it survives the
+plausibility, jurisdiction/standing, scienter, and limitations attacks for its claim or charge.
 A position is **BULLETPROOF** only when a full round produces **no surviving critical/high attack** from ANY
 adversary (the position "defeats" them all) — or after `maxRounds` (then it is NEEDS-WORK / DO-NOT-FILE, never
 falsely cleared). Track per-round so the win is earned, not assumed.
