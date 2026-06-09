@@ -200,7 +200,7 @@ Covers: **Civil** litigation, trial, disputes.
 | Federal litigation & trial counsel | `glaw-federal-trial-counsel` |
 | Pleadings/motions/discovery drafting | `/glaw-draft` (litigation track) |
 | **Quantum meruit / construction non-payment** — full FL civil case (QM + unjust-enrichment complaint, summons/service, discovery pack, MSJ + affidavit, trial brief, damages worksheet w/ §55.03 interest, proposed judgment) + 0-100 settlement-leverage score; extends to breach/account-stated/Ch.713 lien/§772.11 civil theft/FUFTA/RICO (`bin/glaw-qm`) | `/glaw-fl-quantum-meruit` |
-| **Florida Title VI civil-practice library** — index DB of all 36 chapters + every cause of action with a ready-to-file complaint/enforcement/petition template, the dispositive-gate checks, discovery/intake/subpoena packs, and a damages+leverage helper (`bin/glaw-fl-statute`, `bin/glaw-qm`) | `/glaw-fl-quantum-meruit` |
+| **Florida Title VI civil-practice library** — index DB of all 36 chapters + every cause of action with a ready-to-file complaint/enforcement/petition template, the dispositive-gate checks, discovery/intake/subpoena packs, and a damages+leverage helper + a **110-cause Florida claims library** (every cause's elements/SOL/defenses/authority + legal standards) (`bin/glaw-fl-cause`, `bin/glaw-fl-statute`, `bin/glaw-qm`) | `/glaw-fl-quantum-meruit` |
 
 ## Litigation Support Division (the 10 named agents)
 Covers: contract review, case-law research, court records, fraud detection, veil
