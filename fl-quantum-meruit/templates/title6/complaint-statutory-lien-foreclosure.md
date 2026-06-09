@@ -63,4 +63,5 @@ Attorney for Plaintiff
 <!-- DEADLINE: 1 year to foreclose from recording the lien (§ 713.22) — a Notice of Contest shortens it
      to 60 days; a § 713.21(4) summons-to-show-cause shortens it to 20 days. §489.128 licensing is
      dispositive. Lien may be transferred to a bond (§ 713.24) — then sue on the bond. Verify all dates.
-     UPL/work-product footer per /glaw-ethics-conflicts. -->
+     VERIFIED deadline text: lib/statute-text/verified-excerpts.md (§713.06/45-day, §713.08/90-day,
+     §713.22/1-yr+60-day). UPL/work-product footer per /glaw-ethics-conflicts. -->

@@ -182,6 +182,7 @@ skeleton for every Title VI claim, a cross-action discovery set, a routing intak
 | Cross-action discovery (RFP / Rogs / RFA) | `templates/title6/discovery-set.md` |
 | Subpoenas — trial, deposition, duces tecum to party + **non-party** (Rule 1.351/1.410) | `templates/title6/subpoenas.md` |
 | The index DB itself | `lib/fl-title6-index.json` |
+| **Verified verbatim statute text** (deadline sections — §713.06/.08/.22, §56.29) | `lib/statute-text/verified-excerpts.md` |
 
 ## STEP 5 — GATES BEFORE FILING
 1. **§ 489.128 license** confirmed (dispositive on contract/QM enforceability).
