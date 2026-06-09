@@ -88,7 +88,7 @@ Drive the document set off the structure memo's org chart and cap table.
 Drive the document set off the parties-to-claims matrix.
 
 > **Florida civil matter? Use the Title VI document factory first.** Select the cause(s) of action
-> with `glaw-fl-statute causes` (or `chapter <N>` / `search <term>`), then draft from the ready-to-file
+> with `glaw-fl-cause` (110 FL causes — elements/SOL/defenses) + `glaw-fl-statute causes` (or `chapter <N>` / `search <term>`), then draft from the ready-to-file
 > **`/glaw-fl-quantum-meruit`** library: quantum-meruit/unjust-enrichment (`fl-quantum-meruit/templates/0*`)
 > and the full Title VI set (`fl-quantum-meruit/templates/title6/complaint-*.md`, `enforcement-*.md`,
 > `petition-*.md`, `motion-*.md`) + the discovery/intake/subpoena packs. **Run the dispositive-gate

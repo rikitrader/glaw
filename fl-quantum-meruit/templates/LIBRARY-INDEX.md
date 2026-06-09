@@ -120,3 +120,14 @@ Index DB of all 36 Title VI chapters + a pleadable skeleton for every cause of a
 | Subpoena pack (trial/deposition/duces tecum party + non-party, Rule 1.410/1.351) | `title6/subpoenas.md` |
 | ↳ dedicated ready-to-file complaints | `title6/complaint-statutory-lien-foreclosure.md`, `complaint-replevin.md`, `complaint-quiet-title.md`, `complaint-declaratory-judgment.md`, `complaint-ejectment.md`, `complaint-reestablish-lost-instrument.md` |
 | ↳ judgment-enforcement pack | `title6/enforcement-proceedings-supplementary.md` (§56.29 — verified), `enforcement-garnishment.md` (Ch.77) |
+
+
+## 10. FLORIDA CAUSES LIBRARY (110 causes + legal standards)
+Query: `glaw-fl-cause list | category <c> | show <name> | search <t> | standards | sol <yr>`.
+| Document | Source |
+|---|---|
+| Index DB (110 causes — elements/SOL/defenses/authority + standards) | `../lib/fl-causes-index.json` |
+| Common-causes catalog (pleadable skeletons) | `causes/common-causes-catalog.md` |
+| Legal-standards motion pack (MTD/MSJ 1.510/DV/JNOV/Daubert/punitive) | `causes/motions-legal-standards.md` |
+| Dedicated complaints | `causes/complaint-breach-of-contract.md`, `complaint-fraud.md`, `complaint-fdutpa.md`, `complaint-civil-theft-conversion.md` |
+| § 772.11 civil-theft pre-suit demand | `causes/demand-civil-theft.md` |
