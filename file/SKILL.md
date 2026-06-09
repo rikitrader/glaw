@@ -41,7 +41,7 @@ Do not assemble until all three are true in the matter timeline/charter:
 2. **`/glaw-adversarial`** ran a clean RED→BLUE pass (no surviving fatal attack).
 3. **House writing standard cleared** — every external document passed **`/glaw-legal-writing`**
    (the Legal Writing Master) and the deterministic gate
-   `~/.claude/skills/glaw/bin/glaw-writing-check <doc>` (add `--motion` for motions): no passive-voice
+   `~/.claude/skills/glaw/bin/glaw-writing-check <doc>` (add `--motion` for motions, **`--federal` for any U.S. District Court filing** — caption + I–VI sections + signature + Case No.): no passive-voice
    /cliché/hedging/over-long-sentence flags left, and no legal assertion lacking a citation.
 
 If any is missing, stop and route back. The firm does not file unverified, un-adversaried, or

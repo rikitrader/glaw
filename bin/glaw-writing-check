@@ -35,6 +35,16 @@ MOTION_SECTIONS = [("Introduction", r"introduction|comes now|respectfully moves"
                    ("Argument", r"\bargument\b"),
                    ("Relief / WHEREFORE", r"wherefore|requested relief|request(s)? that the court"),
                    ("Conclusion", r"\bconclusion\b")]
+# Federal Filing Style Directive — required structural elements of a U.S. District Court filing
+FEDERAL_ELEMENTS = [("Federal caption (UNITED STATES DISTRICT COURT)", r"united states district court"),
+                    ("Case No. line", r"case no"),
+                    ("I. INTRODUCTION", r"\bintroduction\b"),
+                    ("II. STATEMENT OF FACTS", r"statement of (relevant )?facts|factual background"),
+                    ("III. LEGAL STANDARD", r"legal standard|standard of review"),
+                    ("IV. ARGUMENT", r"\bargument\b"),
+                    ("V. RELIEF REQUESTED", r"relief requested|wherefore"),
+                    ("VI. CONCLUSION", r"\bconclusion\b"),
+                    ("Signature block (Respectfully submitted)", r"respectfully submitted")]
 WEAK_ADVERBS = ["very", "really", "quite", "extremely", "clearly", "obviously", "basically",
                 "actually", "simply", "just", "totally", "literally", "definitely", "certainly"]
 # a sentence asserting law (these verbs/phrases) SHOULD carry authority
@@ -84,16 +94,21 @@ def sentences(text):
 _ADJ_ED = {"entitled", "barred", "settled", "related", "limited", "qualified", "alleged", "named",
            "so-called", "established", "located", "designated", "involved", "concerned", "interested"}
 
-def scan(text, runon=45, motion=False):
+def scan(text, runon=45, motion=False, federal=False):
     low = text.lower()
     sents = sentences(text)
     findings = {k: [] for k in
                 ("passive", "cliche", "hedge", "weak_adverb", "run_on", "unsupported_law", "fragment")}
-    if motion:
+    if motion and not federal:
         findings["missing_section"] = []
         for name, cue in MOTION_SECTIONS:
             if not re.search(cue, low):
                 findings["missing_section"].append({"section": name})
+    if federal:
+        findings["missing_element"] = []
+        for name, cue in FEDERAL_ELEMENTS:
+            if not re.search(cue, low):
+                findings["missing_element"].append({"section": name})
     for i, s in enumerate(sents, 1):
         wc = len(s.split())
         if wc > runon:
@@ -140,6 +155,8 @@ def render(findings, stats):
     checklist = list(CHECK)
     if "missing_section" in findings:
         checklist = checklist + [("Motion structure complete (6 sections + WHEREFORE)", ("missing_section",))]
+    if "missing_element" in findings:
+        checklist = checklist + [("Federal filing complete (caption + I–VI + signature + Case No.)", ("missing_element",))]
     for label, keys in checklist:
         n = sum(len(findings.get(k, [])) for k in keys)
         out.append(f"  [{'FLAG' if n else ' OK '}] {label}" + (f"  ({n})" if n else ""))
@@ -147,7 +164,8 @@ def render(findings, stats):
     EX = {"passive": "passive voice", "cliche": "cliché/throat-clearer", "hedge": "hedging/speculation",
           "weak_adverb": "weak adverb", "run_on": "over-long sentence",
           "unsupported_law": "LEGAL ASSERTION W/O CITE — verify authority", "fragment": "possible fragment",
-          "missing_section": "MISSING required motion section"}
+          "missing_section": "MISSING required motion section",
+          "missing_element": "MISSING required federal-filing element (FRCP style directive)"}
     for k, items in findings.items():
         if not items:
             continue
@@ -170,13 +188,16 @@ def main():
     ap.add_argument("--json", action="store_true")
     ap.add_argument("--motion", action="store_true",
                     help="apply the Court Motion Style Sheet (40-word max + required-section check)")
+    ap.add_argument("--federal", action="store_true",
+                    help="apply the Federal Filing Style Directive (caption + I–VI sections + signature + Case No.)")
     a = ap.parse_args()
     raw = (open(a.path, encoding="utf-8", errors="ignore").read()
            if a.path and a.path != "-" else sys.stdin.read())
     if not raw.strip():
         print(json.dumps({"flags": 0, "findings": {}}) if a.json else "0 flags (empty input).")
         return 0
-    findings, stats = scan(raw, runon=40 if a.motion else 45, motion=a.motion)
+    findings, stats = scan(raw, runon=40 if (a.motion or a.federal) else 45,
+                           motion=a.motion, federal=a.federal)
     if a.json:
         print(json.dumps({"stats": stats, "flags": sum(len(v) for v in findings.values()),
                           "findings": findings}, indent=2))
