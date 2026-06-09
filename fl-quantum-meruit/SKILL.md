@@ -139,6 +139,11 @@ statutes, and case law). Use it to pick and plead the right claim(s) and to anti
 ~/.claude/skills/glaw/bin/glaw-fl-cause standards            # MTD / MSJ(1.510) / DV / JNOV / Daubert / punitive
 ~/.claude/skills/glaw/bin/glaw-fl-cause sol 2                # SOL triage (2-yr: defamation, malpractice, wrongful death)
 ```
+**Templates** (`templates/causes/`): the common-causes catalog (pleadable count skeletons across
+contract/equity/fraud/business/tort/statutory), dedicated complaints (breach of contract, fraud,
+FDUTPA, civil theft + conversion), the § 772.11 civil-theft pre-suit demand, and the **legal-standards
+motion pack** (MTD, MSJ Rule 1.510, directed verdict, JNOV, new trial, Daubert, punitive §768.72,
+appeal standards).
 Index DB: `lib/fl-causes-index.json`. The **defenses** field feeds the adversarial gate's FL Defense
 Counsel attack. Reference, not advice — verify every element/SOL/authority.
 
