@@ -125,6 +125,19 @@ Quantum meruit rarely travels alone. Add or route the matching claim:
 | 60+ jobs / fraud pattern | **Federal civil RICO** → `glaw-federal-trial-counsel` (viability memo first) |
 | Need precedent | `/glaw-case-law-research` + `bin/glaw-recover-research` → verify via `/glaw-legal-research` |
 
+## FLORIDA DEFENSES LIBRARY (50 affirmative defenses) — the defense side
+
+Mirrors the causes library for the DEFENSE: every Rule 1.110(d)/1.140(b) affirmative defense and
+common-law/statutory avoidance — what to show, who bears the burden, the authority, and the claims it
+defeats. Powers both the answer and the adversarial gate's FL Defense Counsel.
+```bash
+~/.claude/skills/glaw/bin/glaw-fl-defense list                    # all 50
+~/.claude/skills/glaw/bin/glaw-fl-defense show "statute of frauds"
+~/.claude/skills/glaw/bin/glaw-fl-defense for "quantum meruit"    # the defenses that KILL a given claim
+```
+Answer template: `templates/defense/answer-affirmative-defenses.md` (answer + every affirmative
+defense + compulsory counterclaim). Index DB: `lib/fl-defenses-index.json`.
+
 ## FLORIDA CAUSES OF ACTION LIBRARY (110 causes + legal standards)
 
 The firm's full Florida civil claim taxonomy — every cause of action with its **elements, statute of

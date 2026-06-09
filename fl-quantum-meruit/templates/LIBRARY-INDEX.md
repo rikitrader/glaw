@@ -131,3 +131,10 @@ Query: `glaw-fl-cause list | category <c> | show <name> | search <t> | standards
 | Legal-standards motion pack (MTD/MSJ 1.510/DV/JNOV/Daubert/punitive) | `causes/motions-legal-standards.md` |
 | Dedicated complaints (≈30, covering all 110 causes) | `causes/complaint-*.md` — contract/common-counts/note/warranty; equity (unjust enrichment, rescission, specific performance, trusts/accounting/indemnity); business (fiduciary duty, tortious interference, conspiracy); intentional torts (assault/battery, defamation, malicious prosecution/abuse of process, IIED, trespass/nuisance, invasion of privacy); negligence (general, hiring/retention/security, malpractice, products liability, wrongful death, NIED); statutory (FDUTPA, FCCPA, civil theft, usury); + misc (consortium, joint venture, way of necessity, building code, wrongful birth) |
 | § 772.11 civil-theft pre-suit demand | `causes/demand-civil-theft.md` |
+
+## 11. FLORIDA DEFENSES LIBRARY (50 affirmative defenses)
+Query: `glaw-fl-defense list | category <c> | show <name> | search <t> | for "<claim>"`.
+| Document | Source |
+|---|---|
+| Index DB (50 defenses — showing/burden/defeats/authority) | `../lib/fl-defenses-index.json` |
+| Answer + affirmative defenses + counterclaim | `defense/answer-affirmative-defenses.md` |
