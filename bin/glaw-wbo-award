@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# glaw-wbo-award — IRC §7623 IRS-whistleblower award-range estimate (mandatory (b) vs discretionary (a)).
+set -euo pipefail
+GLAW_LIB="$HOME/.claude/skills/glaw/lib/bookkeeping"
+VENV_PY="$GLAW_LIB/.venv/bin/python"
+[[ -x "$VENV_PY" ]] || { echo "ERROR: bookkeeping venv missing — run ./setup" >&2; exit 2; }
+exec "$VENV_PY" "$GLAW_LIB/wbo_award.py" "$@"
