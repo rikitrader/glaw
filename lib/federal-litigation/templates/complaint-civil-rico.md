@@ -287,3 +287,8 @@ CAUSE-SPECIFIC GOTCHAS — REVIEW BEFORE FILING:
 
 UPL / attorney work-product — NOT legal advice; verify every statute and cite before filing.
 -->
+
+<!-- DOCTRINE: reference/doj-civil-rico-manual.md (DOJ Civil RICO Manual, ingested) — Reves
+     operation-or-management, enterprise-distinctness + Boyle a/i/f, H.J. Inc. pattern, Anza proximate cause,
+     4-yr SOL (Agency Holding). NOTE: a PRIVATE RICO complaint pleads §1964(c) TREBLE DAMAGES, not an
+     injunction (that is the US's §1964(a) lane). -->
