@@ -1,0 +1,177 @@
+#!/usr/bin/env python3
+"""glaw-writing-check — deterministic legal-writing QC linter (stdlib only; runs anywhere).
+
+Scans a draft and flags the things the Legal Writing Master forbids: passive voice, legal
+clichés / throat-clearers, run-on sentences, adverb overuse, hedging, and legal propositions
+asserted WITHOUT a citation. Emits the QUALITY CONTROL CHECKLIST with per-item pass/flag.
+
+This is a heuristic linter, not a grammar oracle — it surfaces candidates for a human (and the
+/glaw-legal-writing seat) to fix. It NEVER rewrites and NEVER verifies a citation is good law
+(that is /glaw-legal-research). Citations are flagged for verification, never fabricated.
+
+Usage:
+  glaw-writing-check <file>            human scorecard
+  glaw-writing-check <file> --json     machine JSON
+  cat brief.txt | glaw-writing-check - --json
+"""
+from __future__ import annotations
+import sys, re, json, argparse
+
+CLICHES = [
+    "it is important to note", "it should be noted", "it is worth noting", "needless to say",
+    "as a matter of fact", "the fact that", "in order to", "due to the fact that",
+    "for all intents and purposes", "at this point in time", "in the event that",
+    "comes now", "wherefore premises considered", "hereinafter", "aforementioned",
+    "heretofore", "the undersigned", "pursuant to the provisions of", "each and every",
+    "null and void", "clearly", "obviously", "plainly", "undoubtedly", "it goes without saying",
+]
+HEDGES = ["i think", "i believe", "we think", "we believe", "we feel", "it seems", "arguably",
+          "perhaps", "maybe", "kind of", "sort of", "in my opinion", "it appears",
+          "it is undeniable", "everyone knows", "it goes without saying", "presumably", "speculat"]
+# motion house style requires these sections (heuristic: a heading/label containing the cue)
+MOTION_SECTIONS = [("Introduction", r"introduction|comes now|respectfully moves"),
+                   ("Statement of Facts", r"statement of (relevant )?facts|factual background"),
+                   ("Legal Standard", r"legal standard|standard of review"),
+                   ("Argument", r"\bargument\b"),
+                   ("Relief / WHEREFORE", r"wherefore|requested relief|request(s)? that the court"),
+                   ("Conclusion", r"\bconclusion\b")]
+WEAK_ADVERBS = ["very", "really", "quite", "extremely", "clearly", "obviously", "basically",
+                "actually", "simply", "just", "totally", "literally", "definitely", "certainly"]
+# a sentence asserting law (these verbs/phrases) SHOULD carry authority
+LAW_ASSERTION = re.compile(
+    r"\b(the court (held|ruled|found|reasoned)|the statute (requires|provides|states)|"
+    r"is liable|are liable|constitutes?|violat(es|ed|ion)|the law (requires|provides|is)|"
+    r"is barred|is entitled|must be granted|is well[- ]settled|it is well established|"
+    r"courts have held|the elements? (of|are)|the standard (is|requires))\b", re.I)
+# a rough citation signature (case, statute, reporter, rule)
+CITE_SIG = re.compile(
+    r"(\bv\.\s|\b§+\s?\d|\bU\.S\.\b|\bF\.\d?d\b|\bF\. ?Supp\b|\bS\. ?Ct\b|\bSo\. ?\d?d\b|"
+    r"\bStat\.\b|\bFla\.|\bRule\s+\d|\bU\.S\.C\.|\bC\.F\.R\.|\bid\.\b|\bsupra\b)", re.I)
+PASSIVE = re.compile(r"\b(is|are|was|were|be|been|being|been|has been|have been|had been)\s+"
+                     r"(\w+ed|written|made|held|given|taken|brought|found|shown|known|sought|"
+                     r"paid|sold|told|drawn)\b(\s+by\b)?", re.I)
+
+_ABBR = (r"Fla|Tex|Cal|Ala|Ariz|Ark|Colo|Conn|Del|Ga|Ill|Ind|Iowa|Kan|Ky|La|Md|Mass|Mich|"
+         r"Minn|Miss|Mo|Mont|Neb|Nev|Okla|Ore|Pa|Tenn|Va|Vt|Wash|Wis|Wyo|"
+         r"U\.S\.C|C\.F\.R|U\.S|N\.Y|D\.C|F\.2d|F\.3d|F\.\sSupp|So|S\.Ct|S\.W|N\.E|N\.W|P\.2d|A\.2d|"
+         r"No|Nos|Inc|Corp|Co|Ltd|L\.L\.C|Civ|Crim|App|Cir|Dist|Div|Ass\'?n|Bros|"
+         r"Ex|Id|etc|al|Jr|Sr|Mr|Mrs|Ms|Dr|Hon|Rev|Reg|Stat|Art|Sec|Supp|Ct|vs?|"
+         r"e\.g|i\.e|cf|see|accord|Stip")
+_SENT = re.compile(r"(?<=[.!?])\s+(?=[A-Z\"\(])")
+def sentences(text):
+    t = re.sub(r"\s+", " ", text.strip())
+    # mask periods that are NOT sentence ends: known abbreviations, single-letter initials/reporters,
+    # and decimals inside citations (1.540, 453.2) — so the splitter doesn't shatter on them.
+    NUL = "\x00"
+    t = re.sub(r"\b(?:%s)\." % _ABBR, lambda m: m.group(0)[:-1] + NUL, t, flags=re.I)
+    t = re.sub(r"\b([A-Z])\.", lambda m: m.group(1) + NUL, t)          # initials: R. P. F. S. A.
+    t = re.sub(r"(\d)\.(\d)", lambda m: m.group(1) + NUL + m.group(2), t)  # decimals: 1.540
+    parts = [p.replace(NUL, ".").strip() for p in _SENT.split(t)]
+    return [p for p in parts if p.strip()]
+
+# adjectival past-participles that read as passive but are not — keep them out of the passive flag
+_ADJ_ED = {"entitled", "barred", "settled", "related", "limited", "qualified", "alleged", "named",
+           "so-called", "established", "located", "designated", "involved", "concerned", "interested"}
+
+def scan(text, runon=45, motion=False):
+    low = text.lower()
+    sents = sentences(text)
+    findings = {k: [] for k in
+                ("passive", "cliche", "hedge", "weak_adverb", "run_on", "unsupported_law", "fragment")}
+    if motion:
+        findings["missing_section"] = []
+        for name, cue in MOTION_SECTIONS:
+            if not re.search(cue, low):
+                findings["missing_section"].append({"section": name})
+    for i, s in enumerate(sents, 1):
+        wc = len(s.split())
+        if wc > runon:
+            findings["run_on"].append({"sentence": i, "words": wc, "text": s[:140]})
+        pm = PASSIVE.search(s)
+        if pm and pm.group(2).lower() not in _ADJ_ED:
+            findings["passive"].append({"sentence": i, "text": s[:140]})
+        if LAW_ASSERTION.search(s) and not CITE_SIG.search(s):
+            findings["unsupported_law"].append({"sentence": i, "text": s[:160]})
+        # crude fragment check: short, no finite-verb-ish token, and NOT a citation sentence
+        if (wc < 25 and not CITE_SIG.search(s)
+                and not re.search(r"\b(is|are|was|were|be|has|have|had|do|does|did|"
+                                  r"\w+s|\w+ed|shall|must|may|will|would|can|could)\b", s, re.I)):
+            findings["fragment"].append({"sentence": i, "text": s[:140]})
+    for c in CLICHES:
+        for m in re.finditer(r"\b" + re.escape(c) + r"\b", low):
+            findings["cliche"].append({"phrase": c, "at": m.start()})
+    for h in HEDGES:
+        for m in re.finditer(r"\b" + re.escape(h) + r"\b", low):
+            findings["hedge"].append({"phrase": h, "at": m.start()})
+    for w in WEAK_ADVERBS:
+        n = len(re.findall(r"\b" + re.escape(w) + r"\b", low))
+        if n:
+            findings["weak_adverb"].append({"word": w, "count": n})
+    cites = len(CITE_SIG.findall(text))
+    return findings, {"sentences": len(sents),
+                      "words": len(text.split()),
+                      "citation_signals": cites,
+                      "avg_sentence_words": round(len(text.split()) / max(1, len(sents)), 1)}
+
+CHECK = [
+    ("Grammar / structure (passive, fragments, run-ons)", ("passive", "fragment", "run_on")),
+    ("No legal clichés / throat-clearers", ("cliche",)),
+    ("No hedging (advocacy voice)", ("hedge",)),
+    ("No unnecessary / weak adverbs", ("weak_adverb",)),
+    ("Every legal proposition carries authority", ("unsupported_law",)),
+]
+
+def render(findings, stats):
+    out = ["═══ LEGAL WRITING — QUALITY CONTROL ═══",
+           f"  {stats['words']} words · {stats['sentences']} sentences · "
+           f"avg {stats['avg_sentence_words']} w/sent · {stats['citation_signals']} citation signals", ""]
+    total = sum(len(v) for v in findings.values())
+    checklist = list(CHECK)
+    if "missing_section" in findings:
+        checklist = checklist + [("Motion structure complete (6 sections + WHEREFORE)", ("missing_section",))]
+    for label, keys in checklist:
+        n = sum(len(findings.get(k, [])) for k in keys)
+        out.append(f"  [{'FLAG' if n else ' OK '}] {label}" + (f"  ({n})" if n else ""))
+    out.append("")
+    EX = {"passive": "passive voice", "cliche": "cliché/throat-clearer", "hedge": "hedging/speculation",
+          "weak_adverb": "weak adverb", "run_on": "over-long sentence",
+          "unsupported_law": "LEGAL ASSERTION W/O CITE — verify authority", "fragment": "possible fragment",
+          "missing_section": "MISSING required motion section"}
+    for k, items in findings.items():
+        if not items:
+            continue
+        out.append(f"  ▸ {EX[k]} — {len(items)}:")
+        for it in items[:4]:
+            s = it.get("text") or it.get("phrase") or it.get("word") or it.get("section")
+            tag = f"[s{it['sentence']}] " if "sentence" in it else ""
+            out.append(f"      {tag}{s}")
+        if len(items) > 4:
+            out.append(f"      … +{len(items)-4} more")
+    out += ["",
+            "  Reminders: never fabricate a citation; flag unverifiable authority as",
+            '  "Authority requires verification." Citation accuracy → /glaw-legal-research.',
+            f"  TOTAL FLAGS: {total}  ·  {'CLEAN ✅' if total == 0 else 'review before filing'}"]
+    return "\n".join(out)
+
+def main():
+    ap = argparse.ArgumentParser(prog="glaw-writing-check")
+    ap.add_argument("path", nargs="?", default="-")
+    ap.add_argument("--json", action="store_true")
+    ap.add_argument("--motion", action="store_true",
+                    help="apply the Court Motion Style Sheet (40-word max + required-section check)")
+    a = ap.parse_args()
+    raw = (open(a.path, encoding="utf-8", errors="ignore").read()
+           if a.path and a.path != "-" else sys.stdin.read())
+    if not raw.strip():
+        print(json.dumps({"flags": 0, "findings": {}}) if a.json else "0 flags (empty input).")
+        return 0
+    findings, stats = scan(raw, runon=40 if a.motion else 45, motion=a.motion)
+    if a.json:
+        print(json.dumps({"stats": stats, "flags": sum(len(v) for v in findings.values()),
+                          "findings": findings}, indent=2))
+    else:
+        print(render(findings, stats))
+    return 0
+
+if __name__ == "__main__":
+    raise SystemExit(main())

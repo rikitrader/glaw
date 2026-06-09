@@ -128,5 +128,11 @@ Then advance:
 ~/.claude/skills/glaw/bin/glaw timeline-log draft_done
 ```
 
+**House writing standard (every drafted document).** Before handoff, route the draft through
+**`/glaw-legal-writing`** (the Legal Writing Master) and run the deterministic gate
+`~/.claude/skills/glaw/bin/glaw-writing-check <doc>` (add `--motion` for motions) — clear the
+passive-voice / cliché / hedging / unsupported-assertion flags. Citation *accuracy* still goes to
+`/glaw-legal-research`; this gate enforces form, structure, and persuasion.
+
 Hand off to `/glaw-adversarial` — nothing drafted here reaches `/glaw-file` until
 the RED→BLUE pass survives and `/glaw-legal-research` verifies every citation.
