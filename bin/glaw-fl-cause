@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# glaw-fl-cause — query the Florida Causes of Action index (110 causes + legal standards).
+set -euo pipefail
+exec python3 "$HOME/.claude/skills/glaw/fl-quantum-meruit/lib/fl_causes.py" "$@"

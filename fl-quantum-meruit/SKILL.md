@@ -125,6 +125,23 @@ Quantum meruit rarely travels alone. Add or route the matching claim:
 | 60+ jobs / fraud pattern | **Federal civil RICO** → `glaw-federal-trial-counsel` (viability memo first) |
 | Need precedent | `/glaw-case-law-research` + `bin/glaw-recover-research` → verify via `/glaw-legal-research` |
 
+## FLORIDA CAUSES OF ACTION LIBRARY (110 causes + legal standards)
+
+The firm's full Florida civil claim taxonomy — every cause of action with its **elements, statute of
+limitations, key defenses, and authority** (authored from the Florida Standard Jury Instructions,
+statutes, and case law). Use it to pick and plead the right claim(s) and to anticipate the defenses.
+
+```bash
+~/.claude/skills/glaw/bin/glaw-fl-cause list                 # all 110 causes (category + SOL)
+~/.claude/skills/glaw/bin/glaw-fl-cause category tort-fraud  # one category
+~/.claude/skills/glaw/bin/glaw-fl-cause show "civil theft"   # elements + SOL + defenses + authority
+~/.claude/skills/glaw/bin/glaw-fl-cause search fiduciary     # find by name/element/defense
+~/.claude/skills/glaw/bin/glaw-fl-cause standards            # MTD / MSJ(1.510) / DV / JNOV / Daubert / punitive
+~/.claude/skills/glaw/bin/glaw-fl-cause sol 2                # SOL triage (2-yr: defamation, malpractice, wrongful death)
+```
+Index DB: `lib/fl-causes-index.json`. The **defenses** field feeds the adversarial gate's FL Defense
+Counsel attack. Reference, not advice — verify every element/SOL/authority.
+
 ## TITLE VI LIBRARY — the full Florida civil-practice toolkit
 
 Beyond quantum meruit, this skill carries the complete **Florida Statutes Title VI (Civil Practice
