@@ -44,6 +44,12 @@ Do not assemble until all three are true in the matter timeline/charter:
    `~/.claude/skills/glaw/bin/glaw-writing-check <doc>` (add `--motion` for motions, **`--federal` for any U.S. District Court filing** — caption + I–VI sections + signature + Case No.): no passive-voice
    /cliché/hedging/over-long-sentence flags left, and no legal assertion lacking a citation.
 
+4. **Federal render conformance (auto-asserted)** — any U.S. District Court filing is rendered via
+   the federal profile (`bin/glaw-federal-format <doc> -o <doc>.docx`, or the PDF path with
+   `lib/style/federal-filing.css`) and **must pass** `bin/glaw-format-check <doc>.docx` (exit 0):
+   Times New Roman 12pt, double-spaced, justified, 0.5" indent, margins 1"/1"/1.25"/1", page
+   numbers. A non-conforming render is rejected — the directive is enforced by the tool, not by trust.
+
 If any is missing, stop and route back. The firm does not file unverified, un-adversaried, or
 un-polished work-product. (This backstops every document-producing seat — recover-payment,
 consumer-protection, family-law, insurance-coverage, receivables-assignment, fl-quantum-meruit,

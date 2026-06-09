@@ -1,0 +1,14 @@
+/* GLAW Federal Filing Style Directive — PDF/weasyprint render profile (mirror of federal_docx.py).
+   Use for any U.S. District Court filing rendered to PDF. */
+@page {
+  size: Letter;
+  margin: 1in 1in 1in 1.25in;            /* top right bottom left — binder-friendly 1.25" left */
+  @bottom-center { content: counter(page); font-family: "Times New Roman", serif; font-size: 12pt; }
+}
+body { font-family: "Times New Roman", Times, serif; font-size: 12pt; line-height: 2.0; text-align: justify; color: #000; }
+p { text-indent: 0.5in; margin: 0; }
+h1, h2, h3, h4 { font-weight: bold; text-transform: uppercase; text-indent: 0; text-align: left; }
+.caption, .court { text-align: center; font-weight: bold; text-indent: 0; }
+.signature { text-indent: 0; }
+blockquote { margin: 0 0.5in; text-indent: 0; }     /* block citations */
+footnote, .footnote { font-size: 10pt; }
