@@ -121,6 +121,11 @@ firm standard. Summary:
 - **ELITE mode (on request):** SCOTUS-level precision; RICO / fraud / mandamus structure;
   Rule 12(b)(6) / 56 / 60(b) framing; integrated exhibits (Ex. A, Ex. B, …).
 
+**Auto-render (never hand-set fonts):** `bin/glaw-federal-format <doc> -o <doc>.docx` applies the
+render rules (TNR 12pt, double, justified, 0.5" indent, margins 1/1/1.25/1, page numbers); the PDF
+path uses `lib/style/federal-filing.css`. **Auto-assert:** `bin/glaw-format-check <doc>.docx`
+verifies conformance (exit 0/1). 
+
 **Enforce it:** `glaw-writing-check <doc> --federal` checks the caption, all six Roman-numeral
 sections, the signature block, the Case No. line, and the prose rules. The `/glaw-file` hard
 pre-check refuses to assemble a federal filing that has not cleared this directive.

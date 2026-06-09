@@ -352,6 +352,11 @@ if [ -x "$GLAW/lib/bookkeeping/.venv/bin/python" ]; then
   else
     bad "writing-check FAILED — run: python3 $GLAW/lib/writing/test_writing_check.py"
   fi
+  if python3 "$GLAW/lib/render/test_federal_format.py" >/dev/null 2>&1; then
+    ok "federal render profile passed (generate→conforms, plain→fails — TNR/double/justified/1.25\" + page #s)"
+  else
+    bad "federal-format FAILED — run: python3 $GLAW/lib/render/test_federal_format.py"
+  fi
   if "$_BKPY" "$GLAW/lib/bookkeeping/test_wiring.py" >/dev/null 2>&1; then
     ok "orchestrator-wiring lock passed (/glaw-accounting routes to the finance subsystem)"
   else

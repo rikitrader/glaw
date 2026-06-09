@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# glaw-format-check — federal-filing render profile / conformance check (python-docx). Prefers the docx-equipped
+# venv (flp-venv), falls back to system python3 (CI pip-installs python-docx into system python).
+set -euo pipefail
+GLAW="${GLAW:-$HOME/.claude/skills/glaw}"
+for PY in "$HOME/.glaw/tools/flp-venv/bin/python" "/tmp/glaw-ci-venv/bin/python" "$(command -v python3)"; do
+  [ -x "$PY" ] && "$PY" -c 'import docx' >/dev/null 2>&1 && exec "$PY" "$GLAW/lib/render/federal_format_check.py" "$@"
+done
+echo "ERROR: glaw-format-check needs python-docx (pip install python-docx)" >&2; exit 2
