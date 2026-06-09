@@ -21,7 +21,7 @@ CLICHES = [
     "it is important to note", "it should be noted", "it is worth noting", "needless to say",
     "as a matter of fact", "the fact that", "in order to", "due to the fact that",
     "for all intents and purposes", "at this point in time", "in the event that",
-    "comes now", "wherefore premises considered", "hereinafter", "aforementioned",
+    "wherefore premises considered", "hereinafter", "aforementioned",
     "heretofore", "the undersigned", "pursuant to the provisions of", "each and every",
     "null and void", "clearly", "obviously", "plainly", "undoubtedly", "it goes without saying",
 ]
@@ -58,8 +58,17 @@ _ABBR = (r"Fla|Tex|Cal|Ala|Ariz|Ark|Colo|Conn|Del|Ga|Ill|Ind|Iowa|Kan|Ky|La|Md|M
          r"Ex|Id|etc|al|Jr|Sr|Mr|Mrs|Ms|Dr|Hon|Rev|Reg|Stat|Art|Sec|Supp|Ct|vs?|"
          r"e\.g|i\.e|cf|see|accord|Stip")
 _SENT = re.compile(r"(?<=[.!?])\s+(?=[A-Z\"\(])")
+def _is_heading(s):
+    # markdown heading, or a short ALL-CAPS caption/heading line (no lowercase letters)
+    if s.startswith("#"):
+        return True
+    letters = [c for c in s if c.isalpha()]
+    return bool(letters) and len(s.split()) <= 12 and not any(c.islower() for c in s)
+
 def sentences(text):
-    t = re.sub(r"\s+", " ", text.strip())
+    # drop heading / ALL-CAPS caption lines so they aren't analyzed as prose (fragments/run-ons)
+    body = [ln.strip() for ln in text.splitlines() if ln.strip() and not _is_heading(ln.strip())]
+    t = re.sub(r"\s+", " ", " ".join(body))
     # mask periods that are NOT sentence ends: known abbreviations, single-letter initials/reporters,
     # and decimals inside citations (1.540, 453.2) — so the splitter doesn't shatter on them.
     NUL = "\x00"

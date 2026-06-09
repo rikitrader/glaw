@@ -100,6 +100,13 @@ Generate from `templates/` in this folder, filling every `[BRACKET]` from intake
 | 8 | **Proposed Final Judgment** | `08-final-judgment.md` |
 | 9 | **Settlement Demand Letter** | `09-settlement-demand.md` |
 
+**House writing standard (every module above).** After filling a template, run it through
+**`/glaw-legal-writing`** (the Legal Writing Master) and the gate
+`~/.claude/skills/glaw/bin/glaw-writing-check <doc>` — add `--motion` for the MSJ/motions and apply
+`lib/style/court-motion-style-sheet.md`. Clear the passive-voice / cliché / hedging / unsupported-
+assertion flags before the document reaches `/glaw-file`. Citation *accuracy* stays with
+`/glaw-legal-research`.
+
 ## STEP 3 — CASE STRATEGY ENGINE
 
 Run `glaw-qm leverage` to score the matter **0–100** on: proof of work performed,
