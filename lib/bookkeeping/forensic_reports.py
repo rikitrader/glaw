@@ -61,7 +61,7 @@ def reports(book: str, out_dir: str, *, entity: str = "Entity") -> dict:
     m += ["", "### Footnotes",
           "- Cash-basis P&L by statement month, reconstructed from the posted ledger; each month ties to its bank "
           "statement (see deliverable 01). Months with no statement on file are disclosed gaps, not estimates.",
-          "- Inbound wires are booked by counterparty: Dealyze (MCA) → loan (excluded from revenue); Nationwide → "
+          "- Inbound wires are booked by counterparty: the MCA lender (MCA) → loan (excluded from revenue); the customer → "
           "revenue; customer financiers (GoodLeap) → revenue.",
           "- Owner draws are equity, not expense; they do not affect monthly net income."]
     w("09_monthly_reports.md", "\n".join(m))
@@ -73,7 +73,7 @@ def reports(book: str, out_dir: str, *, entity: str = "Entity") -> dict:
         y.append(f"| {yr} | {_f(v['revenue'])} | ({_f(v['expenses'])}) | {_f(v['net_income'])} |")
     y += ["", "### Footnotes",
           "- Annual P&L per calendar year (FYE Dec 31) for return preparation; each year rolls up its months above.",
-          "- The Dealyze advances are carried as a loan liability across years; only repayments and interest hit the "
+          "- The the MCA lender advances are carried as a loan liability across years; only repayments and interest hit the "
           "P&L. The merchant-cash-advance-as-loan position is documented in the error/resolution log (deliverable 07).",
           "- A year with a net loss may generate an NOL (run glaw-nol for the 80% carryforward) — confirm with the CPA."]
     w("10_yearly_reports.md", "\n".join(y))

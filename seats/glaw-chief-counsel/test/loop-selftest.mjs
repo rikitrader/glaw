@@ -113,7 +113,7 @@ const ok = (name, cond) => { if (cond) { pass++; console.log('  ✓', name) } el
   try {
     real = execFileSync('python3',
       [join(here, '..', '..', 'glaw', 'bin', 'matter-ops', 'facts_validate.py'),
-       'roof10x-inc-delaware-c-corp-formation'], { encoding: 'utf8' })
+       'example-matter-slug'], { encoding: 'utf8' })
   } catch (e) { real = (e.stdout || '') + (e.stderr || '') }  // validator exits 1 when blocked — capture stdout
   ok('guard: live validator output present', /LAUNCH_STATUS:/.test(real))
   ok('guard: live matter is correctly DENIED (fact-incomplete)', h.launchAuthorized(real) === false)

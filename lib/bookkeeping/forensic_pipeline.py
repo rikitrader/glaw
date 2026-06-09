@@ -249,7 +249,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(prog="glaw-forensic-pipeline")
     ap.add_argument("csv", help="master-ledger CSV (acct,stmt,date,section,category,amount,desc,file)")
     ap.add_argument("--book", default="blackstone")
-    ap.add_argument("--loan-lenders", default=None, help="JSON list of lender names (e.g. [\"DEALYZE\"]) whose wires are loans")
+    ap.add_argument("--loan-lenders", default=None, help="JSON list of lender names (e.g. [\"EXAMPLE-CAPITAL\"]) whose wires are loans")
     ap.add_argument("--overrides", default=None, help="JSON [{date, amount, account, note}] — per-wire client characterization")
     ap.add_argument("--counterparty-rules", default=None, help="JSON [[substr, account]] — map a wire ORIG:/BNF: counterparty to an account (traceable)")
     ap.add_argument("--out", default=None, help="write JSON deliverables to this directory")
