@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# glaw-form990 — Form 990 family DRAFT: return gating (990-N/EZ/990/PF) + 990-T UBIT + support test.
+set -euo pipefail
+GLAW_LIB="$HOME/.claude/skills/glaw/lib/bookkeeping"
+VENV_PY="$GLAW_LIB/.venv/bin/python"
+[[ -x "$VENV_PY" ]] || { echo "ERROR: bookkeeping venv missing — run ./setup" >&2; exit 2; }
+exec "$VENV_PY" "$GLAW_LIB/form990.py" "$@"

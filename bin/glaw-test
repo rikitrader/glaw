@@ -20,16 +20,23 @@ grn(){ PASS=$((PASS+1)); }
 echo "═══ GLAW SKILL-CONTRACT TEST ═══"
 total=0
 for f in $(find "$GLAW" -name SKILL.md | sort); do
-  total=$((total+1))
   rel="${f#$GLAW/}"
   dir="${rel%/SKILL.md}"
+  # Vendored third-party seats under seats/ are deployed non-destructively and follow their
+  # OWN upstream conventions — NOT the firm's internal frontmatter/UPL contract. This harness
+  # tests firm-authored skills (the personas + stages + orchestrator); deploy parity + the
+  # MANIFEST bijection in glaw-doctor already prove every vendored seat resolves. Skip them.
+  case "$dir" in seats/*) continue;; esac
+  total=$((total+1))
   fm=$(awk 'NR==1&&/^---/{p=1;next} p&&/^---/{exit} p' "$f")   # frontmatter block
   errs=()
   for field in name version description allowed-tools triggers; do
     printf '%s\n' "$fm" | grep -q "^${field}:" || errs+=("missing frontmatter: $field")
   done
   # expected deployed name: orchestrator (SKILL.md at root) = glaw; else glaw-<dir basename>
-  if [ "$dir" = "$rel" ] || [ -z "$dir" ]; then want="glaw"; else want="glaw-$(basename "$dir")"; fi
+  # (a dir that already carries the glaw- prefix is taken as-is — no double prefix).
+  if [ "$dir" = "$rel" ] || [ -z "$dir" ]; then want="glaw"
+  else b="$(basename "$dir")"; case "$b" in glaw|glaw-*) want="$b";; *) want="glaw-$b";; esac; fi
   got=$(printf '%s\n' "$fm" | sed -n 's/^name:[[:space:]]*//p' | tr -d '"'"'"' ' | head -1)
   [ "$got" = "$want" ] || errs+=("name '$got' != expected '$want'")
   grep -qiE '^##.*[Ww]hen to (invoke|use)' "$f" || errs+=("no '## When to invoke' section")
