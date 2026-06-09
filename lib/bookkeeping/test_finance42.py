@@ -71,15 +71,15 @@ def test_per_wire_override():
     importlib.reload(L); importlib.reload(FP)
     p = Path(os.environ["GLAW_HOME"]) / "m.csv"
     rows = [{"acct": "1", "stmt": "2024-01", "date": "01/08/24", "section": "DEPOSIT",
-             "category": "FINANCING/WIRE-IN", "amount": "500000", "desc": "WIRE IN FROM DEALYZE", "file": "e.pdf"}]
+             "category": "FINANCING/WIRE-IN", "amount": "500000", "desc": "WIRE IN FROM EXAMPLE CAPITAL", "file": "e.pdf"}]
     with open(p, "w", newline="") as fh:
         w = _csv.DictWriter(fh, fieldnames=list(rows[0].keys())); w.writeheader(); w.writerows(rows)
-    # without override, DEALYZE → loan; with override, → revenue (advance payment)
-    d = FP.reconstruct(str(p), book="t", loan_lenders=["DEALYZE"],
+    # without override, EXAMPLE CAPITAL → loan; with override, → revenue (advance payment)
+    d = FP.reconstruct(str(p), book="t", loan_lenders=["EXAMPLE CAPITAL"],
                        overrides=[{"date": "2024-01-08", "amount": "500000", "account": "Income:Revenue:Advance"}])
     assert d["build"]["override_hits"] == 1
     assert L.Ledger("t").balances().get("Income:Revenue:Advance") == Decimal("-500000")
-    assert "Liabilities:Loans-Payable:Dealyze" not in L.Ledger("t").balances()  # override beat the loan-lender
+    assert "Liabilities:Loans-Payable:ExampleCap" not in L.Ledger("t").balances()  # override beat the loan-lender
     print("  ✓ pipeline: per-wire override beats loan-lender + category (client characterization wins)")
 
 
@@ -94,23 +94,23 @@ def test_loan_lender_override():
     rows = [
         {"acct": "1", "stmt": "2024-01", "date": "01/08/24", "section": "DEPOSIT",
          "category": "FINANCING/WIRE-IN (review)", "amount": "100000",
-         "desc": "WIRE IN FROM DEALYZE", "file": "e.pdf"},                 # loan proceeds
+         "desc": "WIRE IN FROM EXAMPLE CAPITAL", "file": "e.pdf"},                 # loan proceeds
         {"acct": "1", "stmt": "2024-06", "date": "06/14/24", "section": "WITHDRAWAL",
          "category": "COGS — Materials", "amount": "-30000",
-         "desc": "WIRE OUT TO DEALYZE", "file": "e.pdf"},                  # repayment (was mis-COGS)
+         "desc": "WIRE OUT TO EXAMPLE CAPITAL", "file": "e.pdf"},                  # repayment (was mis-COGS)
         {"acct": "1", "stmt": "2024-02", "date": "02/01/24", "section": "DEPOSIT",
          "category": "FINANCING/WIRE-IN (review)", "amount": "5000",
          "desc": "wire from a customer", "file": "e.pdf"},                 # NOT a loan → revenue
     ]
     with open(p, "w", newline="") as fh:
         w = _csv.DictWriter(fh, fieldnames=list(rows[0].keys())); w.writeheader(); w.writerows(rows)
-    d = FP.reconstruct(str(p), book="t", loan_lenders=["DEALYZE"])
-    assert d["build"]["loan_hits"] == 2                                    # the 2 Dealyze wires
+    d = FP.reconstruct(str(p), book="t", loan_lenders=["EXAMPLE CAPITAL"])
+    assert d["build"]["loan_hits"] == 2                                    # the 2 lender wires
     bal = L.Ledger("t").balances()
-    assert bal.get("Liabilities:Loans-Payable:Dealyze") == Decimal("-70000")   # 100k proceeds − 30k repaid
+    assert bal.get("Liabilities:Loans-Payable:Example Capital") == Decimal("-70000")   # 100k proceeds − 30k repaid
     assert bal.get("Income:Revenue:Construction (wire — payments for work)") == Decimal("-5000")
     assert d["trial_balance_balanced"] and d["chain_intact"]
-    print("  ✓ pipeline: Dealyze wires → loan liability (−70k net); non-lender wire stays revenue")
+    print("  ✓ pipeline: lender wires → loan liability (−70k net); non-lender wire stays revenue")
 
 
 def test_counterparty_mapping():
@@ -118,13 +118,13 @@ def test_counterparty_mapping():
     document-driven map — taking precedence over the category guess."""
     import forensic_pipeline as FP
     # extract counterparty from real BofA wire-description format
-    assert FP.counterparty("WIRE IN ... ORIG:DEALYZE, INC. ID:80002030238 SND BK:FIRST REPUBLIC") == "DEALYZE, INC."
-    assert FP.counterparty("BOOK OUT ... BNF:FLORIDA ROOFING OUTLET INC ID:898111175146 PMT DET:X") == "FLORIDA ROOFING OUTLET INC"
-    rules = [["DEALYZE", "Liabilities:Loans-Payable:Dealyze"], ["FLORIDA ROOFING", "Expenses:COGS:Materials"]]
-    assert FP.map_counterparty("ORIG:DEALYZE, INC. ID:1", rules) == "Liabilities:Loans-Payable:Dealyze"
-    assert FP.map_counterparty("BNF:FLORIDA ROOFING OUTLET ID:2", rules) == "Expenses:COGS:Materials"
+    assert FP.counterparty("WIRE IN ... ORIG:EXAMPLE CAPITAL LLC ID:00000000001 SND BK:FIRST REPUBLIC") == "EXAMPLE CAPITAL LLC"
+    assert FP.counterparty("BOOK OUT ... BNF:EXAMPLE SUPPLY CO INC ID:00000000002 PMT DET:X") == "EXAMPLE SUPPLY CO INC"
+    rules = [["EXAMPLE CAPITAL", "Liabilities:Loans-Payable:ExampleCap"], ["EXAMPLE SUPPLY", "Expenses:COGS:Materials"]]
+    assert FP.map_counterparty("ORIG:EXAMPLE CAPITAL LLC ID:1", rules) == "Liabilities:Loans-Payable:ExampleCap"
+    assert FP.map_counterparty("BNF:EXAMPLE SUPPLY CO ID:2", rules) == "Expenses:COGS:Materials"
     assert FP.map_counterparty("ORIG:SOME RANDOM CUSTOMER ID:3", rules) is None   # no rule → fall back
-    print("  ✓ pipeline: wires booked by their real ORIG:/BNF: counterparty (Dealyze→loan, FRO→COGS)")
+    print("  ✓ pipeline: wires booked by their real ORIG:/BNF: counterparty (lender→loan, supplier→COGS)")
 
 
 def main() -> int:
