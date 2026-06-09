@@ -32,8 +32,22 @@ def test_monthly_yearly_trace():
     print("  ✓ reports: monthly (3) + yearly (2024=70k, 2025=50k) + full trace (6 postings, source-tied)")
 
 
+def test_empty_ledger():
+    """An empty book must produce empty reports, not crash (regression — IndexError on trace[0])."""
+    import os, tempfile
+    os.environ["GLAW_HOME"] = tempfile.mkdtemp(prefix="glaw-rep-empty-")
+    import importlib, ledger as L, forensic_reports as FR
+    importlib.reload(L); importlib.reload(FR)
+    out = tempfile.mkdtemp()
+    r = FR.reports("emptybook", out)
+    assert r["postings_traced"] == 0 and r["months"] == 0 and r["years"] == 0
+    from pathlib import Path
+    assert (Path(out) / "11_transaction_trace.csv").exists()        # header-only, no crash
+    print("  ✓ reports: empty ledger → empty reports + header-only trace CSV (no IndexError)")
+
+
 def main() -> int:
-    test_monthly_yearly_trace()
+    test_monthly_yearly_trace(); test_empty_ledger()
     print("OK: forensic monthly/yearly reports + trace passed")
     return 0
 

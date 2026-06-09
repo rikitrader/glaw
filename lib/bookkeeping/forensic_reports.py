@@ -86,8 +86,9 @@ def reports(book: str, out_dir: str, *, entity: str = "Entity") -> dict:
                                "debit": ln["debit"], "credit": ln["credit"],
                                "memo": e.get("memo", ""), "source_statement": e.get("source", ""),
                                "entry_hash": e.get("entry_hash", "")})
+    cols = ["id", "date", "account", "debit", "credit", "memo", "source_statement", "entry_hash"]
     with (outp / "11_transaction_trace.csv").open("w", newline="", encoding="utf-8") as fh:
-        wr = csv.DictWriter(fh, fieldnames=list(trace_rows[0].keys()))
+        wr = csv.DictWriter(fh, fieldnames=cols)           # fixed header even when the book is empty
         wr.writeheader(); wr.writerows(trace_rows)
     written.append("11_transaction_trace.csv")
     w("11_transaction_trace.md", "\n".join([

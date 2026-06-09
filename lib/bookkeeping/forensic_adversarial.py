@@ -73,7 +73,7 @@ def red_team(book: str, *, documented_loan_notes="0", job_cost_gross_profit=None
                           "§3121 FICA; Watson v. United States 668 F.3d 1008 (reasonable comp)",
                           "distributions recharacterized to wages → employer+employee FICA + 941 penalties",
                           "reasonable-comp study; file/amend 941 + W-2; reclass part of draws to wages"))
-    gaps = FP_gap_months(book)
+    gaps = gap_months(book)
     if gaps:
         F.append(_finding("missing_months", "IRS Revenue Agent", "HIGH",
                           f"{len(gaps)} missing statement months: {', '.join(gaps)}",
@@ -126,7 +126,7 @@ def red_team(book: str, *, documented_loan_notes="0", job_cost_gross_profit=None
     return F
 
 
-def FP_gap_months(book: str) -> list:
+def gap_months(book: str) -> list:
     led = L.Ledger(book)
     months = sorted({e["date"][:7] for e in led.entries()})
     if not months:
