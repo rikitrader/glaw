@@ -104,6 +104,11 @@ Covers: **IRS**, tax planning, tax controversy.
 | **Entity-specific computation** — S-corp basis Form 7203 (`bin/glaw-scorp-basis`), AAA §1368 (`bin/glaw-scorp-aaa`), partner basis §704(d) (`bin/glaw-partner-basis`), accumulated-earnings §531 + PHC §541 (`bin/glaw-penalty-taxes`), estate/trust 1041 DNI (`bin/glaw-form1041`) | `glaw-tax-strategy` |
 | **State & local tax** — state income tax (`bin/glaw-state-tax`), PTET SALT-cap (`bin/glaw-ptet`), franchise/margin DE/TX/CA (`bin/glaw-franchise-tax`), combined/unitary (`bin/glaw-combined-unitary`), P.L. 86-272 nexus (`bin/glaw-income-nexus`), sourcing + throwback (`bin/glaw-sourcing`) | `glaw-tax-strategy` |
 | **International** — GILTI §951A (`bin/glaw-gilti`), Subpart F (`bin/glaw-subpart-f`), FDII (`bin/glaw-fdii`), BEAT §59A (`bin/glaw-beat`), §163(j) (`bin/glaw-sec163j`), 5471/5472 (`bin/glaw-intl-forms`) | `glaw-tax-strategy`, `/glaw-international` |
+| **Tax-exempt organization compliance** — §501(c) posture + Form 1023/1023-EZ/1024 recognition, annual-return gating + 990-T UBIT + §509(a) public-support test (`bin/glaw-form990`), inurement/self-dealing/excise screen; IRS-EO-examiner adversarial gate | `/glaw-exempt-org` |
+| **International tax computation + information returns** — GILTI/Subpart F/FDII/BEAT/§163(j) + 5471/5472 (reuses the `bin/glaw-gilti`…`bin/glaw-intl-forms` engines), FBAR/Form 8938 thresholds + §962 election (`bin/glaw-fbar-8938`), 8865/8858, streamlined / voluntary-disclosure path; IRS-international-examiner adversarial gate | `/glaw-international-tax` |
+| **U.S. Tax Court litigation** — 90-day jurisdictional clock (`bin/glaw-sol`), petition prosecution, §7463 small-case (S) election, IRS Counsel / Branerton settlement + docketed Appeals, trial; IRS-Chief-Counsel adversarial gate | `/glaw-tax-court` |
+| **Estate & gift tax returns** — Form 706 estate tax (`bin/glaw-form706`) + Form 709 gift/GST (`bin/glaw-form709`) on the §2001(c) schedule, portability/DSUE + GST-allocation elections, appraisal-tied schedules; IRS-estate-&-gift-examiner adversarial gate | `/glaw-estate-gift-returns` |
+| **IRS whistleblower (IRC §7623)** — Form 211 eligibility/originality screen, collected-proceeds award-range model 15–30% vs ≤15% (`bin/glaw-wbo-award`), anti-retaliation flag; Whistleblower-Office adversarial gate | `/glaw-irs-whistleblower` |
 | **Structured tax-report object** (machine-validatable; sits under the prose memos) | `bin/glaw-tax-report` → schema `lib/schemas/tax-report-schema.json` |
 
 Tax-report data object (`bin/glaw-tax-report types|validate|scaffold`): JSON Schema
@@ -121,6 +126,12 @@ maps an INFORMATION return (1099-NEC/MISC/K, W-2, 941) to a transmitter (TaxBand
 and writes the upload file. DRY RUN by default; `--live` needs an enrolled TCC / transmitter
 API key (`glaw config set irs_transmitter|irs_api_key`). Income returns (1120-S/1065) =
 MeF via EFIN/approved software, NOT this tool. W-2 → SSA BSO.
+
+**IRS PDF auto-fill** (`bin/glaw-fill-form <blank.pdf> <data.json> <out.pdf>`, `bin/glaw-inspect-fields
+<pdf>`): shared AcroForm filler used by the filing seats (`/glaw-exempt-org`, `/glaw-estate-gift-returns`,
+`/glaw-international-tax`, `/glaw-irs-whistleblower`). Single source of truth is the credit-strategy
+filler, run under the bookkeeping venv (pypdf). Blank IRS PDFs are a manual drop-in per each seat's
+`forms/README.md` — the seat computes the values, the filler stamps them onto the real form.
 
 ## Accounting & Finance Division → lead `/glaw-accounting`
 | **Forensic reconstruction (re-runnable)** — rebuild gapless, fully-reconciled, audit-ready books from raw bank statements: month-by-month reconstruction → tamper-evident double-entry GL + chart of accounts (`bin/glaw-forensic-pipeline`) → 3-statement + SEC/IRS footnotes → credits + IRS-audit-readiness + forms package + error/resolution log + CFO/CEO reports; forensic-auditor adversarial gate | `/glaw-forensic-reconstruction` |
@@ -202,6 +213,7 @@ Covers: **Civil** litigation, trial, disputes.
 | **Quantum meruit / construction non-payment** — full FL civil case (QM + unjust-enrichment complaint, summons/service, discovery pack, MSJ + affidavit, trial brief, damages worksheet w/ §55.03 interest, proposed judgment) + 0-100 settlement-leverage score; extends to breach/account-stated/Ch.713 lien/§772.11 civil theft/FUFTA/RICO (`bin/glaw-qm`) | `/glaw-fl-quantum-meruit` |
 | **Florida Title VI civil-practice library** — index DB of all 36 chapters + every cause of action with a ready-to-file complaint/enforcement/petition template, the dispositive-gate checks, discovery/intake/subpoena packs, and a damages+leverage helper + a **110-cause Florida claims library** (every cause's elements/SOL/defenses/authority + legal standards) + a **50-defense affirmative-defenses library** + answer template (`bin/glaw-fl-defense`) (`bin/glaw-fl-cause`, `bin/glaw-fl-statute`, `bin/glaw-qm`) | `/glaw-fl-quantum-meruit` |
 | **Federal litigation defenses/adversary library** — the defenses + dispositive attacks a federal adversary brings (civil FRCP: Twombly/Iqbal, SMJ/standing, Daubert, Rule 56/11, qualified immunity; criminal: §3282 SOL, mens rea/Cheek, suppression, Brady, entrapment; regulatory: SEC §2462/Jarkesy, FCPA, AML, RICO) — powers the gate's **Federal Defense Counsel** + **DOJ/AUSA Prosecutor** adversaries (`bin/glaw-fed-defense`) + a **56-cause federal claims library** (elements/SOL/defenses + 22 ready-to-file complaints, a causes catalog, an answer/affirmative-defenses template, a motions pack (12(b)(6)/Rule 56/Daubert), FRCP discovery + Rule 45 subpoena + intake, and verbatim statute excerpts) (`bin/glaw-fed-cause`) | `/glaw-federal-trial-counsel`, `/glaw-investigations`, `/glaw-sec-enforcement`, `/glaw-adversarial` |
+| **Florida Title XLI — Fraudulent Transfers (FUFTA Ch. 726) + Statute of Frauds (725) + ABC (727)** — verbatim statute text, FUFTA actual/constructive + ABC causes, the § 726.109 good-faith-transferee + REV + § 726.110 SOL defenses, the badges scorecard, a FUFTA complaint + civil/adversarial review workflow (verbatim statute text + `glaw-fl-cause` / `glaw-fl-defense`) | `/glaw-fl-quantum-meruit`, `/glaw-elite-corporate-counsel`, `/glaw-veil-piercing`, `receivables-assignment-counsel`, `/glaw-adversarial` |
 
 ## Litigation Support Division (the 10 named agents)
 Covers: contract review, case-law research, court records, fraud detection, veil
@@ -276,6 +288,8 @@ Covers: estate/trusts, restructuring, immigration, international.
 | Seat | Skill |
 |------|-------|
 | Estate planning, trusts, succession, asset protection | `/glaw-estate-trusts` |
+| **Estate & gift tax RETURNS (706/709)** — prepares/computes what `/glaw-estate-trusts` designs (transfer-tax engine lives in Tax & IRS) | `/glaw-estate-gift-returns` |
+| **Tax-exempt org / foundation tax COMPLIANCE** (990/990-T/UBIT, 1023/1024) — preparer counterpart to the `bin/glaw-exempt-org` diligence tool | `/glaw-exempt-org` |
 | **Asset-protection STRUCTURES + trust documents + exempt-asset planning** (DAPT/third-party/DING, spendthrift, trust protector, 401k/IRA/life-ins exemptions, custodian) — fills the trust docs + runs the 5-dept compliance gate (FUFTA/solvency/IRS/FinCEN-OFAC/ethics) so nothing raises a red flag | `/glaw-asset-protection` |
 | Bankruptcy, workouts, creditor rights | `/glaw-restructuring` |
 | Business/founder immigration | `/glaw-immigration` |
@@ -340,6 +354,11 @@ output through these seats. Advice stays in the custom suite; math/build goes to
 | VC fund / Private Equity / Fund Management | Securities, Funds & Capital Markets (`glaw-pe-vc-counsel`, `glaw-institutional-finance`) |
 | SEC compliance | Securities, Funds & Capital Markets (`glaw-fund-regulatory-council`) |
 | IRS / Tax | Tax & IRS (`glaw-tax-strategy`, `glaw-tax-compliance`, `glaw-tax-relief`) |
+| Nonprofit / foundation / Form 990 / UBIT / exemption | Tax & IRS (`/glaw-exempt-org`) |
+| FBAR / Form 8938 / foreign accounts / GILTI / 5471 / §962 | Tax & IRS (`/glaw-international-tax`) + Private Client (`/glaw-international` for the structure) |
+| Tax Court / notice of deficiency / 90-day letter | Tax & IRS (`/glaw-tax-court`) |
+| Estate tax / gift tax / 706 / 709 / portability / GST | Private Client (`/glaw-estate-trusts` design) + Tax & IRS (`/glaw-estate-gift-returns` returns) |
+| IRS whistleblower / Form 211 / §7623 award | Tax & IRS (`/glaw-irs-whistleblower`) |
 | Criminal / white-collar | Investigations & White-Collar Crime (`/glaw-investigations`) |
 | Civil | Litigation & Dispute Resolution (`glaw-elite-corporate-counsel`, `glaw-federal-trial-counsel`) |
 | Copywriter / drafting | Legal Writing & Document Production (`/glaw-legal-writing`) |

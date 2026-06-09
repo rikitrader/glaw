@@ -1,5 +1,41 @@
 # Changelog
 
+## Unreleased — Tax & IRS coverage: 5 new seats + doctor green
+
+Closes five IRS/tax gaps from a coverage review. Each is a new firm-authored native seat
+(deployed `/glaw-*` via `glaw-setup`, routed from `lib/firm-roster.md`):
+
+- **`/glaw-exempt-org`** — nonprofit/foundation tax: §501(c) posture + 1023/1024 recognition,
+  990 family gating + 990-T UBIT + §509(a) public-support test (`bin/glaw-form990`),
+  inurement/self-dealing/excise screen. (Preparer counterpart to the `bin/glaw-exempt-org`
+  ProPublica diligence tool.)
+- **`/glaw-international-tax`** — COMPUTE counterpart to flag-only `/glaw-international`: reuses
+  the GILTI/Subpart F/FDII/BEAT/§163(j)/5471-5472 engines and adds the foreign-asset reporting
+  layer — FBAR + Form 8938 thresholds + §962 election (`bin/glaw-fbar-8938`), 8865/8858, and
+  the streamlined / voluntary-disclosure path.
+- **`/glaw-tax-court`** — the U.S. Tax Court forum `/glaw-irs-audit` only drafts a petition for:
+  90-day jurisdictional clock, §7463 small-case (S) election, IRS Counsel / Branerton settlement
+  + docketed Appeals, trial.
+- **`/glaw-estate-gift-returns`** — Form 706 (`bin/glaw-form706`) + Form 709 (`bin/glaw-form709`)
+  on the §2001(c) schedule, portability/DSUE + GST elections; the preparer counterpart to
+  flag-only `/glaw-estate-trusts`.
+- **`/glaw-irs-whistleblower`** — IRC §7623 Form 211 eligibility/originality screen +
+  collected-proceeds award-range model (`bin/glaw-wbo-award`); the IRS analog to
+  `/glaw-sec-whistleblower`.
+
+Shared IRS-PDF AcroForm filler promoted to `bin/glaw-fill-form` + `bin/glaw-inspect-fields`
+(single source of truth = credit-strategy filler, run under the bookkeeping venv/pypdf), wired
+into the four filing seats via per-seat `forms/`.
+
+**Doctor green (two pre-existing failures fixed):**
+- `glaw-cites` ran as a bare `python3` script while `eyecite` was uninstalled → installed eyecite
+  into the bookkeeping venv and converted to the firm's bin-wrapper idiom (`lib/bookkeeping/cites.py`).
+- `glaw-test` imposed the firm's internal frontmatter/UPL contract on **vendored third-party
+  seats** (62 false `name 'glaw-X' != 'glaw-glaw-X'` + frontmatter violations). Scoped the
+  contract test to firm-authored skills (its documented purpose); seat resolution stays covered by
+  deploy parity + the MANIFEST bijection. Name rule is now glaw-prefix-aware. → **100/100 pass,
+  `glaw-doctor` HEALTHY**.
+
 ## 1.1.0 — self-contained ecosystem
 
 - **Self-contained: zero external skill dependencies.** Every specialist seat the firm
