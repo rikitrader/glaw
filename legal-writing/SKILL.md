@@ -98,13 +98,41 @@ A complete document with: a **Fact Section**, the **Legal Standard**, the **Argu
 **Counterargument Analysis** (raise + refute), the **Relief Requested**, and a **Citation Table**
 when requested. Render via `/glaw-make-pdf` / `/glaw-docx`. The **UPL footer** is mandatory.
 
+## Federal filing style directive (MANDATORY for U.S. District Court filings)
+
+Every document destined for a U.S. District Court **must** conform to the **Federal Filing Style
+Directive** — `lib/style/federal-filing-style.md`. It is not optional house preference; it is the
+firm standard. Summary:
+
+- **Render (apply in `/glaw-docx` / `/glaw-make-pdf`):** Times New Roman, body **12 pt** / footnotes
+  **10 pt**; **double-spaced**, **justified**, first-line indent **0.5"**; margins **1" / 1" / left
+  1.25" / 1"**; continuous page numbers (bottom center/right), none on the caption page. No Arial /
+  Helvetica / decorative fonts unless a local rule requires.
+- **Caption:** the exact federal form — `UNITED STATES DISTRICT COURT` / district / parties /
+  `Case No.: [TO BE ASSIGNED]` / **document title in ALL CAPS**.
+- **Headings:** hierarchical, bold, ALL-CAPS major sections — **I. INTRODUCTION · II. STATEMENT OF
+  FACTS · III. LEGAL STANDARD · IV. ARGUMENT (A., B. …) · V. RELIEF REQUESTED · VI. CONCLUSION**.
+- **Citations:** Bluebook (21st ed.), **case names italicized** with pin cites
+  (*Bell Atl. Corp. v. Twombly*, 550 U.S. 544, 570 (2007)); statutes `28 U.S.C. § 1331`; rules
+  `Fed. R. Civ. P. 60(b)`.
+- **Language:** third-person, active voice, "**Plaintiff respectfully submits …**"; never "I think,"
+  "maybe," "kind of," "it appears," "arguably," "clearly," "obviously."
+- **Signature block:** `Respectfully submitted,` + name / address / phone / email / capacity / date.
+- **ELITE mode (on request):** SCOTUS-level precision; RICO / fraud / mandamus structure;
+  Rule 12(b)(6) / 56 / 60(b) framing; integrated exhibits (Ex. A, Ex. B, …).
+
+**Enforce it:** `glaw-writing-check <doc> --federal` checks the caption, all six Roman-numeral
+sections, the signature block, the Case No. line, and the prose rules. The `/glaw-file` hard
+pre-check refuses to assemble a federal filing that has not cleared this directive.
+
 ## Quality-control gate (deterministic — run it, don't eyeball it)
 
 Run the linter on every draft and clear the flags before handoff:
 
 ```bash
 ~/.claude/skills/glaw/bin/glaw-writing-check <draft.md>            # universal QC
-~/.claude/skills/glaw/bin/glaw-writing-check <motion.md> --motion  # + Court Motion Style Sheet
+~/.claude/skills/glaw/bin/glaw-writing-check <motion.md> --motion   # + Court Motion Style Sheet
+~/.claude/skills/glaw/bin/glaw-writing-check <filing.md> --federal # + Federal Filing Style Directive
 ```
 
 It flags passive voice, legal clichés / throat-clearers, hedging/speculation, weak adverbs,
