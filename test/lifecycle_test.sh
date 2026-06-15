@@ -61,6 +61,8 @@ done
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked before final packet ready"
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before adversarial government lenses survive"
+"$ADVERSARIAL" record --profile auto --lens irs-examiner --decision survive --attack "no fatal finding" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial survive blocked without evidence"
 for lens in irs-examiner state-tax-auditor forensic-accountant cfo-controller outside-critic; do
   "$ADVERSARIAL" record --profile auto --lens "$lens" --decision survive --attack "no fatal finding" --evidence "test fixture" >/dev/null
 done

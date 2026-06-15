@@ -101,6 +101,8 @@ bin/glaw-adversarial complete --profile auto
 Use `--decision fix` or `--decision strike` with `--attack` and `--cure` when a government,
 regulatory, or litigation adversary finds a fatal or curable weakness. The command opens a blocking
 red flag automatically.
+Every `survive` decision must carry source-backed evidence, so a RED-team pass cannot be logged as
+ready from an unsupported conclusion.
 
 Ethics, red flags, UPL footer, and the final packet are explicit gates:
 

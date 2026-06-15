@@ -25,7 +25,7 @@ SOL_YEARS = {
 }
 
 # Florida statutory prejudgment-interest rate is set QUARTERLY by the CFO
-# (Fla. Stat. § 55.03). This is a placeholder — confirm the rate(s) for each
+# (Fla. Stat. § 55.03). This default must be confirmed for each
 # quarter the debt was outstanding at myfloridacfo.com before relying on it.
 DEFAULT_RATE = 0.1112  # ~ recent annual rate; OVERRIDE with --rate
 

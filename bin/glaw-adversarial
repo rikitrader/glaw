@@ -104,6 +104,12 @@ def cmd_record(args: argparse.Namespace) -> int:
     d = matter_dir(args.matter)
     profile = profile_for(args, d)
     lens = slugify(args.lens)
+    if args.decision == "survive" and not args.evidence.strip():
+        raise SystemExit("ERROR: adversarial survive requires --evidence with the source-backed proof reviewed.")
+    if args.decision == "fix" and (not args.attack.strip() or not args.cure.strip()):
+        raise SystemExit("ERROR: adversarial fix requires both --attack and --cure.")
+    if args.decision == "strike" and not args.attack.strip():
+        raise SystemExit("ERROR: adversarial strike requires --attack.")
     row = {
         "ts": now(),
         "profile": profile,
@@ -139,13 +145,16 @@ def cmd_status(args: argparse.Namespace) -> int:
             failures.append(lens)
             continue
         decision = row.get("decision")
-        icon = "OK" if decision == "survive" else "BLOCK"
+        evidence_gap = decision == "survive" and not str(row.get("evidence", "")).strip()
+        icon = "OK" if decision == "survive" and not evidence_gap else "BLOCK"
         print(f"  {icon} {lens}: {decision}")
         if row.get("attack"):
             print(f"      attack: {row['attack']}")
         if row.get("cure"):
             print(f"      cure: {row['cure']}")
-        if decision != "survive":
+        if evidence_gap:
+            print("      evidence: MISSING")
+        if decision != "survive" or evidence_gap:
             failures.append(lens)
     if failures:
         print("ADVERSARIAL BLOCKED")

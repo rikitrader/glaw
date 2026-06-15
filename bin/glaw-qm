@@ -9,7 +9,7 @@ exec python3 - "$@" <<'PY'
 import argparse, sys
 from datetime import datetime, date
 
-DEFAULT_RATE = 0.1112  # FL §55.03 placeholder — set quarterly by CFO; VERIFY per quarter.
+DEFAULT_RATE = 0.1112  # FL §55.03 default rate; VERIFY the CFO rate per quarter.
 
 def cmd_intake(a):
     print("=== QUANTUM MERUIT CASE INTAKE (fill every field; leave unknowns as [BRACKET]) ===")

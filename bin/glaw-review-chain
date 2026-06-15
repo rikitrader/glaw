@@ -47,7 +47,7 @@ def main():
         subprocess.run([f"{BIN}/glaw-contract-score", scf], stdout=out, check=True)
     print("  [1/4] scorecard written")
 
-    # 2) review.md (use supplied or stub)
+    # 2) review.md (use supplied or generate the minimal local review shell)
     rev = arg("--review")
     if rev and os.path.exists(rev):
         import shutil; shutil.copy(rev, os.path.join(M, "REVIEW.md"))
