@@ -120,7 +120,8 @@ bin/glaw-final-packet build --profile auto
 
 `glaw-final-packet` writes `final_packet.json` and `final_packet.md`, then logs
 `final_packet_ready` only when intake/conflicts/ethics/citation ledger/adversarial, UPL footer
-checks, red flags, and the required council profile are all explicitly completed and clear.
+checks, red flags, the required council profile, and at least one external-facing text deliverable
+are all explicitly completed and clear.
 
 ## Contract Review
 

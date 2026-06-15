@@ -76,6 +76,8 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before citation 
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before council completion is logged"
 "$COUNCIL" complete --profile auto >/dev/null
+"$PACKET" build >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before external deliverable exists"
 printf '# Draft Report\n\nNumbers tie to source.\n' > "$TMP/matters/$SLUG/draft-report.md"
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by deliverable missing UPL footer"

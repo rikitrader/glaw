@@ -57,6 +57,7 @@ cat > "$M/final_packet.json" <<'JSON'
     "accounting_adversarial_complete": true,
     "accounting_council_complete": true,
     "red_flags_clear": true,
+    "external_deliverable_present": true,
     "upl_footer_clear": true
   }
 }

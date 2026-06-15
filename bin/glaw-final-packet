@@ -74,6 +74,28 @@ def blocking_red_flags(rows: list[dict]) -> list[dict]:
     ]
 
 
+TEXT_DELIVERABLE_EXTS = {".md", ".html", ".htm", ".txt"}
+TEXT_DELIVERABLE_SKIP_NAMES = {
+    "matter.md",
+    "index.md",
+    "final_packet.md",
+}
+TEXT_DELIVERABLE_SKIP_PARTS = {
+    "_published",
+    "_extracted",
+    "evidence",
+}
+
+
+def is_external_text_deliverable(path: Path, root: Path) -> bool:
+    if path.suffix.lower() not in TEXT_DELIVERABLE_EXTS:
+        return False
+    if path.name in TEXT_DELIVERABLE_SKIP_NAMES:
+        return False
+    rel_parts = set(path.relative_to(root).parts)
+    return not bool(rel_parts & TEXT_DELIVERABLE_SKIP_PARTS)
+
+
 def run_check(cmd: list[str], cwd: Path) -> tuple[int, str]:
     proc = subprocess.run(cmd, cwd=str(cwd), capture_output=True, text=True)
     return proc.returncode, (proc.stdout + proc.stderr).strip()
@@ -129,6 +151,10 @@ def cmd_build(args: argparse.Namespace) -> int:
             "red_flags.jsonl", "intake.json", "final_packet.json", "final_packet.md",
         }
     )
+    external_text_deliverables = sorted(
+        str(p.relative_to(d)) for p in d.rglob("*")
+        if p.is_file() and is_external_text_deliverable(p, d)
+    )
 
     rc_rf, red_flag_output = run_check([str(root / "bin/glaw-red-flags"), "status", "--matter", d.name], root)
     rc_ethics, ethics_output = run_check([str(root / "bin/glaw-ethics"), "status", "--matter", d.name], root)
@@ -156,6 +182,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         f"{profile}_adversarial_complete": has_event(timeline_rows, f"{profile}_adversarial_complete") and rc_adv == 0,
         f"{profile}_council_complete": has_event(timeline_rows, f"{profile}_council_complete") and rc_council == 0,
         "red_flags_clear": has_event(timeline_rows, "red_flags_clear") and rc_rf == 0,
+        "external_deliverable_present": bool(external_text_deliverables),
         "upl_footer_clear": rc_upl == 0,
     }
     blockers = blocking_red_flags(red_flags)
@@ -179,6 +206,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         "council_reviews": council,
         "decisions": decisions,
         "deliverables": deliverables,
+        "external_text_deliverables": external_text_deliverables,
     }
     (d / "final_packet.json").write_text(json.dumps(packet, indent=2, sort_keys=False) + "\n", encoding="utf-8")
     (d / "final_packet.md").write_text(render_md(packet), encoding="utf-8")
