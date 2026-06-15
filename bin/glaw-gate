@@ -113,6 +113,35 @@ def latest_by(rows, key):
     return latest
 
 
+TEXT_DELIVERABLE_EXTS = {".md", ".html", ".htm", ".txt"}
+TEXT_DELIVERABLE_SKIP_NAMES = {
+    "matter.md",
+    "index.md",
+    "final_packet.md",
+}
+TEXT_DELIVERABLE_SKIP_PARTS = {
+    "_published",
+    "_extracted",
+    "decisions",
+    "evidence",
+}
+
+
+def is_external_text_deliverable(path):
+    if path.suffix.lower() not in TEXT_DELIVERABLE_EXTS:
+        return False
+    if path.name in TEXT_DELIVERABLE_SKIP_NAMES:
+        return False
+    return not bool(set(path.relative_to(d).parts) & TEXT_DELIVERABLE_SKIP_PARTS)
+
+
+def has_upl_footer(text):
+    lower = text.lower()
+    work_product = "attorney work-product" in lower or "work-product" in lower
+    no_advice = "not legal advice" in lower or "not legal, tax, or accounting advice" in lower
+    return work_product and no_advice
+
+
 p = d / "final_packet.json"
 if not p.exists():
     print("final_packet.json missing")
@@ -136,6 +165,19 @@ if not packet_generated_at:
 missing = [k for k, v in packet.get("gates", {}).items() if not v]
 if missing:
     print("final_packet.json has uncleared gate(s): " + ", ".join(missing))
+    sys.exit(1)
+
+deliverables = [p for p in sorted(d.rglob("*")) if p.is_file() and is_external_text_deliverable(p)]
+if not deliverables:
+    print("no current external text deliverable")
+    sys.exit(1)
+missing_upl = []
+for doc in deliverables:
+    text = doc.read_text(encoding="utf-8", errors="replace")
+    if not has_upl_footer(text):
+        missing_upl.append(str(doc.relative_to(d)))
+if missing_upl:
+    print("current deliverable(s) missing UPL footer: " + ", ".join(missing_upl))
     sys.exit(1)
 
 red_flags = d / "red_flags.jsonl"

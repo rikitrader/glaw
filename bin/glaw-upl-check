@@ -17,6 +17,7 @@ SKIP_NAMES = {
 SKIP_PARTS = {
     "_published",
     "_extracted",
+    "decisions",
     "evidence",
 }
 

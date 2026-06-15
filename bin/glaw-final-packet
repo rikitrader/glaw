@@ -83,6 +83,7 @@ TEXT_DELIVERABLE_SKIP_NAMES = {
 TEXT_DELIVERABLE_SKIP_PARTS = {
     "_published",
     "_extracted",
+    "decisions",
     "evidence",
 }
 
