@@ -23,7 +23,7 @@ glaw/
 - Frontmatter: `name`, `version`, `description`, `allowed-tools`, `triggers`.
 - First content section: `## When to invoke this skill`.
 - Stage skills emit the shared preamble:
-  `bash ~/.claude/skills/glaw/bin/glaw-preamble.sh`.
+  `bash bin/glaw-preamble.sh`.
 - Stages route work to seats in `lib/firm-roster.md` — never freelance a position
   a seat already owns. Delegate to existing skills via the Skill tool; invoke
   `/glaw-*` agents for new seats.

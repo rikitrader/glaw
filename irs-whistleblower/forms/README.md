@@ -12,13 +12,13 @@ here as `f211.pdf`.
 ## Workflow
 1. Dump the exact AcroForm field names:
    ```bash
-   ~/.claude/skills/glaw/bin/glaw-inspect-fields forms/f211.pdf forms/f211.fields.json
+   bin/glaw-inspect-fields forms/f211.pdf forms/f211.fields.json
    ```
 2. Build `forms/f211.data.json` — `{ "exact field name": "value" }` — from the claim narrative, the
    taxpayer/years identifiers, and the proceeds/award model (`glaw-wbo-award --format json`).
 3. Fill:
    ```bash
-   ~/.claude/skills/glaw/bin/glaw-fill-form forms/f211.pdf forms/f211.data.json out/f211-filled.pdf
+   bin/glaw-fill-form forms/f211.pdf forms/f211.data.json out/f211-filled.pdf
    ```
 
 File through counsel to preserve anonymity. Nothing on the form may be fabricated — every figure

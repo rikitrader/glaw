@@ -5,7 +5,8 @@
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 GLAW="$SCRIPT_DIR/glaw"
 [ -x "$GLAW" ] || GLAW="${CODEX_HOME:-$HOME/.codex}/skills/glaw/bin/glaw"
-[ -x "$GLAW" ] || GLAW="$HOME/.claude/skills/glaw/bin/glaw"
+CLAUDE_SKILLS="${CLAUDE_HOME:-$HOME/.claude}/skills"
+[ -x "$GLAW" ] || GLAW="$CLAUDE_SKILLS/glaw/bin/glaw"
 SLUG="$("$GLAW" slug 2>/dev/null || echo "")"
 echo "GLAW_VERSION: $("$GLAW" version 2>/dev/null || echo unknown)"
 if [ -z "$SLUG" ]; then

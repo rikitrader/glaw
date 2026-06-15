@@ -11,13 +11,13 @@ filing-year blank from irs.gov and drop it here, e.g. `f990.pdf`, `f990t.pdf`, `
 ## Workflow
 1. Dump the exact AcroForm field names:
    ```bash
-   ~/.claude/skills/glaw/bin/glaw-inspect-fields forms/f990.pdf forms/f990.fields.json
+   bin/glaw-inspect-fields forms/f990.pdf forms/f990.fields.json
    ```
 2. Build `forms/f990.data.json` — a `{ "exact field name": "value" }` map — from the computed
    values (`glaw-form990 --format json`). Checkboxes use the on-state from step 1 (e.g. `/Yes`).
 3. Fill:
    ```bash
-   ~/.claude/skills/glaw/bin/glaw-fill-form forms/f990.pdf forms/f990.data.json out/f990-filled.pdf
+   bin/glaw-fill-form forms/f990.pdf forms/f990.data.json out/f990-filled.pdf
    ```
 
 The filler reports any data keys that did not match a real field (typos) — fix and re-run.

@@ -21,6 +21,6 @@ accrues at the § 55.03 rate on the date of judgment.
 
 **Auto-compute:**
 ```
-~/.claude/skills/glaw/bin/glaw-qm damages --value [VALUE] --paid [PAID] --due [YYYY-MM-DD]
+bin/glaw-qm damages --value [VALUE] --paid [PAID] --due [YYYY-MM-DD]
 ```
 <!-- UPL/work-product footer per /glaw-ethics-conflicts -->

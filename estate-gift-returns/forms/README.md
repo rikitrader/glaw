@@ -12,14 +12,14 @@ it here, e.g. `f706.pdf`, `f709.pdf`.
 ## Workflow
 1. Dump the exact AcroForm field names:
    ```bash
-   ~/.claude/skills/glaw/bin/glaw-inspect-fields forms/f706.pdf forms/f706.fields.json
+   bin/glaw-inspect-fields forms/f706.pdf forms/f706.fields.json
    ```
 2. Build `forms/f706.data.json` — `{ "exact field name": "value" }` — from the computed values
    (`glaw-form706 --format json` / `glaw-form709 --format json`) and the appraisal-backed schedule
    detail. The portability and GST-allocation election boxes use the on-states from step 1.
 3. Fill:
    ```bash
-   ~/.claude/skills/glaw/bin/glaw-fill-form forms/f706.pdf forms/f706.data.json out/f706-filled.pdf
+   bin/glaw-fill-form forms/f706.pdf forms/f706.data.json out/f706-filled.pdf
    ```
 
 Every schedule value must trace to an appraisal or source document. Filled PDFs are DRAFTS for a
