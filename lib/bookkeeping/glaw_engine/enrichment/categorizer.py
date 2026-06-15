@@ -347,7 +347,8 @@ class Categorizer:
         if self.completion_fn is not None:
             return self.completion_fn
         raise CategorizerError(
-            "LLM enrichment is unavailable in absolute zero-third-party-package mode."
+            "Legacy model enrichment is removed. Use explicit account-map rules, charts, "
+            "or REVIEW classifications that can be audited."
         )
 
 

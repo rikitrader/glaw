@@ -10,15 +10,19 @@ honest about confidence: every field carries whether it was found, and the draft
 flagged if the line items + tax do not reconcile to the stated total. It is a draft for a
 human / the adversarial panel to clear, never a silently-trusted posting.
 
-Input: a text file or stdin containing already-extracted invoice text. PDF/OCR extraction
-is disabled in source-only mode; convert the invoice to text before running this tool.
+Input: a text file, stdin, or a PDF. Text PDFs use the local `pdftotext` binary when
+available; scanned PDFs use local `pdftoppm` + `tesseract`. If text cannot be extracted,
+the tool fails closed instead of inventing invoice fields.
 """
 from __future__ import annotations
 
 import argparse
 import json
 import re
+import shutil
+import subprocess
 import sys
+import tempfile
 from decimal import Decimal
 from pathlib import Path
 
@@ -50,10 +54,42 @@ def extract_text(path: str) -> str:
     p = Path(path)
     if p.suffix.lower() != ".pdf":
         return p.read_text(encoding="utf-8", errors="replace")
-    raise RuntimeError(
-        "PDF invoice extraction is unavailable in absolute zero-third-party-package mode. "
-        "Convert the invoice to text before running glaw-invoice."
-    )
+    texts: list[str] = []
+    if shutil.which("pdftotext"):
+        proc = subprocess.run(
+            ["pdftotext", "-layout", str(p), "-"],
+            capture_output=True,
+            text=True,
+            timeout=60,
+        )
+        if proc.returncode == 0 and proc.stdout.strip():
+            texts.append(proc.stdout)
+    if shutil.which("pdftoppm") and shutil.which("tesseract"):
+        with tempfile.TemporaryDirectory(prefix="glaw-invoice-ocr-") as td:
+            prefix = str(Path(td) / "page")
+            raster = subprocess.run(
+                ["pdftoppm", "-r", "300", "-png", str(p), prefix],
+                capture_output=True,
+                text=True,
+                timeout=90,
+            )
+            if raster.returncode == 0:
+                for img in sorted(Path(td).glob("page-*.png")):
+                    ocr = subprocess.run(
+                        ["tesseract", str(img), "stdout", "--psm", "6"],
+                        capture_output=True,
+                        text=True,
+                        timeout=60,
+                    )
+                    if ocr.returncode == 0 and ocr.stdout.strip():
+                        texts.append(ocr.stdout)
+    best = max(texts, key=len) if texts else ""
+    if not best.strip():
+        raise RuntimeError(
+            "Could not extract invoice PDF text with local source-only tools. Install "
+            "poppler/tesseract or provide a text export; unresolved fields stay in REVIEW."
+        )
+    return best
 
 
 def _keyword_amount(lines: list[str], keywords) -> Decimal | None:

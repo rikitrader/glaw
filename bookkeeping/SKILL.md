@@ -1,7 +1,7 @@
 ---
 name: glaw-bookkeeping
-version: 1.0.0
-description: "GLAW Bookkeeping seat — parses bank/card statements (CSV, OFX/QFX, MT940, CAMT.053, PAIN.001, and PDF) into a unified, deduplicated, balance-verified ledger and exports plaintext-accounting journals (hledger / beancount) for the firm's accounting bench. Deterministic ISO/exchange parsers run first ($0, local); PDFs fall through to an opt-in LLM. Every row keeps an immutable transaction_hash + source_method audit tag. Use for: 'bookkeeping', 'parse bank statements', 'ingest statements into the books', 'turn statements into a ledger', 'hledger/beancount export', 'categorize transactions', 'reconcile a bank statement'."
+version: 1.1.0
+description: "GLAW Bookkeeping seat — parses bank/card statements (CSV, Google Sheets CSV exports, OFX/QFX, MT940, CAMT.053, PAIN.001, and digital/scanned PDF) into unified, deduplicated, balance-verified transaction evidence and exports JSON/CSV/hledger/beancount journals for the accounting bench. Source-only, local-first, no third-party Python packages. OCR uses local poppler + tesseract when available and fails closed when extraction is not provable. Every row keeps an immutable transaction_hash + source_method audit tag. Use for: 'bookkeeping', 'parse bank statements', 'ingest statements into the books', 'turn statements into a ledger', 'hledger/beancount export', 'categorize transactions', 'reconcile a bank statement'."
 allowed-tools:
   - Bash
   - Read
@@ -26,21 +26,22 @@ triggers:
 
 The firm's **Bookkeeping seat**, inside the Accounting & Finance Division. Invoke it
 whenever a matter needs **raw bank/card statements turned into structured, auditable
-books** — the mechanical ingestion layer that feeds `glaw-financial-forensics` (reconstruction),
-`glaw-roofer-accounting` (job costing), and `glaw-institutional-finance` (modeling).
+books** — the mechanical ingestion layer that feeds `/glaw-ledger`, `/glaw-controller`,
+`/glaw-cfo`, `/glaw-audit`, `/glaw-forensic-reconstruction`, `/glaw-tax-provision`,
+`/glaw-tax-compliance`, and public-company style reporting seats.
 
 It does the parsing, deduplication, balance verification, account mapping, and journal
 export. It does **not** opine on tax treatment or render financial statements — it hands
-clean, sourced transaction rows to the seat that does. For full reconstruction or a P&L,
-route to `glaw-financial-forensics` via `/glaw-accounting`.
+clean, sourced transaction rows to the seat that does. For full reconstruction, tax returns,
+forensic review, 8-K/10-K-style reporting, or a P&L, route through `/glaw-accounting`.
 
 ## Persona
 
 A meticulous controller who treats every imported row as something an auditor will trace
 back to the source statement. Zero fabricated figures: a row that cannot be parsed is
-**reported as a warning**, never guessed. Every row carries its origin (`source_method`:
-deterministic / llm / vision) and an immutable `transaction_hash` so re-ingestion is
-idempotent.
+**reported as a warning**, never guessed. Every row carries its origin (`source_method`,
+source file, and extraction path where available) and an immutable `transaction_hash` so
+re-ingestion is idempotent.
 
 ## The engine (vendored, part of GLAW)
 
@@ -48,17 +49,19 @@ The parsing engine lives **inside** the GLAW repo — not as an external depende
 
 ```
 lib/bookkeeping/
-├── glaw_engine/          # vendored Apache-2.0 engine (sebastienrousseau/bankstatementparser)
-├── .venv/                        # dedicated venv (pydantic, lxml, defusedxml, pandas, pypdf)
-├── runner.py                     # GLAW orchestration over the engine
-├── UPSTREAM.txt                  # pinned commit + provenance
+├── glaw_engine/                  # source-vendored bookkeeping engine
+├── runner.py                     # source-only GLAW orchestration over the engine
+├── pdf_extract.py                # digital PDF + local tesseract OCR extraction
+├── sheets_export.py              # local CSV export helper
+├── test_sources.py               # Sheets/CSV/OCR failure-path tests
+├── UPSTREAM.txt                  # provenance
 └── UPSTREAM-LICENSE-Apache-2.0.txt
 ```
 
 GLAW-local patch: `export/ledger.py::_resolve_contra` honors full account paths
 (`Income:Salary`, `Assets:Bank:Savings`) so income/transfers aren't mis-booked as expenses.
 
-Driver: `bin/glaw-bank-ingest`. Run it through that wrapper — it pins the venv + PYTHONPATH.
+Driver: `bin/glaw-bank-ingest`. Run it through that wrapper so the repo-local source path is used.
 
 ## Preamble (run first)
 
@@ -72,12 +75,19 @@ bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skil
 ### Step 1 — Locate the statements
 Ask the user where the statements are (a file or a directory tree) and what format.
 Supported with **$0 deterministic** parsing: CSV, OFX, QFX, MT940, CAMT.053, PAIN.001.
-PDFs (digital or scanned) need the opt-in LLM path — see "PDF path" below.
+Google Sheets can be ingested through their CSV-export URL. PDFs use deterministic local
+text extraction first, then local OCR when available; there is no LLM fallback in the source-only
+path.
 
 ### Step 2 — Ingest
 Single file:
 ```bash
 ~/.claude/skills/glaw/bin/glaw-bank-ingest <statement> --matter <slug> --format json
+```
+Google Sheets URL or exported CSV URL:
+```bash
+~/.claude/skills/glaw/bin/glaw-bank-ingest "<google-sheet-url-or-csv-url>" \
+  --google-auth auto --matter <slug> --format json
 ```
 Whole folder (deduped across the batch):
 ```bash
@@ -95,7 +105,7 @@ finding — surface it, don't bury it.
 | `roofing` | roofing/restoration contractor — job revenue, insurance proceeds, materials, crew, subs, permits |
 | `personal` | household / litigation asset-tracing — wages, housing, transfers, ATM, dining |
 ```bash
-~/.claude/skills/glaw/bin/glaw-bank-ingest <input> --chart roofing --format gsheet
+~/.claude/skills/glaw/bin/glaw-bank-ingest <input> --chart roofing --format csv
 ```
 **Or a custom file** with `--map rules.json` (ordered regex, first match wins):
 ```json
@@ -118,44 +128,62 @@ Plaintext-accounting journals:
 ~/.claude/skills/glaw/bin/glaw-bank-ingest <input> --map rules.json --format hledger --out books.journal
 ~/.claude/skills/glaw/bin/glaw-bank-ingest <input> --map rules.json --format beancount --out books.beancount
 ```
-**Google Sheet** (categorized, two tabs — Transactions + per-category Summary):
+Local CSV export for spreadsheet review:
 ```bash
-~/.claude/skills/glaw/bin/glaw-bank-ingest <input> --map rules.json --format gsheet \
-  --sheet-title "<Client> — <Account> — <Period>"
+GLAW_EXPORT_DIR=/tmp/glaw_exports ~/.claude/skills/glaw/bin/glaw-bank-ingest <input> \
+  --map rules.json --format csv --sheet-title "<Client> - <Account> - <Period>"
 ```
-The `gsheet` path uses the authorized-user creds at `~/.gcp/token.json` (scopes:
-spreadsheets + drive) and prints the new sheet URL. The journal / sheet carries the
-matter header + UPL footer.
+`--format gsheet` remains as a compatibility alias for local CSV export. It does not write
+back to Google Drive. Use Google Sheets as a source by passing a Sheet URL; private Sheets are
+read with a `gcloud` bearer token when `--google-auth auto` or `--google-auth gcloud` is used.
+The journal / CSV carries the matter header + UPL footer where the format supports it.
 
 ### Step 5 — Hand to the accounting bench
 The deduped, mapped, balance-verified rows are the raw material for:
-- `glaw-financial-forensics` → reconstruct P&L / balance sheet / cash flow, fraud scan
-- `glaw-roofer-accounting` → job/crew costing from the mapped expense rows
-- `glaw-institutional-finance` → EBITDA normalization, modeling
+- `/glaw-ledger` → persistent double-entry book of record
+- `/glaw-controller` and `/glaw-cfo` → close, management reporting, board reporting
+- `/glaw-audit` and `/glaw-forensic-reconstruction` → independent tie-out, fraud/anomaly scan
+- `/glaw-tax-provision`, `/glaw-tax-compliance`, `/glaw-irs-audit` → provision, return mapping,
+  form package, IRS-examiner adversarial review
+- `/glaw-sec-reporting` and `/glaw-sec-disclosure` → 10-K/10-Q/8-K-style accounting review,
+  footnotes, MD&A inputs, and subsequent-events review
 Route through `/glaw-accounting`, then:
 ```bash
 ~/.claude/skills/glaw/bin/glaw timeline-log bookkeeping_ledger_ready
 ```
 
-## PDF path — both digital and scanned, deterministic, $0, no model
+## PDF path — digital and scanned, deterministic, $0, no model
 A `.pdf` input auto-selects the right reader (`lib/bookkeeping/pdf_extract.py`):
 
 1. **Digital (text) PDFs → `glaw-opendataloader-pdf`.** Lifts the transaction table,
    normalizes the date column to ISO (US M/D/Y vs D/M/Y auto-detected, so no rows are
    dropped), sniffs opening/closing balances for the Golden Rule.
 2. **Scanned / image-only PDFs → `tesseract` OCR.** When path 1 finds no table, each
-   page is rasterized with `pdftoppm` and OCR'd with tesseract (psm 4), then parsed
-   one-transaction-per-line. Balances are sniffed from the OCR text too. Rows are
-   audit-tagged `extracted via tesseract OCR`.
+   page is rasterized with `pdftoppm` and OCR'd with tesseract across the selected OCR
+   profile, then parsed one-transaction-per-line. Balances are sniffed from the OCR text
+   too. Rows are audit-tagged with profile, DPI, PSM, and extraction method.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw-bank-ingest statement.pdf --chart roofing --format gsheet
-~/.claude/skills/glaw/bin/glaw-bank-ingest scanned.pdf  --chart roofing --ocr force   # force OCR
+~/.claude/skills/glaw/bin/glaw-bank-ingest statement.pdf --chart roofing --format csv
+~/.claude/skills/glaw/bin/glaw-bank-ingest scanned.pdf --chart roofing --ocr force \
+  --ocr-profile bank-statement
 ```
 Requires OS binaries on PATH: `glaw-opendataloader-pdf`, and for scans `tesseract` + `pdftoppm`
 (poppler). `--ocr off` disables the OCR fallback; `--ocr force` always OCRs (use when a
-digital PDF has a garbled text layer). If OCR also finds nothing (very low-quality scan
-or a non-tabular layout), the runner says so rather than inventing rows.
+digital PDF has a garbled text layer). `--ocr-profile bank-statement|dense|simple` selects
+the OCR strategy. If OCR also finds nothing, the runner says so rather than inventing rows.
+
+## Executable gate
+Before any downstream tax, audit, IRS, or public-reporting output is called final, run:
+
+```bash
+GLAW="$PWD" bash bin/glaw-bookkeeping-doctor
+```
+
+This gate covers statement ingest, local spreadsheet export, bank reconciliation, ledger posting,
+IRS return mapping, fill-package generation, tax provision, tax tie-out, OCR availability, no
+third-party package manifests, no direct third-party Python imports, and no temp credential files
+inside the repo. A failure blocks finalization.
 
 ## CLI reference
 | Flag | Meaning |
@@ -165,8 +193,10 @@ or a non-tabular layout), the runner says so rather than inventing rows.
 | `--chart fund\|roofing\|personal` | Bundled chart of accounts (`lib/bookkeeping/charts/`) |
 | `--map rules.json` | Custom AccountMapper regex → account rules (overrides `--chart`) |
 | `--ocr auto\|force\|off` | Scanned-PDF OCR: fallback (default), always, or disabled |
-| `--format hledger\|beancount\|json\|gsheet` | Output (default `hledger`) |
-| `--sheet-title <t>` | Title for the Google Sheet (`--format gsheet`) |
+| `--ocr-profile bank-statement\|dense\|simple` | OCR strategy for scanned PDFs |
+| `--google-auth auto\|none\|gcloud` | Private Google Sheets auth strategy for URL ingest |
+| `--format hledger\|beancount\|json\|csv\|gsheet` | Output (default `hledger`; `gsheet` aliases local CSV export) |
+| `--sheet-title <t>` | Title stem for local CSV spreadsheet export |
 | `--currency <c>` | Default currency for rows with none set (default `USD`) |
 | `--out <path>` | Write to file instead of stdout |
 | `--pattern '**/*.csv'` | Glob when input is a directory |

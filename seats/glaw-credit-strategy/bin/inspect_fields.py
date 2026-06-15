@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
-"""Zero-dependency placeholder for PDF field inspection."""
+"""Source-only notice for PDF field inspection."""
 import sys
 
 
 def main() -> int:
-    print("PDF field inspection is unavailable in absolute zero-third-party-package mode.", file=sys.stderr)
-    print("Use a PDF viewer's field list or the official form instructions manually.", file=sys.stderr)
+    print("PDF field inspection is handled by reviewer workflow in source-only mode.", file=sys.stderr)
+    print("Use the generated fill package plus official form instructions for reviewer entry.", file=sys.stderr)
     return 2
 
 

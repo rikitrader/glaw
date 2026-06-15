@@ -156,9 +156,9 @@ class BankStatementParser(ABC):
             Any: ``polars.DataFrame`` for the parsed data.
 
         Raises:
-            ImportError: If the optional ``polars`` dependency is not installed.
+            ImportError: Always; use list/dict exports in source-only GLAW.
         """
-        raise ImportError("Polars export is unavailable in absolute zero-third-party-package mode.")
+        raise ImportError("Polars export is removed. Use list/dict exports in source-only GLAW.")
 
     def to_polars_lazy(self) -> Any:
         """

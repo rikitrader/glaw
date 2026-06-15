@@ -23,7 +23,7 @@ for the advice.*
 ## 1. Where we are (v1.0 — shipped)
 
 A working virtual firm: **59 skills · 10 departments · 8-stage matter pipeline · 4 hard
-gates · 20 tools**, with the contract-review chain (review → score → real Word tracked
+gates · 20 tools**, with the contract-review chain (review -> score -> local redline
 changes → publish) proven end-to-end. The Investigations Bureau + Intelligence
 Super-Structure (FinCEN/Intel/SEC cells) already seed the "agency" muscles. `glaw-doctor`
 keeps it healthy.

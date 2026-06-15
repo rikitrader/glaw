@@ -94,8 +94,8 @@ into the four filing seats via per-seat `forms/`.
 - **Four hard gates**: conflicts cleared, citations verified, adversarial RED→BLUE,
   UPL disclaimer.
 - **20-tool toolbelt**, including the contract-review chain: `glaw-contract-score`
-  (scorecard), `glaw-redline` / `glaw-redline-docx` (real Word tracked changes),
-  `glaw-review-chain` (one-shot), `glaw-publish` (PDF/Doc/Slides).
+  (scorecard), `glaw-redline` / `glaw-redline-docx` (local redline artifacts),
+  `glaw-review-chain` (one-shot), `glaw-publish` (local matter bundle).
 - **`glaw-doctor`** health harness — asserts all skills resolve, all tools run, no
   dangling references.
 - Interoperates with `legal-redline-tools` and `claude-legal-skill` (both MIT).

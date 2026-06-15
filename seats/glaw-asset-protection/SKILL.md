@@ -126,7 +126,7 @@ Funding letter. (See the matter's asset-protection document set.)
 
 ## How this wires into the whole GLAW pipeline (every stage + agent + checklist)
 The asset-protection engagement threads the standard GLAW pipeline; each stage fires specific seats, checklists,
-adversarial agents, and the LLM review loop:
+adversarial agents, and the senior review loop:
 
 | Stage | What fires | Seats / agents | Checklist / artifact |
 |-------|-----------|----------------|----------------------|
@@ -140,11 +140,10 @@ adversarial agents, and the LLM review loop:
 | **docket** | calendar 709, BOI, situs-renewal, annual trustee review | `/glaw-docket` (`glaw docket add`) | deadline calendar |
 | **retro** | Obsidian vault write-up | `/glaw-matter-retro` | matter vault |
 
-**Adversarial + LLM verification loop (so it's bullet-proof):**
-- Every drafted clause is published to Drive **comment-ready** (Helvetica, single-spaced). The LLM review loop
-  `~/.claude/skills/glaw-83b-election/bin/review_comments.py <folderId>` reads comments **and** tracked-change
-  suggestions (Docs scope is ON) and triages each **ACCEPT vs CAREFUL-REWRITE** (substance → escalate to the
-  owning seat). Run it after every review round.
+**Adversarial + verification loop:**
+- Every drafted clause stays in the local matter packet with a comment/resolution log. The review loop
+  triages each issue as **ACCEPT** (typo/clarity/factually-correct) or **CAREFUL-REWRITE** (changes
+  legal/tax substance, so escalate to the owning seat). Run it after every review round.
 - Every case/PLR/statute cited is re-verified through the **court-research APIs** before it appears in a
   deliverable (CourtListener/CAP/GovInfo). No remembered cites.
 - `/glaw-autocounsel` can run strategy+structure+adversarial back-to-back.

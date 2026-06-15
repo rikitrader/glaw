@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
-# glaw-statements — disabled in absolute zero-third-party-package mode.
+# glaw-statements — source-only financial statements from ingest JSON or the GL.
 set -euo pipefail
-echo "ERROR: glaw-statements requires the disabled bookkeeping parser stack." >&2
-echo "Use existing stdlib ledger outputs or manually prepared JSON statements." >&2
-exit 2
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_LIB="$(cd "$SCRIPT_DIR/../lib/bookkeeping" && pwd)"
+GLAW_LIB="${GLAW:+$GLAW/lib/bookkeeping}"
+[ -n "${GLAW_LIB:-}" ] && [ -d "$GLAW_LIB" ] || GLAW_LIB="$SCRIPT_LIB"
+PY="$(command -v python3)"
+exec "$PY" "$GLAW_LIB/statements.py" "$@"

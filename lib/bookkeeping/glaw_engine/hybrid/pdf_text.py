@@ -1,4 +1,4 @@
-"""PDF text extraction disabled for absolute zero-third-party-package mode."""
+"""Legacy PDF text interface retained for import compatibility."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -17,7 +17,6 @@ def extract_text(path: PathLike, *, engine: Engine = "manual") -> str:
     if not pdf_path.is_file():
         raise PDFExtractionError(f"PDF not found: {pdf_path}")
     raise PDFExtractionError(
-        "PDF extraction is unavailable in absolute zero-third-party-package mode; "
-        "convert the PDF to text or CSV before ingesting."
+        "This legacy PDF text interface is removed. Use bin/glaw-bank-ingest, which "
+        "routes PDFs through lib/bookkeeping/pdf_extract.py and local OCR profiles."
     )
-

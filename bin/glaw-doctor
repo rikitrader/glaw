@@ -70,8 +70,8 @@ done
 # glaw-cites needs stdin
 if printf '' | "$GLAW/bin/glaw-cites" - >/dev/null 2>&1; then ok "glaw-cites ran"; else bad "glaw-cites failed"; fi
 # bookkeeping engine + finance tools: zero-dependency mode uses source/local smokes.
-if [ -x "$GLAW/lib/bookkeeping/.venv/bin/python" ]; then
-  _BKPY="$GLAW/lib/bookkeeping/.venv/bin/python"
+if [ "${GLAW_FULL_BOOKKEEPING_SELFTEST:-0}" = "1" ]; then
+  _BKPY="$(command -v python3)"
   if "$_BKPY" "$GLAW/lib/bookkeeping/test_smoke.py" >/dev/null 2>&1; then
     ok "glaw-bank-ingest engine smoke passed (parse + dedup + Golden-Rule verify)"
   else
@@ -491,10 +491,10 @@ fi
 echo "[6/6] no secrets, keys, or personal data (content scan)"
 # Root-cause guard: the committed tree must never carry live secrets, credential
 # files, or personal/case data. Scans content, not just filenames. Excludes the
-# rebuildable venv and documented EXAMPLE placeholders.
+# ignored generated caches and documented EXAMPLE placeholders.
 SCANROOT="$GLAW"
 scan() { grep -rIE "$1" "$SCANROOT" 2>/dev/null \
-  | grep -vE '/\.venv/|/node_modules/|/\.git/|UPSTREAM-LICENSE|bin/glaw-doctor'; }
+  | grep -vE '/__pycache__/|/node_modules/|/\.git/|UPSTREAM-LICENSE|bin/glaw-doctor'; }
 sec=0
 # (a) live key/token formats (AKIA…EXAMPLE and obvious placeholders excluded)
 if scan 'sk-[a-zA-Z0-9]{32,}|AIza[0-9A-Za-z_-]{35}|ghp_[a-zA-Z0-9]{36}|AKIA[0-9A-Z]{16}|-----BEGIN (RSA|EC|OPENSSH) PRIVATE KEY' \
@@ -502,7 +502,7 @@ if scan 'sk-[a-zA-Z0-9]{32,}|AIza[0-9A-Za-z_-]{35}|ghp_[a-zA-Z0-9]{36}|AKIA[0-9A
   bad "possible live secret/key in tree — run: grep -rIE 'sk-|AKIA|BEGIN .*PRIVATE KEY' (excluding tests/examples)"; sec=$((sec+1))
 fi
 # (b) credential files
-if find "$SCANROOT" -path '*/.venv' -prune -o -path '*/node_modules' -prune -o \
+if find "$SCANROOT" -path '*/__pycache__' -prune -o -path '*/node_modules' -prune -o \
      \( -name '*.key' -o -name '*.pem' -o -name '.env' -o -name '*.enc' -o -name '*token*.json' -o -name '*credentials*.json' \) -print 2>/dev/null \
    | grep -q .; then
   bad "credential file committed (.key/.pem/.env/.enc/token/credentials)"; sec=$((sec+1))

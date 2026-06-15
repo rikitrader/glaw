@@ -308,7 +308,8 @@ class VisionExtractor:
 
     def _render_pages(self, pdf_path: Path) -> list[bytes]:
         raise VisionExtractorError(
-            "Vision PDF rendering is unavailable in absolute zero-third-party-package mode."
+            "Legacy vision rendering is removed. Use bin/glaw-bank-ingest with local "
+            "pdf_extract.py OCR profiles."
         )
 
         try:
@@ -345,7 +346,8 @@ class VisionExtractor:
         strips and dedup'd by ``transaction_hash`` at merge time.
         """
         raise VisionExtractorError(
-            "Vision PDF strip rendering is unavailable in absolute zero-third-party-package mode."
+            "Legacy strip rendering is removed. Use bin/glaw-bank-ingest with local "
+            "pdf_extract.py OCR profiles."
         )
 
         try:
@@ -405,7 +407,8 @@ class VisionExtractor:
         if is_ollama_model(self.model):
             return ollama_direct_completion
         raise VisionExtractorError(
-            "Vision LLM extraction is unavailable in absolute zero-third-party-package mode."
+            "Legacy vision extraction is removed. Use deterministic ingest and local OCR "
+            "profiles; unresolved rows must stay in REVIEW."
         )
 
 

@@ -54,15 +54,11 @@ Day 0 (transfer day) doesn't count; 30 calendar days; weekend/holiday rolls to n
    Pick ONE method, never both. Deliver a copy to the company; keep proof indefinitely.
 7. **Docket** — `glaw docket add <due-date> "83(b) deadline — <founder>"`.
 
-## Review loop (comments + tracked changes → AI advice)
-Google Docs version: turn on **Editing ▸ Suggesting** so collaborator edits appear as
-strikethrough suggestions and are recorded in version history. To let GLAW read and advise:
-- `bin/review_comments.py <folderId>` lists every open **comment** on every doc in the folder
-  (via the Drive API), and for each one classifies **ACCEPT** (typo/clarity/factually-correct) vs
-  **CAREFUL-REWRITE** (changes legal/tax substance — escalate to the owning seat) and can post a reply.
-- Note: reading **suggestion** (tracked-change) text requires a `documents`-scoped token; the
-  default `~/.gcp/token.json` is `drive`+`spreadsheets`. Comments work today; add the Docs scope to
-  also ingest suggestion bodies. Until then, resolve suggestions by reading version history in the UI.
+## Review loop (comments + tracked changes -> AI advice)
+Keep the draft, comment log, and resolution log in the local matter packet. For each open comment
+or proposed edit, classify **ACCEPT** (typo/clarity/factually-correct) vs **CAREFUL-REWRITE**
+(changes legal/tax substance, so escalate to the owning seat). Do not depend on Google Drive,
+Docs API scopes, or token files for the core workflow.
 
 ## Tie-in to GLAW
 - Division: Corporate & Transactional (see `glaw/lib/firm-roster.md`).

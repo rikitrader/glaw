@@ -33,7 +33,7 @@ Sanitized on vendoring: nested `.git/`, `.encrypted/`, secrets, and caches are e
 ## Methodology & interoperating projects
 
 - **gstack** — the skill-orchestration methodology GLAW is built on.
-- [legal-redline-tools](https://github.com/evolsb/legal-redline-tools) (MIT) — real Word tracked-changes, used by the contract chain.
+- [legal-redline-tools](https://github.com/evolsb/legal-redline-tools) (MIT) — redline methodology reference for the local contract chain.
 - [claude-legal-skill](https://github.com/evolsb/claude-legal-skill) (MIT) — interoperating contract-review brain.
 
 If you believe an attribution here is incomplete or incorrect, please open an issue —

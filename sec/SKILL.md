@@ -61,7 +61,7 @@ bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skil
 | 10-K / 10-Q Risk Analyzer | `/glaw-disclosure-risk-analyzer` |
 
 Optional engines: **`glaw-sec-enforcement-swarm`** for multi-agent enforcement sweeps;
-the **due-diligence-agents** report engine (`~/.claude/skills-repos/due-diligence-agents`)
+the local due-diligence report renderer (`bin/glaw-dd-report`)
 as an optional DD-execution + report-generation layer.
 
 ## Division Workflow (orchestration)

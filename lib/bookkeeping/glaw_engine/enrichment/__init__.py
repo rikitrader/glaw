@@ -24,7 +24,8 @@ into this opt-in module so the trust model of the core stays clean.
 
 Install:
 
-    LLM enrichment is disabled in absolute zero-third-party-package mode.
+    No model enrichment install path is supported. Use explicit account-map rules,
+    bundled charts, or REVIEW classifications.
 
 Usage:
 

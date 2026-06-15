@@ -13,38 +13,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Lightweight REST API for the hybrid pipeline.
+"""Legacy REST API namespace retained for import compatibility.
 
-Finance teams want to POST a file and get JSON back. This module
-wraps :func:`smart_ingest` in a single-file FastAPI app that can be
-run as a microservice:
-
-    API mode is disabled in absolute zero-third-party-package mode.
-    glaw_engine-api              # starts on :8000
-    glaw_engine-api --port 9000  # custom port
-
-Or import the app for ASGI deployment::
-
-    from glaw_engine.api import create_app
-
-    app = create_app()
-    # uvicorn glaw_engine.api:app --host 0.0.0.0
-
-The API is **stateless** — each ``/ingest`` call processes the
-uploaded file and returns the result as JSON. No database, no
-sessions, no auth (add those in your reverse proxy or wrapper).
-
-Gated behind the ``[api]`` install extra (fastapi + uvicorn).
+Supported GLAW workflows use local source-only CLIs: ``bin/glaw-bank-ingest``,
+``bin/glaw-statements``, and ``bin/glaw-bookkeeping-doctor``. This module does not
+start a web server and does not require a web framework.
 """
 
 from __future__ import annotations
 
-import logging
-import tempfile
-from pathlib import Path
 from typing import Any, Optional
-
-logger = logging.getLogger(__name__)
 
 
 class APIError(RuntimeError):
@@ -56,65 +34,14 @@ def create_app(
     title: str = "Bank Statement Parser API",
     version: str = "0.0.8",
 ) -> Any:
-    """Create a FastAPI application wrapping :func:`smart_ingest`.
+    """Legacy factory retained for callers that import this symbol.
 
     Returns:
-        A FastAPI ``app`` instance. Raises :class:`APIError` if
-        FastAPI is not installed.
+        Raises :class:`APIError` with the supported local CLI path.
     """
     raise APIError(
-        "The REST API is unavailable in absolute zero-third-party-package mode."
+        "The legacy REST API is removed. Use bin/glaw-bank-ingest for local source-only ingest."
     )
-
-    from .hybrid import smart_ingest
-
-    app = FastAPI(title=title, version=version)
-
-    _file_field = File(...)
-
-    @app.post("/ingest")  # type: ignore[untyped-decorator]
-    async def ingest(  # pragma: no cover - async endpoint needs ASGI server
-        file: UploadFile = _file_field,  # noqa: B008
-    ) -> JSONResponse:
-        """Upload a bank statement and get structured JSON back.
-
-        Accepts any format supported by :func:`smart_ingest`:
-        CAMT, PAIN.001, CSV, OFX, QFX, or MT940. PDF ingestion is disabled in
-        source-only mode; convert PDFs to text or CSV before using this endpoint.
-
-        Returns the full :class:`IngestResult` as JSON including
-        transactions, verification status, and warnings.
-        """
-        suffix = Path(file.filename or "upload").suffix or ".xml"
-        with tempfile.NamedTemporaryFile(
-            suffix=suffix, delete=False
-        ) as tmp:
-            content = await file.read()
-            tmp.write(content)
-            tmp_path = tmp.name
-
-        try:
-            result = smart_ingest(tmp_path)
-            return JSONResponse(
-                content=_result_to_dict(result),
-                status_code=200,
-            )
-        except Exception as exc:
-            logger.error("Ingest failed: %s", exc)
-            return JSONResponse(
-                content={"error": str(exc)},
-                status_code=422,
-            )
-        finally:
-            Path(tmp_path).unlink(missing_ok=True)
-
-    @app.get("/health")  # type: ignore[untyped-decorator]
-    async def health() -> dict[str, str]:
-        """Health check endpoint."""
-        return {"status": "ok", "version": version}
-
-    return app
-
 
 def _result_to_dict(result: Any) -> dict[str, Any]:
     """Serialize an IngestResult to a JSON-safe dict."""
@@ -155,7 +82,7 @@ def main() -> None:
     import argparse
 
     parser = argparse.ArgumentParser(
-        description="Start the Bank Statement Parser REST API."
+        description="Compatibility entry point; use bin/glaw-bank-ingest instead."
     )
     parser.add_argument(
         "--host",
@@ -166,10 +93,6 @@ def main() -> None:
         "--port", type=int, default=8000, help="Port"
     )
     args = parser.parse_args()
+    _ = args
 
-    raise APIError(
-        "The REST API server is unavailable in absolute zero-third-party-package mode."
-    )
-
-    app = create_app()  # pragma: no cover - server entrypoint
-    uvicorn.run(app, host=args.host, port=args.port)  # pragma: no cover
+    raise APIError("The legacy REST API server is removed. Use the local GLAW CLIs.")

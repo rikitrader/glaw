@@ -1,6 +1,102 @@
-#!/usr/bin/env bash
-# glaw-dd-report — disabled in absolute zero-third-party-package mode.
-set -euo pipefail
-echo "ERROR: glaw-dd-report is unavailable in absolute zero-third-party-package mode." >&2
-echo "Use the JSON findings directly or publish with glaw-publish local HTML." >&2
-exit 2
+#!/usr/bin/env python3
+"""Render a source-only due-diligence HTML report from findings JSON."""
+from __future__ import annotations
+
+import argparse
+import html
+import json
+import sys
+from pathlib import Path
+
+
+CSS = """
+body{font:14px/1.5 -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif;margin:0;color:#111827;background:#f9fafb}
+.wrap{max-width:980px;margin:0 auto;padding:36px 28px 48px;background:white;min-height:100vh}
+h1{font-size:26px;margin:0 0 4px}h2{font-size:18px;margin:28px 0 8px;border-bottom:1px solid #d1d5db;padding-bottom:6px}
+.meta{color:#4b5563;margin-bottom:20px}.pill{display:inline-block;border:1px solid #d1d5db;border-radius:999px;padding:2px 8px;margin:2px;font-size:12px}
+table{border-collapse:collapse;width:100%;margin:10px 0}th,td{border:1px solid #d1d5db;padding:7px 9px;vertical-align:top}th{background:#f3f4f6;text-align:left}
+.critical,.high{color:#991b1b;font-weight:700}.medium{color:#92400e;font-weight:700}.low{color:#065f46;font-weight:700}
+pre{background:#f3f4f6;border:1px solid #d1d5db;padding:12px;overflow:auto}
+footer{margin-top:36px;color:#6b7280;font-size:12px;border-top:1px solid #e5e7eb;padding-top:12px}
+"""
+
+
+def _load(path: str) -> object:
+    raw = sys.stdin.read() if path == "-" else Path(path).read_text(encoding="utf-8")
+    return json.loads(raw)
+
+
+def _items(data: object) -> list[dict]:
+    if isinstance(data, list):
+        return [x for x in data if isinstance(x, dict)]
+    if isinstance(data, dict):
+        for key in ("findings", "issues", "red_flags", "items"):
+            val = data.get(key)
+            if isinstance(val, list):
+                return [x for x in val if isinstance(x, dict)]
+        return [{"section": k, "detail": v} for k, v in data.items() if k not in {"meta", "summary"}]
+    return [{"detail": data}]
+
+
+def _text(v: object) -> str:
+    if isinstance(v, (dict, list)):
+        return json.dumps(v, ensure_ascii=False, indent=2)
+    return "" if v is None else str(v)
+
+
+def render(data: object, title: str) -> str:
+    meta = data.get("meta", {}) if isinstance(data, dict) else {}
+    summary = data.get("summary", "") if isinstance(data, dict) else ""
+    rows = []
+    for item in _items(data):
+        severity = _text(item.get("severity") or item.get("risk") or item.get("level") or "review")
+        topic = _text(item.get("title") or item.get("issue") or item.get("section") or item.get("name") or "Finding")
+        evidence = _text(item.get("evidence") or item.get("source") or item.get("sources") or item.get("support"))
+        action = _text(item.get("action") or item.get("recommendation") or item.get("resolution") or item.get("next_step"))
+        detail = _text(item.get("detail") or item.get("description") or item.get("notes") or item)
+        rows.append(
+            "<tr>"
+            f"<td class='{html.escape(severity.lower())}'>{html.escape(severity)}</td>"
+            f"<td>{html.escape(topic)}</td>"
+            f"<td>{html.escape(detail)}</td>"
+            f"<td>{html.escape(evidence)}</td>"
+            f"<td>{html.escape(action)}</td>"
+            "</tr>"
+        )
+    meta_bits = "".join(
+        f"<span class='pill'>{html.escape(str(k))}: {html.escape(_text(v))}</span>"
+        for k, v in sorted(meta.items())
+    )
+    table = (
+        "<table><thead><tr><th>Severity</th><th>Topic</th><th>Detail</th>"
+        "<th>Evidence</th><th>Action</th></tr></thead><tbody>"
+        + "".join(rows)
+        + "</tbody></table>"
+    )
+    return f"""<!doctype html><html><head><meta charset="utf-8"><title>{html.escape(title)}</title><style>{CSS}</style></head>
+<body><main class="wrap"><h1>{html.escape(title)}</h1><div class="meta">{meta_bits}</div>
+<h2>Executive Summary</h2><p>{html.escape(_text(summary) or "No summary supplied. Review findings table below.")}</p>
+<h2>Findings</h2>{table}
+<h2>Raw Source</h2><pre>{html.escape(json.dumps(data, ensure_ascii=False, indent=2))}</pre>
+<footer>GLAW due-diligence report. Source-only local render. Attorney/CPA work-product, not legal, tax, or accounting advice.</footer>
+</main></body></html>"""
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(prog="glaw-dd-report")
+    ap.add_argument("json", nargs="?", default="-", help="findings JSON file or '-' for stdin")
+    ap.add_argument("--title", default="GLAW Due-Diligence Report")
+    ap.add_argument("--out", default=None, help="write HTML report here instead of stdout")
+    args = ap.parse_args()
+    data = _load(args.json)
+    doc = render(data, args.title)
+    if args.out:
+        Path(args.out).write_text(doc, encoding="utf-8")
+        print(f"wrote {args.out} ({len(doc):,} bytes)")
+    else:
+        print(doc)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

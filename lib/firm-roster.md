@@ -413,6 +413,6 @@ The securities-enforcement bench. Eleven requested seats, mapped to GLAW skills 
 | Wells Notice Response Generator ★ | `/glaw-sec-wells-response` |
 | 10-K / 10-Q Risk Analyzer ★ | `/glaw-disclosure-risk-analyzer` |
 
-Also available: `glaw-sec-enforcement-swarm` (user-built skill) for multi-agent enforcement sweeps;
-the **due-diligence-agents** framework (cloned at `~/.claude/skills-repos/due-diligence-agents`,
-a Python DD/reporting engine) is wired as an optional DD execution + report-generation layer.
+Also available: `glaw-sec-enforcement-swarm` (user-built skill) for multi-agent enforcement sweeps.
+Due-diligence findings render locally through `bin/glaw-dd-report`; no external DD engine clone is
+required for the supported workflow.

@@ -2,13 +2,11 @@
 """Source-input tests for Sheets URLs, CSV alias output, and PDF/OCR failures."""
 from __future__ import annotations
 
-import http.server
 import json
 import os
 import subprocess
 import sys
 import tempfile
-import threading
 from pathlib import Path
 
 HERE = Path(__file__).parent
@@ -28,29 +26,30 @@ def test_google_sheet_url_conversion():
 def test_csv_url_download_and_ingest():
     import runner
 
-    tmp = Path(tempfile.mkdtemp(prefix="glaw-sheet-fixture-"))
-    (tmp / "sheet.csv").write_text(
-        "date,description,amount\n2026-01-01,Deposit,100.00\n",
-        encoding="utf-8",
-    )
+    class Response:
+        def __enter__(self):
+            return self
 
-    class Handler(http.server.SimpleHTTPRequestHandler):
-        def log_message(self, *_args):
-            pass
+        def __exit__(self, *_args):
+            return False
 
-    httpd = http.server.ThreadingHTTPServer(("127.0.0.1", 0), Handler)
-    port = httpd.server_address[1]
-    cwd = os.getcwd()
-    os.chdir(tmp)
-    thread = threading.Thread(target=httpd.serve_forever, daemon=True)
-    thread.start()
+        def read(self):
+            return b"date,description,amount\n2026-01-01,Deposit,100.00\n"
+
+    calls = []
+    real_urlopen = runner.urllib.request.urlopen
     try:
-        path = runner._download_sheet_or_csv(f"http://127.0.0.1:{port}/sheet.csv", google_auth="none")
+        def fake_urlopen(req, timeout):
+            calls.append((req.full_url, timeout, dict(req.header_items())))
+            return Response()
+
+        runner.urllib.request.urlopen = fake_urlopen
+        path = runner._download_sheet_or_csv("https://example.com/sheet.csv", google_auth="none")
         assert path.exists() and "Deposit" in path.read_text(encoding="utf-8")
+        assert calls and calls[0][0] == "https://example.com/sheet.csv"
     finally:
-        httpd.shutdown()
-        os.chdir(cwd)
-    print("  ✓ sheets: CSV URL downloads through stdlib urllib")
+        runner.urllib.request.urlopen = real_urlopen
+    print("  ✓ sheets: CSV URL downloads through stdlib urllib without network sockets")
 
 
 def test_gcloud_auth_header_path():

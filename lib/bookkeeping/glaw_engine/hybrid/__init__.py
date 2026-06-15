@@ -13,15 +13,12 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-"""Hybrid pipeline: deterministic parsers with LLM fallback for PDFs.
+"""Legacy hybrid namespace retained for import compatibility.
 
-This subpackage is gated behind explicit operator enablement:
-
-    Hybrid PDF/LLM mode is disabled in absolute zero-third-party-package mode.
-
-Importing :mod:`glaw_engine.hybrid` does **not** require external packages.
-Individual modules raise a clear error only when disabled LLM/PDF entry points
-are actually invoked.
+Current GLAW workflows use the source-only runner plus local PDF/OCR extraction in
+``lib/bookkeeping/pdf_extract.py``. Importing this namespace does not require external
+packages; removed legacy entry points raise clear errors that point back to the supported
+local path.
 """
 
 from __future__ import annotations

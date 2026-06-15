@@ -138,7 +138,8 @@ class LLMExtractor:
         if is_ollama_model(self.model):
             return ollama_direct_completion
         raise LLMExtractorError(
-            "LLM extraction is unavailable in absolute zero-third-party-package mode."
+            "Legacy model extraction is removed. Use the source-only bank ingest path "
+            "with deterministic parsers and local OCR profiles."
         )
 
 

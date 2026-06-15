@@ -90,8 +90,8 @@ def ollama_direct_completion(**kwargs: Any) -> dict[str, Any]:
         import httpx
     except ImportError as exc:  # pragma: no cover - optional dep
         raise OllamaDirectError(
-            "httpx is required for the direct Ollama bridge. "
-            "Network LLM calls are unavailable in absolute zero-third-party-package mode."
+            "The legacy network model bridge is removed from GLAW. Use the source-only "
+            "bank ingest path with deterministic parsers and local OCR profiles."
         ) from exc
 
     model = kwargs.get("model", "")

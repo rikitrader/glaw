@@ -72,6 +72,30 @@ Read `~/.claude/skills/glaw/lib/firm-roster.md` before assigning a seat.
 
 ## Workflow
 
+### Step 0 — Mandatory source-first orchestration
+For any bookkeeping, tax, IRS, audit, forensic, or reporting request, start from source records:
+bank statements, card statements, payment-processor exports, invoices, tax returns, board packages,
+10-K/10-Q/8-K materials, footnotes, and management schedules. Do not produce accounting conclusions
+from narrative alone.
+
+The senior review chain is mandatory:
+
+1. `/glaw-bookkeeping` ingests statements and tags every row with source evidence.
+2. `/glaw-ledger` becomes the book of record; all reports compute from posted entries.
+3. `/glaw-controller` clears close, account mapping, and unresolved REVIEW items.
+4. `/glaw-cfo` owns management reporting, ratios, liquidity, going-concern, and board-level analysis.
+5. `/glaw-audit` independently recomputes and tie-outs every material number.
+6. `/glaw-forensic-reconstruction` attacks gaps, transfers, duplicates, fraud patterns, and missing
+   statement continuity.
+7. `/glaw-tax-provision`, `/glaw-tax-compliance`, `/glaw-irs-audit`, and `/glaw-adversarial` review
+   tax returns, form maps, provision, book-tax differences, and IRS-examiner objections.
+8. Public-company style reporting routes through `/glaw-sec-reporting`, `/glaw-sec-disclosure`, and
+   `/glaw-narrative` for 10-K/10-Q/8-K style footnotes, MD&A/accounting-policy review, risk factors,
+   and subsequent-events disclosure.
+
+Hard rule: a number that cannot be traced to source evidence, a ledger entry, and a tie-out stays in
+REVIEW and must not be presented as final. Unsupported assumptions are named assumptions, not facts.
+
 ### Step 1 — Scope the numbers
 From the matter charter, identify what the matter actually needs: clean financials,
 a tax election decision, a cap-table model, a valuation, a forensic reconstruction,
@@ -102,6 +126,16 @@ Tie the seats together: do the forensic financials reconcile to the tax filings?
 Does the valuation rest on the reconstructed EBITDA? Does the structure's tax
 election match what `/glaw-structure` assumed? Surface every discrepancy — a number
 that two seats disagree on is a finding, not a rounding error.
+
+Before any tax, audit, IRS, or SEC/reporting deliverable leaves draft, run the executable gate:
+
+```bash
+GLAW="$PWD" bash bin/glaw-bookkeeping-doctor
+```
+
+This gate exercises statement ingest, bank reconciliation, ledger posting, IRS return mapping,
+form-fill package generation, tax provision, tax tie-out, OCR availability, source-only imports,
+and third-party-dependency guards. If it fails, the workflow is not final.
 
 ### Step 4 — Hand back
 Package the numbers for the requesting stage:

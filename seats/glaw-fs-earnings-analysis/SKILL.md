@@ -221,8 +221,8 @@ Examples of good/bad headlines, tips for success, common mistakes to avoid, and 
 ## Dependencies
 
 **Required:**
-- Python (matplotlib, pandas, seaborn) for chart generation
+- Python standard library only for source parsing and report assembly
 - DOCX skill for report creation
 
 **Optional:**
-- XLS skill for model updates (not required for earnings updates)
+- XLS skill for model updates when available; otherwise emit CSV/JSON tables for review
