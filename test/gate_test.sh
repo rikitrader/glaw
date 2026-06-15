@@ -48,6 +48,7 @@ cat > "$M/final_packet.json" <<'JSON'
 {
   "status": "ready",
   "generated_at": "2026-01-01T00:00:00Z",
+  "workflow_profile": "accounting",
   "gates": {
     "intake_complete": true,
     "conflicts_cleared": true,
@@ -68,6 +69,14 @@ ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED when Chief appro
 printf '{"final_gate":"approved","approved_packet_generated_at":"2026-01-01T00:00:00Z"}\n' > "$M/decisions.jsonl"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before verified citation ledger artifact"
 printf '{"id":"C-1","status":"verified","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/"}\n' > "$M/citations.jsonl"
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current council ledger artifact"
+for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do
+  printf '{"profile":"accounting","role":"%s","decision":"approve","evidence":"fixture"}\n' "$role" >> "$M/council.jsonl"
+done
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current adversarial ledger artifact"
+for lens in irs-examiner state-tax-auditor forensic-accountant cfo-controller outside-critic; do
+  printf '{"profile":"accounting","lens":"%s","decision":"survive","evidence":"fixture"}\n' "$lens" >> "$M/adversarial.jsonl"
+done
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after all file gates"
 printf '{"id":"RF-STALE","severity":"high","status":"open","finding":"new post-packet issue"}\n' > "$M/red_flags.jsonl"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet high red flag"
@@ -77,6 +86,14 @@ printf '{"id":"C-1","status":"weak","authority":"26 U.S.C. 6001","source_url":"h
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet weak citation"
 printf '{"id":"C-1","status":"verified","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/"}\n' >> "$M/citations.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after post-packet citation re-verified"
+printf '{"profile":"accounting","role":"cfo","decision":"fix","red_flags":["new council issue"],"conditions":["fix it"]}\n' >> "$M/council.jsonl"
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet council fix"
+printf '{"profile":"accounting","role":"cfo","decision":"approve","evidence":"fixture reapproval"}\n' >> "$M/council.jsonl"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after post-packet council reapproval"
+printf '{"profile":"accounting","lens":"irs-examiner","decision":"fix","attack":"new adversarial issue","cure":"fix it"}\n' >> "$M/adversarial.jsonl"
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet adversarial fix"
+printf '{"profile":"accounting","lens":"irs-examiner","decision":"survive","evidence":"fixture rescore"}\n' >> "$M/adversarial.jsonl"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after post-packet adversarial survival"
 
 ok "$([ "$(chk matter-retro)" = 1 ] && echo 1 || echo 0)" "matter-retro BLOCKED before docket gate"
 log docket_gate_complete

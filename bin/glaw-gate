@@ -22,6 +22,7 @@
 set -uo pipefail
 GLAW_HOME="${GLAW_HOME:-$HOME/.glaw}"
 MATTERS="$GLAW_HOME/matters"
+ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 
 # stage -> space-separated required timeline events
 _required_events() {
@@ -78,13 +79,40 @@ if engagement.get("status") != "drafted":
 PY
 }
 
-_file_artifacts_valid() {  # _file_artifacts_valid <matter-dir>
-  python3 - "$1" <<'PY'
+_file_artifacts_valid() {  # _file_artifacts_valid <matter-dir> <repo-root>
+  python3 - "$1" "$2" <<'PY'
 import json
 import pathlib
 import sys
 
 d = pathlib.Path(sys.argv[1])
+root = pathlib.Path(sys.argv[2])
+sys.path.insert(0, str(root / "lib"))
+from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES
+
+
+def read_jsonl(path):
+    rows = []
+    if not path.exists():
+        return rows
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        if not line.strip():
+            continue
+        try:
+            rows.append(json.loads(line))
+        except json.JSONDecodeError:
+            print(f"{path.name} contains invalid JSON")
+            sys.exit(1)
+    return rows
+
+
+def latest_by(rows, key):
+    latest = {}
+    for row in rows:
+        latest[str(row.get(key, ""))] = row
+    return latest
+
+
 p = d / "final_packet.json"
 if not p.exists():
     print("final_packet.json missing")
@@ -96,6 +124,10 @@ except json.JSONDecodeError:
     sys.exit(1)
 if packet.get("status") != "ready":
     print("final_packet.json status is not ready")
+    sys.exit(1)
+profile = packet.get("workflow_profile") or "hybrid"
+if profile not in COUNCIL_PROFILES or profile not in ADVERSARIAL_PROFILES:
+    print(f"unknown workflow profile: {profile}")
     sys.exit(1)
 packet_generated_at = packet.get("generated_at", "")
 if not packet_generated_at:
@@ -109,14 +141,7 @@ if missing:
 red_flags = d / "red_flags.jsonl"
 if red_flags.exists():
     blocking = []
-    for line in red_flags.read_text(encoding="utf-8", errors="replace").splitlines():
-        if not line.strip():
-            continue
-        try:
-            row = json.loads(line)
-        except json.JSONDecodeError:
-            print("red_flags.jsonl contains invalid JSON")
-            sys.exit(1)
+    for row in read_jsonl(red_flags):
         if row.get("status", "open") != "resolved" and str(row.get("severity", "")).lower() in {"critical", "high"}:
             blocking.append(row.get("id") or row.get("finding") or "unnamed")
     if blocking:
@@ -127,16 +152,7 @@ citations = d / "citations.jsonl"
 if not citations.exists():
     print("citations.jsonl missing")
     sys.exit(1)
-latest_citations = {}
-for line in citations.read_text(encoding="utf-8", errors="replace").splitlines():
-    if not line.strip():
-        continue
-    try:
-        row = json.loads(line)
-    except json.JSONDecodeError:
-        print("citations.jsonl contains invalid JSON")
-        sys.exit(1)
-    latest_citations[str(row.get("id", ""))] = row
+latest_citations = latest_by(read_jsonl(citations), "id")
 if not latest_citations:
     print("citations.jsonl has no citation rows")
     sys.exit(1)
@@ -147,6 +163,40 @@ for cid, row in latest_citations.items():
         blocking_citations.append(cid or row.get("authority") or "unnamed")
 if blocking_citations:
     print("current blocking citation(s): " + ", ".join(str(x) for x in blocking_citations))
+    sys.exit(1)
+
+council = d / "council.jsonl"
+if not council.exists():
+    print("council.jsonl missing")
+    sys.exit(1)
+latest_council = latest_by([r for r in read_jsonl(council) if r.get("profile") == profile], "role")
+blocking_council = []
+for role in COUNCIL_PROFILES[profile]:
+    row = latest_council.get(role)
+    if not row:
+        blocking_council.append(role)
+        continue
+    if row.get("decision") != "approve" or not str(row.get("evidence", "")).strip():
+        blocking_council.append(role)
+if blocking_council:
+    print("current blocking council role(s): " + ", ".join(str(x) for x in blocking_council))
+    sys.exit(1)
+
+adversarial = d / "adversarial.jsonl"
+if not adversarial.exists():
+    print("adversarial.jsonl missing")
+    sys.exit(1)
+latest_adversarial = latest_by([r for r in read_jsonl(adversarial) if r.get("profile") == profile], "lens")
+blocking_adversarial = []
+for lens in ADVERSARIAL_PROFILES[profile]:
+    row = latest_adversarial.get(lens)
+    if not row:
+        blocking_adversarial.append(lens)
+        continue
+    if row.get("decision") != "survive" or not str(row.get("evidence", "")).strip():
+        blocking_adversarial.append(lens)
+if blocking_adversarial:
+    print("current blocking adversarial lens(es): " + ", ".join(str(x) for x in blocking_adversarial))
     sys.exit(1)
 
 decisions = d / "decisions.jsonl"
@@ -234,7 +284,7 @@ case "$action" in
       echo "GATE BLOCKED: cannot enter 'strategy' for [$slug] — $artifact_msg"
       exit 1
     fi
-    if [ "$target" = "file" ] && ! artifact_msg="$(_file_artifacts_valid "$MATTERS/$slug" 2>&1)"; then
+    if [ "$target" = "file" ] && ! artifact_msg="$(_file_artifacts_valid "$MATTERS/$slug" "$ROOT" 2>&1)"; then
       echo "GATE BLOCKED: cannot enter 'file' for [$slug] — $artifact_msg"
       exit 1
     fi
@@ -253,7 +303,7 @@ case "$action" in
       ev="${pair%%:*}"; desc="${pair#*:}"
       if _has_event "$tl" "$ev"; then echo "  ✅ $ev ($desc)"; else echo "  ❌ $ev ($desc) — NOT yet cleared"; fi
     done
-    if artifact_msg="$(_file_artifacts_valid "$MATTERS/$slug" 2>&1)"; then
+    if artifact_msg="$(_file_artifacts_valid "$MATTERS/$slug" "$ROOT" 2>&1)"; then
       echo "  ✅ file_artifacts_verified (before file)"
     else
       echo "  ❌ file_artifacts_verified (before file) — $artifact_msg"
