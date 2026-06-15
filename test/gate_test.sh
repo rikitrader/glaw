@@ -342,6 +342,9 @@ packet["gate_artifact_hashes"] = {
     name: hashlib.sha256((d / name).read_bytes()).hexdigest()
     for name in names
 }
+md = "# GLAW Final Packet\n\nManual gate fixture.\n"
+(d / "final_packet.md").write_text(md, encoding="utf-8")
+packet["final_packet_md_sha256"] = hashlib.sha256(md.encode("utf-8")).hexdigest()
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
 python3 - "$M/decisions.jsonl" "$M/final_packet.json" <<'PY'

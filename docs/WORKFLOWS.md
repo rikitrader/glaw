@@ -144,7 +144,9 @@ from the packet's source manifest, e.g. `Evidence: SRC-0001 bank statement`; sou
 live under `evidence/`, `sources/`, or `source_documents/`. Required council and adversarial
 review evidence must also cite a source ID, so a senior approval cannot be based on vague
 "reviewed" language. Resolved critical/high red flags must cite the same current source ID set,
-so an issue cannot be closed with unsupported "fixed" language. The packet also records a reviewer
+so an issue cannot be closed with unsupported "fixed" language. The packet JSON also records the
+expected `final_packet.md` digest, and the file gate blocks if the human-readable markdown packet
+is missing or changed after packet generation. The packet also records a reviewer
 identity manifest: every required Council role and adversarial lens must resolve to a concrete
 GLAW skill file with `Identity:`, `Soul:`, and `Report voice:` posture markers, and the file gate
 blocks if those skill files change after packet generation.

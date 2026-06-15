@@ -209,6 +209,10 @@ sys.exit(0 if ok else 1)
 PY
 rc=$?
 ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "chief approval records current final packet hash"
+printf '\nTampered packet sidecar.\n' >> "$TMP/matters/$SLUG/final_packet.md"
+"$GLAW" stage file >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "file stage blocked by tampered final packet markdown"
+"$CHIEF" --chief "GLAW Chief Counsel" --score 95 --grade A --decision "PROCEED" --risks "none" --conditions "licensed signer final review" --rationale "SRC-0001 all gates clear and source manifests tie out" --approve-final --matter "$SLUG" >/dev/null
 "$GLAW" stage file >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && [ "$(cat "$TMP/matters/$SLUG/.stage")" = file ] && echo 1 || echo 0)" "file stage clears after final packet and chief approval"
 

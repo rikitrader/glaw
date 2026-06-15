@@ -231,6 +231,10 @@ def sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
+def sha256_text(text: str) -> str:
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()
+
+
 def is_source_evidence(path: Path, root: Path) -> bool:
     if not path.is_file():
         return False
@@ -535,8 +539,10 @@ def cmd_build(args: argparse.Namespace) -> int:
         "report_quality_manifest": report_quality_manifest,
         "gate_artifact_hashes": gate_artifact_hashes,
     }
+    packet_md = render_md(packet)
+    packet["final_packet_md_sha256"] = sha256_text(packet_md)
     (d / "final_packet.json").write_text(json.dumps(packet, indent=2, sort_keys=False) + "\n", encoding="utf-8")
-    (d / "final_packet.md").write_text(render_md(packet), encoding="utf-8")
+    (d / "final_packet.md").write_text(packet_md, encoding="utf-8")
     if ready:
         timeline(d, "final_packet_ready", profile=profile)
         print(f"FINAL PACKET READY {d.name}")
