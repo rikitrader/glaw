@@ -125,6 +125,8 @@ The modern path is the general ledger, not a one-off parse:
   runs the continuity (completeness) gate, nets inter-account transfers, ties each account to
   its statement closing, clears `glaw-bank-rec` plus `/glaw-books-doctor --require-rec`, and drives the **CFO + Audit adversarial
   consensus loop** until the numbers are agreed. This is what makes the books audit-ready.
+  For forensic reconstructions, also run `bin/glaw-forensic-adversarial --book <book> --resolutions <resolutions.json>`;
+  critical/high findings clear only when the resolution cites a source evidence id such as `SRC-0001`.
 Then hand the posted ledger to `glaw-financial-forensics` / `glaw-roofer-accounting` /
 `glaw-institutional-finance` for the deeper read. Surface any Golden-Rule `discrepancy` or
 NOT-audit-ready result as a finding — never bury it.

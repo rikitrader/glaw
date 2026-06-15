@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from collections import defaultdict
 from decimal import Decimal, ROUND_HALF_UP
@@ -25,6 +26,7 @@ import statements as S      # noqa: E402
 import forensic_pipeline as FP   # noqa: E402
 
 _CENT = Decimal("0.01")
+_SOURCE_ID = re.compile(r"\bSRC-\d{4,}\b")
 
 
 def _q(d): return Decimal(str(d)).quantize(_CENT, rounding=ROUND_HALF_UP)
@@ -144,17 +146,22 @@ def gap_months(book: str) -> list:
 
 def chief_resolution(findings: list, resolutions: dict | None = None) -> dict:
     """The chief reviews each red-team finding and either CLEARS it (a documented resolution exists)
-    or HOLDS it OPEN. AUDIT-READY only when no CRITICAL/HIGH finding is still open."""
+    or HOLDS it OPEN. A resolution must cite a source evidence id (SRC-0001...) before it clears.
+    AUDIT-READY only when no CRITICAL/HIGH finding is still open."""
     res = resolutions or {}
     rows = []
     open_critical_high = 0
     for f in findings:
-        cleared = f["id"] in res
+        resolution = str(res.get(f["id"], ""))
+        has_resolution = f["id"] in res
+        source_backed = bool(_SOURCE_ID.search(resolution))
+        cleared = has_resolution and source_backed
         status = "CLEARED" if cleared else "OPEN"
         if not cleared and f["severity"] in ("CRITICAL", "HIGH"):
             open_critical_high += 1
         rows.append({**f, "status": status,
-                     "resolution": res.get(f["id"], f"[OPEN] {f['cure']}")})
+                     "resolution": resolution if has_resolution else f"[OPEN] {f['cure']}",
+                     "source_backed": source_backed})
     verdict = "AUDIT-READY" if open_critical_high == 0 else "NOT AUDIT-READY"
     return {"verdict": verdict, "findings_total": len(findings),
             "open_critical_high": open_critical_high, "findings": rows}
@@ -174,6 +181,8 @@ def render_text(d: dict) -> str:
         o.append(f"  {mark} [{f['severity']}] ({f['lens']}) {f['issue']}")
         o.append(f"       authority: {f['authority']}")
         o.append(f"       resolution: {f['resolution']}")
+        if f["status"] == "OPEN" and not f.get("source_backed") and not str(f["resolution"]).startswith("[OPEN]"):
+            o.append("       source evidence id: MISSING (cite SRC-0001 or another source artifact)")
     o += ["-" * 70,
           f"  open critical/high: {d['open_critical_high']}",
           f"  ⚖️  CHIEF VERDICT: {d['verdict']}", "=" * 70]

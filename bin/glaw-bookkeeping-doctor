@@ -89,6 +89,7 @@ fi
 run_py_test test_sources.py
 run_py_test test_finance42.py
 run_py_test test_finance43.py
+run_py_test test_finance45.py
 
 bad_pdf="$tmp/bad.pdf"
 printf '%s' '%PDF-1.4' >"$bad_pdf"

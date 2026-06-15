@@ -40,11 +40,17 @@ def test_chief_gate():
     importlib.reload(FA)
     open_d = FA.review("t", documented_loan_notes="200000")
     assert open_d["verdict"] == "NOT AUDIT-READY" and open_d["open_critical_high"] >= 3
-    # clear every critical/high → AUDIT-READY
+    # unsupported "cleared" text does not clear an adversarial finding
     res = {f["id"]: "cleared" for f in FA.red_team("t", documented_loan_notes="200000")}
+    unsupported = FA.review("t", documented_loan_notes="200000", resolutions=res)
+    assert unsupported["verdict"] == "NOT AUDIT-READY" and unsupported["open_critical_high"] >= 3
+    assert all(not f["source_backed"] for f in unsupported["findings"] if f["id"] in res)
+    # source-backed resolution of every critical/high → AUDIT-READY
+    res = {f["id"]: f"SRC-0001 cleared by source package for {f['id']}"
+           for f in FA.red_team("t", documented_loan_notes="200000")}
     cleared = FA.review("t", documented_loan_notes="200000", resolutions=res)
     assert cleared["verdict"] == "AUDIT-READY" and cleared["open_critical_high"] == 0
-    print("  ✓ chief gate: NOT AUDIT-READY with open issues → AUDIT-READY only when all cleared")
+    print("  ✓ chief gate: unsupported clearances stay blocked; source-backed clearances permit AUDIT-READY")
 
 
 def test_documented_loan_clears():

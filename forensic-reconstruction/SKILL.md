@@ -95,8 +95,10 @@ bin/glaw-forensic-adversarial --book <book> \
 It deterministically raises every finding an IRS Revenue Agent / forensic accountant / BSA examiner
 would raise (naked loan vs documented notes, §274(d) unsubstantiated spend, reasonable comp, missing
 months, engineered-loss-vs-job-cost, same-day washes, structuring), then the CHIEF issues a verdict:
-**AUDIT-READY only when every critical/high finding is cleared** in the resolutions file (which the
-client extends as each issue is cured). Exit code is non-zero until AUDIT-READY. The senior
+**AUDIT-READY only when every critical/high finding is cleared with a source-backed resolution**
+in the resolutions file (each resolution must cite a matter evidence id such as `SRC-0001`, and
+bare text like "cleared" stays open). The client extends that file as each issue is cured. Exit
+code is non-zero until AUDIT-READY. The senior
 adversarial debate (`/glaw-adversarial` -> `/glaw-chief-decision`) layers on top for judgment calls.
 Conflicts cleared · citations verified · UPL footer also apply to every deliverable.
 
