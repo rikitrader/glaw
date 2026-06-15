@@ -19,6 +19,7 @@ import sys
 from calendar import monthrange
 from contextlib import redirect_stdout
 from datetime import date
+from decimal import Decimal
 from pathlib import Path
 
 HERE = Path(__file__).parent
@@ -44,10 +45,29 @@ def _period_end(period: str) -> str:
     return date(y, m, monthrange(y, m)[1]).isoformat()
 
 
+def _load_rec(path: str | None) -> dict | None:
+    if not path:
+        return None
+    return json.loads(Path(path).read_text(encoding="utf-8"))
+
+
+def _rec_failures(rec: dict | None, require_rec: bool) -> list[str]:
+    if rec is None:
+        return ["bank reconciliation artifact missing"] if require_rec else []
+    diff = Decimal(str(rec.get("unreconciled_difference", "0")))
+    failures = []
+    if diff != 0:
+        failures.append(f"bank reconciliation unreconciled difference {diff}")
+    if rec.get("reconciled") is False:
+        failures.append("bank reconciliation marked unreconciled")
+    return failures
+
+
 def run_close(book: str, *, period: str | None = None, as_of: str | None = None,
               out_dir: str | None = None, lock: bool = False, entity: str = "the Company",
               ingest: str | None = None, chart: str | None = None, mapfile: str | None = None,
-              post_subledgers: bool = False) -> dict:
+              post_subledgers: bool = False, rec: str | None = None,
+              require_rec: bool = False) -> dict:
     log: list[str] = []
     artifacts: dict[str, str] = {}
 
@@ -72,10 +92,18 @@ def run_close(book: str, *, period: str | None = None, as_of: str | None = None,
     BD.FAIL = 0
     BD.WARN = 0
     gate_rc, gate_out = _capture(BD.run_ledger, book, as_of=as_of)
+    rec_payload = _load_rec(rec)
+    rec_failures = _rec_failures(rec_payload, require_rec)
+    if rec_failures:
+        gate_out += "\n[bank reconciliation strict gate]\n"
+        for failure in rec_failures:
+            gate_out += f"  ❌ {failure}\n"
     artifacts["books-doctor.txt"] = gate_out
-    gate_passed = gate_rc == 0
+    gate_passed = gate_rc == 0 and not rec_failures
     log.append(f"gate: {'BULLETPROOF' if gate_passed else 'PROBLEMS FOUND'} "
                f"(failures {BD.FAIL}, warnings {BD.WARN})")
+    if require_rec:
+        log.append("bank rec: " + ("reconciled" if not rec_failures else "; ".join(rec_failures)))
 
     # 2 — statements
     postings = [{"account": p["account"], "amount": p["amount"], "id": p["id"]}
@@ -105,6 +133,7 @@ def run_close(book: str, *, period: str | None = None, as_of: str | None = None,
 
     summary = {"book": book, "period": period, "as_of": as_of,
                "gate_passed": gate_passed, "failures": BD.FAIL, "warnings": BD.WARN,
+               "require_rec": require_rec, "rec_failures": rec_failures,
                "net_income": str(s["profit_loss"]["net_income"]),
                "trial_balance_balanced": s["trial_balance"]["balanced"],
                "locked_through": locked_through, "log": log,
@@ -133,13 +162,15 @@ def main() -> int:
     ap.add_argument("--entity", default="the Company")
     ap.add_argument("--ingest", default=None, help="rebuild from new statements (dir or file) before closing")
     ap.add_argument("--post-subledgers", action="store_true", help="auto-post registered subledger entries for the period")
+    ap.add_argument("--rec", default=None, help="bank reconciliation JSON from glaw-bank-rec")
+    ap.add_argument("--require-rec", action="store_true", help="fail close if --rec is missing or unreconciled")
     ap.add_argument("--chart", default=None)
     ap.add_argument("--map", dest="mapfile", default=None)
     ap.add_argument("--format", default="text", choices=["text", "json"])
     a = ap.parse_args()
     res = run_close(a.book, period=a.period, as_of=a.as_of, out_dir=a.out, lock=a.lock,
                     entity=a.entity, ingest=a.ingest, chart=a.chart, mapfile=a.mapfile,
-                    post_subledgers=a.post_subledgers)
+                    post_subledgers=a.post_subledgers, rec=a.rec, require_rec=a.require_rec)
     if a.format == "json":
         print(json.dumps(res, indent=2, default=str))
     else:

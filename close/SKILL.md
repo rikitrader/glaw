@@ -108,18 +108,22 @@ The closing balance becomes next period's opening. The period is now read-only.
 
 For a recurring close that runs without a human in the loop, `bin/glaw-close-run` executes
 the whole pipeline on a book and writes a dated close package — with one hard gate:
-the books-doctor must pass. **Exit code reflects the gate** (0 = bulletproof, 1 = problems),
+the books-doctor must pass and, in strict close mode, a zero-difference bank reconciliation
+must be supplied. **Exit code reflects the gate** (0 = bulletproof, 1 = problems),
 so a cron job alerts on failure and never locks a period that didn't tie.
 
 ```bash
+# first produce a bank reconciliation artifact for the close
+bin/glaw-bank-rec --books <ledger.json> --bank <bank.json> --format json > ~/closes/<book>-2026-06-bank-rec.json
+
 # run the close, write the package, lock the month if the gate passes
-bin/glaw-close-run --book <book> --period 2026-06 --out ~/closes --lock
+bin/glaw-close-run --book <book> --period 2026-06 --rec ~/closes/<book>-2026-06-bank-rec.json --require-rec --out ~/closes --lock
 
 # optionally pull new statements first
-bin/glaw-close-run --book <book> --ingest <statements-dir> --chart <name> --period 2026-06 --out ~/closes --lock
+bin/glaw-close-run --book <book> --ingest <statements-dir> --chart <name> --period 2026-06 --rec ~/closes/<book>-2026-06-bank-rec.json --require-rec --out ~/closes --lock
 
 # schedule it — 06:00 on the 1st of each month (user installs in their own crontab):
-#   0 6 1 * *  bin/glaw-close-run --book acme --out ~/closes --lock || mail -s "GLAW close FAILED" me@co
+#   0 6 1 * *  bin/glaw-close-run --book acme --rec ~/closes/acme-bank-rec.json --require-rec --out ~/closes --lock || mail -s "GLAW close FAILED" me@co
 ```
 The package (`<book>-<period>/`) contains `statements.txt`, `comparative.txt`,
 `dashboard.txt`, `narrative.md`, `books-doctor.txt`, and `summary.json`. A failed gate

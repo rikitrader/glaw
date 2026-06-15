@@ -5,6 +5,7 @@ from __future__ import annotations
 import os
 import sys
 import tempfile
+import json
 from decimal import Decimal
 from pathlib import Path
 
@@ -49,6 +50,40 @@ def test_clean_close_passes_and_writes_package():
     print("  ✓ close-run: clean book → CLOSE PASSED, full package written, period locked")
 
 
+def test_strict_close_requires_bank_reconciliation():
+    L, CR = _fresh()
+    led = L.Ledger("strict")
+    led.post({"date": "2026-06-10", "lines": [{"account": "Assets:Bank:Checking", "debit": 100000},
+                                              {"account": "Income:Sales", "credit": 100000}]})
+    missing = CR.run_close("strict", period="2026-06", require_rec=True, lock=True)
+    assert missing["gate_passed"] is False
+    assert missing["locked_through"] is None
+    assert missing["rec_failures"] == ["bank reconciliation artifact missing"]
+
+    bad_rec = Path(tempfile.mkdtemp(prefix="glaw-rec-")) / "bad-rec.json"
+    bad_rec.write_text(json.dumps({
+        "unreconciled_difference": "25.00",
+        "reconciled": False,
+        "matched": 1,
+    }))
+    unreconciled = CR.run_close("strict", period="2026-06", require_rec=True, rec=str(bad_rec), lock=True)
+    assert unreconciled["gate_passed"] is False
+    assert unreconciled["locked_through"] is None
+    assert unreconciled["rec_failures"], "nonzero reconciliation must block strict close"
+
+    good_rec = bad_rec.with_name("good-rec.json")
+    good_rec.write_text(json.dumps({
+        "unreconciled_difference": "0.00",
+        "reconciled": True,
+        "matched": 1,
+    }))
+    closed = CR.run_close("strict", period="2026-06", require_rec=True, rec=str(good_rec), lock=True)
+    assert closed["gate_passed"] is True
+    assert closed["locked_through"] == "2026-06-30"
+    assert closed["rec_failures"] == []
+    print("  ✓ close-run strict rec: missing/nonzero rec blocks; zero-diff rec permits lock")
+
+
 def test_broken_books_fail_close():
     L, CR = _fresh()
     # a payment with no deposit drives cash negative → books-doctor [cash] fails
@@ -62,6 +97,7 @@ def test_broken_books_fail_close():
 
 def main() -> int:
     test_clean_close_passes_and_writes_package()
+    test_strict_close_requires_bank_reconciliation()
     test_broken_books_fail_close()
     print("OK: scheduled close smoke passed (clean → pass+lock, broken → fail+unlocked)")
     return 0

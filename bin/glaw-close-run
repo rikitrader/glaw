@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 # glaw-close-run — run the period close non-interactively (cron-safe). Exit 0 only if
 # the books-doctor gate passes. Writes a dated close package with --out.
-#   glaw-close-run --book acme --period 2026-06 --out ~/closes --lock
-#   # cron (1st of month, close prior month):  0 6 1 * *  glaw-close-run --book acme --out ~/closes --lock
+#   glaw-bank-rec --books /tmp/acme-ledger.json --bank /tmp/acme-bank.json --format json > ~/closes/acme-bank-rec.json
+#   glaw-close-run --book acme --period 2026-06 --rec ~/closes/acme-bank-rec.json --require-rec --out ~/closes --lock
+#   # cron (1st of month, close prior month):  0 6 1 * *  glaw-close-run --book acme --rec ~/closes/acme-bank-rec.json --require-rec --out ~/closes --lock
 set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SCRIPT_LIB="$(cd "$SCRIPT_DIR/../lib/bookkeeping" && pwd)"
