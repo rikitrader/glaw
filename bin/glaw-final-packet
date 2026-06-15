@@ -317,6 +317,7 @@ def review_evidence_manifest(
         evidence = str(row.get("evidence", ""))
         attack = str(row.get("attack", ""))
         cited = [sid for sid in source_ids if sid in evidence]
+        attack_cited = [sid for sid in source_ids if sid in attack]
         missing = []
         if not row:
             missing.append("review row")
@@ -326,12 +327,15 @@ def review_evidence_manifest(
             missing.append("source evidence id (SRC-####)")
         if not attack.strip():
             missing.append("attack/challenge")
+        if not attack_cited:
+            missing.append("attack source evidence id (SRC-####)")
         rows.append({
             "kind": "adversarial",
             "name": lens,
             "status": "pass" if not missing else "fail",
             "missing": missing,
             "cited_source_ids": cited,
+            "attack_cited_source_ids": attack_cited,
         })
     return rows
 

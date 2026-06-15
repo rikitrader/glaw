@@ -143,6 +143,8 @@ def cmd_record(args: argparse.Namespace) -> int:
     if args.decision == "survive":
         if not args.attack.strip():
             raise SystemExit("ERROR: adversarial survive requires --attack with the challenge tested.")
+        if not evidence_source_ids(args.attack):
+            raise SystemExit("ERROR: adversarial survive attack must cite a source artifact ID such as SRC-0001.")
         if not args.evidence.strip():
             raise SystemExit("ERROR: adversarial survive requires --evidence with the source-backed proof reviewed.")
         if not evidence_source_ids(args.evidence):
@@ -200,7 +202,8 @@ def cmd_status(args: argparse.Namespace) -> int:
         evidence_gap = decision == "survive" and not evidence.strip()
         source_id_gap = decision == "survive" and not evidence_source_ids(evidence)
         attack_gap = decision == "survive" and not attack.strip()
-        icon = "OK" if decision == "survive" and not evidence_gap and not source_id_gap and not attack_gap else "BLOCK"
+        attack_source_id_gap = decision == "survive" and not evidence_source_ids(attack)
+        icon = "OK" if decision == "survive" and not evidence_gap and not source_id_gap and not attack_gap and not attack_source_id_gap else "BLOCK"
         print(f"  {icon} {lens}: {decision}")
         if row.get("attack"):
             print(f"      attack: {row['attack']}")
@@ -212,7 +215,9 @@ def cmd_status(args: argparse.Namespace) -> int:
             print("      source evidence id: MISSING")
         if attack_gap:
             print("      attack/challenge: MISSING")
-        if decision != "survive" or evidence_gap or source_id_gap or attack_gap:
+        if attack_source_id_gap:
+            print("      attack source evidence id: MISSING")
+        if decision != "survive" or evidence_gap or source_id_gap or attack_gap or attack_source_id_gap:
             failures.append(lens)
     if failures:
         print("ADVERSARIAL BLOCKED")

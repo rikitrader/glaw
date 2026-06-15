@@ -106,20 +106,20 @@ Government/regulatory adversarial review is also executable. For accounting/tax 
 RED-team lenses include IRS, state-tax, forensic-accounting, CFO/controller, and outside critic:
 
 ```bash
-bin/glaw-adversarial record --profile auto --lens irs-examiner --decision survive --attack "IRS examiner challenge found no fatal return tie-out defect." --evidence "SRC-0001 return tie-out reviewed"
-bin/glaw-adversarial record --profile auto --lens state-tax-auditor --decision survive --attack "State auditor challenge found no unresolved nexus defect." --evidence "SRC-0001 state nexus reviewed"
-bin/glaw-adversarial record --profile auto --lens forensic-accountant --decision survive --attack "Forensic challenge found no unsupported-number defect." --evidence "SRC-0001 forensics pass reviewed"
-bin/glaw-adversarial record --profile auto --lens cfo-controller --decision survive --attack "Controller challenge found statements tie to source." --evidence "SRC-0001 financial statements reviewed"
-bin/glaw-adversarial record --profile auto --lens outside-critic --decision survive --attack "Outside critic challenge found no fatal alternative conclusion." --evidence "SRC-0001 independent challenge complete"
+bin/glaw-adversarial record --profile auto --lens irs-examiner --decision survive --attack "SRC-0001 IRS examiner challenge found no fatal return tie-out defect." --evidence "SRC-0001 return tie-out reviewed"
+bin/glaw-adversarial record --profile auto --lens state-tax-auditor --decision survive --attack "SRC-0001 State auditor challenge found no unresolved nexus defect." --evidence "SRC-0001 state nexus reviewed"
+bin/glaw-adversarial record --profile auto --lens forensic-accountant --decision survive --attack "SRC-0001 Forensic challenge found no unsupported-number defect." --evidence "SRC-0001 forensics pass reviewed"
+bin/glaw-adversarial record --profile auto --lens cfo-controller --decision survive --attack "SRC-0001 Controller challenge found statements tie to source." --evidence "SRC-0001 financial statements reviewed"
+bin/glaw-adversarial record --profile auto --lens outside-critic --decision survive --attack "SRC-0001 Outside critic challenge found no fatal alternative conclusion." --evidence "SRC-0001 independent challenge complete"
 bin/glaw-adversarial complete --profile auto
 ```
 
-Use `--decision survive` with both a challenge summary and source-backed evidence. Use
+Use `--decision survive` with a source-cited challenge summary and source-backed evidence. Use
 `--decision fix` or `--decision strike` with a source-cited `--attack` and a `--cure`
 when a government, regulatory, or litigation adversary finds a fatal or curable weakness. The
 command opens a blocking red flag automatically.
-Every `survive` decision must carry both the challenge tested and source-backed evidence, so a
-RED-team pass cannot be logged as ready from an unsupported conclusion.
+Every `survive` decision must carry both the source-cited challenge tested and source-backed
+evidence, so a RED-team pass cannot be logged as ready from an unsupported conclusion.
 
 Ethics, red flags, UPL footer, and the final packet are explicit gates:
 
@@ -146,7 +146,7 @@ Evidence must cite a hashed source artifact ID
 from the packet's source manifest, e.g. `Evidence: SRC-0001 bank statement`; source artifacts
 live under `evidence/`, `sources/`, or `source_documents/` and must be nonempty files. Required council approvals
 must include source-backed evidence plus role-specific notes; required adversarial survivals must
-include source-backed evidence plus the challenge tested. A senior approval cannot be based on vague
+include source-backed evidence plus a source-cited challenge tested. A senior approval cannot be based on vague
 "reviewed" language. Resolved critical/high red flags must cite the same current source ID set,
 so an issue cannot be closed with unsupported "fixed" language. The packet JSON also records the
 expected `final_packet.md` digest, and the file gate blocks if the human-readable markdown packet

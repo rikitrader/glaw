@@ -92,10 +92,12 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before adversari
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial survive blocked without evidence"
 "$ADVERSARIAL" record --profile auto --lens irs-examiner --decision survive --attack "no fatal finding" --evidence "test fixture" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial survive blocked without source evidence id"
+"$ADVERSARIAL" record --profile auto --lens irs-examiner --decision survive --attack "no fatal finding" --evidence "SRC-9999 test fixture" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial survive blocked when attack lacks source evidence id"
 "$ADVERSARIAL" record --profile auto --lens irs-examiner --decision survive --evidence "SRC-9999 test fixture" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial survive blocked without attack challenge"
 for lens in irs-examiner state-tax-auditor forensic-accountant cfo-controller outside-critic; do
-  "$ADVERSARIAL" record --profile auto --lens "$lens" --decision survive --attack "no fatal finding" --evidence "SRC-9999 test fixture" >/dev/null
+  "$ADVERSARIAL" record --profile auto --lens "$lens" --decision survive --attack "SRC-9999 no fatal finding after source challenge" --evidence "SRC-9999 test fixture" >/dev/null
 done
 cp "$TMP/matters/$SLUG/adversarial.jsonl" "$TMP/matters/$SLUG/adversarial.clean.jsonl"
 python3 - "$TMP/matters/$SLUG/adversarial.jsonl" <<'PY'
@@ -206,7 +208,7 @@ for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic exte
   "$COUNCIL" record --profile auto --role "$role" --decision approve --evidence "SRC-0001 test fixture review basis" --notes "$role current-source approval conclusion" >/dev/null
 done
 for lens in irs-examiner state-tax-auditor forensic-accountant cfo-controller outside-critic; do
-  "$ADVERSARIAL" record --profile auto --lens "$lens" --decision survive --attack "no fatal finding" --evidence "SRC-0001 test fixture" >/dev/null
+  "$ADVERSARIAL" record --profile auto --lens "$lens" --decision survive --attack "SRC-0001 no fatal finding after source challenge" --evidence "SRC-0001 test fixture" >/dev/null
 done
 "$COUNCIL" complete --profile auto >/dev/null
 "$ADVERSARIAL" complete --profile auto >/dev/null

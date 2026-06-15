@@ -199,7 +199,7 @@ for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic exte
 done
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current adversarial ledger artifact"
 for lens in irs-examiner state-tax-auditor forensic-accountant cfo-controller outside-critic; do
-  append_hashed_jsonl "$M/adversarial.jsonl" "{\"profile\":\"accounting\",\"lens\":\"$lens\",\"decision\":\"survive\",\"attack\":\"$lens no fatal challenge after source review\",\"evidence\":\"SRC-0001 fixture\"}"
+  append_hashed_jsonl "$M/adversarial.jsonl" "{\"profile\":\"accounting\",\"lens\":\"$lens\",\"decision\":\"survive\",\"attack\":\"SRC-0001 $lens no fatal challenge after source review\",\"evidence\":\"SRC-0001 fixture\"}"
 done
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current external deliverable artifact"
 printf '# Draft Report\n\nNumbers tie.\n' > "$M/draft-report.md"
@@ -292,6 +292,7 @@ packet["senior_review_evidence_manifest"] = [
         "status": "pass",
         "missing": [],
         "cited_source_ids": ["SRC-0001"],
+        "attack_cited_source_ids": ["SRC-0001"],
     }
     for name in ["irs-examiner", "state-tax-auditor", "forensic-accountant", "cfo-controller", "outside-critic"]
 ]
@@ -494,6 +495,8 @@ ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact counci
 append_hashed_jsonl "$M/adversarial.jsonl" '{"profile":"accounting","lens":"irs-examiner","decision":"fix","attack":"new adversarial issue","cure":"fix it"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet adversarial fix"
 append_hashed_jsonl "$M/adversarial.jsonl" '{"profile":"accounting","lens":"irs-examiner","decision":"survive","attack":"irs examiner no fatal challenge after rescore","evidence":"SRC-0001 fixture rescore"}'
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by adversarial survival attack without source evidence id"
+append_hashed_jsonl "$M/adversarial.jsonl" '{"profile":"accounting","lens":"irs-examiner","decision":"survive","attack":"SRC-0001 irs examiner no fatal challenge after rescore","evidence":"SRC-0001 fixture rescore"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file STILL BLOCKED by adversarial ledger hash change after survival"
 cp "$M/adversarial.baseline.jsonl" "$M/adversarial.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact adversarial ledger restored"
