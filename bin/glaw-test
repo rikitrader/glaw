@@ -10,6 +10,9 @@
 #   3. a "## When to invoke/use" section exists
 #   4. the load-bearing UPL / not-legal-advice line is present (firm hard gate #4)
 #   5. allowed-tools is a non-empty list
+#   6. an explicit agent identity/posture section exists
+#   7. a workflow section ties the seat into the orchestrator
+#   8. firm memory is wired through glaw-learnings / ReasoningBank
 # Exit 0 = all contracts pass, 1 = at least one violation.
 set -uo pipefail
 GLAW="${GLAW_SKILL_DIR:-$(cd "$(dirname "$0")/.." && pwd)}"
@@ -40,6 +43,14 @@ for f in $(find -H "$GLAW" -name SKILL.md | sort); do
   got=$(printf '%s\n' "$fm" | sed -n 's/^name:[[:space:]]*//p' | tr -d '"'"'"' ' | head -1)
   [ "$got" = "$want" ] || errs+=("name '$got' != expected '$want'")
   grep -qiE '^##.*[Ww]hen to (invoke|use)' "$f" || errs+=("no '## When to invoke' section")
+  grep -qiE '^##.*(Persona|Identity|Agent identity|Role posture|Posture)' "$f" \
+    || errs+=("no explicit agent identity/persona/posture section")
+  for marker in "Primary lens:" "Counter-lens:" "Report voice:" "Disagreement posture:" "Memory posture:"; do
+    grep -qF "$marker" "$f" || errs+=("missing identity/reporting posture marker: $marker")
+  done
+  grep -qiE '^##[[:space:]]*Workflow' "$f" || errs+=("no '## Workflow' section")
+  grep -qiE 'memory|learnings|ReasoningBank|glaw-learnings|KNOWN DEFECTS|prior defects|self-learning' "$f" \
+    || errs+=("no firm-memory / glaw-learnings wiring")
   grep -qiE 'not legal advice|attorney work-product|work-product, not|does not (form|constitute)|UPL' "$f" \
     || errs+=("no UPL / not-legal-advice line (hard gate #4)")
   # allowed-tools must list at least one tool — either a block list ('  - Tool' lines under it)
