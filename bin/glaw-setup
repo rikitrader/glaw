@@ -8,6 +8,16 @@ set -euo pipefail
 ROOT="${GLAW_SKILLS_ROOT:-${CODEX_HOME:-$HOME/.codex}/skills}"
 SRC="${GLAW_SKILL_DIR:-$(cd "$(dirname "$0")/.." && pwd)}"
 mkdir -p "$ROOT"
+
+resolve_path() {
+  python3 - "$1" <<'PY'
+import pathlib
+import sys
+
+print(pathlib.Path(sys.argv[1]).resolve())
+PY
+}
+
 if [ ! -e "$ROOT/glaw" ]; then
   ln -snf "$SRC" "$ROOT/glaw"
 elif [ "$(readlink "$ROOT/glaw" 2>/dev/null || true)" = "$SRC" ]; then
@@ -23,6 +33,18 @@ for d in "$SRC"/*/; do
   top="glaw-$name"
   if [ "$(readlink "$ROOT/$top/SKILL.md" 2>/dev/null || true)" = "$SRC/$name/SKILL.md" ]; then
     continue
+  fi
+  if [ -e "$ROOT/$top/SKILL.md" ]; then
+    existing_target="$(resolve_path "$ROOT/$top/SKILL.md" 2>/dev/null || true)"
+    case "$existing_target" in
+      "$SRC"/*)
+        rm -rf "$ROOT/$top"
+        ;;
+      *)
+        echo "  /$top (existing install kept)"
+        continue
+        ;;
+    esac
   fi
   if [ -e "$ROOT/$top/SKILL.md" ]; then
     echo "  /$top (existing install kept)"
