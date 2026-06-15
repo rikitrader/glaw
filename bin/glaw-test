@@ -19,7 +19,7 @@ grn(){ PASS=$((PASS+1)); }
 
 echo "═══ GLAW SKILL-CONTRACT TEST ═══"
 total=0
-for f in $(find "$GLAW" -name SKILL.md | sort); do
+for f in $(find -H "$GLAW" -name SKILL.md | sort); do
   rel="${f#$GLAW/}"
   dir="${rel%/SKILL.md}"
   # Vendored third-party seats under seats/ are deployed non-destructively and follow their

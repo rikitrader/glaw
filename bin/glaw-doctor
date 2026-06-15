@@ -23,11 +23,11 @@ echo "═══ GLAW DOCTOR ═══"
 
 # ---- 1. SKILLS RESOLVE ----
 echo "[1/3] skills resolve"
-src_skills=$(find "$GLAW" -name SKILL.md | wc -l | tr -d ' ')
+src_skills=$(find -H "$GLAW" -name SKILL.md | wc -l | tr -d ' ')
 deployed=$(ls -d "$ROOT"/glaw-*/ 2>/dev/null | wc -l | tr -d ' ')
 # every source SKILL.md has name + description
 nf=0
-for f in $(find "$GLAW" -name SKILL.md); do
+for f in $(find -H "$GLAW" -name SKILL.md); do
   grep -q '^name:' "$f" && grep -q '^description:' "$f" || { bad "missing frontmatter: ${f#$GLAW/}"; nf=$((nf+1)); }
 done
 [ "$nf" = 0 ] && ok "$src_skills source SKILL.md files, all have name+description"
@@ -44,6 +44,14 @@ for d in "$GLAW"/*/; do
   [ -e "$ROOT/glaw-$name" ] || { warn "not deployed (run glaw-setup): glaw-$name"; miss=$((miss+1)); }
 done
 [ "$miss" = 0 ] && ok "deploy parity: every sub-skill is a top-level command"
+seatmiss=0
+if [ -d "$GLAW/seats" ]; then
+  for d in "$GLAW"/seats/*/; do
+    name="$(basename "$d")"; [ -f "$d/SKILL.md" ] || continue
+    [ -f "$ROOT/$name/SKILL.md" ] || { bad "vendored seat not deployed: /$name"; seatmiss=$((seatmiss+1)); }
+  done
+fi
+[ "$seatmiss" = 0 ] && ok "vendored seat deploy parity: every seat is a top-level command"
 
 # ---- 2. TOOLS RUN ----
 echo "[2/3] tools run (safe smoke)"
@@ -461,6 +469,16 @@ for r in $(grep -oE 'lib/[a-zA-Z0-9._/-]+' "$ROSTER" 2>/dev/null | sort -u); do
   [ -e "$GLAW/$r" ] || { warn "roster -> $r (missing, maybe templated)"; dlib=$((dlib+1)); }
 done
 [ "$dlib" = 0 ] && ok "all lib/ roster refs resolve"
+
+# 3d. Single-app docs must not drift back to external/stub wording for bundled seats.
+single_app_drift=0
+if grep -rIE 'external companions|Seats marked.*external|Reference stub|fetched at install time|ENCRYPTION-GATED|distributed separately|install.*full skill locally|not vendored into' \
+   "$GLAW/SKILL.md" "$GLAW/README.md" "$GLAW/docs" "$GLAW/seats" 2>/dev/null \
+   | grep -vE '/seats/UPSTREAM.md:|/bin/glaw-doctor:' | grep -q .; then
+  bad "single-app documentation drift: bundled seats described as external/stubbed"
+  single_app_drift=$((single_app_drift+1))
+fi
+[ "$single_app_drift" = 0 ] && ok "single-app docs: no external/stubbed bundled-seat wording"
 
 # ---- 4. SKILL CONTRACTS (per-skill, the ~40 personas) ----
 echo "[4/5] skill contracts (glaw-test)"

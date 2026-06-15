@@ -35,7 +35,7 @@ DRAFT  /glaw-draft
   ├─ commercial contract drafting → /glaw-commercial-contracts
   ├─ tax letters/packets → tax-compliance · tax-relief (+ tax-compliance form-fill scripts)
   ├─ pleadings/motions → /glaw-motion-drafting · federal-trial-counsel
-  └─ decks/exhibits → fs-pptx-author · fs-ppt-template-creator · make-pdf · docx
+  └─ decks/exhibits → glaw-fs-pptx-author · glaw-fs-ppt-template-creator · glaw-make-pdf · glaw-docx
 
 ADVERSARIAL  /glaw-adversarial  (RED-team → BLUE-team rebuild)        ← hard gate #2
   └─ fraud/criminal lens → /glaw-investigations · forensic-case-investigator

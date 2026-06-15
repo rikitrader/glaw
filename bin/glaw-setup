@@ -20,16 +20,24 @@ done
 echo "deployed $count GLAW sub-skills as top-level commands (orchestrator /glaw already registered)"
 
 # Deploy vendored seats (skills GLAW routes to) as top-level siblings, NON-destructively:
-# never clobber a seat the user already has installed — their copy wins.
+# never clobber a valid seat the user already has installed — their copy wins.
+# Broken stale deploy directories are repaired so global /glaw-* parity stays real.
 seatc=0
+repaired=0
 if [ -d "$SRC/seats" ]; then
   for d in "$SRC"/seats/*/; do
     name="$(basename "$d")"
     [ -f "$d/SKILL.md" ] || continue
-    [ -e "$ROOT/$name" ] && continue          # already installed → leave it
+    if [ -e "$ROOT/$name" ]; then
+      if [ -f "$ROOT/$name/SKILL.md" ]; then
+        continue                              # already installed and resolvable
+      fi
+      rm -rf "$ROOT/$name"
+      repaired=$((repaired+1))
+    fi
     ln -snf "$SRC/seats/$name" "$ROOT/$name"  # symlink the whole seat dir
     seatc=$((seatc+1))
     echo "  /$name (vendored seat)"
   done
-  echo "deployed $seatc vendored seats (skipped any already installed)"
+  echo "deployed $seatc vendored seats (repaired $repaired stale deploys; skipped valid installs)"
 fi

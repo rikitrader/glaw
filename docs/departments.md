@@ -1,9 +1,11 @@
 # GLAW Departments — full seat reference
 
-GLAW ships **59 native skills**, deployed by `bin/glaw-setup` as top-level `/glaw-*`
-commands. The single source of truth for routing is [`../lib/firm-roster.md`](../lib/firm-roster.md);
-this page is the human-readable index. Seats marked *(external)* are optional companion
-skills GLAW routes to if installed — they are **not** bundled.
+GLAW ships as **one self-contained app**. Current doctor coverage verifies **170 source
+`SKILL.md` files**, **63 vendored seats**, and top-level `/glaw-*` command parity after
+`bin/glaw-setup`. The single source of truth for routing is
+[`../lib/firm-roster.md`](../lib/firm-roster.md); this page is the human-readable index.
+All seats listed below are bundled in this repo or implemented by repo-local `bin/glaw-*`
+tools.
 
 ## The matter pipeline (8 stages)
 | Stage | Skill | Produces |
@@ -28,22 +30,25 @@ skills GLAW routes to if installed — they are **not** bundled.
 
 ## Corporate & Transactional
 `/glaw-entity-architect` · `/glaw-ip-counsel` · `/glaw-commercial-contracts` ·
-`/glaw-employment-counsel` · `/glaw-real-estate-counsel`
-*External companions:* `corporate-counsel`, `elite-corporate-counsel`, `contract-review`.
+`/glaw-employment-counsel` · `/glaw-real-estate-counsel` · `/glaw-corporate-counsel` ·
+`/glaw-elite-corporate-counsel` · `/glaw-contract-review`.
 
 ## Securities, Funds & Capital Markets
 `/glaw-sec` (lead) · `/glaw-sec-disclosure` · `/glaw-sec-adviser` · `/glaw-sec-insider` ·
-`/glaw-sec-marketabuse` · `/glaw-sec-enforcement`
-*External companions:* `pe-vc-counsel`, `fund-regulatory-council`, `tokenization-compliance`, `institutional-finance`.
+`/glaw-sec-marketabuse` · `/glaw-sec-enforcement` · `/glaw-pe-vc-counsel` ·
+`/glaw-fund-regulatory-council` · `/glaw-tokenization-compliance` ·
+`/glaw-institutional-finance`.
 
 ## Accounting & Finance
-`/glaw-accounting` (lead) · `/glaw-audit-assurance`
-*External companions:* `financial-forensics`, `roofer-accounting`, `company-valuation`, `mc-cfo-agent`.
+`/glaw-accounting` (lead) · `/glaw-audit-assurance` · `/glaw-bookkeeping` ·
+`/glaw-ledger` · `/glaw-controller` · `/glaw-cfo` · `/glaw-audit` ·
+`/glaw-reconstruct` · `/glaw-financial-forensics` · `/glaw-roofer-accounting` ·
+`/glaw-company-valuation` · `/glaw-mc-cfo-agent`.
 
 ## Litigation & Dispute Resolution
 `/glaw-motion-drafting` · `/glaw-case-law-research` · `/glaw-evidence-timeline` ·
-`/glaw-veil-piercing` · `/glaw-court-records`
-*External companions:* `federal-trial-counsel`, `forensic-case-investigator`.
+`/glaw-veil-piercing` · `/glaw-court-records` · `/glaw-federal-trial-counsel` ·
+`/glaw-forensic-case-investigator`.
 
 ## Investigations Bureau (white-collar)
 `/glaw-investigations` (lead) · `/glaw-bureau` (case commander) ·
@@ -71,5 +76,8 @@ Charter + scoring spec: [`../lib/bureau-roster.md`](../lib/bureau-roster.md).
 
 ## Tax & IRS
 Tax work is driven by tools (`glaw-tax-report`, `glaw-irs-file`, `glaw-compliance-audit`)
-plus external companions `tax-strategy`, `tax-compliance`, `tax-relief`, `tax-legal-intake`.
+plus bundled seats `/glaw-tax-strategy`, `/glaw-tax-compliance`, `/glaw-tax-relief`,
+`/glaw-tax-legal-intake`, `/glaw-irs-audit`, `/glaw-back-taxes`, `/glaw-tax-court`,
+`/glaw-international-tax`, `/glaw-estate-gift-returns`, `/glaw-exempt-org`, and
+`/glaw-irs-whistleblower`.
 See [`tools.md`](tools.md).

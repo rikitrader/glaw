@@ -1,0 +1,186 @@
+#!/usr/bin/env python3
+"""Create a minimal source-only GLAW PPTX template/deck.
+
+No third-party packages. The output is an OOXML zip package with a title slide
+and the requested layout inventory as plain slides.
+"""
+from __future__ import annotations
+
+import argparse
+import html
+import zipfile
+from pathlib import Path
+
+
+NS_CT = "http://schemas.openxmlformats.org/package/2006/content-types"
+NS_REL = "http://schemas.openxmlformats.org/package/2006/relationships"
+NS_OFFICE_REL = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+
+
+DEFAULT_LAYOUTS = [
+    ("Matter Overview", "Title, client, matter number, jurisdiction, and status."),
+    ("Executive Summary", "Decision, recommendation, top risks, and required approvals."),
+    ("Financial Table", "Statement or model output with source-note footer."),
+    ("Timeline", "Litigation path, filing calendar, or transaction milestones."),
+    ("Evidence Board", "Key documents, exhibits, witnesses, and source trace."),
+    ("Risk Matrix", "Red/yellow/green status, owner, remediation, and gate state."),
+    ("Appendix", "Citations, source files, model cells, and verification notes."),
+]
+
+
+def slide_xml(title: str, body: str, slide_no: int) -> str:
+    title = html.escape(title)
+    body = html.escape(body)
+    footer = html.escape("Attorney work-product for licensed review. Verify all facts, numbers, and citations before external use.")
+    return f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"
+ xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+ xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main">
+ <p:cSld><p:spTree>
+  <p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr/>
+  <p:sp><p:nvSpPr><p:cNvPr id="2" name="Title"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr>
+   <p:spPr><a:xfrm><a:off x="457200" y="274320"/><a:ext cx="8229600" cy="685800"/></a:xfrm></p:spPr>
+   <p:txBody><a:bodyPr/><a:lstStyle/><a:p><a:r><a:rPr sz="3200" b="1"/><a:t>{title}</a:t></a:r></a:p></p:txBody>
+  </p:sp>
+  <p:sp><p:nvSpPr><p:cNvPr id="3" name="Body"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr>
+   <p:spPr><a:xfrm><a:off x="685800" y="1219200"/><a:ext cx="7772400" cy="4114800"/></a:xfrm></p:spPr>
+   <p:txBody><a:bodyPr wrap="square"/><a:lstStyle/><a:p><a:r><a:rPr sz="1800"/><a:t>{body}</a:t></a:r></a:p></p:txBody>
+  </p:sp>
+  <p:sp><p:nvSpPr><p:cNvPr id="4" name="Footer"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr>
+   <p:spPr><a:xfrm><a:off x="457200" y="6172200"/><a:ext cx="8229600" cy="365760"/></a:xfrm></p:spPr>
+   <p:txBody><a:bodyPr/><a:lstStyle/><a:p><a:r><a:rPr sz="900"/><a:t>{footer} | {slide_no}</a:t></a:r></a:p></p:txBody>
+  </p:sp>
+ </p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr>
+</p:sld>'''
+
+
+def content_types(slide_count: int) -> str:
+    slides = "\n".join(
+        f'  <Override PartName="/ppt/slides/slide{i}.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slide+xml"/>'
+        for i in range(1, slide_count + 1)
+    )
+    return f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="{NS_CT}">
+  <Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>
+  <Default Extension="xml" ContentType="application/xml"/>
+  <Override PartName="/ppt/presentation.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml"/>
+  <Override PartName="/ppt/slideMasters/slideMaster1.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slideMaster+xml"/>
+  <Override PartName="/ppt/slideLayouts/slideLayout1.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slideLayout+xml"/>
+  <Override PartName="/ppt/theme/theme1.xml" ContentType="application/vnd.openxmlformats-officedocument.theme+xml"/>
+{slides}
+</Types>'''
+
+
+def presentation_xml(slide_count: int) -> str:
+    slide_ids = "\n".join(
+        f'    <p:sldId id="{255 + i}" r:id="rId{i}"/>'
+        for i in range(1, slide_count + 1)
+    )
+    return f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:presentation xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"
+ xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+ xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main">
+  <p:sldMasterIdLst><p:sldMasterId id="2147483648" r:id="rId{slide_count + 1}"/></p:sldMasterIdLst>
+  <p:sldIdLst>
+{slide_ids}
+  </p:sldIdLst>
+  <p:sldSz cx="9144000" cy="6858000" type="screen4x3"/>
+  <p:notesSz cx="6858000" cy="9144000"/>
+</p:presentation>'''
+
+
+def presentation_rels(slide_count: int) -> str:
+    slide_rels = "\n".join(
+        f'  <Relationship Id="rId{i}" Type="{NS_OFFICE_REL}/slide" Target="slides/slide{i}.xml"/>'
+        for i in range(1, slide_count + 1)
+    )
+    return f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="{NS_REL}">
+{slide_rels}
+  <Relationship Id="rId{slide_count + 1}" Type="{NS_OFFICE_REL}/slideMaster" Target="slideMasters/slideMaster1.xml"/>
+  <Relationship Id="rId{slide_count + 2}" Type="{NS_OFFICE_REL}/theme" Target="theme/theme1.xml"/>
+</Relationships>'''
+
+
+ROOT_RELS = f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="{NS_REL}">
+  <Relationship Id="rId1" Type="{NS_OFFICE_REL}/officeDocument" Target="ppt/presentation.xml"/>
+</Relationships>'''
+
+SLIDE_RELS = f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="{NS_REL}">
+  <Relationship Id="rId1" Type="{NS_OFFICE_REL}/slideLayout" Target="../slideLayouts/slideLayout1.xml"/>
+</Relationships>'''
+
+MASTER_RELS = f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="{NS_REL}">
+  <Relationship Id="rId1" Type="{NS_OFFICE_REL}/slideLayout" Target="../slideLayouts/slideLayout1.xml"/>
+  <Relationship Id="rId2" Type="{NS_OFFICE_REL}/theme" Target="../theme/theme1.xml"/>
+</Relationships>'''
+
+LAYOUT_RELS = f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="{NS_REL}">
+  <Relationship Id="rId1" Type="{NS_OFFICE_REL}/slideMaster" Target="../slideMasters/slideMaster1.xml"/>
+</Relationships>'''
+
+MASTER_XML = '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:sldMaster xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"
+ xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+ xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main">
+ <p:cSld><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr/></p:spTree></p:cSld>
+ <p:clrMap bg1="lt1" tx1="dk1" bg2="lt2" tx2="dk2" accent1="accent1" accent2="accent2" accent3="accent3" accent4="accent4" accent5="accent5" accent6="accent6" hlink="hlink" folHlink="folHlink"/>
+ <p:sldLayoutIdLst><p:sldLayoutId id="2147483649" r:id="rId1"/></p:sldLayoutIdLst>
+ <p:txStyles><p:titleStyle/><p:bodyStyle/><p:otherStyle/></p:txStyles>
+</p:sldMaster>'''
+
+LAYOUT_XML = '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<p:sldLayout xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main"
+ xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"
+ xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main" type="blank" preserve="1">
+ <p:cSld name="GLAW Blank"><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr/></p:spTree></p:cSld>
+ <p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr>
+</p:sldLayout>'''
+
+THEME_XML = '''<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<a:theme xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" name="GLAW">
+ <a:themeElements>
+  <a:clrScheme name="GLAW"><a:dk1><a:srgbClr val="111827"/></a:dk1><a:lt1><a:srgbClr val="FFFFFF"/></a:lt1><a:dk2><a:srgbClr val="1F2937"/></a:dk2><a:lt2><a:srgbClr val="F9FAFB"/></a:lt2><a:accent1><a:srgbClr val="2563EB"/></a:accent1><a:accent2><a:srgbClr val="059669"/></a:accent2><a:accent3><a:srgbClr val="D97706"/></a:accent3><a:accent4><a:srgbClr val="DC2626"/></a:accent4><a:accent5><a:srgbClr val="7C3AED"/></a:accent5><a:accent6><a:srgbClr val="0891B2"/></a:accent6><a:hlink><a:srgbClr val="2563EB"/></a:hlink><a:folHlink><a:srgbClr val="7C3AED"/></a:folHlink></a:clrScheme>
+  <a:fontScheme name="GLAW"><a:majorFont><a:latin typeface="Arial"/></a:majorFont><a:minorFont><a:latin typeface="Arial"/></a:minorFont></a:fontScheme>
+  <a:fmtScheme name="GLAW"><a:fillStyleLst/><a:lnStyleLst/><a:effectStyleLst/><a:bgFillStyleLst/></a:fmtScheme>
+ </a:themeElements>
+</a:theme>'''
+
+
+def write_pptx(out: Path, slides: list[tuple[str, str]]) -> None:
+    out.parent.mkdir(parents=True, exist_ok=True)
+    with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as zf:
+        zf.writestr("[Content_Types].xml", content_types(len(slides)))
+        zf.writestr("_rels/.rels", ROOT_RELS)
+        zf.writestr("ppt/presentation.xml", presentation_xml(len(slides)))
+        zf.writestr("ppt/_rels/presentation.xml.rels", presentation_rels(len(slides)))
+        zf.writestr("ppt/slideMasters/slideMaster1.xml", MASTER_XML)
+        zf.writestr("ppt/slideMasters/_rels/slideMaster1.xml.rels", MASTER_RELS)
+        zf.writestr("ppt/slideLayouts/slideLayout1.xml", LAYOUT_XML)
+        zf.writestr("ppt/slideLayouts/_rels/slideLayout1.xml.rels", LAYOUT_RELS)
+        zf.writestr("ppt/theme/theme1.xml", THEME_XML)
+        for i, (title, body) in enumerate(slides, start=1):
+            zf.writestr(f"ppt/slides/slide{i}.xml", slide_xml(title, body, i))
+            zf.writestr(f"ppt/slides/_rels/slide{i}.xml.rels", SLIDE_RELS)
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Create a stdlib-only GLAW PPTX template/deck.")
+    parser.add_argument("--out", default="templates/firm-template.pptx", help="output .pptx path")
+    parser.add_argument("--title", default="GLAW Firm Template", help="title slide text")
+    parser.add_argument("--body", default="Reusable layouts for GLAW legal, tax, accounting, forensic, and board decks.", help="title slide body")
+    args = parser.parse_args()
+    slides = [(args.title, args.body), *DEFAULT_LAYOUTS]
+    write_pptx(Path(args.out), slides)
+    print(args.out)
+    for title, _ in slides:
+        print(f"- {title}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
