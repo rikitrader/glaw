@@ -76,6 +76,27 @@ def decision_hash(card):
     data = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
     return hashlib.sha256(data).hexdigest()
 
+def validate_final_decision(d):
+    missing = []
+    for key in ("score", "grade", "risks", "conditions", "rationale"):
+        if not str(d.get(key, "")).strip():
+            missing.append(f"--{key}")
+    score = str(d.get("score", "")).strip()
+    if score:
+        try:
+            value = float(score)
+        except ValueError:
+            missing.append("--score numeric 0-100")
+        else:
+            if value < 0 or value > 100:
+                missing.append("--score numeric 0-100")
+    if missing:
+        print("FINAL DECISION BLOCKED: final approve/deny requires a complete Chief decision card.")
+        print("Missing/invalid: " + ", ".join(missing))
+        print("Provide --score 0-100, --grade, --risks, --conditions, and --rationale.")
+        return 1
+    return 0
+
 def parse(argv):
     d = {"chief":"","score":"","grade":"","decision":"","risks":"","conditions":"",
          "rationale":"","matter":"","signoff":False,"approve-final":False,"deny-final":False}
@@ -107,6 +128,8 @@ def main():
     if d["approve-final"] and d["deny-final"]:
         print("Choose only one: --approve-final or --deny-final.")
         return 2
+    if (d["approve-final"] or d["deny-final"]) and validate_final_decision(d) != 0:
+        return 1
     if d["approve-final"]:
         rc, output = rebuild_final_packet(slug)
         if rc != 0:

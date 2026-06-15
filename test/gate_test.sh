@@ -91,6 +91,11 @@ row = {
     "final_gate": "approved",
     "approved_packet_generated_at": "2025-12-31T00:00:00Z",
     "approved_packet_sha256": hashlib.sha256(open(packet, "rb").read()).hexdigest(),
+    "score": "95",
+    "grade": "A",
+    "top_risks": ["none"],
+    "conditions": ["licensed signer final review"],
+    "rationale": "all gates clear and source manifests tie out",
 }
 row["decision_hash"] = hashlib.sha256(
     json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
@@ -105,6 +110,11 @@ row = {
     "final_gate": "approved",
     "approved_packet_generated_at": "2026-01-01T00:00:00Z",
     "approved_packet_sha256": "stale-packet-hash",
+    "score": "95",
+    "grade": "A",
+    "top_risks": ["none"],
+    "conditions": ["licensed signer final review"],
+    "rationale": "all gates clear and source manifests tie out",
 }
 row["decision_hash"] = hashlib.sha256(
     json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
@@ -119,6 +129,11 @@ row = {
     "final_gate": "approved",
     "approved_packet_generated_at": "2026-01-01T00:00:00Z",
     "approved_packet_sha256": hashlib.sha256(open(packet, "rb").read()).hexdigest(),
+    "score": "95",
+    "grade": "A",
+    "top_risks": ["none"],
+    "conditions": ["licensed signer final review"],
+    "rationale": "all gates clear and source manifests tie out",
 }
 row["decision_hash"] = hashlib.sha256(
     json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
@@ -287,6 +302,11 @@ row = {
     "final_gate": "approved",
     "approved_packet_generated_at": "2026-01-01T00:00:00Z",
     "approved_packet_sha256": hashlib.sha256(open(packet, "rb").read()).hexdigest(),
+    "score": "95",
+    "grade": "A",
+    "top_risks": ["none"],
+    "conditions": ["licensed signer final review"],
+    "rationale": "all gates clear and source manifests tie out",
 }
 row["decision_hash"] = hashlib.sha256(
     json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")

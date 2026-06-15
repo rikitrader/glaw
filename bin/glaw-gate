@@ -602,6 +602,17 @@ if latest_packet_sha256 != packet_sha256:
 if not latest_final_row:
     print("latest Chief approval row missing")
     sys.exit(1)
+approval_missing = []
+for key in ("score", "grade", "rationale"):
+    if not str(latest_final_row.get(key, "")).strip():
+        approval_missing.append(key)
+if not latest_final_row.get("top_risks"):
+    approval_missing.append("top_risks")
+if not latest_final_row.get("conditions"):
+    approval_missing.append("conditions")
+if approval_missing:
+    print("latest Chief approval lacks complete sign-off field(s): " + ", ".join(approval_missing))
+    sys.exit(1)
 expected_decision_hash = str(latest_final_row.get("decision_hash", ""))
 if not expected_decision_hash:
     print("latest Chief approval missing decision_hash")

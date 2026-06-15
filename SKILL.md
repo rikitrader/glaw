@@ -143,9 +143,12 @@ bin/glaw-council complete --profile auto
 bin/glaw-final-packet build --profile auto
 bin/glaw-chief-decision \
   --chief "GLAW Chief Counsel" \
+  --score 95 \
+  --grade A \
   --decision "PROCEED" \
   --risks "<surviving red flags or none>" \
   --conditions "<required fixes or none>" \
+  --rationale "<why the current packet is file-ready>" \
   --approve-final
 ```
 

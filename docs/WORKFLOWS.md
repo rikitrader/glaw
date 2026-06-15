@@ -56,9 +56,12 @@ Final approval is recorded by the Chief layer:
 ```bash
 bin/glaw-final-packet build --profile auto
 bin/glaw-chief-decision --chief "GLAW Chief Counsel" \
+  --score 95 \
+  --grade A \
   --decision "PROCEED" \
   --risks "none" \
   --conditions "licensed signer final review" \
+  --rationale "all gates clear and source manifests tie out" \
   --approve-final
 ```
 
@@ -67,6 +70,8 @@ route back to the owning department until fixed.
 `--approve-final` is fail-closed: it first rebuilds `final_packet.json` against the current
 matter files, then refuses to log `chief_approved` unless the rebuilt packet is ready and
 `final_packet_ready` is in the matter timeline.
+Final approve/deny decisions also require a complete Chief card: `--score`, `--grade`,
+`--risks`, `--conditions`, and `--rationale`.
 The Chief approval records the approved packet's `generated_at` and SHA-256 digest; if the
 packet is rebuilt or edited later, the file gate blocks until the Chief approves the current
 packet.
