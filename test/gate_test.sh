@@ -77,6 +77,7 @@ cat > "$M/final_packet.json" <<'JSON'
     "accounting_council_complete": true,
     "red_flags_clear": true,
     "external_deliverable_present": true,
+    "source_evidence_manifest_clear": true,
     "professional_report_manifest_clear": true,
     "upl_footer_clear": true
   }
@@ -120,7 +121,7 @@ cat > "$M/draft-report.md" <<'MD'
 Owner: GLAW Controller
 Report voice: controller/CFO report.
 Findings: Numbers tie to source.
-Evidence: Test fixture ledger and bank statement.
+Evidence: SRC-0001 bank statement.
 Red flags: none.
 Sign-off conditions: licensed review.
 
@@ -135,8 +136,31 @@ markers = ["Owner:", "Report voice:", "Findings:", "Evidence:", "Red flags:", "S
 packet["report_quality_required_markers"] = markers
 packet["report_quality_manifest"] = [{
     "path": "draft-report.md",
+    "status": "fail",
+    "missing_markers": ["source evidence manifest"],
+    "cited_source_ids": [],
+}]
+packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
+PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before source evidence manifest"
+mkdir -p "$M/evidence"
+printf 'date,description,amount\n2026-01-01,capital deposit,100.00\n' > "$M/evidence/bank.csv"
+python3 - "$M" <<'PY'
+import hashlib, json, pathlib, sys
+d = pathlib.Path(sys.argv[1])
+packet_path = d / "final_packet.json"
+packet = json.loads(packet_path.read_text(encoding="utf-8"))
+source = d / "evidence/bank.csv"
+packet["source_evidence_manifest"] = [{
+    "id": "SRC-0001",
+    "path": "evidence/bank.csv",
+    "sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
+}]
+packet["report_quality_manifest"] = [{
+    "path": "draft-report.md",
     "status": "pass",
     "missing_markers": [],
+    "cited_source_ids": ["SRC-0001"],
 }]
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
@@ -194,7 +218,20 @@ Sign-off conditions: licensed review.
 
 Attorney work-product - not legal advice. Prepared for licensed review.
 MD
-ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact deliverable restored"
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED when restored report omits source evidence id"
+cat > "$M/draft-report.md" <<'MD'
+# Draft Report
+
+Owner: GLAW Controller
+Report voice: controller/CFO report.
+Findings: Numbers tie to source.
+Evidence: SRC-0001 bank statement.
+Red flags: none.
+Sign-off conditions: licensed review.
+
+Attorney work-product - not legal advice. Prepared for licensed review.
+MD
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact source-cited deliverable restored"
 printf '{"id":"RF-STALE","severity":"high","status":"open","finding":"new post-packet issue"}\n' > "$M/red_flags.jsonl"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet high red flag"
 printf '{"id":"RF-STALE","severity":"high","status":"resolved","finding":"new post-packet issue","resolution_evidence":"fixed"}\n' > "$M/red_flags.jsonl"

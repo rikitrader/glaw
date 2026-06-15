@@ -125,7 +125,9 @@ bin/glaw-final-packet build --profile auto
 checks, red flags, the required council profile, and at least one external-facing text deliverable
 are all explicitly completed and clear. Each external text deliverable must also pass the
 professional-report marker gate: `Owner:`, `Report voice:`, `Findings:`, `Evidence:`,
-`Red flags:`, and `Sign-off conditions:`.
+`Red flags:`, and `Sign-off conditions:`. Evidence must cite a hashed source artifact ID
+from the packet's source manifest, e.g. `Evidence: SRC-0001 bank statement`; source artifacts
+live under `evidence/`, `sources/`, or `source_documents/`.
 
 ## Contract Review
 

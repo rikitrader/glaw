@@ -125,6 +125,13 @@ TEXT_DELIVERABLE_SKIP_PARTS = {
     "_extracted",
     "decisions",
     "evidence",
+    "source_documents",
+    "sources",
+}
+SOURCE_EVIDENCE_PARTS = {
+    "evidence",
+    "source_documents",
+    "sources",
 }
 REQUIRED_GATE_ARTIFACTS = (
     "intake.json",
@@ -154,6 +161,12 @@ def is_external_text_deliverable(path):
     return not bool(set(path.relative_to(d).parts) & TEXT_DELIVERABLE_SKIP_PARTS)
 
 
+def is_source_evidence(path):
+    if not path.is_file():
+        return False
+    return bool(set(path.relative_to(d).parts) & SOURCE_EVIDENCE_PARTS)
+
+
 def has_upl_footer(text):
     lower = text.lower()
     work_product = "attorney work-product" in lower or "work-product" in lower
@@ -169,13 +182,31 @@ def sha256_file(path):
     return h.hexdigest()
 
 
-def report_quality(path):
+def source_evidence_manifest(paths):
+    return [
+        {
+            "id": f"SRC-{idx:04d}",
+            "path": str(path.relative_to(d)),
+            "sha256": sha256_file(path),
+        }
+        for idx, path in enumerate(sorted(paths), start=1)
+    ]
+
+
+def report_quality(path, source_manifest):
     text = path.read_text(encoding="utf-8", errors="replace")
     missing = [marker for marker in REPORT_REQUIRED_MARKERS if marker.lower() not in text.lower()]
+    source_ids = [item["id"] for item in source_manifest]
+    cited_sources = [sid for sid in source_ids if sid in text]
+    if not source_ids:
+        missing.append("source evidence manifest")
+    elif not cited_sources:
+        missing.append("source evidence id (SRC-####)")
     return {
         "path": str(path.relative_to(d)),
         "status": "pass" if not missing else "fail",
         "missing_markers": missing,
+        "cited_source_ids": cited_sources,
     }
 
 
@@ -243,6 +274,16 @@ for doc in deliverables:
 if missing_upl:
     print("current deliverable(s) missing UPL footer: " + ", ".join(missing_upl))
     sys.exit(1)
+expected_source_manifest = packet.get("source_evidence_manifest") or []
+if not expected_source_manifest:
+    print("final_packet.json missing source_evidence_manifest")
+    sys.exit(1)
+current_source_manifest = source_evidence_manifest(
+    [p for p in d.rglob("*") if is_source_evidence(p)]
+)
+if expected_source_manifest != current_source_manifest:
+    print("current source evidence manifest does not match final_packet.json")
+    sys.exit(1)
 expected_report_markers = packet.get("report_quality_required_markers") or []
 if expected_report_markers != list(REPORT_REQUIRED_MARKERS):
     print("final_packet.json report quality marker set is missing or stale")
@@ -251,7 +292,7 @@ expected_report_manifest = packet.get("report_quality_manifest") or []
 if not expected_report_manifest:
     print("final_packet.json missing report_quality_manifest")
     sys.exit(1)
-current_report_manifest = [report_quality(doc) for doc in deliverables]
+current_report_manifest = [report_quality(doc, current_source_manifest) for doc in deliverables]
 if expected_report_manifest != current_report_manifest:
     print("current report quality manifest does not match final_packet.json")
     sys.exit(1)

@@ -86,6 +86,13 @@ TEXT_DELIVERABLE_SKIP_PARTS = {
     "_extracted",
     "decisions",
     "evidence",
+    "source_documents",
+    "sources",
+}
+SOURCE_EVIDENCE_PARTS = {
+    "evidence",
+    "source_documents",
+    "sources",
 }
 REQUIRED_GATE_ARTIFACTS = (
     "intake.json",
@@ -124,13 +131,38 @@ def sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
-def report_quality(path: Path, root: Path) -> dict:
+def is_source_evidence(path: Path, root: Path) -> bool:
+    if not path.is_file():
+        return False
+    rel_parts = set(path.relative_to(root).parts)
+    return bool(rel_parts & SOURCE_EVIDENCE_PARTS)
+
+
+def source_evidence_manifest(paths: list[Path], root: Path) -> list[dict]:
+    return [
+        {
+            "id": f"SRC-{idx:04d}",
+            "path": str(path.relative_to(root)),
+            "sha256": sha256_file(path),
+        }
+        for idx, path in enumerate(sorted(paths), start=1)
+    ]
+
+
+def report_quality(path: Path, root: Path, source_manifest: list[dict]) -> dict:
     text = path.read_text(encoding="utf-8", errors="replace")
     missing = [marker for marker in REPORT_REQUIRED_MARKERS if marker.lower() not in text.lower()]
+    source_ids = [item["id"] for item in source_manifest]
+    cited_sources = [sid for sid in source_ids if sid in text]
+    if not source_ids:
+        missing.append("source evidence manifest")
+    elif not cited_sources:
+        missing.append("source evidence id (SRC-####)")
     return {
         "path": str(path.relative_to(root)),
         "status": "pass" if not missing else "fail",
         "missing_markers": missing,
+        "cited_source_ids": cited_sources,
     }
 
 
@@ -204,8 +236,13 @@ def cmd_build(args: argparse.Namespace) -> int:
         str(p.relative_to(d)): sha256_file(p)
         for p in external_text_paths
     }
+    source_paths = [
+        p for p in d.rglob("*")
+        if is_source_evidence(p, d)
+    ]
+    source_manifest = source_evidence_manifest(source_paths, d)
     report_quality_manifest = [
-        report_quality(p, d)
+        report_quality(p, d, source_manifest)
         for p in external_text_paths
     ]
     report_quality_clear = bool(report_quality_manifest) and all(
@@ -249,6 +286,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         f"{profile}_council_complete": has_event(timeline_rows, f"{profile}_council_complete") and rc_council == 0,
         "red_flags_clear": has_event(timeline_rows, "red_flags_clear") and rc_rf == 0,
         "external_deliverable_present": bool(external_text_deliverables),
+        "source_evidence_manifest_clear": bool(source_manifest),
         "professional_report_manifest_clear": report_quality_clear,
         "upl_footer_clear": rc_upl == 0,
     }
@@ -275,6 +313,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         "deliverables": deliverables,
         "external_text_deliverables": external_text_deliverables,
         "external_text_deliverable_hashes": external_text_deliverable_hashes,
+        "source_evidence_manifest": source_manifest,
         "report_quality_required_markers": list(REPORT_REQUIRED_MARKERS),
         "report_quality_manifest": report_quality_manifest,
         "gate_artifact_hashes": gate_artifact_hashes,

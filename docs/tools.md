@@ -19,7 +19,7 @@ Run any tool with no arguments for its usage. `bin/glaw-doctor` smoke-tests them
 | `glaw-red-flags` | `add --severity critical\|high\|medium\|low ...` · `resolve <id> --evidence <text>` · `status` · `complete` · `list` for blocking issue control |
 | `glaw-upl-check` | `<matter-slug-or-dir>` → fail-closed check that text deliverables carry attorney-work-product / not-legal-advice footer language |
 | `glaw-citation-gate` | `record --id <id> --proposition ... --authority ... --status verified --source-url <url>` · `status` · `complete`; logs `citations_verified` only when every latest citation row is verified |
-| `glaw-final-packet` | `build --profile auto` → `final_packet.json` + `final_packet.md`; logs `final_packet_ready` only when gates are clear, at least one external text deliverable exists, and every external report includes `Owner:`, `Report voice:`, `Findings:`, `Evidence:`, `Red flags:`, and `Sign-off conditions:` |
+| `glaw-final-packet` | `build --profile auto` → `final_packet.json` + `final_packet.md`; logs `final_packet_ready` only when gates are clear, at least one external text deliverable exists, every external report includes `Owner:`, `Report voice:`, `Findings:`, `Evidence:`, `Red flags:`, and `Sign-off conditions:`, and the report cites a hashed source ID such as `SRC-0001` from `evidence/`, `sources/`, or `source_documents/` |
 | `glaw-setup` | deploy every sub-skill as a `/glaw-*` command (symlink model) |
 | `glaw-doctor` | health harness: skills resolve · tools run · no dangling refs → `HEALTHY`/`PROBLEMS` |
 | `glaw-preamble.sh` | shared preamble emitted by each stage skill |
