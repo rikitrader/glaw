@@ -123,7 +123,7 @@ The modern path is the general ledger, not a one-off parse:
 - **A full audited reconstruction (the default for real engagements)** → `/glaw-reconstruct`:
   it ingests every statement across **all accounts** into the persistent GL (`/glaw-ledger`),
   runs the continuity (completeness) gate, nets inter-account transfers, ties each account to
-  its statement closing, clears `/glaw-books-doctor`, and drives the **CFO + Audit adversarial
+  its statement closing, clears `glaw-bank-rec` plus `/glaw-books-doctor --require-rec`, and drives the **CFO + Audit adversarial
   consensus loop** until the numbers are agreed. This is what makes the books audit-ready.
 Then hand the posted ledger to `glaw-financial-forensics` / `glaw-roofer-accounting` /
 `glaw-institutional-finance` for the deeper read. Surface any Golden-Rule `discrepancy` or

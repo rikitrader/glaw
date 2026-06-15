@@ -183,8 +183,8 @@ TXT, MD, and DOCX intake documents are handled locally. PDFs that require binary
 printf 'date,description,amount\n2026-01-01,Test deposit,100.00\n' > /tmp/glaw-sample.csv
 GLAW="$PWD" bin/glaw-bank-ingest /tmp/glaw-sample.csv --format json
 GLAW="$PWD" bin/glaw-bank-ingest "https://docs.google.com/spreadsheets/d/<id>/edit#gid=0" --format json
-bin/glaw-books-doctor
 bin/glaw-bank-rec
+bin/glaw-books-doctor <ledger.json> --rec <bank_rec.json> --require-rec
 ```
 
 For bookkeeping/accounting reconstruction workflows, intake must identify the source records and tax scope:
@@ -218,6 +218,10 @@ bin/glaw-intake set track_specific.source_records 'returns; GL export; bank reco
 bin/glaw-intake set track_specific.positions_or_issues 'credits; deductions; penalties; audit adjustments'
 bin/glaw-intake set track_specific.filing_or_exam_deadlines '2026-09-15 extended return due; verify notice response date'
 ```
+
+For a close, filing, tax, or audit-ready packet, run the control gate in strict mode:
+`bin/glaw-bank-rec --books <ledger.json> --bank <bank.json> --format json > bank_rec.json`
+then `bin/glaw-books-doctor <ledger.json> --rec bank_rec.json --require-rec`.
 
 The bookkeeping engine lives inside `lib/bookkeeping/glaw_engine` and uses in-repo compatibility shims for table, model, and XML behavior. Google Sheets input is read through the sheet CSV export URL with Python stdlib. PDF/OCR ingestion is repo-owned orchestration over local binaries (`pdftotext` or `opendataloader-pdf`; scans need `pdftoppm` + `tesseract`).
 

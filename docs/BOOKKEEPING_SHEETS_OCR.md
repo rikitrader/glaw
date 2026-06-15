@@ -57,8 +57,8 @@ OCR output carries audit metadata in the ingestion result warnings, including so
 
 ```bash
 GLAW="$PWD" bin/glaw-bank-ingest "<sheet-or-file>" --format json > /tmp/glaw-book.json
-GLAW="$PWD" bin/glaw-books-doctor /tmp/glaw-book.json
-GLAW="$PWD" bin/glaw-bank-rec --books /tmp/glaw-book.json --bank /tmp/glaw-book.json --format json
+GLAW="$PWD" bin/glaw-bank-rec --books /tmp/glaw-book.json --bank /tmp/glaw-book.json --format json > /tmp/glaw-rec.json
+GLAW="$PWD" bin/glaw-books-doctor /tmp/glaw-book.json --rec /tmp/glaw-rec.json --require-rec
 GLAW="$PWD" bin/glaw-bookkeeping-doctor
 ```
 

@@ -57,6 +57,11 @@ def test_books_doctor_pass_and_fail():
     ]), "audit": [{"source": "x", "balance_status": "verified"}]}
     BD.FAIL = 0; BD.WARN = 0
     assert BD.run(good) == 0, "clean books must be BULLETPROOF (exit 0)"
+    BD.FAIL = 0; BD.WARN = 0
+    assert BD.run(good, require_rec=True) == 1, "strict books gate must fail without bank reconciliation"
+    BD.FAIL = 0; BD.WARN = 0
+    assert BD.run(good, require_rec=True, rec={"unreconciled_difference": "0.00", "matched": 2}) == 0, \
+        "strict books gate must pass with zero-difference bank reconciliation"
 
     # discrepancy in the Golden Rule must fail the gate
     bad = dict(good); bad = {"rows": good["rows"],

@@ -13,7 +13,8 @@ Checks:
   5. No negative cash                 ending bank/cash balance >= 0 (unless --allow-negative-cash)
   6. Dedup integrity                  no duplicate transaction_hash survived
   7. Anomaly scan                     near-duplicate payments flagged (deterministic)
-  8. Reconciliation (optional)        --rec <bank_rec.json>: unreconciled difference == 0
+  8. Reconciliation                   --rec <bank_rec.json>: unreconciled difference == 0
+                                       --require-rec makes missing reconciliation a failure
 """
 from __future__ import annotations
 
@@ -47,7 +48,8 @@ def _dec(v) -> Decimal:
         return Decimal("0")
 
 
-def run(payload: dict, *, allow_negative_cash: bool = False, rec: dict | None = None) -> int:
+def run(payload: dict, *, allow_negative_cash: bool = False, rec: dict | None = None,
+        require_rec: bool = False) -> int:
     rows = payload.get("rows", payload if isinstance(payload, list) else [])
     audit = payload.get("audit", []) if isinstance(payload, dict) else []
     s = S.build(rows)
@@ -122,7 +124,10 @@ def run(payload: dict, *, allow_negative_cash: bool = False, rec: dict | None = 
 
     print("[8/8] bank reconciliation")
     if rec is None:
-        warn("no reconciliation supplied (--rec) — run glaw-bank-rec to match books vs bank")
+        if require_rec:
+            bad("no reconciliation supplied (--rec) — strict close requires glaw-bank-rec")
+        else:
+            warn("no reconciliation supplied (--rec) — run glaw-bank-rec to match books vs bank")
     else:
         diff = _dec(rec.get("unreconciled_difference", 0))
         if diff != 0:
@@ -223,13 +228,14 @@ def main() -> int:
     ap.add_argument("--as-of", default=None)
     ap.add_argument("--allow-negative-cash", action="store_true")
     ap.add_argument("--rec", default=None, help="bank reconciliation JSON (from glaw-bank-rec)")
+    ap.add_argument("--require-rec", action="store_true", help="fail if --rec is missing")
     a = ap.parse_args()
     if a.book:
         return run_ledger(a.book, as_of=a.as_of, allow_negative_cash=a.allow_negative_cash)
     raw = sys.stdin.read() if a.json in (None, "-") else open(a.json, encoding="utf-8").read()
     payload = json.loads(raw)
     rec = json.load(open(a.rec, encoding="utf-8")) if a.rec else None
-    return run(payload, allow_negative_cash=a.allow_negative_cash, rec=rec)
+    return run(payload, allow_negative_cash=a.allow_negative_cash, rec=rec, require_rec=a.require_rec)
 
 
 if __name__ == "__main__":

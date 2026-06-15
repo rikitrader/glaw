@@ -2,11 +2,11 @@
 # glaw-books-doctor — the bulletproof finance control gate. Consumes a GLAW ledger
 # (glaw-bank-ingest --format json) and asserts the books are sound:
 #   trial balance balances · BS identity · Golden Rule · classified · cash >= 0 ·
-#   dedup intact · anomaly scan · (optional) reconciled. Exit 0 = bulletproof.
+#   dedup intact · anomaly scan · reconciled when --require-rec. Exit 0 = bulletproof.
 #
 # Usage:
 #   glaw-bank-ingest stmt.csv --map coa.json --open 0 --close N --format json | glaw-books-doctor -
-#   glaw-books-doctor ledger.json [--allow-negative-cash] [--rec bank_rec.json]
+#   glaw-books-doctor ledger.json [--allow-negative-cash] [--rec bank_rec.json] [--require-rec]
 
 set -euo pipefail
 SCRIPT_LIB="$(cd "$(dirname "${BASH_SOURCE[0]}")/../lib/bookkeeping" && pwd)"

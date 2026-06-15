@@ -151,7 +151,7 @@ Covers: **Financial**, accounting, CFO, valuation, audit/assurance.
 |------|-------|
 | Bookkeeping: parse bank/card statements (CSV/OFX/QFX/MT940/CAMT/PAIN/PDF) → deduped, balance-verified ledger; hledger/beancount export; account mapping. Engine vendored at `lib/bookkeeping/`, driver `bin/glaw-bank-ingest`. Feeds the seats below. | `/glaw-bookkeeping` |
 | **Financial statements** — native P&L / Balance Sheet / Cash Flow / Trial Balance from the ledger (no hledger dep) | `bin/glaw-statements` |
-| **Books control gate (bulletproof)** — deterministic finance doctor: TB balances, BS identity, Golden Rule, classified, cash≥0, dedup, anomaly scan, reconciled | `bin/glaw-books-doctor` |
+| **Books control gate (bulletproof)** — deterministic finance doctor: TB balances, BS identity, Golden Rule, classified, cash≥0, dedup, anomaly scan, reconciled; audit/close mode requires `--rec <bank_rec.json> --require-rec` | `bin/glaw-books-doctor` |
 | **Bank reconciliation** — line-match books vs bank; surfaces outstanding/unpresented + bank-only items | `bin/glaw-bank-rec` |
 | **Period close** — orchestrated month-end: ingest → reconcile → adjust → books-doctor gate → statements → sign-off → lock. Cron-safe runner `bin/glaw-close-run`. | `/glaw-close` |
 | **Budget vs actual** — variance cycle; flags expense over-runs / income shortfalls past threshold (`bin/glaw-budget-vs-actual`) | `/glaw-budget` |

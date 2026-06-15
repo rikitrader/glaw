@@ -45,18 +45,18 @@ else
   sed 's/^/      /' "$tmp/csv.err"
 fi
 
-if GLAW="$ROOT" "$ROOT/bin/glaw-books-doctor" "$tmp/ingest.json" >/tmp/glaw-books-doc.out 2>&1; then
-  ok "books doctor over ingest JSON"
-else
-  bad "books doctor over ingest JSON"
-  sed 's/^/      /' /tmp/glaw-books-doc.out
-fi
-
 if GLAW="$ROOT" "$ROOT/bin/glaw-bank-rec" --books "$tmp/ingest.json" --bank "$tmp/ingest.json" --format json >"$tmp/rec.json" 2>"$tmp/rec.err"; then
   ok "bank reconciliation"
 else
   bad "bank reconciliation"
   sed 's/^/      /' "$tmp/rec.err"
+fi
+
+if GLAW="$ROOT" "$ROOT/bin/glaw-books-doctor" "$tmp/ingest.json" --rec "$tmp/rec.json" --require-rec >/tmp/glaw-books-doc.out 2>&1; then
+  ok "books doctor over ingest JSON requires bank rec"
+else
+  bad "books doctor over ingest JSON requires bank rec"
+  sed 's/^/      /' /tmp/glaw-books-doc.out
 fi
 
 ledger_home="$(mktemp -d)"

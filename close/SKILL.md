@@ -80,7 +80,7 @@ Each adjusting JE is appended to the ledger with a source note.
 ### 4 — Control gate  ⛔ BOOKS-DOCTOR (no close without it)
 The period **cannot close** until the books are bulletproof:
 ```bash
-bin/glaw-books-doctor /tmp/close-ledger.json --rec <bank_rec.json>
+bin/glaw-books-doctor /tmp/close-ledger.json --rec <bank_rec.json> --require-rec
 ```
 Exit 0 = TB balances, Assets==Liab+Equity, Golden Rule holds, classified, cash≥0, dedup
 intact, no anomalies, reconciled. **Any failure blocks the close** — fix and re-run.
