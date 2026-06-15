@@ -123,6 +123,32 @@ if red_flags.exists():
         print("current blocking red flag(s): " + ", ".join(str(x) for x in blocking))
         sys.exit(1)
 
+citations = d / "citations.jsonl"
+if not citations.exists():
+    print("citations.jsonl missing")
+    sys.exit(1)
+latest_citations = {}
+for line in citations.read_text(encoding="utf-8", errors="replace").splitlines():
+    if not line.strip():
+        continue
+    try:
+        row = json.loads(line)
+    except json.JSONDecodeError:
+        print("citations.jsonl contains invalid JSON")
+        sys.exit(1)
+    latest_citations[str(row.get("id", ""))] = row
+if not latest_citations:
+    print("citations.jsonl has no citation rows")
+    sys.exit(1)
+blocking_citations = []
+for cid, row in latest_citations.items():
+    status = str(row.get("status", "")).lower()
+    if not cid or status in {"pending", "needs-substitute", "struck", "weak"} or (status == "verified" and not row.get("source_url")):
+        blocking_citations.append(cid or row.get("authority") or "unnamed")
+if blocking_citations:
+    print("current blocking citation(s): " + ", ".join(str(x) for x in blocking_citations))
+    sys.exit(1)
+
 decisions = d / "decisions.jsonl"
 if not decisions.exists():
     print("decisions.jsonl missing")
