@@ -8,6 +8,7 @@ matter has a recorded verification outcome before final packet readiness.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import sys
@@ -50,10 +51,41 @@ def append_jsonl(path: Path, row: dict) -> None:
         f.write(json.dumps(row, sort_keys=False) + "\n")
 
 
+def row_hash(row: dict) -> str:
+    payload = dict(row)
+    payload.pop("row_hash", None)
+    data = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(data).hexdigest()
+
+
+def stamp_row_hash(row: dict) -> dict:
+    row["row_hash"] = row_hash(row)
+    return row
+
+
+def validate_row_hashes(rows: list[dict], ledger_name: str) -> list[str]:
+    failures = []
+    for idx, row in enumerate(rows, start=1):
+        expected = row.get("row_hash")
+        if not expected:
+            failures.append(f"{ledger_name}:{idx} missing row_hash")
+        elif expected != row_hash(row):
+            failures.append(f"{ledger_name}:{idx} row_hash mismatch")
+    return failures
+
+
 def read_jsonl(path: Path) -> list[dict]:
     if not path.exists():
         return []
-    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+    rows = []
+    for idx, line in enumerate(path.read_text(encoding="utf-8", errors="replace").splitlines(), start=1):
+        if not line.strip():
+            continue
+        try:
+            rows.append(json.loads(line))
+        except json.JSONDecodeError as exc:
+            raise SystemExit(f"ERROR: {path.name}:{idx} invalid JSON: {exc.msg}") from exc
+    return rows
 
 
 def timeline(d: Path, event: str, **extra: object) -> None:
@@ -75,7 +107,7 @@ def cmd_record(args: argparse.Namespace) -> int:
         "reviewer": args.reviewer,
         "notes": args.notes,
     }
-    append_jsonl(ledger_path(d), row)
+    append_jsonl(ledger_path(d), stamp_row_hash(row))
     timeline(d, "citation_review", id=args.id, status=args.status)
     print(f"RECORDED citation {args.id}: {args.status}")
     return 0
@@ -101,6 +133,12 @@ def blockers(rows: list[dict]) -> list[dict]:
 def cmd_status(args: argparse.Namespace) -> int:
     d = matter_dir(args.matter)
     rows = read_jsonl(ledger_path(d))
+    hash_failures = validate_row_hashes(rows, ledger_path(d).name)
+    if hash_failures:
+        print("CITATIONS BLOCKED: ledger row hash failure")
+        for failure in hash_failures:
+            print(f"  {failure}")
+        return 1
     bad = blockers(rows)
     latest = latest_by_id(rows)
     print(f"CITATIONS {d.name}: {len(latest)} reviewed, {len(bad)} blocking")

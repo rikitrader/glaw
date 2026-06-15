@@ -13,6 +13,23 @@ TMP="$(mktemp -d)"; export GLAW_HOME="$TMP"
 M="$TMP/matters/m"; mkdir -p "$M"; : > "$M/timeline.jsonl"; echo m > "$TMP/.active"
 log(){ printf '{"ts":"t","event":"%s"}\n' "$1" >> "$M/timeline.jsonl"; }
 chk(){ "$GATE" check "$1" m >/dev/null 2>&1; echo $?; }   # echoes exit code
+append_hashed_jsonl(){
+  python3 - "$1" "$2" <<'PY'
+import hashlib
+import json
+import sys
+
+path = sys.argv[1]
+row = json.loads(sys.argv[2])
+payload = dict(row)
+payload.pop("row_hash", None)
+row["row_hash"] = hashlib.sha256(
+    json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+).hexdigest()
+with open(path, "a", encoding="utf-8") as f:
+    f.write(json.dumps(row) + "\n")
+PY
+}
 
 # unguarded transitions are always clear
 ok "$([ "$(chk structure)" = 0 ] && echo 1 || echo 0)" "unguarded stage 'structure' is CLEAR"
@@ -82,14 +99,14 @@ row["decision_hash"] = hashlib.sha256(
 open(sys.argv[1], "w", encoding="utf-8").write(json.dumps(row) + "\n")
 PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before verified citation ledger artifact"
-printf '{"id":"C-1","status":"verified","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/"}\n' > "$M/citations.jsonl"
+append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current council ledger artifact"
 for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do
-  printf '{"profile":"accounting","role":"%s","decision":"approve","evidence":"fixture"}\n' "$role" >> "$M/council.jsonl"
+  append_hashed_jsonl "$M/council.jsonl" "{\"profile\":\"accounting\",\"role\":\"$role\",\"decision\":\"approve\",\"evidence\":\"fixture\"}"
 done
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current adversarial ledger artifact"
 for lens in irs-examiner state-tax-auditor forensic-accountant cfo-controller outside-critic; do
-  printf '{"profile":"accounting","lens":"%s","decision":"survive","evidence":"fixture"}\n' "$lens" >> "$M/adversarial.jsonl"
+  append_hashed_jsonl "$M/adversarial.jsonl" "{\"profile\":\"accounting\",\"lens\":\"$lens\",\"decision\":\"survive\",\"evidence\":\"fixture\"}"
 done
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current external deliverable artifact"
 printf '# Draft Report\n\nNumbers tie.\n' > "$M/draft-report.md"
@@ -148,21 +165,21 @@ ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after new post-pac
 cp "$M/citations.jsonl" "$M/citations.baseline.jsonl"
 cp "$M/council.jsonl" "$M/council.baseline.jsonl"
 cp "$M/adversarial.jsonl" "$M/adversarial.baseline.jsonl"
-printf '{"id":"C-1","status":"weak","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/"}\n' >> "$M/citations.jsonl"
+append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"weak","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet weak citation"
-printf '{"id":"C-1","status":"verified","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/"}\n' >> "$M/citations.jsonl"
+append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file STILL BLOCKED by citation ledger hash change after re-verification"
 cp "$M/citations.baseline.jsonl" "$M/citations.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact citation ledger restored"
-printf '{"profile":"accounting","role":"cfo","decision":"fix","red_flags":["new council issue"],"conditions":["fix it"]}\n' >> "$M/council.jsonl"
+append_hashed_jsonl "$M/council.jsonl" '{"profile":"accounting","role":"cfo","decision":"fix","red_flags":["new council issue"],"conditions":["fix it"]}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet council fix"
-printf '{"profile":"accounting","role":"cfo","decision":"approve","evidence":"fixture reapproval"}\n' >> "$M/council.jsonl"
+append_hashed_jsonl "$M/council.jsonl" '{"profile":"accounting","role":"cfo","decision":"approve","evidence":"fixture reapproval"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file STILL BLOCKED by council ledger hash change after reapproval"
 cp "$M/council.baseline.jsonl" "$M/council.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact council ledger restored"
-printf '{"profile":"accounting","lens":"irs-examiner","decision":"fix","attack":"new adversarial issue","cure":"fix it"}\n' >> "$M/adversarial.jsonl"
+append_hashed_jsonl "$M/adversarial.jsonl" '{"profile":"accounting","lens":"irs-examiner","decision":"fix","attack":"new adversarial issue","cure":"fix it"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet adversarial fix"
-printf '{"profile":"accounting","lens":"irs-examiner","decision":"survive","evidence":"fixture rescore"}\n' >> "$M/adversarial.jsonl"
+append_hashed_jsonl "$M/adversarial.jsonl" '{"profile":"accounting","lens":"irs-examiner","decision":"survive","evidence":"fixture rescore"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file STILL BLOCKED by adversarial ledger hash change after survival"
 cp "$M/adversarial.baseline.jsonl" "$M/adversarial.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact adversarial ledger restored"

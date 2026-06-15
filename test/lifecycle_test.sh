@@ -63,6 +63,17 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council approve blocked without evide
 for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do
   "$COUNCIL" record --profile auto --role "$role" --decision approve --evidence "test fixture review basis" >/dev/null
 done
+cp "$TMP/matters/$SLUG/council.jsonl" "$TMP/matters/$SLUG/council.clean.jsonl"
+python3 - "$TMP/matters/$SLUG/council.jsonl" <<'PY'
+import json, sys
+p = sys.argv[1]
+rows = [json.loads(line) for line in open(p, encoding="utf-8") if line.strip()]
+rows[0]["evidence"] = "tampered after review"
+open(p, "w", encoding="utf-8").write("\n".join(json.dumps(r) for r in rows) + "\n")
+PY
+"$COUNCIL" status --profile auto >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council status blocks tampered review ledger row"
+cp "$TMP/matters/$SLUG/council.clean.jsonl" "$TMP/matters/$SLUG/council.jsonl"
 "$CHIEF" --chief "GLAW Chief Counsel" --decision "PROCEED" --approve-final --matter "$SLUG" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked before final packet ready"
 "$PACKET" build >/dev/null 2>&1; rc=$?
@@ -72,10 +83,32 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial survive blocked without e
 for lens in irs-examiner state-tax-auditor forensic-accountant cfo-controller outside-critic; do
   "$ADVERSARIAL" record --profile auto --lens "$lens" --decision survive --attack "no fatal finding" --evidence "test fixture" >/dev/null
 done
+cp "$TMP/matters/$SLUG/adversarial.jsonl" "$TMP/matters/$SLUG/adversarial.clean.jsonl"
+python3 - "$TMP/matters/$SLUG/adversarial.jsonl" <<'PY'
+import json, sys
+p = sys.argv[1]
+rows = [json.loads(line) for line in open(p, encoding="utf-8") if line.strip()]
+rows[0]["decision"] = "fix"
+open(p, "w", encoding="utf-8").write("\n".join(json.dumps(r) for r in rows) + "\n")
+PY
+"$ADVERSARIAL" status --profile auto >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial status blocks tampered review ledger row"
+cp "$TMP/matters/$SLUG/adversarial.clean.jsonl" "$TMP/matters/$SLUG/adversarial.jsonl"
 "$ADVERSARIAL" complete --profile auto >/dev/null
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before citation gate completes"
 "$CITES" record --id C-0001 --proposition 'tax return must tie to books' --authority '26 U.S.C. § 6001' --status verified --source-url 'https://uscode.house.gov/' >/dev/null
+cp "$TMP/matters/$SLUG/citations.jsonl" "$TMP/matters/$SLUG/citations.clean.jsonl"
+python3 - "$TMP/matters/$SLUG/citations.jsonl" <<'PY'
+import json, sys
+p = sys.argv[1]
+rows = [json.loads(line) for line in open(p, encoding="utf-8") if line.strip()]
+rows[0]["authority"] = "tampered authority"
+open(p, "w", encoding="utf-8").write("\n".join(json.dumps(r) for r in rows) + "\n")
+PY
+"$CITES" status >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "citation status blocks tampered review ledger row"
+cp "$TMP/matters/$SLUG/citations.clean.jsonl" "$TMP/matters/$SLUG/citations.jsonl"
 "$CITES" complete >/dev/null
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before council completion is logged"

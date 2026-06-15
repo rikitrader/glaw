@@ -168,6 +168,26 @@ def decision_hash(row):
     return hashlib.sha256(data).hexdigest()
 
 
+def row_hash(row):
+    payload = dict(row)
+    payload.pop("row_hash", None)
+    data = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(data).hexdigest()
+
+
+def validate_row_hashes(rows, ledger_name):
+    failures = []
+    for idx, row in enumerate(rows, start=1):
+        expected = row.get("row_hash")
+        if not expected:
+            failures.append(f"{ledger_name}:{idx} missing row_hash")
+        elif expected != row_hash(row):
+            failures.append(f"{ledger_name}:{idx} row_hash mismatch")
+    if failures:
+        print("review ledger row hash failure: " + "; ".join(failures))
+        sys.exit(1)
+
+
 p = d / "final_packet.json"
 if not p.exists():
     print("final_packet.json missing")
@@ -275,7 +295,9 @@ citations = d / "citations.jsonl"
 if not citations.exists():
     print("citations.jsonl missing")
     sys.exit(1)
-latest_citations = latest_by(read_jsonl(citations), "id")
+citation_rows = read_jsonl(citations)
+validate_row_hashes(citation_rows, "citations.jsonl")
+latest_citations = latest_by(citation_rows, "id")
 if not latest_citations:
     print("citations.jsonl has no citation rows")
     sys.exit(1)
@@ -292,7 +314,9 @@ council = d / "council.jsonl"
 if not council.exists():
     print("council.jsonl missing")
     sys.exit(1)
-latest_council = latest_by([r for r in read_jsonl(council) if r.get("profile") == profile], "role")
+council_rows = read_jsonl(council)
+validate_row_hashes(council_rows, "council.jsonl")
+latest_council = latest_by([r for r in council_rows if r.get("profile") == profile], "role")
 blocking_council = []
 for role in COUNCIL_PROFILES[profile]:
     row = latest_council.get(role)
@@ -309,7 +333,9 @@ adversarial = d / "adversarial.jsonl"
 if not adversarial.exists():
     print("adversarial.jsonl missing")
     sys.exit(1)
-latest_adversarial = latest_by([r for r in read_jsonl(adversarial) if r.get("profile") == profile], "lens")
+adversarial_rows = read_jsonl(adversarial)
+validate_row_hashes(adversarial_rows, "adversarial.jsonl")
+latest_adversarial = latest_by([r for r in adversarial_rows if r.get("profile") == profile], "lens")
 blocking_adversarial = []
 for lens in ADVERSARIAL_PROFILES[profile]:
     row = latest_adversarial.get(lens)
