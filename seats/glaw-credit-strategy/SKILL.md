@@ -67,7 +67,7 @@ only; a licensed attorney/CPA reviews, signs, and files (the agent never transmi
 2. **Intake the company facts** (AskUserQuestion if missing): entity type + state, fiscal year, founders & equity/vesting, IP contributed, gross assets, gross receipts & age (for §41 small-business test), payroll/engineering headcount, financing stage, any foreign owners.
 3. Read the KB docs above; map each benefit to the company's facts (qualifies / conditionally / no).
 4. Draft the 7-section dossier. Pull deadlines from doc 21 and compute concrete dates (use `deadline.py` for 83(b)).
-5. **Deliver** as Markdown, and offer to publish: Google Docs (Helvetica/single-spaced) + a deadline Google Sheet via the uploader in `seats/glaw-83b-election/bin/upload_to_drive.py`, and to calendar deadlines with `glaw docket add`.
+5. **Deliver** as Markdown, and offer to publish: Google Docs (Helvetica/single-spaced) + a deadline Google Sheet via the uploader in `seats/glaw-83b-election/bin/upload_to_drive.py`, and to calendar deadlines with `glaw docket add --owner <owner> --source "SRC-0001 <current source>"`.
 6. Route document drafting to `/glaw-draft`; route deep accounting/financial-model work to `/glaw-accounting`; QSBS/securities questions to `glaw-pe-vc-counsel`; keep the UPL footer on every deliverable.
 
 ## Gates

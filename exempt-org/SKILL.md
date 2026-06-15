@@ -105,7 +105,7 @@ bin/glaw-fill-form forms/f990.pdf forms/f990.data.json out/f990-filled.pdf
 ```
 Docket the deadlines (990 due the 15th day of the 5th month after year-end; 990-N never extends):
 ```bash
-bin/glaw docket add <YYYY-MM-DD> "Form 990 due (5th month, 15th day)"
+bin/glaw docket add --owner "tax docket clerk" --source "SRC-0001 filing calendar source" <YYYY-MM-DD> "Form 990 due (5th month, 15th day)"
 ```
 
 ## Route to the bench

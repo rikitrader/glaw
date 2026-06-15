@@ -60,7 +60,7 @@ Fill `matter.md` by interviewing the user. Capture, at minimum:
 - **Documents on hand** — contracts, bank records, prior filings, cap table, returns.
 - **Hard dates** — anything time-sensitive (SOL, lien deadline, closing, board date). Calendar each now:
   ```bash
-  bin/glaw docket add <YYYY-MM-DD> "<deadline>"
+  bin/glaw docket add --owner "intake docket clerk" --source "SRC-0001 intake source" <YYYY-MM-DD> "<deadline>"
   ```
 
 Fill the matching machine-readable fields at the same time:

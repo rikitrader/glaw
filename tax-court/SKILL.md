@@ -57,7 +57,7 @@ and compute the petition deadline — **90 days** from the notice date (150 if a
 Verify the date against the SOL machinery and calendar it as jurisdictional:
 ```bash
 bin/glaw-sol --due-date <YYYY-MM-DD> --filed-date <YYYY-MM-DD> --as-of <today>
-bin/glaw docket add <YYYY-MM-DD> "Tax Court petition — JURISDICTIONAL (90-day)"
+bin/glaw docket add --owner "tax court docket clerk" --source "SRC-0001 notice source" <YYYY-MM-DD> "Tax Court petition - JURISDICTIONAL (90-day)"
 ```
 
 ### 2 — Scope the controversy under §6512

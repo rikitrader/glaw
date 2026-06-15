@@ -108,7 +108,7 @@ bin/glaw-fill-form forms/f8938.pdf forms/f8938.data.json out/f8938-filled.pdf
 Docket the deadlines — Form 8938/5471 with the income-tax return; **FBAR due 4/15 with automatic
 extension to 10/15** (FinCEN, filed separately):
 ```bash
-bin/glaw docket add <YYYY-10-15> "FBAR (FinCEN 114) deadline"
+bin/glaw docket add --owner "tax docket clerk" --source "SRC-0001 filing calendar source" <YYYY-10-15> "FBAR (FinCEN 114) deadline"
 ```
 
 ## Route to the bench

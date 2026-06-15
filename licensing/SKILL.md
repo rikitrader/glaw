@@ -106,7 +106,7 @@ fees, signatory). Then calendar **every** renewal, anniversary, and report so no
 lapses — via the glaw docket CLI:
 
 ```bash
-bin/glaw docket add 2026-12-31 "Local Business Tax Receipt renewal — <county>"
+bin/glaw docket add --owner "licensing docket clerk" --source "SRC-0001 licensing calendar source" 2026-12-31 "Local Business Tax Receipt renewal - <county>"
 bin/glaw timeline-log licensing_inventory_ready
 ```
 

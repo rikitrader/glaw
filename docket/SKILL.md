@@ -58,7 +58,7 @@ from memory.
 
 Add each:
 ```bash
-bin/glaw docket add <YYYY-MM-DD> "<deadline> — <consequence if missed>"
+bin/glaw docket add --owner "docket clerk" --source "SRC-0001 deadline source" <YYYY-MM-DD> "<deadline> — <consequence if missed>"
 ```
 
 ### Step 3 — Show the horizon

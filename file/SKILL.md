@@ -79,7 +79,7 @@ deadline against current rule before stating it — do not rely on memory.
 ### Step 2 — Docket every deadline now
 For each filing line, calendar it immediately so nothing relies on memory:
 ```bash
-bin/glaw docket add <YYYY-MM-DD> "<filing> due — <where>"
+bin/glaw docket add --owner "filing docket clerk" --source "SRC-0001 filing source" <YYYY-MM-DD> "<filing> due — <where>"
 ```
 
 ### Step 3 — Render the packet

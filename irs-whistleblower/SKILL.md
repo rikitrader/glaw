@@ -101,7 +101,7 @@ Route the Form 211 package to `/glaw-draft` and `/glaw-file`; docket the WBO tim
 review, the long award-determination window, and any appeal of the award determination to the Tax
 Court — which routes to `/glaw-tax-court`):
 ```bash
-bin/glaw docket add <YYYY-MM-DD> "WBO claim filed — track award determination"
+bin/glaw docket add --owner "tax docket clerk" --source "SRC-0001 claim source" <YYYY-MM-DD> "WBO claim filed - track award determination"
 ```
 
 ## Route to the bench

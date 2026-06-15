@@ -89,7 +89,7 @@ Route the validation demand / dispute letter / complaint / answer + counterclaim
 and `/glaw-file`. Docket the hard dates — § 1692g 30-day dispute window, FCRA reinvestigation /
 suit-limitations, the answer deadline if sued:
 ```bash
-bin/glaw docket add <YYYY-MM-DD> "§1692g debt-validation window / answer due"
+bin/glaw docket add --owner "consumer docket clerk" --source "SRC-0001 deadline source" <YYYY-MM-DD> "section 1692g debt-validation window / answer due"
 ```
 
 ## Route to the bench

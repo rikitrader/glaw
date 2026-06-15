@@ -104,7 +104,7 @@ bin/glaw-fill-form forms/f706.pdf forms/f706.data.json out/f706-filled.pdf
 Docket the deadlines — **706 due 9 months after death** (6-month extension on Form 4768);
 **709 due April 15** of the year after the gift:
 ```bash
-bin/glaw docket add <YYYY-MM-DD> "Form 706 due (9 months after death)"
+bin/glaw docket add --owner "tax docket clerk" --source "SRC-0001 filing calendar source" <YYYY-MM-DD> "Form 706 due (9 months after death)"
 ```
 
 ## Route to the bench

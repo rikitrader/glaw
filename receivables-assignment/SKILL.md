@@ -90,7 +90,7 @@ sign-off with `/glaw-chief-decision`.
 Route the executed package to `/glaw-file`; serve the § 679.4061 notice; docket the notice date,
 any obligor cure window, and the downstream enforcement deadlines:
 ```bash
-bin/glaw docket add <YYYY-MM-DD> "§679.4061 notice of assignment served"
+bin/glaw docket add --owner "assignment docket clerk" --source "SRC-0001 notice source" <YYYY-MM-DD> "section 679.4061 notice of assignment served"
 ```
 
 ## Route to the bench

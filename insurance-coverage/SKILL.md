@@ -88,7 +88,7 @@ Route the coverage demand / CRN / appraisal demand / complaint to `/glaw-draft` 
 Docket the hard dates — proof-of-loss deadline, CRN cure window, appraisal timeline, suit-
 limitation period:
 ```bash
-bin/glaw docket add <YYYY-MM-DD> "§624.155 CRN cure window expires"
+bin/glaw docket add --owner "coverage docket clerk" --source "SRC-0001 CRN source" <YYYY-MM-DD> "section 624.155 CRN cure window expires"
 ```
 
 ## Route to the bench

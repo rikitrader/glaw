@@ -102,7 +102,7 @@ Route the petition / marital settlement agreement / parenting plan / proposed de
 `/glaw-draft` and `/glaw-file`. Docket every deadline — answer date, temporary-orders hearing,
 mediation, discovery cutoffs, final hearing, and any cooling-off / waiting period:
 ```bash
-bin/glaw docket add <YYYY-MM-DD> "Temporary-orders hearing"
+bin/glaw docket add --owner "family docket clerk" --source "SRC-0001 court calendar source" <YYYY-MM-DD> "Temporary-orders hearing"
 ```
 
 ## Route to the bench

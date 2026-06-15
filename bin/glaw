@@ -35,6 +35,25 @@ _reserved_gate_event() {
   esac
 }
 
+_current_source_ids() {
+  local dir="$1" idx=1 path
+  while IFS= read -r path; do
+    [ -n "$path" ] || continue
+    printf 'SRC-%04d\n' "$idx"
+    idx=$((idx + 1))
+  done < <(find "$dir/evidence" "$dir/source_documents" "$dir/sources" -type f -size +0c 2>/dev/null | LC_ALL=C sort)
+}
+
+_stale_source_ids() {
+  local text="$1" dir="$2" ref
+  while IFS= read -r ref; do
+    [ -n "$ref" ] || continue
+    if ! _current_source_ids "$dir" | grep -Fxq "$ref"; then
+      echo "$ref"
+    fi
+  done < <(printf '%s' "$text" | grep -Eo 'SRC-[0-9]{4}' | LC_ALL=C sort -u || true)
+}
+
 cmd_config() {
   local action="${1:-get}"; shift || true
   case "$action" in
@@ -169,6 +188,7 @@ cmd_docket() {
   local action="${1:-list}"; shift || true
   local slug; slug="$(_active_slug)"
   [ -z "$slug" ] && { echo "(no active matter)"; return 0; }
+  local dir="$MATTERS/$slug"
   local f="$MATTERS/$slug/docket.jsonl"
   case "$action" in
     add)  # glaw docket add [--owner <owner>] [--source <SRC-0001...>] <due-YYYY-MM-DD> <description...>
@@ -184,6 +204,9 @@ cmd_docket() {
       [ -z "$due" ] && { echo "usage: glaw docket add [--owner <owner>] [--source <SRC-0001...>] <YYYY-MM-DD> <desc>"; return 1; }
       [ -n "$owner" ] || { echo "ERROR: docket add requires --owner"; return 1; }
       printf '%s' "$source" | grep -Eq '(^|[^A-Z0-9])SRC-[0-9]{4}([^0-9]|$)' || { echo "ERROR: docket add requires --source with a source ID such as SRC-0001"; return 1; }
+      local stale_refs
+      stale_refs="$(_stale_source_ids "$source" "$dir" | tr '\n' ' ' | sed -E 's/[[:space:]]+$//')"
+      [ -z "$stale_refs" ] || { echo "ERROR: docket add source cites non-current source evidence id(s): $stale_refs"; return 1; }
       printf '{"ts":"%s","due":"%s","desc":"%s","status":"open","owner":"%s","source":"%s"}\n' "$(_now)" "$due" "$(echo "$desc" | sed 's/"/\\"/g')" "$(echo "$owner" | sed 's/"/\\"/g')" "$(echo "$source" | sed 's/"/\\"/g')" >> "$f"
       echo "DOCKETED $due — $desc" ;;
     list)
@@ -240,7 +263,8 @@ glaw — virtual corporate law firm state machinery
   glaw-intake status            show required intake-form gaps for active matter
   glaw matter use <slug>        switch the active matter
   glaw stage [new-stage]        get/set the active matter's pipeline stage
-  glaw docket add <date> <desc> add a deadline (YYYY-MM-DD)
+  glaw docket add --owner <owner> --source "SRC-0001 <basis>" <date> <desc>
+                                 add a source-backed deadline (YYYY-MM-DD)
   glaw docket list              list all deadlines
   glaw docket upcoming [days]   deadlines due within N days (default 30)
   glaw timeline-log <event>     append an event to the matter timeline

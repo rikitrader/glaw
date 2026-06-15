@@ -10,7 +10,7 @@ Run any tool with no arguments for its usage. `bin/glaw-doctor` smoke-tests them
 ## State & ops
 | Tool | Usage |
 |---|---|
-| `glaw` | `matter new "<name>"` · `matter list` · `matter use <slug>` · `stage <stage>` · `docket add --owner <owner> --source "SRC-0001 <basis>" <YYYY-MM-DD> "<desc>"` · `docket upcoming [days]` · `timeline-log <event>` · `config get/set <k> [v]` |
+| `glaw` | `matter new "<name>"` · `matter list` · `matter use <slug>` · `stage <stage>` · `docket add --owner <owner> --source "SRC-0001 <basis>" <YYYY-MM-DD> "<desc>"` (source must be current matter evidence) · `docket upcoming [days]` · `timeline-log <event>` · `config get/set <k> [v]` |
 | `glaw-docket-gate` | `status` · `complete` after owned/source-backed deadlines are docketed; docket and no-deadline sources must cite a current source artifact ID; `no-deadlines --source "SRC-0001 <basis>" --rationale <why>` for explicit no-deadline close-out |
 | `glaw-intake` | `init [slug] --track <track>` · `set <field> <value>` · `status` · `complete` · `show`; strategy and file gates revalidate the current structured `intake.json`, including universal and track-specific fields |
 | `glaw-ethics` | `record-conflicts --status cleared\|waived\|conflict --source "SRC-0001 <basis>"` · `draft-engagement --source "SRC-0001 <basis>"` · `status` · `complete`; conflicts, waiver evidence, and engagement sources must cite current matter source artifacts, and `conflicts_cleared` logs only after source-backed conflicts and engagement are ready |

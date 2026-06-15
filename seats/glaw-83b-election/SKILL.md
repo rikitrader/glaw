@@ -52,7 +52,7 @@ Day 0 (transfer day) doesn't count; 30 calendar days; weekend/holiday rolls to n
 6. **File** — electronic via IRS portal (ID.me; allow 1–2 days) OR paper Certified Mail to the filer's
    IRS service center. Post-2025-12-24 USPS rule: get a same-day retail-counter postmark; no collection boxes.
    Pick ONE method, never both. Deliver a copy to the company; keep proof indefinitely.
-7. **Docket** — `glaw docket add <due-date> "83(b) deadline — <founder>"`.
+7. **Docket** — `glaw docket add --owner "equity docket clerk" --source "SRC-0001 grant source" <due-date> "83(b) deadline - <founder>"`.
 
 ## Review loop (comments + tracked changes -> AI advice)
 Keep the draft, comment log, and resolution log in the local matter packet. For each open comment

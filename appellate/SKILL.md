@@ -59,7 +59,7 @@ certiorari) and compute the **notice-of-appeal deadline** — generally 30 days 
 (Fla. R. App. P. 9.110) / entry (Fed. R. App. P. 4); shortened/extended by post-trial motions that
 toll it. Calendar it as jurisdictional:
 ```bash
-bin/glaw docket add <YYYY-MM-DD> "Notice of appeal — JURISDICTIONAL (30 days)"
+bin/glaw docket add --owner "appellate docket clerk" --source "SRC-0001 judgment source" <YYYY-MM-DD> "Notice of appeal - JURISDICTIONAL (30 days)"
 ```
 Verify finality and, for non-final orders, the specific basis for interlocutory/certiorari review.
 

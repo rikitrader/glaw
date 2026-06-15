@@ -82,9 +82,9 @@ filed. Record the sign-off with `/glaw-chief-decision`.
 
 ### 7 — Docket every deadline
 ```bash
-bin/glaw docket add <YYYY-MM-DD> "IDR response due"
-bin/glaw docket add <YYYY-MM-DD> "30-day protest deadline"
-bin/glaw docket add <YYYY-MM-DD> "90-day Tax Court petition (jurisdictional)"
+bin/glaw docket add --owner "IRS audit docket clerk" --source "SRC-0001 exam notice source" <YYYY-MM-DD> "IDR response due"
+bin/glaw docket add --owner "IRS audit docket clerk" --source "SRC-0001 exam notice source" <YYYY-MM-DD> "30-day protest deadline"
+bin/glaw docket add --owner "IRS audit docket clerk" --source "SRC-0001 notice source" <YYYY-MM-DD> "90-day Tax Court petition (jurisdictional)"
 ```
 
 ## Route to the bench

@@ -200,7 +200,8 @@ bin/glaw docket add --owner "tax docket clerk" --source "SRC-0001 filing calenda
 ```
 
 `SRC-0001` must resolve to a current nonempty file under `evidence/`, `sources/`, or
-`source_documents/`; the docket gate and matter-retro gate reject stale source IDs.
+`source_documents/`; `glaw docket add`, the docket gate, and the matter-retro gate reject
+stale source IDs.
 
 For tax-only compliance, filing, planning, or controversy workflows, use the dedicated
 `tax` track instead of the broader bookkeeping reconstruction track. `--profile auto`
