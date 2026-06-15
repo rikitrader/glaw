@@ -60,8 +60,10 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by open high red
 
 "$COUNCIL" record --profile auto --role cfo --decision approve >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council approve blocked without evidence"
+"$COUNCIL" record --profile auto --role cfo --decision approve --evidence "test fixture review basis" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council approve blocked without source evidence id"
 for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do
-  "$COUNCIL" record --profile auto --role "$role" --decision approve --evidence "test fixture review basis" >/dev/null
+  "$COUNCIL" record --profile auto --role "$role" --decision approve --evidence "SRC-9999 test fixture review basis" >/dev/null
 done
 cp "$TMP/matters/$SLUG/council.jsonl" "$TMP/matters/$SLUG/council.clean.jsonl"
 python3 - "$TMP/matters/$SLUG/council.jsonl" <<'PY'
@@ -80,8 +82,10 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked before f
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before adversarial government lenses survive"
 "$ADVERSARIAL" record --profile auto --lens irs-examiner --decision survive --attack "no fatal finding" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial survive blocked without evidence"
+"$ADVERSARIAL" record --profile auto --lens irs-examiner --decision survive --attack "no fatal finding" --evidence "test fixture" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial survive blocked without source evidence id"
 for lens in irs-examiner state-tax-auditor forensic-accountant cfo-controller outside-critic; do
-  "$ADVERSARIAL" record --profile auto --lens "$lens" --decision survive --attack "no fatal finding" --evidence "test fixture" >/dev/null
+  "$ADVERSARIAL" record --profile auto --lens "$lens" --decision survive --attack "no fatal finding" --evidence "SRC-9999 test fixture" >/dev/null
 done
 cp "$TMP/matters/$SLUG/adversarial.jsonl" "$TMP/matters/$SLUG/adversarial.clean.jsonl"
 python3 - "$TMP/matters/$SLUG/adversarial.jsonl" <<'PY'
