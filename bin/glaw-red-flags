@@ -12,6 +12,7 @@ from pathlib import Path
 
 BLOCKING = {"critical", "high"}
 SOURCE_ID_RE = re.compile(r"\bSRC-\d{4}\b")
+SOURCE_EVIDENCE_PARTS = {"evidence", "source_documents", "sources"}
 
 
 def now() -> str:
@@ -48,6 +49,42 @@ def read_rows(d: Path) -> list[dict]:
     return [json.loads(line) for line in p.read_text(encoding="utf-8").splitlines() if line.strip()]
 
 
+def is_source_evidence(path: Path, root: Path) -> bool:
+    if not path.is_file():
+        return False
+    return bool(set(path.relative_to(root).parts) & SOURCE_EVIDENCE_PARTS)
+
+
+def current_source_ids(d: Path) -> set[str]:
+    paths = [p for p in d.rglob("*") if is_source_evidence(p, d) and p.stat().st_size > 0]
+    return {f"SRC-{idx:04d}" for idx, _path in enumerate(sorted(paths), start=1)}
+
+
+def cited_source_ids(text: str) -> set[str]:
+    return set(SOURCE_ID_RE.findall(text or ""))
+
+
+def invalid_resolution_sources(rows: list[dict], d: Path) -> list[str]:
+    current = current_source_ids(d)
+    failures = []
+    for row in rows:
+        if str(row.get("severity", "")).lower() not in BLOCKING:
+            continue
+        if row.get("status", "open") != "resolved":
+            continue
+        evidence = str(row.get("resolution_evidence", ""))
+        cited = cited_source_ids(evidence)
+        if not cited:
+            failures.append(f"{row.get('id')} resolution evidence missing source id")
+        elif not current:
+            failures.append(f"{row.get('id')} resolution cites {', '.join(sorted(cited))} but no source artifacts exist")
+        else:
+            stale = sorted(cited - current)
+            if stale:
+                failures.append(f"{row.get('id')} resolution cites non-current source id(s): {', '.join(stale)}")
+    return failures
+
+
 def write_rows(d: Path, rows: list[dict]) -> None:
     ledger_path(d).write_text("".join(json.dumps(r, sort_keys=False) + "\n" for r in rows), encoding="utf-8")
 
@@ -81,8 +118,16 @@ def cmd_add(args: argparse.Namespace) -> int:
 
 def cmd_resolve(args: argparse.Namespace) -> int:
     d = matter_dir(args.matter)
-    if not SOURCE_ID_RE.search(args.evidence):
+    source_ids = cited_source_ids(args.evidence)
+    if not source_ids:
         print("ERROR: resolution evidence must cite a source evidence id such as SRC-0001", file=sys.stderr)
+        return 1
+    current = current_source_ids(d)
+    stale = sorted(source_ids - current)
+    if stale or not current:
+        print("ERROR: resolution evidence must cite a current source artifact id from evidence/, sources/, or source_documents/", file=sys.stderr)
+        if stale:
+            print(f"ERROR: non-current source id(s): {', '.join(stale)}", file=sys.stderr)
         return 1
     rows = read_rows(d)
     found = False
@@ -113,10 +158,13 @@ def cmd_status(args: argparse.Namespace) -> int:
     d = matter_dir(args.matter)
     rows = read_rows(d)
     bad = blocking(rows)
+    source_failures = invalid_resolution_sources(rows, d)
     print(f"RED FLAGS {d.name}: {len(rows)} total, {len(bad)} blocking")
     for row in rows:
         print(f"  {row.get('id')} {row.get('severity')} {row.get('status')}: {row.get('finding')}")
-    if bad:
+    for failure in source_failures:
+        print(f"  SOURCE BLOCK: {failure}")
+    if bad or source_failures:
         print("RED FLAGS BLOCKED")
         return 1
     print("RED FLAGS CLEAR")

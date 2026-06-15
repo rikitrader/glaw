@@ -133,7 +133,7 @@ filler, run under the bookkeeping local source runner (reporting-disabled PDF he
 ## Accounting & Finance Division → lead `/glaw-accounting`
 | **Forensic reconstruction (re-runnable)** — rebuild gapless, fully-reconciled, audit-ready books from raw bank statements: month-by-month reconstruction → tamper-evident double-entry GL + chart of accounts (`bin/glaw-forensic-pipeline`) → 3-statement + SEC/IRS footnotes → credits + IRS-audit-readiness + forms package + error/resolution log + CFO/CEO reports; forensic-auditor adversarial gate | `/glaw-forensic-reconstruction` |
 | **Forensic period reports + trace** — monthly/yearly P&L + full transaction trace, every posting tied to its source statement + tamper-evident hash (`bin/glaw-forensic-reports`); wires categorized by their real ORIG:/BNF: counterparty | `/glaw-forensic-reconstruction` |
-| **Executable adversarial gate** — deterministic enforcement red-team (IRS Revenue Agent / forensic accountant / BSA examiner) → chief verdict; AUDIT-READY only when every critical/high finding is cleared (`bin/glaw-forensic-adversarial`) | `/glaw-forensic-reconstruction`, `/glaw-adversarial` |
+| **Executable adversarial gate** — deterministic enforcement red-team (IRS Revenue Agent / forensic accountant / BSA examiner) → chief verdict; AUDIT-READY only when every critical/high finding is cleared with a source-backed resolution (`bin/glaw-forensic-adversarial`) | `/glaw-forensic-reconstruction`, `/glaw-adversarial` |
 Covers: **Financial**, accounting, CFO, valuation, audit/assurance.
 
 **The book of record + the agent loop** (the whole accounting is rebuilt, gated, and adversarially agreed here):

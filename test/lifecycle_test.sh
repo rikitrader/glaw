@@ -61,8 +61,10 @@ ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "strategy clears after intake/conflict
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by open high red flag"
 "$FLAGS" resolve RF-0001 --evidence 'bank reconciliation attached' >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "red flag resolution blocked without source evidence id"
-"$FLAGS" resolve RF-0001 --evidence 'SRC-9999 bank reconciliation attached' >/dev/null
-"$FLAGS" complete >/dev/null
+"$FLAGS" resolve RF-0001 --evidence 'SRC-9999 bank reconciliation attached' >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "red flag resolution blocked by non-current source evidence id"
+"$FLAGS" complete >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "red flags complete blocked while high flag remains open"
 
 "$COUNCIL" record --profile auto --role cfo --decision approve >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council approve blocked without evidence"
@@ -199,7 +201,7 @@ Sign-off conditions: licensed review.
 Attorney work-product - not legal advice. Prepared for licensed review.
 MD
 "$PACKET" build >/dev/null 2>&1; rc=$?
-ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by red flag resolution without current source evidence id"
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before high red flag has current-source resolution"
 "$FLAGS" resolve RF-0001 --evidence 'SRC-0001 bank reconciliation attached' >/dev/null
 "$FLAGS" complete >/dev/null
 "$PACKET" build >/dev/null 2>&1; rc=$?
