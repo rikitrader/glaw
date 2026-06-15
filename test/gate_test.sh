@@ -36,6 +36,25 @@ ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file STILL BLOCKED before fin
 log final_packet_ready
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file STILL BLOCKED before chief_approved"
 log chief_approved
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file STILL BLOCKED before verified final packet artifacts"
+cat > "$M/final_packet.json" <<'JSON'
+{
+  "status": "ready",
+  "gates": {
+    "intake_complete": true,
+    "conflicts_cleared": true,
+    "ethics_gate_complete": true,
+    "citations_verified": true,
+    "citation_gate_complete": true,
+    "adversarial_done": true,
+    "accounting_adversarial_complete": true,
+    "accounting_council_complete": true,
+    "red_flags_clear": true,
+    "upl_footer_clear": true
+  }
+}
+JSON
+printf '{"final_gate":"approved"}\n' > "$M/decisions.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after all file gates"
 
 # status reflects state
@@ -54,6 +73,10 @@ N="$TMP/matters/n"; mkdir -p "$N"; : > "$N/timeline.jsonl"; echo intake > "$N/.s
 ok "$([ "$rc" = 1 ] && [ "$(cat "$N/.stage")" = intake ] && echo 1 || echo 0)" "glaw stage refuses advance without intake/conflicts + leaves .stage unchanged"
 "$GLAW_BIN" stage strategy --force >/dev/null 2>&1
 ok "$([ "$(cat "$N/.stage")" = strategy ] && grep -q gate_override "$N/timeline.jsonl" && echo 1 || echo 0)" "glaw stage --force advances + logs gate_override"
+
+F="$TMP/matters/f"; mkdir -p "$F"; : > "$F/timeline.jsonl"; echo draft > "$F/.stage"; echo f > "$TMP/.active"
+"$GLAW_BIN" stage file --force >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && [ "$(cat "$F/.stage")" = draft ] && echo 1 || echo 0)" "glaw stage file --force refuses final filing"
 
 rm -rf "$TMP"
 echo

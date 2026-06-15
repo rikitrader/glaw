@@ -66,6 +66,8 @@ If the Council denies the final entry, record it with `--deny-final`; unresolved
 route back to the owning department until fixed.
 `--approve-final` is fail-closed: it refuses to log `chief_approved` unless
 `final_packet.json` is ready and `final_packet_ready` is already in the matter timeline.
+`glaw stage file --force` is also fail-closed: final filing cannot be forced around the ready
+packet and approved Chief decision ledgers.
 
 Accounting/bookkeeping has its own required review council before Chief approval:
 

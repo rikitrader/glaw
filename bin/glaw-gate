@@ -11,7 +11,8 @@
 #                   ⇐ red_flags_clear              (no critical/high open findings)
 #                   ⇐ final_packet_ready           (required council + manifest)
 #                   ⇐ chief_approved               (Chief/Council final approval)
-# (UPL footer = gate 4, a per-document content gate enforced at draft/publish, not here.)
+# For file, event presence is necessary but not sufficient: final_packet.json must be ready and
+# the latest final Chief decision must be approved in decisions.jsonl.
 #
 # Usage:
 #   glaw-gate check <target-stage> [slug]   # exit 0 = clear, 1 = blocked
@@ -33,6 +34,50 @@ _has_event() {  # _has_event <timeline-file> <event>
   [ -f "$1" ] && grep -Eq "\"event\"[[:space:]]*:[[:space:]]*\"$2\"" "$1"
 }
 
+_file_artifacts_valid() {  # _file_artifacts_valid <matter-dir>
+  python3 - "$1" <<'PY'
+import json
+import pathlib
+import sys
+
+d = pathlib.Path(sys.argv[1])
+p = d / "final_packet.json"
+if not p.exists():
+    print("final_packet.json missing")
+    sys.exit(1)
+try:
+    packet = json.loads(p.read_text(encoding="utf-8"))
+except json.JSONDecodeError:
+    print("final_packet.json is invalid JSON")
+    sys.exit(1)
+if packet.get("status") != "ready":
+    print("final_packet.json status is not ready")
+    sys.exit(1)
+missing = [k for k, v in packet.get("gates", {}).items() if not v]
+if missing:
+    print("final_packet.json has uncleared gate(s): " + ", ".join(missing))
+    sys.exit(1)
+
+decisions = d / "decisions.jsonl"
+if not decisions.exists():
+    print("decisions.jsonl missing")
+    sys.exit(1)
+latest_final = None
+for line in decisions.read_text(encoding="utf-8", errors="replace").splitlines():
+    if not line.strip():
+        continue
+    try:
+        row = json.loads(line)
+    except json.JSONDecodeError:
+        continue
+    if row.get("final_gate") in {"approved", "denied"}:
+        latest_final = row.get("final_gate")
+if latest_final != "approved":
+    print("latest Chief final decision is not approved")
+    sys.exit(1)
+PY
+}
+
 _slug() { local s="${1:-}"; [ -n "$s" ] && { echo "$s"; return; }; [ -f "$GLAW_HOME/.active" ] && cat "$GLAW_HOME/.active" || echo ""; }
 
 action="${1:-status}"; shift || true
@@ -49,7 +94,11 @@ case "$action" in
     for ev in $req; do _has_event "$tl" "$ev" || missing="$missing $ev"; done
     if [ -n "$missing" ]; then
       echo "GATE BLOCKED: cannot enter '$target' for [$slug] — missing required gate event(s):$missing"
-      echo "  satisfy by logging the gate, e.g.: glaw timeline-log <event>  (after the real gate work)"
+      echo "  satisfy by running the owning gate command, not by hand-logging events."
+      exit 1
+    fi
+    if [ "$target" = "file" ] && ! artifact_msg="$(_file_artifacts_valid "$MATTERS/$slug" 2>&1)"; then
+      echo "GATE BLOCKED: cannot enter 'file' for [$slug] — $artifact_msg"
       exit 1
     fi
     echo "GATE CLEAR: '$target' prerequisites satisfied ($req)"
@@ -62,6 +111,11 @@ case "$action" in
     for pair in "intake_complete:before strategy" "conflicts_cleared:before strategy" "citations_verified:before file" "adversarial_done:before file" "red_flags_clear:before file" "final_packet_ready:before file" "chief_approved:before file"; do
       ev="${pair%%:*}"; desc="${pair#*:}"
       if _has_event "$tl" "$ev"; then echo "  ✅ $ev ($desc)"; else echo "  ❌ $ev ($desc) — NOT yet cleared"; fi
-    done ;;
+    done
+    if artifact_msg="$(_file_artifacts_valid "$MATTERS/$slug" 2>&1)"; then
+      echo "  ✅ file_artifacts_verified (before file)"
+    else
+      echo "  ❌ file_artifacts_verified (before file) — $artifact_msg"
+    fi ;;
   *) echo "usage: glaw-gate check <stage> [slug] | status [slug]"; exit 2 ;;
 esac
