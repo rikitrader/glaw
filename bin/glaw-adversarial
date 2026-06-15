@@ -149,6 +149,8 @@ def cmd_record(args: argparse.Namespace) -> int:
         raise SystemExit("ERROR: adversarial fix requires both --attack and --cure.")
     if args.decision == "strike" and not args.attack.strip():
         raise SystemExit("ERROR: adversarial strike requires --attack.")
+    if args.decision in {"fix", "strike"} and not evidence_source_ids(args.attack):
+        raise SystemExit("ERROR: adversarial fix/strike attack must cite a source artifact ID such as SRC-0001.")
     row = {
         "ts": now(),
         "profile": profile,

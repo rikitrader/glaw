@@ -152,6 +152,8 @@ def cmd_record(args: argparse.Namespace) -> int:
         raise SystemExit("ERROR: council fix requires --red-flags and --conditions.")
     if decision == "deny" and not args.red_flags.strip():
         raise SystemExit("ERROR: council deny requires --red-flags.")
+    if decision in {"fix", "deny"} and not evidence_source_ids(" ".join([args.red_flags, args.notes])):
+        raise SystemExit("ERROR: council fix/deny red flags must cite a source artifact ID such as SRC-0001.")
     row = {
         "ts": now(),
         "profile": profile,

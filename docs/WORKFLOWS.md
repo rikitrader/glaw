@@ -92,11 +92,13 @@ bin/glaw-council record --profile auto --role outside-critic --decision approve 
 bin/glaw-council record --profile auto --role external-reviewer --decision approve --evidence "SRC-0001 outside review basis recorded"
 bin/glaw-council complete --profile auto
 ```
-Every approving council role must record source-backed evidence. `fix` decisions must state the red flags and conditions so the orchestrator can route the matter back before final packet approval.
+Every approving council role must record source-backed evidence. `fix` and `deny` decisions
+must cite a source ID in the red flags and state the conditions so the orchestrator can route
+the matter back from evidence before final packet approval.
 
-Use `--decision fix` or `--decision deny` plus `--red-flags` and `--conditions` for any
-reviewer that finds a gap. The workflow loops back to the owning department until all required
-lenses approve.
+Use `--decision fix` or `--decision deny` plus source-cited `--red-flags` and `--conditions`
+for any reviewer that finds a gap. The workflow loops back to the owning department until all
+required lenses approve.
 
 Government/regulatory adversarial review is also executable. For accounting/tax work the required
 RED-team lenses include IRS, state-tax, forensic-accounting, CFO/controller, and outside critic:
@@ -110,9 +112,9 @@ bin/glaw-adversarial record --profile auto --lens outside-critic --decision surv
 bin/glaw-adversarial complete --profile auto
 ```
 
-Use `--decision fix` or `--decision strike` with `--attack` and `--cure` when a government,
-regulatory, or litigation adversary finds a fatal or curable weakness. The command opens a blocking
-red flag automatically.
+Use `--decision fix` or `--decision strike` with a source-cited `--attack` and a `--cure`
+when a government, regulatory, or litigation adversary finds a fatal or curable weakness. The
+command opens a blocking red flag automatically.
 Every `survive` decision must carry source-backed evidence, so a RED-team pass cannot be logged as
 ready from an unsupported conclusion.
 
