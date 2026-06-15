@@ -55,7 +55,9 @@ ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "strategy clears after intake/conflict
 "$FLAGS" add --severity high --owner cfo --source test --finding 'cash tie-out missing' --required-fix 'attach bank reconciliation' >/dev/null
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by open high red flag"
-"$FLAGS" resolve RF-0001 --evidence 'bank reconciliation attached' >/dev/null
+"$FLAGS" resolve RF-0001 --evidence 'bank reconciliation attached' >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "red flag resolution blocked without source evidence id"
+"$FLAGS" resolve RF-0001 --evidence 'SRC-9999 bank reconciliation attached' >/dev/null
 "$FLAGS" complete >/dev/null
 
 "$COUNCIL" record --profile auto --role cfo --decision approve >/dev/null 2>&1; rc=$?
@@ -153,6 +155,10 @@ Sign-off conditions: licensed review.
 
 Attorney work-product - not legal advice. Prepared for licensed review.
 MD
+"$PACKET" build >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by red flag resolution without current source evidence id"
+"$FLAGS" resolve RF-0001 --evidence 'SRC-0001 bank reconciliation attached' >/dev/null
+"$FLAGS" complete >/dev/null
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by senior reviews without source evidence ids"
 for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do

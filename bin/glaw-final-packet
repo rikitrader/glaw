@@ -6,6 +6,7 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import subprocess
 import sys
 from datetime import datetime, timezone
@@ -157,6 +158,7 @@ SOURCE_EVIDENCE_PARTS = {
     "source_documents",
     "sources",
 }
+SOURCE_ID_RE = re.compile(r"\bSRC-\d{4}\b")
 REQUIRED_GATE_ARTIFACTS = (
     "intake.json",
     "ethics.json",
@@ -278,6 +280,36 @@ def review_evidence_manifest(
     return rows
 
 
+def red_flag_resolution_manifest(red_flags: list[dict], source_manifest: list[dict]) -> list[dict]:
+    source_ids = [item["id"] for item in source_manifest]
+    rows = []
+    for flag in red_flags:
+        severity = str(flag.get("severity", "")).lower()
+        if severity not in {"critical", "high"}:
+            continue
+        if flag.get("status", "open") != "resolved":
+            continue
+        evidence = str(flag.get("resolution_evidence", ""))
+        cited = [sid for sid in source_ids if sid in evidence]
+        syntactic = sorted(set(SOURCE_ID_RE.findall(evidence)))
+        missing = []
+        if not evidence.strip():
+            missing.append("resolution evidence")
+        if not syntactic:
+            missing.append("source evidence id (SRC-####)")
+        elif not cited:
+            missing.append("current source evidence id")
+        rows.append({
+            "id": flag.get("id", ""),
+            "severity": severity,
+            "status": "pass" if not missing else "fail",
+            "missing": missing,
+            "cited_source_ids": cited,
+            "referenced_source_ids": syntactic,
+        })
+    return rows
+
+
 def run_check(cmd: list[str], cwd: Path) -> tuple[int, str]:
     proc = subprocess.run(cmd, cwd=str(cwd), capture_output=True, text=True)
     return proc.returncode, (proc.stdout + proc.stderr).strip()
@@ -302,6 +334,16 @@ def render_md(packet: dict) -> str:
             lines.append(f"- {flag.get('id')}: {flag.get('severity')} - {flag.get('finding')}")
     else:
         lines.append("- none")
+    lines.extend(["", "## Red Flag Resolution Evidence"])
+    resolved_flags = packet.get("red_flag_resolution_evidence_manifest", [])
+    if resolved_flags:
+        for item in resolved_flags:
+            mark = "x" if item.get("status") == "pass" else " "
+            missing = item.get("missing") or []
+            suffix = "" if not missing else f" — missing {', '.join(missing)}"
+            lines.append(f"- [{mark}] {item.get('id')} ({item.get('severity')}){suffix}")
+    else:
+        lines.append("- no resolved critical/high red flags")
     lines.extend(["", "## Council Reviews"])
     for row in packet["council_reviews"]:
         lines.append(f"- {row.get('profile')} / {row.get('role')}: {row.get('decision')}")
@@ -363,6 +405,10 @@ def cmd_build(args: argparse.Namespace) -> int:
     senior_review_evidence_clear = bool(senior_review_evidence_manifest) and all(
         item["status"] == "pass" for item in senior_review_evidence_manifest
     )
+    red_flag_resolution_evidence_manifest = red_flag_resolution_manifest(red_flags, source_manifest)
+    red_flag_resolution_evidence_clear = all(
+        item["status"] == "pass" for item in red_flag_resolution_evidence_manifest
+    )
     reviewer_identity = reviewer_identity_manifest(profile, root)
     reviewer_identity_clear = bool(reviewer_identity) and all(
         item["status"] == "pass" for item in reviewer_identity
@@ -411,6 +457,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         f"{profile}_adversarial_complete": has_event(timeline_rows, f"{profile}_adversarial_complete") and rc_adv == 0,
         f"{profile}_council_complete": has_event(timeline_rows, f"{profile}_council_complete") and rc_council == 0,
         "red_flags_clear": has_event(timeline_rows, "red_flags_clear") and rc_rf == 0,
+        "red_flag_resolution_evidence_clear": red_flag_resolution_evidence_clear,
         "external_deliverable_present": bool(external_text_deliverables),
         "source_evidence_manifest_clear": bool(source_manifest),
         "senior_review_evidence_source_clear": senior_review_evidence_clear,
@@ -444,6 +491,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         "external_text_deliverable_hashes": external_text_deliverable_hashes,
         "source_evidence_manifest": source_manifest,
         "senior_review_evidence_manifest": senior_review_evidence_manifest,
+        "red_flag_resolution_evidence_manifest": red_flag_resolution_evidence_manifest,
         "reviewer_identity_manifest": reviewer_identity,
         "report_quality_required_markers": list(REPORT_REQUIRED_MARKERS),
         "report_quality_manifest": report_quality_manifest,

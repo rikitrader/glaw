@@ -76,6 +76,7 @@ cat > "$M/final_packet.json" <<'JSON'
     "accounting_adversarial_complete": true,
     "accounting_council_complete": true,
     "red_flags_clear": true,
+    "red_flag_resolution_evidence_clear": true,
     "external_deliverable_present": true,
     "source_evidence_manifest_clear": true,
     "senior_review_evidence_source_clear": true,
@@ -215,6 +216,7 @@ packet["senior_review_evidence_manifest"] = [
     }
     for name in ["irs-examiner", "state-tax-auditor", "forensic-accountant", "cfo-controller", "outside-critic"]
 ]
+packet["red_flag_resolution_evidence_manifest"] = []
 packet["report_quality_manifest"] = [{
     "path": "draft-report.md",
     "status": "pass",

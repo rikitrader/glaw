@@ -84,6 +84,7 @@ _file_artifacts_valid() {  # _file_artifacts_valid <matter-dir> <repo-root>
 import hashlib
 import json
 import pathlib
+import re
 import sys
 
 d = pathlib.Path(sys.argv[1])
@@ -158,6 +159,7 @@ SOURCE_EVIDENCE_PARTS = {
     "source_documents",
     "sources",
 }
+SOURCE_ID_RE = re.compile(r"\bSRC-\d{4}\b")
 REQUIRED_GATE_ARTIFACTS = (
     "intake.json",
     "ethics.json",
@@ -310,6 +312,36 @@ def review_evidence_manifest(council_rows, adversarial_rows, profile, source_man
     return rows
 
 
+def red_flag_resolution_manifest(red_flags, source_manifest):
+    source_ids = [item["id"] for item in source_manifest]
+    rows = []
+    for flag in red_flags:
+        severity = str(flag.get("severity", "")).lower()
+        if severity not in {"critical", "high"}:
+            continue
+        if flag.get("status", "open") != "resolved":
+            continue
+        evidence = str(flag.get("resolution_evidence", ""))
+        cited = [sid for sid in source_ids if sid in evidence]
+        syntactic = sorted(set(SOURCE_ID_RE.findall(evidence)))
+        missing = []
+        if not evidence.strip():
+            missing.append("resolution evidence")
+        if not syntactic:
+            missing.append("source evidence id (SRC-####)")
+        elif not cited:
+            missing.append("current source evidence id")
+        rows.append({
+            "id": flag.get("id", ""),
+            "severity": severity,
+            "status": "pass" if not missing else "fail",
+            "missing": missing,
+            "cited_source_ids": cited,
+            "referenced_source_ids": syntactic,
+        })
+    return rows
+
+
 def decision_hash(row):
     payload = dict(row)
     payload.pop("decision_hash", None)
@@ -407,6 +439,26 @@ failing_review_evidence = [
 ]
 if failing_review_evidence:
     print("current senior review(s) fail source evidence IDs: " + "; ".join(failing_review_evidence))
+    sys.exit(1)
+red_flag_rows_for_evidence = read_jsonl(d / "red_flags.jsonl")
+expected_red_flag_resolution_manifest = packet.get("red_flag_resolution_evidence_manifest")
+if expected_red_flag_resolution_manifest is None:
+    print("final_packet.json missing red_flag_resolution_evidence_manifest")
+    sys.exit(1)
+current_red_flag_resolution_manifest = red_flag_resolution_manifest(
+    red_flag_rows_for_evidence,
+    current_source_manifest,
+)
+if expected_red_flag_resolution_manifest != current_red_flag_resolution_manifest:
+    print("current red flag resolution evidence manifest does not match final_packet.json")
+    sys.exit(1)
+failing_red_flag_resolutions = [
+    f"{item['id']} missing {', '.join(item['missing'])}"
+    for item in current_red_flag_resolution_manifest
+    if item.get("status") != "pass"
+]
+if failing_red_flag_resolutions:
+    print("current red flag resolution(s) fail source evidence IDs: " + "; ".join(failing_red_flag_resolutions))
     sys.exit(1)
 expected_reviewer_identity_manifest = packet.get("reviewer_identity_manifest") or []
 if not expected_reviewer_identity_manifest:

@@ -121,6 +121,7 @@ bin/glaw-ethics status
 bin/glaw-citation-gate status
 bin/glaw-red-flags status
 bin/glaw-upl-check "$(bin/glaw slug)"
+bin/glaw-red-flags resolve RF-0001 --evidence "SRC-0001 bank reconciliation fixes cash tie-out"
 bin/glaw-red-flags complete
 bin/glaw-council complete --profile auto
 bin/glaw-adversarial complete --profile auto
@@ -136,10 +137,11 @@ professional-report marker gate: `Owner:`, `Report voice:`, `Findings:`, `Eviden
 from the packet's source manifest, e.g. `Evidence: SRC-0001 bank statement`; source artifacts
 live under `evidence/`, `sources/`, or `source_documents/`. Required council and adversarial
 review evidence must also cite a source ID, so a senior approval cannot be based on vague
-"reviewed" language. The packet also records a reviewer identity manifest: every required Council
-role and adversarial lens must resolve to a concrete GLAW skill file with `Identity:`, `Soul:`,
-and `Report voice:` posture markers, and the file gate blocks if those skill files change after
-packet generation.
+"reviewed" language. Resolved critical/high red flags must cite the same current source ID set,
+so an issue cannot be closed with unsupported "fixed" language. The packet also records a reviewer
+identity manifest: every required Council role and adversarial lens must resolve to a concrete
+GLAW skill file with `Identity:`, `Soul:`, and `Report voice:` posture markers, and the file gate
+blocks if those skill files change after packet generation.
 
 ## Contract Review
 

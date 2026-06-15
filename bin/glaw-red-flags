@@ -5,11 +5,13 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 BLOCKING = {"critical", "high"}
+SOURCE_ID_RE = re.compile(r"\bSRC-\d{4}\b")
 
 
 def now() -> str:
@@ -79,6 +81,9 @@ def cmd_add(args: argparse.Namespace) -> int:
 
 def cmd_resolve(args: argparse.Namespace) -> int:
     d = matter_dir(args.matter)
+    if not SOURCE_ID_RE.search(args.evidence):
+        print("ERROR: resolution evidence must cite a source evidence id such as SRC-0001", file=sys.stderr)
+        return 1
     rows = read_rows(d)
     found = False
     for row in rows:
