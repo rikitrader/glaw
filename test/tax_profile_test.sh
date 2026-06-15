@@ -14,6 +14,8 @@ ADVERSARIAL="$ROOT/bin/glaw-adversarial"
 
 "$GLAW" matter new "Tax Profile" >/dev/null
 SLUG="tax-profile"
+mkdir -p "$TMP/matters/$SLUG/evidence"
+printf 'tax source package\n' > "$TMP/matters/$SLUG/evidence/tax-source.txt"
 "$INTAKE" set workflow_track tax >/dev/null
 "$INTAKE" set client_names 'Acme Inc.' >/dev/null
 "$INTAKE" set parties 'Acme Inc.; IRS; Florida DOR' >/dev/null

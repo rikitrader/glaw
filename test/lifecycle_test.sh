@@ -86,6 +86,8 @@ PY
 "$COUNCIL" status --profile auto >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council status blocks tampered review ledger row"
 cp "$TMP/matters/$SLUG/council.clean.jsonl" "$TMP/matters/$SLUG/council.jsonl"
+"$COUNCIL" status --profile auto >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council status blocks non-current source evidence id"
 "$CHIEF" --chief "GLAW Chief Counsel" --decision "PROCEED" --approve-final --matter "$SLUG" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked before final packet ready"
 "$PACKET" build >/dev/null 2>&1; rc=$?
@@ -112,7 +114,8 @@ PY
 "$ADVERSARIAL" status --profile auto >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial status blocks tampered review ledger row"
 cp "$TMP/matters/$SLUG/adversarial.clean.jsonl" "$TMP/matters/$SLUG/adversarial.jsonl"
-"$ADVERSARIAL" complete --profile auto >/dev/null
+"$ADVERSARIAL" complete --profile auto >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial complete blocks non-current source evidence id"
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before citation gate completes"
 "$CITES" record --id C-0001 --proposition 'tax return must tie to books' --authority '26 U.S.C. § 6001' --status verified --source-url 'not-a-url' >/dev/null 2>&1; rc=$?

@@ -16,6 +16,9 @@ from glaw_profiles import COUNCIL_PROFILES as PROFILES
 from glaw_profiles import profile_for_track
 
 
+SOURCE_EVIDENCE_PARTS = {"evidence", "source_documents", "sources"}
+
+
 def now() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -74,6 +77,25 @@ def validate_row_hashes(rows: list[dict], ledger_name: str) -> list[str]:
 
 def evidence_source_ids(evidence: str) -> list[str]:
     return sorted(set(re.findall(r"\bSRC-\d{4}\b", evidence)))
+
+
+def is_source_evidence(path: Path, root: Path) -> bool:
+    if not path.is_file():
+        return False
+    return bool(set(path.relative_to(root).parts) & SOURCE_EVIDENCE_PARTS)
+
+
+def current_source_ids(d: Path) -> set[str]:
+    paths = [p for p in d.rglob("*") if is_source_evidence(p, d) and p.stat().st_size > 0]
+    return {f"SRC-{idx:04d}" for idx, _path in enumerate(sorted(paths), start=1)}
+
+
+def noncurrent_source_ids(evidence: str, d: Path) -> list[str]:
+    cited = set(evidence_source_ids(evidence))
+    if not cited:
+        return []
+    current = current_source_ids(d)
+    return sorted(cited - current)
 
 
 def read_jsonl(path: Path) -> list[dict]:
@@ -195,6 +217,7 @@ def cmd_status(args: argparse.Namespace) -> int:
         return 1
     latest = latest_by_role([r for r in rows if r.get("profile") == profile])
     failures = []
+    current_sources = current_source_ids(d)
     print(f"COUNCIL {profile} — {d.name}")
     for role in required:
         row = latest.get(role)
@@ -207,8 +230,17 @@ def cmd_status(args: argparse.Namespace) -> int:
         notes = str(row.get("notes", ""))
         evidence_gap = decision == "approve" and not evidence.strip()
         source_id_gap = decision == "approve" and not evidence_source_ids(evidence)
+        noncurrent_source_gap = decision == "approve" and bool(noncurrent_source_ids(evidence, d))
+        no_source_artifacts_gap = decision == "approve" and bool(evidence_source_ids(evidence)) and not current_sources
         notes_gap = decision == "approve" and not notes.strip()
-        icon = "✅" if decision == "approve" and not evidence_gap and not source_id_gap and not notes_gap else "❌"
+        icon = "✅" if (
+            decision == "approve"
+            and not evidence_gap
+            and not source_id_gap
+            and not noncurrent_source_gap
+            and not no_source_artifacts_gap
+            and not notes_gap
+        ) else "❌"
         print(f"  {icon} {role}: {decision}")
         for flag in row.get("red_flags", []):
             print(f"      red_flag: {flag}")
@@ -218,9 +250,13 @@ def cmd_status(args: argparse.Namespace) -> int:
             print("      evidence: MISSING")
         if source_id_gap:
             print("      source evidence id: MISSING")
+        if no_source_artifacts_gap:
+            print("      current source artifact: MISSING")
+        if noncurrent_source_gap:
+            print(f"      non-current source id: {', '.join(noncurrent_source_ids(evidence, d))}")
         if notes_gap:
             print("      notes/conclusion: MISSING")
-        if decision != "approve" or evidence_gap or source_id_gap or notes_gap:
+        if decision != "approve" or evidence_gap or source_id_gap or noncurrent_source_gap or no_source_artifacts_gap or notes_gap:
             failures.append(role)
     if failures:
         print("COUNCIL BLOCKED")
