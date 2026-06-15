@@ -1,0 +1,100 @@
+{
+  "name": "federal_pleading_engine",
+  "version": "1.0.0",
+  "description": "Federal Causes of Action Elements + Pleading Engine for Rule 12(b)(6)-resilient federal complaints",
+  "author": "Federal Trial Counsel Skill",
+  "license": "Private",
+  "main": "dist/cli.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/cli.js",
+    "dev": "ts-node cli.ts"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/node": "^20.0.0"
+  },
+  "capabilities": {
+    "elements_analysis": true,
+    "pleading_generation": true,
+    "mtd_risk_scoring": true,
+    "jurisdiction_analysis": true,
+    "fact_gap_detection": true
+  },
+  "supported_claims": {
+    "constitutional_civil_rights": [
+      "1983_first_amendment_retaliation",
+      "1983_first_amendment_speech_restriction",
+      "1983_fourth_false_arrest",
+      "1983_fourth_unlawful_search_seizure",
+      "1983_fourth_excessive_force",
+      "1983_fourteenth_procedural_due_process",
+      "1983_fourteenth_substantive_due_process",
+      "1983_fourteenth_equal_protection",
+      "1983_monell_municipal_liability",
+      "1985_conspiracy",
+      "1986_failure_to_prevent"
+    ],
+    "bivens": [
+      "bivens_fourth_search_seizure",
+      "bivens_fifth_due_process",
+      "bivens_eighth_deliberate_indifference"
+    ],
+    "administrative": [
+      "apa_arbitrary_capricious",
+      "apa_unlawful_withholding_unreasonable_delay",
+      "mandamus_compel_ministerial_duty",
+      "habeas_detention_challenge"
+    ],
+    "employment": [
+      "title_vii_disparate_treatment",
+      "title_vii_hostile_work_environment",
+      "title_vii_retaliation",
+      "adea_age_discrimination",
+      "ada_title_i_employment_disability",
+      "fmla_interference",
+      "fmla_retaliation",
+      "flsa_unpaid_wages_overtime"
+    ],
+    "tort_government": [
+      "ftca_negligence",
+      "ftca_medical_malpractice",
+      "ftca_wrongful_death"
+    ],
+    "financial_consumer": [
+      "fcra_inaccurate_reporting",
+      "fdcpa_prohibited_practices",
+      "tila_disclosure_violations"
+    ],
+    "commercial": [
+      "false_claims_act_qui_tam",
+      "rico_1962c",
+      "rico_1962d_conspiracy",
+      "antitrust_sherman_section_1",
+      "antitrust_sherman_section_2",
+      "lanham_trademark_infringement",
+      "copyright_infringement",
+      "patent_infringement"
+    ],
+    "erisa": [
+      "erisa_502a1b_benefits",
+      "erisa_502a3_equitable_relief"
+    ],
+    "tax": [
+      "tax_refund_suit",
+      "tax_wrongful_levy"
+    ]
+  },
+  "pleading_standards": [
+    "FRCP_Rule_8a",
+    "Twombly_Iqbal_Plausibility",
+    "Rule_9b_Heightened_Pleading",
+    "Rule_12b1_Subject_Matter_Jurisdiction",
+    "Rule_12b6_Failure_To_State_Claim",
+    "Monell_Municipal_Liability",
+    "Qualified_Immunity",
+    "FTCA_Administrative_Exhaustion",
+    "ERISA_Exhaustion"
+  ]
+}

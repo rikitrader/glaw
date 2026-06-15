@@ -4,8 +4,8 @@
 # with a SKILL.md symlink back to the canonical file under glaw/, so Claude Code
 # discovers each as its own skill (not nested). Idempotent.
 set -euo pipefail
-ROOT="$HOME/.claude/skills"
-SRC="$ROOT/glaw"
+ROOT="${GLAW_SKILLS_ROOT:-$HOME/.claude/skills}"
+SRC="${GLAW_SKILL_DIR:-$ROOT/glaw}"
 count=0
 for d in "$SRC"/*/; do
   name="$(basename "$d")"
@@ -13,7 +13,7 @@ for d in "$SRC"/*/; do
   [ -f "$d/SKILL.md" ] || continue            # skip bin/ lib/ (no SKILL.md)
   top="glaw-$name"
   mkdir -p "$ROOT/$top"
-  ln -snf "../glaw/$name/SKILL.md" "$ROOT/$top/SKILL.md"
+  ln -snf "$SRC/$name/SKILL.md" "$ROOT/$top/SKILL.md"
   count=$((count+1))
   echo "  /$top"
 done
@@ -27,7 +27,7 @@ if [ -d "$SRC/seats" ]; then
     name="$(basename "$d")"
     [ -f "$d/SKILL.md" ] || continue
     [ -e "$ROOT/$name" ] && continue          # already installed → leave it
-    ln -snf "glaw/seats/$name" "$ROOT/$name"  # symlink the whole seat dir
+    ln -snf "$SRC/seats/$name" "$ROOT/$name"  # symlink the whole seat dir
     seatc=$((seatc+1))
     echo "  /$name (vendored seat)"
   done

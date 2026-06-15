@@ -1,0 +1,17 @@
+{
+  "name": "federal-pleading-engine",
+  "version": "1.2.0",
+  "description": "Federal Pleading Engine - Rule 8/9(b) compliant complaint generator with MTD risk scoring",
+  "main": "dist/cli.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/cli.js",
+    "dev": "ts-node cli.ts"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "UNLICENSED",
+  "private": true
+}

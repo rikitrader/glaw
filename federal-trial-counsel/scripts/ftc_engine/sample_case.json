@@ -1,0 +1,94 @@
+{
+  "court": {
+    "district": "Middle District of Florida",
+    "division": "Tampa",
+    "state": "Florida"
+  },
+  "parties": {
+    "plaintiffs": [
+      {
+        "name": "John Smith",
+        "entity_type": "individual",
+        "citizenship": "Florida"
+      }
+    ],
+    "defendants": [
+      {
+        "name": "Officer James Brown",
+        "entity_type": "individual",
+        "type": "officer",
+        "capacity": "both",
+        "citizenship": "Florida",
+        "role_title": "police officer with Tampa Police Department"
+      },
+      {
+        "name": "City of Tampa",
+        "entity_type": "municipality",
+        "type": "local",
+        "capacity": "official",
+        "citizenship": "Florida"
+      }
+    ]
+  },
+  "facts": [
+    {
+      "date": "2025-06-15",
+      "location": "1234 Main Street, Tampa, FL",
+      "event": "Officer Brown approached John Smith during a routine traffic stop. Smith was cooperative and complied with all instructions.",
+      "actors": ["Officer Brown", "John Smith"],
+      "harm": "",
+      "documents": ["Dash camera footage"],
+      "witnesses": ["Passenger Jane Doe"],
+      "evidence": ["Body camera video"]
+    },
+    {
+      "date": "2025-06-15",
+      "location": "1234 Main Street, Tampa, FL",
+      "event": "Without provocation, Officer Brown forcefully removed Smith from the vehicle, slammed him against the hood, and applied a chokehold for approximately 30 seconds despite Smith not resisting",
+      "actors": ["Officer Brown"],
+      "harm": "Smith suffered a fractured wrist, cervical spine strain, and bruising to his face and torso",
+      "documents": ["Medical records from Tampa General Hospital", "Use of force report"],
+      "witnesses": ["Jane Doe", "Bystander witness"],
+      "evidence": ["Body camera video", "Hospital photos", "X-ray results"],
+      "damages_estimate": "$150,000"
+    },
+    {
+      "date": "2025-06-15",
+      "location": "Hillsborough County Jail",
+      "event": "Smith was arrested and charged with resisting arrest without violence. The charges were later dropped by the State Attorney",
+      "actors": ["Officer Brown"],
+      "harm": "Smith was detained for 18 hours. He suffered emotional distress, anxiety, and lost wages from missing work",
+      "documents": ["Arrest report", "Booking records", "Nolle prosequi"],
+      "witnesses": [],
+      "evidence": ["Booking records"]
+    },
+    {
+      "date": "2024-01-01",
+      "location": "Tampa, FL",
+      "event": "Tampa Police Department has a pattern and practice of excessive force. Multiple prior complaints filed against Officer Brown for similar conduct. Internal affairs found policy violations in 3 prior incidents but took no corrective action.",
+      "actors": ["Tampa Police Department", "Officer Brown"],
+      "harm": "",
+      "documents": ["Prior IA complaints", "Use of force statistics"],
+      "witnesses": [],
+      "evidence": ["Public records requests"]
+    }
+  ],
+  "claims_requested": ["auto_suggest"],
+  "relief_requested": ["money", "injunction", "fees"],
+  "exhaustion": {
+    "eeoc_charge_filed": false,
+    "ftca_admin_claim_filed": false,
+    "erisa_appeal_done": false,
+    "agency_final_action": false
+  },
+  "limitations": {
+    "key_dates": {
+      "injury_date": "2025-06-15"
+    },
+    "tolling_factors": []
+  },
+  "goals": {
+    "primary": "Obtain compensation for injuries and policy change",
+    "secondary": "Hold officer individually accountable"
+  }
+}

@@ -281,7 +281,7 @@ glaw-review-chain my-contract.docx findings.json --matter acme-msa \
 # → scorecard (e.g. 88/100 CRITICAL) + a Word file with real accept/reject tracked changes
 ```
 
-Interoperates with [`legal-redline-tools`](https://github.com/evolsb/legal-redline-tools) (MIT) and [`claude-legal-skill`](https://github.com/evolsb/claude-legal-skill) (MIT).
+Includes a vendored contract-review skill and bundled redline/publish routing so GLAW does not depend on an external skill checkout.
 
 <div align="center">
 
@@ -441,6 +441,6 @@ fails the build on any live key, credential file, or real client data. Keep matt
 
 [MIT](LICENSE) — use it, fork it, build your own firm on it. GLAW **vendors** some
 third-party components (the Apache-2.0 bookkeeping engine, MIT seats) — each keeps its own
-license; full credits in [ATTRIBUTIONS.md](ATTRIBUTIONS.md). GLAW stands on the [gstack](https://github.com/garrytan/gstack) methodology and interoperates with [legal-redline-tools](https://github.com/evolsb/legal-redline-tools) and [claude-legal-skill](https://github.com/evolsb/claude-legal-skill).
+license; full credits in [ATTRIBUTIONS.md](ATTRIBUTIONS.md). GLAW stands on the [gstack](https://github.com/garrytan/gstack) methodology and vendors the legal skill content it routes to as part of the single app.
 
 <div align="center"><sub>GLAW · matters, not chat · ⚖️ + 🤖</sub></div>

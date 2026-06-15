@@ -12,8 +12,8 @@
 #                        capability is falsely marked LIVE without the training infra.
 # Exit 0 = healthy, 1 = problems found.
 set -uo pipefail
-ROOT="$HOME/.claude/skills"
-GLAW="$ROOT/glaw"
+ROOT="${GLAW_SKILLS_ROOT:-$HOME/.claude/skills}"
+GLAW="${GLAW_SKILL_DIR:-$ROOT/glaw}"
 FAIL=0; WARN=0
 ok(){ printf '  ✅ %s\n' "$1"; }
 bad(){ printf '  ❌ %s\n' "$1"; FAIL=$((FAIL+1)); }

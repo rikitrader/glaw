@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Federal Trial Counsel &mdash; Dashboard</title>
+  <link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <header id="topbar">
+      <div class="brand">Federal Trial Counsel<span class="sub">M.D. Fla.</span></div>
+      <div class="case-name" id="case-name">No case loaded</div>
+      <div class="actions">
+        <button id="btn-new">New</button>
+        <button id="btn-load">Load</button>
+        <button id="btn-save" class="gold">Save</button>
+      </div>
+    </header>
+
+    <nav id="sidebar">
+      <div class="tab" data-tab="dashboard">Dashboard</div>
+      <div class="tab" data-tab="editor">Intake / Editor</div>
+      <div class="tab" data-tab="analyze">Analyze</div>
+      <div class="tab" data-tab="claims">Claims Library</div>
+      <div class="tab" data-tab="draft">Draft</div>
+      <div class="tab" data-tab="calendar">Calendar</div>
+      <div class="tab" data-tab="monitor">Monitor</div>
+      <div class="tab" data-tab="deposition">Deposition</div>
+      <div class="tab" data-tab="exhibits">Exhibits</div>
+      <div class="tab" data-tab="pacer">PACER</div>
+      <div class="tab" data-tab="research">Research</div>
+      <div class="tab" data-tab="settings">Settings</div>
+    </nav>
+
+    <main id="main">
+      <div id="banner"><span id="banner-msg"></span><button class="close" id="banner-close">&times;</button></div>
+
+      <!-- ─── Dashboard ─── -->
+      <section class="view" data-view="dashboard">
+        <h1>Case Dashboard</h1>
+        <div id="dashboard-body"></div>
+      </section>
+
+      <!-- ─── Intake / Editor ─── -->
+      <section class="view hidden" data-view="editor">
+        <h1>Intake &amp; Editor</h1>
+        <div class="row">
+          <button id="editor-apply" class="primary">Apply JSON to case</button>
+          <button id="editor-fromcase">Reload from case</button>
+          <button id="editor-download" class="gold right">Save to file (.json)</button>
+        </div>
+        <div class="editor-grid">
+          <div>
+            <label>Case JSON</label>
+            <textarea id="editor-json" spellcheck="false"></textarea>
+          </div>
+          <div>
+            <div class="card">
+              <h3>Court</h3>
+              <div class="row">
+                <div class="field"><label>District</label><input id="f-court-district" type="text"></div>
+                <div class="field"><label>Division</label><input id="f-court-division" type="text"></div>
+                <div class="field"><label>State</label><input id="f-court-state" type="text"></div>
+              </div>
+            </div>
+            <div class="card">
+              <h3>Parties</h3>
+              <h4>Plaintiffs</h4>
+              <div id="f-plaintiffs"></div>
+              <button id="add-plaintiff" class="small">+ Add plaintiff</button>
+              <h4 style="margin-top:14px;">Defendants</h4>
+              <div id="f-defendants"></div>
+              <button id="add-defendant" class="small">+ Add defendant</button>
+            </div>
+            <div class="card">
+              <h3>Facts</h3>
+              <div id="f-facts"></div>
+              <button id="add-fact" class="small">+ Add fact</button>
+            </div>
+            <div class="card">
+              <h3>Claims Requested</h3>
+              <input id="f-claims-requested" type="text" placeholder="comma-separated keys, or 'auto_suggest'" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ─── Analyze ─── -->
+      <section class="view hidden" data-view="analyze">
+        <h1>Case Analysis</h1>
+        <div class="row">
+          <button id="run-analyze" class="primary">Run full analysis</button>
+          <span id="analyze-status" class="muted small"></span>
+        </div>
+        <div id="analyze-body"></div>
+      </section>
+
+      <!-- ─── Claims Library ─── -->
+      <section class="view hidden" data-view="claims">
+        <h1>Claims Library</h1>
+        <div class="row">
+          <div class="field"><label>Search</label><input id="cl-search" type="search" placeholder="Name, statute, key..." /></div>
+          <div class="field"><label>Category</label><select id="cl-category"><option value="">All categories</option></select></div>
+          <div class="field"><label>Immunity</label>
+            <select id="cl-immunity">
+              <option value="">Any</option>
+              <option value="yes">Has immunities</option>
+              <option value="no">No immunities</option>
+            </select>
+          </div>
+          <div class="field"><label>Rule 9(b)</label>
+            <select id="cl-rule9b">
+              <option value="">Any</option>
+              <option value="yes">Heightened</option>
+              <option value="no">Notice</option>
+            </select>
+          </div>
+        </div>
+        <div class="lib-grid">
+          <div class="lib-list" id="cl-list"></div>
+          <div class="card" id="cl-detail"><p class="muted">Select a claim to view details.</p></div>
+        </div>
+      </section>
+
+      <!-- ─── Draft ─── -->
+      <section class="view hidden" data-view="draft">
+        <h1>Complaint Draft</h1>
+        <div class="row">
+          <button id="draft-py" class="primary">Generate (Python engine)</button>
+          <button id="draft-ts">Generate (Pleading Engine)</button>
+          <button id="draft-download" class="gold" disabled>Download .md</button>
+          <button id="draft-export-docx" class="gold" disabled>Export .docx</button>
+        </div>
+        <div class="md-preview" id="draft-preview">
+          <span class="muted">No draft generated yet.</span>
+        </div>
+      </section>
+
+      <!-- ─── Calendar ─── -->
+      <section class="view hidden" data-view="calendar">
+        <h1>Filing Calendar</h1>
+        <div class="row">
+          <div class="field"><label>Filing date</label><input id="cal-filing" type="date" /></div>
+          <div class="field"><label>District</label><select id="cal-district"><option value="">(active)</option></select></div>
+          <button id="run-calendar" class="primary">Generate calendar</button>
+        </div>
+        <div id="calendar-body"></div>
+      </section>
+
+      <!-- ─── Monitor ─── -->
+      <section class="view hidden" data-view="monitor">
+        <h1>Rule 11 Viability Monitor</h1>
+        <div class="row">
+          <div class="field"><label>Mode</label>
+            <select id="mon-mode">
+              <option value="offline">Offline</option>
+              <option value="online">Online</option>
+            </select>
+          </div>
+          <button id="run-monitor" class="primary">Run monitor</button>
+        </div>
+        <div id="monitor-body"></div>
+      </section>
+
+      <!-- ─── Deposition ─── -->
+      <section class="view hidden" data-view="deposition">
+        <h1>Deposition Outline</h1>
+        <div class="row">
+          <div class="field"><label>Witness name</label><input id="dep-witness" type="text" /></div>
+          <div class="field"><label>Exam type</label>
+            <select id="dep-type">
+              <option value="cross">Cross</option>
+              <option value="direct">Direct</option>
+            </select>
+          </div>
+          <div class="field"><label>Max questions: <span id="dep-max-label">50</span></label>
+            <input id="dep-max" type="range" min="10" max="150" value="50" />
+          </div>
+          <div class="field"><label>Claim keys (optional, comma-sep)</label><input id="dep-claims" type="text" /></div>
+          <button id="run-deposition" class="primary">Generate outline</button>
+        </div>
+        <div id="deposition-body"></div>
+      </section>
+
+      <!-- ─── Exhibits ─── -->
+      <section class="view hidden" data-view="exhibits">
+        <h1>Exhibit Index</h1>
+        <div class="row">
+          <div class="field">
+            <label>Numbering</label>
+            <div class="hstack">
+              <label class="hstack small"><input type="radio" name="ex-num" value="alpha" checked /> Alpha</label>
+              <label class="hstack small"><input type="radio" name="ex-num" value="numeric" /> Numeric</label>
+              <label class="hstack small"><input type="radio" name="ex-num" value="bates" /> Bates</label>
+            </div>
+          </div>
+          <div class="field"><label>Prefix</label><input id="ex-prefix" type="text" placeholder="optional" /></div>
+          <div class="field"><label>Scan directory</label><input id="ex-dir" type="text" placeholder="optional absolute path" /></div>
+          <button id="run-exhibits" class="primary">Generate index</button>
+        </div>
+        <div id="exhibits-body"></div>
+      </section>
+
+      <!-- ─── PACER ─── -->
+      <section class="view hidden" data-view="pacer">
+        <h1>PACER / ECF Filing Package</h1>
+        <div class="row">
+          <button id="run-pacer" class="primary">Generate package</button>
+        </div>
+        <div id="pacer-body"></div>
+      </section>
+
+      <!-- ─── Research ─── -->
+      <section class="view hidden" data-view="research">
+        <h1>Research &mdash; CourtListener</h1>
+        <div class="row">
+          <div class="field" style="flex:2 1 300px;"><label>Query</label><input id="cl-query" type="search" placeholder='e.g., "qualified immunity" excessive force' /></div>
+          <div class="field"><label>Type</label>
+            <select id="cl-type">
+              <option value="opinions">Opinions</option>
+              <option value="dockets">Dockets</option>
+            </select>
+          </div>
+          <div class="field"><label>Sort</label>
+            <select id="cl-sort">
+              <option value="">Relevance</option>
+              <option value="dateFiled desc">Date filed &darr;</option>
+              <option value="dateFiled asc">Date filed &uarr;</option>
+            </select>
+          </div>
+          <div class="field"><label>Limit</label><input id="cl-limit" type="number" min="1" max="100" value="20" /></div>
+        </div>
+        <div class="row">
+          <div class="field"><label>Court codes (comma-sep)</label><input id="cl-court" type="text" placeholder="flmd, ca11, scotus" /></div>
+          <div class="field"><label>Filed after</label><input id="cl-after" type="date" /></div>
+          <div class="field"><label>Filed before</label><input id="cl-before" type="date" /></div>
+          <button id="run-research" class="primary">Search</button>
+        </div>
+        <div id="research-body"></div>
+      </section>
+
+      <!-- ─── Settings ─── -->
+      <section class="view hidden" data-view="settings">
+        <h1>Settings</h1>
+        <div class="card">
+          <h3>Districts</h3>
+          <div id="settings-districts"><span class="muted">Loading...</span></div>
+        </div>
+        <div class="card">
+          <h3>Documentation</h3>
+          <p class="muted small">Federal Trial Counsel skill reference.</p>
+          <ul class="tight">
+            <li><a href="https://www.flmd.uscourts.gov/" target="_blank" rel="noopener">U.S. District Court, M.D. Fla.</a></li>
+            <li><a href="https://www.ca11.uscourts.gov/" target="_blank" rel="noopener">U.S. Court of Appeals, 11th Circuit</a></li>
+            <li><a href="https://www.courtlistener.com/" target="_blank" rel="noopener">CourtListener</a></li>
+            <li><a href="https://www.law.cornell.edu/rules/frcp" target="_blank" rel="noopener">Federal Rules of Civil Procedure</a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <div class="loading-overlay" id="loader"><span class="spinner"></span><span>Working...</span></div>
+
+  </div>
+
+  <!-- hidden file input for load -->
+  <input type="file" id="file-input" accept=".json,application/json" class="hidden" />
+
+  <script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "mcpServers": {
+    "ftc": {
+      "command": "python3",
+      "args": ["-m", "ftc_engine.mcp_server"],
+      "cwd": "scripts"
+    }
+  }
+}

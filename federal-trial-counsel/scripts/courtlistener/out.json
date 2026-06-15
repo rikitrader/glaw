@@ -1,0 +1,77 @@
+{
+  "meta": {
+    "query": "qualified immunity excessive force",
+    "type": "opinions",
+    "count": 82,
+    "fetched": 3,
+    "next": "https://www.courtlistener.com/api/rest/v4/search/?court=flmd&cursor=cz0zLjc0NTI5JnM9MTc5MzEwNyZ0PW8mZD0yMDI2LTA0LTE4JnA9Mg%3D%3D&q=qualified+immunity+excessive+force&type=o",
+    "courts": [
+      "flmd"
+    ]
+  },
+  "results": [
+    {
+      "title": "Cherry v. City of St. Petersburg",
+      "court": "flmd",
+      "court_name": "Middle District of Florida",
+      "date_filed": "2011-04-25",
+      "citation": "813 F. Supp. 2d 1351, 2011 U.S. Dist. LEXIS 46674, 2011 WL 1560657",
+      "url": "https://www.courtlistener.com/opinion/2175886/cherry-v-city-of-st-petersburg/",
+      "api_url": "https://www.courtlistener.com/api/rest/v4/clusters/2175886/",
+      "docket_number": "2:10-cv-00667",
+      "judges": "Richard A. Lazzara",
+      "case_name": "Cherry v. City of St. Petersburg",
+      "status": "Published",
+      "cluster_id": 2175886,
+      "docket_id": 151634,
+      "source_fields": {
+        "cluster_id": 2175886,
+        "docket_id": 151634,
+        "court_id": "flmd",
+        "status": "Published"
+      }
+    },
+    {
+      "title": "Nam Dang v. Sheriff of Seminole County",
+      "court": "flmd",
+      "court_name": "Middle District of Florida",
+      "date_filed": "2014-08-06",
+      "citation": "38 F. Supp. 3d 1333, 2014 WL 3867681, 2014 U.S. Dist. LEXIS 111401",
+      "url": "https://www.courtlistener.com/opinion/7308127/nam-dang-v-sheriff-of-seminole-county/",
+      "api_url": "https://www.courtlistener.com/api/rest/v4/clusters/7308127/",
+      "docket_number": "Case No. 6:14-cv-37-Orl-31TBS",
+      "judges": "Presnell",
+      "case_name": "Nam Dang v. Sheriff of Seminole County",
+      "status": "Published",
+      "cluster_id": 7308127,
+      "docket_id": 64296604,
+      "source_fields": {
+        "cluster_id": 7308127,
+        "docket_id": 64296604,
+        "court_id": "flmd",
+        "status": "Published"
+      }
+    },
+    {
+      "title": "Howard v. Wilkinson",
+      "court": "flmd",
+      "court_name": "Middle District of Florida",
+      "date_filed": "2018-04-02",
+      "citation": "305 F. Supp. 3d 1327",
+      "url": "https://www.courtlistener.com/opinion/7329785/howard-v-wilkinson/",
+      "api_url": "https://www.courtlistener.com/api/rest/v4/clusters/7329785/",
+      "docket_number": "Case No: 6:17–cv–1473–Orl–40GJK",
+      "judges": "Byron",
+      "case_name": "Howard v. Wilkinson",
+      "status": "Published",
+      "cluster_id": 7329785,
+      "docket_id": 64318269,
+      "source_fields": {
+        "cluster_id": 7329785,
+        "docket_id": 64318269,
+        "court_id": "flmd",
+        "status": "Published"
+      }
+    }
+  ]
+}

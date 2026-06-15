@@ -1,0 +1,108 @@
+{
+  "court": {
+    "district": "Middle District of Florida",
+    "division": "Orlando",
+    "state": "FL"
+  },
+  "parties": {
+    "plaintiffs": [
+      {
+        "name": "John Michael Davis",
+        "citizenship": "Florida",
+        "entity_type": "individual",
+        "residence": "1234 Oak Street, Orlando, FL 32801"
+      }
+    ],
+    "defendants": [
+      {
+        "name": "Officer Robert Smith",
+        "type": "officer",
+        "capacity": "both",
+        "citizenship": "Florida",
+        "entity_type": "individual",
+        "role_title": "Orlando Police Department Officer"
+      },
+      {
+        "name": "City of Orlando",
+        "type": "local",
+        "capacity": "official",
+        "citizenship": "Florida",
+        "entity_type": "municipality",
+        "role_title": "Municipal Corporation"
+      }
+    ]
+  },
+  "facts": [
+    {
+      "date": "2025-06-15",
+      "location": "Intersection of Colonial Drive and Orange Avenue, Orlando, FL",
+      "actors": ["Officer Robert Smith", "John Michael Davis"],
+      "event": "Officer Smith conducted a traffic stop of Mr. Davis for an alleged broken taillight. Upon approaching the vehicle, Officer Smith immediately drew his weapon and ordered Mr. Davis out of the vehicle without any indication of threat or non-compliance.",
+      "documents": ["body camera footage", "dash camera footage", "police report"],
+      "harm": "",
+      "damages_estimate": "",
+      "evidence": ["video", "audio recordings"],
+      "witnesses": ["Maria Rodriguez (passenger)", "James Wilson (bystander)"]
+    },
+    {
+      "date": "2025-06-15",
+      "location": "Same location",
+      "actors": ["Officer Robert Smith", "John Michael Davis"],
+      "event": "While Mr. Davis was complying with commands and exiting the vehicle with his hands raised, Officer Smith grabbed Mr. Davis by the arm and threw him to the ground face-first. Officer Smith then placed his knee on Mr. Davis's back and neck for approximately three minutes while handcuffing him, despite Mr. Davis's repeated statements that he could not breathe.",
+      "documents": ["body camera footage", "medical records"],
+      "harm": "Broken nose, facial lacerations, contusions to back and ribs, anxiety, PTSD symptoms",
+      "damages_estimate": "$250,000",
+      "evidence": ["medical records", "photographs of injuries", "video evidence"],
+      "witnesses": ["Maria Rodriguez", "James Wilson", "Dr. Sarah Chen (treating physician)"]
+    },
+    {
+      "date": "2025-06-15",
+      "location": "Orange County Jail",
+      "actors": ["Officer Robert Smith", "John Michael Davis"],
+      "event": "Mr. Davis was arrested and charged with resisting arrest without violence. All charges were subsequently dropped by the State Attorney's Office on 2025-07-01.",
+      "documents": ["arrest report", "charging documents", "nolle prosequi order"],
+      "harm": "False arrest, detention for 18 hours, reputational harm",
+      "damages_estimate": "$50,000",
+      "evidence": ["booking records", "release documents", "court records"],
+      "witnesses": ["Booking officer records"]
+    },
+    {
+      "date": "2020-2025",
+      "location": "Orlando Police Department",
+      "actors": ["Orlando Police Department", "Officer Robert Smith"],
+      "event": "Officer Smith has been the subject of twelve prior complaints alleging excessive force, none of which resulted in disciplinary action. The Orlando Police Department has a pattern and practice of failing to investigate or discipline officers for excessive force complaints, and the department's use of force training has been criticized as inadequate by independent consultants.",
+      "documents": ["internal affairs records", "prior complaints", "training records", "consultant report"],
+      "harm": "Pattern of unconstitutional conduct",
+      "damages_estimate": "",
+      "evidence": ["personnel records", "complaint database", "training materials"],
+      "witnesses": ["Internal affairs investigator", "Police training consultant"]
+    }
+  ],
+  "claims_requested": [
+    "1983_fourth_excessive_force",
+    "1983_fourth_false_arrest",
+    "1983_monell_municipal_liability"
+  ],
+  "relief_requested": ["money", "injunction", "declaratory", "fees", "costs"],
+  "exhaustion": {
+    "ftca_admin_claim_filed": false,
+    "eeoc_charge_filed": false,
+    "erisa_appeal_done": false,
+    "agency_final_action": false
+  },
+  "limitations": {
+    "key_dates": {
+      "injury_date": "2025-06-15",
+      "notice_date": "",
+      "denial_date": ""
+    }
+  },
+  "goals": {
+    "settlement_target": "$500,000",
+    "non_monetary_goals": [
+      "Policy reform on use of force",
+      "Mandatory de-escalation training",
+      "Independent oversight of complaints"
+    ]
+  }
+}

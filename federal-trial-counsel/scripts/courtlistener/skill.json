@@ -1,0 +1,144 @@
+{
+  "name": "courtlistener-search",
+  "version": "1.0.0",
+  "description": "Search federal case law opinions and dockets using the CourtListener API. Returns structured JSON and Markdown summaries for legal research.",
+  "author": "Federal Trial Counsel Skill",
+  "license": "MIT",
+  "entrypoint": "index.ts",
+  "cli": "cli.ts",
+  "runtime": "node",
+  "runtimeVersion": ">=18.0.0",
+  "language": "typescript",
+  "api": {
+    "provider": "CourtListener (Free Law Project)",
+    "baseUrl": "https://www.courtlistener.com/api/rest/v4",
+    "documentation": "https://www.courtlistener.com/help/api/",
+    "authentication": {
+      "type": "token",
+      "header": "Authorization",
+      "format": "Token {token}",
+      "envVar": "COURTLISTENER_API_TOKEN",
+      "required": false
+    }
+  },
+  "inputs": {
+    "query": {
+      "type": "string",
+      "required": true,
+      "description": "Search query text"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["opinions", "dockets"],
+      "default": "opinions",
+      "description": "Type of search: opinions or dockets"
+    },
+    "courts": {
+      "type": "array",
+      "items": "string",
+      "description": "Court codes to filter (e.g., ['flmd', 'ca11', 'scotus'])"
+    },
+    "filed_after": {
+      "type": "string",
+      "format": "date",
+      "description": "Filter results filed on or after this date (YYYY-MM-DD)"
+    },
+    "filed_before": {
+      "type": "string",
+      "format": "date",
+      "description": "Filter results filed on or before this date (YYYY-MM-DD)"
+    },
+    "sort": {
+      "type": "string",
+      "enum": ["relevance", "newest", "oldest"],
+      "default": "relevance",
+      "description": "Sort order for results"
+    },
+    "limit": {
+      "type": "number",
+      "minimum": 1,
+      "maximum": 100,
+      "default": 20,
+      "description": "Maximum number of results to return"
+    },
+    "page": {
+      "type": "number",
+      "minimum": 1,
+      "description": "Page number for pagination"
+    },
+    "next": {
+      "type": "string",
+      "format": "uri",
+      "description": "Next page URL from previous response"
+    },
+    "include_snippets": {
+      "type": "boolean",
+      "default": true,
+      "description": "Include text snippets in results"
+    }
+  },
+  "outputs": {
+    "meta": {
+      "type": "object",
+      "properties": {
+        "query": "string",
+        "type": "string",
+        "count": "number",
+        "fetched": "number",
+        "next": "string"
+      }
+    },
+    "results": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "title": "string",
+          "court": "string",
+          "court_name": "string",
+          "date_filed": "string",
+          "citation": "string",
+          "url": "string",
+          "api_url": "string",
+          "snippet": "string",
+          "docket_number": "string",
+          "judges": "string"
+        }
+      }
+    }
+  },
+  "exports": [
+    "searchCourtListener",
+    "searchOpinions",
+    "searchDockets",
+    "searchFLMD",
+    "searchEleventhCircuit",
+    "searchByCitation",
+    "toMarkdown",
+    "toBriefSummary",
+    "COURT_CODES",
+    "getCourtName"
+  ],
+  "supportedCourts": {
+    "supreme": ["scotus"],
+    "circuits": [
+      "ca1", "ca2", "ca3", "ca4", "ca5", "ca6",
+      "ca7", "ca8", "ca9", "ca10", "ca11", "cadc", "cafc"
+    ],
+    "florida": ["flmd", "flnd", "flsd"]
+  },
+  "examples": [
+    {
+      "name": "Basic search",
+      "code": "const results = await searchCourtListener({ query: 'qualified immunity' });"
+    },
+    {
+      "name": "Middle District of Florida",
+      "code": "const results = await searchFLMD('motion to dismiss', { filed_after: '2023-01-01' });"
+    },
+    {
+      "name": "Eleventh Circuit",
+      "code": "const results = await searchEleventhCircuit('standing', { sort: 'newest' });"
+    }
+  ]
+}
