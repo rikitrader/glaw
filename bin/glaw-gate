@@ -210,6 +210,50 @@ def report_quality(path, source_manifest):
     }
 
 
+def review_evidence_manifest(council_rows, adversarial_rows, profile, source_manifest):
+    source_ids = [item["id"] for item in source_manifest]
+    rows = []
+    latest_council = latest_by(council_rows, "role")
+    for role in COUNCIL_PROFILES.get(profile, ()):
+        row = latest_council.get(role, {})
+        evidence = str(row.get("evidence", ""))
+        cited = [sid for sid in source_ids if sid in evidence]
+        missing = []
+        if not row:
+            missing.append("review row")
+        if not evidence.strip():
+            missing.append("evidence")
+        if not cited:
+            missing.append("source evidence id (SRC-####)")
+        rows.append({
+            "kind": "council",
+            "name": role,
+            "status": "pass" if not missing else "fail",
+            "missing": missing,
+            "cited_source_ids": cited,
+        })
+    latest_adversarial = latest_by(adversarial_rows, "lens")
+    for lens in ADVERSARIAL_PROFILES.get(profile, ()):
+        row = latest_adversarial.get(lens, {})
+        evidence = str(row.get("evidence", ""))
+        cited = [sid for sid in source_ids if sid in evidence]
+        missing = []
+        if not row:
+            missing.append("review row")
+        if not evidence.strip():
+            missing.append("evidence")
+        if not cited:
+            missing.append("source evidence id (SRC-####)")
+        rows.append({
+            "kind": "adversarial",
+            "name": lens,
+            "status": "pass" if not missing else "fail",
+            "missing": missing,
+            "cited_source_ids": cited,
+        })
+    return rows
+
+
 def decision_hash(row):
     payload = dict(row)
     payload.pop("decision_hash", None)
@@ -283,6 +327,29 @@ current_source_manifest = source_evidence_manifest(
 )
 if expected_source_manifest != current_source_manifest:
     print("current source evidence manifest does not match final_packet.json")
+    sys.exit(1)
+expected_review_evidence_manifest = packet.get("senior_review_evidence_manifest") or []
+if not expected_review_evidence_manifest:
+    print("final_packet.json missing senior_review_evidence_manifest")
+    sys.exit(1)
+council_rows_for_evidence = [r for r in read_jsonl(d / "council.jsonl") if r.get("profile") == profile]
+adversarial_rows_for_evidence = [r for r in read_jsonl(d / "adversarial.jsonl") if r.get("profile") == profile]
+current_review_evidence_manifest = review_evidence_manifest(
+    council_rows_for_evidence,
+    adversarial_rows_for_evidence,
+    profile,
+    current_source_manifest,
+)
+if expected_review_evidence_manifest != current_review_evidence_manifest:
+    print("current senior review evidence manifest does not match final_packet.json")
+    sys.exit(1)
+failing_review_evidence = [
+    f"{item['kind']}:{item['name']} missing {', '.join(item['missing'])}"
+    for item in current_review_evidence_manifest
+    if item.get("status") != "pass"
+]
+if failing_review_evidence:
+    print("current senior review(s) fail source evidence IDs: " + "; ".join(failing_review_evidence))
     sys.exit(1)
 expected_report_markers = packet.get("report_quality_required_markers") or []
 if expected_report_markers != list(REPORT_REQUIRED_MARKERS):

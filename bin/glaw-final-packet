@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "lib"))
-from glaw_profiles import profile_for_track
+from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, profile_for_track
 
 
 def now() -> str:
@@ -65,6 +65,13 @@ def workflow_profile(intake: dict) -> str:
 
 def has_event(rows: list[dict], event: str) -> bool:
     return any(row.get("event") == event for row in rows)
+
+
+def latest_by(rows: list[dict], key: str) -> dict[str, dict]:
+    latest = {}
+    for row in rows:
+        latest[str(row.get(key, ""))] = row
+    return latest
 
 
 def blocking_red_flags(rows: list[dict]) -> list[dict]:
@@ -166,6 +173,55 @@ def report_quality(path: Path, root: Path, source_manifest: list[dict]) -> dict:
     }
 
 
+def review_evidence_manifest(
+    council_rows: list[dict],
+    adversarial_rows: list[dict],
+    profile: str,
+    source_manifest: list[dict],
+) -> list[dict]:
+    source_ids = [item["id"] for item in source_manifest]
+    rows = []
+    latest_council = latest_by(council_rows, "role")
+    for role in COUNCIL_PROFILES.get(profile, ()):
+        row = latest_council.get(role, {})
+        evidence = str(row.get("evidence", ""))
+        cited = [sid for sid in source_ids if sid in evidence]
+        missing = []
+        if not row:
+            missing.append("review row")
+        if not evidence.strip():
+            missing.append("evidence")
+        if not cited:
+            missing.append("source evidence id (SRC-####)")
+        rows.append({
+            "kind": "council",
+            "name": role,
+            "status": "pass" if not missing else "fail",
+            "missing": missing,
+            "cited_source_ids": cited,
+        })
+    latest_adversarial = latest_by(adversarial_rows, "lens")
+    for lens in ADVERSARIAL_PROFILES.get(profile, ()):
+        row = latest_adversarial.get(lens, {})
+        evidence = str(row.get("evidence", ""))
+        cited = [sid for sid in source_ids if sid in evidence]
+        missing = []
+        if not row:
+            missing.append("review row")
+        if not evidence.strip():
+            missing.append("evidence")
+        if not cited:
+            missing.append("source evidence id (SRC-####)")
+        rows.append({
+            "kind": "adversarial",
+            "name": lens,
+            "status": "pass" if not missing else "fail",
+            "missing": missing,
+            "cited_source_ids": cited,
+        })
+    return rows
+
+
 def run_check(cmd: list[str], cwd: Path) -> tuple[int, str]:
     proc = subprocess.run(cmd, cwd=str(cwd), capture_output=True, text=True)
     return proc.returncode, (proc.stdout + proc.stderr).strip()
@@ -218,6 +274,7 @@ def cmd_build(args: argparse.Namespace) -> int:
     timeline_rows = read_jsonl(d / "timeline.jsonl")
     red_flags = read_jsonl(d / "red_flags.jsonl")
     council = [r for r in read_jsonl(d / "council.jsonl") if r.get("profile") == profile]
+    adversarial = [r for r in read_jsonl(d / "adversarial.jsonl") if r.get("profile") == profile]
     decisions = read_jsonl(d / "decisions.jsonl")
     docket = read_jsonl(d / "docket.jsonl")
     deliverables = sorted(
@@ -241,6 +298,10 @@ def cmd_build(args: argparse.Namespace) -> int:
         if is_source_evidence(p, d)
     ]
     source_manifest = source_evidence_manifest(source_paths, d)
+    senior_review_evidence_manifest = review_evidence_manifest(council, adversarial, profile, source_manifest)
+    senior_review_evidence_clear = bool(senior_review_evidence_manifest) and all(
+        item["status"] == "pass" for item in senior_review_evidence_manifest
+    )
     report_quality_manifest = [
         report_quality(p, d, source_manifest)
         for p in external_text_paths
@@ -287,6 +348,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         "red_flags_clear": has_event(timeline_rows, "red_flags_clear") and rc_rf == 0,
         "external_deliverable_present": bool(external_text_deliverables),
         "source_evidence_manifest_clear": bool(source_manifest),
+        "senior_review_evidence_source_clear": senior_review_evidence_clear,
         "professional_report_manifest_clear": report_quality_clear,
         "upl_footer_clear": rc_upl == 0,
     }
@@ -309,11 +371,13 @@ def cmd_build(args: argparse.Namespace) -> int:
         "intake": intake,
         "docket": docket,
         "council_reviews": council,
+        "adversarial_reviews": adversarial,
         "decisions": decisions,
         "deliverables": deliverables,
         "external_text_deliverables": external_text_deliverables,
         "external_text_deliverable_hashes": external_text_deliverable_hashes,
         "source_evidence_manifest": source_manifest,
+        "senior_review_evidence_manifest": senior_review_evidence_manifest,
         "report_quality_required_markers": list(REPORT_REQUIRED_MARKERS),
         "report_quality_manifest": report_quality_manifest,
         "gate_artifact_hashes": gate_artifact_hashes,

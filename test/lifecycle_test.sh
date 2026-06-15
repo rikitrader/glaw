@@ -150,6 +150,16 @@ Sign-off conditions: licensed review.
 Attorney work-product - not legal advice. Prepared for licensed review.
 MD
 "$PACKET" build >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by senior reviews without source evidence ids"
+for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do
+  "$COUNCIL" record --profile auto --role "$role" --decision approve --evidence "SRC-0001 test fixture review basis" >/dev/null
+done
+for lens in irs-examiner state-tax-auditor forensic-accountant cfo-controller outside-critic; do
+  "$ADVERSARIAL" record --profile auto --lens "$lens" --decision survive --attack "no fatal finding" --evidence "SRC-0001 test fixture" >/dev/null
+done
+"$COUNCIL" complete --profile auto >/dev/null
+"$ADVERSARIAL" complete --profile auto >/dev/null
+"$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && [ -f "$TMP/matters/$SLUG/final_packet.json" ] && echo 1 || echo 0)" "final packet ready after council and red flags clear"
 
 "$CHIEF" --chief "GLAW Chief Counsel" --decision "PROCEED" --approve-final --matter "$SLUG" >/dev/null

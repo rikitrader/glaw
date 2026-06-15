@@ -127,7 +127,9 @@ are all explicitly completed and clear. Each external text deliverable must also
 professional-report marker gate: `Owner:`, `Report voice:`, `Findings:`, `Evidence:`,
 `Red flags:`, and `Sign-off conditions:`. Evidence must cite a hashed source artifact ID
 from the packet's source manifest, e.g. `Evidence: SRC-0001 bank statement`; source artifacts
-live under `evidence/`, `sources/`, or `source_documents/`.
+live under `evidence/`, `sources/`, or `source_documents/`. Required council and adversarial
+review evidence must also cite a source ID, so a senior approval cannot be based on vague
+"reviewed" language.
 
 ## Contract Review
 

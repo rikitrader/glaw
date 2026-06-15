@@ -10,7 +10,7 @@
 #   3. a "## When to invoke/use" section exists
 #   4. the load-bearing UPL / not-legal-advice line is present (firm hard gate #4)
 #   5. allowed-tools is a non-empty list
-#   6. an explicit agent identity/posture section exists
+#   6. an explicit agent identity/soul/posture section exists
 #   7. a workflow section ties the seat into the orchestrator
 #   8. firm memory is wired through glaw-learnings / ReasoningBank
 # Exit 0 = all contracts pass, 1 = at least one violation.
@@ -25,14 +25,25 @@ total=0
 for f in $(find -H "$GLAW" -name SKILL.md | sort); do
   rel="${f#$GLAW/}"
   dir="${rel%/SKILL.md}"
+  total=$((total+1))
+  errs=()
+  for marker in "Identity:" "Soul:"; do
+    grep -qF "$marker" "$f" || errs+=("missing identity/soul marker: $marker")
+  done
   # Vendored third-party seats under seats/ are deployed non-destructively and follow their
   # OWN upstream conventions — NOT the firm's internal frontmatter/UPL contract. This harness
   # tests firm-authored skills (the personas + stages + orchestrator); deploy parity + the
-  # MANIFEST bijection in glaw-doctor already prove every vendored seat resolves. Skip them.
-  case "$dir" in seats/*) continue;; esac
-  total=$((total+1))
+  # MANIFEST bijection in glaw-doctor already prove every vendored seat resolves. Only the
+  # identity/soul posture markers are mandatory for every skill file.
+  case "$dir" in seats/*)
+    if [ ${#errs[@]} -eq 0 ]; then grn; else
+      printf '  %s\n' "$dir"
+      for e in "${errs[@]}"; do red "$e"; done
+    fi
+    continue
+    ;;
+  esac
   fm=$(awk 'NR==1&&/^---/{p=1;next} p&&/^---/{exit} p' "$f")   # frontmatter block
-  errs=()
   for field in name version description allowed-tools triggers; do
     printf '%s\n' "$fm" | grep -q "^${field}:" || errs+=("missing frontmatter: $field")
   done

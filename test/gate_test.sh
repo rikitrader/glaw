@@ -78,6 +78,7 @@ cat > "$M/final_packet.json" <<'JSON'
     "red_flags_clear": true,
     "external_deliverable_present": true,
     "source_evidence_manifest_clear": true,
+    "senior_review_evidence_source_clear": true,
     "professional_report_manifest_clear": true,
     "upl_footer_clear": true
   }
@@ -104,11 +105,11 @@ ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before verified 
 append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current council ledger artifact"
 for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do
-  append_hashed_jsonl "$M/council.jsonl" "{\"profile\":\"accounting\",\"role\":\"$role\",\"decision\":\"approve\",\"evidence\":\"fixture\"}"
+  append_hashed_jsonl "$M/council.jsonl" "{\"profile\":\"accounting\",\"role\":\"$role\",\"decision\":\"approve\",\"evidence\":\"SRC-0001 fixture\"}"
 done
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current adversarial ledger artifact"
 for lens in irs-examiner state-tax-auditor forensic-accountant cfo-controller outside-critic; do
-  append_hashed_jsonl "$M/adversarial.jsonl" "{\"profile\":\"accounting\",\"lens\":\"$lens\",\"decision\":\"survive\",\"evidence\":\"fixture\"}"
+  append_hashed_jsonl "$M/adversarial.jsonl" "{\"profile\":\"accounting\",\"lens\":\"$lens\",\"decision\":\"survive\",\"evidence\":\"SRC-0001 fixture\"}"
 done
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current external deliverable artifact"
 printf '# Draft Report\n\nNumbers tie.\n' > "$M/draft-report.md"
@@ -156,6 +157,25 @@ packet["source_evidence_manifest"] = [{
     "path": "evidence/bank.csv",
     "sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
 }]
+packet["senior_review_evidence_manifest"] = [
+    {
+        "kind": "council",
+        "name": name,
+        "status": "pass",
+        "missing": [],
+        "cited_source_ids": ["SRC-0001"],
+    }
+    for name in ["cfo", "irs-audit-agent", "legal-counsel", "forensic-audit", "outside-critic", "external-reviewer"]
+] + [
+    {
+        "kind": "adversarial",
+        "name": name,
+        "status": "pass",
+        "missing": [],
+        "cited_source_ids": ["SRC-0001"],
+    }
+    for name in ["irs-examiner", "state-tax-auditor", "forensic-accountant", "cfo-controller", "outside-critic"]
+]
 packet["report_quality_manifest"] = [{
     "path": "draft-report.md",
     "status": "pass",
