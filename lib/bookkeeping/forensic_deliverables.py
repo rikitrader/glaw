@@ -78,7 +78,7 @@ def _gl(book):
     return led, bal, stmts
 
 
-def deliverables(book: str, out_dir: str, *, entity: str = "Entity", ein: str = "[VERIFY: EIN]",
+def deliverables(book: str, out_dir: str, *, entity: str = "Entity", ein: str = "REVIEW: EIN not provided",
                  form: str = "1120-S", fye: str = "12-31", rate_pct: str = "21") -> dict:
     outp = Path(out_dir); outp.mkdir(parents=True, exist_ok=True)
     led, bal, stmts = _gl(book)
@@ -148,7 +148,7 @@ def deliverables(book: str, out_dir: str, *, entity: str = "Entity", ein: str = 
            "EXAMPLE SUPPLY CO / BEACON wires are COGS materials; APD EXCELLENT REPAIRS is subcontractor labor.",
            "4. **Owner transactions.** Owner draws and contributions are tracked in equity (see trial balance).",
            "5. **Revenue recognition.** Construction receipts recognized on the cash basis as deposited; a percentage-"
-           "of-completion or accrual conversion is a [VERIFY] item with the engagement CPA."]
+           "of-completion or accrual conversion remains a REVIEW item for the engagement CPA."]
     w("03_three_statement_and_footnotes.md", "\n".join(ts))
 
     # 04 — credits report
@@ -157,11 +157,11 @@ def deliverables(book: str, out_dir: str, *, entity: str = "Entity", ein: str = 
           "Credits identified from the reconstructed ledger. Each requires the substantiation noted; "
           "amounts are advisory until the engagement CPA confirms eligibility.", "",
           f"- **Fuel tax credit (§6421/§4081)** — off-highway/business fuel within the {_f(fuel)} fuel-auto "
-          "spend may qualify; requires a gallons + off-highway-use log. [VERIFY: gallons]",
+          "spend may qualify; requires a gallons + off-highway-use log. REVIEW: gallons log not provided.",
           "- **R&D credit (§41)** — only if the construction work includes qualified research (engineering/design); "
-          "likely N/A for a roofing contractor. [VERIFY: qualified activities]",
+          "likely N/A for a roofing contractor. REVIEW: qualified activities not provided.",
           "- **Work Opportunity Tax Credit (§51)** — if any employees came from targeted groups; needs Form 8850. "
-          "[VERIFY: hiring records]",
+          "REVIEW: hiring records not provided.",
           "", "No credit is claimed here; this report scopes what to pursue with substantiation."]
     w("04_credits_report.md", "\n".join(cr))
 
@@ -180,9 +180,9 @@ def deliverables(book: str, out_dir: str, *, entity: str = "Entity", ein: str = 
         ar.append(f"- **{a}**: {_f(v)} — resolve characterization + substantiation.")
     ar += ["", "## Minimization positions (legitimate, documented)",
            "- Maximize substantiated COGS (materials + crew labor) — already the largest deductions.",
-           "- §179 / MACRS on vehicles & equipment within the fuel-auto/asset spend (run glaw-depreciate). [VERIFY: asset register]",
-           "- QBI §199A on pass-through income (run glaw-qbi). [VERIFY: W-2 wages/UBIA]",
-           "- Accountable-plan reimbursements vs owner draws. [VERIFY: plan in place]"]
+           "- §179 / MACRS on vehicles & equipment within the fuel-auto/asset spend (run glaw-depreciate). REVIEW: asset register not provided.",
+           "- QBI §199A on pass-through income (run glaw-qbi). REVIEW: W-2 wages/UBIA not provided.",
+           "- Accountable-plan reimbursements vs owner draws. REVIEW: plan document not provided."]
     w("05_irs_audit_readiness.md", "\n".join(ar))
 
     # 06 — IRS forms package + checklist
@@ -194,7 +194,7 @@ def deliverables(book: str, out_dir: str, *, entity: str = "Entity", ein: str = 
     for ln in rm["lines"]:
         fp.append(f"| {ln['line']} | {ln['label']} | {_f(ln['amount'])} |")
     fp += ["", "## Filing checklist",
-           "- [ ] Confirm entity type + EIN (S-corp election Form 2553 on file?) [VERIFY]",
+           "- [ ] Confirm entity type + EIN and whether S-corp election Form 2553 is on file.",
            "- [ ] Attach the MCA lender promissory notes substantiating the $700K loan (per merchant-cash-advance position)",
            "- [ ] Schedule K-1s to each shareholder (glaw-k1)",
            "- [ ] 1099-NEC for crew/contractors ≥ $600 (glaw-1099 — from the GL)",
@@ -256,7 +256,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(prog="glaw-forensic-deliverables")
     ap.add_argument("--book", required=True)
     ap.add_argument("--out", required=True)
-    ap.add_argument("--entity", default="Entity"); ap.add_argument("--ein", default="[VERIFY: EIN]")
+    ap.add_argument("--entity", default="Entity"); ap.add_argument("--ein", default="REVIEW: EIN not provided")
     ap.add_argument("--form", default="1120-S"); ap.add_argument("--fye", default="12-31")
     a = ap.parse_args()
     d = deliverables(a.book, a.out, entity=a.entity, ein=a.ein, form=a.form, fye=a.fye)

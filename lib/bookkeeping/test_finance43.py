@@ -8,6 +8,9 @@ HERE = Path(__file__).parent
 sys.path.insert(0, str(HERE))
 
 
+UNRESOLVED_PLACEHOLDERS = ("[VERIFY", "[CLIENT", "[DATE", "[TODO", "[TBD")
+
+
 def test_generates_all_eight():
     os.environ["GLAW_HOME"] = tempfile.mkdtemp(prefix="glaw-deliv-")
     import importlib, ledger as L, forensic_deliverables as FD
@@ -25,6 +28,9 @@ def test_generates_all_eight():
               "06_irs_forms_package.md", "07_error_resolution_log.md", "08_executive_cfo_ceo.md", "00_INDEX.json"):
         assert n in files, n
         assert (Path(out) / n).exists() and (Path(out) / n).stat().st_size > 0
+    for path in Path(out).glob("*.md"):
+        text = path.read_text(encoding="utf-8")
+        assert not any(marker in text for marker in UNRESOLVED_PLACEHOLDERS), path.name
     assert res["trial_balance_balanced"]
     # gap detection: Jan and Mar present, Feb is a gap
     assert "2024-02" in res["gap_months"]
