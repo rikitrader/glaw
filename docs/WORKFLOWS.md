@@ -187,7 +187,7 @@ bin/glaw-books-doctor
 bin/glaw-bank-rec
 ```
 
-For bookkeeping/tax workflows, intake must identify the source records and tax scope:
+For bookkeeping/accounting reconstruction workflows, intake must identify the source records and tax scope:
 
 ```bash
 bin/glaw-intake set workflow_track accounting-tax
@@ -197,6 +197,23 @@ bin/glaw-intake set track_specific.entity_tax_type 'C-corp'
 bin/glaw-intake set track_specific.books_status 'raw bank statements only'
 bin/glaw-intake set track_specific.irs_forms_needed '1120; 1099; 941'
 bin/glaw docket add --owner "tax docket clerk" --source "SRC-0001 filing calendar from intake source" 2026-09-15 "tax filing due - verify extension"
+```
+
+For tax-only compliance, filing, planning, or controversy workflows, use the dedicated
+`tax` track instead of the broader bookkeeping reconstruction track. `--profile auto`
+then requires the tax Council (`tax-strategist`, `irs-audit-agent`, `legal-counsel`,
+`accounting-reviewer`, `outside-critic`, `external-reviewer`) and the tax adversarial
+panel (`irs-examiner`, `state-tax-auditor`, `tax-court-counsel`, `penalty-reviewer`,
+`outside-critic`):
+
+```bash
+bin/glaw-intake set workflow_track tax
+bin/glaw-intake set track_specific.tax_years '2024; 2025'
+bin/glaw-intake set track_specific.taxpayer_type 'C-corp'
+bin/glaw-intake set track_specific.tax_forms_needed '1120; 941; 1099'
+bin/glaw-intake set track_specific.source_records 'returns; GL export; bank records; IRS notices'
+bin/glaw-intake set track_specific.positions_or_issues 'credits; deductions; penalties; audit adjustments'
+bin/glaw-intake set track_specific.filing_or_exam_deadlines '2026-09-15 extended return due; verify notice response date'
 ```
 
 The bookkeeping engine lives inside `lib/bookkeeping/glaw_engine` and uses in-repo compatibility shims for table, model, and XML behavior. Google Sheets input is read through the sheet CSV export URL with Python stdlib. PDF/OCR ingestion is repo-owned orchestration over local binaries (`pdftotext` or `opendataloader-pdf`; scans need `pdftoppm` + `tesseract`).

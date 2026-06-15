@@ -39,11 +39,11 @@ This creates both `matter.md` and the required structured intake form `intake.js
 
 ### Step 1 — Classify the matter (AskUserQuestion)
 Ask which track this is — **litigation case (civil)** vs **corp/fund build** vs
-**investigation (white-collar/criminal)** vs **accounting/tax/bookkeeping** vs
-**contract review** vs **both/hybrid**. This is the plan-mode
+**investigation (white-collar/criminal)** vs **accounting/bookkeeping** vs
+**tax compliance/controversy** vs **contract review** vs **both/hybrid**. This is the plan-mode
 entry point; the AskUserQuestion satisfies plan mode. Write the answer into `type:`
 in `~/.glaw/matters/<slug>/matter.md` (values: `litigation` | `corp-build` |
-`investigation` | `accounting-tax` | `contract-review` | `hybrid`). For an investigation,
+`investigation` | `accounting-tax` | `tax` | `contract-review` | `hybrid`). For an investigation,
 hand the lead to `/glaw-investigations`.
 
 Also set the structured form track:
@@ -77,13 +77,26 @@ bin/glaw-intake set conflicts_parties 'all clients, adverse parties, owners, aff
 bin/glaw-intake set authorized_scope 'review/analyze/draft only; no filing without human approval'
 ```
 
-For accounting/tax/bookkeeping workflows, also fill:
+For accounting/bookkeeping workflows, also fill:
 ```bash
 bin/glaw-intake set track_specific.bank_statement_sources '<files, folders, or Google Sheets URLs>'
 bin/glaw-intake set track_specific.tax_years '<years in scope>'
 bin/glaw-intake set track_specific.entity_tax_type '<C-corp/S-corp/partnership/individual/etc.>'
 bin/glaw-intake set track_specific.books_status '<unknown/reconstructed/closed/etc.>'
 bin/glaw-intake set track_specific.irs_forms_needed '<1120/1065/1040/941/1099/etc.>'
+```
+
+For tax compliance, filing, planning, or controversy workflows that do not require a full
+bookkeeping reconstruction, use the dedicated `tax` track so the orchestrator selects the
+tax Council and IRS/state/penalty adversarial profile automatically:
+```bash
+bin/glaw-intake set workflow_track tax
+bin/glaw-intake set track_specific.tax_years '<years in scope>'
+bin/glaw-intake set track_specific.taxpayer_type '<C-corp/S-corp/partnership/individual/exempt-org/etc.>'
+bin/glaw-intake set track_specific.tax_forms_needed '<1120/1065/1040/941/990/706/709/etc.>'
+bin/glaw-intake set track_specific.source_records '<returns, notices, GL exports, bank records, K-1s, transcripts>'
+bin/glaw-intake set track_specific.positions_or_issues '<credits, deductions, nexus, penalties, audit adjustments, elections>'
+bin/glaw-intake set track_specific.filing_or_exam_deadlines '<due dates, notice response dates, SOL, Tax Court petition date>'
 ```
 
 ### Step 3 — Completeness sweep (Build-the-whole-file)
