@@ -19,7 +19,7 @@ Finance teams want to POST a file and get JSON back. This module
 wraps :func:`smart_ingest` in a single-file FastAPI app that can be
 run as a microservice:
 
-    pip install 'glaw_engine[api]'
+    API mode is disabled in absolute zero-third-party-package mode.
     glaw_engine-api              # starts on :8000
     glaw_engine-api --port 9000  # custom port
 
@@ -62,14 +62,9 @@ def create_app(
         A FastAPI ``app`` instance. Raises :class:`APIError` if
         FastAPI is not installed.
     """
-    try:
-        from fastapi import FastAPI, File, UploadFile
-        from fastapi.responses import JSONResponse
-    except ImportError as exc:
-        raise APIError(
-            "FastAPI is required for the REST API. "
-            "Install with: pip install 'glaw_engine[api]'"
-        ) from exc
+    raise APIError(
+        "The REST API is unavailable in absolute zero-third-party-package mode."
+    )
 
     from .hybrid import smart_ingest
 
@@ -84,9 +79,8 @@ def create_app(
         """Upload a bank statement and get structured JSON back.
 
         Accepts any format supported by :func:`smart_ingest`:
-        CAMT, PAIN.001, CSV, OFX, QFX, MT940, or PDF. The routing
-        is automatic — deterministic parsers run first, LLM
-        fallback for PDFs.
+        CAMT, PAIN.001, CSV, OFX, QFX, or MT940. PDF ingestion is disabled in
+        source-only mode; convert PDFs to text or CSV before using this endpoint.
 
         Returns the full :class:`IngestResult` as JSON including
         transactions, verification status, and warnings.
@@ -173,13 +167,9 @@ def main() -> None:
     )
     args = parser.parse_args()
 
-    try:
-        import uvicorn
-    except ImportError as exc:
-        raise APIError(
-            "uvicorn is required to run the API server. "
-            "Install with: pip install 'glaw_engine[api]'"
-        ) from exc
+    raise APIError(
+        "The REST API server is unavailable in absolute zero-third-party-package mode."
+    )
 
     app = create_app()  # pragma: no cover - server entrypoint
     uvicorn.run(app, host=args.host, port=args.port)  # pragma: no cover

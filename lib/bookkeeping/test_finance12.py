@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Smoke test for multi-account reconstruction: transfers + continuity + orchestrator.
-Temp GLAW_HOME; no network (reconstruct shells out to glaw-bank-ingest in the venv)."""
+Temp GLAW_HOME; no network; reconstruct shells out to the source-first glaw-bank-ingest."""
 from __future__ import annotations
 
 import os

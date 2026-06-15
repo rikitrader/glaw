@@ -100,8 +100,7 @@ def cmd_monitor(args):
 
 
 def cmd_setup(args):
-    """Auto-install dependencies and configure environment."""
-    import subprocess
+    """Configure local federal-trial-counsel state without installing packages."""
 
     print("=" * 70)
     print("         FEDERAL TRIAL COUNSEL — SETUP")
@@ -114,15 +113,13 @@ def cmd_setup(args):
     else:
         print(" [WARN] Python 3.9+ recommended")
 
-    # 2. Check/install python-docx
-    print("  python-docx: ", end="")
+    # 2. Check local stdlib DOCX shim
+    print("  docx shim: ", end="")
     try:
         import docx
-        print(f"{docx.__version__} [OK]")
+        print(f"{getattr(docx, '__version__', 'local')} [OK]")
     except ImportError:
-        print("not found — installing...")
-        subprocess.run([sys.executable, "-m", "pip", "install", "python-docx"], check=True)
-        print("  python-docx: installed [OK]")
+        print("not found [WARN]")
 
     # 3. Create config directory
     config_dir = Path.home() / ".ftc"
@@ -168,14 +165,14 @@ def cmd_doctor(args):
     if py_ok:
         checks_passed += 1
 
-    # 2. python-docx
+    # 2. local docx shim
     checks_total += 1
     try:
         import docx
-        print(f"  [OK] python-docx: {docx.__version__}")
+        print(f"  [OK] docx shim: {getattr(docx, '__version__', 'local')}")
         checks_passed += 1
     except ImportError:
-        print("  [!!] python-docx: NOT INSTALLED — run 'python3 -m ftc_engine setup'")
+        print("  [!!] docx shim: not importable from this checkout")
 
     # 3. Config directory
     checks_total += 1

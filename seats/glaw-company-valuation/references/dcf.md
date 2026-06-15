@@ -21,7 +21,7 @@ Expands on the summary in SKILL.md. Use this when building the DCF build table o
 ### Revenue projection
 
 1. Compute historical 3–5 year CAGR.
-2. Pull analyst consensus from `yfinance.Ticker.revenue_estimate`.
+2. Pull analyst consensus from `manual CSV/JSON market data.Ticker.revenue_estimate`.
 3. Consider industry growth, competitive position, and company guidance.
 4. Project revenue for Y1–Y5, fading linearly toward terminal growth rate.
 
@@ -73,7 +73,7 @@ Ke = Risk-Free Rate + Beta × Equity Risk Premium + Size Premium (if applicable)
 |---|---|---|
 | Risk-free rate | 10-year US Treasury | 3.5–5.0% (use current) |
 | Equity risk premium | Damodaran or Duff & Phelps | 4.5–6.0% |
-| Beta | yfinance `info['beta']` (levered) | 0.6–2.0 |
+| Beta | manual CSV/JSON market data `info['beta']` (levered) | 0.6–2.0 |
 | Size premium | Add for small/mid-cap | 0–3% |
 
 ### Cost of Debt
@@ -209,6 +209,6 @@ Implied share price = Equity Value / diluted shares outstanding
 - **Growth > WACC**: Breaks Gordon formula. Cap `g` below WACC.
 - **Inconsistent tax rates**: Historical effective rate may include one-offs. Cross-check with statutory.
 - **Double-counting SBC**: Either subtract SBC from FCFF OR use diluted shares that price it in — not both, and not neither.
-- **Stale beta**: yfinance beta may be 5-year or 3-year. For recent IPOs or post-restructuring businesses, compute fresh.
+- **Stale beta**: manual CSV/JSON market data beta may be 5-year or 3-year. For recent IPOs or post-restructuring businesses, compute fresh.
 - **Ignoring minority interest / preferred**: These are claims on EV ahead of common equity. Always subtract.
 - **Circular WACC**: WACC uses market cap → which is what we're trying to estimate. For IPOs or controversial names, iterate or use target capital structure.

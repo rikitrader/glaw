@@ -6,18 +6,14 @@ Reference values for cost-of-capital inputs. Prefer live values over these defau
 
 Use the 10-year sovereign yield of the company's reporting currency.
 
-| Market | Instrument | yfinance ticker | Typical range |
+| Market | Instrument | Source | Typical range |
 |---|---|---|---|
-| US | 10Y Treasury | `^TNX` (note: quoted in %, divide by 100) | 3.5-5.0% |
+| US | 10Y Treasury | Treasury/FRED/manual input | 3.5-5.0% |
 | UK | 10Y Gilt | `^TNX` does not cover; use FRED or manual | 3.0-4.5% |
 | Germany | 10Y Bund | Manual (ECB) | 2.0-3.5% |
 | Japan | 10Y JGB | Manual (BoJ) | 0.5-1.5% |
 
-**Live fetch:**
-```python
-import yfinance as yf
-rf = yf.Ticker("^TNX").fast_info.last_price / 100
-```
+**Live fetch:** provide a manually verified current 10Y yield as an input.
 
 **Default (when fetch fails):** `rf = 0.045` (4.5%). Flag as stale.
 
@@ -59,7 +55,7 @@ ERP_country = ERP_mature + CRP
 
 ## Levered Beta Defaults (by sector)
 
-Use when yfinance returns `None` or an implausible value (e.g., beta < 0 for a non-gold stock).
+Use when supplied market beta is missing or implausible (e.g., beta < 0 for a non-gold stock).
 
 | Sector | Default beta |
 |---|---|

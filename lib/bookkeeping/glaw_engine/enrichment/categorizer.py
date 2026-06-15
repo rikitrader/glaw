@@ -58,7 +58,7 @@ from collections.abc import Callable, Iterable
 from dataclasses import dataclass, field
 from typing import Any, Optional
 
-from pydantic import BaseModel, ConfigDict
+from .._compat.pydantic import BaseModel, ConfigDict
 
 from ..transaction_models import Transaction
 
@@ -346,14 +346,9 @@ class Categorizer:
     def _resolve_completion(self) -> CompletionFn:
         if self.completion_fn is not None:
             return self.completion_fn
-        try:  # pragma: no cover - optional dep
-            from litellm import completion
-        except ImportError as exc:  # pragma: no cover - optional dep
-            raise CategorizerError(
-                "litellm is required for the enrichment module. "
-                "Install with: pip install glaw_engine[enrichment]"
-            ) from exc
-        return completion  # type: ignore[no-any-return]  # pragma: no cover
+        raise CategorizerError(
+            "LLM enrichment is unavailable in absolute zero-third-party-package mode."
+        )
 
 
 # ---------------------------------------------------------------------------

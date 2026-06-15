@@ -26,8 +26,8 @@ from io import BytesIO
 from pathlib import Path
 from typing import Optional, Union
 
-import pandas as pd
-from lxml import etree
+from ._compat import pandas as pd
+from ._compat import etree
 
 from .base_parser import BankStatementParser
 from .input_validator import InputValidator, ValidationError
@@ -960,9 +960,9 @@ class CamtParser(BankStatementParser):
         transactions = self.get_transactions()
         stats = self.get_statement_stats()
 
-        # Write the dataframes to the Excel file using the openpyxl engine
+        # Write the dataframes to the Excel file using the stdlib OOXML engine
         # pylint: disable=E0110
-        with pd.ExcelWriter(filename, engine="openpyxl") as writer:
+        with pd.ExcelWriter(filename, engine="stdlib OOXML") as writer:
             balances.to_excel(
                 writer, sheet_name="Balances", index=False
             )

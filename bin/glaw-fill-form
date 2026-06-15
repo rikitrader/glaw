@@ -1,11 +1,7 @@
 #!/usr/bin/env bash
-# glaw-fill-form — fill an IRS fillable PDF (AcroForm) from a JSON field map.
-# Shared filing-seat helper: single source of truth is the credit-strategy filler;
-# run under the bookkeeping venv (has pypdf). Usage: glaw-fill-form <blank.pdf> <data.json> <out.pdf>
+# glaw-fill-form — zero-dependency PDF filler handoff.
 set -euo pipefail
-GLAW="$HOME/.claude/skills/glaw"
-VENV_PY="$GLAW/lib/bookkeeping/.venv/bin/python"
+GLAW="${GLAW:-$HOME/.claude/skills/glaw}"
 FILLER="$GLAW/seats/glaw-credit-strategy/bin/fill_form.py"
-[[ -x "$VENV_PY" ]] || { echo "ERROR: bookkeeping venv missing — run ./setup" >&2; exit 2; }
 [[ -f "$FILLER" ]] || { echo "ERROR: fill_form.py not found at $FILLER" >&2; exit 2; }
-exec "$VENV_PY" "$FILLER" "$@"
+exec python3 "$FILLER" "$@"

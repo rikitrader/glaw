@@ -49,9 +49,9 @@
 │                        FASTEST PATH TO A CASE                       │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                     │
-│   Step 1: Install                                                   │
+│   Step 1: Verify local source-first install                         │
 │   $ cd ~/.claude/skills/federal-trial-counsel/scripts               │
-│   $ pip3 install -e .                                               │
+│   $ python3 -m ftc_engine.cli doctor                                │
 │                                                                     │
 │   Step 2: Launch Wizard                                             │
 │   $ ftc new                                                         │
@@ -87,27 +87,19 @@ ftc analyze-docs my-case-001
 | Component | Minimum | Recommended |
 |-----------|---------|-------------|
 | Python | 3.10+ | 3.11+ |
-| pip | 21.0+ | Latest |
-| Node.js (TS engine only) | 18+ | 20+ |
+| Shell | POSIX-compatible | bash/zsh |
 
-### Install the Python CLI Engine
+### Use the Python CLI Engine
 
 ```bash
 cd ~/.claude/skills/federal-trial-counsel/scripts
-
-# Install in development mode (editable)
-pip3 install -e .
 
 # Verify installation
 ftc setup
 ftc info 1983_fourth_excessive_force
 ```
 
-### Install Dependencies Manually (if needed)
-
-```bash
-pip3 install python-docx PyPDF2
-```
+`ftc setup` configures local state only. It does not install packages.
 
 ### Verify Everything Works
 
@@ -122,13 +114,13 @@ python3 -m pytest -v --tb=short
 
 ```bash
 cd scripts/federal_pleading_engine
-npm install && npm run build
+# Source reference only in this bundled GLAW build.
+# No npm install or package build is required.
 ```
 
 ### Install CourtListener Module (Optional)
 
 ```bash
-# No npm install needed — uses native fetch (Node 18+)
 export COURTLISTENER_API_TOKEN="your-token"  # optional, for higher rate limits
 ```
 
@@ -246,7 +238,7 @@ At the start of both new and existing case flows, the wizard asks if you have do
 │ ftc districts│ List all 94 federal districts                        │
 │ ftc questions│ Generate verification questions                      │
 │ ftc calendar │ Generate filing calendar                             │
-│ ftc setup    │ Install dependencies and verify setup                │
+│ ftc setup    │ Configure local state; no packages are installed     │
 ├──────────────┴──────────────────────────────────────────────────────┤
 │ Usage: ftc <command> [arguments]                                     │
 │ Help:  ftc --help                                                    │
@@ -331,8 +323,8 @@ The Document Analyzer is a 5-layer intake pipeline that reads, classifies, and e
 
 | Extension | Reader | Library |
 |-----------|--------|---------|
-| `.pdf` | PyPDF2 page extraction | PyPDF2 |
-| `.docx` / `.doc` | Paragraph text extraction | python-docx |
+| `.pdf` | Local handoff message in zero-dependency mode | No bundled PDF package |
+| `.docx` / `.doc` | Paragraph text extraction | local DOCX shim |
 | `.txt` | Plain text UTF-8 read | stdlib |
 | `.md` | Plain text UTF-8 read | stdlib |
 
@@ -715,23 +707,23 @@ cli.py (entry point)
 **`ftc: command not found`**
 ```bash
 cd ~/.claude/skills/federal-trial-counsel/scripts
-pip3 install -e .
+python3 -m ftc_engine.cli doctor
 ```
 
 **`ModuleNotFoundError: No module named 'docx'`**
 ```bash
-pip3 install python-docx
+Use the bundled local DOCX shim from the GLAW repository.
 ```
 
-**`ModuleNotFoundError: No module named 'PyPDF2'`**
+**`ModuleNotFoundError` for an external package**
 ```bash
-pip3 install PyPDF2
+Run from the bundled GLAW checkout so local shims are on the Python path.
 ```
 
 **Tests failing after update**
 ```bash
 cd ~/.claude/skills/federal-trial-counsel/scripts
-pip3 install -e .
+python3 -m ftc_engine.cli setup
 python3 -m pytest -v --tb=short
 ```
 

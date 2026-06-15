@@ -16,12 +16,10 @@ GLAW="${GLAW_SKILL_DIR:-$HOME/.claude/skills/glaw}"
 GLAW_HOME="${GLAW_HOME:-$HOME/.glaw}"
 DOC="$GLAW/AI-CORP-ARCHITECTURE.md"
 PY_SYS="python3"
-PY_VENV="$GLAW_HOME/tools/flp-venv/bin/python3"
 
 yes_no(){ [ "$1" = 1 ] && echo "[✓]" || echo "[✗]"; }
-has_pkg(){ # has_pkg <module> — true if importable in system OR venv python
+has_pkg(){ # has_pkg <module> — true if importable by the local system python
   "$PY_SYS" -c "import $1" 2>/dev/null && return 0
-  [ -x "$PY_VENV" ] && "$PY_VENV" -c "import $1" 2>/dev/null && return 0
   return 1
 }
 

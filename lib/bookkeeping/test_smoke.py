@@ -5,8 +5,8 @@ Deterministic only — no LLM, no network, no OCR. Exercises the path that must
 never silently break: parse a CSV statement → dedupe → account-map → Golden-Rule
 balance verify → export hledger / beancount / json.
 
-Run with the engine venv:
-    lib/bookkeeping/.venv/bin/python lib/bookkeeping/test_smoke.py
+Run from the repository checkout:
+    python3 lib/bookkeeping/test_smoke.py
 Exit 0 = healthy.
 """
 from __future__ import annotations

@@ -102,17 +102,18 @@ This Claude Code skill transforms Claude into a senior federal trial attorney wi
 
 ```bash
 cd scripts
-pip install -e .
+python3 -m ftc_engine.cli doctor
+python3 -m ftc_engine.cli setup
 ftc doctor    # Verify installation
-ftc setup     # Auto-install all dependencies
+ftc setup     # Configure local state; no packages are installed
 ```
 
 ### TypeScript Pleading Engine (Optional)
 
 ```bash
 cd scripts/federal_pleading_engine
-npm install
-npm run build
+# Source reference only in this bundled GLAW build.
+# No npm install or package build is required.
 ```
 
 ## Features
@@ -164,7 +165,7 @@ Analyze intake documents automatically:
     ├─────────────────────────────────────────────────────────────┤
     │                                                             │
     │   Layer 1: TEXT EXTRACTION                                  │
-    │   PDF (PyPDF2) | DOCX (python-docx) | TXT | MD             │
+    │   PDF (zero-dependency text-only handling) | DOCX (local DOCX shim) | TXT | MD             │
     │                         |                                   │
     │   Layer 2: CLASSIFICATION                                   │
     │   18 legal document categories + keyword scoring            │
@@ -295,7 +296,7 @@ ftc monitor --case case.json         # Rule 11 duty monitor
 ftc calendar --case case.json        # Generate case filing calendar
 
 # System
-ftc setup                            # Auto-install dependencies
+ftc setup                            # Configure local state; no packages are installed
 ftc doctor                           # Diagnostic health check
 ```
 
@@ -390,8 +391,6 @@ federal-trial-counsel/
 ├── USAGE.md                          # Detailed usage guide (3000+ words)
 │
 ├── scripts/
-│   ├── pyproject.toml                # Python package config
-│   │
 │   ├── ftc_engine/                   # Python CLI engine (19 modules, 20 commands)
 │   │   ├── __init__.py               # Package init
 │   │   ├── __main__.py               # python -m ftc_engine entry point
@@ -520,7 +519,7 @@ The skill activates automatically when detecting:
 
 ```bash
 cd scripts
-pip install pytest pytest-cov
+zero-dependency mode: do not install packages
 pytest                            # 459 tests
 pytest --cov --cov-report=term    # with coverage
 pytest -v --tb=short              # verbose with short tracebacks
@@ -534,8 +533,8 @@ pytest -v --tb=short              # verbose with short tracebacks
 | TypeScript Engine | Node.js 18+, TypeScript |
 | CourtListener Module | Node.js 18+ (native fetch) |
 | Tests | pytest, pytest-cov |
-| PDF Analysis | PyPDF2 >= 3.0.0 |
-| DOCX Export | python-docx >= 1.0.0 |
+| PDF Analysis | zero-dependency text-only handling >= 3.0.0 |
+| DOCX Export | local DOCX shim >= 1.0.0 |
 
 ## Legal Disclaimer
 

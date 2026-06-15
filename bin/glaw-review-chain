@@ -2,10 +2,10 @@
 """glaw-review-chain — one-shot inbound-contract pipeline.
 
 Given a contract (.docx) + ONE findings file (the glaw-redline shape), run the whole
-chain and drop everything in ONE Google Drive folder:
+chain and drop everything in the local matter folder:
   contract-review (you supply REVIEW.md) -> glaw-contract-score (scorecard, derived
   from the findings) -> glaw-redline-docx (real Word tracked changes + PDFs) ->
-  glaw-publish (review + scorecard as PDF/Doc/Slides) -> all in one Drive folder.
+  glaw-publish (review + scorecard as local HTML index).
 
 Findings file = the glaw-redline array:
   [{ "id","quote","severity"(critical|important|acceptable),"issue","suggestion" }]
@@ -65,43 +65,13 @@ def main():
     print("  [3/4] " + ("tracked changes generated" if "Applied:" in r.stdout or os.path.exists(base + ".tracked.docx")
                          else "redline step: " + (r.stdout + r.stderr)[:120]))
 
-    if "--local-only" in sys.argv:
-        print(f"  local-only: {M}"); return
-
-    # 4) publish review+scorecard, then add the tracked-changes files to the SAME folder
+    # 4) publish review+scorecard locally
     folder = arg("--folder", f"GLAW — {slug}")
-    pub = subprocess.run([f"{BIN}/glaw-publish", slug, "--folder", folder], capture_output=True, text=True)
-    sys.stdout.write("  [4/4] " + "\n".join(l for l in pub.stdout.splitlines() if "DRIVE FOLDER" in l) + "\n")
-    import re
-    m = re.search(r"folders/([A-Za-z0-9_-]+)", pub.stdout)
-    if not m:
-        print("  publish folder not found:", pub.stdout[-200:]); return
-    fid = m.group(1)
-    _upload_extras(M, base, fid)
-    print(f"  DONE → https://drive.google.com/drive/folders/{fid}")
-
-def _upload_extras(M, base, fid):
-    from google.oauth2.credentials import Credentials
-    from google.auth.transport.requests import Request
-    from googleapiclient.discovery import build
-    from googleapiclient.http import MediaFileUpload
-    c = Credentials.from_authorized_user_file(os.path.expanduser("~/.gcp/token.json"),
-                                              ["https://www.googleapis.com/auth/drive"])
-    if not c.valid: c.refresh(Request())
-    svc = build("drive", "v3", credentials=c)
-    DOCX = "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-    for path, src, tgt, name in [
-        (base + ".tracked.docx", DOCX, None, "TRACKED CHANGES (open in Word).docx"),
-        (base + ".tracked.docx", DOCX, "application/vnd.google-apps.document", "Tracked (Google Doc)"),
-        (base + ".redline.pdf", "application/pdf", None, "Full redline.pdf"),
-        (base + ".summary.pdf", "application/pdf", None, "Schedule of changes.pdf"),
-        (base + ".memo.pdf", "application/pdf", None, "Internal memo.pdf")]:
-        if not os.path.exists(path): continue
-        body = {"name": name, "parents": [fid]}
-        if tgt: body["mimeType"] = tgt
-        svc.files().create(body=body, media_body=MediaFileUpload(path, mimetype=src, resumable=False),
-                           fields="id").execute()
-        print("       + " + name)
+    pub = subprocess.run([f"{BIN}/glaw-publish", slug, "--folder", folder, "--local-only"], capture_output=True, text=True)
+    sys.stdout.write("  [4/4] local publish complete\n")
+    if pub.stdout:
+        sys.stdout.write(pub.stdout)
+    print(f"  DONE → {M}")
 
 if __name__ == "__main__":
     main()

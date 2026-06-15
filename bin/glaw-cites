@@ -1,12 +1,9 @@
 #!/usr/bin/env bash
-# glaw-cites — deterministic legal-citation EXTRACTOR (Free Law Project eyecite).
-# Prefers the bookkeeping venv (Python 3.12, where eyecite is installed — the local Homebrew 3.14
-# system python is PEP-668 externally-managed and cannot run eyecite/lxml). Falls back to system
-# python3 when the venv is absent (e.g. CI, which pip-installs eyecite into system python).
+# glaw-cites — deterministic zero-dependency legal-citation extractor.
 # Logic in lib/bookkeeping/cites.py. Usage: glaw-cites <file|-> [--json]   (stdin via -)
 set -euo pipefail
-GLAW_LIB="${GLAW:-$HOME/.claude/skills/glaw}/lib/bookkeeping"
-[ -d "$GLAW_LIB" ] || GLAW_LIB="$(cd "$(dirname "${BASH_SOURCE[0]}")/../lib/bookkeeping" && pwd)"
-VENV_PY="$GLAW_LIB/.venv/bin/python"
-if [ -x "$VENV_PY" ]; then PY="$VENV_PY"; else PY="$(command -v python3)"; fi
+SCRIPT_LIB="$(cd "$(dirname "${BASH_SOURCE[0]}")/../lib/bookkeeping" && pwd)"
+GLAW_LIB="${GLAW:+$GLAW/lib/bookkeeping}"
+[ -n "${GLAW_LIB:-}" ] && [ -d "$GLAW_LIB" ] || GLAW_LIB="$SCRIPT_LIB"
+PY="$(command -v python3)"
 exec "$PY" "$GLAW_LIB/cites.py" "$@"

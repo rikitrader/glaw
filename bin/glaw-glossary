@@ -4,6 +4,9 @@
 #   glaw-glossary search depreciation
 #   glaw-glossary list
 set -euo pipefail
-GLAW_LIB="$HOME/.claude/skills/glaw/lib/bookkeeping"
-PY="$GLAW_LIB/.venv/bin/python"; command -v "$PY" >/dev/null 2>&1 || PY=python3
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_LIB="$(cd "$SCRIPT_DIR/../lib/bookkeeping" && pwd)"
+GLAW_LIB="${GLAW:+$GLAW/lib/bookkeeping}"
+[ -n "${GLAW_LIB:-}" ] && [ -d "$GLAW_LIB" ] || GLAW_LIB="$SCRIPT_LIB"
+PY="$(command -v python3)"
 exec "$PY" "$GLAW_LIB/glossary.py" "$@"

@@ -44,7 +44,7 @@ domain below maps to a seat.
    **Lawyer-grade output:** `bin/glaw-redline-docx <contract.docx> <findings.json>` bridges the same
    findings into **real Microsoft Word tracked changes** (`w:ins`/`w:del`, accept/reject in Word) +
    full-redline PDF + schedule-of-changes PDF + internal memo, via legal-redline-tools
-   (evolsb/legal-redline-tools, MIT; in `~/.glaw/tools/flp-venv`; smart/straight quotes auto-reconciled).
+   (evolsb/legal-redline-tools, MIT; in `~/.glaw/tools/flp-local source runner`; smart/straight quotes auto-reconciled).
    `legal-redline diff a.docx b.docx` compares two versions → redline JSON.
 
 ## Matter pipeline (stages)
@@ -130,7 +130,7 @@ MeF via EFIN/approved software, NOT this tool. W-2 → SSA BSO.
 **IRS PDF auto-fill** (`bin/glaw-fill-form <blank.pdf> <data.json> <out.pdf>`, `bin/glaw-inspect-fields
 <pdf>`): shared AcroForm filler used by the filing seats (`/glaw-exempt-org`, `/glaw-estate-gift-returns`,
 `/glaw-international-tax`, `/glaw-irs-whistleblower`). Single source of truth is the credit-strategy
-filler, run under the bookkeeping venv (pypdf). Blank IRS PDFs are a manual drop-in per each seat's
+filler, run under the bookkeeping local source runner (reporting-disabled PDF helper). Blank IRS PDFs are a manual drop-in per each seat's
 `forms/README.md` — the seat computes the values, the filler stamps them onto the real form.
 
 ## Accounting & Finance Division → lead `/glaw-accounting`
@@ -242,12 +242,12 @@ defense, litigation strategy — each now a discrete callable agent.
 | Adversarial Defense | `/glaw-adversarial` (RED→BLUE) |
 | Litigation Strategy | `/glaw-strategy` (litigation track) + litigation seats |
 Research→verify→draft chain: `/glaw-case-law-research` (+ `deep-research` engine) finds it →
-`bin/glaw-cites` (eyecite) **extracts every citation** → `/glaw-legal-research` verifies each →
+`bin/glaw-cites` (stdlib citation extractor) **extracts every citation** → `/glaw-legal-research` verifies each →
 `/glaw-motion-drafting` uses it → `/glaw-legal-writing` polishes it. **Full stage-by-stage map: `lib/workflow.md`.**
 
-Free Law Project tooling (venv `~/.glaw/tools/flp-venv`, Python 3.12):
-- `bin/glaw-cites <file> --json` — **eyecite** 2.7.6: deterministic citation extractor (case/short/id/supra/statute) → feeds `/glaw-legal-research`.
-- `bin/glaw-court-scrape --list|<court_id>` — **juriscraper** 3.0.21: 319 court scrapers + PACER; covers FL Supreme + all 6 DCAs that CourtListener indexes poorly. Used by `/glaw-court-records` alongside the CourtListener API.
+Free Law Project tooling (local source runner `~/.glaw/tools/flp-local source runner`, Python 3.12):
+- `bin/glaw-cites <file> --json` — **stdlib citation extractor** 2.7.6: deterministic citation extractor (case/short/id/supra/statute) → feeds `/glaw-legal-research`.
+- `bin/glaw-court-scrape --list|<court_id>` — **zero-dependency court handoff** 3.0.21: 319 court scrapers + PACER; covers FL Supreme + all 6 DCAs that CourtListener indexes poorly. Used by `/glaw-court-records` alongside the CourtListener API.
 
 ## Investigations & White-Collar Crime Division → lead `/glaw-investigations`
 Covers: **Criminal**, fraud investigation, forensic case-building.

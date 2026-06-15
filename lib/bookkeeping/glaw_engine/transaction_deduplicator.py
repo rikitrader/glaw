@@ -24,8 +24,8 @@ from dataclasses import dataclass
 from datetime import date
 from difflib import SequenceMatcher
 
-import pandas as pd
-from pydantic import BaseModel, ConfigDict, Field
+from ._compat import pandas as pd
+from ._compat.pydantic import BaseModel, ConfigDict, Field
 
 from .transaction_models import Transaction
 

@@ -28,8 +28,8 @@ litigation (`/glaw-strategy` → `/glaw-draft`/`/glaw-motion-drafting` → `/gla
 
 ## Bureau tooling (already built — the agents use these)
 - Ingest any evidence: `bin/glaw-doc-extract` (Tika/opendataloader + OCR + metadata)
-- Court records: `bin/glaw-court-scrape` (juriscraper) + `/glaw-court-records` (CourtListener)
-- Citations: `bin/glaw-cites` (eyecite)
+- Court records: `bin/glaw-court-scrape` (zero-dependency court handoff) + `/glaw-court-records` (CourtListener)
+- Citations: `bin/glaw-cites` (stdlib citation extractor)
 - Exempt-org/foundation diligence: `bin/glaw-exempt-org`
 - Chronology: `/glaw-evidence-timeline`
 - Competency/score: `bin/glaw-bureau-score`

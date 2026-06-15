@@ -7,7 +7,7 @@ def main():
     try:
         import docx  # noqa
     except ImportError:
-        print("SKIP: python-docx not available"); return 0
+        print("SKIP: local DOCX shim not available"); return 0
     sys.path.insert(0, str(HERE))
     import federal_docx, federal_format_check
     d = tempfile.mkdtemp(); out = os.path.join(d, "f.docx")

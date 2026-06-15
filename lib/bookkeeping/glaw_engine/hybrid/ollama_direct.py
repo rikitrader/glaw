@@ -35,11 +35,9 @@ the extractor uses this helper automatically. Users do not need to
 opt in.
 
 Why this is in the library and not just a documentation snippet:
-the workaround is small, well-bounded, and adds no new optional
-dependencies (``httpx`` is already a transitive dep of LiteLLM in
-the ``[hybrid]`` extra). Shipping it as a built-in turns the only
-remaining ⚠️ in the cross-platform matrix into a ✅ for every
-local-Ollama user.
+the workaround is small, well-bounded, and uses Python's standard
+library HTTP stack. Shipping it as a built-in turns the remaining
+local-Ollama warning in the cross-platform matrix into an operator-owned path.
 """
 
 from __future__ import annotations
@@ -93,7 +91,7 @@ def ollama_direct_completion(**kwargs: Any) -> dict[str, Any]:
     except ImportError as exc:  # pragma: no cover - optional dep
         raise OllamaDirectError(
             "httpx is required for the direct Ollama bridge. "
-            "Install with: pip install glaw_engine[hybrid]"
+            "Network LLM calls are unavailable in absolute zero-third-party-package mode."
         ) from exc
 
     model = kwargs.get("model", "")

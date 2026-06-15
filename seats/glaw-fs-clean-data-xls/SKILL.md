@@ -10,7 +10,7 @@ Clean messy data in the active sheet or a specified range.
 ## Environment
 
 - **If running inside Excel (Office Add-in / Office JS):** Use Office JS directly (`Excel.run(async (context) => {...})`). Read via `range.values`, write helper-column formulas via `range.formulas = [["=TRIM(A2)"]]`. The in-place vs helper-column decision still applies.
-- **If operating on a standalone .xlsx file:** Use Python/openpyxl.
+- **If operating on a standalone .xlsx file:** Use Python/Office-native or stdlib OOXML.
 
 ## Workflow
 

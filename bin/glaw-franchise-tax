@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # glaw-franchise-tax
 set -euo pipefail
-GLAW_LIB="$HOME/.claude/skills/glaw/lib/bookkeeping"
-VENV_PY="$GLAW_LIB/.venv/bin/python"
-[[ -x "$VENV_PY" ]] || { echo "ERROR: bookkeeping venv missing — run ./setup" >&2; exit 2; }
-exec "$VENV_PY" "$GLAW_LIB/franchise_tax.py" "$@"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_LIB="$(cd "$SCRIPT_DIR/../lib/bookkeeping" && pwd)"
+GLAW_LIB="${GLAW:+$GLAW/lib/bookkeeping}"
+[ -n "${GLAW_LIB:-}" ] && [ -d "$GLAW_LIB" ] || GLAW_LIB="$SCRIPT_LIB"
+PY="$(command -v python3)"
+exec "$PY" "$GLAW_LIB/franchise_tax.py" "$@"

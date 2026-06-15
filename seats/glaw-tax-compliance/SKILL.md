@@ -61,7 +61,7 @@ already be sitting in attached documents. Detect what's available before you ans
 | **Heavy reconstruction** | Are raw bank/credit-card statements involved and is the `glaw-financial-forensics` skill available? | Hand off statement → P&L/Schedule C reconstruction to `glaw-financial-forensics`, then return here to file + seek relief. | Reconstruct manually (Step 3). |
 | **Document output** | Did the user ask for a filledletter/packet, and are `glaw-make-pdf` / `glaw-docx` skills available? | Generate the deliverable in that format from `references/letter-templates.md`. | Deliver as inline markdown. |
 | **Structured intake** | Is `AskUserQuestion` available (interactive session)? | Batch the **categorical** intake (authority, filer type, IRS-contact status, ability to pay) into **one** `AskUserQuestion` call — see `references/intake-questions.md`. | Ask conversationally in prose (the 1b list). |
-| **Packet tooling** | `python3 -c "import pypdf, reportlab"` + `curl`? | Build the **filing packet** in Step 8 — download forms, auto-fill simple ones, assemble a dossier PDF. | Give download URLs + filled letters + a line-by-line fill guide instead. |
+| **Packet tooling** | `python3 -c "import reporting-disabled PDF helper, text checklist renderer"` + `curl`? | Build the **filing packet** in Step 8 — download forms, auto-fill simple ones, assemble a dossier PDF. | Give download URLs + filled letters + a line-by-line fill guide instead. |
 
 > **Decision tree:** live-data → verify numbers first; documents → parse before asking; statements
 > + forensics skill → delegate the books; otherwise → proceed conversationally with 1c defaults.

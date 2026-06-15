@@ -1,59 +1,60 @@
 #!/usr/bin/env python3
-"""glaw-court-scrape — pull opinions/dockets straight from court websites
-(Free Law Project juriscraper, 319 court scrapers + PACER). Complements
-/glaw-court-records' CourtListener API: juriscraper hits the SOURCE court site,
-covering many state courts CourtListener indexes slowly or not at all.
+"""glaw-court-scrape — zero-dependency court-source helper.
 
 Usage:
-  glaw-court-scrape --list [filter]      list available court scraper ids (offline)
-  glaw-court-scrape <court_id>           run that scraper LIVE (network) and print
-                                         case names / dates / download URLs as JSON
+  glaw-court-scrape --list [filter]      list bundled court ids
+  glaw-court-scrape <court_id>           print a CourtListener/source-court handoff
 
-  <court_id> = dotted path under juriscraper.opinions, e.g.
+  <court_id> examples:
                united_states.federal_appellate.ca11
                united_states.state.fla
-NOTE: running a scraper makes a live request to the court's website. Respect their
-terms and rate limits. For PACER (paid) use juriscraper.pacer with your creds.
-"""
-import sys, os, json, glob, importlib
-try:
-    import juriscraper
-except ModuleNotFoundError:
-    sys.exit("ERROR: glaw-court-scrape requires 'juriscraper' — install it: pip install juriscraper")
 
-BASE = os.path.dirname(juriscraper.__file__)
-OPDIR = os.path.join(BASE, "opinions")
+GLAW runs in absolute zero-third-party-package mode. Live source scraping through
+zero-dependency court handoff is not installed or invoked. Use /glaw-court-records for CourtListener
+API work, or manually fetch the source-court page listed here.
+"""
+import sys, json
+
+COURTS = {
+    "united_states.federal_appellate.ca11": {
+        "name": "U.S. Court of Appeals, Eleventh Circuit",
+        "courtlistener": "ca11",
+        "source": "https://www.ca11.uscourts.gov/opinions",
+    },
+    "united_states.federal_district.flmd": {
+        "name": "U.S. District Court, Middle District of Florida",
+        "courtlistener": "flmd",
+        "source": "https://www.flmd.uscourts.gov/opinions",
+    },
+    "united_states.state.fla": {
+        "name": "Florida Supreme Court",
+        "courtlistener": "fla",
+        "source": "https://supremecourt.flcourts.gov/Opinions",
+    },
+}
 
 def list_courts(flt=None):
-    out = []
-    for f in glob.glob(os.path.join(OPDIR, "**", "*.py"), recursive=True):
-        if "__init__" in f or "__pycache__" in f or "template" in f:
-            continue
-        rel = os.path.relpath(f, OPDIR)[:-3].replace(os.sep, ".")
-        if not flt or flt.lower() in rel.lower():
-            out.append(rel)
-    return sorted(out)
+    flt = (flt or "").lower()
+    return sorted(k for k, v in COURTS.items() if not flt or flt in k.lower() or flt in v["name"].lower())
 
 def run_court(cid):
-    mod = importlib.import_module(f"juriscraper.opinions.{cid}")
-    site = mod.Site()
-    site.parse()
-    n = len(site.case_names)
-    cases = []
-    for i in range(n):
-        cases.append({
-            "case_name": site.case_names[i],
-            "date": str(site.case_dates[i]) if site.case_dates else None,
-            "url": site.download_urls[i] if site.download_urls else None,
-            "citation": (site.citations[i] if getattr(site, "citations", None) else None),
-        })
-    return {"court": cid, "count": n, "cases": cases}
+    if cid not in COURTS:
+        return {"court": cid, "error": "unknown bundled court id", "known": sorted(COURTS)}
+    meta = COURTS[cid]
+    return {
+        "court": cid,
+        "name": meta["name"],
+        "courtlistener_court_id": meta["courtlistener"],
+        "source_url": meta["source"],
+        "live_scraping": "disabled: zero third-party package mode",
+        "next_step": f"Use /glaw-court-records with CourtListener court id {meta['courtlistener']}, or manually fetch the source_url.",
+    }
 
 if __name__ == "__main__":
     if len(sys.argv) < 2 or sys.argv[1] == "--list":
         flt = sys.argv[2] if len(sys.argv) > 2 else None
         ids = list_courts(flt)
-        print(f"{len(ids)} court scrapers" + (f" matching {flt!r}" if flt else "") + ":")
+        print(f"{len(ids)} bundled court ids" + (f" matching {flt!r}" if flt else "") + ":")
         for i in ids:
             print("  " + i)
     else:

@@ -27,7 +27,7 @@ Commands:
   open       - Open/resume an existing case
   cases      - List all saved cases
   analyze-docs - Analyze intake documents for a case
-  setup      - Auto-install dependencies and configure environment
+  setup      - Configure local state; no packages are installed
   doctor     - Diagnostic health check
 
 Flags:
@@ -185,7 +185,7 @@ def main():
     p.add_argument("case_number", help="Case number to analyze")
 
     # setup
-    sub.add_parser("setup", help="Auto-install dependencies and configure")
+    sub.add_parser("setup", help="Configure local state; no packages are installed")
 
     # doctor
     sub.add_parser("doctor", help="Diagnostic health check")

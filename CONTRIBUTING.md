@@ -34,10 +34,11 @@ Add the seat to `lib/firm-roster.md`, run `bin/glaw-setup` to deploy it, and
 
 ## Adding a tool (a CLI)
 
-Drop an executable in `bin/`. Python tools should use `#!/usr/bin/env python3`, declare
-deps in `requirements.txt`, and degrade gracefully when an optional system dependency
-(pandoc, tesseract, Tika…) is missing. Add a one-line smoke entry to the `TOOLS` array
-in `bin/glaw-doctor`.
+Drop an executable in `bin/`. Python tools should use `#!/usr/bin/env python3` and rely on
+the standard library plus in-repo modules only. Do not add `requirements.txt`, `pyproject.toml`,
+package manifests, or runtime package installation. If a workflow needs an unavailable binary
+or live API, return a clear local handoff message. Add a one-line smoke entry to the `TOOLS`
+array in `bin/glaw-doctor`.
 
 ## PR checklist
 

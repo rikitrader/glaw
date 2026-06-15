@@ -26,7 +26,7 @@ from concurrent.futures import (
 from dataclasses import dataclass, field
 from pathlib import Path
 
-import pandas as pd
+from ._compat import pandas as pd
 
 logger = logging.getLogger(__name__)
 

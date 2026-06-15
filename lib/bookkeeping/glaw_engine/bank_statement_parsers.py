@@ -24,8 +24,8 @@ import os
 from pathlib import Path
 from typing import Any, Union
 
-import pandas as pd
-from lxml.etree import _Element
+from ._compat import pandas as pd
+from ._compat.etree import _Element
 
 # Import parsers from standalone modules
 from .camt_parser import CamtParser

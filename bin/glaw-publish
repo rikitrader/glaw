@@ -1,137 +1,73 @@
 #!/usr/bin/env python3
-"""glaw-publish — the firm's standing output pipeline.
+"""glaw-publish — zero-dependency local publishing.
 
-For every deliverable (.md) in a matter, produce THREE formats in the GLAW house
-style and put them in ONE Google Drive folder, with an index:
-  • PDF          (styled via lib/house-style.css: Helvetica, justified 12pt/1.5,
-                  centered ALL-CAPS title, blue directive callouts, gray dividers, 1in margins)
-  • Google Doc   (from DOCX, converted on upload)
-  • Google Slides (from PPTX, converted on upload)
-Local copies land in <matter>/_published/. An index.md (+ Google Doc) links everything.
+Collects matter markdown deliverables and writes local HTML copies plus an index
+under <matter>/_published/. No Google Drive, pandoc, weasyprint, or client
+libraries are used.
 
 Usage:
-  glaw-publish <matter-slug-or-dir> [--folder "<Drive folder name>"] [--local-only]
+  glaw-publish <matter-slug-or-dir> [--folder ignored] [--local-only]
 """
-import sys, os, re, subprocess, tempfile, glob, datetime
+import datetime
+import glob
+import html
+import os
+import re
+import sys
 
-GLAW = os.path.expanduser("~/.claude/skills/glaw")
-CSS = f"{GLAW}/lib/house-style.css"
-WEASY = os.path.expanduser("~/Library/Python/3.9/bin/weasyprint")
-BREW_LIB = "/opt/homebrew/lib"
-TOKEN = os.path.expanduser("~/.gcp/token.json")
-MT = {
-    "pdf": "application/pdf",
-    "docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-    "pptx": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
-    "gdoc": "application/vnd.google-apps.document",
-    "gslides": "application/vnd.google-apps.presentation",
-    "folder": "application/vnd.google-apps.folder",
-}
 
-def preprocess(md):
-    # bold [bracketed placeholders] that are NOT markdown links [text](url)
-    return re.sub(r'(?<!\*)(?<!\!)\[([^\]\n]+)\](?!\()', r'**[\1]**', md)
+def md_to_html(text, title):
+    out = [f"<!doctype html><meta charset='utf-8'><title>{html.escape(title)}</title>",
+           "<style>body{font-family:Helvetica,Arial,sans-serif;max-width:820px;margin:40px auto;line-height:1.5}"
+           "h1,h2{text-align:center;text-transform:uppercase}blockquote{border-left:4px solid #999;padding-left:1em;color:#444}"
+           "table{border-collapse:collapse;width:100%}td,th{border:1px solid #aaa;padding:6px}</style>"]
+    for line in text.splitlines():
+        if line.startswith("# "):
+            out.append(f"<h1>{html.escape(line[2:].strip())}</h1>")
+        elif line.startswith("## "):
+            out.append(f"<h2>{html.escape(line[3:].strip())}</h2>")
+        elif line.startswith(">"):
+            out.append(f"<blockquote>{html.escape(line[1:].strip())}</blockquote>")
+        elif line.strip():
+            out.append(f"<p>{html.escape(line)}</p>")
+    return "\n".join(out) + "\n"
 
-def render(md_path, stem, outdir):
-    """-> dict of {pdf,docx,pptx: path} (each best-effort)."""
-    out = {}
-    src = preprocess(open(md_path, encoding="utf-8", errors="ignore").read())
-    with tempfile.NamedTemporaryFile("w", suffix=".md", delete=False) as t:
-        t.write(src); tmp = t.name
-    # PDF (pandoc -> html w/ house CSS -> weasyprint)
-    try:
-        html = tmp + ".html"
-        subprocess.run(["pandoc", tmp, "-t", "html5", "-s", "--css", CSS, "--embed-resources",
-                        "--metadata", f"title={stem}", "-o", html], check=True, capture_output=True)
-        pdf = os.path.join(outdir, stem + ".pdf")
-        subprocess.run([WEASY, html, pdf], check=True, capture_output=True,
-                       env=dict(os.environ, DYLD_FALLBACK_LIBRARY_PATH=BREW_LIB))
-        out["pdf"] = pdf; os.unlink(html)
-    except Exception as e:
-        print(f"    pdf failed: {str(e)[:80]}")
-    # DOCX
-    try:
-        dx = os.path.join(outdir, stem + ".docx")
-        subprocess.run(["pandoc", tmp, "-o", dx], check=True, capture_output=True)
-        out["docx"] = dx
-    except Exception as e:
-        print(f"    docx failed: {str(e)[:80]}")
-    # PPTX (slides; ## starts a slide)
-    try:
-        px = os.path.join(outdir, stem + ".pptx")
-        subprocess.run(["pandoc", tmp, "-o", px, "--slide-level=2"], check=True, capture_output=True)
-        out["pptx"] = px
-    except Exception as e:
-        print(f"    pptx failed: {str(e)[:80]}")
-    os.unlink(tmp)
-    return out
-
-def drive():
-    from google.oauth2.credentials import Credentials
-    from google.auth.transport.requests import Request
-    from googleapiclient.discovery import build
-    c = Credentials.from_authorized_user_file(TOKEN, ["https://www.googleapis.com/auth/drive"])
-    if not c.valid: c.refresh(Request())
-    return build("drive", "v3", credentials=c)
-
-def up(svc, path, parent, src_mt, target_mt=None, name=None):
-    from googleapiclient.http import MediaFileUpload
-    body = {"name": name or os.path.basename(path), "parents": [parent]}
-    if target_mt: body["mimeType"] = target_mt
-    media = MediaFileUpload(path, mimetype=src_mt, resumable=False)
-    return svc.files().create(body=body, media_body=media, fields="id,webViewLink").execute()["webViewLink"]
 
 def main():
     a = sys.argv[1:]
-    if not a: print(__doc__); sys.exit(1)
+    if not a:
+        print(__doc__)
+        return 1
     target = a[0]
-    local_only = "--local-only" in a
     matter = target if os.path.isdir(target) else os.path.expanduser(f"~/.glaw/matters/{target}")
-    if not os.path.isdir(matter): print(f"not found: {matter}"); sys.exit(1)
+    if not os.path.isdir(matter):
+        print(f"not found: {matter}")
+        return 1
     name = os.path.basename(matter.rstrip("/"))
-    folder_name = a[a.index("--folder") + 1] if "--folder" in a else f"GLAW — {name}"
-    pub = os.path.join(matter, "_published"); os.makedirs(pub, exist_ok=True)
+    pub = os.path.join(matter, "_published")
+    os.makedirs(pub, exist_ok=True)
+    skip_dirs = ("/_published/", "/_extracted/", "/evidence/", "-vault/")
+    skip_names = {"matter.md", "parties.md", "index.md"}
+    docs = [f for f in sorted(glob.glob(os.path.join(matter, "**", "*.md"), recursive=True))
+            if not any(s in f for s in skip_dirs) and os.path.basename(f) not in skip_names]
+    if not docs:
+        print("no .md deliverables found")
+        return 0
+    index = [f"# GLAW DELIVERABLES — {name}", "",
+             f"_Published {datetime.date.today().isoformat()} in zero-dependency local mode._", "",
+             "| Document | HTML | Source |", "|---|---|---|"]
+    for src in docs:
+        stem = re.sub(r"[^A-Za-z0-9._-]+", "-", os.path.splitext(os.path.basename(src))[0])
+        html_path = os.path.join(pub, stem + ".html")
+        text = open(src, encoding="utf-8", errors="ignore").read()
+        open(html_path, "w", encoding="utf-8").write(md_to_html(text, stem))
+        index.append(f"| {os.path.basename(src)} | [{stem}.html]({stem}.html) | {src} |")
+        print(f"  wrote {html_path}")
+    idx = os.path.join(pub, "index.md")
+    open(idx, "w", encoding="utf-8").write("\n".join(index) + "\n")
+    print(f"INDEX: {idx}")
+    return 0
 
-    # collect GLAW deliverables only — skip ingested evidence, extractions, state files, vault
-    SKIP_DIRS = ("/_published/", "/_extracted/", "/evidence/", "-vault/")
-    SKIP_NAMES = {"matter.md", "parties.md", "index.md"}
-    docs = []
-    for f in sorted(glob.glob(os.path.join(matter, "**", "*.md"), recursive=True)):
-        if any(s in f for s in SKIP_DIRS) or os.path.basename(f) in SKIP_NAMES:
-            continue
-        docs.append(f)
-    if not docs: print("no .md deliverables found"); sys.exit(0)
-    print(f"publishing {len(docs)} deliverable(s) from {name}")
-
-    rendered = []
-    for f in docs:
-        stem = re.sub(r'[^A-Za-z0-9._-]+', '-', os.path.splitext(os.path.basename(f))[0])
-        print(f"  • {os.path.basename(f)}")
-        rendered.append((f, stem, render(f, stem, pub)))
-
-    if local_only:
-        print(f"local-only: {pub}")
-        return
-
-    svc = drive()
-    fid = svc.files().create(body={"name": folder_name, "mimeType": MT["folder"]},
-                             fields="id,webViewLink").execute()
-    print(f"DRIVE FOLDER: {folder_name}  {fid['webViewLink']}")
-    index = [f"# GLAW DELIVERABLES — {name}", f"", f"_Published {datetime.date.isoformat(datetime.date.today())}. House style: Helvetica, justified 12pt/1.5._", "",
-             "| Document | PDF | Google Doc | Google Slides |", "|---|---|---|---|"]
-    for src, stem, out in rendered:
-        links = {"pdf": "", "gdoc": "", "gslides": ""}
-        if out.get("pdf"): links["pdf"] = up(svc, out["pdf"], fid["id"], MT["pdf"], name=stem + ".pdf")
-        if out.get("docx"): links["gdoc"] = up(svc, out["docx"], fid["id"], MT["docx"], MT["gdoc"], name=stem)
-        if out.get("pptx"): links["gslides"] = up(svc, out["pptx"], fid["id"], MT["pptx"], MT["gslides"], name=stem + " (slides)")
-        index.append(f"| {os.path.basename(src)} | [PDF]({links['pdf']}) | [Doc]({links['gdoc']}) | [Slides]({links['gslides']}) |")
-        print(f"    uploaded: PDF + Doc + Slides")
-    # index.md local + as Google Doc
-    idx_md = os.path.join(pub, "index.md"); open(idx_md, "w").write("\n".join(index))
-    idx_out = render(idx_md, "00-INDEX", pub)
-    if idx_out.get("docx"): up(svc, idx_out["docx"], fid["id"], MT["docx"], MT["gdoc"], name="00 — INDEX")
-    print(f"INDEX: {idx_md} (+ Google Doc in folder)")
-    print("DONE.")
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())

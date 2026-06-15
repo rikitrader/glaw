@@ -23,14 +23,14 @@ extraction path:
   the matching parser handles the file end-to-end. Free, fastest,
   byte-identical reproducible.
 * **Path B — Text-LLM.** When the file is a digital PDF and
-  :mod:`pypdf` extracts at least :data:`LOW_TEXT_DENSITY_THRESHOLD`
+  :mod:`manual PDF conversion` extracts at least :data:`LOW_TEXT_DENSITY_THRESHOLD`
   characters of text, the orchestrator calls
   :class:`~.llm_extractor.LLMExtractor` (LiteLLM-backed, default
   ``ollama/llama3``) to parse the raw text into structured rows.
-* **Path C — Vision-LLM.** When pypdf yields below-threshold text
+* **Path C — Vision-LLM.** When manual PDF conversion yields below-threshold text
   (i.e. the PDF is a scan, photocopy, or fax), the orchestrator
   auto-falls through to :class:`~.vision.VisionExtractor`, which
-  renders pages with ``pypdfium2`` and sends base64 PNGs to a
+  renders pages with ``disabled PDF renderer`` and sends base64 PNGs to a
   multimodal model. Vision is **opt-in only** via
   ``BSP_HYBRID_VISION_MODEL`` — there is no default model.
 
@@ -50,7 +50,7 @@ from decimal import Decimal, DecimalException
 from pathlib import Path
 from typing import Any, Optional, Union
 
-from pydantic import ValidationError
+from .._compat.pydantic import ValidationError
 
 from ..additional_parsers import create_parser, detect_statement_format
 from ..transaction_models import Transaction
@@ -261,7 +261,7 @@ def smart_ingest(
     The pipeline tries three paths in order:
 
     1. **Deterministic** — ISO/exchange-format parser (free, fastest).
-    2. **Text-LLM** — for digital PDFs where pypdf yields usable text.
+    2. **Text-LLM** — for digital PDFs where manual PDF conversion yields usable text.
     3. **Vision-LLM** — for scanned/image-only PDFs (length below
        :data:`LOW_TEXT_DENSITY_THRESHOLD`). Requires
        ``BSP_HYBRID_VISION_MODEL`` to be set.

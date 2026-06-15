@@ -26,8 +26,8 @@ from collections.abc import Generator
 from io import BytesIO
 from typing import Optional, Union, cast
 
-import pandas as pd
-from lxml import etree
+from ._compat import pandas as pd
+from ._compat import etree
 
 from .base_parser import BankStatementParser
 from .exceptions import Pain001ParseError

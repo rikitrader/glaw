@@ -31,32 +31,17 @@ Always present a WACC × terminal-growth sensitivity table and Bull/Base/Bear sc
 
 ## Step 1: Detection Flow
 
-Detect data source and runtime deps. The skill supports 3 method paths — pick the richest one available.
-
-**Environment status:**
-
-```
-!`python3 -c "import yfinance, numpy, pandas; print('YFIN_OK')" 2>/dev/null || echo "YFIN_MISSING"`
-```
-
-```
-!`(command -v funda && funda --version) 2>/dev/null || echo "FUNDA_CLI_MISSING"`
-```
-
-```
-!`python3 -c "import yfinance as yf; t=yf.Ticker('^TNX'); p=t.fast_info.last_price; print(f'RF_10Y={p/100:.4f}')" 2>/dev/null || echo "RF_FETCH_FAIL"`
-```
+Detect data source. The skill supports zero-package inputs only.
 
 **Decision tree:**
 
 | Condition | Method path |
 |---|---|
-| `YFIN_OK` | **Path A** (primary): yfinance for financials + peer multiples |
-| `YFIN_MISSING` but `FUNDA_CLI_MISSING` is not set | **Path B**: delegate to `finance-data-providers:funda-data` skill for fundamentals |
-| Both missing | **Path C**: pip-install yfinance, then Path A. `python3 -m pip install -q yfinance numpy pandas` |
-| `RF_FETCH_FAIL` | Use default `rf = 0.045` and note stale risk-free rate in output |
+| User supplies CSV/JSON financials | **Path A**: build DCF + comps from supplied files |
+| User supplies filings only | **Path B**: extract figures manually from filings into CSV/JSON first |
+| Market data unavailable | Use default `rf = 0.045` and note stale risk-free rate in output |
 
-If `RF_10Y=` printed, use that value as `rf` in Step 4d instead of the hardcoded 4.5%.
+If the user supplies a current 10Y yield, use that value as `rf` in Step 4d instead of the hardcoded 4.5%.
 
 ---
 
@@ -84,7 +69,7 @@ Every parameter below MUST have a value before moving to Step 3. Use these unles
 | Terminal growth `g` | 2.5% | ~ long-run US GDP |
 | Risk-free rate `rf` | Live 10Y UST from Step 1, else 4.5% | Current cost of capital anchor |
 | Equity risk premium `erp` | 5.5% | Damodaran mid-range |
-| Beta | `info['beta']` from yfinance | Market-observed levered beta |
+| Beta | `info['beta']` from manual market-data export | Market-observed levered beta |
 | Cost of debt `kd` | `interest_expense / total_debt`, else 5.5% | Effective rate; fallback to IG spread |
 | Tax rate | 3-yr median effective rate, floored 15%, capped 30% | Strips out one-offs |
 | Margin assumptions | 3-yr median of each ratio | Smooths cyclical noise |
@@ -101,35 +86,20 @@ See `references/wacc_erp_rates.md` for current risk-free rates, ERP tables, and 
 
 ## Step 3: Pull Data
 
-```python
-import yfinance as yf
-import numpy as np
-import pandas as pd
+```text
+Use filed financial statements, company-provided exports, or manually supplied
+CSV/JSON. Do not install market-data packages. Normalize the data into:
 
-TICKER = "AAPL"  # replace
-t = yf.Ticker(TICKER)
-
-info       = t.info
-income_a   = t.income_stmt
-cashflow_a = t.cashflow
-balance_a  = t.balance_sheet
-income_q   = t.quarterly_income_stmt
-cashflow_q = t.quarterly_cashflow
-
-earnings_est = t.earnings_estimate
-revenue_est  = t.revenue_estimate
-
-price       = info.get("currentPrice") or info.get("regularMarketPrice")
-market_cap  = info.get("marketCap")
-shares_out  = info.get("sharesOutstanding")
-total_debt  = info.get("totalDebt") or 0
-cash        = info.get("totalCash") or 0
-beta        = info.get("beta") or 1.0
-sector      = info.get("sector")
-industry    = info.get("industry")
+TICKER = AAPL
+income_annual.csv
+cashflow_annual.csv
+balance_sheet.csv
+income_quarterly.csv
+cashflow_quarterly.csv
+market_snapshot.json
 ```
 
-Key financial statement rows (yfinance labels):
+Key financial statement rows (manual market-data export labels):
 
 | Need | Row |
 |---|---|
@@ -230,7 +200,7 @@ Adjust peer median ±10-30% if target's growth or margin profile diverges materi
 
 ## Step 6: SOTP (multi-segment only)
 
-Skip unless the 10-K reports 2+ operating segments with distinct economics. yfinance does NOT expose segment data — user must supply or parse from filings. Full methodology in `references/sotp.md`:
+Skip unless the 10-K reports 2+ operating segments with distinct economics. manual market-data export does NOT expose segment data — user must supply or parse from filings. Full methodology in `references/sotp.md`:
 - Identify segments + pure-play peer for each
 - Apply peer median EV/EBITDA (or EV/Rev for growth segments)
 - Subtract unallocated corporate costs (cap 2-5% of revenue if unknown)
@@ -282,7 +252,7 @@ Output in this order:
 
 | Missing / edge case | Action |
 |---|---|
-| yfinance returns `None` for beta | Use sector-default beta from `references/wacc_erp_rates.md` |
+| manual market-data export returns `None` for beta | Use sector-default beta from `references/wacc_erp_rates.md` |
 | Negative LTM EBITDA | Skip EV/EBITDA multiple; rely on EV/Revenue + DCF |
 | Negative LTM EPS | Skip P/E multiple; use forward P/E if positive, else skip |
 | Growth > WACC in Gordon | Cap `g = wacc − 0.5%` and flag |
@@ -293,7 +263,7 @@ Output in this order:
 ### Caveats to include
 - TTM data lags real-time; peer multiples reflect market sentiment (can overshoot)
 - DCF is garbage-in/garbage-out; sensitivity matters more than a point estimate
-- yfinance data is unofficial; cross-check any decision with primary filings
+- manual market-data export data is unofficial; cross-check any decision with primary filings
 - Not financial advice
 
 ---

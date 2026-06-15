@@ -1,28 +1,8 @@
 #!/usr/bin/env bash
-# glaw-bank-ingest — GLAW Bookkeeping seat: parse bank statements into a
-# unified ledger using the vendored glaw_engine engine.
-#
-# Engine source (Apache-2.0): ~/.claude/skills/glaw/lib/bookkeeping/glaw_engine
-# Upstream: https://github.com/sebastienrousseau/bankstatementparser
-#
-# Usage:
-#   glaw-bank-ingest <file-or-dir> [--matter <slug>] [--map rules.json]
-#                    [--format hledger|beancount|json] [--out <path>]
-#                    [--pattern '**/*.pdf'] [--open <amt>] [--close <amt>]
-#
-# Examples:
-#   glaw-bank-ingest statement.csv --format hledger
-#   glaw-bank-ingest ./statements --pattern '**/*.csv' --map mappings.json --out books.journal
-#   glaw-bank-ingest scan.pdf --format json          # PDF needs the [hybrid] extra (see SKILL.md)
-
+# glaw-bank-ingest — GLAW Bookkeeping seat, zero-dependency in-repo runner.
 set -euo pipefail
-GLAW_LIB="$HOME/.claude/skills/glaw/lib/bookkeeping"
-VENV_PY="$GLAW_LIB/.venv/bin/python"
-
-if [[ ! -x "$VENV_PY" ]]; then
-  echo "ERROR: bookkeeping venv missing at $GLAW_LIB/.venv" >&2
-  echo "Rebuild: python3 -m venv $GLAW_LIB/.venv && $GLAW_LIB/.venv/bin/pip install 'pydantic>=2' lxml defusedxml pandas pypdf" >&2
-  exit 2
-fi
-
-PYTHONPATH="$GLAW_LIB" exec "$VENV_PY" "$GLAW_LIB/runner.py" "$@"
+SCRIPT_LIB="$(cd "$(dirname "${BASH_SOURCE[0]}")/../lib/bookkeeping" && pwd)"
+GLAW_LIB="${GLAW:+$GLAW/lib/bookkeeping}"
+[ -n "${GLAW_LIB:-}" ] && [ -d "$GLAW_LIB" ] || GLAW_LIB="$SCRIPT_LIB"
+PY="$(command -v python3)"
+PYTHONPATH="$GLAW_LIB" exec "$PY" "$GLAW_LIB/runner.py" "$@"

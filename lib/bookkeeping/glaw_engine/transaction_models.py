@@ -24,7 +24,7 @@ from datetime import date, datetime
 from decimal import Decimal
 from typing import Literal, Optional
 
-from pydantic import (
+from ._compat.pydantic import (
     BaseModel,
     ConfigDict,
     Field,

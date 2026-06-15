@@ -69,7 +69,7 @@ for entry in "${TOOLS[@]}"; do
 done
 # glaw-cites needs stdin
 if printf '' | "$GLAW/bin/glaw-cites" - >/dev/null 2>&1; then ok "glaw-cites ran"; else bad "glaw-cites failed"; fi
-# bookkeeping engine + finance tools: run the smokes if the venv is built (else note)
+# bookkeeping engine + finance tools: zero-dependency mode uses source/local smokes.
 if [ -x "$GLAW/lib/bookkeeping/.venv/bin/python" ]; then
   _BKPY="$GLAW/lib/bookkeeping/.venv/bin/python"
   if "$_BKPY" "$GLAW/lib/bookkeeping/test_smoke.py" >/dev/null 2>&1; then
@@ -368,7 +368,12 @@ if [ -x "$GLAW/lib/bookkeeping/.venv/bin/python" ]; then
     bad "bin-scorer locks FAILED — run: $_BKPY $GLAW/lib/bookkeeping/test_bin_scorers.py"
   fi
 else
-  warn "bookkeeping engine venv not built (run ./setup) — skipping engine + finance smokes"
+  if printf 'date,description,amount\n2026-01-01,Doctor smoke,1.00\n' > /tmp/glaw-doctor-bank.csv \
+     && GLAW="$GLAW" "$GLAW/bin/glaw-bank-ingest" /tmp/glaw-doctor-bank.csv --format json >/dev/null 2>&1; then
+    ok "zero-dependency bookkeeping smoke passed (CSV ingest via in-repo glaw_engine)"
+  else
+    bad "zero-dependency bookkeeping smoke FAILED — run: GLAW=$GLAW $GLAW/bin/glaw-bank-ingest /tmp/glaw-doctor-bank.csv --format json"
+  fi
 fi
 # scripts: syntax-check (don't execute — they mutate/source)
 for s in glaw-setup glaw-preamble.sh glaw-gate; do

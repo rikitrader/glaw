@@ -61,7 +61,7 @@ def handle_ftc_doctor(args: dict) -> dict:
     py_ok = _sys.version_info >= (3, 9)
     checks.append({"name": "python_version", "ok": py_ok, "value": _sys.version.split()[0]})
 
-    # python-docx
+    # local DOCX shim
     try:
         import docx
         checks.append({"name": "python_docx", "ok": True, "value": docx.__version__})

@@ -9,9 +9,7 @@
 #   glaw-books-doctor ledger.json [--allow-negative-cash] [--rec bank_rec.json]
 
 set -euo pipefail
-GLAW_LIB="$HOME/.claude/skills/glaw/lib/bookkeeping"
-VENV_PY="$GLAW_LIB/.venv/bin/python"
-if [[ ! -x "$VENV_PY" ]]; then
-  echo "ERROR: bookkeeping venv missing — run ./setup" >&2; exit 2
-fi
-exec "$VENV_PY" "$GLAW_LIB/books_doctor.py" "$@"
+SCRIPT_LIB="$(cd "$(dirname "${BASH_SOURCE[0]}")/../lib/bookkeeping" && pwd)"
+GLAW_LIB="${GLAW:+$GLAW/lib/bookkeeping}"
+[ -n "${GLAW_LIB:-}" ] && [ -d "$GLAW_LIB" ] || GLAW_LIB="$SCRIPT_LIB"
+exec python3 "$GLAW_LIB/books_doctor.py" "$@"

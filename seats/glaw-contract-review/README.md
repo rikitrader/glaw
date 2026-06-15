@@ -65,7 +65,7 @@ Analyzes legal contracts and outputs:
 This skill outputs structured JSON redlines. To produce the tracked-changes Word docs and redline PDFs that lawyers actually send, pair with [**legal-redline-tools**](https://github.com/evolsb/legal-redline-tools):
 
 ```bash
-pip install git+https://github.com/evolsb/legal-redline-tools.git
+zero-dependency mode: do not install packages
 
 # After the skill generates redlines.json:
 legal-redline apply contract.docx redlined.docx \

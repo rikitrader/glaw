@@ -1,18 +1,14 @@
 #!/usr/bin/env python3
-"""GAP 2 — cap-table Sheet -> §351 control proof + §1202 per-holder register.
+"""GAP 2 — cap-table CSV/JSON export -> §351 control proof + §1202 per-holder register.
 Canonical sample = the Example Holdings Carta workbook ("Cap Table View" tab). Any future corp clones that
 workbook; this reader is HEADER-DRIVEN, so it works on any copy with the same column names:
   Stakeholder | Type | Share Class | Security Type | Shares | Investment Value | Ownership % (Basic) | Ownership % (FD)
 
-Usage: captable_to_proof.py [spreadsheetId] [--tab "Cap Table View"]
-Defaults to the canonical sample workbook + tab.
+Usage: captable_to_proof.py captable.csv
 """
-import sys, os, re
-from google.oauth2.credentials import Credentials
-from google.auth.transport.requests import Request
-from googleapiclient.discovery import build
+import csv, json, sys, os, re
 
-SHEET = os.environ.get("GLAW_CAPTABLE_SHEET", "YOUR_CAP_TABLE_SHEET_ID")  # set GLAW_CAPTABLE_SHEET
+SHEET = os.environ.get("GLAW_CAPTABLE_FILE", "")
 TAB = "Cap Table View"
 
 def num(s):
@@ -26,16 +22,22 @@ def col(headers, *names):
             if n in h: return i
     return None
 
+def load_rows(path):
+    if not path:
+        return []
+    if path.endswith(".json"):
+        data = json.load(open(path, encoding="utf-8"))
+        return data.get("values", data if isinstance(data, list) else [])
+    return list(csv.reader(open(path, encoding="utf-8")))
+
 def main():
     sid = next((a for a in sys.argv[1:] if not a.startswith("--")), SHEET)
     m = re.search(r'--tab\s+"?([^"]+)"?', " ".join(sys.argv))
     tab = m.group(1) if m else TAB
-    tok = os.path.expanduser("~/.gcp/token.json")
-    c = Credentials.from_authorized_user_file(tok)
-    if not c.valid: c.refresh(Request()); open(tok, "w").write(c.to_json())
-    sheets = build("sheets", "v4", credentials=c)
-    rows = sheets.spreadsheets().values().get(spreadsheetId=sid, range=f"'{tab}'!A1:Z200").execute().get("values", [])
-    if not rows: print("no rows"); return
+    rows = load_rows(sid)
+    if not rows:
+        print("no rows; pass a CSV/JSON cap table export path")
+        return
     hdr = rows[0]
     ci = {k: col(hdr, *v) for k, v in {
         "name": ("stakeholder", "name"), "type": ("type",), "class": ("share class", "class"),
@@ -64,7 +66,7 @@ def main():
     fctl = sum(h["shares"] for h in founders) / total * 100
 
     print(f"## §351 control + §1202 register (auto-generated from cap table)")
-    print(f"Source: {sid} / tab '{tab}'\n")
+    print(f"Source: {sid}\n")
     print("| Stakeholder | Type | Share Class | Security | Shares | % (FD) | QSBS? |")
     print("|---|---|---|---|---:|---:|---|")
     for h in holders:

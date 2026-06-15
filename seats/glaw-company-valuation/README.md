@@ -4,7 +4,7 @@ Estimate the intrinsic value of a public company via DCF, relative (peer multipl
 
 ## What it does
 
-- Pulls 5 years of financials + analyst estimates via yfinance
+- Uses operator-provided CSV/JSON financials and market data
 - Builds a 5-year DCF with explicit revenue / margin / WACC / terminal-value assumptions
 - Applies peer median P/E, EV/Revenue, EV/EBITDA multiples across 4-6 peers
 - Runs SOTP when the company has 2+ distinct reporting segments
@@ -18,17 +18,18 @@ Estimate the intrinsic value of a public company via DCF, relative (peer multipl
 ## Prerequisites
 
 - Python 3.8+
-- `yfinance`, `numpy`, `pandas` (auto-installed if missing)
+- Operator-provided CSV/JSON market data
+- Python 3 standard library only
 
 Optional: `finance-data-providers:funda-data` skill as a fallback data source.
 
 ## Platform
 
-CLI-based agents (Claude Code). Requires shell + pip.
+CLI-based agents (Claude Code/Codex). Requires shell and Python 3.
 
 ## Setup
 
-No authentication required. First run will auto-install dependencies.
+No authentication required. No packages are installed.
 
 ## Reference Files
 

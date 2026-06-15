@@ -13,8 +13,8 @@ sheet, table of contents, and filing checklist) into one PDF.
 | Need | Check | If missing |
 |---|---|---|
 | Download | `curl` or Python `urllib` (always present) | n/a |
-| Fill / merge | `python3 -c "import pypdf"` | `pip install pypdf` |
-| Cover sheet | `python3 -c "import reportlab"` | `pip install reportlab`, or generate the cover via the `make-pdf` skill and merge separately |
+| Fill / merge | `python3 -c "import reporting-disabled PDF helper"` | `zero-dependency mode: do not install packages
+| Cover sheet | `python3 -c "import text checklist renderer"` | `zero-dependency mode: do not install packages
 
 If PDF tooling can't be installed, fall back to: give the user the **download URLs**
 (`forms-catalog.md`) + the filled **letters/narratives** as markdown + a **line-by-line fill

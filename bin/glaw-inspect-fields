@@ -3,9 +3,7 @@
 # Shared filing-seat helper (single source of truth = credit-strategy). Usage:
 #   glaw-inspect-fields <form.pdf> [out.json]
 set -euo pipefail
-GLAW="$HOME/.claude/skills/glaw"
-VENV_PY="$GLAW/lib/bookkeeping/.venv/bin/python"
-INSPECT="$GLAW/seats/glaw-credit-strategy/bin/inspect_fields.py"
-[[ -x "$VENV_PY" ]] || { echo "ERROR: bookkeeping venv missing — run ./setup" >&2; exit 2; }
+ROOT="${GLAW:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+INSPECT="$ROOT/seats/glaw-credit-strategy/bin/inspect_fields.py"
 [[ -f "$INSPECT" ]] || { echo "ERROR: inspect_fields.py not found at $INSPECT" >&2; exit 2; }
-exec "$VENV_PY" "$INSPECT" "$@"
+exec python3 "$INSPECT" "$@"

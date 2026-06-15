@@ -5,17 +5,19 @@
 #
 # Usage:
 #   glaw-bank-rec --books books.json   --bank statement.json
-#   glaw-bank-rec --books books.csv    --bank bank.ofx        # raw statements auto-ingested
+#   glaw-bank-rec --books books.csv    --bank bank.ofx        # raw source files auto-ingested
 #   glaw-bank-rec --books b.json --bank k.json --window 7 --format json
 #
-# --books / --bank accept either a glaw-bank-ingest JSON or a raw statement file
-# (CSV/OFX/QFX/MT940/CAMT/PAIN/PDF), which is ingested to JSON first.
+# --books / --bank accept either a glaw-bank-ingest JSON or a source statement file
+# (CSV/OFX/QFX/MT940/CAMT/PAIN), which is ingested to JSON first.
 
 set -euo pipefail
-GLAW_LIB="$HOME/.claude/skills/glaw/lib/bookkeeping"
-VENV_PY="$GLAW_LIB/.venv/bin/python"
-INGEST="$HOME/.claude/skills/glaw/bin/glaw-bank-ingest"
-[[ -x "$VENV_PY" ]] || { echo "ERROR: bookkeeping venv missing — run ./setup" >&2; exit 2; }
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+SCRIPT_LIB="$(cd "$SCRIPT_DIR/../lib/bookkeeping" && pwd)"
+GLAW_LIB="${GLAW:+$GLAW/lib/bookkeeping}"
+[ -n "${GLAW_LIB:-}" ] && [ -d "$GLAW_LIB" ] || GLAW_LIB="$SCRIPT_LIB"
+INGEST="$SCRIPT_DIR/glaw-bank-ingest"
+PY="$(command -v python3)"
 
 BOOKS=""; BANK=""; PASS=()
 while [[ $# -gt 0 ]]; do
@@ -37,4 +39,4 @@ to_json() {
 }
 BJ="$(to_json "$BOOKS" books)"
 KJ="$(to_json "$BANK" bank)"
-exec "$VENV_PY" "$GLAW_LIB/bank_rec.py" --books "$BJ" --bank "$KJ" ${PASS[@]+"${PASS[@]}"}
+exec "$PY" "$GLAW_LIB/bank_rec.py" --books "$BJ" --bank "$KJ" ${PASS[@]+"${PASS[@]}"}

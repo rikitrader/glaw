@@ -24,7 +24,7 @@ into this opt-in module so the trust model of the core stays clean.
 
 Install:
 
-    pip install glaw_engine[enrichment]
+    LLM enrichment is disabled in absolute zero-third-party-package mode.
 
 Usage:
 

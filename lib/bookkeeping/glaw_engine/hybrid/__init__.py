@@ -15,13 +15,13 @@
 
 """Hybrid pipeline: deterministic parsers with LLM fallback for PDFs.
 
-This subpackage is gated behind the ``[hybrid]`` install extra:
+This subpackage is gated behind explicit operator enablement:
 
-    pip install glaw_engine[hybrid]
+    Hybrid PDF/LLM mode is disabled in absolute zero-third-party-package mode.
 
-Importing :mod:`glaw_engine.hybrid` does **not** require the
-optional dependencies. Individual modules raise a clear error only when
-their LLM/PDF entry points are actually invoked.
+Importing :mod:`glaw_engine.hybrid` does **not** require external packages.
+Individual modules raise a clear error only when disabled LLM/PDF entry points
+are actually invoked.
 """
 
 from __future__ import annotations

@@ -18,8 +18,8 @@
 Used by :mod:`glaw_engine.hybrid.orchestrator` as Path C when
 text extraction yields too few characters to be a digital PDF.
 
-Pages are rendered with :mod:`pypdfium2` (pure-Python wheel, no system
-dependencies — chosen over ``pdf2image``/poppler for WSL/macOS/Linux
+Pages are rendered with :mod:`disabled PDF renderer` (pure-Python wheel, no system
+operator setup — chosen instead of bundling PDF/image packages
 parity) and sent to a multimodal LLM via LiteLLM's OpenAI-compatible
 ``image_url`` payload.
 
@@ -133,7 +133,7 @@ class VisionExtractor:
             extractor auto-selects
             :func:`~.ollama_direct.ollama_direct_completion` to
             sidestep the upstream LiteLLM hang on long vision prompts.
-        render_scale: pypdfium2 render scale (default ``2.0`` ≈ 144
+        render_scale: disabled PDF renderer render scale (default ``2.0`` ≈ 144
             DPI).
         max_pages: Hard cap on pages sent to the model to keep token
             usage bounded. Defaults to ``5``.
@@ -307,14 +307,9 @@ class VisionExtractor:
         )
 
     def _render_pages(self, pdf_path: Path) -> list[bytes]:
-        try:
-            import pypdfium2 as pdfium
-        except ImportError as exc:  # pragma: no cover - optional dep
-            raise VisionExtractorError(
-                "pypdfium2 is required for vision extraction. "
-                "Install with: "
-                "pip install glaw_engine[hybrid-vision]"
-            ) from exc
+        raise VisionExtractorError(
+            "Vision PDF rendering is unavailable in absolute zero-third-party-package mode."
+        )
 
         try:
             pdf = pdfium.PdfDocument(str(pdf_path))
@@ -349,14 +344,9 @@ class VisionExtractor:
         rows that bisect a boundary are seen by both adjacent
         strips and dedup'd by ``transaction_hash`` at merge time.
         """
-        try:
-            import pypdfium2 as pdfium
-        except ImportError as exc:  # pragma: no cover - optional dep
-            raise VisionExtractorError(
-                "pypdfium2 is required for vision extraction. "
-                "Install with: "
-                "pip install glaw_engine[hybrid-vision]"
-            ) from exc
+        raise VisionExtractorError(
+            "Vision PDF strip rendering is unavailable in absolute zero-third-party-package mode."
+        )
 
         try:
             pdf = pdfium.PdfDocument(str(pdf_path))
@@ -414,15 +404,9 @@ class VisionExtractor:
 
         if is_ollama_model(self.model):
             return ollama_direct_completion
-        try:  # pragma: no cover - optional dep
-            from litellm import completion
-        except ImportError as exc:  # pragma: no cover - optional dep
-            raise VisionExtractorError(
-                "litellm is required for vision extraction. "
-                "Install with: "
-                "pip install glaw_engine[hybrid-vision]"
-            ) from exc
-        return completion  # type: ignore[no-any-return]  # pragma: no cover
+        raise VisionExtractorError(
+            "Vision LLM extraction is unavailable in absolute zero-third-party-package mode."
+        )
 
 
 STRIP_HEADER_SYSTEM_PROMPT = """You are a meticulous Financial Data

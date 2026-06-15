@@ -5,7 +5,7 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-import pandas as pd
+from ._compat import pandas as pd
 
 from .base_parser import BankStatementParser
 from .camt_parser import CamtParser

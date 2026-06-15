@@ -26,7 +26,7 @@ import sys
 from pathlib import Path
 from typing import Optional
 
-import pandas as pd
+from ._compat import pandas as pd
 
 from glaw_engine import CamtParser, Pain001Parser, Transaction
 from glaw_engine.input_validator import (
@@ -474,9 +474,8 @@ class BankStatementCLI:
             from glaw_engine.hybrid import smart_ingest
         except ImportError as exc:
             print(
-                "Error: PDF ingestion requires the [hybrid] extra.\n"
-                "  Run: pip install 'glaw_engine[hybrid]'\n"
-                "  (or [hybrid-plus] for higher-fidelity PDF tables)"
+                "Error: PDF ingestion is disabled in source-only mode.\n"
+                "  Convert PDFs to text or CSV before ingesting."
             )
             logger.error(f"Hybrid import failed: {exc}")
             sys.exit(1)
@@ -485,11 +484,10 @@ class BankStatementCLI:
         try:
             result = smart_ingest(str(file_path))
         except ImportError as exc:
-            # Raised lazily by pypdf/litellm if [hybrid] is half-installed
+            # Raised lazily by disabled PDF/LLM paths in source-only mode.
             print(
-                "Error: PDF ingestion requires the [hybrid] extra.\n"
-                f"  Missing dependency: {exc.name or exc}\n"
-                "  Run: pip install 'glaw_engine[hybrid]'"
+                "Error: PDF ingestion is disabled in source-only mode.\n"
+                "  Convert PDFs to text or CSV before ingesting."
             )
             logger.error(f"Hybrid runtime import failed: {exc}")
             sys.exit(1)
@@ -579,8 +577,8 @@ class BankStatementCLI:
             )
         except ImportError as exc:
             print(
-                "Error: review mode requires the [hybrid] extra.\n"
-                "  Run: pip install 'glaw_engine[hybrid]'"
+                "Error: review mode requires source-only ingest JSON.\n"
+                "  Convert PDFs to text or CSV before ingesting."
             )
             logger.error(f"Hybrid import failed: {exc}")
             sys.exit(1)

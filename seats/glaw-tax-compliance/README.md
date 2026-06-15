@@ -35,7 +35,7 @@ Walks a back-tax case through the correct order of operations:
 - `references/other-levers-and-flags.md` — §7345 passport, bankruptcy tax discharge, innocent/injured spouse.
 - `references/forms-catalog.md` — verified IRS form-download URLs + auto-fill scope + mailing-address sourcing.
 - `references/filing-packet.md` — download → inspect → fill → assemble pipeline + guardrails.
-- `scripts/` — `download_forms.py`, `inspect_fields.py`, `fill_form.py`, `assemble_dossier.py` (pypdf + reportlab).
+- `scripts/` — `download_forms.py`, `inspect_fields.py`, `fill_form.py`, `assemble_dossier.py` (reporting-disabled PDF helper + text checklist renderer).
 
 ## Filing-packet capability
 

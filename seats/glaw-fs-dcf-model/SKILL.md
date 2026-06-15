@@ -17,10 +17,10 @@ This skill creates institutional-quality DCF models for equity valuation followi
 
 These constraints apply throughout all DCF model building. Review before starting:
 
-**Environment: Office JS vs Python/openpyxl:**
-- **If running inside Excel (Office Add-in / Office JS environment):** Use Office JS directly — do NOT use Python/openpyxl. Write formulas via `range.formulas = [["=D19*(1+$B$8)"]]`. No separate recalc step needed; Excel calculates natively. Use `range.format.*` for styling. The same formulas-over-hardcodes rule applies: set `.formulas`, never `.values` for derived cells.
-- **If generating a standalone .xlsx file (no live Excel session):** Use Python/openpyxl as described below, then run `recalc.py` before delivery.
-- The rest of this skill uses openpyxl examples — translate to Office JS API calls when in that environment, but all principles (formula strings, cell comments, section checkpoints, sensitivity table loops) apply identically.
+**Environment: Office JS vs Python/Office-native or stdlib OOXML:**
+- **If running inside Excel (Office Add-in / Office JS environment):** Use Office JS directly — do NOT use Python/Office-native or stdlib OOXML. Write formulas via `range.formulas = [["=D19*(1+$B$8)"]]`. No separate recalc step needed; Excel calculates natively. Use `range.format.*` for styling. The same formulas-over-hardcodes rule applies: set `.formulas`, never `.values` for derived cells.
+- **If generating a standalone .xlsx file (no live Excel session):** Use Python/Office-native or stdlib OOXML as described below, then run `recalc.py` before delivery.
+- The rest of this skill uses Office-native or stdlib OOXML examples — translate to Office JS API calls when in that environment, but all principles (formula strings, cell comments, section checkpoints, sensitivity table loops) apply identically.
 
 **⚠️ Office JS merged cell pitfall:** When building section headers with merged cells, do NOT call `.merge()` then set `.values` on the merged range — Office JS still reports the range's original dimensions and will throw `InvalidArgument: The number of rows or columns in the input array doesn't match the size or dimensions of the range`. Instead, write the value to the top-left cell alone, then merge and format the full range:
 
@@ -43,7 +43,7 @@ This applies to every merged section header in the DCF (market data, scenario bl
 
 **Formulas Over Hardcodes (NON-NEGOTIABLE):**
 - Every projection, margin, discount factor, PV, and sensitivity cell MUST be a live Excel formula — never a value computed in Python and written as a number
-- When using openpyxl: `ws["D20"] = "=D19*(1+$B$8)"` is correct; `ws["D20"] = calculated_revenue` is WRONG
+- When using Office-native or stdlib OOXML: `ws["D20"] = "=D19*(1+$B$8)"` is correct; `ws["D20"] = calculated_revenue` is WRONG
 - The only hardcoded numbers permitted are: (1) raw historical inputs, (2) assumption drivers (growth rates, WACC inputs, terminal g), (3) current market data (share price, debt balance)
 - If you catch yourself computing something in Python and writing the result — STOP. The model must flex when the user changes an assumption.
 
@@ -60,7 +60,7 @@ This applies to every merged section header in the DCF (market data, scenario bl
 - **Center cell = base case.** Build the axis values so the middle row header and middle column header exactly equal the model's actual assumptions (e.g., if base WACC = 9.0%, the middle row is 9.0%; if terminal g = 3.0%, the middle column is 3.0%). The center cell's output must therefore equal the model's actual implied share price — this is the sanity check that the table is built correctly.
 - **Highlight the center cell** with the medium-blue fill (`#BDD7EE`) + bold font so it's immediately visible which cell is the base case.
 - Populate ALL cells (typically 3 tables × 25 cells = 75) with full DCF recalculation formulas
-- Use openpyxl loops (or Office JS loops) to write formulas programmatically
+- Use Office-native or stdlib OOXML loops (or Office JS loops) to write formulas programmatically
 - NO placeholder text, NO linear approximations, NO manual steps required
 - Each cell must recalculate full DCF for that assumption combination
 
@@ -363,7 +363,7 @@ Build **three sensitivity tables** at the bottom of the DCF sheet showing how va
 2. **Revenue Growth vs EBIT Margin** - Shows impact of top-line growth and operating leverage
 3. **Beta vs Risk-Free Rate** - Shows sensitivity to cost of equity components
 
-**Implementation**: These are simple 2D grids (NOT Excel's "Data Table" feature) with formulas in each cell. Each cell must contain a full DCF recalculation for that specific assumption combination. See Critical Constraints section for detailed requirements on populating all 75 cells programmatically using openpyxl.
+**Implementation**: These are simple 2D grids (NOT Excel's "Data Table" feature) with formulas in each cell. Each cell must contain a full DCF recalculation for that specific assumption combination. See Critical Constraints section for detailed requirements on populating all 75 cells programmatically using Office-native or stdlib OOXML.
 
 <correct_patterns>
 
@@ -524,11 +524,11 @@ Row,Content
 
 ### Correct Sensitivity Table Implementation
 
-**IMPORTANT**: These are NOT Excel's "Data Table" feature. These are simple grids where you write regular formulas using openpyxl. Yes, this means ~75 formulas total (3 tables × 25 cells each), but this is straightforward and required.
+**IMPORTANT**: These are NOT Excel's "Data Table" feature. These are simple grids where you write regular formulas using Office-native or stdlib OOXML. Yes, this means ~75 formulas total (3 tables × 25 cells each), but this is straightforward and required.
 
 **Programmatic Population with Formulas:**
 
-Each sensitivity table must be fully populated with formulas that recalculate the implied share price for each combination of assumptions. **Do not use Excel's Data Table feature** (it requires manual intervention and cannot be automated via openpyxl).
+Each sensitivity table must be fully populated with formulas that recalculate the implied share price for each combination of assumptions. **Do not use Excel's Data Table feature** (it requires manual intervention and cannot be automated via Office-native or stdlib OOXML).
 
 **Implementation approach - CONCRETE EXAMPLE:**
 
@@ -562,7 +562,7 @@ The formula in B88 should recalculate the implied price using:
 **Example formula structure:**
 `=([SUM of PV FCFs using $A88 as discount rate] + [Terminal Value using B$87 as growth rate and $A88 as WACC] - [Net Debt]) / [Shares]`
 
-**CRITICAL - Write a formula for EVERY cell in the 5x5 grid (25 cells per table, 75 cells total).** Use openpyxl to write these formulas programmatically in a loop. Do NOT skip this step or leave placeholder text.
+**CRITICAL - Write a formula for EVERY cell in the 5x5 grid (25 cells per table, 75 cells total).** Use Office-native or stdlib OOXML to write these formulas programmatically in a loop. Do NOT skip this step or leave placeholder text.
 
 **Python implementation pattern:**
 ```python
@@ -618,7 +618,7 @@ B105: =B88/(1+(E48-0.07))      // Doesn't recalculate full DCF
 **Common rationalization to REJECT:**
 "Writing 75+ formulas feels complex, so I'll leave a note for the user to complete it manually."
 
-**Reality:** Writing 75 formulas is straightforward when you use a loop in Python with openpyxl. Each formula follows the same pattern - just substitute the row/column values. This is a required part of the deliverable.
+**Reality:** Writing 75 formulas is straightforward when you use a loop in Python with Office-native or stdlib OOXML. Each formula follows the same pattern - just substitute the row/column values. This is a required part of the deliverable.
 
 **Instead:** Populate every sensitivity cell with formulas that recalculate the full DCF for that specific combination of assumptions
 
@@ -1062,7 +1062,7 @@ WACC = (Cost of Equity × Equity Weight) + (After-tax Cost of Debt × Debt Weigh
 
 ### Sensitivity Analysis (Bottom of DCF Sheet)
 
-**TERMINOLOGY REMINDER**: "Sensitivity tables" = simple 2D grids with row headers, column headers, and formulas in each data cell. NOT Excel's "Data Table" feature (Data → What-If Analysis → Data Table). You will use openpyxl to write regular Excel formulas into each cell.
+**TERMINOLOGY REMINDER**: "Sensitivity tables" = simple 2D grids with row headers, column headers, and formulas in each data cell. NOT Excel's "Data Table" feature (Data → What-If Analysis → Data Table). You will use Office-native or stdlib OOXML to write regular Excel formulas into each cell.
 
 **Location**: Rows 87+ on DCF sheet (NOT a separate sheet)
 
@@ -1074,7 +1074,7 @@ WACC = (Cost of Equity × Equity Weight) + (After-tax Cost of Debt × Debt Weigh
 
 **Total formulas to write: 75** (this is required, not optional)
 
-**CRITICAL**: All sensitivity table cells must be populated programmatically with formulas using openpyxl. DO NOT use linear approximation shortcuts. DO NOT leave placeholder text or notes about manual steps. DO NOT rationalize leaving cells empty because "it's complex" - use a Python loop to generate the formulas.
+**CRITICAL**: All sensitivity table cells must be populated programmatically with formulas using Office-native or stdlib OOXML. DO NOT use linear approximation shortcuts. DO NOT leave placeholder text or notes about manual steps. DO NOT rationalize leaving cells empty because "it's complex" - use a Python loop to generate the formulas.
 
 **Table Setup:**
 1. Create table structure with row/column headers (the assumption values to test)
@@ -1208,7 +1208,7 @@ This approach centralizes scenario logic, making the model easier to audit and m
 
 ### During Model Construction
 
-1. **Build Excel model** using openpyxl with formulas (not hardcoded values)
+1. **Build Excel model** using Office-native or stdlib OOXML with formulas (not hardcoded values)
 2. **Follow xlsx skill conventions** for formula construction and formatting
 3. **Apply fill colors only if requested** by user or if specific brand guidelines are provided
 

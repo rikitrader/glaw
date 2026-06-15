@@ -144,7 +144,7 @@ When an investigation surfaces **red flags past threshold** (fraud tier, sanctio
 
 ## 🧰 The Toolbelt (116 CLIs)
 
-GLAW's brains are markdown; its hands are small, transparent CLIs in [`bin/`](bin/). The core (matter state) needs nothing but bash. The rest are progressive enhancement.
+GLAW's brains are markdown; its hands are small, transparent CLIs in [`bin/`](bin/). The runtime is source-first: bash, Python 3, repository libraries, and the Python standard library.
 
 ```mermaid
 flowchart LR
@@ -171,7 +171,7 @@ flowchart LR
     classDef t fill:#15233b,stroke:#3B82F6,color:#cfe0ff;
     class s1,s2,s3,s4,c1,c2,c3,c4,d1,d2,d3,d4,d5,t1,t2,t3,t4,x1,x2 t
 ```
-<sub>All 20 are `glaw-*` CLIs (prefix dropped above for space). The core — `glaw`, `glaw-setup`, `glaw-doctor` — needs only bash; the rest enhance progressively.</sub>
+<sub>All 20 are `glaw-*` CLIs (prefix dropped above for space). The core — `glaw`, `glaw-setup`, `glaw-doctor` — runs locally with no package installation.</sub>
 
 | Tool | Does |
 |---|---|
@@ -181,16 +181,16 @@ flowchart LR
 | **Contract chain** | |
 | `glaw-contract-score` | deterministic contract-review **scorecard** (risk 0–100, tier, grade A–F, red-flag card) |
 | `glaw-redline` | mark up a contract with comments + suggested rewrites, **accept/deny** each |
-| `glaw-redline-docx` | real **Microsoft Word tracked changes** (`w:ins`/`w:del`) + redline / summary / memo PDFs |
-| `glaw-review-chain` | **one-shot**: review → score → Word track-changes → publish, all into one folder |
+| `glaw-redline-docx` | local normalized redline JSON plus replacement DOCX |
+| `glaw-review-chain` | **one-shot**: review → score → local redline artifact → publish bundle |
 | **Documents & research** | |
-| `glaw-doc-extract` | any PDF/DOCX → text + metadata (Tika / opendataloader; OCR via Tesseract) |
-| `glaw-cites` | extract & normalize legal citations (eyecite) |
-| `glaw-court-scrape` | dockets / opinions via 300+ court scrapers (juriscraper) |
-| `glaw-assemble` | fill DOCX templates (Jinja-in-Word) |
-| `glaw-publish` | render any deliverable to **PDF + Google Doc + Google Slides** in the house style |
+| `glaw-doc-extract` | text/DOCX → text + metadata; PDFs use local binaries when installed |
+| `glaw-cites` | extract & normalize legal citations (stdlib citation extractor) |
+| `glaw-court-scrape` | dockets / opinions via 300+ court scrapers (zero-dependency court handoff) |
+| `glaw-assemble` | fill DOCX templates with the stdlib DOCX merge path |
+| `glaw-publish` | render any deliverable to a local HTML/manifest publish bundle |
 | **Tax / regulatory** | |
-| `glaw-tax-report` | machine-validatable tax-report objects (JSON Schema) |
+| `glaw-tax-report` | machine-validatable tax-report objects using the local schema validator |
 | `glaw-irs-file` | information-return transmission scaffold (1099 / W-2 → transmitter / SSA EFW2) |
 | `glaw-compliance-audit` | data-driven corporate-compliance checklist runner |
 | `glaw-exempt-org` | nonprofit / 990 lookup + financial-risk read (ProPublica API) |
@@ -202,13 +202,13 @@ flowchart LR
 | `glaw-cashflow` | **indirect statement of cash flows** — tag-aware, self-reconciling to the change in cash. |
 | `glaw-close-run` | **scheduled/automated close** (cron-safe) — runs the whole close on a book, writes a dated package, locks only if the gate passes; exit code reflects the gate. |
 | `glaw-dashboard` | **management KPI pack** — margins, current/quick ratio, working capital, DSO/DPO, debt/equity, burn/runway, from the ledger. |
-| `glaw-export` | **financial report export** — branded, printable HTML (print-to-PDF) combining statements + cash flow + KPIs + MD&A; optional Google Sheets push. |
+| `glaw-export` | **financial report export** — branded, printable HTML combining statements + cash flow + KPIs + MD&A. |
 | `glaw-amortize` | **loan** amortization (interest/principal split) + **prepaid/deferral** release schedules. |
 | `glaw-narrative` | **SEC-filing-style narrative** — MD&A + notes to the financial statements, generated from the posted ledger. |
 | `glaw-revrec` | **revenue recognition (ASC 606)** — deferred-revenue release schedule (ratable / milestone) + entries. |
 | `glaw-tax-provision` | **income tax provision (ASC 740)** — current + deferred tax, ETR reconciliation, provision entry. |
 | `glaw-inventory` | **inventory & COGS** — FIFO / weighted-average cost, ending inventory, gross margin. |
-| `glaw-invoice` | **invoice/bill OCR** — extract vendor / line items / tax / total from a bill (text or PDF) → a **draft AP entry**, flagged if it doesn't reconcile. |
+| `glaw-invoice` | **invoice/bill extraction** — extract vendor / line items / tax / total from text inputs → a **draft AP entry**, flagged if it doesn't reconcile. |
 | `glaw-fx-reval` | **FX revaluation** — restate monetary foreign-currency balances to closing rate, gain/loss entry (asset vs liability). |
 | `glaw-fx-report` | **multi-currency GL** — per-currency balances + **current-rate translation** to a reporting currency (BS@closing, P&L@average) with a balancing **CTA**. |
 | `glaw-fx-convert` | **realized-FX conversion** — convert a foreign balance at a rate ≠ its carrying rate → a reporting-balanced entry that books the **realized FX gain/loss**, foreign amounts tracked per-currency. |
@@ -220,7 +220,7 @@ flowchart LR
 | `glaw-transfers` | **inter-account transfer netting** — detect & reclassify transfers between own accounts so the P&L isn't double-counted. |
 | `glaw-continuity` | **statement completeness gate** — assert each account's statements chain (opening==prior close, no missing periods). |
 | `glaw-je-test` | **JE forensics** — SAS-99 journal-entry tests (round-dollar / weekend / period-end / large / rare-account / manual) + **Benford's-law** first-digit analysis. |
-| `glaw-bank-ingest` | bank/card statements (CSV·OFX·QFX·MT940·CAMT·PAIN·**PDF**) → deduped, **balance-verified** ledger → hledger / beancount / **Google Sheet**. Scanned PDFs via Tesseract OCR. Engine: bundled [`glaw_engine`](lib/bookkeeping). |
+| `glaw-bank-ingest` | bank/card statements (Google Sheet URL·CSV·OFX·QFX·MT940·CAMT·PAIN·PDF/OCR) → deduped, **balance-verified** ledger → hledger / beancount / JSON. Engine: bundled [`glaw_engine`](lib/bookkeeping). |
 | `glaw-statements` | native **P&L / Balance Sheet / Cash Flow / Trial Balance** from the ledger (no hledger dep). Exits non-zero if the books don't balance. |
 | `glaw-books-doctor` | the **bulletproof finance control gate** — TB balances, BS identity, Golden Rule, classified, cash≥0, dedup, anomaly scan, reconciled → "books are bulletproof, or fail." |
 | `glaw-bank-rec` | true **bank reconciliation** — line-matches books vs bank, surfaces outstanding/unpresented checks + bank-only fees/interest. |
@@ -241,15 +241,20 @@ The Accounting department ships a self-contained, **deterministic, $0** bookkeep
 ([`lib/bookkeeping/glaw_engine`](lib/bookkeeping)) — no LLM required for structured formats.
 
 ```bash
-# any statement → categorized, balance-checked Google Sheet
-glaw-bank-ingest statement.pdf --matter acme --chart roofing --format gsheet
-#   PDF → opendataloader/Tesseract → engine (dedup + Golden-Rule verify) → chart → Sheet
+# Google Sheet or structured statement → categorized, balance-checked JSON
+glaw-bank-ingest "https://docs.google.com/spreadsheets/d/.../edit#gid=0" --matter acme --chart roofing --format json
+#   Google Sheet CSV export / CSV / OFX / QFX / MT940 / CAMT / PAIN / PDF-OCR
+#   → engine (dedup + Golden-Rule verify) → chart → JSON
 ```
 
-- **6 structured formats** parsed deterministically + **digital & scanned PDFs** (OCR).
+- **Google Sheet input** through stdlib CSV export, no Google SDK.
+- **6 structured formats** parsed deterministically.
+- **PDF/OCR path** is Python-owned orchestration over local binaries (`pdftotext` or
+  `opendataloader-pdf`; scanned PDFs use `pdftoppm` + `tesseract`) with row parsing,
+  validation, and audit in the repo.
 - **Golden-Rule check**: `opening + credits − debits == closing` → `verified` / `discrepancy`.
 - **Bundled charts of accounts** (`--chart fund|roofing|personal`) or your own regex rules.
-- Exports **hledger**, **beancount**, **json**, or a tabbed **Google Sheet**. Every row keeps an
+- Exports **hledger**, **beancount**, **json**, or local CSV. Every row keeps an
   immutable hash + a `source_method` audit tag. Feeds `/glaw-financial-forensics`.
 
 ---
@@ -263,7 +268,7 @@ flowchart LR
     CR["📑 contract-review<br/>the review brain"] --> RC{{"⚙️ glaw-review-chain"}}
     RC --> SC["📊 glaw-contract-score<br/>0–100 scorecard"]
     RC --> RD["✍️ glaw-redline-docx<br/>Word tracked changes"]
-    RC --> PB["📦 glaw-publish<br/>PDF · Doc · Slides"]
+    RC --> PB["📦 glaw-publish<br/>local HTML · manifest"]
     SC --> DR[("☁️ Google Drive")]
     RD --> DR
     PB --> DR
@@ -303,13 +308,23 @@ cd ~/.claude/skills/glaw
 ./setup
 ```
 
-`./setup` deploys the 59 sub-skills as `/glaw-*` commands **plus the 62 vendored seats**, creates the state dir (`~/.glaw`), and (optionally) installs the Python toolbelt. The **core firm runs with zero dependencies**; the heavier tools want some extras:
+`./setup` deploys the 59 sub-skills as `/glaw-*` commands **plus the 62 vendored seats** and creates the state dir (`~/.glaw`). It does **not** install pip packages, npm packages, virtualenvs, or remote toolbelts. GLAW is source-first: every shipped CLI uses repository code plus the Python standard library.
 
 | Capability | Needs |
 |---|---|
-| Citations / court scraping / Word redlines | `pip install -r requirements.txt` (a venv is fine) |
-| PDF / Slides publishing | `pandoc`, `weasyprint` |
-| OCR, doc extraction & scanned-PDF bookkeeping | `tesseract`, `poppler` (`pdftoppm`), Java + Apache Tika, `opendataloader-pdf` |
+| Citations / court scraping / Word redlines | In-repo stdlib tools |
+| DOCX generation / template fill | In-repo minimal DOCX shim |
+| PDF / scanned-document extraction | Repo parser plus local OCR binaries: `pdftotext` or `opendataloader-pdf`, and `pdftoppm` + `tesseract` for scans |
+| Google Sheets bank input | Paste a Google Sheet URL; GLAW reads the CSV export with stdlib `urllib` |
+| Google Docs / Drive publishing | Local CSV/JSON/HTML exports by default; no bundled Google SDK |
+
+Start with the operator docs:
+
+- [Installation](docs/INSTALLATION.md)
+- [Modules and commands](docs/MODULES.md)
+- [Core workflows](docs/WORKFLOWS.md)
+- [Library and API model](docs/API_AND_LIBRARY.md)
+- [CLI tool reference](docs/tools.md)
 
 ### 🔐 Environment & credentials (`.env`)
 
@@ -319,9 +334,7 @@ credentials. Copy [`.env.example`](.env.example) → `.env` and set only what yo
 
 | Variable / file | Used by | For |
 |---|---|---|
-| `~/.gcp/token.json` (OAuth) | `glaw-bank-ingest --format gsheet`, `glaw-publish` | Google Sheets / Docs / Slides output |
-| `BSP_HYBRID_MODEL` *(opt)* | bookkeeping PDF path | text-LLM for non-tabular PDFs (e.g. `ollama/llama3`) |
-| `BSP_HYBRID_VISION_MODEL` *(opt)* | bookkeeping scans | vision model for image-only PDFs (default path is Tesseract, $0) |
+| Local CSV/JSON/HTML paths | publishing and bookkeeping tools | source-first exports without cloud APIs |
 | `COURTLISTENER_TOKEN` *(opt)* | `glaw-court-scrape` | higher CourtListener rate limits |
 | `PROPUBLICA_API_KEY` *(opt)* | `glaw-exempt-org` | nonprofit / 990 lookups |
 
@@ -346,7 +359,7 @@ Run `bin/glaw-doctor` any time to confirm the whole firm is healthy.
 ```
 glaw/
 ├── SKILL.md              # /glaw — the Managing Partner (orchestrator)
-├── bin/                  # 24 CLIs: state machinery + toolbelt + bookkeeping + finance control
+├── bin/                  # 24 CLIs: state machinery + zero-dependency local tools + bookkeeping + finance control
 ├── seats/                # 62 SELF-CONTAINED specialist seats (glaw-*) + MANIFEST
 │                         #   every skill the firm routes to — zero external deps
 ├── lib/
@@ -365,7 +378,7 @@ glaw/
 └── <practice-group + bureau + intel + sec + fincen agents>/   # the departments
 ```
 
-State lives under `~/.glaw` (`matters/<slug>/` with `matter.md`, `docket.jsonl`, `timeline.jsonl`). Deep dives: **[departments reference](docs/departments.md)** · **[toolbelt reference](docs/tools.md)** · [org chart & usage](docs/org-chart-and-usage.md).
+State lives under `~/.glaw` (`matters/<slug>/` with `matter.md`, `docket.jsonl`, `timeline.jsonl`). Deep dives: **[departments reference](docs/departments.md)** · **[zero-dependency local tools reference](docs/tools.md)** · [org chart & usage](docs/org-chart-and-usage.md).
 
 ---
 

@@ -7,22 +7,22 @@ Usage:
   fill_from_captable.py <master.md> --company "Example Holdings, Inc." --year 2024 --state Delaware \
     [--strike "[APPRAISED FMV — $1.00 draft]"] [--sheet <captableSheetId>] [--out <out.md>]
 """
-import sys, os, re
-from google.oauth2.credentials import Credentials
-from google.auth.transport.requests import Request
-from googleapiclient.discovery import build
+import csv, json, sys, os, re
 
 def arg(flag, default=None):
     m = re.search(rf'{flag}\s+"([^"]+)"', " ".join(sys.argv)) or re.search(rf'{flag}\s+(\S+)', " ".join(sys.argv))
     return m.group(1) if m else default
 
+def _rows(path):
+    if not path:
+        return []
+    if path.endswith(".json"):
+        data = json.load(open(path, encoding="utf-8"))
+        return data.get("values", data if isinstance(data, list) else [])
+    return list(csv.reader(open(path, encoding="utf-8")))
+
 def employees(sheet):
-    if not sheet: return []
-    tok = os.path.expanduser("~/.gcp/token.json")
-    c = Credentials.from_authorized_user_file(tok)
-    if not c.valid: c.refresh(Request()); open(tok, "w").write(c.to_json())
-    s = build("sheets", "v4", credentials=c)
-    rows = s.spreadsheets().values().get(spreadsheetId=sheet, range="'Cap Table View'!A1:H200").execute().get("values", [])
+    rows = _rows(sheet)
     if not rows: return []
     hdr = [h.lower() for h in rows[0]]
     ci = lambda *n: next((i for i, h in enumerate(hdr) if any(x in h for x in n)), None)
@@ -40,7 +40,7 @@ def main():
     year = arg("--year", "20__")
     state = arg("--state", "Delaware")
     strike = arg("--strike", "[APPRAISED FMV]")
-    sheet = arg("--sheet")
+    sheet = arg("--sheet")  # CSV/JSON export path in zero-dependency mode
     out = arg("--out", master.replace(".md", "") + ".filled.md")
     short = re.sub(r",?\s*(Inc\.|LLC|Corp\.).*$", "", company).strip()
     t = open(master).read()

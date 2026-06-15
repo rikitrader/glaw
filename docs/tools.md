@@ -1,8 +1,9 @@
-# GLAW Toolbelt — CLI reference
+# GLAW Toolbelt — CLI Reference
 
 The firm's reasoning lives in markdown skills; its deterministic work lives in 20 small
-CLIs under [`../bin/`](../bin/). The **core (matter state) needs only bash**; the rest are
-progressive enhancement (`pip install -r ../requirements.txt` + a few system tools).
+CLIs under [`../bin/`](../bin/). The toolbelt is source-first and zero third-party package:
+no `pip install`, no `npm install`, no virtualenv bootstrap, and no remote package fetch.
+Tools use bash, Python 3, repository libraries, and the Python standard library.
 
 Run any tool with no arguments for its usage. `bin/glaw-doctor` smoke-tests them all.
 
@@ -19,24 +20,24 @@ Run any tool with no arguments for its usage. `bin/glaw-doctor` smoke-tests them
 |---|---|
 | `glaw-contract-score` | `scaffold` · `<findings.json>` → scorecard (risk 0–100, tier, grade A–F, red-flag card). Severity 🔴critical/🟡important/🟢acceptable. |
 | `glaw-redline` | `annotate <contract> <findings.json>` → highlighted HTML + comments · `decide <file> <id> accept\|deny` · `status <file>` |
-| `glaw-redline-docx` | `<contract.docx> <findings.json> [-o base]` → real Word tracked changes (`w:ins`/`w:del`) + redline/summary/memo PDFs (via legal-redline-tools) |
-| `glaw-review-chain` | `<contract.docx> <findings.json> --matter <slug>` → one-shot: scorecard + Word track-changes + publish, all to one Drive folder |
+| `glaw-redline-docx` | `<contract.docx> <findings.json> [-o base]` → local normalized redline JSON plus replacement DOCX |
+| `glaw-review-chain` | `<contract.docx> <findings.json> --matter <slug>` → one-shot local scorecard, redline artifact, and publish bundle |
 
 `findings.json` (the shared shape): `[{ "id","quote","severity","issue","suggestion" }]`.
 
 ## Documents & research
 | Tool | Usage |
 |---|---|
-| `glaw-doc-extract` | `<file\|dir> [-o out]` → text + metadata (Apache Tika / opendataloader-pdf; OCR via Tesseract) |
-| `glaw-cites` | `<file>` or `-` (stdin) `[--json]` → extracted/normalized citations (eyecite) |
-| `glaw-court-scrape` | `--list [filter]` · `<court_id>` → dockets/opinions (juriscraper, 300+ courts + PACER) |
-| `glaw-assemble` | `vars <template.docx>` · `<template.docx> <data.json> -o out.docx` (Jinja-in-Word, docxtpl) |
-| `glaw-publish` | `<matter-slug\|dir> [--folder NAME] [--local-only]` → PDF + Google Doc + Google Slides in the house style |
+| `glaw-doc-extract` | `<file\|dir> [-o out]` → text + metadata for local text/DOCX inputs; PDFs use local binaries when installed |
+| `glaw-cites` | `<file>` or `-` (stdin) `[--json]` → extracted/normalized citations (stdlib citation extractor) |
+| `glaw-court-scrape` | `--list [filter]` · `<court_id>` → dockets/opinions (zero-dependency court handoff, 300+ courts + PACER) |
+| `glaw-assemble` | `vars <template.docx>` · `<template.docx> <data.json> -o out.docx` using stdlib DOCX merge |
+| `glaw-publish` | `<matter-slug\|dir> [--folder NAME] [--local-only]` → local HTML/manifest publish bundle in the house style |
 
 ## Tax & regulatory
 | Tool | Usage |
 |---|---|
-| `glaw-tax-report` | `types` · `validate <f.json>` · `scaffold <form>` (JSON Schema; 1040/1120/1120-S/1065/W-2/1099/941/… ) |
+| `glaw-tax-report` | `types` · `validate <f.json>` · `scaffold <form>` using the in-repo stdlib schema validator |
 | `glaw-irs-file` | `scaffold <form>` · `submit <payload.json> [--live]` · `status <id>` · `efw2 <payload.json>` (W-2→SSA) · `list <year>` |
 | `glaw-compliance-audit` | `<docs-dir> [--type s-corp\|c-corp\|llc\|fund] [-o out.md]` → ✅have / 🟡action / ❌gap per item |
 | `glaw-exempt-org` | `search "<name>"` · `<EIN>` → nonprofit lookup + financial-risk read (ProPublica API, no key) |
@@ -47,8 +48,16 @@ Run any tool with no arguments for its usage. `bin/glaw-doctor` smoke-tests them
 | `glaw-bureau-score` | `competency <json>` · `fraud <json>` → deterministic fraud score (0–100) + FBI competency scorecard |
 | `glaw-chief-decision` | record the Chief's PROCEED / WITH-FIXES / WITH-CONDITIONS sign-off → matter timeline + decision card |
 
-## Dependencies
-Python deps are in [`../requirements.txt`](../requirements.txt). System tools (install
-separately): `pandoc` + `weasyprint` (publishing), `tesseract` + `poppler` (OCR),
-Java 21 + Apache Tika jar (extraction), `opendataloader-pdf` (PDF→Markdown). Each tool
-degrades gracefully when an optional dependency is absent.
+## Zero-Dependency Policy
+
+GLAW ships no third-party package manifest. The supported install path is:
+
+```bash
+./setup
+bin/glaw-doctor
+```
+
+Library code that historically depended on packages such as pandas, pydantic, lxml,
+python-docx, docxtpl, eyecite, juriscraper, jsonschema, or Google SDKs now uses in-repo
+compatibility modules or local stdlib fallbacks. Google Sheets input uses CSV export URLs.
+PDF/OCR bank ingestion uses repo code plus local binaries, not Python packages.

@@ -3,7 +3,7 @@
 glaw_engine engine.
 
 Pipeline:  ingest -> Golden-Rule balance verify -> dedupe -> account map
-           -> export (hledger / beancount / json)
+           -> export (hledger / beancount / json / local csv)
 
 Every row keeps its immutable transaction_hash and source_method audit tag.
 No figures are invented: a row that cannot be parsed is reported, not guessed.
@@ -13,6 +13,9 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import tempfile
+import urllib.parse
+import urllib.request
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 
@@ -49,12 +52,7 @@ def _dec(v):
 
 
 def _ingest_pdf(path: Path, open_bal, close_bal, ocr="auto"):
-    """PDF front-end: opendataloader-pdf (digital) or tesseract OCR (scanned)
-    -> CSV -> deterministic parser.
-
-    Uses balances sniffed from the PDF text for the Golden Rule when the
-    caller didn't pass --open/--close explicitly.
-    """
+    """PDF front-end: local text extraction or local OCR binaries -> CSV -> parser."""
     from pdf_extract import extract_to_csv  # local module, lives inside GLAW
 
     csv_path, meta = extract_to_csv(path, ocr=ocr)
@@ -63,10 +61,49 @@ def _ingest_pdf(path: Path, open_bal, close_bal, ocr="auto"):
     if close_bal is None:
         close_bal = _dec(meta.get("closing_balance"))
     res = smart_ingest(csv_path, opening_balance=open_bal, closing_balance=close_bal)
-    # IngestResult is frozen; carry the PDF provenance alongside it for the audit.
-    how = "tesseract OCR" if meta.get("source_method_hint") == "ocr" else "opendataloader-pdf"
+    how = meta.get("source_method_hint") or "pdf_text"
     note = f"source PDF: {path.name} (extracted via {how})"
     return list(res.transactions), [res], {id(res): note}
+
+
+def _is_url(value: str) -> bool:
+    return value.startswith("http://") or value.startswith("https://")
+
+
+def _google_sheet_csv_url(url: str) -> str:
+    """Convert a Google Sheets edit/pub URL into a CSV export URL when possible."""
+    parsed = urllib.parse.urlparse(url)
+    if "docs.google.com" not in parsed.netloc or "/spreadsheets/" not in parsed.path:
+        return url
+    parts = parsed.path.split("/")
+    try:
+        sheet_id = parts[parts.index("d") + 1]
+    except (ValueError, IndexError):
+        return url
+    query = urllib.parse.parse_qs(parsed.query)
+    gid = query.get("gid", ["0"])[0]
+    if "gid=" not in parsed.query and parsed.fragment:
+        frag = urllib.parse.parse_qs(parsed.fragment)
+        gid = frag.get("gid", [gid])[0]
+    return f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv&gid={gid}"
+
+
+def _download_sheet_or_csv(url: str) -> Path:
+    csv_url = _google_sheet_csv_url(url)
+    req = urllib.request.Request(csv_url, headers={"User-Agent": "GLAW/1.0"})
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            data = resp.read()
+    except Exception as exc:
+        raise RuntimeError(
+            "Could not read Google Sheet/CSV URL. Make the sheet viewable by link, "
+            "publish it to CSV, or export it manually as CSV."
+        ) from exc
+    if not data.strip():
+        raise RuntimeError("Google Sheet/CSV URL returned no data.")
+    out = Path(tempfile.mkdtemp(prefix="glaw-sheet-")) / "sheet.csv"
+    out.write_bytes(data)
+    return out
 
 
 def _collect(path: Path, pattern: str, open_bal, close_bal, ocr="auto"):
@@ -88,7 +125,7 @@ def _collect(path: Path, pattern: str, open_bal, close_bal, ocr="auto"):
 
 def main() -> int:
     ap = argparse.ArgumentParser(prog="glaw-bank-ingest")
-    ap.add_argument("input", help="Statement file or directory")
+    ap.add_argument("input", help="Statement file, directory, Google Sheet URL, or CSV URL")
     ap.add_argument("--matter", default=None, help="GLAW matter slug (for the audit header)")
     ap.add_argument("--map", dest="mapfile", default=None,
                     help="AccountMapper rules JSON (custom path)")
@@ -98,19 +135,28 @@ def main() -> int:
                     choices=["hledger", "beancount", "json", "gsheet"])
     ap.add_argument("--out", default=None, help="Write output to this path instead of stdout")
     ap.add_argument("--sheet-title", default=None,
-                    help="Title for the Google Sheet when --format gsheet")
+                    help="Title for local CSV files when --format gsheet")
     ap.add_argument("--pattern", default="**/*.*", help="Glob when input is a directory")
     ap.add_argument("--open", dest="open_bal", default=None, help="Opening balance override")
     ap.add_argument("--close", dest="close_bal", default=None, help="Closing balance override")
     ap.add_argument("--currency", default="USD",
                     help="Default currency for rows with none set (default: USD)")
     ap.add_argument("--ocr", default="auto", choices=["auto", "force", "off"],
-                    help="Scanned-PDF OCR: auto (fallback), force (always OCR), off")
+                    help="PDF OCR mode: auto, force, or off")
     args = ap.parse_args()
 
-    in_path = Path(args.input).expanduser()
-    if not in_path.exists():
-        print(f"ERROR: input not found: {in_path}", file=sys.stderr)
+    try:
+        if _is_url(args.input):
+            in_path = _download_sheet_or_csv(args.input)
+            input_label = args.input
+        else:
+            in_path = Path(args.input).expanduser()
+            input_label = str(in_path)
+            if not in_path.exists():
+                print(f"ERROR: input not found: {in_path}", file=sys.stderr)
+                return 2
+    except RuntimeError as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
         return 2
 
     # Resolve the chart of accounts: --map (custom) wins, else --chart (bundled).
@@ -122,8 +168,12 @@ def main() -> int:
                   file=sys.stderr)
             return 2
 
-    txs, results, notes = _collect(in_path, args.pattern, _dec(args.open_bal),
-                                   _dec(args.close_bal), ocr=args.ocr)
+    try:
+        txs, results, notes = _collect(in_path, args.pattern, _dec(args.open_bal),
+                                       _dec(args.close_bal), ocr=args.ocr)
+    except Exception as exc:
+        print(f"ERROR: {exc}", file=sys.stderr)
+        return 2
 
     # Dedupe across the whole batch (idempotent re-ingestion).
     # dedupe_by_hash returns (unique, skipped_hashes). The directory path
@@ -156,7 +206,7 @@ def main() -> int:
         _txs = getattr(r, "transactions", []) or []
         _dates = sorted(str(getattr(t, "booking_date", "") or "")[:10] for t in _txs if getattr(t, "booking_date", None))
         audit.append({
-            "source": notes.get(id(r)) or getattr(r, "source_path", None) or str(in_path),
+            "source": notes.get(id(r)) or getattr(r, "source_path", None) or input_label,
             "method": getattr(r, "source_method", None),
             "rows": len(_txs),
             "balance_status": getattr(getattr(v, "status", None), "value", None),
@@ -174,9 +224,9 @@ def main() -> int:
     if args.format == "gsheet":
         from sheets_export import export as gsheet_export
         title = args.sheet_title or f"GLAW Bookkeeping — {args.matter or in_path.stem}"
-        url = gsheet_export(txs, title=title, matter=args.matter,
-                            default_currency=args.currency)
-        print(f"Google Sheet created ({len(txs)} tx, {mapped} mapped):\n{url}")
+        csv_path = gsheet_export(txs, title=title, matter=args.matter,
+                                 default_currency=args.currency)
+        print(f"Local CSV export created ({len(txs)} tx, {mapped} mapped):\n{csv_path}")
         print("\n--- BALANCE AUDIT (Golden Rule) ---", file=sys.stderr)
         for a in audit:
             print(f"  {a['source']}  [{a['method']}]  rows={a['rows']}  "

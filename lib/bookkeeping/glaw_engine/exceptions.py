@@ -17,7 +17,7 @@
 
 from __future__ import annotations
 
-from defusedxml.ElementTree import ParseError
+from xml.etree.ElementTree import ParseError
 
 
 class BankStatementParserError(Exception):

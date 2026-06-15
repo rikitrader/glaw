@@ -137,14 +137,9 @@ class LLMExtractor:
 
         if is_ollama_model(self.model):
             return ollama_direct_completion
-        try:  # pragma: no cover - optional dep
-            from litellm import completion
-        except ImportError as exc:  # pragma: no cover - optional dep
-            raise LLMExtractorError(
-                "litellm is required for LLM extraction. "
-                "Install with: pip install glaw_engine[hybrid]"
-            ) from exc
-        return completion  # type: ignore[no-any-return]  # pragma: no cover
+        raise LLMExtractorError(
+            "LLM extraction is unavailable in absolute zero-third-party-package mode."
+        )
 
 
 def _extract_message_content(response: Any) -> str:

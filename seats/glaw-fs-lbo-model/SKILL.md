@@ -23,7 +23,7 @@ Before starting any LBO model:
 ### Environment: Office JS vs Python
 
 **If running inside Excel (Office Add-in / Office JS environment):**
-- Use Office JS (`Excel.run(async (context) => {...})`) directly — do NOT use Python/openpyxl
+- Use Office JS (`Excel.run(async (context) => {...})`) directly — do NOT use Python/Office-native or stdlib OOXML
 - Write formulas via `range.formulas = [["=B5*B6"]]` — Office JS formulas recalculate natively in the live workbook
 - The same formulas-over-hardcodes rule applies: set `range.formulas`, never `range.values` for anything that should be a calculation
 - Use `range.format.font.color` / `range.format.fill.color` for the blue/black/purple/green convention
@@ -31,13 +31,13 @@ Before starting any LBO model:
 - **Merged cell pitfall:** Do NOT call `.merge()` then set `.values` on the merged range (throws `InvalidArgument` — range still reports original dimensions). Instead: write value to top-left cell alone (`ws.getRange("A7").values = [["SOURCES & USES"]]`), then merge + format the full range (`ws.getRange("A7:F7").merge(); ws.getRange("A7:F7").format.fill.color = "#1F4E79";`)
 
 **If generating a standalone .xlsx file (no live Excel session):**
-- Use Python/openpyxl as described below
+- Use Python/Office-native or stdlib OOXML as described below
 - Write formula strings (`ws["D20"] = "=B5*B6"`), then run `recalc.py` before delivery
 
-The rest of this skill is written with openpyxl examples, but the same principles apply to Office JS — just translate the API calls.
+The rest of this skill is written with Office-native or stdlib OOXML examples, but the same principles apply to Office JS — just translate the API calls.
 
 ### Core Principles
-* **Every calculation must be an Excel formula** - NEVER compute values in Python and hardcode results into cells. When using openpyxl, write `cell.value = "=B5*B6"` (formula string), NOT `cell.value = 1250` (computed result). The model must be dynamic and update when inputs change.
+* **Every calculation must be an Excel formula** - NEVER compute values in Python and hardcode results into cells. When using Office-native or stdlib OOXML, write `cell.value = "=B5*B6"` (formula string), NOT `cell.value = 1250` (computed result). The model must be dynamic and update when inputs change.
 * **Use the template structure** - Follow the organization in `examples/LBO_Model.xlsx` or the user's provided template. Do not invent your own layout.
 * **Use proper cell references** - All formulas should reference the appropriate cells. Never type numbers that should come from other cells.
 * **Maintain sign convention consistency** - Follow whatever sign convention the template uses (some use negative for outflows, some use positive). Be consistent throughout.
@@ -153,7 +153,7 @@ The following calculation patterns frequently cause issues across LBO models. Pa
 * **Use ODD dimensions** (5×5 or 7×7) — never 4×4 or 6×6. Odd dimensions guarantee a true center cell.
 * **Center cell = base case.** Build the row and column axis values symmetrically around the model's actual assumptions (e.g., if base entry multiple = 10.0x, axis = `[8.0x, 9.0x, 10.0x, 11.0x, 12.0x]`). The center cell's IRR/MOIC MUST then equal the model's actual IRR/MOIC output — this is the proof the table is wired correctly.
 * **Highlight the center cell** — medium-blue fill (`#BDD7EE`) + bold font so the base case is visually anchored.
-* Excel's DATA TABLE function may not work with openpyxl — instead write explicit formulas that reference row/column headers
+* Excel's DATA TABLE function may not work with Office-native or stdlib OOXML — instead write explicit formulas that reference row/column headers
 * Each cell should show a DIFFERENT value — if all same, formulas aren't varying correctly
 * Use mixed references (e.g., `$A5` for row input, `B$4` for column input)
 

@@ -62,15 +62,8 @@ SUPPORTED_EXTENSIONS = {".pdf", ".docx", ".doc", ".txt", ".md"}
 
 
 def read_pdf(path: Path) -> str:
-    """Extract text from a PDF file using PyPDF2."""
-    from PyPDF2 import PdfReader
-    reader = PdfReader(str(path))
-    pages = []
-    for page in reader.pages:
-        text = page.extract_text()
-        if text:
-            pages.append(text)
-    return "\n".join(pages)
+    """PDF text extraction is intentionally unavailable in zero-dependency mode."""
+    raise ValueError("PDF text extraction requires a third-party parser; convert to .txt/.md first")
 
 
 def read_docx(path: Path) -> str:

@@ -24,15 +24,13 @@ import importlib
 import json
 from abc import ABC, abstractmethod
 from pathlib import Path
-from typing import TYPE_CHECKING, Union
+from typing import Any, Union
 
-import pandas as pd
+from ._compat import pandas as pd
 
 from .exceptions import ExportError
 from .record_types import SummaryRecord
 
-if TYPE_CHECKING:
-    import polars as pl
 
 
 class BankStatementParser(ABC):
@@ -150,7 +148,7 @@ class BankStatementParser(ABC):
                 temp_path.unlink()
             raise ExportError(f"Failed to export JSON: {exc}") from exc
 
-    def to_polars(self) -> "pl.DataFrame":
+    def to_polars(self) -> Any:
         """
         Convert parsed transaction data to a Polars DataFrame.
 
@@ -160,16 +158,9 @@ class BankStatementParser(ABC):
         Raises:
             ImportError: If the optional ``polars`` dependency is not installed.
         """
-        try:
-            polars = importlib.import_module("polars")
-        except ImportError as exc:
-            raise ImportError(
-                "Run 'pip install glaw_engine[polars]' to use this feature."
-            ) from exc
+        raise ImportError("Polars export is unavailable in absolute zero-third-party-package mode.")
 
-        return polars.from_pandas(self.parse())
-
-    def to_polars_lazy(self) -> "pl.LazyFrame":
+    def to_polars_lazy(self) -> Any:
         """
         Convert parsed transaction data to a Polars LazyFrame.
 

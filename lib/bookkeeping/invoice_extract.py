@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""GLAW invoice/bill extractor — line-item OCR → a draft AP bill journal entry.
+"""GLAW invoice/bill extractor — line-item text → a draft AP bill journal entry.
 
 The bank-statement pipeline parses transactions; this parses a vendor INVOICE/BILL: vendor,
 invoice number, date, line items (description + amount), subtotal, tax, and total — then
@@ -10,17 +10,15 @@ honest about confidence: every field carries whether it was found, and the draft
 flagged if the line items + tax do not reconcile to the stated total. It is a draft for a
 human / the adversarial panel to clear, never a silently-trusted posting.
 
-Input: a text file / stdin (already-extracted invoice text), or a PDF (--pdf, reuses the
-GLAW PDF text pipeline: opendataloader-pdf for digital, tesseract for scanned).
+Input: a text file or stdin containing already-extracted invoice text. PDF/OCR extraction
+is disabled in source-only mode; convert the invoice to text before running this tool.
 """
 from __future__ import annotations
 
 import argparse
 import json
 import re
-import subprocess
 import sys
-import tempfile
 from decimal import Decimal
 from pathlib import Path
 
@@ -52,30 +50,10 @@ def extract_text(path: str) -> str:
     p = Path(path)
     if p.suffix.lower() != ".pdf":
         return p.read_text(encoding="utf-8", errors="replace")
-    # digital PDF → opendataloader markdown; fall back to tesseract OCR
-    work = Path(tempfile.mkdtemp(prefix="glaw-inv-"))
-    try:
-        subprocess.run(["opendataloader-pdf", "-o", str(work), "-f", "markdown", str(p)],
-                       check=True, capture_output=True)
-        md = sorted(work.glob("**/*.md"))
-        if md:
-            txt = "\n".join(f.read_text(encoding="utf-8", errors="replace") for f in md)
-            if txt.strip():
-                return txt
-    except Exception:
-        pass
-    try:
-        from pdf_extract import _ocr_pdf_to_text  # type: ignore
-        return _ocr_pdf_to_text(p)
-    except Exception:
-        # last resort: rasterize + tesseract here
-        subprocess.run(["pdftoppm", "-r", "300", "-png", str(p), str(work / "pg")],
-                       check=True, capture_output=True)
-        out = []
-        for png in sorted(work.glob("pg*.png")):
-            out.append(subprocess.run(["tesseract", str(png), "stdout", "--psm", "4"],
-                                      capture_output=True, text=True).stdout)
-        return "\n".join(out)
+    raise RuntimeError(
+        "PDF invoice extraction is unavailable in absolute zero-third-party-package mode. "
+        "Convert the invoice to text before running glaw-invoice."
+    )
 
 
 def _keyword_amount(lines: list[str], keywords) -> Decimal | None:
@@ -175,15 +153,19 @@ def to_bill_je(inv: dict, *, ap_account: str = "Liabilities:AP",
 
 def main() -> int:
     ap = argparse.ArgumentParser(prog="glaw-invoice")
-    ap.add_argument("input", nargs="?", default="-", help="invoice text file, PDF, or '-' for stdin")
-    ap.add_argument("--pdf", action="store_true", help="(input is a PDF — auto-detected by .pdf too)")
+    ap.add_argument("input", nargs="?", default="-", help="invoice text file or '-' for stdin")
+    ap.add_argument("--pdf", action="store_true", help="accepted for compatibility; PDF extraction is disabled")
     ap.add_argument("--je", action="store_true", help="also emit the draft AP bill journal entry")
     ap.add_argument("--format", default="text", choices=["text", "json"])
     a = ap.parse_args()
     if a.input in (None, "-"):
         text = sys.stdin.read()
     elif a.pdf or a.input.lower().endswith(".pdf"):
-        text = extract_text(a.input)
+        try:
+            text = extract_text(a.input)
+        except RuntimeError as exc:
+            print(f"ERROR: {exc}", file=sys.stderr)
+            return 2
     else:
         text = Path(a.input).read_text(encoding="utf-8", errors="replace")
     inv = parse_invoice(text)
