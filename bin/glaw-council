@@ -112,6 +112,12 @@ def cmd_record(args: argparse.Namespace) -> int:
     decision = args.decision.lower()
     if decision not in {"approve", "fix", "deny"}:
         raise SystemExit("ERROR: decision must be approve, fix, or deny")
+    if decision == "approve" and not args.evidence.strip():
+        raise SystemExit("ERROR: council approve requires --evidence with the source-backed review basis.")
+    if decision == "fix" and (not args.red_flags.strip() or not args.conditions.strip()):
+        raise SystemExit("ERROR: council fix requires --red-flags and --conditions.")
+    if decision == "deny" and not args.red_flags.strip():
+        raise SystemExit("ERROR: council deny requires --red-flags.")
     row = {
         "ts": now(),
         "profile": profile,
@@ -121,6 +127,7 @@ def cmd_record(args: argparse.Namespace) -> int:
         "red_flags": [x.strip() for x in re.split(r"[;\n]", args.red_flags or "") if x.strip()],
         "conditions": [x.strip() for x in re.split(r"[;\n]", args.conditions or "") if x.strip()],
         "notes": args.notes,
+        "evidence": args.evidence,
     }
     append_jsonl(d / "council.jsonl", row)
     timeline(d, "council_review", profile=profile, role=role, decision=decision)
@@ -151,13 +158,16 @@ def cmd_status(args: argparse.Namespace) -> int:
             failures.append(role)
             continue
         decision = row.get("decision")
-        icon = "✅" if decision == "approve" else "❌"
+        evidence_gap = decision == "approve" and not str(row.get("evidence", "")).strip()
+        icon = "✅" if decision == "approve" and not evidence_gap else "❌"
         print(f"  {icon} {role}: {decision}")
         for flag in row.get("red_flags", []):
             print(f"      red_flag: {flag}")
         for condition in row.get("conditions", []):
             print(f"      condition: {condition}")
-        if decision != "approve":
+        if evidence_gap:
+            print("      evidence: MISSING")
+        if decision != "approve" or evidence_gap:
             failures.append(role)
     if failures:
         print("COUNCIL BLOCKED")
@@ -187,6 +197,7 @@ def main() -> int:
     p.add_argument("--red-flags", default="")
     p.add_argument("--conditions", default="")
     p.add_argument("--notes", default="")
+    p.add_argument("--evidence", default="")
     p.add_argument("--matter", default=None)
     p.set_defaults(func=cmd_record)
     p = sub.add_parser("status", help="show council completion status")

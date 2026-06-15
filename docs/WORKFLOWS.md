@@ -73,14 +73,15 @@ events or backing ledgers.
 Accounting/bookkeeping has its own required review council before Chief approval:
 
 ```bash
-bin/glaw-council record --profile auto --role cfo --decision approve
-bin/glaw-council record --profile auto --role irs-audit-agent --decision approve
-bin/glaw-council record --profile auto --role legal-counsel --decision approve
-bin/glaw-council record --profile auto --role forensic-audit --decision approve
-bin/glaw-council record --profile auto --role outside-critic --decision approve
-bin/glaw-council record --profile auto --role external-reviewer --decision approve
+bin/glaw-council record --profile auto --role cfo --decision approve --evidence "bank reconciliation and ledger tie-out reviewed"
+bin/glaw-council record --profile auto --role irs-audit-agent --decision approve --evidence "return map and source support reviewed"
+bin/glaw-council record --profile auto --role legal-counsel --decision approve --evidence "scope, UPL footer, and filing posture reviewed"
+bin/glaw-council record --profile auto --role forensic-audit --decision approve --evidence "fraud and unsupported-number checks reviewed"
+bin/glaw-council record --profile auto --role outside-critic --decision approve --evidence "independent challenge reviewed"
+bin/glaw-council record --profile auto --role external-reviewer --decision approve --evidence "outside review basis recorded"
 bin/glaw-council complete --profile auto
 ```
+Every approving council role must record source-backed evidence. `fix` decisions must state the red flags and conditions so the orchestrator can route the matter back before final packet approval.
 
 Use `--decision fix` or `--decision deny` plus `--red-flags` and `--conditions` for any
 reviewer that finds a gap. The workflow loops back to the owning department until all required

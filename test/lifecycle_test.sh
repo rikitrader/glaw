@@ -54,8 +54,10 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by open high red
 "$FLAGS" resolve RF-0001 --evidence 'bank reconciliation attached' >/dev/null
 "$FLAGS" complete >/dev/null
 
+"$COUNCIL" record --profile auto --role cfo --decision approve >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council approve blocked without evidence"
 for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do
-  "$COUNCIL" record --profile auto --role "$role" --decision approve >/dev/null
+  "$COUNCIL" record --profile auto --role "$role" --decision approve --evidence "test fixture review basis" >/dev/null
 done
 "$CHIEF" --chief "GLAW Chief Counsel" --decision "PROCEED" --approve-final --matter "$SLUG" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked before final packet ready"

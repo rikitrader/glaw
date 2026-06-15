@@ -14,7 +14,7 @@ Run any tool with no arguments for its usage. `bin/glaw-doctor` smoke-tests them
 | `glaw-docket-gate` | `status` · `complete` after deadlines are docketed; `no-deadlines --rationale <why>` for explicit no-deadline close-out |
 | `glaw-intake` | `init [slug] --track <track>` · `set <field> <value>` · `status` · `complete` · `show` for the structured `intake.json` gate |
 | `glaw-ethics` | `record-conflicts --status cleared\|waived\|conflict` · `draft-engagement` · `status` · `complete`; logs `conflicts_cleared` only after conflicts and engagement are ready |
-| `glaw-council` | `record --profile auto --role <lens> --decision approve\|fix\|deny` · `status` · `complete` for required multi-agent signoff |
+| `glaw-council` | `record --profile auto --role <lens> --decision approve\|fix\|deny` · `status` · `complete`; `approve` requires source-backed `--evidence`, `fix` requires `--red-flags` and `--conditions`, and every required role must approve before final packet |
 | `glaw-adversarial` | `record --profile auto --lens <government/regulatory lens> --decision survive\|fix\|strike` · `status` · `complete`; `survive` requires source-backed `--evidence`, `fix` requires `--attack` and `--cure`, and `adversarial_done` logs only when every required RED-team lens survives |
 | `glaw-red-flags` | `add --severity critical\|high\|medium\|low ...` · `resolve <id> --evidence <text>` · `status` · `complete` · `list` for blocking issue control |
 | `glaw-upl-check` | `<matter-slug-or-dir>` → fail-closed check that text deliverables carry attorney-work-product / not-legal-advice footer language |

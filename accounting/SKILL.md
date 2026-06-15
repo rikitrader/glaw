@@ -96,9 +96,9 @@ The senior review chain is mandatory:
 Accounting/bookkeeping work cannot self-approve. The required council lenses are:
 `cfo`, `irs-audit-agent`, `legal-counsel`, `forensic-audit`, `outside-critic`, and
 `external-reviewer`.
-Record each review with `bin/glaw-council record --profile auto ...`, then run
-`bin/glaw-council complete --profile auto`. Any `fix` or `deny` routes the work
-back to the owning department until corrected.
+Record each approval with `bin/glaw-council record --profile auto ... --decision approve --evidence "<source-backed review basis>"`, then run `bin/glaw-council complete --profile auto`.
+Any `fix` or `deny` must name the red flags and routes the work back to the owning department
+until corrected.
 
 Hard rule: a number that cannot be traced to source evidence, a ledger entry, and a tie-out stays in
 REVIEW and must not be presented as final. Unsupported assumptions are named assumptions, not facts.
