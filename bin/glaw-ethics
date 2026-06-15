@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -16,6 +17,7 @@ UPL_FOOTER = (
     "this material does not create an attorney-client relationship. Verify all citations, "
     "deadlines, filings, fees, and figures independently before filing or relying on them."
 )
+SOURCE_ID_RE = re.compile(r"\bSRC-\d{4}\b")
 
 
 def now() -> str:
@@ -74,6 +76,7 @@ def default_record(d: Path) -> dict:
         "status": "draft",
         "conflicts_status": "pending",
         "conflicts_notes": "",
+        "conflicts_source": "",
         "waiver_required": False,
         "waiver_evidence": "",
         "engagement": {
@@ -81,6 +84,7 @@ def default_record(d: Path) -> dict:
             "scope": "",
             "fee_terms": "",
             "responsible_professional": "",
+            "source": "",
         },
         "upl_footer": UPL_FOOTER,
         "updated_at": now(),
@@ -105,14 +109,20 @@ def blockers(record: dict) -> list[str]:
     conflicts = record.get("conflicts_status")
     if conflicts not in {"cleared", "waived"}:
         out.append("conflicts_status must be cleared or waived")
+    if not SOURCE_ID_RE.search(str(record.get("conflicts_source", ""))):
+        out.append("conflicts_source must cite source evidence id (SRC-####)")
     if conflicts == "waived" and not record.get("waiver_evidence"):
         out.append("waiver_evidence required for waived conflicts")
+    if conflicts == "waived" and not SOURCE_ID_RE.search(str(record.get("waiver_evidence", ""))):
+        out.append("waiver_evidence must cite source evidence id (SRC-####)")
     engagement = record.get("engagement", {})
     if engagement.get("status") != "drafted":
         out.append("engagement.status must be drafted")
     for key in ("scope", "responsible_professional"):
         if not engagement.get(key):
             out.append(f"engagement.{key} required")
+    if not SOURCE_ID_RE.search(str(engagement.get("source", ""))):
+        out.append("engagement.source must cite source evidence id (SRC-####)")
     footer = str(record.get("upl_footer", "")).lower()
     if "attorney work-product" not in footer or "not legal advice" not in footer:
         out.append("upl_footer must include attorney work-product and not legal advice language")
@@ -140,21 +150,28 @@ def cmd_init(args: argparse.Namespace) -> int:
 
 
 def cmd_record_conflicts(args: argparse.Namespace) -> int:
+    if not SOURCE_ID_RE.search(args.source):
+        print("ERROR: --source must cite a source evidence id such as SRC-0001", file=sys.stderr)
+        return 2
     d = matter_dir(args.matter)
     record = load_record(d)
     record["conflicts_status"] = args.status
     record["conflicts_notes"] = args.notes
+    record["conflicts_source"] = args.source
     record["waiver_required"] = args.status == "waived"
     if args.waiver_evidence:
         record["waiver_evidence"] = args.waiver_evidence
     save_record(d, record)
     sync_charter(d, record)
-    timeline(d, "conflicts_reviewed", status=args.status)
+    timeline(d, "conflicts_reviewed", status=args.status, source=args.source)
     print(f"CONFLICTS {args.status}")
     return 0
 
 
 def cmd_engagement(args: argparse.Namespace) -> int:
+    if not SOURCE_ID_RE.search(args.source):
+        print("ERROR: --source must cite a source evidence id such as SRC-0001", file=sys.stderr)
+        return 2
     d = matter_dir(args.matter)
     record = load_record(d)
     record["engagement"] = {
@@ -162,10 +179,11 @@ def cmd_engagement(args: argparse.Namespace) -> int:
         "scope": args.scope,
         "fee_terms": args.fee_terms,
         "responsible_professional": args.responsible_professional,
+        "source": args.source,
     }
     save_record(d, record)
     sync_charter(d, record)
-    timeline(d, "engagement_drafted")
+    timeline(d, "engagement_drafted", source=args.source)
     print("ENGAGEMENT DRAFTED")
     return 0
 
@@ -213,6 +231,7 @@ def main() -> int:
     p = sub.add_parser("record-conflicts")
     p.add_argument("--status", required=True, choices=["cleared", "waived", "conflict"])
     p.add_argument("--notes", default="")
+    p.add_argument("--source", required=True)
     p.add_argument("--waiver-evidence", default="")
     p.add_argument("--matter", default=None)
     p.set_defaults(func=cmd_record_conflicts)
@@ -220,6 +239,7 @@ def main() -> int:
     p.add_argument("--scope", required=True)
     p.add_argument("--fee-terms", default="")
     p.add_argument("--responsible-professional", required=True)
+    p.add_argument("--source", required=True)
     p.add_argument("--matter", default=None)
     p.set_defaults(func=cmd_engagement)
     p = sub.add_parser("status")

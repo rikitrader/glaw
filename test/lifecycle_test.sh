@@ -46,8 +46,12 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "strategy blocked before intake/confli
 "$INTAKE" set track_specific.books_status 'raw statements' >/dev/null
 "$INTAKE" set track_specific.irs_forms_needed '1120' >/dev/null
 "$INTAKE" complete >/dev/null
-"$ETHICS" record-conflicts --status cleared --notes 'no conflict in test fixture' >/dev/null
-"$ETHICS" draft-engagement --scope 'review and draft only' --responsible-professional 'licensed reviewer' >/dev/null
+"$ETHICS" record-conflicts --status cleared --notes 'no conflict in test fixture' >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "ethics conflicts blocked without source evidence id"
+"$ETHICS" record-conflicts --status cleared --notes 'no conflict in test fixture' --source 'SRC-0001 intake party list reviewed' >/dev/null
+"$ETHICS" draft-engagement --scope 'review and draft only' --responsible-professional 'licensed reviewer' >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "ethics engagement blocked without source evidence id"
+"$ETHICS" draft-engagement --scope 'review and draft only' --responsible-professional 'licensed reviewer' --source 'SRC-0001 authorized scope reviewed' >/dev/null
 "$ETHICS" complete >/dev/null
 "$GLAW" stage strategy >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "strategy clears after intake/conflicts"

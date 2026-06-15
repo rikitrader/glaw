@@ -37,14 +37,14 @@ bin/glaw-intake set track_specific.counterparty 'Vendor LLC'
 bin/glaw-intake set track_specific.governing_law 'Florida'
 bin/glaw-intake set track_specific.review_standard 'client-favorable'
 bin/glaw-intake complete
-bin/glaw-ethics record-conflicts --status cleared --notes 'no conflict identified'
-bin/glaw-ethics draft-engagement --scope 'review and draft only' --responsible-professional 'licensed reviewer'
+bin/glaw-ethics record-conflicts --status cleared --notes 'no conflict identified' --source 'SRC-0001 party list reviewed'
+bin/glaw-ethics draft-engagement --scope 'review and draft only' --responsible-professional 'licensed reviewer' --source 'SRC-0001 authorized scope reviewed'
 bin/glaw-ethics complete
 ```
 
 Required gates:
 
-1. Structured intake and conflicts/engagement must clear before strategy.
+1. Structured intake and source-backed conflicts/engagement must clear before strategy.
 2. Legal citations must be verified through `glaw-citation-gate complete` before file.
 3. Adversarial review must pass before file.
 4. Critical/high red flags must be resolved before file.

@@ -105,8 +105,8 @@ The executable gate is:
 bin/glaw-ethics complete
 ```
 
-That command logs `conflicts_cleared` only after conflicts, engagement, responsible reviewer, and
-UPL footer state are complete.
+That command logs `conflicts_cleared` only after conflicts, engagement, responsible reviewer,
+source-backed conflicts/engagement basis, and UPL footer state are complete.
 
 ### Step 3 — Run the pipeline
 Walk the stages in order. After each stage, run `glaw stage <next>` to advance, and

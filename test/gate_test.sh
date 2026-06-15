@@ -75,6 +75,22 @@ cat > "$M/intake.json" <<'JSON'
   }
 }
 JSON
+ok "$([ "$(chk strategy)" = 1 ] && echo 1 || echo 0)" "strategy STILL BLOCKED by unsourced ethics artifact"
+cat > "$M/ethics.json" <<'JSON'
+{
+  "status": "complete",
+  "conflicts_status": "cleared",
+  "conflicts_notes": "no conflict in fixture",
+  "conflicts_source": "SRC-0001 party list reviewed",
+  "engagement": {
+    "status": "drafted",
+    "scope": "review and draft only",
+    "responsible_professional": "licensed reviewer",
+    "source": "SRC-0001 authorized scope reviewed"
+  },
+  "upl_footer": "Attorney work-product - not legal advice."
+}
+JSON
 ok "$([ "$(chk strategy)" = 0 ] && echo 1 || echo 0)" "strategy CLEAR after intake/ethics artifacts"
 
 # file gate: citations, adversarial, red flags, final packet, and chief approval

@@ -42,12 +42,14 @@ _strategy_artifacts_valid() {  # _strategy_artifacts_valid <matter-dir> <repo-ro
   python3 - "$1" "$2" <<'PY'
 import json
 import pathlib
+import re
 import sys
 
 d = pathlib.Path(sys.argv[1])
 root = pathlib.Path(sys.argv[2])
 sys.path.insert(0, str(root / "lib"))
 from glaw_profiles import TRACKS
+SOURCE_ID_RE = re.compile(r"\bSRC-\d{4}\b")
 
 REQUIRED_INTAKE = (
     "matter_name",
@@ -112,9 +114,24 @@ if ethics.get("status") != "complete":
 if ethics.get("conflicts_status") not in {"cleared", "waived"}:
     print("ethics conflicts_status is not cleared or waived")
     sys.exit(1)
+if not SOURCE_ID_RE.search(str(ethics.get("conflicts_source", ""))):
+    print("ethics conflicts_source lacks source evidence id (SRC-####)")
+    sys.exit(1)
+if ethics.get("conflicts_status") == "waived" and not SOURCE_ID_RE.search(str(ethics.get("waiver_evidence", ""))):
+    print("ethics waiver_evidence lacks source evidence id (SRC-####)")
+    sys.exit(1)
 engagement = ethics.get("engagement", {})
 if engagement.get("status") != "drafted":
     print("ethics engagement is not drafted")
+    sys.exit(1)
+if not str(engagement.get("scope", "")).strip():
+    print("ethics engagement scope is missing")
+    sys.exit(1)
+if not str(engagement.get("responsible_professional", "")).strip():
+    print("ethics responsible professional is missing")
+    sys.exit(1)
+if not SOURCE_ID_RE.search(str(engagement.get("source", ""))):
+    print("ethics engagement source lacks source evidence id (SRC-####)")
     sys.exit(1)
 PY
 }
