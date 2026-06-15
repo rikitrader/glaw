@@ -95,8 +95,8 @@ The senior review chain is mandatory:
 
 Accounting/bookkeeping work cannot self-approve. The required council lenses are:
 `cfo`, `irs-audit-agent`, `legal-counsel`, `forensic-audit`, and `outside-critic`.
-Record each review with `bin/glaw-council record --profile accounting ...`, then run
-`bin/glaw-council complete --profile accounting`. Any `fix` or `deny` routes the work
+Record each review with `bin/glaw-council record --profile auto ...`, then run
+`bin/glaw-council complete --profile auto`. Any `fix` or `deny` routes the work
 back to the owning department until corrected.
 
 Hard rule: a number that cannot be traced to source evidence, a ledger entry, and a tie-out stays in
@@ -137,7 +137,9 @@ Before any tax, audit, IRS, or SEC/reporting deliverable leaves draft, run the e
 
 ```bash
 GLAW="$PWD" bash bin/glaw-bookkeeping-doctor
-bin/glaw-council status --profile accounting
+bin/glaw-council status --profile auto
+bin/glaw-red-flags status
+bin/glaw-final-packet build --profile auto
 ```
 
 This gate exercises statement ingest, bank reconciliation, ledger posting, IRS return mapping,

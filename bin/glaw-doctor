@@ -397,8 +397,8 @@ for p in "$GLAW"/bin/matter-ops/*.py; do
   python3 -m py_compile "$p" 2>/dev/null || { bad "matter-ops/$(basename "$p") syntax error"; mo_fail=$((mo_fail+1)); }
 done
 [ "$mo_fail" = 0 ] && ok "all $mo_n bin/matter-ops/*.py compile (incl. facts_validate/facts_gate guard)"
-# regression tests (safety-critical paths): launch-guard RUN-vs-WAIT + hard-gate enforcement
-for t in facts_validate_test:launch-guard gate_test:hard-gate; do
+# regression tests (safety-critical paths): launch-guard, hard gates, full lifecycle
+for t in facts_validate_test:launch-guard gate_test:hard-gate lifecycle_test:full-lifecycle; do
   script="$GLAW/test/${t%%:*}.sh"; name="${t#*:}"
   [ -x "$script" ] || continue
   if "$script" >/tmp/glaw-$$.out 2>&1; then

@@ -192,7 +192,10 @@ Then route the output through the accounting council before calling it final:
 ~/.claude/skills/glaw/bin/glaw-council record --profile accounting --role legal-counsel --decision approve
 ~/.claude/skills/glaw/bin/glaw-council record --profile accounting --role forensic-audit --decision approve
 ~/.claude/skills/glaw/bin/glaw-council record --profile accounting --role outside-critic --decision approve
+~/.claude/skills/glaw/bin/glaw-council record --profile accounting --role external-reviewer --decision approve
 ~/.claude/skills/glaw/bin/glaw-council complete --profile accounting
+~/.claude/skills/glaw/bin/glaw-red-flags status
+~/.claude/skills/glaw/bin/glaw-final-packet build --profile accounting
 ```
 Use `--decision fix` or `--decision deny` with `--red-flags` when a reviewer finds a gap.
 

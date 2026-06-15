@@ -1,6 +1,6 @@
 # GLAW Toolbelt — CLI Reference
 
-The firm's reasoning lives in markdown skills; its deterministic work lives in 20 small
+The firm's reasoning lives in markdown skills; its deterministic work lives in source-only
 CLIs under [`../bin/`](../bin/). The toolbelt is source-first and zero third-party package:
 no `pip install`, no `npm install`, no virtualenv bootstrap, and no remote package fetch.
 Tools use bash, Python 3, repository libraries, and the Python standard library.
@@ -12,7 +12,9 @@ Run any tool with no arguments for its usage. `bin/glaw-doctor` smoke-tests them
 |---|---|
 | `glaw` | `matter new "<name>"` · `matter list` · `matter use <slug>` · `stage <stage>` · `docket add <YYYY-MM-DD> "<desc>"` · `docket upcoming [days]` · `timeline-log <event>` · `config get/set <k> [v]` |
 | `glaw-intake` | `init [slug] --track <track>` · `set <field> <value>` · `status` · `complete` · `show` for the structured `intake.json` gate |
-| `glaw-council` | `record --profile accounting --role <lens> --decision approve\|fix\|deny` · `status` · `complete` for required multi-agent signoff |
+| `glaw-council` | `record --profile auto --role <lens> --decision approve\|fix\|deny` · `status` · `complete` for required multi-agent signoff |
+| `glaw-red-flags` | `add --severity critical\|high\|medium\|low ...` · `resolve <id> --evidence <text>` · `status` · `list` for blocking issue control |
+| `glaw-final-packet` | `build --profile auto` → `final_packet.json` + `final_packet.md`; logs `final_packet_ready` only when gates are clear |
 | `glaw-setup` | deploy every sub-skill as a `/glaw-*` command (symlink model) |
 | `glaw-doctor` | health harness: skills resolve · tools run · no dangling refs → `HEALTHY`/`PROBLEMS` |
 | `glaw-preamble.sh` | shared preamble emitted by each stage skill |

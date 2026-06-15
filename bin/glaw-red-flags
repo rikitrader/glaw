@@ -1,0 +1,156 @@
+#!/usr/bin/env python3
+"""GLAW red-flag ledger: open, resolve, list, and gate blocking findings."""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+BLOCKING = {"critical", "high"}
+
+
+def now() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def home() -> Path:
+    return Path(os.environ.get("GLAW_HOME", str(Path.home() / ".glaw")))
+
+
+def active_slug() -> str:
+    p = home() / ".active"
+    return p.read_text(encoding="utf-8").strip() if p.exists() else ""
+
+
+def matter_dir(slug: str | None) -> Path:
+    s = slug or active_slug()
+    if not s:
+        raise SystemExit("ERROR: no active matter. Run `glaw matter new \"<name>\"` first.")
+    d = home() / "matters" / s
+    if not d.is_dir():
+        raise SystemExit(f"ERROR: matter not found: {s}")
+    return d
+
+
+def ledger_path(d: Path) -> Path:
+    return d / "red_flags.jsonl"
+
+
+def read_rows(d: Path) -> list[dict]:
+    p = ledger_path(d)
+    if not p.exists():
+        return []
+    return [json.loads(line) for line in p.read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
+def write_rows(d: Path, rows: list[dict]) -> None:
+    ledger_path(d).write_text("".join(json.dumps(r, sort_keys=False) + "\n" for r in rows), encoding="utf-8")
+
+
+def timeline(d: Path, event: str, **extra: object) -> None:
+    with (d / "timeline.jsonl").open("a", encoding="utf-8") as f:
+        f.write(json.dumps({"ts": now(), "event": event, **extra}) + "\n")
+
+
+def cmd_add(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    rows = read_rows(d)
+    rid = args.id or f"RF-{len(rows) + 1:04d}"
+    row = {
+        "ts": now(),
+        "id": rid,
+        "severity": args.severity,
+        "owner": args.owner,
+        "source": args.source,
+        "finding": args.finding,
+        "required_fix": args.required_fix,
+        "status": "open",
+        "resolution_evidence": "",
+    }
+    rows.append(row)
+    write_rows(d, rows)
+    timeline(d, "red_flag_opened", id=rid, severity=args.severity, owner=args.owner)
+    print(f"OPENED {rid}")
+    return 0
+
+
+def cmd_resolve(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    rows = read_rows(d)
+    found = False
+    for row in rows:
+        if row.get("id") == args.id:
+            row["status"] = "resolved"
+            row["resolved_at"] = now()
+            row["resolution_evidence"] = args.evidence
+            found = True
+            break
+    if not found:
+        print(f"ERROR: red flag not found: {args.id}", file=sys.stderr)
+        return 1
+    write_rows(d, rows)
+    timeline(d, "red_flag_resolved", id=args.id)
+    print(f"RESOLVED {args.id}")
+    return 0
+
+
+def blocking(rows: list[dict]) -> list[dict]:
+    return [
+        r for r in rows
+        if r.get("status", "open") != "resolved" and str(r.get("severity", "")).lower() in BLOCKING
+    ]
+
+
+def cmd_status(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    rows = read_rows(d)
+    bad = blocking(rows)
+    print(f"RED FLAGS {d.name}: {len(rows)} total, {len(bad)} blocking")
+    for row in rows:
+        print(f"  {row.get('id')} {row.get('severity')} {row.get('status')}: {row.get('finding')}")
+    if bad:
+        print("RED FLAGS BLOCKED")
+        return 1
+    timeline(d, "red_flags_clear")
+    print("RED FLAGS CLEAR")
+    return 0
+
+
+def cmd_list(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    print(json.dumps(read_rows(d), indent=2))
+    return 0
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(prog="glaw-red-flags")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    p = sub.add_parser("add")
+    p.add_argument("--id", default="")
+    p.add_argument("--severity", required=True, choices=["critical", "high", "medium", "low"])
+    p.add_argument("--owner", required=True)
+    p.add_argument("--source", required=True)
+    p.add_argument("--finding", required=True)
+    p.add_argument("--required-fix", required=True)
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_add)
+    p = sub.add_parser("resolve")
+    p.add_argument("id")
+    p.add_argument("--evidence", required=True)
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_resolve)
+    p = sub.add_parser("status")
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_status)
+    p = sub.add_parser("list")
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_list)
+    args = ap.parse_args()
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -1,0 +1,192 @@
+#!/usr/bin/env python3
+"""Build the GLAW final packet manifest and gate final readiness."""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import subprocess
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+TRACK_TO_PROFILE = {
+    "accounting-tax": "accounting",
+    "litigation": "litigation",
+    "corp-build": "corp-build",
+    "contract-review": "contract-review",
+    "investigation": "investigation",
+    "hybrid": "hybrid",
+}
+
+
+def now() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def home() -> Path:
+    return Path(os.environ.get("GLAW_HOME", str(Path.home() / ".glaw")))
+
+
+def active_slug() -> str:
+    p = home() / ".active"
+    return p.read_text(encoding="utf-8").strip() if p.exists() else ""
+
+
+def matter_dir(slug: str | None) -> Path:
+    s = slug or active_slug()
+    if not s:
+        raise SystemExit("ERROR: no active matter. Run `glaw matter new \"<name>\"` first.")
+    d = home() / "matters" / s
+    if not d.is_dir():
+        raise SystemExit(f"ERROR: matter not found: {s}")
+    return d
+
+
+def read_json(path: Path, default):
+    if not path.exists():
+        return default
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return default
+
+
+def read_jsonl(path: Path) -> list[dict]:
+    if not path.exists():
+        return []
+    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
+def timeline(d: Path, event: str, **extra: object) -> None:
+    with (d / "timeline.jsonl").open("a", encoding="utf-8") as f:
+        f.write(json.dumps({"ts": now(), "event": event, **extra}) + "\n")
+
+
+def workflow_profile(intake: dict) -> str:
+    track = intake.get("universal", {}).get("workflow_track") or intake.get("workflow_track")
+    return TRACK_TO_PROFILE.get(track, track or "hybrid")
+
+
+def has_event(rows: list[dict], event: str) -> bool:
+    return any(row.get("event") == event for row in rows)
+
+
+def blocking_red_flags(rows: list[dict]) -> list[dict]:
+    return [
+        row for row in rows
+        if row.get("status", "open") != "resolved"
+        and str(row.get("severity", "")).lower() in {"critical", "high"}
+    ]
+
+
+def run_check(cmd: list[str], cwd: Path) -> tuple[int, str]:
+    proc = subprocess.run(cmd, cwd=str(cwd), capture_output=True, text=True)
+    return proc.returncode, (proc.stdout + proc.stderr).strip()
+
+
+def render_md(packet: dict) -> str:
+    lines = [
+        "# GLAW Final Packet",
+        "",
+        f"- Matter: {packet['matter_slug']}",
+        f"- Generated: {packet['generated_at']}",
+        f"- Workflow profile: {packet['workflow_profile']}",
+        f"- Gate status: {packet['status']}",
+        "",
+        "## Required Gates",
+    ]
+    for gate, ok in packet["gates"].items():
+        lines.append(f"- [{'x' if ok else ' '}] {gate}")
+    lines.extend(["", "## Blocking Red Flags"])
+    if packet["blocking_red_flags"]:
+        for flag in packet["blocking_red_flags"]:
+            lines.append(f"- {flag.get('id')}: {flag.get('severity')} - {flag.get('finding')}")
+    else:
+        lines.append("- none")
+    lines.extend(["", "## Council Reviews"])
+    for row in packet["council_reviews"]:
+        lines.append(f"- {row.get('profile')} / {row.get('role')}: {row.get('decision')}")
+    lines.extend(["", "## Deliverables"])
+    if packet["deliverables"]:
+        for item in packet["deliverables"]:
+            lines.append(f"- {item}")
+    else:
+        lines.append("- none recorded")
+    lines.append("")
+    lines.append("Attorney/CPA work-product. Human licensed signoff remains required where applicable.")
+    return "\n".join(lines) + "\n"
+
+
+def cmd_build(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    root = Path(__file__).resolve().parents[1]
+    intake = read_json(d / "intake.json", {})
+    profile = args.profile if args.profile != "auto" else workflow_profile(intake)
+    timeline_rows = read_jsonl(d / "timeline.jsonl")
+    red_flags = read_jsonl(d / "red_flags.jsonl")
+    council = [r for r in read_jsonl(d / "council.jsonl") if r.get("profile") == profile]
+    decisions = read_jsonl(d / "decisions.jsonl")
+    docket = read_jsonl(d / "docket.jsonl")
+    deliverables = sorted(
+        str(p.relative_to(d)) for p in d.rglob("*")
+        if p.is_file() and p.name not in {
+            "timeline.jsonl", "docket.jsonl", "council.jsonl", "decisions.jsonl",
+            "red_flags.jsonl", "intake.json", "final_packet.json", "final_packet.md",
+        }
+    )
+
+    rc_rf, red_flag_output = run_check([str(root / "bin/glaw-red-flags"), "status", "--matter", d.name], root)
+    rc_council, council_output = run_check(
+        [str(root / "bin/glaw-council"), "complete", "--profile", profile, "--matter", d.name],
+        root,
+    )
+    timeline_rows = read_jsonl(d / "timeline.jsonl")
+    gates = {
+        "intake_complete": has_event(timeline_rows, "intake_complete"),
+        "conflicts_cleared": has_event(timeline_rows, "conflicts_cleared"),
+        "citations_verified": has_event(timeline_rows, "citations_verified"),
+        "adversarial_done": has_event(timeline_rows, "adversarial_done"),
+        f"{profile}_council_complete": has_event(timeline_rows, f"{profile}_council_complete"),
+        "red_flags_clear": rc_rf == 0,
+    }
+    blockers = blocking_red_flags(red_flags)
+    ready = all(gates.values()) and not blockers and rc_council == 0
+    packet = {
+        "schema_version": 1,
+        "generated_at": now(),
+        "matter_slug": d.name,
+        "workflow_profile": profile,
+        "status": "ready" if ready else "blocked",
+        "gates": gates,
+        "red_flag_check": red_flag_output,
+        "council_check": council_output,
+        "blocking_red_flags": blockers,
+        "intake": intake,
+        "docket": docket,
+        "council_reviews": council,
+        "decisions": decisions,
+        "deliverables": deliverables,
+    }
+    (d / "final_packet.json").write_text(json.dumps(packet, indent=2, sort_keys=False) + "\n", encoding="utf-8")
+    (d / "final_packet.md").write_text(render_md(packet), encoding="utf-8")
+    if ready:
+        timeline(d, "final_packet_ready", profile=profile)
+        print(f"FINAL PACKET READY {d.name}")
+        return 0
+    print(f"FINAL PACKET BLOCKED {d.name}", file=sys.stderr)
+    print(render_md(packet), file=sys.stderr)
+    return 1
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(prog="glaw-final-packet")
+    ap.add_argument("build", nargs="?")
+    ap.add_argument("--profile", default="auto")
+    ap.add_argument("--matter", default=None)
+    args = ap.parse_args()
+    return cmd_build(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

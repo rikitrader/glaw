@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+# lifecycle_test.sh — full source-only matter lifecycle gate test.
+set -uo pipefail
+HERE="$(cd "$(dirname "$0")" && pwd)"
+ROOT="$HERE/.."
+pass=0; fail=0
+ok(){ if [ "$1" = 1 ]; then pass=$((pass+1)); echo "  ✓ $2"; else fail=$((fail+1)); echo "  ✗ FAIL: $2"; fi; }
+
+TMP="$(mktemp -d)"; export GLAW_HOME="$TMP"
+GLAW="$ROOT/bin/glaw"
+INTAKE="$ROOT/bin/glaw-intake"
+COUNCIL="$ROOT/bin/glaw-council"
+FLAGS="$ROOT/bin/glaw-red-flags"
+PACKET="$ROOT/bin/glaw-final-packet"
+CHIEF="$ROOT/bin/glaw-chief-decision"
+
+"$GLAW" matter new "Lifecycle Accounting" >/dev/null
+SLUG="lifecycle-accounting"
+ok "$([ -f "$TMP/matters/$SLUG/intake.json" ] && echo 1 || echo 0)" "matter new creates intake.json"
+
+"$GLAW" stage strategy >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "strategy blocked before intake/conflicts"
+
+"$INTAKE" set workflow_track accounting-tax >/dev/null
+"$INTAKE" set client_names 'Acme Inc.' >/dev/null
+"$INTAKE" set parties 'Acme Inc.; Bank' >/dev/null
+"$INTAKE" set jurisdiction 'Florida' >/dev/null
+"$INTAKE" set goal 'reconstruct books and tax package' >/dev/null
+"$INTAKE" set source_documents 'bank.csv' >/dev/null
+"$INTAKE" set deadlines '2026-09-15 tax filing' >/dev/null
+"$INTAKE" set facts_timeline '2026-01-01 opening balance' >/dev/null
+"$INTAKE" set open_questions 'none' >/dev/null
+"$INTAKE" set conflicts_parties 'Acme Inc.; Bank' >/dev/null
+"$INTAKE" set authorized_scope 'review and draft only' >/dev/null
+"$INTAKE" set track_specific.bank_statement_sources 'bank.csv' >/dev/null
+"$INTAKE" set track_specific.tax_years '2026' >/dev/null
+"$INTAKE" set track_specific.entity_tax_type 'C-corp' >/dev/null
+"$INTAKE" set track_specific.books_status 'raw statements' >/dev/null
+"$INTAKE" set track_specific.irs_forms_needed '1120' >/dev/null
+"$INTAKE" complete >/dev/null
+"$GLAW" timeline-log conflicts_cleared
+"$GLAW" stage strategy >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "strategy clears after intake/conflicts"
+
+"$FLAGS" add --severity high --owner cfo --source test --finding 'cash tie-out missing' --required-fix 'attach bank reconciliation' >/dev/null
+"$PACKET" build >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by open high red flag"
+"$FLAGS" resolve RF-0001 --evidence 'bank reconciliation attached' >/dev/null
+
+for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do
+  "$COUNCIL" record --profile auto --role "$role" --decision approve >/dev/null
+done
+"$GLAW" timeline-log citations_verified
+"$GLAW" timeline-log adversarial_done
+"$PACKET" build >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 0 ] && [ -f "$TMP/matters/$SLUG/final_packet.json" ] && echo 1 || echo 0)" "final packet ready after council and red flags clear"
+
+"$CHIEF" --chief "GLAW Chief Counsel" --decision "PROCEED" --approve-final --matter "$SLUG" >/dev/null
+"$GLAW" stage file >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 0 ] && [ "$(cat "$TMP/matters/$SLUG/.stage")" = file ] && echo 1 || echo 0)" "file stage clears after final packet and chief approval"
+
+rm -rf "$TMP"
+echo
+echo "${fail:-0} failures — $pass passed, $fail failed"
+[ "$fail" = 0 ] && { echo "ALL PASS ✅"; exit 0; } || { echo "FAILURES ❌"; exit 1; }

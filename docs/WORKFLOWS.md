@@ -43,8 +43,10 @@ Required gates:
 1. Structured intake and conflicts/engagement must clear before strategy.
 2. Legal citations must be verified before file.
 3. Adversarial review must pass before file.
-4. Chief/Council must approve final entry before file.
-5. External deliverables must include the attorney-review / not-legal-advice guardrail.
+4. Critical/high red flags must be resolved before file.
+5. Final packet manifest must be ready before file.
+6. Chief/Council must approve final entry before file.
+7. External deliverables must include the attorney-review / not-legal-advice guardrail.
 
 Final approval is recorded by the Chief layer:
 
@@ -62,17 +64,29 @@ route back to the owning department until fixed.
 Accounting/bookkeeping has its own required review council before Chief approval:
 
 ```bash
-bin/glaw-council record --profile accounting --role cfo --decision approve
-bin/glaw-council record --profile accounting --role irs-audit-agent --decision approve
-bin/glaw-council record --profile accounting --role legal-counsel --decision approve
-bin/glaw-council record --profile accounting --role forensic-audit --decision approve
-bin/glaw-council record --profile accounting --role outside-critic --decision approve
-bin/glaw-council complete --profile accounting
+bin/glaw-council record --profile auto --role cfo --decision approve
+bin/glaw-council record --profile auto --role irs-audit-agent --decision approve
+bin/glaw-council record --profile auto --role legal-counsel --decision approve
+bin/glaw-council record --profile auto --role forensic-audit --decision approve
+bin/glaw-council record --profile auto --role outside-critic --decision approve
+bin/glaw-council record --profile auto --role external-reviewer --decision approve
+bin/glaw-council complete --profile auto
 ```
 
 Use `--decision fix` or `--decision deny` plus `--red-flags` and `--conditions` for any
 reviewer that finds a gap. The workflow loops back to the owning department until all required
 lenses approve.
+
+Red flags and the final packet are explicit gates:
+
+```bash
+bin/glaw-red-flags status
+bin/glaw-final-packet build --profile auto
+```
+
+`glaw-final-packet` writes `final_packet.json` and `final_packet.md`, then logs
+`final_packet_ready` only when intake/conflicts/citations/adversarial, red flags, and the required
+council profile are all clear.
 
 ## Contract Review
 

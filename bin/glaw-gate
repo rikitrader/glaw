@@ -8,6 +8,8 @@
 #                   ⇐ conflicts_cleared            (gate 1: conflicts before strategy)
 #   enter file      ⇐ citations_verified           (gate 2: cites verified before file)
 #                   ⇐ adversarial_done             (gate 3: RED→BLUE before file)
+#                   ⇐ red_flags_clear              (no critical/high open findings)
+#                   ⇐ final_packet_ready           (required council + manifest)
 #                   ⇐ chief_approved               (Chief/Council final approval)
 # (UPL footer = gate 4, a per-document content gate enforced at draft/publish, not here.)
 #
@@ -22,13 +24,13 @@ MATTERS="$GLAW_HOME/matters"
 _required_events() {
   case "$1" in
     strategy) echo "intake_complete conflicts_cleared" ;;
-    file)     echo "citations_verified adversarial_done chief_approved" ;;
+    file)     echo "citations_verified adversarial_done red_flags_clear final_packet_ready chief_approved" ;;
     *)        echo "" ;;   # unguarded transition
   esac
 }
 
 _has_event() {  # _has_event <timeline-file> <event>
-  [ -f "$1" ] && grep -q "\"event\":\"$2\"" "$1"
+  [ -f "$1" ] && grep -Eq "\"event\"[[:space:]]*:[[:space:]]*\"$2\"" "$1"
 }
 
 _slug() { local s="${1:-}"; [ -n "$s" ] && { echo "$s"; return; }; [ -f "$GLAW_HOME/.active" ] && cat "$GLAW_HOME/.active" || echo ""; }
@@ -57,7 +59,7 @@ case "$action" in
     [ -z "$slug" ] && { echo "GATE: no active matter"; exit 2; }
     tl="$MATTERS/$slug/timeline.jsonl"
     echo "═══ GATE STATUS — $slug ═══"
-    for pair in "intake_complete:before strategy" "conflicts_cleared:before strategy" "citations_verified:before file" "adversarial_done:before file" "chief_approved:before file"; do
+    for pair in "intake_complete:before strategy" "conflicts_cleared:before strategy" "citations_verified:before file" "adversarial_done:before file" "red_flags_clear:before file" "final_packet_ready:before file" "chief_approved:before file"; do
       ev="${pair%%:*}"; desc="${pair#*:}"
       if _has_event "$tl" "$ev"; then echo "  ✅ $ev ($desc)"; else echo "  ❌ $ev ($desc) — NOT yet cleared"; fi
     done ;;

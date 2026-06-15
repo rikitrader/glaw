@@ -43,6 +43,8 @@ ADVERSARIAL  /glaw-adversarial  (RED-team → BLUE-team rebuild)        ← hard
   GATE: /glaw-legal-research verifies every cited proposition          ← hard gate #3
 
 FILE  /glaw-file  (signature-ready packet + checklist; UPL disclaimer on every deliverable)
+  └─ GATE: `glaw-red-flags status` must show no blocking critical/high findings
+  └─ GATE: `glaw-final-packet build` writes final_packet.json/md and logs readiness
   └─ GATE: `glaw-chief-decision --approve-final` logs Chief/Council approval
   └─ court records → /glaw-court-records (CourtListener/PACER)
   └─ final polish → /glaw-legal-writing  (Bluebook)
