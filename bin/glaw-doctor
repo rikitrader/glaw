@@ -480,6 +480,22 @@ if grep -rIE 'external companions|Seats marked.*external|Reference stub|fetched 
 fi
 [ "$single_app_drift" = 0 ] && ok "single-app docs: no external/stubbed bundled-seat wording"
 
+# 3e. Core routing docs must use the actual /glaw-* command names for bundled seats.
+bare_ref=0
+if [ -f "$GLAW/seats/MANIFEST" ]; then
+  for seat in $(cat "$GLAW/seats/MANIFEST"); do
+    bare="${seat#glaw-}"
+    case "$seat" in
+      glaw-opendataloader-pdf) continue ;;  # also documented as a local helper binary name
+    esac
+    if grep -RInF "\`$bare\`" "$GLAW/docs/org-chart-and-usage.md" "$GLAW/lib/workflow.md" 2>/dev/null | grep -q .; then
+      bad "bare bundled-seat reference in core routing docs: \`$bare\` should be \`/$seat\`"
+      bare_ref=$((bare_ref+1))
+    fi
+  done
+fi
+[ "$bare_ref" = 0 ] && ok "core routing docs use /glaw-* names for bundled seats"
+
 # ---- 4. SKILL CONTRACTS (per-skill, the ~40 personas) ----
 echo "[4/5] skill contracts (glaw-test)"
 if [ -x "$GLAW/bin/glaw-test" ]; then

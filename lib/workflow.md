@@ -66,11 +66,12 @@ RETRO  /glaw-matter-retro  (close-out + Obsidian vault write)
 1. **Research → verify → draft → polish:** `/glaw-case-law-research` (+`deep-research`) →
    `/glaw-legal-research` (citation gate) → `/glaw-motion-drafting`/`/glaw-draft` →
    `/glaw-legal-writing`.
-2. **Advise → model → reconcile:** a legal/tax seat designs it → an `fs-*` skill builds the
-   model/ledger/KYC/deck → `financial-forensics` reconciles. (See the Execution-layer table in
+2. **Advise → model → reconcile:** a legal/tax seat designs it → a `/glaw-fs-*` skill builds the
+   model/ledger/KYC/deck → `/glaw-financial-forensics` reconciles. (See the Execution-layer table in
    `firm-roster.md`.)
-3. **Tax cleanup → resolve → plan forward:** `tax-compliance` (file) → `tax-relief` (resolve
-   can't-pay) → `tax-strategy` (optimize) — sequenced by `tax-legal-intake`.
+3. **Tax cleanup → resolve → plan forward:** `/glaw-tax-compliance` (file) →
+   `/glaw-tax-relief` (resolve can't-pay) → `/glaw-tax-strategy` (optimize) —
+   sequenced by `/glaw-tax-legal-intake`.
 
 ## Hard gates (orchestrator-enforced)
 1. Structured intake complete (`bin/glaw-intake complete`) before strategy.
