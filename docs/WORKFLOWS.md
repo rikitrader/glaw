@@ -45,7 +45,7 @@ bin/glaw-ethics complete
 Required gates:
 
 1. Structured intake and source-backed conflicts/engagement must clear before strategy.
-2. Legal citations must be verified through `glaw-citation-gate complete` before file.
+2. Legal citations must be verified through `glaw-citation-gate complete` before file; each verified row must preserve proposition, authority, reviewer, and HTTP(S) source URL.
 3. Adversarial review must pass before file.
 4. Critical/high red flags must be resolved before file.
 5. Final packet manifest must be ready before file.

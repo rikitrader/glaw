@@ -11,12 +11,14 @@ import argparse
 import hashlib
 import json
 import os
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
 
 BLOCKING = {"pending", "needs-substitute", "struck", "weak"}
+HTTP_URL_RE = re.compile(r"^https?://", re.IGNORECASE)
 
 
 def now() -> str:
@@ -94,9 +96,19 @@ def timeline(d: Path, event: str, **extra: object) -> None:
 
 def cmd_record(args: argparse.Namespace) -> int:
     d = matter_dir(args.matter)
-    if args.status == "verified" and not args.source_url:
-        print("ERROR: --source-url is required for verified citations", file=sys.stderr)
-        return 2
+    if args.status == "verified":
+        missing = []
+        if not args.proposition.strip():
+            missing.append("--proposition")
+        if not args.authority.strip():
+            missing.append("--authority")
+        if not args.reviewer.strip():
+            missing.append("--reviewer")
+        if not HTTP_URL_RE.match(args.source_url):
+            missing.append("--source-url http(s)")
+        if missing:
+            print("ERROR: verified citations require " + ", ".join(missing), file=sys.stderr)
+            return 2
     row = {
         "ts": now(),
         "id": args.id,
@@ -122,11 +134,21 @@ def latest_by_id(rows: list[dict]) -> dict[str, dict]:
 
 def blockers(rows: list[dict]) -> list[dict]:
     latest = latest_by_id(rows)
+    def verified_incomplete(row: dict) -> bool:
+        return (
+            row.get("status") == "verified"
+            and (
+                not str(row.get("proposition", "")).strip()
+                or not str(row.get("authority", "")).strip()
+                or not str(row.get("reviewer", "")).strip()
+                or not HTTP_URL_RE.match(str(row.get("source_url", "")))
+            )
+        )
     return [
         row for row in latest.values()
         if not row.get("id")
         or str(row.get("status", "")).lower() in BLOCKING
-        or (row.get("status") == "verified" and not row.get("source_url"))
+        or verified_incomplete(row)
     ]
 
 

@@ -188,6 +188,8 @@ open(sys.argv[1], "w", encoding="utf-8").write(json.dumps(row) + "\n")
 PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before verified citation ledger artifact"
 append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/"}'
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by incomplete verified citation row"
+append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","proposition":"tax return must tie to books","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/","reviewer":"legal-research"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current council ledger artifact"
 for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do
   append_hashed_jsonl "$M/council.jsonl" "{\"profile\":\"accounting\",\"role\":\"$role\",\"decision\":\"approve\",\"evidence\":\"SRC-0001 fixture\"}"
@@ -427,7 +429,7 @@ cp "$M/council.jsonl" "$M/council.baseline.jsonl"
 cp "$M/adversarial.jsonl" "$M/adversarial.baseline.jsonl"
 append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"weak","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet weak citation"
-append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/"}'
+append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","proposition":"tax return must tie to books","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/","reviewer":"legal-research"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file STILL BLOCKED by citation ledger hash change after re-verification"
 cp "$M/citations.baseline.jsonl" "$M/citations.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact citation ledger restored"

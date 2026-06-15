@@ -148,6 +148,7 @@ d = pathlib.Path(sys.argv[1])
 root = pathlib.Path(sys.argv[2])
 sys.path.insert(0, str(root / "lib"))
 from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, REVIEWER_SKILL_MAP, TRACKS
+HTTP_URL_RE = re.compile(r"^https?://", re.IGNORECASE)
 
 REQUIRED_INTAKE = (
     "matter_name",
@@ -679,7 +680,13 @@ if not latest_citations:
 blocking_citations = []
 for cid, row in latest_citations.items():
     status = str(row.get("status", "")).lower()
-    if not cid or status in {"pending", "needs-substitute", "struck", "weak"} or (status == "verified" and not row.get("source_url")):
+    verified_incomplete = status == "verified" and (
+        not str(row.get("proposition", "")).strip()
+        or not str(row.get("authority", "")).strip()
+        or not str(row.get("reviewer", "")).strip()
+        or not HTTP_URL_RE.match(str(row.get("source_url", "")))
+    )
+    if not cid or status in {"pending", "needs-substitute", "struck", "weak"} or verified_incomplete:
         blocking_citations.append(cid or row.get("authority") or "unnamed")
 if blocking_citations:
     print("current blocking citation(s): " + ", ".join(str(x) for x in blocking_citations))
