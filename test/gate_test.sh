@@ -84,18 +84,42 @@ cat > "$M/final_packet.json" <<'JSON'
   }
 }
 JSON
-python3 - "$M/decisions.jsonl" <<'PY'
+python3 - "$M/decisions.jsonl" "$M/final_packet.json" <<'PY'
 import hashlib, json, sys
-row = {"final_gate": "approved", "approved_packet_generated_at": "2025-12-31T00:00:00Z"}
+packet = sys.argv[2]
+row = {
+    "final_gate": "approved",
+    "approved_packet_generated_at": "2025-12-31T00:00:00Z",
+    "approved_packet_sha256": hashlib.sha256(open(packet, "rb").read()).hexdigest(),
+}
 row["decision_hash"] = hashlib.sha256(
     json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
 ).hexdigest()
 open(sys.argv[1], "w", encoding="utf-8").write(json.dumps(row) + "\n")
 PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED when Chief approval references stale packet"
-python3 - "$M/decisions.jsonl" <<'PY'
+python3 - "$M/decisions.jsonl" "$M/final_packet.json" <<'PY'
 import hashlib, json, sys
-row = {"final_gate": "approved", "approved_packet_generated_at": "2026-01-01T00:00:00Z"}
+packet = sys.argv[2]
+row = {
+    "final_gate": "approved",
+    "approved_packet_generated_at": "2026-01-01T00:00:00Z",
+    "approved_packet_sha256": "stale-packet-hash",
+}
+row["decision_hash"] = hashlib.sha256(
+    json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
+).hexdigest()
+open(sys.argv[1], "w", encoding="utf-8").write(json.dumps(row) + "\n")
+PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED when Chief approval references stale packet hash"
+python3 - "$M/decisions.jsonl" "$M/final_packet.json" <<'PY'
+import hashlib, json, sys
+packet = sys.argv[2]
+row = {
+    "final_gate": "approved",
+    "approved_packet_generated_at": "2026-01-01T00:00:00Z",
+    "approved_packet_sha256": hashlib.sha256(open(packet, "rb").read()).hexdigest(),
+}
 row["decision_hash"] = hashlib.sha256(
     json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
 ).hexdigest()
@@ -255,6 +279,19 @@ packet["gate_artifact_hashes"] = {
     for name in names
 }
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
+PY
+python3 - "$M/decisions.jsonl" "$M/final_packet.json" <<'PY'
+import hashlib, json, sys
+packet = sys.argv[2]
+row = {
+    "final_gate": "approved",
+    "approved_packet_generated_at": "2026-01-01T00:00:00Z",
+    "approved_packet_sha256": hashlib.sha256(open(packet, "rb").read()).hexdigest(),
+}
+row["decision_hash"] = hashlib.sha256(
+    json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
+).hexdigest()
+open(sys.argv[1], "w", encoding="utf-8").write(json.dumps(row) + "\n")
 PY
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after all file gates"
 cp "$M/decisions.jsonl" "$M/decisions.baseline.jsonl"

@@ -38,6 +38,13 @@ def read_json(path, default):
     except json.JSONDecodeError:
         return default
 
+def sha256_file(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
 def has_timeline_event(mdir, event):
     path = os.path.join(mdir, "timeline.jsonl")
     if not os.path.exists(path):
@@ -98,7 +105,9 @@ def main():
         print("FINAL APPROVAL BLOCKED: final_packet.json is missing/not ready or final_packet_ready is absent.")
         print("Run `glaw-final-packet build --profile auto` after clearing every gate, then retry.")
         return 1
-    final_packet = read_json(os.path.join(mdir, "final_packet.json"), {}) if d["approve-final"] else {}
+    final_packet_path = os.path.join(mdir, "final_packet.json")
+    final_packet = read_json(final_packet_path, {}) if d["approve-final"] else {}
+    final_packet_sha256 = sha256_file(final_packet_path) if d["approve-final"] else ""
 
     card = {
         "ts": ts, "chief": d["chief"],
@@ -106,6 +115,7 @@ def main():
         "decision": d["decision"], "signoff_required": d["signoff"],
         "final_gate": "approved" if d["approve-final"] else ("denied" if d["deny-final"] else "reviewed"),
         "approved_packet_generated_at": final_packet.get("generated_at", "") if d["approve-final"] else "",
+        "approved_packet_sha256": final_packet_sha256,
         "top_risks": risks, "conditions": conds, "rationale": d["rationale"],
     }
     card["decision_hash"] = decision_hash(card)
@@ -117,7 +127,8 @@ def main():
         if d["approve-final"]:
             f.write(json.dumps({"ts":ts,"event":"chief_approved","chief":d["chief"],
                                 "grade":d["grade"],"score":d["score"],"decision":d["decision"],
-                                "approved_packet_generated_at": final_packet.get("generated_at", "")})+"\n")
+                                "approved_packet_generated_at": final_packet.get("generated_at", ""),
+                                "approved_packet_sha256": final_packet_sha256})+"\n")
         if d["deny-final"]:
             f.write(json.dumps({"ts":ts,"event":"chief_denied","chief":d["chief"],
                                 "grade":d["grade"],"score":d["score"],"decision":d["decision"],
@@ -135,6 +146,7 @@ def main():
         f.write(f"- **DECISION:** {d['decision']}\n")
         if d["approve-final"]: f.write(f"- **FINAL GATE:** APPROVED (`chief_approved` logged)\n")
         if d["approve-final"]: f.write(f"- **Approved packet generated_at:** {final_packet.get('generated_at', '')}\n")
+        if d["approve-final"]: f.write(f"- **Approved packet sha256:** `{final_packet_sha256}`\n")
         if d["deny-final"]: f.write(f"- **FINAL GATE:** DENIED (`chief_denied` logged)\n")
         if d["signoff"]: f.write(f"- **⚠ Human/attorney sign-off required.**\n")
         if risks: f.write("\n## Top surviving risks\n"+"".join(f"- {r}\n" for r in risks))

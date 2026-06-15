@@ -66,8 +66,9 @@ If the Council denies the final entry, record it with `--deny-final`; unresolved
 route back to the owning department until fixed.
 `--approve-final` is fail-closed: it refuses to log `chief_approved` unless
 `final_packet.json` is ready and `final_packet_ready` is already in the matter timeline.
-The Chief approval records the approved packet's `generated_at`; if the packet is rebuilt later,
-the file gate blocks until the Chief approves the current packet.
+The Chief approval records the approved packet's `generated_at` and SHA-256 digest; if the
+packet is rebuilt or edited later, the file gate blocks until the Chief approves the current
+packet.
 Guarded stage transitions are fail-closed: `glaw stage strategy --force`,
 `glaw stage file --force`, and `glaw stage matter-retro --force` cannot bypass missing
 events or backing ledgers.
