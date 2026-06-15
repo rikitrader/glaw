@@ -259,10 +259,24 @@ ok "$([ "$rc" = 0 ] && [ "$(cat "$TMP/matters/$SLUG/.stage")" = file ] && echo 1
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "matter-retro blocked before docket gate"
 "$GLAW" docket add 2026-09-15 "tax filing due - verify extension" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "docket add blocked without source-backed owner basis"
+"$GLAW" docket add --owner "tax docket clerk" --source "SRC-9999 stale source" 2026-09-15 "tax filing due - verify extension" >/dev/null
+"$DOCKET" complete >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "docket gate blocked by non-current source evidence id"
+rm "$TMP/matters/$SLUG/docket.jsonl"
 "$GLAW" docket add --owner "tax docket clerk" --source "SRC-0001 filing calendar from intake source" 2026-09-15 "tax filing due - verify extension" >/dev/null
 "$DOCKET" complete >/dev/null
 "$GLAW" stage matter-retro >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && [ "$(cat "$TMP/matters/$SLUG/.stage")" = matter-retro ] && echo 1 || echo 0)" "matter-retro clears after docket gate"
+
+"$GLAW" matter new "No Deadline Source Guard" >/dev/null
+ND_SLUG="no-deadline-source-guard"
+mkdir -p "$TMP/matters/$ND_SLUG/evidence"
+printf 'source support\n' > "$TMP/matters/$ND_SLUG/evidence/source.txt"
+"$DOCKET" no-deadlines --source "SRC-9999 stale source" --rationale "no filing deadlines in scoped review" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "no-deadlines blocked by non-current source evidence id"
+"$DOCKET" no-deadlines --source "SRC-0001 current source" --rationale "no filing deadlines in scoped review" >/dev/null
+"$DOCKET" complete >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "no-deadlines completes with current source evidence id"
 
 "$GLAW" matter new "Negative Finding Source Guard" >/dev/null
 GUARD_SLUG="negative-finding-source-guard"

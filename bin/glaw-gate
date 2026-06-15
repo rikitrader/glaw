@@ -865,6 +865,24 @@ d = pathlib.Path(sys.argv[1])
 docket = d / "docket.jsonl"
 source_id_re = re.compile(r"\bSRC-\d{4}\b")
 due_re = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+source_evidence_parts = {"evidence", "source_documents", "sources"}
+
+def is_source_evidence(path):
+    if not path.is_file():
+        return False
+    if path.stat().st_size <= 0:
+        return False
+    return bool(set(path.relative_to(d).parts) & source_evidence_parts)
+
+current_source_ids = {
+    f"SRC-{idx:04d}"
+    for idx, _path in enumerate(sorted(p for p in d.rglob("*") if is_source_evidence(p)), start=1)
+}
+
+def stale_source_refs(text):
+    refs = sorted(set(source_id_re.findall(text)))
+    return [ref for ref in refs if ref not in current_source_ids]
+
 open_deadlines = 0
 if docket.exists():
     for idx, line in enumerate(docket.read_text(encoding="utf-8", errors="replace").splitlines(), start=1):
@@ -893,6 +911,10 @@ if docket.exists():
         if not source_id_re.search(source):
             print(f"docket.jsonl:{idx} missing source evidence id (SRC-####)")
             sys.exit(1)
+        stale_refs = stale_source_refs(source)
+        if stale_refs:
+            print(f"docket.jsonl:{idx} source evidence id not current: {', '.join(stale_refs)}")
+            sys.exit(1)
         open_deadlines += 1
 if open_deadlines:
     sys.exit(0)
@@ -912,6 +934,10 @@ if (
     or not source_id_re.search(str(record.get("source", "")))
 ):
     print("docket_gate.json lacks sourced no-deadlines rationale/reviewer")
+    sys.exit(1)
+stale_refs = stale_source_refs(str(record.get("source", "")))
+if stale_refs:
+    print(f"docket_gate.json source evidence id not current: {', '.join(stale_refs)}")
     sys.exit(1)
 PY
 }

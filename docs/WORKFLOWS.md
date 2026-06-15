@@ -51,7 +51,7 @@ Required gates:
 5. Final packet manifest must be ready before file.
 6. Chief/Council must approve final entry before file.
 7. External deliverables must include the attorney-review / not-legal-advice guardrail.
-8. Matter-retro requires owned, source-backed docket entries or a sourced no-deadlines determination.
+8. Matter-retro requires owned docket entries or a no-deadlines determination tied to a current source artifact ID.
 
 Final approval is recorded by the Chief layer:
 
@@ -198,6 +198,9 @@ bin/glaw-intake set track_specific.books_status 'raw bank statements only'
 bin/glaw-intake set track_specific.irs_forms_needed '1120; 1099; 941'
 bin/glaw docket add --owner "tax docket clerk" --source "SRC-0001 filing calendar from intake source" 2026-09-15 "tax filing due - verify extension"
 ```
+
+`SRC-0001` must resolve to a current nonempty file under `evidence/`, `sources/`, or
+`source_documents/`; the docket gate and matter-retro gate reject stale source IDs.
 
 For tax-only compliance, filing, planning, or controversy workflows, use the dedicated
 `tax` track instead of the broader bookkeeping reconstruction track. `--profile auto`

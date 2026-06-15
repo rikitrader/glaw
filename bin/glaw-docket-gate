@@ -17,6 +17,11 @@ from pathlib import Path
 
 SOURCE_ID_RE = re.compile(r"\bSRC-\d{4}\b")
 DUE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+SOURCE_EVIDENCE_PARTS = {
+    "evidence",
+    "source_documents",
+    "sources",
+}
 
 
 def now() -> str:
@@ -65,6 +70,24 @@ def read_jsonl(path: Path) -> list[dict]:
     return rows
 
 
+def is_source_evidence(path: Path, root: Path) -> bool:
+    if not path.is_file():
+        return False
+    if path.stat().st_size <= 0:
+        return False
+    return bool(set(path.relative_to(root).parts) & SOURCE_EVIDENCE_PARTS)
+
+
+def source_evidence_ids(d: Path) -> set[str]:
+    paths = sorted(p for p in d.rglob("*") if is_source_evidence(p, d))
+    return {f"SRC-{idx:04d}" for idx, _path in enumerate(paths, start=1)}
+
+
+def missing_current_source_refs(text: str, valid_ids: set[str]) -> list[str]:
+    refs = sorted(set(SOURCE_ID_RE.findall(text)))
+    return [ref for ref in refs if ref not in valid_ids]
+
+
 def open_deadlines(d: Path) -> list[dict]:
     return [
         row for row in read_jsonl(d / "docket.jsonl")
@@ -75,6 +98,7 @@ def open_deadlines(d: Path) -> list[dict]:
 def docket_failures(d: Path) -> list[str]:
     failures: list[str] = []
     rows = read_jsonl(d / "docket.jsonl")
+    valid_source_ids = source_evidence_ids(d)
     for idx, row in enumerate(rows, start=1):
         if row.get("_invalid"):
             failures.append(f"docket.jsonl:{idx} invalid JSON")
@@ -93,6 +117,10 @@ def docket_failures(d: Path) -> list[str]:
             failures.append(f"docket.jsonl:{idx} missing owner")
         if not SOURCE_ID_RE.search(source):
             failures.append(f"docket.jsonl:{idx} missing source evidence id (SRC-####)")
+        else:
+            stale_refs = missing_current_source_refs(source, valid_source_ids)
+            if stale_refs:
+                failures.append(f"docket.jsonl:{idx} source evidence id not current: {', '.join(stale_refs)}")
     return failures
 
 
@@ -127,13 +155,19 @@ def ready_reason(d: Path) -> tuple[bool, str]:
     if deadlines:
         return True, f"{len(deadlines)} open docket deadline(s)"
     record = no_deadlines_record(d)
+    record_source = str(record.get("source", ""))
+    valid_source_ids = source_evidence_ids(d)
+    stale_refs = missing_current_source_refs(record_source, valid_source_ids) if record_source else []
     if (
         record.get("status") == "no_deadlines"
         and record.get("rationale")
         and record.get("reviewer")
-        and SOURCE_ID_RE.search(str(record.get("source", "")))
+        and SOURCE_ID_RE.search(record_source)
+        and not stale_refs
     ):
         return True, "no-deadlines determination recorded"
+    if stale_refs:
+        return False, "no-deadlines source evidence id not current: " + ", ".join(stale_refs)
     return False, "no open docket deadlines and no sourced no-deadlines determination"
 
 
@@ -156,6 +190,10 @@ def cmd_no_deadlines(args: argparse.Namespace) -> int:
         print("ERROR: --source must cite a source evidence id such as SRC-0001", file=sys.stderr)
         return 2
     d = matter_dir(args.matter)
+    stale_refs = missing_current_source_refs(args.source, source_evidence_ids(d))
+    if stale_refs:
+        print("ERROR: --source cites non-current source evidence id(s): " + ", ".join(stale_refs), file=sys.stderr)
+        return 2
     write_no_deadlines(d, args.rationale, args.reviewer, args.source)
     timeline(d, "docket_no_deadlines", reviewer=args.reviewer, source=args.source)
     print("DOCKET NO-DEADLINES RECORDED")
