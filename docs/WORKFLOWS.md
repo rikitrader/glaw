@@ -142,8 +142,9 @@ are all explicitly completed and clear. Each external text deliverable must also
 professional-report marker gate: `Owner:`, `Report voice:`, `Findings:`, `Evidence:`,
 `Red flags:`, and `Sign-off conditions:`. Evidence must cite a hashed source artifact ID
 from the packet's source manifest, e.g. `Evidence: SRC-0001 bank statement`; source artifacts
-live under `evidence/`, `sources/`, or `source_documents/` and must be nonempty files. Required council and adversarial
-review evidence must also cite a source ID, so a senior approval cannot be based on vague
+live under `evidence/`, `sources/`, or `source_documents/` and must be nonempty files. Required council approvals
+must include source-backed evidence plus role-specific notes; required adversarial survivals must
+include source-backed evidence plus the challenge tested. A senior approval cannot be based on vague
 "reviewed" language. Resolved critical/high red flags must cite the same current source ID set,
 so an issue cannot be closed with unsupported "fixed" language. The packet JSON also records the
 expected `final_packet.md` digest, and the file gate blocks if the human-readable markdown packet

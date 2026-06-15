@@ -187,23 +187,25 @@ inside the repo. A failure blocks finalization.
 
 Then route the output through the accounting council before calling it final:
 ```bash
-bin/glaw-council record --profile accounting --role cfo --decision approve
-bin/glaw-council record --profile accounting --role irs-audit-agent --decision approve
-bin/glaw-council record --profile accounting --role legal-counsel --decision approve
-bin/glaw-council record --profile accounting --role forensic-audit --decision approve
-bin/glaw-council record --profile accounting --role outside-critic --decision approve
-bin/glaw-council record --profile accounting --role external-reviewer --decision approve
+bin/glaw-council record --profile accounting --role cfo --decision approve --evidence "SRC-0001 bank reconciliation and ledger tie-out reviewed" --notes "CFO conclusion: books, bank, and reports tie out subject to listed conditions."
+bin/glaw-council record --profile accounting --role irs-audit-agent --decision approve --evidence "SRC-0001 return map and source support reviewed" --notes "IRS audit conclusion: return positions are source-supported and reviewable."
+bin/glaw-council record --profile accounting --role legal-counsel --decision approve --evidence "SRC-0001 scope, UPL footer, and filing posture reviewed" --notes "Legal conclusion: bookkeeping output is work product for licensed review."
+bin/glaw-council record --profile accounting --role forensic-audit --decision approve --evidence "SRC-0001 fraud and unsupported-number checks reviewed" --notes "Forensic conclusion: no unsupported number remains outside red flags."
+bin/glaw-council record --profile accounting --role outside-critic --decision approve --evidence "SRC-0001 independent challenge reviewed" --notes "Outside critic conclusion: no fatal alternative reading remains."
+bin/glaw-council record --profile accounting --role external-reviewer --decision approve --evidence "SRC-0001 outside review basis recorded" --notes "External reviewer conclusion: packet is coherent against source evidence."
 bin/glaw-council complete --profile accounting
-bin/glaw-adversarial record --profile accounting --lens irs-examiner --decision survive --evidence "SRC-0001 return tie-out reviewed"
-bin/glaw-adversarial record --profile accounting --lens state-tax-auditor --decision survive --evidence "SRC-0001 state tax/nexus reviewed"
-bin/glaw-adversarial record --profile accounting --lens forensic-accountant --decision survive --evidence "SRC-0001 forensic reconstruction reviewed"
-bin/glaw-adversarial record --profile accounting --lens cfo-controller --decision survive --evidence "SRC-0001 financial statement tie-outs reviewed"
-bin/glaw-adversarial record --profile accounting --lens outside-critic --decision survive --evidence "SRC-0001 independent challenge complete"
+bin/glaw-adversarial record --profile accounting --lens irs-examiner --decision survive --attack "IRS examiner challenge found no fatal return tie-out defect." --evidence "SRC-0001 return tie-out reviewed"
+bin/glaw-adversarial record --profile accounting --lens state-tax-auditor --decision survive --attack "State auditor challenge found no unresolved nexus defect." --evidence "SRC-0001 state tax/nexus reviewed"
+bin/glaw-adversarial record --profile accounting --lens forensic-accountant --decision survive --attack "Forensic challenge found no unsupported-number defect." --evidence "SRC-0001 forensic reconstruction reviewed"
+bin/glaw-adversarial record --profile accounting --lens cfo-controller --decision survive --attack "Controller challenge found statements tie to source." --evidence "SRC-0001 financial statement tie-outs reviewed"
+bin/glaw-adversarial record --profile accounting --lens outside-critic --decision survive --attack "Outside critic challenge found no fatal alternative conclusion." --evidence "SRC-0001 independent challenge complete"
 bin/glaw-adversarial complete --profile accounting
 bin/glaw-red-flags status
 bin/glaw-red-flags complete
 bin/glaw-final-packet build --profile accounting
 ```
+Council approvals require source-backed `--evidence` plus role-specific `--notes`.
+Adversarial survivals require source-backed `--evidence` plus the `--attack` challenge tested.
 Use `--decision fix` or `--decision deny` with `--red-flags` when a reviewer finds a gap.
 
 ## CLI reference
