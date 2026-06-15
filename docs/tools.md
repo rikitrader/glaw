@@ -55,7 +55,7 @@ Run any tool with no arguments for its usage. `bin/glaw-doctor` smoke-tests them
 | Tool | Usage |
 |---|---|
 | `glaw-bureau-score` | `competency <json>` · `fraud <json>` → deterministic fraud score (0–100) + FBI competency scorecard |
-| `glaw-chief-decision` | record the Chief's PROCEED / WITH-FIXES / WITH-CONDITIONS sign-off → matter timeline + decision card |
+| `glaw-chief-decision` | record the Chief's PROCEED / WITH-FIXES / WITH-CONDITIONS sign-off → matter timeline + decision card; `--approve-final` requires a ready `final_packet.json` |
 
 ## Zero-Dependency Policy
 

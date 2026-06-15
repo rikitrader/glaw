@@ -54,6 +54,7 @@ Required gates:
 Final approval is recorded by the Chief layer:
 
 ```bash
+bin/glaw-final-packet build --profile auto
 bin/glaw-chief-decision --chief "GLAW Chief Counsel" \
   --decision "PROCEED" \
   --risks "none" \
@@ -63,6 +64,8 @@ bin/glaw-chief-decision --chief "GLAW Chief Counsel" \
 
 If the Council denies the final entry, record it with `--deny-final`; unresolved red flags
 route back to the owning department until fixed.
+`--approve-final` is fail-closed: it refuses to log `chief_approved` unless
+`final_packet.json` is ready and `final_packet_ready` is already in the matter timeline.
 
 Accounting/bookkeeping has its own required review council before Chief approval:
 

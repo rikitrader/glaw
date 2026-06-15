@@ -29,6 +29,34 @@ def active_slug():
     p = os.path.join(HOME, ".active")
     return open(p).read().strip() if os.path.exists(p) else ""
 
+def read_json(path, default):
+    if not os.path.exists(path):
+        return default
+    try:
+        with open(path, encoding="utf-8") as f:
+            return json.load(f)
+    except json.JSONDecodeError:
+        return default
+
+def has_timeline_event(mdir, event):
+    path = os.path.join(mdir, "timeline.jsonl")
+    if not os.path.exists(path):
+        return False
+    with open(path, encoding="utf-8", errors="replace") as f:
+        for line in f:
+            if not line.strip():
+                continue
+            try:
+                if json.loads(line).get("event") == event:
+                    return True
+            except json.JSONDecodeError:
+                continue
+    return False
+
+def final_packet_ready(mdir):
+    packet = read_json(os.path.join(mdir, "final_packet.json"), {})
+    return packet.get("status") == "ready" and has_timeline_event(mdir, "final_packet_ready")
+
 def parse(argv):
     d = {"chief":"","score":"","grade":"","decision":"","risks":"","conditions":"",
          "rationale":"","matter":"","signoff":False,"approve-final":False,"deny-final":False}
@@ -60,6 +88,10 @@ def main():
     if d["approve-final"] and d["deny-final"]:
         print("Choose only one: --approve-final or --deny-final.")
         return 2
+    if d["approve-final"] and not final_packet_ready(mdir):
+        print("FINAL APPROVAL BLOCKED: final_packet.json is missing/not ready or final_packet_ready is absent.")
+        print("Run `glaw-final-packet build --profile auto` after clearing every gate, then retry.")
+        return 1
 
     card = {
         "ts": ts, "chief": d["chief"],

@@ -138,6 +138,7 @@ Then run the Chief/Council decision. The Chief routes any red flags back to the 
 department until the agents agree on a final report/outcome:
 
 ```bash
+~/.claude/skills/glaw/bin/glaw-final-packet build --profile auto
 ~/.claude/skills/glaw/bin/glaw-chief-decision \
   --chief "GLAW Chief Counsel" \
   --decision "PROCEED" \
@@ -146,8 +147,9 @@ department until the agents agree on a final report/outcome:
   --approve-final
 ```
 
-Use `--deny-final` instead when the Council refuses the final entry. `glaw stage file`
-is code-gated and will not advance without `chief_approved`.
+Use `--deny-final` instead when the Council refuses the final entry. `--approve-final` refuses to
+log `chief_approved` until the verified final packet is ready. `glaw stage file` is code-gated and
+will not advance without `chief_approved`.
 
 ### Step 5 — File + docket
 `/glaw-file` assembles the signature-ready packet and the filing checklist.
