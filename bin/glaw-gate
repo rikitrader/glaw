@@ -161,6 +161,13 @@ def sha256_file(path):
     return h.hexdigest()
 
 
+def decision_hash(row):
+    payload = dict(row)
+    payload.pop("decision_hash", None)
+    data = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(data).hexdigest()
+
+
 p = d / "final_packet.json"
 if not p.exists():
     print("final_packet.json missing")
@@ -321,6 +328,7 @@ if not decisions.exists():
     sys.exit(1)
 latest_final = None
 latest_packet_generated_at = ""
+latest_final_row = None
 for line in decisions.read_text(encoding="utf-8", errors="replace").splitlines():
     if not line.strip():
         continue
@@ -331,11 +339,22 @@ for line in decisions.read_text(encoding="utf-8", errors="replace").splitlines()
     if row.get("final_gate") in {"approved", "denied"}:
         latest_final = row.get("final_gate")
         latest_packet_generated_at = row.get("approved_packet_generated_at", "")
+        latest_final_row = row
 if latest_final != "approved":
     print("latest Chief final decision is not approved")
     sys.exit(1)
 if latest_packet_generated_at != packet_generated_at:
     print("latest Chief approval does not match current final_packet.json generated_at")
+    sys.exit(1)
+if not latest_final_row:
+    print("latest Chief approval row missing")
+    sys.exit(1)
+expected_decision_hash = str(latest_final_row.get("decision_hash", ""))
+if not expected_decision_hash:
+    print("latest Chief approval missing decision_hash")
+    sys.exit(1)
+if expected_decision_hash != decision_hash(latest_final_row):
+    print("latest Chief approval decision_hash does not match current decision row")
     sys.exit(1)
 PY
 }

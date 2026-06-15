@@ -17,7 +17,7 @@ Usage:
      --conditions "complete gifts before LOI; estate-attorney non-grantor confirm; 709 appraisal" \
      [--rationale "..."] [--matter <slug>] [--signoff] [--approve-final|--deny-final]
 """
-import os, sys, json, datetime, re
+import os, sys, json, datetime, re, hashlib
 
 HOME = os.environ.get("GLAW_HOME", os.path.expanduser("~/.glaw"))
 MATTERS = os.path.join(HOME, "matters")
@@ -56,6 +56,12 @@ def has_timeline_event(mdir, event):
 def final_packet_ready(mdir):
     packet = read_json(os.path.join(mdir, "final_packet.json"), {})
     return packet.get("status") == "ready" and has_timeline_event(mdir, "final_packet_ready")
+
+def decision_hash(card):
+    payload = dict(card)
+    payload.pop("decision_hash", None)
+    data = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(data).hexdigest()
 
 def parse(argv):
     d = {"chief":"","score":"","grade":"","decision":"","risks":"","conditions":"",
@@ -102,6 +108,7 @@ def main():
         "approved_packet_generated_at": final_packet.get("generated_at", "") if d["approve-final"] else "",
         "top_risks": risks, "conditions": conds, "rationale": d["rationale"],
     }
+    card["decision_hash"] = decision_hash(card)
 
     # 1) timeline event
     with open(os.path.join(mdir,"timeline.jsonl"),"a") as f:

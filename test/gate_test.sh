@@ -64,9 +64,23 @@ cat > "$M/final_packet.json" <<'JSON'
   }
 }
 JSON
-printf '{"final_gate":"approved","approved_packet_generated_at":"2025-12-31T00:00:00Z"}\n' > "$M/decisions.jsonl"
+python3 - "$M/decisions.jsonl" <<'PY'
+import hashlib, json, sys
+row = {"final_gate": "approved", "approved_packet_generated_at": "2025-12-31T00:00:00Z"}
+row["decision_hash"] = hashlib.sha256(
+    json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
+).hexdigest()
+open(sys.argv[1], "w", encoding="utf-8").write(json.dumps(row) + "\n")
+PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED when Chief approval references stale packet"
-printf '{"final_gate":"approved","approved_packet_generated_at":"2026-01-01T00:00:00Z"}\n' > "$M/decisions.jsonl"
+python3 - "$M/decisions.jsonl" <<'PY'
+import hashlib, json, sys
+row = {"final_gate": "approved", "approved_packet_generated_at": "2026-01-01T00:00:00Z"}
+row["decision_hash"] = hashlib.sha256(
+    json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
+).hexdigest()
+open(sys.argv[1], "w", encoding="utf-8").write(json.dumps(row) + "\n")
+PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before verified citation ledger artifact"
 printf '{"id":"C-1","status":"verified","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/"}\n' > "$M/citations.jsonl"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current council ledger artifact"
@@ -108,6 +122,17 @@ packet["gate_artifact_hashes"] = {
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after all file gates"
+cp "$M/decisions.jsonl" "$M/decisions.baseline.jsonl"
+python3 - "$M/decisions.jsonl" <<'PY'
+import json, sys
+p = sys.argv[1]
+row = json.loads(open(p, encoding="utf-8").read())
+row["decision"] = "tampered after approval"
+open(p, "w", encoding="utf-8").write(json.dumps(row) + "\n")
+PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-approval Chief decision tamper"
+cp "$M/decisions.baseline.jsonl" "$M/decisions.jsonl"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact Chief decision restored"
 printf '# Draft Report\n\nNumbers changed after packet.\n' > "$M/draft-report.md"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-packet deliverable losing UPL footer"
 printf '\nAttorney work-product - not legal advice. Prepared for licensed review.\n' >> "$M/draft-report.md"
