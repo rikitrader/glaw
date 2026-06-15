@@ -192,11 +192,11 @@ ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by incomplete ve
 append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","proposition":"tax return must tie to books","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/","reviewer":"legal-research"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current council ledger artifact"
 for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do
-  append_hashed_jsonl "$M/council.jsonl" "{\"profile\":\"accounting\",\"role\":\"$role\",\"decision\":\"approve\",\"evidence\":\"SRC-0001 fixture\"}"
+  append_hashed_jsonl "$M/council.jsonl" "{\"profile\":\"accounting\",\"role\":\"$role\",\"decision\":\"approve\",\"evidence\":\"SRC-0001 fixture\",\"notes\":\"$role source-backed approval conclusion\"}"
 done
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current adversarial ledger artifact"
 for lens in irs-examiner state-tax-auditor forensic-accountant cfo-controller outside-critic; do
-  append_hashed_jsonl "$M/adversarial.jsonl" "{\"profile\":\"accounting\",\"lens\":\"$lens\",\"decision\":\"survive\",\"evidence\":\"SRC-0001 fixture\"}"
+  append_hashed_jsonl "$M/adversarial.jsonl" "{\"profile\":\"accounting\",\"lens\":\"$lens\",\"decision\":\"survive\",\"attack\":\"$lens no fatal challenge after source review\",\"evidence\":\"SRC-0001 fixture\"}"
 done
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current external deliverable artifact"
 printf '# Draft Report\n\nNumbers tie.\n' > "$M/draft-report.md"
@@ -439,13 +439,13 @@ cp "$M/citations.baseline.jsonl" "$M/citations.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact citation ledger restored"
 append_hashed_jsonl "$M/council.jsonl" '{"profile":"accounting","role":"cfo","decision":"fix","red_flags":["new council issue"],"conditions":["fix it"]}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet council fix"
-append_hashed_jsonl "$M/council.jsonl" '{"profile":"accounting","role":"cfo","decision":"approve","evidence":"SRC-0001 fixture reapproval"}'
+append_hashed_jsonl "$M/council.jsonl" '{"profile":"accounting","role":"cfo","decision":"approve","evidence":"SRC-0001 fixture reapproval","notes":"cfo source-backed reapproval conclusion"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file STILL BLOCKED by council ledger hash change after reapproval"
 cp "$M/council.baseline.jsonl" "$M/council.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact council ledger restored"
 append_hashed_jsonl "$M/adversarial.jsonl" '{"profile":"accounting","lens":"irs-examiner","decision":"fix","attack":"new adversarial issue","cure":"fix it"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet adversarial fix"
-append_hashed_jsonl "$M/adversarial.jsonl" '{"profile":"accounting","lens":"irs-examiner","decision":"survive","evidence":"SRC-0001 fixture rescore"}'
+append_hashed_jsonl "$M/adversarial.jsonl" '{"profile":"accounting","lens":"irs-examiner","decision":"survive","attack":"irs examiner no fatal challenge after rescore","evidence":"SRC-0001 fixture rescore"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file STILL BLOCKED by adversarial ledger hash change after survival"
 cp "$M/adversarial.baseline.jsonl" "$M/adversarial.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact adversarial ledger restored"

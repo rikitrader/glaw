@@ -86,15 +86,15 @@ events or backing ledgers.
 Accounting/bookkeeping has its own required review council before Chief approval:
 
 ```bash
-bin/glaw-council record --profile auto --role cfo --decision approve --evidence "SRC-0001 bank reconciliation and ledger tie-out reviewed"
-bin/glaw-council record --profile auto --role irs-audit-agent --decision approve --evidence "SRC-0001 return map and source support reviewed"
-bin/glaw-council record --profile auto --role legal-counsel --decision approve --evidence "SRC-0001 scope, UPL footer, and filing posture reviewed"
-bin/glaw-council record --profile auto --role forensic-audit --decision approve --evidence "SRC-0001 fraud and unsupported-number checks reviewed"
-bin/glaw-council record --profile auto --role outside-critic --decision approve --evidence "SRC-0001 independent challenge reviewed"
-bin/glaw-council record --profile auto --role external-reviewer --decision approve --evidence "SRC-0001 outside review basis recorded"
+bin/glaw-council record --profile auto --role cfo --decision approve --evidence "SRC-0001 bank reconciliation and ledger tie-out reviewed" --notes "CFO conclusion: books, bank, and report tie out subject to listed conditions."
+bin/glaw-council record --profile auto --role irs-audit-agent --decision approve --evidence "SRC-0001 return map and source support reviewed" --notes "IRS audit conclusion: return positions are source-supported and reviewable."
+bin/glaw-council record --profile auto --role legal-counsel --decision approve --evidence "SRC-0001 scope, UPL footer, and filing posture reviewed" --notes "Legal conclusion: work product is ready for licensed attorney review."
+bin/glaw-council record --profile auto --role forensic-audit --decision approve --evidence "SRC-0001 fraud and unsupported-number checks reviewed" --notes "Forensic conclusion: no unsupported number remains outside red flags."
+bin/glaw-council record --profile auto --role outside-critic --decision approve --evidence "SRC-0001 independent challenge reviewed" --notes "Outside critic conclusion: no fatal alternative reading remains."
+bin/glaw-council record --profile auto --role external-reviewer --decision approve --evidence "SRC-0001 outside review basis recorded" --notes "External reviewer conclusion: packet is coherent against source evidence."
 bin/glaw-council complete --profile auto
 ```
-Every approving council role must record source-backed evidence. `fix` and `deny` decisions
+Every approving council role must record source-backed evidence and role-specific notes/conclusions. `fix` and `deny` decisions
 must cite a source ID in the red flags and state the conditions so the orchestrator can route
 the matter back from evidence before final packet approval.
 
@@ -106,19 +106,20 @@ Government/regulatory adversarial review is also executable. For accounting/tax 
 RED-team lenses include IRS, state-tax, forensic-accounting, CFO/controller, and outside critic:
 
 ```bash
-bin/glaw-adversarial record --profile auto --lens irs-examiner --decision survive --evidence "SRC-0001 return tie-out reviewed"
-bin/glaw-adversarial record --profile auto --lens state-tax-auditor --decision survive --evidence "SRC-0001 state nexus reviewed"
-bin/glaw-adversarial record --profile auto --lens forensic-accountant --decision survive --evidence "SRC-0001 forensics pass reviewed"
-bin/glaw-adversarial record --profile auto --lens cfo-controller --decision survive --evidence "SRC-0001 financial statements reviewed"
-bin/glaw-adversarial record --profile auto --lens outside-critic --decision survive --evidence "SRC-0001 independent challenge complete"
+bin/glaw-adversarial record --profile auto --lens irs-examiner --decision survive --attack "IRS examiner challenge found no fatal return tie-out defect." --evidence "SRC-0001 return tie-out reviewed"
+bin/glaw-adversarial record --profile auto --lens state-tax-auditor --decision survive --attack "State auditor challenge found no unresolved nexus defect." --evidence "SRC-0001 state nexus reviewed"
+bin/glaw-adversarial record --profile auto --lens forensic-accountant --decision survive --attack "Forensic challenge found no unsupported-number defect." --evidence "SRC-0001 forensics pass reviewed"
+bin/glaw-adversarial record --profile auto --lens cfo-controller --decision survive --attack "Controller challenge found statements tie to source." --evidence "SRC-0001 financial statements reviewed"
+bin/glaw-adversarial record --profile auto --lens outside-critic --decision survive --attack "Outside critic challenge found no fatal alternative conclusion." --evidence "SRC-0001 independent challenge complete"
 bin/glaw-adversarial complete --profile auto
 ```
 
-Use `--decision fix` or `--decision strike` with a source-cited `--attack` and a `--cure`
+Use `--decision survive` with both a challenge summary and source-backed evidence. Use
+`--decision fix` or `--decision strike` with a source-cited `--attack` and a `--cure`
 when a government, regulatory, or litigation adversary finds a fatal or curable weakness. The
 command opens a blocking red flag automatically.
-Every `survive` decision must carry source-backed evidence, so a RED-team pass cannot be logged as
-ready from an unsupported conclusion.
+Every `survive` decision must carry both the challenge tested and source-backed evidence, so a
+RED-team pass cannot be logged as ready from an unsupported conclusion.
 
 Ethics, red flags, UPL footer, and the final packet are explicit gates:
 

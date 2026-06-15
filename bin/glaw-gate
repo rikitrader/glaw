@@ -372,6 +372,7 @@ def review_evidence_manifest(council_rows, adversarial_rows, profile, source_man
     for role in COUNCIL_PROFILES.get(profile, ()):
         row = latest_council.get(role, {})
         evidence = str(row.get("evidence", ""))
+        notes = str(row.get("notes", ""))
         cited = [sid for sid in source_ids if sid in evidence]
         missing = []
         if not row:
@@ -380,6 +381,8 @@ def review_evidence_manifest(council_rows, adversarial_rows, profile, source_man
             missing.append("evidence")
         if not cited:
             missing.append("source evidence id (SRC-####)")
+        if not notes.strip():
+            missing.append("notes/conclusion")
         rows.append({
             "kind": "council",
             "name": role,
@@ -391,6 +394,7 @@ def review_evidence_manifest(council_rows, adversarial_rows, profile, source_man
     for lens in ADVERSARIAL_PROFILES.get(profile, ()):
         row = latest_adversarial.get(lens, {})
         evidence = str(row.get("evidence", ""))
+        attack = str(row.get("attack", ""))
         cited = [sid for sid in source_ids if sid in evidence]
         missing = []
         if not row:
@@ -399,6 +403,8 @@ def review_evidence_manifest(council_rows, adversarial_rows, profile, source_man
             missing.append("evidence")
         if not cited:
             missing.append("source evidence id (SRC-####)")
+        if not attack.strip():
+            missing.append("attack/challenge")
         rows.append({
             "kind": "adversarial",
             "name": lens,
@@ -726,7 +732,11 @@ for role in COUNCIL_PROFILES[profile]:
     if not row:
         blocking_council.append(role)
         continue
-    if row.get("decision") != "approve" or not str(row.get("evidence", "")).strip():
+    if (
+        row.get("decision") != "approve"
+        or not str(row.get("evidence", "")).strip()
+        or not str(row.get("notes", "")).strip()
+    ):
         blocking_council.append(role)
 if blocking_council:
     print("current blocking council role(s): " + ", ".join(str(x) for x in blocking_council))
@@ -745,7 +755,11 @@ for lens in ADVERSARIAL_PROFILES[profile]:
     if not row:
         blocking_adversarial.append(lens)
         continue
-    if row.get("decision") != "survive" or not str(row.get("evidence", "")).strip():
+    if (
+        row.get("decision") != "survive"
+        or not str(row.get("evidence", "")).strip()
+        or not str(row.get("attack", "")).strip()
+    ):
         blocking_adversarial.append(lens)
 if blocking_adversarial:
     print("current blocking adversarial lens(es): " + ", ".join(str(x) for x in blocking_adversarial))

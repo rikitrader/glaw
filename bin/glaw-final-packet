@@ -283,6 +283,7 @@ def review_evidence_manifest(
     for role in COUNCIL_PROFILES.get(profile, ()):
         row = latest_council.get(role, {})
         evidence = str(row.get("evidence", ""))
+        notes = str(row.get("notes", ""))
         cited = [sid for sid in source_ids if sid in evidence]
         missing = []
         if not row:
@@ -291,6 +292,8 @@ def review_evidence_manifest(
             missing.append("evidence")
         if not cited:
             missing.append("source evidence id (SRC-####)")
+        if not notes.strip():
+            missing.append("notes/conclusion")
         rows.append({
             "kind": "council",
             "name": role,
@@ -302,6 +305,7 @@ def review_evidence_manifest(
     for lens in ADVERSARIAL_PROFILES.get(profile, ()):
         row = latest_adversarial.get(lens, {})
         evidence = str(row.get("evidence", ""))
+        attack = str(row.get("attack", ""))
         cited = [sid for sid in source_ids if sid in evidence]
         missing = []
         if not row:
@@ -310,6 +314,8 @@ def review_evidence_manifest(
             missing.append("evidence")
         if not cited:
             missing.append("source evidence id (SRC-####)")
+        if not attack.strip():
+            missing.append("attack/challenge")
         rows.append({
             "kind": "adversarial",
             "name": lens,

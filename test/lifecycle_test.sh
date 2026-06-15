@@ -68,8 +68,10 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "red flag resolution blocked without s
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council approve blocked without evidence"
 "$COUNCIL" record --profile auto --role cfo --decision approve --evidence "test fixture review basis" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council approve blocked without source evidence id"
+"$COUNCIL" record --profile auto --role cfo --decision approve --evidence "SRC-9999 test fixture review basis" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council approve blocked without role-specific conclusion"
 for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do
-  "$COUNCIL" record --profile auto --role "$role" --decision approve --evidence "SRC-9999 test fixture review basis" >/dev/null
+  "$COUNCIL" record --profile auto --role "$role" --decision approve --evidence "SRC-9999 test fixture review basis" --notes "$role source-backed approval conclusion" >/dev/null
 done
 cp "$TMP/matters/$SLUG/council.jsonl" "$TMP/matters/$SLUG/council.clean.jsonl"
 python3 - "$TMP/matters/$SLUG/council.jsonl" <<'PY'
@@ -90,6 +92,8 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before adversari
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial survive blocked without evidence"
 "$ADVERSARIAL" record --profile auto --lens irs-examiner --decision survive --attack "no fatal finding" --evidence "test fixture" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial survive blocked without source evidence id"
+"$ADVERSARIAL" record --profile auto --lens irs-examiner --decision survive --evidence "SRC-9999 test fixture" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial survive blocked without attack challenge"
 for lens in irs-examiner state-tax-auditor forensic-accountant cfo-controller outside-critic; do
   "$ADVERSARIAL" record --profile auto --lens "$lens" --decision survive --attack "no fatal finding" --evidence "SRC-9999 test fixture" >/dev/null
 done
@@ -171,7 +175,7 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by red flag reso
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by senior reviews without source evidence ids"
 for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do
-  "$COUNCIL" record --profile auto --role "$role" --decision approve --evidence "SRC-0001 test fixture review basis" >/dev/null
+  "$COUNCIL" record --profile auto --role "$role" --decision approve --evidence "SRC-0001 test fixture review basis" --notes "$role current-source approval conclusion" >/dev/null
 done
 for lens in irs-examiner state-tax-auditor forensic-accountant cfo-controller outside-critic; do
   "$ADVERSARIAL" record --profile auto --lens "$lens" --decision survive --attack "no fatal finding" --evidence "SRC-0001 test fixture" >/dev/null

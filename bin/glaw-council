@@ -148,6 +148,8 @@ def cmd_record(args: argparse.Namespace) -> int:
             raise SystemExit("ERROR: council approve requires --evidence with the source-backed review basis.")
         if not evidence_source_ids(args.evidence):
             raise SystemExit("ERROR: council approve evidence must cite a source artifact ID such as SRC-0001.")
+        if not args.notes.strip():
+            raise SystemExit("ERROR: council approve requires --notes with the role-specific conclusion.")
     if decision == "fix" and (not args.red_flags.strip() or not args.conditions.strip()):
         raise SystemExit("ERROR: council fix requires --red-flags and --conditions.")
     if decision == "deny" and not args.red_flags.strip():
@@ -202,9 +204,11 @@ def cmd_status(args: argparse.Namespace) -> int:
             continue
         decision = row.get("decision")
         evidence = str(row.get("evidence", ""))
+        notes = str(row.get("notes", ""))
         evidence_gap = decision == "approve" and not evidence.strip()
         source_id_gap = decision == "approve" and not evidence_source_ids(evidence)
-        icon = "✅" if decision == "approve" and not evidence_gap and not source_id_gap else "❌"
+        notes_gap = decision == "approve" and not notes.strip()
+        icon = "✅" if decision == "approve" and not evidence_gap and not source_id_gap and not notes_gap else "❌"
         print(f"  {icon} {role}: {decision}")
         for flag in row.get("red_flags", []):
             print(f"      red_flag: {flag}")
@@ -214,7 +218,9 @@ def cmd_status(args: argparse.Namespace) -> int:
             print("      evidence: MISSING")
         if source_id_gap:
             print("      source evidence id: MISSING")
-        if decision != "approve" or evidence_gap or source_id_gap:
+        if notes_gap:
+            print("      notes/conclusion: MISSING")
+        if decision != "approve" or evidence_gap or source_id_gap or notes_gap:
             failures.append(role)
     if failures:
         print("COUNCIL BLOCKED")
