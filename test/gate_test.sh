@@ -23,7 +23,14 @@ ok "$([ "$(chk strategy)" = 1 ] && echo 1 || echo 0)" "strategy BLOCKED before i
 log intake_complete
 ok "$([ "$(chk strategy)" = 1 ] && echo 1 || echo 0)" "strategy STILL BLOCKED with only intake_complete"
 log conflicts_cleared
-ok "$([ "$(chk strategy)" = 0 ] && echo 1 || echo 0)" "strategy CLEAR after intake_complete + conflicts_cleared"
+ok "$([ "$(chk strategy)" = 1 ] && echo 1 || echo 0)" "strategy STILL BLOCKED before intake/ethics artifacts"
+cat > "$M/intake.json" <<'JSON'
+{"status":"complete"}
+JSON
+cat > "$M/ethics.json" <<'JSON'
+{"status":"complete","conflicts_status":"cleared","engagement":{"status":"drafted"}}
+JSON
+ok "$([ "$(chk strategy)" = 0 ] && echo 1 || echo 0)" "strategy CLEAR after intake/ethics artifacts"
 
 # file gate: citations, adversarial, red flags, final packet, and chief approval
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED with no file gates"
@@ -61,6 +68,8 @@ ok "$([ "$(chk matter-retro)" = 1 ] && echo 1 || echo 0)" "matter-retro BLOCKED 
 log docket_gate_complete
 ok "$([ "$(chk matter-retro)" = 1 ] && echo 1 || echo 0)" "matter-retro STILL BLOCKED before docket_done"
 log docket_done
+ok "$([ "$(chk matter-retro)" = 1 ] && echo 1 || echo 0)" "matter-retro STILL BLOCKED before docket artifacts"
+printf '{"due":"2026-09-15","desc":"tax filing","status":"open"}\n' > "$M/docket.jsonl"
 ok "$([ "$(chk matter-retro)" = 0 ] && echo 1 || echo 0)" "matter-retro CLEAR after docket completion"
 
 # status reflects state
@@ -73,14 +82,16 @@ ok "$(echo "$S" | grep -q '✅ final_packet_ready' && echo 1 || echo 0)" "status
 ok "$(echo "$S" | grep -q '✅ chief_approved' && echo 1 || echo 0)" "status shows chief_approved ✅"
 ok "$(echo "$S" | grep -q '✅ docket_gate_complete' && echo 1 || echo 0)" "status shows docket_gate_complete ✅"
 ok "$(echo "$S" | grep -q '✅ docket_done' && echo 1 || echo 0)" "status shows docket_done ✅"
+ok "$(echo "$S" | grep -q '✅ strategy_artifacts_verified' && echo 1 || echo 0)" "status shows strategy_artifacts_verified ✅"
+ok "$(echo "$S" | grep -q '✅ docket_artifacts_verified' && echo 1 || echo 0)" "status shows docket_artifacts_verified ✅"
 
 # the live glaw 'stage' command refuses to advance past an unmet gate (integration)
 GLAW_BIN="$HERE/../bin/glaw"
 N="$TMP/matters/n"; mkdir -p "$N"; : > "$N/timeline.jsonl"; echo intake > "$N/.stage"; echo n > "$TMP/.active"
 "$GLAW_BIN" stage strategy >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && [ "$(cat "$N/.stage")" = intake ] && echo 1 || echo 0)" "glaw stage refuses advance without intake/conflicts + leaves .stage unchanged"
-"$GLAW_BIN" stage strategy --force >/dev/null 2>&1
-ok "$([ "$(cat "$N/.stage")" = strategy ] && grep -q gate_override "$N/timeline.jsonl" && echo 1 || echo 0)" "glaw stage --force advances + logs gate_override"
+"$GLAW_BIN" stage strategy --force >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && [ "$(cat "$N/.stage")" = intake ] && echo 1 || echo 0)" "glaw stage strategy --force refuses guarded gate"
 
 F="$TMP/matters/f"; mkdir -p "$F"; : > "$F/timeline.jsonl"; echo draft > "$F/.stage"; echo f > "$TMP/.active"
 "$GLAW_BIN" stage file --force >/dev/null 2>&1; rc=$?

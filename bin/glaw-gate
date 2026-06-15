@@ -13,8 +13,8 @@
 #                   ⇐ chief_approved               (Chief/Council final approval)
 #   enter matter-retro ⇐ docket_gate_complete      (deadline review before close-out)
 #                      ⇐ docket_done
-# For file, event presence is necessary but not sufficient: final_packet.json must be ready and
-# the latest final Chief decision must be approved in decisions.jsonl.
+# For guarded stages, event presence is necessary but not sufficient; the backing ledgers must
+# prove the gate state.
 #
 # Usage:
 #   glaw-gate check <target-stage> [slug]   # exit 0 = clear, 1 = blocked
@@ -35,6 +35,47 @@ _required_events() {
 
 _has_event() {  # _has_event <timeline-file> <event>
   [ -f "$1" ] && grep -Eq "\"event\"[[:space:]]*:[[:space:]]*\"$2\"" "$1"
+}
+
+_strategy_artifacts_valid() {  # _strategy_artifacts_valid <matter-dir>
+  python3 - "$1" <<'PY'
+import json
+import pathlib
+import sys
+
+d = pathlib.Path(sys.argv[1])
+intake_path = d / "intake.json"
+ethics_path = d / "ethics.json"
+try:
+    intake = json.loads(intake_path.read_text(encoding="utf-8"))
+except FileNotFoundError:
+    print("intake.json missing")
+    sys.exit(1)
+except json.JSONDecodeError:
+    print("intake.json is invalid JSON")
+    sys.exit(1)
+if intake.get("status") != "complete":
+    print("intake.json status is not complete")
+    sys.exit(1)
+try:
+    ethics = json.loads(ethics_path.read_text(encoding="utf-8"))
+except FileNotFoundError:
+    print("ethics.json missing")
+    sys.exit(1)
+except json.JSONDecodeError:
+    print("ethics.json is invalid JSON")
+    sys.exit(1)
+if ethics.get("status") != "complete":
+    print("ethics.json status is not complete")
+    sys.exit(1)
+if ethics.get("conflicts_status") not in {"cleared", "waived"}:
+    print("ethics conflicts_status is not cleared or waived")
+    sys.exit(1)
+engagement = ethics.get("engagement", {})
+if engagement.get("status") != "drafted":
+    print("ethics engagement is not drafted")
+    sys.exit(1)
+PY
 }
 
 _file_artifacts_valid() {  # _file_artifacts_valid <matter-dir>
@@ -81,6 +122,43 @@ if latest_final != "approved":
 PY
 }
 
+_retro_artifacts_valid() {  # _retro_artifacts_valid <matter-dir>
+  python3 - "$1" <<'PY'
+import json
+import pathlib
+import sys
+
+d = pathlib.Path(sys.argv[1])
+docket = d / "docket.jsonl"
+open_deadlines = 0
+if docket.exists():
+    for line in docket.read_text(encoding="utf-8", errors="replace").splitlines():
+        if not line.strip():
+            continue
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError:
+            print("docket.jsonl contains invalid JSON")
+            sys.exit(1)
+        if row.get("due") and row.get("status", "open") != "closed":
+            open_deadlines += 1
+if open_deadlines:
+    sys.exit(0)
+record_path = d / "docket_gate.json"
+if not record_path.exists():
+    print("no open docket deadlines and no docket_gate.json")
+    sys.exit(1)
+try:
+    record = json.loads(record_path.read_text(encoding="utf-8"))
+except json.JSONDecodeError:
+    print("docket_gate.json is invalid JSON")
+    sys.exit(1)
+if record.get("status") != "no_deadlines" or not record.get("rationale"):
+    print("docket_gate.json lacks a no-deadlines rationale")
+    sys.exit(1)
+PY
+}
+
 _slug() { local s="${1:-}"; [ -n "$s" ] && { echo "$s"; return; }; [ -f "$GLAW_HOME/.active" ] && cat "$GLAW_HOME/.active" || echo ""; }
 
 action="${1:-status}"; shift || true
@@ -100,8 +178,16 @@ case "$action" in
       echo "  satisfy by running the owning gate command, not by hand-logging events."
       exit 1
     fi
+    if [ "$target" = "strategy" ] && ! artifact_msg="$(_strategy_artifacts_valid "$MATTERS/$slug" 2>&1)"; then
+      echo "GATE BLOCKED: cannot enter 'strategy' for [$slug] — $artifact_msg"
+      exit 1
+    fi
     if [ "$target" = "file" ] && ! artifact_msg="$(_file_artifacts_valid "$MATTERS/$slug" 2>&1)"; then
       echo "GATE BLOCKED: cannot enter 'file' for [$slug] — $artifact_msg"
+      exit 1
+    fi
+    if [ "$target" = "matter-retro" ] && ! artifact_msg="$(_retro_artifacts_valid "$MATTERS/$slug" 2>&1)"; then
+      echo "GATE BLOCKED: cannot enter 'matter-retro' for [$slug] — $artifact_msg"
       exit 1
     fi
     echo "GATE CLEAR: '$target' prerequisites satisfied ($req)"
@@ -119,6 +205,16 @@ case "$action" in
       echo "  ✅ file_artifacts_verified (before file)"
     else
       echo "  ❌ file_artifacts_verified (before file) — $artifact_msg"
+    fi
+    if artifact_msg="$(_strategy_artifacts_valid "$MATTERS/$slug" 2>&1)"; then
+      echo "  ✅ strategy_artifacts_verified (before strategy)"
+    else
+      echo "  ❌ strategy_artifacts_verified (before strategy) — $artifact_msg"
+    fi
+    if artifact_msg="$(_retro_artifacts_valid "$MATTERS/$slug" 2>&1)"; then
+      echo "  ✅ docket_artifacts_verified (before matter-retro)"
+    else
+      echo "  ❌ docket_artifacts_verified (before matter-retro) — $artifact_msg"
     fi ;;
   *) echo "usage: glaw-gate check <stage> [slug] | status [slug]"; exit 2 ;;
 esac

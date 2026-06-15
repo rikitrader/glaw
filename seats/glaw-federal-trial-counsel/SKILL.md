@@ -1,6 +1,6 @@
 ---
 name: glaw-federal-trial-counsel
-description: "GLAW Litigation seat — federal trial counsel. Federal civil/criminal trial strategy, pleadings, motions, and trial posture. This seat is an ENCRYPTION-GATED skill: its full engine + content are distributed separately and are NOT bundled in the public GLAW repo (they contain client/case material). Install the full skill locally to activate; GLAW routes to it when present."
+description: "GLAW Litigation seat — federal trial counsel. Federal civil/criminal trial strategy, pleadings, motions, discovery, deadlines, and trial posture using the vendored federal-trial-counsel engine inside this repo."
 allowed-tools:
   - Bash
   - Read
@@ -17,14 +17,22 @@ Federal trial counsel — federal civil and criminal litigation: complaints, mot
 TROs, trial blueprints, and posture. GLAW's Litigation Division routes federal trial
 work here.
 
-## Encryption-gated — installed separately
+## Local engine
 
-The full federal-trial-counsel engine and its content are **encryption-gated and
-distributed separately** (they contain client- and case-specific material). They are
-intentionally **not vendored** into the public GLAW repo. When the full skill is
-installed locally (`~/.claude/skills/federal-trial-counsel/`), GLAW routes to it
-automatically; this stub keeps the seat resolvable in the self-contained ecosystem
-without publishing gated content.
+The federal trial counsel engine is vendored in this repo at
+`federal-trial-counsel/`. Use its `SKILL.md`, `README.md`, `USAGE.md`, templates, and
+stdlib Python tools for federal pleading, claim suggestion, deadline, Rule 11, exhibit,
+and document-analysis workflows. Do not route to an external encrypted install path.
+
+Primary local commands:
+
+```bash
+PYTHONPATH=federal-trial-counsel/scripts python3 -m ftc_engine --help
+```
+
+If a workflow needs generated pleadings, citations, or filing output, write it into the
+active matter directory and send the result through GLAW citation, adversarial, red-flag,
+final-packet, and Chief approval gates before filing.
 
 ## Not legal advice
 

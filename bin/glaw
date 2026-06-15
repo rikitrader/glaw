@@ -137,26 +137,19 @@ EOF
       if [ -n "$set" ]; then
         # HARD-GATE ENFORCEMENT: block advance to a guarded stage unless its gate is clear.
         local gate; gate="$(dirname "$0")/glaw-gate"
-        if [ -x "$gate" ] && ! "$gate" check "$set" "$slug" >/tmp/glaw-gate.$$  2>&1; then
+        local gate_out; gate_out="$(mktemp "${TMPDIR:-/tmp}/glaw-gate.XXXXXX")"
+        if [ -x "$gate" ] && ! "$gate" check "$set" "$slug" >"$gate_out" 2>&1; then
           if [ "$force" = "--force" ]; then
-            if [ "$set" = "file" ]; then
-              cat /tmp/glaw-gate.$$ >&2; rm -f /tmp/glaw-gate.$$
-              echo "Refusing to force final filing. Build a ready final packet and record Chief approval first." >&2
-              return 1
-            fi
-            cmd_timeline "gate_override" "\"stage\":\"$set\",\"by\":\"--force\""
-            echo "GATE OVERRIDE (logged): advancing to '$set' despite unmet gate." >&2
+            cat "$gate_out" >&2; rm -f "$gate_out"
+            echo "Refusing to force a guarded compliance gate. Run the owning gate command first." >&2
+            return 1
           else
-            cat /tmp/glaw-gate.$$ >&2; rm -f /tmp/glaw-gate.$$
-            if [ "$set" = "file" ]; then
-              echo "Refusing to advance. The file gate cannot be forced." >&2
-            else
-              echo "Refusing to advance. Clear the gate, or override with: glaw stage $set --force" >&2
-            fi
+            cat "$gate_out" >&2; rm -f "$gate_out"
+            echo "Refusing to advance. Clear the gate with the owning gate command first." >&2
             return 1
           fi
         fi
-        rm -f /tmp/glaw-gate.$$ 2>/dev/null || true
+        rm -f "$gate_out" 2>/dev/null || true
         echo "$set" > "$MATTERS/$slug/.stage"; cmd_timeline "stage_$set"
       fi
       cat "$MATTERS/$slug/.stage" 2>/dev/null || echo "intake" ;;

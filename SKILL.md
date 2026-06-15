@@ -150,8 +150,10 @@ department until the agents agree on a final report/outcome:
 ```
 
 Use `--deny-final` instead when the Council refuses the final entry. `--approve-final` refuses to
-log `chief_approved` until the verified final packet is ready. `glaw stage file` is code-gated and
-will not advance without `chief_approved`.
+log `chief_approved` until the verified final packet is ready. Guarded stage transitions are
+code-gated and cannot be forced; `glaw stage strategy`, `glaw stage file`, and
+`glaw stage matter-retro` advance only after their owning gate commands produce the required
+events and backing artifacts.
 
 ### Step 5 — File + docket
 `/glaw-file` assembles the signature-ready packet and the filing checklist.
