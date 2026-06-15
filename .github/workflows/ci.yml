@@ -18,12 +18,9 @@ jobs:
       - name: Syntax check (no deps)
         run: |
           set -e
-          for f in bin/glaw bin/glaw-setup bin/glaw-doctor bin/glaw-preamble.sh; do bash -n "$f"; done
+          for f in bin/glaw bin/glaw-setup bin/glaw-doctor bin/glaw-bookkeeping-doctor bin/glaw-preamble.sh; do bash -n "$f"; done
           for f in bin/*; do head -1 "$f" | grep -q 'python' && python3 -m py_compile "$f" || true; done
           echo "syntax OK"
-
-      - name: Install toolbelt deps
-        run: pip install eyecite juriscraper python-docx docxtpl jsonschema requests
 
       - name: Deploy skills + run glaw-doctor (core mode)
         run: |
@@ -32,63 +29,18 @@ jobs:
           bash bin/glaw-setup
           GLAW_DOCTOR_CORE=1 bash bin/glaw-doctor
 
+      - name: Bookkeeping source-only doctor
+        run: GLAW="$GITHUB_WORKSPACE" bash bin/glaw-bookkeeping-doctor
+
       - name: Bookkeeping engine + finance tools smoke
         run: |
-          python3 -m venv /tmp/bkv
-          /tmp/bkv/bin/pip install -q -r lib/bookkeeping/requirements.txt
-          /tmp/bkv/bin/python lib/bookkeeping/test_smoke.py
-          /tmp/bkv/bin/python lib/bookkeeping/test_finance.py
-          /tmp/bkv/bin/python lib/bookkeeping/test_finance2.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_ledger.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance3.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance5.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance6.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance7.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance8.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance9.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance10.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance11.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance12.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance13.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance14.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance15.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance16.py
-          /tmp/bkv/bin/python lib/bookkeeping/test_glossary.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_tamper.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_concurrency.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_scale.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_index.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance17.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance18.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance19.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance20.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance21.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance22.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance23.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance24.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance25.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance26.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance27.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance28.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance29.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance30.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance31.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance32.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance33.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance34.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance35.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance36.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance37.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance38.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance39.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance40.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance41.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance42.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance43.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance44.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance45.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance46.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance47.py
-          GLAW_HOME=$(mktemp -d) /tmp/bkv/bin/python lib/bookkeeping/test_finance48.py
-          /tmp/bkv/bin/python lib/bookkeeping/test_wiring.py
-          /tmp/bkv/bin/python lib/bookkeeping/test_bin_scorers.py
+          for t in lib/bookkeeping/test_*.py; do
+            echo "== $t"
+            GLAW="$GITHUB_WORKSPACE" GLAW_HOME=$(mktemp -d) PYTHONPATH="$GITHUB_WORKSPACE/lib/bookkeeping:$GITHUB_WORKSPACE" python3 "$t"
+          done
+
+      - name: Zero third-party package guard
+        run: |
+          set -e
+          ! find . \( -name requirements.txt -o -name pyproject.toml -o -name package.json -o -name package-lock.json -o -name yarn.lock -o -name pnpm-lock.yaml \) -print | grep -q .
+          ! grep -rIE '^\s*(from|import)\s+(pydantic|pandas|lxml|defusedxml|pypdf|PyPDF2|pypdfium2|litellm|polars|fastapi|uvicorn|google|googleapiclient|openpyxl|docxtpl|eyecite|jsonschema|juriscraper|requests)\b' bin lib federal-trial-counsel seats docx

@@ -30,6 +30,12 @@ _OCR_LINE = re.compile(
     re.IGNORECASE,
 )
 
+_PROFILES = {
+    "bank-statement": {"dpi": (300, 240, 360), "psm": ("4", "6")},
+    "dense": {"dpi": (360, 300, 240), "psm": ("6", "4", "11")},
+    "simple": {"dpi": (240, 300), "psm": ("6", "4")},
+}
+
 
 class PDFExtractionUnavailable(RuntimeError):
     """Raised when local PDF/OCR tooling is unavailable or cannot parse rows."""
@@ -156,34 +162,41 @@ def _rows_from_text(text: str) -> tuple[list[str], list[list[str]], dict]:
     return ["Date", "Description", "Amount"], rows, meta
 
 
-def _ocr_text(pdf_path: Path, work: Path, *, dpi: int = 300) -> tuple[str, int]:
+def _ocr_text(pdf_path: Path, work: Path, *, profile: str = "bank-statement") -> tuple[str, int, dict]:
     pdftoppm = _need("pdftoppm")
     tesseract = _need("tesseract")
-    try:
-        subprocess.run([pdftoppm, "-r", str(dpi), "-png", str(pdf_path), str(work / "page")],
-                       check=True, capture_output=True, text=True)
-    except subprocess.CalledProcessError as exc:
-        detail = (exc.stderr or exc.stdout or "").strip()
+    cfg = _PROFILES.get(profile, _PROFILES["bank-statement"])
+    best = {"text": "", "pages": 0, "dpi": None, "psm": None}
+    last_error = ""
+    for dpi in cfg["dpi"]:
+        prefix = work / f"page-{dpi}"
+        try:
+            subprocess.run([pdftoppm, "-r", str(dpi), "-png", str(pdf_path), str(prefix)],
+                           check=True, capture_output=True, text=True)
+        except subprocess.CalledProcessError as exc:
+            last_error = (exc.stderr or exc.stdout or str(exc)).strip()
+            continue
+        pages = sorted(work.glob(f"page-{dpi}*.png"))
+        if not pages:
+            continue
+        for psm in cfg["psm"]:
+            parts = []
+            for png in pages:
+                proc = subprocess.run([tesseract, str(png), "stdout", "--psm", psm],
+                                      capture_output=True, text=True)
+                parts.append(proc.stdout if proc.returncode == 0 else "")
+            text = "\n".join(parts)
+            if len(text) > len(str(best["text"])):
+                best = {"text": text, "pages": len(pages), "dpi": dpi, "psm": psm}
+    if not best["text"]:
         raise PDFExtractionUnavailable(
-            f"Could not render PDF pages with pdftoppm: {detail or exc}"
-        ) from exc
-    pages = sorted(work.glob("page*.png"))
-    if not pages:
-        raise PDFExtractionUnavailable(f"pdftoppm produced no page images for {pdf_path.name}")
-    parts = []
-    for png in pages:
-        page_texts = []
-        for psm in ("4", "6"):
-            proc = subprocess.run([tesseract, str(png), "stdout", "--psm", psm],
-                                  capture_output=True, text=True)
-            if proc.returncode == 0 and proc.stdout.strip():
-                page_texts.append(proc.stdout)
-        parts.append(max(page_texts, key=len) if page_texts else "")
-    return "\n".join(parts), len(pages)
+            f"Could not render/OCR PDF pages with local tools: {last_error or 'no OCR text produced'}"
+        )
+    return str(best["text"]), int(best["pages"]), {"ocr_dpi": best["dpi"], "ocr_psm": best["psm"], "ocr_profile": profile}
 
 
 def extract_to_csv(pdf_path: str | Path, *, out_csv: str | Path | None = None,
-                   ocr: str = "auto") -> tuple[Path, dict]:
+                   ocr: str = "auto", profile: str = "bank-statement") -> tuple[Path, dict]:
     pdf_path = Path(pdf_path)
     work = Path(tempfile.mkdtemp(prefix="glaw-pdf-"))
     out_csv = Path(out_csv) if out_csv else work / "extracted.csv"
@@ -197,9 +210,10 @@ def extract_to_csv(pdf_path: str | Path, *, out_csv: str | Path | None = None,
             raise PDFExtractionUnavailable(
                 f"No transaction table found in {pdf_path.name}; OCR disabled with --ocr off."
             )
-        text, pages = _ocr_text(pdf_path, work)
+        text, pages, ocr_meta = _ocr_text(pdf_path, work, profile=profile)
         header, rows, meta = _rows_from_text(text)
         meta["ocr_pages"] = pages
+        meta.update(ocr_meta)
         source = "ocr"
 
     if not rows:
@@ -212,6 +226,10 @@ def extract_to_csv(pdf_path: str | Path, *, out_csv: str | Path | None = None,
     meta["rows"] = len(rows)
     meta["source_pdf"] = str(pdf_path)
     meta["source_method_hint"] = source
+    if source == "ocr":
+        meta.setdefault("warnings", [])
+        if len(rows) < 2:
+            meta["warnings"].append("low-confidence OCR: fewer than two transaction rows parsed")
     return out_csv, meta
 
 

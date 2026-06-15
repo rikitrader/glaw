@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import csv
+import os
 from collections import defaultdict
 from decimal import Decimal
 from pathlib import Path
@@ -11,7 +12,9 @@ from pathlib import Path
 def export(transactions, *, title: str, matter: str | None = None,
            default_currency: str = "USD") -> str:
     """Write transactions and summary CSV files, return the transaction CSV path."""
-    base = Path(title.replace("/", "-").replace(" ", "_"))
+    export_dir = Path(os.environ.get("GLAW_EXPORT_DIR", ".")).expanduser()
+    export_dir.mkdir(parents=True, exist_ok=True)
+    base = export_dir / title.replace("/", "-").replace(" ", "_")
     tx_path = base.with_suffix(".transactions.csv")
     summary_path = base.with_suffix(".summary.csv")
     cat_total: dict[str, Decimal] = defaultdict(lambda: Decimal("0"))

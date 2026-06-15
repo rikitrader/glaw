@@ -4,12 +4,14 @@
 
 # GLAW · The Open-Source Virtual Law Firm
 
-**A full AI law firm you install as a skill. Not a chatbot — an org chart.**
+**A self-contained open-source virtual law firm you install as an AI agent skill. Not a chatbot — an org chart.**
 GLAW runs legal *matters* (build a company, structure a fund, prosecute or defend a case, investigate fraud) through an **8-stage pipeline**, routing each step to the right **department**, and produces **attorney work-product** — pleadings, contracts, redlines, dossiers, filings — for a licensed attorney to review and sign.
+
+**10 departments · 169 source skills · 62 vendored seats · hard-gated matter pipeline · FBI-style fraud dossiers · source-first bookkeeping with Google Sheets input + OCR orchestration. Attorney work-product, not legal advice.**
 
 [![GLAW Doctor](https://github.com/rikitrader/glaw/actions/workflows/ci.yml/badge.svg)](https://github.com/rikitrader/glaw/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-C9A227.svg)](LICENSE)
-[![Skills](https://img.shields.io/badge/skills-154-1A3FA0.svg)](lib/firm-roster.md)
+[![Skills](https://img.shields.io/badge/skills-169-1A3FA0.svg)](lib/firm-roster.md)
 [![Tools](https://img.shields.io/badge/tools-127-1A3FA0.svg)](#-the-toolbelt-116-clis)
 [![Departments](https://img.shields.io/badge/departments-10-3B82F6.svg)](#%EF%B8%8F-the-departments)
 [![Pipeline](https://img.shields.io/badge/pipeline-8%20stages-3B82F6.svg)](#-the-workflow)
@@ -27,7 +29,7 @@ GLAW runs legal *matters* (build a company, structure a fund, prosecute or defen
 ```bash
 # 1. install (clone into your Claude Code skills dir)
 git clone https://github.com/rikitrader/glaw ~/.claude/skills/glaw
-cd ~/.claude/skills/glaw && ./setup        # deploys 154 skills (92 native + 62 vendored seats) + tools
+cd ~/.claude/skills/glaw && ./setup        # deploys source skills + 62 vendored seats + tools
 
 # 2. open a matter and let the firm work it
 /glaw                                       # "form a Delaware C-corp with a SAFE round"
@@ -56,7 +58,7 @@ Most "AI lawyer" tools are a single prompt that answers one question. A real fir
 GLAW models the firm:
 
 - **It's an org chart, not a chat.** Work routes to the seat that owns it — a Tax question goes to Tax, a fund to Securities, a fraud pattern to the Investigations Bureau.
-- **It produces documents, not opinions.** The output of a matter is a signature-ready packet: pleadings, formation docs, an offering memo, a redlined contract with real Word tracked-changes, a dossier.
+- **It produces documents, not opinions.** The output of a matter is a signature-ready packet: pleadings, formation docs, an offering memo, local redline artifacts, a dossier.
 - **It red-teams itself.** No matter reaches "file" until an adversarial pass (opposing counsel / IRS / SEC / trustee) has tried to destroy every position and a partner has verified the survivors.
 - **It refuses to freelance.** Every position maps to a seat in a single source-of-truth roster. No gaps, no made-up authority.
 - **It's auditable.** Every matter has a folder, a docket, a timeline, and a paper trail.
@@ -67,7 +69,7 @@ Built on the **gstack** skill-orchestration methodology: a meta-skill orchestrat
 
 ## 🏛️ The Departments
 
-GLAW ships **92 native skills** organized into ten departments **plus 62 self-contained specialist seats** vendored under [`seats/`](seats/) — `glaw-corporate-counsel`, `glaw-pe-vc-counsel`, `glaw-tax-strategy`, `glaw-financial-forensics`, the `glaw-fs-*` finance models, and more. **Zero external skill dependencies:** every seat the firm routes to travels with the repo and is deployed by `./setup`. A deterministic gate (`glaw-doctor`) proves it — every routed skill resolves, or CI fails.
+GLAW ships **169 source skills** organized into ten departments, including **62 self-contained specialist seats** vendored under [`seats/`](seats/) — `glaw-corporate-counsel`, `glaw-pe-vc-counsel`, `glaw-tax-strategy`, `glaw-financial-forensics`, the `glaw-fs-*` finance models, and more. **Zero external skill dependencies:** every seat the firm routes to travels with the repo and is deployed by `./setup`. A deterministic gate (`glaw-doctor`) proves it — every routed skill resolves, or CI fails.
 
 ```mermaid
 flowchart TD
@@ -261,15 +263,15 @@ glaw-bank-ingest "https://docs.google.com/spreadsheets/d/.../edit#gid=0" --matte
 
 ## ✍️ Showcase: the contract-review chain
 
-Three open-source projects + GLAW's tooling interlock into one command-driven pipeline — *contract → review → scorecard → real Word tracked changes → published deliverable* — all sharing one severity vocabulary (🔴 critical / 🟡 important / 🟢 acceptable):
+GLAW's contract tooling interlocks into one command-driven pipeline — *contract → review → scorecard → local redline artifact → published deliverable* — all sharing one severity vocabulary (🔴 critical / 🟡 important / 🟢 acceptable):
 
 ```mermaid
 flowchart LR
     CR["📑 contract-review<br/>the review brain"] --> RC{{"⚙️ glaw-review-chain"}}
     RC --> SC["📊 glaw-contract-score<br/>0–100 scorecard"]
-    RC --> RD["✍️ glaw-redline-docx<br/>Word tracked changes"]
+    RC --> RD["✍️ glaw-redline-docx<br/>local DOCX redline artifact"]
     RC --> PB["📦 glaw-publish<br/>local HTML · manifest"]
-    SC --> DR[("☁️ Google Drive")]
+    SC --> DR[("local matter folder")]
     RD --> DR
     PB --> DR
     classDef brain fill:#14532d,stroke:#22c55e,color:#fff;
@@ -283,16 +285,16 @@ flowchart LR
 ```bash
 glaw-review-chain my-contract.docx findings.json --matter acme-msa \
   --doctype "SaaS MSA" --position Customer --counterparty "Acme Inc."
-# → scorecard (e.g. 88/100 CRITICAL) + a Word file with real accept/reject tracked changes
+# → scorecard (e.g. 88/100 CRITICAL) + local DOCX redline artifact
 ```
 
 Includes a vendored contract-review skill and bundled redline/publish routing so GLAW does not depend on an external skill checkout.
 
 <div align="center">
 
-![GLAW matter run — review → scorecard → Word tracked changes → publish](assets/glaw-demo.png)
+![GLAW matter run — review → scorecard → redline artifact → publish](assets/glaw-demo.png)
 
-<sub>One prompt → intake → review → an 88/100 CRITICAL scorecard → real Word tracked changes → published to Drive.</sub>
+<sub>One prompt → intake → review → an 88/100 CRITICAL scorecard → local redline artifact → published matter bundle.</sub>
 
 </div>
 
@@ -323,6 +325,7 @@ Start with the operator docs:
 - [Installation](docs/INSTALLATION.md)
 - [Modules and commands](docs/MODULES.md)
 - [Core workflows](docs/WORKFLOWS.md)
+- [Bookkeeping Sheets and OCR](docs/BOOKKEEPING_SHEETS_OCR.md)
 - [Library and API model](docs/API_AND_LIBRARY.md)
 - [CLI tool reference](docs/tools.md)
 

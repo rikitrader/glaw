@@ -21,8 +21,8 @@ domain below maps to a seat.
 
 ## Firm-wide output rules (STANDING — every deliverable)
 1. **House style + publishing.** Every dossier, drafted `.md`, motion, memo, matrix, and
-   briefing is published via **`bin/glaw-publish <matter>`** → **PDF (styled) + Google Doc
-   + Google Slides** in one Google Drive folder, with an `index`. Styling = `lib/house-style.css`
+   briefing is published via **`bin/glaw-publish <matter>`** → local HTML/manifest matter bundle.
+   Styling = `lib/house-style.css`
    (Helvetica, justified 12pt/1.5, centered ALL-CAPS title, blue directive callouts, gray
    dividers, 1in margins). Full spec: `lib/house-style.md`.
 2. **Scorecard rule.** Every contract review emits a **`bin/glaw-contract-score`** scorecard
@@ -42,10 +42,7 @@ domain below maps to a seat.
    accept|deny [--note]` (accepted = struck-through in the copy); `glaw-redline status` for the
    tally. The redline is a deliverable (publish it). Feeds the Chief decision in rule 3.
    **Lawyer-grade output:** `bin/glaw-redline-docx <contract.docx> <findings.json>` bridges the same
-   findings into **real Microsoft Word tracked changes** (`w:ins`/`w:del`, accept/reject in Word) +
-   full-redline PDF + schedule-of-changes PDF + internal memo, via legal-redline-tools
-   (evolsb/legal-redline-tools, MIT; in `~/.glaw/tools/flp-local source runner`; smart/straight quotes auto-reconciled).
-   `legal-redline diff a.docx b.docx` compares two versions → redline JSON.
+   findings into a local DOCX redline artifact plus normalized redline JSON for attorney review.
 
 ## Matter pipeline (stages)
 | Stage | Skill | Produces |
@@ -73,8 +70,8 @@ Covers: **Corporate**, entity structuring, IP, contracts, employment, real estat
 | IP (trademark/patent/copyright/trade secret/assignment) | `/glaw-ip-counsel` |
 | Commercial contracts (MSA/SaaS/NDA/supply/vendor) — draft/negotiate | `/glaw-commercial-contracts` |
 | Inbound/third-party contract **review + redline** (CUAD 41-cat risk grading, market benchmarks, severity triage, negotiation matrix) | `glaw-contract-review` |
-| ↳ *contract-review chain:* `glaw-contract-review` (evolsb/claude-legal-skill v3, markdown review w/ 🔴/🟡/🟢 tiers + redline language) → findings feed `bin/glaw-contract-score` (scorecard) **and** `bin/glaw-redline-docx` (real Word track-changes via legal-redline-tools). Same 🔴 critical / 🟡 important / 🟢 acceptable severity vocabulary end-to-end. | (pipeline) |
-| ↳ *one-shot orchestrator:* `bin/glaw-review-chain <contract.docx> <findings.json> --matter <slug>` runs the whole chain in one command — derives the scorecard, generates the Word tracked changes + PDFs, publishes review+scorecard, and drops everything (review + scorecard ×3 formats + tracked-changes Word + redline/summary/memo PDFs) into ONE Drive folder. **"Review this Drive contract" action:** download → `glaw-contract-review` produces findings → `glaw-review-chain` does the rest. | (pipeline) |
+| ↳ *contract-review chain:* `glaw-contract-review` (markdown review w/ 🔴/🟡/🟢 tiers + redline language) → findings feed `bin/glaw-contract-score` (scorecard) **and** `bin/glaw-redline-docx` (local DOCX redline artifact + normalized redline JSON). Same 🔴 critical / 🟡 important / 🟢 acceptable severity vocabulary end-to-end. | (pipeline) |
+| ↳ *one-shot orchestrator:* `bin/glaw-review-chain <contract.docx> <findings.json> --matter <slug>` runs the whole chain in one command — derives the scorecard, generates local redline artifacts, publishes review+scorecard, and drops everything into the local matter folder. | (pipeline) |
 | Employment & labor | `/glaw-employment-counsel` |
 | Real estate | `/glaw-real-estate-counsel` |
 | §83(b) elections + founder restricted stock + IRS Form 15620 + cap table + Drive comment-review loop | `/glaw-83b-election` |

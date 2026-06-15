@@ -13,6 +13,7 @@ GLAW has one supported runtime model: local repository code plus standard-librar
 | `lib/render` | local rendering checks |
 | `lib/writing` | legal-writing quality checks |
 | `federal-trial-counsel/scripts/ftc_engine` | federal litigation CLI engine |
+| `seats/glaw-tax-compliance/scripts/fill_form.py` | zero-package IRS form fill-package generator |
 
 ## External Package Policy
 

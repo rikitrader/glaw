@@ -12,6 +12,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
+import subprocess
 import sys
 import tempfile
 import urllib.parse
@@ -51,11 +53,11 @@ def _dec(v):
         return None
 
 
-def _ingest_pdf(path: Path, open_bal, close_bal, ocr="auto"):
+def _ingest_pdf(path: Path, open_bal, close_bal, ocr="auto", ocr_profile="bank-statement"):
     """PDF front-end: local text extraction or local OCR binaries -> CSV -> parser."""
     from pdf_extract import extract_to_csv  # local module, lives inside GLAW
 
-    csv_path, meta = extract_to_csv(path, ocr=ocr)
+    csv_path, meta = extract_to_csv(path, ocr=ocr, profile=ocr_profile)
     if open_bal is None:
         open_bal = _dec(meta.get("opening_balance"))
     if close_bal is None:
@@ -88,16 +90,39 @@ def _google_sheet_csv_url(url: str) -> str:
     return f"https://docs.google.com/spreadsheets/d/{sheet_id}/export?format=csv&gid={gid}"
 
 
-def _download_sheet_or_csv(url: str) -> Path:
+def _gcloud_token() -> str | None:
+    for args in (["auth", "application-default", "print-access-token"],
+                 ["auth", "print-access-token"]):
+        try:
+            proc = subprocess.run(["gcloud", *args], capture_output=True, text=True, timeout=20)
+        except (OSError, subprocess.SubprocessError):
+            continue
+        token = proc.stdout.strip()
+        if proc.returncode == 0 and token:
+            return token
+    return None
+
+
+def _download_sheet_or_csv(url: str, google_auth: str = "auto") -> Path:
     csv_url = _google_sheet_csv_url(url)
-    req = urllib.request.Request(csv_url, headers={"User-Agent": "GLAW/1.0"})
+    headers = {"User-Agent": "GLAW/1.0"}
+    if "docs.google.com" in urllib.parse.urlparse(csv_url).netloc and google_auth in ("auto", "gcloud"):
+        token = _gcloud_token()
+        if token:
+            headers["Authorization"] = f"Bearer {token}"
+        elif google_auth == "gcloud":
+            raise RuntimeError(
+                "Google Sheet auth requested, but no local gcloud OAuth token was available. "
+                "Run `gcloud auth application-default login` or make the sheet exportable by link."
+            )
+    req = urllib.request.Request(csv_url, headers=headers)
     try:
         with urllib.request.urlopen(req, timeout=30) as resp:
             data = resp.read()
     except Exception as exc:
         raise RuntimeError(
             "Could not read Google Sheet/CSV URL. Make the sheet viewable by link, "
-            "publish it to CSV, or export it manually as CSV."
+            "publish it to CSV, authenticate with local gcloud, or export it manually as CSV."
         ) from exc
     if not data.strip():
         raise RuntimeError("Google Sheet/CSV URL returned no data.")
@@ -106,7 +131,7 @@ def _download_sheet_or_csv(url: str) -> Path:
     return out
 
 
-def _collect(path: Path, pattern: str, open_bal, close_bal, ocr="auto"):
+def _collect(path: Path, pattern: str, open_bal, close_bal, ocr="auto", ocr_profile="bank-statement"):
     """Return (transactions, results, notes) across a file or directory tree.
 
     ``notes`` maps id(result) -> a provenance string injected into the audit.
@@ -118,7 +143,7 @@ def _collect(path: Path, pattern: str, open_bal, close_bal, ocr="auto"):
         txs = list(getattr(scan, "unique_transactions", []) or [])
         return txs, results, {}
     if path.suffix.lower() == ".pdf":
-        return _ingest_pdf(path, open_bal, close_bal, ocr=ocr)
+        return _ingest_pdf(path, open_bal, close_bal, ocr=ocr, ocr_profile=ocr_profile)
     res = smart_ingest(path, opening_balance=open_bal, closing_balance=close_bal)
     return list(res.transactions), [res], {}
 
@@ -132,7 +157,7 @@ def main() -> int:
     ap.add_argument("--chart", default=None,
                     help="Bundled chart of accounts: " + ", ".join(_charts()))
     ap.add_argument("--format", default="hledger",
-                    choices=["hledger", "beancount", "json", "gsheet"])
+                    choices=["hledger", "beancount", "json", "csv", "gsheet"])
     ap.add_argument("--out", default=None, help="Write output to this path instead of stdout")
     ap.add_argument("--sheet-title", default=None,
                     help="Title for local CSV files when --format gsheet")
@@ -143,11 +168,16 @@ def main() -> int:
                     help="Default currency for rows with none set (default: USD)")
     ap.add_argument("--ocr", default="auto", choices=["auto", "force", "off"],
                     help="PDF OCR mode: auto, force, or off")
+    ap.add_argument("--ocr-profile", default="bank-statement",
+                    choices=["bank-statement", "dense", "simple"],
+                    help="OCR/rendering profile for scanned bank statements")
+    ap.add_argument("--google-auth", default="auto", choices=["auto", "none", "gcloud"],
+                    help="Google Sheet auth: auto, none, or local gcloud token")
     args = ap.parse_args()
 
     try:
         if _is_url(args.input):
-            in_path = _download_sheet_or_csv(args.input)
+            in_path = _download_sheet_or_csv(args.input, google_auth=args.google_auth)
             input_label = args.input
         else:
             in_path = Path(args.input).expanduser()
@@ -170,7 +200,8 @@ def main() -> int:
 
     try:
         txs, results, notes = _collect(in_path, args.pattern, _dec(args.open_bal),
-                                       _dec(args.close_bal), ocr=args.ocr)
+                                       _dec(args.close_bal), ocr=args.ocr,
+                                       ocr_profile=args.ocr_profile)
     except Exception as exc:
         print(f"ERROR: {exc}", file=sys.stderr)
         return 2
@@ -221,11 +252,13 @@ def main() -> int:
         })
 
     # Render output
-    if args.format == "gsheet":
+    if args.format in ("csv", "gsheet"):
         from sheets_export import export as gsheet_export
         title = args.sheet_title or f"GLAW Bookkeeping — {args.matter or in_path.stem}"
         csv_path = gsheet_export(txs, title=title, matter=args.matter,
                                  default_currency=args.currency)
+        if args.format == "gsheet":
+            print("NOTE: --format gsheet is a backwards-compatible alias for local CSV export.", file=sys.stderr)
         print(f"Local CSV export created ({len(txs)} tx, {mapped} mapped):\n{csv_path}")
         print("\n--- BALANCE AUDIT (Golden Rule) ---", file=sys.stderr)
         for a in audit:

@@ -374,6 +374,16 @@ else
   else
     bad "zero-dependency bookkeeping smoke FAILED — run: GLAW=$GLAW $GLAW/bin/glaw-bank-ingest /tmp/glaw-doctor-bank.csv --format json"
   fi
+  if [ -x "$GLAW/bin/glaw-bookkeeping-doctor" ]; then
+    if GLAW="$GLAW" "$GLAW/bin/glaw-bookkeeping-doctor" >/tmp/glaw-bookkeeping-doctor.out 2>&1; then
+      ok "bookkeeping/IRS/adversarial gate passed (bank rec + ledger + forms + tax tie-out)"
+    else
+      bad "bookkeeping/IRS/adversarial gate FAILED — run: GLAW=$GLAW $GLAW/bin/glaw-bookkeeping-doctor"
+      grep -E '❌|Traceback|ERROR' /tmp/glaw-bookkeeping-doctor.out | sed 's/^/    /'
+    fi
+  else
+    bad "glaw-bookkeeping-doctor missing/executable bit absent"
+  fi
 fi
 # scripts: syntax-check (don't execute — they mutate/source)
 for s in glaw-setup glaw-preamble.sh glaw-gate; do

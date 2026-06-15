@@ -4,7 +4,7 @@
 Given a contract (.docx) + ONE findings file (the glaw-redline shape), run the whole
 chain and drop everything in the local matter folder:
   contract-review (you supply REVIEW.md) -> glaw-contract-score (scorecard, derived
-  from the findings) -> glaw-redline-docx (real Word tracked changes + PDFs) ->
+  from the findings) -> glaw-redline-docx (local DOCX redline artifact + JSON) ->
   glaw-publish (review + scorecard as local HTML index).
 
 Findings file = the glaw-redline array:
@@ -54,15 +54,15 @@ def main():
     elif not os.path.exists(os.path.join(M, "REVIEW.md")):
         open(os.path.join(M, "REVIEW.md"), "w").write(
             f"# Contract Review: {title}\n\n**Counterparty:** {sc['counterparty']}\n\n"
-            f"See the Scorecard (quantified risk) and the tracked-changes Word file "
+            f"See the Scorecard (quantified risk) and the local redline artifact "
             f"({len(findings)} redlines).\n\n> Attorney work-product, not legal advice.\n")
     print("  [2/4] review captured")
 
-    # 3) real Word tracked changes
+    # 3) local DOCX redline artifact
     base = os.path.join(M, "REDLINE")
     r = subprocess.run([f"{BIN}/glaw-redline-docx", contract, findings_p, "-o", base,
                         "--title", title], capture_output=True, text=True)
-    print("  [3/4] " + ("tracked changes generated" if "Applied:" in r.stdout or os.path.exists(base + ".tracked.docx")
+    print("  [3/4] " + ("redline artifact generated" if "Applied:" in r.stdout or os.path.exists(base + ".tracked.docx")
                          else "redline step: " + (r.stdout + r.stderr)[:120]))
 
     # 4) publish review+scorecard locally

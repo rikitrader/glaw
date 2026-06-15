@@ -1,0 +1,134 @@
+#!/usr/bin/env bash
+# glaw-bookkeeping-doctor — focused source-first bookkeeping health gate.
+set -uo pipefail
+
+ROOT="${GLAW:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+PY="$(command -v python3)"
+FAIL=0
+
+ok(){ printf '  ✅ %s\n' "$1"; }
+bad(){ printf '  ❌ %s\n' "$1"; FAIL=$((FAIL+1)); }
+skip(){ printf '  ⚠️  %s\n' "$1"; }
+
+run_py_test() {
+  local test="$1"
+  if GLAW="$ROOT" GLAW_HOME="$(mktemp -d)" PYTHONPATH="$ROOT/lib/bookkeeping:$ROOT" "$PY" "$ROOT/lib/bookkeeping/$test" >/tmp/glaw-bkdoc.out 2>&1; then
+    ok "$test"
+  else
+    bad "$test"
+    sed 's/^/      /' /tmp/glaw-bkdoc.out
+  fi
+}
+
+echo "═══ GLAW BOOKKEEPING DOCTOR ═══"
+
+tmp="$(mktemp -d)"
+sample="$tmp/bank.csv"
+cat >"$sample" <<'CSV'
+date,description,amount
+2026-01-01,Client deposit,1000.00
+2026-01-02,Office supplies,-125.00
+CSV
+
+if GLAW="$ROOT" "$ROOT/bin/glaw-bank-ingest" "$sample" --format json >"$tmp/ingest.json" 2>"$tmp/ingest.err"; then
+  ok "CSV ingest -> JSON"
+else
+  bad "CSV ingest -> JSON"
+  sed 's/^/      /' "$tmp/ingest.err"
+fi
+
+if GLAW="$ROOT" GLAW_EXPORT_DIR="$tmp" "$ROOT/bin/glaw-bank-ingest" "$sample" --format csv --sheet-title "book-export" >"$tmp/csv.out" 2>"$tmp/csv.err"; then
+  csv_path="$(tail -1 "$tmp/csv.out")"
+  [ -f "$csv_path" ] && ok "local CSV export" || bad "local CSV export missing output file"
+else
+  bad "local CSV export"
+  sed 's/^/      /' "$tmp/csv.err"
+fi
+
+if GLAW="$ROOT" "$ROOT/bin/glaw-books-doctor" "$tmp/ingest.json" >/tmp/glaw-books-doc.out 2>&1; then
+  ok "books doctor over ingest JSON"
+else
+  bad "books doctor over ingest JSON"
+  sed 's/^/      /' /tmp/glaw-books-doc.out
+fi
+
+if GLAW="$ROOT" "$ROOT/bin/glaw-bank-rec" --books "$tmp/ingest.json" --bank "$tmp/ingest.json" --format json >"$tmp/rec.json" 2>"$tmp/rec.err"; then
+  ok "bank reconciliation"
+else
+  bad "bank reconciliation"
+  sed 's/^/      /' "$tmp/rec.err"
+fi
+
+ledger_home="$(mktemp -d)"
+if GLAW_HOME="$ledger_home" GLAW="$ROOT" "$ROOT/bin/glaw-ledger" --book doctor post --date 2026-01-01 --debit Assets:Cash 1000 --credit Income:Revenue 1000 >/tmp/glaw-ledger-doc.out 2>&1 \
+  && GLAW_HOME="$ledger_home" GLAW="$ROOT" "$ROOT/bin/glaw-ledger" --book doctor post --date 2026-01-02 --debit Expenses:COGS:Materials 250 --credit Assets:Cash 250 >/tmp/glaw-ledger-doc.out 2>&1 \
+  && GLAW_HOME="$ledger_home" GLAW="$ROOT" "$ROOT/bin/glaw-books-doctor" --book doctor >/tmp/glaw-ledger-doc.out 2>&1; then
+  ok "ledger wrapper executable + book gate"
+else
+  bad "ledger wrapper executable + book gate"
+  sed 's/^/      /' /tmp/glaw-ledger-doc.out
+fi
+
+if GLAW_HOME="$ledger_home" GLAW="$ROOT" "$ROOT/bin/glaw-return-map" --book doctor --form 1120 --format json >"$tmp/1120.json" 2>"$tmp/1120.err" \
+  && GLAW="$ROOT" "$ROOT/bin/glaw-fill-form" --form 1120 --data "$tmp/1120.json" --out "$tmp/1120" >/tmp/glaw-fill-doc.out 2>&1 \
+  && [ -s "$tmp/1120.fill.json" ] && [ -s "$tmp/1120.fill.txt" ]; then
+  ok "IRS return map + form fill package ties to ledger"
+else
+  bad "IRS return map + form fill package ties to ledger"
+  cat "$tmp/1120.err" /tmp/glaw-fill-doc.out 2>/dev/null | sed 's/^/      /'
+fi
+
+if GLAW_HOME="$ledger_home" GLAW="$ROOT" "$ROOT/bin/glaw-tax-provision" --book doctor --rate 21 --post --date 2026-12-31 --format json >"$tmp/provision.json" 2>"$tmp/provision.err" \
+  && GLAW_HOME="$ledger_home" GLAW="$ROOT" "$ROOT/bin/glaw-tax-tieout" --book doctor --rate 21 >/tmp/glaw-tax-tieout.out 2>&1; then
+  ok "tax provision + tax tie-out from ledger"
+else
+  bad "tax provision + tax tie-out from ledger"
+  cat "$tmp/provision.err" /tmp/glaw-tax-tieout.out 2>/dev/null | sed 's/^/      /'
+fi
+
+run_py_test test_sources.py
+run_py_test test_finance42.py
+run_py_test test_finance43.py
+
+bad_pdf="$tmp/bad.pdf"
+printf '%s' '%PDF-1.4' >"$bad_pdf"
+if GLAW="$ROOT" "$ROOT/bin/glaw-bank-ingest" "$bad_pdf" --format json >/tmp/glaw-pdf-doc.out 2>/tmp/glaw-pdf-doc.err; then
+  bad "bad PDF should fail cleanly"
+else
+  if grep -q 'Traceback' /tmp/glaw-pdf-doc.err; then
+    bad "bad PDF emitted traceback"
+  else
+    ok "bad PDF clean error path"
+  fi
+fi
+
+if command -v tesseract >/dev/null 2>&1 && command -v pdftoppm >/dev/null 2>&1; then
+  ok "OCR binaries available (tesseract + pdftoppm)"
+else
+  skip "OCR binaries not both installed; PDF/OCR runtime tests skipped"
+fi
+
+if find "$ROOT" \( -name requirements.txt -o -name pyproject.toml -o -name package.json -o -name package-lock.json -o -name yarn.lock -o -name pnpm-lock.yaml \) -print | grep -q .; then
+  bad "package manifest found in repo"
+else
+  ok "no package manifests"
+fi
+
+if grep -rIE '^\s*(from|import)\s+(pydantic|pandas|lxml|defusedxml|pypdf|PyPDF2|pypdfium2|litellm|polars|fastapi|uvicorn|google|googleapiclient|openpyxl|docxtpl|eyecite|jsonschema|juriscraper|requests)\b' "$ROOT/bin" "$ROOT/lib" "$ROOT/federal-trial-counsel" "$ROOT/seats" "$ROOT/docx" >/tmp/glaw-import-scan.out 2>/dev/null; then
+  bad "direct third-party Python import found"
+  sed 's/^/      /' /tmp/glaw-import-scan.out
+else
+  ok "no direct third-party Python imports"
+fi
+
+leaks=$(find "$ROOT" \( -name '*.transactions.csv' -o -name '*.summary.csv' -o -name 'sheet.csv' -o -name 'page-*.png' -o -name '*.token.json' -o -name '*credentials*.json' \) -print 2>/dev/null | grep -v '/.git/' || true)
+if [ -n "$leaks" ]; then
+  bad "possible committed bookkeeping temp/credential files"
+  printf '%s\n' "$leaks" | sed 's/^/      /'
+else
+  ok "no bookkeeping temp/credential files in repo"
+fi
+
+echo "═══ RESULT ═══"
+echo "  failures: $FAIL"
+[ "$FAIL" = 0 ] && { echo "  BOOKKEEPING HEALTHY ✅"; exit 0; } || { echo "  BOOKKEEPING PROBLEMS ❌"; exit 1; }
