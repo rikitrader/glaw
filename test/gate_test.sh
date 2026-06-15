@@ -47,6 +47,7 @@ ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file STILL BLOCKED before ver
 cat > "$M/final_packet.json" <<'JSON'
 {
   "status": "ready",
+  "generated_at": "2026-01-01T00:00:00Z",
   "gates": {
     "intake_complete": true,
     "conflicts_cleared": true,
@@ -62,7 +63,9 @@ cat > "$M/final_packet.json" <<'JSON'
   }
 }
 JSON
-printf '{"final_gate":"approved"}\n' > "$M/decisions.jsonl"
+printf '{"final_gate":"approved","approved_packet_generated_at":"2025-12-31T00:00:00Z"}\n' > "$M/decisions.jsonl"
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED when Chief approval references stale packet"
+printf '{"final_gate":"approved","approved_packet_generated_at":"2026-01-01T00:00:00Z"}\n' > "$M/decisions.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after all file gates"
 printf '{"id":"RF-STALE","severity":"high","status":"open","finding":"new post-packet issue"}\n' > "$M/red_flags.jsonl"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet high red flag"

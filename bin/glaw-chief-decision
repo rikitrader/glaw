@@ -92,12 +92,14 @@ def main():
         print("FINAL APPROVAL BLOCKED: final_packet.json is missing/not ready or final_packet_ready is absent.")
         print("Run `glaw-final-packet build --profile auto` after clearing every gate, then retry.")
         return 1
+    final_packet = read_json(os.path.join(mdir, "final_packet.json"), {}) if d["approve-final"] else {}
 
     card = {
         "ts": ts, "chief": d["chief"],
         "score": d["score"], "grade": d["grade"],
         "decision": d["decision"], "signoff_required": d["signoff"],
         "final_gate": "approved" if d["approve-final"] else ("denied" if d["deny-final"] else "reviewed"),
+        "approved_packet_generated_at": final_packet.get("generated_at", "") if d["approve-final"] else "",
         "top_risks": risks, "conditions": conds, "rationale": d["rationale"],
     }
 
@@ -107,7 +109,8 @@ def main():
                             "grade":d["grade"],"score":d["score"],"decision":d["decision"]})+"\n")
         if d["approve-final"]:
             f.write(json.dumps({"ts":ts,"event":"chief_approved","chief":d["chief"],
-                                "grade":d["grade"],"score":d["score"],"decision":d["decision"]})+"\n")
+                                "grade":d["grade"],"score":d["score"],"decision":d["decision"],
+                                "approved_packet_generated_at": final_packet.get("generated_at", "")})+"\n")
         if d["deny-final"]:
             f.write(json.dumps({"ts":ts,"event":"chief_denied","chief":d["chief"],
                                 "grade":d["grade"],"score":d["score"],"decision":d["decision"],
@@ -124,6 +127,7 @@ def main():
         f.write(f"- **Position-Strength:** {d['score']}/100  (Grade {d['grade']})\n")
         f.write(f"- **DECISION:** {d['decision']}\n")
         if d["approve-final"]: f.write(f"- **FINAL GATE:** APPROVED (`chief_approved` logged)\n")
+        if d["approve-final"]: f.write(f"- **Approved packet generated_at:** {final_packet.get('generated_at', '')}\n")
         if d["deny-final"]: f.write(f"- **FINAL GATE:** DENIED (`chief_denied` logged)\n")
         if d["signoff"]: f.write(f"- **⚠ Human/attorney sign-off required.**\n")
         if risks: f.write("\n## Top surviving risks\n"+"".join(f"- {r}\n" for r in risks))

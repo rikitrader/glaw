@@ -97,6 +97,10 @@ except json.JSONDecodeError:
 if packet.get("status") != "ready":
     print("final_packet.json status is not ready")
     sys.exit(1)
+packet_generated_at = packet.get("generated_at", "")
+if not packet_generated_at:
+    print("final_packet.json missing generated_at")
+    sys.exit(1)
 missing = [k for k, v in packet.get("gates", {}).items() if not v]
 if missing:
     print("final_packet.json has uncleared gate(s): " + ", ".join(missing))
@@ -124,6 +128,7 @@ if not decisions.exists():
     print("decisions.jsonl missing")
     sys.exit(1)
 latest_final = None
+latest_packet_generated_at = ""
 for line in decisions.read_text(encoding="utf-8", errors="replace").splitlines():
     if not line.strip():
         continue
@@ -133,8 +138,12 @@ for line in decisions.read_text(encoding="utf-8", errors="replace").splitlines()
         continue
     if row.get("final_gate") in {"approved", "denied"}:
         latest_final = row.get("final_gate")
+        latest_packet_generated_at = row.get("approved_packet_generated_at", "")
 if latest_final != "approved":
     print("latest Chief final decision is not approved")
+    sys.exit(1)
+if latest_packet_generated_at != packet_generated_at:
+    print("latest Chief approval does not match current final_packet.json generated_at")
     sys.exit(1)
 PY
 }
