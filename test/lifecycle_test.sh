@@ -48,9 +48,15 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "strategy blocked before intake/confli
 "$INTAKE" complete >/dev/null
 "$ETHICS" record-conflicts --status cleared --notes 'no conflict in test fixture' >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "ethics conflicts blocked without source evidence id"
+"$ETHICS" record-conflicts --status cleared --notes 'no conflict in test fixture' --source 'SRC-9999 stale intake party list reviewed' >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "ethics conflicts blocked by non-current source evidence id"
+mkdir -p "$TMP/matters/$SLUG/evidence"
+printf 'date,description,amount\n2026-01-01,capital deposit,100.00\n' > "$TMP/matters/$SLUG/evidence/bank.csv"
 "$ETHICS" record-conflicts --status cleared --notes 'no conflict in test fixture' --source 'SRC-0001 intake party list reviewed' >/dev/null
 "$ETHICS" draft-engagement --scope 'review and draft only' --responsible-professional 'licensed reviewer' >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "ethics engagement blocked without source evidence id"
+"$ETHICS" draft-engagement --scope 'review and draft only' --responsible-professional 'licensed reviewer' --source 'SRC-9999 stale authorized scope reviewed' >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "ethics engagement blocked by non-current source evidence id"
 "$ETHICS" draft-engagement --scope 'review and draft only' --responsible-professional 'licensed reviewer' --source 'SRC-0001 authorized scope reviewed' >/dev/null
 "$ETHICS" complete >/dev/null
 "$GLAW" stage strategy >/dev/null 2>&1; rc=$?
@@ -74,8 +80,6 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council approve blocked without sourc
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council approve blocked without role-specific conclusion"
 "$COUNCIL" record --profile auto --role cfo --decision approve --evidence "SRC-9999 test fixture review basis" --notes "cfo source-backed approval conclusion" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council approve blocked by non-current source evidence id"
-mkdir -p "$TMP/matters/$SLUG/evidence"
-printf 'date,description,amount\n2026-01-01,capital deposit,100.00\n' > "$TMP/matters/$SLUG/evidence/bank.csv"
 for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do
   "$COUNCIL" record --profile auto --role "$role" --decision approve --evidence "SRC-0001 test fixture review basis" --notes "$role source-backed approval conclusion" >/dev/null
 done

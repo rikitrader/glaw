@@ -18,6 +18,7 @@ UPL_FOOTER = (
     "deadlines, filings, fees, and figures independently before filing or relying on them."
 )
 SOURCE_ID_RE = re.compile(r"\bSRC-\d{4}\b")
+SOURCE_EVIDENCE_PARTS = {"evidence", "source_documents", "sources"}
 
 
 def now() -> str:
@@ -58,6 +59,44 @@ def read_json(path: Path, default):
 
 def write_json(path: Path, payload: dict) -> None:
     path.write_text(json.dumps(payload, indent=2, sort_keys=False) + "\n", encoding="utf-8")
+
+
+def is_source_evidence(path: Path, root: Path) -> bool:
+    if not path.is_file():
+        return False
+    return bool(set(path.relative_to(root).parts) & SOURCE_EVIDENCE_PARTS)
+
+
+def current_source_ids(d: Path) -> set[str]:
+    paths = [p for p in d.rglob("*") if is_source_evidence(p, d) and p.stat().st_size > 0]
+    return {f"SRC-{idx:04d}" for idx, _path in enumerate(sorted(paths), start=1)}
+
+
+def cited_source_ids(text: str) -> set[str]:
+    return set(SOURCE_ID_RE.findall(text or ""))
+
+
+def noncurrent_source_ids(text: str, d: Path) -> list[str]:
+    cited = cited_source_ids(text)
+    if not cited:
+        return []
+    return sorted(cited - current_source_ids(d))
+
+
+def require_current_source_ids(text: str, d: Path, context: str) -> bool:
+    cited = cited_source_ids(text)
+    if not cited:
+        print(f"ERROR: {context} must cite a source evidence id such as SRC-0001", file=sys.stderr)
+        return False
+    stale = noncurrent_source_ids(text, d)
+    if stale:
+        print(
+            f"ERROR: {context} must cite current source artifact ID(s); "
+            f"non-current: {', '.join(stale)}",
+            file=sys.stderr,
+        )
+        return False
+    return True
 
 
 def append_jsonl(path: Path, row: dict) -> None:
@@ -104,17 +143,21 @@ def save_record(d: Path, record: dict) -> None:
     write_json(ethics_path(d), record)
 
 
-def blockers(record: dict) -> list[str]:
+def blockers(record: dict, d: Path | None = None) -> list[str]:
     out: list[str] = []
     conflicts = record.get("conflicts_status")
     if conflicts not in {"cleared", "waived"}:
         out.append("conflicts_status must be cleared or waived")
     if not SOURCE_ID_RE.search(str(record.get("conflicts_source", ""))):
         out.append("conflicts_source must cite source evidence id (SRC-####)")
+    elif d is not None and noncurrent_source_ids(str(record.get("conflicts_source", "")), d):
+        out.append("conflicts_source must cite a current source artifact")
     if conflicts == "waived" and not record.get("waiver_evidence"):
         out.append("waiver_evidence required for waived conflicts")
     if conflicts == "waived" and not SOURCE_ID_RE.search(str(record.get("waiver_evidence", ""))):
         out.append("waiver_evidence must cite source evidence id (SRC-####)")
+    elif conflicts == "waived" and d is not None and noncurrent_source_ids(str(record.get("waiver_evidence", "")), d):
+        out.append("waiver_evidence must cite a current source artifact")
     engagement = record.get("engagement", {})
     if engagement.get("status") != "drafted":
         out.append("engagement.status must be drafted")
@@ -123,6 +166,8 @@ def blockers(record: dict) -> list[str]:
             out.append(f"engagement.{key} required")
     if not SOURCE_ID_RE.search(str(engagement.get("source", ""))):
         out.append("engagement.source must cite source evidence id (SRC-####)")
+    elif d is not None and noncurrent_source_ids(str(engagement.get("source", "")), d):
+        out.append("engagement.source must cite a current source artifact")
     footer = str(record.get("upl_footer", "")).lower()
     if "attorney work-product" not in footer or "not legal advice" not in footer:
         out.append("upl_footer must include attorney work-product and not legal advice language")
@@ -150,10 +195,11 @@ def cmd_init(args: argparse.Namespace) -> int:
 
 
 def cmd_record_conflicts(args: argparse.Namespace) -> int:
-    if not SOURCE_ID_RE.search(args.source):
-        print("ERROR: --source must cite a source evidence id such as SRC-0001", file=sys.stderr)
-        return 2
     d = matter_dir(args.matter)
+    if not require_current_source_ids(args.source, d, "--source"):
+        return 2
+    if args.waiver_evidence and not require_current_source_ids(args.waiver_evidence, d, "--waiver-evidence"):
+        return 2
     record = load_record(d)
     record["conflicts_status"] = args.status
     record["conflicts_notes"] = args.notes
@@ -169,10 +215,9 @@ def cmd_record_conflicts(args: argparse.Namespace) -> int:
 
 
 def cmd_engagement(args: argparse.Namespace) -> int:
-    if not SOURCE_ID_RE.search(args.source):
-        print("ERROR: --source must cite a source evidence id such as SRC-0001", file=sys.stderr)
-        return 2
     d = matter_dir(args.matter)
+    if not require_current_source_ids(args.source, d, "--source"):
+        return 2
     record = load_record(d)
     record["engagement"] = {
         "status": "drafted",
@@ -191,7 +236,7 @@ def cmd_engagement(args: argparse.Namespace) -> int:
 def cmd_status(args: argparse.Namespace) -> int:
     d = matter_dir(args.matter)
     record = load_record(d)
-    missing = blockers(record)
+    missing = blockers(record, d)
     print(f"ETHICS {d.name}: conflicts={record.get('conflicts_status')} engagement={record.get('engagement', {}).get('status')}")
     if missing:
         for item in missing:
