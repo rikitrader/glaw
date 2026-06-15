@@ -11,6 +11,8 @@
 #                   ⇐ red_flags_clear              (no critical/high open findings)
 #                   ⇐ final_packet_ready           (required council + manifest)
 #                   ⇐ chief_approved               (Chief/Council final approval)
+#   enter matter-retro ⇐ docket_gate_complete      (deadline review before close-out)
+#                      ⇐ docket_done
 # For file, event presence is necessary but not sufficient: final_packet.json must be ready and
 # the latest final Chief decision must be approved in decisions.jsonl.
 #
@@ -26,6 +28,7 @@ _required_events() {
   case "$1" in
     strategy) echo "intake_complete conflicts_cleared" ;;
     file)     echo "citations_verified adversarial_done red_flags_clear final_packet_ready chief_approved" ;;
+    matter-retro) echo "docket_gate_complete docket_done" ;;
     *)        echo "" ;;   # unguarded transition
   esac
 }
@@ -108,7 +111,7 @@ case "$action" in
     [ -z "$slug" ] && { echo "GATE: no active matter"; exit 2; }
     tl="$MATTERS/$slug/timeline.jsonl"
     echo "═══ GATE STATUS — $slug ═══"
-    for pair in "intake_complete:before strategy" "conflicts_cleared:before strategy" "citations_verified:before file" "adversarial_done:before file" "red_flags_clear:before file" "final_packet_ready:before file" "chief_approved:before file"; do
+    for pair in "intake_complete:before strategy" "conflicts_cleared:before strategy" "citations_verified:before file" "adversarial_done:before file" "red_flags_clear:before file" "final_packet_ready:before file" "chief_approved:before file" "docket_gate_complete:before matter-retro" "docket_done:before matter-retro"; do
       ev="${pair%%:*}"; desc="${pair#*:}"
       if _has_event "$tl" "$ev"; then echo "  ✅ $ev ($desc)"; else echo "  ❌ $ev ($desc) — NOT yet cleared"; fi
     done

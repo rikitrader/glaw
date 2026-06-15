@@ -159,8 +159,10 @@ will not advance without `chief_approved`.
 of limitation, lien deadlines, Form D anniversaries, BOI, annual reports.
 
 ### Step 6 — Close
-`/glaw-matter-retro` writes the matter's Obsidian vault (per the user's universal
-workflow rule), logs decisions + followups, and marks the matter status.
+Before close-out, `/glaw-docket` must run `glaw-docket-gate complete` so deadlines are either
+docketed or explicitly marked no-deadlines with a rationale. Then `/glaw-matter-retro` writes the
+matter's Obsidian vault (per the user's universal workflow rule), logs decisions + followups, and
+marks the matter status.
 
 ## Gates summary (never skip)
 1. **Conflicts cleared** before strategy.
@@ -168,6 +170,7 @@ workflow rule), logs decisions + followups, and marks the matter status.
 3. **Adversarial RED→BLUE** before file.
 4. **Chief/Council approval** before file.
 5. **UPL disclaimer** on every external deliverable (`glaw-upl-check`).
+6. **Docket gate complete** before matter-retro.
 
 ## State commands
 | Need | Command |

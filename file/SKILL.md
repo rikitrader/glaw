@@ -96,7 +96,6 @@ works from.
 ### Step 5 — Advance
 ```bash
 ~/.claude/skills/glaw/bin/glaw stage docket
-~/.claude/skills/glaw/bin/glaw timeline-log file_done
 ```
 Hand off to `/glaw-docket` for ongoing calendaring/monitoring.
 

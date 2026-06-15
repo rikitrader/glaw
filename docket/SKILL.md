@@ -79,8 +79,8 @@ Ask the user which they want before creating anything.
 
 ### Step 5 — Advance
 ```bash
+~/.claude/skills/glaw/bin/glaw-docket-gate complete
 ~/.claude/skills/glaw/bin/glaw stage matter-retro
-~/.claude/skills/glaw/bin/glaw timeline-log docket_done
 ```
 Hand off to `/glaw-matter-retro` for close-out.
 
@@ -88,6 +88,12 @@ Hand off to `/glaw-matter-retro` for close-out.
 A fully calendared matter: every deadline docketed with its consequence, the
 30/60/90-day horizon shown, jurisdictional/one-shot deadlines flagged, and an
 ongoing-monitoring routine offered via `/schedule` or `/loop`.
+
+If the matter truly has no deadlines, record the exception before close-out:
+```bash
+~/.claude/skills/glaw/bin/glaw-docket-gate no-deadlines --rationale "<why no deadlines exist>"
+~/.claude/skills/glaw/bin/glaw-docket-gate complete
+```
 
 > **Attorney work-product — not legal advice.** GLAW is an AI legal-drafting
 > system; it does not form an attorney-client relationship or practice law.

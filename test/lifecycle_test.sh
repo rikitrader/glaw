@@ -16,6 +16,7 @@ CHIEF="$ROOT/bin/glaw-chief-decision"
 ADVERSARIAL="$ROOT/bin/glaw-adversarial"
 ETHICS="$ROOT/bin/glaw-ethics"
 CITES="$ROOT/bin/glaw-citation-gate"
+DOCKET="$ROOT/bin/glaw-docket-gate"
 
 "$GLAW" matter new "Lifecycle Accounting" >/dev/null
 SLUG="lifecycle-accounting"
@@ -81,6 +82,13 @@ ok "$([ "$rc" = 0 ] && [ -f "$TMP/matters/$SLUG/final_packet.json" ] && echo 1 |
 "$CHIEF" --chief "GLAW Chief Counsel" --decision "PROCEED" --approve-final --matter "$SLUG" >/dev/null
 "$GLAW" stage file >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && [ "$(cat "$TMP/matters/$SLUG/.stage")" = file ] && echo 1 || echo 0)" "file stage clears after final packet and chief approval"
+
+"$GLAW" stage matter-retro >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "matter-retro blocked before docket gate"
+"$GLAW" docket add 2026-09-15 "tax filing due - verify extension" >/dev/null
+"$DOCKET" complete >/dev/null
+"$GLAW" stage matter-retro >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 0 ] && [ "$(cat "$TMP/matters/$SLUG/.stage")" = matter-retro ] && echo 1 || echo 0)" "matter-retro clears after docket gate"
 
 rm -rf "$TMP"
 echo

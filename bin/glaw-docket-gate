@@ -1,0 +1,156 @@
+#!/usr/bin/env python3
+"""GLAW docket readiness gate.
+
+Close-out cannot rely on memory. This gate verifies that the matter docket has
+deadline entries, or records an explicit no-deadlines determination with a rationale.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+
+def now() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def home() -> Path:
+    return Path(os.environ.get("GLAW_HOME", str(Path.home() / ".glaw")))
+
+
+def active_slug() -> str:
+    p = home() / ".active"
+    return p.read_text(encoding="utf-8").strip() if p.exists() else ""
+
+
+def matter_dir(slug: str | None) -> Path:
+    s = slug or active_slug()
+    if not s:
+        raise SystemExit("ERROR: no active matter. Run `glaw matter new \"<name>\"` first.")
+    d = home() / "matters" / s
+    if not d.is_dir():
+        raise SystemExit(f"ERROR: matter not found: {s}")
+    return d
+
+
+def append_jsonl(path: Path, row: dict) -> None:
+    with path.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(row, sort_keys=False) + "\n")
+
+
+def timeline(d: Path, event: str, **extra: object) -> None:
+    append_jsonl(d / "timeline.jsonl", {"ts": now(), "event": event, **extra})
+
+
+def read_jsonl(path: Path) -> list[dict]:
+    if not path.exists():
+        return []
+    rows = []
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        if not line.strip():
+            continue
+        try:
+            rows.append(json.loads(line))
+        except json.JSONDecodeError:
+            rows.append({"_invalid": line})
+    return rows
+
+
+def open_deadlines(d: Path) -> list[dict]:
+    return [
+        row for row in read_jsonl(d / "docket.jsonl")
+        if not row.get("_invalid") and row.get("status", "open") != "closed" and row.get("due")
+    ]
+
+
+def no_deadlines_record(d: Path) -> dict:
+    p = d / "docket_gate.json"
+    if not p.exists():
+        return {}
+    try:
+        return json.loads(p.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return {}
+
+
+def write_no_deadlines(d: Path, rationale: str, reviewer: str) -> None:
+    payload = {
+        "schema_version": 1,
+        "matter_slug": d.name,
+        "status": "no_deadlines",
+        "rationale": rationale,
+        "reviewer": reviewer,
+        "reviewed_at": now(),
+    }
+    (d / "docket_gate.json").write_text(json.dumps(payload, indent=2, sort_keys=False) + "\n", encoding="utf-8")
+
+
+def ready_reason(d: Path) -> tuple[bool, str]:
+    deadlines = open_deadlines(d)
+    if deadlines:
+        return True, f"{len(deadlines)} open docket deadline(s)"
+    record = no_deadlines_record(d)
+    if record.get("status") == "no_deadlines" and record.get("rationale"):
+        return True, "no-deadlines determination recorded"
+    return False, "no open docket deadlines and no no-deadlines rationale"
+
+
+def cmd_status(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    ok, reason = ready_reason(d)
+    print(f"DOCKET {d.name}: {reason}")
+    if not ok:
+        print("DOCKET BLOCKED")
+        return 1
+    print("DOCKET READY")
+    return 0
+
+
+def cmd_no_deadlines(args: argparse.Namespace) -> int:
+    if not args.rationale.strip():
+        print("ERROR: --rationale is required", file=sys.stderr)
+        return 2
+    d = matter_dir(args.matter)
+    write_no_deadlines(d, args.rationale, args.reviewer)
+    timeline(d, "docket_no_deadlines", reviewer=args.reviewer)
+    print("DOCKET NO-DEADLINES RECORDED")
+    return 0
+
+
+def cmd_complete(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    ok, reason = ready_reason(d)
+    print(f"DOCKET {d.name}: {reason}")
+    if not ok:
+        print("DOCKET BLOCKED")
+        return 1
+    timeline(d, "docket_gate_complete", reason=reason)
+    timeline(d, "docket_done")
+    print("DOCKET COMPLETE")
+    return 0
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(prog="glaw-docket-gate")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    p = sub.add_parser("status")
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_status)
+    p = sub.add_parser("no-deadlines")
+    p.add_argument("--rationale", required=True)
+    p.add_argument("--reviewer", default=os.environ.get("USER", "operator"))
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_no_deadlines)
+    p = sub.add_parser("complete")
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_complete)
+    args = ap.parse_args()
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

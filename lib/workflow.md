@@ -56,6 +56,7 @@ FILE  /glaw-file  (signature-ready packet + checklist; UPL disclaimer on every d
   └─ final polish → /glaw-legal-writing  (Bluebook)
 
 DOCKET  /glaw-docket  (deadline calendar + monitoring)
+  └─ GATE: `glaw-docket-gate complete` before matter-retro
 
 RETRO  /glaw-matter-retro  (close-out + Obsidian vault write)
 ```
