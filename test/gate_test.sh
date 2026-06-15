@@ -221,6 +221,19 @@ cat > "$M/draft-report.md" <<'MD'
 
 Owner: GLAW Controller
 Report voice: controller/CFO report.
+Findings: Numbers tie to source. REVIEW: asset register not provided.
+Evidence: SRC-0001 bank statement.
+Red flags: none.
+Sign-off conditions: licensed review.
+
+Attorney work-product - not legal advice. Prepared for licensed review.
+MD
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by unresolved current REVIEW marker"
+cat > "$M/draft-report.md" <<'MD'
+# Draft Report
+
+Owner: GLAW Controller
+Report voice: controller/CFO report.
 Findings: Numbers tie to source.
 Evidence: SRC-0001 bank statement.
 Red flags: none.
@@ -241,6 +254,7 @@ packet["report_quality_manifest"] = [{
     "missing_markers": ["source evidence manifest"],
     "cited_source_ids": [],
     "unresolved_placeholders": [],
+    "unresolved_review_markers": [],
 }]
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
@@ -285,6 +299,7 @@ packet["report_quality_manifest"] = [{
     "missing_markers": [],
     "cited_source_ids": ["SRC-0001"],
     "unresolved_placeholders": [],
+    "unresolved_review_markers": [],
 }]
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY

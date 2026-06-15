@@ -271,6 +271,7 @@ REPORT_REQUIRED_MARKERS = (
     "Sign-off conditions:",
 )
 UNRESOLVED_PLACEHOLDER_RE = re.compile(r"\[(?:[A-Z][A-Z0-9 _./:-]{1,}|VERIFY|TODO|TBD)[^\]]*\]")
+UNRESOLVED_REVIEW_RE = re.compile(r"\bREVIEW\s*:", re.IGNORECASE)
 
 
 def is_external_text_deliverable(path):
@@ -353,6 +354,7 @@ def report_quality(path, source_manifest):
     text = path.read_text(encoding="utf-8", errors="replace")
     missing = [marker for marker in REPORT_REQUIRED_MARKERS if marker.lower() not in text.lower()]
     placeholders = sorted(set(UNRESOLVED_PLACEHOLDER_RE.findall(text)))
+    review_markers = sorted(set(UNRESOLVED_REVIEW_RE.findall(text)))
     source_ids = [item["id"] for item in source_manifest]
     cited_sources = [sid for sid in source_ids if sid in text]
     if not source_ids:
@@ -361,12 +363,15 @@ def report_quality(path, source_manifest):
         missing.append("source evidence id (SRC-####)")
     if placeholders:
         missing.append("unresolved placeholders")
+    if review_markers:
+        missing.append("unresolved REVIEW markers")
     return {
         "path": str(path.relative_to(d)),
         "status": "pass" if not missing else "fail",
         "missing_markers": missing,
         "cited_source_ids": cited_sources,
         "unresolved_placeholders": placeholders,
+        "unresolved_review_markers": review_markers,
     }
 
 

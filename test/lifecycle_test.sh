@@ -175,6 +175,20 @@ cat > "$TMP/matters/$SLUG/draft-report.md" <<'MD'
 
 Owner: GLAW Controller
 Report voice: controller/CFO report.
+Findings: Numbers tie to source. REVIEW: EIN not provided.
+Evidence: SRC-0001 bank statement.
+Red flags: none.
+Sign-off conditions: licensed review.
+
+Attorney work-product - not legal advice. Prepared for licensed review.
+MD
+"$PACKET" build >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by unresolved REVIEW marker"
+cat > "$TMP/matters/$SLUG/draft-report.md" <<'MD'
+# Draft Report
+
+Owner: GLAW Controller
+Report voice: controller/CFO report.
 Findings: Numbers tie to source.
 Evidence: SRC-0001 bank statement.
 Red flags: none.

@@ -141,7 +141,8 @@ checks, red flags, the required council profile, and at least one external-facin
 are all explicitly completed and clear. Each external text deliverable must also pass the
 professional-report marker gate: `Owner:`, `Report voice:`, `Findings:`, `Evidence:`,
 `Red flags:`, and `Sign-off conditions:`, and it must not contain unresolved bracket
-placeholders such as `[VERIFY]`, `[CLIENT]`, or `[DATE]`. Evidence must cite a hashed source artifact ID
+placeholders such as `[VERIFY]`, `[CLIENT]`, or `[DATE]` or unresolved `REVIEW:` markers.
+Evidence must cite a hashed source artifact ID
 from the packet's source manifest, e.g. `Evidence: SRC-0001 bank statement`; source artifacts
 live under `evidence/`, `sources/`, or `source_documents/` and must be nonempty files. Required council approvals
 must include source-backed evidence plus role-specific notes; required adversarial survivals must
