@@ -21,7 +21,7 @@ Run any tool with no arguments for its usage. `bin/glaw-doctor` smoke-tests them
 | `glaw-citation-gate` | `record --id <id> --proposition ... --authority ... --status verified --source-url https://... --reviewer <name>` · `status` · `complete`; logs `citations_verified` only when every latest citation row is verified with proposition, authority, reviewer, and HTTP(S) source URL |
 | `glaw-final-packet` | `build --profile auto` → `final_packet.json` + `final_packet.md`; logs `final_packet_ready` only when gates are clear, at least one external text deliverable exists, every external report includes `Owner:`, `Report voice:`, `Findings:`, `Evidence:`, `Red flags:`, and `Sign-off conditions:`, the report plus required council/adversarial reviews and resolved critical/high red flags cite hashed nonempty source files such as `SRC-0001` from `evidence/`, `sources/`, or `source_documents/`, every required reviewer/lens resolves to a hashed GLAW skill identity file, and the markdown packet digest matches `final_packet.json` |
 | `glaw-setup` | deploy every sub-skill as a `/glaw-*` command (symlink model) |
-| `glaw-doctor` | health harness: skills resolve · tools run · no dangling refs → `HEALTHY`/`PROBLEMS` |
+| `glaw-doctor` | health harness: skills resolve · tools run · no dangling refs · Codex/Claude parity · no weak review-gate examples → `HEALTHY`/`PROBLEMS` |
 | `glaw-preamble.sh` | shared preamble emitted by each stage skill |
 
 ## Contract-review chain

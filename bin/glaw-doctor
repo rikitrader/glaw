@@ -569,7 +569,17 @@ if grep -RInE '~/.claude/skills/glaw|\.claude/skills/glaw' \
 fi
 [ "$portable_path_drift" = 0 ] && ok "portable docs: no Claude-only GLAW command paths"
 
-# 3f. Core routing docs must use the actual /glaw-* command names for bundled seats.
+# 3f. Review gate examples must not drift back to evidence-only approvals.
+review_gate_drift=0
+if grep -RInP 'glaw-council record[^\n]*--decision approve(?![^\n]*--notes)|glaw-adversarial record[^\n]*--decision survive(?![^\n]*--attack)' \
+   "$GLAW/SKILL.md" "$GLAW"/*/SKILL.md "$GLAW"/seats/*/SKILL.md "$GLAW/docs" "$GLAW/README.md" "$GLAW/test" "$GLAW/bin" "$GLAW/lib" 2>/dev/null \
+   | grep -vE '/bin/glaw-doctor:' | grep -q .; then
+  bad "review-gate documentation drift: council approve examples need --notes and adversarial survive examples need --attack"
+  review_gate_drift=$((review_gate_drift+1))
+fi
+[ "$review_gate_drift" = 0 ] && ok "review-gate docs: approvals require notes and survivals require attacks"
+
+# 3g. Core routing docs must use the actual /glaw-* command names for bundled seats.
 bare_ref=0
 if [ -f "$GLAW/seats/MANIFEST" ]; then
   for seat in $(cat "$GLAW/seats/MANIFEST"); do
