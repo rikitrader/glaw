@@ -248,6 +248,7 @@ def source_evidence_manifest(paths: list[Path], root: Path) -> list[dict]:
             "id": f"SRC-{idx:04d}",
             "path": str(path.relative_to(root)),
             "sha256": sha256_file(path),
+            "size_bytes": path.stat().st_size,
         }
         for idx, path in enumerate(sorted(paths), start=1)
     ]
@@ -500,7 +501,9 @@ def cmd_build(args: argparse.Namespace) -> int:
         "red_flags_clear": has_event(timeline_rows, "red_flags_clear") and rc_rf == 0,
         "red_flag_resolution_evidence_clear": red_flag_resolution_evidence_clear,
         "external_deliverable_present": bool(external_text_deliverables),
-        "source_evidence_manifest_clear": bool(source_manifest),
+        "source_evidence_manifest_clear": bool(source_manifest) and all(
+            int(item.get("size_bytes", 0)) > 0 for item in source_manifest
+        ),
         "senior_review_evidence_source_clear": senior_review_evidence_clear,
         "reviewer_identity_manifest_clear": reviewer_identity_clear,
         "professional_report_manifest_clear": report_quality_clear,

@@ -311,6 +311,7 @@ def source_evidence_manifest(paths):
             "id": f"SRC-{idx:04d}",
             "path": str(path.relative_to(d)),
             "sha256": sha256_file(path),
+            "size_bytes": path.stat().st_size,
         }
         for idx, path in enumerate(sorted(paths), start=1)
     ]
@@ -537,6 +538,10 @@ current_source_manifest = source_evidence_manifest(
 )
 if expected_source_manifest != current_source_manifest:
     print("current source evidence manifest does not match final_packet.json")
+    sys.exit(1)
+empty_sources = [item["path"] for item in current_source_manifest if int(item.get("size_bytes", 0)) <= 0]
+if empty_sources:
+    print("current source evidence file(s) are empty: " + ", ".join(empty_sources))
     sys.exit(1)
 expected_review_evidence_manifest = packet.get("senior_review_evidence_manifest") or []
 if not expected_review_evidence_manifest:

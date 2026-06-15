@@ -148,6 +148,9 @@ MD
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by report without source evidence id"
 mkdir -p "$TMP/matters/$SLUG/evidence"
+: > "$TMP/matters/$SLUG/evidence/bank.csv"
+"$PACKET" build >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by empty source evidence file"
 printf 'date,description,amount\n2026-01-01,capital deposit,100.00\n' > "$TMP/matters/$SLUG/evidence/bank.csv"
 cat > "$TMP/matters/$SLUG/draft-report.md" <<'MD'
 # Draft Report

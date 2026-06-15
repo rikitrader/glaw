@@ -243,6 +243,7 @@ packet["source_evidence_manifest"] = [{
     "id": "SRC-0001",
     "path": "evidence/bank.csv",
     "sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
+    "size_bytes": source.stat().st_size,
 }]
 packet["senior_review_evidence_manifest"] = [
     {
