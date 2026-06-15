@@ -171,10 +171,20 @@ cmd_docket() {
   [ -z "$slug" ] && { echo "(no active matter)"; return 0; }
   local f="$MATTERS/$slug/docket.jsonl"
   case "$action" in
-    add)  # glaw docket add <due-YYYY-MM-DD> <description...>
+    add)  # glaw docket add [--owner <owner>] [--source <SRC-0001...>] <due-YYYY-MM-DD> <description...>
+      local owner="${USER:-operator}" source=""
+      while [ "${1:-}" = "--owner" ] || [ "${1:-}" = "--source" ]; do
+        case "$1" in
+          --owner) shift; owner="${1:-}" ;;
+          --source) shift; source="${1:-}" ;;
+        esac
+        shift || true
+      done
       local due="${1:-}"; shift || true; local desc="${*:-}"
-      [ -z "$due" ] && { echo "usage: glaw docket add <YYYY-MM-DD> <desc>"; return 1; }
-      printf '{"ts":"%s","due":"%s","desc":"%s","status":"open"}\n' "$(_now)" "$due" "$(echo "$desc" | sed 's/"/\\"/g')" >> "$f"
+      [ -z "$due" ] && { echo "usage: glaw docket add [--owner <owner>] [--source <SRC-0001...>] <YYYY-MM-DD> <desc>"; return 1; }
+      [ -n "$owner" ] || { echo "ERROR: docket add requires --owner"; return 1; }
+      printf '%s' "$source" | grep -Eq '(^|[^A-Z0-9])SRC-[0-9]{4}([^0-9]|$)' || { echo "ERROR: docket add requires --source with a source ID such as SRC-0001"; return 1; }
+      printf '{"ts":"%s","due":"%s","desc":"%s","status":"open","owner":"%s","source":"%s"}\n' "$(_now)" "$due" "$(echo "$desc" | sed 's/"/\\"/g')" "$(echo "$owner" | sed 's/"/\\"/g')" "$(echo "$source" | sed 's/"/\\"/g')" >> "$f"
       echo "DOCKETED $due — $desc" ;;
     list)
       [ -s "$f" ] || { echo "(docket empty)"; return 0; }

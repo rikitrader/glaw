@@ -434,6 +434,8 @@ ok "$([ "$(chk matter-retro)" = 1 ] && echo 1 || echo 0)" "matter-retro STILL BL
 log docket_done
 ok "$([ "$(chk matter-retro)" = 1 ] && echo 1 || echo 0)" "matter-retro STILL BLOCKED before docket artifacts"
 printf '{"due":"2026-09-15","desc":"tax filing","status":"open"}\n' > "$M/docket.jsonl"
+ok "$([ "$(chk matter-retro)" = 1 ] && echo 1 || echo 0)" "matter-retro STILL BLOCKED by unsourced docket row"
+printf '{"due":"2026-09-15","desc":"tax filing","status":"open","owner":"tax docket clerk","source":"SRC-0001 intake deadline"}\n' > "$M/docket.jsonl"
 ok "$([ "$(chk matter-retro)" = 0 ] && echo 1 || echo 0)" "matter-retro CLEAR after docket completion"
 
 # status reflects state

@@ -162,8 +162,8 @@ events and backing artifacts.
 
 ### Step 5 — File + docket
 `/glaw-file` assembles the signature-ready packet and the filing checklist.
-`/glaw-docket` calendars every deadline (`glaw docket add <date> <desc>`): statutes
-of limitation, lien deadlines, Form D anniversaries, BOI, annual reports.
+`/glaw-docket` calendars every deadline (`glaw docket add --owner <owner> --source "SRC-0001 <basis>" <date> <desc>`):
+statutes of limitation, lien deadlines, Form D anniversaries, BOI, annual reports.
 
 ### Step 6 — Close
 Before close-out, `/glaw-docket` must run `glaw-docket-gate complete` so deadlines are either
@@ -185,7 +185,7 @@ marks the matter status.
 | Open matter | `glaw matter new "<name>"` |
 | List / switch | `glaw matter list` · `glaw matter use <slug>` |
 | Advance stage | `glaw stage <stage>` |
-| Add deadline | `glaw docket add <YYYY-MM-DD> "<desc>"` |
+| Add deadline | `glaw docket add --owner <owner> --source "SRC-0001 <basis>" <YYYY-MM-DD> "<desc>"` |
 | Upcoming deadlines | `glaw docket upcoming [days]` |
 | Log event | `glaw timeline-log <event>` |
 

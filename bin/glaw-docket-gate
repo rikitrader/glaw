@@ -9,9 +9,14 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
+
+
+SOURCE_ID_RE = re.compile(r"\bSRC-\d{4}\b")
+DUE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
 
 def now() -> str:
@@ -67,6 +72,30 @@ def open_deadlines(d: Path) -> list[dict]:
     ]
 
 
+def docket_failures(d: Path) -> list[str]:
+    failures: list[str] = []
+    rows = read_jsonl(d / "docket.jsonl")
+    for idx, row in enumerate(rows, start=1):
+        if row.get("_invalid"):
+            failures.append(f"docket.jsonl:{idx} invalid JSON")
+            continue
+        if row.get("status", "open") == "closed":
+            continue
+        due = str(row.get("due", "")).strip()
+        desc = str(row.get("desc", "")).strip()
+        owner = str(row.get("owner", "")).strip()
+        source = str(row.get("source", "")).strip()
+        if not due or not DUE_RE.match(due):
+            failures.append(f"docket.jsonl:{idx} missing valid YYYY-MM-DD due")
+        if not desc:
+            failures.append(f"docket.jsonl:{idx} missing desc")
+        if not owner:
+            failures.append(f"docket.jsonl:{idx} missing owner")
+        if not SOURCE_ID_RE.search(source):
+            failures.append(f"docket.jsonl:{idx} missing source evidence id (SRC-####)")
+    return failures
+
+
 def no_deadlines_record(d: Path) -> dict:
     p = d / "docket_gate.json"
     if not p.exists():
@@ -77,26 +106,35 @@ def no_deadlines_record(d: Path) -> dict:
         return {}
 
 
-def write_no_deadlines(d: Path, rationale: str, reviewer: str) -> None:
+def write_no_deadlines(d: Path, rationale: str, reviewer: str, source: str) -> None:
     payload = {
         "schema_version": 1,
         "matter_slug": d.name,
         "status": "no_deadlines",
         "rationale": rationale,
         "reviewer": reviewer,
+        "source": source,
         "reviewed_at": now(),
     }
     (d / "docket_gate.json").write_text(json.dumps(payload, indent=2, sort_keys=False) + "\n", encoding="utf-8")
 
 
 def ready_reason(d: Path) -> tuple[bool, str]:
+    failures = docket_failures(d)
+    if failures:
+        return False, "; ".join(failures)
     deadlines = open_deadlines(d)
     if deadlines:
         return True, f"{len(deadlines)} open docket deadline(s)"
     record = no_deadlines_record(d)
-    if record.get("status") == "no_deadlines" and record.get("rationale"):
+    if (
+        record.get("status") == "no_deadlines"
+        and record.get("rationale")
+        and record.get("reviewer")
+        and SOURCE_ID_RE.search(str(record.get("source", "")))
+    ):
         return True, "no-deadlines determination recorded"
-    return False, "no open docket deadlines and no no-deadlines rationale"
+    return False, "no open docket deadlines and no sourced no-deadlines determination"
 
 
 def cmd_status(args: argparse.Namespace) -> int:
@@ -114,9 +152,12 @@ def cmd_no_deadlines(args: argparse.Namespace) -> int:
     if not args.rationale.strip():
         print("ERROR: --rationale is required", file=sys.stderr)
         return 2
+    if not SOURCE_ID_RE.search(args.source):
+        print("ERROR: --source must cite a source evidence id such as SRC-0001", file=sys.stderr)
+        return 2
     d = matter_dir(args.matter)
-    write_no_deadlines(d, args.rationale, args.reviewer)
-    timeline(d, "docket_no_deadlines", reviewer=args.reviewer)
+    write_no_deadlines(d, args.rationale, args.reviewer, args.source)
+    timeline(d, "docket_no_deadlines", reviewer=args.reviewer, source=args.source)
     print("DOCKET NO-DEADLINES RECORDED")
     return 0
 
@@ -142,6 +183,7 @@ def main() -> int:
     p.set_defaults(func=cmd_status)
     p = sub.add_parser("no-deadlines")
     p.add_argument("--rationale", required=True)
+    p.add_argument("--source", required=True)
     p.add_argument("--reviewer", default=os.environ.get("USER", "operator"))
     p.add_argument("--matter", default=None)
     p.set_defaults(func=cmd_no_deadlines)

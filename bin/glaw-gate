@@ -778,13 +778,16 @@ _retro_artifacts_valid() {  # _retro_artifacts_valid <matter-dir>
   python3 - "$1" <<'PY'
 import json
 import pathlib
+import re
 import sys
 
 d = pathlib.Path(sys.argv[1])
 docket = d / "docket.jsonl"
+source_id_re = re.compile(r"\bSRC-\d{4}\b")
+due_re = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 open_deadlines = 0
 if docket.exists():
-    for line in docket.read_text(encoding="utf-8", errors="replace").splitlines():
+    for idx, line in enumerate(docket.read_text(encoding="utf-8", errors="replace").splitlines(), start=1):
         if not line.strip():
             continue
         try:
@@ -792,8 +795,25 @@ if docket.exists():
         except json.JSONDecodeError:
             print("docket.jsonl contains invalid JSON")
             sys.exit(1)
-        if row.get("due") and row.get("status", "open") != "closed":
-            open_deadlines += 1
+        if row.get("status", "open") == "closed":
+            continue
+        due = str(row.get("due", "")).strip()
+        desc = str(row.get("desc", "")).strip()
+        owner = str(row.get("owner", "")).strip()
+        source = str(row.get("source", "")).strip()
+        if not due or not due_re.match(due):
+            print(f"docket.jsonl:{idx} missing valid YYYY-MM-DD due")
+            sys.exit(1)
+        if not desc:
+            print(f"docket.jsonl:{idx} missing desc")
+            sys.exit(1)
+        if not owner:
+            print(f"docket.jsonl:{idx} missing owner")
+            sys.exit(1)
+        if not source_id_re.search(source):
+            print(f"docket.jsonl:{idx} missing source evidence id (SRC-####)")
+            sys.exit(1)
+        open_deadlines += 1
 if open_deadlines:
     sys.exit(0)
 record_path = d / "docket_gate.json"
@@ -805,8 +825,13 @@ try:
 except json.JSONDecodeError:
     print("docket_gate.json is invalid JSON")
     sys.exit(1)
-if record.get("status") != "no_deadlines" or not record.get("rationale"):
-    print("docket_gate.json lacks a no-deadlines rationale")
+if (
+    record.get("status") != "no_deadlines"
+    or not record.get("rationale")
+    or not record.get("reviewer")
+    or not source_id_re.search(str(record.get("source", "")))
+):
+    print("docket_gate.json lacks sourced no-deadlines rationale/reviewer")
     sys.exit(1)
 PY
 }

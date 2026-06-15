@@ -208,7 +208,9 @@ ok "$([ "$rc" = 0 ] && [ "$(cat "$TMP/matters/$SLUG/.stage")" = file ] && echo 1
 
 "$GLAW" stage matter-retro >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "matter-retro blocked before docket gate"
-"$GLAW" docket add 2026-09-15 "tax filing due - verify extension" >/dev/null
+"$GLAW" docket add 2026-09-15 "tax filing due - verify extension" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "docket add blocked without source-backed owner basis"
+"$GLAW" docket add --owner "tax docket clerk" --source "SRC-0001 filing calendar from intake source" 2026-09-15 "tax filing due - verify extension" >/dev/null
 "$DOCKET" complete >/dev/null
 "$GLAW" stage matter-retro >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && [ "$(cat "$TMP/matters/$SLUG/.stage")" = matter-retro ] && echo 1 || echo 0)" "matter-retro clears after docket gate"

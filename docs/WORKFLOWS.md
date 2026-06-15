@@ -51,6 +51,7 @@ Required gates:
 5. Final packet manifest must be ready before file.
 6. Chief/Council must approve final entry before file.
 7. External deliverables must include the attorney-review / not-legal-advice guardrail.
+8. Matter-retro requires owned, source-backed docket entries or a sourced no-deadlines determination.
 
 Final approval is recorded by the Chief layer:
 
@@ -189,6 +190,7 @@ bin/glaw-intake set track_specific.tax_years '2024; 2025'
 bin/glaw-intake set track_specific.entity_tax_type 'C-corp'
 bin/glaw-intake set track_specific.books_status 'raw bank statements only'
 bin/glaw-intake set track_specific.irs_forms_needed '1120; 1099; 941'
+bin/glaw docket add --owner "tax docket clerk" --source "SRC-0001 filing calendar from intake source" 2026-09-15 "tax filing due - verify extension"
 ```
 
 The bookkeeping engine lives inside `lib/bookkeeping/glaw_engine` and uses in-repo compatibility shims for table, model, and XML behavior. Google Sheets input is read through the sheet CSV export URL with Python stdlib. PDF/OCR ingestion is repo-owned orchestration over local binaries (`pdftotext` or `opendataloader-pdf`; scans need `pdftoppm` + `tesseract`).
