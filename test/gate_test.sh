@@ -64,6 +64,10 @@ cat > "$M/final_packet.json" <<'JSON'
 JSON
 printf '{"final_gate":"approved"}\n' > "$M/decisions.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after all file gates"
+printf '{"id":"RF-STALE","severity":"high","status":"open","finding":"new post-packet issue"}\n' > "$M/red_flags.jsonl"
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet high red flag"
+printf '{"id":"RF-STALE","severity":"high","status":"resolved","finding":"new post-packet issue","resolution_evidence":"fixed"}\n' > "$M/red_flags.jsonl"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after post-packet red flag resolved"
 
 ok "$([ "$(chk matter-retro)" = 1 ] && echo 1 || echo 0)" "matter-retro BLOCKED before docket gate"
 log docket_gate_complete

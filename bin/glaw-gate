@@ -102,6 +102,23 @@ if missing:
     print("final_packet.json has uncleared gate(s): " + ", ".join(missing))
     sys.exit(1)
 
+red_flags = d / "red_flags.jsonl"
+if red_flags.exists():
+    blocking = []
+    for line in red_flags.read_text(encoding="utf-8", errors="replace").splitlines():
+        if not line.strip():
+            continue
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError:
+            print("red_flags.jsonl contains invalid JSON")
+            sys.exit(1)
+        if row.get("status", "open") != "resolved" and str(row.get("severity", "")).lower() in {"critical", "high"}:
+            blocking.append(row.get("id") or row.get("finding") or "unnamed")
+    if blocking:
+        print("current blocking red flag(s): " + ", ".join(str(x) for x in blocking))
+        sys.exit(1)
+
 decisions = d / "decisions.jsonl"
 if not decisions.exists():
     print("decisions.jsonl missing")
