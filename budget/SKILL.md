@@ -35,7 +35,7 @@ report: what drove it, is it timing or permanent, and what does it do to the for
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Workflow
@@ -49,7 +49,7 @@ A budget is a JSON map of planned amounts per account (income positive, expense 
 ### 2 — Measure actuals vs budget (deterministic)
 Actuals come from the closed period's ledger (`glaw-bank-ingest --format json`):
 ```bash
-~/.claude/skills/glaw/bin/glaw-budget-vs-actual --budget budget.json --actual actual.json --threshold 10
+bin/glaw-budget-vs-actual --budget budget.json --actual actual.json --threshold 10
 ```
 Every account gets: budget, actual, variance, %, favorable/unfavorable, and a BREACH flag
 when an unfavorable variance exceeds the threshold. Exit non-zero ⇒ the period is over

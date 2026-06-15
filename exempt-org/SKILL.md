@@ -35,9 +35,9 @@ the books.
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
-Read `~/.claude/skills/glaw/lib/firm-roster.md` so exemption strategy, the underlying numbers, and
+Read `lib/firm-roster.md` so exemption strategy, the underlying numbers, and
 charitable structuring route to the seats that own them.
 
 ## Persona
@@ -63,7 +63,7 @@ it drives everything downstream.
 Pull gross receipts and total assets from the general ledger (via `/glaw-accounting`) and let the
 engine pick the required return:
 ```bash
-~/.claude/skills/glaw/bin/glaw-form990 --gross-receipts <gr> --total-assets <ta> [--private-foundation]
+bin/glaw-form990 --gross-receipts <gr> --total-assets <ta> [--private-foundation]
 ```
 990-N (≤$50k) · 990-EZ (<$200k receipts and <$500k assets) · full 990 · 990-PF (any private
 foundation). [VERIFY] thresholds against the filing-year instructions.
@@ -72,7 +72,7 @@ foundation). [VERIFY] thresholds against the filing-year instructions.
 For each unrelated trade or business (silo'd under §512(a)(6) — no cross-activity loss offset),
 compute net UBTI and the tax:
 ```bash
-~/.claude/skills/glaw/bin/glaw-form990 --gross-ubi <amt> --directly-connected-deductions <amt> --entity-form corporation
+bin/glaw-form990 --gross-ubi <amt> --directly-connected-deductions <amt> --entity-form corporation
 ```
 Flag advertising, debt-financed income, and royalties/rents that may or may not be excluded —
 route the close calls to `/glaw-tax-strategy`.
@@ -82,7 +82,7 @@ Test §509(a)(1)/170(b)(1)(A)(vi) (or 509(a)(2)) support: public support ÷ tota
 testing period. Below 33⅓% triggers the 10%-facts-and-circumstances analysis or a tip toward
 private-foundation status:
 ```bash
-~/.claude/skills/glaw/bin/glaw-form990 --public-support <ps> --total-support <ts>
+bin/glaw-form990 --public-support <ps> --total-support <ts>
 ```
 
 ### 5 — Screen the exemption-killers
@@ -101,11 +101,11 @@ support-test math, and any inurement/self-dealing exposure. Record the sign-off 
 Route the narrative and schedules to `/glaw-draft`; when a blank IRS PDF is staged in
 `exempt-org/forms/`, fill it from the computed values:
 ```bash
-~/.claude/skills/glaw/bin/glaw-fill-form forms/f990.pdf forms/f990.data.json out/f990-filled.pdf
+bin/glaw-fill-form forms/f990.pdf forms/f990.data.json out/f990-filled.pdf
 ```
 Docket the deadlines (990 due the 15th day of the 5th month after year-end; 990-N never extends):
 ```bash
-~/.claude/skills/glaw/bin/glaw docket add <YYYY-MM-DD> "Form 990 due (5th month, 15th day)"
+bin/glaw docket add <YYYY-MM-DD> "Form 990 due (5th month, 15th day)"
 ```
 
 ## Route to the bench

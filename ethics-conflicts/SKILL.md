@@ -31,9 +31,9 @@ form an attorney-client relationship and does not practice law.**
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 echo "--- known matters (for cross-matter conflict scan) ---"
-~/.claude/skills/glaw/bin/glaw matter list 2>/dev/null || true
+bin/glaw matter list 2>/dev/null || true
 ```
 
 ## Workflow
@@ -62,7 +62,7 @@ Classify the result: **cleared**, **conflict (decline)**, or **waivable (informe
   ethics wall. Do not advance the matter.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw-ethics record-conflicts --status cleared --notes "<basis>"
+bin/glaw-ethics record-conflicts --status cleared --notes "<basis>"
 ```
 Use `--status waived --waiver-evidence "<written informed consent path/summary>"` for waivable
 conflicts. Use `--status conflict` and stop for non-waivable conflicts. `glaw-ethics` syncs the
@@ -75,7 +75,7 @@ termination, and the limitation that work-product requires licensed-attorney rev
 Set `Engagement → engagement letter: drafted` in the charter.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw-ethics draft-engagement \
+bin/glaw-ethics draft-engagement \
   --scope "<authorized scope>" \
   --fee-terms "<fee terms or TBD>" \
   --responsible-professional "<licensed reviewer/signing professional>"
@@ -94,7 +94,7 @@ Only when `status: cleared` (or `waived`) AND the engagement letter is drafted, 
 `CONFLICTS: cleared` and hand back to `/glaw` / `/glaw-strategy`.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw-ethics complete
+bin/glaw-ethics complete
 ```
 
 `glaw-ethics complete` logs `conflicts_cleared` and `ethics_gate_complete` only after the conflicts

@@ -34,7 +34,7 @@ never "are we profitable" but "do we make payroll in week 6."
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Workflow
@@ -47,7 +47,7 @@ service, tax). Seed inflows/outflows from `/glaw-ap-ar` aging and recurring run-
 ### 2 — Project (deterministic)
 ```bash
 echo '{"opening_cash":20000,"minimum_cash":5000,"items":[{"week":1,"amount":-30000,"label":"payroll+materials"},{"week":2,"amount":40000,"label":"AR collection"}]}' \
-  | ~/.claude/skills/glaw/bin/glaw-cashflow-13w -
+  | bin/glaw-cashflow-13w -
 ```
 Returns the running ending-cash per week, the **trough**, and every week that **breaches**
 the minimum. Exit non-zero ⇒ a liquidity breach exists in the horizon — act now.

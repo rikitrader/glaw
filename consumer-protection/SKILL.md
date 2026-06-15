@@ -35,9 +35,9 @@ the *creditor* side) and `/glaw-elite-corporate-counsel` (MCA/commercial usury).
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
-Read `~/.claude/skills/glaw/lib/firm-roster.md` so litigation, the creditor-side mirror, and
+Read `lib/firm-roster.md` so litigation, the creditor-side mirror, and
 citation verification route to the seats that own them.
 
 ## Persona
@@ -89,7 +89,7 @@ Route the validation demand / dispute letter / complaint / answer + counterclaim
 and `/glaw-file`. Docket the hard dates — § 1692g 30-day dispute window, FCRA reinvestigation /
 suit-limitations, the answer deadline if sued:
 ```bash
-~/.claude/skills/glaw/bin/glaw docket add <YYYY-MM-DD> "§1692g debt-validation window / answer due"
+bin/glaw docket add <YYYY-MM-DD> "§1692g debt-validation window / answer due"
 ```
 
 ## Route to the bench

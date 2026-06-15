@@ -27,9 +27,9 @@ posted and proved — not copied from any copyrighted dictionary or course.
 ## Look it up (the tool)
 
 ```bash
-~/.claude/skills/glaw/bin/glaw-glossary lookup accrual        # one term → definition + source
-~/.claude/skills/glaw/bin/glaw-glossary search depreciation   # keyword → matching terms
-~/.claude/skills/glaw/bin/glaw-glossary list                  # every indexed term
+bin/glaw-glossary lookup accrual        # one term → definition + source
+bin/glaw-glossary search depreciation   # keyword → matching terms
+bin/glaw-glossary list                  # every indexed term
 ```
 
 ## The knowledge base

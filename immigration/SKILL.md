@@ -37,10 +37,10 @@ to prepare and submit the petition.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` so entity-structure and employment
+Read `lib/firm-roster.md` so entity-structure and employment
 questions route to the seats that own them.
 
 ## Persona

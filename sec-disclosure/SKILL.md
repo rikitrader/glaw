@@ -39,7 +39,7 @@ assumed.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -78,7 +78,7 @@ each finding to the filing line and argue materiality from the mix.
 Retrieve the issuer's filings from EDGAR (full-text search and the company's filing
 index), then normalize to text + metadata:
 ```bash
-~/.claude/skills/glaw/bin/glaw-doc-extract <filings-dir> -o <matter>/_extracted
+bin/glaw-doc-extract <filings-dir> -o <matter>/_extracted
 ```
 Build the filing index: form type, period, file date, and the certifying officers.
 
@@ -108,7 +108,7 @@ to the exact filing, item, and line, and to the contemporaneous fact that contra
 - Findings up to the Enforcement Attorney → `/glaw-sec-enforcement`; chronology →
   `/glaw-evidence-timeline`; red-team materiality → `/glaw-adversarial`.
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log sec_disclosure_findings 2>/dev/null || true
+bin/glaw timeline-log sec_disclosure_findings 2>/dev/null || true
 ```
 
 ## Deliverables

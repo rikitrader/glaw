@@ -84,7 +84,9 @@ The sheet must be viewable by link or published/exportable as CSV.
 | Path | Purpose |
 |---|---|
 | `~/.glaw` | local matter state, ledgers, audit logs, learning ledger |
-| `~/.claude/skills/glaw` | default skill checkout |
+| `~/glaw` or any local checkout | source checkout used by `./setup` |
+| `~/.claude/skills` | Claude skill deployment target |
+| `${CODEX_HOME:-~/.codex}/skills` | Codex skill deployment target |
 | `bin/` | deterministic local commands |
 | `lib/` | in-repo libraries and compatibility shims |
 | `seats/` | vendored specialist seats |

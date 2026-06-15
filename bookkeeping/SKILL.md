@@ -66,8 +66,8 @@ Driver: `bin/glaw-bank-ingest`. Run it through that wrapper so the repo-local so
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
-~/.claude/skills/glaw/bin/glaw-bank-ingest --help 2>&1 | head -5 || true
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bin/glaw-bank-ingest --help 2>&1 | head -5 || true
 ```
 
 ## Workflow
@@ -82,16 +82,16 @@ path.
 ### Step 2 — Ingest
 Single file:
 ```bash
-~/.claude/skills/glaw/bin/glaw-bank-ingest <statement> --matter <slug> --format json
+bin/glaw-bank-ingest <statement> --matter <slug> --format json
 ```
 Google Sheets URL or exported CSV URL:
 ```bash
-~/.claude/skills/glaw/bin/glaw-bank-ingest "<google-sheet-url-or-csv-url>" \
+bin/glaw-bank-ingest "<google-sheet-url-or-csv-url>" \
   --google-auth auto --matter <slug> --format json
 ```
 Whole folder (deduped across the batch):
 ```bash
-~/.claude/skills/glaw/bin/glaw-bank-ingest <dir> --pattern '**/*.csv' --matter <slug> --format json
+bin/glaw-bank-ingest <dir> --pattern '**/*.csv' --matter <slug> --format json
 ```
 Read the **BALANCE AUDIT (Golden Rule)** block printed to stderr: each source reports
 `balance=verified|discrepancy|failed` and any parse `warnings`. A `discrepancy` is a
@@ -105,7 +105,7 @@ finding — surface it, don't bury it.
 | `roofing` | roofing/restoration contractor — job revenue, insurance proceeds, materials, crew, subs, permits |
 | `personal` | household / litigation asset-tracing — wages, housing, transfers, ATM, dining |
 ```bash
-~/.claude/skills/glaw/bin/glaw-bank-ingest <input> --chart roofing --format csv
+bin/glaw-bank-ingest <input> --chart roofing --format csv
 ```
 **Or a custom file** with `--map rules.json` (ordered regex, first match wins):
 ```json
@@ -125,12 +125,12 @@ starting points — copy one out and tune it per matter.
 ### Step 4 — Export
 Plaintext-accounting journals:
 ```bash
-~/.claude/skills/glaw/bin/glaw-bank-ingest <input> --map rules.json --format hledger --out books.journal
-~/.claude/skills/glaw/bin/glaw-bank-ingest <input> --map rules.json --format beancount --out books.beancount
+bin/glaw-bank-ingest <input> --map rules.json --format hledger --out books.journal
+bin/glaw-bank-ingest <input> --map rules.json --format beancount --out books.beancount
 ```
 Local CSV export for spreadsheet review:
 ```bash
-GLAW_EXPORT_DIR=/tmp/glaw_exports ~/.claude/skills/glaw/bin/glaw-bank-ingest <input> \
+GLAW_EXPORT_DIR=/tmp/glaw_exports bin/glaw-bank-ingest <input> \
   --map rules.json --format csv --sheet-title "<Client> - <Account> - <Period>"
 ```
 `--format gsheet` remains as a compatibility alias for local CSV export. It does not write
@@ -149,7 +149,7 @@ The deduped, mapped, balance-verified rows are the raw material for:
   footnotes, MD&A inputs, and subsequent-events review
 Route through `/glaw-accounting`, then:
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log bookkeeping_ledger_ready
+bin/glaw timeline-log bookkeeping_ledger_ready
 ```
 
 ## PDF path — digital and scanned, deterministic, $0, no model
@@ -164,8 +164,8 @@ A `.pdf` input auto-selects the right reader (`lib/bookkeeping/pdf_extract.py`):
    too. Rows are audit-tagged with profile, DPI, PSM, and extraction method.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw-bank-ingest statement.pdf --chart roofing --format csv
-~/.claude/skills/glaw/bin/glaw-bank-ingest scanned.pdf --chart roofing --ocr force \
+bin/glaw-bank-ingest statement.pdf --chart roofing --format csv
+bin/glaw-bank-ingest scanned.pdf --chart roofing --ocr force \
   --ocr-profile bank-statement
 ```
 Requires OS binaries on PATH: `glaw-opendataloader-pdf`, and for scans `tesseract` + `pdftoppm`
@@ -187,22 +187,22 @@ inside the repo. A failure blocks finalization.
 
 Then route the output through the accounting council before calling it final:
 ```bash
-~/.claude/skills/glaw/bin/glaw-council record --profile accounting --role cfo --decision approve
-~/.claude/skills/glaw/bin/glaw-council record --profile accounting --role irs-audit-agent --decision approve
-~/.claude/skills/glaw/bin/glaw-council record --profile accounting --role legal-counsel --decision approve
-~/.claude/skills/glaw/bin/glaw-council record --profile accounting --role forensic-audit --decision approve
-~/.claude/skills/glaw/bin/glaw-council record --profile accounting --role outside-critic --decision approve
-~/.claude/skills/glaw/bin/glaw-council record --profile accounting --role external-reviewer --decision approve
-~/.claude/skills/glaw/bin/glaw-council complete --profile accounting
-~/.claude/skills/glaw/bin/glaw-adversarial record --profile accounting --lens irs-examiner --decision survive --evidence "return tie-out reviewed"
-~/.claude/skills/glaw/bin/glaw-adversarial record --profile accounting --lens state-tax-auditor --decision survive --evidence "state tax/nexus reviewed"
-~/.claude/skills/glaw/bin/glaw-adversarial record --profile accounting --lens forensic-accountant --decision survive --evidence "forensic reconstruction reviewed"
-~/.claude/skills/glaw/bin/glaw-adversarial record --profile accounting --lens cfo-controller --decision survive --evidence "financial statement tie-outs reviewed"
-~/.claude/skills/glaw/bin/glaw-adversarial record --profile accounting --lens outside-critic --decision survive --evidence "independent challenge complete"
-~/.claude/skills/glaw/bin/glaw-adversarial complete --profile accounting
-~/.claude/skills/glaw/bin/glaw-red-flags status
-~/.claude/skills/glaw/bin/glaw-red-flags complete
-~/.claude/skills/glaw/bin/glaw-final-packet build --profile accounting
+bin/glaw-council record --profile accounting --role cfo --decision approve
+bin/glaw-council record --profile accounting --role irs-audit-agent --decision approve
+bin/glaw-council record --profile accounting --role legal-counsel --decision approve
+bin/glaw-council record --profile accounting --role forensic-audit --decision approve
+bin/glaw-council record --profile accounting --role outside-critic --decision approve
+bin/glaw-council record --profile accounting --role external-reviewer --decision approve
+bin/glaw-council complete --profile accounting
+bin/glaw-adversarial record --profile accounting --lens irs-examiner --decision survive --evidence "return tie-out reviewed"
+bin/glaw-adversarial record --profile accounting --lens state-tax-auditor --decision survive --evidence "state tax/nexus reviewed"
+bin/glaw-adversarial record --profile accounting --lens forensic-accountant --decision survive --evidence "forensic reconstruction reviewed"
+bin/glaw-adversarial record --profile accounting --lens cfo-controller --decision survive --evidence "financial statement tie-outs reviewed"
+bin/glaw-adversarial record --profile accounting --lens outside-critic --decision survive --evidence "independent challenge complete"
+bin/glaw-adversarial complete --profile accounting
+bin/glaw-red-flags status
+bin/glaw-red-flags complete
+bin/glaw-final-packet build --profile accounting
 ```
 Use `--decision fix` or `--decision deny` with `--red-flags` when a reviewer finds a gap.
 

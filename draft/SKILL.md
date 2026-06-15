@@ -33,10 +33,10 @@ without the UPL footer.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` before routing. Read
+Read `lib/firm-roster.md` before routing. Read
 `structure-memo.md` and `strategy-memo.md` — draft executes them exactly; it does
 not re-decide architecture.
 
@@ -124,13 +124,13 @@ and a manifest listing each draft + its responsible seat + its open citation ite
 Then advance:
 
 ```bash
-~/.claude/skills/glaw/bin/glaw stage adversarial
-~/.claude/skills/glaw/bin/glaw timeline-log draft_done
+bin/glaw stage adversarial
+bin/glaw timeline-log draft_done
 ```
 
 **House writing standard (every drafted document).** Before handoff, route the draft through
 **`/glaw-legal-writing`** (the Legal Writing Master) and run the deterministic gate
-`~/.claude/skills/glaw/bin/glaw-writing-check <doc>` (add `--motion` for motions) — clear the
+`bin/glaw-writing-check <doc>` (add `--motion` for motions) — clear the
 passive-voice / cliché / hedging / unsupported-assertion flags. Citation *accuracy* still goes to
 `/glaw-legal-research`; this gate enforces form, structure, and persuasion.
 

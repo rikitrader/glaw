@@ -31,7 +31,7 @@ math actually clears — nothing fabricated, every number tied to the books.
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Workflow
@@ -40,28 +40,28 @@ bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATT
 Pull the IRS account picture and the collection statute. Reconstruct what the IRS has and what is
 still open:
 ```bash
-~/.claude/skills/glaw/bin/glaw-transcript --account <account.json> --wage-income <wi.json>
-~/.claude/skills/glaw/bin/glaw-sol --due-date <YYYY-04-15> --filed-date <YYYY-MM-DD> --as-of <today>
+bin/glaw-transcript --account <account.json> --wage-income <wi.json>
+bin/glaw-sol --due-date <YYYY-04-15> --filed-date <YYYY-MM-DD> --as-of <today>
 ```
 
 ### 2 — File the missing years (from the general ledger)
 Build each delinquent year's return off the posted books (`/glaw-accounting` + `return_map`) and
 roll the penalties + interest across all years:
 ```bash
-~/.claude/skills/glaw/bin/glaw-back-filing <years.json>          # tax from the GL + penalty/interest roll
-~/.claude/skills/glaw/bin/glaw-sfr --gross-income <g> --deductions <d>   # replace any IRS SFR
+bin/glaw-back-filing <years.json>          # tax from the GL + penalty/interest roll
+bin/glaw-sfr --gross-income <g> --deductions <d>   # replace any IRS SFR
 ```
 
 ### 3 — Penalty abatement
 ```bash
-~/.claude/skills/glaw/bin/glaw-abatement --penalty <amt> [--factors ...]
+bin/glaw-abatement --penalty <amt> [--factors ...]
 ```
 
 ### 4 — Choose the collection alternative (the math decides)
 ```bash
-~/.claude/skills/glaw/bin/glaw-oic --assets <assets.json> --monthly-income <i> --allowable-expenses <e>
-~/.claude/skills/glaw/bin/glaw-installment --balance <bal> --term-months 72
-~/.claude/skills/glaw/bin/glaw-collections --monthly-income <i> --allowable-expenses <e> --cdp-notice-date <d>
+bin/glaw-oic --assets <assets.json> --monthly-income <i> --allowable-expenses <e>
+bin/glaw-installment --balance <bal> --term-months 72
+bin/glaw-collections --monthly-income <i> --allowable-expenses <e> --cdp-notice-date <d>
 ```
 The **RCP** (net realizable equity + future income) is the floor for an OIC; if monthly ability is
 zero, pursue **CNC**; otherwise a **streamlined installment agreement**. Allowable expenses follow
@@ -69,7 +69,7 @@ the IRS Collection Financial Standards. Pull the asset/financial picture from `/
 
 ### 5 — Payroll trust-fund exposure (if applicable)
 ```bash
-~/.claude/skills/glaw/bin/glaw-tfrp --withheld-income-tax <w> --employee-fica <f> --responsible-factors ... --willful-factors ...
+bin/glaw-tfrp --withheld-income-tax <w> --employee-fica <f> --responsible-factors ... --willful-factors ...
 ```
 §6672 reaches responsible **and** willful persons personally for the trust-fund portion; flag the
 personal exposure for the client's officers.

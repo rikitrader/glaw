@@ -47,7 +47,7 @@ potential violation is a lead to be proven from the record, not a conclusion ass
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -98,7 +98,7 @@ conduct under examination, the securities and markets involved, and the delivera
 Normalize filings, blotters, transcripts, communications, and account records to text +
 metadata:
 ```bash
-~/.claude/skills/glaw/bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
+bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
 ```
 Catalogue every item by custodian and source as it enters the file.
 
@@ -124,7 +124,7 @@ Verify every statute and rule the leads invoke (`/glaw-legal-research`). Write t
 **investigation plan** (conduct · candidate violations as leads · document demands ·
 custodians · witness/testimony order · open questions) and the **evidence index**.
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log sec_investigation_plan 2>/dev/null || true
+bin/glaw timeline-log sec_investigation_plan 2>/dev/null || true
 ```
 Hand the built record up to `/glaw-sec-enforcement` for charging and to
 `/glaw-bureau-fusion` for the link map.

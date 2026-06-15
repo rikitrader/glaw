@@ -32,15 +32,15 @@ It is the strategic command (FBI Director), the supervisor (SSA), and the fusion
 brain in one. It does not give legal advice and **fabricates nothing** — every dot
 traces to evidence; an unsourced claim is a lead, not a finding.
 
-Read `~/.claude/skills/glaw/lib/bureau-roster.md` (charter, roster, dossier spec,
+Read `lib/bureau-roster.md` (charter, roster, dossier spec,
 scorecards) before commanding the bureau.
 
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 echo "--- bureau roster ---"
-sed -n '/## Roster/,/## Bureau tooling/p' ~/.claude/skills/glaw/lib/bureau-roster.md 2>/dev/null | head -22
+sed -n '/## Roster/,/## Bureau tooling/p' lib/bureau-roster.md 2>/dev/null | head -22
 ```
 
 ## The bench (route to these)
@@ -68,7 +68,7 @@ criminal referral, or both). Conflicts must be cleared (`/glaw-ethics-conflicts`
 ### Step 1 — Ingest everything (evidence on-ramp)
 Normalize the full evidence set to text + metadata:
 ```bash
-~/.claude/skills/glaw/bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
+bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
 ```
 Pull court records (`/glaw-court-records`, `bin/glaw-court-scrape`) and any
 exempt-org/foundation data (`bin/glaw-exempt-org`). Build the evidence index.
@@ -83,7 +83,7 @@ financial-crimes + HUMINT collect; counter-fraud + legal-intelligence analyze.
 timeline, pattern detection. Produces the **relationship map** + a unified finding set.
 
 ### Step 4 — Score (transparent)
-- **Fraud Score:** `~/.claude/skills/glaw/bin/glaw-bureau-score fraud <indicators.json>` (0–5 indicators → 0–100 + tier).
+- **Fraud Score:** `bin/glaw-bureau-score fraud <indicators.json>` (0–5 indicators → 0–100 + tier).
 - **Evidence strength** (0–5/item) and **witness credibility** (0–5) per the rubric.
 - **Case readiness:** `glaw-bureau-score competency <scores.json>` (FBI weighted scorecard).
 
@@ -103,7 +103,7 @@ Score · Evidence Matrix · Timeline (`/glaw-evidence-timeline`) · Relationship
 Litigation Strategy · Red-Team Assessment · Recommended Actions. Render with
 `bin/glaw-doc-extract`-friendly Markdown; stamp the UPL footer.
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log bureau_dossier_ready
+bin/glaw timeline-log bureau_dossier_ready
 ```
 Hand to `/glaw-draft` (complaint) or assemble a referral packet via `/glaw-file`.
 

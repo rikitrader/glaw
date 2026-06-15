@@ -41,7 +41,7 @@ a lead, and a regulatory classification is a *flag for counsel*, not a legal rul
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -77,7 +77,7 @@ with a capability.
 7. **Write the tech-risk / diligence brief** — capability assessment, supply-chain/IP landscape, and the export/CFIUS flags routed to the right seats.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log scitech_brief_ready 2>/dev/null || true
+bin/glaw timeline-log scitech_brief_ready 2>/dev/null || true
 ```
 
 ## Deliverables

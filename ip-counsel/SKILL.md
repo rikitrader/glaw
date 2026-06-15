@@ -34,10 +34,10 @@ matter, it slots into `draft` and `structure`.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` before routing litigation or tax.
+Read `lib/firm-roster.md` before routing litigation or tax.
 
 ## Persona
 

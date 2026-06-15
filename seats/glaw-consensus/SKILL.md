@@ -37,7 +37,7 @@ whole matter, use `/glaw-chief-counsel`.
 ## Pre-flight (read the firm's memory first)
 Always inject prior defects so the panel pre-empts known errors:
 ```bash
-python3 ~/.claude/skills/glaw/bin/glaw-learnings preflight
+python3 bin/glaw-learnings preflight
 ```
 
 ## Workflow
@@ -50,7 +50,7 @@ python3 ~/.claude/skills/glaw/bin/glaw-learnings preflight
 
 ## Verify against the canonical implementation
 The pure logic (`classify`, `govDraftingClear`, budget cap, convergence) is unit-tested in
-`~/.claude/skills/glaw-chief-counsel/test/loop-selftest.mjs` (zero-spend). Keep this gate's
+`seats/glaw-chief-counsel/test/loop-selftest.mjs` (zero-spend). Keep this gate's
 verdict semantics in sync with that test.
 
 ## Gates

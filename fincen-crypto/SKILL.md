@@ -38,7 +38,7 @@ confidence level. An unconfirmed attribution is a **lead**, not a finding.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -66,7 +66,7 @@ Solana, Tron, and Layer-2s, and you note where a bridge breaks the trail.
 
 1. **Scope the addresses/txids.** Establish the seed wallet(s), chain(s), and time
    window. Normalize any supplied off-chain docs with
-   `~/.claude/skills/glaw/bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted`.
+   `bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted`.
 2. **Pull public chain data.** Use WebFetch / Bash against public block explorers and
    public RPC/API endpoints (Bitcoin, Etherscan-class, Solana, Tron, L2 explorers) to
    retrieve verifiable transactions. Record each txid as the source for its hop.
@@ -83,7 +83,7 @@ Solana, Tron, and Layer-2s, and you note where a bridge breaks the trail.
 7. **Route doctrine and hand up.** Send BSA/MSB/VASP and OFAC-of-crypto doctrine to
    `/glaw-regulatory-aml`; hand the on-chain map to `/glaw-bureau-fusion`.
    ```bash
-   ~/.claude/skills/glaw/bin/glaw timeline-log fincen_crypto_report_ready
+   bin/glaw timeline-log fincen_crypto_report_ready
    ```
 
 ## Deliverables

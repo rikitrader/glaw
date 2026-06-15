@@ -7,7 +7,7 @@ formats in one Google Drive folder, with an index**:
 
 Run it with one command at the end of any matter or deliverable:
 ```bash
-~/.claude/skills/glaw/bin/glaw-publish <matter-slug-or-dir> [--folder "<Drive folder name>"]
+bin/glaw-publish <matter-slug-or-dir> [--folder "<Drive folder name>"]
 ```
 It renders every `.md` deliverable (skipping ingested evidence, extractions, and state
 files), uploads PDF + Doc + Slides to a new Drive folder, and writes `index.md` (local

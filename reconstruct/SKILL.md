@@ -38,7 +38,7 @@ accounts netted out, every period present, every figure defended against a skept
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## ⛔ The chief-orchestrated pipeline (every step owned, every number challenged)
@@ -61,7 +61,7 @@ bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATT
 
 ### Run the deterministic reconstruction
 ```bash
-~/.claude/skills/glaw/bin/glaw-reconstruct manifest.json --out ~/recon --format text
+bin/glaw-reconstruct manifest.json --out ~/recon --format text
 ```
 Manifest (each source = one account; **give the statement's `opening`/`closing` so the books
 tie** — an ongoing company never starts at zero):

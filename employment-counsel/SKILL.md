@@ -37,10 +37,10 @@ people-ops build, the matter pipeline sequences this after `/glaw-structure`.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` before routing handoffs.
+Read `lib/firm-roster.md` before routing handoffs.
 
 ## Persona
 

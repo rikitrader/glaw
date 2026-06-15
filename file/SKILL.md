@@ -28,10 +28,10 @@ assembles and routes the ones that already cleared the gates.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` before routing.
+Read `lib/firm-roster.md` before routing.
 
 ## Workflow
 
@@ -41,7 +41,7 @@ Do not assemble until all three are true in the matter timeline/charter:
 2. **`/glaw-adversarial`** ran a clean RED→BLUE pass (no surviving fatal attack).
 3. **House writing standard cleared** — every external document passed **`/glaw-legal-writing`**
    (the Legal Writing Master) and the deterministic gate
-   `~/.claude/skills/glaw/bin/glaw-writing-check <doc>` (add `--motion` for motions, **`--federal` for any U.S. District Court filing** — caption + I–VI sections + signature + Case No.): no passive-voice
+   `bin/glaw-writing-check <doc>` (add `--motion` for motions, **`--federal` for any U.S. District Court filing** — caption + I–VI sections + signature + Case No.): no passive-voice
    /cliché/hedging/over-long-sentence flags left, and no legal assertion lacking a citation.
 
 4. **Federal render conformance (auto-asserted)** — any U.S. District Court filing is rendered via
@@ -79,7 +79,7 @@ deadline against current rule before stating it — do not rely on memory.
 ### Step 2 — Docket every deadline now
 For each filing line, calendar it immediately so nothing relies on memory:
 ```bash
-~/.claude/skills/glaw/bin/glaw docket add <YYYY-MM-DD> "<filing> due — <where>"
+bin/glaw docket add <YYYY-MM-DD> "<filing> due — <where>"
 ```
 
 ### Step 3 — Render the packet
@@ -95,7 +95,7 @@ works from.
 
 ### Step 5 — Advance
 ```bash
-~/.claude/skills/glaw/bin/glaw stage docket
+bin/glaw stage docket
 ```
 Hand off to `/glaw-docket` for ongoing calendaring/monitoring.
 

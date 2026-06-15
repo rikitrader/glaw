@@ -27,7 +27,7 @@ moves facts #4/#8 from *missing* → *drafted, pending appraiser sign-off* — n
 ## Real math (don't hand-wave the allocation)
 Use the OPM calculator for the common-stock allocation + strike — it is actual Black-Scholes, reviewable by an appraiser:
 ```bash
-python3 ~/.claude/skills/glaw-valuation-409a/bin/opm.py \
+python3 seats/glaw-valuation-409a/bin/opm.py \
   --equity <E> --pref <aggregate_liq_pref> --fd-shares <FD> --common-shares <C> \
   --sigma 0.60 --years 4 --rate 0.04 --dlom 0.30
 # or backsolve from a recent round:
@@ -67,9 +67,9 @@ are written to `glaw-learnings` so future valuations pre-empt them. Only an appr
 ## Unblocking the matter (facts #4 / #8)
 When the founder + independent appraiser accept the drafted figures, record them:
 ```bash
-python3 ~/.claude/skills/glaw/bin/matter-ops/facts_gate.py set <slug> ip_valuation "$<value> — <appraiser>, <date>"
-python3 ~/.claude/skills/glaw/bin/matter-ops/facts_gate.py set <slug> valuation_409a "$<x>/sh — <appraiser>, <date>"
-python3 ~/.claude/skills/glaw/bin/matter-ops/facts_validate.py <slug>   # re-check the launch guard
+python3 bin/matter-ops/facts_gate.py set <slug> ip_valuation "$<value> — <appraiser>, <date>"
+python3 bin/matter-ops/facts_gate.py set <slug> valuation_409a "$<x>/sh — <appraiser>, <date>"
+python3 bin/matter-ops/facts_validate.py <slug>   # re-check the launch guard
 ```
 Do NOT set these from the AI draft alone — the launch guard treats them as verified facts, and the §409A safe
 harbor + §351 basis depend on a real independent appraisal.

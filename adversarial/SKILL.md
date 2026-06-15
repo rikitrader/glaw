@@ -36,10 +36,10 @@ survivors.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` before routing.
+Read `lib/firm-roster.md` before routing.
 
 ## Workflow
 
@@ -83,7 +83,7 @@ relevant RED lens against every rebuild.
 Repeat Steps 2–4 until a full RED pass surfaces **no new fatal attack**. Only a
 clean pass closes the gate. Log each round:
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log adversarial_round
+bin/glaw timeline-log adversarial_round
 ```
 
 ### Step 6 — Verify survivors (HARD requirement before file)
@@ -94,7 +94,7 @@ struck, not filed (ETHOS principle 3).
 ### Step 7 — Advance
 Only when no new fatal attack surfaces AND survivors are verified:
 ```bash
-~/.claude/skills/glaw/bin/glaw-adversarial complete --profile auto
+bin/glaw-adversarial complete --profile auto
 ```
 `glaw-adversarial complete` logs `adversarial_done` only when every required RED-team lens for the
 matter's workflow profile has recorded `survive`. Then hand off to `/glaw-file`; the file stage is

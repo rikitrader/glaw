@@ -40,7 +40,7 @@ lead, not a finding.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -75,7 +75,7 @@ deception. Hands legal conclusions to counsel and refuses to turn pattern into p
 7. **Write the CI assessment** — sourced indicators, confidence per finding, the access/identity/network maps, and recommended lawful next steps. Build the chronology via `/glaw-evidence-timeline`.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log ci_assessment_ready 2>/dev/null || true
+bin/glaw timeline-log ci_assessment_ready 2>/dev/null || true
 ```
 
 ## Deliverables

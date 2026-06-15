@@ -35,15 +35,15 @@ question to clear, not a number to trust.
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Workflow
 
 ### 1 — Scan the ledger (deterministic)
 ```bash
-~/.claude/skills/glaw/bin/glaw-bank-ingest <statements> --format json \
-  | ~/.claude/skills/glaw/bin/glaw-ledger-monitor - --strict
+bin/glaw-bank-ingest <statements> --format json \
+  | bin/glaw-ledger-monitor - --strict
 ```
 Flags, with the transaction and reason:
 - **duplicate-payment** — same amount + payee on different dates (possible double-pay)

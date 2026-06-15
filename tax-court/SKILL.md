@@ -34,9 +34,9 @@ settlement track, and trial. It is the tax-specialist complement to `/glaw-feder
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
-Read `~/.claude/skills/glaw/lib/firm-roster.md` so the audit record, the substantive tax math, and
+Read `lib/firm-roster.md` so the audit record, the substantive tax math, and
 district-court alternatives route to the seats that own them.
 
 ## Persona
@@ -56,8 +56,8 @@ Confirm the notice is a true statutory notice of deficiency (or an appealable CD
 and compute the petition deadline — **90 days** from the notice date (150 if addressed abroad).
 Verify the date against the SOL machinery and calendar it as jurisdictional:
 ```bash
-~/.claude/skills/glaw/bin/glaw-sol --due-date <YYYY-MM-DD> --filed-date <YYYY-MM-DD> --as-of <today>
-~/.claude/skills/glaw/bin/glaw docket add <YYYY-MM-DD> "Tax Court petition — JURISDICTIONAL (90-day)"
+bin/glaw-sol --due-date <YYYY-MM-DD> --filed-date <YYYY-MM-DD> --as-of <today>
+bin/glaw docket add <YYYY-MM-DD> "Tax Court petition — JURISDICTIONAL (90-day)"
 ```
 
 ### 2 — Scope the controversy under §6512

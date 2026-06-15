@@ -33,10 +33,10 @@ stage directly instead.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` before routing. **Refuse to run
+Read `lib/firm-roster.md` before routing. **Refuse to run
 until `CONFLICTS: cleared`** in the charter (route to `/glaw-ethics-conflicts` if not).
 
 ## Decision principles (how it auto-decides)
@@ -87,7 +87,7 @@ survivability verdict, decisions made, and what the gate resolved.
 ### Step 7 — Hand off
 The matter is now strategized, structured, and adversaried.
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log autocounsel_done
+bin/glaw timeline-log autocounsel_done
 ```
 Hand off to `/glaw-draft` (if documents aren't drafted yet) or `/glaw-file` (if
 they are and survivors are verified). Do not advance past the adversarial gate

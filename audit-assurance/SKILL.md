@@ -41,12 +41,12 @@ GLAW cannot issue an audit opinion — it gets the client *ready* for one.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 echo "--- accounting bench ---"
-sed -n '/Accounting & Finance Division/,/^$/p' ~/.claude/skills/glaw/lib/firm-roster.md 2>/dev/null | head -20
+sed -n '/Accounting & Finance Division/,/^$/p' lib/firm-roster.md 2>/dev/null | head -20
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` before assigning a seat.
+Read `lib/firm-roster.md` before assigning a seat.
 
 ## Persona
 
@@ -107,7 +107,7 @@ rollforward/cap table, significant contracts, and a draft **management represent
 letter**. This is the binder the auditor or buyer's QoE team opens on day one.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log audit_readiness_package_ready
+bin/glaw timeline-log audit_readiness_package_ready
 ```
 
 ### Step 6 — Hand back

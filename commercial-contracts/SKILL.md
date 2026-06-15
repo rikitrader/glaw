@@ -33,10 +33,10 @@ For a single clause question it answers directly; in a matter it slots into `dra
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` before routing data, employment, or securities terms.
+Read `lib/firm-roster.md` before routing data, employment, or securities terms.
 
 ## Persona
 

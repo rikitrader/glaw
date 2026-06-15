@@ -40,7 +40,7 @@ carries a written release schedule so the next period inherits a clean roll-forw
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Workflow
@@ -57,10 +57,10 @@ For each contract, settle the five questions in order and write the answer down:
 When cash is collected ahead of performance, book it as a liability and write the schedule that releases it as the obligation is satisfied (e.g., a 12-month subscription releases ratably). Record the deferral and each subsequent release through `/glaw-journal` into `/glaw-ledger`:
 ```bash
 # Collection in advance: cash up, deferred (unearned) revenue up — NOT income yet
-~/.claude/skills/glaw/bin/glaw-journal --book <book> --date 2026-01-01 --memo "Annual plan billed in advance" \
+bin/glaw-journal --book <book> --date 2026-01-01 --memo "Annual plan billed in advance" \
   --debit "Assets:Bank:Checking" 12000 --credit "Liabilities:Deferred Revenue" 12000
 # Monthly release as the obligation is satisfied
-~/.claude/skills/glaw/bin/glaw-journal --book <book> --date 2026-01-31 --memo "Recognize Jan subscription (1/12)" \
+bin/glaw-journal --book <book> --date 2026-01-31 --memo "Recognize Jan subscription (1/12)" \
   --debit "Liabilities:Deferred Revenue" 1000 --credit "Income:Subscription Revenue" 1000
 ```
 Confirm the account names against the chart with `/glaw-coa`; for terminology disputes ("contract asset" vs. "contract liability", earned vs. billed) reconcile against `/glaw-glossary`.
@@ -74,7 +74,7 @@ Net per contract, never across contracts, so one customer's prepayment never mas
 ### 4 — Prove cut-off and completeness
 Run the diagnostic to confirm the deferred-revenue roll-forward ties, no income was booked into a future period, and nothing earned was left off the books:
 ```bash
-~/.claude/skills/glaw/bin/glaw-books-doctor --book <book> check
+bin/glaw-books-doctor --book <book> check
 ```
 `/glaw-books-doctor` is the internal cut-off/completeness check; `/glaw-audit` independently rebuilds and **challenges** the recognition timing and the deferred-revenue balance.
 

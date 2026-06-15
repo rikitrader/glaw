@@ -31,7 +31,7 @@ Every row traces to a document. A date with no source is not a fact — it is a 
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -41,7 +41,7 @@ A trial paralegal who builds the chronology before counsel writes a word.
 ## Document ingestion (run FIRST on any evidence files)
 Normalize every file to text + metadata with the firm's router before reading:
 ```bash
-~/.claude/skills/glaw/bin/glaw-doc-extract <file-or-dir> -o <matter>/_extracted
+bin/glaw-doc-extract <file-or-dir> -o <matter>/_extracted
 ```
 PDFs → `glaw-opendataloader-pdf` (Markdown); email `.eml/.msg/.pst`, Office, images+OCR,
 HTML, zip → Apache Tika → `<name>.txt` + `<name>.meta.json`. The metadata
@@ -60,8 +60,8 @@ conflict is itself evidence. Never invents a date to fill a gap — gaps get fla
 ### Step 1 — Inventory the evidence set
 Locate the evidence under the matter folder and list it:
 ```bash
-SLUG="$(~/.claude/skills/glaw/bin/glaw slug 2>/dev/null)"
-DIR="$(~/.claude/skills/glaw/bin/glaw home 2>/dev/null)/matters/$SLUG"
+SLUG="$(bin/glaw slug 2>/dev/null)"
+DIR="$(bin/glaw home 2>/dev/null)/matters/$SLUG"
 ls -R "$DIR/evidence" "$DIR/records" 2>/dev/null
 ```
 Use `Glob` to gather files (`*.pdf *.txt *.csv *.eml *.md`) and `Read` each. For
@@ -100,7 +100,7 @@ Run the analysis pass and annotate:
 #   $DIR/timeline.md        — the table + flags
 #   $DIR/timeline-narrative.md — the prose chronology
 #   $DIR/exhibit-index.md   — exhibit/Bates → date(s) cross-reference
-~/.claude/skills/glaw/bin/glaw timeline-log chronology_built 2>/dev/null || true
+bin/glaw timeline-log chronology_built 2>/dev/null || true
 ```
 Report `CHRONOLOGY: built (<n> events, <g> gaps, <c> conflicts)` and hand to
 `/glaw-strategy`.

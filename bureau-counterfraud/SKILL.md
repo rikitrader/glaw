@@ -35,10 +35,10 @@ Every indicator traces to evidence; an unsupported suspicion is a **lead, not a 
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/bureau-roster.md` (fraud-score components, indicator
+Read `lib/bureau-roster.md` (fraud-score components, indicator
 rubric). Read the matter's `_extracted/` text and the `*.meta.json` files emitted by
 `bin/glaw-doc-extract`.
 
@@ -78,7 +78,7 @@ fraudulent; you score the indicator, cite the source, and let the score speak.
 ### Step 1 — Ingest with metadata
 Confirm the evidence is extracted with metadata. If not:
 ```bash
-~/.claude/skills/glaw/bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
+bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
 ```
 Each document yields its text plus a `*.meta.json` — the authentication layer.
 
@@ -112,8 +112,8 @@ with its evidence:
 
 Write them as JSON for the score tool:
 ```bash
-~/.claude/skills/glaw/bin/glaw-bureau-score fraud <indicators.json>
-~/.claude/skills/glaw/bin/glaw timeline-log counterfraud_indicators 2>/dev/null || true
+bin/glaw-bureau-score fraud <indicators.json>
+bin/glaw timeline-log counterfraud_indicators 2>/dev/null || true
 ```
 
 ### Step 6 — Route

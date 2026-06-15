@@ -39,7 +39,7 @@ leaves a clean audit trail, and any slice the parent does not own is handed back
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Workflow
@@ -55,9 +55,9 @@ SPVs) and any equity-method vs. full-consolidation judgment route to `/glaw-inst
 ### 2 — Confirm each entity is a clean, separate book
 Every entity must be its own ledger book and must close before it can be consolidated.
 ```bash
-~/.claude/skills/glaw/bin/glaw-ledger --book parent  balances --as-of 2026-12-31   # trial balance
-~/.claude/skills/glaw/bin/glaw-ledger --book sub-a   balances --as-of 2026-12-31
-~/.claude/skills/glaw/bin/glaw-coa check-ledger --book parent                       # no Uncategorized leakage
+bin/glaw-ledger --book parent  balances --as-of 2026-12-31   # trial balance
+bin/glaw-ledger --book sub-a   balances --as-of 2026-12-31
+bin/glaw-coa check-ledger --book parent                       # no Uncategorized leakage
 ```
 Align the chart so the same account means the same thing in every book (`/glaw-coa`). If a book
 is not yet closed, run `/glaw-close` on it first; statements per entity come from `/glaw-statements`.
@@ -80,17 +80,17 @@ one of the underlying books, not an elimination — fix it there before proceedi
 Open a separate book (e.g. `consol`) so the eliminations never touch any entity's standalone
 ledger. Post each elimination as a balanced journal entry via `/glaw-journal`:
 ```bash
-~/.claude/skills/glaw/bin/glaw-journal --book consol --date 2026-12-31 \
+bin/glaw-journal --book consol --date 2026-12-31 \
   --memo "Eliminate intercompany AR/AP parent<->sub-a" \
   --debit "Liabilities:Intercompany Payable" 50000 \
   --credit "Assets:Intercompany Receivable" 50000
 
-~/.claude/skills/glaw/bin/glaw-journal --book consol --date 2026-12-31 \
+bin/glaw-journal --book consol --date 2026-12-31 \
   --memo "Eliminate intercompany sales / COGS" \
   --debit "Revenue:Intercompany Sales" 120000 \
   --credit "Expenses:Intercompany COGS" 120000
 
-~/.claude/skills/glaw/bin/glaw-journal --book consol --date 2026-12-31 \
+bin/glaw-journal --book consol --date 2026-12-31 \
   --memo "Eliminate investment in sub-a against its equity at acquisition" \
   --debit "Equity:Common Stock (sub-a)" 200000 \
   --credit "Assets:Investment in sub-a" 200000
@@ -107,7 +107,7 @@ this as a balanced entry in the `consol` book.
 The consolidated trial balance = combined (step 3) + the `consol` book (steps 5–6). Read it as-of
 the period end and hand it to the statement bench.
 ```bash
-~/.claude/skills/glaw/bin/glaw-ledger --book consol balances --as-of 2026-12-31   # eliminations only
+bin/glaw-ledger --book consol balances --as-of 2026-12-31   # eliminations only
 ```
 - Consolidated statements → `/glaw-statements` (or `/glaw-cfo` for the package).
 - Independent rebuild / tie-out of the consolidation → `/glaw-audit`.

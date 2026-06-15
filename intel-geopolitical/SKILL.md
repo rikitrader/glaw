@@ -39,7 +39,7 @@ and confidence-rated; an unsourced claim is a lead, not a finding.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -74,7 +74,7 @@ policy with its observed behavior.
 7. **Write the country-risk brief** — overall rating, per-dimension findings, the sanctions/treaty flags routed to the right seats, and the tripwires to monitor.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log country_risk_brief_ready 2>/dev/null || true
+bin/glaw timeline-log country_risk_brief_ready 2>/dev/null || true
 ```
 
 ## Deliverables

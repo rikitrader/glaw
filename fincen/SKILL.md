@@ -19,12 +19,12 @@ or Case Commander (`/glaw-bureau`). Analytical work-product only — it does not
 SARs or make charging/licensing decisions. Every dollar traces to a record; an
 unsourced flow is a lead, not a finding.
 
-Read `~/.claude/skills/glaw/lib/bureau-roster.md` before commanding the cell.
+Read `lib/bureau-roster.md` before commanding the cell.
 
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## The cell (route to these)
@@ -43,7 +43,7 @@ bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skil
 1. **Ingest** financial records (`bin/glaw-doc-extract`) — bank/card/processor statements, wires, trade docs.
 2. **Deploy** the relevant agents (parallel). Each returns sourced findings.
 3. **Reconstruct** the numbers via `glaw-financial-forensics`; build the **source-and-use / net-worth** picture.
-4. **Score** risk: `~/.claude/skills/glaw/bin/glaw-bureau-score fraud <indicators.json>` → 0–100 + tier.
+4. **Score** risk: `bin/glaw-bureau-score fraud <indicators.json>` → 0–100 + tier.
 5. **Fuse** via `/glaw-bureau-fusion` → financial-crime network map.
 6. **Hand up** the Financial Crime Assessment + Suspicious-Activity Ranking + Asset-Trace report.
 

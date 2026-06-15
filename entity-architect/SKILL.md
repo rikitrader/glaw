@@ -42,10 +42,10 @@ everything else hangs on.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` before routing handoffs.
+Read `lib/firm-roster.md` before routing handoffs.
 
 ## Persona
 
@@ -116,7 +116,7 @@ entity before any election so the election has a subject). Then route the rest:
 - **Asset-protection trusts** (DAPT, etc.) → `/glaw-estate-trusts`.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log entity_architecture_ready
+bin/glaw timeline-log entity_architecture_ready
 ```
 
 ## Deliverables

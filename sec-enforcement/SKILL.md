@@ -44,7 +44,7 @@ sourced fact, and materiality and scienter are argued from the record, not assum
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -93,7 +93,7 @@ respondent(s), the conduct, the securities and markets involved, and the deliver
 ### Step 2 — Ingest the record
 Normalize filings, blotters, transcripts, and communications to text + metadata:
 ```bash
-~/.claude/skills/glaw/bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
+bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
 ```
 Pull issuer filings from EDGAR (route to `/glaw-sec-disclosure`). Build the exhibit index.
 
@@ -120,7 +120,7 @@ Verify every citation (`/glaw-legal-research`; extract cites with `bin/glaw-cite
 Write the **Wells memorandum** (facts · charges · elements · evidence · remedies ·
 anticipated defenses · recommendation) and the **litigation package**.
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log sec_enforcement_recommendation 2>/dev/null || true
+bin/glaw timeline-log sec_enforcement_recommendation 2>/dev/null || true
 ```
 Hand findings up to `/glaw-bureau-fusion` (link map) and to `/glaw-draft` /
 `/glaw-strategy` for the complaint.

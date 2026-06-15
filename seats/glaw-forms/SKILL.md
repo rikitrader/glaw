@@ -11,7 +11,7 @@ triggers: [forms library, draft a SAFE, convertible note, option grant, RSU agre
 Routes any equity/financing form request to the right master, fills it for the corp, and publishes it in the
 enforced house style. Every master is recreated 100% from a current SEC filing (see `forms-library/manifest.json`).
 
-## Library (masters at `~/.claude/skills/glaw/lib/forms-library/`)
+## Library (masters at `lib/forms-library/`)
 | Need | Master | Source |
 |------|--------|--------|
 | Grant options (ISO/NSO) | `glaw-stock-option-agreement-master.md` | Reddit 2024 |
@@ -24,13 +24,13 @@ enforced house style. Every master is recreated 100% from a current SEC filing (
 1. Emit the GLAW preamble; confirm the corp + which form.
 2. **Fill** from the cap table:
    ```bash
-   python3 ~/.claude/skills/glaw/bin/matter-ops/fill_from_captable.py <master.md> \
+   python3 bin/matter-ops/fill_from_captable.py <master.md> \
      --company "Example Holdings, Inc." --year 2024 --state Delaware --strike "[APPRAISED FMV]" --sheet <captableSheetId> --out <out.md>
    ```
    (option/RSU masters auto-append a grant schedule from the EMPLOYEE rows.)
 3. **House style + publish** (always — enforced):
    ```bash
-   python3 ~/.claude/skills/glaw/bin/matter-ops/publish_legal.py <out.md> --folder <driveFolderId> --name "Title"
+   python3 bin/matter-ops/publish_legal.py <out.md> --folder <driveFolderId> --name "Title"
    ```
 4. **Gate (when it's an issuance/financing position):** route to `/glaw-consensus` (panel + IRS/SEC veto) and, for
    options/RSUs, `/glaw-valuation-409a` (strike ≥ appraised FMV; HELD IN ESCROW until the 409A is signed).

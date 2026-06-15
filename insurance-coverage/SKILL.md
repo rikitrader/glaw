@@ -34,9 +34,9 @@ seat reads the policy, pursues coverage, and builds the bad-faith record.
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
-Read `~/.claude/skills/glaw/lib/firm-roster.md` so the loss quantification, the litigation, and
+Read `lib/firm-roster.md` so the loss quantification, the litigation, and
 citation verification route to the seats that own them.
 
 ## Persona
@@ -88,7 +88,7 @@ Route the coverage demand / CRN / appraisal demand / complaint to `/glaw-draft` 
 Docket the hard dates — proof-of-loss deadline, CRN cure window, appraisal timeline, suit-
 limitation period:
 ```bash
-~/.claude/skills/glaw/bin/glaw docket add <YYYY-MM-DD> "§624.155 CRN cure window expires"
+bin/glaw docket add <YYYY-MM-DD> "§624.155 CRN cure window expires"
 ```
 
 ## Route to the bench

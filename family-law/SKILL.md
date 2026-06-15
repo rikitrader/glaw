@@ -34,9 +34,9 @@ business valuation, and estate-plan cleanup to the seats that own them.
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
-Read `~/.claude/skills/glaw/lib/firm-roster.md` so valuation, retirement-plan division, and
+Read `lib/firm-roster.md` so valuation, retirement-plan division, and
 estate-plan updates route to the seats that own them. **Confirm the governing state first** — it
 drives everything (TX community property + conservatorship vocabulary vs. FL equitable
 distribution + parenting plans).
@@ -77,7 +77,7 @@ asset / dissipation work to `/glaw-investigations`.
 Build the parenting plan / conservatorship + possession schedule on a best-interest analysis.
 Compute guideline child support — Texas via the ch.154 engine:
 ```bash
-~/.claude/skills/glaw/bin/glaw-child-support --net-resources <monthly-net> --children <n> --other-children <n>
+bin/glaw-child-support --net-resources <monthly-net> --children <n> --other-children <n>
 ```
 (Other states' guidelines route to `/glaw-legal-research`.) Build up **net resources** from gross
 (SS/Medicare, single-filer federal tax, union dues, child health-insurance) before applying the
@@ -102,7 +102,7 @@ Route the petition / marital settlement agreement / parenting plan / proposed de
 `/glaw-draft` and `/glaw-file`. Docket every deadline — answer date, temporary-orders hearing,
 mediation, discovery cutoffs, final hearing, and any cooling-off / waiting period:
 ```bash
-~/.claude/skills/glaw/bin/glaw docket add <YYYY-MM-DD> "Temporary-orders hearing"
+bin/glaw docket add <YYYY-MM-DD> "Temporary-orders hearing"
 ```
 
 ## Route to the bench

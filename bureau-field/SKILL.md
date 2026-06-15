@@ -34,14 +34,14 @@ documents — it does not give legal advice and **fabricates nothing**. Every it
 logs traces to a source; an unsourced assertion is a lead, not a finding.
 
 Reports to the Case Commander (`/glaw-bureau`); feeds `/glaw-bureau-fusion`. Read
-`~/.claude/skills/glaw/lib/bureau-roster.md` for the charter, dossier spec, and scorecards.
+`lib/bureau-roster.md` for the charter, dossier spec, and scorecards.
 
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 echo "--- field collection bench ---"
-sed -n '/## Bureau tooling/,/## Dossier/p' ~/.claude/skills/glaw/lib/bureau-roster.md 2>/dev/null | head -12
+sed -n '/## Bureau tooling/,/## Dossier/p' lib/bureau-roster.md 2>/dev/null | head -12
 ```
 
 ## Persona
@@ -70,7 +70,7 @@ Solving.**
 1. **Scope the collection.** Confirm the active investigation matter and the objective. Conflicts must be cleared (`/glaw-ethics-conflicts`). List what's needed and how to get it lawfully (consent, subpoena, PRR, discovery, warrant).
 2. **Ingest + log existing evidence.** Normalize the set and capture metadata:
    ```bash
-   ~/.claude/skills/glaw/bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
+   bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
    ```
    Build the evidence log: each item → unique ID → source/custodian → hash (if digital) → what it proves. Mine `*.meta.json` (created/modified/author) to expose backdating.
 3. **Plan interviews & develop witnesses.** Draft interview/interrogation plans (themes, sequence, lawful approach) and a witness roster with locate-via-public-records leads; route credibility scoring to `/glaw-bureau-humint`.
@@ -79,7 +79,7 @@ Solving.**
 6. **Run cross-examination simulation.** Attack our own witnesses and exhibits — impeachment, bias, gaps, foundation/authentication failures — and report what must be shored up before any theory advances.
 7. **Document & hand off.** Log the milestone and deliver to the Commander/fusion:
    ```bash
-   ~/.claude/skills/glaw/bin/glaw timeline-log field_collection_ready
+   bin/glaw timeline-log field_collection_ready
    ```
 
 ## Deliverables

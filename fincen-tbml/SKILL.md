@@ -37,7 +37,7 @@ unverified mismatch is a **lead**, not a finding.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -65,7 +65,7 @@ really one network trading with itself.
 ## Workflow
 
 1. **Ingest the trade pack.** Normalize invoices, bills of lading, declarations,
-   packing lists: `~/.claude/skills/glaw/bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted`.
+   packing lists: `bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted`.
    Build the per-shipment document set.
 2. **Reconstruct the trade numbers.** Hand value reconciliation to `glaw-financial-forensics`
    + `/glaw-accounting` so quantities, unit prices, and totals rest on verified figures.
@@ -84,7 +84,7 @@ really one network trading with itself.
    (components shown); build the chronology with `/glaw-evidence-timeline`; send BSA/AML
    doctrine to `/glaw-regulatory-aml`; hand the analysis to `/glaw-bureau-fusion`.
    ```bash
-   ~/.claude/skills/glaw/bin/glaw timeline-log fincen_tbml_analysis_ready
+   bin/glaw timeline-log fincen_tbml_analysis_ready
    ```
 
 ## Deliverables

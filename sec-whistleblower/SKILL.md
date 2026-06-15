@@ -49,7 +49,7 @@ are argued from the record, not assumed. It routes retaliation analysis to
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -104,7 +104,7 @@ deliverable (**tip assessment** or **company exposure memo**). Conflicts cleared
 ### Step 2 — Ingest the record
 Normalize tips, filings, communications, and agreements to text + metadata:
 ```bash
-~/.claude/skills/glaw/bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
+bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
 ```
 On the company side, pull every severance/NDA/separation/employment template into the
 21F-17 review set. Build the exhibit index.
@@ -134,7 +134,7 @@ Write the **tip assessment** (eligibility · originality/voluntariness · award-
 anti-retaliation · TCR/anonymity plan) **or** the **company exposure memo** (21F-17
 clause review · internal-reporting handling · retaliation posture · remediation · exposure).
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log sec_whistleblower_assessment 2>/dev/null || true
+bin/glaw timeline-log sec_whistleblower_assessment 2>/dev/null || true
 ```
 Hand findings up to `/glaw-strategy` and `/glaw-draft` for the TCR filing, the demand, or
 the remediation plan.

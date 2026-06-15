@@ -35,14 +35,14 @@ advice and **fabricates nothing**: every entry cites the URL, filing, or record 
 from; an uncited claim is a lead, not a finding.
 
 Reports to the Case Commander (`/glaw-bureau`); feeds `/glaw-bureau-fusion`. Read
-`~/.claude/skills/glaw/lib/bureau-roster.md` for the charter, dossier spec, and scorecards.
+`lib/bureau-roster.md` for the charter, dossier spec, and scorecards.
 
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 echo "--- OSINT tooling ---"
-sed -n '/## Bureau tooling/,/## Dossier/p' ~/.claude/skills/glaw/lib/bureau-roster.md 2>/dev/null | head -12
+sed -n '/## Bureau tooling/,/## Dossier/p' lib/bureau-roster.md 2>/dev/null | head -12
 ```
 
 ## Persona
@@ -58,7 +58,7 @@ Adaptability.**
 
 - **Social-media intelligence** — public profiles/posts: aliases, associations, locations, timeline anchors, sentiment — read-only, public-facing only.
 - **Public-records analysis** — property, liens, UCC, licensing, sanctions/PEP lists, voter/court adjacent public data.
-- **Corporate-records research** — Sunbiz / Secretary-of-State registries and **SEC EDGAR**; nonprofits/foundations via `~/.claude/skills/glaw/bin/glaw-exempt-org`; case dockets via `~/.claude/skills/glaw/bin/glaw-court-scrape` (+ `/glaw-court-records`).
+- **Corporate-records research** — Sunbiz / Secretary-of-State registries and **SEC EDGAR**; nonprofits/foundations via `bin/glaw-exempt-org`; case dockets via `bin/glaw-court-scrape` (+ `/glaw-court-records`).
 - **Domain/WHOIS investigations** — registration, history, hosting, related infrastructure (coordinate technical depth with `/glaw-bureau-cyber`).
 - **Geolocation analysis** — locate from imagery/landmarks/EXIF/posted detail.
 - **METADATA analysis** — mine the `*.meta.json` from `bin/glaw-doc-extract`: EXIF, author, software, created/modified dates — to expose authorship, backdating, and provenance.
@@ -70,7 +70,7 @@ Adaptability.**
 1. **Scope the targets.** Confirm the active matter and the entities/persons to profile. Conflicts cleared (`/glaw-ethics-conflicts`). List the seed identifiers (names, emails, domains, entity numbers).
 2. **Mine the metadata first.** If documents exist, extract and read the metadata:
    ```bash
-   ~/.claude/skills/glaw/bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
+   bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
    ```
    Grep the `*.meta.json` for EXIF/author/timestamps — provenance and backdating leads come cheap here.
 3. **Pull the records.** Corporate (Sunbiz/SoS/EDGAR), nonprofits (`bin/glaw-exempt-org`), dockets (`bin/glaw-court-scrape`), property/liens, sanctions — capture each with its source URL/filing ID.
@@ -78,7 +78,7 @@ Adaptability.**
 5. **Resolve & map.** De-duplicate identities, link entities to control persons and infrastructure, and build the reputation/relationship map for `/glaw-bureau-fusion`.
 6. **Document & hand off.**
    ```bash
-   ~/.claude/skills/glaw/bin/glaw timeline-log osint_collection_ready
+   bin/glaw timeline-log osint_collection_ready
    ```
 
 ## Deliverables

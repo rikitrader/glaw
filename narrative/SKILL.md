@@ -40,7 +40,7 @@ informative, not promotional.
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Workflow
@@ -49,7 +49,7 @@ bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATT
 The narrative is computed *from* the books, never asserted independently. Get the posted
 statements and balances first; nothing in the prose may contradict them.
 ```bash
-~/.claude/skills/glaw/bin/glaw-narrative --book <book> source --as-of 2026-12-31
+bin/glaw-narrative --book <book> source --as-of 2026-12-31
 ```
 - Statements (P&L, balance sheet, cash flow, trial balance) → `/glaw-statements --book`
 - CFO-level commentary, ratios, and the three-statement view → `/glaw-cfo`
@@ -69,7 +69,7 @@ Write the analytical core in four parts:
 - **Cash flows** — operating, investing, and financing activity explained in plain terms.
 - **Known trends and uncertainties** — forward-looking pressures the reader should weigh.
 ```bash
-~/.claude/skills/glaw/bin/glaw-narrative --book <book> mda --compare prior-year
+bin/glaw-narrative --book <book> mda --compare prior-year
 ```
 
 ### 4 — Critical accounting estimates & policies
@@ -86,7 +86,7 @@ debt, equity, revenue recognition, income taxes, commitments and contingencies, 
 transactions, and subsequent events. Each note ties to the ledger and the supporting subledger
 (`/glaw-fixed-assets`, `/glaw-ap-ar`, `/glaw-treasury`).
 ```bash
-~/.claude/skills/glaw/bin/glaw-narrative --book <book> notes --as-of 2026-12-31
+bin/glaw-narrative --book <book> notes --as-of 2026-12-31
 ```
 
 ### 6 — Risk factors

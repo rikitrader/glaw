@@ -36,38 +36,38 @@ history. The ledger is append-only and tamper-evident.
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Workflow
 
 ### 1 — Chart of accounts
 ```bash
-~/.claude/skills/glaw/bin/glaw-coa validate <chart.json>          # every account has a valid root
-~/.claude/skills/glaw/bin/glaw-coa check-ledger --book <book>     # no unclassified / Uncategorized leakage
+bin/glaw-coa validate <chart.json>          # every account has a valid root
+bin/glaw-coa check-ledger --book <book>     # no unclassified / Uncategorized leakage
 ```
 
 ### 2 — Get transactions onto the books
 ```bash
 # bank activity → balanced journal entries (idempotent; dedupes by hash)
-~/.claude/skills/glaw/bin/glaw-ledger --book <book> rebuild <statements-dir> --chart <name>
+bin/glaw-ledger --book <book> rebuild <statements-dir> --chart <name>
 # a manual / adjusting entry (cash OR non-cash)
-~/.claude/skills/glaw/bin/glaw-journal --book <book> --date 2026-01-31 --memo "Jan depreciation" \
+bin/glaw-journal --book <book> --date 2026-01-31 --memo "Jan depreciation" \
   --debit Expenses:Depreciation 1000 --credit "Assets:Accumulated Depreciation" 1000
 ```
 Every entry is validated balanced before it posts; back-dating into a locked period is rejected.
 
 ### 3 — Query the books (as-of any date)
 ```bash
-~/.claude/skills/glaw/bin/glaw-ledger --book <book> balances --as-of 2026-03-31   # trial balance
-~/.claude/skills/glaw/bin/glaw-ledger --book <book> gl --account "Assets:Bank:Checking"  # GL detail + running balance
-~/.claude/skills/glaw/bin/glaw-ledger --book <book> status
+bin/glaw-ledger --book <book> balances --as-of 2026-03-31   # trial balance
+bin/glaw-ledger --book <book> gl --account "Assets:Bank:Checking"  # GL detail + running balance
+bin/glaw-ledger --book <book> status
 ```
 
 ### 4 — Close & lock
 ```bash
-~/.claude/skills/glaw/bin/glaw-ledger --book <book> lock --through 2026-01-31     # period read-only
-~/.claude/skills/glaw/bin/glaw-ledger --book <book> close-year --year 2026        # I/E → Retained Earnings, roll forward
+bin/glaw-ledger --book <book> lock --through 2026-01-31     # period read-only
+bin/glaw-ledger --book <book> close-year --year 2026        # I/E → Retained Earnings, roll forward
 ```
 
 ### 5 — Hand to the bench

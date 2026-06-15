@@ -34,10 +34,10 @@ This skill maps the factors to facts; it does not bless the law — that routes 
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` before routing. Read the matter's
+Read `lib/firm-roster.md` before routing. Read the matter's
 `strategy-memo.md` and any `structure-memo.md` — the org chart and cap table are the
 spine of the analysis.
 
@@ -152,7 +152,7 @@ and hand the legal call to `glaw-elite-corporate-counsel`.
 - **Final wording / brief polish** → `/glaw-legal-writing`.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log veil_analysis_done 2>/dev/null || true
+bin/glaw timeline-log veil_analysis_done 2>/dev/null || true
 ```
 
 ## Deliverables

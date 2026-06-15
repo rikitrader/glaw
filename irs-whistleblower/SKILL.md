@@ -36,9 +36,9 @@ client and counsel.
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
-Read `~/.claude/skills/glaw/lib/firm-roster.md` so the underlying tax exam, the forensic numbers,
+Read `lib/firm-roster.md` so the underlying tax exam, the forensic numbers,
 and any retaliation cause of action route to the seats that own them.
 
 ## Persona
@@ -78,7 +78,7 @@ Quantify the tax + penalties + interest at issue (the collected-proceeds base) w
 `/glaw-financial-forensics`, pulling the assessment/collection picture via `/glaw-irs-audit` where
 a related exam exists. Then model the award range:
 ```bash
-~/.claude/skills/glaw/bin/glaw-wbo-award --collected-proceeds <amt> --taxpayer-gross-income <amt> \
+bin/glaw-wbo-award --collected-proceeds <amt> --taxpayer-gross-income <amt> \
   --positive-factors <n> --negative-factors <n> [--planner] [--convicted]
 ```
 The output is a defensible **range**, not a promise — the Whistleblower Office sets the percentage.
@@ -101,7 +101,7 @@ Route the Form 211 package to `/glaw-draft` and `/glaw-file`; docket the WBO tim
 review, the long award-determination window, and any appeal of the award determination to the Tax
 Court — which routes to `/glaw-tax-court`):
 ```bash
-~/.claude/skills/glaw/bin/glaw docket add <YYYY-MM-DD> "WBO claim filed — track award determination"
+bin/glaw docket add <YYYY-MM-DD> "WBO claim filed — track award determination"
 ```
 
 ## Route to the bench

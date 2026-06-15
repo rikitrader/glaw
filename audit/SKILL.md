@@ -38,7 +38,7 @@ surviving challenge, not granted.
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## The audit pipeline (rebuild → tie-out → gate → anomaly → ADVERSARIAL → opinion)
@@ -47,27 +47,27 @@ bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATT
 Post every source statement into a fresh set of books — the auditor's own ledger, not the
 client's:
 ```bash
-~/.claude/skills/glaw/bin/glaw-ledger --book audit-<matter> rebuild <statements-dir> --chart <fund|roofing|personal>
+bin/glaw-ledger --book audit-<matter> rebuild <statements-dir> --chart <fund|roofing|personal>
 ```
 Each statement reports its Golden-Rule status on rebuild; idempotent (re-runs dedupe).
 
 ### 2 — Tie out & integrity
 ```bash
-~/.claude/skills/glaw/bin/glaw-ledger --book audit-<matter> audit            # TB + BS + tamper-evidence + per-entry trace
-~/.claude/skills/glaw/bin/glaw-books-doctor --book audit-<matter>            # the bulletproof control gate over the GL
+bin/glaw-ledger --book audit-<matter> audit            # TB + BS + tamper-evidence + per-entry trace
+bin/glaw-books-doctor --book audit-<matter>            # the bulletproof control gate over the GL
 ```
 Trial balance must balance, Assets == Liabilities + Equity, every entry's hash must verify
 (tamper-evident), and the bank account must tie to the source statements' closing balances.
 
 ### 3 — Classification & completeness
 ```bash
-~/.claude/skills/glaw/bin/glaw-coa check-ledger --book audit-<matter>        # no unclassified / Uncategorized leakage
+bin/glaw-coa check-ledger --book audit-<matter>        # no unclassified / Uncategorized leakage
 ```
 
 ### 4 — Anomaly / fraud scan
 ```bash
-~/.claude/skills/glaw/bin/glaw-ledger --book audit-<matter> statements --format json \
-  | ... | ~/.claude/skills/glaw/bin/glaw-ledger-monitor -                     # duplicate/round-dollar/weekend/lone-large
+bin/glaw-ledger --book audit-<matter> statements --format json \
+  | ... | bin/glaw-ledger-monitor -                     # duplicate/round-dollar/weekend/lone-large
 ```
 Deep forensic dig on anything flagged → `/glaw-financial-forensics`; suspected fraud →
 `/glaw-investigations`.

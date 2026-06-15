@@ -34,10 +34,10 @@ finding**.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/bureau-roster.md` (dossier spec, Relationship Map
+Read `lib/bureau-roster.md` (dossier spec, Relationship Map
 output). Read every agent product under the matter's `analysis/` and the evidence index.
 
 ## Persona
@@ -90,7 +90,7 @@ Every edge carries its source. Mark hubs, brokers, and the chokepoints the schem
 through.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log fusion_relationship_map 2>/dev/null || true
+bin/glaw timeline-log fusion_relationship_map 2>/dev/null || true
 ```
 
 ### Step 5 — Build the timeline and find patterns

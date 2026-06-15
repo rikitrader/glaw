@@ -33,10 +33,10 @@ record. Every credibility call traces to evidence; an unsupported impression is 
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/bureau-roster.md` (witness-credibility rubric, dossier
+Read `lib/bureau-roster.md` (witness-credibility rubric, dossier
 spec). Read the matter's evidence index and any extracted statements/transcripts.
 
 ## Persona
@@ -106,7 +106,7 @@ admissions to secure. Mark it for counsel / licensed-investigator execution.
 - Witness prep for trial → `/glaw-bureau-prosecutor`.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log humint_credibility_done 2>/dev/null || true
+bin/glaw timeline-log humint_credibility_done 2>/dev/null || true
 ```
 
 ## Deliverables

@@ -28,7 +28,7 @@ docket number. It feeds `/glaw-case-law-research` (opinions to read),
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -44,8 +44,8 @@ CourtListener (the API in the workflow below) is the aggregated database. For co
 it indexes slowly or not at all — notably **Florida's DCAs** — scrape the source site
 directly with Free Law Project's **juriscraper** (319 court scrapers + PACER):
 ```bash
-~/.claude/skills/glaw/bin/glaw-court-scrape --list fla     # 7 FL scrapers: fla (Sup Ct) + fladistctapp_1..6
-~/.claude/skills/glaw/bin/glaw-court-scrape united_states.state.fla   # LIVE pull → JSON
+bin/glaw-court-scrape --list fla     # 7 FL scrapers: fla (Sup Ct) + fladistctapp_1..6
+bin/glaw-court-scrape united_states.state.fla   # LIVE pull → JSON
 ```
 Prefer CourtListener first (cached, polite); use juriscraper when CourtListener lacks
 the court or you need fresh-from-source opinions. juriscraper hits the live court site
@@ -55,7 +55,7 @@ the court or you need fresh-from-source opinions. juriscraper hits the live cour
 Court filings and opinions come down as PDFs (often scanned). Run every pulled file
 through the firm's ingestion router so the text is searchable and dated:
 ```bash
-~/.claude/skills/glaw/bin/glaw-doc-extract <pulled-file-or-dir> -o <matter>/_extracted
+bin/glaw-doc-extract <pulled-file-or-dir> -o <matter>/_extracted
 ```
 PDFs → `glaw-opendataloader-pdf`; scanned/image filings get OCR via Apache Tika + Tesseract.
 Hand the extracted text to `/glaw-evidence-timeline` and `/glaw-case-law-research`.
@@ -66,9 +66,9 @@ Hand the extracted text to `/glaw-evidence-timeline` and `/glaw-case-law-researc
 CourtListener's REST API v4 is free; an account token raises rate limits and unlocks
 RECAP. Create a free account at courtlistener.com, copy the API token, and store it:
 ```bash
-~/.claude/skills/glaw/bin/glaw config set courtlistener_token <TOKEN>
+bin/glaw config set courtlistener_token <TOKEN>
 # or export COURTLISTENER_TOKEN=<TOKEN>
-TOKEN="${COURTLISTENER_TOKEN:-$(~/.claude/skills/glaw/bin/glaw config get courtlistener_token 2>/dev/null)}"
+TOKEN="${COURTLISTENER_TOKEN:-$(bin/glaw config get courtlistener_token 2>/dev/null)}"
 AUTH=""; [ -n "$TOKEN" ] && AUTH="-H \"Authorization: Token $TOKEN\""
 ```
 No token? Skip to Step 4 (degraded WebFetch path).
@@ -110,13 +110,13 @@ eval curl -s $AUTH "'$BASE/recap/?docket_entry__docket=<docket_id>'"
 
 ### Step 5 — Save to the matter folder + index
 ```bash
-SLUG="$(~/.claude/skills/glaw/bin/glaw slug 2>/dev/null)"
-DIR="$(~/.claude/skills/glaw/bin/glaw home 2>/dev/null)/matters/$SLUG/records"
+SLUG="$(bin/glaw slug 2>/dev/null)"
+DIR="$(bin/glaw home 2>/dev/null)/matters/$SLUG/records"
 mkdir -p "$DIR"
 # write each pull to $DIR/<court>-<docket_no>-<kind>.json|.txt
 # then append the one-line index entry to $DIR/INDEX.md, e.g.:
 #   - 2026-06-04 | 11th Cir | 23-12345 | opinion | clusters/9988 | court-records/...txt
-~/.claude/skills/glaw/bin/glaw timeline-log records_pulled 2>/dev/null || true
+bin/glaw timeline-log records_pulled 2>/dev/null || true
 ```
 
 ## Deliverables

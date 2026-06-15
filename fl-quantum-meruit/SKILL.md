@@ -40,7 +40,7 @@ complaint, defer to that seat; this skill **produces the papers**.
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona & hard rules
@@ -77,9 +77,9 @@ Owner_Paid_GC:             yes/no/unknown   (Commerce gate — sub-vs-owner)
 ```
 Scaffold the intake and compute the money with the helper:
 ```bash
-~/.claude/skills/glaw/bin/glaw-qm intake
-~/.claude/skills/glaw/bin/glaw-qm damages --value 48500 --paid 0 --due 2024-09-01
-~/.claude/skills/glaw/bin/glaw-qm leverage --work-proof --accepted --writings --liquidated --solvent
+bin/glaw-qm intake
+bin/glaw-qm damages --value 48500 --paid 0 --due 2024-09-01
+bin/glaw-qm leverage --work-proof --accepted --writings --liquidated --solvent
 ```
 
 ## STEP 2 — OUTPUT MODULES (the full case file)
@@ -102,7 +102,7 @@ Generate from `templates/` in this folder, filling every `[BRACKET]` from intake
 
 **House writing standard (every module above).** After filling a template, run it through
 **`/glaw-legal-writing`** (the Legal Writing Master) and the gate
-`~/.claude/skills/glaw/bin/glaw-writing-check <doc>` — add `--motion` for the MSJ/motions and apply
+`bin/glaw-writing-check <doc>` — add `--motion` for the MSJ/motions and apply
 `lib/style/court-motion-style-sheet.md`. Clear the passive-voice / cliché / hedging / unsupported-
 assertion flags before the document reaches `/glaw-file`. Citation *accuracy* stays with
 `/glaw-legal-research`.
@@ -138,9 +138,9 @@ Mirrors the causes library for the DEFENSE: every Rule 1.110(d)/1.140(b) affirma
 common-law/statutory avoidance — what to show, who bears the burden, the authority, and the claims it
 defeats. Powers both the answer and the adversarial gate's FL Defense Counsel.
 ```bash
-~/.claude/skills/glaw/bin/glaw-fl-defense list                    # all 50
-~/.claude/skills/glaw/bin/glaw-fl-defense show "statute of frauds"
-~/.claude/skills/glaw/bin/glaw-fl-defense for "quantum meruit"    # the defenses that KILL a given claim
+bin/glaw-fl-defense list                    # all 50
+bin/glaw-fl-defense show "statute of frauds"
+bin/glaw-fl-defense for "quantum meruit"    # the defenses that KILL a given claim
 ```
 Answer template: `templates/defense/answer-affirmative-defenses.md` (answer + every affirmative
 defense + compulsory counterclaim). Index DB: `lib/fl-defenses-index.json`.
@@ -152,12 +152,12 @@ limitations, key defenses, and authority** (authored from the Florida Standard J
 statutes, and case law). Use it to pick and plead the right claim(s) and to anticipate the defenses.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw-fl-cause list                 # all 110 causes (category + SOL)
-~/.claude/skills/glaw/bin/glaw-fl-cause category tort-fraud  # one category
-~/.claude/skills/glaw/bin/glaw-fl-cause show "civil theft"   # elements + SOL + defenses + authority
-~/.claude/skills/glaw/bin/glaw-fl-cause search fiduciary     # find by name/element/defense
-~/.claude/skills/glaw/bin/glaw-fl-cause standards            # MTD / MSJ(1.510) / DV / JNOV / Daubert / punitive
-~/.claude/skills/glaw/bin/glaw-fl-cause sol 2                # SOL triage (2-yr: defamation, malpractice, wrongful death)
+bin/glaw-fl-cause list                 # all 110 causes (category + SOL)
+bin/glaw-fl-cause category tort-fraud  # one category
+bin/glaw-fl-cause show "civil theft"   # elements + SOL + defenses + authority
+bin/glaw-fl-cause search fiduciary     # find by name/element/defense
+bin/glaw-fl-cause standards            # MTD / MSJ(1.510) / DV / JNOV / Daubert / punitive
+bin/glaw-fl-cause sol 2                # SOL triage (2-yr: defamation, malpractice, wrongful death)
 ```
 **Templates** (`templates/causes/`): the common-causes catalog (pleadable count skeletons across
 contract/equity/fraud/business/tort/statutory), dedicated complaints (breach of contract, fraud,
@@ -174,10 +174,10 @@ and Procedure)** library: an index DB of all 36 chapters, a cause-of-action cata
 skeleton for every Title VI claim, a cross-action discovery set, a routing intake, and a subpoena pack.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw-fl-statute list            # every Title VI chapter
-~/.claude/skills/glaw/bin/glaw-fl-statute causes          # every cause of action / remedy / writ
-~/.claude/skills/glaw/bin/glaw-fl-statute chapter 78      # one chapter — causes, elements, sections
-~/.claude/skills/glaw/bin/glaw-fl-statute search "lien"   # search titles/causes/sections
+bin/glaw-fl-statute list            # every Title VI chapter
+bin/glaw-fl-statute causes          # every cause of action / remedy / writ
+bin/glaw-fl-statute chapter 78      # one chapter — causes, elements, sections
+bin/glaw-fl-statute search "lien"   # search titles/causes/sections
 ```
 | Need | File |
 |---|---|

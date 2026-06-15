@@ -33,17 +33,17 @@ It verifies what others drafted, and strikes what it cannot confirm.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` so a struck cite can be reassigned
+Read `lib/firm-roster.md` so a struck cite can be reassigned
 to the owning seat for a substitute.
 
 ## Step 0 — extract every citation first (eyecite)
 Don't rely on eyeballing the draft for citations — extract them deterministically
 with Free Law Project's eyecite, then verify each:
 ```bash
-~/.claude/skills/glaw/bin/glaw-cites <draft-file> --json
+bin/glaw-cites <draft-file> --json
 ```
 It returns every FullCaseCitation / ShortCaseCitation / Id / Supra / FullLawCitation
 (case name, reporter, volume, page, year, pin cite). Verify each row against primary
@@ -100,7 +100,7 @@ reporter source. If only a secondary source is available, mark the verification 
 Produce the deliverable table (below) and a one-line gate verdict. Record each row in the
 executable citation ledger:
 ```bash
-~/.claude/skills/glaw/bin/glaw-citation-gate record \
+bin/glaw-citation-gate record \
   --id C-0001 \
   --proposition "<proposition verified>" \
   --authority "<citation as drafted>" \
@@ -113,7 +113,7 @@ Report `CITATIONS: clean` only when zero items remain **struck** or unresolved.
 Any struck-and-unreplaced cite means the filing is blocked. Then run:
 
 ```bash
-~/.claude/skills/glaw/bin/glaw-citation-gate complete
+bin/glaw-citation-gate complete
 ```
 
 `glaw-citation-gate complete` logs `citations_verified` and `citation_gate_complete` only when

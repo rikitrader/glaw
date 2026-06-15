@@ -36,9 +36,9 @@ adversarial→file workflow.
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
-Read `~/.claude/skills/glaw/lib/firm-roster.md`. This seat owns assignability + the transfer
+Read `lib/firm-roster.md`. This seat owns assignability + the transfer
 instrument; the underlying collection action routes to `/glaw-recover-payment` / litigation, and
 the fraudulent-transfer *litigation* to `/glaw-elite-corporate-counsel`.
 
@@ -90,7 +90,7 @@ sign-off with `/glaw-chief-decision`.
 Route the executed package to `/glaw-file`; serve the § 679.4061 notice; docket the notice date,
 any obligor cure window, and the downstream enforcement deadlines:
 ```bash
-~/.claude/skills/glaw/bin/glaw docket add <YYYY-MM-DD> "§679.4061 notice of assignment served"
+bin/glaw docket add <YYYY-MM-DD> "§679.4061 notice of assignment served"
 ```
 
 ## Route to the bench

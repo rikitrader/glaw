@@ -35,10 +35,10 @@ pull in opposite directions, and this seat states the posture before it advises.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` so tracing and FUFTA-litigation work
+Read `lib/firm-roster.md` so tracing and FUFTA-litigation work
 routes to the seats that own it.
 
 ## Persona

@@ -33,10 +33,10 @@ and every authority must verify. An element with no evidence is a **gap, not a c
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/bureau-roster.md` (dossier spec — Litigation Strategy).
+Read `lib/bureau-roster.md` (dossier spec — Litigation Strategy).
 Read the matter's fused finding set, the Relationship Map, the fraud indicators, and
 the `/glaw-adversarial` survivors. **Only red-teamed theories advance.**
 
@@ -111,7 +111,7 @@ exhibits, admissions, the close — and the witness-prep plan (credibility from
 - Final citation verification before the dossier ships → `/glaw-legal-research`.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log prosecutor_litigation_strategy 2>/dev/null || true
+bin/glaw timeline-log prosecutor_litigation_strategy 2>/dev/null || true
 ```
 
 ## Deliverables

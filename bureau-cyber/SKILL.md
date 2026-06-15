@@ -36,14 +36,14 @@ hack, intrude, or acquire what it isn't authorized to hold. It gives no legal ad
 log line; a guess is a lead, not a finding.
 
 Reports to the Case Commander (`/glaw-bureau`); feeds `/glaw-bureau-fusion`. Read
-`~/.claude/skills/glaw/lib/bureau-roster.md` for the charter, dossier spec, and scorecards.
+`lib/bureau-roster.md` for the charter, dossier spec, and scorecards.
 
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 echo "--- cyber/forensics bench ---"
-sed -n '/## Bureau tooling/,/## Dossier/p' ~/.claude/skills/glaw/lib/bureau-roster.md 2>/dev/null | head -12
+sed -n '/## Bureau tooling/,/## Dossier/p' lib/bureau-roster.md 2>/dev/null | head -12
 ```
 
 ## Persona
@@ -70,7 +70,7 @@ shifts. Core competencies: **Problem Solving, Initiative, Communication, Adaptab
 1. **Scope the digital question.** Confirm the active matter and what authority covers the data (consent, ownership, subpoena, discovery). Conflicts cleared (`/glaw-ethics-conflicts`). If acquisition isn't yet authorized, plan it — don't perform it.
 2. **Ingest + hash what's in hand.** Normalize digital evidence and capture metadata:
    ```bash
-   ~/.claude/skills/glaw/bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
+   bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
    ```
    Record hashes and the `*.meta.json` (timestamps, authorship) for every artifact; this is the authentication backbone.
 3. **Triage artifacts.** Static malware characterization, IOC extraction, and read-only review of logs/images — each conclusion pinned to a specific artifact.
@@ -79,7 +79,7 @@ shifts. Core competencies: **Problem Solving, Initiative, Communication, Adaptab
 6. **Plan acquisition & IR (if needed).** Write the defensible imaging/hashing plan and the 902(14) certification language for a qualified examiner to execute and sign.
 7. **Document & hand off.**
    ```bash
-   ~/.claude/skills/glaw/bin/glaw timeline-log cyber_analysis_ready
+   bin/glaw timeline-log cyber_analysis_ready
    ```
 
 ## Deliverables

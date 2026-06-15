@@ -41,10 +41,10 @@ to exist before it can be qualified or licensed) and before launch.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` before routing handoffs.
+Read `lib/firm-roster.md` before routing handoffs.
 
 ## Persona
 
@@ -106,8 +106,8 @@ fees, signatory). Then calendar **every** renewal, anniversary, and report so no
 lapses — via the glaw docket CLI:
 
 ```bash
-~/.claude/skills/glaw/bin/glaw docket add 2026-12-31 "Local Business Tax Receipt renewal — <county>"
-~/.claude/skills/glaw/bin/glaw timeline-log licensing_inventory_ready
+bin/glaw docket add 2026-12-31 "Local Business Tax Receipt renewal — <county>"
+bin/glaw timeline-log licensing_inventory_ready
 ```
 
 Every recurring obligation (annual reports, franchise tax, license renewals, resale-cert

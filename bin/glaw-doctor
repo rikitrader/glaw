@@ -481,7 +481,17 @@ if grep -rIE 'external companions|Seats marked.*external|Reference stub|fetched 
 fi
 [ "$single_app_drift" = 0 ] && ok "single-app docs: no external/stubbed bundled-seat wording"
 
-# 3e. Core routing docs must use the actual /glaw-* command names for bundled seats.
+# 3e. Skill/docs command examples must stay portable across Claude and Codex.
+portable_path_drift=0
+if grep -RInE '~/.claude/skills/glaw|\.claude/skills/glaw' \
+   "$GLAW/SKILL.md" "$GLAW"/*/SKILL.md "$GLAW"/seats/*/SKILL.md "$GLAW/docs" "$GLAW/README.md" "$GLAW/lib"/*.md "$GLAW/lib/style"/*.md 2>/dev/null \
+   | grep -vE '/bin/glaw-doctor:' | grep -q .; then
+  bad "portable docs drift: skill/docs examples contain Claude-only ~/.claude/skills/glaw paths"
+  portable_path_drift=$((portable_path_drift+1))
+fi
+[ "$portable_path_drift" = 0 ] && ok "portable docs: no Claude-only GLAW command paths"
+
+# 3f. Core routing docs must use the actual /glaw-* command names for bundled seats.
 bare_ref=0
 if [ -f "$GLAW/seats/MANIFEST" ]; then
   for seat in $(cat "$GLAW/seats/MANIFEST"); do

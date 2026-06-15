@@ -35,9 +35,9 @@ expressly defers: FBAR, Form 8938, the §962 election, and the disclosure path f
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
-Read `~/.claude/skills/glaw/lib/firm-roster.md`. This seat owns the cross-border *computation and
+Read `lib/firm-roster.md`. This seat owns the cross-border *computation and
 information returns*; the *structure* belongs to `/glaw-international`, broad *planning* to
 `/glaw-tax-strategy`.
 
@@ -62,12 +62,12 @@ filing thresholds turn on it.
 ### 2 — Compute the income-tax inclusions (reuse the engines)
 Run the existing computation bins against the foreign entities' books:
 ```bash
-~/.claude/skills/glaw/bin/glaw-gilti ...          # GILTI §951A
-~/.claude/skills/glaw/bin/glaw-subpart-f ...      # Subpart F
-~/.claude/skills/glaw/bin/glaw-fdii ...           # FDII
-~/.claude/skills/glaw/bin/glaw-beat ...           # BEAT §59A
-~/.claude/skills/glaw/bin/glaw-sec163j ...        # §163(j)
-~/.claude/skills/glaw/bin/glaw-intl-forms ...     # 5471 / 5472 schedules
+bin/glaw-gilti ...          # GILTI §951A
+bin/glaw-subpart-f ...      # Subpart F
+bin/glaw-fdii ...           # FDII
+bin/glaw-beat ...           # BEAT §59A
+bin/glaw-sec163j ...        # §163(j)
+bin/glaw-intl-forms ...     # 5471 / 5472 schedules
 ```
 Tie the E&P and foreign-base-company income to the books via `/glaw-accounting`; route the broad
 treaty/withholding planning to `/glaw-tax-strategy`.
@@ -76,7 +76,7 @@ treaty/withholding planning to `/glaw-tax-strategy`.
 Compute the FBAR and Form 8938 thresholds and the §962 election flag — the layer that previously
 had no seat:
 ```bash
-~/.claude/skills/glaw/bin/glaw-fbar-8938 --max-aggregate <amt> --year-end-aggregate <amt> \
+bin/glaw-fbar-8938 --max-aggregate <amt> --year-end-aggregate <amt> \
   --status single|mfj --residence us|abroad --cfc-inclusion <GILTI/SubF inclusion>
 ```
 Add Form 8865 (foreign partnerships) and 8858 (disregarded entities) where the chart shows them.
@@ -103,12 +103,12 @@ international examiner** red-team — attacking the inclusion math, the 8938 dis
 ### 7 — Assemble, fill, and docket
 Route to `/glaw-draft`; fill staged IRS PDFs from the computed values:
 ```bash
-~/.claude/skills/glaw/bin/glaw-fill-form forms/f8938.pdf forms/f8938.data.json out/f8938-filled.pdf
+bin/glaw-fill-form forms/f8938.pdf forms/f8938.data.json out/f8938-filled.pdf
 ```
 Docket the deadlines — Form 8938/5471 with the income-tax return; **FBAR due 4/15 with automatic
 extension to 10/15** (FinCEN, filed separately):
 ```bash
-~/.claude/skills/glaw/bin/glaw docket add <YYYY-10-15> "FBAR (FinCEN 114) deadline"
+bin/glaw docket add <YYYY-10-15> "FBAR (FinCEN 114) deadline"
 ```
 
 ## Route to the bench

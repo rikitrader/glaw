@@ -46,7 +46,7 @@ the evidence will not carry.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -105,7 +105,7 @@ deliverable (make/don't-make memo, Wells submission, or both). Conflicts cleared
 Normalize the Wells Notice, the underlying filings, blotters, transcripts, and
 communications to text + metadata:
 ```bash
-~/.claude/skills/glaw/bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
+bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
 ```
 Reconstruct the staff's proof grid as the staff would build it (route to
 `/glaw-sec-enforcement` to model the offensive case). Pull issuer filings from EDGAR via
@@ -136,7 +136,7 @@ of scienter · reliance/good-faith · procedural & policy arguments · Seaboard 
 proportionality/remedies · conclusion: do not recommend) and the **make/don't-make
 strategic memo**.
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log sec_wells_submission 2>/dev/null || true
+bin/glaw timeline-log sec_wells_submission 2>/dev/null || true
 ```
 Hand findings up to `/glaw-strategy` and to `/glaw-draft` / `/glaw-legal-writing` for
 final form and filing posture.

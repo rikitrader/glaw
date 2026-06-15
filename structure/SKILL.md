@@ -33,10 +33,10 @@ does not verify citations (`/glaw-legal-research` at the file gate).
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` before routing. Read
+Read `lib/firm-roster.md` before routing. Read
 `~/.glaw/matters/<slug>/strategy-memo.md` — structure executes the chosen direction.
 
 ## Workflow
@@ -102,8 +102,8 @@ Write the **structure memo** to `~/.glaw/matters/<slug>/structure-memo.md`:
 Then advance:
 
 ```bash
-~/.claude/skills/glaw/bin/glaw stage draft
-~/.claude/skills/glaw/bin/glaw timeline-log structure_done
+bin/glaw stage draft
+bin/glaw timeline-log structure_done
 ```
 
 Hand off to `/glaw-draft`. Every legal proposition here is flagged for

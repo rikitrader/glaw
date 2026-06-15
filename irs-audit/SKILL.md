@@ -32,7 +32,7 @@ general ledger** so nothing is fabricated.
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Workflow
@@ -41,7 +41,7 @@ bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATT
 Identify the notice type and the deadline it starts (IDR response, 30-day protest, 90-day Tax
 Court petition). Compute the assessment + refund statutes so you know whether the year is even open:
 ```bash
-~/.claude/skills/glaw/bin/glaw-sol --due-date <YYYY-04-15> --filed-date <YYYY-MM-DD> --as-of <today>
+bin/glaw-sol --due-date <YYYY-04-15> --filed-date <YYYY-MM-DD> --as-of <today>
 ```
 A closed assessment year (`EXPIRED`) is a complete defense — raise it first. Fraud or a non-filed
 year is open indefinitely; flag the criminal-exposure question for `/glaw-investigations` (eggshell).
@@ -50,14 +50,14 @@ year is open indefinitely; flag the criminal-exposure question for `/glaw-invest
 Pull what the IRS actually has on record before responding — assessed tax, withholding, payments,
 penalties, interest, and the third-party income reported to it:
 ```bash
-~/.claude/skills/glaw/bin/glaw-transcript --account <account.json> --wage-income <wi.json>
+bin/glaw-transcript --account <account.json> --wage-income <wi.json>
 ```
 
 ### 3 — Substantiate every challenged item from the general ledger
 For each account under exam, produce the supporting posted entries — each carrying its
 tamper-evident hash, so the substantiation ties to the books and not to a story:
 ```bash
-~/.claude/skills/glaw/bin/glaw-audit-package --book <book> --accounts Expenses:Meals,Expenses:Travel \
+bin/glaw-audit-package --book <book> --accounts Expenses:Meals,Expenses:Travel \
   --form4549 <4549.json>     # recompute the agent's proposed adjustments
 ```
 Hand the forensic-reconstruction edge cases to `/glaw-financial-forensics`; route the underlying
@@ -66,7 +66,7 @@ numbers to `/glaw-accounting` and tie the provision out with `/glaw-tax-provisio
 ### 4 — Penalty abatement
 Test First-Time Abatement, then reasonable cause, and quantify the abatable penalty (Form 843):
 ```bash
-~/.claude/skills/glaw/bin/glaw-abatement --penalty <amt> [--factors death_or_serious_illness,reliance_on_tax_professional]
+bin/glaw-abatement --penalty <amt> [--factors death_or_serious_illness,reliance_on_tax_professional]
 ```
 
 ### 5 — Build the response package (lawyer)
@@ -82,9 +82,9 @@ filed. Record the sign-off with `/glaw-chief-decision`.
 
 ### 7 — Docket every deadline
 ```bash
-~/.claude/skills/glaw/bin/glaw docket add <YYYY-MM-DD> "IDR response due"
-~/.claude/skills/glaw/bin/glaw docket add <YYYY-MM-DD> "30-day protest deadline"
-~/.claude/skills/glaw/bin/glaw docket add <YYYY-MM-DD> "90-day Tax Court petition (jurisdictional)"
+bin/glaw docket add <YYYY-MM-DD> "IDR response due"
+bin/glaw docket add <YYYY-MM-DD> "30-day protest deadline"
+bin/glaw docket add <YYYY-MM-DD> "90-day Tax Court petition (jurisdictional)"
 ```
 
 ## Route to the bench

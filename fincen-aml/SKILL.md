@@ -36,7 +36,7 @@ record; an unsupported link is a **lead**, not a finding.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -63,7 +63,7 @@ cannot evidence.
 ## Workflow
 
 1. **Ingest and index.** Normalize statements, registry records, contracts:
-   `~/.claude/skills/glaw/bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted`.
+   `bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted`.
    Pull entity/registry and exempt-org data (`bin/glaw-exempt-org`) for ownership.
 2. **Reconstruct the numbers.** Hand reconstruction and reconciliation to
    `glaw-financial-forensics` + `/glaw-accounting`. The AML case rests on verified figures,
@@ -81,7 +81,7 @@ cannot evidence.
 7. **Route doctrine and hand up.** Send BSA/AML doctrine to `/glaw-regulatory-aml`;
    hand the case file to `/glaw-bureau-fusion`.
    ```bash
-   ~/.claude/skills/glaw/bin/glaw timeline-log fincen_aml_case_file_ready
+   bin/glaw timeline-log fincen_aml_case_file_ready
    ```
 
 ## Deliverables

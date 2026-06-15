@@ -23,14 +23,14 @@ and makes the best past trajectories retrievable so future runs start smarter.
 
 ## Record a trajectory (distillation)
 ```bash
-L=~/.claude/skills/glaw/bin/glaw-learnings
+L=bin/glaw-learnings
 # the verdict + each new defect from the run
 python3 "$L" add '{"type":"episode","scope":"firm","error_class":"<position>","where":"<matter/doc>","wrong":"<verdict+top risk>","fix":"<what resolved it>","confidence":<1-10>}'
-python3 ~/.claude/skills/glaw/bin/glaw-reflect --apply   # synthesize higher-level patterns
+python3 bin/glaw-reflect --apply   # synthesize higher-level patterns
 ```
 
 ## Recall (outcome-aware retrieval)
-1. **Always** (keyword + importance): `python3 ~/.claude/skills/glaw/bin/glaw-learnings preflight [matter]`
+1. **Always** (keyword + importance): `python3 bin/glaw-learnings preflight [matter]`
    — ranks by confidence, meta-rules first.
 2. **Semantic (when Qdrant is up):** use the qdrant MCP (`mcp__qdrant__qdrant-find`) to recall
    GLAW memories relevant to the positions under review, even when worded differently. Start Qdrant

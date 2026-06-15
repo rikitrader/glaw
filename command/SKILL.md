@@ -20,12 +20,12 @@ apparatus. It runs a **triage**, always returns a **briefing**, and escalates to
 **full dossier only if red flags clear the threshold** — so cheap cases stay cheap and
 real cases get the full workup. It fabricates nothing; every dot traces to evidence.
 
-Read `~/.claude/skills/glaw/lib/bureau-roster.md` (charter, dossier spec, scorecards).
+Read `lib/bureau-roster.md` (charter, dossier spec, scorecards).
 
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 echo "--- bureaus on call ---"; echo "FBI:/glaw-bureau  FinCEN:/glaw-fincen  CIA:/glaw-intel  SEC:/glaw-sec  IRS-CI:financial-forensics  RedTeam:/glaw-adversarial"
 ```
 
@@ -87,7 +87,7 @@ re-rated after the red team. A theory the firm's own red team kills is struck.
   Timeline · Risk Matrix · Fraud Indicators · Litigation Support Package ·
   Adversarial Findings · Strategic Recommendations. Stamp the UPL footer.
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log command_complete '"escalated":true_or_false,"fraud_tier":"..."'
+bin/glaw timeline-log command_complete '"escalated":true_or_false,"fraud_tier":"..."'
 ```
 Hand to `/glaw-draft` (complaint), `/glaw-file` (referral packet), or `/glaw-strategy`.
 

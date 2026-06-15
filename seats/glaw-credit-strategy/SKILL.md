@@ -36,7 +36,7 @@ Read these before drafting — they hold the law, forms, and substantiation alre
 - R&D credit §41 + §174A (incl. Rev. Proc. 2025-28, $500k offset) — `…/20-rnd-credit-section41-claim-kit.md`
 - Elections & deadlines matrix (+ FL F-1120) — `…/21-tax-elections-and-deadlines-matrix.md`
 - IRS/tax advantages overview — `…/01-deal-thesis-and-IRS-advantages.md`
-- 83(b)/Form 15620 fill-library — `…/14-*.md`, `…/14b-form15620-library.json`; deadline calc: `~/.claude/skills/glaw-83b-election/bin/deadline.py`
+- 83(b)/Form 15620 fill-library — `…/14-*.md`, `…/14b-form15620-library.json`; deadline calc: `seats/glaw-83b-election/bin/deadline.py`
 > If the matter differs (LLC, S-corp, fund), adapt — see `…/12-scorp-llc-compliance-guide.md`. Always
 > reconcile post-OBBBA figures against current IRS guidance before relying (flag "VERIFY").
 
@@ -67,7 +67,7 @@ only; a licensed attorney/CPA reviews, signs, and files (the agent never transmi
 2. **Intake the company facts** (AskUserQuestion if missing): entity type + state, fiscal year, founders & equity/vesting, IP contributed, gross assets, gross receipts & age (for §41 small-business test), payroll/engineering headcount, financing stage, any foreign owners.
 3. Read the KB docs above; map each benefit to the company's facts (qualifies / conditionally / no).
 4. Draft the 7-section dossier. Pull deadlines from doc 21 and compute concrete dates (use `deadline.py` for 83(b)).
-5. **Deliver** as Markdown, and offer to publish: Google Docs (Helvetica/single-spaced) + a deadline Google Sheet via the uploader in `~/.claude/skills/glaw-83b-election/bin/upload_to_drive.py`, and to calendar deadlines with `glaw docket add`.
+5. **Deliver** as Markdown, and offer to publish: Google Docs (Helvetica/single-spaced) + a deadline Google Sheet via the uploader in `seats/glaw-83b-election/bin/upload_to_drive.py`, and to calendar deadlines with `glaw docket add`.
 6. Route document drafting to `/glaw-draft`; route deep accounting/financial-model work to `/glaw-accounting`; QSBS/securities questions to `glaw-pe-vc-counsel`; keep the UPL footer on every deliverable.
 
 ## Gates

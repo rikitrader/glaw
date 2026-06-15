@@ -44,9 +44,9 @@ case is built to survive that lawyer before it is ever filed.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 echo "--- investigations bench ---"
-sed -n '/Investigations & White-Collar Division/,/^$/p' ~/.claude/skills/glaw/lib/firm-roster.md 2>/dev/null | head -20
+sed -n '/Investigations & White-Collar Division/,/^$/p' lib/firm-roster.md 2>/dev/null | head -20
 ```
 
 ## The investigations bench (route to these)
@@ -69,7 +69,7 @@ corporate filings, court records, returns. Note what's missing and how to get it
 
 **Ingest first.** Normalize the whole evidence set to text + metadata before reading:
 ```bash
-~/.claude/skills/glaw/bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
+bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
 ```
 PDFs → `glaw-opendataloader-pdf`; email `.eml/.msg/.pst`, Office, images+OCR, zip → Apache
 Tika. Grep the `*.txt` to connect dots fast; mine the `*.meta.json` (created/modified
@@ -109,7 +109,7 @@ strength → evidence still needed. Then route the deliverable:
 Verify every cited statute through `/glaw-legal-research` before the package leaves.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log investigation_package_ready
+bin/glaw timeline-log investigation_package_ready
 ```
 
 ## Deliverables

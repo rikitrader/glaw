@@ -37,7 +37,7 @@ record line; an unsupported pattern is a **lead**, not a finding.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -64,7 +64,7 @@ transaction that supports every flag.
 ## Workflow
 
 1. **Ingest the record.** Normalize statements, ledgers, wire logs to text + metadata:
-   `~/.claude/skills/glaw/bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted`.
+   `bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted`.
    Establish the customer's expected/declared profile as the behavioral baseline.
 2. **Get the actual numbers.** Hand reconstruction/normalization to `glaw-financial-forensics`
    + `/glaw-accounting` — the SAR agent reads *patterns*, not raw arithmetic. Reconcile
@@ -83,7 +83,7 @@ transaction that supports every flag.
 7. **Route doctrine and hand up.** Send BSA/SAR doctrine questions to `/glaw-regulatory-aml`;
    hand the analysis to `/glaw-bureau-fusion` for cross-source correlation.
    ```bash
-   ~/.claude/skills/glaw/bin/glaw timeline-log fincen_sar_analysis_ready
+   bin/glaw timeline-log fincen_sar_analysis_ready
    ```
 
 ## Deliverables

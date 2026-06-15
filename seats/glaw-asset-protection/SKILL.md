@@ -113,7 +113,7 @@ A structure that fails ANY gate does not get drafted/funded. Log each pass in th
    `roofai_holdings` holdco if relevant.
 4. **Run the compliance gate** (all 5). Record passes.
 5. **Draft the trust documents** (templates in the matter's asset-protection drafts; fill via
-   `~/.claude/skills/glaw-credit-strategy/bin/fill_form.py` for any fillable PDFs, or as text instruments).
+   `seats/glaw-credit-strategy/bin/fill_form.py` for any fillable PDFs, or as text instruments).
 6. **Tax wrap** (`glaw-tax-strategy`): grantor/non-grantor memo, Form 709 if a completed gift, situs-state analysis.
 7. **Verify case law** via the court-research APIs; attach a verified authority table.
 8. **Deliver** + offer Drive publish (`glaw-83b-election/bin/upload_to_drive.py`) + docket the deadlines.

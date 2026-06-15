@@ -35,7 +35,7 @@ control accounts every period.
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Workflow
@@ -47,7 +47,7 @@ owed to us; payables = money we owe.
 ### 2 — Age it (deterministic)
 ```bash
 echo '[{"party":"ABC Supply","amount":7800,"date":"2026-01-05"},{"party":"ABC Supply","amount":4200,"date":"2025-11-10"}]' \
-  | ~/.claude/skills/glaw/bin/glaw-aging - --as-of 2026-02-01
+  | bin/glaw-aging - --as-of 2026-02-01
 ```
 Buckets: Current (0-30) / 31-60 / 61-90 / 90+, per party and in total, with the overdue
 (31+) figure called out.

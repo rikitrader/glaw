@@ -22,7 +22,7 @@ Each persona attacks a different failure mode; run them through `/glaw-consensus
 2. **Audit-Defense Appraiser** — would THIS memo survive a Big-4 / PCAOB review? DLOM method (Finnerty/protective-put/restricted-stock study), sigma benchmarking, breakpoint/waterfall correctness.
 3. **VC Diligence Analyst** — does the implied common/preferred ratio and EV match what a real investor would underwrite? Backsolve integrity vs the last round price.
 4. **Litigation Damages Expert** — would this valuation hold under cross-examination in a dispute (409A-driven repricing, 409A penalty litigation, M&A earn-out fight)?
-5. **OPM Quant** — re-runs `~/.claude/skills/glaw-valuation-409a/bin/opm.py` with independent sigma/DLOM/T to expose the FMV's sensitivity (the swing = the attack).
+5. **OPM Quant** — re-runs `seats/glaw-valuation-409a/bin/opm.py` with independent sigma/DLOM/T to expose the FMV's sensitivity (the swing = the attack).
 Invent an extra bespoke persona if a deal-specific angle is missed (e.g. IP-heavy → IP-licensing economist).
 
 ## Attack surface (press EVERY one; ground each in valuation doctrine, never invent)
@@ -39,7 +39,7 @@ Invent an extra bespoke persona if a deal-specific angle is missed (e.g. IP-heav
 11. **§409A safe-harbor integrity** — does this even qualify for the independent-appraisal presumption, or is it a board valuation dressed up? The presumption is REBUTTABLE — what rebuts it here?
 
 ## Method
-1. Pre-flight the firm memory: `python3 ~/.claude/skills/glaw/bin/glaw-learnings preflight` (pre-empt known cite/standard defects, e.g. the 409A independent-appraisal vs illiquid-startup standard).
+1. Pre-flight the firm memory: `python3 bin/glaw-learnings preflight` (pre-empt known cite/standard defects, e.g. the 409A independent-appraisal vs illiquid-startup standard).
 2. Read the draft memo + re-run `bin/opm.py` with the adversary's OWN sigma/DLOM/T to show how sensitive the FMV is (sensitivity analysis = the attack).
 3. For each surviving attack: state theory + severity (critical/high/medium/low) + the specific fix.
 4. Score defensibility 0-10 and give a verdict: DEFENSIBLE (≥8, no surviving critical/high) or NEEDS-WORK.
@@ -68,8 +68,8 @@ Chief approval: GRANTED only when every Q has an answer + fix and no surviving c
 ```
 After the Chief approves, persist the learnings so future valuations pre-empt the same attacks:
 ```bash
-python3 ~/.claude/skills/glaw/bin/glaw-learnings add '{"type":"knowledge","scope":"firm","error_class":"valuation-<slug>","where":"409A memo","wrong":"<attack>","fix":"<answer/fix>","confidence":8}'
-python3 ~/.claude/skills/glaw/bin/glaw-reflect --apply
+python3 bin/glaw-learnings add '{"type":"knowledge","scope":"firm","error_class":"valuation-<slug>","where":"409A memo","wrong":"<attack>","fix":"<answer/fix>","confidence":8}'
+python3 bin/glaw-reflect --apply
 ```
 
 ## Gates

@@ -36,9 +36,9 @@ here).
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
-Read `~/.claude/skills/glaw/lib/firm-roster.md` so the trial record, the substantive arguments, and
+Read `lib/firm-roster.md` so the trial record, the substantive arguments, and
 citation verification route to the seats that own them.
 
 ## Persona
@@ -59,7 +59,7 @@ certiorari) and compute the **notice-of-appeal deadline** — generally 30 days 
 (Fla. R. App. P. 9.110) / entry (Fed. R. App. P. 4); shortened/extended by post-trial motions that
 toll it. Calendar it as jurisdictional:
 ```bash
-~/.claude/skills/glaw/bin/glaw docket add <YYYY-MM-DD> "Notice of appeal — JURISDICTIONAL (30 days)"
+bin/glaw docket add <YYYY-MM-DD> "Notice of appeal — JURISDICTIONAL (30 days)"
 ```
 Verify finality and, for non-final orders, the specific basis for interlocutory/certiorari review.
 

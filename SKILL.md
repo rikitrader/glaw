@@ -39,12 +39,12 @@ attorney to review, sign, and file.** The UPL guardrail lives in `/glaw-ethics-c
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 echo "--- roster ---"
-sed -n '/## Matter pipeline/,/## Routing rule/p' ~/.claude/skills/glaw/lib/firm-roster.md 2>/dev/null | head -40
+sed -n '/## Matter pipeline/,/## Routing rule/p' lib/firm-roster.md 2>/dev/null | head -40
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` in full before assigning any seat.
+Read `lib/firm-roster.md` in full before assigning any seat.
 
 ## The pipeline
 
@@ -75,7 +75,7 @@ and records the final Council decision through `glaw-chief-decision`. No matter 
 1. Run the preamble. If `ACTIVE_MATTER: none`, ask the user what matter to open
    (name + one-line goal), then:
    ```bash
-   ~/.claude/skills/glaw/bin/glaw matter new "<matter name>"
+   bin/glaw matter new "<matter name>"
    ```
 2. If a matter is active, confirm it's the one the user means. To switch:
    `glaw matter use <slug>`.
@@ -102,7 +102,7 @@ mirrors a real firm: you cannot open the file until GC clears it.
 The executable gate is:
 
 ```bash
-~/.claude/skills/glaw/bin/glaw-ethics complete
+bin/glaw-ethics complete
 ```
 
 That command logs `conflicts_cleared` only after conflicts, engagement, responsible reviewer, and
@@ -128,7 +128,7 @@ position whose authority cannot be verified, does not get filed.
 Record the executable adversarial gate with:
 
 ```bash
-~/.claude/skills/glaw/bin/glaw-adversarial complete --profile auto
+bin/glaw-adversarial complete --profile auto
 ```
 
 That command logs `adversarial_done` only after every required government/regulatory/litigation
@@ -138,10 +138,10 @@ Then run the Chief/Council decision. The Chief routes any red flags back to the 
 department until the agents agree on a final report/outcome:
 
 ```bash
-~/.claude/skills/glaw/bin/glaw-red-flags complete
-~/.claude/skills/glaw/bin/glaw-council complete --profile auto
-~/.claude/skills/glaw/bin/glaw-final-packet build --profile auto
-~/.claude/skills/glaw/bin/glaw-chief-decision \
+bin/glaw-red-flags complete
+bin/glaw-council complete --profile auto
+bin/glaw-final-packet build --profile auto
+bin/glaw-chief-decision \
   --chief "GLAW Chief Counsel" \
   --decision "PROCEED" \
   --risks "<surviving red flags or none>" \

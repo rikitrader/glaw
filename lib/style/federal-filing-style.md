@@ -82,7 +82,7 @@ Upgrade to SCOTUS-level precision; RICO / fraud / mandamus structure; Rule 12(b)
 framing; integrated evidentiary exhibits (Ex. A, Ex. B, …).
 
 ## Enforcement
-Run before filing — `~/.claude/skills/glaw/bin/glaw-writing-check <doc> --federal` checks the caption,
+Run before filing — `bin/glaw-writing-check <doc> --federal` checks the caption,
 the six Roman-numeral sections, the signature block, the Case No. line, and the prose rules. Clear
 every flag. The `/glaw-file` hard pre-check refuses to assemble a federal filing that has not cleared
 this directive.

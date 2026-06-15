@@ -35,10 +35,10 @@ the should-we-actually-file-this judgment routes to `glaw-federal-trial-counsel`
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` before routing. Read the matter's
+Read `lib/firm-roster.md` before routing. Read the matter's
 `strategy-memo.md` and the pleadings already in `drafts/` — the motion executes the
 case theory; it does not re-litigate strategy.
 
@@ -121,12 +121,12 @@ IRAC/CRAC. State the standard honestly. Draft the proposed order and certificate
   COMES-NOW opening, topic-sentence-first paragraphs, Rule→Authority→Application→Conclusion,
   15–25-word sentences (40 max), the prohibited-phrase list, and a specific WHEREFORE that
   matches the argument.
-- **Deterministic QC gate (run before handoff):** `~/.claude/skills/glaw/bin/glaw-writing-check
+- **Deterministic QC gate (run before handoff):** `bin/glaw-writing-check
   <motion.md> --motion` — flags passive voice, clichés, hedging, over-long sentences, missing
   motion sections, and any legal assertion lacking a citation. Clear the flags before `/glaw-file`.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log motion_drafted 2>/dev/null || true
+bin/glaw timeline-log motion_drafted 2>/dev/null || true
 ```
 
 ## Deliverables

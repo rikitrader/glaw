@@ -49,7 +49,7 @@ one assumed.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -107,7 +107,7 @@ first (`/glaw-ethics-conflicts`).
 Normalize the case record, the expert's worksheets, and the underlying data to
 text + metadata:
 ```bash
-~/.claude/skills/glaw/bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
+bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
 ```
 Build the "facts or data considered" index — the Rule 26(a)(2)(B)(ii) list — as you go.
 
@@ -136,7 +136,7 @@ Verify every legal citation (`/glaw-legal-research`; extract cites with `bin/gla
 and confirm each numeric input traces to its source. Hand the prose to
 `/glaw-legal-writing` for the final report.
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log expert_report_assembled 2>/dev/null || true
+bin/glaw timeline-log expert_report_assembled 2>/dev/null || true
 ```
 Hand the package up to `/glaw-draft` / `/glaw-strategy` for the disclosure and the
 expert's deposition prep.

@@ -43,12 +43,12 @@ attack. Zero fabricated figures — every line traces to a source document.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 echo "--- accounting bench ---"
-sed -n '/Accounting & Finance Division/,/^$/p' ~/.claude/skills/glaw/lib/firm-roster.md 2>/dev/null | head -20
+sed -n '/Accounting & Finance Division/,/^$/p' lib/firm-roster.md 2>/dev/null | head -20
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` before assigning a seat.
+Read `lib/firm-roster.md` before assigning a seat.
 
 ## The accounting bench (route to these)
 
@@ -163,7 +163,7 @@ Package the numbers for the requesting stage:
 - to `/glaw-adversarial` — so the IRS-examiner and SEC-reviewer lenses have real numbers to attack
 
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log accounting_package_ready
+bin/glaw timeline-log accounting_package_ready
 ```
 
 ## Deliverables

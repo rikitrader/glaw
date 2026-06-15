@@ -40,7 +40,7 @@ balance "to be explained later."
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Workflow
@@ -57,8 +57,8 @@ line so nothing is collected twice.
 
 ### 2 — Find the defects before the auditor does
 ```bash
-~/.claude/skills/glaw/bin/glaw-books-doctor --book <book> --as-of 2026-12-31   # health scan
-~/.claude/skills/glaw/bin/glaw-ledger --book <book> balances --as-of 2026-12-31  # trial balance
+bin/glaw-books-doctor --book <book> --as-of 2026-12-31   # health scan
+bin/glaw-ledger --book <book> balances --as-of 2026-12-31  # trial balance
 ```
 Run `/glaw-books-doctor` for the integrity sweep (out-of-balance entries, suspense and
 Uncategorized leakage, stale reconciling items) and a `/glaw-ledger audit` pass to confirm the

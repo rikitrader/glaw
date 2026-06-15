@@ -48,7 +48,7 @@ corrupt intent and knowledge are argued from the record, not assumed.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -108,7 +108,7 @@ and the deliverable (risk assessment, remediation plan, or both). Conflicts clea
 Normalize payment records, ledgers, contracts, intermediary agreements, and communications
 to text + metadata:
 ```bash
-~/.claude/skills/glaw/bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
+bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
 ```
 Pull issuer filings and any prior disclosures from EDGAR (route to `/glaw-sec-disclosure`).
 Build the payment/exhibit index.
@@ -139,7 +139,7 @@ the **FCPA risk assessment** (facts · anti-bribery exposure · accounting expos
 third-party risk · knowledge analysis · remedies · self-disclosure posture) and the
 **remediation plan**.
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log fcpa_risk_assessment 2>/dev/null || true
+bin/glaw timeline-log fcpa_risk_assessment 2>/dev/null || true
 ```
 Hand findings up to `/glaw-bureau-fusion` (link map) and to `/glaw-draft` /
 `/glaw-strategy` for any disclosure or remediation filing.

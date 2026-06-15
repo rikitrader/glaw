@@ -37,7 +37,7 @@ can only grind to DRAFTING-CLEAN, never BULLETPROOF — so running it wastes bud
 
 **Before EVERY launch — the orchestrator (and any caller) MUST run, and gate on, this zero-agent check:**
 ```bash
-python3 ~/.claude/skills/glaw/bin/matter-ops/facts_validate.py <matter-slug>   # exit 0 ONLY if LAUNCH_AUTHORIZED
+python3 bin/matter-ops/facts_validate.py <matter-slug>   # exit 0 ONLY if LAUNCH_AUTHORIZED
 ```
 - exit 0 / `LAUNCH_STATUS: LAUNCH_AUTHORIZED` → you MAY call `Workflow(...)`. Then **stay with the run until it reports** BULLETPROOF / BLOCKED / FAILED.
 - any other status (`FACT_INCOMPLETE` / `FACT_VALIDATION_PENDING` / `FACT_CONFLICT`) → **DENIED.** Do NOT launch. Enter **autonomous recovery**: gather + verify the missing facts (`facts_gate.py set …` / drafts/32 intake), re-run the guard after each new fact, and only launch when it flips to LAUNCH_AUTHORIZED.

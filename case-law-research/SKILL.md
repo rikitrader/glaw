@@ -33,10 +33,10 @@ it does not cite. It hunts primary sources and hands the candidates to the verif
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` so domain-specific issues (tax,
+Read `lib/firm-roster.md` so domain-specific issues (tax,
 securities, bankruptcy, employment) route to the owning seat for the substantive
 position, while this seat supplies the authority underneath it.
 
@@ -90,10 +90,10 @@ case) → Key authorities (cite, court, year, one-line holding, weight, treatmen
 Application** to the matter's facts. Keep the on-point cases; drop the merely
 adjacent. Save it to the matter folder:
 ```bash
-SLUG="$(~/.claude/skills/glaw/bin/glaw slug 2>/dev/null)"
-DIR="$(~/.claude/skills/glaw/bin/glaw home 2>/dev/null)/matters/$SLUG"
+SLUG="$(bin/glaw slug 2>/dev/null)"
+DIR="$(bin/glaw home 2>/dev/null)/matters/$SLUG"
 # write the memo to $DIR/authority-memo.md, then:
-~/.claude/skills/glaw/bin/glaw timeline-log authority_researched 2>/dev/null || true
+bin/glaw timeline-log authority_researched 2>/dev/null || true
 ```
 
 ### Step 5 — Hand the candidates to verification

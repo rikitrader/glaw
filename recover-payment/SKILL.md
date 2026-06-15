@@ -47,10 +47,10 @@ litigation track from `strategy` through `file` and `docket`.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` before routing veil-piercing,
+Read `lib/firm-roster.md` before routing veil-piercing,
 fraud, real-estate, or tax pieces to their owning seats.
 
 ## Persona
@@ -100,7 +100,7 @@ paid, what remains, and **every document** (contract, change orders, invoices,
 texts/emails, photos, lien papers). Then quantify the demand:
 
 ```bash
-~/.claude/skills/glaw/bin/glaw-recover assess \
+bin/glaw-recover assess \
   --principal 48500 --late-fees 1200 --due 2024-09-01
 ```
 Returns principal + Florida § 55.03 prejudgment interest + total demand. **Verify
@@ -121,7 +121,7 @@ lien/bond/guarantor routes over a bare in-personam suit.
 Score the counts from the established facts:
 
 ```bash
-~/.claude/skills/glaw/bin/glaw-recover claims \
+bin/glaw-recover claims \
   --oral --performed --accepted --benefited --unpaid --invoices --silence --real-property
 ```
 Use the flags that match the facts (`--written/--oral/--performed/--accepted/
@@ -131,7 +131,7 @@ express-contract bar on the equitable counts.
 
 ### Step 4 — Deadlines (run early, re-run at file)
 ```bash
-~/.claude/skills/glaw/bin/glaw-recover deadlines \
+bin/glaw-recover deadlines \
   --accrued 2024-09-01 --first-work 2024-06-15 --last-work 2024-08-20
 ```
 Limitations clocks (§ 95.11) + construction-lien clocks (**NTO 45d / Claim of Lien
@@ -189,9 +189,9 @@ and a frank issue brief, because the law here is **not** automatically on the su
 side.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw-recover-research brief      # the issue + lead authority
-~/.claude/skills/glaw/bin/glaw-recover-research queries    # curated CL/Scholar search strings
-~/.claude/skills/glaw/bin/glaw-recover-research search "<query>" --court fla,fladistctapp
+bin/glaw-recover-research brief      # the issue + lead authority
+bin/glaw-recover-research queries    # curated CL/Scholar search strings
+bin/glaw-recover-research search "<query>" --court fla,fladistctapp
 ```
 
 **The dispositive fact — establish it first: *has the owner already paid the GC for

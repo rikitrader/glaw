@@ -39,9 +39,9 @@ variance. Every adjusting entry is sourced; every number traces to a document.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 echo "--- accounting bench ---"
-sed -n '/Accounting & Finance Division/,/^$/p' ~/.claude/skills/glaw/lib/firm-roster.md 2>/dev/null | head -14
+sed -n '/Accounting & Finance Division/,/^$/p' lib/firm-roster.md 2>/dev/null | head -14
 ```
 
 ## The close pipeline (hard gates ⛔)
@@ -56,7 +56,7 @@ sed -n '/Accounting & Finance Division/,/^$/p' ~/.claude/skills/glaw/lib/firm-ro
 ### 1 — Ingest
 Pull every bank/card/processor statement for the period into the ledger:
 ```bash
-~/.claude/skills/glaw/bin/glaw-bank-ingest <statements-dir> --pattern '**/*' \
+bin/glaw-bank-ingest <statements-dir> --pattern '**/*' \
   --matter <slug> --chart <fund|roofing|personal> --open <prior-close> --close <bank-close> \
   --format json > /tmp/close-ledger.json
 ```
@@ -65,7 +65,7 @@ Route messy/edge formats through `/glaw-bookkeeping`.
 ### 2 — Reconcile  ⛔ (must reconcile or explain every item)
 Line-match the books against the bank statement; surface outstanding and bank-only items:
 ```bash
-~/.claude/skills/glaw/bin/glaw-bank-rec --books <books.json> --bank <bank-statement> --format json
+bin/glaw-bank-rec --books <books.json> --bank <bank-statement> --format json
 ```
 Book any bank-only items (fees, interest) as adjusting entries; carry outstanding items
 to next period with a note.
@@ -80,7 +80,7 @@ Each adjusting JE is appended to the ledger with a source note.
 ### 4 — Control gate  ⛔ BOOKS-DOCTOR (no close without it)
 The period **cannot close** until the books are bulletproof:
 ```bash
-~/.claude/skills/glaw/bin/glaw-books-doctor /tmp/close-ledger.json --rec <bank_rec.json>
+bin/glaw-books-doctor /tmp/close-ledger.json --rec <bank_rec.json>
 ```
 Exit 0 = TB balances, Assets==Liab+Equity, Golden Rule holds, classified, cash≥0, dedup
 intact, no anomalies, reconciled. **Any failure blocks the close** — fix and re-run.
@@ -88,19 +88,19 @@ intact, no anomalies, reconciled. **Any failure blocks the close** — fix and r
 ### 5 — Statements
 Render the period financials:
 ```bash
-~/.claude/skills/glaw/bin/glaw-statements /tmp/close-ledger.json --format text
+bin/glaw-statements /tmp/close-ledger.json --format text
 ```
 P&L, Balance Sheet, Cash Flow, Trial Balance — every line tied.
 
 ### 6 — Review & sign-off  ⛔
 Record the controller/Chief decision (PROCEED / WITH-FIXES / WITH-CONDITIONS):
 ```bash
-~/.claude/skills/glaw/bin/glaw-chief-decision ...   # the sign-off card
+bin/glaw-chief-decision ...   # the sign-off card
 ```
 
 ### 7 — Lock the period
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log period_close_locked_<YYYY-MM>
+bin/glaw timeline-log period_close_locked_<YYYY-MM>
 ```
 The closing balance becomes next period's opening. The period is now read-only.
 
@@ -113,13 +113,13 @@ so a cron job alerts on failure and never locks a period that didn't tie.
 
 ```bash
 # run the close, write the package, lock the month if the gate passes
-~/.claude/skills/glaw/bin/glaw-close-run --book <book> --period 2026-06 --out ~/closes --lock
+bin/glaw-close-run --book <book> --period 2026-06 --out ~/closes --lock
 
 # optionally pull new statements first
-~/.claude/skills/glaw/bin/glaw-close-run --book <book> --ingest <statements-dir> --chart <name> --period 2026-06 --out ~/closes --lock
+bin/glaw-close-run --book <book> --ingest <statements-dir> --chart <name> --period 2026-06 --out ~/closes --lock
 
 # schedule it — 06:00 on the 1st of each month (user installs in their own crontab):
-#   0 6 1 * *  ~/.claude/skills/glaw/bin/glaw-close-run --book acme --out ~/closes --lock || mail -s "GLAW close FAILED" me@co
+#   0 6 1 * *  bin/glaw-close-run --book acme --out ~/closes --lock || mail -s "GLAW close FAILED" me@co
 ```
 The package (`<book>-<period>/`) contains `statements.txt`, `comparative.txt`,
 `dashboard.txt`, `narrative.md`, `books-doctor.txt`, and `summary.json`. A failed gate

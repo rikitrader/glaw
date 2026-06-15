@@ -34,10 +34,10 @@ flags every proposition that needs authority.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
-Read `~/.claude/skills/glaw/lib/firm-roster.md` before routing any sub-task.
+Read `lib/firm-roster.md` before routing any sub-task.
 If the preamble shows conflicts are not cleared, stop and return to `/glaw-ethics-conflicts`.
 
 ## Workflow
@@ -111,8 +111,8 @@ Write the **strategy memo** to `~/.glaw/matters/<slug>/strategy-memo.md`:
 Then advance:
 
 ```bash
-~/.claude/skills/glaw/bin/glaw stage structure
-~/.claude/skills/glaw/bin/glaw timeline-log strategy_done
+bin/glaw stage structure
+bin/glaw timeline-log strategy_done
 ```
 
 Hand off to `/glaw-structure`. No citations are blessed here — every legal

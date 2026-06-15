@@ -36,14 +36,14 @@ nothing leaves the close until the books-doctor gate is green.
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Workflow
 
 ### 1 — Get it on the ledger
 ```bash
-~/.claude/skills/glaw/bin/glaw-ledger --book <book> rebuild <statements> --chart <name>   # bank → JEs
+bin/glaw-ledger --book <book> rebuild <statements> --chart <name>   # bank → JEs
 ```
 Route messy formats through `/glaw-bookkeeping`; the book of record is `/glaw-ledger`.
 
@@ -56,14 +56,14 @@ Every adjustment is a balanced `glaw-journal` entry with a memo + source.
 
 ### 3 — Clear the control gate
 ```bash
-~/.claude/skills/glaw/bin/glaw-bank-rec --books <books> --bank <statement>    # reconcile
-~/.claude/skills/glaw/bin/glaw-books-doctor --book <book>                     # ⛔ must be BULLETPROOF
-~/.claude/skills/glaw/bin/glaw-coa check-ledger --book <book>                 # no classification gaps
+bin/glaw-bank-rec --books <books> --bank <statement>    # reconcile
+bin/glaw-books-doctor --book <book>                     # ⛔ must be BULLETPROOF
+bin/glaw-coa check-ledger --book <book>                 # no classification gaps
 ```
 
 ### 4 — Prepare the draft statements
 ```bash
-~/.claude/skills/glaw/bin/glaw-statements --book <book> --format text
+bin/glaw-statements --book <book> --format text
 ```
 
 ### 5 — Respond to challenge (the correction loop)

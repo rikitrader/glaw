@@ -40,7 +40,7 @@ fiduciary breach is proven from the duty and the conduct, never assumed.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -87,7 +87,7 @@ duty and the document.
 Confirm the adviser records, ADV/PF filings, fund documents, and client ledgers are
 lawfully obtained. Normalize to text + metadata:
 ```bash
-~/.claude/skills/glaw/bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
+bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
 ```
 Build the document index: ADV parts, LPA, side letters, fee schedules, custody arrangements.
 
@@ -113,7 +113,7 @@ the ADV line, ledger entry, marketing piece, or contract term.
 - Findings up to the Enforcement Attorney → `/glaw-sec-enforcement`; verify rules →
   `/glaw-legal-research`; red-team the breach theory → `/glaw-adversarial`.
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log sec_adviser_findings 2>/dev/null || true
+bin/glaw timeline-log sec_adviser_findings 2>/dev/null || true
 ```
 
 ## Deliverables

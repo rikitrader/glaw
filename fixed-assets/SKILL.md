@@ -35,7 +35,7 @@ the balance sheet. No depreciation is booked that the schedule cannot reproduce.
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Workflow
@@ -47,11 +47,11 @@ enter the register with cost, placed-in-service date, class life, and method.
 ### 2 — Build the schedule (deterministic)
 ```bash
 # MACRS GDS half-year (e.g. vehicle = 5-year, equipment = 7-year)
-~/.claude/skills/glaw/bin/glaw-depreciate --cost 50000 --method macrs --life 5
+bin/glaw-depreciate --cost 50000 --method macrs --life 5
 # with §179 expensing + bonus on the remainder
-~/.claude/skills/glaw/bin/glaw-depreciate --cost 100000 --method macrs --life 7 --section-179 25000 --bonus-pct 60
+bin/glaw-depreciate --cost 100000 --method macrs --life 7 --section-179 25000 --bonus-pct 60
 # straight-line (book / GAAP)
-~/.claude/skills/glaw/bin/glaw-depreciate --cost 12000 --method straight-line --life 5 --salvage 2000
+bin/glaw-depreciate --cost 12000 --method straight-line --life 5 --salvage 2000
 ```
 MACRS percentages are the published IRS Pub 946 Table A-1 values, self-checked to sum to
 100%. §179 and bonus come off the basis first; the remainder depreciates on the schedule.

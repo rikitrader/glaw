@@ -37,7 +37,7 @@ is a **lead, not a finding**, and intent is argued from the pattern, never assum
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -77,7 +77,7 @@ call ordinary trading manipulation; you score the pattern and cite the data.
 Confirm the market data is lawfully obtained and in scope. Normalize blotters and order
 records to text + metadata:
 ```bash
-~/.claude/skills/glaw/bin/glaw-doc-extract <data-dir> -o <matter>/_extracted
+bin/glaw-doc-extract <data-dir> -o <matter>/_extracted
 ```
 Define the security, the venues, the accounts, and the analysis window.
 
@@ -104,7 +104,7 @@ finding to the exact records (order IDs, timestamps, account/MPID).
 - Findings up to the Enforcement Attorney → `/glaw-sec-enforcement`; link map →
   `/glaw-bureau-fusion`; red-team the inference → `/glaw-adversarial`.
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log sec_marketabuse_findings 2>/dev/null || true
+bin/glaw timeline-log sec_marketabuse_findings 2>/dev/null || true
 ```
 
 ## Deliverables

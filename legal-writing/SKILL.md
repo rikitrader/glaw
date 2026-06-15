@@ -38,7 +38,7 @@ flags every proposition that still needs authority.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Role
@@ -135,9 +135,9 @@ pre-check refuses to assemble a federal filing that has not cleared this directi
 Run the linter on every draft and clear the flags before handoff:
 
 ```bash
-~/.claude/skills/glaw/bin/glaw-writing-check <draft.md>            # universal QC
-~/.claude/skills/glaw/bin/glaw-writing-check <motion.md> --motion   # + Court Motion Style Sheet
-~/.claude/skills/glaw/bin/glaw-writing-check <filing.md> --federal # + Federal Filing Style Directive
+bin/glaw-writing-check <draft.md>            # universal QC
+bin/glaw-writing-check <motion.md> --motion   # + Court Motion Style Sheet
+bin/glaw-writing-check <filing.md> --federal # + Federal Filing Style Directive
 ```
 
 It flags passive voice, legal clichés / throat-clearers, hedging/speculation, weak adverbs,
@@ -160,7 +160,7 @@ over-long sentences, and **legal assertions made without a citation**. Then walk
 - **Render** → `/glaw-make-pdf`, `/glaw-docx`, `/glaw-document-generate`.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log writing_polished 2>/dev/null || true
+bin/glaw timeline-log writing_polished 2>/dev/null || true
 ```
 
 ## Not legal advice

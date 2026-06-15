@@ -35,7 +35,7 @@ posted to an explicit **REVIEW** account and listed in the error log — it is n
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## The pipeline (each step is re-runnable; outputs to an `--out` dir)
@@ -47,7 +47,7 @@ month is flagged as a gap, not papered over.
 
 ### 2 — Bookkeeping load (double-entry GL)
 ```bash
-~/.claude/skills/glaw/bin/glaw-forensic-pipeline <master_ledger.csv> --book <co> --out <dir>
+bin/glaw-forensic-pipeline <master_ledger.csv> --book <co> --out <dir>
 ```
 Posts every transaction to the GLAW tamper-evident double-entry ledger (deposit → Dr bank / Cr
 income; withdrawal → Dr expense / Cr bank), builds the chart of accounts, and produces the trial
@@ -55,15 +55,15 @@ balance — trial-balance-balanced and hash-chain-intact, or it fails loudly.
 
 ### 3 — Reconciliation gate
 ```bash
-~/.claude/skills/glaw/bin/glaw-books-doctor --book <co>      # [1..8] incl. tamper-evidence + tax tie-out
+bin/glaw-books-doctor --book <co>      # [1..8] incl. tamper-evidence + tax tie-out
 ```
 Own-account transfers must net to ~0 (the transfers-clearing residual surfaces any missing
 statement). Every account ties; the chain proves nothing was altered.
 
 ### 4 — Three-statement set + footnotes
 ```bash
-~/.claude/skills/glaw/bin/glaw-statements --book <co> --format text     # P&L, balance sheet, cash flow
-~/.claude/skills/glaw/bin/glaw-narrative  --book <co> notes             # SEC-disclosure + IRS-audit footnotes
+bin/glaw-statements --book <co> --format text     # P&L, balance sheet, cash flow
+bin/glaw-narrative  --book <co> notes             # SEC-disclosure + IRS-audit footnotes
 ```
 
 ### 5 — Credits advisory report
@@ -89,7 +89,7 @@ ratios, risks) and a CEO summary (`/glaw-narrative`) close it out.
 ## ⛔ Adversarial gate (EXECUTABLE — red-team → chief resolution)
 This is wired, not advisory. After reconstruction, run the executable enforcement red-team:
 ```bash
-~/.claude/skills/glaw/bin/glaw-forensic-adversarial --book <book> \
+bin/glaw-forensic-adversarial --book <book> \
   --documented-loan-notes <$> --job-cost-gross-profit <$> --resolutions <resolutions.json>
 ```
 It deterministically raises every finding an IRS Revenue Agent / forensic accountant / BSA examiner

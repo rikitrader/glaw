@@ -52,7 +52,7 @@ assumed. A reference Form 10-Q exemplar lives at
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -108,7 +108,7 @@ Conflicts cleared first (`/glaw-ethics-conflicts`).
 ### Step 2 — Ingest the filing
 Normalize the 10-K/10-Q and its exhibits and prior filings to text + structure:
 ```bash
-~/.claude/skills/glaw/bin/glaw-doc-extract <filing-dir> -o <matter>/_extracted
+bin/glaw-doc-extract <filing-dir> -o <matter>/_extracted
 ```
 Pull the filing and comparatives from EDGAR (route to `/glaw-sec-disclosure`). Build the
 item index (303 MD&A, 105 Risk Factors, Item 8 financials + footnotes, Item 9A controls)
@@ -140,7 +140,7 @@ Verify every statute, rule, and standard (`/glaw-legal-research`; extract cites 
 filing line, with the securities-law theory) and the **materiality/restatement-risk
 scorecard**.
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log disclosure_risk_analysis 2>/dev/null || true
+bin/glaw timeline-log disclosure_risk_analysis 2>/dev/null || true
 ```
 Hand findings up to `/glaw-sec-disclosure` / `/glaw-sec-enforcement` for any enforcement
 posture and to `/glaw-strategy` for litigation or remediation.

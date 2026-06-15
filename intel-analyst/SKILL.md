@@ -40,7 +40,7 @@ a lead — not a finding.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -76,7 +76,7 @@ fact.
 7. **Write the estimate + brief** — produce the intelligence estimate, the strategic forecast, and a one-page executive brief. Bottom line up front, every claim sourced, confidence on every call.
 
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log intel_estimate_ready 2>/dev/null || true
+bin/glaw timeline-log intel_estimate_ready 2>/dev/null || true
 ```
 
 ## Deliverables

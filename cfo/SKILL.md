@@ -40,7 +40,7 @@ attacked it and could not break it, and the books-doctor gate is green.
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## ⛔ The orchestration loop (draft → attack → collect → redirect → re-gate → agree)

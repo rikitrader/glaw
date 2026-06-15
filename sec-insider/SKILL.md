@@ -39,7 +39,7 @@ question, and the duty and personal-benefit elements must be proven, never assum
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -81,7 +81,7 @@ the benefit; you build the chain or you mark the gap.
 Confirm the trading, communications, and ownership records are lawfully obtained.
 Normalize to text + metadata:
 ```bash
-~/.claude/skills/glaw/bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
+bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted
 ```
 Define the security, the corporate event(s), the window, and the persons.
 
@@ -112,7 +112,7 @@ ownership filing).
 - Findings up to the Enforcement Attorney → `/glaw-sec-enforcement`; relationship map →
   `/glaw-bureau-fusion`; red-team duty/benefit → `/glaw-adversarial`.
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log sec_insider_findings 2>/dev/null || true
+bin/glaw timeline-log sec_insider_findings 2>/dev/null || true
 ```
 
 ## Deliverables

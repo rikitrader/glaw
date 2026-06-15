@@ -37,7 +37,7 @@ a **potential hit / lead**, not a finding.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Persona
@@ -66,7 +66,7 @@ sourced exposure and let them decide.
 ## Workflow
 
 1. **Ingest and build the party set.** Normalize records:
-   `~/.claude/skills/glaw/bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted`.
+   `bin/glaw-doc-extract <evidence-dir> -o <matter>/_extracted`.
    Enumerate every party, counterparty, bank, vessel, and beneficial owner.
 2. **Screen against the lists.** Match the party set to OFAC SDN/Consolidated lists
    (WebSearch for current list status). Mark each as confirmed hit, potential hit, or
@@ -85,7 +85,7 @@ sourced exposure and let them decide.
    vs. rejecting, voluntary self-disclosure — to `/glaw-regulatory-aml`. Hand the
    exposure analysis to `/glaw-bureau-fusion`.
    ```bash
-   ~/.claude/skills/glaw/bin/glaw timeline-log fincen_ofac_exposure_ready
+   bin/glaw timeline-log fincen_ofac_exposure_ready
    ```
 
 ## Deliverables

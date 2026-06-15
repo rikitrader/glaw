@@ -26,9 +26,9 @@ ETHOS principle 1 — completeness is cheap, a blown deadline is not.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 echo "--- current docket ---"
-~/.claude/skills/glaw/bin/glaw docket upcoming 90 2>/dev/null || true
+bin/glaw docket upcoming 90 2>/dev/null || true
 ```
 
 ## Workflow
@@ -58,14 +58,14 @@ from memory.
 
 Add each:
 ```bash
-~/.claude/skills/glaw/bin/glaw docket add <YYYY-MM-DD> "<deadline> — <consequence if missed>"
+bin/glaw docket add <YYYY-MM-DD> "<deadline> — <consequence if missed>"
 ```
 
 ### Step 3 — Show the horizon
 ```bash
-~/.claude/skills/glaw/bin/glaw docket upcoming 30
-~/.claude/skills/glaw/bin/glaw docket upcoming 60
-~/.claude/skills/glaw/bin/glaw docket upcoming 90
+bin/glaw docket upcoming 30
+bin/glaw docket upcoming 60
+bin/glaw docket upcoming 90
 ```
 Flag anything jurisdictional or one-shot (SOL, appeal window, 83(b)) at the top —
 those have no second chance.
@@ -79,8 +79,8 @@ Ask the user which they want before creating anything.
 
 ### Step 5 — Advance
 ```bash
-~/.claude/skills/glaw/bin/glaw-docket-gate complete
-~/.claude/skills/glaw/bin/glaw stage matter-retro
+bin/glaw-docket-gate complete
+bin/glaw stage matter-retro
 ```
 Hand off to `/glaw-matter-retro` for close-out.
 
@@ -91,8 +91,8 @@ ongoing-monitoring routine offered via `/schedule` or `/loop`.
 
 If the matter truly has no deadlines, record the exception before close-out:
 ```bash
-~/.claude/skills/glaw/bin/glaw-docket-gate no-deadlines --rationale "<why no deadlines exist>"
-~/.claude/skills/glaw/bin/glaw-docket-gate complete
+bin/glaw-docket-gate no-deadlines --rationale "<why no deadlines exist>"
+bin/glaw-docket-gate complete
 ```
 
 > **Attorney work-product — not legal advice.** GLAW is an AI legal-drafting

@@ -25,7 +25,7 @@ work. It does NOT give legal advice — it gathers, classifies, and routes.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Workflow
@@ -33,7 +33,7 @@ bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skil
 ### Step 0 — Open or locate the matter
 If no active matter, open one:
 ```bash
-~/.claude/skills/glaw/bin/glaw matter new "<matter name>"
+bin/glaw matter new "<matter name>"
 ```
 This creates both `matter.md` and the required structured intake form `intake.json`.
 
@@ -48,7 +48,7 @@ hand the lead to `/glaw-investigations`.
 
 Also set the structured form track:
 ```bash
-~/.claude/skills/glaw/bin/glaw-intake set workflow_track <track>
+bin/glaw-intake set workflow_track <track>
 ```
 
 ### Step 2 — Capture the charter
@@ -60,30 +60,30 @@ Fill `matter.md` by interviewing the user. Capture, at minimum:
 - **Documents on hand** — contracts, bank records, prior filings, cap table, returns.
 - **Hard dates** — anything time-sensitive (SOL, lien deadline, closing, board date). Calendar each now:
   ```bash
-  ~/.claude/skills/glaw/bin/glaw docket add <YYYY-MM-DD> "<deadline>"
+  bin/glaw docket add <YYYY-MM-DD> "<deadline>"
   ```
 
 Fill the matching machine-readable fields at the same time:
 ```bash
-~/.claude/skills/glaw/bin/glaw-intake set client_names 'Client A; Client B'
-~/.claude/skills/glaw/bin/glaw-intake set parties 'Client A; Counterparty X; Related Entity Y'
-~/.claude/skills/glaw/bin/glaw-intake set jurisdiction 'Delaware; Florida; federal'
-~/.claude/skills/glaw/bin/glaw-intake set goal '<what success looks like>'
-~/.claude/skills/glaw/bin/glaw-intake set source_documents 'bank statement; contract; tax return'
-~/.claude/skills/glaw/bin/glaw-intake set deadlines '2026-07-01 closing; 2026-08-15 filing'
-~/.claude/skills/glaw/bin/glaw-intake set facts_timeline '2026-01-01 event...'
-~/.claude/skills/glaw/bin/glaw-intake set open_questions 'missing statement; confirm ownership'
-~/.claude/skills/glaw/bin/glaw-intake set conflicts_parties 'all clients, adverse parties, owners, affiliates'
-~/.claude/skills/glaw/bin/glaw-intake set authorized_scope 'review/analyze/draft only; no filing without human approval'
+bin/glaw-intake set client_names 'Client A; Client B'
+bin/glaw-intake set parties 'Client A; Counterparty X; Related Entity Y'
+bin/glaw-intake set jurisdiction 'Delaware; Florida; federal'
+bin/glaw-intake set goal '<what success looks like>'
+bin/glaw-intake set source_documents 'bank statement; contract; tax return'
+bin/glaw-intake set deadlines '2026-07-01 closing; 2026-08-15 filing'
+bin/glaw-intake set facts_timeline '2026-01-01 event...'
+bin/glaw-intake set open_questions 'missing statement; confirm ownership'
+bin/glaw-intake set conflicts_parties 'all clients, adverse parties, owners, affiliates'
+bin/glaw-intake set authorized_scope 'review/analyze/draft only; no filing without human approval'
 ```
 
 For accounting/tax/bookkeeping workflows, also fill:
 ```bash
-~/.claude/skills/glaw/bin/glaw-intake set track_specific.bank_statement_sources '<files, folders, or Google Sheets URLs>'
-~/.claude/skills/glaw/bin/glaw-intake set track_specific.tax_years '<years in scope>'
-~/.claude/skills/glaw/bin/glaw-intake set track_specific.entity_tax_type '<C-corp/S-corp/partnership/individual/etc.>'
-~/.claude/skills/glaw/bin/glaw-intake set track_specific.books_status '<unknown/reconstructed/closed/etc.>'
-~/.claude/skills/glaw/bin/glaw-intake set track_specific.irs_forms_needed '<1120/1065/1040/941/1099/etc.>'
+bin/glaw-intake set track_specific.bank_statement_sources '<files, folders, or Google Sheets URLs>'
+bin/glaw-intake set track_specific.tax_years '<years in scope>'
+bin/glaw-intake set track_specific.entity_tax_type '<C-corp/S-corp/partnership/individual/etc.>'
+bin/glaw-intake set track_specific.books_status '<unknown/reconstructed/closed/etc.>'
+bin/glaw-intake set track_specific.irs_forms_needed '<1120/1065/1040/941/1099/etc.>'
 ```
 
 ### Step 3 — Completeness sweep (Build-the-whole-file)
@@ -93,7 +93,7 @@ missing. List the gaps explicitly rather than quietly proceeding. Cheap now, cos
 
 Run:
 ```bash
-~/.claude/skills/glaw/bin/glaw-intake status
+bin/glaw-intake status
 ```
 If it reports missing fields, do not advance. Missing facts stay in the intake gap list.
 
@@ -105,9 +105,9 @@ does NOT clear conflicts itself.
 ### Step 5 — Advance
 On conflicts cleared:
 ```bash
-~/.claude/skills/glaw/bin/glaw-intake complete
-~/.claude/skills/glaw/bin/glaw stage strategy
-~/.claude/skills/glaw/bin/glaw timeline-log intake_done
+bin/glaw-intake complete
+bin/glaw stage strategy
+bin/glaw timeline-log intake_done
 ```
 `glaw stage strategy` is code-gated: it refuses to advance until both `intake_complete`
 and `conflicts_cleared` are present in the matter timeline. Hand off to `/glaw-strategy`

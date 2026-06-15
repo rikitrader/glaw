@@ -33,9 +33,9 @@ transfer-tax analog to `/glaw-tax-provision`'s schedule discipline.
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
-Read `~/.claude/skills/glaw/lib/firm-roster.md` so the trust design, the business valuations, and
+Read `lib/firm-roster.md` so the trust design, the business valuations, and
 the exemption strategy route to the seats that own them.
 
 ## Persona
@@ -66,12 +66,12 @@ lowers the estate.
 ### 3 — Compute the tax (use the engines)
 **Estate (706):**
 ```bash
-~/.claude/skills/glaw/bin/glaw-form706 --gross-estate <ge> --marital-deduction <md> \
+bin/glaw-form706 --gross-estate <ge> --marital-deduction <md> \
   --charitable-deduction <cd> --debts-claims <dc> --adjusted-taxable-gifts <atg> --dsue <dsue> --year <YYYY>
 ```
 **Gift (709):**
 ```bash
-~/.claude/skills/glaw/bin/glaw-form709 --current-gifts <g> --num-donees <n> [--split-gifts] \
+bin/glaw-form709 --current-gifts <g> --num-donees <n> [--split-gifts] \
   --prior-taxable-gifts <ptg> --prior-credit-used <pcu> --gst-transfers <gst> --year <YYYY>
 ```
 If the estate or trust also files an income-tax 1041, route DNI to `bin/glaw-form1041`.
@@ -99,12 +99,12 @@ reworked, not filed. Record the sign-off with `/glaw-chief-decision`.
 ### 7 — Assemble, fill, and docket
 Route to `/glaw-draft`; fill staged IRS PDFs from the computed values:
 ```bash
-~/.claude/skills/glaw/bin/glaw-fill-form forms/f706.pdf forms/f706.data.json out/f706-filled.pdf
+bin/glaw-fill-form forms/f706.pdf forms/f706.data.json out/f706-filled.pdf
 ```
 Docket the deadlines — **706 due 9 months after death** (6-month extension on Form 4768);
 **709 due April 15** of the year after the gift:
 ```bash
-~/.claude/skills/glaw/bin/glaw docket add <YYYY-MM-DD> "Form 706 due (9 months after death)"
+bin/glaw docket add <YYYY-MM-DD> "Form 706 due (9 months after death)"
 ```
 
 ## Route to the bench

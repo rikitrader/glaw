@@ -24,12 +24,12 @@ on a matter and hands a unified enforcement assessment up to the Master Command
 Dodd-Frank). Analytical work-product — Wells/charging/settlement decisions are licensed
 counsel's. Every claim sourced; materiality + scienter analyzed, not assumed.
 
-Read `~/.claude/skills/glaw/lib/bureau-roster.md` first.
+Read `lib/bureau-roster.md` first.
 
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## The cell (route to these)

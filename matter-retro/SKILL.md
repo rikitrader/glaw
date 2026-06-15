@@ -26,9 +26,9 @@ the matter's status. It does NOT advance the pipeline — this is the end.
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 echo "--- next deadlines ---"
-~/.claude/skills/glaw/bin/glaw docket upcoming 90 2>/dev/null || true
+bin/glaw docket upcoming 90 2>/dev/null || true
 ```
 
 ## Workflow
@@ -38,7 +38,7 @@ The vault is a sibling of the matter folder: `<matter-slug>-vault/`. Mirror the
 numbered-folder convention (as in `venezuela-corrupcion-vault`). Create it if
 missing:
 ```bash
-SLUG="$(~/.claude/skills/glaw/bin/glaw matter current 2>/dev/null || echo matter)"
+SLUG="$(bin/glaw matter current 2>/dev/null || echo matter)"
 VAULT="$HOME/.glaw/matters/${SLUG}-vault"
 mkdir -p "$VAULT/00-Indices" "$VAULT/06-Sessions"
 ```
@@ -67,7 +67,7 @@ Set status in `matter.md`:
 - **monitoring** — delivered but recurring deadlines remain (Form D anniversary, BOI, SOL, appeal window) — keep the docket live.
 - **open** — work continues; this was an interim retro.
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log matter_closed
+bin/glaw timeline-log matter_closed
 ```
 (Edit the `status:` line in `~/.glaw/matters/<slug>/matter.md` to match.)
 

@@ -42,7 +42,7 @@ distinctly and never conflated.
 
 ## Preamble (run first)
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## Workflow
@@ -54,7 +54,7 @@ These may differ; when they do, both a remeasurement and a translation step exis
 account-classification convention (which accounts are monetary) with `/glaw-coa`, and pin the
 chart so revaluation always targets the same accounts.
 ```bash
-~/.claude/skills/glaw/bin/glaw-coa check-ledger --book <book>     # confirm monetary accounts are classified
+bin/glaw-coa check-ledger --book <book>     # confirm monetary accounts are classified
 ```
 Gate with **AskUserQuestion** if functional currency is ambiguous (e.g. a holdco that bills USD but
 pays a foreign payroll) — do not assume it.
@@ -76,7 +76,7 @@ date. The change is an FX gain or loss:
 
 Post the revaluation as a dated adjusting entry; non-monetary items are left untouched.
 ```bash
-~/.claude/skills/glaw/bin/glaw-journal --book <book> --date 2026-03-31 --memo "Q1 FX revaluation @ closing rate" \
+bin/glaw-journal --book <book> --date 2026-03-31 --memo "Q1 FX revaluation @ closing rate" \
   --debit "Expenses:FX Loss (unrealized)" 4200 --credit "Liabilities:AP (EUR)" 4200
 ```
 
@@ -92,8 +92,8 @@ translated foreign entities into a consolidated set is owned by `/glaw-consolida
 Tie revalued balances back to the ledger as-of the period-end, and confirm the FX gain/loss and CTA
 movements foot.
 ```bash
-~/.claude/skills/glaw/bin/glaw-ledger --book <book> balances --as-of 2026-03-31
-~/.claude/skills/glaw/bin/glaw-ledger --book <book> gl --account "Equity:CTA"
+bin/glaw-ledger --book <book> balances --as-of 2026-03-31
+bin/glaw-ledger --book <book> gl --account "Equity:CTA"
 ```
 - The period close that schedules revaluation each cycle → `/glaw-close`
 - Consolidating translated foreign subsidiaries → `/glaw-consolidation`

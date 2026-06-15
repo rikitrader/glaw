@@ -19,12 +19,12 @@ The strategic cell's Director — turns raw collection into calibrated, sourced
 (`/glaw-command`). Lawful/public sources only; no espionage; every judgment carries a
 confidence level and its key assumptions. Analytical work-product, not legal advice.
 
-Read `~/.claude/skills/glaw/lib/bureau-roster.md` first.
+Read `lib/bureau-roster.md` first.
 
 ## Preamble (run first)
 
 ```bash
-bash ~/.claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || bash .claude/skills/glaw/bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
+bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 ```
 
 ## The cell (route to these)

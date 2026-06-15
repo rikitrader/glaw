@@ -13,7 +13,7 @@ no practice of law. (`/glaw-ethics-conflicts` owns that guardrail.)
 ## Quick start
 ```bash
 # open a matter (the orchestrator does this for you, or run it directly)
-~/.claude/skills/glaw/bin/glaw matter new "Acme Holdings Formation"
+bin/glaw matter new "Acme Holdings Formation"
 ```
 Then invoke `/glaw` and it drives the pipeline.
 
