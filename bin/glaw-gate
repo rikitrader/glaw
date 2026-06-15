@@ -252,6 +252,8 @@ SOURCE_EVIDENCE_PARTS = {
     "sources",
 }
 SOURCE_ID_RE = re.compile(r"\bSRC-\d{4}\b")
+NEGATIVE_DECISION_RE = re.compile(r"\b(DENY|DENIED|REJECT|REJECTED|REFUSE|REFUSED|BLOCK|BLOCKED|DO NOT PROCEED|NOT READY|WITH[- ]?FIXES|FIXES REQUIRED|FIX REQUIRED)\b", re.I)
+APPROVAL_DECISION_RE = re.compile(r"\b(PROCEED|APPROVE|APPROVED|READY|FILE-READY)\b", re.I)
 REQUIRED_GATE_ARTIFACTS = (
     "intake.json",
     "ethics.json",
@@ -820,6 +822,10 @@ if not latest_final_row.get("conditions"):
     approval_missing.append("conditions")
 if approval_missing:
     print("latest Chief approval lacks complete sign-off field(s): " + ", ".join(approval_missing))
+    sys.exit(1)
+approval_decision = str(latest_final_row.get("decision", ""))
+if NEGATIVE_DECISION_RE.search(approval_decision) or not APPROVAL_DECISION_RE.search(approval_decision):
+    print("latest Chief approval decision text contradicts final approval")
     sys.exit(1)
 approval_rationale = str(latest_final_row.get("rationale", ""))
 approval_rationale_refs = sorted(set(SOURCE_ID_RE.findall(approval_rationale)))

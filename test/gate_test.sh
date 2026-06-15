@@ -135,6 +135,7 @@ import hashlib, json, sys
 packet = sys.argv[2]
 row = {
     "final_gate": "approved",
+    "decision": "PROCEED",
     "approved_packet_generated_at": "2025-12-31T00:00:00Z",
     "approved_packet_sha256": hashlib.sha256(open(packet, "rb").read()).hexdigest(),
     "score": "95",
@@ -154,6 +155,7 @@ import hashlib, json, sys
 packet = sys.argv[2]
 row = {
     "final_gate": "approved",
+    "decision": "PROCEED",
     "approved_packet_generated_at": "2026-01-01T00:00:00Z",
     "approved_packet_sha256": "stale-packet-hash",
     "score": "95",
@@ -173,6 +175,7 @@ import hashlib, json, sys
 packet = sys.argv[2]
 row = {
     "final_gate": "approved",
+    "decision": "PROCEED",
     "approved_packet_generated_at": "2026-01-01T00:00:00Z",
     "approved_packet_sha256": hashlib.sha256(open(packet, "rb").read()).hexdigest(),
     "score": "95",
@@ -383,6 +386,7 @@ import hashlib, json, sys
 packet = sys.argv[2]
 row = {
     "final_gate": "approved",
+    "decision": "PROCEED",
     "approved_packet_generated_at": "2026-01-01T00:00:00Z",
     "approved_packet_sha256": hashlib.sha256(open(packet, "rb").read()).hexdigest(),
     "score": "95",
@@ -422,6 +426,20 @@ PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by Chief approval rationale without source evidence id"
 cp "$M/decisions.baseline.jsonl" "$M/decisions.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after source-backed Chief decision restored"
+python3 - "$M/decisions.jsonl" <<'PY'
+import hashlib, json, sys
+p = sys.argv[1]
+row = json.loads(open(p, encoding="utf-8").read())
+row["decision"] = "DENY"
+row.pop("decision_hash", None)
+row["decision_hash"] = hashlib.sha256(
+    json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
+).hexdigest()
+open(p, "w", encoding="utf-8").write(json.dumps(row) + "\n")
+PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by contradictory Chief approval decision"
+cp "$M/decisions.baseline.jsonl" "$M/decisions.jsonl"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after consistent Chief decision restored"
 printf '# Draft Report\n\nNumbers changed after packet.\n' > "$M/draft-report.md"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-packet deliverable losing UPL footer"
 printf '\nAttorney work-product - not legal advice. Prepared for licensed review.\n' >> "$M/draft-report.md"

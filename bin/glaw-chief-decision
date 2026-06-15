@@ -23,6 +23,9 @@ HOME = os.environ.get("GLAW_HOME", os.path.expanduser("~/.glaw"))
 MATTERS = os.path.join(HOME, "matters")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SOURCE_ID_RE = re.compile(r"\bSRC-\d{4}\b")
+NEGATIVE_DECISION_RE = re.compile(r"\b(DENY|DENIED|REJECT|REJECTED|REFUSE|REFUSED|BLOCK|BLOCKED|DO NOT PROCEED|NOT READY|WITH[- ]?FIXES|FIXES REQUIRED|FIX REQUIRED)\b", re.I)
+APPROVAL_DECISION_RE = re.compile(r"\b(PROCEED|APPROVE|APPROVED|READY|FILE-READY)\b", re.I)
+DENIAL_DECISION_RE = re.compile(r"\b(DENY|DENIED|REJECT|REJECTED|REFUSE|REFUSED|DO NOT PROCEED)\b", re.I)
 
 def now(): return datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
 def slugify(s): return re.sub(r"[^a-z0-9]+","-", s.lower()).strip("-")
@@ -95,6 +98,14 @@ def validate_final_decision(d):
         print("FINAL DECISION BLOCKED: final approve/deny requires a complete Chief decision card.")
         print("Missing/invalid: " + ", ".join(missing))
         print("Provide --score 0-100, --grade, --risks, --conditions, and --rationale.")
+        return 1
+    decision = str(d.get("decision", "")).strip()
+    if d.get("approve-final"):
+        if NEGATIVE_DECISION_RE.search(decision) or not APPROVAL_DECISION_RE.search(decision):
+            print("FINAL APPROVAL BLOCKED: --approve-final requires a proceed/approve decision, not a contradictory denial or fix posture.")
+            return 1
+    if d.get("deny-final") and not DENIAL_DECISION_RE.search(decision):
+        print("FINAL DENIAL BLOCKED: --deny-final requires a denial/rejection decision.")
         return 1
     return 0
 
