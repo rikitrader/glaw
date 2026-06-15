@@ -138,11 +138,11 @@ def cmd_build(args: argparse.Namespace) -> int:
         root,
     )
     rc_adv, adversarial_output = run_check(
-        [str(root / "bin/glaw-adversarial"), "complete", "--profile", profile, "--matter", d.name],
+        [str(root / "bin/glaw-adversarial"), "status", "--profile", profile, "--matter", d.name],
         root,
     )
     rc_council, council_output = run_check(
-        [str(root / "bin/glaw-council"), "complete", "--profile", profile, "--matter", d.name],
+        [str(root / "bin/glaw-council"), "status", "--profile", profile, "--matter", d.name],
         root,
     )
     timeline_rows = read_jsonl(d / "timeline.jsonl")
@@ -153,9 +153,9 @@ def cmd_build(args: argparse.Namespace) -> int:
         "citations_verified": has_event(timeline_rows, "citations_verified") and rc_cites == 0,
         "citation_gate_complete": has_event(timeline_rows, "citation_gate_complete") and rc_cites == 0,
         "adversarial_done": has_event(timeline_rows, "adversarial_done") and rc_adv == 0,
-        f"{profile}_adversarial_complete": rc_adv == 0,
-        f"{profile}_council_complete": has_event(timeline_rows, f"{profile}_council_complete"),
-        "red_flags_clear": rc_rf == 0,
+        f"{profile}_adversarial_complete": has_event(timeline_rows, f"{profile}_adversarial_complete") and rc_adv == 0,
+        f"{profile}_council_complete": has_event(timeline_rows, f"{profile}_council_complete") and rc_council == 0,
+        "red_flags_clear": has_event(timeline_rows, "red_flags_clear") and rc_rf == 0,
         "upl_footer_clear": rc_upl == 0,
     }
     blockers = blocking_red_flags(red_flags)

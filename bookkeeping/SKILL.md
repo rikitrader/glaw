@@ -201,6 +201,7 @@ Then route the output through the accounting council before calling it final:
 ~/.claude/skills/glaw/bin/glaw-adversarial record --profile accounting --lens outside-critic --decision survive --evidence "independent challenge complete"
 ~/.claude/skills/glaw/bin/glaw-adversarial complete --profile accounting
 ~/.claude/skills/glaw/bin/glaw-red-flags status
+~/.claude/skills/glaw/bin/glaw-red-flags complete
 ~/.claude/skills/glaw/bin/glaw-final-packet build --profile accounting
 ```
 Use `--decision fix` or `--decision deny` with `--red-flags` when a reviewer finds a gap.

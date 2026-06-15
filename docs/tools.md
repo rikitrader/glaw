@@ -15,7 +15,7 @@ Run any tool with no arguments for its usage. `bin/glaw-doctor` smoke-tests them
 | `glaw-ethics` | `record-conflicts --status cleared\|waived\|conflict` · `draft-engagement` · `status` · `complete`; logs `conflicts_cleared` only after conflicts and engagement are ready |
 | `glaw-council` | `record --profile auto --role <lens> --decision approve\|fix\|deny` · `status` · `complete` for required multi-agent signoff |
 | `glaw-adversarial` | `record --profile auto --lens <government/regulatory lens> --decision survive\|fix\|strike` · `status` · `complete`; logs `adversarial_done` only when every required RED-team lens survives |
-| `glaw-red-flags` | `add --severity critical\|high\|medium\|low ...` · `resolve <id> --evidence <text>` · `status` · `list` for blocking issue control |
+| `glaw-red-flags` | `add --severity critical\|high\|medium\|low ...` · `resolve <id> --evidence <text>` · `status` · `complete` · `list` for blocking issue control |
 | `glaw-upl-check` | `<matter-slug-or-dir>` → fail-closed check that text deliverables carry attorney-work-product / not-legal-advice footer language |
 | `glaw-citation-gate` | `record --id <id> --proposition ... --authority ... --status verified --source-url <url>` · `status` · `complete`; logs `citations_verified` only when every latest citation row is verified |
 | `glaw-final-packet` | `build --profile auto` → `final_packet.json` + `final_packet.md`; logs `final_packet_ready` only when gates are clear |

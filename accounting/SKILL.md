@@ -141,6 +141,9 @@ GLAW="$PWD" bash bin/glaw-bookkeeping-doctor
 bin/glaw-council status --profile auto
 bin/glaw-adversarial status --profile auto
 bin/glaw-red-flags status
+bin/glaw-red-flags complete
+bin/glaw-council complete --profile auto
+bin/glaw-adversarial complete --profile auto
 bin/glaw-final-packet build --profile auto
 ```
 
@@ -148,8 +151,9 @@ This gate exercises statement ingest, bank reconciliation, ledger posting, IRS r
 form-fill package generation, tax provision, tax tie-out, OCR availability, source-only imports,
 and third-party-dependency guards. The council status checks the CFO, IRS-audit, legal,
 forensic/audit, outside-critic, and external-reviewer lenses; the adversarial status checks
-government/regulatory attack lenses such as IRS examiner and state-tax auditor. If any gate fails,
-the workflow is not final.
+government/regulatory attack lenses such as IRS examiner and state-tax auditor. The `complete`
+commands create the explicit audit-trail events that final packet assembly requires. If any gate
+fails, the workflow is not final.
 
 ### Step 4 — Hand back
 Package the numbers for the requesting stage:

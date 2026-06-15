@@ -138,6 +138,8 @@ Then run the Chief/Council decision. The Chief routes any red flags back to the 
 department until the agents agree on a final report/outcome:
 
 ```bash
+~/.claude/skills/glaw/bin/glaw-red-flags complete
+~/.claude/skills/glaw/bin/glaw-council complete --profile auto
 ~/.claude/skills/glaw/bin/glaw-final-packet build --profile auto
 ~/.claude/skills/glaw/bin/glaw-chief-decision \
   --chief "GLAW Chief Counsel" \

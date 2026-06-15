@@ -48,6 +48,7 @@ ADVERSARIAL  /glaw-adversarial  (RED-team → BLUE-team rebuild)        ← hard
 
 FILE  /glaw-file  (signature-ready packet + checklist; UPL disclaimer on every deliverable)
   └─ GATE: `glaw-red-flags status` must show no blocking critical/high findings
+  └─ GATE: `glaw-red-flags complete` logs the explicit clear event
   └─ GATE: `glaw-upl-check <matter>` must show all external text deliverables carry the footer
   └─ GATE: `glaw-final-packet build` writes final_packet.json/md and logs readiness
   └─ GATE: `glaw-chief-decision --approve-final` logs Chief/Council approval

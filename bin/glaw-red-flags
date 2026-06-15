@@ -114,8 +114,17 @@ def cmd_status(args: argparse.Namespace) -> int:
     if bad:
         print("RED FLAGS BLOCKED")
         return 1
-    timeline(d, "red_flags_clear")
     print("RED FLAGS CLEAR")
+    return 0
+
+
+def cmd_complete(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    rc = cmd_status(args)
+    if rc != 0:
+        return rc
+    timeline(d, "red_flags_clear")
+    print("RED FLAGS COMPLETE")
     return 0
 
 
@@ -145,6 +154,9 @@ def main() -> int:
     p = sub.add_parser("status")
     p.add_argument("--matter", default=None)
     p.set_defaults(func=cmd_status)
+    p = sub.add_parser("complete", help="log red_flags_clear when no critical/high flags remain")
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_complete)
     p = sub.add_parser("list")
     p.add_argument("--matter", default=None)
     p.set_defaults(func=cmd_list)

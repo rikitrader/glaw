@@ -108,12 +108,15 @@ bin/glaw-ethics status
 bin/glaw-citation-gate status
 bin/glaw-red-flags status
 bin/glaw-upl-check "$(bin/glaw slug)"
+bin/glaw-red-flags complete
+bin/glaw-council complete --profile auto
+bin/glaw-adversarial complete --profile auto
 bin/glaw-final-packet build --profile auto
 ```
 
 `glaw-final-packet` writes `final_packet.json` and `final_packet.md`, then logs
 `final_packet_ready` only when intake/conflicts/ethics/citation ledger/adversarial, UPL footer
-checks, red flags, and the required council profile are all clear.
+checks, red flags, and the required council profile are all explicitly completed and clear.
 
 ## Contract Review
 
