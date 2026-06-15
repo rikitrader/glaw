@@ -44,7 +44,7 @@ bin/glaw-ethics complete
 Required gates:
 
 1. Structured intake and conflicts/engagement must clear before strategy.
-2. Legal citations must be verified before file.
+2. Legal citations must be verified through `glaw-citation-gate complete` before file.
 3. Adversarial review must pass before file.
 4. Critical/high red flags must be resolved before file.
 5. Final packet manifest must be ready before file.
@@ -100,14 +100,15 @@ Ethics, red flags, UPL footer, and the final packet are explicit gates:
 
 ```bash
 bin/glaw-ethics status
+bin/glaw-citation-gate status
 bin/glaw-red-flags status
 bin/glaw-upl-check "$(bin/glaw slug)"
 bin/glaw-final-packet build --profile auto
 ```
 
 `glaw-final-packet` writes `final_packet.json` and `final_packet.md`, then logs
-`final_packet_ready` only when intake/conflicts/ethics/citations/adversarial, UPL footer checks,
-red flags, and the required council profile are all clear.
+`final_packet_ready` only when intake/conflicts/ethics/citation ledger/adversarial, UPL footer
+checks, red flags, and the required council profile are all clear.
 
 ## Contract Review
 

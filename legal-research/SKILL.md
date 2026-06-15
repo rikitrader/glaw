@@ -97,15 +97,28 @@ reporter source. If only a secondary source is available, mark the verification 
   — no "courts have suggested" hedging over a cite we couldn't find.
 
 ### Step 4 — Emit the citation table
-Produce the deliverable table (below) and a one-line gate verdict. Log it:
+Produce the deliverable table (below) and a one-line gate verdict. Record each row in the
+executable citation ledger:
 ```bash
-~/.claude/skills/glaw/bin/glaw timeline-log citations_verified 2>/dev/null || true
+~/.claude/skills/glaw/bin/glaw-citation-gate record \
+  --id C-0001 \
+  --proposition "<proposition verified>" \
+  --authority "<citation as drafted>" \
+  --status verified \
+  --source-url "<primary source URL checked>"
 ```
 
 ### Step 5 — Gate `/glaw-file`
 Report `CITATIONS: clean` only when zero items remain **struck** or unresolved.
-Any struck-and-unreplaced cite means the filing is blocked. Hand the verdict and
-the table back to `/glaw-file`.
+Any struck-and-unreplaced cite means the filing is blocked. Then run:
+
+```bash
+~/.claude/skills/glaw/bin/glaw-citation-gate complete
+```
+
+`glaw-citation-gate complete` logs `citations_verified` and `citation_gate_complete` only when
+every latest citation record is verified with a source URL. Hand the verdict and the table back to
+`/glaw-file`.
 
 ## Handoffs (own the verification, defer the substance)
 - **Tax** authority/elections → re-cite via `glaw-tax-strategy` / `glaw-tax-compliance`, then verify.

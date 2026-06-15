@@ -1,0 +1,154 @@
+#!/usr/bin/env python3
+"""GLAW citation verification ledger.
+
+This gate records the result of legal-research review. It does not claim to
+perform live Shepardizing offline; it enforces that every cited authority in a
+matter has a recorded verification outcome before final packet readiness.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+
+BLOCKING = {"pending", "needs-substitute", "struck", "weak"}
+
+
+def now() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def home() -> Path:
+    return Path(os.environ.get("GLAW_HOME", str(Path.home() / ".glaw")))
+
+
+def active_slug() -> str:
+    p = home() / ".active"
+    return p.read_text(encoding="utf-8").strip() if p.exists() else ""
+
+
+def matter_dir(slug: str | None) -> Path:
+    s = slug or active_slug()
+    if not s:
+        raise SystemExit("ERROR: no active matter. Run `glaw matter new \"<name>\"` first.")
+    d = home() / "matters" / s
+    if not d.is_dir():
+        raise SystemExit(f"ERROR: matter not found: {s}")
+    return d
+
+
+def ledger_path(d: Path) -> Path:
+    return d / "citations.jsonl"
+
+
+def append_jsonl(path: Path, row: dict) -> None:
+    with path.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(row, sort_keys=False) + "\n")
+
+
+def read_jsonl(path: Path) -> list[dict]:
+    if not path.exists():
+        return []
+    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
+def timeline(d: Path, event: str, **extra: object) -> None:
+    append_jsonl(d / "timeline.jsonl", {"ts": now(), "event": event, **extra})
+
+
+def cmd_record(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    if args.status == "verified" and not args.source_url:
+        print("ERROR: --source-url is required for verified citations", file=sys.stderr)
+        return 2
+    row = {
+        "ts": now(),
+        "id": args.id,
+        "proposition": args.proposition,
+        "authority": args.authority,
+        "status": args.status,
+        "source_url": args.source_url,
+        "reviewer": args.reviewer,
+        "notes": args.notes,
+    }
+    append_jsonl(ledger_path(d), row)
+    timeline(d, "citation_review", id=args.id, status=args.status)
+    print(f"RECORDED citation {args.id}: {args.status}")
+    return 0
+
+
+def latest_by_id(rows: list[dict]) -> dict[str, dict]:
+    out: dict[str, dict] = {}
+    for row in rows:
+        out[str(row.get("id", ""))] = row
+    return out
+
+
+def blockers(rows: list[dict]) -> list[dict]:
+    latest = latest_by_id(rows)
+    return [
+        row for row in latest.values()
+        if not row.get("id")
+        or str(row.get("status", "")).lower() in BLOCKING
+        or (row.get("status") == "verified" and not row.get("source_url"))
+    ]
+
+
+def cmd_status(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    rows = read_jsonl(ledger_path(d))
+    bad = blockers(rows)
+    latest = latest_by_id(rows)
+    print(f"CITATIONS {d.name}: {len(latest)} reviewed, {len(bad)} blocking")
+    for row in latest.values():
+        print(f"  {row.get('id')} {row.get('status')}: {row.get('authority')}")
+    if not rows:
+        print("CITATIONS BLOCKED: no citation verification ledger")
+        return 1
+    if bad:
+        print("CITATIONS BLOCKED")
+        return 1
+    print("CITATIONS READY")
+    return 0
+
+
+def cmd_complete(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    rc = cmd_status(args)
+    if rc != 0:
+        return rc
+    timeline(d, "citations_verified")
+    timeline(d, "citation_gate_complete")
+    print("CITATIONS COMPLETE")
+    return 0
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(prog="glaw-citation-gate")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    p = sub.add_parser("record")
+    p.add_argument("--id", required=True)
+    p.add_argument("--proposition", required=True)
+    p.add_argument("--authority", required=True)
+    p.add_argument("--status", required=True, choices=["verified", "weak", "needs-substitute", "struck", "pending"])
+    p.add_argument("--source-url", default="")
+    p.add_argument("--reviewer", default=os.environ.get("USER", "operator"))
+    p.add_argument("--notes", default="")
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_record)
+    p = sub.add_parser("status")
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_status)
+    p = sub.add_parser("complete")
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_complete)
+    args = ap.parse_args()
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

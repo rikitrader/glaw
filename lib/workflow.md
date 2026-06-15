@@ -43,7 +43,8 @@ ADVERSARIAL  /glaw-adversarial  (RED-team → BLUE-team rebuild)        ← hard
   └─ executable gate → `glaw-adversarial complete --profile auto` logs `adversarial_done`
      only after every required government/regulatory/litigation RED lens survives
 
-  GATE: /glaw-legal-research verifies every cited proposition          ← hard gate #3
+  GATE: /glaw-legal-research verifies every cited proposition via
+        `glaw-citation-gate complete`                                  ← hard gate #3
 
 FILE  /glaw-file  (signature-ready packet + checklist; UPL disclaimer on every deliverable)
   └─ GATE: `glaw-red-flags status` must show no blocking critical/high findings
@@ -73,7 +74,7 @@ RETRO  /glaw-matter-retro  (close-out + Obsidian vault write)
 1. Structured intake complete (`bin/glaw-intake complete`) before strategy.
 2. Conflicts cleared (`glaw-ethics complete`) before strategy.
 3. Adversarial RED→BLUE (`/glaw-adversarial`) before file.
-4. Citations verified (`/glaw-legal-research`) before file.
+4. Citations verified (`glaw-citation-gate complete`) before file.
 5. Chief/Council approval (`glaw-chief-decision --approve-final`) before file.
 6. UPL disclaimer on every external deliverable (`glaw-upl-check`).
 7. Figures quoted from `tax-legal-shared/current-figures.md` ("as of [date], verify").

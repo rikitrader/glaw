@@ -15,6 +15,7 @@ PACKET="$ROOT/bin/glaw-final-packet"
 CHIEF="$ROOT/bin/glaw-chief-decision"
 ADVERSARIAL="$ROOT/bin/glaw-adversarial"
 ETHICS="$ROOT/bin/glaw-ethics"
+CITES="$ROOT/bin/glaw-citation-gate"
 
 "$GLAW" matter new "Lifecycle Accounting" >/dev/null
 SLUG="lifecycle-accounting"
@@ -54,12 +55,15 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by open high red
 for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do
   "$COUNCIL" record --profile auto --role "$role" --decision approve >/dev/null
 done
-"$GLAW" timeline-log citations_verified
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before adversarial government lenses survive"
 for lens in irs-examiner state-tax-auditor forensic-accountant cfo-controller outside-critic; do
   "$ADVERSARIAL" record --profile auto --lens "$lens" --decision survive --attack "no fatal finding" --evidence "test fixture" >/dev/null
 done
+"$PACKET" build >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before citation gate completes"
+"$CITES" record --id C-0001 --proposition 'tax return must tie to books' --authority '26 U.S.C. § 6001' --status verified --source-url 'https://uscode.house.gov/' >/dev/null
+"$CITES" complete >/dev/null
 printf '# Draft Report\n\nNumbers tie to source.\n' > "$TMP/matters/$SLUG/draft-report.md"
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by deliverable missing UPL footer"

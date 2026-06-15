@@ -121,8 +121,9 @@ intermediate prompts, offer `/glaw-autocounsel`.
 
 ### Step 4 — Adversarial gate (HARD GATE)
 No matter reaches `file` until `/glaw-adversarial` has run its RED → BLUE pass and
-every surviving position is verified by `/glaw-legal-research`. A position that the
-firm's own adversary destroys does not get filed.
+every surviving position is verified by `/glaw-legal-research` through
+`glaw-citation-gate complete`. A position that the firm's own adversary destroys, or a
+position whose authority cannot be verified, does not get filed.
 
 Record the executable adversarial gate with:
 
@@ -159,7 +160,7 @@ workflow rule), logs decisions + followups, and marks the matter status.
 
 ## Gates summary (never skip)
 1. **Conflicts cleared** before strategy.
-2. **Citations verified** (`/glaw-legal-research`) before file.
+2. **Citations verified** (`glaw-citation-gate complete`) before file.
 3. **Adversarial RED→BLUE** before file.
 4. **Chief/Council approval** before file.
 5. **UPL disclaimer** on every external deliverable (`glaw-upl-check`).
