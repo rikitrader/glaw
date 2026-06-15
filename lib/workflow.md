@@ -56,7 +56,7 @@ FILE  /glaw-file  (signature-ready packet + checklist; UPL disclaimer on every d
   └─ GATE: resolved critical/high red flags must cite the same current source ID set
   └─ GATE: required council/adversarial reviewers must resolve to hashed skill identity files
   └─ GATE: `glaw-final-packet build` writes final_packet.json/md and logs readiness
-  └─ GATE: `glaw-chief-decision --approve-final` logs Chief/Council approval
+  └─ GATE: `glaw-chief-decision --approve-final` logs source-backed Chief/Council approval
   └─ court records → /glaw-court-records (CourtListener/PACER)
   └─ final polish → /glaw-legal-writing  (Bluebook)
 

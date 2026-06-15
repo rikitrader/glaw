@@ -22,6 +22,7 @@ import os, sys, json, datetime, re, hashlib, subprocess
 HOME = os.environ.get("GLAW_HOME", os.path.expanduser("~/.glaw"))
 MATTERS = os.path.join(HOME, "matters")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+SOURCE_ID_RE = re.compile(r"\bSRC-\d{4}\b")
 
 def now(): return datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
 def slugify(s): return re.sub(r"[^a-z0-9]+","-", s.lower()).strip("-")
@@ -97,6 +98,23 @@ def validate_final_decision(d):
         return 1
     return 0
 
+def validate_final_approval_source(d, final_packet):
+    source_ids = [item.get("id") for item in final_packet.get("source_evidence_manifest", []) if item.get("id")]
+    if not source_ids:
+        print("FINAL APPROVAL BLOCKED: final packet has no source evidence manifest.")
+        return 1
+    rationale = str(d.get("rationale", ""))
+    cited = [sid for sid in source_ids if sid in rationale]
+    syntactic = SOURCE_ID_RE.findall(rationale)
+    if not syntactic:
+        print("FINAL APPROVAL BLOCKED: Chief rationale must cite a source evidence id such as SRC-0001.")
+        return 1
+    if not cited:
+        print("FINAL APPROVAL BLOCKED: Chief rationale cites no current final-packet source evidence id.")
+        print("Current source IDs: " + ", ".join(source_ids))
+        return 1
+    return 0
+
 def parse(argv):
     d = {"chief":"","score":"","grade":"","decision":"","risks":"","conditions":"",
          "rationale":"","matter":"","signoff":False,"approve-final":False,"deny-final":False}
@@ -144,6 +162,8 @@ def main():
     final_packet_path = os.path.join(mdir, "final_packet.json")
     final_packet = read_json(final_packet_path, {}) if d["approve-final"] else {}
     final_packet_sha256 = sha256_file(final_packet_path) if d["approve-final"] else ""
+    if d["approve-final"] and validate_final_approval_source(d, final_packet) != 0:
+        return 1
 
     card = {
         "ts": ts, "chief": d["chief"],

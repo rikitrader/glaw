@@ -96,7 +96,7 @@ row = {
     "grade": "A",
     "top_risks": ["none"],
     "conditions": ["licensed signer final review"],
-    "rationale": "all gates clear and source manifests tie out",
+    "rationale": "SRC-0001 all gates clear and source manifests tie out",
 }
 row["decision_hash"] = hashlib.sha256(
     json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
@@ -115,7 +115,7 @@ row = {
     "grade": "A",
     "top_risks": ["none"],
     "conditions": ["licensed signer final review"],
-    "rationale": "all gates clear and source manifests tie out",
+    "rationale": "SRC-0001 all gates clear and source manifests tie out",
 }
 row["decision_hash"] = hashlib.sha256(
     json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
@@ -134,7 +134,7 @@ row = {
     "grade": "A",
     "top_risks": ["none"],
     "conditions": ["licensed signer final review"],
-    "rationale": "all gates clear and source manifests tie out",
+    "rationale": "SRC-0001 all gates clear and source manifests tie out",
 }
 row["decision_hash"] = hashlib.sha256(
     json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
@@ -308,7 +308,7 @@ row = {
     "grade": "A",
     "top_risks": ["none"],
     "conditions": ["licensed signer final review"],
-    "rationale": "all gates clear and source manifests tie out",
+    "rationale": "SRC-0001 all gates clear and source manifests tie out",
 }
 row["decision_hash"] = hashlib.sha256(
     json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
@@ -327,6 +327,20 @@ PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-approval Chief decision tamper"
 cp "$M/decisions.baseline.jsonl" "$M/decisions.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact Chief decision restored"
+python3 - "$M/decisions.jsonl" <<'PY'
+import hashlib, json, sys
+p = sys.argv[1]
+row = json.loads(open(p, encoding="utf-8").read())
+row["rationale"] = "all gates clear but no source citation"
+row.pop("decision_hash", None)
+row["decision_hash"] = hashlib.sha256(
+    json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
+).hexdigest()
+open(p, "w", encoding="utf-8").write(json.dumps(row) + "\n")
+PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by Chief approval rationale without source evidence id"
+cp "$M/decisions.baseline.jsonl" "$M/decisions.jsonl"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after source-backed Chief decision restored"
 printf '# Draft Report\n\nNumbers changed after packet.\n' > "$M/draft-report.md"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-packet deliverable losing UPL footer"
 printf '\nAttorney work-product - not legal advice. Prepared for licensed review.\n' >> "$M/draft-report.md"

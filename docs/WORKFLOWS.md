@@ -61,7 +61,7 @@ bin/glaw-chief-decision --chief "GLAW Chief Counsel" \
   --decision "PROCEED" \
   --risks "none" \
   --conditions "licensed signer final review" \
-  --rationale "all gates clear and source manifests tie out" \
+  --rationale "SRC-0001 all gates clear and source manifests tie out" \
   --approve-final
 ```
 
@@ -72,6 +72,8 @@ matter files, then refuses to log `chief_approved` unless the rebuilt packet is 
 `final_packet_ready` is in the matter timeline.
 Final approve/deny decisions also require a complete Chief card: `--score`, `--grade`,
 `--risks`, `--conditions`, and `--rationale`.
+For final approval, the Chief rationale must cite a current source ID from the rebuilt
+final packet, such as `SRC-0001`; the file gate revalidates that citation before filing.
 The Chief approval records the approved packet's `generated_at` and SHA-256 digest; if the
 packet is rebuilt or edited later, the file gate blocks until the Chief approves the current
 packet.

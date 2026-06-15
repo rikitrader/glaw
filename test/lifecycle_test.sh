@@ -189,7 +189,9 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief approval blocked when current p
 mv "$TMP/matters/$SLUG/draft-report.clean.md" "$TMP/matters/$SLUG/draft-report.md"
 "$CHIEF" --chief "GLAW Chief Counsel" --decision "PROCEED" --approve-final --matter "$SLUG" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked without complete decision card"
-"$CHIEF" --chief "GLAW Chief Counsel" --score 95 --grade A --decision "PROCEED" --risks "none" --conditions "licensed signer final review" --rationale "all gates clear and source manifests tie out" --approve-final --matter "$SLUG" >/dev/null
+"$CHIEF" --chief "GLAW Chief Counsel" --score 95 --grade A --decision "PROCEED" --risks "none" --conditions "licensed signer final review" --rationale "all gates clear and source manifests tie out" --approve-final --matter "$SLUG" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked without source-backed rationale"
+"$CHIEF" --chief "GLAW Chief Counsel" --score 95 --grade A --decision "PROCEED" --risks "none" --conditions "licensed signer final review" --rationale "SRC-0001 all gates clear and source manifests tie out" --approve-final --matter "$SLUG" >/dev/null
 python3 - "$TMP/matters/$SLUG" <<'PY'
 import hashlib, json, pathlib, sys
 d = pathlib.Path(sys.argv[1])

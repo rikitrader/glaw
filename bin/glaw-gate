@@ -665,6 +665,18 @@ if not latest_final_row.get("conditions"):
 if approval_missing:
     print("latest Chief approval lacks complete sign-off field(s): " + ", ".join(approval_missing))
     sys.exit(1)
+approval_rationale = str(latest_final_row.get("rationale", ""))
+approval_rationale_refs = sorted(set(SOURCE_ID_RE.findall(approval_rationale)))
+approval_rationale_current_refs = [
+    sid for sid in [item["id"] for item in current_source_manifest]
+    if sid in approval_rationale
+]
+if not approval_rationale_refs:
+    print("latest Chief approval rationale lacks source evidence id (SRC-####)")
+    sys.exit(1)
+if not approval_rationale_current_refs:
+    print("latest Chief approval rationale cites no current source evidence id")
+    sys.exit(1)
 expected_decision_hash = str(latest_final_row.get("decision_hash", ""))
 if not expected_decision_hash:
     print("latest Chief approval missing decision_hash")
