@@ -21,6 +21,10 @@ DOCKET="$ROOT/bin/glaw-docket-gate"
 "$GLAW" matter new "Lifecycle Accounting" >/dev/null
 SLUG="lifecycle-accounting"
 ok "$([ -f "$TMP/matters/$SLUG/intake.json" ] && echo 1 || echo 0)" "matter new creates intake.json"
+"$GLAW" timeline-log chief_approved >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && ! grep -q 'chief_approved' "$TMP/matters/$SLUG/timeline.jsonl" && echo 1 || echo 0)" "manual timeline-log refuses reserved chief_approved gate event"
+"$GLAW" timeline-log operator_note >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 0 ] && grep -q 'operator_note' "$TMP/matters/$SLUG/timeline.jsonl" && echo 1 || echo 0)" "manual timeline-log still allows non-gate operator notes"
 
 "$GLAW" stage strategy >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "strategy blocked before intake/conflicts"

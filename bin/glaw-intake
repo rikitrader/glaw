@@ -5,7 +5,6 @@ from __future__ import annotations
 import argparse
 import json
 import os
-import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -179,9 +178,9 @@ def sync_matter_md(d: Path, form: dict) -> None:
     md.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
-def log_event(event: str) -> None:
-    glaw = Path(__file__).with_name("glaw")
-    subprocess.run([str(glaw), "timeline-log", event], check=False)
+def log_event(d: Path, event: str) -> None:
+    with (d / "timeline.jsonl").open("a", encoding="utf-8") as f:
+        f.write(json.dumps({"ts": now(), "event": event}) + "\n")
 
 
 def cmd_init(args: argparse.Namespace) -> int:
@@ -229,7 +228,7 @@ def cmd_complete(args: argparse.Namespace) -> int:
     form["review"]["completed_by"] = args.by
     save_form(d, form)
     sync_matter_md(d, form)
-    log_event("intake_complete")
+    log_event(d, "intake_complete")
     print(f"INTAKE COMPLETE {d.name}")
     return 0
 

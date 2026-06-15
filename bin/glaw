@@ -26,6 +26,15 @@ _slugify() { echo "$1" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; 
 
 _active_slug() { [ -f "$GLAW_HOME/.active" ] && cat "$GLAW_HOME/.active" 2>/dev/null || echo ""; }
 
+_reserved_gate_event() {
+  case "$1" in
+    intake_complete|conflicts_cleared|ethics_gate_complete|citations_verified|citation_gate_complete|adversarial_done|red_flags_clear|final_packet_ready|chief_approved|chief_denied|docket_gate_complete|docket_done|*_adversarial_complete|*_council_complete)
+      return 0 ;;
+    *)
+      return 1 ;;
+  esac
+}
+
 cmd_config() {
   local action="${1:-get}"; shift || true
   case "$action" in
@@ -188,6 +197,10 @@ cmd_timeline() {  # glaw timeline-log <event> [json-extra]
   local slug; slug="$(_active_slug)"
   [ -z "$slug" ] && return 0
   local ev="${1:-event}"; local extra="${2:-}"
+  if _reserved_gate_event "$ev" && [ "${GLAW_INTERNAL_GATE_WRITER:-}" != "1" ]; then
+    echo "Refusing to hand-log reserved gate event '$ev'. Run the owning gate command instead." >&2
+    return 1
+  fi
   local f="$MATTERS/$slug/timeline.jsonl"
   if [ -n "$extra" ]; then
     printf '{"ts":"%s","event":"%s",%s}\n' "$(_now)" "$ev" "$extra" >> "$f"
