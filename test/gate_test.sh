@@ -77,6 +77,7 @@ cat > "$M/final_packet.json" <<'JSON'
     "accounting_council_complete": true,
     "red_flags_clear": true,
     "external_deliverable_present": true,
+    "professional_report_manifest_clear": true,
     "upl_footer_clear": true
   }
 }
@@ -112,6 +113,33 @@ ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current e
 printf '# Draft Report\n\nNumbers tie.\n' > "$M/draft-report.md"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current deliverable missing UPL footer"
 printf '\nAttorney work-product - not legal advice. Prepared for licensed review.\n' >> "$M/draft-report.md"
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before professional report quality manifest"
+cat > "$M/draft-report.md" <<'MD'
+# Draft Report
+
+Owner: GLAW Controller
+Report voice: controller/CFO report.
+Findings: Numbers tie to source.
+Evidence: Test fixture ledger and bank statement.
+Red flags: none.
+Sign-off conditions: licensed review.
+
+Attorney work-product - not legal advice. Prepared for licensed review.
+MD
+python3 - "$M" <<'PY'
+import json, pathlib, sys
+d = pathlib.Path(sys.argv[1])
+packet_path = d / "final_packet.json"
+packet = json.loads(packet_path.read_text(encoding="utf-8"))
+markers = ["Owner:", "Report voice:", "Findings:", "Evidence:", "Red flags:", "Sign-off conditions:"]
+packet["report_quality_required_markers"] = markers
+packet["report_quality_manifest"] = [{
+    "path": "draft-report.md",
+    "status": "pass",
+    "missing_markers": [],
+}]
+packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
+PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before deliverable hash manifest"
 python3 - "$M" <<'PY'
 import hashlib, json, pathlib, sys
@@ -153,8 +181,19 @@ ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact Chief 
 printf '# Draft Report\n\nNumbers changed after packet.\n' > "$M/draft-report.md"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-packet deliverable losing UPL footer"
 printf '\nAttorney work-product - not legal advice. Prepared for licensed review.\n' >> "$M/draft-report.md"
-ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-packet deliverable hash change"
-printf '# Draft Report\n\nNumbers tie.\n\nAttorney work-product - not legal advice. Prepared for licensed review.\n' > "$M/draft-report.md"
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-packet deliverable report-quality/hash change"
+cat > "$M/draft-report.md" <<'MD'
+# Draft Report
+
+Owner: GLAW Controller
+Report voice: controller/CFO report.
+Findings: Numbers tie to source.
+Evidence: Test fixture ledger and bank statement.
+Red flags: none.
+Sign-off conditions: licensed review.
+
+Attorney work-product - not legal advice. Prepared for licensed review.
+MD
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact deliverable restored"
 printf '{"id":"RF-STALE","severity":"high","status":"open","finding":"new post-packet issue"}\n' > "$M/red_flags.jsonl"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet high red flag"

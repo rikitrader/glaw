@@ -136,6 +136,14 @@ REQUIRED_GATE_ARTIFACTS = (
 OPTIONAL_GATE_ARTIFACTS = (
     "red_flags.jsonl",
 )
+REPORT_REQUIRED_MARKERS = (
+    "Owner:",
+    "Report voice:",
+    "Findings:",
+    "Evidence:",
+    "Red flags:",
+    "Sign-off conditions:",
+)
 
 
 def is_external_text_deliverable(path):
@@ -159,6 +167,16 @@ def sha256_file(path):
         for chunk in iter(lambda: f.read(1024 * 1024), b""):
             h.update(chunk)
     return h.hexdigest()
+
+
+def report_quality(path):
+    text = path.read_text(encoding="utf-8", errors="replace")
+    missing = [marker for marker in REPORT_REQUIRED_MARKERS if marker.lower() not in text.lower()]
+    return {
+        "path": str(path.relative_to(d)),
+        "status": "pass" if not missing else "fail",
+        "missing_markers": missing,
+    }
 
 
 def decision_hash(row):
@@ -224,6 +242,26 @@ for doc in deliverables:
         missing_upl.append(str(doc.relative_to(d)))
 if missing_upl:
     print("current deliverable(s) missing UPL footer: " + ", ".join(missing_upl))
+    sys.exit(1)
+expected_report_markers = packet.get("report_quality_required_markers") or []
+if expected_report_markers != list(REPORT_REQUIRED_MARKERS):
+    print("final_packet.json report quality marker set is missing or stale")
+    sys.exit(1)
+expected_report_manifest = packet.get("report_quality_manifest") or []
+if not expected_report_manifest:
+    print("final_packet.json missing report_quality_manifest")
+    sys.exit(1)
+current_report_manifest = [report_quality(doc) for doc in deliverables]
+if expected_report_manifest != current_report_manifest:
+    print("current report quality manifest does not match final_packet.json")
+    sys.exit(1)
+failing_reports = [
+    f"{item['path']} missing {', '.join(item['missing_markers'])}"
+    for item in current_report_manifest
+    if item.get("status") != "pass"
+]
+if failing_reports:
+    print("current deliverable(s) fail professional report markers: " + "; ".join(failing_reports))
     sys.exit(1)
 expected_hashes = packet.get("external_text_deliverable_hashes") or {}
 if not expected_hashes:

@@ -97,6 +97,14 @@ REQUIRED_GATE_ARTIFACTS = (
 OPTIONAL_GATE_ARTIFACTS = (
     "red_flags.jsonl",
 )
+REPORT_REQUIRED_MARKERS = (
+    "Owner:",
+    "Report voice:",
+    "Findings:",
+    "Evidence:",
+    "Red flags:",
+    "Sign-off conditions:",
+)
 
 
 def is_external_text_deliverable(path: Path, root: Path) -> bool:
@@ -114,6 +122,16 @@ def sha256_file(path: Path) -> str:
         for chunk in iter(lambda: f.read(1024 * 1024), b""):
             h.update(chunk)
     return h.hexdigest()
+
+
+def report_quality(path: Path, root: Path) -> dict:
+    text = path.read_text(encoding="utf-8", errors="replace")
+    missing = [marker for marker in REPORT_REQUIRED_MARKERS if marker.lower() not in text.lower()]
+    return {
+        "path": str(path.relative_to(root)),
+        "status": "pass" if not missing else "fail",
+        "missing_markers": missing,
+    }
 
 
 def run_check(cmd: list[str], cwd: Path) -> tuple[int, str]:
@@ -149,6 +167,12 @@ def render_md(packet: dict) -> str:
             lines.append(f"- {item}")
     else:
         lines.append("- none recorded")
+    lines.extend(["", "## Professional Report Quality"])
+    for item in packet.get("report_quality_manifest", []):
+        mark = "x" if item.get("status") == "pass" else " "
+        missing = item.get("missing_markers") or []
+        suffix = "" if not missing else f" — missing {', '.join(missing)}"
+        lines.append(f"- [{mark}] {item.get('path')}{suffix}")
     lines.append("")
     lines.append("Attorney/CPA work-product. Human licensed signoff remains required where applicable.")
     return "\n".join(lines) + "\n"
@@ -180,6 +204,13 @@ def cmd_build(args: argparse.Namespace) -> int:
         str(p.relative_to(d)): sha256_file(p)
         for p in external_text_paths
     }
+    report_quality_manifest = [
+        report_quality(p, d)
+        for p in external_text_paths
+    ]
+    report_quality_clear = bool(report_quality_manifest) and all(
+        item["status"] == "pass" for item in report_quality_manifest
+    )
     gate_artifact_names = list(REQUIRED_GATE_ARTIFACTS)
     gate_artifact_names.extend(
         name for name in OPTIONAL_GATE_ARTIFACTS
@@ -218,6 +249,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         f"{profile}_council_complete": has_event(timeline_rows, f"{profile}_council_complete") and rc_council == 0,
         "red_flags_clear": has_event(timeline_rows, "red_flags_clear") and rc_rf == 0,
         "external_deliverable_present": bool(external_text_deliverables),
+        "professional_report_manifest_clear": report_quality_clear,
         "upl_footer_clear": rc_upl == 0,
     }
     blockers = blocking_red_flags(red_flags)
@@ -243,6 +275,8 @@ def cmd_build(args: argparse.Namespace) -> int:
         "deliverables": deliverables,
         "external_text_deliverables": external_text_deliverables,
         "external_text_deliverable_hashes": external_text_deliverable_hashes,
+        "report_quality_required_markers": list(REPORT_REQUIRED_MARKERS),
+        "report_quality_manifest": report_quality_manifest,
         "gate_artifact_hashes": gate_artifact_hashes,
     }
     (d / "final_packet.json").write_text(json.dumps(packet, indent=2, sort_keys=False) + "\n", encoding="utf-8")

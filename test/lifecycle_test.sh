@@ -120,6 +120,20 @@ printf '# Draft Report\n\nNumbers tie to source.\n' > "$TMP/matters/$SLUG/draft-
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by deliverable missing UPL footer"
 printf '\nAttorney work-product - not legal advice. Prepared for licensed review.\n' >> "$TMP/matters/$SLUG/draft-report.md"
 "$PACKET" build >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by deliverable missing professional report markers"
+cat > "$TMP/matters/$SLUG/draft-report.md" <<'MD'
+# Draft Report
+
+Owner: GLAW Controller
+Report voice: controller/CFO report.
+Findings: Numbers tie to source.
+Evidence: Test fixture ledger and bank statement.
+Red flags: none.
+Sign-off conditions: licensed review.
+
+Attorney work-product - not legal advice. Prepared for licensed review.
+MD
+"$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && [ -f "$TMP/matters/$SLUG/final_packet.json" ] && echo 1 || echo 0)" "final packet ready after council and red flags clear"
 
 "$CHIEF" --chief "GLAW Chief Counsel" --decision "PROCEED" --approve-final --matter "$SLUG" >/dev/null

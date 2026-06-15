@@ -50,6 +50,7 @@ FILE  /glaw-file  (signature-ready packet + checklist; UPL disclaimer on every d
   └─ GATE: `glaw-red-flags status` must show no blocking critical/high findings
   └─ GATE: `glaw-red-flags complete` logs the explicit clear event
   └─ GATE: `glaw-upl-check <matter>` must show all external text deliverables carry the footer
+  └─ GATE: external reports must include Owner / Report voice / Findings / Evidence / Red flags / Sign-off conditions
   └─ GATE: `glaw-final-packet build` writes final_packet.json/md and logs readiness
   └─ GATE: `glaw-chief-decision --approve-final` logs Chief/Council approval
   └─ court records → /glaw-court-records (CourtListener/PACER)
