@@ -6,6 +6,7 @@
 # State lives under $GLAW_HOME (default ~/.glaw):
 #   config.yaml                       firm-wide settings (flat key: value)
 #   matters/<slug>/matter.md          matter charter (type, parties, jurisdiction, goal)
+#   matters/<slug>/intake.json        structured workflow intake form
 #   matters/<slug>/docket.jsonl       deadlines (one JSON object per line)
 #   matters/<slug>/timeline.jsonl     append-only event log
 #   matters/<slug>/.stage             current pipeline stage
@@ -75,6 +76,37 @@ opened: $(_now)
 
 ## Engagement
 - engagement letter: PENDING
+EOF
+      cat > "$dir/intake.json" <<EOF
+{
+  "schema_version": 1,
+  "matter_slug": "$slug",
+  "matter_name": "$name",
+  "workflow_track": "unset",
+  "status": "draft",
+  "created_at": "$(_now)",
+  "updated_at": "$(_now)",
+  "universal": {
+    "matter_name": "$name",
+    "workflow_track": "unset",
+    "client_names": [],
+    "parties": [],
+    "jurisdiction": "",
+    "goal": "",
+    "source_documents": [],
+    "deadlines": [],
+    "facts_timeline": [],
+    "open_questions": [],
+    "conflicts_parties": [],
+    "authorized_scope": ""
+  },
+  "track_specific": {},
+  "review": {
+    "completed_by": "",
+    "completed_at": "",
+    "notes": ""
+  }
+}
 EOF
       : > "$dir/docket.jsonl"
       : > "$dir/timeline.jsonl"
@@ -180,6 +212,7 @@ glaw — virtual corporate law firm state machinery
   glaw matter new <name>        open a matter (litigation or corp-build), make it active
   glaw matter list              list all matters (* = active)
   glaw matter show [slug]       print a matter's charter
+  glaw-intake status            show required intake-form gaps for active matter
   glaw matter use <slug>        switch the active matter
   glaw stage [new-stage]        get/set the active matter's pipeline stage
   glaw docket add <date> <desc> add a deadline (YYYY-MM-DD)

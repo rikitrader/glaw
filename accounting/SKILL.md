@@ -93,6 +93,12 @@ The senior review chain is mandatory:
    `/glaw-narrative` for 10-K/10-Q/8-K style footnotes, MD&A/accounting-policy review, risk factors,
    and subsequent-events disclosure.
 
+Accounting/bookkeeping work cannot self-approve. The required council lenses are:
+`cfo`, `irs-audit-agent`, `legal-counsel`, `forensic-audit`, and `outside-critic`.
+Record each review with `bin/glaw-council record --profile accounting ...`, then run
+`bin/glaw-council complete --profile accounting`. Any `fix` or `deny` routes the work
+back to the owning department until corrected.
+
 Hard rule: a number that cannot be traced to source evidence, a ledger entry, and a tie-out stays in
 REVIEW and must not be presented as final. Unsupported assumptions are named assumptions, not facts.
 
@@ -131,11 +137,13 @@ Before any tax, audit, IRS, or SEC/reporting deliverable leaves draft, run the e
 
 ```bash
 GLAW="$PWD" bash bin/glaw-bookkeeping-doctor
+bin/glaw-council status --profile accounting
 ```
 
 This gate exercises statement ingest, bank reconciliation, ledger posting, IRS return mapping,
 form-fill package generation, tax provision, tax tie-out, OCR availability, source-only imports,
-and third-party-dependency guards. If it fails, the workflow is not final.
+and third-party-dependency guards. The council status checks the CFO, IRS-audit, legal,
+forensic/audit, and outside-critic lenses. If either fails, the workflow is not final.
 
 ### Step 4 — Hand back
 Package the numbers for the requesting stage:

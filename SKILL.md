@@ -63,6 +63,12 @@ holds the gates. Stages route work to the **divisions** in `lib/firm-roster.md`
 Litigation, Investigations via `/glaw-investigations`, Regulatory/Licensing,
 Private Client, Legal Writing) — every domain maps to a seat there, no gaps.
 
+The orchestrator is the firm's Chief layer: it does not merely call the next skill. It
+directs departments, requires review of reports/numbers/code/files/statements by the
+owning senior agents, collects red flags, sends unresolved items back for correction,
+and records the final Council decision through `glaw-chief-decision`. No matter reaches
+`file` until the Chief/Council explicitly logs `chief_approved`.
+
 ## Workflow
 
 ### Step 0 — Locate or open the matter
@@ -109,6 +115,21 @@ No matter reaches `file` until `/glaw-adversarial` has run its RED → BLUE pass
 every surviving position is verified by `/glaw-legal-research`. A position that the
 firm's own adversary destroys does not get filed.
 
+Then run the Chief/Council decision. The Chief routes any red flags back to the owning
+department until the agents agree on a final report/outcome:
+
+```bash
+~/.claude/skills/glaw/bin/glaw-chief-decision \
+  --chief "GLAW Chief Counsel" \
+  --decision "PROCEED" \
+  --risks "<surviving red flags or none>" \
+  --conditions "<required fixes or none>" \
+  --approve-final
+```
+
+Use `--deny-final` instead when the Council refuses the final entry. `glaw stage file`
+is code-gated and will not advance without `chief_approved`.
+
 ### Step 5 — File + docket
 `/glaw-file` assembles the signature-ready packet and the filing checklist.
 `/glaw-docket` calendars every deadline (`glaw docket add <date> <desc>`): statutes
@@ -122,7 +143,8 @@ workflow rule), logs decisions + followups, and marks the matter status.
 1. **Conflicts cleared** before strategy.
 2. **Citations verified** (`/glaw-legal-research`) before file.
 3. **Adversarial RED→BLUE** before file.
-4. **UPL disclaimer** on every external deliverable.
+4. **Chief/Council approval** before file.
+5. **UPL disclaimer** on every external deliverable.
 
 ## State commands
 | Need | Command |

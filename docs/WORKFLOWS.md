@@ -13,14 +13,66 @@ bin/glaw matter new "Acme contract review"
 bin/glaw matter list
 bin/glaw matter use acme-contract-review
 bin/glaw stage intake
+bin/glaw-intake status
+```
+
+`matter new` creates both `matter.md` and `intake.json`. Every workflow must complete
+the structured intake before strategy:
+
+```bash
+bin/glaw-intake set workflow_track contract-review
+bin/glaw-intake set client_names 'Acme Inc.'
+bin/glaw-intake set parties 'Acme Inc.; Vendor LLC'
+bin/glaw-intake set jurisdiction 'Florida; Delaware'
+bin/glaw-intake set goal 'review vendor MSA and produce risk/redline package'
+bin/glaw-intake set source_documents 'vendor-msa.docx'
+bin/glaw-intake set deadlines '2026-07-01 signature target'
+bin/glaw-intake set facts_timeline '2026-06-15 received draft'
+bin/glaw-intake set open_questions 'confirm business owner; confirm governing law'
+bin/glaw-intake set conflicts_parties 'Acme Inc.; Vendor LLC; affiliates'
+bin/glaw-intake set authorized_scope 'review and draft only; no filing/signature authority'
+bin/glaw-intake set track_specific.contract_type 'MSA'
+bin/glaw-intake set track_specific.counterparty 'Vendor LLC'
+bin/glaw-intake set track_specific.governing_law 'Florida'
+bin/glaw-intake set track_specific.review_standard 'client-favorable'
+bin/glaw-intake complete
 ```
 
 Required gates:
 
-1. Conflicts and engagement must clear before strategy.
+1. Structured intake and conflicts/engagement must clear before strategy.
 2. Legal citations must be verified before file.
 3. Adversarial review must pass before file.
-4. External deliverables must include the attorney-review / not-legal-advice guardrail.
+4. Chief/Council must approve final entry before file.
+5. External deliverables must include the attorney-review / not-legal-advice guardrail.
+
+Final approval is recorded by the Chief layer:
+
+```bash
+bin/glaw-chief-decision --chief "GLAW Chief Counsel" \
+  --decision "PROCEED" \
+  --risks "none" \
+  --conditions "licensed signer final review" \
+  --approve-final
+```
+
+If the Council denies the final entry, record it with `--deny-final`; unresolved red flags
+route back to the owning department until fixed.
+
+Accounting/bookkeeping has its own required review council before Chief approval:
+
+```bash
+bin/glaw-council record --profile accounting --role cfo --decision approve
+bin/glaw-council record --profile accounting --role irs-audit-agent --decision approve
+bin/glaw-council record --profile accounting --role legal-counsel --decision approve
+bin/glaw-council record --profile accounting --role forensic-audit --decision approve
+bin/glaw-council record --profile accounting --role outside-critic --decision approve
+bin/glaw-council complete --profile accounting
+```
+
+Use `--decision fix` or `--decision deny` plus `--red-flags` and `--conditions` for any
+reviewer that finds a gap. The workflow loops back to the owning department until all required
+lenses approve.
 
 ## Contract Review
 
@@ -52,6 +104,17 @@ GLAW="$PWD" bin/glaw-bank-ingest /tmp/glaw-sample.csv --format json
 GLAW="$PWD" bin/glaw-bank-ingest "https://docs.google.com/spreadsheets/d/<id>/edit#gid=0" --format json
 bin/glaw-books-doctor
 bin/glaw-bank-rec
+```
+
+For bookkeeping/tax workflows, intake must identify the source records and tax scope:
+
+```bash
+bin/glaw-intake set workflow_track accounting-tax
+bin/glaw-intake set track_specific.bank_statement_sources 'statements/*.pdf; Google Sheet URL'
+bin/glaw-intake set track_specific.tax_years '2024; 2025'
+bin/glaw-intake set track_specific.entity_tax_type 'C-corp'
+bin/glaw-intake set track_specific.books_status 'raw bank statements only'
+bin/glaw-intake set track_specific.irs_forms_needed '1120; 1099; 941'
 ```
 
 The bookkeeping engine lives inside `lib/bookkeeping/glaw_engine` and uses in-repo compatibility shims for table, model, and XML behavior. Google Sheets input is read through the sheet CSV export URL with Python stdlib. PDF/OCR ingestion is repo-owned orchestration over local binaries (`pdftotext` or `opendataloader-pdf`; scans need `pdftoppm` + `tesseract`).

@@ -4,9 +4,11 @@
 # in the matter's timeline.jsonl. Fail-closed: if the required event is absent, exit 1.
 #
 # GATES (mirror CLAUDE.md "Hard gates"):
-#   enter strategy  ⇐ conflicts_cleared            (gate 1: conflicts before strategy)
+#   enter strategy  ⇐ intake_complete              (structured intake before work)
+#                   ⇐ conflicts_cleared            (gate 1: conflicts before strategy)
 #   enter file      ⇐ citations_verified           (gate 2: cites verified before file)
 #                   ⇐ adversarial_done             (gate 3: RED→BLUE before file)
+#                   ⇐ chief_approved               (Chief/Council final approval)
 # (UPL footer = gate 4, a per-document content gate enforced at draft/publish, not here.)
 #
 # Usage:
@@ -19,8 +21,8 @@ MATTERS="$GLAW_HOME/matters"
 # stage -> space-separated required timeline events
 _required_events() {
   case "$1" in
-    strategy) echo "conflicts_cleared" ;;
-    file)     echo "citations_verified adversarial_done" ;;
+    strategy) echo "intake_complete conflicts_cleared" ;;
+    file)     echo "citations_verified adversarial_done chief_approved" ;;
     *)        echo "" ;;   # unguarded transition
   esac
 }
@@ -55,7 +57,7 @@ case "$action" in
     [ -z "$slug" ] && { echo "GATE: no active matter"; exit 2; }
     tl="$MATTERS/$slug/timeline.jsonl"
     echo "═══ GATE STATUS — $slug ═══"
-    for pair in "conflicts_cleared:before strategy" "citations_verified:before file" "adversarial_done:before file"; do
+    for pair in "intake_complete:before strategy" "conflicts_cleared:before strategy" "citations_verified:before file" "adversarial_done:before file" "chief_approved:before file"; do
       ev="${pair%%:*}"; desc="${pair#*:}"
       if _has_event "$tl" "$ev"; then echo "  ✅ $ev ($desc)"; else echo "  ❌ $ev ($desc) — NOT yet cleared"; fi
     done ;;

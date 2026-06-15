@@ -6,15 +6,16 @@ Writes the card three ways (no fabrication; you pass the real score/decision):
   - appends the structured card to matters/<slug>/decisions.jsonl
   - renders a markdown card to matters/<slug>/decisions/<ts>-<chief-slug>.md
 
-Pair with score.py: pass its grade/score/recommendation in. Non-blocking by design —
-this records the Chief's PROCEED / WITH-FIXES / WITH-CONDITIONS decision; it never halts.
+Pair with score.py: pass its grade/score/recommendation in. For final file/outcome gates,
+use --approve-final or --deny-final. The orchestrator blocks final filing until an explicit
+chief_approved event exists.
 
 Usage:
   glaw-chief-decision --chief "Chief Tax Strategist" --score 73 --grade C \
      --decision "PROCEED WITH FIXES" \
      --risks "assignment-of-income; non-grantor drafting; valuation" \
      --conditions "complete gifts before LOI; estate-attorney non-grantor confirm; 709 appraisal" \
-     [--rationale "..."] [--matter <slug>] [--signoff]
+     [--rationale "..."] [--matter <slug>] [--signoff] [--approve-final|--deny-final]
 """
 import os, sys, json, datetime, re
 
@@ -30,11 +31,11 @@ def active_slug():
 
 def parse(argv):
     d = {"chief":"","score":"","grade":"","decision":"","risks":"","conditions":"",
-         "rationale":"","matter":"","signoff":False}
+         "rationale":"","matter":"","signoff":False,"approve-final":False,"deny-final":False}
     i=0
     while i < len(argv):
         a=argv[i].lstrip("-")
-        if a=="signoff": d["signoff"]=True; i+=1
+        if a in ("signoff", "approve-final", "deny-final"): d[a]=True; i+=1
         elif a in d: d[a]=argv[i+1]; i+=2
         else: i+=1
     return d
@@ -56,10 +57,15 @@ def main():
     ts = now()
     risks = [r.strip() for r in re.split(r"[;\n]", d["risks"]) if r.strip()]
     conds = [c.strip() for c in re.split(r"[;\n]", d["conditions"]) if c.strip()]
+    if d["approve-final"] and d["deny-final"]:
+        print("Choose only one: --approve-final or --deny-final.")
+        return 2
+
     card = {
         "ts": ts, "chief": d["chief"],
         "score": d["score"], "grade": d["grade"],
         "decision": d["decision"], "signoff_required": d["signoff"],
+        "final_gate": "approved" if d["approve-final"] else ("denied" if d["deny-final"] else "reviewed"),
         "top_risks": risks, "conditions": conds, "rationale": d["rationale"],
     }
 
@@ -67,6 +73,13 @@ def main():
     with open(os.path.join(mdir,"timeline.jsonl"),"a") as f:
         f.write(json.dumps({"ts":ts,"event":"chief_decision","chief":d["chief"],
                             "grade":d["grade"],"score":d["score"],"decision":d["decision"]})+"\n")
+        if d["approve-final"]:
+            f.write(json.dumps({"ts":ts,"event":"chief_approved","chief":d["chief"],
+                                "grade":d["grade"],"score":d["score"],"decision":d["decision"]})+"\n")
+        if d["deny-final"]:
+            f.write(json.dumps({"ts":ts,"event":"chief_denied","chief":d["chief"],
+                                "grade":d["grade"],"score":d["score"],"decision":d["decision"],
+                                "risks":risks,"conditions":conds})+"\n")
     # 2) decisions ledger
     with open(os.path.join(mdir,"decisions.jsonl"),"a") as f:
         f.write(json.dumps(card)+"\n")
@@ -78,11 +91,13 @@ def main():
         f.write(f"- **Chief:** {d['chief']}\n- **Matter:** {slug}\n- **Date:** {ts}\n")
         f.write(f"- **Position-Strength:** {d['score']}/100  (Grade {d['grade']})\n")
         f.write(f"- **DECISION:** {d['decision']}\n")
+        if d["approve-final"]: f.write(f"- **FINAL GATE:** APPROVED (`chief_approved` logged)\n")
+        if d["deny-final"]: f.write(f"- **FINAL GATE:** DENIED (`chief_denied` logged)\n")
         if d["signoff"]: f.write(f"- **⚠ Human/attorney sign-off required.**\n")
         if risks: f.write("\n## Top surviving risks\n"+"".join(f"- {r}\n" for r in risks))
         if conds: f.write("\n## Conditions / sign-off\n"+"".join(f"- [ ] {c}\n" for c in conds))
         if d["rationale"]: f.write(f"\n## Rationale\n{d['rationale']}\n")
-        f.write("\n*Recorded by glaw-chief-decision. Non-blocking; workflow completes with these conditions.*\n")
+        f.write("\n*Recorded by glaw-chief-decision. Final filing still requires human attorney/CPA authorization where applicable.*\n")
 
     print(f"RECORDED chief decision for matter '{slug}'")
     print(f"  timeline.jsonl + decisions.jsonl appended")

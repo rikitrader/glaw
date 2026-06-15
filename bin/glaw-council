@@ -1,0 +1,169 @@
+#!/usr/bin/env python3
+"""GLAW review council ledger for required multi-agent signoff."""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import re
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+
+PROFILES = {
+    "accounting": (
+        "cfo",
+        "irs-audit-agent",
+        "legal-counsel",
+        "forensic-audit",
+        "outside-critic",
+    )
+}
+
+
+def now() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def slugify(text: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+
+
+def home() -> Path:
+    return Path(os.environ.get("GLAW_HOME", str(Path.home() / ".glaw")))
+
+
+def active_slug() -> str:
+    p = home() / ".active"
+    return p.read_text(encoding="utf-8").strip() if p.exists() else ""
+
+
+def matter_dir(slug: str | None) -> Path:
+    s = slug or active_slug()
+    if not s:
+        raise SystemExit("ERROR: no active matter. Run `glaw matter new \"<name>\"` first.")
+    d = home() / "matters" / s
+    if not d.is_dir():
+        raise SystemExit(f"ERROR: matter not found: {s}")
+    return d
+
+
+def append_jsonl(path: Path, row: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(row, sort_keys=False) + "\n")
+
+
+def read_jsonl(path: Path) -> list[dict]:
+    if not path.exists():
+        return []
+    out = []
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        if line.strip():
+            out.append(json.loads(line))
+    return out
+
+
+def latest_by_role(rows: list[dict]) -> dict[str, dict]:
+    latest: dict[str, dict] = {}
+    for row in rows:
+        latest[row.get("role", "")] = row
+    return latest
+
+
+def timeline(d: Path, event: str, **extra: object) -> None:
+    row = {"ts": now(), "event": event, **extra}
+    append_jsonl(d / "timeline.jsonl", row)
+
+
+def cmd_record(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    role = slugify(args.role)
+    decision = args.decision.lower()
+    if decision not in {"approve", "fix", "deny"}:
+        raise SystemExit("ERROR: decision must be approve, fix, or deny")
+    row = {
+        "ts": now(),
+        "profile": args.profile,
+        "role": role,
+        "display_role": args.role,
+        "decision": decision,
+        "red_flags": [x.strip() for x in re.split(r"[;\n]", args.red_flags or "") if x.strip()],
+        "conditions": [x.strip() for x in re.split(r"[;\n]", args.conditions or "") if x.strip()],
+        "notes": args.notes,
+    }
+    append_jsonl(d / "council.jsonl", row)
+    timeline(d, "council_review", profile=args.profile, role=role, decision=decision)
+    if decision == "approve":
+        timeline(d, f"council_approved_{role}", profile=args.profile)
+    elif decision == "deny":
+        timeline(d, f"council_denied_{role}", profile=args.profile)
+    print(f"RECORDED {args.profile} council review: {role}={decision}")
+    return 0
+
+
+def cmd_status(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    required = PROFILES[args.profile]
+    latest = latest_by_role([r for r in read_jsonl(d / "council.jsonl") if r.get("profile") == args.profile])
+    failures = []
+    print(f"COUNCIL {args.profile} — {d.name}")
+    for role in required:
+        row = latest.get(role)
+        if not row:
+            print(f"  ❌ {role}: missing")
+            failures.append(role)
+            continue
+        decision = row.get("decision")
+        icon = "✅" if decision == "approve" else "❌"
+        print(f"  {icon} {role}: {decision}")
+        for flag in row.get("red_flags", []):
+            print(f"      red_flag: {flag}")
+        for condition in row.get("conditions", []):
+            print(f"      condition: {condition}")
+        if decision != "approve":
+            failures.append(role)
+    if failures:
+        print("COUNCIL BLOCKED")
+        return 1
+    print("COUNCIL READY")
+    return 0
+
+
+def cmd_complete(args: argparse.Namespace) -> int:
+    rc = cmd_status(args)
+    if rc != 0:
+        return rc
+    d = matter_dir(args.matter)
+    timeline(d, f"{args.profile}_council_complete", profile=args.profile)
+    print(f"{args.profile.upper()} COUNCIL COMPLETE")
+    return 0
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(prog="glaw-council")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    p = sub.add_parser("record", help="record one council lens review")
+    p.add_argument("--profile", default="accounting", choices=sorted(PROFILES))
+    p.add_argument("--role", required=True, help="e.g. cfo, irs-audit-agent, legal-counsel")
+    p.add_argument("--decision", required=True, choices=["approve", "fix", "deny"])
+    p.add_argument("--red-flags", default="")
+    p.add_argument("--conditions", default="")
+    p.add_argument("--notes", default="")
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_record)
+    p = sub.add_parser("status", help="show council completion status")
+    p.add_argument("--profile", default="accounting", choices=sorted(PROFILES))
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_status)
+    p = sub.add_parser("complete", help="log <profile>_council_complete when every lens approves")
+    p.add_argument("--profile", default="accounting", choices=sorted(PROFILES))
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_complete)
+    args = ap.parse_args()
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

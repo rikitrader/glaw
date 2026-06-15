@@ -1,0 +1,283 @@
+#!/usr/bin/env python3
+"""GLAW structured intake form tied to the matter orchestrator."""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import subprocess
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+
+REQUIRED = (
+    "matter_name",
+    "workflow_track",
+    "client_names",
+    "parties",
+    "jurisdiction",
+    "goal",
+    "source_documents",
+    "deadlines",
+    "facts_timeline",
+    "open_questions",
+    "conflicts_parties",
+    "authorized_scope",
+)
+
+TRACKS = {
+    "litigation": ("claims_or_defenses", "forum", "relief_requested", "evidence_sources"),
+    "corp-build": ("entity_type", "owners", "capitalization", "tax_elections", "filings_needed"),
+    "investigation": ("targets", "suspected_conduct", "evidence_sources", "reporting_path"),
+    "hybrid": ("tracks_in_scope", "sequencing", "shared_evidence_sources"),
+    "accounting-tax": (
+        "bank_statement_sources",
+        "tax_years",
+        "entity_tax_type",
+        "books_status",
+        "irs_forms_needed",
+    ),
+    "contract-review": ("contract_type", "counterparty", "governing_law", "review_standard"),
+}
+
+
+def now() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def glaw_home() -> Path:
+    return Path(os.environ.get("GLAW_HOME", str(Path.home() / ".glaw")))
+
+
+def active_slug(home: Path) -> str:
+    active = home / ".active"
+    return active.read_text(encoding="utf-8").strip() if active.exists() else ""
+
+
+def matter_dir(slug: str | None) -> Path:
+    home = glaw_home()
+    s = slug or active_slug(home)
+    if not s:
+        raise SystemExit("ERROR: no active matter. Run `glaw matter new \"<name>\"` first.")
+    d = home / "matters" / s
+    if not d.is_dir():
+        raise SystemExit(f"ERROR: matter not found: {s}")
+    return d
+
+
+def matter_name(d: Path) -> str:
+    md = d / "matter.md"
+    if not md.exists():
+        return d.name
+    for line in md.read_text(encoding="utf-8", errors="replace").splitlines():
+        if line.startswith("name:"):
+            return line.split(":", 1)[1].strip()
+    return d.name
+
+
+def default_form(d: Path, track: str = "unset") -> dict:
+    workflow_track = track if track in TRACKS else "unset"
+    sections = {name: "" for name in TRACKS.get(workflow_track, ())}
+    return {
+        "schema_version": 1,
+        "matter_slug": d.name,
+        "matter_name": matter_name(d),
+        "workflow_track": workflow_track,
+        "status": "draft",
+        "created_at": now(),
+        "updated_at": now(),
+        "universal": {
+            "matter_name": matter_name(d),
+            "workflow_track": workflow_track,
+            "client_names": [],
+            "parties": [],
+            "jurisdiction": "",
+            "goal": "",
+            "source_documents": [],
+            "deadlines": [],
+            "facts_timeline": [],
+            "open_questions": [],
+            "conflicts_parties": [],
+            "authorized_scope": "",
+        },
+        "track_specific": sections,
+        "review": {
+            "completed_by": "",
+            "completed_at": "",
+            "notes": "",
+        },
+    }
+
+
+def load_form(d: Path) -> dict:
+    p = d / "intake.json"
+    if not p.exists():
+        form = default_form(d)
+        save_form(d, form)
+        return form
+    return json.loads(p.read_text(encoding="utf-8"))
+
+
+def save_form(d: Path, form: dict) -> None:
+    form["updated_at"] = now()
+    (d / "intake.json").write_text(json.dumps(form, indent=2, sort_keys=False) + "\n", encoding="utf-8")
+
+
+def set_path(form: dict, key: str, value: str) -> None:
+    if "." in key:
+        root, child = key.split(".", 1)
+    elif key in REQUIRED:
+        root, child = "universal", key
+    else:
+        root, child = "track_specific", key
+    if root not in ("universal", "track_specific", "review"):
+        raise SystemExit("ERROR: key must be universal.<field>, track_specific.<field>, review.<field>, or a known field")
+    target = form.setdefault(root, {})
+    current = target.get(child)
+    if isinstance(current, list):
+        try:
+            parsed = json.loads(value)
+            target[child] = parsed if isinstance(parsed, list) else [value]
+        except json.JSONDecodeError:
+            target[child] = [v.strip() for v in value.split(";") if v.strip()]
+    else:
+        target[child] = value
+    if child == "workflow_track" and value in TRACKS:
+        form["workflow_track"] = value
+        form.setdefault("universal", {})["workflow_track"] = value
+        existing = form.setdefault("track_specific", {})
+        form["track_specific"] = {name: existing.get(name, "") for name in TRACKS[value]}
+
+
+def missing_fields(form: dict) -> list[str]:
+    universal = form.get("universal", {})
+    missing: list[str] = []
+    for key in REQUIRED:
+        val = universal.get(key)
+        if val in ("", None, [], {}):
+            missing.append(f"universal.{key}")
+    track = universal.get("workflow_track") or form.get("workflow_track")
+    if track not in TRACKS:
+        missing.append("universal.workflow_track(valid)")
+    for key in TRACKS.get(track, ()):
+        val = form.get("track_specific", {}).get(key)
+        if val in ("", None, [], {}):
+            missing.append(f"track_specific.{key}")
+    return missing
+
+
+def sync_matter_md(d: Path, form: dict) -> None:
+    md = d / "matter.md"
+    if not md.exists():
+        return
+    text = md.read_text(encoding="utf-8", errors="replace")
+    track = form.get("universal", {}).get("workflow_track", "unset")
+    jurisdiction = form.get("universal", {}).get("jurisdiction", "unset") or "unset"
+    lines = []
+    seen_type = seen_jurisdiction = False
+    for line in text.splitlines():
+        if line.startswith("type:"):
+            lines.append(f"type: {track}")
+            seen_type = True
+        elif line.startswith("jurisdiction:"):
+            lines.append(f"jurisdiction: {jurisdiction}")
+            seen_jurisdiction = True
+        else:
+            lines.append(line)
+    if not seen_type:
+        lines.insert(2, f"type: {track}")
+    if not seen_jurisdiction:
+        lines.insert(3, f"jurisdiction: {jurisdiction}")
+    md.write_text("\n".join(lines) + "\n", encoding="utf-8")
+
+
+def log_event(event: str) -> None:
+    glaw = Path(__file__).with_name("glaw")
+    subprocess.run([str(glaw), "timeline-log", event], check=False)
+
+
+def cmd_init(args: argparse.Namespace) -> int:
+    d = matter_dir(args.slug)
+    form = default_form(d, args.track)
+    save_form(d, form)
+    print(f"initialized {d / 'intake.json'}")
+    return 0
+
+
+def cmd_set(args: argparse.Namespace) -> int:
+    d = matter_dir(args.slug)
+    form = load_form(d)
+    set_path(form, args.key, args.value)
+    save_form(d, form)
+    print(f"set {args.key}")
+    return 0
+
+
+def cmd_status(args: argparse.Namespace) -> int:
+    d = matter_dir(args.slug)
+    form = load_form(d)
+    missing = missing_fields(form)
+    print(f"INTAKE {d.name}: {form.get('status', 'draft')}")
+    if missing:
+        print("missing:")
+        for item in missing:
+            print(f"  - {item}")
+        return 1
+    print("complete-ready")
+    return 0
+
+
+def cmd_complete(args: argparse.Namespace) -> int:
+    d = matter_dir(args.slug)
+    form = load_form(d)
+    missing = missing_fields(form)
+    if missing:
+        print("ERROR: intake incomplete; missing:", file=sys.stderr)
+        for item in missing:
+            print(f"  - {item}", file=sys.stderr)
+        return 1
+    form["status"] = "complete"
+    form["review"]["completed_at"] = now()
+    form["review"]["completed_by"] = args.by
+    save_form(d, form)
+    sync_matter_md(d, form)
+    log_event("intake_complete")
+    print(f"INTAKE COMPLETE {d.name}")
+    return 0
+
+
+def cmd_show(args: argparse.Namespace) -> int:
+    d = matter_dir(args.slug)
+    print(json.dumps(load_form(d), indent=2))
+    return 0
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(prog="glaw-intake")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    p = sub.add_parser("init", help="create/reset the structured intake form")
+    p.add_argument("slug", nargs="?")
+    p.add_argument("--track", default="unset", choices=["unset", *TRACKS])
+    p.set_defaults(func=cmd_init)
+    p = sub.add_parser("set", help="set an intake field")
+    p.add_argument("key")
+    p.add_argument("value")
+    p.add_argument("--slug", default=None)
+    p.set_defaults(func=cmd_set)
+    p = sub.add_parser("status", help="show missing required intake fields")
+    p.add_argument("slug", nargs="?")
+    p.set_defaults(func=cmd_status)
+    p = sub.add_parser("complete", help="validate intake and log intake_complete")
+    p.add_argument("slug", nargs="?")
+    p.add_argument("--by", default=os.environ.get("USER", "operator"))
+    p.set_defaults(func=cmd_complete)
+    p = sub.add_parser("show", help="print intake JSON")
+    p.add_argument("slug", nargs="?")
+    p.set_defaults(func=cmd_show)
+    args = ap.parse_args()
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -18,28 +18,34 @@ chk(){ "$GATE" check "$1" m >/dev/null 2>&1; echo $?; }   # echoes exit code
 ok "$([ "$(chk structure)" = 0 ] && echo 1 || echo 0)" "unguarded stage 'structure' is CLEAR"
 ok "$([ "$(chk draft)" = 0 ] && echo 1 || echo 0)"     "unguarded stage 'draft' is CLEAR"
 
-# gate 1: strategy needs conflicts_cleared
-ok "$([ "$(chk strategy)" = 1 ] && echo 1 || echo 0)" "strategy BLOCKED before conflicts_cleared"
+# intake + gate 1: strategy needs intake_complete and conflicts_cleared
+ok "$([ "$(chk strategy)" = 1 ] && echo 1 || echo 0)" "strategy BLOCKED before intake_complete + conflicts_cleared"
+log intake_complete
+ok "$([ "$(chk strategy)" = 1 ] && echo 1 || echo 0)" "strategy STILL BLOCKED with only intake_complete"
 log conflicts_cleared
-ok "$([ "$(chk strategy)" = 0 ] && echo 1 || echo 0)" "strategy CLEAR after conflicts_cleared"
+ok "$([ "$(chk strategy)" = 0 ] && echo 1 || echo 0)" "strategy CLEAR after intake_complete + conflicts_cleared"
 
-# gates 2+3: file needs citations_verified AND adversarial_done
-ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED with neither cites nor adversarial"
+# gates 2+3+4: file needs citations_verified, adversarial_done, and chief_approved
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED with no file gates"
 log citations_verified
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file STILL BLOCKED with only citations_verified"
 log adversarial_done
-ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after both citations_verified + adversarial_done"
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file STILL BLOCKED before chief_approved"
+log chief_approved
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after citations_verified + adversarial_done + chief_approved"
 
 # status reflects state
 S="$("$GATE" status m 2>&1)"
 ok "$(echo "$S" | grep -q '✅ conflicts_cleared' && echo 1 || echo 0)" "status shows conflicts_cleared ✅"
+ok "$(echo "$S" | grep -q '✅ intake_complete' && echo 1 || echo 0)" "status shows intake_complete ✅"
 ok "$(echo "$S" | grep -q '✅ adversarial_done' && echo 1 || echo 0)" "status shows adversarial_done ✅"
+ok "$(echo "$S" | grep -q '✅ chief_approved' && echo 1 || echo 0)" "status shows chief_approved ✅"
 
 # the live glaw 'stage' command refuses to advance past an unmet gate (integration)
 GLAW_BIN="$HERE/../bin/glaw"
 N="$TMP/matters/n"; mkdir -p "$N"; : > "$N/timeline.jsonl"; echo intake > "$N/.stage"; echo n > "$TMP/.active"
 "$GLAW_BIN" stage strategy >/dev/null 2>&1; rc=$?
-ok "$([ "$rc" = 1 ] && [ "$(cat "$N/.stage")" = intake ] && echo 1 || echo 0)" "glaw stage refuses advance + leaves .stage unchanged"
+ok "$([ "$rc" = 1 ] && [ "$(cat "$N/.stage")" = intake ] && echo 1 || echo 0)" "glaw stage refuses advance without intake/conflicts + leaves .stage unchanged"
 "$GLAW_BIN" stage strategy --force >/dev/null 2>&1
 ok "$([ "$(cat "$N/.stage")" = strategy ] && grep -q gate_override "$N/timeline.jsonl" && echo 1 || echo 0)" "glaw stage --force advances + logs gate_override"
 
