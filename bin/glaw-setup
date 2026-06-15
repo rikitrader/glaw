@@ -1,17 +1,33 @@
 #!/usr/bin/env bash
 # glaw-setup — deploy GLAW's nested sub-skills as top-level /glaw-* commands,
 # mirroring gstack's ./setup. Creates a real top-level directory per sub-skill
-# with a SKILL.md symlink back to the canonical file under glaw/, so Claude Code
-# discovers each as its own skill (not nested). Idempotent.
+# with a SKILL.md symlink back to the canonical file under glaw/, so Claude Code,
+# Codex, or any Agent Skills-compatible client discovers each as its own skill.
+# Idempotent.
 set -euo pipefail
-ROOT="${GLAW_SKILLS_ROOT:-$HOME/.claude/skills}"
-SRC="${GLAW_SKILL_DIR:-$ROOT/glaw}"
+ROOT="${GLAW_SKILLS_ROOT:-${CODEX_HOME:-$HOME/.codex}/skills}"
+SRC="${GLAW_SKILL_DIR:-$(cd "$(dirname "$0")/.." && pwd)}"
+mkdir -p "$ROOT"
+if [ ! -e "$ROOT/glaw" ]; then
+  ln -snf "$SRC" "$ROOT/glaw"
+elif [ "$(readlink "$ROOT/glaw" 2>/dev/null || true)" = "$SRC" ]; then
+  :
+else
+  echo "  /glaw (existing install kept)"
+fi
 count=0
 for d in "$SRC"/*/; do
   name="$(basename "$d")"
   [ "$name" = "seats" ] && continue           # vendored seats handled below
   [ -f "$d/SKILL.md" ] || continue            # skip bin/ lib/ (no SKILL.md)
   top="glaw-$name"
+  if [ "$(readlink "$ROOT/$top/SKILL.md" 2>/dev/null || true)" = "$SRC/$name/SKILL.md" ]; then
+    continue
+  fi
+  if [ -e "$ROOT/$top/SKILL.md" ]; then
+    echo "  /$top (existing install kept)"
+    continue
+  fi
   mkdir -p "$ROOT/$top"
   ln -snf "$SRC/$name/SKILL.md" "$ROOT/$top/SKILL.md"
   count=$((count+1))
@@ -21,9 +37,12 @@ echo "deployed $count GLAW sub-skills as top-level commands (orchestrator /glaw 
 
 # Deploy vendored seats (skills GLAW routes to) as top-level siblings, NON-destructively:
 # never clobber a valid seat the user already has installed — their copy wins.
-# Broken stale deploy directories are repaired so global /glaw-* parity stays real.
+# Broken stale deploy directories are repaired when the filesystem allows it; otherwise
+# setup reports them and continues so one protected stale entry does not block Codex.
 seatc=0
 repaired=0
+stale=0
+blocked=0
 if [ -d "$SRC/seats" ]; then
   for d in "$SRC"/seats/*/; do
     name="$(basename "$d")"
@@ -32,12 +51,21 @@ if [ -d "$SRC/seats" ]; then
       if [ -f "$ROOT/$name/SKILL.md" ]; then
         continue                              # already installed and resolvable
       fi
-      rm -rf "$ROOT/$name"
-      repaired=$((repaired+1))
+      if rm -rf "$ROOT/$name" 2>/dev/null; then
+        repaired=$((repaired+1))
+      else
+        stale=$((stale+1))
+        echo "  /$name (stale existing install kept; remove manually to redeploy)"
+        continue
+      fi
     fi
-    ln -snf "$SRC/seats/$name" "$ROOT/$name"  # symlink the whole seat dir
+    if ! ln -snf "$SRC/seats/$name" "$ROOT/$name" 2>/dev/null; then
+      blocked=$((blocked+1))
+      echo "  /$name (could not create install link; filesystem denied write)"
+      continue
+    fi
     seatc=$((seatc+1))
     echo "  /$name (vendored seat)"
   done
-  echo "deployed $seatc vendored seats (repaired $repaired stale deploys; skipped valid installs)"
+  echo "deployed $seatc vendored seats (repaired $repaired stale deploys; $stale stale protected; $blocked write-blocked; skipped valid installs)"
 fi

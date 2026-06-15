@@ -126,6 +126,16 @@ TEXT_DELIVERABLE_SKIP_PARTS = {
     "decisions",
     "evidence",
 }
+REQUIRED_GATE_ARTIFACTS = (
+    "intake.json",
+    "ethics.json",
+    "citations.jsonl",
+    "council.jsonl",
+    "adversarial.jsonl",
+)
+OPTIONAL_GATE_ARTIFACTS = (
+    "red_flags.jsonl",
+)
 
 
 def is_external_text_deliverable(path):
@@ -211,6 +221,37 @@ if missing_from_disk or new_since_packet or changed_since_packet:
     if changed_since_packet:
         parts.append("changed: " + ", ".join(changed_since_packet))
     print("current deliverables do not match final_packet.json: " + "; ".join(parts))
+    sys.exit(1)
+
+expected_gate_hashes = packet.get("gate_artifact_hashes") or {}
+if not expected_gate_hashes:
+    print("final_packet.json missing gate_artifact_hashes")
+    sys.exit(1)
+missing_gate_hashes = sorted(set(REQUIRED_GATE_ARTIFACTS) - set(expected_gate_hashes))
+if missing_gate_hashes:
+    print("final_packet.json missing gate artifact hash(es): " + ", ".join(missing_gate_hashes))
+    sys.exit(1)
+known_gate_artifacts = REQUIRED_GATE_ARTIFACTS + OPTIONAL_GATE_ARTIFACTS
+current_gate_hashes = {}
+for name in known_gate_artifacts:
+    path = d / name
+    if path.exists():
+        current_gate_hashes[name] = sha256_file(path)
+missing_gate_artifacts = sorted(set(expected_gate_hashes) - set(current_gate_hashes))
+new_gate_artifacts = sorted(set(current_gate_hashes) - set(expected_gate_hashes))
+changed_gate_artifacts = sorted(
+    name for name, digest in expected_gate_hashes.items()
+    if name in current_gate_hashes and current_gate_hashes[name] != digest
+)
+if missing_gate_artifacts or new_gate_artifacts or changed_gate_artifacts:
+    parts = []
+    if missing_gate_artifacts:
+        parts.append("missing: " + ", ".join(missing_gate_artifacts))
+    if new_gate_artifacts:
+        parts.append("new: " + ", ".join(new_gate_artifacts))
+    if changed_gate_artifacts:
+        parts.append("changed: " + ", ".join(changed_gate_artifacts))
+    print("current gate artifacts do not match final_packet.json: " + "; ".join(parts))
     sys.exit(1)
 
 red_flags = d / "red_flags.jsonl"

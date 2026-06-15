@@ -27,7 +27,7 @@ sys.path.insert(0, str(HERE))
 import ledger as L          # noqa: E402
 import statements as S      # noqa: E402
 
-INGEST = str(Path.home() / ".claude/skills/glaw/bin/glaw-bank-ingest")
+INGEST = str(Path(__file__).resolve().parents[2] / "bin" / "glaw-bank-ingest")
 
 
 def _ingest_to_rows(path: str, chart: str | None, mapfile: str | None) -> dict:

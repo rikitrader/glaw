@@ -12,8 +12,9 @@ Usage:
   glaw-tax-report scaffold <type>     print a blank report skeleton for a report_type
 """
 import sys, json, os, re
+from pathlib import Path
 
-SCHEMA = os.path.expanduser("~/.claude/skills/glaw/lib/schemas/tax-report-schema.json")
+SCHEMA = str(Path(os.environ.get("GLAW_SKILL_DIR", Path(__file__).resolve().parents[1])) / "lib/schemas/tax-report-schema.json")
 
 def load(): return json.load(open(SCHEMA))
 

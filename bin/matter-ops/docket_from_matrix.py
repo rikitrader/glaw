@@ -7,10 +7,11 @@ resolves relative dates to absolute for a given tax year, and emits `glaw docket
 Usage: docket_from_matrix.py <matrix.md> [--year 2026] [--apply]
 """
 import sys, os, re, subprocess, datetime as dt
+from pathlib import Path
 
 MONTHS = {m: i for i, m in enumerate(
     ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], 1)}
-GLAW = os.path.expanduser('~/.claude/skills/glaw/bin/glaw')
+GLAW = str(Path(__file__).resolve().parents[1] / "glaw")
 
 def resolve(date_txt, year):
     """'May 1' / 'Apr 15' / 'Mar 1' -> YYYY-MM-DD for the given year (next occurrence if past)."""

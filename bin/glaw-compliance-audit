@@ -15,8 +15,9 @@ For PDFs/DOCX, run `glaw-doc-extract <dir> -o <dir>/_extracted` first so the tex
 is searchable, then point this at the folder (it greps text files + filenames).
 """
 import sys, os, json, glob, re
+from pathlib import Path
 
-SKILLDIR = os.path.expanduser("~/.claude/skills/glaw")
+SKILLDIR = os.environ.get("GLAW_SKILL_DIR") or str(Path(__file__).resolve().parents[1])
 
 def load_checklist(args):
     if "--checklist" in args:

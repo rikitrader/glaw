@@ -87,6 +87,16 @@ TEXT_DELIVERABLE_SKIP_PARTS = {
     "decisions",
     "evidence",
 }
+REQUIRED_GATE_ARTIFACTS = (
+    "intake.json",
+    "ethics.json",
+    "citations.jsonl",
+    "council.jsonl",
+    "adversarial.jsonl",
+)
+OPTIONAL_GATE_ARTIFACTS = (
+    "red_flags.jsonl",
+)
 
 
 def is_external_text_deliverable(path: Path, root: Path) -> bool:
@@ -170,6 +180,16 @@ def cmd_build(args: argparse.Namespace) -> int:
         str(p.relative_to(d)): sha256_file(p)
         for p in external_text_paths
     }
+    gate_artifact_names = list(REQUIRED_GATE_ARTIFACTS)
+    gate_artifact_names.extend(
+        name for name in OPTIONAL_GATE_ARTIFACTS
+        if (d / name).exists()
+    )
+    gate_artifact_hashes = {
+        name: sha256_file(d / name)
+        for name in gate_artifact_names
+        if (d / name).exists()
+    }
 
     rc_rf, red_flag_output = run_check([str(root / "bin/glaw-red-flags"), "status", "--matter", d.name], root)
     rc_ethics, ethics_output = run_check([str(root / "bin/glaw-ethics"), "status", "--matter", d.name], root)
@@ -223,6 +243,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         "deliverables": deliverables,
         "external_text_deliverables": external_text_deliverables,
         "external_text_deliverable_hashes": external_text_deliverable_hashes,
+        "gate_artifact_hashes": gate_artifact_hashes,
     }
     (d / "final_packet.json").write_text(json.dumps(packet, indent=2, sort_keys=False) + "\n", encoding="utf-8")
     (d / "final_packet.md").write_text(render_md(packet), encoding="utf-8")

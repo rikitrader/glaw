@@ -92,6 +92,21 @@ packet["external_text_deliverables"] = ["draft-report.md"]
 packet["external_text_deliverable_hashes"] = {"draft-report.md": hashlib.sha256(p.read_bytes()).hexdigest()}
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before gate artifact hash manifest"
+python3 - "$M" <<'PY'
+import hashlib, json, pathlib, sys
+d = pathlib.Path(sys.argv[1])
+packet_path = d / "final_packet.json"
+packet = json.loads(packet_path.read_text(encoding="utf-8"))
+names = ["intake.json", "ethics.json", "citations.jsonl", "council.jsonl", "adversarial.jsonl"]
+if (d / "red_flags.jsonl").exists():
+    names.append("red_flags.jsonl")
+packet["gate_artifact_hashes"] = {
+    name: hashlib.sha256((d / name).read_bytes()).hexdigest()
+    for name in names
+}
+packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
+PY
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after all file gates"
 printf '# Draft Report\n\nNumbers changed after packet.\n' > "$M/draft-report.md"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-packet deliverable losing UPL footer"
@@ -102,19 +117,30 @@ ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact delive
 printf '{"id":"RF-STALE","severity":"high","status":"open","finding":"new post-packet issue"}\n' > "$M/red_flags.jsonl"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet high red flag"
 printf '{"id":"RF-STALE","severity":"high","status":"resolved","finding":"new post-packet issue","resolution_evidence":"fixed"}\n' > "$M/red_flags.jsonl"
-ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after post-packet red flag resolved"
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file STILL BLOCKED by new post-packet red flag ledger after resolution"
+rm -f "$M/red_flags.jsonl"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after new post-packet red flag ledger removed"
+cp "$M/citations.jsonl" "$M/citations.baseline.jsonl"
+cp "$M/council.jsonl" "$M/council.baseline.jsonl"
+cp "$M/adversarial.jsonl" "$M/adversarial.baseline.jsonl"
 printf '{"id":"C-1","status":"weak","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/"}\n' >> "$M/citations.jsonl"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet weak citation"
 printf '{"id":"C-1","status":"verified","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/"}\n' >> "$M/citations.jsonl"
-ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after post-packet citation re-verified"
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file STILL BLOCKED by citation ledger hash change after re-verification"
+cp "$M/citations.baseline.jsonl" "$M/citations.jsonl"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact citation ledger restored"
 printf '{"profile":"accounting","role":"cfo","decision":"fix","red_flags":["new council issue"],"conditions":["fix it"]}\n' >> "$M/council.jsonl"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet council fix"
 printf '{"profile":"accounting","role":"cfo","decision":"approve","evidence":"fixture reapproval"}\n' >> "$M/council.jsonl"
-ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after post-packet council reapproval"
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file STILL BLOCKED by council ledger hash change after reapproval"
+cp "$M/council.baseline.jsonl" "$M/council.jsonl"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact council ledger restored"
 printf '{"profile":"accounting","lens":"irs-examiner","decision":"fix","attack":"new adversarial issue","cure":"fix it"}\n' >> "$M/adversarial.jsonl"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet adversarial fix"
 printf '{"profile":"accounting","lens":"irs-examiner","decision":"survive","evidence":"fixture rescore"}\n' >> "$M/adversarial.jsonl"
-ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after post-packet adversarial survival"
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file STILL BLOCKED by adversarial ledger hash change after survival"
+cp "$M/adversarial.baseline.jsonl" "$M/adversarial.jsonl"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact adversarial ledger restored"
 
 ok "$([ "$(chk matter-retro)" = 1 ] && echo 1 || echo 0)" "matter-retro BLOCKED before docket gate"
 log docket_gate_complete

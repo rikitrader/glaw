@@ -12,7 +12,7 @@
 #   5. allowed-tools is a non-empty list
 # Exit 0 = all contracts pass, 1 = at least one violation.
 set -uo pipefail
-GLAW="${GLAW_SKILL_DIR:-$HOME/.claude/skills/glaw}"
+GLAW="${GLAW_SKILL_DIR:-$(cd "$(dirname "$0")/.." && pwd)}"
 PASS=0; FAILS=0
 red(){ printf '  \033[31m✗ %s\033[0m\n' "$1"; FAILS=$((FAILS+1)); }
 grn(){ PASS=$((PASS+1)); }

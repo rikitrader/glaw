@@ -12,7 +12,7 @@
 # "📐 DESIGNED" is exit 0. This is the check glaw-doctor relies on so status can never
 # silently inflate to LIVE without the infra actually existing.
 set -uo pipefail
-GLAW="${GLAW_SKILL_DIR:-$HOME/.claude/skills/glaw}"
+GLAW="${GLAW_SKILL_DIR:-$(cd "$(dirname "$0")/.." && pwd)}"
 GLAW_HOME="${GLAW_HOME:-$HOME/.glaw}"
 DOC="$GLAW/AI-CORP-ARCHITECTURE.md"
 PY_SYS="python3"

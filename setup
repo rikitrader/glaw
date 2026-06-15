@@ -10,7 +10,12 @@ echo "   repo: $HERE"
 
 # 1) deploy every sub-skill as a top-level /glaw-* command
 echo "→ deploying skills…"
-bash "$HERE/bin/glaw-setup"
+if [ -n "${GLAW_SKILLS_ROOT:-}" ]; then
+  GLAW_SKILL_DIR="${GLAW_SKILL_DIR:-$HERE}" bash "$HERE/bin/glaw-setup"
+else
+  GLAW_SKILL_DIR="$HERE" GLAW_SKILLS_ROOT="$HOME/.claude/skills" bash "$HERE/bin/glaw-setup"
+  GLAW_SKILL_DIR="$HERE" GLAW_SKILLS_ROOT="${CODEX_HOME:-$HOME/.codex}/skills" bash "$HERE/bin/glaw-setup"
+fi
 
 # 2) state dir
 mkdir -p "$GLAW_HOME/tools"

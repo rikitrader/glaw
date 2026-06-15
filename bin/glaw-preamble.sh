@@ -2,8 +2,10 @@
 # Shared preamble emitted by every GLAW skill (the firm's "open the file before
 # you talk" reflex). Echoes the active matter, its type, stage, and any deadline
 # inside 14 days. Sourced/run at the top of each stage skill. Never fails hard.
-GLAW="$HOME/.claude/skills/glaw/bin/glaw"
-[ -x "$GLAW" ] || GLAW=".claude/skills/glaw/bin/glaw"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+GLAW="$SCRIPT_DIR/glaw"
+[ -x "$GLAW" ] || GLAW="${CODEX_HOME:-$HOME/.codex}/skills/glaw/bin/glaw"
+[ -x "$GLAW" ] || GLAW="$HOME/.claude/skills/glaw/bin/glaw"
 SLUG="$("$GLAW" slug 2>/dev/null || echo "")"
 echo "GLAW_VERSION: $("$GLAW" version 2>/dev/null || echo unknown)"
 if [ -z "$SLUG" ]; then

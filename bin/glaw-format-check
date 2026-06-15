@@ -2,6 +2,6 @@
 # glaw-format-check — federal-filing render profile / conformance check (local DOCX shim). Prefers the docx-equipped
 # local source runner (flp-local source runner), falls back to system python3 (CI pip-installs local DOCX shim into system python).
 set -euo pipefail
-GLAW="${GLAW:-$HOME/.claude/skills/glaw}"
+GLAW="${GLAW:-${GLAW_SKILL_DIR:-$(cd "$(dirname "$0")/.." && pwd)}}"
 PY="$(command -v python3)"
 exec "$PY" "$GLAW/lib/render/federal_format_check.py" "$@"

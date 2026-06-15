@@ -27,9 +27,9 @@ GLAW runs legal *matters* (build a company, structure a fund, prosecute or defen
 ## ⚡ TL;DR
 
 ```bash
-# 1. install (clone into your Claude Code skills dir)
-git clone https://github.com/rikitrader/glaw ~/.claude/skills/glaw
-cd ~/.claude/skills/glaw && ./setup        # deploys source skills + 63 vendored seats + tools
+# 1. install (any local checkout; setup deploys Claude + Codex skill roots)
+git clone https://github.com/rikitrader/glaw ~/glaw
+cd ~/glaw && ./setup                       # deploys source skills + 63 vendored seats + tools
 
 # 2. open a matter and let the firm work it
 /glaw                                       # "form a Delaware C-corp with a SAFE round"
@@ -302,15 +302,15 @@ Includes a vendored contract-review skill and bundled redline/publish routing so
 
 ## 🚀 Install
 
-**Requires** [Claude Code](https://claude.com/claude-code) (or any [Agent Skills](https://agentskills.org)-compatible agent).
+**Requires** Claude Code, Codex, or any [Agent Skills](https://agentskills.org)-compatible agent.
 
 ```bash
-git clone https://github.com/rikitrader/glaw ~/.claude/skills/glaw
-cd ~/.claude/skills/glaw
+git clone https://github.com/rikitrader/glaw ~/glaw
+cd ~/glaw
 ./setup
 ```
 
-`./setup` deploys the native `/glaw-*` commands, the 63 vendored seats, and the state dir (`~/.glaw`). It does **not** install pip packages, npm packages, virtualenvs, or remote toolbelts. GLAW is source-first: every shipped CLI uses repository code plus the Python standard library.
+`./setup` deploys the native `/glaw-*` commands and 63 vendored seats into both `~/.claude/skills` and `${CODEX_HOME:-~/.codex}/skills`, then creates the state dir (`~/.glaw`). Set `GLAW_SKILLS_ROOT=/path/to/skills` when you intentionally want one target root. It does **not** install pip packages, npm packages, virtualenvs, or remote toolbelts. GLAW is source-first: every shipped CLI uses repository code plus the Python standard library.
 
 | Capability | Needs |
 |---|---|

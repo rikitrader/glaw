@@ -22,29 +22,29 @@ Digital PDFs can use `pdftotext` from Poppler. Scanned PDFs use Python-owned OCR
 ## Fresh Install
 
 ```bash
-git clone https://github.com/rikitrader/glaw ~/.claude/skills/glaw
-cd ~/.claude/skills/glaw
+git clone https://github.com/rikitrader/glaw ~/glaw
+cd ~/glaw
 ./setup
 bin/glaw-doctor
 ```
 
-`./setup` deploys the orchestrator and every `/glaw-*` sub-skill into the configured skills root. It also creates local state under `~/.glaw`.
+`./setup` deploys the orchestrator and every `/glaw-*` sub-skill into both Claude and Codex skills roots: `~/.claude/skills` and `${CODEX_HOME:-~/.codex}/skills`. It also creates local state under `~/.glaw`.
 
 ## Existing Checkout
 
 ```bash
-cd ~/.claude/skills/glaw
+cd ~/glaw
 git pull
 ./setup
 bin/glaw-doctor
 ```
 
-If you are running from a development checkout, set the skill directory explicitly:
+If you need to deploy into only one skills root, set it explicitly:
 
 ```bash
 cd /path/to/glaw
-GLAW_SKILL_DIR="$PWD" ./setup
-GLAW_SKILL_DIR="$PWD" bin/glaw-doctor
+GLAW_SKILLS_ROOT="$HOME/.codex/skills" ./setup
+GLAW_SKILL_DIR="$PWD" GLAW_SKILLS_ROOT="$HOME/.codex/skills" bin/glaw-doctor
 ```
 
 ## Codex and Claude

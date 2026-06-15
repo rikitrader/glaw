@@ -20,8 +20,9 @@ Usage:
   glaw-irs-file submit <payload.json> [--transmitter taxbandits|iris] [--live] [-o outdir]
 """
 import sys, os, json, subprocess, re, time, hmac, hashlib, base64, urllib.request, urllib.error, urllib.parse
+from pathlib import Path
 
-GLAW = os.path.expanduser("~/.claude/skills/glaw/bin/glaw")
+GLAW = str(Path(__file__).resolve().parent / "glaw")
 SUPPORTED = {"1099-NEC", "1099-MISC", "1099-K", "W-2", "941"}
 TB_ENDPOINT = {"1099-NEC": "/Form1099NEC/Create", "1099-MISC": "/Form1099MISC/Create",
                "1099-K": "/Form1099K/Create", "941": "/Form941/Create"}

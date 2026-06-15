@@ -7,6 +7,7 @@ Unknown facts become explicit [VERIFY:...] placeholders — never fabricated.
 Usage: intake_to_form15620.py <intake.md> [out.json]
 """
 import sys, os, re, json
+from pathlib import Path
 
 # Form 15620 AcroForm field names (from inspect_fields.py)
 F = "form1[0].page1[0]."
@@ -66,7 +67,9 @@ def main():
     open(out, 'w').write(json.dumps(data, indent=2))
     verify = sum(1 for v in data.values() if str(v).startswith('[VERIFY'))
     print(f"wrote {out}  ({len(data)} fields, {verify} still [VERIFY])")
-    print("next: python3 ~/.claude/skills/glaw-credit-strategy/bin/fill_form.py <15620.pdf> "+out+" <out.pdf>")
+    repo = Path(__file__).resolve().parents[2]
+    filler = repo / "seats" / "glaw-credit-strategy" / "bin" / "fill_form.py"
+    print(f"next: python3 {filler} <15620.pdf> {out} <out.pdf>")
 
 if __name__ == '__main__':
     main()

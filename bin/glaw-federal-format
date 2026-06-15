@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # glaw-federal-format — federal-filing render profile in zero-dependency mode.
 set -euo pipefail
-GLAW="${GLAW:-$HOME/.claude/skills/glaw}"
+GLAW="${GLAW:-${GLAW_SKILL_DIR:-$(cd "$(dirname "$0")/.." && pwd)}}"
 PY="$(command -v python3)"
 exec "$PY" "$GLAW/lib/render/federal_docx.py" "$@"

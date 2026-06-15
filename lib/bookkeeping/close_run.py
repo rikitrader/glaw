@@ -29,7 +29,7 @@ import books_doctor as BD     # noqa: E402
 import dashboard as DASH      # noqa: E402
 import narrative as NARR      # noqa: E402
 
-LEDGER_BIN = str(Path.home() / ".claude/skills/glaw/bin/glaw-ledger")
+LEDGER_BIN = str(Path(__file__).resolve().parents[2] / "bin" / "glaw-ledger")
 
 
 def _capture(fn, *a, **k):

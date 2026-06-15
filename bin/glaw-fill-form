@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # glaw-fill-form — zero-dependency PDF filler handoff.
 set -euo pipefail
-GLAW="${GLAW:-$HOME/.claude/skills/glaw}"
+GLAW="${GLAW:-${GLAW_SKILL_DIR:-$(cd "$(dirname "$0")/.." && pwd)}}"
 FILLER="$GLAW/seats/glaw-tax-compliance/scripts/fill_form.py"
 [[ -f "$FILLER" ]] || { echo "ERROR: fill_form.py not found at $FILLER" >&2; exit 2; }
 exec python3 "$FILLER" "$@"
