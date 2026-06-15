@@ -81,6 +81,7 @@ PY
 
 _file_artifacts_valid() {  # _file_artifacts_valid <matter-dir> <repo-root>
   python3 - "$1" "$2" <<'PY'
+import hashlib
 import json
 import pathlib
 import sys
@@ -142,6 +143,14 @@ def has_upl_footer(text):
     return work_product and no_advice
 
 
+def sha256_file(path):
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
 p = d / "final_packet.json"
 if not p.exists():
     print("final_packet.json missing")
@@ -178,6 +187,30 @@ for doc in deliverables:
         missing_upl.append(str(doc.relative_to(d)))
 if missing_upl:
     print("current deliverable(s) missing UPL footer: " + ", ".join(missing_upl))
+    sys.exit(1)
+expected_hashes = packet.get("external_text_deliverable_hashes") or {}
+if not expected_hashes:
+    print("final_packet.json missing external_text_deliverable_hashes")
+    sys.exit(1)
+current_hashes = {
+    str(doc.relative_to(d)): sha256_file(doc)
+    for doc in deliverables
+}
+missing_from_disk = sorted(set(expected_hashes) - set(current_hashes))
+new_since_packet = sorted(set(current_hashes) - set(expected_hashes))
+changed_since_packet = sorted(
+    path for path, digest in expected_hashes.items()
+    if path in current_hashes and current_hashes[path] != digest
+)
+if missing_from_disk or new_since_packet or changed_since_packet:
+    parts = []
+    if missing_from_disk:
+        parts.append("missing: " + ", ".join(missing_from_disk))
+    if new_since_packet:
+        parts.append("new: " + ", ".join(new_since_packet))
+    if changed_since_packet:
+        parts.append("changed: " + ", ".join(changed_since_packet))
+    print("current deliverables do not match final_packet.json: " + "; ".join(parts))
     sys.exit(1)
 
 red_flags = d / "red_flags.jsonl"

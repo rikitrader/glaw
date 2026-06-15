@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 import subprocess
@@ -97,6 +98,14 @@ def is_external_text_deliverable(path: Path, root: Path) -> bool:
     return not bool(rel_parts & TEXT_DELIVERABLE_SKIP_PARTS)
 
 
+def sha256_file(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as f:
+        for chunk in iter(lambda: f.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
 def run_check(cmd: list[str], cwd: Path) -> tuple[int, str]:
     proc = subprocess.run(cmd, cwd=str(cwd), capture_output=True, text=True)
     return proc.returncode, (proc.stdout + proc.stderr).strip()
@@ -152,10 +161,15 @@ def cmd_build(args: argparse.Namespace) -> int:
             "red_flags.jsonl", "intake.json", "final_packet.json", "final_packet.md",
         }
     )
-    external_text_deliverables = sorted(
-        str(p.relative_to(d)) for p in d.rglob("*")
+    external_text_paths = sorted(
+        p for p in d.rglob("*")
         if p.is_file() and is_external_text_deliverable(p, d)
     )
+    external_text_deliverables = [str(p.relative_to(d)) for p in external_text_paths]
+    external_text_deliverable_hashes = {
+        str(p.relative_to(d)): sha256_file(p)
+        for p in external_text_paths
+    }
 
     rc_rf, red_flag_output = run_check([str(root / "bin/glaw-red-flags"), "status", "--matter", d.name], root)
     rc_ethics, ethics_output = run_check([str(root / "bin/glaw-ethics"), "status", "--matter", d.name], root)
@@ -208,6 +222,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         "decisions": decisions,
         "deliverables": deliverables,
         "external_text_deliverables": external_text_deliverables,
+        "external_text_deliverable_hashes": external_text_deliverable_hashes,
     }
     (d / "final_packet.json").write_text(json.dumps(packet, indent=2, sort_keys=False) + "\n", encoding="utf-8")
     (d / "final_packet.md").write_text(render_md(packet), encoding="utf-8")

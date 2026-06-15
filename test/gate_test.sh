@@ -81,11 +81,24 @@ ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current e
 printf '# Draft Report\n\nNumbers tie.\n' > "$M/draft-report.md"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current deliverable missing UPL footer"
 printf '\nAttorney work-product - not legal advice. Prepared for licensed review.\n' >> "$M/draft-report.md"
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before deliverable hash manifest"
+python3 - "$M" <<'PY'
+import hashlib, json, pathlib, sys
+d = pathlib.Path(sys.argv[1])
+p = d / "draft-report.md"
+packet_path = d / "final_packet.json"
+packet = json.loads(packet_path.read_text(encoding="utf-8"))
+packet["external_text_deliverables"] = ["draft-report.md"]
+packet["external_text_deliverable_hashes"] = {"draft-report.md": hashlib.sha256(p.read_bytes()).hexdigest()}
+packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
+PY
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after all file gates"
 printf '# Draft Report\n\nNumbers changed after packet.\n' > "$M/draft-report.md"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-packet deliverable losing UPL footer"
 printf '\nAttorney work-product - not legal advice. Prepared for licensed review.\n' >> "$M/draft-report.md"
-ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after post-packet deliverable footer restored"
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-packet deliverable hash change"
+printf '# Draft Report\n\nNumbers tie.\n\nAttorney work-product - not legal advice. Prepared for licensed review.\n' > "$M/draft-report.md"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact deliverable restored"
 printf '{"id":"RF-STALE","severity":"high","status":"open","finding":"new post-packet issue"}\n' > "$M/red_flags.jsonl"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet high red flag"
 printf '{"id":"RF-STALE","severity":"high","status":"resolved","finding":"new post-packet issue","resolution_evidence":"fixed"}\n' > "$M/red_flags.jsonl"
