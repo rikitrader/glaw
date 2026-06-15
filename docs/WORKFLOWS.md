@@ -36,6 +36,9 @@ bin/glaw-intake set track_specific.counterparty 'Vendor LLC'
 bin/glaw-intake set track_specific.governing_law 'Florida'
 bin/glaw-intake set track_specific.review_standard 'client-favorable'
 bin/glaw-intake complete
+bin/glaw-ethics record-conflicts --status cleared --notes 'no conflict identified'
+bin/glaw-ethics draft-engagement --scope 'review and draft only' --responsible-professional 'licensed reviewer'
+bin/glaw-ethics complete
 ```
 
 Required gates:
@@ -93,16 +96,18 @@ Use `--decision fix` or `--decision strike` with `--attack` and `--cure` when a 
 regulatory, or litigation adversary finds a fatal or curable weakness. The command opens a blocking
 red flag automatically.
 
-Red flags and the final packet are explicit gates:
+Ethics, red flags, UPL footer, and the final packet are explicit gates:
 
 ```bash
+bin/glaw-ethics status
 bin/glaw-red-flags status
+bin/glaw-upl-check "$(bin/glaw slug)"
 bin/glaw-final-packet build --profile auto
 ```
 
 `glaw-final-packet` writes `final_packet.json` and `final_packet.md`, then logs
-`final_packet_ready` only when intake/conflicts/citations/adversarial, red flags, and the required
-council profile are all clear.
+`final_packet_ready` only when intake/conflicts/ethics/citations/adversarial, UPL footer checks,
+red flags, and the required council profile are all clear.
 
 ## Contract Review
 

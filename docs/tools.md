@@ -12,9 +12,11 @@ Run any tool with no arguments for its usage. `bin/glaw-doctor` smoke-tests them
 |---|---|
 | `glaw` | `matter new "<name>"` · `matter list` · `matter use <slug>` · `stage <stage>` · `docket add <YYYY-MM-DD> "<desc>"` · `docket upcoming [days]` · `timeline-log <event>` · `config get/set <k> [v]` |
 | `glaw-intake` | `init [slug] --track <track>` · `set <field> <value>` · `status` · `complete` · `show` for the structured `intake.json` gate |
+| `glaw-ethics` | `record-conflicts --status cleared\|waived\|conflict` · `draft-engagement` · `status` · `complete`; logs `conflicts_cleared` only after conflicts and engagement are ready |
 | `glaw-council` | `record --profile auto --role <lens> --decision approve\|fix\|deny` · `status` · `complete` for required multi-agent signoff |
 | `glaw-adversarial` | `record --profile auto --lens <government/regulatory lens> --decision survive\|fix\|strike` · `status` · `complete`; logs `adversarial_done` only when every required RED-team lens survives |
 | `glaw-red-flags` | `add --severity critical\|high\|medium\|low ...` · `resolve <id> --evidence <text>` · `status` · `list` for blocking issue control |
+| `glaw-upl-check` | `<matter-slug-or-dir>` → fail-closed check that text deliverables carry attorney-work-product / not-legal-advice footer language |
 | `glaw-final-packet` | `build --profile auto` → `final_packet.json` + `final_packet.md`; logs `final_packet_ready` only when gates are clear |
 | `glaw-setup` | deploy every sub-skill as a `/glaw-*` command (symlink model) |
 | `glaw-doctor` | health harness: skills resolve · tools run · no dangling refs → `HEALTHY`/`PROBLEMS` |

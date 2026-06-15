@@ -1,0 +1,91 @@
+#!/usr/bin/env python3
+"""Verify external-facing matter deliverables carry the GLAW UPL footer."""
+from __future__ import annotations
+
+import argparse
+import os
+import sys
+from pathlib import Path
+
+
+CHECK_EXTS = {".md", ".html", ".htm", ".txt"}
+SKIP_NAMES = {
+    "matter.md",
+    "index.md",
+    "final_packet.md",
+}
+SKIP_PARTS = {
+    "_published",
+    "_extracted",
+    "evidence",
+}
+
+
+def home() -> Path:
+    return Path(os.environ.get("GLAW_HOME", str(Path.home() / ".glaw")))
+
+
+def active_slug() -> str:
+    p = home() / ".active"
+    return p.read_text(encoding="utf-8").strip() if p.exists() else ""
+
+
+def matter_dir(target: str | None) -> Path:
+    if target:
+        p = Path(target).expanduser()
+        if p.is_dir():
+            return p
+        p = home() / "matters" / target
+        if p.is_dir():
+            return p
+        raise SystemExit(f"ERROR: matter not found: {target}")
+    slug = active_slug()
+    if not slug:
+        raise SystemExit("ERROR: no active matter. Run `glaw matter new \"<name>\"` first.")
+    return home() / "matters" / slug
+
+
+def is_deliverable(path: Path, root: Path) -> bool:
+    if path.suffix.lower() not in CHECK_EXTS:
+        return False
+    if path.name in SKIP_NAMES:
+        return False
+    rel_parts = set(path.relative_to(root).parts)
+    return not bool(rel_parts & SKIP_PARTS)
+
+
+def has_upl(text: str) -> bool:
+    lower = text.lower()
+    work_product = "attorney work-product" in lower or "work-product" in lower
+    no_advice = "not legal advice" in lower or "not legal, tax, or accounting advice" in lower
+    return work_product and no_advice
+
+
+def check(root: Path) -> tuple[list[Path], list[Path]]:
+    docs = [p for p in sorted(root.rglob("*")) if p.is_file() and is_deliverable(p, root)]
+    missing = []
+    for doc in docs:
+        text = doc.read_text(encoding="utf-8", errors="replace")
+        if not has_upl(text):
+            missing.append(doc)
+    return docs, missing
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(prog="glaw-upl-check")
+    ap.add_argument("matter", nargs="?", help="matter slug or directory; defaults to active matter")
+    args = ap.parse_args()
+    root = matter_dir(args.matter)
+    docs, missing = check(root)
+    print(f"UPL CHECK {root.name}: {len(docs)} deliverable text file(s)")
+    for doc in missing:
+        print(f"  MISSING UPL FOOTER: {doc.relative_to(root)}")
+    if missing:
+        print("UPL BLOCKED")
+        return 1
+    print("UPL CLEAR")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

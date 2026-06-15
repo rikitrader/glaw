@@ -62,16 +62,24 @@ Classify the result: **cleared**, **conflict (decline)**, or **waivable (informe
   ethics wall. Do not advance the matter.
 
 ```bash
-# after deciding (example): record in the charter, then log
-~/.claude/skills/glaw/bin/glaw timeline-log conflicts_cleared
+~/.claude/skills/glaw/bin/glaw-ethics record-conflicts --status cleared --notes "<basis>"
 ```
-Edit `~/.glaw/matters/<slug>/matter.md` so the `## Conflicts check` block reads the chosen status.
+Use `--status waived --waiver-evidence "<written informed consent path/summary>"` for waivable
+conflicts. Use `--status conflict` and stop for non-waivable conflicts. `glaw-ethics` syncs the
+matter charter so the `## Conflicts check` block reflects the chosen status.
 
 ### Step 4 — Draft the engagement letter
 Produce a written engagement letter capturing: parties, scope of representation
 (what's in / out), fee arrangement (flat / hourly / contingency — ask), responsibilities,
 termination, and the limitation that work-product requires licensed-attorney review.
 Set `Engagement → engagement letter: drafted` in the charter.
+
+```bash
+~/.claude/skills/glaw/bin/glaw-ethics draft-engagement \
+  --scope "<authorized scope>" \
+  --fee-terms "<fee terms or TBD>" \
+  --responsible-professional "<licensed reviewer/signing professional>"
+```
 
 ### Step 5 — Stamp the UPL guardrail
 Every external GLAW deliverable carries this footer (the file/draft stages pull it):
@@ -84,6 +92,13 @@ Every external GLAW deliverable carries this footer (the file/draft stages pull 
 ### Step 6 — Clear the gate
 Only when `status: cleared` (or `waived`) AND the engagement letter is drafted, report
 `CONFLICTS: cleared` and hand back to `/glaw` / `/glaw-strategy`.
+
+```bash
+~/.claude/skills/glaw/bin/glaw-ethics complete
+```
+
+`glaw-ethics complete` logs `conflicts_cleared` and `ethics_gate_complete` only after the conflicts
+result, engagement terms, responsible professional, and UPL footer are present.
 
 ## Output
 A conflicts determination, a recorded status in the charter, an engagement letter

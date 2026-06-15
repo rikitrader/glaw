@@ -99,6 +99,15 @@ check, drafts the engagement letter, and stamps the UPL disclaimer. **Do not adv
 to strategy until `CONFLICTS: cleared`** (or an explicit waiver is recorded). This
 mirrors a real firm: you cannot open the file until GC clears it.
 
+The executable gate is:
+
+```bash
+~/.claude/skills/glaw/bin/glaw-ethics complete
+```
+
+That command logs `conflicts_cleared` only after conflicts, engagement, responsible reviewer, and
+UPL footer state are complete.
+
 ### Step 3 — Run the pipeline
 Walk the stages in order. After each stage, run `glaw stage <next>` to advance, and
 `glaw timeline-log <stage>_done`. For each stage:
@@ -153,7 +162,7 @@ workflow rule), logs decisions + followups, and marks the matter status.
 2. **Citations verified** (`/glaw-legal-research`) before file.
 3. **Adversarial RED→BLUE** before file.
 4. **Chief/Council approval** before file.
-5. **UPL disclaimer** on every external deliverable.
+5. **UPL disclaimer** on every external deliverable (`glaw-upl-check`).
 
 ## State commands
 | Need | Command |

@@ -1,0 +1,238 @@
+#!/usr/bin/env python3
+"""GLAW ethics/conflicts gate: conflicts, engagement, and UPL footer state."""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+
+UPL_FOOTER = (
+    "Attorney work-product - not legal advice. Prepared by GLAW for review, revision, "
+    "and signature by a licensed attorney or CPA in the relevant jurisdiction. Use of "
+    "this material does not create an attorney-client relationship. Verify all citations, "
+    "deadlines, filings, fees, and figures independently before filing or relying on them."
+)
+
+
+def now() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def home() -> Path:
+    return Path(os.environ.get("GLAW_HOME", str(Path.home() / ".glaw")))
+
+
+def active_slug() -> str:
+    p = home() / ".active"
+    return p.read_text(encoding="utf-8").strip() if p.exists() else ""
+
+
+def matter_dir(slug: str | None) -> Path:
+    s = slug or active_slug()
+    if not s:
+        raise SystemExit("ERROR: no active matter. Run `glaw matter new \"<name>\"` first.")
+    d = home() / "matters" / s
+    if not d.is_dir():
+        raise SystemExit(f"ERROR: matter not found: {s}")
+    return d
+
+
+def ethics_path(d: Path) -> Path:
+    return d / "ethics.json"
+
+
+def read_json(path: Path, default):
+    if not path.exists():
+        return default
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return default
+
+
+def write_json(path: Path, payload: dict) -> None:
+    path.write_text(json.dumps(payload, indent=2, sort_keys=False) + "\n", encoding="utf-8")
+
+
+def append_jsonl(path: Path, row: dict) -> None:
+    with path.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(row, sort_keys=False) + "\n")
+
+
+def timeline(d: Path, event: str, **extra: object) -> None:
+    append_jsonl(d / "timeline.jsonl", {"ts": now(), "event": event, **extra})
+
+
+def default_record(d: Path) -> dict:
+    return {
+        "schema_version": 1,
+        "matter_slug": d.name,
+        "status": "draft",
+        "conflicts_status": "pending",
+        "conflicts_notes": "",
+        "waiver_required": False,
+        "waiver_evidence": "",
+        "engagement": {
+            "status": "pending",
+            "scope": "",
+            "fee_terms": "",
+            "responsible_professional": "",
+        },
+        "upl_footer": UPL_FOOTER,
+        "updated_at": now(),
+    }
+
+
+def load_record(d: Path) -> dict:
+    record = default_record(d)
+    record.update(read_json(ethics_path(d), {}))
+    record.setdefault("engagement", default_record(d)["engagement"])
+    record.setdefault("upl_footer", UPL_FOOTER)
+    return record
+
+
+def save_record(d: Path, record: dict) -> None:
+    record["updated_at"] = now()
+    write_json(ethics_path(d), record)
+
+
+def blockers(record: dict) -> list[str]:
+    out: list[str] = []
+    conflicts = record.get("conflicts_status")
+    if conflicts not in {"cleared", "waived"}:
+        out.append("conflicts_status must be cleared or waived")
+    if conflicts == "waived" and not record.get("waiver_evidence"):
+        out.append("waiver_evidence required for waived conflicts")
+    engagement = record.get("engagement", {})
+    if engagement.get("status") != "drafted":
+        out.append("engagement.status must be drafted")
+    for key in ("scope", "responsible_professional"):
+        if not engagement.get(key):
+            out.append(f"engagement.{key} required")
+    footer = str(record.get("upl_footer", "")).lower()
+    if "attorney work-product" not in footer or "not legal advice" not in footer:
+        out.append("upl_footer must include attorney work-product and not legal advice language")
+    return out
+
+
+def sync_charter(d: Path, record: dict) -> None:
+    md = d / "matter.md"
+    if not md.exists():
+        return
+    text = md.read_text(encoding="utf-8", errors="replace")
+    text = text.replace("- status: PENDING   # cleared | conflict | waived",
+                        f"- status: {record['conflicts_status']}")
+    text = text.replace("- engagement letter: PENDING",
+                        f"- engagement letter: {record['engagement']['status']}")
+    md.write_text(text, encoding="utf-8")
+
+
+def cmd_init(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    record = load_record(d)
+    save_record(d, record)
+    print(f"INITIALIZED {ethics_path(d)}")
+    return 0
+
+
+def cmd_record_conflicts(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    record = load_record(d)
+    record["conflicts_status"] = args.status
+    record["conflicts_notes"] = args.notes
+    record["waiver_required"] = args.status == "waived"
+    if args.waiver_evidence:
+        record["waiver_evidence"] = args.waiver_evidence
+    save_record(d, record)
+    sync_charter(d, record)
+    timeline(d, "conflicts_reviewed", status=args.status)
+    print(f"CONFLICTS {args.status}")
+    return 0
+
+
+def cmd_engagement(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    record = load_record(d)
+    record["engagement"] = {
+        "status": "drafted",
+        "scope": args.scope,
+        "fee_terms": args.fee_terms,
+        "responsible_professional": args.responsible_professional,
+    }
+    save_record(d, record)
+    sync_charter(d, record)
+    timeline(d, "engagement_drafted")
+    print("ENGAGEMENT DRAFTED")
+    return 0
+
+
+def cmd_status(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    record = load_record(d)
+    missing = blockers(record)
+    print(f"ETHICS {d.name}: conflicts={record.get('conflicts_status')} engagement={record.get('engagement', {}).get('status')}")
+    if missing:
+        for item in missing:
+            print(f"  BLOCK: {item}")
+        print("ETHICS BLOCKED")
+        return 1
+    print("ETHICS READY")
+    return 0
+
+
+def cmd_complete(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    rc = cmd_status(args)
+    if rc != 0:
+        return rc
+    record = load_record(d)
+    record["status"] = "complete"
+    save_record(d, record)
+    sync_charter(d, record)
+    timeline(d, "conflicts_cleared", status=record.get("conflicts_status"))
+    timeline(d, "ethics_gate_complete")
+    print("ETHICS COMPLETE")
+    return 0
+
+
+def cmd_footer(args: argparse.Namespace) -> int:
+    print(UPL_FOOTER)
+    return 0
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(prog="glaw-ethics")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    p = sub.add_parser("init")
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_init)
+    p = sub.add_parser("record-conflicts")
+    p.add_argument("--status", required=True, choices=["cleared", "waived", "conflict"])
+    p.add_argument("--notes", default="")
+    p.add_argument("--waiver-evidence", default="")
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_record_conflicts)
+    p = sub.add_parser("draft-engagement")
+    p.add_argument("--scope", required=True)
+    p.add_argument("--fee-terms", default="")
+    p.add_argument("--responsible-professional", required=True)
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_engagement)
+    p = sub.add_parser("status")
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_status)
+    p = sub.add_parser("complete")
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_complete)
+    p = sub.add_parser("footer")
+    p.set_defaults(func=cmd_footer)
+    args = ap.parse_args()
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -14,6 +14,7 @@ FLAGS="$ROOT/bin/glaw-red-flags"
 PACKET="$ROOT/bin/glaw-final-packet"
 CHIEF="$ROOT/bin/glaw-chief-decision"
 ADVERSARIAL="$ROOT/bin/glaw-adversarial"
+ETHICS="$ROOT/bin/glaw-ethics"
 
 "$GLAW" matter new "Lifecycle Accounting" >/dev/null
 SLUG="lifecycle-accounting"
@@ -39,7 +40,9 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "strategy blocked before intake/confli
 "$INTAKE" set track_specific.books_status 'raw statements' >/dev/null
 "$INTAKE" set track_specific.irs_forms_needed '1120' >/dev/null
 "$INTAKE" complete >/dev/null
-"$GLAW" timeline-log conflicts_cleared
+"$ETHICS" record-conflicts --status cleared --notes 'no conflict in test fixture' >/dev/null
+"$ETHICS" draft-engagement --scope 'review and draft only' --responsible-professional 'licensed reviewer' >/dev/null
+"$ETHICS" complete >/dev/null
 "$GLAW" stage strategy >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "strategy clears after intake/conflicts"
 
@@ -57,6 +60,10 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before adversari
 for lens in irs-examiner state-tax-auditor forensic-accountant cfo-controller outside-critic; do
   "$ADVERSARIAL" record --profile auto --lens "$lens" --decision survive --attack "no fatal finding" --evidence "test fixture" >/dev/null
 done
+printf '# Draft Report\n\nNumbers tie to source.\n' > "$TMP/matters/$SLUG/draft-report.md"
+"$PACKET" build >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by deliverable missing UPL footer"
+printf '\nAttorney work-product - not legal advice. Prepared for licensed review.\n' >> "$TMP/matters/$SLUG/draft-report.md"
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && [ -f "$TMP/matters/$SLUG/final_packet.json" ] && echo 1 || echo 0)" "final packet ready after council and red flags clear"
 

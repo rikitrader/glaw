@@ -11,7 +11,8 @@ models go to `fs-*`; research goes through `deep-research`→verify; figures com
 ```
 INTAKE  /glaw-intake
   └─ form: `intake.json` via `bin/glaw-intake` (required before strategy)
-  └─ GATE: /glaw-ethics-conflicts (conflicts + engagement letter + UPL)   ← hard gate #1
+  └─ GATE: /glaw-ethics-conflicts → `glaw-ethics complete`
+     (conflicts + engagement letter + UPL state)                           ← hard gate #1
   └─ tax/legal triage → tax-legal-intake (sequences tax/corp/relief work)
 
 STRATEGY  /glaw-strategy
@@ -46,6 +47,7 @@ ADVERSARIAL  /glaw-adversarial  (RED-team → BLUE-team rebuild)        ← hard
 
 FILE  /glaw-file  (signature-ready packet + checklist; UPL disclaimer on every deliverable)
   └─ GATE: `glaw-red-flags status` must show no blocking critical/high findings
+  └─ GATE: `glaw-upl-check <matter>` must show all external text deliverables carry the footer
   └─ GATE: `glaw-final-packet build` writes final_packet.json/md and logs readiness
   └─ GATE: `glaw-chief-decision --approve-final` logs Chief/Council approval
   └─ court records → /glaw-court-records (CourtListener/PACER)
@@ -69,11 +71,11 @@ RETRO  /glaw-matter-retro  (close-out + Obsidian vault write)
 
 ## Hard gates (orchestrator-enforced)
 1. Structured intake complete (`bin/glaw-intake complete`) before strategy.
-2. Conflicts cleared (`/glaw-ethics-conflicts`) before strategy.
+2. Conflicts cleared (`glaw-ethics complete`) before strategy.
 3. Adversarial RED→BLUE (`/glaw-adversarial`) before file.
 4. Citations verified (`/glaw-legal-research`) before file.
 5. Chief/Council approval (`glaw-chief-decision --approve-final`) before file.
-6. UPL disclaimer on every external deliverable.
+6. UPL disclaimer on every external deliverable (`glaw-upl-check`).
 7. Figures quoted from `tax-legal-shared/current-figures.md` ("as of [date], verify").
 
 ## Connected skill inventory (by layer)
