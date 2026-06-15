@@ -115,6 +115,15 @@ No matter reaches `file` until `/glaw-adversarial` has run its RED → BLUE pass
 every surviving position is verified by `/glaw-legal-research`. A position that the
 firm's own adversary destroys does not get filed.
 
+Record the executable adversarial gate with:
+
+```bash
+~/.claude/skills/glaw/bin/glaw-adversarial complete --profile auto
+```
+
+That command logs `adversarial_done` only after every required government/regulatory/litigation
+RED-team lens for the matter profile has recorded `survive`.
+
 Then run the Chief/Council decision. The Chief routes any red flags back to the owning
 department until the agents agree on a final report/outcome:
 

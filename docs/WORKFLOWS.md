@@ -77,6 +77,22 @@ Use `--decision fix` or `--decision deny` plus `--red-flags` and `--conditions` 
 reviewer that finds a gap. The workflow loops back to the owning department until all required
 lenses approve.
 
+Government/regulatory adversarial review is also executable. For accounting/tax work the required
+RED-team lenses include IRS, state-tax, forensic-accounting, CFO/controller, and outside critic:
+
+```bash
+bin/glaw-adversarial record --profile auto --lens irs-examiner --decision survive --evidence "return tie-out reviewed"
+bin/glaw-adversarial record --profile auto --lens state-tax-auditor --decision survive --evidence "state nexus reviewed"
+bin/glaw-adversarial record --profile auto --lens forensic-accountant --decision survive --evidence "forensics pass reviewed"
+bin/glaw-adversarial record --profile auto --lens cfo-controller --decision survive --evidence "financial statements reviewed"
+bin/glaw-adversarial record --profile auto --lens outside-critic --decision survive --evidence "independent challenge complete"
+bin/glaw-adversarial complete --profile auto
+```
+
+Use `--decision fix` or `--decision strike` with `--attack` and `--cure` when a government,
+regulatory, or litigation adversary finds a fatal or curable weakness. The command opens a blocking
+red flag automatically.
+
 Red flags and the final packet are explicit gates:
 
 ```bash

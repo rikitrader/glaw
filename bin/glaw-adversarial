@@ -1,0 +1,195 @@
+#!/usr/bin/env python3
+"""GLAW adversarial RED-team ledger for government/regulatory attack lenses."""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import re
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "lib"))
+from glaw_profiles import ADVERSARIAL_PROFILES as PROFILES
+from glaw_profiles import profile_for_track
+
+
+def now() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def slugify(text: str) -> str:
+    return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+
+
+def home() -> Path:
+    return Path(os.environ.get("GLAW_HOME", str(Path.home() / ".glaw")))
+
+
+def active_slug() -> str:
+    p = home() / ".active"
+    return p.read_text(encoding="utf-8").strip() if p.exists() else ""
+
+
+def matter_dir(slug: str | None) -> Path:
+    s = slug or active_slug()
+    if not s:
+        raise SystemExit("ERROR: no active matter. Run `glaw matter new \"<name>\"` first.")
+    d = home() / "matters" / s
+    if not d.is_dir():
+        raise SystemExit(f"ERROR: matter not found: {s}")
+    return d
+
+
+def append_jsonl(path: Path, row: dict) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with path.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(row, sort_keys=False) + "\n")
+
+
+def read_jsonl(path: Path) -> list[dict]:
+    if not path.exists():
+        return []
+    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
+def timeline(d: Path, event: str, **extra: object) -> None:
+    append_jsonl(d / "timeline.jsonl", {"ts": now(), "event": event, **extra})
+
+
+def intake_profile(d: Path) -> str:
+    p = d / "intake.json"
+    if not p.exists():
+        return "hybrid"
+    try:
+        form = json.loads(p.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return "hybrid"
+    track = form.get("universal", {}).get("workflow_track") or form.get("workflow_track")
+    return profile_for_track(track)
+
+
+def profile_for(args: argparse.Namespace, d: Path) -> str:
+    return args.profile if args.profile != "auto" else intake_profile(d)
+
+
+def latest_by_lens(rows: list[dict]) -> dict[str, dict]:
+    latest: dict[str, dict] = {}
+    for row in rows:
+        latest[row.get("lens", "")] = row
+    return latest
+
+
+def open_red_flag(d: Path, *, profile: str, lens: str, row: dict) -> None:
+    existing = read_jsonl(d / "red_flags.jsonl")
+    rid = f"RF-{len(existing) + 1:04d}"
+    severity = "critical" if row["decision"] == "strike" else "high"
+    flag = {
+        "ts": now(),
+        "id": rid,
+        "severity": severity,
+        "owner": lens,
+        "source": f"adversarial:{profile}:{lens}",
+        "finding": row["attack"] or f"{lens} returned {row['decision']}",
+        "required_fix": row["cure"] or "Rebuild or drop the attacked position and re-run RED review.",
+        "status": "open",
+        "resolution_evidence": "",
+    }
+    append_jsonl(d / "red_flags.jsonl", flag)
+    timeline(d, "red_flag_opened", id=rid, severity=severity, owner=lens, source=flag["source"])
+
+
+def cmd_record(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    profile = profile_for(args, d)
+    lens = slugify(args.lens)
+    row = {
+        "ts": now(),
+        "profile": profile,
+        "lens": lens,
+        "display_lens": args.lens,
+        "position": args.position,
+        "decision": args.decision,
+        "attack": args.attack,
+        "cure": args.cure,
+        "evidence": args.evidence,
+    }
+    append_jsonl(d / "adversarial.jsonl", row)
+    timeline(d, "adversarial_review", profile=profile, lens=lens, decision=args.decision)
+    if args.decision == "survive":
+        timeline(d, f"adversarial_survived_{lens}", profile=profile)
+    else:
+        open_red_flag(d, profile=profile, lens=lens, row=row)
+    print(f"RECORDED {profile} adversarial review: {lens}={args.decision}")
+    return 0
+
+
+def cmd_status(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    profile = profile_for(args, d)
+    required = PROFILES[profile]
+    latest = latest_by_lens([r for r in read_jsonl(d / "adversarial.jsonl") if r.get("profile") == profile])
+    failures = []
+    print(f"ADVERSARIAL {profile} - {d.name}")
+    for lens in required:
+        row = latest.get(lens)
+        if not row:
+            print(f"  MISSING {lens}")
+            failures.append(lens)
+            continue
+        decision = row.get("decision")
+        icon = "OK" if decision == "survive" else "BLOCK"
+        print(f"  {icon} {lens}: {decision}")
+        if row.get("attack"):
+            print(f"      attack: {row['attack']}")
+        if row.get("cure"):
+            print(f"      cure: {row['cure']}")
+        if decision != "survive":
+            failures.append(lens)
+    if failures:
+        print("ADVERSARIAL BLOCKED")
+        return 1
+    print("ADVERSARIAL READY")
+    return 0
+
+
+def cmd_complete(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    args.profile = profile_for(args, d)
+    rc = cmd_status(args)
+    if rc != 0:
+        return rc
+    timeline(d, f"{args.profile}_adversarial_complete", profile=args.profile)
+    timeline(d, "adversarial_done", profile=args.profile)
+    print(f"{args.profile.upper()} ADVERSARIAL COMPLETE")
+    return 0
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(prog="glaw-adversarial")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    p = sub.add_parser("record", help="record one RED-team lens review")
+    p.add_argument("--profile", default="auto", choices=["auto", *sorted(PROFILES)])
+    p.add_argument("--lens", required=True, help="e.g. irs-examiner, sec-reviewer, opposing-counsel")
+    p.add_argument("--decision", required=True, choices=["survive", "fix", "strike"])
+    p.add_argument("--position", default="matter work-product")
+    p.add_argument("--attack", default="")
+    p.add_argument("--cure", default="")
+    p.add_argument("--evidence", default="")
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_record)
+    p = sub.add_parser("status", help="show required RED-team lens completion")
+    p.add_argument("--profile", default="auto", choices=["auto", *sorted(PROFILES)])
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_status)
+    p = sub.add_parser("complete", help="log adversarial_done only when every lens survives")
+    p.add_argument("--profile", default="auto", choices=["auto", *sorted(PROFILES)])
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_complete)
+    args = ap.parse_args()
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

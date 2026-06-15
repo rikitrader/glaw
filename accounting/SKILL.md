@@ -94,7 +94,8 @@ The senior review chain is mandatory:
    and subsequent-events disclosure.
 
 Accounting/bookkeeping work cannot self-approve. The required council lenses are:
-`cfo`, `irs-audit-agent`, `legal-counsel`, `forensic-audit`, and `outside-critic`.
+`cfo`, `irs-audit-agent`, `legal-counsel`, `forensic-audit`, `outside-critic`, and
+`external-reviewer`.
 Record each review with `bin/glaw-council record --profile auto ...`, then run
 `bin/glaw-council complete --profile auto`. Any `fix` or `deny` routes the work
 back to the owning department until corrected.
@@ -138,6 +139,7 @@ Before any tax, audit, IRS, or SEC/reporting deliverable leaves draft, run the e
 ```bash
 GLAW="$PWD" bash bin/glaw-bookkeeping-doctor
 bin/glaw-council status --profile auto
+bin/glaw-adversarial status --profile auto
 bin/glaw-red-flags status
 bin/glaw-final-packet build --profile auto
 ```
@@ -145,7 +147,9 @@ bin/glaw-final-packet build --profile auto
 This gate exercises statement ingest, bank reconciliation, ledger posting, IRS return mapping,
 form-fill package generation, tax provision, tax tie-out, OCR availability, source-only imports,
 and third-party-dependency guards. The council status checks the CFO, IRS-audit, legal,
-forensic/audit, and outside-critic lenses. If either fails, the workflow is not final.
+forensic/audit, outside-critic, and external-reviewer lenses; the adversarial status checks
+government/regulatory attack lenses such as IRS examiner and state-tax auditor. If any gate fails,
+the workflow is not final.
 
 ### Step 4 — Hand back
 Package the numbers for the requesting stage:

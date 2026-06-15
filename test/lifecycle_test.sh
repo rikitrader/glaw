@@ -13,6 +13,7 @@ COUNCIL="$ROOT/bin/glaw-council"
 FLAGS="$ROOT/bin/glaw-red-flags"
 PACKET="$ROOT/bin/glaw-final-packet"
 CHIEF="$ROOT/bin/glaw-chief-decision"
+ADVERSARIAL="$ROOT/bin/glaw-adversarial"
 
 "$GLAW" matter new "Lifecycle Accounting" >/dev/null
 SLUG="lifecycle-accounting"
@@ -51,7 +52,11 @@ for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic exte
   "$COUNCIL" record --profile auto --role "$role" --decision approve >/dev/null
 done
 "$GLAW" timeline-log citations_verified
-"$GLAW" timeline-log adversarial_done
+"$PACKET" build >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before adversarial government lenses survive"
+for lens in irs-examiner state-tax-auditor forensic-accountant cfo-controller outside-critic; do
+  "$ADVERSARIAL" record --profile auto --lens "$lens" --decision survive --attack "no fatal finding" --evidence "test fixture" >/dev/null
+done
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && [ -f "$TMP/matters/$SLUG/final_packet.json" ] && echo 1 || echo 0)" "final packet ready after council and red flags clear"
 

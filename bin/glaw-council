@@ -10,76 +10,9 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-
-PROFILES = {
-    "accounting": (
-        "cfo",
-        "irs-audit-agent",
-        "legal-counsel",
-        "forensic-audit",
-        "outside-critic",
-        "external-reviewer",
-    ),
-    "tax": (
-        "tax-strategist",
-        "irs-audit-agent",
-        "legal-counsel",
-        "accounting-reviewer",
-        "outside-critic",
-        "external-reviewer",
-    ),
-    "litigation": (
-        "lead-counsel",
-        "opposing-counsel-critic",
-        "evidence-reviewer",
-        "legal-research",
-        "outside-critic",
-    ),
-    "corp-build": (
-        "corporate-counsel",
-        "tax-counsel",
-        "securities-counsel",
-        "accounting-reviewer",
-        "outside-critic",
-    ),
-    "contract-review": (
-        "contract-counsel",
-        "business-reviewer",
-        "risk-reviewer",
-        "legal-research",
-        "outside-critic",
-    ),
-    "investigation": (
-        "case-commander",
-        "forensic-investigator",
-        "legal-counsel",
-        "evidence-reviewer",
-        "outside-critic",
-    ),
-    "sec-reporting": (
-        "sec-counsel",
-        "accounting-reviewer",
-        "disclosure-reviewer",
-        "audit-reviewer",
-        "outside-critic",
-    ),
-    "hybrid": (
-        "chief-counsel",
-        "accounting-reviewer",
-        "tax-reviewer",
-        "legal-counsel",
-        "outside-critic",
-    ),
-}
-
-TRACK_TO_PROFILE = {
-    "accounting-tax": "accounting",
-    "litigation": "litigation",
-    "corp-build": "corp-build",
-    "contract-review": "contract-review",
-    "investigation": "investigation",
-    "hybrid": "hybrid",
-}
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "lib"))
+from glaw_profiles import COUNCIL_PROFILES as PROFILES
+from glaw_profiles import profile_for_track
 
 
 def now() -> str:
@@ -146,7 +79,7 @@ def intake_profile(d: Path) -> str:
     except json.JSONDecodeError:
         return "hybrid"
     track = form.get("universal", {}).get("workflow_track") or form.get("workflow_track")
-    return TRACK_TO_PROFILE.get(track, track if track in PROFILES else "hybrid")
+    return profile_for_track(track)
 
 
 def profile_for(args: argparse.Namespace, d: Path) -> str:

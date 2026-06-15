@@ -52,7 +52,7 @@ declare -a TOOLS=(
   "glaw-irs-file|scaffold 1099-NEC" "glaw-court-scrape|--list __none__"
   "glaw-compliance-audit|" "glaw-doc-extract|" "glaw-exempt-org|" "glaw-assemble|"
   "glaw-contract-score|scaffold" "glaw-publish|" "glaw-redline|" "glaw-redline-docx|" "glaw-chief-decision|"
-  "glaw-review-chain|"
+  "glaw-review-chain|" "glaw-adversarial|"
 )
 for entry in "${TOOLS[@]}"; do
   tool="${entry%%|*}"; args="${entry#*|}"

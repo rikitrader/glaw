@@ -94,10 +94,12 @@ struck, not filed (ETHOS principle 3).
 ### Step 7 — Advance
 Only when no new fatal attack surfaces AND survivors are verified:
 ```bash
-~/.claude/skills/glaw/bin/glaw stage file
-~/.claude/skills/glaw/bin/glaw timeline-log adversarial_done
+~/.claude/skills/glaw/bin/glaw-adversarial complete --profile auto
 ```
-Hand off to `/glaw-file`.
+`glaw-adversarial complete` logs `adversarial_done` only when every required RED-team lens for the
+matter's workflow profile has recorded `survive`. Then hand off to `/glaw-file`; the file stage is
+still blocked until red flags are clear, the final packet is ready, and Chief/Council approval is
+recorded.
 
 ## Output
 A **SURVIVABILITY REPORT** — a table of every position → its strongest attack

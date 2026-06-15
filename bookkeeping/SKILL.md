@@ -194,6 +194,12 @@ Then route the output through the accounting council before calling it final:
 ~/.claude/skills/glaw/bin/glaw-council record --profile accounting --role outside-critic --decision approve
 ~/.claude/skills/glaw/bin/glaw-council record --profile accounting --role external-reviewer --decision approve
 ~/.claude/skills/glaw/bin/glaw-council complete --profile accounting
+~/.claude/skills/glaw/bin/glaw-adversarial record --profile accounting --lens irs-examiner --decision survive --evidence "return tie-out reviewed"
+~/.claude/skills/glaw/bin/glaw-adversarial record --profile accounting --lens state-tax-auditor --decision survive --evidence "state tax/nexus reviewed"
+~/.claude/skills/glaw/bin/glaw-adversarial record --profile accounting --lens forensic-accountant --decision survive --evidence "forensic reconstruction reviewed"
+~/.claude/skills/glaw/bin/glaw-adversarial record --profile accounting --lens cfo-controller --decision survive --evidence "financial statement tie-outs reviewed"
+~/.claude/skills/glaw/bin/glaw-adversarial record --profile accounting --lens outside-critic --decision survive --evidence "independent challenge complete"
+~/.claude/skills/glaw/bin/glaw-adversarial complete --profile accounting
 ~/.claude/skills/glaw/bin/glaw-red-flags status
 ~/.claude/skills/glaw/bin/glaw-final-packet build --profile accounting
 ```

@@ -10,14 +10,8 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-TRACK_TO_PROFILE = {
-    "accounting-tax": "accounting",
-    "litigation": "litigation",
-    "corp-build": "corp-build",
-    "contract-review": "contract-review",
-    "investigation": "investigation",
-    "hybrid": "hybrid",
-}
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "lib"))
+from glaw_profiles import profile_for_track
 
 
 def now() -> str:
@@ -65,7 +59,7 @@ def timeline(d: Path, event: str, **extra: object) -> None:
 
 def workflow_profile(intake: dict) -> str:
     track = intake.get("universal", {}).get("workflow_track") or intake.get("workflow_track")
-    return TRACK_TO_PROFILE.get(track, track or "hybrid")
+    return profile_for_track(track)
 
 
 def has_event(rows: list[dict], event: str) -> bool:
@@ -137,6 +131,10 @@ def cmd_build(args: argparse.Namespace) -> int:
     )
 
     rc_rf, red_flag_output = run_check([str(root / "bin/glaw-red-flags"), "status", "--matter", d.name], root)
+    rc_adv, adversarial_output = run_check(
+        [str(root / "bin/glaw-adversarial"), "complete", "--profile", profile, "--matter", d.name],
+        root,
+    )
     rc_council, council_output = run_check(
         [str(root / "bin/glaw-council"), "complete", "--profile", profile, "--matter", d.name],
         root,
@@ -146,12 +144,13 @@ def cmd_build(args: argparse.Namespace) -> int:
         "intake_complete": has_event(timeline_rows, "intake_complete"),
         "conflicts_cleared": has_event(timeline_rows, "conflicts_cleared"),
         "citations_verified": has_event(timeline_rows, "citations_verified"),
-        "adversarial_done": has_event(timeline_rows, "adversarial_done"),
+        "adversarial_done": has_event(timeline_rows, "adversarial_done") and rc_adv == 0,
+        f"{profile}_adversarial_complete": rc_adv == 0,
         f"{profile}_council_complete": has_event(timeline_rows, f"{profile}_council_complete"),
         "red_flags_clear": rc_rf == 0,
     }
     blockers = blocking_red_flags(red_flags)
-    ready = all(gates.values()) and not blockers and rc_council == 0
+    ready = all(gates.values()) and not blockers and rc_adv == 0 and rc_council == 0
     packet = {
         "schema_version": 1,
         "generated_at": now(),
@@ -160,6 +159,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         "status": "ready" if ready else "blocked",
         "gates": gates,
         "red_flag_check": red_flag_output,
+        "adversarial_check": adversarial_output,
         "council_check": council_output,
         "blocking_red_flags": blockers,
         "intake": intake,

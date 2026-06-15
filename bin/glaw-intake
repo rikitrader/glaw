@@ -10,6 +10,9 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "lib"))
+from glaw_profiles import TRACKS
+
 
 REQUIRED = (
     "matter_name",
@@ -25,22 +28,6 @@ REQUIRED = (
     "conflicts_parties",
     "authorized_scope",
 )
-
-TRACKS = {
-    "litigation": ("claims_or_defenses", "forum", "relief_requested", "evidence_sources"),
-    "corp-build": ("entity_type", "owners", "capitalization", "tax_elections", "filings_needed"),
-    "investigation": ("targets", "suspected_conduct", "evidence_sources", "reporting_path"),
-    "hybrid": ("tracks_in_scope", "sequencing", "shared_evidence_sources"),
-    "accounting-tax": (
-        "bank_statement_sources",
-        "tax_years",
-        "entity_tax_type",
-        "books_status",
-        "irs_forms_needed",
-    ),
-    "contract-review": ("contract_type", "counterparty", "governing_law", "review_standard"),
-}
-
 
 def now() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")

@@ -1,0 +1,169 @@
+"""Shared GLAW workflow profile definitions.
+
+This is the single source of truth for council and adversarial review coverage.
+Keep it dependency-free so every CLI can import it in a source-only install.
+"""
+from __future__ import annotations
+
+
+COUNCIL_PROFILES: dict[str, tuple[str, ...]] = {
+    "accounting": (
+        "cfo",
+        "irs-audit-agent",
+        "legal-counsel",
+        "forensic-audit",
+        "outside-critic",
+        "external-reviewer",
+    ),
+    "tax": (
+        "tax-strategist",
+        "irs-audit-agent",
+        "legal-counsel",
+        "accounting-reviewer",
+        "outside-critic",
+        "external-reviewer",
+    ),
+    "litigation": (
+        "lead-counsel",
+        "opposing-counsel-critic",
+        "evidence-reviewer",
+        "legal-research",
+        "outside-critic",
+    ),
+    "corp-build": (
+        "corporate-counsel",
+        "tax-counsel",
+        "securities-counsel",
+        "accounting-reviewer",
+        "outside-critic",
+    ),
+    "contract-review": (
+        "contract-counsel",
+        "business-reviewer",
+        "risk-reviewer",
+        "legal-research",
+        "outside-critic",
+    ),
+    "investigation": (
+        "case-commander",
+        "forensic-investigator",
+        "legal-counsel",
+        "evidence-reviewer",
+        "outside-critic",
+    ),
+    "sec-reporting": (
+        "sec-counsel",
+        "accounting-reviewer",
+        "disclosure-reviewer",
+        "audit-reviewer",
+        "outside-critic",
+    ),
+    "hybrid": (
+        "chief-counsel",
+        "accounting-reviewer",
+        "tax-reviewer",
+        "legal-counsel",
+        "outside-critic",
+    ),
+}
+
+
+ADVERSARIAL_PROFILES: dict[str, tuple[str, ...]] = {
+    "accounting": (
+        "irs-examiner",
+        "state-tax-auditor",
+        "forensic-accountant",
+        "cfo-controller",
+        "outside-critic",
+    ),
+    "tax": (
+        "irs-examiner",
+        "state-tax-auditor",
+        "tax-court-counsel",
+        "penalty-reviewer",
+        "outside-critic",
+    ),
+    "litigation": (
+        "opposing-counsel",
+        "federal-defense-counsel",
+        "evidence-adversary",
+        "skeptical-judge",
+        "outside-critic",
+    ),
+    "corp-build": (
+        "irs-examiner",
+        "sec-reviewer",
+        "creditor-trustee",
+        "corporate-separateness-reviewer",
+        "outside-critic",
+    ),
+    "contract-review": (
+        "opposing-counsel",
+        "commercial-counterparty",
+        "regulator-reviewer",
+        "litigation-counsel",
+        "outside-critic",
+    ),
+    "investigation": (
+        "doj-ausa-prosecutor",
+        "fincen-aml-reviewer",
+        "sec-enforcement-reviewer",
+        "irs-ci-reviewer",
+        "defense-counsel",
+        "outside-critic",
+    ),
+    "sec-reporting": (
+        "sec-staff-reviewer",
+        "pcaob-audit-reviewer",
+        "disclosure-counsel",
+        "irs-examiner",
+        "outside-critic",
+    ),
+    "hybrid": (
+        "opposing-counsel",
+        "irs-examiner",
+        "sec-reviewer",
+        "creditor-trustee",
+        "outside-critic",
+    ),
+}
+
+
+TRACK_TO_PROFILE = {
+    "accounting-tax": "accounting",
+    "litigation": "litigation",
+    "corp-build": "corp-build",
+    "contract-review": "contract-review",
+    "investigation": "investigation",
+    "sec-reporting": "sec-reporting",
+    "hybrid": "hybrid",
+}
+
+
+TRACKS: dict[str, tuple[str, ...]] = {
+    "litigation": ("claims_or_defenses", "forum", "relief_requested", "evidence_sources"),
+    "corp-build": ("entity_type", "owners", "capitalization", "tax_elections", "filings_needed"),
+    "investigation": ("targets", "suspected_conduct", "evidence_sources", "reporting_path"),
+    "hybrid": ("tracks_in_scope", "sequencing", "shared_evidence_sources"),
+    "accounting-tax": (
+        "bank_statement_sources",
+        "tax_years",
+        "entity_tax_type",
+        "books_status",
+        "irs_forms_needed",
+    ),
+    "contract-review": ("contract_type", "counterparty", "governing_law", "review_standard"),
+    "sec-reporting": (
+        "filer_status",
+        "period_end",
+        "forms_needed",
+        "audited_financial_sources",
+        "xbrl_scope",
+    ),
+}
+
+
+def profile_for_track(track: str | None) -> str:
+    if not track:
+        return "hybrid"
+    return TRACK_TO_PROFILE.get(track, track if track in COUNCIL_PROFILES else "hybrid")

@@ -39,6 +39,8 @@ DRAFT  /glaw-draft
 ADVERSARIAL  /glaw-adversarial  (RED-team → BLUE-team rebuild)        ← hard gate #2
   └─ fraud/criminal lens → /glaw-investigations · forensic-case-investigator
   └─ evidence → /glaw-evidence-timeline · /glaw-veil-piercing
+  └─ executable gate → `glaw-adversarial complete --profile auto` logs `adversarial_done`
+     only after every required government/regulatory/litigation RED lens survives
 
   GATE: /glaw-legal-research verifies every cited proposition          ← hard gate #3
 
