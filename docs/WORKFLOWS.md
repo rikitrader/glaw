@@ -64,8 +64,9 @@ bin/glaw-chief-decision --chief "GLAW Chief Counsel" \
 
 If the Council denies the final entry, record it with `--deny-final`; unresolved red flags
 route back to the owning department until fixed.
-`--approve-final` is fail-closed: it refuses to log `chief_approved` unless
-`final_packet.json` is ready and `final_packet_ready` is already in the matter timeline.
+`--approve-final` is fail-closed: it first rebuilds `final_packet.json` against the current
+matter files, then refuses to log `chief_approved` unless the rebuilt packet is ready and
+`final_packet_ready` is in the matter timeline.
 The Chief approval records the approved packet's `generated_at` and SHA-256 digest; if the
 packet is rebuilt or edited later, the file gate blocks until the Chief approves the current
 packet.

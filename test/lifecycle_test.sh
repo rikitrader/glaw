@@ -176,6 +176,11 @@ PY
 rc=$?
 ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "final packet records reviewer identity manifest"
 
+cp "$TMP/matters/$SLUG/draft-report.md" "$TMP/matters/$SLUG/draft-report.clean.md"
+printf '# Draft Report\n\nStale after packet.\n' > "$TMP/matters/$SLUG/draft-report.md"
+"$CHIEF" --chief "GLAW Chief Counsel" --decision "PROCEED" --approve-final --matter "$SLUG" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief approval blocked when current packet rebuild fails"
+mv "$TMP/matters/$SLUG/draft-report.clean.md" "$TMP/matters/$SLUG/draft-report.md"
 "$CHIEF" --chief "GLAW Chief Counsel" --decision "PROCEED" --approve-final --matter "$SLUG" >/dev/null
 python3 - "$TMP/matters/$SLUG" <<'PY'
 import hashlib, json, pathlib, sys

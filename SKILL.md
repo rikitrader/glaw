@@ -149,9 +149,10 @@ bin/glaw-chief-decision \
   --approve-final
 ```
 
-Use `--deny-final` instead when the Council refuses the final entry. `--approve-final` refuses to
-log `chief_approved` until the verified final packet is ready, and records the packet's
-`generated_at` plus SHA-256 digest so rebuilt or edited packets require fresh Chief approval.
+Use `--deny-final` instead when the Council refuses the final entry. `--approve-final` rebuilds
+the final packet against the current matter files, refuses to log `chief_approved` unless that
+verified packet is ready, and records the packet's `generated_at` plus SHA-256 digest so rebuilt
+or edited packets require fresh Chief approval.
 Guarded stage transitions are code-gated and cannot be forced; `glaw stage strategy`, `glaw stage file`, and
 `glaw stage matter-retro` advance only after their owning gate commands produce the required
 events and backing artifacts.
