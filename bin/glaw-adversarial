@@ -98,6 +98,18 @@ def noncurrent_source_ids(text: str, d: Path) -> list[str]:
     return sorted(cited - current)
 
 
+def require_current_source_ids(text: str, d: Path, context: str) -> None:
+    cited = evidence_source_ids(text)
+    if not cited:
+        return
+    stale = noncurrent_source_ids(text, d)
+    if stale:
+        raise SystemExit(
+            f"ERROR: {context} must cite current source artifact ID(s); "
+            f"non-current: {', '.join(stale)}"
+        )
+
+
 def read_jsonl(path: Path) -> list[dict]:
     if not path.exists():
         return []
@@ -167,16 +179,20 @@ def cmd_record(args: argparse.Namespace) -> int:
             raise SystemExit("ERROR: adversarial survive requires --attack with the challenge tested.")
         if not evidence_source_ids(args.attack):
             raise SystemExit("ERROR: adversarial survive attack must cite a source artifact ID such as SRC-0001.")
+        require_current_source_ids(args.attack, d, "adversarial survive attack")
         if not args.evidence.strip():
             raise SystemExit("ERROR: adversarial survive requires --evidence with the source-backed proof reviewed.")
         if not evidence_source_ids(args.evidence):
             raise SystemExit("ERROR: adversarial survive evidence must cite a source artifact ID such as SRC-0001.")
+        require_current_source_ids(args.evidence, d, "adversarial survive evidence")
     if args.decision == "fix" and (not args.attack.strip() or not args.cure.strip()):
         raise SystemExit("ERROR: adversarial fix requires both --attack and --cure.")
     if args.decision == "strike" and not args.attack.strip():
         raise SystemExit("ERROR: adversarial strike requires --attack.")
     if args.decision in {"fix", "strike"} and not evidence_source_ids(args.attack):
         raise SystemExit("ERROR: adversarial fix/strike attack must cite a source artifact ID such as SRC-0001.")
+    if args.decision in {"fix", "strike"}:
+        require_current_source_ids(args.attack, d, "adversarial fix/strike attack")
     row = {
         "ts": now(),
         "profile": profile,

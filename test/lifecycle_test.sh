@@ -72,8 +72,12 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council approve blocked without evide
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council approve blocked without source evidence id"
 "$COUNCIL" record --profile auto --role cfo --decision approve --evidence "SRC-9999 test fixture review basis" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council approve blocked without role-specific conclusion"
+"$COUNCIL" record --profile auto --role cfo --decision approve --evidence "SRC-9999 test fixture review basis" --notes "cfo source-backed approval conclusion" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council approve blocked by non-current source evidence id"
+mkdir -p "$TMP/matters/$SLUG/evidence"
+printf 'date,description,amount\n2026-01-01,capital deposit,100.00\n' > "$TMP/matters/$SLUG/evidence/bank.csv"
 for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do
-  "$COUNCIL" record --profile auto --role "$role" --decision approve --evidence "SRC-9999 test fixture review basis" --notes "$role source-backed approval conclusion" >/dev/null
+  "$COUNCIL" record --profile auto --role "$role" --decision approve --evidence "SRC-0001 test fixture review basis" --notes "$role source-backed approval conclusion" >/dev/null
 done
 cp "$TMP/matters/$SLUG/council.jsonl" "$TMP/matters/$SLUG/council.clean.jsonl"
 python3 - "$TMP/matters/$SLUG/council.jsonl" <<'PY'
@@ -86,8 +90,6 @@ PY
 "$COUNCIL" status --profile auto >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council status blocks tampered review ledger row"
 cp "$TMP/matters/$SLUG/council.clean.jsonl" "$TMP/matters/$SLUG/council.jsonl"
-"$COUNCIL" status --profile auto >/dev/null 2>&1; rc=$?
-ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council status blocks non-current source evidence id"
 "$CHIEF" --chief "GLAW Chief Counsel" --decision "PROCEED" --approve-final --matter "$SLUG" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked before final packet ready"
 "$PACKET" build >/dev/null 2>&1; rc=$?
@@ -100,8 +102,10 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial survive blocked without s
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial survive blocked when attack lacks source evidence id"
 "$ADVERSARIAL" record --profile auto --lens irs-examiner --decision survive --evidence "SRC-9999 test fixture" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial survive blocked without attack challenge"
+"$ADVERSARIAL" record --profile auto --lens irs-examiner --decision survive --attack "SRC-9999 no fatal finding after source challenge" --evidence "SRC-9999 test fixture" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial survive blocked by non-current source evidence id"
 for lens in irs-examiner state-tax-auditor forensic-accountant cfo-controller outside-critic; do
-  "$ADVERSARIAL" record --profile auto --lens "$lens" --decision survive --attack "SRC-9999 no fatal finding after source challenge" --evidence "SRC-9999 test fixture" >/dev/null
+  "$ADVERSARIAL" record --profile auto --lens "$lens" --decision survive --attack "SRC-0001 no fatal finding after source challenge" --evidence "SRC-0001 test fixture" >/dev/null
 done
 cp "$TMP/matters/$SLUG/adversarial.jsonl" "$TMP/matters/$SLUG/adversarial.clean.jsonl"
 python3 - "$TMP/matters/$SLUG/adversarial.jsonl" <<'PY'
@@ -114,8 +118,7 @@ PY
 "$ADVERSARIAL" status --profile auto >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial status blocks tampered review ledger row"
 cp "$TMP/matters/$SLUG/adversarial.clean.jsonl" "$TMP/matters/$SLUG/adversarial.jsonl"
-"$ADVERSARIAL" complete --profile auto >/dev/null 2>&1; rc=$?
-ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial complete blocks non-current source evidence id"
+"$ADVERSARIAL" complete --profile auto >/dev/null
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before citation gate completes"
 "$CITES" record --id C-0001 --proposition 'tax return must tie to books' --authority '26 U.S.C. § 6001' --status verified --source-url 'not-a-url' >/dev/null 2>&1; rc=$?
@@ -158,7 +161,6 @@ Attorney work-product - not legal advice. Prepared for licensed review.
 MD
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by report without source evidence id"
-mkdir -p "$TMP/matters/$SLUG/evidence"
 : > "$TMP/matters/$SLUG/evidence/bank.csv"
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by empty source evidence file"
@@ -207,8 +209,6 @@ MD
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before high red flag has current-source resolution"
 "$FLAGS" resolve RF-0001 --evidence 'SRC-0001 bank reconciliation attached' >/dev/null
 "$FLAGS" complete >/dev/null
-"$PACKET" build >/dev/null 2>&1; rc=$?
-ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by senior reviews without source evidence ids"
 for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do
   "$COUNCIL" record --profile auto --role "$role" --decision approve --evidence "SRC-0001 test fixture review basis" --notes "$role current-source approval conclusion" >/dev/null
 done
@@ -285,6 +285,8 @@ ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "no-deadlines completes with current s
 
 "$GLAW" matter new "Negative Finding Source Guard" >/dev/null
 GUARD_SLUG="negative-finding-source-guard"
+mkdir -p "$TMP/matters/$GUARD_SLUG/evidence"
+printf 'negative finding source\n' > "$TMP/matters/$GUARD_SLUG/evidence/source.txt"
 "$COUNCIL" record --profile accounting --role cfo --decision fix --red-flags "unsupported cash variance" --conditions "reconcile cash" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council fix blocked without source-backed red flag"
 "$COUNCIL" record --profile accounting --role cfo --decision fix --red-flags "SRC-0001 unsupported cash variance" --conditions "reconcile cash" >/dev/null
