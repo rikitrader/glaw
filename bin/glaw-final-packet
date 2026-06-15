@@ -212,6 +212,7 @@ REPORT_REQUIRED_MARKERS = (
     "Red flags:",
     "Sign-off conditions:",
 )
+UNRESOLVED_PLACEHOLDER_RE = re.compile(r"\[(?:[A-Z][A-Z0-9 _./:-]{1,}|VERIFY|TODO|TBD)[^\]]*\]")
 
 
 def is_external_text_deliverable(path: Path, root: Path) -> bool:
@@ -257,17 +258,21 @@ def source_evidence_manifest(paths: list[Path], root: Path) -> list[dict]:
 def report_quality(path: Path, root: Path, source_manifest: list[dict]) -> dict:
     text = path.read_text(encoding="utf-8", errors="replace")
     missing = [marker for marker in REPORT_REQUIRED_MARKERS if marker.lower() not in text.lower()]
+    placeholders = sorted(set(UNRESOLVED_PLACEHOLDER_RE.findall(text)))
     source_ids = [item["id"] for item in source_manifest]
     cited_sources = [sid for sid in source_ids if sid in text]
     if not source_ids:
         missing.append("source evidence manifest")
     elif not cited_sources:
         missing.append("source evidence id (SRC-####)")
+    if placeholders:
+        missing.append("unresolved placeholders")
     return {
         "path": str(path.relative_to(root)),
         "status": "pass" if not missing else "fail",
         "missing_markers": missing,
         "cited_source_ids": cited_sources,
+        "unresolved_placeholders": placeholders,
     }
 
 
