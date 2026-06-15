@@ -184,6 +184,52 @@ packet["report_quality_manifest"] = [{
 }]
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before reviewer identity manifest"
+python3 - "$M" "$HERE/.." <<'PY'
+import hashlib, json, pathlib, sys
+d = pathlib.Path(sys.argv[1])
+root = pathlib.Path(sys.argv[2]).resolve()
+sys.path.insert(0, str(root / "lib"))
+from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, REVIEWER_SKILL_MAP
+
+def skill_name(path):
+    in_frontmatter = False
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        if line.strip() == "---":
+            if not in_frontmatter:
+                in_frontmatter = True
+                continue
+            break
+        if in_frontmatter and line.startswith("name:"):
+            return line.split(":", 1)[1].strip().strip('"').strip("'")
+    return ""
+
+def skill_path_for(command):
+    matches = [p for p in root.rglob("SKILL.md") if ".git" not in p.parts and skill_name(p) == command]
+    return sorted(matches, key=lambda p: ("seats" in p.relative_to(root).parts, str(p.relative_to(root))))[0]
+
+def row(kind, name):
+    command = REVIEWER_SKILL_MAP[name]
+    path = skill_path_for(command)
+    return {
+        "kind": kind,
+        "name": name,
+        "skill": command,
+        "path": str(path.relative_to(root)),
+        "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        "status": "pass",
+        "missing": [],
+    }
+
+packet_path = d / "final_packet.json"
+packet = json.loads(packet_path.read_text(encoding="utf-8"))
+profile = packet["workflow_profile"]
+packet["reviewer_identity_manifest"] = (
+    [row("council", name) for name in COUNCIL_PROFILES[profile]]
+    + [row("adversarial", name) for name in ADVERSARIAL_PROFILES[profile]]
+)
+packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
+PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before deliverable hash manifest"
 python3 - "$M" <<'PY'
 import hashlib, json, pathlib, sys

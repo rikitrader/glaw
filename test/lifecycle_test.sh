@@ -165,6 +165,16 @@ done
 "$ADVERSARIAL" complete --profile auto >/dev/null
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && [ -f "$TMP/matters/$SLUG/final_packet.json" ] && echo 1 || echo 0)" "final packet ready after council and red flags clear"
+python3 - "$TMP/matters/$SLUG/final_packet.json" <<'PY'
+import json, sys
+p = sys.argv[1]
+packet = json.load(open(p, encoding="utf-8"))
+items = packet.get("reviewer_identity_manifest") or []
+ok = bool(items) and all(item.get("status") == "pass" and item.get("sha256") for item in items)
+sys.exit(0 if ok else 1)
+PY
+rc=$?
+ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "final packet records reviewer identity manifest"
 
 "$CHIEF" --chief "GLAW Chief Counsel" --decision "PROCEED" --approve-final --matter "$SLUG" >/dev/null
 "$GLAW" stage file >/dev/null 2>&1; rc=$?

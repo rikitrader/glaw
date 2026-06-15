@@ -79,5 +79,68 @@ for f in $(find -H "$GLAW" -name SKILL.md | sort); do
 done
 
 echo "═══ RESULT ═══"
-echo "  skills checked: $total   passed: $PASS   violations: $FAILS"
+profile_failures=$(python3 - "$GLAW" <<'PY'
+import pathlib
+import sys
+
+root = pathlib.Path(sys.argv[1])
+sys.path.insert(0, str(root / "lib"))
+from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, REVIEWER_SKILL_MAP
+
+
+def skill_name(path):
+    in_frontmatter = False
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        if line.strip() == "---":
+            if not in_frontmatter:
+                in_frontmatter = True
+                continue
+            break
+        if in_frontmatter and line.startswith("name:"):
+            return line.split(":", 1)[1].strip().strip('"').strip("'")
+    return ""
+
+
+skills = {}
+for path in sorted(root.rglob("SKILL.md")):
+    if ".git" in path.parts:
+        continue
+    name = skill_name(path)
+    if name and name not in skills:
+        skills[name] = path
+
+required = set()
+for rows in (COUNCIL_PROFILES, ADVERSARIAL_PROFILES):
+    for names in rows.values():
+        required.update(names)
+
+failures = []
+for reviewer in sorted(required):
+    command = REVIEWER_SKILL_MAP.get(reviewer)
+    if not command:
+        failures.append(f"{reviewer}: missing reviewer skill mapping")
+        continue
+    path = skills.get(command)
+    if not path:
+        failures.append(f"{reviewer}: mapped skill not found: {command}")
+        continue
+    text = path.read_text(encoding="utf-8", errors="replace")
+    for marker in ("Identity:", "Soul:", "Report voice:"):
+        if marker not in text:
+            failures.append(f"{reviewer}: {command} missing {marker}")
+
+for reviewer in sorted(set(REVIEWER_SKILL_MAP) - required):
+    failures.append(f"{reviewer}: stale reviewer skill mapping")
+
+print("\n".join(failures))
+PY
+)
+if [ -n "$profile_failures" ]; then
+  while IFS= read -r failure; do red "profile reviewer identity: $failure"; done <<EOF
+$profile_failures
+EOF
+else
+  grn
+fi
+echo "  skills checked: $total   contract checks passed: $PASS   violations: $FAILS"
 [ "$FAILS" = 0 ] && { echo "  ALL CONTRACTS PASS ✅"; exit 0; } || { echo "  CONTRACT VIOLATIONS ❌"; exit 1; }

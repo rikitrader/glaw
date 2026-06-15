@@ -89,7 +89,7 @@ import sys
 d = pathlib.Path(sys.argv[1])
 root = pathlib.Path(sys.argv[2])
 sys.path.insert(0, str(root / "lib"))
-from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES
+from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, REVIEWER_SKILL_MAP
 
 
 def read_jsonl(path):
@@ -112,6 +112,31 @@ def latest_by(rows, key):
     for row in rows:
         latest[str(row.get(key, ""))] = row
     return latest
+
+
+def skill_name(path):
+    in_frontmatter = False
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        if line.strip() == "---":
+            if not in_frontmatter:
+                in_frontmatter = True
+                continue
+            break
+        if in_frontmatter and line.startswith("name:"):
+            return line.split(":", 1)[1].strip().strip('"').strip("'")
+    return ""
+
+
+def skill_path_for(command):
+    matches = []
+    for path in root.rglob("SKILL.md"):
+        if ".git" in path.parts:
+            continue
+        if skill_name(path) == command:
+            matches.append(path)
+    if not matches:
+        return None
+    return sorted(matches, key=lambda p: ("seats" in p.relative_to(root).parts, str(p.relative_to(root))))[0]
 
 
 TEXT_DELIVERABLE_EXTS = {".md", ".html", ".htm", ".txt"}
@@ -191,6 +216,37 @@ def source_evidence_manifest(paths):
         }
         for idx, path in enumerate(sorted(paths), start=1)
     ]
+
+
+def reviewer_identity_manifest(profile):
+    required = [("council", name) for name in COUNCIL_PROFILES.get(profile, ())]
+    required.extend(("adversarial", name) for name in ADVERSARIAL_PROFILES.get(profile, ()))
+    rows = []
+    for kind, name in required:
+        command = REVIEWER_SKILL_MAP.get(name, "")
+        missing = []
+        path = skill_path_for(command) if command else None
+        text = path.read_text(encoding="utf-8", errors="replace") if path else ""
+        if not command:
+            missing.append("reviewer skill mapping")
+        if not path:
+            missing.append("skill file")
+        if "Identity:" not in text:
+            missing.append("Identity:")
+        if "Soul:" not in text:
+            missing.append("Soul:")
+        if "Report voice:" not in text:
+            missing.append("Report voice:")
+        rows.append({
+            "kind": kind,
+            "name": name,
+            "skill": command,
+            "path": str(path.relative_to(root)) if path else "",
+            "sha256": sha256_file(path) if path else "",
+            "status": "pass" if not missing else "fail",
+            "missing": missing,
+        })
+    return rows
 
 
 def report_quality(path, source_manifest):
@@ -350,6 +406,22 @@ failing_review_evidence = [
 ]
 if failing_review_evidence:
     print("current senior review(s) fail source evidence IDs: " + "; ".join(failing_review_evidence))
+    sys.exit(1)
+expected_reviewer_identity_manifest = packet.get("reviewer_identity_manifest") or []
+if not expected_reviewer_identity_manifest:
+    print("final_packet.json missing reviewer_identity_manifest")
+    sys.exit(1)
+current_reviewer_identity_manifest = reviewer_identity_manifest(profile)
+if expected_reviewer_identity_manifest != current_reviewer_identity_manifest:
+    print("current reviewer identity manifest does not match final_packet.json")
+    sys.exit(1)
+failing_reviewer_identity = [
+    f"{item['kind']}:{item['name']} missing {', '.join(item['missing'])}"
+    for item in current_reviewer_identity_manifest
+    if item.get("status") != "pass"
+]
+if failing_reviewer_identity:
+    print("current reviewer identity manifest is incomplete: " + "; ".join(failing_reviewer_identity))
     sys.exit(1)
 expected_report_markers = packet.get("report_quality_required_markers") or []
 if expected_report_markers != list(REPORT_REQUIRED_MARKERS):

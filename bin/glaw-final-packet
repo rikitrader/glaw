@@ -12,7 +12,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "lib"))
-from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, profile_for_track
+from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, REVIEWER_SKILL_MAP, profile_for_track
 
 
 def now() -> str:
@@ -72,6 +72,62 @@ def latest_by(rows: list[dict], key: str) -> dict[str, dict]:
     for row in rows:
         latest[str(row.get(key, ""))] = row
     return latest
+
+
+def skill_name(path: Path) -> str:
+    in_frontmatter = False
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        if line.strip() == "---":
+            if not in_frontmatter:
+                in_frontmatter = True
+                continue
+            break
+        if in_frontmatter and line.startswith("name:"):
+            return line.split(":", 1)[1].strip().strip('"').strip("'")
+    return ""
+
+
+def skill_path_for(root: Path, command: str) -> Path | None:
+    matches = []
+    for path in root.rglob("SKILL.md"):
+        if ".git" in path.parts:
+            continue
+        if skill_name(path) == command:
+            matches.append(path)
+    if not matches:
+        return None
+    return sorted(matches, key=lambda p: ("seats" in p.relative_to(root).parts, str(p.relative_to(root))))[0]
+
+
+def reviewer_identity_manifest(profile: str, root: Path) -> list[dict]:
+    required = [("council", name) for name in COUNCIL_PROFILES.get(profile, ())]
+    required.extend(("adversarial", name) for name in ADVERSARIAL_PROFILES.get(profile, ()))
+    rows = []
+    for kind, name in required:
+        command = REVIEWER_SKILL_MAP.get(name, "")
+        missing = []
+        path = skill_path_for(root, command) if command else None
+        text = path.read_text(encoding="utf-8", errors="replace") if path else ""
+        if not command:
+            missing.append("reviewer skill mapping")
+        if not path:
+            missing.append("skill file")
+        if "Identity:" not in text:
+            missing.append("Identity:")
+        if "Soul:" not in text:
+            missing.append("Soul:")
+        if "Report voice:" not in text:
+            missing.append("Report voice:")
+        rows.append({
+            "kind": kind,
+            "name": name,
+            "skill": command,
+            "path": str(path.relative_to(root)) if path else "",
+            "sha256": sha256_file(path) if path else "",
+            "status": "pass" if not missing else "fail",
+            "missing": missing,
+        })
+    return rows
 
 
 def blocking_red_flags(rows: list[dict]) -> list[dict]:
@@ -249,6 +305,11 @@ def render_md(packet: dict) -> str:
     lines.extend(["", "## Council Reviews"])
     for row in packet["council_reviews"]:
         lines.append(f"- {row.get('profile')} / {row.get('role')}: {row.get('decision')}")
+    lines.extend(["", "## Reviewer Identity Manifest"])
+    for item in packet.get("reviewer_identity_manifest", []):
+        mark = "x" if item.get("status") == "pass" else " "
+        suffix = "" if item.get("status") == "pass" else f" — missing {', '.join(item.get('missing') or [])}"
+        lines.append(f"- [{mark}] {item.get('kind')}:{item.get('name')} -> {item.get('skill')}{suffix}")
     lines.extend(["", "## Deliverables"])
     if packet["deliverables"]:
         for item in packet["deliverables"]:
@@ -302,6 +363,10 @@ def cmd_build(args: argparse.Namespace) -> int:
     senior_review_evidence_clear = bool(senior_review_evidence_manifest) and all(
         item["status"] == "pass" for item in senior_review_evidence_manifest
     )
+    reviewer_identity = reviewer_identity_manifest(profile, root)
+    reviewer_identity_clear = bool(reviewer_identity) and all(
+        item["status"] == "pass" for item in reviewer_identity
+    )
     report_quality_manifest = [
         report_quality(p, d, source_manifest)
         for p in external_text_paths
@@ -349,6 +414,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         "external_deliverable_present": bool(external_text_deliverables),
         "source_evidence_manifest_clear": bool(source_manifest),
         "senior_review_evidence_source_clear": senior_review_evidence_clear,
+        "reviewer_identity_manifest_clear": reviewer_identity_clear,
         "professional_report_manifest_clear": report_quality_clear,
         "upl_footer_clear": rc_upl == 0,
     }
@@ -378,6 +444,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         "external_text_deliverable_hashes": external_text_deliverable_hashes,
         "source_evidence_manifest": source_manifest,
         "senior_review_evidence_manifest": senior_review_evidence_manifest,
+        "reviewer_identity_manifest": reviewer_identity,
         "report_quality_required_markers": list(REPORT_REQUIRED_MARKERS),
         "report_quality_manifest": report_quality_manifest,
         "gate_artifact_hashes": gate_artifact_hashes,

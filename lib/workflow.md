@@ -53,6 +53,7 @@ FILE  /glaw-file  (signature-ready packet + checklist; UPL disclaimer on every d
   └─ GATE: external reports must include Owner / Report voice / Findings / Evidence / Red flags / Sign-off conditions
   └─ GATE: report Evidence must cite a hashed source ID (SRC-0001...) from evidence/, sources/, or source_documents/
   └─ GATE: required council/adversarial review evidence must cite the same source ID set
+  └─ GATE: required council/adversarial reviewers must resolve to hashed skill identity files
   └─ GATE: `glaw-final-packet build` writes final_packet.json/md and logs readiness
   └─ GATE: `glaw-chief-decision --approve-final` logs Chief/Council approval
   └─ court records → /glaw-court-records (CourtListener/PACER)
