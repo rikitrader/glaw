@@ -17,7 +17,8 @@ bin/glaw-intake status
 ```
 
 `matter new` creates both `matter.md` and `intake.json`. Every workflow must complete
-the structured intake before strategy:
+the structured intake before strategy; the gate revalidates the current artifact instead of
+trusting a hand-edited `status: complete` flag:
 
 ```bash
 bin/glaw-intake set workflow_track contract-review

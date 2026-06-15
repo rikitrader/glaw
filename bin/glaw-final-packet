@@ -13,7 +13,23 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "lib"))
-from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, REVIEWER_SKILL_MAP, profile_for_track
+from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, REVIEWER_SKILL_MAP, TRACKS, profile_for_track
+
+
+REQUIRED_INTAKE = (
+    "matter_name",
+    "workflow_track",
+    "client_names",
+    "parties",
+    "jurisdiction",
+    "goal",
+    "source_documents",
+    "deadlines",
+    "facts_timeline",
+    "open_questions",
+    "conflicts_parties",
+    "authorized_scope",
+)
 
 
 def now() -> str:
@@ -62,6 +78,25 @@ def timeline(d: Path, event: str, **extra: object) -> None:
 def workflow_profile(intake: dict) -> str:
     track = intake.get("universal", {}).get("workflow_track") or intake.get("workflow_track")
     return profile_for_track(track)
+
+
+def intake_missing_fields(intake: dict) -> list[str]:
+    universal = intake.get("universal", {})
+    missing = []
+    if intake.get("status") != "complete":
+        missing.append("status=complete")
+    for key in REQUIRED_INTAKE:
+        val = universal.get(key)
+        if val in ("", None, [], {}):
+            missing.append(f"universal.{key}")
+    track = universal.get("workflow_track") or intake.get("workflow_track")
+    if track not in TRACKS:
+        missing.append("universal.workflow_track(valid)")
+    for key in TRACKS.get(track, ()):
+        val = intake.get("track_specific", {}).get(key)
+        if val in ("", None, [], {}):
+            missing.append(f"track_specific.{key}")
+    return missing
 
 
 def has_event(rows: list[dict], event: str) -> bool:
@@ -373,6 +408,7 @@ def cmd_build(args: argparse.Namespace) -> int:
     d = matter_dir(args.matter)
     root = Path(__file__).resolve().parents[1]
     intake = read_json(d / "intake.json", {})
+    intake_missing = intake_missing_fields(intake)
     profile = args.profile if args.profile != "auto" else workflow_profile(intake)
     timeline_rows = read_jsonl(d / "timeline.jsonl")
     red_flags = read_jsonl(d / "red_flags.jsonl")
@@ -449,6 +485,7 @@ def cmd_build(args: argparse.Namespace) -> int:
     timeline_rows = read_jsonl(d / "timeline.jsonl")
     gates = {
         "intake_complete": has_event(timeline_rows, "intake_complete"),
+        "intake_artifact_clear": not intake_missing,
         "conflicts_cleared": has_event(timeline_rows, "conflicts_cleared") and rc_ethics == 0,
         "ethics_gate_complete": has_event(timeline_rows, "ethics_gate_complete") and rc_ethics == 0,
         "citations_verified": has_event(timeline_rows, "citations_verified") and rc_cites == 0,
@@ -482,6 +519,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         "council_check": council_output,
         "blocking_red_flags": blockers,
         "intake": intake,
+        "intake_missing_fields": intake_missing,
         "docket": docket,
         "council_reviews": council,
         "adversarial_reviews": adversarial,

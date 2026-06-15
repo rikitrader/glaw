@@ -12,7 +12,7 @@ Run any tool with no arguments for its usage. `bin/glaw-doctor` smoke-tests them
 |---|---|
 | `glaw` | `matter new "<name>"` · `matter list` · `matter use <slug>` · `stage <stage>` · `docket add <YYYY-MM-DD> "<desc>"` · `docket upcoming [days]` · `timeline-log <event>` · `config get/set <k> [v]` |
 | `glaw-docket-gate` | `status` · `complete` after deadlines are docketed; `no-deadlines --rationale <why>` for explicit no-deadline close-out |
-| `glaw-intake` | `init [slug] --track <track>` · `set <field> <value>` · `status` · `complete` · `show` for the structured `intake.json` gate |
+| `glaw-intake` | `init [slug] --track <track>` · `set <field> <value>` · `status` · `complete` · `show`; strategy and file gates revalidate the current structured `intake.json`, including universal and track-specific fields |
 | `glaw-ethics` | `record-conflicts --status cleared\|waived\|conflict` · `draft-engagement` · `status` · `complete`; logs `conflicts_cleared` only after conflicts and engagement are ready |
 | `glaw-council` | `record --profile auto --role <lens> --decision approve\|fix\|deny` · `status` · `complete`; `approve` requires source-backed `--evidence`, `fix/deny` red flags must cite `SRC-####`, `fix` requires `--conditions`, and every required role must approve before final packet |
 | `glaw-adversarial` | `record --profile auto --lens <government/regulatory lens> --decision survive\|fix\|strike` · `status` · `complete`; `survive` requires source-backed `--evidence`, `fix/strike` attacks must cite `SRC-####`, `fix` requires `--cure`, and `adversarial_done` logs only when every required RED-team lens survives |

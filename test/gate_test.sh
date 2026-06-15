@@ -47,6 +47,34 @@ JSON
 cat > "$M/ethics.json" <<'JSON'
 {"status":"complete","conflicts_status":"cleared","engagement":{"status":"drafted"}}
 JSON
+ok "$([ "$(chk strategy)" = 1 ] && echo 1 || echo 0)" "strategy STILL BLOCKED by incomplete structured intake artifact"
+cat > "$M/intake.json" <<'JSON'
+{
+  "status": "complete",
+  "workflow_track": "accounting-tax",
+  "universal": {
+    "matter_name": "Manual Gate Fixture",
+    "workflow_track": "accounting-tax",
+    "client_names": ["Acme Inc."],
+    "parties": ["Acme Inc.", "Bank"],
+    "jurisdiction": "Florida",
+    "goal": "reconstruct books and tax package",
+    "source_documents": ["bank.csv"],
+    "deadlines": ["2026-09-15 tax filing"],
+    "facts_timeline": ["2026-01-01 opening balance"],
+    "open_questions": ["none"],
+    "conflicts_parties": ["Acme Inc.", "Bank"],
+    "authorized_scope": "review and draft only"
+  },
+  "track_specific": {
+    "bank_statement_sources": "bank.csv",
+    "tax_years": "2026",
+    "entity_tax_type": "C-corp",
+    "books_status": "raw statements",
+    "irs_forms_needed": "1120"
+  }
+}
+JSON
 ok "$([ "$(chk strategy)" = 0 ] && echo 1 || echo 0)" "strategy CLEAR after intake/ethics artifacts"
 
 # file gate: citations, adversarial, red flags, final packet, and chief approval
@@ -68,6 +96,7 @@ cat > "$M/final_packet.json" <<'JSON'
   "workflow_profile": "accounting",
   "gates": {
     "intake_complete": true,
+    "intake_artifact_clear": true,
     "conflicts_cleared": true,
     "ethics_gate_complete": true,
     "citations_verified": true,

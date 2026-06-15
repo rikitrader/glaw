@@ -38,13 +38,52 @@ _has_event() {  # _has_event <timeline-file> <event>
   [ -f "$1" ] && grep -Eq "\"event\"[[:space:]]*:[[:space:]]*\"$2\"" "$1"
 }
 
-_strategy_artifacts_valid() {  # _strategy_artifacts_valid <matter-dir>
-  python3 - "$1" <<'PY'
+_strategy_artifacts_valid() {  # _strategy_artifacts_valid <matter-dir> <repo-root>
+  python3 - "$1" "$2" <<'PY'
 import json
 import pathlib
 import sys
 
 d = pathlib.Path(sys.argv[1])
+root = pathlib.Path(sys.argv[2])
+sys.path.insert(0, str(root / "lib"))
+from glaw_profiles import TRACKS
+
+REQUIRED_INTAKE = (
+    "matter_name",
+    "workflow_track",
+    "client_names",
+    "parties",
+    "jurisdiction",
+    "goal",
+    "source_documents",
+    "deadlines",
+    "facts_timeline",
+    "open_questions",
+    "conflicts_parties",
+    "authorized_scope",
+)
+
+
+def intake_missing_fields(intake):
+    universal = intake.get("universal", {})
+    missing = []
+    if intake.get("status") != "complete":
+        missing.append("status=complete")
+    for key in REQUIRED_INTAKE:
+        val = universal.get(key)
+        if val in ("", None, [], {}):
+            missing.append(f"universal.{key}")
+    track = universal.get("workflow_track") or intake.get("workflow_track")
+    if track not in TRACKS:
+        missing.append("universal.workflow_track(valid)")
+    for key in TRACKS.get(track, ()):
+        val = intake.get("track_specific", {}).get(key)
+        if val in ("", None, [], {}):
+            missing.append(f"track_specific.{key}")
+    return missing
+
+
 intake_path = d / "intake.json"
 ethics_path = d / "ethics.json"
 try:
@@ -55,8 +94,9 @@ except FileNotFoundError:
 except json.JSONDecodeError:
     print("intake.json is invalid JSON")
     sys.exit(1)
-if intake.get("status") != "complete":
-    print("intake.json status is not complete")
+missing_intake = intake_missing_fields(intake)
+if missing_intake:
+    print("intake.json incomplete: " + ", ".join(missing_intake))
     sys.exit(1)
 try:
     ethics = json.loads(ethics_path.read_text(encoding="utf-8"))
@@ -90,7 +130,41 @@ import sys
 d = pathlib.Path(sys.argv[1])
 root = pathlib.Path(sys.argv[2])
 sys.path.insert(0, str(root / "lib"))
-from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, REVIEWER_SKILL_MAP
+from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, REVIEWER_SKILL_MAP, TRACKS
+
+REQUIRED_INTAKE = (
+    "matter_name",
+    "workflow_track",
+    "client_names",
+    "parties",
+    "jurisdiction",
+    "goal",
+    "source_documents",
+    "deadlines",
+    "facts_timeline",
+    "open_questions",
+    "conflicts_parties",
+    "authorized_scope",
+)
+
+
+def intake_missing_fields(intake):
+    universal = intake.get("universal", {})
+    missing = []
+    if intake.get("status") != "complete":
+        missing.append("status=complete")
+    for key in REQUIRED_INTAKE:
+        val = universal.get(key)
+        if val in ("", None, [], {}):
+            missing.append(f"universal.{key}")
+    track = universal.get("workflow_track") or intake.get("workflow_track")
+    if track not in TRACKS:
+        missing.append("universal.workflow_track(valid)")
+    for key in TRACKS.get(track, ()):
+        val = intake.get("track_specific", {}).get(key)
+        if val in ("", None, [], {}):
+            missing.append(f"track_specific.{key}")
+    return missing
 
 
 def read_jsonl(path):
@@ -393,6 +467,19 @@ packet_sha256 = sha256_file(p)
 missing = [k for k, v in packet.get("gates", {}).items() if not v]
 if missing:
     print("final_packet.json has uncleared gate(s): " + ", ".join(missing))
+    sys.exit(1)
+intake_path = d / "intake.json"
+if not intake_path.exists():
+    print("intake.json missing")
+    sys.exit(1)
+try:
+    intake = json.loads(intake_path.read_text(encoding="utf-8"))
+except json.JSONDecodeError:
+    print("intake.json is invalid JSON")
+    sys.exit(1)
+missing_intake = intake_missing_fields(intake)
+if missing_intake:
+    print("current intake.json incomplete: " + ", ".join(missing_intake))
     sys.exit(1)
 
 deliverables = [p for p in sorted(d.rglob("*")) if p.is_file() and is_external_text_deliverable(p)]
@@ -743,7 +830,7 @@ case "$action" in
       echo "  satisfy by running the owning gate command, not by hand-logging events."
       exit 1
     fi
-    if [ "$target" = "strategy" ] && ! artifact_msg="$(_strategy_artifacts_valid "$MATTERS/$slug" 2>&1)"; then
+    if [ "$target" = "strategy" ] && ! artifact_msg="$(_strategy_artifacts_valid "$MATTERS/$slug" "$ROOT" 2>&1)"; then
       echo "GATE BLOCKED: cannot enter 'strategy' for [$slug] — $artifact_msg"
       exit 1
     fi
@@ -771,7 +858,7 @@ case "$action" in
     else
       echo "  ❌ file_artifacts_verified (before file) — $artifact_msg"
     fi
-    if artifact_msg="$(_strategy_artifacts_valid "$MATTERS/$slug" 2>&1)"; then
+    if artifact_msg="$(_strategy_artifacts_valid "$MATTERS/$slug" "$ROOT" 2>&1)"; then
       echo "  ✅ strategy_artifacts_verified (before strategy)"
     else
       echo "  ❌ strategy_artifacts_verified (before strategy) — $artifact_msg"
