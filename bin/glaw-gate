@@ -55,6 +55,11 @@ GENERIC_PROFESSIONAL_RE = re.compile(
     r"|^\s*(?:tbd|todo|n/?a|unknown|pending)\s*$",
     re.IGNORECASE,
 )
+GENERIC_INTAKE_REVIEWER_RE = re.compile(
+    r"^\s*(?:intake\s+)?(?:reviewer|operator|user|clerk|agent|professional|counsel)\s*$"
+    r"|^\s*(?:tbd|todo|n/?a|unknown|pending)\s*$",
+    re.IGNORECASE,
+)
 BRACKET_PLACEHOLDER_RE = re.compile(r"\[[^\]]+\]")
 
 
@@ -69,6 +74,20 @@ def responsible_professional_blocker(value):
         return "ethics responsible professional is a generic role"
     if len(alpha_words) < 2:
         return "ethics responsible professional must include a named accountable reviewer"
+    return ""
+
+
+def intake_reviewer_blocker(value):
+    text = str(value or "").strip()
+    alpha_words = re.findall(r"[A-Za-z][A-Za-z.'-]+", text)
+    if not text:
+        return "intake review.completed_by is missing"
+    if BRACKET_PLACEHOLDER_RE.search(text):
+        return "intake review.completed_by is a placeholder"
+    if GENERIC_INTAKE_REVIEWER_RE.match(text):
+        return "intake review.completed_by is a generic role"
+    if len(alpha_words) < 2:
+        return "intake review.completed_by must include a named accountable reviewer"
     return ""
 
 REQUIRED_INTAKE = (
@@ -103,6 +122,9 @@ def intake_missing_fields(intake):
         val = intake.get("track_specific", {}).get(key)
         if val in ("", None, [], {}):
             missing.append(f"track_specific.{key}")
+    reviewer_blocker = intake_reviewer_blocker(intake.get("review", {}).get("completed_by", ""))
+    if reviewer_blocker:
+        missing.append(reviewer_blocker)
     return missing
 
 
@@ -197,10 +219,31 @@ root = pathlib.Path(sys.argv[2])
 sys.path.insert(0, str(root / "lib"))
 from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, REVIEWER_SKILL_MAP, TRACKS
 
+GENERIC_INTAKE_REVIEWER_RE = re.compile(
+    r"^\s*(?:intake\s+)?(?:reviewer|operator|user|clerk|agent|professional|counsel)\s*$"
+    r"|^\s*(?:tbd|todo|n/?a|unknown|pending)\s*$",
+    re.IGNORECASE,
+)
+BRACKET_PLACEHOLDER_RE = re.compile(r"\[[^\]]+\]")
+
 
 def valid_http_url(value):
     parsed = urlparse(str(value).strip())
     return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
+
+
+def intake_reviewer_blocker(value):
+    text = str(value or "").strip()
+    alpha_words = re.findall(r"[A-Za-z][A-Za-z.'-]+", text)
+    if not text:
+        return "intake review.completed_by is missing"
+    if BRACKET_PLACEHOLDER_RE.search(text):
+        return "intake review.completed_by is a placeholder"
+    if GENERIC_INTAKE_REVIEWER_RE.match(text):
+        return "intake review.completed_by is a generic role"
+    if len(alpha_words) < 2:
+        return "intake review.completed_by must include a named accountable reviewer"
+    return ""
 
 
 def valid_legal_research_reviewer(value):
@@ -239,6 +282,9 @@ def intake_missing_fields(intake):
         val = intake.get("track_specific", {}).get(key)
         if val in ("", None, [], {}):
             missing.append(f"track_specific.{key}")
+    reviewer_blocker = intake_reviewer_blocker(intake.get("review", {}).get("completed_by", ""))
+    if reviewer_blocker:
+        missing.append(reviewer_blocker)
     return missing
 
 

@@ -46,7 +46,11 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "strategy blocked before intake/confli
 "$INTAKE" set track_specific.entity_tax_type 'C-corp' >/dev/null
 "$INTAKE" set track_specific.books_status 'raw statements' >/dev/null
 "$INTAKE" set track_specific.irs_forms_needed '1120' >/dev/null
-"$INTAKE" complete >/dev/null
+"$INTAKE" complete >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "intake complete blocked without accountable reviewer"
+"$INTAKE" complete --by 'intake reviewer' >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "intake complete blocked by generic reviewer"
+"$INTAKE" complete --by 'Jordan Lee, intake counsel' >/dev/null
 "$ETHICS" record-conflicts --status cleared --notes 'no conflict in test fixture' >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "ethics conflicts blocked without source evidence id"
 "$ETHICS" record-conflicts --status cleared --notes 'no conflict in test fixture' --source 'SRC-9999 stale intake party list reviewed' >/dev/null 2>&1; rc=$?

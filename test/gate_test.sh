@@ -72,9 +72,20 @@ cat > "$M/intake.json" <<'JSON'
     "entity_tax_type": "C-corp",
     "books_status": "raw statements",
     "irs_forms_needed": "1120"
+  },
+  "review": {
+    "completed_by": "intake reviewer"
   }
 }
 JSON
+ok "$([ "$(chk strategy)" = 1 ] && echo 1 || echo 0)" "strategy STILL BLOCKED by generic intake reviewer"
+python3 - "$M/intake.json" <<'PY'
+import json, sys
+p = sys.argv[1]
+data = json.load(open(p, encoding="utf-8"))
+data["review"]["completed_by"] = "Jordan Lee, intake counsel"
+open(p, "w", encoding="utf-8").write(json.dumps(data) + "\n")
+PY
 ok "$([ "$(chk strategy)" = 1 ] && echo 1 || echo 0)" "strategy STILL BLOCKED by unsourced ethics artifact"
 cat > "$M/ethics.json" <<'JSON'
 {

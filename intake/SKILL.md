@@ -75,7 +75,10 @@ bin/glaw-intake set facts_timeline '2026-01-01 event...'
 bin/glaw-intake set open_questions 'missing statement; confirm ownership'
 bin/glaw-intake set conflicts_parties 'all clients, adverse parties, owners, affiliates'
 bin/glaw-intake set authorized_scope 'review/analyze/draft only; no filing without human approval'
+bin/glaw-intake complete --by '<named intake reviewer>'
 ```
+Generic placeholders such as `intake reviewer`, `operator`, `TBD`, or `[REVIEWER]`
+do not clear the executable gate; name the accountable intake reviewer.
 
 For accounting/bookkeeping workflows, also fill:
 ```bash
@@ -118,7 +121,7 @@ does NOT clear conflicts itself.
 ### Step 5 — Advance
 On conflicts cleared:
 ```bash
-bin/glaw-intake complete
+bin/glaw-intake complete --by '<named intake reviewer>'
 bin/glaw stage strategy
 bin/glaw timeline-log intake_done
 ```

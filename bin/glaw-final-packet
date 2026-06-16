@@ -30,6 +30,12 @@ REQUIRED_INTAKE = (
     "conflicts_parties",
     "authorized_scope",
 )
+GENERIC_INTAKE_REVIEWER_RE = re.compile(
+    r"^\s*(?:intake\s+)?(?:reviewer|operator|user|clerk|agent|professional|counsel)\s*$"
+    r"|^\s*(?:tbd|todo|n/?a|unknown|pending)\s*$",
+    re.IGNORECASE,
+)
+BRACKET_PLACEHOLDER_RE = re.compile(r"\[[^\]]+\]")
 
 
 def now() -> str:
@@ -80,6 +86,20 @@ def workflow_profile(intake: dict) -> str:
     return profile_for_track(track)
 
 
+def intake_reviewer_blocker(value: str) -> str:
+    text = str(value or "").strip()
+    alpha_words = re.findall(r"[A-Za-z][A-Za-z.'-]+", text)
+    if not text:
+        return "review.completed_by required"
+    if BRACKET_PLACEHOLDER_RE.search(text):
+        return "review.completed_by must name an accountable intake reviewer, not a placeholder"
+    if GENERIC_INTAKE_REVIEWER_RE.match(text):
+        return "review.completed_by must name an accountable intake reviewer, not a generic role"
+    if len(alpha_words) < 2:
+        return "review.completed_by must include a named accountable reviewer"
+    return ""
+
+
 def intake_missing_fields(intake: dict) -> list[str]:
     universal = intake.get("universal", {})
     missing = []
@@ -96,6 +116,9 @@ def intake_missing_fields(intake: dict) -> list[str]:
         val = intake.get("track_specific", {}).get(key)
         if val in ("", None, [], {}):
             missing.append(f"track_specific.{key}")
+    reviewer_blocker = intake_reviewer_blocker(intake.get("review", {}).get("completed_by", ""))
+    if reviewer_blocker:
+        missing.append(reviewer_blocker)
     return missing
 
 

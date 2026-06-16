@@ -66,6 +66,11 @@ DOCKET  /glaw-docket  (deadline calendar + monitoring)
 RETRO  /glaw-matter-retro  (close-out + Obsidian vault write)
 ```
 
+Council note: Chief/Council review is intentionally an executable gate, not a
+pipeline stage directory. The implementation lives in `bin/glaw-council` plus
+`COUNCIL_PROFILES` in `lib/glaw_profiles.py`; do not add a redundant
+`council/` skill to satisfy directory-only scans.
+
 ## The three cross-cutting chains (what "connected" means)
 
 1. **Research → verify → draft → polish:** `/glaw-case-law-research` (+`deep-research`) →

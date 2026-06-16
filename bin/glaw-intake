@@ -6,6 +6,7 @@ import argparse
 import json
 import os
 import sys
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -27,6 +28,12 @@ REQUIRED = (
     "conflicts_parties",
     "authorized_scope",
 )
+GENERIC_REVIEWER_RE = re.compile(
+    r"^\s*(?:intake\s+)?(?:reviewer|operator|user|clerk|agent|professional|counsel)\s*$"
+    r"|^\s*(?:tbd|todo|n/?a|unknown|pending)\s*$",
+    re.IGNORECASE,
+)
+BRACKET_PLACEHOLDER_RE = re.compile(r"\[[^\]]+\]")
 
 def now() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -153,6 +160,20 @@ def missing_fields(form: dict) -> list[str]:
     return missing
 
 
+def intake_reviewer_blocker(value: str) -> str:
+    text = str(value or "").strip()
+    alpha_words = re.findall(r"[A-Za-z][A-Za-z.'-]+", text)
+    if not text:
+        return "review.completed_by required"
+    if BRACKET_PLACEHOLDER_RE.search(text):
+        return "review.completed_by must name an accountable intake reviewer, not a placeholder"
+    if GENERIC_REVIEWER_RE.match(text):
+        return "review.completed_by must name an accountable intake reviewer, not a generic role"
+    if len(alpha_words) < 2:
+        return "review.completed_by must include a named accountable reviewer"
+    return ""
+
+
 def sync_matter_md(d: Path, form: dict) -> None:
     md = d / "matter.md"
     if not md.exists():
@@ -223,6 +244,10 @@ def cmd_complete(args: argparse.Namespace) -> int:
         for item in missing:
             print(f"  - {item}", file=sys.stderr)
         return 1
+    reviewer_blocker = intake_reviewer_blocker(args.by)
+    if reviewer_blocker:
+        print(f"ERROR: {reviewer_blocker}", file=sys.stderr)
+        return 2
     form["status"] = "complete"
     form["review"]["completed_at"] = now()
     form["review"]["completed_by"] = args.by
@@ -256,7 +281,7 @@ def main() -> int:
     p.set_defaults(func=cmd_status)
     p = sub.add_parser("complete", help="validate intake and log intake_complete")
     p.add_argument("slug", nargs="?")
-    p.add_argument("--by", default=os.environ.get("USER", "operator"))
+    p.add_argument("--by", default="")
     p.set_defaults(func=cmd_complete)
     p = sub.add_parser("show", help="print intake JSON")
     p.add_argument("slug", nargs="?")
