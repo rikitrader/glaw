@@ -102,6 +102,28 @@ def matter_profile(d: Path) -> tuple[str, str]:
     return str(track), profile_for_track(track)
 
 
+def final_packet_compliance_failures(d: Path) -> list[dict]:
+    packet = read_json(d / "final_packet.json", {})
+    rows = packet.get("compliance_manifest")
+    if not isinstance(rows, list):
+        return []
+    failures = []
+    for row in rows:
+        if isinstance(row, dict) and row.get("status") != "pass":
+            failures.append(row)
+    return failures
+
+
+def compliance_failure_summary(failures: list[dict]) -> str:
+    labels = []
+    for row in failures[:5]:
+        label = str(row.get("id") or row.get("owner") or "unnamed").strip()
+        if label:
+            labels.append(label)
+    suffix = "" if len(failures) <= 5 else f" and {len(failures) - 5} more"
+    return ", ".join(labels) + suffix
+
+
 def decision_signature(decision: dict) -> str:
     return "|".join([
         str(decision.get("stage", "")),
@@ -267,6 +289,7 @@ def route_from_state(d: Path) -> dict:
         "adversarial_required": list(ADVERSARIAL_PROFILES.get(profile, ())),
         "human_only_actions": sorted(HUMAN_ONLY_ACTIONS),
         "authority": "quality routing only; no filing/signing/service/payment/charge/live transmission",
+        "compliance_failures": [],
     }
 
     if not strategy_clear:
@@ -307,8 +330,18 @@ def route_from_state(d: Path) -> dict:
             owner = "red-flags"
             command = "bin/glaw-red-flags status"
         elif not has_event(rows, "final_packet_ready"):
-            owner = "final-packet"
-            command = "bin/glaw-final-packet build --profile auto"
+            failures = final_packet_compliance_failures(d)
+            if failures:
+                owner = "compliance"
+                command = "bin/glaw-final-packet build --profile auto"
+                decision["compliance_failures"] = failures
+                decision["reason"] = (
+                    "final packet compliance manifest is blocked: "
+                    + compliance_failure_summary(failures)
+                )
+            else:
+                owner = "final-packet"
+                command = "bin/glaw-final-packet build --profile auto"
         elif not has_event(rows, "chief_approved"):
             owner = "chief-counsel"
             command = "bin/glaw-chief-decision --approve-final ..."
@@ -319,7 +352,7 @@ def route_from_state(d: Path) -> dict:
             "next_gate": "file",
             "owner": owner,
             "next_command": command,
-            "reason": file_output or "file gate is not clear",
+            "reason": decision.get("reason") or file_output or "file gate is not clear",
         })
         return decision
 

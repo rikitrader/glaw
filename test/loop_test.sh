@@ -92,6 +92,94 @@ PY
 rc2=$?
 ok "$([ "$rc" = 1 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "loop JSON reports authority-blocked transmit"
 
+"$GLAW" matter new "Loop Compliance" >/dev/null
+M2="$TMP/matters/loop-compliance"
+mkdir -p "$M2/evidence"
+printf 'Bank statement and engagement source fixture.\n' > "$M2/evidence/source.txt"
+cat > "$M2/intake.json" <<'JSON'
+{
+  "status": "complete",
+  "universal": {
+    "matter_name": "Loop Compliance",
+    "workflow_track": "accounting-tax",
+    "client_names": ["Example Client LLC"],
+    "parties": ["Example Client LLC", "Example Bank"],
+    "jurisdiction": "US federal / Delaware",
+    "goal": "Prepare source-backed accounting-tax file-readiness packet.",
+    "source_documents": ["SRC-0001 bank statement and engagement source fixture"],
+    "deadlines": ["2026-09-15 tax extension deadline"],
+    "facts_timeline": ["SRC-0001 bank activity imported for reconciliation testing"],
+    "open_questions": ["SRC-0001 identify unreconciled exceptions"],
+    "conflicts_parties": ["Example Client LLC", "Example Bank"],
+    "authorized_scope": "Accounting-tax analysis and workpaper preparation only."
+  },
+  "track_specific": {
+    "bank_statement_sources": ["SRC-0001 evidence/source.txt"],
+    "tax_years": ["2026"],
+    "entity_tax_type": "partnership",
+    "books_status": "open pending reconciliation",
+    "irs_forms_needed": ["Form 1065"]
+  },
+  "review": {
+    "completed_by": "Morgan Rivera"
+  }
+}
+JSON
+cat > "$M2/ethics.json" <<'JSON'
+{
+  "status": "complete",
+  "conflicts_status": "cleared",
+  "conflicts_source": "SRC-0001 conflicts checked against provided parties",
+  "engagement": {
+    "status": "drafted",
+    "scope": "Accounting-tax analysis and workpaper preparation only.",
+    "responsible_professional": "Alexandra Chen",
+    "source": "SRC-0001 engagement authority and source fixture"
+  }
+}
+JSON
+cat > "$M2/timeline.jsonl" <<'JSONL'
+{"ts":"2026-06-16T00:00:00Z","event":"intake_complete"}
+{"ts":"2026-06-16T00:00:01Z","event":"conflicts_cleared"}
+{"ts":"2026-06-16T00:00:02Z","event":"citations_verified"}
+{"ts":"2026-06-16T00:00:03Z","event":"adversarial_done"}
+{"ts":"2026-06-16T00:00:04Z","event":"red_flags_clear"}
+JSONL
+printf 'draft\n' > "$M2/.stage"
+cat > "$M2/final_packet.json" <<'JSON'
+{
+  "status": "blocked",
+  "compliance_manifest": [
+    {
+      "id": "accounting-control",
+      "owner": "glaw-accounting",
+      "status": "fail",
+      "missing": ["bank_reconciliation", "tax_tie_out"],
+      "detail": "accounting controls must pass before file-readiness"
+    }
+  ]
+}
+JSON
+"$LOOP" status --matter loop-compliance --json > "$TMP/loop-compliance.json"; rc=$?
+python3 - "$TMP/loop-compliance.json" <<'PY'
+import json
+import sys
+
+data = json.load(open(sys.argv[1], encoding="utf-8"))
+failures = data.get("compliance_failures") or []
+ok = (
+    data.get("next_gate") == "file"
+    and data.get("owner") == "compliance"
+    and data.get("next_command") == "bin/glaw-final-packet build --profile auto"
+    and "compliance manifest is blocked" in data.get("reason", "")
+    and failures
+    and failures[0].get("id") == "accounting-control"
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "loop routes failed compliance manifest to Chief Compliance Officer"
+
 "$OVERSIGHT" halt --by "QA reviewer" --reason "test halt" >/dev/null
 "$LOOP" status --json > "$TMP/loop-halted.json"; rc=$?
 python3 - "$TMP/loop-halted.json" <<'PY'

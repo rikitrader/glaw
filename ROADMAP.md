@@ -287,6 +287,10 @@ the seal stays human as a legal and ethics constraint.
   `GOVERNMENT_ADVERSARY_LENSES`, and `bin/glaw-doctor`, `test/golden_profile_test.sh`, and
   `bin/glaw-sandbox` fail if any executable workflow profile loses its government,
   regulator, court, enforcement, or litigation attack lens.
+- ✅ **P2-G9 · Compliance-manifest routing**: `glaw-loop` now detects blocked
+  `final_packet.json` compliance manifests before treating the matter as generic
+  final-packet work, routes the matter to `/glaw-compliance`, and emits the failing
+  compliance rows in `compliance_failures` for Codex/Claude/orchestrator follow-up.
 
 ### Phase 3 (Harness Integration) — add
 - ✅ **P3-G1 · Policy-as-fail-closed-CI-gate + observability**: `bin/glaw-policy check` now
