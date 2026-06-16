@@ -29,6 +29,9 @@ jobs:
           bash bin/glaw-setup
           GLAW_DOCTOR_CORE=1 bash bin/glaw-doctor
 
+      - name: Policy contract gate
+        run: python3 bin/glaw-policy check
+
       - name: Bookkeeping source-only doctor
         run: GLAW="$GITHUB_WORKSPACE" bash bin/glaw-bookkeeping-doctor
 

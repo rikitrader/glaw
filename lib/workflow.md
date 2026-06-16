@@ -101,6 +101,12 @@ through `REVIEWER_SKILL_MAP` to a real `SKILL.md` with `Identity:`, `Soul:`, and
 Edits to `lib/glaw_profiles.py` and `lib/firm-roster.md` are SSOT-lock required and must set
 `GLAW_SSOT_OWNER` after coordination.
 
+`bin/glaw-policy check` is the repo policy gate. It fails closed when CI stops running the doctor,
+bookkeeping doctor, zero-dependency guard, or policy check; when doctor drops safety-critical
+tests/tool smokes; when hooks stop calling the commit gate; or when final-packet/file gates stop
+hashing required gate artifacts. CI and `glaw-doctor` both run this policy contract so a high
+quality score cannot override a missing safety primitive.
+
 Golden-profile invariant: for every executable workflow profile, a known-good matter must be able
 to clear all hard gates through `chief_approved`. Gate tightening is not complete unless it both
 blocks the bad state and preserves at least one source-backed all-clear path for the affected profile.

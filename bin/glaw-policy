@@ -1,0 +1,148 @@
+#!/usr/bin/env python3
+"""glaw-policy - fail-closed repo policy and observability contract.
+
+Usage:
+  glaw-policy check [--root PATH] [--json]
+
+The policy gate is intentionally source-only. It checks that CI, doctor, hooks,
+and gate artifacts still enforce the safety contract. A policy failure is a
+failure even when other quality tests pass.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+
+REQUIRED_CI_SNIPPETS = (
+    "GLAW_DOCTOR_CORE=1 bash bin/glaw-doctor",
+    "bash bin/glaw-bookkeeping-doctor",
+    "python3 bin/glaw-policy check",
+    "Zero third-party package guard",
+)
+REQUIRED_DOCTOR_TESTS = (
+    "facts_validate_test:launch-guard",
+    "gate_test:hard-gate",
+    "lifecycle_test:full-lifecycle",
+    "sec_reporting_profile_test:sec-reporting-profile",
+    "authority_gate_test:authority-gate",
+    "conscience_test:autonomous-conscience",
+    "citation_corpus_test:citation-corpus",
+    "citation_typology_test:citation-typology",
+    "groundedness_test:groundedness",
+    "loop_test:orchestrator-loop",
+    "golden_profile_test:golden-profiles",
+    "memory_test:cross-matter-memory",
+)
+REQUIRED_TOOL_SMOKES = (
+    "glaw-policy|check",
+    "glaw-conscience|check-call",
+    "glaw-citation-corpus|status",
+    "glaw-citation-gate|",
+    "glaw-groundedness|audit",
+    "glaw-loop|status",
+)
+REQUIRED_GATE_ARTIFACTS = (
+    "citation_corpus.jsonl",
+    "citations.jsonl",
+    "groundedness.json",
+    "council.jsonl",
+    "adversarial.jsonl",
+)
+REQUIRED_HOOK_SNIPPETS = ("bin/glaw-commit-gate",)
+
+
+def read(path: Path) -> str:
+    return path.read_text(encoding="utf-8", errors="replace") if path.exists() else ""
+
+
+def check_contains(name: str, text: str, required: tuple[str, ...]) -> dict:
+    missing = [item for item in required if item not in text]
+    return {
+        "id": name,
+        "status": "pass" if not missing else "fail",
+        "missing": missing,
+    }
+
+
+def check_file(path: Path, label: str) -> dict:
+    return {
+        "id": label,
+        "status": "pass" if path.is_file() else "fail",
+        "missing": [] if path.is_file() else [str(path)],
+    }
+
+
+def check_executable(path: Path, label: str) -> dict:
+    ok = path.is_file() and path.stat().st_mode & 0o111
+    return {
+        "id": label,
+        "status": "pass" if ok else "fail",
+        "missing": [] if ok else [str(path)],
+    }
+
+
+def policy_report(root: Path) -> dict:
+    ci = read(root / ".github/workflows/ci.yml")
+    doctor = read(root / "bin/glaw-doctor")
+    gate = read(root / "bin/glaw-gate")
+    packet = read(root / "bin/glaw-final-packet")
+    setup = read(root / "setup")
+    pre_commit = read(root / ".githooks/pre-commit")
+    pre_push = read(root / ".githooks/pre-push")
+    commit_gate = read(root / "bin/glaw-commit-gate")
+
+    checks = [
+        check_file(root / ".github/workflows/ci.yml", "ci_workflow_exists"),
+        check_contains("ci_policy_contract", ci, REQUIRED_CI_SNIPPETS),
+        check_contains("doctor_required_tests", doctor, REQUIRED_DOCTOR_TESTS),
+        check_contains("doctor_tool_smokes", doctor, REQUIRED_TOOL_SMOKES),
+        check_contains("gate_required_artifacts", gate, REQUIRED_GATE_ARTIFACTS),
+        check_contains("final_packet_required_artifacts", packet, REQUIRED_GATE_ARTIFACTS),
+        check_contains("setup_installs_hooks", setup, ("core.hooksPath .githooks", "bin/glaw-doctor")),
+        check_contains("pre_commit_gate", pre_commit, REQUIRED_HOOK_SNIPPETS),
+        check_contains("pre_push_gate", pre_push, REQUIRED_HOOK_SNIPPETS),
+        check_contains("commit_gate_runs_doctor", commit_gate, ("bin/glaw-doctor",)),
+        check_executable(root / "bin/glaw-policy", "policy_tool_executable"),
+        check_executable(root / "bin/glaw-doctor", "doctor_executable"),
+    ]
+    failed = [item for item in checks if item["status"] != "pass"]
+    return {
+        "ts": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+        "root": str(root),
+        "status": "pass" if not failed else "fail",
+        "checks": checks,
+        "failed": failed,
+    }
+
+
+def cmd_check(args: argparse.Namespace) -> int:
+    root = Path(args.root).resolve()
+    report = policy_report(root)
+    if args.json:
+        print(json.dumps(report, indent=2, sort_keys=False))
+    else:
+        print(f"GLAW POLICY {report['status'].upper()}: {root}")
+        for check in report["checks"]:
+            print(f"  {check['status']}: {check['id']}")
+            for missing in check.get("missing", []):
+                print(f"    missing: {missing}")
+    return 0 if report["status"] == "pass" else 1
+
+
+def main(argv: list[str]) -> int:
+    ap = argparse.ArgumentParser(prog="glaw-policy")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    p = sub.add_parser("check")
+    p.add_argument("--root", default=str(Path(__file__).resolve().parents[1]))
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_check)
+    args = ap.parse_args(argv)
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))

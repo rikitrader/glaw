@@ -29,6 +29,7 @@ Run any tool with no arguments for its usage. `bin/glaw-doctor` smoke-tests them
 | `glaw-learnings` | `add '<json>'` · `preflight [matter] [--query TEXT]` · `query "<query>" [--json] [--limit N] [--matter M] [--type T]` · `stats`; source-linked long-term memory store under `$GLAW_HOME/learnings/learnings.jsonl` with ranked selective retrieval |
 | `glaw-reflect` | `[--apply]` → synthesizes source-linked knowledge rules from repeated `glaw-learnings` defects and writes them back to the same isolated memory store |
 | `glaw-setup` | deploy every sub-skill as a `/glaw-*` command (symlink model) |
+| `glaw-policy` | `check [--root PATH] [--json]` → fail-closed policy contract: CI must run doctor/bookkeeping/policy gates, doctor must include required tests/tool smokes, hooks must run the commit gate, and file/final-packet gates must carry required artifacts |
 | `glaw-doctor` | health harness: skills resolve · tools run · no dangling refs · profile reviewer-map consistency · Codex/Claude parity · no weak review-gate examples → `HEALTHY`/`PROBLEMS` |
 | `glaw-preamble.sh` | shared preamble emitted by each stage skill |
 

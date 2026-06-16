@@ -268,8 +268,10 @@ the seal stays human as a legal and ethics constraint.
   unresolved placeholders, unsupported human-act claims, and high-stakes output without `SRC-####`.
 
 ### Phase 3 (Harness Integration) — add
-- **P3-G1 · Policy-as-fail-closed-CI-gate + observability**: unify benchmarks, traces, and CI
-  quality gates under one contract; a policy violation fails CI even at high quality score.
+- ✅ **P3-G1 · Policy-as-fail-closed-CI-gate + observability**: `bin/glaw-policy check` now
+  enforces the repo policy contract across CI, doctor tests/tool smokes, git hooks, and required
+  gate artifacts. CI and `glaw-doctor` both run it, so a missing policy primitive fails even when
+  other quality checks pass.
 - **P3-G2 · Full RBAC + SOC2 mapping** around the shipped authority gate: roles
   READER/WRITER/ADMIN/**AUDITOR** + execution rings, SOC2-mapped audit logging — required when
   GLAW runs embedded in a host (zeroclaw-x0 / MCP).
@@ -289,7 +291,7 @@ the seal stays human as a legal and ethics constraint.
   if the score is below threshold. The audit trail carries citation row hash, source hash, and
   segment hash.
 
-*Suggested build order: P3 host/observability → P3 RBAC/SOC2 mapping.*
+*Suggested build order: P3 RBAC/SOC2 mapping → host embedding adapter.*
 
 ---
 
