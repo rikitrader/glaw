@@ -105,11 +105,17 @@ def final_packet_summary(matter: Path) -> dict:
             "status": "missing",
             "compliance_manifest": [],
             "government_adversary_manifest": [],
+            "accounting_control_manifest": {},
             "compliance_failures": [],
             "government_adversary_failures": [],
+            "accounting_control_failures": [],
         }
     compliance = packet.get("compliance_manifest") or []
     government = packet.get("government_adversary_manifest") or []
+    accounting_control = packet.get("accounting_control_manifest") or {}
+    accounting_failures = []
+    if accounting_control and accounting_control.get("status") not in {"pass", "not_required"}:
+        accounting_failures.append(accounting_control)
     return {
         "present": True,
         "status": packet.get("status", "unknown"),
@@ -118,12 +124,14 @@ def final_packet_summary(matter: Path) -> dict:
         "gates": packet.get("gates", {}),
         "compliance_manifest": compliance,
         "government_adversary_manifest": government,
+        "accounting_control_manifest": accounting_control,
         "compliance_failures": [
             item for item in compliance if item.get("status") != "pass"
         ],
         "government_adversary_failures": [
             item for item in government if item.get("status") != "pass"
         ],
+        "accounting_control_failures": accounting_failures,
     }
 
 
@@ -183,8 +191,10 @@ def report(goal: str, slug: str = "") -> dict:
         "final_packet": packet_summary,
         "compliance_manifest": packet_summary["compliance_manifest"],
         "government_adversary_manifest": packet_summary["government_adversary_manifest"],
+        "accounting_control_manifest": packet_summary["accounting_control_manifest"],
         "compliance_failures": packet_summary["compliance_failures"],
         "government_adversary_failures": packet_summary["government_adversary_failures"],
+        "accounting_control_failures": packet_summary["accounting_control_failures"],
         "decisions": latest_decisions(matter),
         "shipped_artifacts": shipped_artifacts(matter),
         "timeline_events": len(timeline),

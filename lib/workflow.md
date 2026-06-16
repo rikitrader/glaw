@@ -129,8 +129,9 @@ WASM wrapper must enforce.
 
 Headless orchestrator reporting uses `glaw --headless --goal "<objective>" --json`, which delegates
 to `bin/glaw-headless`. It is read-only and returns the matter, stage, workflow track, loop routing
-decision, open gates, next owner/command, recent decisions, shipped artifacts, and the human-seal
-boundary for spawned hosts.
+decision, open gates, next owner/command, recent decisions, shipped artifacts, compliance and
+government-adversary manifests, accounting-control failures for bank reconciliation/tax tie-out
+routing, and the human-seal boundary for spawned hosts.
 
 Golden-profile invariant: for every executable workflow profile, a known-good matter must be able
 to clear all hard gates through `chief_approved`. Gate tightening is not complete unless it both

@@ -20,18 +20,21 @@ for the advice.*
 
 ---
 
-## 1. Where we are (v1.0 — shipped)
+## 1. Where we are (v1.x — shipped)
 
-A working virtual firm: **59 skills · 10 departments · 8-stage matter pipeline · 4 hard
-gates · 20 tools**, with the contract-review chain (review -> score -> local redline
-changes → publish) proven end-to-end. The Investigations Bureau + Intelligence
-Super-Structure (FinCEN/Intel/SEC cells) already seed the "agency" muscles. `glaw-doctor`
-keeps it healthy.
+A working source-only virtual firm: **179 source skills · 177 mirrored Codex/Claude commands ·
+10 departments · 8-stage matter pipeline · hard strategy/file/retro gates · 63 vendored seats**,
+with contract review, accounting/bookkeeping, IRS/tax tie-out, government adversarial review,
+headless orchestrator reporting, and self-contained doctor gates proven in CI/local hooks. The
+Investigations Bureau + Intelligence Super-Structure (FinCEN/Intel/SEC cells) already seed the
+"agency" muscles. `glaw-doctor` keeps it healthy and fails on broken command mirrors, profile
+identity drift, missing government adversaries, stale figures, dangling references, unsafe claims,
+and source-only ecosystem regressions.
 
-**What's missing to become an *organism*:** it still waits to be told. It has departments
-but no *autonomic loop* — no continuous perception, no self-set goals, no persistent
-working memory across matters, no adopted conscience in a host runtime. The rest of this
-document closes that gap.
+**What's still missing to become a deeper *organism*:** the fail-closed loop, standing-goal daemon,
+source-linked memory, host/MCP/Extism adapters, and sandbox simulations now exist, but the remaining
+frontier is broader live perception coverage, deeper jurisdiction/corpus adapters, richer
+oversight tabletop packs, and more golden scenarios per seat.
 
 ---
 

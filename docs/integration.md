@@ -78,6 +78,7 @@ bin/glaw --headless --goal "<objective>" --json
 ```
 
 The report is read-only. It returns the active matter, workflow track, current stage, `glaw-loop`
-decision, open gate list, next owner, next command, recent Chief decisions, shipped artifacts, and
-the human-seal authority boundary. A blocked report is useful signal: it tells the host exactly
-which GLAW department/gate owns the next fix.
+decision, open gate list, next owner, next command, recent Chief decisions, shipped artifacts,
+compliance/government-adversary manifests, accounting-control failures for bank reconciliation or
+tax tie-out routing, and the human-seal authority boundary. A blocked report is useful signal: it
+tells the host exactly which GLAW department/gate owns the next fix.

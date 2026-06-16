@@ -76,7 +76,13 @@ cat > "$TMP/matters/headless-routing/final_packet.json" <<'JSON'
       "evidence_cited_source_ids": ["SRC-0001"],
       "attack_cited_source_ids": ["SRC-0001"]
     }
-  ]
+  ],
+  "accounting_control_manifest": {
+    "required": true,
+    "status": "fail",
+    "missing": ["bank_reconciliation"],
+    "path": "accounting_control.json"
+  }
 }
 JSON
 "$HEAD" --goal "show decisions and artifacts" --matter headless-routing --json > "$TMP/report2.json"; rc=$?
@@ -90,13 +96,16 @@ ok = (
     and data["timeline_events"] >= 1
     and data["final_packet"]["status"] == "ready"
     and data["compliance_failures"][0]["id"] == "accounting-control"
+    and data["accounting_control_manifest"]["status"] == "fail"
+    and data["accounting_control_failures"][0]["missing"] == ["bank_reconciliation"]
+    and data["final_packet"]["accounting_control_failures"][0]["path"] == "accounting_control.json"
     and data["government_adversary_manifest"][0]["lens"] == "irs-examiner"
     and not data["government_adversary_failures"]
 )
 sys.exit(0 if ok else 1)
 PY
 rc2=$?
-ok "$([ "$rc" = 1 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "headless report includes decisions, artifacts, timeline count, compliance, and government adversary manifest"
+ok "$([ "$rc" = 1 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "headless report includes decisions, artifacts, timeline count, compliance, government adversary, and accounting-control manifests"
 
 rm -rf "$TMP"
 echo
