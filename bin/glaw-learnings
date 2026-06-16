@@ -12,6 +12,7 @@ Usage:
   glaw-learnings add '<json>'                 # append/update source-linked memory
   glaw-learnings preflight [matter] [--track T] # formatted known-defects digest
   glaw-learnings query "<query>" [--json] [--limit N] [--matter M] [--type T] [--track T]
+  glaw-learnings eval '<json>' [--json]       # score retrieval expectations
   glaw-learnings search "<query>"             # alias for query
   glaw-learnings list [--limit N] [--json]
   glaw-learnings stats
@@ -293,6 +294,72 @@ def cmd_query(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_eval(args: argparse.Namespace) -> int:
+    try:
+        spec = json.loads(args.json_spec)
+    except json.JSONDecodeError as exc:
+        print(f"bad eval json: {exc}", file=sys.stderr)
+        return 1
+    cases = spec.get("cases") if isinstance(spec, dict) else spec
+    if not isinstance(cases, list) or not cases:
+        print("ERROR: eval spec requires a nonempty cases list", file=sys.stderr)
+        return 2
+    results = []
+    for idx, case in enumerate(cases, start=1):
+        if not isinstance(case, dict):
+            results.append({"case": idx, "status": "fail", "reason": "case is not an object"})
+            continue
+        query = str(case.get("query", "")).strip()
+        expected = str(case.get("expect_error_class", case.get("expect", ""))).strip()
+        if not query or not expected:
+            results.append({"case": idx, "status": "fail", "reason": "query and expect_error_class are required"})
+            continue
+        try:
+            limit = max(1, int(case.get("limit", 5)))
+        except (TypeError, ValueError):
+            results.append({"case": idx, "status": "fail", "reason": "limit must be numeric"})
+            continue
+        rows = query_items(
+            query,
+            limit=limit,
+            matter=str(case.get("matter", "")),
+            type_filter=str(case.get("type", "")),
+            track=str(case.get("track", "")),
+        )
+        top = rows[0] if rows else {}
+        got = str(top.get("error_class", ""))
+        results.append({
+            "case": idx,
+            "name": str(case.get("name", f"case-{idx}")),
+            "status": "pass" if got == expected else "fail",
+            "query": query,
+            "track": str(case.get("track", "")),
+            "expected": expected,
+            "got": got,
+            "top_memory_id": top.get("memory_id", ""),
+            "score": top.get("score", 0),
+            "score_track_boost": top.get("score_track_boost", 0),
+        })
+    failed = [row for row in results if row["status"] != "pass"]
+    payload = {
+        "status": "pass" if not failed else "fail",
+        "total": len(results),
+        "passed": len(results) - len(failed),
+        "failed": len(failed),
+        "results": results,
+    }
+    if args.json:
+        print(json.dumps(payload, indent=2, sort_keys=False))
+    else:
+        print(f"GLAW MEMORY EVAL: {payload['status']} ({payload['passed']}/{payload['total']} passed)")
+        for row in results:
+            print(
+                f"  {row['status']}: {row.get('name')} expected={row.get('expected')} "
+                f"got={row.get('got')} track={row.get('track')}"
+            )
+    return 0 if not failed else 1
+
+
 def cmd_list(args: argparse.Namespace) -> int:
     items = load()[-args.limit:]
     if args.json:
@@ -346,6 +413,10 @@ def main(argv: list[str]) -> int:
         p.add_argument("--type", default="")
         p.add_argument("--track", default="")
         p.set_defaults(func=cmd_query)
+    p = sub.add_parser("eval")
+    p.add_argument("json_spec")
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_eval)
     p = sub.add_parser("list")
     p.add_argument("--limit", type=int, default=50)
     p.add_argument("--json", action="store_true")
