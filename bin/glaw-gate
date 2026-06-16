@@ -212,6 +212,7 @@ import json
 import pathlib
 import re
 import sys
+from datetime import datetime, timezone
 from urllib.parse import urlparse
 
 d = pathlib.Path(sys.argv[1])
@@ -241,6 +242,32 @@ def valid_http_url(value):
 
 
 APPROVED_CORPUS_TRUST = {"authoritative", "authenticated-copy"}
+DEFAULT_MAX_AGE_DAYS = 180
+
+
+def parse_ts(value):
+    text = str(value or "").strip()
+    if not text:
+        return None
+    if text.endswith("Z"):
+        text = text[:-1] + "+00:00"
+    try:
+        parsed = datetime.fromisoformat(text)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc)
+
+
+def corpus_freshness_failure(row, corpus_id):
+    parsed = parse_ts(row.get("ts", ""))
+    if not parsed:
+        return f"{corpus_id}: corpus capture timestamp is missing or invalid"
+    age = (datetime.now(timezone.utc) - parsed).days
+    if age > DEFAULT_MAX_AGE_DAYS:
+        return f"{corpus_id}: corpus capture is stale ({age} days old; max {DEFAULT_MAX_AGE_DAYS})"
+    return ""
 
 
 def intake_reviewer_blocker(value):
@@ -1333,6 +1360,9 @@ for corpus_id, corpus_row in latest_corpus.items():
         corpus_failures.append(f"{corpus_id}: corpus is not authoritative: trust={corpus_row.get('trust_level', 'untrusted')}")
     if not approved_authority_url(str(corpus_row.get("source_url", ""))):
         corpus_failures.append(f"{corpus_id}: source domain is not approved for legal authority")
+    stale = corpus_freshness_failure(corpus_row, corpus_id)
+    if stale:
+        corpus_failures.append(stale)
 if corpus_failures:
     print("citation corpus failure: " + "; ".join(corpus_failures))
     sys.exit(1)
@@ -1352,6 +1382,7 @@ for cid, row in latest_citations.items():
         or not str(corpus_row.get("segment_sha256", "")).strip()
         or corpus_row.get("trust_level") not in APPROVED_CORPUS_TRUST
         or not approved_authority_url(str(corpus_row.get("source_url", "")))
+        or bool(corpus_freshness_failure(corpus_row, corpus_id))
         or (row.get("source_sha256") and row.get("source_sha256") != corpus_row.get("source_sha256"))
         or (row.get("segment_sha256") and row.get("segment_sha256") != corpus_row.get("segment_sha256"))
     )

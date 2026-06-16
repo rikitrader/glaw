@@ -90,6 +90,30 @@ ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "citation record accepts matching corp
 "$CITES" complete >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "citation gate completes with validated corpus"
 
+python3 - "$TMP/matters/citation-corpus-trusted/citation_corpus.jsonl" <<'PY'
+import hashlib
+import json
+import sys
+
+path = sys.argv[1]
+rows = [json.loads(line) for line in open(path, encoding="utf-8") if line.strip()]
+rows[-1]["ts"] = "2025-01-01T00:00:00Z"
+payload = dict(rows[-1])
+payload.pop("row_hash", None)
+rows[-1]["row_hash"] = hashlib.sha256(
+    json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+).hexdigest()
+with open(path, "w", encoding="utf-8") as f:
+    for row in rows:
+        f.write(json.dumps(row, sort_keys=False) + "\n")
+PY
+
+"$CORPUS" status >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "corpus status blocks stale authority captures"
+
+"$CITES" status >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "citation gate blocks stale authority captures"
+
 printf 'tampered\n' >> "$TMP/matters/citation-corpus-trusted/citation_corpus/CORP-1.txt"
 "$CORPUS" status >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "corpus status blocks source text tamper"

@@ -34,8 +34,42 @@ from glaw_authority_sources import (
 )
 
 
+DEFAULT_MAX_AGE_DAYS = 180
+
+
 def now() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def parse_ts(value: str) -> datetime | None:
+    text = str(value or "").strip()
+    if not text:
+        return None
+    if text.endswith("Z"):
+        text = text[:-1] + "+00:00"
+    try:
+        parsed = datetime.fromisoformat(text)
+    except ValueError:
+        return None
+    if parsed.tzinfo is None:
+        parsed = parsed.replace(tzinfo=timezone.utc)
+    return parsed.astimezone(timezone.utc)
+
+
+def row_age_days(row: dict) -> int | None:
+    parsed = parse_ts(str(row.get("ts", "")))
+    if not parsed:
+        return None
+    return (datetime.now(timezone.utc) - parsed).days
+
+
+def freshness_failure(row: dict, max_age_days: int) -> str:
+    age = row_age_days(row)
+    if age is None:
+        return f"{row.get('id')}: corpus capture timestamp is missing or invalid"
+    if age > max_age_days:
+        return f"{row.get('id')}: corpus capture is stale ({age} days old; max {max_age_days})"
+    return ""
 
 
 def home() -> Path:
@@ -224,6 +258,7 @@ def cmd_status(args: argparse.Namespace) -> int:
     rows = read_jsonl(corpus_path(d))
     failures = validate_row_hashes(rows, corpus_path(d).name)
     latest = latest_by_id(rows)
+    max_age_days = args.max_age_days
     print(f"CITATION CORPUS {d.name}: {len(latest)} source(s)")
     for row in latest.values():
         path = d / str(row.get("source_path", ""))
@@ -235,7 +270,15 @@ def cmd_status(args: argparse.Namespace) -> int:
             failures.append(f"{row.get('id')}: corpus is not authoritative: trust={row.get('trust_level', 'untrusted')}")
         if not approved_authority_url(str(row.get("source_url", ""))):
             failures.append(f"{row.get('id')}: source domain is not approved for legal authority")
-        print(f"  {row.get('id')}: {row.get('source_url')} {row.get('source_sha256')} trust={row.get('trust_level', 'untrusted')}")
+        stale = freshness_failure(row, max_age_days)
+        if stale:
+            failures.append(stale)
+        age = row_age_days(row)
+        age_note = "unknown-age" if age is None else f"age={age}d"
+        print(
+            f"  {row.get('id')}: {row.get('source_url')} {row.get('source_sha256')} "
+            f"trust={row.get('trust_level', 'untrusted')} {age_note}"
+        )
     if failures:
         print("CITATION CORPUS BLOCKED")
         for failure in failures:
@@ -283,6 +326,7 @@ def main() -> int:
     p.set_defaults(func=cmd_capture)
     p = sub.add_parser("status")
     p.add_argument("--matter", default=None)
+    p.add_argument("--max-age-days", type=int, default=DEFAULT_MAX_AGE_DAYS)
     p.set_defaults(func=cmd_status)
     p = sub.add_parser("sources")
     p.add_argument("--profile", default="")
