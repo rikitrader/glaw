@@ -224,12 +224,112 @@ def simulate_profile_map() -> dict:
     }
 
 
+def simulate_government_adversary_routing() -> dict:
+    with tempfile.TemporaryDirectory(prefix="glaw-sandbox-") as tmp:
+        home = Path(tmp)
+        slug = make_matter(home, "Sandbox Government Adversary")
+        matter = home / "matters" / slug
+        evidence = matter / "evidence"
+        evidence.mkdir(parents=True, exist_ok=True)
+        (evidence / "source.txt").write_text("SEC/IRS source packet\n", encoding="utf-8")
+        (matter / ".stage").write_text("draft\n", encoding="utf-8")
+        (matter / "intake.json").write_text(
+            json.dumps(
+                {
+                    "status": "complete",
+                    "universal": {
+                        "workflow_track": "accounting-tax",
+                        "matter_name": "Sandbox Government Adversary",
+                        "client_names": ["Example Client LLC"],
+                        "parties": ["Example Client LLC", "Example Bank"],
+                        "jurisdiction": "US federal / Delaware",
+                        "goal": "Prepare source-backed accounting-tax packet and government-adversary review.",
+                        "source_documents": ["SRC-0001 SEC/IRS source packet"],
+                        "deadlines": ["2026-09-15 tax extension deadline"],
+                        "facts_timeline": ["SRC-0001 bank activity imported for adversarial testing"],
+                        "open_questions": ["SRC-0001 identify missing government-adversary review"],
+                        "conflicts_parties": ["Example Client LLC", "Example Bank"],
+                        "authorized_scope": "Accounting-tax analysis and workpaper preparation only.",
+                    },
+                    "track_specific": {
+                        "bank_statement_sources": ["SRC-0001 evidence/source.txt"],
+                        "tax_years": ["2026"],
+                        "entity_tax_type": "partnership",
+                        "books_status": "open pending reconciliation",
+                        "irs_forms_needed": ["Form 1065"],
+                    },
+                    "review": {
+                        "completed_by": "Morgan Rivera",
+                    },
+                }
+            ),
+            encoding="utf-8",
+        )
+        (matter / "ethics.json").write_text(
+            json.dumps(
+                {
+                    "status": "complete",
+                    "conflicts_status": "cleared",
+                    "conflicts_source": "SRC-0001 conflicts checked against provided parties",
+                    "engagement": {
+                        "status": "drafted",
+                        "scope": "Accounting-tax analysis and workpaper preparation only.",
+                        "responsible_professional": "Alexandra Chen",
+                        "source": "SRC-0001 engagement authority and source fixture",
+                    },
+                }
+            ),
+            encoding="utf-8",
+        )
+        (matter / "timeline.jsonl").write_text(
+            "\n".join(
+                [
+                    '{"event":"intake_complete"}',
+                    '{"event":"conflicts_cleared"}',
+                    '{"event":"citations_verified"}',
+                    '{"event":"adversarial_done"}',
+                    '{"event":"red_flags_clear"}',
+                ]
+            )
+            + "\n",
+            encoding="utf-8",
+        )
+        (matter / "final_packet.json").write_text(
+            json.dumps(
+                {
+                    "status": "blocked",
+                    "compliance_manifest": [
+                        {
+                            "id": "government-adversary",
+                            "owner": "glaw-adversarial",
+                            "status": "fail",
+                            "missing": ["government_adversary_manifest"],
+                            "detail": "government/regulatory RED-team evidence missing",
+                        }
+                    ],
+                }
+            ),
+            encoding="utf-8",
+        )
+        result = run_cmd([str(BIN / "glaw-loop"), "status", "--matter", slug, "--json"], home=home)
+        payload = parse_json(result)
+        failures = payload.get("compliance_failures") or []
+        checks = [
+            check("loop_status_passes", result["returncode"] == 0, "loop status should emit a routing decision"),
+            check("routes_to_adversarial_owner", payload.get("owner") == "adversarial", "government-adversary failure must route to adversarial owner"),
+            check("uses_adversarial_command", payload.get("next_command") == "bin/glaw-adversarial status --profile auto", "next command must call the adversarial gate"),
+            check("carries_failure_row", bool(failures) and failures[0].get("id") == "government-adversary", "routing payload must carry the failed compliance row"),
+        ]
+        return scenario("government-adversary-routing", checks, home=home)
+
+
 SCENARIOS: dict[str, tuple[str, Callable[[], dict]]] = {
     "conscience-human-act": ("Conscience blocks autonomous human-only requested acts.", simulate_conscience_human_act),
     "oversight-kill-switch": ("Oversight halt stops glaw-loop and routes to the Board.", simulate_oversight_kill_switch),
     "deadline-daemon": ("Daemon surfaces sourced deadlines and routes through glaw-loop.", simulate_deadline_daemon),
     "jurisdiction-pack-fail": ("Jurisdiction pack gate fails closed on unsupported matrices.", simulate_jurisdiction_pack_fail),
     "profile-map": ("Profiles resolve council/adversarial reviewers to skills.", simulate_profile_map),
+    "government-adversary-routing": ("Loop routes final-packet government-adversary failures back to RED team.", simulate_government_adversary_routing),
 }
 
 

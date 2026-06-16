@@ -197,6 +197,40 @@ PY
 rc2=$?
 ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "loop routes failed accounting-control manifest to accounting-control owner"
 
+cat > "$M2/final_packet.json" <<'JSON'
+{
+  "status": "blocked",
+  "compliance_manifest": [
+    {
+      "id": "government-adversary",
+      "owner": "glaw-adversarial",
+      "status": "fail",
+      "missing": ["government_adversary_manifest"],
+      "detail": "no SEC/IRS/regulator RED-team attack survived against the source packet"
+    }
+  ]
+}
+JSON
+"$LOOP" status --matter loop-compliance --json > "$TMP/loop-government-adversary.json"; rc=$?
+python3 - "$TMP/loop-government-adversary.json" <<'PY'
+import json
+import sys
+
+data = json.load(open(sys.argv[1], encoding="utf-8"))
+failures = data.get("compliance_failures") or []
+ok = (
+    data.get("next_gate") == "file"
+    and data.get("owner") == "adversarial"
+    and data.get("next_command") == "bin/glaw-adversarial status --profile auto"
+    and "government-adversary manifest is blocked" in data.get("reason", "")
+    and failures
+    and failures[0].get("id") == "government-adversary"
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "loop routes failed government-adversary manifest to adversarial owner"
+
 "$OVERSIGHT" halt --by "QA reviewer" --reason "test halt" >/dev/null
 "$LOOP" status --json > "$TMP/loop-halted.json"; rc=$?
 python3 - "$TMP/loop-halted.json" <<'PY'

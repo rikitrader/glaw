@@ -14,7 +14,14 @@ python3 - "$TMP/list.json" <<'PY'
 import json, sys
 data=json.load(open(sys.argv[1]))
 names={item.get("name") for item in data.get("scenarios", [])}
-required={"conscience-human-act","oversight-kill-switch","deadline-daemon","jurisdiction-pack-fail","profile-map"}
+required={
+    "conscience-human-act",
+    "oversight-kill-switch",
+    "deadline-daemon",
+    "jurisdiction-pack-fail",
+    "profile-map",
+    "government-adversary-routing",
+}
 sys.exit(0 if data.get("status") == "pass" and required <= names else 1)
 PY
 rc2=$?

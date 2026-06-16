@@ -288,8 +288,9 @@ the seal stays human as a legal and ethics constraint.
 - ✅ **P2-G7 · Sandbox simulation runner**: `/glaw-sandbox` + `bin/glaw-sandbox` create
   isolated temporary `$GLAW_HOME` fixtures and run real commands to prove fail-closed behavior
   for conscience human-only requests, Oversight Board kill-switch routing, daemon deadline
-  scans, jurisdiction pack failures, and profile-map consistency. `bin/glaw-doctor` runs the
-  sandbox regression so autonomy claims stay executable, not just documented.
+  scans, jurisdiction pack failures, profile-map consistency, and final-packet
+  government-adversary failures routing back to the RED-team owner. `bin/glaw-doctor` runs
+  the sandbox regression so autonomy claims stay executable, not just documented.
 - ✅ **P2-G8 · Government-adversary coverage lock**: `lib/glaw_profiles.py` now carries
   `GOVERNMENT_ADVERSARY_LENSES`, and `bin/glaw-doctor`, `test/golden_profile_test.sh`, and
   `bin/glaw-sandbox` fail if any executable workflow profile loses its government,
