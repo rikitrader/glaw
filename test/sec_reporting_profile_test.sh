@@ -60,7 +60,7 @@ for lens in sec-staff-reviewer pcaob-audit-reviewer disclosure-counsel irs-exami
 done
 "$ADVERSARIAL" complete --profile auto >/dev/null
 
-"$CITES" record --id C-SEC-0001 --proposition 'SEC reporting financial statements must tie to source books and controls' --authority 'Regulation S-X' --status verified --source-url 'https://www.ecfr.gov/' --reviewer legal-research >/dev/null
+"$CITES" record --id C-SEC-0001 --proposition 'SEC reporting financial statements must tie to source books and controls' --authority 'Regulation S-X' --status verified --source-url 'https://www.ecfr.gov/' --reviewer legal-research --support-summary 'Regulation S-X is the cited financial statement reporting authority; source books and controls remain required support for the package.' >/dev/null
 "$CITES" complete >/dev/null
 
 cat > "$M/sec-report.md" <<'MD'

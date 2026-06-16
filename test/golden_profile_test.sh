@@ -214,7 +214,8 @@ def run_profile(profile: str) -> None:
         "--proposition", "The golden fixture is source-backed and held for licensed review",
         "--authority", "GLAW workflow source-evidence rule",
         "--status", "verified", "--source-url", "https://www.irs.gov/",
-        "--reviewer", "legal-research")
+        "--reviewer", "legal-research",
+        "--support-summary", "The workflow rule supports keeping the fixture source-backed and subject to licensed review.")
     run("glaw-citation-gate", "complete")
 
     report = matter / "golden-report.md"

@@ -278,14 +278,15 @@ the seal stays human as a legal and ethics constraint.
 - **P4-G1 · Wire a verifiable corpus BEHIND the citation gate** (CourtListener/CAP), retrieving
   minimal text segments and source hashes. The corpus feeds, never replaces, the deterministic
   citation gate.
-- **P4-G2 · Encode the falsifiable hallucination typology** in `glaw-citation-gate`: a
-  proposition fails if **incorrect** or **misgrounded** (cites a source that doesn't support it);
-  **ungrounded** and **incomplete** are tracked separately.
+- ✅ **P4-G2 · Encode the falsifiable hallucination typology** in `glaw-citation-gate`: verified
+  rows now require a support summary, and failed rows must classify the defect as **incorrect**,
+  **misgrounded**, **ungrounded**, or **incomplete**. `glaw-gate` revalidates the same contract so
+  manual ledger edits cannot bypass the citation typology.
 - **P4-G3 · Auditable groundedness scoring** (HalluGraph-style): Entity-Grounding +
   Relation-Preservation metrics with a full audit trail from each assertion back to source
   passages — composes with GLAW's existing SRC-#### + SHA-256 hashing.
 
-*Suggested build order: P4-G2 citation typology → P4-G1 corpus → P3 host/observability.*
+*Suggested build order: P4-G1 corpus → P3 host/observability.*
 
 ---
 

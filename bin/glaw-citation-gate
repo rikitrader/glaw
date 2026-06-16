@@ -19,6 +19,8 @@ from urllib.parse import urlparse
 
 
 BLOCKING = {"pending", "needs-substitute", "struck", "weak"}
+DEFECT_TYPES = {"incorrect", "misgrounded", "ungrounded", "incomplete"}
+NONE_DEFECTS = {"", "none", "verified"}
 LEGAL_RESEARCH_REVIEWERS = {"legal-research", "glaw-legal-research", "/glaw-legal-research"}
 
 
@@ -30,6 +32,30 @@ def valid_http_url(value: str) -> bool:
 def valid_legal_research_reviewer(value: str) -> bool:
     normalized = str(value).strip().lower().replace("_", "-")
     return normalized in LEGAL_RESEARCH_REVIEWERS
+
+
+def normalized_defect_type(value: str) -> str:
+    return str(value or "").strip().lower().replace("_", "-")
+
+
+def verified_row_incomplete(row: dict) -> bool:
+    return (
+        row.get("status") == "verified"
+        and (
+            not str(row.get("proposition", "")).strip()
+            or not str(row.get("authority", "")).strip()
+            or not valid_legal_research_reviewer(str(row.get("reviewer", "")))
+            or not valid_http_url(str(row.get("source_url", "")))
+            or not str(row.get("support_summary", "")).strip()
+            or normalized_defect_type(row.get("defect_type", "")) not in NONE_DEFECTS
+        )
+    )
+
+
+def blocking_defect_missing(row: dict) -> bool:
+    status = str(row.get("status", "")).lower()
+    defect = normalized_defect_type(row.get("defect_type", ""))
+    return status in BLOCKING and defect not in DEFECT_TYPES
 
 
 def now() -> str:
@@ -117,8 +143,20 @@ def cmd_record(args: argparse.Namespace) -> int:
             missing.append("--reviewer legal-research")
         if not valid_http_url(args.source_url):
             missing.append("--source-url valid http(s)")
+        if not args.support_summary.strip():
+            missing.append("--support-summary")
+        if normalized_defect_type(args.defect_type) not in NONE_DEFECTS:
+            missing.append("--defect-type none for verified")
         if missing:
             print("ERROR: verified citations require " + ", ".join(missing), file=sys.stderr)
+            return 2
+    else:
+        if normalized_defect_type(args.defect_type) not in DEFECT_TYPES:
+            print(
+                "ERROR: blocking citation statuses require --defect-type "
+                "incorrect|misgrounded|ungrounded|incomplete",
+                file=sys.stderr,
+            )
             return 2
     row = {
         "ts": now(),
@@ -126,6 +164,8 @@ def cmd_record(args: argparse.Namespace) -> int:
         "proposition": args.proposition,
         "authority": args.authority,
         "status": args.status,
+        "defect_type": "none" if args.status == "verified" else normalized_defect_type(args.defect_type),
+        "support_summary": args.support_summary,
         "source_url": args.source_url,
         "reviewer": args.reviewer,
         "notes": args.notes,
@@ -145,21 +185,12 @@ def latest_by_id(rows: list[dict]) -> dict[str, dict]:
 
 def blockers(rows: list[dict]) -> list[dict]:
     latest = latest_by_id(rows)
-    def verified_incomplete(row: dict) -> bool:
-        return (
-            row.get("status") == "verified"
-            and (
-                not str(row.get("proposition", "")).strip()
-                or not str(row.get("authority", "")).strip()
-                or not valid_legal_research_reviewer(str(row.get("reviewer", "")))
-                or not valid_http_url(str(row.get("source_url", "")))
-            )
-        )
     return [
         row for row in latest.values()
         if not row.get("id")
         or str(row.get("status", "")).lower() in BLOCKING
-        or verified_incomplete(row)
+        or verified_row_incomplete(row)
+        or blocking_defect_missing(row)
     ]
 
 
@@ -176,7 +207,9 @@ def cmd_status(args: argparse.Namespace) -> int:
     latest = latest_by_id(rows)
     print(f"CITATIONS {d.name}: {len(latest)} reviewed, {len(bad)} blocking")
     for row in latest.values():
-        print(f"  {row.get('id')} {row.get('status')}: {row.get('authority')}")
+        defect = normalized_defect_type(row.get("defect_type", ""))
+        defect_note = f" [{defect}]" if defect and defect not in NONE_DEFECTS else ""
+        print(f"  {row.get('id')} {row.get('status')}{defect_note}: {row.get('authority')}")
     if not rows:
         print("CITATIONS BLOCKED: no citation verification ledger")
         return 1
@@ -206,6 +239,8 @@ def main() -> int:
     p.add_argument("--proposition", required=True)
     p.add_argument("--authority", required=True)
     p.add_argument("--status", required=True, choices=["verified", "weak", "needs-substitute", "struck", "pending"])
+    p.add_argument("--defect-type", default="")
+    p.add_argument("--support-summary", default="")
     p.add_argument("--source-url", default="")
     p.add_argument("--reviewer", default="")
     p.add_argument("--notes", default="")

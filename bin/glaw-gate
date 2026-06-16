@@ -1051,15 +1051,21 @@ if not latest_citations:
     print("citations.jsonl has no citation rows")
     sys.exit(1)
 blocking_citations = []
+defect_types = {"incorrect", "misgrounded", "ungrounded", "incomplete"}
+none_defects = {"", "none", "verified"}
 for cid, row in latest_citations.items():
     status = str(row.get("status", "")).lower()
+    defect_type = str(row.get("defect_type", "")).lower().replace("_", "-")
     verified_incomplete = status == "verified" and (
         not str(row.get("proposition", "")).strip()
         or not str(row.get("authority", "")).strip()
         or not valid_legal_research_reviewer(row.get("reviewer", ""))
         or not valid_http_url(row.get("source_url", ""))
+        or not str(row.get("support_summary", "")).strip()
+        or defect_type not in none_defects
     )
-    if not cid or status in {"pending", "needs-substitute", "struck", "weak"} or verified_incomplete:
+    blocking_defect_missing = status in {"pending", "needs-substitute", "struck", "weak"} and defect_type not in defect_types
+    if not cid or status in {"pending", "needs-substitute", "struck", "weak"} or verified_incomplete or blocking_defect_missing:
         blocking_citations.append(cid or row.get("authority") or "unnamed")
 if blocking_citations:
     print("current blocking citation(s): " + ", ".join(str(x) for x in blocking_citations))

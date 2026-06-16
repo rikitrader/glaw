@@ -137,12 +137,12 @@ cp "$TMP/matters/$SLUG/adversarial.clean.jsonl" "$TMP/matters/$SLUG/adversarial.
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before citation gate completes"
 "$CITES" record --id C-0001 --proposition 'tax return must tie to books' --authority '26 U.S.C. § 6001' --status verified --source-url 'https://uscode.house.gov/' >/dev/null 2>&1; rc=$?
-ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "citation verified row blocked without legal-research reviewer"
+ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "citation verified row blocked without legal-research reviewer and support summary"
 "$CITES" record --id C-0001 --proposition 'tax return must tie to books' --authority '26 U.S.C. § 6001' --status verified --source-url 'not-a-url' --reviewer legal-research >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "citation verified row blocked without http source URL"
 "$CITES" record --id C-0001 --proposition 'tax return must tie to books' --authority '26 U.S.C. § 6001' --status verified --source-url 'https://' --reviewer legal-research >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "citation verified row blocked by malformed http source URL"
-"$CITES" record --id C-0001 --proposition 'tax return must tie to books' --authority '26 U.S.C. § 6001' --status verified --source-url 'https://uscode.house.gov/' --reviewer legal-research >/dev/null
+"$CITES" record --id C-0001 --proposition 'tax return must tie to books' --authority '26 U.S.C. § 6001' --status verified --source-url 'https://uscode.house.gov/' --reviewer legal-research --support-summary 'The cited section supports maintaining records sufficient to establish tax liability.' >/dev/null
 cp "$TMP/matters/$SLUG/citations.jsonl" "$TMP/matters/$SLUG/citations.clean.jsonl"
 python3 - "$TMP/matters/$SLUG/citations.jsonl" <<'PY'
 import json, sys

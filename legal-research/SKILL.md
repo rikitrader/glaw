@@ -88,7 +88,12 @@ reporter source. If only a secondary source is available, mark the verification 
 **weak** and flag for a primary substitute.
 
 ### Step 3 — Classify each citation
-- **verified** — exists, supports, and current. Keep as drafted.
+- **verified** — exists, supports, and current. Keep as drafted; record the support summary.
+- **incorrect** — the named authority does not exist, is fabricated, transposed, repealed,
+  reversed, or otherwise cannot be used as stated.
+- **misgrounded** — the authority exists but does not support the proposition for which it is cited.
+- **ungrounded** — the proposition has no cited primary authority yet.
+- **incomplete** — the row lacks enough proposition/authority/source/support detail to verify.
 - **needs-substitute** — proposition is sound but the cited authority is wrong,
   weak, or off-point; a correct authority likely exists. Route back to the owning
   seat (`lib/firm-roster.md`) to re-cite, then re-verify.
@@ -105,8 +110,23 @@ bin/glaw-citation-gate record \
   --proposition "<proposition verified>" \
   --authority "<citation as drafted>" \
   --status verified \
+  --support-summary "<why the checked source supports the proposition>" \
   --source-url "<primary source URL checked>" \
   --reviewer legal-research
+```
+
+Failed rows must carry a falsifiable defect type:
+
+```bash
+bin/glaw-citation-gate record \
+  --id C-0002 \
+  --proposition "<proposition challenged>" \
+  --authority "<citation as drafted>" \
+  --status struck \
+  --defect-type misgrounded \
+  --source-url "<source URL checked>" \
+  --reviewer legal-research \
+  --notes "<why the authority does not carry the proposition>"
 ```
 
 ### Step 5 — Gate `/glaw-file`
@@ -118,7 +138,8 @@ bin/glaw-citation-gate complete
 ```
 
 `glaw-citation-gate complete` logs `citations_verified` and `citation_gate_complete` only when
-every latest citation record is verified with a source URL and the `/glaw-legal-research` reviewer.
+every latest citation record is verified with a source URL, a support summary, and the
+`/glaw-legal-research` reviewer.
 Hand the verdict and the table back to
 `/glaw-file`.
 
@@ -129,8 +150,8 @@ Hand the verdict and the table back to
 - This seat never *chooses* the position — it only confirms whether the cited authority can carry it.
 
 ## Deliverables
-- A **citation table**: `proposition → cited authority → verified / struck / needs-substitute → source URL checked`.
-- A list of struck cites with the reason (not-found / off-point / superseded).
+- A **citation table**: `proposition → cited authority → verified / struck / needs-substitute → defect type → support summary/source URL checked`.
+- A list of struck cites with the reason (`incorrect`, `misgrounded`, `ungrounded`, or `incomplete`).
 - A list of needs-substitute items routed to their owning seat.
 - A single gate verdict: `CITATIONS: clean` or `CITATIONS: blocked (<n> struck)`.
 
