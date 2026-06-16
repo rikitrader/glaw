@@ -94,6 +94,8 @@ JSON
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "accounting control blocked by mixed current and stale source ids"
 "$CONTROL" --matter "$SLUG" --profile tax --source "SRC-0001 tax source package reviewed" --ledger "$TMP/matters/$SLUG/workpapers/ledger.json" --bank-rec "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "tax accounting control blocked without tax tie-out artifact"
+"$CONTROL" --matter "$SLUG" --profile accounting-tax --source "SRC-0001 tax source package reviewed" --ledger "$TMP/matters/$SLUG/workpapers/ledger.json" --bank-rec "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "accounting-tax control blocked without tax tie-out artifact"
 cat > "$TMP/matters/$SLUG/workpapers/tax-tieout-bad.json" <<'JSON'
 {
   "provision_ties": false,
@@ -104,6 +106,8 @@ cat > "$TMP/matters/$SLUG/workpapers/tax-tieout-bad.json" <<'JSON'
 JSON
 "$CONTROL" --matter "$SLUG" --profile tax --source "SRC-0001 tax source package reviewed" --ledger "$TMP/matters/$SLUG/workpapers/ledger.json" --bank-rec "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" --tax-tieout "$TMP/matters/$SLUG/workpapers/tax-tieout-bad.json" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "tax accounting control blocked by failing tax tie-out"
+"$CONTROL" --matter "$SLUG" --profile accounting-tax --source "SRC-0001 tax source package reviewed" --ledger "$TMP/matters/$SLUG/workpapers/ledger.json" --bank-rec "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" --tax-tieout "$TMP/matters/$SLUG/workpapers/tax-tieout-bad.json" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "accounting-tax control blocked by failing tax tie-out"
 cat > "$TMP/matters/$SLUG/workpapers/tax-tieout-good.json" <<'JSON'
 {
   "provision_ties": true,
@@ -129,6 +133,23 @@ sys.exit(0 if ok else 1)
 PY
 rc=$?
 ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "tax accounting control records passing tax tie-out"
+"$CONTROL" --matter "$SLUG" --profile accounting-tax --source "SRC-0001 tax source package reviewed" --ledger "$TMP/matters/$SLUG/workpapers/ledger.json" --bank-rec "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" --tax-tieout "$TMP/matters/$SLUG/workpapers/tax-tieout-good.json" >/dev/null
+python3 - "$TMP/matters/$SLUG/accounting_control.json" <<'PY'
+import json
+import sys
+
+control = json.load(open(sys.argv[1], encoding="utf-8"))
+tax = control.get("tax_tieout") or {}
+ok = (
+    control.get("status") == "pass"
+    and tax.get("status") == "pass"
+    and tax.get("provision_ties") is True
+    and tax.get("internal_consistency") is True
+)
+sys.exit(0 if ok else 1)
+PY
+rc=$?
+ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "accounting-tax control records passing tax tie-out"
 
 echo
 echo "0 failures — $pass passed, $fail failed"

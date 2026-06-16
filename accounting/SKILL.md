@@ -93,9 +93,12 @@ The senior review chain is mandatory:
    `/glaw-narrative` for 10-K/10-Q/8-K style footnotes, MD&A/accounting-policy review, risk factors,
    and subsequent-events disclosure.
 
-Accounting/bookkeeping work cannot self-approve. The required council lenses are:
-`cfo`, `irs-audit-agent`, `legal-counsel`, `forensic-audit`, `outside-critic`, and
-`external-reviewer`.
+Accounting/bookkeeping work cannot self-approve. Pure accounting uses the `accounting`
+profile. Mixed bookkeeping + IRS/tax workflows use the `accounting-tax` profile and cannot
+clear final packet review unless the accounting control includes a passing `tax_tieout`.
+The required mixed-profile council lenses are: `cfo`, `tax-strategist`,
+`irs-audit-agent`, `legal-counsel`, `forensic-audit`, `accounting-reviewer`,
+`outside-critic`, and `external-reviewer`.
 Record each approval with `bin/glaw-council record --profile auto ... --decision approve --evidence "<source-backed review basis>" --notes "<role-specific conclusion>"`, then run `bin/glaw-council complete --profile auto`.
 Evidence alone is not an approval.
 Any `fix` or `deny` must name the red flags and routes the work back to the owning department
@@ -152,11 +155,12 @@ bin/glaw-final-packet build --profile auto
 
 This gate exercises statement ingest, bank reconciliation, ledger posting, IRS return mapping,
 form-fill package generation, tax provision, tax tie-out, OCR availability, source-only imports,
-and third-party-dependency guards. The council status checks the CFO, IRS-audit, legal,
-forensic/audit, outside-critic, and external-reviewer lenses; the adversarial status checks
-government/regulatory attack lenses such as IRS examiner and state-tax auditor. The `complete`
-commands create the explicit audit-trail events that final packet assembly requires. If any gate
-fails, the workflow is not final.
+and third-party-dependency guards. For mixed bookkeeping + tax work, the council status checks
+the CFO, tax-strategist, IRS-audit, legal, forensic/audit, accounting-reviewer, outside-critic,
+and external-reviewer lenses; the adversarial status checks government/regulatory attack lenses
+including IRS examiner, state-tax auditor, Tax Court counsel, penalty reviewer, forensic accountant,
+CFO/controller, and outside critic. The `complete` commands create the explicit audit-trail events
+that final packet assembly requires. If any gate fails, the workflow is not final.
 
 ### Step 4 — Hand back
 Package the numbers for the requesting stage:

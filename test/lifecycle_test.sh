@@ -91,7 +91,7 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council approve blocked without sourc
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council approve blocked without role-specific conclusion"
 "$COUNCIL" record --profile auto --role cfo --decision approve --evidence "SRC-9999 test fixture review basis" --notes "cfo source-backed approval conclusion" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council approve blocked by non-current source evidence id"
-for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do
+for role in cfo tax-strategist irs-audit-agent legal-counsel forensic-audit accounting-reviewer outside-critic external-reviewer; do
   "$COUNCIL" record --profile auto --role "$role" --decision approve --evidence "SRC-0001 test fixture review basis" --notes "$role source-backed approval conclusion" >/dev/null
 done
 cp "$TMP/matters/$SLUG/council.jsonl" "$TMP/matters/$SLUG/council.clean.jsonl"
@@ -119,7 +119,7 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial survive blocked when atta
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial survive blocked without attack challenge"
 "$ADVERSARIAL" record --profile auto --lens irs-examiner --decision survive --attack "SRC-9999 no fatal finding after source challenge" --evidence "SRC-9999 test fixture" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial survive blocked by non-current source evidence id"
-for lens in irs-examiner state-tax-auditor forensic-accountant cfo-controller outside-critic; do
+for lens in irs-examiner state-tax-auditor tax-court-counsel penalty-reviewer forensic-accountant cfo-controller outside-critic; do
   "$ADVERSARIAL" record --profile auto --lens "$lens" --decision survive --attack "SRC-0001 no fatal finding after source challenge" --evidence "SRC-0001 test fixture" >/dev/null
 done
 cp "$TMP/matters/$SLUG/adversarial.jsonl" "$TMP/matters/$SLUG/adversarial.clean.jsonl"
@@ -229,10 +229,10 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before high red 
 "$FLAGS" resolve RF-0001 --evidence 'SRC-0001 bank reconciliation attached' >/dev/null
 "$FLAGS" add --severity medium --owner controller --source "SRC-0001 bank statement" --finding "watch item for final reviewer" --required-fix "carry RF-0002 in Chief risks/conditions until closed" >/dev/null
 "$FLAGS" complete >/dev/null
-for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do
+for role in cfo tax-strategist irs-audit-agent legal-counsel forensic-audit accounting-reviewer outside-critic external-reviewer; do
   "$COUNCIL" record --profile auto --role "$role" --decision approve --evidence "SRC-0001 test fixture review basis" --notes "$role current-source approval conclusion" >/dev/null
 done
-for lens in irs-examiner state-tax-auditor forensic-accountant cfo-controller outside-critic; do
+for lens in irs-examiner state-tax-auditor tax-court-counsel penalty-reviewer forensic-accountant cfo-controller outside-critic; do
   "$ADVERSARIAL" record --profile auto --lens "$lens" --decision survive --attack "SRC-0001 no fatal finding after source challenge" --evidence "SRC-0001 test fixture" >/dev/null
 done
 "$COUNCIL" complete --profile auto >/dev/null
@@ -273,7 +273,15 @@ cat > "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" <<'JSON'
   "reconciled": true
 }
 JSON
-"$CONTROL" --matter "$SLUG" --profile accounting --source "SRC-0001 bank statement, ledger, and bank reconciliation source package" --ledger "$TMP/matters/$SLUG/workpapers/ledger.json" --bank-rec "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" >/dev/null
+cat > "$TMP/matters/$SLUG/workpapers/tax-tieout.json" <<'JSON'
+{
+  "provision_ties": true,
+  "internal": {
+    "consistent": true
+  }
+}
+JSON
+"$CONTROL" --matter "$SLUG" --profile accounting-tax --source "SRC-0001 bank statement, ledger, bank reconciliation, and tax tie-out source package" --ledger "$TMP/matters/$SLUG/workpapers/ledger.json" --bank-rec "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" --tax-tieout "$TMP/matters/$SLUG/workpapers/tax-tieout.json" >/dev/null
 cat > "$TMP/matters/$SLUG/draft-report.md" <<'MD'
 # Draft Report
 

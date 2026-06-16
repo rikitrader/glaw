@@ -562,6 +562,73 @@ else
 fi
 [ "$nonseat" = 0 ] && ok "non-seat token allowlist present and referenced"
 
+# 3b-3. Profile SSOT consistency: every reviewer/lens named by the executable
+#       council/adversarial profiles must map to a real skill carrying the identity
+#       posture markers required by final-packet reviewer manifests.
+if python3 - "$GLAW" <<'PY'
+import pathlib
+import sys
+
+glaw = pathlib.Path(sys.argv[1]).resolve()
+sys.path.insert(0, str(glaw / "lib"))
+from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, REVIEWER_SKILL_MAP
+
+
+def skill_name(path: pathlib.Path) -> str:
+    in_frontmatter = False
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        if line.strip() == "---":
+            if not in_frontmatter:
+                in_frontmatter = True
+                continue
+            break
+        if in_frontmatter and line.startswith("name:"):
+            return line.split(":", 1)[1].strip().strip('"').strip("'")
+    return ""
+
+
+skill_paths: dict[str, list[pathlib.Path]] = {}
+for path in glaw.rglob("SKILL.md"):
+    if ".git" in path.parts:
+        continue
+    name = skill_name(path)
+    if name:
+        skill_paths.setdefault(name, []).append(path)
+
+failures: list[str] = []
+for profile_kind, profiles in (
+    ("council", COUNCIL_PROFILES),
+    ("adversarial", ADVERSARIAL_PROFILES),
+):
+    for profile, reviewers in profiles.items():
+        for reviewer in reviewers:
+            skill = REVIEWER_SKILL_MAP.get(reviewer)
+            if not skill:
+                failures.append(f"{profile_kind}:{profile}:{reviewer} missing REVIEWER_SKILL_MAP entry")
+                continue
+            matches = sorted(skill_paths.get(skill, []), key=lambda p: ("seats" in p.relative_to(glaw).parts, str(p.relative_to(glaw))))
+            if not matches:
+                failures.append(f"{profile_kind}:{profile}:{reviewer} maps to {skill}, but no SKILL.md has that name")
+                continue
+            text = matches[0].read_text(encoding="utf-8", errors="replace")
+            missing = [marker for marker in ("Identity:", "Soul:", "Report voice:") if marker not in text]
+            if missing:
+                failures.append(
+                    f"{profile_kind}:{profile}:{reviewer} -> {skill} missing {', '.join(missing)}"
+                )
+
+if failures:
+    for failure in failures:
+        print(failure)
+    sys.exit(1)
+print("profile reviewer map resolves")
+PY
+then
+  ok "profile consistency: every council/adversarial reviewer maps to a real identity-bearing skill"
+else
+  bad "profile consistency failed"
+fi
+
 # 3c. lib/ paths referenced -> exist
 dlib=0
 for r in $(grep -oE 'lib/[a-zA-Z0-9._/-]+' "$ROSTER" 2>/dev/null | sort -u); do

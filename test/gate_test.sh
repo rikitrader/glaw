@@ -15,7 +15,14 @@ else
 fi
 GATE="$ROOT/bin/glaw-gate"
 pass=0; fail=0
-ok(){ if [ "$1" = 1 ]; then pass=$((pass+1)); echo "  ✓ $2"; else fail=$((fail+1)); echo "  ✗ FAIL: $2"; fi; }
+ok(){
+  if [ "$1" = 1 ]; then
+    pass=$((pass+1)); echo "  ✓ $2"
+  else
+    fail=$((fail+1)); echo "  ✗ FAIL: $2"
+    [ -s "${TMP:-}/last-gate.err" ] && sed 's/^/      gate: /' "$TMP/last-gate.err"
+  fi
+}
 fixture_py(){
   python3 - "$@" || {
     rc=$?
@@ -27,7 +34,7 @@ fixture_py(){
 TMP="$(mktemp -d)"; export GLAW_HOME="$TMP"
 M="$TMP/matters/m"; mkdir -p "$M"; : > "$M/timeline.jsonl"; echo m > "$TMP/.active"
 log(){ printf '{"ts":"t","event":"%s"}\n' "$1" >> "$M/timeline.jsonl"; }
-chk(){ "$GATE" check "$1" m >/dev/null 2>&1; echo $?; }   # echoes exit code
+chk(){ "$GATE" check "$1" m >"$TMP/last-gate.err" 2>&1; echo $?; }   # echoes exit code
 append_hashed_jsonl(){
   fixture_py "$1" "$2" <<'PY'
 import hashlib
@@ -185,7 +192,7 @@ cat > "$M/final_packet.json" <<'JSON'
 {
   "status": "ready",
   "generated_at": "2026-01-01T00:00:00Z",
-  "workflow_profile": "accounting",
+  "workflow_profile": "accounting-tax",
   "gates": {
     "intake_complete": true,
     "intake_artifact_clear": true,
@@ -271,12 +278,12 @@ append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","autho
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by incomplete verified citation row"
 append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","proposition":"tax return must tie to books","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/","reviewer":"legal-research"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current council ledger artifact"
-for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do
-  append_hashed_jsonl "$M/council.jsonl" "{\"profile\":\"accounting\",\"role\":\"$role\",\"decision\":\"approve\",\"evidence\":\"SRC-0001 fixture\",\"notes\":\"$role source-backed approval conclusion\"}"
+for role in cfo tax-strategist irs-audit-agent legal-counsel forensic-audit accounting-reviewer outside-critic external-reviewer; do
+  append_hashed_jsonl "$M/council.jsonl" "{\"profile\":\"accounting-tax\",\"role\":\"$role\",\"decision\":\"approve\",\"evidence\":\"SRC-0001 fixture\",\"notes\":\"$role source-backed approval conclusion\"}"
 done
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current adversarial ledger artifact"
-for lens in irs-examiner state-tax-auditor forensic-accountant cfo-controller outside-critic; do
-  append_hashed_jsonl "$M/adversarial.jsonl" "{\"profile\":\"accounting\",\"lens\":\"$lens\",\"decision\":\"survive\",\"attack\":\"SRC-0001 $lens no fatal challenge after source review\",\"evidence\":\"SRC-0001 fixture\"}"
+for lens in irs-examiner state-tax-auditor tax-court-counsel penalty-reviewer forensic-accountant cfo-controller outside-critic; do
+  append_hashed_jsonl "$M/adversarial.jsonl" "{\"profile\":\"accounting-tax\",\"lens\":\"$lens\",\"decision\":\"survive\",\"attack\":\"SRC-0001 $lens no fatal challenge after source review\",\"evidence\":\"SRC-0001 fixture\"}"
 done
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current external deliverable artifact"
 printf '# Draft Report\n\nNumbers tie.\n' > "$M/draft-report.md"
@@ -359,7 +366,16 @@ packet["senior_review_evidence_manifest"] = [
         "missing": [],
         "cited_source_ids": ["SRC-0001"],
     }
-    for name in ["cfo", "irs-audit-agent", "legal-counsel", "forensic-audit", "outside-critic", "external-reviewer"]
+    for name in [
+        "cfo",
+        "tax-strategist",
+        "irs-audit-agent",
+        "legal-counsel",
+        "forensic-audit",
+        "accounting-reviewer",
+        "outside-critic",
+        "external-reviewer",
+    ]
 ] + [
     {
         "kind": "adversarial",
@@ -369,7 +385,15 @@ packet["senior_review_evidence_manifest"] = [
         "cited_source_ids": ["SRC-0001"],
         "attack_cited_source_ids": ["SRC-0001"],
     }
-    for name in ["irs-examiner", "state-tax-auditor", "forensic-accountant", "cfo-controller", "outside-critic"]
+    for name in [
+        "irs-examiner",
+        "state-tax-auditor",
+        "tax-court-counsel",
+        "penalty-reviewer",
+        "forensic-accountant",
+        "cfo-controller",
+        "outside-critic",
+    ]
 ]
 packet["red_flag_resolution_evidence_manifest"] = []
 packet["nonblocking_red_flag_manifest"] = []
@@ -428,6 +452,7 @@ mkdir -p "$M/workpapers"
 printf '{"rows":[],"audit":[]}\n' > "$M/workpapers/ledger.json"
 printf 'books doctor pass\n' > "$M/workpapers/books-doctor.txt"
 printf '{"reconciled":true,"unreconciled_difference":"0","book_only":[],"bank_only":[]}\n' > "$M/workpapers/bank-rec.json"
+printf '{"provision_ties":true,"internal":{"consistent":true}}\n' > "$M/workpapers/tax-tieout.json"
 cat > "$M/accounting_control.json" <<'JSON'
 {
   "schema_version": 1,
@@ -485,6 +510,36 @@ packet["accounting_control_manifest"] = {
         },
     ],
 }
+packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
+PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before accounting-tax tax tie-out"
+fixture_py "$M/accounting_control.json" <<'PY'
+import json, sys
+p = sys.argv[1]
+control = json.loads(open(p, encoding="utf-8").read())
+control["tax_tieout"] = {
+    "status": "pass",
+    "artifact": "workpapers/tax-tieout.json",
+    "provision_ties": True,
+    "internal_consistency": True,
+}
+open(p, "w", encoding="utf-8").write(json.dumps(control) + "\n")
+PY
+fixture_py "$M" <<'PY'
+import hashlib, json, pathlib, sys
+d = pathlib.Path(sys.argv[1])
+packet_path = d / "final_packet.json"
+packet = json.loads(packet_path.read_text(encoding="utf-8"))
+control = d / "accounting_control.json"
+packet["accounting_control_manifest"]["sha256"] = hashlib.sha256(control.read_bytes()).hexdigest()
+packet["accounting_control_manifest"]["artifact_hashes"].append(
+    {
+        "label": "tax_tieout",
+        "path": "workpapers/tax-tieout.json",
+        "sha256": hashlib.sha256((d / "workpapers/tax-tieout.json").read_bytes()).hexdigest(),
+        "size_bytes": (d / "workpapers/tax-tieout.json").stat().st_size,
+    }
+)
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before reviewer identity manifest"

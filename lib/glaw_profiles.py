@@ -15,6 +15,16 @@ COUNCIL_PROFILES: dict[str, tuple[str, ...]] = {
         "outside-critic",
         "external-reviewer",
     ),
+    "accounting-tax": (
+        "cfo",
+        "tax-strategist",
+        "irs-audit-agent",
+        "legal-counsel",
+        "forensic-audit",
+        "accounting-reviewer",
+        "outside-critic",
+        "external-reviewer",
+    ),
     "tax": (
         "tax-strategist",
         "irs-audit-agent",
@@ -76,6 +86,15 @@ ADVERSARIAL_PROFILES: dict[str, tuple[str, ...]] = {
         "cfo-controller",
         "outside-critic",
     ),
+    "accounting-tax": (
+        "irs-examiner",
+        "state-tax-auditor",
+        "tax-court-counsel",
+        "penalty-reviewer",
+        "forensic-accountant",
+        "cfo-controller",
+        "outside-critic",
+    ),
     "tax": (
         "irs-examiner",
         "state-tax-auditor",
@@ -130,7 +149,7 @@ ADVERSARIAL_PROFILES: dict[str, tuple[str, ...]] = {
 
 
 TRACK_TO_PROFILE = {
-    "accounting-tax": "accounting",
+    "accounting-tax": "accounting-tax",
     "tax": "tax",
     "litigation": "litigation",
     "corp-build": "corp-build",

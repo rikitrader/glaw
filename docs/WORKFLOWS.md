@@ -94,9 +94,11 @@ Accounting/bookkeeping has its own required review council before Chief approval
 
 ```bash
 bin/glaw-council record --profile auto --role cfo --decision approve --evidence "SRC-0001 bank reconciliation and ledger tie-out reviewed" --notes "CFO conclusion: books, bank, and report tie out subject to listed conditions."
+bin/glaw-council record --profile auto --role tax-strategist --decision approve --evidence "SRC-0001 book-to-tax and return-position support reviewed" --notes "Tax strategist conclusion: tax positions tie to source support and listed conditions."
 bin/glaw-council record --profile auto --role irs-audit-agent --decision approve --evidence "SRC-0001 return map and source support reviewed" --notes "IRS audit conclusion: return positions are source-supported and reviewable."
 bin/glaw-council record --profile auto --role legal-counsel --decision approve --evidence "SRC-0001 scope, UPL footer, and filing posture reviewed" --notes "Legal conclusion: work product is ready for licensed attorney review."
 bin/glaw-council record --profile auto --role forensic-audit --decision approve --evidence "SRC-0001 fraud and unsupported-number checks reviewed" --notes "Forensic conclusion: no unsupported number remains outside red flags."
+bin/glaw-council record --profile auto --role accounting-reviewer --decision approve --evidence "SRC-0001 accounting-control and tax tie-out reviewed" --notes "Accounting reviewer conclusion: ledger, bank rec, and tax tie-out are internally consistent."
 bin/glaw-council record --profile auto --role outside-critic --decision approve --evidence "SRC-0001 independent challenge reviewed" --notes "Outside critic conclusion: no fatal alternative reading remains."
 bin/glaw-council record --profile auto --role external-reviewer --decision approve --evidence "SRC-0001 outside review basis recorded" --notes "External reviewer conclusion: packet is coherent against source evidence."
 bin/glaw-council complete --profile auto
@@ -115,6 +117,8 @@ RED-team lenses include IRS, state-tax, forensic-accounting, CFO/controller, and
 ```bash
 bin/glaw-adversarial record --profile auto --lens irs-examiner --decision survive --attack "SRC-0001 IRS examiner challenge found no fatal return tie-out defect." --evidence "SRC-0001 return tie-out reviewed"
 bin/glaw-adversarial record --profile auto --lens state-tax-auditor --decision survive --attack "SRC-0001 State auditor challenge found no unresolved nexus defect." --evidence "SRC-0001 state nexus reviewed"
+bin/glaw-adversarial record --profile auto --lens tax-court-counsel --decision survive --attack "SRC-0001 Tax Court counsel challenge found no fatal substantiation or burden-of-proof defect." --evidence "SRC-0001 tax controversy support reviewed"
+bin/glaw-adversarial record --profile auto --lens penalty-reviewer --decision survive --attack "SRC-0001 Penalty reviewer challenge found no unresolved accuracy, late-filing, or reasonable-cause defect." --evidence "SRC-0001 penalty support reviewed"
 bin/glaw-adversarial record --profile auto --lens forensic-accountant --decision survive --attack "SRC-0001 Forensic challenge found no unsupported-number defect." --evidence "SRC-0001 forensics pass reviewed"
 bin/glaw-adversarial record --profile auto --lens cfo-controller --decision survive --attack "SRC-0001 Controller challenge found statements tie to source." --evidence "SRC-0001 financial statements reviewed"
 bin/glaw-adversarial record --profile auto --lens outside-critic --decision survive --attack "SRC-0001 Outside critic challenge found no fatal alternative conclusion." --evidence "SRC-0001 independent challenge complete"
@@ -232,17 +236,18 @@ bin/glaw-intake set track_specific.filing_or_exam_deadlines '2026-09-15 extended
 For a close, filing, tax, or audit-ready packet, run the control gate in strict mode:
 `bin/glaw-bank-rec --books <ledger.json> --bank <bank.json> --format json > bank_rec.json`
 then `bin/glaw-books-doctor <ledger.json> --rec bank_rec.json --require-rec`.
-Before the final packet can be ready for an accounting, tax, or SEC-reporting profile, record those deterministic
+Before the final packet can be ready for an accounting, accounting-tax, tax, or SEC-reporting profile, record those deterministic
 controls in `accounting_control.json` at the matter root. The gate requires `status: "pass"`,
 a current `SRC-####` in `source`, `books_doctor.require_rec: true`, a reconciled bank rec with
-zero book-only/bank-only rows and zero unreconciled difference, and for tax profiles a passing
+zero book-only/bank-only rows and zero unreconciled difference, and for accounting-tax/tax profiles a passing
 `tax_tieout` block with provision and internal consistency both true. `final_packet.json` hashes
 that control artifact, and `glaw-gate check file` rejects later edits until the packet and Chief
 approval are rebuilt.
 Use the generator instead of hand-editing the control file:
 `bin/glaw-accounting-control --source "SRC-0001 bank source package" --ledger ledger.json --bank-rec bank_rec.json --profile accounting`.
 For SEC reporting packets, use `--profile sec-reporting`.
-For tax packets, add `--profile tax --tax-tieout tax_tieout.json`.
+For mixed bookkeeping + tax packets, use `--profile accounting-tax --tax-tieout tax_tieout.json`.
+For pure tax packets, use `--profile tax --tax-tieout tax_tieout.json`.
 
 The bookkeeping engine lives inside `lib/bookkeeping/glaw_engine` and uses in-repo compatibility shims for table, model, and XML behavior. Google Sheets input is read through the sheet CSV export URL with Python stdlib. PDF/OCR ingestion is repo-owned orchestration over local binaries (`pdftotext` or `opendataloader-pdf`; scans need `pdftoppm` + `tesseract`).
 

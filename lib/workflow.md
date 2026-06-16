@@ -92,6 +92,19 @@ pipeline stage directory. The implementation lives in `bin/glaw-council` plus
 6. UPL disclaimer on every external deliverable (`glaw-upl-check`).
 7. Figures quoted from `tax-legal-shared/current-figures.md` ("as of [date], verify").
 
+## Repo-integrity gate
+
+The firm gates its own code before it gates client work. `./setup` installs `.githooks/pre-commit`
+and `.githooks/pre-push`; both run `bin/glaw-doctor`. The doctor directly checks profile
+consistency: every reviewer/lens in `COUNCIL_PROFILES` and `ADVERSARIAL_PROFILES` must resolve
+through `REVIEWER_SKILL_MAP` to a real `SKILL.md` with `Identity:`, `Soul:`, and `Report voice:`.
+Edits to `lib/glaw_profiles.py` and `lib/firm-roster.md` are SSOT-lock required and must set
+`GLAW_SSOT_OWNER` after coordination.
+
+Golden-profile invariant: for every executable workflow profile, a known-good matter must be able
+to clear all hard gates through `chief_approved`. Gate tightening is not complete unless it both
+blocks the bad state and preserves at least one source-backed all-clear path for the affected profile.
+
 ## Connected skill inventory (by layer)
 - **In-house seats:** all `glaw-*` (pipeline + 20+ practice/litigation-support seats).
 - **Custom legal/tax suite:** corporate-counsel · elite-corporate-counsel · tax-strategy ·

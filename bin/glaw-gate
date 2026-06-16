@@ -356,7 +356,7 @@ SOURCE_EVIDENCE_PARTS = {
     "sources",
 }
 SOURCE_ID_RE = re.compile(r"\bSRC-\d{4}\b")
-ACCOUNTING_CONTROL_PROFILES = {"accounting", "tax", "sec-reporting"}
+ACCOUNTING_CONTROL_PROFILES = {"accounting", "accounting-tax", "tax", "sec-reporting"}
 NEGATIVE_DECISION_RE = re.compile(r"\b(DENY|DENIED|REJECT|REJECTED|REFUSE|REFUSED|BLOCK|BLOCKED|DO NOT PROCEED|NOT READY|WITH[- ]?FIXES|FIXES REQUIRED|FIX REQUIRED)\b", re.I)
 APPROVAL_DECISION_RE = re.compile(r"\b(PROCEED|APPROVE|APPROVED|READY|FILE-READY)\b", re.I)
 FINAL_APPROVAL_MIN_SCORE = 90.0
@@ -739,7 +739,7 @@ def accounting_control_manifest(profile, source_manifest):
         _artifact_hash(rec.get("artifact", ""), "bank_reconciliation", manifest["missing"])
     )
 
-    if profile == "tax":
+    if profile in {"accounting-tax", "tax"}:
         tax = control.get("tax_tieout", {})
         if tax.get("status") != "pass":
             manifest["missing"].append("tax_tieout.status=pass")
