@@ -16,6 +16,7 @@ CHIEF="$ROOT/bin/glaw-chief-decision"
 ADVERSARIAL="$ROOT/bin/glaw-adversarial"
 ETHICS="$ROOT/bin/glaw-ethics"
 CITES="$ROOT/bin/glaw-citation-gate"
+CORPUS="$ROOT/bin/glaw-citation-corpus"
 DOCKET="$ROOT/bin/glaw-docket-gate"
 CONTROL="$ROOT/bin/glaw-accounting-control"
 
@@ -142,7 +143,8 @@ ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "citation verified row blocked without
 ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "citation verified row blocked without http source URL"
 "$CITES" record --id C-0001 --proposition 'tax return must tie to books' --authority '26 U.S.C. § 6001' --status verified --source-url 'https://' --reviewer legal-research >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "citation verified row blocked by malformed http source URL"
-"$CITES" record --id C-0001 --proposition 'tax return must tie to books' --authority '26 U.S.C. § 6001' --status verified --source-url 'https://uscode.house.gov/' --reviewer legal-research --support-summary 'The cited section supports maintaining records sufficient to establish tax liability.' >/dev/null
+"$CORPUS" capture --id CORP-0001 --source-url 'https://uscode.house.gov/' --text '26 U.S.C. § 6001 supports maintaining records sufficient to establish tax liability.' --segment 'records sufficient to establish tax liability' >/dev/null
+"$CITES" record --id C-0001 --proposition 'tax return must tie to books' --authority '26 U.S.C. § 6001' --status verified --source-url 'https://uscode.house.gov/' --reviewer legal-research --support-summary 'The cited section supports maintaining records sufficient to establish tax liability.' --corpus-id CORP-0001 >/dev/null
 cp "$TMP/matters/$SLUG/citations.jsonl" "$TMP/matters/$SLUG/citations.clean.jsonl"
 python3 - "$TMP/matters/$SLUG/citations.jsonl" <<'PY'
 import json, sys

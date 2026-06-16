@@ -15,6 +15,7 @@ SKIP_NAMES = {
     "final_packet.md",
 }
 SKIP_PARTS = {
+    "citation_corpus",
     "_published",
     "_extracted",
     "decisions",

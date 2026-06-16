@@ -275,9 +275,10 @@ the seal stays human as a legal and ethics constraint.
   GLAW runs embedded in a host (zeroclaw-x0 / MCP).
 
 ### Phase 4 (Branches + corpus) — add
-- **P4-G1 · Wire a verifiable corpus BEHIND the citation gate** (CourtListener/CAP), retrieving
-  minimal text segments and source hashes. The corpus feeds, never replaces, the deterministic
-  citation gate.
+- ✅ **P4-G1 · Wire a verifiable corpus BEHIND the citation gate**: `bin/glaw-citation-corpus`
+  captures checked authority text from pasted text, local files, or optional HTTP(S) fetch, stores
+  source and segment SHA-256 hashes, and `glaw-citation-gate` now requires verified rows to point
+  to a matching corpus id. The corpus feeds, never replaces, the deterministic citation gate.
 - ✅ **P4-G2 · Encode the falsifiable hallucination typology** in `glaw-citation-gate`: verified
   rows now require a support summary, and failed rows must classify the defect as **incorrect**,
   **misgrounded**, **ungrounded**, or **incomplete**. `glaw-gate` revalidates the same contract so
@@ -286,7 +287,7 @@ the seal stays human as a legal and ethics constraint.
   Relation-Preservation metrics with a full audit trail from each assertion back to source
   passages — composes with GLAW's existing SRC-#### + SHA-256 hashing.
 
-*Suggested build order: P4-G1 corpus → P3 host/observability.*
+*Suggested build order: P3 host/observability → P4-G3 groundedness scoring.*
 
 ---
 

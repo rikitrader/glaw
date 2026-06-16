@@ -342,6 +342,7 @@ TEXT_DELIVERABLE_SKIP_NAMES = {
     "final_packet.md",
 }
 TEXT_DELIVERABLE_SKIP_PARTS = {
+    "citation_corpus",
     "_published",
     "_extracted",
     "decisions",
@@ -363,6 +364,7 @@ FINAL_APPROVAL_MIN_SCORE = 90.0
 REQUIRED_GATE_ARTIFACTS = (
     "intake.json",
     "ethics.json",
+    "citation_corpus.jsonl",
     "citations.jsonl",
     "council.jsonl",
     "adversarial.jsonl",
@@ -770,6 +772,10 @@ def row_hash(row):
     return hashlib.sha256(data).hexdigest()
 
 
+def text_hash(text):
+    return hashlib.sha256(str(text).encode("utf-8")).hexdigest()
+
+
 def validate_row_hashes(rows, ledger_name):
     failures = []
     for idx, row in enumerate(rows, start=1):
@@ -1050,12 +1056,47 @@ latest_citations = latest_by(citation_rows, "id")
 if not latest_citations:
     print("citations.jsonl has no citation rows")
     sys.exit(1)
+corpus = d / "citation_corpus.jsonl"
+if not corpus.exists():
+    print("citation_corpus.jsonl missing")
+    sys.exit(1)
+corpus_rows = read_jsonl(corpus)
+validate_row_hashes(corpus_rows, "citation_corpus.jsonl")
+latest_corpus = latest_by(corpus_rows, "id")
+corpus_failures = []
+for corpus_id, corpus_row in latest_corpus.items():
+    source_path = d / str(corpus_row.get("source_path", ""))
+    if not source_path.is_file():
+        corpus_failures.append(f"{corpus_id}: source_path missing")
+        continue
+    text = source_path.read_text(encoding="utf-8", errors="replace")
+    if text_hash(text) != corpus_row.get("source_sha256"):
+        corpus_failures.append(f"{corpus_id}: source_path hash mismatch")
+    segment = str(corpus_row.get("segment", ""))
+    if not segment or segment not in text:
+        corpus_failures.append(f"{corpus_id}: segment missing from source text")
+    elif text_hash(segment) != corpus_row.get("segment_sha256"):
+        corpus_failures.append(f"{corpus_id}: segment hash mismatch")
+if corpus_failures:
+    print("citation corpus failure: " + "; ".join(corpus_failures))
+    sys.exit(1)
 blocking_citations = []
 defect_types = {"incorrect", "misgrounded", "ungrounded", "incomplete"}
 none_defects = {"", "none", "verified"}
 for cid, row in latest_citations.items():
     status = str(row.get("status", "")).lower()
     defect_type = str(row.get("defect_type", "")).lower().replace("_", "-")
+    corpus_id = str(row.get("corpus_id", "")).strip()
+    corpus_row = latest_corpus.get(corpus_id, {})
+    corpus_incomplete = status == "verified" and (
+        not corpus_id
+        or not corpus_row
+        or corpus_row.get("source_url") != row.get("source_url")
+        or not str(corpus_row.get("source_sha256", "")).strip()
+        or not str(corpus_row.get("segment_sha256", "")).strip()
+        or (row.get("source_sha256") and row.get("source_sha256") != corpus_row.get("source_sha256"))
+        or (row.get("segment_sha256") and row.get("segment_sha256") != corpus_row.get("segment_sha256"))
+    )
     verified_incomplete = status == "verified" and (
         not str(row.get("proposition", "")).strip()
         or not str(row.get("authority", "")).strip()
@@ -1063,6 +1104,7 @@ for cid, row in latest_citations.items():
         or not valid_http_url(row.get("source_url", ""))
         or not str(row.get("support_summary", "")).strip()
         or defect_type not in none_defects
+        or corpus_incomplete
     )
     blocking_defect_missing = status in {"pending", "needs-substitute", "struck", "weak"} and defect_type not in defect_types
     if not cid or status in {"pending", "needs-substitute", "struck", "weak"} or verified_incomplete or blocking_defect_missing:

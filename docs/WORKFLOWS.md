@@ -45,7 +45,7 @@ bin/glaw-ethics complete
 Required gates:
 
 1. Structured intake and source-backed conflicts/engagement must clear before strategy.
-2. Legal citations must be verified through `glaw-citation-gate complete` before file; each verified row must preserve proposition, authority, support summary, reviewer, and HTTP(S) source URL. Failed rows must carry a falsifiable defect type: incorrect, misgrounded, ungrounded, or incomplete.
+2. Legal citations must be verified through `glaw-citation-gate complete` before file; each verified row must preserve proposition, authority, support summary, corpus id, source/segment hashes, reviewer, and HTTP(S) source URL. Capture checked authority text first with `glaw-citation-corpus capture`. Failed rows must carry a falsifiable defect type: incorrect, misgrounded, ungrounded, or incomplete.
 3. Adversarial review must pass before file.
 4. Critical/high red flags must be resolved before file; medium/low red flags may remain open only if owner-assigned, source-backed, and carried in the final packet.
 5. Final packet manifest must be ready before file.
@@ -147,7 +147,7 @@ bin/glaw-final-packet build --profile auto
 ```
 
 `glaw-final-packet` writes `final_packet.json` and `final_packet.md`, then logs
-`final_packet_ready` only when intake/conflicts/ethics/citation ledger/adversarial, UPL footer
+`final_packet_ready` only when intake/conflicts/ethics/citation corpus/citation ledger/adversarial, UPL footer
 checks, red flags, the required council profile, and at least one external-facing text deliverable
 are all explicitly completed and clear. Each external text deliverable must also pass the
 professional-report marker gate: `Owner:`, `Report voice:`, `Findings:`, `Evidence:`,

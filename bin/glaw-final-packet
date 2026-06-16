@@ -205,6 +205,7 @@ TEXT_DELIVERABLE_SKIP_NAMES = {
     "final_packet.md",
 }
 TEXT_DELIVERABLE_SKIP_PARTS = {
+    "citation_corpus",
     "_published",
     "_extracted",
     "decisions",
@@ -223,6 +224,7 @@ ACCOUNTING_CONTROL_PROFILES = {"accounting", "accounting-tax", "tax", "sec-repor
 REQUIRED_GATE_ARTIFACTS = (
     "intake.json",
     "ethics.json",
+    "citation_corpus.jsonl",
     "citations.jsonl",
     "council.jsonl",
     "adversarial.jsonl",

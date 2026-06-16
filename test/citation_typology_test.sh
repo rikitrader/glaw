@@ -9,6 +9,7 @@ ok(){ if [ "$1" = 1 ]; then pass=$((pass+1)); echo "  ✓ $2"; else fail=$((fail
 TMP="$(mktemp -d)"; export GLAW_HOME="$TMP"
 GLAW="$ROOT/bin/glaw"
 CITES="$ROOT/bin/glaw-citation-gate"
+CORPUS="$ROOT/bin/glaw-citation-corpus"
 
 "$GLAW" matter new "Citation Typology" >/dev/null
 
@@ -20,6 +21,11 @@ ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "verified citation blocked without sup
   --status verified --source-url "https://uscode.house.gov/" --reviewer legal-research \
   --support-summary "The cited section supports recordkeeping duties." --defect-type misgrounded >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "verified citation blocked when defect type is not none"
+
+"$CITES" record --id C-0001 --proposition "Books must be retained" --authority "26 U.S.C. 6001" \
+  --status verified --source-url "https://uscode.house.gov/" --reviewer legal-research \
+  --support-summary "The cited section supports recordkeeping duties." >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "verified citation blocked without corpus id"
 
 "$CITES" record --id C-0002 --proposition "Unsupported claim" --authority "Imaginary case" \
   --status struck --source-url "https://example.com/" --reviewer legal-research >/dev/null 2>&1; rc=$?
@@ -33,9 +39,14 @@ ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "incorrect defect type can be recorded
 "$CITES" status > "$TMP/status-blocked.out" 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && grep -q 'incorrect' "$TMP/status-blocked.out" && echo 1 || echo 0)" "status prints typed blocking citation"
 
+"$CORPUS" capture --id CORP-0001 --source-url "https://uscode.house.gov/" \
+  --text "26 U.S.C. 6001 supports recordkeeping duties for tax substantiation." \
+  --segment "supports recordkeeping duties" >/dev/null; rc=$?
+ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "citation corpus captures source and segment hashes"
+
 "$CITES" record --id C-0002 --proposition "Books must be retained" --authority "26 U.S.C. 6001" \
   --status verified --source-url "https://uscode.house.gov/" --reviewer legal-research \
-  --support-summary "The cited section supports recordkeeping duties." >/dev/null; rc=$?
+  --support-summary "The cited section supports recordkeeping duties." --corpus-id CORP-0001 >/dev/null; rc=$?
 ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "typed failed citation can be replaced with verified support"
 
 "$CITES" complete >/dev/null 2>&1; rc=$?

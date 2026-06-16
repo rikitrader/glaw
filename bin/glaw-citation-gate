@@ -38,7 +38,8 @@ def normalized_defect_type(value: str) -> str:
     return str(value or "").strip().lower().replace("_", "-")
 
 
-def verified_row_incomplete(row: dict) -> bool:
+def verified_row_incomplete(row: dict, corpus: dict[str, dict] | None = None) -> bool:
+    corpus = corpus or {}
     return (
         row.get("status") == "verified"
         and (
@@ -48,6 +49,7 @@ def verified_row_incomplete(row: dict) -> bool:
             or not valid_http_url(str(row.get("source_url", "")))
             or not str(row.get("support_summary", "")).strip()
             or normalized_defect_type(row.get("defect_type", "")) not in NONE_DEFECTS
+            or bool(corpus_failure(row, corpus))
         )
     )
 
@@ -83,6 +85,10 @@ def matter_dir(slug: str | None) -> Path:
 
 def ledger_path(d: Path) -> Path:
     return d / "citations.jsonl"
+
+
+def corpus_path(d: Path) -> Path:
+    return d / "citation_corpus.jsonl"
 
 
 def append_jsonl(path: Path, row: dict) -> None:
@@ -127,12 +133,58 @@ def read_jsonl(path: Path) -> list[dict]:
     return rows
 
 
+def latest_by_id(rows: list[dict]) -> dict[str, dict]:
+    out: dict[str, dict] = {}
+    for row in rows:
+        out[str(row.get("id", ""))] = row
+    return out
+
+
+def corpus_rows(d: Path) -> tuple[dict[str, dict], list[str]]:
+    rows = read_jsonl(corpus_path(d))
+    failures = validate_row_hashes(rows, corpus_path(d).name)
+    latest = latest_by_id(rows)
+    for cid, row in latest.items():
+        source_path = d / str(row.get("source_path", ""))
+        if not source_path.is_file():
+            failures.append(f"corpus {cid} source_path missing")
+            continue
+        text = source_path.read_text(encoding="utf-8", errors="replace")
+        if hashlib.sha256(text.encode("utf-8")).hexdigest() != row.get("source_sha256"):
+            failures.append(f"corpus {cid} source_path hash mismatch")
+        segment = str(row.get("segment", ""))
+        if not segment or segment not in text:
+            failures.append(f"corpus {cid} segment missing from source text")
+        elif hashlib.sha256(segment.encode("utf-8")).hexdigest() != row.get("segment_sha256"):
+            failures.append(f"corpus {cid} segment hash mismatch")
+    return latest, failures
+
+
+def corpus_failure(row: dict, corpus: dict[str, dict]) -> str:
+    corpus_id = str(row.get("corpus_id", "")).strip()
+    if not corpus_id:
+        return "verified row missing corpus_id"
+    item = corpus.get(corpus_id)
+    if not item:
+        return f"verified row corpus_id not found: {corpus_id}"
+    if str(item.get("source_url", "")).strip() != str(row.get("source_url", "")).strip():
+        return f"verified row source_url does not match corpus {corpus_id}"
+    if not str(item.get("source_sha256", "")).strip() or not str(item.get("segment_sha256", "")).strip():
+        return f"corpus {corpus_id} missing hashes"
+    if row.get("source_sha256") and row.get("source_sha256") != item.get("source_sha256"):
+        return f"verified row source hash does not match corpus {corpus_id}"
+    if row.get("segment_sha256") and row.get("segment_sha256") != item.get("segment_sha256"):
+        return f"verified row segment hash does not match corpus {corpus_id}"
+    return ""
+
+
 def timeline(d: Path, event: str, **extra: object) -> None:
     append_jsonl(d / "timeline.jsonl", {"ts": now(), "event": event, **extra})
 
 
 def cmd_record(args: argparse.Namespace) -> int:
     d = matter_dir(args.matter)
+    corpus_item: dict = {}
     if args.status == "verified":
         missing = []
         if not args.proposition.strip():
@@ -145,8 +197,18 @@ def cmd_record(args: argparse.Namespace) -> int:
             missing.append("--source-url valid http(s)")
         if not args.support_summary.strip():
             missing.append("--support-summary")
+        if not args.corpus_id.strip():
+            missing.append("--corpus-id")
         if normalized_defect_type(args.defect_type) not in NONE_DEFECTS:
             missing.append("--defect-type none for verified")
+        corpus, corpus_failures = corpus_rows(d)
+        if corpus_failures:
+            missing.append("valid citation corpus")
+        corpus_item = corpus.get(args.corpus_id.strip(), {})
+        if args.corpus_id.strip() and not corpus_item:
+            missing.append("--corpus-id existing corpus record")
+        if corpus_item and corpus_item.get("source_url") != args.source_url:
+            missing.append("--source-url matching corpus")
         if missing:
             print("ERROR: verified citations require " + ", ".join(missing), file=sys.stderr)
             return 2
@@ -166,6 +228,9 @@ def cmd_record(args: argparse.Namespace) -> int:
         "status": args.status,
         "defect_type": "none" if args.status == "verified" else normalized_defect_type(args.defect_type),
         "support_summary": args.support_summary,
+        "corpus_id": args.corpus_id,
+        "source_sha256": corpus_item.get("source_sha256", "") if args.status == "verified" else "",
+        "segment_sha256": corpus_item.get("segment_sha256", "") if args.status == "verified" else "",
         "source_url": args.source_url,
         "reviewer": args.reviewer,
         "notes": args.notes,
@@ -176,20 +241,13 @@ def cmd_record(args: argparse.Namespace) -> int:
     return 0
 
 
-def latest_by_id(rows: list[dict]) -> dict[str, dict]:
-    out: dict[str, dict] = {}
-    for row in rows:
-        out[str(row.get("id", ""))] = row
-    return out
-
-
-def blockers(rows: list[dict]) -> list[dict]:
+def blockers(rows: list[dict], corpus: dict[str, dict]) -> list[dict]:
     latest = latest_by_id(rows)
     return [
         row for row in latest.values()
         if not row.get("id")
         or str(row.get("status", "")).lower() in BLOCKING
-        or verified_row_incomplete(row)
+        or verified_row_incomplete(row, corpus)
         or blocking_defect_missing(row)
     ]
 
@@ -203,7 +261,13 @@ def cmd_status(args: argparse.Namespace) -> int:
         for failure in hash_failures:
             print(f"  {failure}")
         return 1
-    bad = blockers(rows)
+    corpus, corpus_failures = corpus_rows(d)
+    if corpus_failures:
+        print("CITATIONS BLOCKED: corpus failure")
+        for failure in corpus_failures:
+            print(f"  {failure}")
+        return 1
+    bad = blockers(rows, corpus)
     latest = latest_by_id(rows)
     print(f"CITATIONS {d.name}: {len(latest)} reviewed, {len(bad)} blocking")
     for row in latest.values():
@@ -241,6 +305,7 @@ def main() -> int:
     p.add_argument("--status", required=True, choices=["verified", "weak", "needs-substitute", "struck", "pending"])
     p.add_argument("--defect-type", default="")
     p.add_argument("--support-summary", default="")
+    p.add_argument("--corpus-id", default="")
     p.add_argument("--source-url", default="")
     p.add_argument("--reviewer", default="")
     p.add_argument("--notes", default="")

@@ -14,6 +14,7 @@ else
   }
 fi
 GATE="$ROOT/bin/glaw-gate"
+CORPUS="$ROOT/bin/glaw-citation-corpus"
 pass=0; fail=0
 ok(){
   if [ "$1" = 1 ]; then
@@ -278,7 +279,8 @@ append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","autho
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by incomplete verified citation row"
 append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","proposition":"tax return must tie to books","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/","reviewer":"legal-research"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by verified citation without support summary"
-append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","proposition":"tax return must tie to books","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/","reviewer":"legal-research","support_summary":"The cited section supports keeping records that substantiate tax positions."}'
+"$CORPUS" capture --id CORP-1 --source-url "https://uscode.house.gov/" --text "26 U.S.C. 6001 requires records sufficient to establish tax liability." --segment "records sufficient to establish tax liability" >/dev/null
+append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","proposition":"tax return must tie to books","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/","reviewer":"legal-research","support_summary":"The cited section supports keeping records that substantiate tax positions.","corpus_id":"CORP-1"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current council ledger artifact"
 for role in cfo tax-strategist irs-audit-agent legal-counsel forensic-audit accounting-reviewer outside-critic external-reviewer; do
   append_hashed_jsonl "$M/council.jsonl" "{\"profile\":\"accounting-tax\",\"role\":\"$role\",\"decision\":\"approve\",\"evidence\":\"SRC-0001 fixture\",\"notes\":\"$role source-backed approval conclusion\"}"
@@ -608,7 +610,7 @@ import hashlib, json, pathlib, sys
 d = pathlib.Path(sys.argv[1])
 packet_path = d / "final_packet.json"
 packet = json.loads(packet_path.read_text(encoding="utf-8"))
-names = ["intake.json", "ethics.json", "citations.jsonl", "council.jsonl", "adversarial.jsonl", "accounting_control.json"]
+names = ["intake.json", "ethics.json", "citation_corpus.jsonl", "citations.jsonl", "council.jsonl", "adversarial.jsonl", "accounting_control.json"]
 if (d / "red_flags.jsonl").exists():
     names.append("red_flags.jsonl")
 packet["gate_artifact_hashes"] = {
@@ -840,7 +842,7 @@ append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","propo
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by verified citation without legal-research reviewer"
 append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","proposition":"tax return must tie to books","authority":"26 U.S.C. 6001","source_url":"https://","reviewer":"legal-research"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by malformed verified citation source URL"
-append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","proposition":"tax return must tie to books","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/","reviewer":"legal-research","support_summary":"The cited section supports keeping records that substantiate tax positions."}'
+append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","proposition":"tax return must tie to books","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/","reviewer":"legal-research","support_summary":"The cited section supports keeping records that substantiate tax positions.","corpus_id":"CORP-1"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file STILL BLOCKED by citation ledger hash change after re-verification"
 cp "$M/citations.baseline.jsonl" "$M/citations.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact citation ledger restored"

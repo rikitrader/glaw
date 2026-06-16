@@ -13,6 +13,7 @@ ETHICS="$ROOT/bin/glaw-ethics"
 COUNCIL="$ROOT/bin/glaw-council"
 ADVERSARIAL="$ROOT/bin/glaw-adversarial"
 CITES="$ROOT/bin/glaw-citation-gate"
+CORPUS="$ROOT/bin/glaw-citation-corpus"
 FLAGS="$ROOT/bin/glaw-red-flags"
 PACKET="$ROOT/bin/glaw-final-packet"
 CONTROL="$ROOT/bin/glaw-accounting-control"
@@ -60,7 +61,8 @@ for lens in sec-staff-reviewer pcaob-audit-reviewer disclosure-counsel irs-exami
 done
 "$ADVERSARIAL" complete --profile auto >/dev/null
 
-"$CITES" record --id C-SEC-0001 --proposition 'SEC reporting financial statements must tie to source books and controls' --authority 'Regulation S-X' --status verified --source-url 'https://www.ecfr.gov/' --reviewer legal-research --support-summary 'Regulation S-X is the cited financial statement reporting authority; source books and controls remain required support for the package.' >/dev/null
+"$CORPUS" capture --id CORP-SEC-0001 --source-url 'https://www.ecfr.gov/' --text 'Regulation S-X is the cited financial statement reporting authority for SEC reporting packages.' --segment 'financial statement reporting authority' >/dev/null
+"$CITES" record --id C-SEC-0001 --proposition 'SEC reporting financial statements must tie to source books and controls' --authority 'Regulation S-X' --status verified --source-url 'https://www.ecfr.gov/' --reviewer legal-research --support-summary 'Regulation S-X is the cited financial statement reporting authority; source books and controls remain required support for the package.' --corpus-id CORP-SEC-0001 >/dev/null
 "$CITES" complete >/dev/null
 
 cat > "$M/sec-report.md" <<'MD'

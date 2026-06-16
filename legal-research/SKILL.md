@@ -105,12 +105,19 @@ reporter source. If only a secondary source is available, mark the verification 
 Produce the deliverable table (below) and a one-line gate verdict. Record each row in the
 executable citation ledger:
 ```bash
+bin/glaw-citation-corpus capture \
+  --id CORP-0001 \
+  --source-url "<primary source URL checked>" \
+  --text "<checked source text or excerpt>" \
+  --segment "<exact segment carrying the proposition>"
+
 bin/glaw-citation-gate record \
   --id C-0001 \
   --proposition "<proposition verified>" \
   --authority "<citation as drafted>" \
   --status verified \
   --support-summary "<why the checked source supports the proposition>" \
+  --corpus-id CORP-0001 \
   --source-url "<primary source URL checked>" \
   --reviewer legal-research
 ```
@@ -138,8 +145,8 @@ bin/glaw-citation-gate complete
 ```
 
 `glaw-citation-gate complete` logs `citations_verified` and `citation_gate_complete` only when
-every latest citation record is verified with a source URL, a support summary, and the
-`/glaw-legal-research` reviewer.
+every latest citation record is verified with a source URL, a support summary, a corpus id whose
+captured source/segment hashes validate, and the `/glaw-legal-research` reviewer.
 Hand the verdict and the table back to
 `/glaw-file`.
 
@@ -150,7 +157,7 @@ Hand the verdict and the table back to
 - This seat never *chooses* the position — it only confirms whether the cited authority can carry it.
 
 ## Deliverables
-- A **citation table**: `proposition → cited authority → verified / struck / needs-substitute → defect type → support summary/source URL checked`.
+- A **citation table**: `proposition → cited authority → verified / struck / needs-substitute → defect type → corpus id/source hash/segment hash → support summary/source URL checked`.
 - A list of struck cites with the reason (`incorrect`, `misgrounded`, `ungrounded`, or `incomplete`).
 - A list of needs-substitute items routed to their owning seat.
 - A single gate verdict: `CITATIONS: clean` or `CITATIONS: blocked (<n> struck)`.

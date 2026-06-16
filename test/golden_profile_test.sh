@@ -210,12 +210,17 @@ def run_profile(profile: str) -> None:
             "--evidence", "SRC-0001 source package reviewed")
     run("glaw-adversarial", "complete", "--profile", "auto")
 
+    run("glaw-citation-corpus", "capture", "--id", f"CORP-{profile.upper()}-0001",
+        "--source-url", "https://www.irs.gov/",
+        "--text", "GLAW workflow source evidence rule supports source-backed licensed review.",
+        "--segment", "supports source-backed licensed review")
     run("glaw-citation-gate", "record", "--id", f"C-{profile.upper()}-0001",
         "--proposition", "The golden fixture is source-backed and held for licensed review",
         "--authority", "GLAW workflow source-evidence rule",
         "--status", "verified", "--source-url", "https://www.irs.gov/",
         "--reviewer", "legal-research",
-        "--support-summary", "The workflow rule supports keeping the fixture source-backed and subject to licensed review.")
+        "--support-summary", "The workflow rule supports keeping the fixture source-backed and subject to licensed review.",
+        "--corpus-id", f"CORP-{profile.upper()}-0001")
     run("glaw-citation-gate", "complete")
 
     report = matter / "golden-report.md"

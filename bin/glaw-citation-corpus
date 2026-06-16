@@ -1,0 +1,214 @@
+#!/usr/bin/env python3
+"""glaw-citation-corpus - source corpus capture for citation verification.
+
+Usage:
+  glaw-citation-corpus capture --id <id> --source-url <url> (--text <text> | --file <path> | --fetch) [--segment <text>] [--matter <slug>]
+  glaw-citation-corpus status [--matter <slug>]
+
+The corpus stores the checked source text and a minimal support segment with
+SHA-256 hashes. It is source-only and deterministic when --text or --file is
+used; --fetch is an optional stdlib HTTP(S) convenience for live research.
+"""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import os
+import re
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+from urllib.parse import urlparse
+from urllib.request import Request, urlopen
+
+
+def now() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def home() -> Path:
+    return Path(os.environ.get("GLAW_HOME", str(Path.home() / ".glaw")))
+
+
+def active_slug() -> str:
+    p = home() / ".active"
+    return p.read_text(encoding="utf-8").strip() if p.exists() else ""
+
+
+def matter_dir(slug: str | None) -> Path:
+    s = slug or active_slug()
+    if not s:
+        raise SystemExit("ERROR: no active matter. Run `glaw matter new \"<name>\"` first.")
+    d = home() / "matters" / s
+    if not d.is_dir():
+        raise SystemExit(f"ERROR: matter not found: {s}")
+    return d
+
+
+def valid_http_url(value: str) -> bool:
+    parsed = urlparse(str(value).strip())
+    return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
+
+
+def safe_name(value: str) -> str:
+    return re.sub(r"[^A-Za-z0-9._-]+", "-", value).strip("-")[:80] or "source"
+
+
+def sha256_text(value: str) -> str:
+    return hashlib.sha256(value.encode("utf-8")).hexdigest()
+
+
+def row_hash(row: dict) -> str:
+    payload = dict(row)
+    payload.pop("row_hash", None)
+    data = json.dumps(payload, sort_keys=True, separators=(",", ":")).encode("utf-8")
+    return hashlib.sha256(data).hexdigest()
+
+
+def stamp_row_hash(row: dict) -> dict:
+    row["row_hash"] = row_hash(row)
+    return row
+
+
+def append_jsonl(path: Path, row: dict) -> None:
+    with path.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(row, sort_keys=False) + "\n")
+
+
+def read_jsonl(path: Path) -> list[dict]:
+    if not path.exists():
+        return []
+    rows = []
+    for idx, line in enumerate(path.read_text(encoding="utf-8", errors="replace").splitlines(), start=1):
+        if not line.strip():
+            continue
+        try:
+            rows.append(json.loads(line))
+        except json.JSONDecodeError as exc:
+            raise SystemExit(f"ERROR: {path.name}:{idx} invalid JSON: {exc.msg}") from exc
+    return rows
+
+
+def validate_row_hashes(rows: list[dict], ledger_name: str) -> list[str]:
+    failures = []
+    for idx, row in enumerate(rows, start=1):
+        expected = row.get("row_hash")
+        if not expected:
+            failures.append(f"{ledger_name}:{idx} missing row_hash")
+        elif expected != row_hash(row):
+            failures.append(f"{ledger_name}:{idx} row_hash mismatch")
+    return failures
+
+
+def latest_by_id(rows: list[dict]) -> dict[str, dict]:
+    out: dict[str, dict] = {}
+    for row in rows:
+        out[str(row.get("id", ""))] = row
+    return out
+
+
+def corpus_path(d: Path) -> Path:
+    return d / "citation_corpus.jsonl"
+
+
+def fetch_url(url: str) -> str:
+    req = Request(url, headers={"User-Agent": "GLAW citation corpus verifier"})
+    with urlopen(req, timeout=20) as resp:
+        charset = resp.headers.get_content_charset() or "utf-8"
+        return resp.read().decode(charset, errors="replace")
+
+
+def source_text(args: argparse.Namespace) -> str:
+    sources = [bool(args.text), bool(args.file), bool(args.fetch)]
+    if sum(1 for item in sources if item) != 1:
+        raise SystemExit("ERROR: choose exactly one of --text, --file, or --fetch")
+    if args.text:
+        return args.text
+    if args.file:
+        return Path(args.file).read_text(encoding="utf-8", errors="replace")
+    return fetch_url(args.source_url)
+
+
+def cmd_capture(args: argparse.Namespace) -> int:
+    if not valid_http_url(args.source_url):
+        print("ERROR: --source-url must be valid http(s)", file=sys.stderr)
+        return 2
+    if not args.id.strip():
+        print("ERROR: --id required", file=sys.stderr)
+        return 2
+    d = matter_dir(args.matter)
+    text = source_text(args)
+    if not text.strip():
+        print("ERROR: source text is empty", file=sys.stderr)
+        return 2
+    segment = args.segment if args.segment else text[:2000]
+    if segment not in text:
+        print("ERROR: --segment must be an exact substring of the source text", file=sys.stderr)
+        return 2
+    store = d / "citation_corpus"
+    store.mkdir(parents=True, exist_ok=True)
+    rel = Path("citation_corpus") / f"{safe_name(args.id)}.txt"
+    (d / rel).write_text(text, encoding="utf-8")
+    row = {
+        "ts": now(),
+        "id": args.id,
+        "source_url": args.source_url,
+        "source_path": str(rel),
+        "source_sha256": sha256_text(text),
+        "segment": segment,
+        "segment_sha256": sha256_text(segment),
+        "notes": args.notes,
+    }
+    append_jsonl(corpus_path(d), stamp_row_hash(row))
+    print(f"CAPTURED corpus {args.id}: {row['source_sha256']} segment={row['segment_sha256']}")
+    return 0
+
+
+def cmd_status(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    rows = read_jsonl(corpus_path(d))
+    failures = validate_row_hashes(rows, corpus_path(d).name)
+    latest = latest_by_id(rows)
+    print(f"CITATION CORPUS {d.name}: {len(latest)} source(s)")
+    for row in latest.values():
+        path = d / str(row.get("source_path", ""))
+        if not path.is_file():
+            failures.append(f"{row.get('id')}: source_path missing")
+        elif sha256_text(path.read_text(encoding="utf-8", errors="replace")) != row.get("source_sha256"):
+            failures.append(f"{row.get('id')}: source_path hash mismatch")
+        print(f"  {row.get('id')}: {row.get('source_url')} {row.get('source_sha256')}")
+    if failures:
+        print("CITATION CORPUS BLOCKED")
+        for failure in failures:
+            print(f"  {failure}")
+        return 1
+    if not rows:
+        print("CITATION CORPUS EMPTY")
+        return 1
+    print("CITATION CORPUS READY")
+    return 0
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(prog="glaw-citation-corpus")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    p = sub.add_parser("capture")
+    p.add_argument("--id", required=True)
+    p.add_argument("--source-url", required=True)
+    p.add_argument("--text", default="")
+    p.add_argument("--file", default="")
+    p.add_argument("--fetch", action="store_true")
+    p.add_argument("--segment", default="")
+    p.add_argument("--notes", default="")
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_capture)
+    p = sub.add_parser("status")
+    p.add_argument("--matter", default=None)
+    p.set_defaults(func=cmd_status)
+    args = ap.parse_args()
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
