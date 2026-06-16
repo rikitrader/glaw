@@ -285,6 +285,10 @@ the seal stays human as a legal and ethics constraint.
   `glaw_status`, and `glaw_execute` over a source-only JSON-RPC line bridge. The bridge never
   exposes raw shell; execution delegates to `glaw-host`, preserving argv-only execution,
   conscience pre/post guards, and RBAC ADMIN human-seal boundaries.
+- ✅ **P3-G5 · Extism/zeroclaw wrapper contract**: `bin/glaw-extism` exports deterministic
+  `tool_metadata` and `execute` payloads over `glaw-host`, declares shell/hardware denied,
+  host-controlled network, repo/`$GLAW_HOME` filesystem scope, and preserves conscience/RBAC
+  boundaries for every embedded GLAW tool.
 
 ### Phase 4 (Branches + corpus) — add
 - ✅ **P4-G1 · Wire a verifiable corpus BEHIND the citation gate**: `bin/glaw-citation-corpus`
@@ -301,7 +305,7 @@ the seal stays human as a legal and ethics constraint.
   if the score is below threshold. The audit trail carries citation row hash, source hash, and
   segment hash.
 
-*Suggested build order: Extism wrapper.*
+*Suggested build order: headless orchestrator report → branch seats.*
 
 ---
 

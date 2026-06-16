@@ -1,0 +1,56 @@
+#!/usr/bin/env python3
+"""glaw-extism - source-only Extism/zeroclaw plugin contract shim.
+
+Usage:
+  glaw-extism tool_metadata [--json]
+  glaw-extism execute --payload '{"tool":"glaw","args":["version"]}' [--json]
+
+This is the deterministic contract surface for an Extism wrapper. It does not
+load a WASM runtime locally; it emits the same metadata/execute payload shape the
+zeroclaw host can wrap, and execution delegates to glaw-host.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "lib"))
+from glaw_extism import dumps, handle_export
+
+
+def cmd_metadata(args: argparse.Namespace) -> int:
+    data = handle_export("tool_metadata")
+    print(dumps(data) if args.json else f"GLAW Extism metadata: {data['tool_count']} tools")
+    return 0
+
+
+def cmd_execute(args: argparse.Namespace) -> int:
+    try:
+        payload = json.loads(args.payload)
+    except json.JSONDecodeError as exc:
+        print(dumps({"status": "blocked", "reason": f"invalid payload JSON: {exc}"}))
+        return 2
+    data = handle_export("execute", payload)
+    print(dumps(data) if args.json else data.get("stdout", dumps(data)))
+    return 0 if data.get("status") == "pass" else 1
+
+
+def main(argv: list[str]) -> int:
+    ap = argparse.ArgumentParser(prog="glaw-extism")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    p = sub.add_parser("tool_metadata")
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_metadata)
+    p = sub.add_parser("execute")
+    p.add_argument("--payload", required=True)
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_execute)
+    args = ap.parse_args(argv)
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))

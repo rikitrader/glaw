@@ -122,6 +122,11 @@ MCP exposure uses `bin/glaw-mcp`, which intentionally exposes only `glaw_manifes
 `glaw_status`, and `glaw_execute`. The MCP bridge delegates execution to `glaw-host`; it never
 offers a raw shell tool.
 
+zeroclaw/Extism exposure uses `bin/glaw-extism`, a deterministic source-only contract shim for
+the `tool_metadata` and `execute` exports. It delegates execution to `glaw-host`, declares raw
+shell and hardware permissions denied, and preserves the same conscience/RBAC boundary a native
+WASM wrapper must enforce.
+
 Golden-profile invariant: for every executable workflow profile, a known-good matter must be able
 to clear all hard gates through `chief_approved`. Gate tightening is not complete unless it both
 blocks the bad state and preserves at least one source-backed all-clear path for the affected profile.

@@ -46,3 +46,24 @@ printf '%s\n' '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}' | bin
 
 GLAW prepares work product. It does not autonomously file, serve, sign, transmit, pay,
 charge, or bind anyone.
+
+## Extism / zeroclaw
+
+`bin/glaw-extism` is the source-only Extism contract shim. It exports the two host-facing
+operations zeroclaw expects:
+
+- `tool_metadata`
+- `execute`
+
+The local shim does not download or load an Extism runtime. It produces the deterministic
+metadata and execute payload shape a Rust/WASM wrapper can expose, and all execution still
+delegates to `glaw-host`.
+
+```bash
+bin/glaw-extism tool_metadata --json
+bin/glaw-extism execute --payload '{"tool":"glaw","args":["version"]}' --json
+```
+
+The metadata declares host permissions explicitly: raw shell denied, hardware denied, network
+controlled by the host runtime, filesystem limited to the repo and `$GLAW_HOME`, and human-seal
+acts limited to a named lawful human actor with RBAC `ADMIN`.
