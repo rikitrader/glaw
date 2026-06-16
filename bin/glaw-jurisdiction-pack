@@ -124,20 +124,24 @@ def validate(pack: dict[str, Any]) -> dict[str, Any]:
             "detail": "pack contains scaffold/placeholder text: " + ", ".join(sorted(set(placeholder_paths))[:8]),
         })
 
-    source_catalog = pack.get("source_catalog") or {}
-    if source_catalog and not isinstance(source_catalog, dict):
+    source_catalog = pack.get("source_catalog")
+    if "source_catalog" not in pack:
+        failures.append({"id": "source_catalog", "detail": "pack requires source_catalog keyed by each SRC-####"})
+        source_catalog = {}
+    elif not isinstance(source_catalog, dict):
         failures.append({"id": "source_catalog", "detail": "source_catalog must be an object keyed by SRC-####"})
         source_catalog = {}
     for src in source_ids:
         entry = source_catalog.get(src)
-        if source_catalog and not isinstance(entry, dict):
+        if not isinstance(entry, dict):
             failures.append({"id": "source_catalog", "detail": f"{src} missing source_catalog entry"})
             continue
-        if isinstance(entry, dict):
-            url = str(entry.get("url", "")).strip()
-            title = str(entry.get("title", "")).strip()
-            if not title or not url.startswith("https://"):
-                failures.append({"id": "source_catalog", "detail": f"{src} requires title and https URL"})
+        url = str(entry.get("url", "")).strip()
+        title = str(entry.get("title", "")).strip()
+        if not title or not url.startswith("https://"):
+            failures.append({"id": "source_catalog", "detail": f"{src} requires title and https URL"})
+    for src in sorted(set(source_catalog) - source_ids):
+        failures.append({"id": "source_catalog", "detail": f"{src} source_catalog entry is not listed in source_ids"})
 
     jurisdictions = pack.get("jurisdictions") or []
     if not isinstance(jurisdictions, list) or not jurisdictions:

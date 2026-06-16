@@ -62,6 +62,60 @@ PY
 rc2=$?
 ok "$([ "$rc" = 1 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "pack fails closed without sources or jurisdictions"
 
+python3 - "$ROOT/jurisdiction/packs/us-core.json" "$TMP/no-catalog.json" <<'PY'
+import json, sys
+data=json.load(open(sys.argv[1]))
+data.pop("source_catalog", None)
+json.dump(data, open(sys.argv[2], "w"))
+PY
+"$PACK" validate "$TMP/no-catalog.json" --json > "$TMP/no-catalog-report.json"; rc=$?
+python3 - "$TMP/no-catalog-report.json" <<'PY'
+import json, sys
+data=json.load(open(sys.argv[1]))
+ok=data.get("status") == "fail" and any(row.get("id") == "source_catalog" for row in data.get("failures", []))
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 1 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "pack fails when source_catalog is missing"
+
+python3 - "$ROOT/jurisdiction/packs/us-core.json" "$TMP/missing-catalog-entry.json" <<'PY'
+import json, sys
+data=json.load(open(sys.argv[1]))
+data["source_catalog"].pop(data["source_ids"][0])
+json.dump(data, open(sys.argv[2], "w"))
+PY
+"$PACK" validate "$TMP/missing-catalog-entry.json" --json > "$TMP/missing-catalog-entry-report.json"; rc=$?
+python3 - "$TMP/missing-catalog-entry-report.json" <<'PY'
+import json, sys
+data=json.load(open(sys.argv[1]))
+ok=(
+    data.get("status") == "fail"
+    and any(row.get("id") == "source_catalog" and "missing source_catalog entry" in row.get("detail", "") for row in data.get("failures", []))
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 1 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "pack fails when a cited source lacks catalog metadata"
+
+python3 - "$ROOT/jurisdiction/packs/us-core.json" "$TMP/orphan-catalog-entry.json" <<'PY'
+import json, sys
+data=json.load(open(sys.argv[1]))
+data["source_catalog"]["SRC-9999"]={"title":"orphan source","url":"https://example.com/orphan"}
+json.dump(data, open(sys.argv[2], "w"))
+PY
+"$PACK" validate "$TMP/orphan-catalog-entry.json" --json > "$TMP/orphan-catalog-entry-report.json"; rc=$?
+python3 - "$TMP/orphan-catalog-entry-report.json" <<'PY'
+import json, sys
+data=json.load(open(sys.argv[1]))
+ok=(
+    data.get("status") == "fail"
+    and any(row.get("id") == "source_catalog" and "not listed in source_ids" in row.get("detail", "") for row in data.get("failures", []))
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 1 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "pack fails when source_catalog has orphan entries"
+
 python3 - "$ROOT/jurisdiction/packs/us-core.json" "$TMP/missing-lens.json" <<'PY'
 import json, sys
 data=json.load(open(sys.argv[1]))
