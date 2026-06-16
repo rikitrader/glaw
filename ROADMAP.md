@@ -227,14 +227,14 @@ The more autonomous GLAW gets, the more these bind. They are the organism's cons
 
 | Area | Current shipped state | Residual work | Phase |
 |---|---|---|---|
-| **Autonomic loop** | `glaw-loop` routes fail-closed, records maker/checker decisions, latches non-convergence escalations, respects Oversight halt, and emits self-routing compliance failures | richer matter-specific convergence fixtures and more tabletop scenarios | 2–6 |
+| **Autonomic loop** | `glaw-loop` routes fail-closed, records maker/checker decisions, latches non-convergence escalations, respects Oversight halt, emits self-routing compliance failures, and is covered by accounting/tax/SEC/PCAOB tabletop sandbox scenarios | richer matter-specific convergence fixtures across more specialist seats | 2–6 |
 | **Cross-matter memory** | `glaw-learnings` is a queryable source-linked long-term store with reflected knowledge rules and isolated `$GLAW_HOME` tests | retrieval quality evaluation and matter-type weighting | 2–6 |
 | **Host embedding** | `glaw-host`, `glaw-mcp`, and `glaw-extism` expose guarded argv-only execution with conscience and RBAC boundaries | hosted/multi-operator identity beyond local role assertion | 3–6 |
 | **Verifiable law** | citation corpus capture rejects off-allowlist URLs, treats pasted text as untrusted, supports allowlisted fetch and authenticated official copies, and gates citation typology + lexical groundedness | deeper authoritative corpus integrations and semantic authority checking beyond the lexical floor | 4–6 |
 | **Public-law branches** | `/glaw-constitutional`, `/glaw-legislative`, `/glaw-judicial`, and `/glaw-admin-law` ship reference checklists, model templates, and doctor-enforced substance tests | additional jurisdiction-specific branch playbooks and model outputs | 4–6 |
 | **Automated tests** | doctor + hard gates + per-profile golden matters + sandbox fault simulations + tax wrapper golden/coverage manifest | more golden-output tests per specialist seat and scenario diversity | 2–6 |
 | **Filing connectivity** | filing tools remain human-sealed; IRS/EFW2/packet scaffolds are gated and kill-switch aware | real transmitter credentials and EDGAR/court e-file integrations under human seal | 4–6 |
-| **Oversight tooling** | `/glaw-oversight-board` + `bin/glaw-oversight` provide kill-switch, source-backed escalation ledger, RBAC ADMIN Board decisions, and sandbox halt fixtures | standing Oversight Board policy packs and deeper tabletop simulations | 6 |
+| **Oversight tooling** | `/glaw-oversight-board` + `bin/glaw-oversight` provide kill-switch, source-backed escalation ledger, RBAC ADMIN Board decisions, sandbox halt fixtures, and fail-closed Fortune 500 accounting/SEC tabletop simulations | standing Oversight Board policy packs and additional industry-specific tabletop simulations | 6 |
 | **Jurisdiction discipline** | `/glaw-jurisdiction` + `bin/glaw-jurisdiction-pack` enforce source-backed matrices; `jurisdiction/packs/us-core.json` seeds DE, FL, TX, NY, and federal corporate filing authority | more state/country packs and local-counsel playbooks | 4–6 |
 
 ---

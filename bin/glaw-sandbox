@@ -227,73 +227,7 @@ def simulate_profile_map() -> dict:
 def simulate_government_adversary_routing() -> dict:
     with tempfile.TemporaryDirectory(prefix="glaw-sandbox-") as tmp:
         home = Path(tmp)
-        slug = make_matter(home, "Sandbox Government Adversary")
-        matter = home / "matters" / slug
-        evidence = matter / "evidence"
-        evidence.mkdir(parents=True, exist_ok=True)
-        (evidence / "source.txt").write_text("SEC/IRS source packet\n", encoding="utf-8")
-        (matter / ".stage").write_text("draft\n", encoding="utf-8")
-        (matter / "intake.json").write_text(
-            json.dumps(
-                {
-                    "status": "complete",
-                    "universal": {
-                        "workflow_track": "accounting-tax",
-                        "matter_name": "Sandbox Government Adversary",
-                        "client_names": ["Example Client LLC"],
-                        "parties": ["Example Client LLC", "Example Bank"],
-                        "jurisdiction": "US federal / Delaware",
-                        "goal": "Prepare source-backed accounting-tax packet and government-adversary review.",
-                        "source_documents": ["SRC-0001 SEC/IRS source packet"],
-                        "deadlines": ["2026-09-15 tax extension deadline"],
-                        "facts_timeline": ["SRC-0001 bank activity imported for adversarial testing"],
-                        "open_questions": ["SRC-0001 identify missing government-adversary review"],
-                        "conflicts_parties": ["Example Client LLC", "Example Bank"],
-                        "authorized_scope": "Accounting-tax analysis and workpaper preparation only.",
-                    },
-                    "track_specific": {
-                        "bank_statement_sources": ["SRC-0001 evidence/source.txt"],
-                        "tax_years": ["2026"],
-                        "entity_tax_type": "partnership",
-                        "books_status": "open pending reconciliation",
-                        "irs_forms_needed": ["Form 1065"],
-                    },
-                    "review": {
-                        "completed_by": "Morgan Rivera",
-                    },
-                }
-            ),
-            encoding="utf-8",
-        )
-        (matter / "ethics.json").write_text(
-            json.dumps(
-                {
-                    "status": "complete",
-                    "conflicts_status": "cleared",
-                    "conflicts_source": "SRC-0001 conflicts checked against provided parties",
-                    "engagement": {
-                        "status": "drafted",
-                        "scope": "Accounting-tax analysis and workpaper preparation only.",
-                        "responsible_professional": "Alexandra Chen",
-                        "source": "SRC-0001 engagement authority and source fixture",
-                    },
-                }
-            ),
-            encoding="utf-8",
-        )
-        (matter / "timeline.jsonl").write_text(
-            "\n".join(
-                [
-                    '{"event":"intake_complete"}',
-                    '{"event":"conflicts_cleared"}',
-                    '{"event":"citations_verified"}',
-                    '{"event":"adversarial_done"}',
-                    '{"event":"red_flags_clear"}',
-                ]
-            )
-            + "\n",
-            encoding="utf-8",
-        )
+        slug, matter = ready_matter(home, "Sandbox Government Adversary", "accounting-tax")
         (matter / "final_packet.json").write_text(
             json.dumps(
                 {
@@ -323,6 +257,183 @@ def simulate_government_adversary_routing() -> dict:
         return scenario("government-adversary-routing", checks, home=home)
 
 
+def ready_matter(home: Path, title: str, track: str) -> tuple[str, Path]:
+    slug = make_matter(home, title)
+    matter = home / "matters" / slug
+    evidence = matter / "evidence"
+    evidence.mkdir(parents=True, exist_ok=True)
+    (evidence / "source.txt").write_text("SEC/IRS/source-controlled accounting packet\n", encoding="utf-8")
+    (matter / ".stage").write_text("draft\n", encoding="utf-8")
+    if track == "sec-reporting":
+        track_specific = {
+            "filer_status": "accelerated filer",
+            "period_end": "2026-06-30",
+            "forms_needed": ["Form 10-K", "Form 8-K"],
+            "audited_financial_sources": ["SRC-0001 evidence/source.txt"],
+            "xbrl_scope": "financial statements and notes",
+        }
+    elif track == "accounting-tax":
+        track_specific = {
+            "bank_statement_sources": ["SRC-0001 evidence/source.txt"],
+            "tax_years": ["2026"],
+            "entity_tax_type": "partnership",
+            "books_status": "open pending reconciliation",
+            "irs_forms_needed": ["Form 1065"],
+        }
+    else:
+        track_specific = {}
+    (matter / "intake.json").write_text(
+        json.dumps(
+            {
+                "status": "complete",
+                "universal": {
+                    "workflow_track": track,
+                    "matter_name": title,
+                    "client_names": ["Example Client LLC"],
+                    "parties": ["Example Client LLC", "Example Bank", "SEC", "IRS"],
+                    "jurisdiction": "US federal / Delaware",
+                    "goal": "Prepare source-backed accounting, tax, SEC, and government-adversary review package.",
+                    "source_documents": ["SRC-0001 SEC/IRS/source-controlled accounting packet"],
+                    "deadlines": ["2026-09-15 tax extension deadline"],
+                    "facts_timeline": ["SRC-0001 bank activity and financial statements imported for adversarial testing"],
+                    "open_questions": ["SRC-0001 identify blocked final-packet control rows"],
+                    "conflicts_parties": ["Example Client LLC", "Example Bank", "SEC", "IRS"],
+                    "authorized_scope": "Analysis and workpaper preparation only; no filing or signature authority.",
+                },
+                "track_specific": track_specific,
+                "review": {
+                    "completed_by": "Morgan Rivera",
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    (matter / "ethics.json").write_text(
+        json.dumps(
+            {
+                "status": "complete",
+                "conflicts_status": "cleared",
+                "conflicts_source": "SRC-0001 conflicts checked against provided parties",
+                "engagement": {
+                    "status": "drafted",
+                    "scope": "Analysis and workpaper preparation only; no filing or signature authority.",
+                    "responsible_professional": "Alexandra Chen",
+                    "source": "SRC-0001 engagement authority and source fixture",
+                },
+            }
+        ),
+        encoding="utf-8",
+    )
+    (matter / "timeline.jsonl").write_text(
+        "\n".join(
+            [
+                '{"event":"intake_complete"}',
+                '{"event":"conflicts_cleared"}',
+                '{"event":"citations_verified"}',
+                '{"event":"adversarial_done"}',
+                '{"event":"red_flags_clear"}',
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+    return slug, matter
+
+
+def simulate_fortune500_accounting_priority() -> dict:
+    with tempfile.TemporaryDirectory(prefix="glaw-sandbox-") as tmp:
+        home = Path(tmp)
+        slug, matter = ready_matter(home, "Sandbox Fortune 500 Accounting", "accounting-tax")
+        (matter / "final_packet.json").write_text(
+            json.dumps(
+                {
+                    "status": "blocked",
+                    "compliance_manifest": [
+                        {
+                            "id": "accounting-control",
+                            "owner": "glaw-accounting",
+                            "status": "fail",
+                            "missing": ["bank_reconciliation", "tax_tie_out", "source_subledger_hashes"],
+                            "next_command": "bin/glaw-accounting-control",
+                            "required_fix": "Rebuild books from source bank data, rerun bank reconciliation, and tie tax return numbers to the ledger.",
+                        },
+                        {
+                            "id": "government-adversary",
+                            "owner": "glaw-adversarial",
+                            "status": "fail",
+                            "missing": ["irs-examiner", "sec-staff-reviewer", "pcaob-audit-reviewer"],
+                            "next_command": "bin/glaw-adversarial status --profile auto",
+                            "required_fix": "Run IRS, SEC, and PCAOB adversarial lenses until each source-cited attack survives or routes a red flag.",
+                        },
+                        {
+                            "id": "citation-grounding",
+                            "owner": "glaw-legal-research",
+                            "status": "fail",
+                            "missing": ["trusted_corpus_match"],
+                            "next_command": "bin/glaw-citation-gate status",
+                            "required_fix": "Capture authority from an allowlisted corpus and rerun groundedness before relying on the legal proposition.",
+                        },
+                    ],
+                }
+            ),
+            encoding="utf-8",
+        )
+        result = run_cmd([str(BIN / "glaw-loop"), "status", "--matter", slug, "--json"], home=home)
+        payload = parse_json(result)
+        action_plan = payload.get("compliance_action_plan") or []
+        plan_ids = {row.get("id") for row in action_plan}
+        accounting = next((row for row in action_plan if row.get("id") == "accounting-control"), {})
+        checks = [
+            check("loop_status_passes", result["returncode"] == 0, "loop status should emit a routing decision"),
+            check("accounting_controls_are_first_owner", payload.get("owner") == "accounting-control", "accounting controls must be the first Fortune 500 blocker"),
+            check("accounting_command_is_explicit", payload.get("next_command") == "bin/glaw-accounting-control", "next command must route to accounting-control"),
+            check("all_failed_rows_in_action_plan", {"accounting-control", "government-adversary", "citation-grounding"} <= plan_ids, "action plan must preserve every failed row"),
+            check("required_fix_survives", "bank reconciliation" in accounting.get("required_fix", ""), "accounting action plan must preserve the required fix"),
+        ]
+        return scenario("fortune500-accounting-priority", checks, home=home)
+
+
+def simulate_sec_pcaob_tabletop() -> dict:
+    with tempfile.TemporaryDirectory(prefix="glaw-sandbox-") as tmp:
+        home = Path(tmp)
+        slug, matter = ready_matter(home, "Sandbox SEC PCAOB Tabletop", "sec-reporting")
+        (matter / "final_packet.json").write_text(
+            json.dumps(
+                {
+                    "status": "blocked",
+                    "government_adversary_manifest": [
+                        {"lens": "sec-staff-reviewer", "status": "pass", "evidence": "SRC-0001 disclosure controls reviewed"},
+                        {"lens": "pcaob-audit-reviewer", "status": "fail", "evidence": "SRC-0001 audit tie-out missing"},
+                    ],
+                    "compliance_manifest": [
+                        {
+                            "id": "government-adversary",
+                            "owner": "glaw-adversarial",
+                            "status": "fail",
+                            "missing": ["pcaob-audit-reviewer"],
+                            "next_command": "bin/glaw-adversarial status --profile auto",
+                            "required_fix": "Resolve the PCAOB audit-reviewer attack against the SEC reporting packet before Chief approval.",
+                        }
+                    ],
+                }
+            ),
+            encoding="utf-8",
+        )
+        result = run_cmd([str(BIN / "glaw-loop"), "status", "--matter", slug, "--json"], home=home)
+        payload = parse_json(result)
+        lenses = set(payload.get("adversarial_required") or [])
+        plan = payload.get("compliance_action_plan") or []
+        first = plan[0] if plan else {}
+        checks = [
+            check("loop_status_passes", result["returncode"] == 0, "loop status should emit a routing decision"),
+            check("sec_profile_selected", payload.get("workflow_profile") == "sec-reporting", "SEC reporting intake must select the SEC profile"),
+            check("sec_and_pcaob_lenses_required", {"sec-staff-reviewer", "pcaob-audit-reviewer"} <= lenses, "SEC/PCAOB adversaries must be required"),
+            check("routes_failed_lens_to_red_team", payload.get("owner") == "adversarial" and payload.get("next_command") == "bin/glaw-adversarial status --profile auto", "failed PCAOB lens must route to adversarial gate"),
+            check("pcaob_fix_is_preserved", "PCAOB" in first.get("required_fix", ""), "action plan must preserve PCAOB-specific fix text"),
+        ]
+        return scenario("sec-pcaob-tabletop", checks, home=home)
+
+
 SCENARIOS: dict[str, tuple[str, Callable[[], dict]]] = {
     "conscience-human-act": ("Conscience blocks autonomous human-only requested acts.", simulate_conscience_human_act),
     "oversight-kill-switch": ("Oversight halt stops glaw-loop and routes to the Board.", simulate_oversight_kill_switch),
@@ -330,6 +441,8 @@ SCENARIOS: dict[str, tuple[str, Callable[[], dict]]] = {
     "jurisdiction-pack-fail": ("Jurisdiction pack gate fails closed on unsupported matrices.", simulate_jurisdiction_pack_fail),
     "profile-map": ("Profiles resolve council/adversarial reviewers to skills.", simulate_profile_map),
     "government-adversary-routing": ("Loop routes final-packet government-adversary failures back to RED team.", simulate_government_adversary_routing),
+    "fortune500-accounting-priority": ("Fortune 500 accounting/tax/SEC packet routes bank-rec and tax tie-out controls before downstream legal sign-off.", simulate_fortune500_accounting_priority),
+    "sec-pcaob-tabletop": ("SEC reporting tabletop routes failed PCAOB/SEC adversarial lenses back to the RED team.", simulate_sec_pcaob_tabletop),
 }
 
 

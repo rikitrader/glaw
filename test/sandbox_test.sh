@@ -21,6 +21,8 @@ required={
     "jurisdiction-pack-fail",
     "profile-map",
     "government-adversary-routing",
+    "fortune500-accounting-priority",
+    "sec-pcaob-tabletop",
 }
 sys.exit(0 if data.get("status") == "pass" and required <= names else 1)
 PY
@@ -42,6 +44,40 @@ sys.exit(0 if ok else 1)
 PY
 rc2=$?
 ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "sandbox full run passes fail-closed fixtures"
+
+"$SANDBOX" run --scenario fortune500-accounting-priority --json > "$TMP/accounting.json"; rc=$?
+python3 - "$TMP/accounting.json" <<'PY'
+import json, sys
+data=json.load(open(sys.argv[1]))
+scenario=data.get("scenarios", [{}])[0]
+checks={item.get("id"): item.get("status") for item in scenario.get("checks", [])}
+ok=(
+    data.get("status") == "pass"
+    and scenario.get("name") == "fortune500-accounting-priority"
+    and checks.get("accounting_controls_are_first_owner") == "pass"
+    and checks.get("all_failed_rows_in_action_plan") == "pass"
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "sandbox requires Fortune 500 accounting-control priority"
+
+"$SANDBOX" run --scenario sec-pcaob-tabletop --json > "$TMP/sec.json"; rc=$?
+python3 - "$TMP/sec.json" <<'PY'
+import json, sys
+data=json.load(open(sys.argv[1]))
+scenario=data.get("scenarios", [{}])[0]
+checks={item.get("id"): item.get("status") for item in scenario.get("checks", [])}
+ok=(
+    data.get("status") == "pass"
+    and scenario.get("name") == "sec-pcaob-tabletop"
+    and checks.get("sec_and_pcaob_lenses_required") == "pass"
+    and checks.get("routes_failed_lens_to_red_team") == "pass"
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "sandbox requires SEC/PCAOB adversarial tabletop routing"
 
 rm -rf "$TMP"
 echo
