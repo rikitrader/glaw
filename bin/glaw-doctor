@@ -138,6 +138,7 @@ declare -a TOOLS=(
   "glaw|version" "glaw-bureau-score|weights" "glaw-tax-report|types"
   "glaw-irs-file|scaffold 1099-NEC" "glaw-court-scrape|--list __none__"
   "glaw-compliance-audit|" "glaw-doc-extract|" "glaw-exempt-org|" "glaw-assemble|"
+  "glaw-accounting-control|"
   "glaw-contract-score|scaffold" "glaw-publish|" "glaw-redline|" "glaw-redline-docx|" "glaw-chief-decision|"
   "glaw-review-chain|" "glaw-adversarial|" "glaw-ethics|" "glaw-upl-check|" "glaw-citation-gate|" "glaw-docket-gate|"
 )

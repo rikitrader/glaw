@@ -230,6 +230,9 @@ zero book-only/bank-only rows and zero unreconciled difference, and for tax prof
 `tax_tieout` block with provision and internal consistency both true. `final_packet.json` hashes
 that control artifact, and `glaw-gate check file` rejects later edits until the packet and Chief
 approval are rebuilt.
+Use the generator instead of hand-editing the control file:
+`bin/glaw-accounting-control --source "SRC-0001 bank source package" --ledger ledger.json --bank-rec bank_rec.json --profile accounting`.
+For tax packets, add `--profile tax --tax-tieout tax_tieout.json`.
 
 The bookkeeping engine lives inside `lib/bookkeeping/glaw_engine` and uses in-repo compatibility shims for table, model, and XML behavior. Google Sheets input is read through the sheet CSV export URL with Python stdlib. PDF/OCR ingestion is repo-owned orchestration over local binaries (`pdftotext` or `opendataloader-pdf`; scans need `pdftoppm` + `tesseract`).
 

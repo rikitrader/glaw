@@ -19,6 +19,9 @@ SKIP_PARTS = {
     "_extracted",
     "decisions",
     "evidence",
+    "source_documents",
+    "sources",
+    "workpapers",
 }
 
 

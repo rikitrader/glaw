@@ -17,6 +17,7 @@ ADVERSARIAL="$ROOT/bin/glaw-adversarial"
 ETHICS="$ROOT/bin/glaw-ethics"
 CITES="$ROOT/bin/glaw-citation-gate"
 DOCKET="$ROOT/bin/glaw-docket-gate"
+CONTROL="$ROOT/bin/glaw-accounting-control"
 
 "$GLAW" matter new "Lifecycle Accounting" >/dev/null
 SLUG="lifecycle-accounting"
@@ -223,26 +224,41 @@ done
 "$ADVERSARIAL" complete --profile auto >/dev/null
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before accounting control manifest"
-cat > "$TMP/matters/$SLUG/accounting_control.json" <<'JSON'
+mkdir -p "$TMP/matters/$SLUG/workpapers"
+cat > "$TMP/matters/$SLUG/workpapers/ledger.json" <<'JSON'
 {
-  "schema_version": 1,
-  "status": "pass",
-  "source": "SRC-0001 bank statement, ledger, bank reconciliation, and tax tie-out source package",
-  "books_doctor": {
-    "status": "pass",
-    "artifact": "workpapers/books-doctor.txt",
-    "require_rec": true
-  },
-  "bank_reconciliation": {
-    "status": "pass",
-    "artifact": "workpapers/bank-rec.json",
-    "reconciled": true,
-    "unreconciled_difference": "0",
-    "book_only_count": 0,
-    "bank_only_count": 0
-  }
+  "rows": [
+    {
+      "booking_date": "2026-01-01",
+      "description": "capital deposit",
+      "normalized_description": "CAPITAL DEPOSIT",
+      "amount": "100.00",
+      "currency": "USD",
+      "category": "Equity:Owner:Contributions",
+      "transaction_hash": "fixture-001",
+      "source_method": "deterministic"
+    }
+  ],
+  "audit": [
+    {
+      "source": "evidence/bank.csv",
+      "balance_status": "verified"
+    }
+  ]
 }
 JSON
+cat > "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" <<'JSON'
+{
+  "matched": 1,
+  "book_only": [],
+  "bank_only": [],
+  "sum_book": "100.00",
+  "sum_bank": "100.00",
+  "unreconciled_difference": "0",
+  "reconciled": true
+}
+JSON
+"$CONTROL" --matter "$SLUG" --profile accounting --source "SRC-0001 bank statement, ledger, and bank reconciliation source package" --ledger "$TMP/matters/$SLUG/workpapers/ledger.json" --bank-rec "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" >/dev/null
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && [ -f "$TMP/matters/$SLUG/final_packet.json" ] && echo 1 || echo 0)" "final packet ready after council and red flags clear"
 python3 - "$TMP/matters/$SLUG/final_packet.json" <<'PY'

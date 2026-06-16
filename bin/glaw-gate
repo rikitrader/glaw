@@ -245,6 +245,7 @@ TEXT_DELIVERABLE_SKIP_PARTS = {
     "evidence",
     "source_documents",
     "sources",
+    "workpapers",
 }
 SOURCE_EVIDENCE_PARTS = {
     "evidence",
