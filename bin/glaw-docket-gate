@@ -186,6 +186,9 @@ def cmd_no_deadlines(args: argparse.Namespace) -> int:
     if not args.rationale.strip():
         print("ERROR: --rationale is required", file=sys.stderr)
         return 2
+    if not args.reviewer.strip():
+        print("ERROR: --reviewer is required", file=sys.stderr)
+        return 2
     if not SOURCE_ID_RE.search(args.source):
         print("ERROR: --source must cite a source evidence id such as SRC-0001", file=sys.stderr)
         return 2

@@ -354,6 +354,8 @@ mkdir -p "$TMP/matters/$ND_SLUG/evidence"
 printf 'source support\n' > "$TMP/matters/$ND_SLUG/evidence/source.txt"
 "$DOCKET" no-deadlines --source "SRC-9999 stale source" --rationale "no filing deadlines in scoped review" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "no-deadlines blocked by non-current source evidence id"
+"$DOCKET" no-deadlines --source "SRC-0001 current source" --rationale "no filing deadlines in scoped review" --reviewer "" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "no-deadlines blocked without accountable reviewer"
 "$DOCKET" no-deadlines --source "SRC-0001 current source" --rationale "no filing deadlines in scoped review" >/dev/null
 "$DOCKET" complete >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "no-deadlines completes with current source evidence id"
