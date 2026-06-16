@@ -169,16 +169,16 @@ data = json.load(open(sys.argv[1], encoding="utf-8"))
 failures = data.get("compliance_failures") or []
 ok = (
     data.get("next_gate") == "file"
-    and data.get("owner") == "compliance"
-    and data.get("next_command") == "bin/glaw-final-packet build --profile auto"
-    and "compliance manifest is blocked" in data.get("reason", "")
+    and data.get("owner") == "accounting-control"
+    and data.get("next_command") == "bin/glaw-accounting-control"
+    and "accounting controls are blocked" in data.get("reason", "")
     and failures
     and failures[0].get("id") == "accounting-control"
 )
 sys.exit(0 if ok else 1)
 PY
 rc2=$?
-ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "loop routes failed compliance manifest to Chief Compliance Officer"
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "loop routes failed accounting-control manifest to accounting-control owner"
 
 "$OVERSIGHT" halt --by "QA reviewer" --reason "test halt" >/dev/null
 "$LOOP" status --json > "$TMP/loop-halted.json"; rc=$?

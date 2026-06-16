@@ -292,8 +292,13 @@ the seal stays human as a legal and ethics constraint.
   regulator, court, enforcement, or litigation attack lens.
 - ✅ **P2-G9 · Compliance-manifest routing**: `glaw-loop` now detects blocked
   `final_packet.json` compliance manifests before treating the matter as generic
-  final-packet work, routes the matter to `/glaw-compliance`, and emits the failing
-  compliance rows in `compliance_failures` for Codex/Claude/orchestrator follow-up.
+  final-packet work and emits the failing compliance rows in `compliance_failures`
+  for Codex/Claude/orchestrator follow-up.
+- ✅ **P2-G10 · Typed manifest-owner routing**: `glaw-loop` now routes failed compliance
+  rows to the department that can cure them: accounting-control failures to
+  `glaw-accounting-control`, government-adversary failures to `/glaw-adversarial`,
+  citation-grounding failures to `/glaw-legal-research`, red-flag failures to
+  `/glaw-red-flags`, and general compliance failures to `/glaw-compliance`.
 
 ### Phase 3 (Harness Integration) — add
 - ✅ **P3-G1 · Policy-as-fail-closed-CI-gate + observability**: `bin/glaw-policy check` now

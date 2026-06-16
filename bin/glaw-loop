@@ -124,6 +124,41 @@ def compliance_failure_summary(failures: list[dict]) -> str:
     return ", ".join(labels) + suffix
 
 
+def compliance_failure_route(failures: list[dict]) -> tuple[str, str, str]:
+    row_ids = {str(row.get("id") or "").strip().lower() for row in failures}
+    owners = {str(row.get("owner") or "").strip().lower() for row in failures}
+    summary = compliance_failure_summary(failures)
+    if "accounting-control" in row_ids or "glaw-accounting" in owners:
+        return (
+            "accounting-control",
+            "bin/glaw-accounting-control",
+            "final packet accounting controls are blocked: " + summary,
+        )
+    if "government-adversary" in row_ids or "glaw-adversarial" in owners:
+        return (
+            "adversarial",
+            "bin/glaw-adversarial status --profile auto",
+            "final packet government-adversary manifest is blocked: " + summary,
+        )
+    if "citation-grounding" in row_ids or "glaw-legal-research" in owners:
+        return (
+            "legal-research",
+            "bin/glaw-citation-gate status",
+            "final packet citation grounding is blocked: " + summary,
+        )
+    if "red-flags" in row_ids or "glaw-red-flags" in owners:
+        return (
+            "red-flags",
+            "bin/glaw-red-flags status",
+            "final packet red-flag controls are blocked: " + summary,
+        )
+    return (
+        "compliance",
+        "bin/glaw-final-packet build --profile auto",
+        "final packet compliance manifest is blocked: " + summary,
+    )
+
+
 def decision_signature(decision: dict) -> str:
     return "|".join([
         str(decision.get("stage", "")),
@@ -332,13 +367,9 @@ def route_from_state(d: Path) -> dict:
         elif not has_event(rows, "final_packet_ready"):
             failures = final_packet_compliance_failures(d)
             if failures:
-                owner = "compliance"
-                command = "bin/glaw-final-packet build --profile auto"
+                owner, command, reason = compliance_failure_route(failures)
                 decision["compliance_failures"] = failures
-                decision["reason"] = (
-                    "final packet compliance manifest is blocked: "
-                    + compliance_failure_summary(failures)
-                )
+                decision["reason"] = reason
             else:
                 owner = "final-packet"
                 command = "bin/glaw-final-packet build --profile auto"
