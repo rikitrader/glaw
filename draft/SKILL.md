@@ -1,6 +1,6 @@
 ---
 name: glaw-draft
-version: 1.0.0
+version: 1.1.0
 description: "GLAW pipeline stage 4 — the documents. Corp-build: certificate/articles of incorporation, bylaws or operating agreement, organizational board/member consents, founder agreements + IP assignment, equity docs (SAFE / stock purchase / option plan), and for offerings the PPM + subscription agreement + Form D draft. Litigation: the complaint or answer, motions, discovery requests, and demand letters. Every drafted document carries the UPL footer; all citations defer to /glaw-legal-research. Use after the structure memo, or when asked to 'draft the documents', 'draft the complaint', 'draft the operating agreement', 'draft the PPM', 'write the bylaws', 'draft a demand letter', 'prepare the formation docs'."
 allowed-tools:
   - Skill

@@ -543,6 +543,25 @@ for t in $TOKENS; do
 done
 [ "$ref" = 0 ] && ok "every glaw-* reference resolves ($(echo "$TOKENS" | grep -c .) refs, 0 ignored)"
 
+# 3b-2. Non-seat token allowlist must exist and only name real backticked roster
+#       tokens that are intentionally not vendorable skills.
+nonseat=0
+NONSEAT="$GLAW/seats/.nonseat-tokens"
+if [ ! -f "$NONSEAT" ]; then
+  bad "seats/.nonseat-tokens missing (required allowlist for non-vendored roster tokens)"
+  nonseat=$((nonseat+1))
+else
+  while IFS= read -r token; do
+    token="$(printf '%s' "$token" | sed -E 's/[[:space:]]+#.*$//; s/^[[:space:]]+//; s/[[:space:]]+$//')"
+    [ -z "$token" ] && continue
+    if ! grep -RInF "\`$token\`" "$ROSTER" "$GLAW/SKILL.md" "$GLAW"/*/SKILL.md "$GLAW/docs" "$GLAW/README.md" 2>/dev/null | grep -q .; then
+      bad "seats/.nonseat-tokens contains unreferenced token: $token"
+      nonseat=$((nonseat+1))
+    fi
+  done < "$NONSEAT"
+fi
+[ "$nonseat" = 0 ] && ok "non-seat token allowlist present and referenced"
+
 # 3c. lib/ paths referenced -> exist
 dlib=0
 for r in $(grep -oE 'lib/[a-zA-Z0-9._/-]+' "$ROSTER" 2>/dev/null | sort -u); do

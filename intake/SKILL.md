@@ -1,6 +1,6 @@
 ---
 name: glaw-intake
-version: 1.0.0
+version: 1.1.0
 description: "GLAW pipeline stage 1 — matter intake. Captures facts, parties, jurisdiction, and goal; classifies the matter (litigation vs corp-build); and hands off to the conflicts/engagement gate. Use at the start of any GLAW matter, or when asked to 'open a matter', 'take on a case', 'start intake'."
 allowed-tools:
   - Bash
