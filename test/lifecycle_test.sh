@@ -302,10 +302,16 @@ p = sys.argv[1]
 packet = json.load(open(p, encoding="utf-8"))
 items = packet.get("reviewer_identity_manifest") or []
 ok = bool(items) and all(item.get("status") == "pass" and item.get("sha256") for item in items)
+ok = ok and any(
+    item.get("kind") == "citation"
+    and item.get("name") == "legal-research"
+    and item.get("skill") == "glaw-legal-research"
+    for item in items
+)
 sys.exit(0 if ok else 1)
 PY
 rc=$?
-ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "final packet records reviewer identity manifest"
+ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "final packet records reviewer identity manifest including citation verifier"
 
 cp "$TMP/matters/$SLUG/draft-report.md" "$TMP/matters/$SLUG/draft-report.clean.md"
 printf '# Draft Report\n\nStale after packet.\n' > "$TMP/matters/$SLUG/draft-report.md"

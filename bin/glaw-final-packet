@@ -136,7 +136,8 @@ def skill_path_for(root: Path, command: str) -> Path | None:
 
 
 def reviewer_identity_manifest(profile: str, root: Path) -> list[dict]:
-    required = [("council", name) for name in COUNCIL_PROFILES.get(profile, ())]
+    required = [("citation", "legal-research")]
+    required.extend(("council", name) for name in COUNCIL_PROFILES.get(profile, ()))
     required.extend(("adversarial", name) for name in ADVERSARIAL_PROFILES.get(profile, ()))
     rows = []
     for kind, name in required:

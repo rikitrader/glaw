@@ -361,7 +361,8 @@ def source_evidence_manifest(paths):
 
 
 def reviewer_identity_manifest(profile):
-    required = [("council", name) for name in COUNCIL_PROFILES.get(profile, ())]
+    required = [("citation", "legal-research")]
+    required.extend(("council", name) for name in COUNCIL_PROFILES.get(profile, ()))
     required.extend(("adversarial", name) for name in ADVERSARIAL_PROFILES.get(profile, ()))
     rows = []
     for kind, name in required:

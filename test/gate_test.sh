@@ -486,7 +486,8 @@ packet_path = d / "final_packet.json"
 packet = json.loads(packet_path.read_text(encoding="utf-8"))
 profile = packet["workflow_profile"]
 packet["reviewer_identity_manifest"] = (
-    [row("council", name) for name in COUNCIL_PROFILES[profile]]
+    [row("citation", "legal-research")]
+    + [row("council", name) for name in COUNCIL_PROFILES[profile]]
     + [row("adversarial", name) for name in ADVERSARIAL_PROFILES[profile]]
 )
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
