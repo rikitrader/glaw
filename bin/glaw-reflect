@@ -9,7 +9,16 @@ Usage: glaw-reflect [--apply]   (default: dry-run preview; --apply writes synthe
 """
 import sys, os, json, re, datetime as dt
 
-STORE = os.path.expanduser("~/.glaw/learnings/learnings.jsonl")
+def store_path():
+    explicit = os.environ.get("GLAW_LEARNINGS_STORE", "").strip()
+    if explicit:
+        return os.path.expanduser(explicit)
+    home = os.environ.get("GLAW_HOME", "").strip()
+    if home:
+        return os.path.join(os.path.expanduser(home), "learnings", "learnings.jsonl")
+    return os.path.expanduser("~/.glaw/learnings/learnings.jsonl")
+
+STORE = store_path()
 
 # Theme map: error_class -> (theme, synthesized meta-rule). When >=2 learnings share a theme,
 # the engine promotes the theme to a standing knowledge rule.
@@ -53,6 +62,7 @@ def main():
         if len(hits) >= 2:
             synth.append({"type":"knowledge","scope":"firm","error_class":theme,
                           "synthesized_from":hits,"rule":rule,"confidence":9,
+                          "source_links":[{"label":"matter:glaw-learnings reflection","url":""}],
                           "ts":dt.datetime.now(dt.timezone.utc).isoformat()})
     print(f"Reflected over {len(items)} learnings in {len(by_class)} classes.")
     print(f"Synthesized {len(synth)} higher-level meta-rules:")

@@ -107,6 +107,11 @@ blocks the bad state and preserves at least one source-backed all-clear path for
 `test/golden_profile_test.sh` enforces this across every `COUNCIL_PROFILES`/`ADVERSARIAL_PROFILES`
 profile and proves each one can reach `chief_approved` and the `file` stage.
 
+Cross-matter memory is a source-linked long-term store. `bin/glaw-learnings add` refuses memories
+without `source_links`/`authority`; `query` and `preflight` do selective retrieval by matter,
+type, confidence, and keywords; `bin/glaw-reflect --apply` writes synthesized knowledge rules
+back to the same `$GLAW_HOME/learnings/learnings.jsonl` ledger.
+
 ## Human-authority gate
 
 Quality gates decide whether a packet is ready. They do not authorize human-only acts:

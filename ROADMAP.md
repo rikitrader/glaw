@@ -258,8 +258,9 @@ the seal stays human as a legal and ethics constraint.
 - ✅ **P2-G2 · Maker-checker discipline for `glaw-loop`**: `glaw-loop once` now records
   checked decisions in `loop_decisions.jsonl`, applies explicit acceptance criteria, enforces
   an iteration cap, and escalates to human oversight on non-convergence.
-- **P2-G3 · Cross-matter memory**: promote `glaw-reasoningbank` to a queryable long-term store
-  with selective retrieval and auditable source links.
+- ✅ **P2-G3 · Cross-matter memory**: `glaw-learnings` is now a queryable source-linked
+  long-term store with selective retrieval by query/matter/type, isolated `$GLAW_HOME` support,
+  and reflected knowledge rules written back to the same ledger.
 - **P2-G4 · Multi-point guardrails**: in autonomous mode, run conscience checks at tool-call and
   tool-response, not only the file gate — intermediate agents can introduce/propagate defects.
 
@@ -281,8 +282,7 @@ the seal stays human as a legal and ethics constraint.
   Relation-Preservation metrics with a full audit trail from each assertion back to source
   passages — composes with GLAW's existing SRC-#### + SHA-256 hashing.
 
-*Suggested build order: P2-G3 memory → P4-G2 citation typology →
-P4-G1 corpus → P3 host/observability.*
+*Suggested build order: P4-G2 citation typology → P4-G1 corpus → P3 host/observability.*
 
 ---
 
