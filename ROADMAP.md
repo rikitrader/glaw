@@ -227,7 +227,7 @@ The more autonomous GLAW gets, the more these bind. They are the organism's cons
 | **No constitutional/legislative/judicial seats** | firm-only | the Branches (`/glaw-constitutional` …) | 4 |
 | **Automated tests need broader golden coverage** | doctor + hard gates + per-profile golden matters | golden-output tests per seat + sandbox sim | 2–6 |
 | **Real filing connectivity is partial** | scaffolds (IRS/EFW2) | transmitter creds + EDGAR/court e-file (human-sealed) | 4–5 |
-| **No formal oversight tooling** | gates in prose | Oversight Board workflow + kill-switch + audit ledger | 6 |
+| **Formal oversight tooling is early** | `/glaw-oversight-board` + `bin/glaw-oversight` kill-switch/ledger | standing Oversight Board policy packs + sandbox simulations | 6 |
 | **Single-jurisdiction bias** | US-centric | jurisdiction packs (state, federal, international) | 4–5 |
 
 ---
@@ -270,6 +270,10 @@ the seal stays human as a legal and ethics constraint.
   `conscience_call_guard` before writing a routing decision. It blocks destructive shell calls,
   hand-logged reserved gate events, live filings or human-only acts without authority,
   unresolved placeholders, unsupported human-act claims, and high-stakes output without `SRC-####`.
+- ✅ **P2-G5 · Oversight Board kill-switch**: `/glaw-oversight-board` + `bin/glaw-oversight`
+  provide a global halt/resume state, source-backed escalation ledger, RBAC ADMIN Board
+  decisions, and `glaw-loop` now stops routing while the kill-switch is active. Non-converging
+  loop routes are written to the oversight ledger instead of living only in `loop_decisions.jsonl`.
 
 ### Phase 3 (Harness Integration) — add
 - ✅ **P3-G1 · Policy-as-fail-closed-CI-gate + observability**: `bin/glaw-policy check` now

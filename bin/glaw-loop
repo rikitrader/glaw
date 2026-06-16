@@ -21,6 +21,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "lib"))
 from glaw_authority import HUMAN_ONLY_ACTIONS, require_human_authority
+from glaw_oversight import escalate as oversight_escalate
+from glaw_oversight import status as oversight_status
 from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, profile_for_track
 
 
@@ -198,19 +200,47 @@ def apply_checker(decision: dict, checker: dict) -> dict:
         return decision
     failed_ids = {item["id"] for item in checker.get("failed", [])}
     if "iteration_cap" in failed_ids:
+        reason = (
+            "glaw-loop reached its iteration cap without convergence; "
+            "same route repeated "
+            f"{checker.get('prior_same_route_count')} time(s)"
+        )
         decision.update({
             "quality_state": "human_escalation_required",
             "next_gate": "oversight",
             "owner": "human-oversight-board",
-            "next_command": "human review required: resolve non-converging glaw-loop route before continuing",
-            "reason": (
-                "glaw-loop reached its iteration cap without convergence; "
-                "same route repeated "
-                f"{checker.get('prior_same_route_count')} time(s)"
-            ),
+            "next_command": "bin/glaw-oversight status",
+            "reason": reason,
         })
+        decision["oversight"] = oversight_escalate(matter=str(decision.get("matter", "")), reason=reason)
         decision["decision_signature"] = decision_signature(decision)
     return decision
+
+
+def halted_decision(d: Path) -> dict | None:
+    oversight = oversight_status(5)
+    state = oversight.get("state") or {}
+    if not state.get("halted"):
+        return None
+    track, profile = matter_profile(d)
+    stage = (d / ".stage").read_text(encoding="utf-8").strip() if (d / ".stage").exists() else "intake"
+    return {
+        "ts": now(),
+        "matter": d.name,
+        "stage": stage,
+        "workflow_track": track,
+        "workflow_profile": profile,
+        "quality_state": "human_escalation_required",
+        "next_gate": "oversight",
+        "owner": "human-oversight-board",
+        "next_command": "bin/glaw-oversight status",
+        "reason": f"kill-switch active: {state.get('halt_reason', 'halted by Oversight Board')}",
+        "council_required": list(COUNCIL_PROFILES.get(profile, ())),
+        "adversarial_required": list(ADVERSARIAL_PROFILES.get(profile, ())),
+        "human_only_actions": sorted(HUMAN_ONLY_ACTIONS),
+        "authority": "quality routing only; no filing/signing/service/payment/charge/live transmission",
+        "oversight": oversight,
+    }
 
 
 def route_from_state(d: Path) -> dict:
@@ -374,7 +404,7 @@ def main(argv: list[str]) -> int:
                 print(result)
             return 1
 
-    decision = route_from_state(d)
+    decision = halted_decision(d) or route_from_state(d)
     checker = checker_for(
         decision,
         d,

@@ -10,6 +10,7 @@ TMP="$(mktemp -d)"; export GLAW_HOME="$TMP"
 GLAW="$ROOT/bin/glaw"
 INTAKE="$ROOT/bin/glaw-intake"
 LOOP="$ROOT/bin/glaw-loop"
+OVERSIGHT="$ROOT/bin/glaw-oversight"
 
 "$GLAW" matter new "Loop Routing" >/dev/null
 "$INTAKE" set workflow_track accounting-tax >/dev/null
@@ -66,6 +67,8 @@ failed = {item.get("id") for item in checker.get("failed", [])}
 ok = (
     data.get("quality_state") == "human_escalation_required"
     and data.get("owner") == "human-oversight-board"
+    and data.get("next_command") == "bin/glaw-oversight status"
+    and (data.get("oversight") or {}).get("event") == "oversight_escalation"
     and "iteration_cap" in failed
     and len(ledger) == 2
 )
@@ -88,6 +91,25 @@ sys.exit(0 if ok else 1)
 PY
 rc2=$?
 ok "$([ "$rc" = 1 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "loop JSON reports authority-blocked transmit"
+
+"$OVERSIGHT" halt --by "QA reviewer" --reason "test halt" >/dev/null
+"$LOOP" status --json > "$TMP/loop-halted.json"; rc=$?
+python3 - "$TMP/loop-halted.json" <<'PY'
+import json
+import sys
+
+data = json.load(open(sys.argv[1], encoding="utf-8"))
+ok = (
+    data.get("quality_state") == "human_escalation_required"
+    and data.get("next_gate") == "oversight"
+    and data.get("owner") == "human-oversight-board"
+    and "kill-switch active" in data.get("reason", "")
+    and (data.get("oversight") or {}).get("status") == "halted"
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "loop stops routing while oversight kill-switch is active"
 
 rm -rf "$TMP"
 echo
