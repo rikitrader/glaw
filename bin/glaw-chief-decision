@@ -120,6 +120,11 @@ def validate_final_approval_source(d, final_packet):
     if not syntactic:
         print("FINAL APPROVAL BLOCKED: Chief rationale must cite a source evidence id such as SRC-0001.")
         return 1
+    stale = sorted(set(syntactic) - set(source_ids))
+    if stale:
+        print("FINAL APPROVAL BLOCKED: Chief rationale cites non-current final-packet source evidence id(s): " + ", ".join(stale))
+        print("Current source IDs: " + ", ".join(source_ids))
+        return 1
     if not cited:
         print("FINAL APPROVAL BLOCKED: Chief rationale cites no current final-packet source evidence id.")
         print("Current source IDs: " + ", ".join(source_ids))

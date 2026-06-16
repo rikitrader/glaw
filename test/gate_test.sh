@@ -610,6 +610,20 @@ python3 - "$M/decisions.jsonl" <<'PY'
 import hashlib, json, sys
 p = sys.argv[1]
 row = json.loads(open(p, encoding="utf-8").read())
+row["rationale"] = "SRC-0001 current source plus SRC-9999 stale source"
+row.pop("decision_hash", None)
+row["decision_hash"] = hashlib.sha256(
+    json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
+).hexdigest()
+open(p, "w", encoding="utf-8").write(json.dumps(row) + "\n")
+PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by Chief approval rationale with stale source evidence id"
+cp "$M/decisions.baseline.jsonl" "$M/decisions.jsonl"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after stale Chief rationale source restored"
+python3 - "$M/decisions.jsonl" <<'PY'
+import hashlib, json, sys
+p = sys.argv[1]
+row = json.loads(open(p, encoding="utf-8").read())
 row["decision"] = "DENY"
 row.pop("decision_hash", None)
 row["decision_hash"] = hashlib.sha256(

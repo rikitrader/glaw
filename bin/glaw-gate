@@ -1077,8 +1077,14 @@ approval_rationale_current_refs = [
     sid for sid in [item["id"] for item in current_source_manifest]
     if sid in approval_rationale
 ]
+approval_rationale_stale_refs = sorted(
+    set(approval_rationale_refs) - {item["id"] for item in current_source_manifest}
+)
 if not approval_rationale_refs:
     print("latest Chief approval rationale lacks source evidence id (SRC-####)")
+    sys.exit(1)
+if approval_rationale_stale_refs:
+    print("latest Chief approval rationale cites non-current source evidence id(s): " + ", ".join(approval_rationale_stale_refs))
     sys.exit(1)
 if not approval_rationale_current_refs:
     print("latest Chief approval rationale cites no current source evidence id")

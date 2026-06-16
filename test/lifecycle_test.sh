@@ -286,6 +286,8 @@ mv "$TMP/matters/$SLUG/draft-report.clean.md" "$TMP/matters/$SLUG/draft-report.m
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked without complete decision card"
 "$CHIEF" --chief "GLAW Chief Counsel" --score 95 --grade A --decision "PROCEED" --risks "none" --conditions "licensed signer final review" --rationale "all gates clear and source manifests tie out" --approve-final --matter "$SLUG" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked without source-backed rationale"
+"$CHIEF" --chief "GLAW Chief Counsel" --score 95 --grade A --decision "PROCEED" --risks "none" --conditions "licensed signer final review" --rationale "SRC-0001 current source plus SRC-9999 stale source" --approve-final --matter "$SLUG" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked by mixed current and stale rationale sources"
 "$CHIEF" --chief "GLAW Chief Counsel" --score 95 --grade A --decision "PROCEED" --risks "none" --conditions "licensed signer final review" --rationale "SRC-0001 all gates clear and source manifests tie out" --approve-final --matter "$SLUG" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked without nonblocking red flag acknowledgment"
 "$CHIEF" --chief "GLAW Chief Counsel" --score 95 --grade A --decision "DENY" --risks "none" --conditions "licensed signer final review" --rationale "SRC-0001 all gates clear and source manifests tie out" --approve-final --matter "$SLUG" >/dev/null 2>&1; rc=$?
