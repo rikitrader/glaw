@@ -283,6 +283,10 @@ the seal stays human as a legal and ethics constraint.
   for conscience human-only requests, Oversight Board kill-switch routing, daemon deadline
   scans, jurisdiction pack failures, and profile-map consistency. `bin/glaw-doctor` runs the
   sandbox regression so autonomy claims stay executable, not just documented.
+- ✅ **P2-G8 · Government-adversary coverage lock**: `lib/glaw_profiles.py` now carries
+  `GOVERNMENT_ADVERSARY_LENSES`, and `bin/glaw-doctor`, `test/golden_profile_test.sh`, and
+  `bin/glaw-sandbox` fail if any executable workflow profile loses its government,
+  regulator, court, enforcement, or litigation attack lens.
 
 ### Phase 3 (Harness Integration) — add
 - ✅ **P3-G1 · Policy-as-fail-closed-CI-gate + observability**: `bin/glaw-policy check` now

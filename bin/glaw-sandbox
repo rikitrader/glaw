@@ -200,17 +200,21 @@ def simulate_profile_map() -> dict:
     profile_names = sorted(set(glaw_profiles.COUNCIL_PROFILES) | set(glaw_profiles.ADVERSARIAL_PROFILES))
     missing_profiles: list[str] = []
     unmapped_reviewers: list[str] = []
+    no_government_adversary: list[str] = []
     for profile in profile_names:
         council = glaw_profiles.COUNCIL_PROFILES.get(profile, ())
         adversarial = glaw_profiles.ADVERSARIAL_PROFILES.get(profile, ())
         if not council or not adversarial:
             missing_profiles.append(profile)
+        if adversarial and not (set(adversarial) & glaw_profiles.GOVERNMENT_ADVERSARY_LENSES):
+            no_government_adversary.append(profile)
         for reviewer in list(council) + list(adversarial):
             if reviewer not in glaw_profiles.REVIEWER_SKILL_MAP:
                 unmapped_reviewers.append(f"{profile}:{reviewer}")
     checks = [
         check("profiles_have_council_and_adversaries", not missing_profiles, "profiles with missing panels: " + ", ".join(missing_profiles[:10]) if missing_profiles else "all profiles have panels"),
         check("reviewers_map_to_skills", not unmapped_reviewers, "unmapped reviewers: " + ", ".join(unmapped_reviewers[:10]) if unmapped_reviewers else "all reviewers map to skills"),
+        check("profiles_have_government_adversary", not no_government_adversary, "profiles without government/regulatory/litigation adversary: " + ", ".join(no_government_adversary[:10]) if no_government_adversary else "all profiles include a government/regulatory/litigation adversary lens"),
     ]
     return {
         "name": "profile-map",

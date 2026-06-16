@@ -19,7 +19,7 @@ from pathlib import Path
 root = Path(sys.argv[1]).resolve()
 home = Path(os.environ["GLAW_HOME"])
 sys.path.insert(0, str(root / "lib"))
-from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, TRACKS, profile_for_track
+from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, GOVERNMENT_ADVERSARY_LENSES, TRACKS, profile_for_track
 
 
 def slugify(text: str) -> str:
@@ -279,6 +279,8 @@ if missing:
 for profile in profiles:
     if profile not in TRACK_BY_PROFILE:
         raise AssertionError(f"no golden track mapping for profile {profile}")
+    if not (set(ADVERSARIAL_PROFILES[profile]) & GOVERNMENT_ADVERSARY_LENSES):
+        raise AssertionError(f"{profile} lacks a government/regulatory/litigation adversary lens")
     run_profile(profile)
 print()
 print(f"0 failures - {len(profiles)} passed, 0 failed")

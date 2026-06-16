@@ -643,7 +643,7 @@ import sys
 
 glaw = pathlib.Path(sys.argv[1]).resolve()
 sys.path.insert(0, str(glaw / "lib"))
-from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, REVIEWER_SKILL_MAP
+from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, GOVERNMENT_ADVERSARY_LENSES, REVIEWER_SKILL_MAP
 
 
 def skill_name(path: pathlib.Path) -> str:
@@ -689,14 +689,20 @@ for profile_kind, profiles in (
                     f"{profile_kind}:{profile}:{reviewer} -> {skill} missing {', '.join(missing)}"
                 )
 
+for profile, reviewers in ADVERSARIAL_PROFILES.items():
+    if not (set(reviewers) & GOVERNMENT_ADVERSARY_LENSES):
+        failures.append(
+            f"adversarial:{profile} lacks a government/regulatory/litigation adversary lens"
+        )
+
 if failures:
     for failure in failures:
         print(failure)
     sys.exit(1)
-print("profile reviewer map resolves")
+print("profile reviewer map resolves and every profile has a government/regulatory/litigation adversary")
 PY
 then
-  ok "profile consistency: every council/adversarial reviewer maps to a real identity-bearing skill"
+  ok "profile consistency: every council/adversarial reviewer maps to a real identity-bearing skill and government adversary"
 else
   bad "profile consistency failed"
 fi

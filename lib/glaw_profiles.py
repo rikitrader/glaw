@@ -148,6 +148,34 @@ ADVERSARIAL_PROFILES: dict[str, tuple[str, ...]] = {
 }
 
 
+# Lenses that represent a government, regulator, court, enforcement, or
+# litigation adversary. Every executable workflow profile must include at least
+# one of these so the firm's RED team cannot degrade into only internal review.
+GOVERNMENT_ADVERSARY_LENSES: frozenset[str] = frozenset(
+    {
+        "irs-examiner",
+        "state-tax-auditor",
+        "tax-court-counsel",
+        "penalty-reviewer",
+        "opposing-counsel",
+        "federal-defense-counsel",
+        "evidence-adversary",
+        "skeptical-judge",
+        "sec-reviewer",
+        "regulator-reviewer",
+        "litigation-counsel",
+        "doj-ausa-prosecutor",
+        "fincen-aml-reviewer",
+        "sec-enforcement-reviewer",
+        "irs-ci-reviewer",
+        "defense-counsel",
+        "sec-staff-reviewer",
+        "pcaob-audit-reviewer",
+        "disclosure-counsel",
+    }
+)
+
+
 TRACK_TO_PROFILE = {
     "accounting": "accounting",
     "accounting-tax": "accounting-tax",
