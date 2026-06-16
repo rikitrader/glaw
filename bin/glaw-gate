@@ -86,6 +86,37 @@ def intake_missing_fields(intake):
     return missing
 
 
+def source_evidence_manifest():
+    paths = []
+    for part in ("evidence", "source_documents", "sources"):
+        base = d / part
+        if not base.exists():
+            continue
+        paths.extend(path for path in base.rglob("*") if path.is_file() and path.stat().st_size > 0)
+    return [
+        {"id": f"SRC-{idx:04d}", "path": str(path.relative_to(d))}
+        for idx, path in enumerate(sorted(paths), start=1)
+    ]
+
+
+def validate_current_source(text, label, source_ids):
+    text = str(text or "")
+    refs = sorted(set(SOURCE_ID_RE.findall(text)))
+    if not refs:
+        print(f"{label} lacks source evidence id (SRC-####)")
+        sys.exit(1)
+    stale = [ref for ref in refs if ref not in source_ids]
+    if stale:
+        print(f"{label} cites non-current source evidence id(s): {', '.join(stale)}")
+        sys.exit(1)
+
+
+source_ids = {item["id"] for item in source_evidence_manifest()}
+if not source_ids:
+    print("no current nonempty source evidence file")
+    sys.exit(1)
+
+
 intake_path = d / "intake.json"
 ethics_path = d / "ethics.json"
 try:
@@ -114,12 +145,9 @@ if ethics.get("status") != "complete":
 if ethics.get("conflicts_status") not in {"cleared", "waived"}:
     print("ethics conflicts_status is not cleared or waived")
     sys.exit(1)
-if not SOURCE_ID_RE.search(str(ethics.get("conflicts_source", ""))):
-    print("ethics conflicts_source lacks source evidence id (SRC-####)")
-    sys.exit(1)
-if ethics.get("conflicts_status") == "waived" and not SOURCE_ID_RE.search(str(ethics.get("waiver_evidence", ""))):
-    print("ethics waiver_evidence lacks source evidence id (SRC-####)")
-    sys.exit(1)
+validate_current_source(ethics.get("conflicts_source", ""), "ethics conflicts_source", source_ids)
+if ethics.get("conflicts_status") == "waived":
+    validate_current_source(ethics.get("waiver_evidence", ""), "ethics waiver_evidence", source_ids)
 engagement = ethics.get("engagement", {})
 if engagement.get("status") != "drafted":
     print("ethics engagement is not drafted")
@@ -130,9 +158,7 @@ if not str(engagement.get("scope", "")).strip():
 if not str(engagement.get("responsible_professional", "")).strip():
     print("ethics responsible professional is missing")
     sys.exit(1)
-if not SOURCE_ID_RE.search(str(engagement.get("source", ""))):
-    print("ethics engagement source lacks source evidence id (SRC-####)")
-    sys.exit(1)
+validate_current_source(engagement.get("source", ""), "ethics engagement source", source_ids)
 PY
 }
 

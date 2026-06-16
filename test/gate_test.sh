@@ -91,7 +91,41 @@ cat > "$M/ethics.json" <<'JSON'
   "upl_footer": "Attorney work-product - not legal advice."
 }
 JSON
-ok "$([ "$(chk strategy)" = 0 ] && echo 1 || echo 0)" "strategy CLEAR after intake/ethics artifacts"
+ok "$([ "$(chk strategy)" = 1 ] && echo 1 || echo 0)" "strategy STILL BLOCKED before current source evidence file"
+mkdir -p "$M/evidence"
+printf 'date,description,amount\n2026-01-01,capital deposit,100.00\n' > "$M/evidence/bank.csv"
+cat > "$M/ethics.json" <<'JSON'
+{
+  "status": "complete",
+  "conflicts_status": "cleared",
+  "conflicts_notes": "no conflict in fixture",
+  "conflicts_source": "SRC-9999 stale party list reviewed",
+  "engagement": {
+    "status": "drafted",
+    "scope": "review and draft only",
+    "responsible_professional": "licensed reviewer",
+    "source": "SRC-9999 stale authorized scope reviewed"
+  },
+  "upl_footer": "Attorney work-product - not legal advice."
+}
+JSON
+ok "$([ "$(chk strategy)" = 1 ] && echo 1 || echo 0)" "strategy STILL BLOCKED by stale ethics source id"
+cat > "$M/ethics.json" <<'JSON'
+{
+  "status": "complete",
+  "conflicts_status": "cleared",
+  "conflicts_notes": "no conflict in fixture",
+  "conflicts_source": "SRC-0001 party list reviewed",
+  "engagement": {
+    "status": "drafted",
+    "scope": "review and draft only",
+    "responsible_professional": "licensed reviewer",
+    "source": "SRC-0001 authorized scope reviewed"
+  },
+  "upl_footer": "Attorney work-product - not legal advice."
+}
+JSON
+ok "$([ "$(chk strategy)" = 0 ] && echo 1 || echo 0)" "strategy CLEAR after current-source intake/ethics artifacts"
 
 # file gate: citations, adversarial, red flags, final packet, and chief approval
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED with no file gates"
@@ -263,8 +297,6 @@ packet["report_quality_manifest"] = [{
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before source evidence manifest"
-mkdir -p "$M/evidence"
-printf 'date,description,amount\n2026-01-01,capital deposit,100.00\n' > "$M/evidence/bank.csv"
 python3 - "$M" <<'PY'
 import hashlib, json, pathlib, sys
 d = pathlib.Path(sys.argv[1])
