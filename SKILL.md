@@ -172,12 +172,15 @@ matter's Obsidian vault (per the user's universal workflow rule), logs decisions
 marks the matter status.
 
 ## Gates summary (never skip)
-1. **Conflicts cleared** before strategy.
-2. **Citations verified** (`glaw-citation-gate complete`) before file.
-3. **Adversarial RED→BLUE** before file.
-4. **Chief/Council approval** before file.
-5. **UPL disclaimer** on every external deliverable (`glaw-upl-check`).
-6. **Docket gate complete** before matter-retro.
+1. **Structured intake complete** before strategy (`bin/glaw-intake complete`).
+2. **Conflicts cleared** before strategy (`bin/glaw-ethics complete`).
+3. **Citations verified** before file (`bin/glaw-citation-gate complete`).
+4. **Adversarial RED→BLUE** before file (`bin/glaw-adversarial complete --profile auto`).
+5. **Red flags clear or explicitly carried** before file (`bin/glaw-red-flags complete`).
+6. **Final packet ready** before file (`bin/glaw-final-packet build --profile auto`).
+7. **Chief/Council approval** before file (`bin/glaw-chief-decision --approve-final`).
+8. **UPL disclaimer** on every external deliverable (`bin/glaw-upl-check`).
+9. **Docket gate complete** before matter-retro (`bin/glaw-docket-gate complete`).
 
 ## State commands
 | Need | Command |

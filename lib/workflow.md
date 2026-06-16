@@ -88,9 +88,15 @@ pipeline stage directory. The implementation lives in `bin/glaw-council` plus
 2. Conflicts cleared (`glaw-ethics complete`) before strategy.
 3. Adversarial RED→BLUE (`/glaw-adversarial`) before file.
 4. Citations verified (`glaw-citation-gate complete`) before file.
-5. Chief/Council approval (`glaw-chief-decision --approve-final`) before file.
-6. UPL disclaimer on every external deliverable (`glaw-upl-check`).
-7. Figures quoted from `tax-legal-shared/current-figures.md` ("as of [date], verify").
+5. Red flags clear or explicitly carried (`glaw-red-flags complete`) before file.
+6. Final packet ready (`glaw-final-packet build --profile auto`) before file.
+7. Chief/Council approval (`glaw-chief-decision --approve-final`) before file.
+8. UPL disclaimer on every external deliverable (`glaw-upl-check`).
+9. Docket gate complete (`glaw-docket-gate complete`) before matter-retro.
+
+Figures quoted from `tax-legal-shared/current-figures.md` must carry an "as of" date and
+current-source verification; stale figures are a citation/accounting defect, not a separate
+stage-skipping gate.
 
 ## Repo-integrity gate
 

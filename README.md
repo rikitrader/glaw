@@ -35,7 +35,7 @@ cd ~/glaw && ./setup                       # deploys source skills + 63 vendored
 /glaw                                       # "form a Delaware C-corp with a SAFE round"
 ```
 
-GLAW turns one prompt into a **staffed engagement**: intake → strategy → structure → draft → adversarial red-team → file → docket → close — with **hard gates** (conflicts cleared, citations verified, adversary survived, UPL disclaimer) it will not skip.
+GLAW turns one prompt into a **staffed engagement**: intake → strategy → structure → draft → adversarial red-team → file → docket → close — with **hard gates** (structured intake, conflicts, citations, adversarial RED→BLUE, red flags, final packet, Chief/Council approval, UPL, docket) it will not skip.
 
 ---
 
@@ -131,12 +131,17 @@ flowchart LR
 | **Corp / Fund build** | deal thesis | entity org chart + tax + cap table | formation / governance / offering docs | IRS + SEC + creditor red-team |
 | **Investigation** (white-collar) | theory of wrongdoing | entity & flow-of-funds map | exposure matrix → complaint / referral | defense + prosecutor + judge red-team |
 
-### 🚦 Four hard gates (never skipped)
+### 🚦 Hard gates (never skipped)
 
-1. **Conflicts cleared** before any substantive work (`/glaw-ethics-conflicts`).
-2. **Citations verified** before filing (`/glaw-legal-research`) — the anti-hallucination guardrail.
-3. **Adversarial RED → BLUE** before filing — a position the firm's own adversary destroys does not get filed.
-4. **UPL disclaimer** on every external deliverable — GLAW produces *work-product*, not legal advice.
+1. **Structured intake complete** before strategy (`bin/glaw-intake complete`).
+2. **Conflicts cleared** before any substantive work (`/glaw-ethics-conflicts`).
+3. **Citations verified** before filing (`/glaw-legal-research`) — the anti-hallucination guardrail.
+4. **Adversarial RED → BLUE** before filing — a position the firm's own adversary destroys does not get filed.
+5. **Red flags clear or explicitly carried** before filing — critical/high findings block.
+6. **Final packet ready** before filing — source manifest, reviewer evidence, and artifacts tie out.
+7. **Chief/Council approval** before filing — the Chief logs `chief_approved` on the current packet digest.
+8. **UPL disclaimer** on every external deliverable — GLAW produces *work-product*, not legal advice.
+9. **Docket gate complete** before matter-retro — deadlines are owned and source-backed, or no-deadlines is justified.
 
 ### 🕵️ The dossier escalation
 

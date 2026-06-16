@@ -44,14 +44,15 @@ bin/glaw-ethics complete
 
 Required gates:
 
-1. Structured intake and source-backed conflicts/engagement must clear before strategy.
-2. Legal citations must be verified through `glaw-citation-gate complete` before file; each verified row must preserve proposition, authority, support summary, corpus id, source/segment hashes, reviewer, and an approved HTTP(S) source URL. Capture authority text first with `glaw-citation-corpus capture` from an allowlisted authority domain by `--fetch`, or from `--file --authenticated-copy` for an offline official copy. Pasted `--text` is stored as untrusted context and cannot support a verified legal citation. Completion automatically writes `groundedness.json` with a deterministic lexical-floor entity-grounding and relation-preservation audit. That audit is a fail-closed floor, not semantic Shepardizing. Failed rows must carry a falsifiable defect type: incorrect, misgrounded, ungrounded, or incomplete.
-3. Adversarial review must pass before file.
-4. Critical/high red flags must be resolved before file; medium/low red flags may remain open only if owner-assigned, source-backed, and carried in the final packet.
-5. Final packet manifest must be ready before file.
-6. Chief/Council must approve final entry before file.
-7. External deliverables must include the attorney-review / not-legal-advice guardrail.
-8. Matter-retro requires owned docket entries or a no-deadlines determination tied to a current source artifact ID.
+1. **Structured intake complete** before strategy (`bin/glaw-intake complete`).
+2. **Conflicts cleared** before strategy (`bin/glaw-ethics complete`).
+3. **Citations verified** through `glaw-citation-gate complete` before file; each verified row must preserve proposition, authority, support summary, corpus id, source/segment hashes, reviewer, and an approved HTTP(S) source URL. Capture authority text first with `glaw-citation-corpus capture` from an allowlisted authority domain by `--fetch`, or from `--file --authenticated-copy` for an offline official copy. Pasted `--text` is stored as untrusted context and cannot support a verified legal citation. Completion automatically writes `groundedness.json` with a deterministic lexical-floor entity-grounding and relation-preservation audit. That audit is a fail-closed floor, not semantic Shepardizing. Failed rows must carry a falsifiable defect type: incorrect, misgrounded, ungrounded, or incomplete.
+4. **Adversarial RED→BLUE** review must pass before file.
+5. **Red flags clear or explicitly carried** before file; critical/high red flags must be resolved, while medium/low red flags may remain open only if owner-assigned, source-backed, and carried in the final packet.
+6. **Final packet ready** before file.
+7. **Chief/Council approval** must approve final entry before file.
+8. **UPL disclaimer** must appear on every external deliverable as the attorney-review / not-legal-advice guardrail.
+9. **Docket gate complete** before matter-retro; close-out requires owned docket entries or a no-deadlines determination tied to a current source artifact ID.
 
 Final approval is recorded by the Chief layer:
 

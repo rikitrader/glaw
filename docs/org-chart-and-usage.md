@@ -59,14 +59,15 @@ The routing table (with a domain → seat quick index, no gaps) is `lib/firm-ros
 The firm's principles are `ETHOS.md`.
 
 ## Hard gates (never skipped)
-1. **Structured intake + conflicts/engagement** before strategy.
-2. **Citations verified** (`glaw-citation-gate complete`) before file.
-3. **Adversarial RED→BLUE** (`glaw-adversarial complete --profile auto`) before file.
-4. **Red flags clear** before file.
-5. **Final packet ready** before file.
-6. **Chief/Council approval** before file.
-7. **UPL disclaimer** on every external deliverable.
-8. **Docket gate complete** before matter-retro.
+1. **Structured intake complete** before strategy.
+2. **Conflicts cleared** before strategy.
+3. **Citations verified** (`glaw-citation-gate complete`) before file.
+4. **Adversarial RED→BLUE** (`glaw-adversarial complete --profile auto`) before file.
+5. **Red flags clear or explicitly carried** before file.
+6. **Final packet ready** before file.
+7. **Chief/Council approval** before file.
+8. **UPL disclaimer** on every external deliverable.
+9. **Docket gate complete** before matter-retro.
 
 ## State
 Lives under `~/.glaw/` (override with `$GLAW_HOME`): `config.yaml`,
