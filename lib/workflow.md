@@ -122,8 +122,17 @@ authority act today: `glaw-chief-decision --signoff` and `glaw-irs-file submit -
 `bin/glaw-loop` is the autonomous routing layer: it may report the next owner and gate, but
 it refuses human-only authority requests and must never file, sign, serve, transmit, pay, or
 charge on its own. `glaw-loop once` writes `loop_decisions.jsonl`, applies maker/checker
-acceptance criteria (owner, command, reason, authority boundary), and escalates to human
+acceptance criteria (owner, command, reason, authority boundary, and the tool-call conscience),
+and escalates to human
 oversight when the same route repeats past `--max-iterations` without convergence.
+
+Autonomous agents also run `bin/glaw-conscience` at the tool boundary. `check-call` blocks
+destructive shell primitives, direct live filing/transmission commands, hand-logged reserved
+gate events, and human-only requested actions without authority. `check-response` blocks
+unresolved placeholders, unsupported claims that something was filed/signed/served/paid/
+transmitted, and high-stakes legal/tax/accounting/final output that lacks a current `SRC-####`
+source ID. `glaw-loop` records the pre-call result as the `conscience_call_guard` checker
+criterion before it writes a routing decision.
 
 ## Connected skill inventory (by layer)
 - **In-house seats:** all `glaw-*` (pipeline + 20+ practice/litigation-support seats).

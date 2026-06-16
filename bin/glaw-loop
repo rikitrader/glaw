@@ -124,6 +124,23 @@ def prior_same_route_count(d: Path, signature: str) -> int:
 def checker_for(decision: dict, d: Path, *, max_iterations: int, user_acceptance: list[str]) -> dict:
     signature = decision_signature(decision)
     prior_count = prior_same_route_count(d, signature)
+    conscience_rc, conscience_out = run_tool(
+        "glaw-conscience",
+        "check-call",
+        "--command",
+        str(decision.get("next_command", "")),
+        "--matter",
+        d.name,
+        "--json",
+    )
+    try:
+        conscience = json.loads(conscience_out)
+    except json.JSONDecodeError:
+        conscience = {
+            "status": "fail",
+            "phase": "tool-call",
+            "failures": [{"id": "conscience_output", "detail": conscience_out or "invalid JSON"}],
+        }
     criteria = [
         {
             "id": "owner_named",
@@ -150,6 +167,11 @@ def checker_for(decision: dict, d: Path, *, max_iterations: int, user_acceptance
             "status": "pass" if prior_count < max_iterations else "fail",
             "detail": f"same route repeated {prior_count} time(s); cap is {max_iterations}",
         },
+        {
+            "id": "conscience_call_guard",
+            "status": "pass" if conscience_rc == 0 and conscience.get("status") == "pass" else "fail",
+            "detail": "next command passes autonomous tool-call conscience checks",
+        },
     ]
     for idx, text in enumerate(user_acceptance, start=1):
         criteria.append({
@@ -165,6 +187,7 @@ def checker_for(decision: dict, d: Path, *, max_iterations: int, user_acceptance
         "max_iterations": max_iterations,
         "criteria": criteria,
         "failed": failed,
+        "conscience": conscience,
     }
 
 

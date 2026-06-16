@@ -261,8 +261,11 @@ the seal stays human as a legal and ethics constraint.
 - ✅ **P2-G3 · Cross-matter memory**: `glaw-learnings` is now a queryable source-linked
   long-term store with selective retrieval by query/matter/type, isolated `$GLAW_HOME` support,
   and reflected knowledge rules written back to the same ledger.
-- **P2-G4 · Multi-point guardrails**: in autonomous mode, run conscience checks at tool-call and
-  tool-response, not only the file gate — intermediate agents can introduce/propagate defects.
+- ✅ **P2-G4 · Multi-point guardrails**: `bin/glaw-conscience` now runs tool-call and
+  tool-response checks for autonomous mode, and `glaw-loop` records the pre-call
+  `conscience_call_guard` before writing a routing decision. It blocks destructive shell calls,
+  hand-logged reserved gate events, live filings or human-only acts without authority,
+  unresolved placeholders, unsupported human-act claims, and high-stakes output without `SRC-####`.
 
 ### Phase 3 (Harness Integration) — add
 - **P3-G1 · Policy-as-fail-closed-CI-gate + observability**: unify benchmarks, traces, and CI

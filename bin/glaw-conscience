@@ -1,0 +1,233 @@
+#!/usr/bin/env python3
+"""glaw-conscience - autonomous tool-call and response guardrails.
+
+Usage:
+  glaw-conscience check-call --command "<command>" [--matter <slug>] [--json]
+  glaw-conscience check-response [--text "<text>"] [--matter <slug>] [--json]
+
+The conscience is a pre/post boundary for autonomous mode. It does not decide
+matter quality; it fails closed on commands or responses that try to bypass
+human authority, introduce unresolved placeholders, or claim source-backed work
+without source IDs.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import shlex
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "lib"))
+from glaw_authority import HUMAN_ONLY_ACTIONS, human_authority_error
+
+
+RESERVED_GATE_EVENTS = {
+    "adversarial_done",
+    "chief_approved",
+    "citations_verified",
+    "conflicts_cleared",
+    "docket_gate_complete",
+    "final_packet_ready",
+    "intake_complete",
+    "red_flags_clear",
+}
+
+DESTRUCTIVE_COMMANDS = (
+    (re.compile(r"(^|\s)rm\s+-[A-Za-z]*r[A-Za-z]*f?\b"), "destructive rm command"),
+    (re.compile(r"(^|\s)git\s+reset\s+--hard\b"), "destructive git reset"),
+    (re.compile(r"(^|\s)git\s+checkout\s+--\b"), "destructive git checkout"),
+    (re.compile(r"(^|\s)sudo\b"), "privilege escalation"),
+)
+
+PLACEHOLDER_RE = re.compile(r"(\[(VERIFY|TODO|TBD|PLACEHOLDER)[^\]]*\]|REVIEW:|FIXME:)", re.I)
+SOURCE_RE = re.compile(r"\bSRC-\d{4}\b")
+HIGH_STAKES_RE = re.compile(
+    r"\b(irs|tax|sec|audit|accounting|legal|citation|form\s+\d{4}|10-k|10-q|8-k|filing|final)\b",
+    re.I,
+)
+HUMAN_COMPLETION_RE = re.compile(
+    r"\b(filed|served|signed|transmitted|paid|charged|submitted|e-filed|efiled)\b",
+    re.I,
+)
+
+
+def parse_command(command: str) -> list[str]:
+    try:
+        return shlex.split(command)
+    except ValueError:
+        return []
+
+
+def base_name(token: str) -> str:
+    return Path(token).name
+
+
+def has_human_authority(tokens: list[str], command: str) -> bool:
+    lowered = command.lower()
+    if "--human-authority" in tokens:
+        return True
+    return "glaw_human_authority_actor" in lowered or "glaw_human_authority=1" in lowered
+
+
+def result(phase: str, failures: list[dict], checks: list[dict], *, json_out: bool) -> int:
+    payload = {
+        "phase": phase,
+        "status": "fail" if failures else "pass",
+        "failures": failures,
+        "checks": checks,
+    }
+    if json_out:
+        print(json.dumps(payload, indent=2, sort_keys=False))
+    elif failures:
+        print(f"GLAW CONSCIENCE BLOCKED: {phase}")
+        for failure in failures:
+            print(f"- {failure['id']}: {failure['detail']}")
+    else:
+        print(f"GLAW CONSCIENCE PASS: {phase}")
+    return 1 if failures else 0
+
+
+def check_call(command: str, matter: str, *, json_out: bool) -> int:
+    tokens = parse_command(command)
+    failures: list[dict] = []
+    checks: list[dict] = []
+
+    def add_check(check_id: str, ok: bool, detail: str) -> None:
+        checks.append({"id": check_id, "status": "pass" if ok else "fail", "detail": detail})
+        if not ok:
+            failures.append({"id": check_id, "detail": detail})
+
+    add_check("command_present", bool(command.strip() and tokens), "tool call must be parseable and nonempty")
+
+    for pattern, detail in DESTRUCTIVE_COMMANDS:
+        if pattern.search(command):
+            add_check("destructive_shell_command", False, f"{detail} is not allowed in autonomous routing")
+            break
+    else:
+        add_check("destructive_shell_command", True, "no destructive shell primitive detected")
+
+    base = base_name(tokens[0]) if tokens else ""
+    lowered_tokens = [t.lower() for t in tokens]
+
+    reserved_event = ""
+    if base == "glaw" and len(lowered_tokens) >= 3 and lowered_tokens[1] == "timeline-log":
+        if lowered_tokens[2] in RESERVED_GATE_EVENTS:
+            reserved_event = lowered_tokens[2]
+    add_check(
+        "reserved_gate_events",
+        not reserved_event,
+        (
+            f"reserved gate event {reserved_event} must be produced by its owning gate command"
+            if reserved_event
+            else "no reserved gate event is being hand-logged"
+        ),
+    )
+
+    direct_live_filing = (
+        base == "glaw-irs-file"
+        and "submit" in lowered_tokens
+        and "--live" in lowered_tokens
+        and not has_human_authority(tokens, command)
+    )
+    add_check(
+        "human_authority_live_filing",
+        not direct_live_filing,
+        human_authority_error("submit-live", matter or "autonomous tool call")
+        if direct_live_filing
+        else "no live filing/transmission without human authority",
+    )
+
+    direct_signoff = (
+        base == "glaw-chief-decision"
+        and "--signoff" in lowered_tokens
+        and not has_human_authority(tokens, command)
+    )
+    add_check(
+        "human_authority_signoff",
+        not direct_signoff,
+        human_authority_error("sign", matter or "autonomous tool call")
+        if direct_signoff
+        else "no signature/signoff without human authority",
+    )
+
+    requested = ""
+    if "--request-action" in lowered_tokens:
+        idx = lowered_tokens.index("--request-action")
+        if idx + 1 < len(lowered_tokens):
+            requested = lowered_tokens[idx + 1]
+    request_blocked = requested in HUMAN_ONLY_ACTIONS and not has_human_authority(tokens, command)
+    add_check(
+        "human_only_requested_action",
+        not request_blocked,
+        human_authority_error(requested, matter or "autonomous request") if request_blocked else "no human-only action requested",
+    )
+
+    return result("tool-call", failures, checks, json_out=json_out)
+
+
+def check_response(text: str, matter: str, *, json_out: bool) -> int:
+    failures: list[dict] = []
+    checks: list[dict] = []
+
+    def add_check(check_id: str, ok: bool, detail: str) -> None:
+        checks.append({"id": check_id, "status": "pass" if ok else "fail", "detail": detail})
+        if not ok:
+            failures.append({"id": check_id, "detail": detail})
+
+    add_check("response_present", bool(text.strip()), "tool response must be nonempty")
+
+    placeholder = PLACEHOLDER_RE.search(text)
+    add_check(
+        "no_unresolved_placeholders",
+        placeholder is None,
+        f"unresolved marker found: {placeholder.group(0)}" if placeholder else "no unresolved placeholders or review markers",
+    )
+
+    claims_human_act = bool(HUMAN_COMPLETION_RE.search(text))
+    authority_marker = "human authority" in text.lower() or "glaw_human_authority_actor" in text.lower()
+    add_check(
+        "no_unbacked_human_act_claim",
+        not (claims_human_act and not authority_marker),
+        "response claims a filing/signing/service/payment/transmission act without human-authority evidence"
+        if claims_human_act and not authority_marker
+        else "no unsupported human-only completion claim",
+    )
+
+    high_stakes = bool(HIGH_STAKES_RE.search(text))
+    has_source = bool(SOURCE_RE.search(text))
+    add_check(
+        "source_ids_for_high_stakes_output",
+        not high_stakes or has_source,
+        "high-stakes legal/tax/accounting/final output must cite at least one SRC-#### source"
+        if high_stakes and not has_source
+        else "source IDs present when high-stakes terms appear",
+    )
+
+    return result("tool-response", failures, checks, json_out=json_out)
+
+
+def main(argv: list[str]) -> int:
+    ap = argparse.ArgumentParser(prog="glaw-conscience")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    call = sub.add_parser("check-call")
+    call.add_argument("--command", required=True)
+    call.add_argument("--matter", default="")
+    call.add_argument("--json", action="store_true")
+    response = sub.add_parser("check-response")
+    response.add_argument("--text", default="")
+    response.add_argument("--matter", default="")
+    response.add_argument("--json", action="store_true")
+    args = ap.parse_args(argv)
+
+    if args.cmd == "check-call":
+        return check_call(args.command, args.matter, json_out=args.json)
+
+    text = args.text if args.text else sys.stdin.read()
+    return check_response(text, args.matter, json_out=args.json)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))
