@@ -15,9 +15,16 @@ position another seat already owns.
    all tools run, no dangling references) before you open a PR.
 4. **Keep the gates load-bearing.** Conflicts → strategy, citations → file, adversarial
    → file, UPL disclaimer on every external deliverable. Don't weaken these.
-5. **No legal advice, ever.** Skills produce *attorney work-product drafts*. Keep the
+5. **Local commits must stay green.** `./setup` installs `.githooks/pre-commit` and
+   `.githooks/pre-push`; both run `bin/glaw-doctor`, so a red HEAD cannot be committed
+   or pushed from a configured checkout.
+6. **SSOT edits are lock-required.** `lib/glaw_profiles.py` and `lib/firm-roster.md`
+   are single-owner files. Coordinate the lock before editing either file, set
+   `GLAW_SSOT_OWNER='<name/team>'` for that commit, and keep producer/gate/test changes
+   in the same patch.
+7. **No legal advice, ever.** Skills produce *attorney work-product drafts*. Keep the
    "not legal advice / for attorney review" line in any user-facing output.
-6. **No private data.** Never commit real matter data, client names, credentials, or
+8. **No private data.** Never commit real matter data, client names, credentials, or
    absolute home paths. Examples must be fictional.
 
 ## Adding a seat (a new department / sub-skill)

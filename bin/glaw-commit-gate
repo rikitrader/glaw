@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# glaw-commit-gate — local Git safety gate for GLAW.
+set -euo pipefail
+
+mode="${1:-manual}"
+ROOT="${GLAW_ROOT:-$(git rev-parse --show-toplevel 2>/dev/null || true)}"
+if [ -z "$ROOT" ] || [ ! -d "$ROOT" ]; then
+  echo "GLAW COMMIT GATE BLOCKED: cannot resolve repo root; set GLAW_ROOT." >&2
+  exit 1
+fi
+cd "$ROOT"
+
+if [ "$mode" = "pre-commit" ]; then
+  ssot_changed="$(git diff --cached --name-only -- lib/glaw_profiles.py lib/firm-roster.md 2>/dev/null || true)"
+  if [ -n "$ssot_changed" ] && [ -z "${GLAW_SSOT_OWNER:-}" ]; then
+    echo "GLAW COMMIT GATE BLOCKED: SSOT files require an explicit single owner." >&2
+    echo "$ssot_changed" | sed 's/^/  - /' >&2
+    echo "Set GLAW_SSOT_OWNER='<name/team>' only after coordinating the lock." >&2
+    exit 1
+  fi
+fi
+
+echo "GLAW commit gate ($mode): running bin/glaw-doctor"
+bash bin/glaw-doctor

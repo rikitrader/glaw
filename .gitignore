@@ -7,6 +7,7 @@ venv/
 .coverage
 .pytest_cache/
 .nested-git-backups-*/
+glaw.backup.*/
 
 # OS / editor
 .DS_Store

@@ -4,17 +4,32 @@
 # Asserts: a guarded stage is BLOCKED (exit 1) until its prerequisite gate events are
 # logged, then CLEAR (exit 0); unguarded stages are always clear.
 set -uo pipefail
-HERE="$(cd "$(dirname "$0")" && pwd)"
-GATE="$HERE/../bin/glaw-gate"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+if [ -n "${GLAW_ROOT:-}" ]; then
+  ROOT="$(cd "$GLAW_ROOT" && pwd)"
+else
+  ROOT="$(git -C "$SCRIPT_DIR" rev-parse --show-toplevel 2>/dev/null)" || {
+    echo "FATAL: cannot resolve repo root; set GLAW_ROOT explicitly" >&2
+    exit 99
+  }
+fi
+GATE="$ROOT/bin/glaw-gate"
 pass=0; fail=0
 ok(){ if [ "$1" = 1 ]; then pass=$((pass+1)); echo "  ✓ $2"; else fail=$((fail+1)); echo "  ✗ FAIL: $2"; fi; }
+fixture_py(){
+  python3 - "$@" || {
+    rc=$?
+    echo "FATAL: gate_test fixture setup failed near line ${BASH_LINENO[0]} (python exit $rc)" >&2
+    exit "$rc"
+  }
+}
 
 TMP="$(mktemp -d)"; export GLAW_HOME="$TMP"
 M="$TMP/matters/m"; mkdir -p "$M"; : > "$M/timeline.jsonl"; echo m > "$TMP/.active"
 log(){ printf '{"ts":"t","event":"%s"}\n' "$1" >> "$M/timeline.jsonl"; }
 chk(){ "$GATE" check "$1" m >/dev/null 2>&1; echo $?; }   # echoes exit code
 append_hashed_jsonl(){
-  python3 - "$1" "$2" <<'PY'
+  fixture_py "$1" "$2" <<'PY'
 import hashlib
 import json
 import sys
@@ -79,7 +94,7 @@ cat > "$M/intake.json" <<'JSON'
 }
 JSON
 ok "$([ "$(chk strategy)" = 1 ] && echo 1 || echo 0)" "strategy STILL BLOCKED by generic intake reviewer"
-python3 - "$M/intake.json" <<'PY'
+fixture_py "$M/intake.json" <<'PY'
 import json, sys
 p = sys.argv[1]
 data = json.load(open(p, encoding="utf-8"))
@@ -192,7 +207,7 @@ cat > "$M/final_packet.json" <<'JSON'
   }
 }
 JSON
-python3 - "$M/decisions.jsonl" "$M/final_packet.json" <<'PY'
+fixture_py "$M/decisions.jsonl" "$M/final_packet.json" <<'PY'
 import hashlib, json, sys
 packet = sys.argv[2]
 row = {
@@ -212,7 +227,7 @@ row["decision_hash"] = hashlib.sha256(
 open(sys.argv[1], "w", encoding="utf-8").write(json.dumps(row) + "\n")
 PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED when Chief approval references stale packet"
-python3 - "$M/decisions.jsonl" "$M/final_packet.json" <<'PY'
+fixture_py "$M/decisions.jsonl" "$M/final_packet.json" <<'PY'
 import hashlib, json, sys
 packet = sys.argv[2]
 row = {
@@ -232,7 +247,7 @@ row["decision_hash"] = hashlib.sha256(
 open(sys.argv[1], "w", encoding="utf-8").write(json.dumps(row) + "\n")
 PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED when Chief approval references stale packet hash"
-python3 - "$M/decisions.jsonl" "$M/final_packet.json" <<'PY'
+fixture_py "$M/decisions.jsonl" "$M/final_packet.json" <<'PY'
 import hashlib, json, sys
 packet = sys.argv[2]
 row = {
@@ -306,7 +321,7 @@ Sign-off conditions: licensed review.
 
 Attorney work-product - not legal advice. Prepared for licensed review.
 MD
-python3 - "$M" <<'PY'
+fixture_py "$M" <<'PY'
 import json, pathlib, sys
 d = pathlib.Path(sys.argv[1])
 packet_path = d / "final_packet.json"
@@ -324,7 +339,7 @@ packet["report_quality_manifest"] = [{
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before source evidence manifest"
-python3 - "$M" <<'PY'
+fixture_py "$M" <<'PY'
 import hashlib, json, pathlib, sys
 d = pathlib.Path(sys.argv[1])
 packet_path = d / "final_packet.json"
@@ -369,7 +384,7 @@ packet["report_quality_manifest"] = [{
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
 printf '{"id":"RF-MED","severity":"medium","status":"open","finding":"watch item","source":"SRC-0001 bank statement"}\n' > "$M/red_flags.jsonl"
-python3 - "$M" <<'PY'
+fixture_py "$M" <<'PY'
 import json, pathlib, sys
 d = pathlib.Path(sys.argv[1])
 packet_path = d / "final_packet.json"
@@ -389,7 +404,7 @@ packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by unowned nonblocking medium red flag"
 printf '{"id":"RF-MED","severity":"medium","status":"open","finding":"watch item","owner":"controller","required_fix":"carry in Chief conditions until closed","source":"SRC-0001 bank statement"}\n' > "$M/red_flags.jsonl"
-python3 - "$M" <<'PY'
+fixture_py "$M" <<'PY'
 import json, pathlib, sys
 d = pathlib.Path(sys.argv[1])
 packet_path = d / "final_packet.json"
@@ -437,7 +452,7 @@ cat > "$M/accounting_control.json" <<'JSON'
   }
 }
 JSON
-python3 - "$M" <<'PY'
+fixture_py "$M" <<'PY'
 import hashlib, json, pathlib, sys
 d = pathlib.Path(sys.argv[1])
 packet_path = d / "final_packet.json"
@@ -473,7 +488,7 @@ packet["accounting_control_manifest"] = {
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before reviewer identity manifest"
-python3 - "$M" "$HERE/.." <<'PY'
+fixture_py "$M" "$ROOT" <<'PY'
 import hashlib, json, pathlib, sys
 d = pathlib.Path(sys.argv[1])
 root = pathlib.Path(sys.argv[2]).resolve()
@@ -520,7 +535,7 @@ packet["reviewer_identity_manifest"] = (
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before deliverable hash manifest"
-python3 - "$M" <<'PY'
+fixture_py "$M" <<'PY'
 import hashlib, json, pathlib, sys
 d = pathlib.Path(sys.argv[1])
 p = d / "draft-report.md"
@@ -531,7 +546,7 @@ packet["external_text_deliverable_hashes"] = {"draft-report.md": hashlib.sha256(
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before gate artifact hash manifest"
-python3 - "$M" <<'PY'
+fixture_py "$M" <<'PY'
 import hashlib, json, pathlib, sys
 d = pathlib.Path(sys.argv[1])
 packet_path = d / "final_packet.json"
@@ -548,7 +563,7 @@ md = "# GLAW Final Packet\n\nManual gate fixture.\n"
 packet["final_packet_md_sha256"] = hashlib.sha256(md.encode("utf-8")).hexdigest()
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
-python3 - "$M/decisions.jsonl" "$M/final_packet.json" <<'PY'
+fixture_py "$M/decisions.jsonl" "$M/final_packet.json" <<'PY'
 import hashlib, json, sys
 packet = sys.argv[2]
 row = {
@@ -568,7 +583,7 @@ row["decision_hash"] = hashlib.sha256(
 open(sys.argv[1], "w", encoding="utf-8").write(json.dumps(row) + "\n")
 PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED when Chief approval omits open nonblocking red flag"
-python3 - "$M/decisions.jsonl" "$M/final_packet.json" <<'PY'
+fixture_py "$M/decisions.jsonl" "$M/final_packet.json" <<'PY'
 import hashlib, json, sys
 packet = sys.argv[2]
 row = {
@@ -589,7 +604,7 @@ open(sys.argv[1], "w", encoding="utf-8").write(json.dumps(row) + "\n")
 PY
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after all file gates"
 cp "$M/final_packet.json" "$M/final_packet.profile-baseline.json"
-python3 - "$M/final_packet.json" <<'PY'
+fixture_py "$M/final_packet.json" <<'PY'
 import json, sys
 p = sys.argv[1]
 packet = json.load(open(p, encoding="utf-8"))
@@ -611,7 +626,7 @@ ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-packet a
 cp "$M/workpapers/books-doctor.baseline.txt" "$M/workpapers/books-doctor.txt"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact accounting workpaper restored"
 cp "$M/accounting_control.json" "$M/accounting_control.baseline.json"
-python3 - "$M/accounting_control.json" <<'PY'
+fixture_py "$M/accounting_control.json" <<'PY'
 import json, sys
 p = sys.argv[1]
 row = json.loads(open(p, encoding="utf-8").read())
@@ -622,7 +637,7 @@ ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-packet a
 cp "$M/accounting_control.baseline.json" "$M/accounting_control.json"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact accounting control restored"
 cp "$M/decisions.jsonl" "$M/decisions.baseline.jsonl"
-python3 - "$M/decisions.jsonl" <<'PY'
+fixture_py "$M/decisions.jsonl" <<'PY'
 import json, sys
 p = sys.argv[1]
 row = json.loads(open(p, encoding="utf-8").read())
@@ -632,7 +647,7 @@ PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-approval Chief decision tamper"
 cp "$M/decisions.baseline.jsonl" "$M/decisions.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact Chief decision restored"
-python3 - "$M/decisions.jsonl" <<'PY'
+fixture_py "$M/decisions.jsonl" <<'PY'
 import hashlib, json, sys
 p = sys.argv[1]
 row = json.loads(open(p, encoding="utf-8").read())
@@ -646,7 +661,7 @@ PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by Chief approval score below threshold"
 cp "$M/decisions.baseline.jsonl" "$M/decisions.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after Chief approval score restored"
-python3 - "$M/decisions.jsonl" <<'PY'
+fixture_py "$M/decisions.jsonl" <<'PY'
 import hashlib, json, sys
 p = sys.argv[1]
 row = json.loads(open(p, encoding="utf-8").read())
@@ -660,7 +675,7 @@ PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by non-A Chief approval grade"
 cp "$M/decisions.baseline.jsonl" "$M/decisions.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after Chief approval grade restored"
-python3 - "$M/decisions.jsonl" <<'PY'
+fixture_py "$M/decisions.jsonl" <<'PY'
 import hashlib, json, sys
 p = sys.argv[1]
 row = json.loads(open(p, encoding="utf-8").read())
@@ -674,7 +689,7 @@ PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by Chief approval rationale without source evidence id"
 cp "$M/decisions.baseline.jsonl" "$M/decisions.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after source-backed Chief decision restored"
-python3 - "$M/decisions.jsonl" <<'PY'
+fixture_py "$M/decisions.jsonl" <<'PY'
 import hashlib, json, sys
 p = sys.argv[1]
 row = json.loads(open(p, encoding="utf-8").read())
@@ -688,7 +703,7 @@ PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by Chief approval rationale with stale source evidence id"
 cp "$M/decisions.baseline.jsonl" "$M/decisions.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after stale Chief rationale source restored"
-python3 - "$M/decisions.jsonl" <<'PY'
+fixture_py "$M/decisions.jsonl" <<'PY'
 import hashlib, json, sys
 p = sys.argv[1]
 row = json.loads(open(p, encoding="utf-8").read())
@@ -733,7 +748,7 @@ Attorney work-product - not legal advice. Prepared for licensed review.
 MD
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact source-cited deliverable restored"
 cp "$M/red_flags.jsonl" "$M/red_flags.baseline.jsonl"
-python3 - "$M/red_flags.jsonl" <<'PY'
+fixture_py "$M/red_flags.jsonl" <<'PY'
 import json, sys
 p = sys.argv[1]
 row = json.loads(open(p, encoding="utf-8").read())
@@ -743,7 +758,7 @@ PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-packet nonblocking red flag accountability tamper"
 cp "$M/red_flags.baseline.jsonl" "$M/red_flags.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact nonblocking red flag ledger restored"
-python3 - "$M/red_flags.jsonl" <<'PY'
+fixture_py "$M/red_flags.jsonl" <<'PY'
 import json, sys
 p = sys.argv[1]
 row = json.loads(open(p, encoding="utf-8").read())
@@ -813,7 +828,7 @@ ok "$(echo "$S" | grep -q '✅ strategy_artifacts_verified' && echo 1 || echo 0)
 ok "$(echo "$S" | grep -q '✅ docket_artifacts_verified' && echo 1 || echo 0)" "status shows docket_artifacts_verified ✅"
 
 # the live glaw 'stage' command refuses to advance past an unmet gate (integration)
-GLAW_BIN="$HERE/../bin/glaw"
+GLAW_BIN="$ROOT/bin/glaw"
 N="$TMP/matters/n"; mkdir -p "$N"; : > "$N/timeline.jsonl"; echo intake > "$N/.stage"; echo n > "$TMP/.active"
 "$GLAW_BIN" stage strategy >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && [ "$(cat "$N/.stage")" = intake ] && echo 1 || echo 0)" "glaw stage refuses advance without intake/conflicts + leaves .stage unchanged"

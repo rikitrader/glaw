@@ -24,7 +24,14 @@ echo "→ state dir: $GLAW_HOME"
 # 3) zero-dependency policy
 echo "→ zero-dependency mode: no pip/npm installs, no venv build"
 
-# 4) health check
+# 4) local Git safety gate
+if git -C "$HERE" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
+  chmod +x "$HERE/bin/glaw-commit-gate" "$HERE/.githooks/pre-commit" "$HERE/.githooks/pre-push"
+  git -C "$HERE" config core.hooksPath .githooks
+  echo "→ commit gate: .githooks (bin/glaw-doctor on commit/push)"
+fi
+
+# 5) health check
 echo "→ health check…"
 bash "$HERE/bin/glaw-doctor" 2>/dev/null | tail -3 || true
 

@@ -28,7 +28,7 @@ cd ~/glaw
 bin/glaw-doctor
 ```
 
-`./setup` deploys the orchestrator and every `/glaw-*` sub-skill into both Claude and Codex skills roots: `~/.claude/skills` and `${CODEX_HOME:-~/.codex}/skills`. It also creates local state under `~/.glaw`.
+`./setup` deploys the orchestrator and every `/glaw-*` sub-skill into both Claude and Codex skills roots: `~/.claude/skills` and `${CODEX_HOME:-~/.codex}/skills`. It also creates local state under `~/.glaw` and configures `.githooks` so `bin/glaw-doctor` runs before local commits and pushes.
 
 ## Existing Checkout
 
