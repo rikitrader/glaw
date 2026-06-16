@@ -91,12 +91,12 @@ The breadth is done and the safety spine is **verified real** (authority gate, l
 - **Acceptance:** `compliance_audit_test.sh` exists and is picked up by the doctor test-runner loop.
 - **Closed:** `test/compliance_audit_test.sh` asserts HAVE/ACTION/GAP/optional-missing classification and is included in `bin/glaw-doctor`.
 
-### H-10 · ~99 tax/practice-group CLI wrappers are smoke-or-less — `IN-PROGRESS`
+### H-10 · ~99 tax/practice-group CLI wrappers are smoke-or-less — `DONE`
 - **Files:** e.g. `bin/glaw-scorp-aaa`, `glaw-partner-basis`, `glaw-subpart-f`, `glaw-combined-unitary`, `glaw-tfrp`, `glaw-ptet`, `glaw-oic`, `glaw-sfr`, `glaw-wbo-award`, `glaw-qm` (representative).
 - **Current state:** load-bearing IRS/state calcs with no test / no lib-engine backing / not even in the doctor smoke array. (Many other tax tools *are* covered via `lib/bookkeeping/test_finance*.py` — these are the ones that are not.)
 - **Required fix:** add at least a golden-value test per uncovered calc tool (one known input → known output), or fold them into the existing finance-engine test pattern.
 - **Acceptance:** every `bin/glaw-*` calc tool has either a golden-value test or a lib-engine test touching its math.
-- **Progress:** `test/tax_wrapper_golden_test.sh` covers the named representative tools in this item with exact wrapper-level golden values: `glaw-scorp-aaa`, `glaw-partner-basis`, `glaw-subpart-f`, `glaw-combined-unitary`, `glaw-tfrp`, `glaw-ptet`, `glaw-oic`, `glaw-sfr`, `glaw-wbo-award`, and `glaw-qm`. `test/tax_wrapper_coverage.json` plus `test/tax_wrapper_coverage_test.sh` now lock 22 wrapper-to-module-to-evidence mappings covering the named representatives and the W3/W4/W5 entity/state/international engine set. Remaining work: inventory every other calc wrapper and either add wrapper goldens or prove lib-engine coverage.
+- **Closed:** `test/tax_wrapper_golden_test.sh` covers the named representative tools in this item with exact wrapper-level golden values. `test/tax_wrapper_gap_golden_test.sh` adds wrapper-level goldens for the remaining deterministic form/reporting/citation/ledger helpers that lacked direct wrapper checks. `test/tax_wrapper_coverage.json` plus `test/tax_wrapper_coverage_test.sh` now lock 90 wrapper-to-module-to-evidence mappings and fail if any non-meta bookkeeping-backed wrapper is missing a golden or lib-engine evidence path. The only excluded bookkeeping-backed commands are doctor/meta gates: `glaw-bookkeeping-doctor` and `glaw-doctor`.
 
 ---
 

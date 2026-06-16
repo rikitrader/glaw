@@ -14,7 +14,6 @@ root = Path(sys.argv[1])
 manifest = Path(sys.argv[2])
 golden = Path(sys.argv[3])
 rows = json.loads(manifest.read_text(encoding="utf-8"))
-golden_text = golden.read_text(encoding="utf-8")
 
 required = {
     "glaw-scorp-aaa",
@@ -51,15 +50,19 @@ for idx, row in enumerate(rows, start=1):
     evidence_paths = [item.strip() for item in evidence.split(";") if item.strip()]
     if not evidence_paths:
         failures.append(f"{wrapper} has no coverage evidence")
+    evidence_texts = []
     for rel in evidence_paths:
         path = root / rel
         if not path.exists():
             failures.append(f"{wrapper} evidence missing: {rel}")
-    if "wrapper-golden" in coverage and wrapper not in golden_text:
-        failures.append(f"{wrapper} claims wrapper-golden coverage but is absent from tax_wrapper_golden_test.sh")
+        else:
+            evidence_texts.append(path.read_text(encoding="utf-8"))
+    if "wrapper-golden" in coverage:
+        if wrapper not in "\n".join(evidence_texts):
+            failures.append(f"{wrapper} claims wrapper-golden coverage but is absent from its evidence files")
     if "lib-engine" in coverage:
         module_stem = Path(module).stem
-        evidence_text = "\n".join((root / rel).read_text(encoding="utf-8") for rel in evidence_paths if (root / rel).exists())
+        evidence_text = "\n".join(evidence_texts)
         if module_stem not in evidence_text:
             failures.append(f"{wrapper} claims lib-engine coverage but evidence does not reference {module_stem}")
     if coverage not in {"wrapper-golden", "lib-engine", "wrapper-golden+lib-engine"}:
@@ -69,9 +72,19 @@ missing_required = sorted(required - seen)
 if missing_required:
     failures.append("manifest missing H-10 representative wrappers: " + ", ".join(missing_required))
 
+allowed_uncovered_meta = {"glaw-bookkeeping-doctor", "glaw-doctor"}
+bookkeeping_wrappers = set()
+for path in (root / "bin").glob("glaw-*"):
+    text = path.read_text(encoding="utf-8", errors="replace")
+    if "lib/bookkeeping" in text:
+        bookkeeping_wrappers.add(path.name)
+uncovered = sorted(bookkeeping_wrappers - seen - allowed_uncovered_meta)
+if uncovered:
+    failures.append("bookkeeping-backed wrappers lack coverage manifest rows: " + ", ".join(uncovered))
+
 if failures:
     print("\n".join("FAIL: " + item for item in failures), file=sys.stderr)
     raise SystemExit(1)
 
-print(f"{len(rows)} passed; {len(required)} H-10 representative wrappers locked")
+print(f"{len(rows)} passed; {len(required)} H-10 representative wrappers locked; non-meta bookkeeping wrappers fully covered")
 PY
