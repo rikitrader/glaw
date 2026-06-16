@@ -54,6 +54,8 @@ oversight decision path:
 
 ```bash
 bin/glaw-oversight validate-policy
+bin/glaw-oversight validate-policy --path oversight-board/policies/fortune500-accounting-sec.json
+bin/glaw-oversight policy-list --json
 bin/glaw-oversight policy --json
 ```
 

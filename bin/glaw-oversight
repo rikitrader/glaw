@@ -7,7 +7,8 @@ Usage:
   glaw-oversight resume --by NAME --role ADMIN --reason TEXT [--json]
   glaw-oversight escalate --matter SLUG --reason TEXT [--source SRC-0001] [--owner NAME] [--json]
   glaw-oversight decision --matter SLUG --decision approve|fix|deny|halt --by NAME --role ADMIN --reason TEXT [--source SRC-0001] [--json]
-  glaw-oversight policy [--json]
+  glaw-oversight policy [--path PATH] [--json]
+  glaw-oversight policy-list [--json]
   glaw-oversight validate-policy [--path PATH] [--json]
 
 The kill-switch is global. When halted, autonomous routing must stop and route to
@@ -25,6 +26,8 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "lib"))
 from glaw_oversight import decision, escalate, halt, resume, status
 from glaw_oversight_policy import DEFAULT_POLICY_PATH, load_policy, validate_policy_file
+
+POLICY_DIR = ROOT / "oversight-board" / "policies"
 
 
 def emit(data: dict, as_json: bool) -> None:
@@ -80,6 +83,10 @@ def main(argv: list[str]) -> int:
     p.add_argument("--json", action="store_true")
 
     p = sub.add_parser("policy")
+    p.add_argument("--path", default=str(DEFAULT_POLICY_PATH))
+    p.add_argument("--json", action="store_true")
+
+    p = sub.add_parser("policy-list")
     p.add_argument("--json", action="store_true")
 
     p = sub.add_parser("validate-policy")
@@ -115,17 +122,36 @@ def main(argv: list[str]) -> int:
             emit(row, args.json)
             return 0 if ok else 1
         if args.cmd == "policy":
-            policy = load_policy(DEFAULT_POLICY_PATH)
-            data = {"status": "pass", "path": str(DEFAULT_POLICY_PATH), "policy": policy}
+            policy_path = Path(args.path)
+            policy = load_policy(policy_path)
+            data = {"status": "pass", "path": str(policy_path), "policy": policy}
             if args.json:
                 print(json.dumps(data, indent=2, sort_keys=False))
             else:
                 print(f"OVERSIGHT POLICY: {policy.get('name')}")
-                print(f"  path: {DEFAULT_POLICY_PATH}")
+                print(f"  path: {policy_path}")
                 print(f"  authority: {policy.get('authority_boundary')}")
                 print(f"  triggers: {len(policy.get('escalation_triggers') or [])}")
                 print(f"  decisions: {len(policy.get('decision_rules') or [])}")
             return 0
+        if args.cmd == "policy-list":
+            policies = []
+            for path in sorted(POLICY_DIR.glob("*.json")):
+                validation = validate_policy_file(path)
+                policies.append({
+                    "path": str(path.relative_to(ROOT)),
+                    "name": validation.get("name", ""),
+                    "status": validation.get("status", "fail"),
+                    "failure_count": len(validation.get("failures", [])),
+                })
+            data = {"status": "pass" if all(p["status"] == "pass" for p in policies) else "fail", "policies": policies}
+            if args.json:
+                print(json.dumps(data, indent=2, sort_keys=False))
+            else:
+                print(f"OVERSIGHT POLICIES: {data['status']}")
+                for policy in policies:
+                    print(f"  {policy['status']}: {policy['path']} - {policy['name']}")
+            return 0 if data["status"] == "pass" else 1
         if args.cmd == "validate-policy":
             data = validate_policy_file(Path(args.path))
             if args.json:

@@ -79,6 +79,54 @@ PY
 rc2=$?
 ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "bundled Oversight Board policy pack validates"
 
+"$OVERSIGHT" policy-list --json > "$TMP/policy-list.json"; rc=$?
+python3 - "$TMP/policy-list.json" <<'PY'
+import json, sys
+data=json.load(open(sys.argv[1]))
+paths={item.get("path") for item in data.get("policies", [])}
+ok=(
+    data.get("status") == "pass"
+    and "oversight-board/policies/core.json" in paths
+    and "oversight-board/policies/fortune500-accounting-sec.json" in paths
+    and all(item.get("status") == "pass" for item in data.get("policies", []))
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "policy-list validates all bundled Oversight Board policy packs"
+
+"$OVERSIGHT" validate-policy --path "$ROOT/oversight-board/policies/fortune500-accounting-sec.json" --json > "$TMP/policy-f500.json"; rc=$?
+python3 - "$TMP/policy-f500.json" <<'PY'
+import json, sys
+data=json.load(open(sys.argv[1]))
+ok=(
+    data.get("status") == "pass"
+    and data.get("required_trigger_count") == 6
+    and data.get("decision_rule_count") == 5
+    and data.get("name") == "GLAW Fortune 500 Accounting SEC Oversight Policy"
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "Fortune 500 accounting/SEC Oversight policy validates"
+
+"$OVERSIGHT" policy --path "$ROOT/oversight-board/policies/fortune500-accounting-sec.json" --json > "$TMP/policy-f500-show.json"; rc=$?
+python3 - "$TMP/policy-f500-show.json" <<'PY'
+import json, sys
+data=json.load(open(sys.argv[1]))
+policy=data.get("policy", {})
+triggers={item.get("id") for item in policy.get("escalation_triggers", [])}
+acts=set(policy.get("prohibited_autonomous_acts", []))
+ok=(
+    data.get("status") == "pass"
+    and {"sec-restatement-risk", "pcaob-icfr-deficiency", "irs-return-tieout-break", "bank-rec-material-break"} <= triggers
+    and {"edgar-submit", "irs-transmit", "audit-signoff"} <= acts
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "Fortune 500 policy exposes SEC/PCAOB/IRS/bank-rec escalation and prohibited acts"
+
 "$OVERSIGHT" policy --json > "$TMP/policy-show.json"; rc=$?
 python3 - "$TMP/policy-show.json" <<'PY'
 import json, sys
@@ -95,7 +143,7 @@ ok=(
 sys.exit(0 if ok else 1)
 PY
 rc2=$?
-ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "policy pack exposes accounting/government escalation and human-only acts"
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "core policy pack exposes accounting/government escalation and human-only acts"
 
 cat > "$TMP/bad-policy.json" <<'JSON'
 {
