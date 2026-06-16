@@ -97,6 +97,36 @@ def shipped_artifacts(matter: Path) -> list[dict]:
     return artifacts
 
 
+def final_packet_summary(matter: Path) -> dict:
+    packet = read_json(matter / "final_packet.json", {})
+    if not packet:
+        return {
+            "present": False,
+            "status": "missing",
+            "compliance_manifest": [],
+            "government_adversary_manifest": [],
+            "compliance_failures": [],
+            "government_adversary_failures": [],
+        }
+    compliance = packet.get("compliance_manifest") or []
+    government = packet.get("government_adversary_manifest") or []
+    return {
+        "present": True,
+        "status": packet.get("status", "unknown"),
+        "workflow_profile": packet.get("workflow_profile", ""),
+        "generated_at": packet.get("generated_at", ""),
+        "gates": packet.get("gates", {}),
+        "compliance_manifest": compliance,
+        "government_adversary_manifest": government,
+        "compliance_failures": [
+            item for item in compliance if item.get("status") != "pass"
+        ],
+        "government_adversary_failures": [
+            item for item in government if item.get("status") != "pass"
+        ],
+    }
+
+
 def report(goal: str, slug: str = "") -> dict:
     matter_slug = slug or active_slug()
     if not matter_slug:
@@ -135,6 +165,7 @@ def report(goal: str, slug: str = "") -> dict:
     timeline = read_jsonl(matter / "timeline.jsonl")
     gates = gate_status(matter_slug)
     open_gates = [row for row in gates if row["status"] != "pass"]
+    packet_summary = final_packet_summary(matter)
     return {
         "schema_version": 1,
         "status": "pass" if not open_gates and loop.get("quality_state") in {"ready_for_next_stage", "ready_for_closeout"} else "blocked",
@@ -149,6 +180,11 @@ def report(goal: str, slug: str = "") -> dict:
         "next_command": loop.get("next_command", ""),
         "open_gates": open_gates,
         "gate_status": gates,
+        "final_packet": packet_summary,
+        "compliance_manifest": packet_summary["compliance_manifest"],
+        "government_adversary_manifest": packet_summary["government_adversary_manifest"],
+        "compliance_failures": packet_summary["compliance_failures"],
+        "government_adversary_failures": packet_summary["government_adversary_failures"],
         "decisions": latest_decisions(matter),
         "shipped_artifacts": shipped_artifacts(matter),
         "timeline_events": len(timeline),
