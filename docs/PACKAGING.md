@@ -15,3 +15,6 @@ docker push ghcr.io/rikitrader/glaw:latest
 
 The image is `FROM scratch` and contains the repository under `/glaw`; it is a
 distribution artifact, not a runtime with installed third-party packages.
+
+The same publish path is automated by `.github/workflows/package-ghcr.yml` on
+release publication or manual `workflow_dispatch`.
