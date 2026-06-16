@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.2.2 — current main release and package refresh
+
+- **Government-adversary routing regression.** Added a loop regression and sandbox scenario proving
+  final-packet government/regulatory/litigation adversary failures route back to the adversarial
+  owner instead of letting the orchestrator proceed.
+- **Gate documentation alignment.** README, ROADMAP, tools docs, and gate consistency tests now
+  describe the current hard-gate chain consistently: structured intake, conflicts, citations,
+  adversarial RED-to-BLUE, red flags, final packet, Chief/Council approval, UPL, and docket.
+- **Release/package metadata synced.** `VERSION`, `SKILL.md`, and GHCR package documentation now
+  point at this release line so GitHub Releases and GitHub Packages describe the same artifact.
+
+## 1.2.1 — gate contract documentation and package hardening
+
+- **Public docs match enforced gates.** README, SKILL.md, workflow docs, and org-chart docs now
+  describe the same enforced matter-gate contract.
+- **Documentation drift fails closed.** Added `gate_docs_consistency_test` and wired it into
+  `glaw-doctor` and `glaw-policy`.
+- **GHCR package workflow hardened.** Release publication now verifies source with `glaw-setup`,
+  `glaw-doctor`, `glaw-policy`, `glaw-bookkeeping-doctor`, and the zero-package guard before
+  pushing the source-only OCI package.
+
 ## 1.2.0 — authority-backed citations and autonomous safety hardening
 
 - **Citation corpus is now trust-gated.** Verified legal citations must point to an approved
