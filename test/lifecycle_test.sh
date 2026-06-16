@@ -264,6 +264,32 @@ cat > "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" <<'JSON'
 }
 JSON
 "$CONTROL" --matter "$SLUG" --profile accounting --source "SRC-0001 bank statement, ledger, and bank reconciliation source package" --ledger "$TMP/matters/$SLUG/workpapers/ledger.json" --bank-rec "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" >/dev/null
+cat > "$TMP/matters/$SLUG/draft-report.md" <<'MD'
+# Draft Report
+
+Owner: GLAW Controller
+Report voice: controller/CFO report.
+Findings: Numbers tie to source.
+Evidence: SRC-0001 bank statement plus SRC-9999 stale extract.
+Red flags: none.
+Sign-off conditions: licensed review.
+
+Attorney work-product - not legal advice. Prepared for licensed review.
+MD
+"$PACKET" build >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by report with mixed current and stale source ids"
+cat > "$TMP/matters/$SLUG/draft-report.md" <<'MD'
+# Draft Report
+
+Owner: GLAW Controller
+Report voice: controller/CFO report.
+Findings: Numbers tie to source.
+Evidence: SRC-0001 bank statement.
+Red flags: none.
+Sign-off conditions: licensed review.
+
+Attorney work-product - not legal advice. Prepared for licensed review.
+MD
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && [ -f "$TMP/matters/$SLUG/final_packet.json" ] && echo 1 || echo 0)" "final packet ready after council and red flags clear"
 python3 - "$TMP/matters/$SLUG/final_packet.json" <<'PY'

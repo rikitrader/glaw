@@ -266,10 +266,14 @@ def report_quality(path: Path, root: Path, source_manifest: list[dict]) -> dict:
     review_markers = sorted(set(UNRESOLVED_REVIEW_RE.findall(text)))
     source_ids = [item["id"] for item in source_manifest]
     cited_sources = [sid for sid in source_ids if sid in text]
+    referenced_sources = sorted(set(SOURCE_ID_RE.findall(text)))
+    stale_sources = sorted(set(referenced_sources) - set(source_ids))
     if not source_ids:
         missing.append("source evidence manifest")
     elif not cited_sources:
         missing.append("source evidence id (SRC-####)")
+    elif stale_sources:
+        missing.append("non-current source evidence id")
     if placeholders:
         missing.append("unresolved placeholders")
     if review_markers:
@@ -298,6 +302,8 @@ def review_evidence_manifest(
         evidence = str(row.get("evidence", ""))
         notes = str(row.get("notes", ""))
         cited = [sid for sid in source_ids if sid in evidence]
+        referenced = sorted(set(SOURCE_ID_RE.findall(evidence)))
+        stale = sorted(set(referenced) - set(source_ids))
         missing = []
         if not row:
             missing.append("review row")
@@ -305,6 +311,8 @@ def review_evidence_manifest(
             missing.append("evidence")
         if not cited:
             missing.append("source evidence id (SRC-####)")
+        elif stale:
+            missing.append("non-current source evidence id")
         if not notes.strip():
             missing.append("notes/conclusion")
         rows.append({
@@ -321,6 +329,10 @@ def review_evidence_manifest(
         attack = str(row.get("attack", ""))
         cited = [sid for sid in source_ids if sid in evidence]
         attack_cited = [sid for sid in source_ids if sid in attack]
+        referenced = sorted(set(SOURCE_ID_RE.findall(evidence)))
+        attack_referenced = sorted(set(SOURCE_ID_RE.findall(attack)))
+        stale = sorted(set(referenced) - set(source_ids))
+        attack_stale = sorted(set(attack_referenced) - set(source_ids))
         missing = []
         if not row:
             missing.append("review row")
@@ -328,10 +340,14 @@ def review_evidence_manifest(
             missing.append("evidence")
         if not cited:
             missing.append("source evidence id (SRC-####)")
+        elif stale:
+            missing.append("non-current source evidence id")
         if not attack.strip():
             missing.append("attack/challenge")
         if not attack_cited:
             missing.append("attack source evidence id (SRC-####)")
+        elif attack_stale:
+            missing.append("non-current attack source evidence id")
         rows.append({
             "kind": "adversarial",
             "name": lens,
@@ -362,6 +378,8 @@ def red_flag_resolution_manifest(red_flags: list[dict], source_manifest: list[di
             missing.append("source evidence id (SRC-####)")
         elif not cited:
             missing.append("current source evidence id")
+        elif sorted(set(syntactic) - set(source_ids)):
+            missing.append("non-current source evidence id")
         rows.append({
             "id": flag.get("id", ""),
             "severity": severity,
@@ -400,6 +418,8 @@ def nonblocking_red_flag_manifest(red_flags: list[dict], source_manifest: list[d
             missing.append("source evidence id (SRC-####)")
         elif not cited:
             missing.append("current source evidence id")
+        elif sorted(set(syntactic) - set(source_ids)):
+            missing.append("non-current source evidence id")
         rows.append({
             "id": flag.get("id", ""),
             "severity": severity,
@@ -484,10 +504,13 @@ def accounting_control_manifest(d: Path, profile: str, source_manifest: list[dic
         manifest["missing"].append("status=pass")
     source_text = str(control.get("source", ""))
     cited = [sid for sid in source_ids if sid in source_text]
+    syntactic = sorted(set(SOURCE_ID_RE.findall(source_text)))
     if not SOURCE_ID_RE.search(source_text):
         manifest["missing"].append("source evidence id (SRC-####)")
     elif not cited:
         manifest["missing"].append("current source evidence id")
+    elif sorted(set(syntactic) - set(source_ids)):
+        manifest["missing"].append("non-current source evidence id")
 
     ledger = control.get("ledger", {})
     if ledger.get("status") != "pass":

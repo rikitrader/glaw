@@ -675,6 +675,16 @@ PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-packet nonblocking red flag accountability tamper"
 cp "$M/red_flags.baseline.jsonl" "$M/red_flags.jsonl"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact nonblocking red flag ledger restored"
+python3 - "$M/red_flags.jsonl" <<'PY'
+import json, sys
+p = sys.argv[1]
+row = json.loads(open(p, encoding="utf-8").read())
+row["source"] = "SRC-0001 bank statement plus SRC-9999 stale extract"
+open(p, "w", encoding="utf-8").write(json.dumps(row) + "\n")
+PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by nonblocking red flag with stale source evidence id"
+cp "$M/red_flags.baseline.jsonl" "$M/red_flags.jsonl"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after stale nonblocking red flag source restored"
 printf '{"id":"RF-STALE","severity":"high","status":"open","finding":"new post-packet issue"}\n' > "$M/red_flags.jsonl"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet high red flag"
 printf '{"id":"RF-STALE","severity":"high","status":"resolved","finding":"new post-packet issue","resolution_evidence":"fixed"}\n' > "$M/red_flags.jsonl"
