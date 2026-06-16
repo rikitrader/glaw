@@ -227,6 +227,7 @@ from glaw_profiles import (
     profile_for_track,
 )
 from glaw_authority_sources import approved_authority_url
+from glaw_groundedness import audit_matter
 
 GENERIC_INTAKE_REVIEWER_RE = re.compile(
     r"^\s*(?:intake\s+)?(?:reviewer|operator|user|clerk|agent|professional|counsel)\s*$"
@@ -1400,6 +1401,26 @@ for cid, row in latest_citations.items():
         blocking_citations.append(cid or row.get("authority") or "unnamed")
 if blocking_citations:
     print("current blocking citation(s): " + ", ".join(str(x) for x in blocking_citations))
+    sys.exit(1)
+
+groundedness_path = d / "groundedness.json"
+if not groundedness_path.exists():
+    print("groundedness.json missing")
+    sys.exit(1)
+groundedness = json.loads(groundedness_path.read_text(encoding="utf-8"))
+current_groundedness = audit_matter(d)
+if groundedness.get("status") != "pass":
+    print("groundedness.json status is not pass")
+    sys.exit(1)
+if current_groundedness.get("status") != "pass":
+    failures = current_groundedness.get("failures", [])
+    print("current groundedness audit fails: " + "; ".join(str(x) for x in failures))
+    sys.exit(1)
+if groundedness.get("rows") != current_groundedness.get("rows"):
+    print("groundedness.json is stale or does not match current citations/corpus")
+    sys.exit(1)
+if groundedness.get("failures", []) != current_groundedness.get("failures", []):
+    print("groundedness.json failure list does not match current audit")
     sys.exit(1)
 
 council = d / "council.jsonl"

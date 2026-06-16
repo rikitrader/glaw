@@ -283,7 +283,7 @@ append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","propo
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by verified citation without support summary"
 printf '%s\n' "26 U.S.C. 6001 requires tax return records to tie to books and establish tax liability." > "$TMP/usc-6001.txt"
 "$CORPUS" capture --id CORP-1 --source-url "https://uscode.house.gov/" --file "$TMP/usc-6001.txt" --authenticated-copy --segment "tax return records to tie to books and establish tax liability" >/dev/null
-append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","proposition":"tax return must tie to books","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/","reviewer":"legal-research","support_summary":"The cited section supports keeping records that substantiate tax positions.","corpus_id":"CORP-1"}'
+append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","proposition":"tax return must tie to books","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/","reviewer":"legal-research","support_summary":"The source segment says tax return records tie to books and establish tax liability.","corpus_id":"CORP-1"}'
 "$ROOT/bin/glaw-groundedness" audit >/dev/null
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current council ledger artifact"
 for role in cfo tax-strategist irs-audit-agent legal-counsel forensic-audit accounting-reviewer outside-critic external-reviewer; do
@@ -747,6 +747,35 @@ open(sys.argv[1], "w", encoding="utf-8").write(json.dumps(row) + "\n")
 PY
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after all file gates"
 cp "$M/final_packet.json" "$M/final_packet.compliance-baseline.json"
+cp "$M/groundedness.json" "$M/groundedness.baseline.json"
+cp "$M/decisions.jsonl" "$M/decisions.baseline.jsonl"
+fixture_py "$M" <<'PY'
+import hashlib, json, pathlib, sys
+d = pathlib.Path(sys.argv[1])
+ground_path = d / "groundedness.json"
+ground = json.loads(ground_path.read_text(encoding="utf-8"))
+ground["rows"][0]["entity_grounding"] = 1.0
+ground["rows"][0]["missing_proposition_tokens"] = ["manually-corrupted"]
+ground_path.write_text(json.dumps(ground) + "\n", encoding="utf-8")
+
+packet_path = d / "final_packet.json"
+packet = json.loads(packet_path.read_text(encoding="utf-8"))
+packet["gate_artifact_hashes"]["groundedness.json"] = hashlib.sha256(ground_path.read_bytes()).hexdigest()
+packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
+
+decision_path = d / "decisions.jsonl"
+row = json.loads(decision_path.read_text(encoding="utf-8").splitlines()[-1])
+row["approved_packet_sha256"] = hashlib.sha256(packet_path.read_bytes()).hexdigest()
+row.pop("decision_hash", None)
+row["decision_hash"] = hashlib.sha256(
+    json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
+).hexdigest()
+decision_path.write_text(json.dumps(row) + "\n", encoding="utf-8")
+PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by stale groundedness artifact despite matching packet hashes"
+cp "$M/final_packet.compliance-baseline.json" "$M/final_packet.json"
+cp "$M/groundedness.baseline.json" "$M/groundedness.json"
+cp "$M/decisions.baseline.jsonl" "$M/decisions.jsonl"
 fixture_py "$M/final_packet.json" <<'PY'
 import json, sys
 p = sys.argv[1]

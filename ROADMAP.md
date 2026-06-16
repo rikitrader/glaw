@@ -230,7 +230,7 @@ The more autonomous GLAW gets, the more these bind. They are the organism's cons
 | **Autonomic loop** | `glaw-loop` routes fail-closed, records maker/checker decisions, latches non-convergence escalations, respects Oversight halt, emits self-routing compliance failures, and is covered by accounting/tax/SEC/PCAOB, citation-grounding, red-flag, and report-quality tabletop sandbox scenarios | richer matter-specific convergence fixtures across more specialist seats | 2–6 |
 | **Cross-matter memory** | `glaw-learnings` is a queryable source-linked long-term store with reflected knowledge rules, isolated `$GLAW_HOME` tests, workflow-track/matter-type weighted retrieval, and retrieval-quality eval fixtures for accounting-tax, litigation, SEC reporting, tax, and legal-research tracks | broader retrieval quality scenarios across more specialist seats and outcome-aware scoring | 2–6 |
 | **Host embedding** | `glaw-host`, `glaw-mcp`, and `glaw-extism` expose guarded argv-only execution with conscience and RBAC boundaries | hosted/multi-operator identity beyond local role assertion | 3–6 |
-| **Verifiable law** | citation corpus capture rejects off-allowlist URLs, treats pasted text as untrusted, supports allowlisted fetch and authenticated official copies, stamps source rows with a reviewed authority-source catalog for U.S.C., eCFR, GovInfo, Federal Register, IRS, SEC, PCAOB, FASB/GAAP, Congress, SCOTUS, CourtListener, and LII, blocks stale corpus captures by default after 180 days, and gates citation typology + lexical groundedness | deeper live corpus integrations and semantic authority checking beyond the lexical floor | 4–6 |
+| **Verifiable law** | citation corpus capture rejects off-allowlist URLs, treats pasted text as untrusted, supports allowlisted fetch and authenticated official copies, stamps source rows with a reviewed authority-source catalog for U.S.C., eCFR, GovInfo, Federal Register, IRS, SEC, PCAOB, FASB/GAAP, Congress, SCOTUS, CourtListener, and LII, blocks stale corpus captures by default after 180 days, and gates citation typology + lexical groundedness with file-stage recomputation | deeper live corpus integrations and semantic authority checking beyond the lexical floor | 4–6 |
 | **Public-law branches** | `/glaw-constitutional`, `/glaw-legislative`, `/glaw-judicial`, and `/glaw-admin-law` ship reference checklists, model templates, and doctor-enforced substance tests | additional jurisdiction-specific branch playbooks and model outputs | 4–6 |
 | **Automated tests** | doctor + hard gates + per-profile golden matters + sandbox fault simulations + tax wrapper golden/coverage manifest | more golden-output tests per specialist seat and scenario diversity | 2–6 |
 | **Filing connectivity** | filing tools remain human-sealed; IRS/EFW2/packet scaffolds are gated and kill-switch aware | real transmitter credentials and EDGAR/court e-file integrations under human seal | 4–6 |
@@ -374,6 +374,11 @@ the seal stays human as a legal and ethics constraint.
   citation rows against trusted corpus segments, writes `groundedness.json`, and
   `glaw-citation-gate complete` blocks if the score is below threshold or the corpus is
   untrusted. It is explicitly not semantic Shepardizing or HalluGraph proof.
+- ✅ **P4-G3b · File-stage groundedness recomputation**: `glaw-gate check file`
+  now recomputes groundedness from current citations/corpus and refuses a stale or
+  mismatched `groundedness.json` even when `final_packet.json` has been rebuilt with
+  matching artifact hashes. `gate_test.sh` corrupts the artifact, updates packet and
+  approval hashes, and proves the gate still blocks.
 - ✅ **P4-G4 · Jurisdiction-pack gate**: `/glaw-jurisdiction` + `bin/glaw-jurisdiction-pack`
   require source-backed state/federal/international matrices for governing law, forum, tax,
   licensing, filings, deadlines, and government/adversarial lenses. This turns
