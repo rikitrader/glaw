@@ -230,7 +230,7 @@ The more autonomous GLAW gets, the more these bind. They are the organism's cons
 | **Autonomic loop** | `glaw-loop` routes fail-closed, records maker/checker decisions, latches non-convergence escalations, respects Oversight halt, emits self-routing compliance failures, and is covered by accounting/tax/SEC/PCAOB, citation-grounding, red-flag, and report-quality tabletop sandbox scenarios | richer matter-specific convergence fixtures across more specialist seats | 2–6 |
 | **Cross-matter memory** | `glaw-learnings` is a queryable source-linked long-term store with reflected knowledge rules, isolated `$GLAW_HOME` tests, workflow-track/matter-type weighted retrieval, and retrieval-quality eval fixtures for accounting-tax, litigation, SEC reporting, tax, and legal-research tracks | broader retrieval quality scenarios across more specialist seats and outcome-aware scoring | 2–6 |
 | **Host embedding** | `glaw-host`, `glaw-mcp`, and `glaw-extism` expose guarded argv-only execution with conscience and RBAC boundaries | hosted/multi-operator identity beyond local role assertion | 3–6 |
-| **Verifiable law** | citation corpus capture rejects off-allowlist URLs, treats pasted text as untrusted, supports allowlisted fetch and authenticated official copies, and gates citation typology + lexical groundedness | deeper authoritative corpus integrations and semantic authority checking beyond the lexical floor | 4–6 |
+| **Verifiable law** | citation corpus capture rejects off-allowlist URLs, treats pasted text as untrusted, supports allowlisted fetch and authenticated official copies, stamps source rows with a reviewed authority-source catalog for U.S.C., eCFR, GovInfo, Federal Register, IRS, SEC, PCAOB, FASB/GAAP, Congress, SCOTUS, CourtListener, and LII, and gates citation typology + lexical groundedness | deeper live corpus integrations and semantic authority checking beyond the lexical floor | 4–6 |
 | **Public-law branches** | `/glaw-constitutional`, `/glaw-legislative`, `/glaw-judicial`, and `/glaw-admin-law` ship reference checklists, model templates, and doctor-enforced substance tests | additional jurisdiction-specific branch playbooks and model outputs | 4–6 |
 | **Automated tests** | doctor + hard gates + per-profile golden matters + sandbox fault simulations + tax wrapper golden/coverage manifest | more golden-output tests per specialist seat and scenario diversity | 2–6 |
 | **Filing connectivity** | filing tools remain human-sealed; IRS/EFW2/packet scaffolds are gated and kill-switch aware | real transmitter credentials and EDGAR/court e-file integrations under human seal | 4–6 |
@@ -353,6 +353,13 @@ the seal stays human as a legal and ethics constraint.
   authoritative `--fetch` from approved sources and offline `--file --authenticated-copy`
   official copies, stores source/segment SHA-256 hashes, and `glaw-citation-gate` plus
   `glaw-gate` refuse verified rows backed by untrusted pasted text.
+- ✅ **P4-G1b · Authority-source catalog for Fortune 500 workflows**:
+  `lib/glaw_authority_sources.py` now exposes a code-reviewed source catalog and
+  `glaw-citation-corpus sources [--profile ...]` lists official lanes for legal research,
+  tax, accounting-tax, SEC-reporting, and public-law work. Captured corpus rows carry
+  `authority_source_id` / `authority_source_kind`; `authority_sources_test.sh` locks IRS,
+  SEC, PCAOB, FASB/GAAP, U.S.C., eCFR, GovInfo, and CourtListener coverage and proves
+  runtime environment variables cannot add fake authority domains.
 - ✅ **P4-G2 · Encode the falsifiable hallucination typology** in `glaw-citation-gate`: verified
   rows now require a support summary, and failed rows must classify the defect as **incorrect**,
   **misgrounded**, **ungrounded**, or **incomplete**. `glaw-gate` revalidates the same contract so

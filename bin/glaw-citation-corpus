@@ -4,6 +4,7 @@
 Usage:
   glaw-citation-corpus capture --id <id> --source-url <url> (--text <text> | --file <path> | --fetch) [--authenticated-copy] [--segment <text>] [--matter <slug>]
   glaw-citation-corpus status [--matter <slug>]
+  glaw-citation-corpus sources [--profile <profile>] [--json]
 
 The corpus stores checked source text and a minimal support segment with SHA-256
 hashes. Pasted --text is explicitly untrusted and cannot support a verified legal
@@ -25,7 +26,12 @@ from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "lib"))
-from glaw_authority_sources import authority_domain, approved_authority_url
+from glaw_authority_sources import (
+    authority_domain,
+    authority_source_for_url,
+    authority_sources,
+    approved_authority_url,
+)
 
 
 def now() -> str:
@@ -67,6 +73,7 @@ def capture_method(args: argparse.Namespace) -> str:
 def trust_metadata(args: argparse.Namespace) -> dict:
     method = capture_method(args)
     approved = approved_authority_url(args.source_url)
+    source = authority_source_for_url(args.source_url)
     if method == "fetch" and approved:
         trust_level = "authoritative"
         basis = "fetched directly from approved authority source URL"
@@ -85,6 +92,9 @@ def trust_metadata(args: argparse.Namespace) -> dict:
         "source_method": method,
         "trust_level": trust_level,
         "authority_domain": authority_domain(args.source_url),
+        "authority_source_id": source.get("id", ""),
+        "authority_source_name": source.get("name", ""),
+        "authority_source_kind": source.get("kind", ""),
         "approved_authority_source": approved,
         "authenticated_copy": bool(args.authenticated_copy),
         "trust_basis": basis,
@@ -238,6 +248,25 @@ def cmd_status(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_sources(args: argparse.Namespace) -> int:
+    rows = authority_sources(args.profile)
+    if args.json:
+        print(json.dumps({"profile": args.profile or "all", "sources": rows}, indent=2, sort_keys=False))
+        return 0
+    label = args.profile or "all"
+    print(f"APPROVED AUTHORITY SOURCES ({label})")
+    for row in rows:
+        domains = ", ".join(row.get("domains", ()))
+        profiles = ", ".join(row.get("profiles", ()))
+        print(f"  {row.get('id')}: {row.get('name')} [{row.get('kind')}]")
+        print(f"    domains: {domains}")
+        print(f"    profiles: {profiles}")
+    if not rows:
+        print("  none")
+        return 1
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(prog="glaw-citation-corpus")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -255,6 +284,10 @@ def main() -> int:
     p = sub.add_parser("status")
     p.add_argument("--matter", default=None)
     p.set_defaults(func=cmd_status)
+    p = sub.add_parser("sources")
+    p.add_argument("--profile", default="")
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_sources)
     args = ap.parse_args()
     return args.func(args)
 
