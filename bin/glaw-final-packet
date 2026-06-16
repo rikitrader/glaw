@@ -651,6 +651,42 @@ def accounting_control_manifest(d: Path, profile: str, source_manifest: list[dic
             if not _boolish(internal.get("consistent", False)):
                 manifest["missing"].append("tax_tieout.artifact.internal.consistent=true")
 
+    if profile == "sec-reporting":
+        audit = control.get("audit_tieout", {})
+        if audit.get("status") != "pass":
+            manifest["missing"].append("audit_tieout.status=pass")
+        if not _boolish(audit.get("financial_statements_tie")):
+            manifest["missing"].append("audit_tieout.financial_statements_tie=true")
+        if not _boolish(audit.get("icfr_reviewed")):
+            manifest["missing"].append("audit_tieout.icfr_reviewed=true")
+        if not _boolish(audit.get("pcaob_reviewed")):
+            manifest["missing"].append("audit_tieout.pcaob_reviewed=true")
+        if _int_value(audit.get("open_deficiencies_count", 0)) != 0:
+            manifest["missing"].append("audit_tieout.open_deficiencies_count=0")
+        if _int_value(audit.get("material_weaknesses_count", 0)) != 0:
+            manifest["missing"].append("audit_tieout.material_weaknesses_count=0")
+        if _int_value(audit.get("unresolved_audit_differences_count", 0)) != 0:
+            manifest["missing"].append("audit_tieout.unresolved_audit_differences_count=0")
+        manifest["artifact_hashes"].append(
+            _artifact_hash(str(audit.get("artifact", "")), d, "audit_tieout", manifest["missing"])
+        )
+        audit_artifact = _read_accounting_artifact(
+            str(audit.get("artifact", "")), d, "audit_tieout", manifest["missing"]
+        )
+        if audit_artifact:
+            if not _boolish(audit_artifact.get("financial_statements_tie")):
+                manifest["missing"].append("audit_tieout.artifact.financial_statements_tie=true")
+            if not _boolish(audit_artifact.get("icfr_reviewed")):
+                manifest["missing"].append("audit_tieout.artifact.icfr_reviewed=true")
+            if not _boolish(audit_artifact.get("pcaob_reviewed")):
+                manifest["missing"].append("audit_tieout.artifact.pcaob_reviewed=true")
+            if audit_artifact.get("open_deficiencies") not in ([], None):
+                manifest["missing"].append("audit_tieout.artifact.open_deficiencies empty")
+            if audit_artifact.get("material_weaknesses") not in ([], None):
+                manifest["missing"].append("audit_tieout.artifact.material_weaknesses empty")
+            if audit_artifact.get("unresolved_audit_differences") not in ([], None):
+                manifest["missing"].append("audit_tieout.artifact.unresolved_audit_differences empty")
+
     if manifest["missing"]:
         manifest["status"] = "fail"
     return manifest
@@ -691,7 +727,7 @@ COMPLIANCE_ROW_ROUTES = {
     ),
     "accounting-control": (
         "bin/glaw-accounting-control",
-        "run books-doctor, bank reconciliation, ledger, and tax tie-out controls",
+        "run books-doctor, bank reconciliation, ledger, tax tie-out, and SEC audit tie-out controls",
     ),
     "accounting-control-not-required": (
         "",

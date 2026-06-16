@@ -652,7 +652,7 @@ routes = {
     "source-evidence-chain": ("bin/glaw-final-packet build --profile auto", "refresh the source evidence manifest from current matter files"),
     "professional-report-quality": ("bin/glaw-upl-check", "fix external reports so they carry owner, voice, findings, evidence, red flags, sign-off conditions, sources, and no placeholders"),
     "reviewer-identity": ("bin/glaw-doctor", "repair reviewer skill mapping or identity markers"),
-    "accounting-control": ("bin/glaw-accounting-control", "run books-doctor, bank reconciliation, ledger, and tax tie-out controls"),
+    "accounting-control": ("bin/glaw-accounting-control", "run books-doctor, bank reconciliation, ledger, tax tie-out, and SEC audit tie-out controls"),
 }
 def compliance(row_id, owner):
     next_command, required_fix = routes[row_id]

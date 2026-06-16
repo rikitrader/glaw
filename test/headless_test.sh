@@ -68,7 +68,7 @@ cat > "$TMP/matters/headless-routing/final_packet.json" <<'JSON'
       "owner": "glaw-accounting",
       "status": "fail",
       "next_command": "bin/glaw-accounting-control",
-      "required_fix": "run books-doctor, bank reconciliation, ledger, and tax tie-out controls",
+      "required_fix": "run books-doctor, bank reconciliation, ledger, tax tie-out, and SEC audit tie-out controls",
       "missing": ["bank_reconciliation"]
     }
   ],
@@ -111,6 +111,7 @@ ok = (
     and plan[0]["owner"] == "glaw-accounting"
     and plan[0]["next_command"] == "bin/glaw-accounting-control"
     and "bank reconciliation" in plan[0]["required_fix"]
+    and "SEC audit tie-out" in plan[0]["required_fix"]
 )
 sys.exit(0 if ok else 1)
 PY

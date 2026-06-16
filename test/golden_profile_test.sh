@@ -137,12 +137,13 @@ def set_intake(track: str) -> None:
     run("glaw-intake", "complete", "--by", "Jordan Lee, intake counsel")
 
 
-def write_accounting_inputs(matter: Path) -> tuple[Path, Path, Path]:
+def write_accounting_inputs(matter: Path) -> tuple[Path, Path, Path, Path]:
     work = matter / "workpapers"
     work.mkdir(exist_ok=True)
     ledger = work / "ledger-input.json"
     rec = work / "bank-rec-input.json"
     tax = work / "tax-tieout-input.json"
+    audit = work / "audit-tieout-input.json"
     ledger.write_text(json.dumps({
         "rows": [{
             "booking_date": "2026-01-01",
@@ -169,7 +170,15 @@ def write_accounting_inputs(matter: Path) -> tuple[Path, Path, Path]:
         "provision_ties": True,
         "internal": {"consistent": True},
     }, indent=2) + "\n", encoding="utf-8")
-    return ledger, rec, tax
+    audit.write_text(json.dumps({
+        "financial_statements_tie": True,
+        "icfr_reviewed": True,
+        "pcaob_reviewed": True,
+        "open_deficiencies": [],
+        "material_weaknesses": [],
+        "unresolved_audit_differences": [],
+    }, indent=2) + "\n", encoding="utf-8")
+    return ledger, rec, tax, audit
 
 
 def run_profile(profile: str) -> None:
@@ -242,7 +251,7 @@ Attorney work-product - not legal advice. Prepared for licensed review.
 """, encoding="utf-8")
 
     if profile in {"accounting", "accounting-tax", "tax", "sec-reporting"}:
-        ledger, rec, tax = write_accounting_inputs(matter)
+        ledger, rec, tax, audit = write_accounting_inputs(matter)
         args = [
             "glaw-accounting-control", "--matter", slug, "--profile", profile,
             "--source", "SRC-0001 source package, ledger, bank reconciliation, and tie-out reviewed",
@@ -250,6 +259,8 @@ Attorney work-product - not legal advice. Prepared for licensed review.
         ]
         if profile in {"accounting-tax", "tax"}:
             args.extend(["--tax-tieout", str(tax)])
+        if profile == "sec-reporting":
+            args.extend(["--audit-tieout", str(audit)])
         run(*args)
 
     run("glaw-final-packet", "build", "--profile", "auto", "--matter", slug)

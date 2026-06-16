@@ -63,6 +63,14 @@ def evidence_source_ids(text: str) -> list[str]:
     return sorted(set(re.findall(r"\bSRC-\d{4}\b", text)))
 
 
+def boolish(value: object) -> bool:
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, (int, float)):
+        return value == 1
+    return str(value).strip().lower() in {"true", "yes", "1", "pass"}
+
+
 def require_current_source(source: str, d: Path) -> None:
     cited = evidence_source_ids(source)
     if not cited:
@@ -157,6 +165,46 @@ def tax_tieout_block(path: Path | None, d: Path, required: bool) -> dict | None:
     return block
 
 
+def audit_tieout_block(path: Path | None, d: Path, required: bool) -> dict | None:
+    if path is None:
+        if required:
+            raise SystemExit("ERROR: sec-reporting profile requires --audit-tieout JSON")
+        return None
+    data = read_json(path)
+    dest = copy_artifact(path, d / "workpapers" / "audit-tieout.json")
+    financial_statements_tie = boolish(data.get("financial_statements_tie"))
+    icfr_reviewed = boolish(data.get("icfr_reviewed"))
+    pcaob_reviewed = boolish(data.get("pcaob_reviewed"))
+    open_deficiencies = data.get("open_deficiencies") or []
+    material_weaknesses = data.get("material_weaknesses") or []
+    unresolved_audit_differences = data.get("unresolved_audit_differences") or []
+    block = {
+        "status": "pass"
+        if (
+            financial_statements_tie
+            and icfr_reviewed
+            and pcaob_reviewed
+            and not open_deficiencies
+            and not material_weaknesses
+            and not unresolved_audit_differences
+        )
+        else "fail",
+        "artifact": rel(dest, d),
+        "financial_statements_tie": financial_statements_tie,
+        "icfr_reviewed": icfr_reviewed,
+        "pcaob_reviewed": pcaob_reviewed,
+        "open_deficiencies_count": len(open_deficiencies),
+        "material_weaknesses_count": len(material_weaknesses),
+        "unresolved_audit_differences_count": len(unresolved_audit_differences),
+    }
+    if block["status"] != "pass":
+        raise SystemExit(
+            "ERROR: SEC audit tie-out did not pass financial-statement, ICFR, PCAOB, "
+            "deficiency, material-weakness, and audit-difference checks"
+        )
+    return block
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(prog="glaw-accounting-control")
     ap.add_argument("--matter", default=None)
@@ -165,6 +213,7 @@ def main() -> int:
     ap.add_argument("--ledger", required=True, help="ledger JSON consumed by glaw-books-doctor")
     ap.add_argument("--bank-rec", required=True, help="JSON output from glaw-bank-rec --format json")
     ap.add_argument("--tax-tieout", default=None, help="JSON output from glaw-tax-tieout --format json")
+    ap.add_argument("--audit-tieout", default=None, help="SEC/audit tie-out JSON for sec-reporting profiles")
     ap.add_argument("--out", default=None, help="default: <matter>/accounting_control.json")
     args = ap.parse_args()
 
@@ -173,6 +222,7 @@ def main() -> int:
     ledger = Path(args.ledger)
     rec_src = Path(args.bank_rec)
     tax_src = Path(args.tax_tieout) if args.tax_tieout else None
+    audit_src = Path(args.audit_tieout) if args.audit_tieout else None
 
     books_out = run_books_doctor(ledger, rec_src, d)
     ledger_dest = copy_artifact(ledger, d / "workpapers" / "ledger.json")
@@ -196,6 +246,9 @@ def main() -> int:
     tax = tax_tieout_block(tax_src, d, required=args.profile in {"accounting-tax", "tax"})
     if tax is not None:
         payload["tax_tieout"] = tax
+    audit = audit_tieout_block(audit_src, d, required=args.profile == "sec-reporting")
+    if audit is not None:
+        payload["audit_tieout"] = audit
 
     out = Path(args.out) if args.out else d / "accounting_control.json"
     out.parent.mkdir(parents=True, exist_ok=True)

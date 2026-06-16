@@ -211,8 +211,10 @@ The more autonomous GLAW gets, the more these bind. They are the organism's cons
    covert ops, surveillance, intrusion, or illegal collection — ever.
 4. **Verifiable authority, no hallucinated law.** Every legal citation must pass the
    citation gate or remain struck/unverified. Today that means source-backed citation
-   ledgers plus available primary-source tools such as CourtListener, GovInfo, eCFR,
-   U.S.C., and IRS sources; the universal corpus-backed verifier remains a roadmap item.
+   ledgers, an allowlisted authority-source catalog, corpus freshness checks, verified
+   segment hashes, and deterministic groundedness recomputation at the file gate. The
+   remaining roadmap work is deeper live corpus coverage and semantic authority checking
+   beyond the current lexical floor.
 5. **Full audit ledger.** Every autonomous decision is logged (timeline + decision card +
    reproducible inputs) and reviewable. Nothing happens off the record.
 6. **Kill-switch + Oversight Board.** A human can halt the loop instantly; standing goals are
@@ -232,7 +234,7 @@ The more autonomous GLAW gets, the more these bind. They are the organism's cons
 | **Host embedding** | `glaw-host`, `glaw-mcp`, and `glaw-extism` expose guarded argv-only execution with conscience and RBAC boundaries | hosted/multi-operator identity beyond local role assertion | 3–6 |
 | **Verifiable law** | citation corpus capture rejects off-allowlist URLs, treats pasted text as untrusted, supports allowlisted fetch and authenticated official copies, stamps source rows with a reviewed authority-source catalog for U.S.C., eCFR, GovInfo, Federal Register, IRS, SEC, PCAOB, FASB/GAAP, Congress, SCOTUS, CourtListener, and LII, blocks stale corpus captures by default after 180 days, and gates citation typology + lexical groundedness with file-stage recomputation | deeper live corpus integrations and semantic authority checking beyond the lexical floor | 4–6 |
 | **Public-law branches** | `/glaw-constitutional`, `/glaw-legislative`, `/glaw-judicial`, and `/glaw-admin-law` ship reference checklists, model templates, and doctor-enforced substance tests | additional jurisdiction-specific branch playbooks and model outputs | 4–6 |
-| **Automated tests** | doctor + hard gates + per-profile golden matters + sandbox fault simulations + tax wrapper golden/coverage manifest | more golden-output tests per specialist seat and scenario diversity | 2–6 |
+| **Automated tests** | doctor + hard gates + per-profile golden matters + sandbox fault simulations + tax wrapper golden/coverage manifest + SEC audit-tieout accounting-control regression | more golden-output tests per specialist seat and scenario diversity | 2–6 |
 | **Filing connectivity** | filing tools remain human-sealed; IRS/EFW2/packet scaffolds are gated and kill-switch aware | real transmitter credentials and EDGAR/court e-file integrations under human seal | 4–6 |
 | **Oversight tooling** | `/glaw-oversight-board` + `bin/glaw-oversight` provide kill-switch, source-backed escalation ledger, RBAC ADMIN Board decisions, validated source-controlled core and Fortune 500 accounting/SEC policy packs, sandbox halt fixtures, and fail-closed Fortune 500 accounting/SEC tabletop simulations | additional industry-specific tabletop simulations and policy packs | 6 |
 | **Jurisdiction discipline** | `/glaw-jurisdiction` + `bin/glaw-jurisdiction-pack` enforce source-backed matrices; `jurisdiction/packs/us-core.json` seeds DE, FL, TX, NY, and federal corporate filing authority, `jurisdiction/packs/us-fortune500-tax-sec.json` seeds federal tax, SEC reporting, PCAOB audit, US GAAP, and FinCEN lanes, and `jurisdiction/packs/us-california-enterprise.json` seeds California entity, franchise-tax, privacy/data-broker, labor, and workplace-safety lanes | more state/country packs and local-counsel playbooks | 4–6 |
@@ -321,6 +323,12 @@ the seal stays human as a legal and ethics constraint.
   differences, or carries book/bank-only items, and tax profiles are blocked when
   the underlying tax tie-out artifact does not prove provision and internal
   consistency.
+- ✅ **P2-G11c · SEC audit/ICFR tie-out control**: SEC-reporting accounting controls
+  now require a referenced audit-tieout JSON workpaper proving financial-statement
+  tie, ICFR review, PCAOB review, zero open deficiencies, zero material weaknesses,
+  and zero unresolved audit differences. `glaw-final-packet` and `glaw-gate` read
+  that workpaper directly so a rebuilt summary/hash cannot hide contradictory SEC
+  audit evidence.
 - ✅ **P2-G12 · Oversight Board policy packs**: `/glaw-oversight-board` now ships
   source-controlled core and Fortune 500 accounting/SEC policy packs. `bin/glaw-oversight
   policy-list` validates every bundled pack, and `validate-policy` fails closed unless

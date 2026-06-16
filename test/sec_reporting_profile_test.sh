@@ -115,9 +115,38 @@ cat > "$M/workpapers/bank-rec-input.json" <<'JSON'
   "reconciled": true
 }
 JSON
-"$CONTROL" --matter "$SLUG" --profile sec-reporting --source "SRC-0001 SEC reporting ledger and bank reconciliation support reviewed" --ledger "$M/workpapers/ledger.json" --bank-rec "$M/workpapers/bank-rec-input.json" >/dev/null
+cat > "$M/workpapers/audit-tieout-bad.json" <<'JSON'
+{
+  "financial_statements_tie": true,
+  "icfr_reviewed": true,
+  "pcaob_reviewed": true,
+  "open_deficiencies": [
+    {
+      "id": "D-1",
+      "severity": "material"
+    }
+  ],
+  "material_weaknesses": [],
+  "unresolved_audit_differences": []
+}
+JSON
+"$CONTROL" --matter "$SLUG" --profile sec-reporting --source "SRC-0001 SEC reporting ledger and bank reconciliation support reviewed" --ledger "$M/workpapers/ledger.json" --bank-rec "$M/workpapers/bank-rec-input.json" >/dev/null 2>"$TMP/control-missing-audit.out"; rc=$?
+ok "$([ "$rc" = 1 ] && grep -q 'audit-tieout' "$TMP/control-missing-audit.out" && echo 1 || echo 0)" "SEC accounting control blocked without audit tie-out"
+"$CONTROL" --matter "$SLUG" --profile sec-reporting --source "SRC-0001 SEC reporting ledger and bank reconciliation support reviewed" --ledger "$M/workpapers/ledger.json" --bank-rec "$M/workpapers/bank-rec-input.json" --audit-tieout "$M/workpapers/audit-tieout-bad.json" >/dev/null 2>"$TMP/control-bad-audit.out"; rc=$?
+ok "$([ "$rc" = 1 ] && grep -q 'SEC audit tie-out' "$TMP/control-bad-audit.out" && echo 1 || echo 0)" "SEC accounting control blocked by open audit deficiency"
+cat > "$M/workpapers/audit-tieout-good.json" <<'JSON'
+{
+  "financial_statements_tie": true,
+  "icfr_reviewed": true,
+  "pcaob_reviewed": true,
+  "open_deficiencies": [],
+  "material_weaknesses": [],
+  "unresolved_audit_differences": []
+}
+JSON
+"$CONTROL" --matter "$SLUG" --profile sec-reporting --source "SRC-0001 SEC reporting ledger bank reconciliation audit and ICFR support reviewed" --ledger "$M/workpapers/ledger.json" --bank-rec "$M/workpapers/bank-rec-input.json" --audit-tieout "$M/workpapers/audit-tieout-good.json" >/dev/null
 "$PACKET" build >/dev/null 2>"$TMP/packet-ready.out"; rc=$?
-ok "$([ "$rc" = 0 ] && grep -q '"workflow_profile": "sec-reporting"' "$M/final_packet.json" && grep -q '"required": true' "$M/final_packet.json" && echo 1 || echo 0)" "SEC final packet ready after accounting control"
+ok "$([ "$rc" = 0 ] && grep -q '"workflow_profile": "sec-reporting"' "$M/final_packet.json" && grep -q '"required": true' "$M/final_packet.json" && grep -q '"label": "audit_tieout"' "$M/final_packet.json" && echo 1 || echo 0)" "SEC final packet ready after audit-backed accounting control"
 
 echo
 echo "0 failures — $pass passed, $fail failed"
