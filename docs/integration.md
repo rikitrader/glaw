@@ -27,9 +27,22 @@ For zeroclaw-x0, map `manifest.tools[]` to host tool metadata and call `execute`
 the selected tool and argv array. The host should treat any `status` other than `pass`
 as fail-closed.
 
-For MCP, expose `manifest`, `status`, and `execute` as three tools. Do not expose a raw
-shell command. The adapter already returns the pre-call and post-response guard evidence
-that a host can store in its own audit ledger.
+For MCP, use `bin/glaw-mcp`. It exposes exactly three tools:
+
+- `glaw_manifest`
+- `glaw_status`
+- `glaw_execute`
+
+`glaw-mcp serve` reads one JSON-RPC object per line from stdin and writes one response per
+line to stdout. It handles `initialize`, `tools/list`, `tools/call`, and `ping`. It never
+exposes a raw shell command; `glaw_execute` delegates to `glaw-host`, so the same argv-only,
+conscience-guarded, RBAC-preserving contract applies.
+
+```bash
+bin/glaw-mcp tools --json
+bin/glaw-mcp call glaw_execute --arguments '{"tool":"glaw","args":["version"]}' --json
+printf '%s\n' '{"jsonrpc":"2.0","id":1,"method":"tools/list","params":{}}' | bin/glaw-mcp serve
+```
 
 GLAW prepares work product. It does not autonomously file, serve, sign, transmit, pay,
 charge, or bind anyone.

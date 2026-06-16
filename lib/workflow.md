@@ -118,6 +118,10 @@ every call with `glaw-conscience`, and returns machine-readable pre/post guard e
 the source-only bridge for zeroclaw-x0, MCP, and other hosts; it does not expand the authority
 boundary or bypass matter gates.
 
+MCP exposure uses `bin/glaw-mcp`, which intentionally exposes only `glaw_manifest`,
+`glaw_status`, and `glaw_execute`. The MCP bridge delegates execution to `glaw-host`; it never
+offers a raw shell tool.
+
 Golden-profile invariant: for every executable workflow profile, a known-good matter must be able
 to clear all hard gates through `chief_approved`. Gate tightening is not complete unless it both
 blocks the bad state and preserves at least one source-backed all-clear path for the affected profile.

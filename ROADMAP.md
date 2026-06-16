@@ -281,6 +281,10 @@ the seal stays human as a legal and ethics constraint.
   guarded execute path for zeroclaw/MCP-style hosts. It accepts argv arrays only, blocks path
   traversal/shell strings, wraps every execution with `glaw-conscience` pre/post checks, and
   preserves RBAC ADMIN for human-seal actions.
+- ✅ **P3-G4 · MCP server surface over `glaw-host`**: `bin/glaw-mcp` exposes `glaw_manifest`,
+  `glaw_status`, and `glaw_execute` over a source-only JSON-RPC line bridge. The bridge never
+  exposes raw shell; execution delegates to `glaw-host`, preserving argv-only execution,
+  conscience pre/post guards, and RBAC ADMIN human-seal boundaries.
 
 ### Phase 4 (Branches + corpus) — add
 - ✅ **P4-G1 · Wire a verifiable corpus BEHIND the citation gate**: `bin/glaw-citation-corpus`
@@ -297,7 +301,7 @@ the seal stays human as a legal and ethics constraint.
   if the score is below threshold. The audit trail carries citation row hash, source hash, and
   segment hash.
 
-*Suggested build order: MCP server surface over `glaw-host` → Extism wrapper.*
+*Suggested build order: Extism wrapper.*
 
 ---
 

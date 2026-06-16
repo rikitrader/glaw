@@ -1,0 +1,75 @@
+#!/usr/bin/env python3
+"""glaw-mcp - source-only MCP-style JSON-RPC bridge over glaw-host.
+
+Usage:
+  glaw-mcp tools [--json]
+  glaw-mcp call glaw_manifest|glaw_status|glaw_execute --arguments '<json>' [--json]
+  glaw-mcp serve
+
+`serve` reads one JSON-RPC object per line from stdin and writes one response per
+line to stdout. It exposes only glaw_manifest, glaw_status, and glaw_execute.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "lib"))
+from glaw_mcp import call_tool, handle_message, tool_defs
+
+
+def cmd_tools(args: argparse.Namespace) -> int:
+    data = {"tools": tool_defs()}
+    print(json.dumps(data, indent=2, sort_keys=False) if args.json else "\n".join(t["name"] for t in data["tools"]))
+    return 0
+
+
+def cmd_call(args: argparse.Namespace) -> int:
+    try:
+        payload = json.loads(args.arguments or "{}")
+    except json.JSONDecodeError as exc:
+        print(json.dumps({"content": [{"type": "text", "text": f"invalid arguments JSON: {exc}"}], "isError": True}, indent=2))
+        return 2
+    data = call_tool(args.name, payload)
+    print(json.dumps(data, indent=2, sort_keys=False) if args.json else data["content"][0]["text"])
+    return 1 if data.get("isError") else 0
+
+
+def cmd_serve(_args: argparse.Namespace) -> int:
+    for line in sys.stdin:
+        if not line.strip():
+            continue
+        try:
+            msg = json.loads(line)
+            response = handle_message(msg)
+        except json.JSONDecodeError as exc:
+            response = {"jsonrpc": "2.0", "id": None, "error": {"code": -32700, "message": f"parse error: {exc}"}}
+        except Exception as exc:
+            response = {"jsonrpc": "2.0", "id": None, "error": {"code": -32603, "message": f"internal error: {exc}"}}
+        if response is not None:
+            print(json.dumps(response, separators=(",", ":")), flush=True)
+    return 0
+
+
+def main(argv: list[str]) -> int:
+    ap = argparse.ArgumentParser(prog="glaw-mcp")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    p = sub.add_parser("tools")
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_tools)
+    p = sub.add_parser("call")
+    p.add_argument("name")
+    p.add_argument("--arguments", default="{}")
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_call)
+    p = sub.add_parser("serve")
+    p.set_defaults(func=cmd_serve)
+    args = ap.parse_args(argv)
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))
