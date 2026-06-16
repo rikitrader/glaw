@@ -3,7 +3,7 @@
 
 Usage:
   glaw-loop status [--matter <slug>] [--json] [--max-iterations N]
-  glaw-loop once [--matter <slug>] [--json] [--max-iterations N] [--acceptance TEXT] [--request-action <file|serve|sign|transmit|charge|pay|submit-live>]
+  glaw-loop once [--matter <slug>] [--json] [--max-iterations N] [--acceptance TEXT] [--request-action <file|serve|sign|transmit|charge|pay|submit-live>] [--role ADMIN]
 
 The loop reports the next gate/department that owns the matter. It may prepare
 work, but it never files, serves, signs, transmits, pays, or charges.
@@ -350,13 +350,14 @@ def main(argv: list[str]) -> int:
         p.add_argument("--max-iterations", type=int, default=3)
         if name == "once":
             p.add_argument("--request-action", default="")
+            p.add_argument("--role", default="")
             p.add_argument("--acceptance", action="append", default=[])
     args = ap.parse_args(argv)
 
     d = matter_dir(args.matter)
     requested = getattr(args, "request_action", "")
     if requested:
-        ok, result = require_human_authority(requested, context=f"glaw-loop {d.name}")
+        ok, result = require_human_authority(requested, role=getattr(args, "role", ""), context=f"glaw-loop {d.name}")
         if not ok:
             row = {
                     "ts": now(),

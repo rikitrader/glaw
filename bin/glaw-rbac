@@ -1,0 +1,103 @@
+#!/usr/bin/env python3
+"""glaw-rbac - role/ring authorization with SOC2-mapped audit logging.
+
+Usage:
+  glaw-rbac check --operation read|write|audit|admin|human_authority --role ROLE --actor NAME [--resource PATH] [--context TEXT] [--json]
+  glaw-rbac roles [--json]
+  glaw-rbac audit [--json] [--tail N]
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "lib"))
+from glaw_rbac import OPERATION_POLICY, ROLES, audit_path, check_permission
+
+
+def read_audit(tail: int) -> list[dict]:
+    path = audit_path()
+    if not path.exists():
+        return []
+    rows = []
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        if not line.strip():
+            continue
+        try:
+            rows.append(json.loads(line))
+        except json.JSONDecodeError:
+            rows.append({"status": "fail", "reason": "invalid audit jsonl row"})
+    return rows[-tail:] if tail > 0 else rows
+
+
+def cmd_roles(args: argparse.Namespace) -> int:
+    data = {"roles": ROLES, "operations": OPERATION_POLICY}
+    if args.json:
+        print(json.dumps(data, indent=2, sort_keys=True))
+    else:
+        for role, meta in ROLES.items():
+            print(f"{role}: {meta['description']}")
+        print("Operations:")
+        for op, policy in OPERATION_POLICY.items():
+            print(f"  {op}: {policy['ring']}  roles={','.join(sorted(policy['roles']))}  soc2={','.join(policy['soc2'])}")
+    return 0
+
+
+def cmd_check(args: argparse.Namespace) -> int:
+    ok, result = check_permission(
+        args.operation,
+        role=args.role,
+        actor=args.actor,
+        resource=args.resource,
+        context=args.context,
+    )
+    if args.json:
+        print(json.dumps(result, indent=2, sort_keys=False))
+    elif ok:
+        print(f"RBAC OK: {result['operation']} authorized for {result['actor']} ({result['role']}, {result['ring']})")
+        print("SOC2: " + ", ".join(result["soc2_controls"]))
+    else:
+        print(f"RBAC BLOCKED: {result['reason']}")
+        print(f"Operation: {result.get('operation')}  Ring: {result.get('ring')}  SOC2: {', '.join(result.get('soc2_controls', [])) or 'n/a'}")
+        print(f"Actor: {result.get('actor')}  Role: {result.get('role') or '(unset)'}  Allowed: {', '.join(result.get('allowed_roles', [])) or 'none'}")
+    return 0 if ok else 1
+
+
+def cmd_audit(args: argparse.Namespace) -> int:
+    rows = read_audit(args.tail)
+    if args.json:
+        print(json.dumps({"path": str(audit_path()), "rows": rows}, indent=2, sort_keys=False))
+    else:
+        print(f"RBAC audit: {audit_path()}")
+        for row in rows:
+            print(f"{row.get('ts')} {row.get('status')} {row.get('operation')} {row.get('actor')} {row.get('role')} {row.get('ring')}")
+    return 0
+
+
+def main(argv: list[str]) -> int:
+    ap = argparse.ArgumentParser(prog="glaw-rbac")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    roles = sub.add_parser("roles")
+    roles.add_argument("--json", action="store_true")
+    roles.set_defaults(func=cmd_roles)
+    check = sub.add_parser("check")
+    check.add_argument("--operation", required=True)
+    check.add_argument("--role", default="")
+    check.add_argument("--actor", default="")
+    check.add_argument("--resource", default="")
+    check.add_argument("--context", default="")
+    check.add_argument("--json", action="store_true")
+    check.set_defaults(func=cmd_check)
+    audit = sub.add_parser("audit")
+    audit.add_argument("--json", action="store_true")
+    audit.add_argument("--tail", type=int, default=20)
+    audit.set_defaults(func=cmd_audit)
+    args = ap.parse_args(argv)
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))

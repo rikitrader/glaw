@@ -29,6 +29,7 @@ REQUIRED_DOCTOR_TESTS = (
     "lifecycle_test:full-lifecycle",
     "sec_reporting_profile_test:sec-reporting-profile",
     "authority_gate_test:authority-gate",
+    "rbac_test:rbac-soc2",
     "conscience_test:autonomous-conscience",
     "citation_corpus_test:citation-corpus",
     "citation_typology_test:citation-typology",
@@ -39,6 +40,7 @@ REQUIRED_DOCTOR_TESTS = (
 )
 REQUIRED_TOOL_SMOKES = (
     "glaw-policy|check",
+    "glaw-rbac|check",
     "glaw-conscience|check-call",
     "glaw-citation-corpus|status",
     "glaw-citation-gate|",

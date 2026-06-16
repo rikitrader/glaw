@@ -272,9 +272,11 @@ the seal stays human as a legal and ethics constraint.
   enforces the repo policy contract across CI, doctor tests/tool smokes, git hooks, and required
   gate artifacts. CI and `glaw-doctor` both run it, so a missing policy primitive fails even when
   other quality checks pass.
-- **P3-G2 · Full RBAC + SOC2 mapping** around the shipped authority gate: roles
-  READER/WRITER/ADMIN/**AUDITOR** + execution rings, SOC2-mapped audit logging — required when
-  GLAW runs embedded in a host (zeroclaw-x0 / MCP).
+- ✅ **P3-G2 · Full RBAC + SOC2 mapping** around the shipped authority gate: `bin/glaw-rbac`
+  defines READER/WRITER/ADMIN/**AUDITOR**, maps operations to execution rings and SOC2 controls,
+  writes hash-chained audit rows, and makes human-seal authority acts require ADMIN rather than
+  only a named actor. `glaw-doctor` and `bin/glaw-policy check` both enforce the RBAC/SOC2
+  regression.
 
 ### Phase 4 (Branches + corpus) — add
 - ✅ **P4-G1 · Wire a verifiable corpus BEHIND the citation gate**: `bin/glaw-citation-corpus`
@@ -291,7 +293,7 @@ the seal stays human as a legal and ethics constraint.
   if the score is below threshold. The audit trail carries citation row hash, source hash, and
   segment hash.
 
-*Suggested build order: P3 RBAC/SOC2 mapping → host embedding adapter.*
+*Suggested build order: host embedding adapter.*
 
 ---
 

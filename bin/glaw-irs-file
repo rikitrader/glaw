@@ -17,7 +17,7 @@ Config (never committed): `glaw config set irs_transmitter taxbandits|iris`,
 
 Usage:
   glaw-irs-file scaffold <form_type>            # blank payload skeleton (e.g. 1099-NEC)
-  glaw-irs-file submit <payload.json> [--transmitter taxbandits|iris] [--live] [-o outdir]
+  glaw-irs-file submit <payload.json> [--transmitter taxbandits|iris] [--live] [--human-authority "<name/role>"] [--role ADMIN] [-o outdir]
 """
 import sys, os, json, subprocess, re, time, hmac, hashlib, base64, urllib.request, urllib.error, urllib.parse
 from pathlib import Path
@@ -277,6 +277,13 @@ def submit(path, args):
             print("ERROR: --human-authority requires a name/role")
             sys.exit(2)
         human_actor = args[idx + 1]
+    role = ""
+    if "--role" in args:
+        idx = args.index("--role")
+        if idx + 1 >= len(args):
+            print("ERROR: --role requires READER|WRITER|ADMIN|AUDITOR")
+            sys.exit(2)
+        role = args[idx + 1]
     live = "--live" in args
     env = (cfg("taxbandits_env") or "sandbox").lower()   # sandbox by default; set 'live' to hit production
 
@@ -300,6 +307,7 @@ def submit(path, args):
     authority_ok, authority_result = require_human_authority(
         "transmit",
         actor=human_actor,
+        role=role,
         context=f"{p.get('form_type')} via {transmitter}",
     )
     if not authority_ok:

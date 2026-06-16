@@ -167,7 +167,7 @@ def validate_nonblocking_red_flag_acknowledgment(d, final_packet):
 
 def parse(argv):
     d = {"chief":"","score":"","grade":"","decision":"","risks":"","conditions":"",
-         "rationale":"","matter":"","human-authority":"","signoff":False,"approve-final":False,"deny-final":False}
+         "rationale":"","matter":"","human-authority":"","role":"","signoff":False,"approve-final":False,"deny-final":False}
     i=0
     while i < len(argv):
         a=argv[i].lstrip("-")
@@ -191,7 +191,7 @@ def main():
         print("Need at least --chief and --decision."); return 2
     human_actor = ""
     if d["signoff"]:
-        ok, result = require_human_authority("sign", actor=d.get("human-authority", ""), context="Chief sign-off")
+        ok, result = require_human_authority("sign", actor=d.get("human-authority", ""), role=d.get("role", ""), context="Chief sign-off")
         if not ok:
             print(result)
             return 1

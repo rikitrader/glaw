@@ -107,6 +107,11 @@ tests/tool smokes; when hooks stop calling the commit gate; or when final-packet
 hashing required gate artifacts. CI and `glaw-doctor` both run this policy contract so a high
 quality score cannot override a missing safety primitive.
 
+RBAC is part of the autonomy boundary. `bin/glaw-rbac` defines READER/WRITER/ADMIN/AUDITOR,
+maps operations to execution rings and SOC2 control IDs, and appends hash-chained audit rows
+under `$GLAW_HOME/audit/rbac.jsonl`. Human-only authority acts use the R4_HUMAN_SEAL ring and
+require ADMIN; a named human actor without ADMIN still fails closed.
+
 Golden-profile invariant: for every executable workflow profile, a known-good matter must be able
 to clear all hard gates through `chief_approved`. Gate tightening is not complete unless it both
 blocks the bad state and preserves at least one source-backed all-clear path for the affected profile.

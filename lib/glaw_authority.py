@@ -3,6 +3,8 @@ from __future__ import annotations
 
 import os
 
+from glaw_rbac import require_permission
+
 
 HUMAN_ONLY_ACTIONS = {
     "charge",
@@ -30,23 +32,40 @@ def authority_actor(explicit_actor: str = "") -> str:
     return ""
 
 
-def human_authority_error(action: str, context: str = "") -> str:
+def human_authority_error(action: str, context: str = "", rbac_message: str = "") -> str:
     action = action.strip() or "human-only action"
     detail = f" for {context}" if context else ""
-    return (
+    base = (
         f"HUMAN AUTHORITY BLOCKED: {action}{detail} is reserved to a human licensed/authorized actor.\n"
         "Quality gates can approve readiness, but they do not authorize filing, service, signature, "
         "payment, charge, or live transmission.\n"
-        "Pass --human-authority '<name/role>' or set GLAW_HUMAN_AUTHORITY_ACTOR after the human actor "
-        "has authorized the act."
+        "Pass --human-authority '<name/role>' plus --role ADMIN, or set GLAW_HUMAN_AUTHORITY_ACTOR "
+        "and GLAW_RBAC_ROLE=ADMIN after the human actor has authorized the act."
     )
+    return base + (f"\n{rbac_message}" if rbac_message else "")
 
 
-def require_human_authority(action: str, *, actor: str = "", context: str = "") -> tuple[bool, str]:
+def require_human_authority(action: str, *, actor: str = "", role: str = "", context: str = "") -> tuple[bool, str]:
     normalized = action.strip().lower()
     if normalized not in HUMAN_ONLY_ACTIONS:
         return True, authority_actor(actor)
     authorized = authority_actor(actor)
     if authorized:
-        return True, authorized
-    return False, human_authority_error(action, context)
+        ok, message, _result = require_permission(
+            "human_authority",
+            actor=authorized,
+            role=role,
+            resource=normalized,
+            context=context,
+        )
+        if ok:
+            return True, authorized
+        return False, human_authority_error(action, context, message)
+    ok, message, _result = require_permission(
+        "human_authority",
+        actor=actor,
+        role=role,
+        resource=normalized,
+        context=context,
+    )
+    return False, human_authority_error(action, context, message if not ok else "")

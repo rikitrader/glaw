@@ -2,7 +2,7 @@
 """glaw-authority — deny-list gate for human-only authority acts.
 
 Usage:
-  glaw-authority check <file|serve|sign|transmit|charge|pay|submit-live> [--human-authority "<name/role>"]
+  glaw-authority check <file|serve|sign|transmit|charge|pay|submit-live> [--human-authority "<name/role>"] [--role ADMIN]
 """
 from __future__ import annotations
 
@@ -34,7 +34,15 @@ def main(argv: list[str]) -> int:
         except IndexError:
             print("ERROR: --human-authority requires a name/role")
             return 2
-    ok, result = require_human_authority(action, actor=actor)
+    role = ""
+    if "--role" in argv:
+        idx = argv.index("--role")
+        try:
+            role = argv[idx + 1]
+        except IndexError:
+            print("ERROR: --role requires READER|WRITER|ADMIN|AUDITOR")
+            return 2
+    ok, result = require_human_authority(action, actor=actor, role=role)
     if not ok:
         print(result)
         return 1
