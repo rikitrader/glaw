@@ -149,6 +149,7 @@ ADVERSARIAL_PROFILES: dict[str, tuple[str, ...]] = {
 
 
 TRACK_TO_PROFILE = {
+    "accounting": "accounting",
     "accounting-tax": "accounting-tax",
     "tax": "tax",
     "litigation": "litigation",
@@ -161,6 +162,12 @@ TRACK_TO_PROFILE = {
 
 
 TRACKS: dict[str, tuple[str, ...]] = {
+    "accounting": (
+        "bank_statement_sources",
+        "books_status",
+        "accounting_periods",
+        "reports_needed",
+    ),
     "litigation": ("claims_or_defenses", "forum", "relief_requested", "evidence_sources"),
     "corp-build": ("entity_type", "owners", "capitalization", "tax_elections", "filings_needed"),
     "investigation": ("targets", "suspected_conduct", "evidence_sources", "reporting_path"),

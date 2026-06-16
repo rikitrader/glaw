@@ -216,12 +216,12 @@ The more autonomous GLAW gets, the more these bind. They are the organism's cons
 
 | Gap | Today | Needed | Phase |
 |---|---|---|---|
-| **No autonomic loop** | waits for a prompt | `glaw-loop` + docket daemon + standing goals | 2 |
+| **Autonomic loop is early** | `glaw-loop` routes gates fail-closed | docket daemon + standing goals + maker/checker convergence | 2 |
 | **No persistent cross-matter memory** | per-matter files | queryable long-term memory | 2 |
 | **No host embedding** | standalone skill | Extism plugin + MCP + conscience adoption | 3 |
 | **Citations not corpus-backed** | model + `glaw-cites` | wired statute/case corpus (CAP/CourtListener/U.S.C./CFR) | 4 |
 | **No constitutional/legislative/judicial seats** | firm-only | the Branches (`/glaw-constitutional` …) | 4 |
-| **Thin automated tests** | `glaw-doctor` smoke only | golden-output tests per seat + sandbox sim | 2–6 |
+| **Automated tests need broader golden coverage** | doctor + hard gates + per-profile golden matters | golden-output tests per seat + sandbox sim | 2–6 |
 | **Real filing connectivity is partial** | scaffolds (IRS/EFW2) | transmitter creds + EDGAR/court e-file (human-sealed) | 4–5 |
 | **No formal oversight tooling** | gates in prose | Oversight Board workflow + kill-switch + audit ledger | 6 |
 | **Single-jurisdiction bias** | US-centric | jurisdiction packs (state, federal, international) | 4–5 |
@@ -252,9 +252,9 @@ autonomous" is bounded to analysis, drafting, routing, QA, and workpaper assembl
 the seal stays human as a legal and ethics constraint.
 
 ### Phase 2 (Autonomy Core) — add
-- **P2-G1 · Per-profile golden matters** in `glaw-doctor`: one frozen known-good matter per
-  workflow profile that must always reach `chief_approved`. The profile-consistency check
-  already ships; golden matters are the remaining counterweight against gate over-blocking.
+- ✅ **P2-G1 · Per-profile golden matters** in `glaw-doctor`: every executable workflow
+  profile now has a deterministic source-backed fixture that must reach `chief_approved`
+  and the `file` stage. This is the counterweight against gate over-blocking.
 - **P2-G2 · Maker-checker discipline for `glaw-loop`**: explicit acceptance criteria, an
   iteration cap, and a human-escalation fallback on non-convergence.
 - **P2-G3 · Cross-matter memory**: promote `glaw-reasoningbank` to a queryable long-term store
@@ -280,8 +280,8 @@ the seal stays human as a legal and ethics constraint.
   Relation-Preservation metrics with a full audit trail from each assertion back to source
   passages — composes with GLAW's existing SRC-#### + SHA-256 hashing.
 
-*Suggested build order: P2-G1 (cheap, closes the regression risk) → P4-G2 (spec-only) →
-P2-G3 + loop discipline → P4-G1 corpus → P3 host/observability.*
+*Suggested build order: P2-G2 loop discipline → P2-G3 memory → P4-G2 citation typology →
+P4-G1 corpus → P3 host/observability.*
 
 ---
 

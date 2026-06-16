@@ -104,6 +104,8 @@ Edits to `lib/glaw_profiles.py` and `lib/firm-roster.md` are SSOT-lock required 
 Golden-profile invariant: for every executable workflow profile, a known-good matter must be able
 to clear all hard gates through `chief_approved`. Gate tightening is not complete unless it both
 blocks the bad state and preserves at least one source-backed all-clear path for the affected profile.
+`test/golden_profile_test.sh` enforces this across every `COUNCIL_PROFILES`/`ADVERSARIAL_PROFILES`
+profile and proves each one can reach `chief_approved` and the `file` stage.
 
 ## Human-authority gate
 
