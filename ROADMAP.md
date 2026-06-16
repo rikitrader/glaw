@@ -219,19 +219,19 @@ The more autonomous GLAW gets, the more these bind. They are the organism's cons
 
 ---
 
-## 8. Gap analysis — what stands between here and the Agency
+## 8. Gap analysis — current residuals
 
-| Gap | Today | Needed | Phase |
+| Area | Current shipped state | Residual work | Phase |
 |---|---|---|---|
-| **Autonomic loop is early** | `glaw-loop` routes gates fail-closed | docket daemon + standing goals + maker/checker convergence | 2 |
-| **No persistent cross-matter memory** | per-matter files | queryable long-term memory | 2 |
-| **No host embedding** | standalone skill | Extism plugin + MCP + conscience adoption | 3 |
-| **Citations not corpus-backed** | model + `glaw-cites` | wired statute/case corpus (CAP/CourtListener/U.S.C./CFR) | 4 |
-| **No constitutional/legislative/judicial seats** | firm-only | the Branches (`/glaw-constitutional` …) | 4 |
-| **Automated tests need broader golden coverage** | doctor + hard gates + per-profile golden matters + `bin/glaw-sandbox` isolated failure-mode simulations | golden-output tests per seat and more scenario fixtures | 2–6 |
-| **Real filing connectivity is partial** | scaffolds (IRS/EFW2) | transmitter creds + EDGAR/court e-file (human-sealed) | 4–5 |
-| **Formal oversight tooling is early** | `/glaw-oversight-board` + `bin/glaw-oversight` kill-switch/ledger + sandbox halt fixture | standing Oversight Board policy packs and deeper tabletop simulations | 6 |
-| **Single-jurisdiction bias is early** | `/glaw-jurisdiction` + `bin/glaw-jurisdiction-pack` require source-backed jurisdiction matrices | deeper country/state packs and local-counsel playbooks | 4–5 |
+| **Autonomic loop** | `glaw-loop` routes fail-closed, records maker/checker decisions, latches non-convergence escalations, respects Oversight halt, and emits self-routing compliance failures | richer matter-specific convergence fixtures and more tabletop scenarios | 2–6 |
+| **Cross-matter memory** | `glaw-learnings` is a queryable source-linked long-term store with reflected knowledge rules and isolated `$GLAW_HOME` tests | retrieval quality evaluation and matter-type weighting | 2–6 |
+| **Host embedding** | `glaw-host`, `glaw-mcp`, and `glaw-extism` expose guarded argv-only execution with conscience and RBAC boundaries | hosted/multi-operator identity beyond local role assertion | 3–6 |
+| **Verifiable law** | citation corpus capture rejects off-allowlist URLs, treats pasted text as untrusted, supports allowlisted fetch and authenticated official copies, and gates citation typology + lexical groundedness | deeper authoritative corpus integrations and semantic authority checking beyond the lexical floor | 4–6 |
+| **Public-law branches** | `/glaw-constitutional`, `/glaw-legislative`, `/glaw-judicial`, and `/glaw-admin-law` ship reference checklists, model templates, and doctor-enforced substance tests | additional jurisdiction-specific branch playbooks and model outputs | 4–6 |
+| **Automated tests** | doctor + hard gates + per-profile golden matters + sandbox fault simulations + tax wrapper golden/coverage manifest | more golden-output tests per specialist seat and scenario diversity | 2–6 |
+| **Filing connectivity** | filing tools remain human-sealed; IRS/EFW2/packet scaffolds are gated and kill-switch aware | real transmitter credentials and EDGAR/court e-file integrations under human seal | 4–6 |
+| **Oversight tooling** | `/glaw-oversight-board` + `bin/glaw-oversight` provide kill-switch, source-backed escalation ledger, RBAC ADMIN Board decisions, and sandbox halt fixtures | standing Oversight Board policy packs and deeper tabletop simulations | 6 |
+| **Jurisdiction discipline** | `/glaw-jurisdiction` + `bin/glaw-jurisdiction-pack` enforce source-backed matrices; `jurisdiction/packs/us-core.json` seeds DE, FL, TX, NY, and federal corporate filing authority | more state/country packs and local-counsel playbooks | 4–6 |
 
 ---
 
@@ -355,7 +355,7 @@ the seal stays human as a legal and ethics constraint.
   plus model-output template, and `branch_substance_test.sh` makes `glaw-doctor` fail if a
   branch loses source discipline, sign-off conditions, or authority-boundary language.
 
-*Suggested build order: branch seats.*
+*Suggested build order: expand golden-output scenario coverage and jurisdiction/source corpus packs.*
 
 ---
 
