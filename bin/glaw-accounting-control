@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import shutil
 import subprocess
 import sys
@@ -58,13 +59,23 @@ def current_source_ids(d: Path) -> set[str]:
     return {f"SRC-{idx:04d}" for idx, _path in enumerate(paths, start=1)}
 
 
+def evidence_source_ids(text: str) -> list[str]:
+    return sorted(set(re.findall(r"\bSRC-\d{4}\b", text)))
+
+
 def require_current_source(source: str, d: Path) -> None:
-    ids = sorted(current_source_ids(d))
-    cited = [sid for sid in ids if sid in source]
+    cited = evidence_source_ids(source)
     if not cited:
         raise SystemExit(
             "ERROR: --source must cite a current matter source ID from evidence/, "
             "sources/, or source_documents/ such as SRC-0001"
+        )
+    current = current_source_ids(d)
+    stale = sorted(set(cited) - current)
+    if stale:
+        raise SystemExit(
+            "ERROR: --source cites non-current matter source ID(s): "
+            + ", ".join(stale)
         )
 
 
