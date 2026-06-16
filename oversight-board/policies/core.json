@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "name": "GLAW Oversight Board Core Policy",
+  "authority_boundary": "GLAW may analyze, draft, route, and assemble workpapers. A human with lawful authority holds the human seal for filing, serving, signing, transmitting, charging, paying, submit-live actions, or any binding/coercive act.",
+  "prohibited_autonomous_acts": [
+    "file",
+    "serve",
+    "sign",
+    "transmit",
+    "charge",
+    "pay",
+    "submit-live"
+  ],
+  "escalation_triggers": [
+    {
+      "id": "human-only-act-requested",
+      "description": "Any autonomous route asks GLAW to file, serve, sign, transmit, charge, pay, or submit live.",
+      "owner": "human-oversight-board",
+      "next_command": "bin/glaw-oversight decision --decision deny",
+      "source_requirement": "The escalation must cite SRC-#### evidence showing the requested human-only act and the current authority boundary."
+    },
+    {
+      "id": "non-convergence",
+      "description": "The same glaw-loop route repeats past the iteration cap or remains latched after a failed fix cycle.",
+      "owner": "human-oversight-board",
+      "next_command": "bin/glaw-oversight status",
+      "source_requirement": "The escalation must cite SRC-#### loop evidence or a hash-backed loop_decisions.jsonl excerpt."
+    },
+    {
+      "id": "accounting-control-failure",
+      "description": "Bank reconciliation, tax tie-out, source subledger hash, or accounting-control manifest row is blocked.",
+      "owner": "glaw-accounting",
+      "next_command": "bin/glaw-accounting-control",
+      "source_requirement": "The escalation must cite SRC-#### bank, ledger, tax-return, or source-book workpapers."
+    },
+    {
+      "id": "government-adversary-failure",
+      "description": "IRS, SEC, PCAOB, court, regulator, enforcement, or litigation adversary lens does not survive.",
+      "owner": "glaw-adversarial",
+      "next_command": "bin/glaw-adversarial status --profile auto",
+      "source_requirement": "The escalation must cite SRC-#### reviewer evidence and the RED-team attack text."
+    },
+    {
+      "id": "citation-grounding-failure",
+      "description": "A high-stakes legal, tax, accounting, or SEC proposition lacks trusted authority corpus support or groundedness.",
+      "owner": "glaw-legal-research",
+      "next_command": "bin/glaw-citation-gate status",
+      "source_requirement": "The escalation must cite SRC-#### authority capture, corpus id, and groundedness artifact."
+    },
+    {
+      "id": "high-impact-filing",
+      "description": "Any filing, transmission, tax return, SEC report, court packet, payment, charge, or external signature package is ready for human seal.",
+      "owner": "human-oversight-board",
+      "next_command": "bin/glaw-authority check file --role ADMIN",
+      "source_requirement": "The escalation must cite SRC-#### final packet digest, chief decision, docket state, and human authority basis."
+    }
+  ],
+  "decision_rules": [
+    {
+      "decision": "approve",
+      "minimum_evidence": "SRC-#### final packet digest, source manifest, cleared compliance_action_plan, and human-authority basis.",
+      "conditions": [
+        "RBAC ADMIN actor is named.",
+        "No critical/high red flag remains unresolved.",
+        "No prohibited autonomous act is delegated to GLAW."
+      ],
+      "audit_entry": "Record oversight_decision approve with source, reason, actor, role, and conditions."
+    },
+    {
+      "decision": "fix",
+      "minimum_evidence": "SRC-#### blocked control row with owner, next_command, required_fix, and missing fields.",
+      "conditions": [
+        "Owner is a real GLAW seat or human-oversight-board.",
+        "Fix can be rerun through the normal gate chain.",
+        "No filing/signing/transmission occurs during remediation."
+      ],
+      "audit_entry": "Record oversight_decision fix with owner, required_fix, and source."
+    },
+    {
+      "decision": "deny",
+      "minimum_evidence": "SRC-#### defect evidence showing unsupported authority, failed adversary, unresolved red flag, or missing source tie-out.",
+      "conditions": [
+        "Reason names the failed gate.",
+        "Matter remains blocked until the owner cures and reruns gates.",
+        "Denial is visible in the oversight ledger."
+      ],
+      "audit_entry": "Record oversight_decision deny with failed gate and source."
+    },
+    {
+      "decision": "halt",
+      "minimum_evidence": "SRC-#### safety, ethics, data-integrity, legal-authority, or compliance evidence requiring stop-work.",
+      "conditions": [
+        "Kill-switch is recorded immediately.",
+        "Autonomous loop and daemon stop routing.",
+        "Resume requires a separate RBAC ADMIN decision."
+      ],
+      "audit_entry": "Record kill_switch_halted and oversight_decision halt."
+    },
+    {
+      "decision": "resume",
+      "minimum_evidence": "SRC-#### evidence that the halt condition was cured and the next route is bounded to analysis/workpaper preparation.",
+      "conditions": [
+        "RBAC ADMIN actor is named.",
+        "Resume reason states why the specific halt condition is cured.",
+        "Human-only acts remain behind the authority gate."
+      ],
+      "audit_entry": "Record kill_switch_resumed with actor, role, reason, and source."
+    }
+  ],
+  "required_evidence": [
+    "Every Board escalation or decision should identify a current SRC-#### evidence basis.",
+    "Every blocked compliance row must preserve owner, next_command, required_fix, and missing fields.",
+    "Every approve/resume path must state the human-seal boundary and RBAC ADMIN actor.",
+    "Every fix/deny/halt path must name the gate, owner, and source-backed reason."
+  ]
+}

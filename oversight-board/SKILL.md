@@ -49,6 +49,14 @@ bin/glaw-oversight status --json
 If the kill-switch is halted, do not advance autonomous work. Route back to the
 Board decision and the owning department named in the escalation.
 
+Also validate the Board's source-controlled policy pack before relying on an
+oversight decision path:
+
+```bash
+bin/glaw-oversight validate-policy
+bin/glaw-oversight policy --json
+```
+
 ### Step 2 - Halt instantly when required
 
 Any named human may halt the autonomous loop when legal, ethical, security,
@@ -93,7 +101,8 @@ bin/glaw-oversight decision \
 ## Deliverables
 
 Oversight state, kill-switch events, escalation ledger, Board decision ledger,
-owner routing, and explicit conditions for resume, fix, denial, or halt.
+owner routing, source-controlled policy-pack validation, and explicit conditions
+for resume, fix, denial, or halt.
 
 ## Agent identity & reporting posture
 

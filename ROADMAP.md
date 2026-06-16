@@ -234,7 +234,7 @@ The more autonomous GLAW gets, the more these bind. They are the organism's cons
 | **Public-law branches** | `/glaw-constitutional`, `/glaw-legislative`, `/glaw-judicial`, and `/glaw-admin-law` ship reference checklists, model templates, and doctor-enforced substance tests | additional jurisdiction-specific branch playbooks and model outputs | 4–6 |
 | **Automated tests** | doctor + hard gates + per-profile golden matters + sandbox fault simulations + tax wrapper golden/coverage manifest | more golden-output tests per specialist seat and scenario diversity | 2–6 |
 | **Filing connectivity** | filing tools remain human-sealed; IRS/EFW2/packet scaffolds are gated and kill-switch aware | real transmitter credentials and EDGAR/court e-file integrations under human seal | 4–6 |
-| **Oversight tooling** | `/glaw-oversight-board` + `bin/glaw-oversight` provide kill-switch, source-backed escalation ledger, RBAC ADMIN Board decisions, sandbox halt fixtures, and fail-closed Fortune 500 accounting/SEC tabletop simulations | standing Oversight Board policy packs and additional industry-specific tabletop simulations | 6 |
+| **Oversight tooling** | `/glaw-oversight-board` + `bin/glaw-oversight` provide kill-switch, source-backed escalation ledger, RBAC ADMIN Board decisions, a validated source-controlled core policy pack, sandbox halt fixtures, and fail-closed Fortune 500 accounting/SEC tabletop simulations | additional industry-specific tabletop simulations and policy packs | 6 |
 | **Jurisdiction discipline** | `/glaw-jurisdiction` + `bin/glaw-jurisdiction-pack` enforce source-backed matrices; `jurisdiction/packs/us-core.json` seeds DE, FL, TX, NY, and federal corporate filing authority | more state/country packs and local-counsel playbooks | 4–6 |
 
 ---
@@ -308,6 +308,10 @@ the seal stays human as a legal and ethics constraint.
   now require every compliance-manifest row to carry `owner`, `next_command`, and
   `required_fix`, so the Orchestrator can route from the packet itself and stale
   hand-edited manifests fail the file gate.
+- ✅ **P2-G12 · Oversight Board policy pack**: `/glaw-oversight-board` now ships a
+  source-controlled core policy pack and `bin/glaw-oversight validate-policy` fails closed
+  unless escalation triggers, human-seal boundaries, prohibited autonomous acts, decision
+  rules, and source-evidence requirements are present.
 
 ### Phase 3 (Harness Integration) — add
 - ✅ **P3-G1 · Policy-as-fail-closed-CI-gate + observability**: `bin/glaw-policy check` now

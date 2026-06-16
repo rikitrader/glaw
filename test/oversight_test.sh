@@ -65,6 +65,60 @@ PY
 rc2=$?
 ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "ADMIN can record Board decision"
 
+"$OVERSIGHT" validate-policy --json > "$TMP/policy.json"; rc=$?
+python3 - "$TMP/policy.json" <<'PY'
+import json, sys
+data=json.load(open(sys.argv[1]))
+ok=(
+    data.get("status") == "pass"
+    and data.get("required_trigger_count") == 6
+    and data.get("decision_rule_count") == 5
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "bundled Oversight Board policy pack validates"
+
+"$OVERSIGHT" policy --json > "$TMP/policy-show.json"; rc=$?
+python3 - "$TMP/policy-show.json" <<'PY'
+import json, sys
+data=json.load(open(sys.argv[1]))
+policy=data.get("policy", {})
+triggers={item.get("id") for item in policy.get("escalation_triggers", [])}
+acts=set(policy.get("prohibited_autonomous_acts", []))
+ok=(
+    data.get("status") == "pass"
+    and "accounting-control-failure" in triggers
+    and "government-adversary-failure" in triggers
+    and {"file", "sign", "submit-live"} <= acts
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "policy pack exposes accounting/government escalation and human-only acts"
+
+cat > "$TMP/bad-policy.json" <<'JSON'
+{
+  "schema_version": 1,
+  "name": "Bad Policy",
+  "authority_boundary": "GLAW can act alone",
+  "prohibited_autonomous_acts": ["file"],
+  "escalation_triggers": [],
+  "decision_rules": [],
+  "required_evidence": ["none"]
+}
+JSON
+"$OVERSIGHT" validate-policy --path "$TMP/bad-policy.json" --json > "$TMP/bad-policy.out" 2>&1; rc=$?
+python3 - "$TMP/bad-policy.out" <<'PY'
+import json, sys
+data=json.load(open(sys.argv[1]))
+failure_ids={item.get("id") for item in data.get("failures", [])}
+ok=data.get("status") == "fail" and "human_seal" in failure_ids and "required_escalation_triggers" in failure_ids
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 1 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "malformed Oversight Board policy fails closed"
+
 rm -rf "$TMP"
 echo
 echo "0 failures — $pass passed, $fail failed"
