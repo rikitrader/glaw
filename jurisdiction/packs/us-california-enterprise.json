@@ -1,0 +1,264 @@
+{
+  "matter": "us-california-enterprise-entity-tax-privacy-labor-safety-pack",
+  "source_ids": [
+    "SRC-0001",
+    "SRC-0002",
+    "SRC-0003",
+    "SRC-0004",
+    "SRC-0005"
+  ],
+  "source_catalog": {
+    "SRC-0001": {
+      "title": "California Secretary of State Statements of Information Filing Tips",
+      "url": "https://www.sos.ca.gov/business-programs/business-entities/statements/",
+      "authority": "California Secretary of State",
+      "accessed": "2026-06-16"
+    },
+    "SRC-0002": {
+      "title": "California Franchise Tax Board Corporations",
+      "url": "https://www.ftb.ca.gov/file/business/types/corporations/index.html",
+      "authority": "California Franchise Tax Board",
+      "accessed": "2026-06-16"
+    },
+    "SRC-0003": {
+      "title": "California Privacy Protection Agency Laws and Regulations",
+      "url": "https://cppa.ca.gov/regulations/",
+      "authority": "California Privacy Protection Agency",
+      "accessed": "2026-06-16"
+    },
+    "SRC-0004": {
+      "title": "California Labor Commissioner's Office",
+      "url": "https://www.dir.ca.gov/dlse/",
+      "authority": "California Department of Industrial Relations",
+      "accessed": "2026-06-16"
+    },
+    "SRC-0005": {
+      "title": "Cal/OSHA Division of Occupational Safety and Health",
+      "url": "https://www.dir.ca.gov/dosh/",
+      "authority": "California Department of Industrial Relations",
+      "accessed": "2026-06-16"
+    }
+  },
+  "jurisdictions": [
+    {
+      "name": "California Entity Records",
+      "role": "entity qualification, status, and statement-of-information authority",
+      "source_ids": [
+        "SRC-0001"
+      ],
+      "governing_law": {
+        "status": "mapped",
+        "basis": "California entity maintenance and statement-of-information routing are anchored to Secretary of State guidance in SRC-0001."
+      },
+      "forum": {
+        "status": "mapped",
+        "basis": "California entity record, status, filing confirmation, public disclosure, and business-search questions route through the Secretary of State source in SRC-0001."
+      },
+      "tax": {
+        "status": "mapped",
+        "basis": "SRC-0001 states failure to file the required Statement of Information may result in Franchise Tax Board penalties and suspension or forfeiture, linking the entity-record lane to tax-status control."
+      },
+      "licenses": {
+        "status": "mapped",
+        "basis": "Entity record maintenance, public company disclosure statements, certified copies, and certificate orders route through the Secretary of State filing lane in SRC-0001."
+      },
+      "filings": {
+        "status": "mapped",
+        "basis": "Statements of Information, Common Interest Development Statements, and Publicly Traded Disclosure Statements can be filed online through the Secretary of State lane described in SRC-0001."
+      },
+      "deadlines": [
+        {
+          "due": "Six-month statutory filing window tied to month of incorporation, registration, formation, or conversion",
+          "desc": "Use the Secretary of State six-month filing window chart to calendar recurring Statement of Information periods.",
+          "source": "SRC-0001"
+        },
+        {
+          "due": "Upon information change between statutory filing periods",
+          "desc": "Updated statements should be filed when information changes between statutory filing periods.",
+          "source": "SRC-0001"
+        }
+      ],
+      "adversarial_lenses": [
+        "state regulator",
+        "tax authority",
+        "opposing counsel",
+        "enforcement agency",
+        "outside critic"
+      ]
+    },
+    {
+      "name": "California Franchise and Income Tax",
+      "role": "corporate franchise-tax, income-tax, and suspension-control authority",
+      "source_ids": [
+        "SRC-0002"
+      ],
+      "governing_law": {
+        "status": "mapped",
+        "basis": "California corporate tax posture for domestic, foreign, registered, and doing-business corporations is routed to FTB corporation guidance in SRC-0002."
+      },
+      "forum": {
+        "status": "mapped",
+        "basis": "California tax return, minimum franchise tax, extension, suspension, and dissolution or surrender issues route through the FTB source in SRC-0002."
+      },
+      "tax": {
+        "status": "mapped",
+        "basis": "SRC-0002 states every corporation incorporated, registered, or doing business in California must pay the minimum franchise tax, subject to the stated first-year and short-year exceptions."
+      },
+      "licenses": {
+        "status": "mapped",
+        "basis": "SRC-0002 ties corporation active status to filing the Statement of Information and filing and paying state income taxes; operating licenses remain routed by business activity."
+      },
+      "filings": {
+        "status": "mapped",
+        "basis": "California corporation return, estimated tax, extension payment, final return, and dissolution or surrender steps are mapped to the FTB source in SRC-0002."
+      },
+      "deadlines": [
+        {
+          "due": "Original corporation return and estimated-tax due date from FTB due-date tables",
+          "desc": "Calendar corporation filing and payment dates from the FTB business due-date lane linked in SRC-0002.",
+          "source": "SRC-0002"
+        },
+        {
+          "due": "Automatic extension period from FTB corporation guidance",
+          "desc": "Apply the FTB automatic extension period while treating payment as due on the original date because SRC-0002 states the extension to file is not an extension to pay.",
+          "source": "SRC-0002"
+        }
+      ],
+      "adversarial_lenses": [
+        "state regulator",
+        "tax authority",
+        "opposing counsel",
+        "enforcement agency",
+        "outside critic"
+      ]
+    },
+    {
+      "name": "California Privacy and Data Broker Compliance",
+      "role": "CCPA, CPRA, Delete Act, data-broker, privacy-regulation, and enforcement authority",
+      "source_ids": [
+        "SRC-0003"
+      ],
+      "governing_law": {
+        "status": "mapped",
+        "basis": "California privacy compliance routes to the CPPA laws and regulations source in SRC-0003, including CCPA, Proposition 24, and Delete Act materials."
+      },
+      "forum": {
+        "status": "mapped",
+        "basis": "CPPA rulemaking, enforcement posture, data-broker registration, consumer complaint, and privacy regulatory questions route through SRC-0003."
+      },
+      "tax": {
+        "status": "not_applicable",
+        "basis": "SRC-0003 is a privacy and data-broker authority; California tax issues route to SRC-0002."
+      },
+      "licenses": {
+        "status": "mapped",
+        "basis": "Data broker registration, accessible deletion mechanism duties, cybersecurity audits, risk assessments, ADMT regulations, and CCPA updates route to CPPA materials in SRC-0003."
+      },
+      "filings": {
+        "status": "mapped",
+        "basis": "Data-broker registration, consumer rights process support, DROP compliance, and privacy documentation workflows route through SRC-0003."
+      },
+      "deadlines": [
+        {
+          "due": "January 1, 2026 effective-law lane for CCPA and Delete Act materials",
+          "desc": "Use the CPPA source to calendar CCPA, Delete Act, and data-broker regulation effective-date controls.",
+          "source": "SRC-0003"
+        },
+        {
+          "due": "Rulemaking-specific dates listed by CPPA",
+          "desc": "Calendar CPPA rulemaking, completed package, preliminary activity, and registration obligations from the dated CPPA materials in SRC-0003.",
+          "source": "SRC-0003"
+        }
+      ],
+      "adversarial_lenses": [
+        "state regulator",
+        "tax authority",
+        "opposing counsel",
+        "enforcement agency",
+        "outside critic"
+      ]
+    },
+    {
+      "name": "California Labor Standards",
+      "role": "wage, retaliation, posting, registration, and labor-law enforcement authority",
+      "source_ids": [
+        "SRC-0004"
+      ],
+      "governing_law": {
+        "status": "mapped",
+        "basis": "California wage, break, retaliation, posting, registration, and labor-law enforcement work routes to the Labor Commissioner's Office source in SRC-0004."
+      },
+      "forum": {
+        "status": "mapped",
+        "basis": "Wage claim, retaliation, labor-law violation, judgment enforcement, BOFE, public works, and Labor Commissioner proceeding issues route through SRC-0004."
+      },
+      "tax": {
+        "status": "mapped",
+        "basis": "Payroll-tax and wage-statement tie-outs must reconcile labor-standard classifications and wage obligations from SRC-0004 to the owning payroll and tax seats."
+      },
+      "licenses": {
+        "status": "mapped",
+        "basis": "California labor registrations, workplace postings, training, public works, and registration services are mapped to the Labor Commissioner lane in SRC-0004."
+      },
+      "filings": {
+        "status": "mapped",
+        "basis": "Workplace rights notice, wage claim, retaliation complaint, labor-law violation report, and registration-service workflows route through SRC-0004."
+      },
+      "deadlines": [
+        {
+          "due": "February 1 annually for workplace rights notice duty",
+          "desc": "SRC-0004 states employers must provide the workplace rights notice on or before February 1, 2026, and each year after that.",
+          "source": "SRC-0004"
+        }
+      ],
+      "adversarial_lenses": [
+        "state regulator",
+        "tax authority",
+        "opposing counsel",
+        "enforcement agency",
+        "outside critic"
+      ]
+    },
+    {
+      "name": "California Workplace Safety",
+      "role": "Cal/OSHA workplace safety, permits, reporting, and enforcement authority",
+      "source_ids": [
+        "SRC-0005"
+      ],
+      "governing_law": {
+        "status": "mapped",
+        "basis": "Workplace safety and health obligations route to Cal/OSHA authority in SRC-0005."
+      },
+      "forum": {
+        "status": "mapped",
+        "basis": "Cal/OSHA inspection, citation, appeal, complaint, employer reporting, consultation, permit, and registration issues route through SRC-0005."
+      },
+      "tax": {
+        "status": "not_applicable",
+        "basis": "SRC-0005 is a workplace safety source; tax and payroll issues route to SRC-0002 or the payroll tax seat after intake."
+      },
+      "licenses": {
+        "status": "mapped",
+        "basis": "Cal/OSHA permits, registrations, certifications, licenses, required notifications, postings, and recordkeeping are mapped to SRC-0005."
+      },
+      "filings": {
+        "status": "mapped",
+        "basis": "Employer accident reporting, workplace safety complaints, appeals, recordkeeping, required notifications, and permit workflows route through SRC-0005."
+      },
+      "deadlines": [
+        {
+          "due": "Event-triggered employer reporting and recordkeeping deadlines",
+          "desc": "Calendar workplace accident reporting, postings, notifications, recordkeeping, and permit deadlines from the Cal/OSHA employer lanes in SRC-0005.",
+          "source": "SRC-0005"
+        }
+      ],
+      "adversarial_lenses": [
+        "state regulator",
+        "tax authority",
+        "opposing counsel",
+        "enforcement agency",
+        "outside critic"
+      ]
+    }
+  ]
+}

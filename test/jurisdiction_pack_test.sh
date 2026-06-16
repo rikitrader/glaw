@@ -33,6 +33,9 @@ ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "pack list includes 
 grep -q 'jurisdiction/packs/us-fortune500-tax-sec.json' "$TMP/list.txt"; rc2=$?
 ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "pack list includes Fortune 500 tax/SEC/accounting pack"
 
+grep -q 'jurisdiction/packs/us-california-enterprise.json' "$TMP/list.txt"; rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "pack list includes California enterprise pack"
+
 "$PACK" validate "$ROOT/jurisdiction/packs/us-core.json" --json > "$TMP/us-core-report.json"; rc=$?
 python3 - "$TMP/us-core-report.json" "$ROOT/jurisdiction/packs/us-core.json" <<'PY'
 import json, sys
@@ -73,6 +76,38 @@ sys.exit(0 if ok else 1)
 PY
 rc2=$?
 ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "source-backed Fortune 500 tax/SEC/accounting pack passes with zero review warnings"
+
+"$PACK" validate "$ROOT/jurisdiction/packs/us-california-enterprise.json" --json > "$TMP/california-report.json"; rc=$?
+python3 - "$TMP/california-report.json" "$ROOT/jurisdiction/packs/us-california-enterprise.json" <<'PY'
+import json, sys
+report=json.load(open(sys.argv[1]))
+pack=json.load(open(sys.argv[2]))
+names={row.get("name") for row in pack.get("jurisdictions", [])}
+catalog=pack.get("source_catalog", {})
+required={
+    "California Entity Records",
+    "California Franchise and Income Tax",
+    "California Privacy and Data Broker Compliance",
+    "California Labor Standards",
+    "California Workplace Safety",
+}
+urls={row.get("url") for row in catalog.values()}
+ok=(
+    report.get("status") == "pass"
+    and report.get("jurisdiction_count") >= 5
+    and not report.get("warnings")
+    and required <= names
+    and "https://www.sos.ca.gov/business-programs/business-entities/statements/" in urls
+    and "https://www.ftb.ca.gov/file/business/types/corporations/index.html" in urls
+    and "https://cppa.ca.gov/regulations/" in urls
+    and "https://www.dir.ca.gov/dlse/" in urls
+    and "https://www.dir.ca.gov/dosh/" in urls
+    and "not legal advice" in report.get("authority", "")
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "source-backed California enterprise pack passes with zero review warnings"
 
 printf '{"matter":"bad","source_ids":[],"jurisdictions":[]}' > "$TMP/bad.json"
 "$PACK" validate "$TMP/bad.json" --json > "$TMP/bad-report.json"; rc=$?

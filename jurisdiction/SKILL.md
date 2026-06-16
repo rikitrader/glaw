@@ -61,6 +61,11 @@ income-tax matters, start from `jurisdiction/packs/us-core.json` and narrow it
 to the matter facts. The scaffold is only a template shape; it must not be used
 as production legal data.
 
+For Fortune 500 accounting, tax, SEC, PCAOB, GAAP, or FinCEN packets, also load
+`jurisdiction/packs/us-fortune500-tax-sec.json`. For California enterprise
+operations, privacy/data-broker, labor, workplace-safety, entity-maintenance, or
+franchise-tax exposure, also load `jurisdiction/packs/us-california-enterprise.json`.
+
 For each jurisdiction, complete: `governing_law`, `forum`, `tax`, `licenses`,
 `filings`, `deadlines`, and `adversarial_lenses`. Every conclusion must cite a
 current matter source ID such as `SRC-0001`.
