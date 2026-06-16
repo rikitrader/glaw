@@ -78,6 +78,9 @@ Final approve/deny decisions also require a complete Chief card: `--score`, `--g
 `--risks`, `--conditions`, and `--rationale`.
 For final approval, the Chief rationale must cite a current source ID from the rebuilt
 final packet, such as `SRC-0001`; the file gate revalidates that citation before filing.
+If the rebuilt packet carries open medium/low red flags, the Chief approval must name each
+red-flag ID in `--risks` or `--conditions`; the approval command and file gate both block
+when the Chief says "none" while a packet-carried issue remains open.
 The Chief approval records the approved packet's `generated_at` and SHA-256 digest; if the
 packet is rebuilt or edited later, the file gate blocks until the Chief approves the current
 packet.

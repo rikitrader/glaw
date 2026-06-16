@@ -507,6 +507,26 @@ row["decision_hash"] = hashlib.sha256(
 ).hexdigest()
 open(sys.argv[1], "w", encoding="utf-8").write(json.dumps(row) + "\n")
 PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED when Chief approval omits open nonblocking red flag"
+python3 - "$M/decisions.jsonl" "$M/final_packet.json" <<'PY'
+import hashlib, json, sys
+packet = sys.argv[2]
+row = {
+    "final_gate": "approved",
+    "decision": "PROCEED",
+    "approved_packet_generated_at": "2026-01-01T00:00:00Z",
+    "approved_packet_sha256": hashlib.sha256(open(packet, "rb").read()).hexdigest(),
+    "score": "95",
+    "grade": "A",
+    "top_risks": ["RF-MED remains open as a nonblocking watch item"],
+    "conditions": ["licensed signer final review; RF-MED carried until closed"],
+    "rationale": "SRC-0001 all gates clear and source manifests tie out",
+}
+row["decision_hash"] = hashlib.sha256(
+    json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
+).hexdigest()
+open(sys.argv[1], "w", encoding="utf-8").write(json.dumps(row) + "\n")
+PY
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after all file gates"
 cp "$M/workpapers/ledger.json" "$M/workpapers/ledger.baseline.json"
 printf '{"rows":[{"tampered":true}]}\n' > "$M/workpapers/ledger.json"

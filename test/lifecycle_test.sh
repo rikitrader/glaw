@@ -213,6 +213,7 @@ MD
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before high red flag has current-source resolution"
 "$FLAGS" resolve RF-0001 --evidence 'SRC-0001 bank reconciliation attached' >/dev/null
+"$FLAGS" add --severity medium --owner controller --source "SRC-0001 bank statement" --finding "watch item for final reviewer" --required-fix "carry RF-0002 in Chief risks/conditions until closed" >/dev/null
 "$FLAGS" complete >/dev/null
 for role in cfo irs-audit-agent legal-counsel forensic-audit outside-critic external-reviewer; do
   "$COUNCIL" record --profile auto --role "$role" --decision approve --evidence "SRC-0001 test fixture review basis" --notes "$role current-source approval conclusion" >/dev/null
@@ -281,9 +282,11 @@ mv "$TMP/matters/$SLUG/draft-report.clean.md" "$TMP/matters/$SLUG/draft-report.m
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked without complete decision card"
 "$CHIEF" --chief "GLAW Chief Counsel" --score 95 --grade A --decision "PROCEED" --risks "none" --conditions "licensed signer final review" --rationale "all gates clear and source manifests tie out" --approve-final --matter "$SLUG" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked without source-backed rationale"
+"$CHIEF" --chief "GLAW Chief Counsel" --score 95 --grade A --decision "PROCEED" --risks "none" --conditions "licensed signer final review" --rationale "SRC-0001 all gates clear and source manifests tie out" --approve-final --matter "$SLUG" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked without nonblocking red flag acknowledgment"
 "$CHIEF" --chief "GLAW Chief Counsel" --score 95 --grade A --decision "DENY" --risks "none" --conditions "licensed signer final review" --rationale "SRC-0001 all gates clear and source manifests tie out" --approve-final --matter "$SLUG" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked by contradictory denial decision"
-"$CHIEF" --chief "GLAW Chief Counsel" --score 95 --grade A --decision "PROCEED" --risks "none" --conditions "licensed signer final review" --rationale "SRC-0001 all gates clear and source manifests tie out" --approve-final --matter "$SLUG" >/dev/null
+"$CHIEF" --chief "GLAW Chief Counsel" --score 95 --grade A --decision "PROCEED" --risks "RF-0002 remains open as a nonblocking watch item" --conditions "licensed signer final review; RF-0002 carried until closed" --rationale "SRC-0001 all gates clear and source manifests tie out" --approve-final --matter "$SLUG" >/dev/null
 python3 - "$TMP/matters/$SLUG" <<'PY'
 import hashlib, json, pathlib, sys
 d = pathlib.Path(sys.argv[1])
@@ -298,7 +301,7 @@ ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "chief approval records current final 
 printf '\nTampered packet sidecar.\n' >> "$TMP/matters/$SLUG/final_packet.md"
 "$GLAW" stage file >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "file stage blocked by tampered final packet markdown"
-"$CHIEF" --chief "GLAW Chief Counsel" --score 95 --grade A --decision "PROCEED" --risks "none" --conditions "licensed signer final review" --rationale "SRC-0001 all gates clear and source manifests tie out" --approve-final --matter "$SLUG" >/dev/null
+"$CHIEF" --chief "GLAW Chief Counsel" --score 95 --grade A --decision "PROCEED" --risks "RF-0002 remains open as a nonblocking watch item" --conditions "licensed signer final review; RF-0002 carried until closed" --rationale "SRC-0001 all gates clear and source manifests tie out" --approve-final --matter "$SLUG" >/dev/null
 "$GLAW" stage file >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && [ "$(cat "$TMP/matters/$SLUG/.stage")" = file ] && echo 1 || echo 0)" "file stage clears after final packet and chief approval"
 

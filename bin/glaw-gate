@@ -1025,6 +1025,22 @@ if not latest_final_row.get("conditions"):
 if approval_missing:
     print("latest Chief approval lacks complete sign-off field(s): " + ", ".join(approval_missing))
     sys.exit(1)
+nonblocking_flags_for_approval = [
+    item for item in packet.get("nonblocking_red_flag_manifest", [])
+    if item.get("status") == "pass"
+]
+approval_ack_text = "\n".join(
+    str(value)
+    for value in (latest_final_row.get("top_risks", []), latest_final_row.get("conditions", []))
+)
+unacknowledged_nonblocking_flags = [
+    str(item.get("id", "")).strip()
+    for item in nonblocking_flags_for_approval
+    if str(item.get("id", "")).strip() and str(item.get("id", "")).strip() not in approval_ack_text
+]
+if unacknowledged_nonblocking_flags:
+    print("latest Chief approval does not acknowledge open nonblocking red flag(s): " + ", ".join(unacknowledged_nonblocking_flags))
+    sys.exit(1)
 approval_decision = str(latest_final_row.get("decision", ""))
 if NEGATIVE_DECISION_RE.search(approval_decision) or not APPROVAL_DECISION_RE.search(approval_decision):
     print("latest Chief approval decision text contradicts final approval")

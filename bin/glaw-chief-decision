@@ -126,6 +126,28 @@ def validate_final_approval_source(d, final_packet):
         return 1
     return 0
 
+def validate_nonblocking_red_flag_acknowledgment(d, final_packet):
+    flags = [
+        item for item in final_packet.get("nonblocking_red_flag_manifest", [])
+        if item.get("status") == "pass"
+    ]
+    if not flags:
+        return 0
+    acknowledgment_text = "\n".join([
+        str(d.get("risks", "")),
+        str(d.get("conditions", "")),
+    ])
+    missing = [
+        str(item.get("id", "")).strip()
+        for item in flags
+        if str(item.get("id", "")).strip() and str(item.get("id", "")).strip() not in acknowledgment_text
+    ]
+    if missing:
+        print("FINAL APPROVAL BLOCKED: Chief risks/conditions must acknowledge every open nonblocking red flag.")
+        print("Missing red flag ID(s): " + ", ".join(missing))
+        return 1
+    return 0
+
 def parse(argv):
     d = {"chief":"","score":"","grade":"","decision":"","risks":"","conditions":"",
          "rationale":"","matter":"","signoff":False,"approve-final":False,"deny-final":False}
@@ -174,6 +196,8 @@ def main():
     final_packet = read_json(final_packet_path, {}) if d["approve-final"] else {}
     final_packet_sha256 = sha256_file(final_packet_path) if d["approve-final"] else ""
     if d["approve-final"] and validate_final_approval_source(d, final_packet) != 0:
+        return 1
+    if d["approve-final"] and validate_nonblocking_red_flag_acknowledgment(d, final_packet) != 0:
         return 1
 
     card = {
