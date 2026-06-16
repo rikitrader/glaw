@@ -19,6 +19,12 @@ UPL_FOOTER = (
 )
 SOURCE_ID_RE = re.compile(r"\bSRC-\d{4}\b")
 SOURCE_EVIDENCE_PARTS = {"evidence", "source_documents", "sources"}
+GENERIC_PROFESSIONAL_RE = re.compile(
+    r"^\s*(?:licensed\s+)?(?:reviewer|attorney|cpa|ea|professional|signer|counsel)\s*$"
+    r"|^\s*(?:tbd|todo|n/?a|unknown|pending)\s*$",
+    re.IGNORECASE,
+)
+BRACKET_PLACEHOLDER_RE = re.compile(r"\[[^\]]+\]")
 
 
 def now() -> str:
@@ -99,6 +105,20 @@ def require_current_source_ids(text: str, d: Path, context: str) -> bool:
     return True
 
 
+def responsible_professional_blocker(value: str) -> str:
+    text = str(value or "").strip()
+    alpha_words = re.findall(r"[A-Za-z][A-Za-z.'-]+", text)
+    if not text:
+        return "engagement.responsible_professional required"
+    if BRACKET_PLACEHOLDER_RE.search(text):
+        return "engagement.responsible_professional must name an accountable licensed reviewer, not a placeholder"
+    if GENERIC_PROFESSIONAL_RE.match(text):
+        return "engagement.responsible_professional must name an accountable licensed reviewer, not a generic role"
+    if len(alpha_words) < 2:
+        return "engagement.responsible_professional must include a named accountable reviewer"
+    return ""
+
+
 def append_jsonl(path: Path, row: dict) -> None:
     with path.open("a", encoding="utf-8") as f:
         f.write(json.dumps(row, sort_keys=False) + "\n")
@@ -161,9 +181,11 @@ def blockers(record: dict, d: Path | None = None) -> list[str]:
     engagement = record.get("engagement", {})
     if engagement.get("status") != "drafted":
         out.append("engagement.status must be drafted")
-    for key in ("scope", "responsible_professional"):
-        if not engagement.get(key):
-            out.append(f"engagement.{key} required")
+    if not engagement.get("scope"):
+        out.append("engagement.scope required")
+    professional_blocker = responsible_professional_blocker(str(engagement.get("responsible_professional", "")))
+    if professional_blocker:
+        out.append(professional_blocker)
     if not SOURCE_ID_RE.search(str(engagement.get("source", ""))):
         out.append("engagement.source must cite source evidence id (SRC-####)")
     elif d is not None and noncurrent_source_ids(str(engagement.get("source", "")), d):
@@ -217,6 +239,10 @@ def cmd_record_conflicts(args: argparse.Namespace) -> int:
 def cmd_engagement(args: argparse.Namespace) -> int:
     d = matter_dir(args.matter)
     if not require_current_source_ids(args.source, d, "--source"):
+        return 2
+    professional_blocker = responsible_professional_blocker(args.responsible_professional)
+    if professional_blocker:
+        print(f"ERROR: {professional_blocker}", file=sys.stderr)
         return 2
     record = load_record(d)
     record["engagement"] = {

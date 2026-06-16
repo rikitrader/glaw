@@ -78,8 +78,10 @@ Set `Engagement → engagement letter: drafted` in the charter.
 bin/glaw-ethics draft-engagement \
   --scope "<authorized scope>" \
   --fee-terms "<fee terms or TBD>" \
-  --responsible-professional "<licensed reviewer/signing professional>"
+  --responsible-professional "<named licensed reviewer/signing professional>"
 ```
+Generic placeholders such as `licensed reviewer`, `attorney`, `TBD`, or `[REVIEWER]` do
+not clear the executable gate; name the accountable licensed reviewer/signing professional.
 
 ### Step 5 — Stamp the UPL guardrail
 Every external GLAW deliverable carries this footer (the file/draft stages pull it):

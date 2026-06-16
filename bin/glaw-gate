@@ -50,6 +50,26 @@ root = pathlib.Path(sys.argv[2])
 sys.path.insert(0, str(root / "lib"))
 from glaw_profiles import TRACKS
 SOURCE_ID_RE = re.compile(r"\bSRC-\d{4}\b")
+GENERIC_PROFESSIONAL_RE = re.compile(
+    r"^\s*(?:licensed\s+)?(?:reviewer|attorney|cpa|ea|professional|signer|counsel)\s*$"
+    r"|^\s*(?:tbd|todo|n/?a|unknown|pending)\s*$",
+    re.IGNORECASE,
+)
+BRACKET_PLACEHOLDER_RE = re.compile(r"\[[^\]]+\]")
+
+
+def responsible_professional_blocker(value):
+    text = str(value or "").strip()
+    alpha_words = re.findall(r"[A-Za-z][A-Za-z.'-]+", text)
+    if not text:
+        return "ethics responsible professional is missing"
+    if BRACKET_PLACEHOLDER_RE.search(text):
+        return "ethics responsible professional is a placeholder"
+    if GENERIC_PROFESSIONAL_RE.match(text):
+        return "ethics responsible professional is a generic role"
+    if len(alpha_words) < 2:
+        return "ethics responsible professional must include a named accountable reviewer"
+    return ""
 
 REQUIRED_INTAKE = (
     "matter_name",
@@ -155,8 +175,9 @@ if engagement.get("status") != "drafted":
 if not str(engagement.get("scope", "")).strip():
     print("ethics engagement scope is missing")
     sys.exit(1)
-if not str(engagement.get("responsible_professional", "")).strip():
-    print("ethics responsible professional is missing")
+professional_blocker = responsible_professional_blocker(engagement.get("responsible_professional", ""))
+if professional_blocker:
+    print(professional_blocker)
     sys.exit(1)
 validate_current_source(engagement.get("source", ""), "ethics engagement source", source_ids)
 PY

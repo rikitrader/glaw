@@ -38,7 +38,7 @@ bin/glaw-intake set track_specific.governing_law 'Florida'
 bin/glaw-intake set track_specific.review_standard 'client-favorable'
 bin/glaw-intake complete
 bin/glaw-ethics record-conflicts --status cleared --notes 'no conflict identified' --source 'SRC-0001 party list reviewed'
-bin/glaw-ethics draft-engagement --scope 'review and draft only' --responsible-professional 'licensed reviewer' --source 'SRC-0001 authorized scope reviewed'
+bin/glaw-ethics draft-engagement --scope 'review and draft only' --responsible-professional 'Alex Rivera, licensed attorney' --source 'SRC-0001 authorized scope reviewed'
 bin/glaw-ethics complete
 ```
 

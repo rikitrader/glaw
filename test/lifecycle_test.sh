@@ -56,9 +56,11 @@ printf 'date,description,amount\n2026-01-01,capital deposit,100.00\n' > "$TMP/ma
 "$ETHICS" record-conflicts --status cleared --notes 'no conflict in test fixture' --source 'SRC-0001 intake party list reviewed' >/dev/null
 "$ETHICS" draft-engagement --scope 'review and draft only' --responsible-professional 'licensed reviewer' >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "ethics engagement blocked without source evidence id"
-"$ETHICS" draft-engagement --scope 'review and draft only' --responsible-professional 'licensed reviewer' --source 'SRC-9999 stale authorized scope reviewed' >/dev/null 2>&1; rc=$?
+"$ETHICS" draft-engagement --scope 'review and draft only' --responsible-professional 'licensed reviewer' --source 'SRC-0001 authorized scope reviewed' >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "ethics engagement blocked by generic responsible professional"
+"$ETHICS" draft-engagement --scope 'review and draft only' --responsible-professional 'Alex Rivera, licensed attorney' --source 'SRC-9999 stale authorized scope reviewed' >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "ethics engagement blocked by non-current source evidence id"
-"$ETHICS" draft-engagement --scope 'review and draft only' --responsible-professional 'licensed reviewer' --source 'SRC-0001 authorized scope reviewed' >/dev/null
+"$ETHICS" draft-engagement --scope 'review and draft only' --responsible-professional 'Alex Rivera, licensed attorney' --source 'SRC-0001 authorized scope reviewed' >/dev/null
 "$ETHICS" complete >/dev/null
 "$GLAW" stage strategy >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "strategy clears after intake/conflicts"

@@ -85,7 +85,7 @@ cat > "$M/ethics.json" <<'JSON'
   "engagement": {
     "status": "drafted",
     "scope": "review and draft only",
-    "responsible_professional": "licensed reviewer",
+    "responsible_professional": "Alex Rivera, licensed attorney",
     "source": "SRC-0001 authorized scope reviewed"
   },
   "upl_footer": "Attorney work-product - not legal advice."
@@ -103,7 +103,7 @@ cat > "$M/ethics.json" <<'JSON'
   "engagement": {
     "status": "drafted",
     "scope": "review and draft only",
-    "responsible_professional": "licensed reviewer",
+    "responsible_professional": "Alex Rivera, licensed attorney",
     "source": "SRC-9999 stale authorized scope reviewed"
   },
   "upl_footer": "Attorney work-product - not legal advice."
@@ -120,6 +120,22 @@ cat > "$M/ethics.json" <<'JSON'
     "status": "drafted",
     "scope": "review and draft only",
     "responsible_professional": "licensed reviewer",
+    "source": "SRC-0001 authorized scope reviewed"
+  },
+  "upl_footer": "Attorney work-product - not legal advice."
+}
+JSON
+ok "$([ "$(chk strategy)" = 1 ] && echo 1 || echo 0)" "strategy STILL BLOCKED by generic ethics responsible professional"
+cat > "$M/ethics.json" <<'JSON'
+{
+  "status": "complete",
+  "conflicts_status": "cleared",
+  "conflicts_notes": "no conflict in fixture",
+  "conflicts_source": "SRC-0001 party list reviewed",
+  "engagement": {
+    "status": "drafted",
+    "scope": "review and draft only",
+    "responsible_professional": "Alex Rivera, licensed attorney",
     "source": "SRC-0001 authorized scope reviewed"
   },
   "upl_footer": "Attorney work-product - not legal advice."
