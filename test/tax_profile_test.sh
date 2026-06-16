@@ -11,6 +11,7 @@ GLAW="$ROOT/bin/glaw"
 INTAKE="$ROOT/bin/glaw-intake"
 COUNCIL="$ROOT/bin/glaw-council"
 ADVERSARIAL="$ROOT/bin/glaw-adversarial"
+CONTROL="$ROOT/bin/glaw-accounting-control"
 
 "$GLAW" matter new "Tax Profile" >/dev/null
 SLUG="tax-profile"
@@ -54,6 +55,78 @@ for lens in irs-examiner state-tax-auditor tax-court-counsel penalty-reviewer ou
 done
 "$ADVERSARIAL" complete --profile auto >"$TMP/adversarial-complete.out" 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && grep -q 'TAX ADVERSARIAL COMPLETE' "$TMP/adversarial-complete.out" && echo 1 || echo 0)" "tax adversarial completes through auto profile"
+
+mkdir -p "$TMP/matters/$SLUG/workpapers"
+cat > "$TMP/matters/$SLUG/workpapers/ledger.json" <<'JSON'
+{
+  "rows": [
+    {
+      "booking_date": "2026-01-01",
+      "description": "tax source deposit",
+      "normalized_description": "TAX SOURCE DEPOSIT",
+      "amount": "100.00",
+      "currency": "USD",
+      "category": "Equity:Owner:Contributions",
+      "transaction_hash": "tax-fixture-001",
+      "source_method": "deterministic"
+    }
+  ],
+  "audit": [
+    {
+      "source": "evidence/tax-source.txt",
+      "balance_status": "verified"
+    }
+  ]
+}
+JSON
+cat > "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" <<'JSON'
+{
+  "matched": 1,
+  "book_only": [],
+  "bank_only": [],
+  "sum_book": "100.00",
+  "sum_bank": "100.00",
+  "unreconciled_difference": "0.00",
+  "reconciled": true
+}
+JSON
+"$CONTROL" --matter "$SLUG" --profile tax --source "SRC-0001 tax source package reviewed" --ledger "$TMP/matters/$SLUG/workpapers/ledger.json" --bank-rec "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "tax accounting control blocked without tax tie-out artifact"
+cat > "$TMP/matters/$SLUG/workpapers/tax-tieout-bad.json" <<'JSON'
+{
+  "provision_ties": false,
+  "internal": {
+    "consistent": true
+  }
+}
+JSON
+"$CONTROL" --matter "$SLUG" --profile tax --source "SRC-0001 tax source package reviewed" --ledger "$TMP/matters/$SLUG/workpapers/ledger.json" --bank-rec "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" --tax-tieout "$TMP/matters/$SLUG/workpapers/tax-tieout-bad.json" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "tax accounting control blocked by failing tax tie-out"
+cat > "$TMP/matters/$SLUG/workpapers/tax-tieout-good.json" <<'JSON'
+{
+  "provision_ties": true,
+  "internal": {
+    "consistent": true
+  }
+}
+JSON
+"$CONTROL" --matter "$SLUG" --profile tax --source "SRC-0001 tax source package reviewed" --ledger "$TMP/matters/$SLUG/workpapers/ledger.json" --bank-rec "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" --tax-tieout "$TMP/matters/$SLUG/workpapers/tax-tieout-good.json" >/dev/null
+python3 - "$TMP/matters/$SLUG/accounting_control.json" <<'PY'
+import json
+import sys
+
+control = json.load(open(sys.argv[1], encoding="utf-8"))
+tax = control.get("tax_tieout") or {}
+ok = (
+    control.get("status") == "pass"
+    and tax.get("status") == "pass"
+    and tax.get("provision_ties") is True
+    and tax.get("internal_consistency") is True
+)
+sys.exit(0 if ok else 1)
+PY
+rc=$?
+ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "tax accounting control records passing tax tie-out"
 
 echo
 echo "0 failures — $pass passed, $fail failed"
