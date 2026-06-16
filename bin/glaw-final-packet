@@ -614,6 +614,132 @@ def accounting_control_manifest(d: Path, profile: str, source_manifest: list[dic
     return manifest
 
 
+def _compliance_row(row_id: str, owner: str, ok: bool, missing: list[str]) -> dict:
+    return {
+        "id": row_id,
+        "owner": owner,
+        "status": "pass" if ok else "fail",
+        "missing": missing,
+    }
+
+
+def compliance_manifest(
+    profile: str,
+    gates: dict[str, bool],
+    *,
+    accounting_control: dict,
+    government_adversary_rows: list[dict],
+    source_manifest: list[dict],
+    senior_review_evidence_manifest: list[dict],
+    red_flag_resolution_evidence_manifest: list[dict],
+    nonblocking_red_flags: list[dict],
+    reviewer_identity: list[dict],
+    report_quality_manifest: list[dict],
+) -> list[dict]:
+    accounting_required = accounting_control.get("required") is True
+    return [
+        _compliance_row(
+            "ethics-upl",
+            "glaw-ethics-conflicts",
+            gates.get("conflicts_cleared", False)
+            and gates.get("ethics_gate_complete", False)
+            and gates.get("upl_footer_clear", False),
+            [
+                name
+                for name in ("conflicts_cleared", "ethics_gate_complete", "upl_footer_clear")
+                if not gates.get(name, False)
+            ],
+        ),
+        _compliance_row(
+            "citation-grounding",
+            "glaw-legal-research",
+            gates.get("citations_verified", False) and gates.get("citation_gate_complete", False),
+            [
+                name
+                for name in ("citations_verified", "citation_gate_complete")
+                if not gates.get(name, False)
+            ],
+        ),
+        _compliance_row(
+            "government-adversary",
+            "glaw-adversarial",
+            bool(government_adversary_rows)
+            and all(item.get("status") == "pass" for item in government_adversary_rows),
+            ["government_adversary_manifest"] if not government_adversary_rows else [
+                f"{item.get('lens')}:{','.join(item.get('missing') or [])}"
+                for item in government_adversary_rows
+                if item.get("status") != "pass"
+            ],
+        ),
+        _compliance_row(
+            "senior-review-source-support",
+            "glaw-council",
+            bool(senior_review_evidence_manifest)
+            and all(item.get("status") == "pass" for item in senior_review_evidence_manifest),
+            ["senior_review_evidence_manifest"] if not senior_review_evidence_manifest else [
+                f"{item.get('kind')}:{item.get('name')}:{','.join(item.get('missing') or [])}"
+                for item in senior_review_evidence_manifest
+                if item.get("status") != "pass"
+            ],
+        ),
+        _compliance_row(
+            "red-flag-accountability",
+            "glaw-red-flags",
+            gates.get("red_flags_clear", False)
+            and all(item.get("status") == "pass" for item in red_flag_resolution_evidence_manifest)
+            and all(item.get("status") == "pass" for item in nonblocking_red_flags),
+            [
+                name
+                for name in (
+                    "red_flags_clear",
+                    "red_flag_resolution_evidence_clear",
+                    "nonblocking_red_flags_accounted_clear",
+                )
+                if not gates.get(name, False)
+            ],
+        ),
+        _compliance_row(
+            "source-evidence-chain",
+            "glaw-final-packet",
+            bool(source_manifest)
+            and gates.get("source_evidence_manifest_clear", False),
+            ["source_evidence_manifest"] if not source_manifest else [
+                item.get("path", "")
+                for item in source_manifest
+                if int(item.get("size_bytes", 0)) <= 0
+            ],
+        ),
+        _compliance_row(
+            "professional-report-quality",
+            "glaw-legal-writing",
+            bool(report_quality_manifest)
+            and all(item.get("status") == "pass" for item in report_quality_manifest),
+            ["report_quality_manifest"] if not report_quality_manifest else [
+                f"{item.get('path')}:{','.join(item.get('missing_markers') or [])}"
+                for item in report_quality_manifest
+                if item.get("status") != "pass"
+            ],
+        ),
+        _compliance_row(
+            "reviewer-identity",
+            "glaw-final-packet",
+            bool(reviewer_identity)
+            and all(item.get("status") == "pass" for item in reviewer_identity),
+            ["reviewer_identity_manifest"] if not reviewer_identity else [
+                f"{item.get('kind')}:{item.get('name')}:{','.join(item.get('missing') or [])}"
+                for item in reviewer_identity
+                if item.get("status") != "pass"
+            ],
+        ),
+        _compliance_row(
+            "accounting-control" if accounting_required else "accounting-control-not-required",
+            "glaw-accounting",
+            accounting_control.get("status") in {"pass", "not_required"},
+            list(accounting_control.get("missing") or []),
+        ),
+    ]
+
+
 def run_check(cmd: list[str], cwd: Path) -> tuple[int, str]:
     proc = subprocess.run(cmd, cwd=str(cwd), capture_output=True, text=True)
     return proc.returncode, (proc.stdout + proc.stderr).strip()
@@ -698,6 +824,12 @@ def render_md(packet: dict) -> str:
         suffix = "" if not missing else f" — missing {', '.join(missing)}"
         lines.extend(["", "## Accounting Control"])
         lines.append(f"- [{mark}] accounting_control.json{suffix}")
+    lines.extend(["", "## Compliance Manifest"])
+    for item in packet.get("compliance_manifest", []):
+        mark = "x" if item.get("status") == "pass" else " "
+        missing = item.get("missing") or []
+        suffix = "" if not missing else f" — missing {', '.join(missing)}"
+        lines.append(f"- [{mark}] {item.get('id')} owner={item.get('owner')}{suffix}")
     lines.append("")
     lines.append("Attorney/CPA work-product. Human licensed signoff remains required where applicable.")
     return "\n".join(lines) + "\n"
@@ -823,6 +955,20 @@ def cmd_build(args: argparse.Namespace) -> int:
         "accounting_control_manifest_clear": accounting_control["status"] in {"pass", "not_required"},
         "upl_footer_clear": rc_upl == 0,
     }
+    compliance_rows = compliance_manifest(
+        profile,
+        gates,
+        accounting_control=accounting_control,
+        government_adversary_rows=government_adversary_rows,
+        source_manifest=source_manifest,
+        senior_review_evidence_manifest=senior_review_evidence_manifest,
+        red_flag_resolution_evidence_manifest=red_flag_resolution_evidence_manifest,
+        nonblocking_red_flags=nonblocking_red_flags,
+        reviewer_identity=reviewer_identity,
+        report_quality_manifest=report_quality_manifest,
+    )
+    compliance_clear = bool(compliance_rows) and all(item["status"] == "pass" for item in compliance_rows)
+    gates["compliance_manifest_clear"] = compliance_clear
     blockers = blocking_red_flags(red_flags)
     ready = all(gates.values()) and not blockers and rc_adv == 0 and rc_council == 0
     packet = {
@@ -852,6 +998,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         "source_evidence_manifest": source_manifest,
         "senior_review_evidence_manifest": senior_review_evidence_manifest,
         "government_adversary_manifest": government_adversary_rows,
+        "compliance_manifest": compliance_rows,
         "red_flag_resolution_evidence_manifest": red_flag_resolution_evidence_manifest,
         "reviewer_identity_manifest": reviewer_identity,
         "accounting_control_manifest": accounting_control,

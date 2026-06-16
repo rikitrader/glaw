@@ -211,6 +211,7 @@ cat > "$M/final_packet.json" <<'JSON'
     "source_evidence_manifest_clear": true,
     "senior_review_evidence_source_clear": true,
     "government_adversary_manifest_clear": true,
+    "compliance_manifest_clear": true,
     "professional_report_manifest_clear": true,
     "upl_footer_clear": true
   }
@@ -641,6 +642,17 @@ packet["reviewer_identity_manifest"] = (
     + [row("council", name) for name in COUNCIL_PROFILES[profile]]
     + [row("adversarial", name) for name in ADVERSARIAL_PROFILES[profile]]
 )
+packet["compliance_manifest"] = [
+    {"id": "ethics-upl", "owner": "glaw-ethics-conflicts", "status": "pass", "missing": []},
+    {"id": "citation-grounding", "owner": "glaw-legal-research", "status": "pass", "missing": []},
+    {"id": "government-adversary", "owner": "glaw-adversarial", "status": "pass", "missing": []},
+    {"id": "senior-review-source-support", "owner": "glaw-council", "status": "pass", "missing": []},
+    {"id": "red-flag-accountability", "owner": "glaw-red-flags", "status": "pass", "missing": []},
+    {"id": "source-evidence-chain", "owner": "glaw-final-packet", "status": "pass", "missing": []},
+    {"id": "professional-report-quality", "owner": "glaw-legal-writing", "status": "pass", "missing": []},
+    {"id": "reviewer-identity", "owner": "glaw-final-packet", "status": "pass", "missing": []},
+    {"id": "accounting-control", "owner": "glaw-accounting", "status": "pass", "missing": []},
+]
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before deliverable hash manifest"
@@ -712,6 +724,19 @@ row["decision_hash"] = hashlib.sha256(
 open(sys.argv[1], "w", encoding="utf-8").write(json.dumps(row) + "\n")
 PY
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after all file gates"
+cp "$M/final_packet.json" "$M/final_packet.compliance-baseline.json"
+fixture_py "$M/final_packet.json" <<'PY'
+import json, sys
+p = sys.argv[1]
+packet = json.load(open(p, encoding="utf-8"))
+packet["compliance_manifest"] = [
+    row for row in packet["compliance_manifest"] if row["id"] != "government-adversary"
+]
+open(p, "w", encoding="utf-8").write(json.dumps(packet) + "\n")
+PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by stale compliance manifest"
+cp "$M/final_packet.compliance-baseline.json" "$M/final_packet.json"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact compliance manifest restored"
 cp "$M/final_packet.json" "$M/final_packet.profile-baseline.json"
 fixture_py "$M/final_packet.json" <<'PY'
 import json, sys

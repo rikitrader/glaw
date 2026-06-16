@@ -784,6 +784,132 @@ def accounting_control_manifest(profile, source_manifest):
     return manifest
 
 
+def _compliance_row(row_id, owner, ok, missing):
+    return {
+        "id": row_id,
+        "owner": owner,
+        "status": "pass" if ok else "fail",
+        "missing": missing,
+    }
+
+
+def compliance_manifest(
+    profile,
+    gates,
+    *,
+    accounting_control,
+    government_adversary_rows,
+    source_manifest,
+    senior_review_evidence_manifest,
+    red_flag_resolution_evidence_manifest,
+    nonblocking_red_flags,
+    reviewer_identity,
+    report_quality_manifest,
+):
+    accounting_required = accounting_control.get("required") is True
+    return [
+        _compliance_row(
+            "ethics-upl",
+            "glaw-ethics-conflicts",
+            gates.get("conflicts_cleared", False)
+            and gates.get("ethics_gate_complete", False)
+            and gates.get("upl_footer_clear", False),
+            [
+                name
+                for name in ("conflicts_cleared", "ethics_gate_complete", "upl_footer_clear")
+                if not gates.get(name, False)
+            ],
+        ),
+        _compliance_row(
+            "citation-grounding",
+            "glaw-legal-research",
+            gates.get("citations_verified", False) and gates.get("citation_gate_complete", False),
+            [
+                name
+                for name in ("citations_verified", "citation_gate_complete")
+                if not gates.get(name, False)
+            ],
+        ),
+        _compliance_row(
+            "government-adversary",
+            "glaw-adversarial",
+            bool(government_adversary_rows)
+            and all(item.get("status") == "pass" for item in government_adversary_rows),
+            ["government_adversary_manifest"] if not government_adversary_rows else [
+                f"{item.get('lens')}:{','.join(item.get('missing') or [])}"
+                for item in government_adversary_rows
+                if item.get("status") != "pass"
+            ],
+        ),
+        _compliance_row(
+            "senior-review-source-support",
+            "glaw-council",
+            bool(senior_review_evidence_manifest)
+            and all(item.get("status") == "pass" for item in senior_review_evidence_manifest),
+            ["senior_review_evidence_manifest"] if not senior_review_evidence_manifest else [
+                f"{item.get('kind')}:{item.get('name')}:{','.join(item.get('missing') or [])}"
+                for item in senior_review_evidence_manifest
+                if item.get("status") != "pass"
+            ],
+        ),
+        _compliance_row(
+            "red-flag-accountability",
+            "glaw-red-flags",
+            gates.get("red_flags_clear", False)
+            and all(item.get("status") == "pass" for item in red_flag_resolution_evidence_manifest)
+            and all(item.get("status") == "pass" for item in nonblocking_red_flags),
+            [
+                name
+                for name in (
+                    "red_flags_clear",
+                    "red_flag_resolution_evidence_clear",
+                    "nonblocking_red_flags_accounted_clear",
+                )
+                if not gates.get(name, False)
+            ],
+        ),
+        _compliance_row(
+            "source-evidence-chain",
+            "glaw-final-packet",
+            bool(source_manifest)
+            and gates.get("source_evidence_manifest_clear", False),
+            ["source_evidence_manifest"] if not source_manifest else [
+                item.get("path", "")
+                for item in source_manifest
+                if int(item.get("size_bytes", 0)) <= 0
+            ],
+        ),
+        _compliance_row(
+            "professional-report-quality",
+            "glaw-legal-writing",
+            bool(report_quality_manifest)
+            and all(item.get("status") == "pass" for item in report_quality_manifest),
+            ["report_quality_manifest"] if not report_quality_manifest else [
+                f"{item.get('path')}:{','.join(item.get('missing_markers') or [])}"
+                for item in report_quality_manifest
+                if item.get("status") != "pass"
+            ],
+        ),
+        _compliance_row(
+            "reviewer-identity",
+            "glaw-final-packet",
+            bool(reviewer_identity)
+            and all(item.get("status") == "pass" for item in reviewer_identity),
+            ["reviewer_identity_manifest"] if not reviewer_identity else [
+                f"{item.get('kind')}:{item.get('name')}:{','.join(item.get('missing') or [])}"
+                for item in reviewer_identity
+                if item.get("status") != "pass"
+            ],
+        ),
+        _compliance_row(
+            "accounting-control" if accounting_required else "accounting-control-not-required",
+            "glaw-accounting",
+            accounting_control.get("status") in {"pass", "not_required"},
+            list(accounting_control.get("missing") or []),
+        ),
+    ]
+
+
 def decision_hash(row):
     payload = dict(row)
     payload.pop("decision_hash", None)
@@ -1024,6 +1150,33 @@ failing_reports = [
 ]
 if failing_reports:
     print("current deliverable(s) fail professional report markers: " + "; ".join(failing_reports))
+    sys.exit(1)
+expected_compliance_manifest = packet.get("compliance_manifest")
+if expected_compliance_manifest is None:
+    print("final_packet.json missing compliance_manifest")
+    sys.exit(1)
+current_compliance_manifest = compliance_manifest(
+    profile,
+    packet.get("gates", {}),
+    accounting_control=current_accounting_control,
+    government_adversary_rows=current_government_adversary_manifest,
+    source_manifest=current_source_manifest,
+    senior_review_evidence_manifest=current_review_evidence_manifest,
+    red_flag_resolution_evidence_manifest=current_red_flag_resolution_manifest,
+    nonblocking_red_flags=current_nonblocking_red_flag_manifest,
+    reviewer_identity=current_reviewer_identity_manifest,
+    report_quality_manifest=current_report_manifest,
+)
+if expected_compliance_manifest != current_compliance_manifest:
+    print("current compliance manifest does not match final_packet.json")
+    sys.exit(1)
+failing_compliance = [
+    f"{item['id']} missing {', '.join(item['missing'])}"
+    for item in current_compliance_manifest
+    if item.get("status") != "pass"
+]
+if failing_compliance:
+    print("current compliance manifest is not clear: " + "; ".join(failing_compliance))
     sys.exit(1)
 expected_hashes = packet.get("external_text_deliverable_hashes") or {}
 if not expected_hashes:
