@@ -105,7 +105,8 @@ bin/glaw-citation-gate record \
   --proposition "<proposition verified>" \
   --authority "<citation as drafted>" \
   --status verified \
-  --source-url "<primary source URL checked>"
+  --source-url "<primary source URL checked>" \
+  --reviewer legal-research
 ```
 
 ### Step 5 — Gate `/glaw-file`
@@ -117,7 +118,8 @@ bin/glaw-citation-gate complete
 ```
 
 `glaw-citation-gate complete` logs `citations_verified` and `citation_gate_complete` only when
-every latest citation record is verified with a source URL. Hand the verdict and the table back to
+every latest citation record is verified with a source URL and the `/glaw-legal-research` reviewer.
+Hand the verdict and the table back to
 `/glaw-file`.
 
 ## Handoffs (own the verification, defer the substance)

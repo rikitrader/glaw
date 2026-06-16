@@ -19,11 +19,17 @@ from urllib.parse import urlparse
 
 
 BLOCKING = {"pending", "needs-substitute", "struck", "weak"}
+LEGAL_RESEARCH_REVIEWERS = {"legal-research", "glaw-legal-research", "/glaw-legal-research"}
 
 
 def valid_http_url(value: str) -> bool:
     parsed = urlparse(str(value).strip())
     return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
+
+
+def valid_legal_research_reviewer(value: str) -> bool:
+    normalized = str(value).strip().lower().replace("_", "-")
+    return normalized in LEGAL_RESEARCH_REVIEWERS
 
 
 def now() -> str:
@@ -107,8 +113,8 @@ def cmd_record(args: argparse.Namespace) -> int:
             missing.append("--proposition")
         if not args.authority.strip():
             missing.append("--authority")
-        if not args.reviewer.strip():
-            missing.append("--reviewer")
+        if not valid_legal_research_reviewer(args.reviewer):
+            missing.append("--reviewer legal-research")
         if not valid_http_url(args.source_url):
             missing.append("--source-url valid http(s)")
         if missing:
@@ -145,7 +151,7 @@ def blockers(rows: list[dict]) -> list[dict]:
             and (
                 not str(row.get("proposition", "")).strip()
                 or not str(row.get("authority", "")).strip()
-                or not str(row.get("reviewer", "")).strip()
+                or not valid_legal_research_reviewer(str(row.get("reviewer", "")))
                 or not valid_http_url(str(row.get("source_url", "")))
             )
         )
@@ -201,7 +207,7 @@ def main() -> int:
     p.add_argument("--authority", required=True)
     p.add_argument("--status", required=True, choices=["verified", "weak", "needs-substitute", "struck", "pending"])
     p.add_argument("--source-url", default="")
-    p.add_argument("--reviewer", default=os.environ.get("USER", "operator"))
+    p.add_argument("--reviewer", default="")
     p.add_argument("--notes", default="")
     p.add_argument("--matter", default=None)
     p.set_defaults(func=cmd_record)

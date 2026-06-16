@@ -696,6 +696,8 @@ cp "$M/council.jsonl" "$M/council.baseline.jsonl"
 cp "$M/adversarial.jsonl" "$M/adversarial.baseline.jsonl"
 append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"weak","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet weak citation"
+append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","proposition":"tax return must tie to books","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/"}'
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by verified citation without legal-research reviewer"
 append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","proposition":"tax return must tie to books","authority":"26 U.S.C. 6001","source_url":"https://","reviewer":"legal-research"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by malformed verified citation source URL"
 append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","proposition":"tax return must tie to books","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/","reviewer":"legal-research"}'
