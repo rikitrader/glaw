@@ -255,8 +255,9 @@ the seal stays human as a legal and ethics constraint.
 - ✅ **P2-G1 · Per-profile golden matters** in `glaw-doctor`: every executable workflow
   profile now has a deterministic source-backed fixture that must reach `chief_approved`
   and the `file` stage. This is the counterweight against gate over-blocking.
-- **P2-G2 · Maker-checker discipline for `glaw-loop`**: explicit acceptance criteria, an
-  iteration cap, and a human-escalation fallback on non-convergence.
+- ✅ **P2-G2 · Maker-checker discipline for `glaw-loop`**: `glaw-loop once` now records
+  checked decisions in `loop_decisions.jsonl`, applies explicit acceptance criteria, enforces
+  an iteration cap, and escalates to human oversight on non-convergence.
 - **P2-G3 · Cross-matter memory**: promote `glaw-reasoningbank` to a queryable long-term store
   with selective retrieval and auditable source links.
 - **P2-G4 · Multi-point guardrails**: in autonomous mode, run conscience checks at tool-call and
@@ -280,7 +281,7 @@ the seal stays human as a legal and ethics constraint.
   Relation-Preservation metrics with a full audit trail from each assertion back to source
   passages — composes with GLAW's existing SRC-#### + SHA-256 hashing.
 
-*Suggested build order: P2-G2 loop discipline → P2-G3 memory → P4-G2 citation typology →
+*Suggested build order: P2-G3 memory → P4-G2 citation typology →
 P4-G1 corpus → P3 host/observability.*
 
 ---

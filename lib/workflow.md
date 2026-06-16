@@ -116,7 +116,9 @@ filing, service, signature, live transmission, payment, or charging. Those actio
 authority act today: `glaw-chief-decision --signoff` and `glaw-irs-file submit --live`.
 `bin/glaw-loop` is the autonomous routing layer: it may report the next owner and gate, but
 it refuses human-only authority requests and must never file, sign, serve, transmit, pay, or
-charge on its own.
+charge on its own. `glaw-loop once` writes `loop_decisions.jsonl`, applies maker/checker
+acceptance criteria (owner, command, reason, authority boundary), and escalates to human
+oversight when the same route repeats past `--max-iterations` without convergence.
 
 ## Connected skill inventory (by layer)
 - **In-house seats:** all `glaw-*` (pipeline + 20+ practice/litigation-support seats).

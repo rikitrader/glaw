@@ -2,8 +2,8 @@
 """glaw-loop - fail-closed orchestrator loop for matter routing.
 
 Usage:
-  glaw-loop status [--matter <slug>] [--json]
-  glaw-loop once [--matter <slug>] [--json] [--request-action <file|serve|sign|transmit|charge|pay|submit-live>]
+  glaw-loop status [--matter <slug>] [--json] [--max-iterations N]
+  glaw-loop once [--matter <slug>] [--json] [--max-iterations N] [--acceptance TEXT] [--request-action <file|serve|sign|transmit|charge|pay|submit-live>]
 
 The loop reports the next gate/department that owns the matter. It may prepare
 work, but it never files, serves, signs, transmits, pays, or charges.
@@ -73,6 +73,11 @@ def has_event(rows: list[dict], event: str) -> bool:
     return any(row.get("event") == event for row in rows)
 
 
+def append_jsonl(path: Path, row: dict) -> None:
+    with path.open("a", encoding="utf-8") as f:
+        f.write(json.dumps(row, sort_keys=False) + "\n")
+
+
 def run_tool(*args: str) -> tuple[int, str]:
     proc = subprocess.run(
         [str(ROOT / "bin" / args[0]), *args[1:]],
@@ -93,6 +98,96 @@ def matter_profile(d: Path) -> tuple[str, str]:
     intake = read_json(d / "intake.json", {})
     track = intake.get("universal", {}).get("workflow_track") or intake.get("workflow_track") or "unset"
     return str(track), profile_for_track(track)
+
+
+def decision_signature(decision: dict) -> str:
+    return "|".join([
+        str(decision.get("stage", "")),
+        str(decision.get("quality_state", "")),
+        str(decision.get("next_gate", "")),
+        str(decision.get("owner", "")),
+        str(decision.get("next_command", "")),
+    ])
+
+
+def prior_same_route_count(d: Path, signature: str) -> int:
+    rows = read_jsonl(d / "loop_decisions.jsonl")
+    count = 0
+    for row in reversed(rows):
+        if row.get("decision_signature") == signature:
+            count += 1
+        else:
+            break
+    return count
+
+
+def checker_for(decision: dict, d: Path, *, max_iterations: int, user_acceptance: list[str]) -> dict:
+    signature = decision_signature(decision)
+    prior_count = prior_same_route_count(d, signature)
+    criteria = [
+        {
+            "id": "owner_named",
+            "status": "pass" if bool(str(decision.get("owner", "")).strip()) else "fail",
+            "detail": "next owner must be explicit",
+        },
+        {
+            "id": "next_command_named",
+            "status": "pass" if bool(str(decision.get("next_command", "")).strip()) else "fail",
+            "detail": "next command must be explicit",
+        },
+        {
+            "id": "reason_present",
+            "status": "pass" if bool(str(decision.get("reason", "")).strip()) else "fail",
+            "detail": "routing reason must be explicit",
+        },
+        {
+            "id": "human_authority_boundary",
+            "status": "pass" if "no filing/signing/service/payment/charge/live transmission" in str(decision.get("authority", "")) else "fail",
+            "detail": "decision must preserve human-only authority boundary",
+        },
+        {
+            "id": "iteration_cap",
+            "status": "pass" if prior_count < max_iterations else "fail",
+            "detail": f"same route repeated {prior_count} time(s); cap is {max_iterations}",
+        },
+    ]
+    for idx, text in enumerate(user_acceptance, start=1):
+        criteria.append({
+            "id": f"user_acceptance_{idx}",
+            "status": "recorded" if text.strip() else "fail",
+            "detail": text.strip(),
+        })
+    failed = [item for item in criteria if item["status"] == "fail"]
+    return {
+        "status": "pass" if not failed else "fail",
+        "decision_signature": signature,
+        "prior_same_route_count": prior_count,
+        "max_iterations": max_iterations,
+        "criteria": criteria,
+        "failed": failed,
+    }
+
+
+def apply_checker(decision: dict, checker: dict) -> dict:
+    decision["checker"] = checker
+    decision["decision_signature"] = checker["decision_signature"]
+    if checker["status"] == "pass":
+        return decision
+    failed_ids = {item["id"] for item in checker.get("failed", [])}
+    if "iteration_cap" in failed_ids:
+        decision.update({
+            "quality_state": "human_escalation_required",
+            "next_gate": "oversight",
+            "owner": "human-oversight-board",
+            "next_command": "human review required: resolve non-converging glaw-loop route before continuing",
+            "reason": (
+                "glaw-loop reached its iteration cap without convergence; "
+                "same route repeated "
+                f"{checker.get('prior_same_route_count')} time(s)"
+            ),
+        })
+        decision["decision_signature"] = decision_signature(decision)
+    return decision
 
 
 def route_from_state(d: Path) -> dict:
@@ -215,6 +310,11 @@ def print_report(decision: dict) -> None:
     if decision.get("adversarial_required"):
         print("  adversarial lenses: " + ", ".join(decision["adversarial_required"]))
     print("  authority: " + decision["authority"])
+    checker = decision.get("checker") or {}
+    if checker:
+        print(f"  checker: {checker.get('status')}  repeat={checker.get('prior_same_route_count')}/{checker.get('max_iterations')}")
+        for item in checker.get("failed", []):
+            print(f"    failed: {item.get('id')} - {item.get('detail')}")
 
 
 def main(argv: list[str]) -> int:
@@ -224,8 +324,10 @@ def main(argv: list[str]) -> int:
         p = sub.add_parser(name)
         p.add_argument("--matter", default=None)
         p.add_argument("--json", action="store_true")
+        p.add_argument("--max-iterations", type=int, default=3)
         if name == "once":
             p.add_argument("--request-action", default="")
+            p.add_argument("--acceptance", action="append", default=[])
     args = ap.parse_args(argv)
 
     d = matter_dir(args.matter)
@@ -233,19 +335,31 @@ def main(argv: list[str]) -> int:
     if requested:
         ok, result = require_human_authority(requested, context=f"glaw-loop {d.name}")
         if not ok:
-            if args.json:
-                print(json.dumps({
+            row = {
                     "ts": now(),
                     "matter": d.name,
                     "quality_state": "authority_blocked",
                     "requested_action": requested,
                     "reason": result,
-                }, indent=2))
+                }
+            if args.cmd == "once":
+                append_jsonl(d / "loop_decisions.jsonl", row)
+            if args.json:
+                print(json.dumps(row, indent=2))
             else:
                 print(result)
             return 1
 
     decision = route_from_state(d)
+    checker = checker_for(
+        decision,
+        d,
+        max_iterations=max(1, int(args.max_iterations)),
+        user_acceptance=getattr(args, "acceptance", []),
+    )
+    decision = apply_checker(decision, checker)
+    if args.cmd == "once":
+        append_jsonl(d / "loop_decisions.jsonl", decision)
     if args.json:
         print(json.dumps(decision, indent=2, sort_keys=False))
     else:
