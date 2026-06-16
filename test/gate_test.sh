@@ -308,6 +308,9 @@ packet["report_quality_manifest"] = [{
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before accounting control manifest"
+mkdir -p "$M/workpapers"
+printf 'books doctor pass\n' > "$M/workpapers/books-doctor.txt"
+printf '{"reconciled":true,"unreconciled_difference":"0","book_only":[],"bank_only":[]}\n' > "$M/workpapers/bank-rec.json"
 cat > "$M/accounting_control.json" <<'JSON'
 {
   "schema_version": 1,
@@ -340,6 +343,20 @@ packet["accounting_control_manifest"] = {
     "status": "pass",
     "missing": [],
     "sha256": hashlib.sha256(control.read_bytes()).hexdigest(),
+    "artifact_hashes": [
+        {
+            "label": "books_doctor",
+            "path": "workpapers/books-doctor.txt",
+            "sha256": hashlib.sha256((d / "workpapers/books-doctor.txt").read_bytes()).hexdigest(),
+            "size_bytes": (d / "workpapers/books-doctor.txt").stat().st_size,
+        },
+        {
+            "label": "bank_reconciliation",
+            "path": "workpapers/bank-rec.json",
+            "sha256": hashlib.sha256((d / "workpapers/bank-rec.json").read_bytes()).hexdigest(),
+            "size_bytes": (d / "workpapers/bank-rec.json").stat().st_size,
+        },
+    ],
 }
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
@@ -438,6 +455,11 @@ row["decision_hash"] = hashlib.sha256(
 open(sys.argv[1], "w", encoding="utf-8").write(json.dumps(row) + "\n")
 PY
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after all file gates"
+cp "$M/workpapers/books-doctor.txt" "$M/workpapers/books-doctor.baseline.txt"
+printf 'tampered workpaper\n' >> "$M/workpapers/books-doctor.txt"
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-packet accounting workpaper tamper"
+cp "$M/workpapers/books-doctor.baseline.txt" "$M/workpapers/books-doctor.txt"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact accounting workpaper restored"
 cp "$M/accounting_control.json" "$M/accounting_control.baseline.json"
 python3 - "$M/accounting_control.json" <<'PY'
 import json, sys

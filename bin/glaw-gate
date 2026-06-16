@@ -484,6 +484,25 @@ def _int_value(value):
         return -1
 
 
+def _artifact_hash(path_text, label, missing):
+    if not str(path_text).strip():
+        missing.append(f"{label}.artifact")
+        return {"label": label, "path": str(path_text), "sha256": "", "size_bytes": 0}
+    path = (d / str(path_text)).resolve()
+    try:
+        rel_path = str(path.relative_to(d.resolve()))
+    except ValueError:
+        missing.append(f"{label}.artifact inside matter")
+        return {"label": label, "path": str(path_text), "sha256": "", "size_bytes": 0}
+    if not path.is_file():
+        missing.append(f"{label}.artifact exists")
+        return {"label": label, "path": rel_path, "sha256": "", "size_bytes": 0}
+    size = path.stat().st_size
+    if size <= 0:
+        missing.append(f"{label}.artifact nonempty")
+    return {"label": label, "path": rel_path, "sha256": sha256_file(path), "size_bytes": size}
+
+
 def accounting_control_manifest(profile, source_manifest):
     required = profile in ACCOUNTING_CONTROL_PROFILES
     path = d / "accounting_control.json"
@@ -494,6 +513,7 @@ def accounting_control_manifest(profile, source_manifest):
         "status": "pass",
         "missing": [],
         "sha256": "",
+        "artifact_hashes": [],
     }
     if not required:
         manifest["status"] = "not_required"
@@ -524,8 +544,9 @@ def accounting_control_manifest(profile, source_manifest):
         manifest["missing"].append("books_doctor.status=pass")
     if not _boolish(books.get("require_rec")):
         manifest["missing"].append("books_doctor.require_rec=true")
-    if not str(books.get("artifact", "")).strip():
-        manifest["missing"].append("books_doctor.artifact")
+    manifest["artifact_hashes"].append(
+        _artifact_hash(books.get("artifact", ""), "books_doctor", manifest["missing"])
+    )
 
     rec = control.get("bank_reconciliation", {})
     if rec.get("status") != "pass":
@@ -538,8 +559,9 @@ def accounting_control_manifest(profile, source_manifest):
         manifest["missing"].append("bank_reconciliation.book_only_count=0")
     if _int_value(rec.get("bank_only_count", 0)) != 0:
         manifest["missing"].append("bank_reconciliation.bank_only_count=0")
-    if not str(rec.get("artifact", "")).strip():
-        manifest["missing"].append("bank_reconciliation.artifact")
+    manifest["artifact_hashes"].append(
+        _artifact_hash(rec.get("artifact", ""), "bank_reconciliation", manifest["missing"])
+    )
 
     if profile == "tax":
         tax = control.get("tax_tieout", {})
@@ -549,8 +571,9 @@ def accounting_control_manifest(profile, source_manifest):
             manifest["missing"].append("tax_tieout.provision_ties=true")
         if not _boolish(tax.get("internal_consistency")):
             manifest["missing"].append("tax_tieout.internal_consistency=true")
-        if not str(tax.get("artifact", "")).strip():
-            manifest["missing"].append("tax_tieout.artifact")
+        manifest["artifact_hashes"].append(
+            _artifact_hash(tax.get("artifact", ""), "tax_tieout", manifest["missing"])
+        )
 
     if manifest["missing"]:
         manifest["status"] = "fail"
