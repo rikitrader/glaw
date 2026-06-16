@@ -222,6 +222,28 @@ done
 "$COUNCIL" complete --profile auto >/dev/null
 "$ADVERSARIAL" complete --profile auto >/dev/null
 "$PACKET" build >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before accounting control manifest"
+cat > "$TMP/matters/$SLUG/accounting_control.json" <<'JSON'
+{
+  "schema_version": 1,
+  "status": "pass",
+  "source": "SRC-0001 bank statement, ledger, bank reconciliation, and tax tie-out source package",
+  "books_doctor": {
+    "status": "pass",
+    "artifact": "workpapers/books-doctor.txt",
+    "require_rec": true
+  },
+  "bank_reconciliation": {
+    "status": "pass",
+    "artifact": "workpapers/bank-rec.json",
+    "reconciled": true,
+    "unreconciled_difference": "0",
+    "book_only_count": 0,
+    "bank_only_count": 0
+  }
+}
+JSON
+"$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && [ -f "$TMP/matters/$SLUG/final_packet.json" ] && echo 1 || echo 0)" "final packet ready after council and red flags clear"
 python3 - "$TMP/matters/$SLUG/final_packet.json" <<'PY'
 import json, sys

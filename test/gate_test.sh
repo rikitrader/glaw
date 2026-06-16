@@ -307,6 +307,42 @@ packet["report_quality_manifest"] = [{
 }]
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before accounting control manifest"
+cat > "$M/accounting_control.json" <<'JSON'
+{
+  "schema_version": 1,
+  "status": "pass",
+  "source": "SRC-0001 bank statement, ledger, bank reconciliation, and tax tie-out source package",
+  "books_doctor": {
+    "status": "pass",
+    "artifact": "workpapers/books-doctor.txt",
+    "require_rec": true
+  },
+  "bank_reconciliation": {
+    "status": "pass",
+    "artifact": "workpapers/bank-rec.json",
+    "reconciled": true,
+    "unreconciled_difference": "0",
+    "book_only_count": 0,
+    "bank_only_count": 0
+  }
+}
+JSON
+python3 - "$M" <<'PY'
+import hashlib, json, pathlib, sys
+d = pathlib.Path(sys.argv[1])
+packet_path = d / "final_packet.json"
+packet = json.loads(packet_path.read_text(encoding="utf-8"))
+control = d / "accounting_control.json"
+packet["accounting_control_manifest"] = {
+    "required": True,
+    "path": "accounting_control.json",
+    "status": "pass",
+    "missing": [],
+    "sha256": hashlib.sha256(control.read_bytes()).hexdigest(),
+}
+packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
+PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before reviewer identity manifest"
 python3 - "$M" "$HERE/.." <<'PY'
 import hashlib, json, pathlib, sys
@@ -370,7 +406,7 @@ import hashlib, json, pathlib, sys
 d = pathlib.Path(sys.argv[1])
 packet_path = d / "final_packet.json"
 packet = json.loads(packet_path.read_text(encoding="utf-8"))
-names = ["intake.json", "ethics.json", "citations.jsonl", "council.jsonl", "adversarial.jsonl"]
+names = ["intake.json", "ethics.json", "citations.jsonl", "council.jsonl", "adversarial.jsonl", "accounting_control.json"]
 if (d / "red_flags.jsonl").exists():
     names.append("red_flags.jsonl")
 packet["gate_artifact_hashes"] = {
@@ -402,6 +438,17 @@ row["decision_hash"] = hashlib.sha256(
 open(sys.argv[1], "w", encoding="utf-8").write(json.dumps(row) + "\n")
 PY
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after all file gates"
+cp "$M/accounting_control.json" "$M/accounting_control.baseline.json"
+python3 - "$M/accounting_control.json" <<'PY'
+import json, sys
+p = sys.argv[1]
+row = json.loads(open(p, encoding="utf-8").read())
+row["bank_reconciliation"]["unreconciled_difference"] = "1.00"
+open(p, "w", encoding="utf-8").write(json.dumps(row) + "\n")
+PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-packet accounting control tamper"
+cp "$M/accounting_control.baseline.json" "$M/accounting_control.json"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact accounting control restored"
 cp "$M/decisions.jsonl" "$M/decisions.baseline.jsonl"
 python3 - "$M/decisions.jsonl" <<'PY'
 import json, sys

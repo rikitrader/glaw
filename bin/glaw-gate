@@ -252,6 +252,7 @@ SOURCE_EVIDENCE_PARTS = {
     "sources",
 }
 SOURCE_ID_RE = re.compile(r"\bSRC-\d{4}\b")
+ACCOUNTING_CONTROL_PROFILES = {"accounting", "tax"}
 NEGATIVE_DECISION_RE = re.compile(r"\b(DENY|DENIED|REJECT|REJECTED|REFUSE|REFUSED|BLOCK|BLOCKED|DO NOT PROCEED|NOT READY|WITH[- ]?FIXES|FIXES REQUIRED|FIX REQUIRED)\b", re.I)
 APPROVAL_DECISION_RE = re.compile(r"\b(PROCEED|APPROVE|APPROVED|READY|FILE-READY)\b", re.I)
 REQUIRED_GATE_ARTIFACTS = (
@@ -263,6 +264,7 @@ REQUIRED_GATE_ARTIFACTS = (
 )
 OPTIONAL_GATE_ARTIFACTS = (
     "red_flags.jsonl",
+    "accounting_control.json",
 )
 REPORT_REQUIRED_MARKERS = (
     "Owner:",
@@ -461,6 +463,99 @@ def red_flag_resolution_manifest(red_flags, source_manifest):
     return rows
 
 
+def _boolish(value):
+    if isinstance(value, bool):
+        return value
+    return str(value).strip().lower() in {"1", "true", "yes", "pass", "passed", "ok"}
+
+
+def _zeroish(value):
+    try:
+        return float(str(value).strip()) == 0.0
+    except ValueError:
+        return False
+
+
+def _int_value(value):
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return -1
+
+
+def accounting_control_manifest(profile, source_manifest):
+    required = profile in ACCOUNTING_CONTROL_PROFILES
+    path = d / "accounting_control.json"
+    source_ids = [item["id"] for item in source_manifest]
+    manifest = {
+        "required": required,
+        "path": "accounting_control.json",
+        "status": "pass",
+        "missing": [],
+        "sha256": "",
+    }
+    if not required:
+        manifest["status"] = "not_required"
+        return manifest
+    if not path.exists():
+        manifest["status"] = "fail"
+        manifest["missing"].append("accounting_control.json")
+        return manifest
+    manifest["sha256"] = sha256_file(path)
+    try:
+        control = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        manifest["status"] = "fail"
+        manifest["missing"].append("valid JSON")
+        return manifest
+
+    if control.get("status") != "pass":
+        manifest["missing"].append("status=pass")
+    source_text = str(control.get("source", ""))
+    cited = [sid for sid in source_ids if sid in source_text]
+    if not SOURCE_ID_RE.search(source_text):
+        manifest["missing"].append("source evidence id (SRC-####)")
+    elif not cited:
+        manifest["missing"].append("current source evidence id")
+
+    books = control.get("books_doctor", {})
+    if books.get("status") != "pass":
+        manifest["missing"].append("books_doctor.status=pass")
+    if not _boolish(books.get("require_rec")):
+        manifest["missing"].append("books_doctor.require_rec=true")
+    if not str(books.get("artifact", "")).strip():
+        manifest["missing"].append("books_doctor.artifact")
+
+    rec = control.get("bank_reconciliation", {})
+    if rec.get("status") != "pass":
+        manifest["missing"].append("bank_reconciliation.status=pass")
+    if not _boolish(rec.get("reconciled")):
+        manifest["missing"].append("bank_reconciliation.reconciled=true")
+    if not _zeroish(rec.get("unreconciled_difference")):
+        manifest["missing"].append("bank_reconciliation.unreconciled_difference=0")
+    if _int_value(rec.get("book_only_count", 0)) != 0:
+        manifest["missing"].append("bank_reconciliation.book_only_count=0")
+    if _int_value(rec.get("bank_only_count", 0)) != 0:
+        manifest["missing"].append("bank_reconciliation.bank_only_count=0")
+    if not str(rec.get("artifact", "")).strip():
+        manifest["missing"].append("bank_reconciliation.artifact")
+
+    if profile == "tax":
+        tax = control.get("tax_tieout", {})
+        if tax.get("status") != "pass":
+            manifest["missing"].append("tax_tieout.status=pass")
+        if not _boolish(tax.get("provision_ties")):
+            manifest["missing"].append("tax_tieout.provision_ties=true")
+        if not _boolish(tax.get("internal_consistency")):
+            manifest["missing"].append("tax_tieout.internal_consistency=true")
+        if not str(tax.get("artifact", "")).strip():
+            manifest["missing"].append("tax_tieout.artifact")
+
+    if manifest["missing"]:
+        manifest["status"] = "fail"
+    return manifest
+
+
 def decision_hash(row):
     payload = dict(row)
     payload.pop("decision_hash", None)
@@ -564,6 +659,17 @@ if expected_source_manifest != current_source_manifest:
 empty_sources = [item["path"] for item in current_source_manifest if int(item.get("size_bytes", 0)) <= 0]
 if empty_sources:
     print("current source evidence file(s) are empty: " + ", ".join(empty_sources))
+    sys.exit(1)
+expected_accounting_control = packet.get("accounting_control_manifest")
+if expected_accounting_control is None:
+    print("final_packet.json missing accounting_control_manifest")
+    sys.exit(1)
+current_accounting_control = accounting_control_manifest(profile, current_source_manifest)
+if expected_accounting_control != current_accounting_control:
+    print("current accounting control manifest does not match final_packet.json")
+    sys.exit(1)
+if current_accounting_control.get("status") == "fail":
+    print("current accounting control is incomplete: " + ", ".join(current_accounting_control.get("missing") or []))
     sys.exit(1)
 expected_review_evidence_manifest = packet.get("senior_review_evidence_manifest") or []
 if not expected_review_evidence_manifest:

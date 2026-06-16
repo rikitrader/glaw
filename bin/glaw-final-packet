@@ -194,6 +194,7 @@ SOURCE_EVIDENCE_PARTS = {
     "sources",
 }
 SOURCE_ID_RE = re.compile(r"\bSRC-\d{4}\b")
+ACCOUNTING_CONTROL_PROFILES = {"accounting", "tax"}
 REQUIRED_GATE_ARTIFACTS = (
     "intake.json",
     "ethics.json",
@@ -203,6 +204,7 @@ REQUIRED_GATE_ARTIFACTS = (
 )
 OPTIONAL_GATE_ARTIFACTS = (
     "red_flags.jsonl",
+    "accounting_control.json",
 )
 REPORT_REQUIRED_MARKERS = (
     "Owner:",
@@ -370,6 +372,99 @@ def red_flag_resolution_manifest(red_flags: list[dict], source_manifest: list[di
     return rows
 
 
+def _boolish(value) -> bool:
+    if isinstance(value, bool):
+        return value
+    return str(value).strip().lower() in {"1", "true", "yes", "pass", "passed", "ok"}
+
+
+def _zeroish(value) -> bool:
+    try:
+        return float(str(value).strip()) == 0.0
+    except ValueError:
+        return False
+
+
+def _int_value(value) -> int:
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return -1
+
+
+def accounting_control_manifest(d: Path, profile: str, source_manifest: list[dict]) -> dict:
+    required = profile in ACCOUNTING_CONTROL_PROFILES
+    path = d / "accounting_control.json"
+    source_ids = [item["id"] for item in source_manifest]
+    manifest = {
+        "required": required,
+        "path": "accounting_control.json",
+        "status": "pass",
+        "missing": [],
+        "sha256": "",
+    }
+    if not required:
+        manifest["status"] = "not_required"
+        return manifest
+    if not path.exists():
+        manifest["status"] = "fail"
+        manifest["missing"].append("accounting_control.json")
+        return manifest
+    manifest["sha256"] = sha256_file(path)
+    try:
+        control = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        manifest["status"] = "fail"
+        manifest["missing"].append("valid JSON")
+        return manifest
+
+    if control.get("status") != "pass":
+        manifest["missing"].append("status=pass")
+    source_text = str(control.get("source", ""))
+    cited = [sid for sid in source_ids if sid in source_text]
+    if not SOURCE_ID_RE.search(source_text):
+        manifest["missing"].append("source evidence id (SRC-####)")
+    elif not cited:
+        manifest["missing"].append("current source evidence id")
+
+    books = control.get("books_doctor", {})
+    if books.get("status") != "pass":
+        manifest["missing"].append("books_doctor.status=pass")
+    if not _boolish(books.get("require_rec")):
+        manifest["missing"].append("books_doctor.require_rec=true")
+    if not str(books.get("artifact", "")).strip():
+        manifest["missing"].append("books_doctor.artifact")
+
+    rec = control.get("bank_reconciliation", {})
+    if rec.get("status") != "pass":
+        manifest["missing"].append("bank_reconciliation.status=pass")
+    if not _boolish(rec.get("reconciled")):
+        manifest["missing"].append("bank_reconciliation.reconciled=true")
+    if not _zeroish(rec.get("unreconciled_difference")):
+        manifest["missing"].append("bank_reconciliation.unreconciled_difference=0")
+    if _int_value(rec.get("book_only_count", 0)) != 0:
+        manifest["missing"].append("bank_reconciliation.book_only_count=0")
+    if _int_value(rec.get("bank_only_count", 0)) != 0:
+        manifest["missing"].append("bank_reconciliation.bank_only_count=0")
+    if not str(rec.get("artifact", "")).strip():
+        manifest["missing"].append("bank_reconciliation.artifact")
+
+    if profile == "tax":
+        tax = control.get("tax_tieout", {})
+        if tax.get("status") != "pass":
+            manifest["missing"].append("tax_tieout.status=pass")
+        if not _boolish(tax.get("provision_ties")):
+            manifest["missing"].append("tax_tieout.provision_ties=true")
+        if not _boolish(tax.get("internal_consistency")):
+            manifest["missing"].append("tax_tieout.internal_consistency=true")
+        if not str(tax.get("artifact", "")).strip():
+            manifest["missing"].append("tax_tieout.artifact")
+
+    if manifest["missing"]:
+        manifest["status"] = "fail"
+    return manifest
+
+
 def run_check(cmd: list[str], cwd: Path) -> tuple[int, str]:
     proc = subprocess.run(cmd, cwd=str(cwd), capture_output=True, text=True)
     return proc.returncode, (proc.stdout + proc.stderr).strip()
@@ -424,6 +519,13 @@ def render_md(packet: dict) -> str:
         missing = item.get("missing_markers") or []
         suffix = "" if not missing else f" — missing {', '.join(missing)}"
         lines.append(f"- [{mark}] {item.get('path')}{suffix}")
+    ac = packet.get("accounting_control_manifest", {})
+    if ac.get("required"):
+        mark = "x" if ac.get("status") == "pass" else " "
+        missing = ac.get("missing") or []
+        suffix = "" if not missing else f" — missing {', '.join(missing)}"
+        lines.extend(["", "## Accounting Control"])
+        lines.append(f"- [{mark}] accounting_control.json{suffix}")
     lines.append("")
     lines.append("Attorney/CPA work-product. Human licensed signoff remains required where applicable.")
     return "\n".join(lines) + "\n"
@@ -462,6 +564,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         if is_source_evidence(p, d)
     ]
     source_manifest = source_evidence_manifest(source_paths, d)
+    accounting_control = accounting_control_manifest(d, profile, source_manifest)
     senior_review_evidence_manifest = review_evidence_manifest(council, adversarial, profile, source_manifest)
     senior_review_evidence_clear = bool(senior_review_evidence_manifest) and all(
         item["status"] == "pass" for item in senior_review_evidence_manifest
@@ -527,6 +630,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         "senior_review_evidence_source_clear": senior_review_evidence_clear,
         "reviewer_identity_manifest_clear": reviewer_identity_clear,
         "professional_report_manifest_clear": report_quality_clear,
+        "accounting_control_manifest_clear": accounting_control["status"] in {"pass", "not_required"},
         "upl_footer_clear": rc_upl == 0,
     }
     blockers = blocking_red_flags(red_flags)
@@ -558,6 +662,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         "senior_review_evidence_manifest": senior_review_evidence_manifest,
         "red_flag_resolution_evidence_manifest": red_flag_resolution_evidence_manifest,
         "reviewer_identity_manifest": reviewer_identity,
+        "accounting_control_manifest": accounting_control,
         "report_quality_required_markers": list(REPORT_REQUIRED_MARKERS),
         "report_quality_manifest": report_quality_manifest,
         "gate_artifact_hashes": gate_artifact_hashes,

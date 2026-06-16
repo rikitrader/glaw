@@ -223,6 +223,13 @@ bin/glaw-intake set track_specific.filing_or_exam_deadlines '2026-09-15 extended
 For a close, filing, tax, or audit-ready packet, run the control gate in strict mode:
 `bin/glaw-bank-rec --books <ledger.json> --bank <bank.json> --format json > bank_rec.json`
 then `bin/glaw-books-doctor <ledger.json> --rec bank_rec.json --require-rec`.
+Before the final packet can be ready for an accounting or tax profile, record those deterministic
+controls in `accounting_control.json` at the matter root. The gate requires `status: "pass"`,
+a current `SRC-####` in `source`, `books_doctor.require_rec: true`, a reconciled bank rec with
+zero book-only/bank-only rows and zero unreconciled difference, and for tax profiles a passing
+`tax_tieout` block with provision and internal consistency both true. `final_packet.json` hashes
+that control artifact, and `glaw-gate check file` rejects later edits until the packet and Chief
+approval are rebuilt.
 
 The bookkeeping engine lives inside `lib/bookkeeping/glaw_engine` and uses in-repo compatibility shims for table, model, and XML behavior. Google Sheets input is read through the sheet CSV export URL with Python stdlib. PDF/OCR ingestion is repo-owned orchestration over local binaries (`pdftotext` or `opendataloader-pdf`; scans need `pdftoppm` + `tesseract`).
 
