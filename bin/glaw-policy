@@ -33,6 +33,7 @@ REQUIRED_DOCTOR_TESTS = (
     "host_adapter_test:host-adapter",
     "mcp_test:mcp-bridge",
     "extism_test:extism-contract",
+    "headless_test:headless-report",
     "conscience_test:autonomous-conscience",
     "citation_corpus_test:citation-corpus",
     "citation_typology_test:citation-typology",
@@ -43,6 +44,7 @@ REQUIRED_DOCTOR_TESTS = (
 )
 REQUIRED_TOOL_SMOKES = (
     "glaw-policy|check",
+    "glaw-headless|--goal",
     "glaw-host|manifest",
     "glaw-mcp|tools",
     "glaw-extism|tool_metadata",

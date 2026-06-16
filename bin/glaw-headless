@@ -1,0 +1,41 @@
+#!/usr/bin/env python3
+"""glaw-headless - structured orchestrator report for spawned/autonomous hosts.
+
+Usage:
+  glaw-headless --goal "<objective>" [--matter SLUG] [--json]
+
+The report is read-only. It summarizes the active matter, open gates, next owner,
+next command, decisions, and shipped artifacts for an external orchestrator.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "lib"))
+from glaw_headless import report
+
+
+def main(argv: list[str]) -> int:
+    ap = argparse.ArgumentParser(prog="glaw-headless")
+    ap.add_argument("--goal", required=True)
+    ap.add_argument("--matter", default="")
+    ap.add_argument("--json", action="store_true")
+    args = ap.parse_args(argv)
+    data = report(args.goal, args.matter)
+    if args.json:
+        print(json.dumps(data, indent=2, sort_keys=False))
+    else:
+        print(f"GLAW HEADLESS: {data['status']}")
+        print(f"matter: {data.get('matter') or '(none)'}")
+        print(f"goal: {data.get('goal')}")
+        print(f"next owner: {data.get('next_owner') or '(none)'}")
+        print(f"next command: {data.get('next_command') or '(none)'}")
+    return 0 if data.get("status") == "pass" else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))

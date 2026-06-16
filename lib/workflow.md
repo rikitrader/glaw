@@ -127,6 +127,11 @@ the `tool_metadata` and `execute` exports. It delegates execution to `glaw-host`
 shell and hardware permissions denied, and preserves the same conscience/RBAC boundary a native
 WASM wrapper must enforce.
 
+Headless orchestrator reporting uses `glaw --headless --goal "<objective>" --json`, which delegates
+to `bin/glaw-headless`. It is read-only and returns the matter, stage, workflow track, loop routing
+decision, open gates, next owner/command, recent decisions, shipped artifacts, and the human-seal
+boundary for spawned hosts.
+
 Golden-profile invariant: for every executable workflow profile, a known-good matter must be able
 to clear all hard gates through `chief_approved`. Gate tightening is not complete unless it both
 blocks the bad state and preserves at least one source-backed all-clear path for the affected profile.

@@ -289,6 +289,10 @@ the seal stays human as a legal and ethics constraint.
   `tool_metadata` and `execute` payloads over `glaw-host`, declares shell/hardware denied,
   host-controlled network, repo/`$GLAW_HOME` filesystem scope, and preserves conscience/RBAC
   boundaries for every embedded GLAW tool.
+- ✅ **P3-G6 · Headless orchestrator report**: `glaw --headless --goal "<objective>" --json`
+  now emits a read-only structured report with matter, stage, workflow track, loop routing,
+  open gates, next owner/command, decisions, shipped artifacts, and the human-seal boundary
+  for OpenClaw/ZeroClaw/spawned hosts.
 
 ### Phase 4 (Branches + corpus) — add
 - ✅ **P4-G1 · Wire a verifiable corpus BEHIND the citation gate**: `bin/glaw-citation-corpus`
@@ -305,7 +309,7 @@ the seal stays human as a legal and ethics constraint.
   if the score is below threshold. The audit trail carries citation row hash, source hash, and
   segment hash.
 
-*Suggested build order: headless orchestrator report → branch seats.*
+*Suggested build order: branch seats.*
 
 ---
 

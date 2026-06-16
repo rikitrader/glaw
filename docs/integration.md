@@ -19,6 +19,7 @@ no package server, no shell eval, no background daemon, and no authority expansi
 bin/glaw-host manifest --json
 bin/glaw-host execute --tool glaw --args '["version"]' --json
 bin/glaw-host execute --tool glaw-loop --args '["status","--json"]' --matter "$SLUG" --json
+bin/glaw --headless --goal "summarize open gates for orchestrator" --json
 ```
 
 ## Host Mapping
@@ -67,3 +68,16 @@ bin/glaw-extism execute --payload '{"tool":"glaw","args":["version"]}' --json
 The metadata declares host permissions explicitly: raw shell denied, hardware denied, network
 controlled by the host runtime, filesystem limited to the repo and `$GLAW_HOME`, and human-seal
 acts limited to a named lawful human actor with RBAC `ADMIN`.
+
+## Headless Orchestrator Report
+
+OpenClaw, ZeroClaw, and spawned agents can call:
+
+```bash
+bin/glaw --headless --goal "<objective>" --json
+```
+
+The report is read-only. It returns the active matter, workflow track, current stage, `glaw-loop`
+decision, open gate list, next owner, next command, recent Chief decisions, shipped artifacts, and
+the human-seal authority boundary. A blocked report is useful signal: it tells the host exactly
+which GLAW department/gate owns the next fix.

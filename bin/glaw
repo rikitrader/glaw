@@ -21,6 +21,11 @@ CONFIG="$GLAW_HOME/config.yaml"
 MATTERS="$GLAW_HOME/matters"
 mkdir -p "$MATTERS" 2>/dev/null || true
 
+if [ "${1:-}" = "--headless" ]; then
+  shift
+  exec "$(dirname "$0")/glaw-headless" "$@"
+fi
+
 _now() { date -u +%Y-%m-%dT%H:%M:%SZ; }
 _slugify() { echo "$1" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+|-+$//g'; }
 
@@ -271,6 +276,8 @@ glaw — virtual corporate law firm state machinery
   glaw config get|set <k> [v]   firm settings
   glaw slug                     print the active matter slug
   glaw home                     print $GLAW_HOME
+  glaw --headless --goal <text> [--matter slug] [--json]
+                                emit a read-only orchestrator completion/gate report
 EOF
     ;;
 esac
