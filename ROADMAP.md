@@ -277,6 +277,10 @@ the seal stays human as a legal and ethics constraint.
   writes hash-chained audit rows, and makes human-seal authority acts require ADMIN rather than
   only a named actor. `glaw-doctor` and `bin/glaw-policy check` both enforce the RBAC/SOC2
   regression.
+- ✅ **P3-G3 · Host embedding adapter**: `bin/glaw-host` exposes a source-only JSON manifest and
+  guarded execute path for zeroclaw/MCP-style hosts. It accepts argv arrays only, blocks path
+  traversal/shell strings, wraps every execution with `glaw-conscience` pre/post checks, and
+  preserves RBAC ADMIN for human-seal actions.
 
 ### Phase 4 (Branches + corpus) — add
 - ✅ **P4-G1 · Wire a verifiable corpus BEHIND the citation gate**: `bin/glaw-citation-corpus`
@@ -293,7 +297,7 @@ the seal stays human as a legal and ethics constraint.
   if the score is below threshold. The audit trail carries citation row hash, source hash, and
   segment hash.
 
-*Suggested build order: host embedding adapter.*
+*Suggested build order: MCP server surface over `glaw-host` → Extism wrapper.*
 
 ---
 

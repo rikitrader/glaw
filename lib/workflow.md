@@ -112,6 +112,12 @@ maps operations to execution rings and SOC2 control IDs, and appends hash-chaine
 under `$GLAW_HOME/audit/rbac.jsonl`. Human-only authority acts use the R4_HUMAN_SEAL ring and
 require ADMIN; a named human actor without ADMIN still fails closed.
 
+Host embedding uses `bin/glaw-host`. Embedded runtimes call `manifest` to discover tools and
+`execute` with a JSON argv array; the adapter refuses path traversal and shell strings, wraps
+every call with `glaw-conscience`, and returns machine-readable pre/post guard evidence. It is
+the source-only bridge for zeroclaw-x0, MCP, and other hosts; it does not expand the authority
+boundary or bypass matter gates.
+
 Golden-profile invariant: for every executable workflow profile, a known-good matter must be able
 to clear all hard gates through `chief_approved`. Gate tightening is not complete unless it both
 blocks the bad state and preserves at least one source-backed all-clear path for the affected profile.

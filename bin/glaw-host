@@ -1,0 +1,88 @@
+#!/usr/bin/env python3
+"""glaw-host - source-only JSON adapter for autonomous hosts.
+
+Usage:
+  glaw-host manifest [--json]
+  glaw-host execute --tool glaw-rbac --args '["roles","--json"]' [--matter SLUG] [--timeout N] [--json]
+  glaw-host status [--json]
+
+The adapter accepts argv arrays only. It never evaluates shell strings, and every
+execution is wrapped in glaw-conscience pre-call and post-response checks.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "lib"))
+from glaw_host import active_matter, execute, manifest
+
+
+def cmd_manifest(args: argparse.Namespace) -> int:
+    data = manifest()
+    if args.json:
+        print(json.dumps(data, indent=2, sort_keys=False))
+    else:
+        print(f"GLAW host adapter: {data['glaw_version']} ({data['tool_count']} tools)")
+        print("Safety: argv-array execution, conscience pre/post guard, RBAC ADMIN for human seal")
+    return 0
+
+
+def cmd_status(args: argparse.Namespace) -> int:
+    data = {
+        "schema_version": 1,
+        "status": "ready",
+        "active_matter": active_matter(),
+        "safety_contract": manifest()["safety_contract"],
+    }
+    if args.json:
+        print(json.dumps(data, indent=2, sort_keys=False))
+    else:
+        print(f"GLAW host status: {data['status']}")
+        print(f"active_matter: {data['active_matter'] or '(none)'}")
+    return 0
+
+
+def cmd_execute(args: argparse.Namespace) -> int:
+    try:
+        argv = json.loads(args.args)
+    except json.JSONDecodeError as exc:
+        print(json.dumps({"status": "blocked", "reason": f"invalid args JSON: {exc}"}, indent=2))
+        return 2
+    data = execute(args.tool, argv, matter=args.matter, timeout=args.timeout)
+    if args.json:
+        print(json.dumps(data, indent=2, sort_keys=False))
+    else:
+        print(f"GLAW host execute: {data['status']}")
+        if data.get("reason"):
+            print(data["reason"])
+        if data.get("stdout"):
+            print(data["stdout"])
+    return 0 if data.get("status") == "pass" else 1
+
+
+def main(argv: list[str]) -> int:
+    ap = argparse.ArgumentParser(prog="glaw-host")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    p = sub.add_parser("manifest")
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_manifest)
+    p = sub.add_parser("status")
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_status)
+    p = sub.add_parser("execute")
+    p.add_argument("--tool", required=True)
+    p.add_argument("--args", required=True, help="JSON array of argv strings")
+    p.add_argument("--matter", default="")
+    p.add_argument("--timeout", type=int, default=30)
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_execute)
+    args = ap.parse_args(argv)
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))
