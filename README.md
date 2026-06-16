@@ -355,6 +355,8 @@ Then just talk to it:
 
 Run `bin/glaw-doctor` any time to confirm the whole firm is healthy.
 
+GitHub Packages are published as a source-only GHCR artifact; see [`docs/PACKAGING.md`](docs/PACKAGING.md).
+
 ---
 
 ## 🧱 Architecture

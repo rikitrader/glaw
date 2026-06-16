@@ -1,0 +1,8 @@
+.git
+.github
+.githooks
+.DS_Store
+matters
+tmp
+*.pyc
+__pycache__

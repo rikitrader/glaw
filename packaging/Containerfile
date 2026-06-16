@@ -1,0 +1,9 @@
+FROM scratch
+
+LABEL org.opencontainers.image.title="GLAW"
+LABEL org.opencontainers.image.description="Self-contained source-only virtual law firm agent skill"
+LABEL org.opencontainers.image.source="https://github.com/rikitrader/glaw"
+LABEL org.opencontainers.image.licenses="MIT"
+
+COPY . /glaw
+WORKDIR /glaw
