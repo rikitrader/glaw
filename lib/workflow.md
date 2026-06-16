@@ -105,6 +105,14 @@ Golden-profile invariant: for every executable workflow profile, a known-good ma
 to clear all hard gates through `chief_approved`. Gate tightening is not complete unless it both
 blocks the bad state and preserves at least one source-backed all-clear path for the affected profile.
 
+## Human-authority gate
+
+Quality gates decide whether a packet is ready. They do not authorize human-only acts:
+filing, service, signature, live transmission, payment, or charging. Those actions must pass
+`bin/glaw-authority check <action> --human-authority "<name/role>"` or provide
+`GLAW_HUMAN_AUTHORITY_ACTOR`. Existing executable paths enforce this where they can commit an
+authority act today: `glaw-chief-decision --signoff` and `glaw-irs-file submit --live`.
+
 ## Connected skill inventory (by layer)
 - **In-house seats:** all `glaw-*` (pipeline + 20+ practice/litigation-support seats).
 - **Custom legal/tax suite:** corporate-counsel · elite-corporate-counsel · tax-strategy ·

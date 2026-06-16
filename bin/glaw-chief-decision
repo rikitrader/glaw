@@ -19,6 +19,9 @@ Usage:
 """
 import os, sys, json, datetime, re, hashlib, subprocess
 
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "lib"))
+from glaw_authority import require_human_authority
+
 HOME = os.environ.get("GLAW_HOME", os.path.expanduser("~/.glaw"))
 MATTERS = os.path.join(HOME, "matters")
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -164,7 +167,7 @@ def validate_nonblocking_red_flag_acknowledgment(d, final_packet):
 
 def parse(argv):
     d = {"chief":"","score":"","grade":"","decision":"","risks":"","conditions":"",
-         "rationale":"","matter":"","signoff":False,"approve-final":False,"deny-final":False}
+         "rationale":"","matter":"","human-authority":"","signoff":False,"approve-final":False,"deny-final":False}
     i=0
     while i < len(argv):
         a=argv[i].lstrip("-")
@@ -186,6 +189,13 @@ def main():
         print(f"No such matter: {slug} (under {MATTERS})"); return 1
     if not d["chief"] or not d["decision"]:
         print("Need at least --chief and --decision."); return 2
+    human_actor = ""
+    if d["signoff"]:
+        ok, result = require_human_authority("sign", actor=d.get("human-authority", ""), context="Chief sign-off")
+        if not ok:
+            print(result)
+            return 1
+        human_actor = result
 
     ts = now()
     risks = [r.strip() for r in re.split(r"[;\n]", d["risks"]) if r.strip()]
@@ -218,6 +228,7 @@ def main():
         "ts": ts, "chief": d["chief"],
         "score": d["score"], "grade": d["grade"],
         "decision": d["decision"], "signoff_required": d["signoff"],
+        "human_authority_actor": human_actor,
         "final_gate": "approved" if d["approve-final"] else ("denied" if d["deny-final"] else "reviewed"),
         "approved_packet_generated_at": final_packet.get("generated_at", "") if d["approve-final"] else "",
         "approved_packet_sha256": final_packet_sha256,
@@ -253,7 +264,7 @@ def main():
         if d["approve-final"]: f.write(f"- **Approved packet generated_at:** {final_packet.get('generated_at', '')}\n")
         if d["approve-final"]: f.write(f"- **Approved packet sha256:** `{final_packet_sha256}`\n")
         if d["deny-final"]: f.write(f"- **FINAL GATE:** DENIED (`chief_denied` logged)\n")
-        if d["signoff"]: f.write(f"- **⚠ Human/attorney sign-off required.**\n")
+        if d["signoff"]: f.write(f"- **Human/attorney sign-off authorized by:** {human_actor}\n")
         if risks: f.write("\n## Top surviving risks\n"+"".join(f"- {r}\n" for r in risks))
         if conds: f.write("\n## Conditions / sign-off\n"+"".join(f"- [ ] {c}\n" for c in conds))
         if d["rationale"]: f.write(f"\n## Rationale\n{d['rationale']}\n")

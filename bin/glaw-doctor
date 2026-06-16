@@ -486,7 +486,7 @@ for p in "$GLAW"/bin/matter-ops/*.py; do
 done
 [ "$mo_fail" = 0 ] && ok "all $mo_n bin/matter-ops/*.py compile (incl. facts_validate/facts_gate guard)"
 # regression tests (safety-critical paths): launch-guard, hard gates, full lifecycle, profile routing
-for t in facts_validate_test:launch-guard gate_test:hard-gate lifecycle_test:full-lifecycle tax_profile_test:tax-profile sec_reporting_profile_test:sec-reporting-profile; do
+for t in facts_validate_test:launch-guard gate_test:hard-gate lifecycle_test:full-lifecycle tax_profile_test:tax-profile sec_reporting_profile_test:sec-reporting-profile authority_gate_test:authority-gate; do
   script="$GLAW/test/${t%%:*}.sh"; name="${t#*:}"
   [ -x "$script" ] || continue
   if "$script" >/tmp/glaw-$$.out 2>&1; then
@@ -561,6 +561,64 @@ else
   done < "$NONSEAT"
 fi
 [ "$nonseat" = 0 ] && ok "non-seat token allowlist present and referenced"
+
+# 3b-2b. Shared tax/legal figure spine must exist and be fresh enough that tax
+#        math cannot silently depend on an undated or stale figures file.
+if python3 - "$GLAW" <<'PY'
+from __future__ import annotations
+
+import datetime as dt
+import pathlib
+import re
+import sys
+
+glaw = pathlib.Path(sys.argv[1]).resolve()
+base = glaw / "tax-legal-shared"
+required = [
+    base / "current-figures.md",
+    base / "guardrails.md",
+    base / "evals.md",
+    base / "REVERIFY.md",
+]
+failures: list[str] = []
+for path in required:
+    if not path.is_file():
+        failures.append(f"missing {path.relative_to(glaw)}")
+
+figures = base / "current-figures.md"
+if figures.is_file():
+    text = figures.read_text(encoding="utf-8", errors="replace")
+    date_match = re.search(r"^updated_as_of:\s*([0-9]{4}-[0-9]{2}-[0-9]{2})\s*$", text, re.M)
+    age_match = re.search(r"^max_age_days:\s*([0-9]+)\s*$", text, re.M)
+    if not date_match:
+        failures.append("tax-legal-shared/current-figures.md missing updated_as_of")
+    if not age_match:
+        failures.append("tax-legal-shared/current-figures.md missing max_age_days")
+    if date_match and age_match:
+        updated = dt.date.fromisoformat(date_match.group(1))
+        max_age = int(age_match.group(1))
+        today = dt.date.today()
+        if updated > today:
+            failures.append("tax-legal-shared/current-figures.md updated_as_of is in the future")
+        elif (today - updated).days > max_age:
+            failures.append(
+                "tax-legal-shared/current-figures.md is stale: "
+                f"{(today - updated).days} days old, max {max_age}"
+            )
+    if "figure_id: FIG-YYYY-####" not in text:
+        failures.append("tax-legal-shared/current-figures.md missing required entry shape")
+
+if failures:
+    for failure in failures:
+        print(failure)
+    sys.exit(1)
+print("tax/legal figures spine exists and is within max age")
+PY
+then
+  ok "tax/legal figures spine present and fresh"
+else
+  bad "tax/legal figures spine failed"
+fi
 
 # 3b-3. Profile SSOT consistency: every reviewer/lens named by the executable
 #       council/adversarial profiles must map to a real skill carrying the identity

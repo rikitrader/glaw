@@ -23,6 +23,8 @@ import sys, os, json, subprocess, re, time, hmac, hashlib, base64, urllib.reques
 from pathlib import Path
 
 GLAW = str(Path(__file__).resolve().parent / "glaw")
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "lib"))
+from glaw_authority import require_human_authority
 SUPPORTED = {"1099-NEC", "1099-MISC", "1099-K", "W-2", "941"}
 TB_ENDPOINT = {"1099-NEC": "/Form1099NEC/Create", "1099-MISC": "/Form1099MISC/Create",
                "1099-K": "/Form1099K/Create", "941": "/Form941/Create"}
@@ -268,6 +270,13 @@ def submit(path, args):
     p = json.load(open(path))
     transmitter = args[args.index("--transmitter") + 1] if "--transmitter" in args else (cfg("irs_transmitter") or "iris")
     outdir = args[args.index("-o") + 1] if "-o" in args else os.path.dirname(os.path.abspath(path))
+    human_actor = ""
+    if "--human-authority" in args:
+        idx = args.index("--human-authority")
+        if idx + 1 >= len(args):
+            print("ERROR: --human-authority requires a name/role")
+            sys.exit(2)
+        human_actor = args[idx + 1]
     live = "--live" in args
     env = (cfg("taxbandits_env") or "sandbox").lower()   # sandbox by default; set 'live' to hit production
 
@@ -288,6 +297,15 @@ def submit(path, args):
         return
 
     # ---- LIVE ----
+    authority_ok, authority_result = require_human_authority(
+        "transmit",
+        actor=human_actor,
+        context=f"{p.get('form_type')} via {transmitter}",
+    )
+    if not authority_ok:
+        print("  " + authority_result.replace("\n", "\n  "))
+        sys.exit(1)
+    print(f"  HUMAN AUTHORITY ✅ live transmission authorized by {authority_result}")
     if transmitter == "taxbandits":
         has = all(cfg(k) for k in ("taxbandits_client_id", "taxbandits_client_secret", "taxbandits_user_token"))
         if not has:

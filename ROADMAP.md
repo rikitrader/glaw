@@ -198,8 +198,10 @@ The more autonomous GLAW gets, the more these bind. They are the organism's cons
    matter, autonomous or not. A position the firm's own adversary destroys is not acted on.
 3. **Lawful analysis only.** Investigations/intel seats are analytical work-product. No
    covert ops, surveillance, intrusion, or illegal collection — ever.
-4. **Verifiable authority, no hallucinated law.** Every legal citation is checked against a
-   real corpus before it leaves the building. Unverifiable = struck.
+4. **Verifiable authority, no hallucinated law.** Every legal citation must pass the
+   citation gate or remain struck/unverified. Today that means source-backed citation
+   ledgers plus available primary-source tools such as CourtListener, GovInfo, eCFR,
+   U.S.C., and IRS sources; the universal corpus-backed verifier remains a roadmap item.
 5. **Full audit ledger.** Every autonomous decision is logged (timeline + decision card +
    reproducible inputs) and reviewable. Nothing happens off the record.
 6. **Kill-switch + Oversight Board.** A human can halt the loop instantly; standing goals are

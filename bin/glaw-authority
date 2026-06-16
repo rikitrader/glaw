@@ -1,0 +1,46 @@
+#!/usr/bin/env python3
+"""glaw-authority — deny-list gate for human-only authority acts.
+
+Usage:
+  glaw-authority check <file|serve|sign|transmit|charge|pay|submit-live> [--human-authority "<name/role>"]
+"""
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "lib"))
+from glaw_authority import HUMAN_ONLY_ACTIONS, require_human_authority
+
+
+def main(argv: list[str]) -> int:
+    if len(argv) < 2 or argv[0] in {"-h", "--help"}:
+        print(__doc__)
+        return 2
+    cmd = argv[0]
+    if cmd != "check":
+        print(__doc__)
+        return 2
+    action = argv[1]
+    if action.strip().lower() not in HUMAN_ONLY_ACTIONS:
+        print(f"ERROR: unsupported authority action: {action}")
+        print(__doc__)
+        return 2
+    actor = ""
+    if "--human-authority" in argv:
+        idx = argv.index("--human-authority")
+        try:
+            actor = argv[idx + 1]
+        except IndexError:
+            print("ERROR: --human-authority requires a name/role")
+            return 2
+    ok, result = require_human_authority(action, actor=actor)
+    if not ok:
+        print(result)
+        return 1
+    print(f"HUMAN AUTHORITY OK: {action} authorized by {result}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))

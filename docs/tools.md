@@ -21,6 +21,7 @@ Run any tool with no arguments for its usage. `bin/glaw-doctor` smoke-tests them
 | `glaw-citation-gate` | `record --id <id> --proposition ... --authority ... --status verified --source-url https://... --reviewer legal-research` · `status` · `complete`; logs `citations_verified` only when every latest citation row is verified with proposition, authority, the legal-research reviewer, and a valid HTTP(S) source URL |
 | `glaw-final-packet` | `build --profile auto` → `final_packet.json` + `final_packet.md`; logs `final_packet_ready` only when gates are clear, at least one external text deliverable exists, every external report includes `Owner:`, `Report voice:`, `Findings:`, `Evidence:`, `Red flags:`, and `Sign-off conditions:`, has no unresolved bracket placeholders such as `[VERIFY]` and no unresolved `REVIEW:` markers, the report plus required council/adversarial reviews and resolved critical/high red flags cite hashed nonempty source files such as `SRC-0001` from `evidence/`, `sources/`, or `source_documents/`, open medium/low red flags are owner-assigned, fix-described, source-backed, and hashed into the packet manifest, the citation verifier plus every required reviewer/lens resolves to a hashed GLAW skill identity file, accounting/accounting-tax/tax/SEC-reporting profiles include a passing `accounting_control.json` proving books-doctor, bank reconciliation, and tax tie-out controls where applicable, and the markdown packet digest matches `final_packet.json` |
 | `glaw-accounting-control` | `--source "SRC-0001 <basis>" --ledger ledger.json --bank-rec bank_rec.json [--profile accounting\|accounting-tax\|tax\|sec-reporting] [--tax-tieout tax_tieout.json]` → runs strict books-doctor, copies workpapers, validates clean bank reconciliation and tax tie-out for accounting-tax/tax profiles, and writes `accounting_control.json` |
+| `glaw-authority` | `check <file\|serve\|sign\|transmit\|charge\|pay\|submit-live> [--human-authority "<name/role>"]` → fail-closed human-authority gate for acts GLAW may prepare but not autonomously commit |
 | `glaw-setup` | deploy every sub-skill as a `/glaw-*` command (symlink model) |
 | `glaw-doctor` | health harness: skills resolve · tools run · no dangling refs · profile reviewer-map consistency · Codex/Claude parity · no weak review-gate examples → `HEALTHY`/`PROBLEMS` |
 | `glaw-preamble.sh` | shared preamble emitted by each stage skill |
@@ -49,7 +50,7 @@ Run any tool with no arguments for its usage. `bin/glaw-doctor` smoke-tests them
 |---|---|
 | `glaw-tax-report` | `types` · `validate <f.json>` · `scaffold <form>` using the in-repo stdlib schema validator |
 | `glaw-fill-form` | `--form FORM --data return.json --out out/form` → `.fill.json` + `.fill.txt` manual-entry package |
-| `glaw-irs-file` | `scaffold <form>` · `submit <payload.json> [--live]` · `status <id>` · `efw2 <payload.json>` (W-2→SSA) · `list <year>` |
+| `glaw-irs-file` | `scaffold <form>` · `submit <payload.json> [--live] [--human-authority "<name/role>"]` · `status <id>` · `efw2 <payload.json>` (W-2→SSA) · `list <year>`; `--live` validates and stages the payload, then refuses transmission unless the human-authority gate is satisfied |
 | `glaw-compliance-audit` | `<docs-dir> [--type s-corp\|c-corp\|llc\|fund] [-o out.md]` → ✅have / 🟡action / ❌gap per item |
 | `glaw-exempt-org` | `search "<name>"` · `<EIN>` → nonprofit lookup + financial-risk read (ProPublica API, no key) |
 
@@ -57,7 +58,7 @@ Run any tool with no arguments for its usage. `bin/glaw-doctor` smoke-tests them
 | Tool | Usage |
 |---|---|
 | `glaw-bureau-score` | `competency <json>` · `fraud <json>` → deterministic fraud score (0–100) + FBI competency scorecard |
-| `glaw-chief-decision` | record the Chief's PROCEED / WITH-FIXES / WITH-CONDITIONS sign-off → matter timeline + decision card; final approve/deny requires `--score`, `--grade`, `--risks`, `--conditions`, and `--rationale`; `--approve-final` rebuilds `final_packet.json`, requires it to be ready, requires score ≥90 and an A-range grade, requires a proceed/approve decision, requires the Chief rationale to cite a current `SRC-####`, requires every open nonblocking red flag ID to appear in `--risks` or `--conditions`, and binds approval to that packet's `generated_at` plus SHA-256 digest |
+| `glaw-chief-decision` | record the Chief's PROCEED / WITH-FIXES / WITH-CONDITIONS sign-off → matter timeline + decision card; final approve/deny requires `--score`, `--grade`, `--risks`, `--conditions`, and `--rationale`; `--approve-final` rebuilds `final_packet.json`, requires it to be ready, requires score ≥90 and an A-range grade, requires a proceed/approve decision, requires the Chief rationale to cite a current `SRC-####`, requires every open nonblocking red flag ID to appear in `--risks` or `--conditions`, and binds approval to that packet's `generated_at` plus SHA-256 digest; `--signoff` is a human-authority act and requires `--human-authority "<name/role>"` or `GLAW_HUMAN_AUTHORITY_ACTOR` |
 
 ## Zero-Dependency Policy
 
