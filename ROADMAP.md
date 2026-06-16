@@ -228,7 +228,7 @@ The more autonomous GLAW gets, the more these bind. They are the organism's cons
 | Area | Current shipped state | Residual work | Phase |
 |---|---|---|---|
 | **Autonomic loop** | `glaw-loop` routes fail-closed, records maker/checker decisions, latches non-convergence escalations, respects Oversight halt, emits self-routing compliance failures, and is covered by accounting/tax/SEC/PCAOB tabletop sandbox scenarios | richer matter-specific convergence fixtures across more specialist seats | 2–6 |
-| **Cross-matter memory** | `glaw-learnings` is a queryable source-linked long-term store with reflected knowledge rules and isolated `$GLAW_HOME` tests | retrieval quality evaluation and matter-type weighting | 2–6 |
+| **Cross-matter memory** | `glaw-learnings` is a queryable source-linked long-term store with reflected knowledge rules, isolated `$GLAW_HOME` tests, and workflow-track/matter-type weighted retrieval | broader retrieval quality evaluation fixtures across more departments | 2–6 |
 | **Host embedding** | `glaw-host`, `glaw-mcp`, and `glaw-extism` expose guarded argv-only execution with conscience and RBAC boundaries | hosted/multi-operator identity beyond local role assertion | 3–6 |
 | **Verifiable law** | citation corpus capture rejects off-allowlist URLs, treats pasted text as untrusted, supports allowlisted fetch and authenticated official copies, and gates citation typology + lexical groundedness | deeper authoritative corpus integrations and semantic authority checking beyond the lexical floor | 4–6 |
 | **Public-law branches** | `/glaw-constitutional`, `/glaw-legislative`, `/glaw-judicial`, and `/glaw-admin-law` ship reference checklists, model templates, and doctor-enforced substance tests | additional jurisdiction-specific branch playbooks and model outputs | 4–6 |
@@ -270,8 +270,10 @@ the seal stays human as a legal and ethics constraint.
   checked decisions in `loop_decisions.jsonl`, applies explicit acceptance criteria, enforces
   an iteration cap, and escalates to human oversight on non-convergence.
 - ✅ **P2-G3 · Cross-matter memory**: `glaw-learnings` is now a queryable source-linked
-  long-term store with selective retrieval by query/matter/type, isolated `$GLAW_HOME` support,
-  and reflected knowledge rules written back to the same ledger.
+  long-term store with selective retrieval by query/matter/type/workflow-track, isolated
+  `$GLAW_HOME` support, reflected knowledge rules written back to the same ledger, and
+  regression coverage proving accounting-tax and litigation tracks can rank different lessons
+  for the same query.
 - ✅ **P2-G4 · Multi-point guardrails**: `bin/glaw-conscience` now runs tool-call and
   tool-response checks for autonomous mode, and `glaw-loop` records the pre-call
   `conscience_call_guard` before writing a routing decision. It blocks destructive shell calls,

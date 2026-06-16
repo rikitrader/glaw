@@ -10,8 +10,8 @@ Store: $GLAW_LEARNINGS_STORE, else $GLAW_HOME/learnings/learnings.jsonl, else
 
 Usage:
   glaw-learnings add '<json>'                 # append/update source-linked memory
-  glaw-learnings preflight [matter]           # formatted known-defects digest
-  glaw-learnings query "<query>" [--json] [--limit N] [--matter M] [--type T]
+  glaw-learnings preflight [matter] [--track T] # formatted known-defects digest
+  glaw-learnings query "<query>" [--json] [--limit N] [--matter M] [--type T] [--track T]
   glaw-learnings search "<query>"             # alias for query
   glaw-learnings list [--limit N] [--json]
   glaw-learnings stats
@@ -134,7 +134,8 @@ def normalize(item: dict) -> dict:
     item["source_links"] = source_links(item)
     item["memory_id"] = item.get("memory_id") or stable_id(item)
     item["keywords"] = sorted(tokens(" ".join(str(item.get(k, "")) for k in (
-        "type", "scope", "error_class", "where", "wrong", "fix", "matter", "run_id"
+        "type", "scope", "error_class", "where", "wrong", "fix", "matter", "run_id",
+        "workflow_track", "track", "matter_type", "profile",
     ))))
     return item
 
@@ -156,7 +157,41 @@ def validate(item: dict) -> list[str]:
     return failures
 
 
-def score(item: dict, query: str, *, matter: str = "", type_filter: str = "") -> float:
+def track_values(item: dict) -> set[str]:
+    out: set[str] = set()
+    for key in ("workflow_track", "track", "matter_type", "profile"):
+        value = item.get(key)
+        if isinstance(value, str):
+            stripped = value.strip().lower()
+            if stripped:
+                out.add(stripped)
+        elif isinstance(value, list):
+            out.update(str(part).strip().lower() for part in value if str(part).strip())
+    return out
+
+
+def track_boost(item: dict, track: str) -> int:
+    track = track.strip().lower()
+    if not track:
+        return 0
+    values = track_values(item)
+    if track in values:
+        return 12
+    item_tokens = tokens(" ".join(
+        [
+            json.dumps(sorted(values)),
+            str(item.get("matter", "")),
+            str(item.get("scope", "")),
+            str(item.get("error_class", "")),
+            " ".join(str(x) for x in item.get("keywords", [])),
+        ]
+    ))
+    if tokens(track) & item_tokens:
+        return 4
+    return 0
+
+
+def score(item: dict, query: str, *, matter: str = "", type_filter: str = "", track: str = "") -> float:
     if type_filter and item.get("type") != type_filter:
         return -1
     if matter and matter not in str(item.get("matter", "")) and item.get("scope") != "firm":
@@ -170,16 +205,18 @@ def score(item: dict, query: str, *, matter: str = "", type_filter: str = "") ->
     confidence = float(item.get("confidence", 8))
     meta_boost = 2 if item.get("type") == "knowledge" else 0
     firm_boost = 1 if item.get("scope") == "firm" else 0
-    return overlap * 10 + confidence + meta_boost + firm_boost
+    return overlap * 10 + confidence + meta_boost + firm_boost + track_boost(item, track)
 
 
-def query_items(query: str, *, limit: int, matter: str = "", type_filter: str = "") -> list[dict]:
+def query_items(query: str, *, limit: int, matter: str = "", type_filter: str = "", track: str = "") -> list[dict]:
     scored = []
     for item in load():
-        s = score(item, query, matter=matter, type_filter=type_filter)
+        s = score(item, query, matter=matter, type_filter=type_filter, track=track)
         if s >= 0:
             row = dict(item)
             row["score"] = s
+            if track:
+                row["score_track_boost"] = track_boost(item, track)
             scored.append(row)
     scored.sort(key=lambda x: (-float(x.get("score", 0)), -float(x.get("confidence", 0)), x.get("ts", "")))
     return scored[:limit]
@@ -236,13 +273,19 @@ def print_digest(items: list[dict]) -> None:
 
 def cmd_preflight(args: argparse.Namespace) -> int:
     query = args.query or args.matter or "audit tax citation filing accounting gate"
-    items = query_items(query, limit=args.limit, matter=args.matter or "")
+    items = query_items(query, limit=args.limit, matter=args.matter or "", track=args.track or "")
     print_digest(items)
     return 0
 
 
 def cmd_query(args: argparse.Namespace) -> int:
-    items = query_items(args.query, limit=args.limit, matter=args.matter or "", type_filter=args.type or "")
+    items = query_items(
+        args.query,
+        limit=args.limit,
+        matter=args.matter or "",
+        type_filter=args.type or "",
+        track=args.track or "",
+    )
     if args.json:
         print(json.dumps(items, indent=2, sort_keys=False))
     else:
@@ -292,6 +335,7 @@ def main(argv: list[str]) -> int:
     p.add_argument("matter", nargs="?")
     p.add_argument("--query", default="")
     p.add_argument("--limit", type=int, default=8)
+    p.add_argument("--track", default="")
     p.set_defaults(func=cmd_preflight)
     for name in ("query", "search"):
         p = sub.add_parser(name)
@@ -300,6 +344,7 @@ def main(argv: list[str]) -> int:
         p.add_argument("--limit", type=int, default=10)
         p.add_argument("--matter", default="")
         p.add_argument("--type", default="")
+        p.add_argument("--track", default="")
         p.set_defaults(func=cmd_query)
     p = sub.add_parser("list")
     p.add_argument("--limit", type=int, default=50)

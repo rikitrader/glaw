@@ -147,8 +147,11 @@ profile and proves each one can reach `chief_approved` and the `file` stage.
 
 Cross-matter memory is a source-linked long-term store. `bin/glaw-learnings add` refuses memories
 without `source_links`/`authority`; `query` and `preflight` do selective retrieval by matter,
-type, confidence, and keywords; `bin/glaw-reflect --apply` writes synthesized knowledge rules
-back to the same `$GLAW_HOME/learnings/learnings.jsonl` ledger.
+type, confidence, keywords, and optional workflow track (`workflow_track`, `track`,
+`matter_type`, or `profile`). The same query can rank different source-backed lessons for
+accounting-tax, litigation, SEC, or other workflows when called with `--track`. `bin/glaw-reflect
+--apply` writes synthesized knowledge rules back to the same `$GLAW_HOME/learnings/learnings.jsonl`
+ledger.
 
 ## Human-authority gate
 
