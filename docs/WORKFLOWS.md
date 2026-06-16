@@ -45,7 +45,7 @@ bin/glaw-ethics complete
 Required gates:
 
 1. Structured intake and source-backed conflicts/engagement must clear before strategy.
-2. Legal citations must be verified through `glaw-citation-gate complete` before file; each verified row must preserve proposition, authority, support summary, corpus id, source/segment hashes, reviewer, and HTTP(S) source URL. Capture checked authority text first with `glaw-citation-corpus capture`. Completion automatically writes `groundedness.json` with entity-grounding and relation-preservation scores. Failed rows must carry a falsifiable defect type: incorrect, misgrounded, ungrounded, or incomplete.
+2. Legal citations must be verified through `glaw-citation-gate complete` before file; each verified row must preserve proposition, authority, support summary, corpus id, source/segment hashes, reviewer, and an approved HTTP(S) source URL. Capture authority text first with `glaw-citation-corpus capture` from an allowlisted authority domain by `--fetch`, or from `--file --authenticated-copy` for an offline official copy. Pasted `--text` is stored as untrusted context and cannot support a verified legal citation. Completion automatically writes `groundedness.json` with a deterministic lexical-floor entity-grounding and relation-preservation audit. That audit is a fail-closed floor, not semantic Shepardizing. Failed rows must carry a falsifiable defect type: incorrect, misgrounded, ungrounded, or incomplete.
 3. Adversarial review must pass before file.
 4. Critical/high red flags must be resolved before file; medium/low red flags may remain open only if owner-assigned, source-backed, and carried in the final packet.
 5. Final packet manifest must be ready before file.

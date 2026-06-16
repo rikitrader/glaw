@@ -332,19 +332,20 @@ the seal stays human as a legal and ethics constraint.
   for OpenClaw/ZeroClaw/spawned hosts.
 
 ### Phase 4 (Branches + corpus) — add
-- ✅ **P4-G1 · Wire a verifiable corpus BEHIND the citation gate**: `bin/glaw-citation-corpus`
-  captures checked authority text from pasted text, local files, or optional HTTP(S) fetch, stores
-  source and segment SHA-256 hashes, and `glaw-citation-gate` now requires verified rows to point
-  to a matching corpus id. The corpus feeds, never replaces, the deterministic citation gate.
+- ✅ **P4-G1 · Wire a trusted corpus BEHIND the citation gate**: `bin/glaw-citation-corpus`
+  rejects off-allowlist legal source URLs, treats pasted text as untrusted context, accepts
+  authoritative `--fetch` from approved sources and offline `--file --authenticated-copy`
+  official copies, stores source/segment SHA-256 hashes, and `glaw-citation-gate` plus
+  `glaw-gate` refuse verified rows backed by untrusted pasted text.
 - ✅ **P4-G2 · Encode the falsifiable hallucination typology** in `glaw-citation-gate`: verified
   rows now require a support summary, and failed rows must classify the defect as **incorrect**,
   **misgrounded**, **ungrounded**, or **incomplete**. `glaw-gate` revalidates the same contract so
   manual ledger edits cannot bypass the citation typology.
-- ✅ **P4-G3 · Auditable groundedness scoring**: `bin/glaw-groundedness` computes
-  Entity-Grounding + Relation-Preservation metrics for verified citation rows against the
-  captured corpus segment, writes `groundedness.json`, and `glaw-citation-gate complete` blocks
-  if the score is below threshold. The audit trail carries citation row hash, source hash, and
-  segment hash.
+- ✅ **P4-G3 · Auditable groundedness scoring**: `bin/glaw-groundedness` computes a
+  deterministic lexical-floor Entity-Grounding + Relation-Preservation audit for verified
+  citation rows against trusted corpus segments, writes `groundedness.json`, and
+  `glaw-citation-gate complete` blocks if the score is below threshold or the corpus is
+  untrusted. It is explicitly not semantic Shepardizing or HalluGraph proof.
 - ✅ **P4-G4 · Jurisdiction-pack gate**: `/glaw-jurisdiction` + `bin/glaw-jurisdiction-pack`
   require source-backed state/federal/international matrices for governing law, forum, tax,
   licensing, filings, deadlines, and government/adversarial lenses. This turns

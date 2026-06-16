@@ -281,7 +281,8 @@ append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","autho
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by incomplete verified citation row"
 append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","proposition":"tax return must tie to books","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/","reviewer":"legal-research"}'
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by verified citation without support summary"
-"$CORPUS" capture --id CORP-1 --source-url "https://uscode.house.gov/" --text "26 U.S.C. 6001 requires tax return records to tie to books and establish tax liability." --segment "tax return records to tie to books and establish tax liability" >/dev/null
+printf '%s\n' "26 U.S.C. 6001 requires tax return records to tie to books and establish tax liability." > "$TMP/usc-6001.txt"
+"$CORPUS" capture --id CORP-1 --source-url "https://uscode.house.gov/" --file "$TMP/usc-6001.txt" --authenticated-copy --segment "tax return records to tie to books and establish tax liability" >/dev/null
 append_hashed_jsonl "$M/citations.jsonl" '{"id":"C-1","status":"verified","proposition":"tax return must tie to books","authority":"26 U.S.C. 6001","source_url":"https://uscode.house.gov/","reviewer":"legal-research","support_summary":"The cited section supports keeping records that substantiate tax positions.","corpus_id":"CORP-1"}'
 "$ROOT/bin/glaw-groundedness" audit >/dev/null
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before current council ledger artifact"

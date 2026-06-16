@@ -8,16 +8,40 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import re
 from pathlib import Path
+from urllib.parse import urlparse
 
 
 STOPWORDS = {
     "a", "an", "and", "are", "as", "at", "be", "by", "for", "from", "in",
     "is", "it", "must", "of", "or", "that", "the", "this", "to", "with",
 }
-MIN_ENTITY_GROUNDING = 0.30
-MIN_RELATION_PRESERVATION = 0.20
+MIN_ENTITY_GROUNDING = 0.50
+MIN_RELATION_PRESERVATION = 0.35
+APPROVED_CORPUS_TRUST = {"authoritative", "authenticated-copy"}
+APPROVED_AUTHORITY_DOMAINS = {
+    "uscode.house.gov",
+    "ecfr.gov",
+    "www.ecfr.gov",
+    "federalregister.gov",
+    "www.federalregister.gov",
+    "govinfo.gov",
+    "www.govinfo.gov",
+    "irs.gov",
+    "www.irs.gov",
+    "sec.gov",
+    "www.sec.gov",
+    "congress.gov",
+    "www.congress.gov",
+    "supremecourt.gov",
+    "www.supremecourt.gov",
+    "courtlistener.com",
+    "www.courtlistener.com",
+    "law.cornell.edu",
+    "www.law.cornell.edu",
+}
 
 
 def sha256_text(value: str) -> str:
@@ -30,6 +54,23 @@ def token_set(value: str) -> set[str]:
         for token in re.findall(r"[A-Za-z][A-Za-z0-9-]{2,}", str(value).lower())
         if token not in STOPWORDS
     }
+
+
+def authority_domain(value: str) -> str:
+    return (urlparse(str(value).strip()).hostname or "").lower()
+
+
+def approved_authority_url(value: str) -> bool:
+    host = authority_domain(value)
+    configured = {
+        item.strip().lower()
+        for item in os.environ.get("GLAW_AUTHORITY_DOMAINS", "").split(",")
+        if item.strip()
+    }
+    domains = APPROVED_AUTHORITY_DOMAINS | configured
+    return host in domains or any(
+        host.endswith("." + domain) for domain in domains if not domain.startswith("www.")
+    )
 
 
 def row_hash(row: dict) -> str:
@@ -76,6 +117,7 @@ def score_row(citation: dict, corpus: dict) -> dict:
         "citation_id": citation.get("id", ""),
         "corpus_id": citation.get("corpus_id", ""),
         "status": status,
+        "method": "deterministic_lexical_floor_not_semantic_proof",
         "entity_grounding": round(entity_score, 4),
         "relation_preservation": round(relation_score, 4),
         "thresholds": {
@@ -103,6 +145,15 @@ def audit_matter(matter_dir: Path) -> dict:
         corpus_row = corpus.get(corpus_id)
         if not corpus_row:
             failures.append(f"{citation.get('id')}: missing corpus {corpus_id}")
+            continue
+        if corpus_row.get("trust_level") not in APPROVED_CORPUS_TRUST:
+            failures.append(
+                f"{citation.get('id')}: corpus {corpus_id} is not authoritative "
+                f"(trust={corpus_row.get('trust_level', 'untrusted')})"
+            )
+            continue
+        if not approved_authority_url(str(corpus_row.get("source_url", ""))):
+            failures.append(f"{citation.get('id')}: corpus {corpus_id} source domain is not approved")
             continue
         scored = score_row(citation, corpus_row)
         rows.append(scored)

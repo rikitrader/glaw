@@ -300,6 +300,39 @@ def halted_decision(d: Path) -> dict | None:
     }
 
 
+def latched_escalation_decision(d: Path) -> dict | None:
+    rows = read_jsonl(d / "loop_decisions.jsonl")
+    for row in reversed(rows):
+        if row.get("quality_state") != "human_escalation_required" or row.get("next_gate") != "oversight":
+            continue
+        oversight = oversight_status(5)
+        resumed_at = str((oversight.get("state") or {}).get("resumed_at", ""))
+        escalated_at = str(row.get("ts", ""))
+        if resumed_at and escalated_at and resumed_at > escalated_at:
+            return None
+        track, profile = matter_profile(d)
+        stage = (d / ".stage").read_text(encoding="utf-8").strip() if (d / ".stage").exists() else "intake"
+        return {
+            "ts": now(),
+            "matter": d.name,
+            "stage": stage,
+            "workflow_track": track,
+            "workflow_profile": profile,
+            "quality_state": "human_escalation_required",
+            "next_gate": "oversight",
+            "owner": "human-oversight-board",
+            "next_command": "bin/glaw-oversight status",
+            "reason": "prior non-convergence escalation remains latched until Oversight Board resume",
+            "council_required": list(COUNCIL_PROFILES.get(profile, ())),
+            "adversarial_required": list(ADVERSARIAL_PROFILES.get(profile, ())),
+            "human_only_actions": sorted(HUMAN_ONLY_ACTIONS),
+            "authority": "quality routing only; no filing/signing/service/payment/charge/live transmission",
+            "oversight": oversight,
+            "latched_from": row.get("ts", ""),
+        }
+    return None
+
+
 def route_from_state(d: Path) -> dict:
     slug = d.name
     stage = (d / ".stage").read_text(encoding="utf-8").strip() if (d / ".stage").exists() else "intake"
@@ -468,7 +501,7 @@ def main(argv: list[str]) -> int:
                 print(result)
             return 1
 
-    decision = halted_decision(d) or route_from_state(d)
+    decision = halted_decision(d) or latched_escalation_decision(d) or route_from_state(d)
     checker = checker_for(
         decision,
         d,

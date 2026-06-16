@@ -26,11 +26,50 @@ BLOCKING = {"pending", "needs-substitute", "struck", "weak"}
 DEFECT_TYPES = {"incorrect", "misgrounded", "ungrounded", "incomplete"}
 NONE_DEFECTS = {"", "none", "verified"}
 LEGAL_RESEARCH_REVIEWERS = {"legal-research", "glaw-legal-research", "/glaw-legal-research"}
+APPROVED_CORPUS_TRUST = {"authoritative", "authenticated-copy"}
+APPROVED_AUTHORITY_DOMAINS = {
+    "uscode.house.gov",
+    "ecfr.gov",
+    "www.ecfr.gov",
+    "federalregister.gov",
+    "www.federalregister.gov",
+    "govinfo.gov",
+    "www.govinfo.gov",
+    "irs.gov",
+    "www.irs.gov",
+    "sec.gov",
+    "www.sec.gov",
+    "congress.gov",
+    "www.congress.gov",
+    "supremecourt.gov",
+    "www.supremecourt.gov",
+    "courtlistener.com",
+    "www.courtlistener.com",
+    "law.cornell.edu",
+    "www.law.cornell.edu",
+}
 
 
 def valid_http_url(value: str) -> bool:
     parsed = urlparse(str(value).strip())
     return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
+
+
+def authority_domain(value: str) -> str:
+    return (urlparse(str(value).strip()).hostname or "").lower()
+
+
+def approved_authority_url(value: str) -> bool:
+    host = authority_domain(value)
+    configured = {
+        item.strip().lower()
+        for item in os.environ.get("GLAW_AUTHORITY_DOMAINS", "").split(",")
+        if item.strip()
+    }
+    domains = APPROVED_AUTHORITY_DOMAINS | configured
+    return host in domains or any(
+        host.endswith("." + domain) for domain in domains if not domain.startswith("www.")
+    )
 
 
 def valid_legal_research_reviewer(value: str) -> bool:
@@ -179,6 +218,10 @@ def corpus_failure(row: dict, corpus: dict[str, dict]) -> str:
         return f"verified row source hash does not match corpus {corpus_id}"
     if row.get("segment_sha256") and row.get("segment_sha256") != item.get("segment_sha256"):
         return f"verified row segment hash does not match corpus {corpus_id}"
+    if item.get("trust_level") not in APPROVED_CORPUS_TRUST:
+        return f"corpus {corpus_id} is not authoritative: trust={item.get('trust_level', 'untrusted')}"
+    if not approved_authority_url(str(item.get("source_url", ""))):
+        return f"corpus {corpus_id} source domain is not approved for legal authority"
     return ""
 
 
@@ -199,6 +242,8 @@ def cmd_record(args: argparse.Namespace) -> int:
             missing.append("--reviewer legal-research")
         if not valid_http_url(args.source_url):
             missing.append("--source-url valid http(s)")
+        elif not approved_authority_url(args.source_url):
+            missing.append("--source-url approved authority source")
         if not args.support_summary.strip():
             missing.append("--support-summary")
         if not args.corpus_id.strip():
@@ -213,6 +258,8 @@ def cmd_record(args: argparse.Namespace) -> int:
             missing.append("--corpus-id existing corpus record")
         if corpus_item and corpus_item.get("source_url") != args.source_url:
             missing.append("--source-url matching corpus")
+        if corpus_item and corpus_failure({"corpus_id": args.corpus_id.strip(), "source_url": args.source_url}, corpus):
+            missing.append("authoritative citation corpus")
         if missing:
             print("ERROR: verified citations require " + ", ".join(missing), file=sys.stderr)
             return 2

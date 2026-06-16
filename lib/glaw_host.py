@@ -9,6 +9,8 @@ import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
+from glaw_rbac import require_permission
+
 
 ROOT = Path(__file__).resolve().parents[1]
 BIN = ROOT / "bin"
@@ -107,7 +109,20 @@ def _parse_json(text: str) -> dict:
         return {"status": "fail", "raw": text}
 
 
-def execute(tool: str, args: list[str], *, matter: str = "", timeout: int = 30) -> dict:
+def _rbac_operation(tool: str, args: list[str]) -> str:
+    lowered = [str(arg).lower() for arg in args]
+    if tool == "glaw" and lowered == ["version"]:
+        return "read"
+    if lowered and lowered[0] in {"status", "list", "roles", "manifest"}:
+        return "read"
+    if tool in {"glaw-irs-file", "glaw-authority"} and ("--live" in lowered or "submit-live" in lowered):
+        return "human_authority"
+    if tool == "glaw-chief-decision" and "--signoff" in lowered:
+        return "human_authority"
+    return "write"
+
+
+def execute(tool: str, args: list[str], *, matter: str = "", timeout: int = 30, role: str = "", actor: str = "") -> dict:
     if not is_allowed_tool(tool):
         return {
             "status": "blocked",
@@ -124,6 +139,23 @@ def execute(tool: str, args: list[str], *, matter: str = "", timeout: int = 30) 
         }
 
     command = _command_string(tool, args)
+    operation = _rbac_operation(tool, args)
+    rbac_ok, rbac_message, rbac = require_permission(
+        operation,
+        role=role,
+        actor=actor,
+        resource=command,
+        context=f"glaw-host execute {tool}",
+    )
+    if not rbac_ok:
+        return {
+            "status": "blocked",
+            "phase": "rbac",
+            "tool": tool,
+            "args": args,
+            "rbac": rbac,
+            "reason": rbac_message,
+        }
     pre_rc, pre_out = _run_guard("check-call", "--command", command, "--matter", matter, "--json")
     pre_guard = _parse_json(pre_out)
     if pre_rc != 0 or pre_guard.get("status") != "pass":
@@ -160,6 +192,7 @@ def execute(tool: str, args: list[str], *, matter: str = "", timeout: int = 30) 
         "args": args,
         "returncode": rc,
         "stdout": stdout,
+        "rbac": rbac,
         "pre_guard": pre_guard,
         "post_guard": post_guard,
     }

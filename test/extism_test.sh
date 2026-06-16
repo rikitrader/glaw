@@ -26,11 +26,11 @@ PY
 rc2=$?
 ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "Extism metadata exports tools, permissions, and safety contract"
 
-"$EXT" execute --payload '{"tool":"glaw","args":["version"]}' --json > "$TMP/exec-ok.json"; rc=$?
+"$EXT" execute --payload '{"tool":"glaw","args":["version"],"role":"READER","actor":"Extism Reader"}' --json > "$TMP/exec-ok.json"; rc=$?
 python3 - "$TMP/exec-ok.json" <<'PY'
 import json, sys
 data = json.load(open(sys.argv[1], encoding="utf-8"))
-ok = data["status"] == "pass" and data["plugin"] == "glaw-extism" and data["pre_guard"]["status"] == "pass"
+ok = data["status"] == "pass" and data["plugin"] == "glaw-extism" and data["rbac"]["status"] == "pass" and data["pre_guard"]["status"] == "pass"
 sys.exit(0 if ok else 1)
 PY
 rc2=$?
@@ -46,7 +46,7 @@ PY
 rc2=$?
 ok "$([ "$rc" = 1 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "Extism execute blocks path traversal through host adapter"
 
-"$EXT" execute --payload '{"tool":"glaw-irs-file","args":["submit","missing.json","--live"],"matter":"x"}' --json > "$TMP/live-block.json"; rc=$?
+"$EXT" execute --payload '{"tool":"glaw-irs-file","args":["submit","missing.json","--live"],"matter":"x","role":"ADMIN","actor":"Extism Admin"}' --json > "$TMP/live-block.json"; rc=$?
 python3 - "$TMP/live-block.json" <<'PY'
 import json, sys
 data = json.load(open(sys.argv[1], encoding="utf-8"))

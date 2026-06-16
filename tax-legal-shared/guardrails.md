@@ -14,3 +14,8 @@ financial-reporting workflow.
 5. Bank-to-tax tie-out: tax outputs using books data must tie to source bank
    statements, ledger workpapers, reconciliation reports, and tax tie-out
    artifacts.
+6. Local RBAC trust boundary: in the source-only single-operator CLI, `--role`
+   and `GLAW_RBAC_ROLE` are operator assertions recorded in a hash-chained audit
+   ledger; they are not cryptographic identity or hosted SSO. Treat ADMIN and
+   human-authority records as tamper-evident local controls until GLAW is run
+   inside a multi-operator identity provider.

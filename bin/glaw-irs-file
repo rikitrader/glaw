@@ -25,6 +25,7 @@ from pathlib import Path
 GLAW = str(Path(__file__).resolve().parent / "glaw")
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "lib"))
 from glaw_authority import require_human_authority
+from glaw_oversight import status as oversight_status
 SUPPORTED = {"1099-NEC", "1099-MISC", "1099-K", "W-2", "941"}
 TB_ENDPOINT = {"1099-NEC": "/Form1099NEC/Create", "1099-MISC": "/Form1099MISC/Create",
                "1099-K": "/Form1099K/Create", "941": "/Form941/Create"}
@@ -304,6 +305,11 @@ def submit(path, args):
         return
 
     # ---- LIVE ----
+    oversight = oversight_status(5)
+    if (oversight.get("state") or {}).get("halted"):
+        reason = (oversight.get("state") or {}).get("halt_reason", "Oversight Board kill-switch active")
+        print(f"  OVERSIGHT BLOCKED ❌ live transmission halted: {reason}")
+        sys.exit(1)
     authority_ok, authority_result = require_human_authority(
         "transmit",
         actor=human_actor,

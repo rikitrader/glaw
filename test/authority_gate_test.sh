@@ -11,6 +11,7 @@ AUTH="$ROOT/bin/glaw-authority"
 GLAW="$ROOT/bin/glaw"
 CHIEF="$ROOT/bin/glaw-chief-decision"
 IRS="$ROOT/bin/glaw-irs-file"
+OVERSIGHT="$ROOT/bin/glaw-oversight"
 
 "$AUTH" check transmit >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "authority check blocks transmit without human actor"
@@ -50,10 +51,15 @@ JSON
 
 "$IRS" submit "$TMP/1099.json" --live -o "$TMP" >/tmp/glaw-auth-irs.out 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && grep -q 'HUMAN AUTHORITY BLOCKED' /tmp/glaw-auth-irs.out && echo 1 || echo 0)" "IRS live submit blocks before transmission without human actor"
+
+"$OVERSIGHT" halt --by "QA reviewer" --reason "live filing freeze" >/dev/null
+"$IRS" submit "$TMP/1099.json" --live --human-authority "Alex Rivera, licensed attorney" --role ADMIN -o "$TMP" >/tmp/glaw-auth-irs-halt.out 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && grep -q 'OVERSIGHT BLOCKED' /tmp/glaw-auth-irs-halt.out && echo 1 || echo 0)" "IRS live submit blocks during Oversight Board halt even with ADMIN authority"
+"$OVERSIGHT" resume --by "Alex Rivera" --role ADMIN --reason "test resume" >/dev/null
 "$IRS" submit "$TMP/1099.json" --live --human-authority "Alex Rivera, licensed attorney" --role ADMIN -o "$TMP" >/tmp/glaw-auth-irs-ok.out 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && grep -q 'HUMAN AUTHORITY' /tmp/glaw-auth-irs-ok.out && echo 1 || echo 0)" "IRS live submit passes authority gate with human actor"
 
-rm -rf "$TMP" /tmp/glaw-auth-role.out /tmp/glaw-auth-writer.out /tmp/glaw-auth-irs.out /tmp/glaw-auth-irs-ok.out
+rm -rf "$TMP" /tmp/glaw-auth-role.out /tmp/glaw-auth-writer.out /tmp/glaw-auth-irs.out /tmp/glaw-auth-irs-halt.out /tmp/glaw-auth-irs-ok.out
 echo
 echo "0 failures — $pass passed, $fail failed"
 [ "$fail" = 0 ] && { echo "ALL PASS ✅"; exit 0; } || { echo "FAILURES ❌"; exit 1; }

@@ -3,11 +3,11 @@
 
 Usage:
   glaw-host manifest [--json]
-  glaw-host execute --tool glaw-rbac --args '["roles","--json"]' [--matter SLUG] [--timeout N] [--json]
+  glaw-host execute --tool glaw-rbac --args '["roles","--json"]' [--matter SLUG] [--role ROLE] [--actor NAME] [--timeout N] [--json]
   glaw-host status [--json]
 
 The adapter accepts argv arrays only. It never evaluates shell strings, and every
-execution is wrapped in glaw-conscience pre-call and post-response checks.
+execution is wrapped in RBAC plus glaw-conscience pre-call and post-response checks.
 """
 from __future__ import annotations
 
@@ -52,7 +52,7 @@ def cmd_execute(args: argparse.Namespace) -> int:
     except json.JSONDecodeError as exc:
         print(json.dumps({"status": "blocked", "reason": f"invalid args JSON: {exc}"}, indent=2))
         return 2
-    data = execute(args.tool, argv, matter=args.matter, timeout=args.timeout)
+    data = execute(args.tool, argv, matter=args.matter, timeout=args.timeout, role=args.role, actor=args.actor)
     if args.json:
         print(json.dumps(data, indent=2, sort_keys=False))
     else:
@@ -77,6 +77,8 @@ def main(argv: list[str]) -> int:
     p.add_argument("--tool", required=True)
     p.add_argument("--args", required=True, help="JSON array of argv strings")
     p.add_argument("--matter", default="")
+    p.add_argument("--role", default="")
+    p.add_argument("--actor", default="")
     p.add_argument("--timeout", type=int, default=30)
     p.add_argument("--json", action="store_true")
     p.set_defaults(func=cmd_execute)

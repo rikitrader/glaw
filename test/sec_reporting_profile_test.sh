@@ -61,7 +61,8 @@ for lens in sec-staff-reviewer pcaob-audit-reviewer disclosure-counsel irs-exami
 done
 "$ADVERSARIAL" complete --profile auto >/dev/null
 
-"$CORPUS" capture --id CORP-SEC-0001 --source-url 'https://www.ecfr.gov/' --text 'Regulation S-X is the cited financial statement reporting authority requiring SEC reporting financial statements to tie to source books and controls.' --segment 'SEC reporting financial statements to tie to source books and controls' >/dev/null
+printf '%s\n' 'Regulation S-X is the cited financial statement reporting authority requiring SEC reporting financial statements to tie to source books and controls.' > "$TMP/ecfr-regsx.txt"
+"$CORPUS" capture --id CORP-SEC-0001 --source-url 'https://www.ecfr.gov/' --file "$TMP/ecfr-regsx.txt" --authenticated-copy --segment 'SEC reporting financial statements to tie to source books and controls' >/dev/null
 "$CITES" record --id C-SEC-0001 --proposition 'SEC reporting financial statements must tie to source books and controls' --authority 'Regulation S-X' --status verified --source-url 'https://www.ecfr.gov/' --reviewer legal-research --support-summary 'Regulation S-X is the cited financial statement reporting authority; source books and controls remain required support for the package.' --corpus-id CORP-SEC-0001 >/dev/null
 "$CITES" complete >/dev/null
 

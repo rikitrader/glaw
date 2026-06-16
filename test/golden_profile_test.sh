@@ -210,9 +210,14 @@ def run_profile(profile: str) -> None:
             "--evidence", "SRC-0001 source package reviewed")
     run("glaw-adversarial", "complete", "--profile", "auto")
 
+    official_copy = home / "matters" / slug / "evidence" / f"authority-{slug}.txt"
+    official_copy.write_text(
+        "GLAW workflow source evidence rule supports source-backed licensed review.",
+        encoding="utf-8",
+    )
     run("glaw-citation-corpus", "capture", "--id", f"CORP-{profile.upper()}-0001",
         "--source-url", "https://www.irs.gov/",
-        "--text", "GLAW workflow source evidence rule supports source-backed licensed review.",
+        "--file", str(official_copy), "--authenticated-copy",
         "--segment", "supports source-backed licensed review")
     run("glaw-citation-gate", "record", "--id", f"C-{profile.upper()}-0001",
         "--proposition", "The golden fixture is source-backed and held for licensed review",

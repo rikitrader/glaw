@@ -39,10 +39,11 @@ ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "incorrect defect type can be recorded
 "$CITES" status > "$TMP/status-blocked.out" 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && grep -q 'incorrect' "$TMP/status-blocked.out" && echo 1 || echo 0)" "status prints typed blocking citation"
 
+printf '%s\n' "26 U.S.C. 6001 says books must be retained and supports recordkeeping duties for tax substantiation." > "$TMP/usc-6001.txt"
 "$CORPUS" capture --id CORP-0001 --source-url "https://uscode.house.gov/" \
-  --text "26 U.S.C. 6001 says books must be retained and supports recordkeeping duties for tax substantiation." \
+  --file "$TMP/usc-6001.txt" --authenticated-copy \
   --segment "books must be retained and supports recordkeeping duties" >/dev/null; rc=$?
-ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "citation corpus captures source and segment hashes"
+ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "citation corpus captures authenticated official-copy source and segment hashes"
 
 "$CITES" record --id C-0002 --proposition "Books must be retained" --authority "26 U.S.C. 6001" \
   --status verified --source-url "https://uscode.house.gov/" --reviewer legal-research \

@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.2.0 — authority-backed citations and autonomous safety hardening
+
+- **Citation corpus is now trust-gated.** Verified legal citations must point to an approved
+  authority URL and a trusted corpus row: fetched from an allowlisted source or captured as an
+  authenticated offline official copy. Pasted text remains allowed for context, but is marked
+  untrusted and cannot support a verified citation.
+- **Fabricated-law path closed.** `glaw-citation-gate`, `glaw-groundedness`, and the file gate now
+  reject untrusted corpus rows, off-allowlist authority domains, and support summaries that do not
+  meet the deterministic lexical groundedness floor. This does not claim semantic Shepardizing; it
+  is an explicit fail-closed floor before human legal review.
+- **Autonomy boundary hardened.** Host/MCP/Extism execution now applies RBAC before tool dispatch,
+  IRS live filing checks the Oversight Board kill-switch directly, and the loop keeps escalation
+  latched until oversight resumes.
+- **Regression coverage expanded.** `glaw-doctor` now covers citation corpus trust, groundedness
+  negative paths, compliance audit classification, host adapter RBAC, golden profile clearance, and
+  the full lifecycle packet approval path. Current doctor result: 0 failures, 0 warnings.
+
 ## Unreleased — 5 new practice-area seats (firm-wide gap close)
 
 Closes the highest-relevance non-tax coverage gaps from a firm-wide review. Each is a

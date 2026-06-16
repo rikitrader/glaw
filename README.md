@@ -7,12 +7,12 @@
 **A self-contained open-source virtual law firm you install as an AI agent skill. Not a chatbot — an org chart.**
 GLAW runs legal *matters* (build a company, structure a fund, prosecute or defend a case, investigate fraud) through an **8-stage pipeline**, routing each step to the right **department**, and produces **attorney work-product** — pleadings, contracts, redlines, dossiers, filings — for a licensed attorney to review and sign.
 
-**10 departments · 170 source skills · 63 vendored seats · hard-gated matter pipeline · FBI-style fraud dossiers · source-first bookkeeping with Google Sheets input + OCR orchestration. Attorney work-product, not legal advice.**
+**10 departments · 179 source skills · 63 vendored seats · 177 mirrored commands · hard-gated matter pipeline · FBI-style fraud dossiers · source-first bookkeeping with Google Sheets input + OCR orchestration. Attorney work-product, not legal advice.**
 
 [![GLAW Doctor](https://github.com/rikitrader/glaw/actions/workflows/ci.yml/badge.svg)](https://github.com/rikitrader/glaw/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-C9A227.svg)](LICENSE)
-[![Skills](https://img.shields.io/badge/skills-170-1A3FA0.svg)](lib/firm-roster.md)
-[![Tools](https://img.shields.io/badge/tools-137-1A3FA0.svg)](#-the-toolbelt-137-clis)
+[![Skills](https://img.shields.io/badge/skills-179-1A3FA0.svg)](lib/firm-roster.md)
+[![Tools](https://img.shields.io/badge/commands-177-1A3FA0.svg)](#-the-toolbelt-177-mirrored-commands)
 [![Departments](https://img.shields.io/badge/departments-10-3B82F6.svg)](#%EF%B8%8F-the-departments)
 [![Pipeline](https://img.shields.io/badge/pipeline-8%20stages-3B82F6.svg)](#-the-workflow)
 [![Agent Skills](https://img.shields.io/badge/format-Agent%20Skills-000.svg)](https://agentskills.org)
@@ -69,7 +69,7 @@ Built on the **gstack** skill-orchestration methodology: a meta-skill orchestrat
 
 ## 🏛️ The Departments
 
-GLAW ships **170 source skills** organized into ten departments, including **63 self-contained specialist seats** vendored under [`seats/`](seats/) — `glaw-corporate-counsel`, `glaw-pe-vc-counsel`, `glaw-tax-strategy`, `glaw-financial-forensics`, the `glaw-fs-*` finance models, and more. **Zero external skill dependencies:** every seat the firm routes to travels with the repo and is deployed by `./setup`. A deterministic gate (`glaw-doctor`) proves it — every routed skill resolves, or CI fails.
+GLAW ships **179 source skills** organized into ten departments, including **63 self-contained specialist seats** vendored under [`seats/`](seats/) — `glaw-corporate-counsel`, `glaw-pe-vc-counsel`, `glaw-tax-strategy`, `glaw-financial-forensics`, the `glaw-fs-*` finance models, and more. **Zero external skill dependencies:** every seat the firm routes to travels with the repo and is deployed by `./setup`. A deterministic gate (`glaw-doctor`) proves it — every routed skill resolves, or CI fails.
 
 ```mermaid
 flowchart TD
@@ -144,7 +144,7 @@ When an investigation surfaces **red flags past threshold** (fraud tier, sanctio
 
 ---
 
-## 🧰 The Toolbelt (137 CLIs)
+## 🧰 The Toolbelt (177 Mirrored Commands)
 
 GLAW's brains are markdown; its hands are small, transparent CLIs in [`bin/`](bin/). The runtime is source-first: bash, Python 3, repository libraries, and the Python standard library.
 
@@ -362,7 +362,7 @@ Run `bin/glaw-doctor` any time to confirm the whole firm is healthy.
 ```
 glaw/
 ├── SKILL.md              # /glaw — the Managing Partner (orchestrator)
-├── bin/                  # 137 CLIs: state machinery + zero-dependency local tools + bookkeeping + finance control
+├── bin/                  # source-only CLIs: state machinery + local tools + bookkeeping + finance control
 ├── seats/                # 63 SELF-CONTAINED specialist seats (glaw-*) + MANIFEST
 │                         #   every skill the firm routes to — zero external deps
 ├── lib/

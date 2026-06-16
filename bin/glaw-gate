@@ -209,6 +209,7 @@ _file_artifacts_valid() {  # _file_artifacts_valid <matter-dir> <repo-root>
   python3 - "$1" "$2" <<'PY'
 import hashlib
 import json
+import os
 import pathlib
 import re
 import sys
@@ -237,6 +238,47 @@ BRACKET_PLACEHOLDER_RE = re.compile(r"\[[^\]]+\]")
 def valid_http_url(value):
     parsed = urlparse(str(value).strip())
     return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
+
+
+APPROVED_CORPUS_TRUST = {"authoritative", "authenticated-copy"}
+APPROVED_AUTHORITY_DOMAINS = {
+    "uscode.house.gov",
+    "ecfr.gov",
+    "www.ecfr.gov",
+    "federalregister.gov",
+    "www.federalregister.gov",
+    "govinfo.gov",
+    "www.govinfo.gov",
+    "irs.gov",
+    "www.irs.gov",
+    "sec.gov",
+    "www.sec.gov",
+    "congress.gov",
+    "www.congress.gov",
+    "supremecourt.gov",
+    "www.supremecourt.gov",
+    "courtlistener.com",
+    "www.courtlistener.com",
+    "law.cornell.edu",
+    "www.law.cornell.edu",
+}
+
+
+def authority_domain(value):
+    return (urlparse(str(value).strip()).hostname or "").lower()
+
+
+def approved_authority_url(value):
+    host = authority_domain(value)
+    configured = {
+        item.strip().lower()
+        for item in os.environ.get("GLAW_AUTHORITY_DOMAINS", "").split(",")
+        if item.strip()
+    }
+    domains = APPROVED_AUTHORITY_DOMAINS | configured
+    return host in domains or any(
+        host.endswith("." + domain) for domain in domains if not domain.startswith("www.")
+    )
 
 
 def intake_reviewer_blocker(value):
@@ -1325,6 +1367,10 @@ for corpus_id, corpus_row in latest_corpus.items():
         corpus_failures.append(f"{corpus_id}: segment missing from source text")
     elif text_hash(segment) != corpus_row.get("segment_sha256"):
         corpus_failures.append(f"{corpus_id}: segment hash mismatch")
+    if corpus_row.get("trust_level") not in APPROVED_CORPUS_TRUST:
+        corpus_failures.append(f"{corpus_id}: corpus is not authoritative: trust={corpus_row.get('trust_level', 'untrusted')}")
+    if not approved_authority_url(str(corpus_row.get("source_url", ""))):
+        corpus_failures.append(f"{corpus_id}: source domain is not approved for legal authority")
 if corpus_failures:
     print("citation corpus failure: " + "; ".join(corpus_failures))
     sys.exit(1)
@@ -1342,6 +1388,8 @@ for cid, row in latest_citations.items():
         or corpus_row.get("source_url") != row.get("source_url")
         or not str(corpus_row.get("source_sha256", "")).strip()
         or not str(corpus_row.get("segment_sha256", "")).strip()
+        or corpus_row.get("trust_level") not in APPROVED_CORPUS_TRUST
+        or not approved_authority_url(str(corpus_row.get("source_url", "")))
         or (row.get("source_sha256") and row.get("source_sha256") != corpus_row.get("source_sha256"))
         or (row.get("segment_sha256") and row.get("segment_sha256") != corpus_row.get("segment_sha256"))
     )

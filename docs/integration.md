@@ -18,7 +18,7 @@ no package server, no shell eval, no background daemon, and no authority expansi
 ```bash
 bin/glaw-host manifest --json
 bin/glaw-host execute --tool glaw --args '["version"]' --json
-bin/glaw-host execute --tool glaw-loop --args '["status","--json"]' --matter "$SLUG" --json
+bin/glaw-host execute --tool glaw-loop --args '["status","--json"]' --matter "$SLUG" --role READER --actor "Host Reader" --json
 bin/glaw --headless --goal "summarize open gates for orchestrator" --json
 ```
 
@@ -82,3 +82,7 @@ decision, open gate list, next owner, next command, recent Chief decisions, ship
 compliance/government-adversary manifests, accounting-control failures for bank reconciliation or
 tax tie-out routing, and the human-seal authority boundary. A blocked report is useful signal: it
 tells the host exactly which GLAW department/gate owns the next fix.
+
+Host and MCP execution both enforce RBAC at the embedding boundary. Pass `role` and `actor`
+(`READER` for status/report calls, `WRITER` for workpaper-producing tools, `ADMIN` for
+human-seal operations) before the host runs the conscience guards or the tool itself.

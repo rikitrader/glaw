@@ -30,6 +30,8 @@ def tool_metadata() -> dict:
                     "properties": {
                         "args": {"type": "array", "items": {"type": "string"}},
                         "matter": {"type": "string"},
+                        "role": {"type": "string"},
+                        "actor": {"type": "string"},
                         "timeout": {"type": "integer", "minimum": 1, "maximum": 300},
                     },
                     "required": ["args"],
@@ -54,8 +56,10 @@ def execute_plugin(payload: dict[str, Any]) -> dict:
     tool = str(payload.get("tool", ""))
     args = payload.get("args", [])
     matter = str(payload.get("matter", ""))
+    role = str(payload.get("role", ""))
+    actor = str(payload.get("actor", ""))
     timeout = int(payload.get("timeout", 30) or 30)
-    data = execute(tool, args, matter=matter, timeout=timeout)
+    data = execute(tool, args, matter=matter, timeout=timeout, role=role, actor=actor)
     data["plugin"] = PLUGIN_NAME
     data["export"] = "execute"
     return data

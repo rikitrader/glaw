@@ -26,15 +26,24 @@ PY
 rc2=$?
 ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "manifest exposes tools and host safety contract"
 
-"$HOST" execute --tool glaw --args '["version"]' --json > "$TMP/exec-ok.json"; rc=$?
+"$HOST" execute --tool glaw --args '["version"]' --json > "$TMP/rbac-block.json"; rc=$?
+python3 - "$TMP/rbac-block.json" <<'PY'
+import json, sys
+data = json.load(open(sys.argv[1], encoding="utf-8"))
+sys.exit(0 if data["status"] == "blocked" and data.get("phase") == "rbac" else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 1 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "execute blocks without host RBAC role"
+
+"$HOST" execute --tool glaw --args '["version"]' --role READER --actor "Host Reader" --json > "$TMP/exec-ok.json"; rc=$?
 python3 - "$TMP/exec-ok.json" <<'PY'
 import json, sys
 data = json.load(open(sys.argv[1], encoding="utf-8"))
-ok = data["status"] == "pass" and data["pre_guard"]["status"] == "pass" and data["post_guard"]["status"] == "pass" and data["stdout"].strip()
+ok = data["status"] == "pass" and data["rbac"]["status"] == "pass" and data["pre_guard"]["status"] == "pass" and data["post_guard"]["status"] == "pass" and data["stdout"].strip()
 sys.exit(0 if ok else 1)
 PY
 rc2=$?
-ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "execute runs whitelisted tool through pre/post conscience guards"
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "execute runs whitelisted read tool through RBAC and pre/post conscience guards"
 
 "$HOST" execute --tool ../../bin/glaw-rbac --args '["roles"]' --json > "$TMP/path-block.json"; rc=$?
 ok "$([ "$rc" = 1 ] && grep -q 'not a whitelisted executable' "$TMP/path-block.json" && echo 1 || echo 0)" "execute blocks path traversal tool names"
@@ -42,7 +51,7 @@ ok "$([ "$rc" = 1 ] && grep -q 'not a whitelisted executable' "$TMP/path-block.j
 "$HOST" execute --tool glaw --args '"stage file"' --json > "$TMP/args-block.json"; rc=$?
 ok "$([ "$rc" = 1 ] && grep -q 'args must be a JSON array' "$TMP/args-block.json" && echo 1 || echo 0)" "execute requires argv array, not shell string"
 
-"$HOST" execute --tool glaw-irs-file --args '["submit","missing.json","--live"]' --matter host-test --json > "$TMP/live-block.json"; rc=$?
+"$HOST" execute --tool glaw-irs-file --args '["submit","missing.json","--live"]' --matter host-test --role ADMIN --actor "Host Admin" --json > "$TMP/live-block.json"; rc=$?
 python3 - "$TMP/live-block.json" <<'PY'
 import json, sys
 data = json.load(open(sys.argv[1], encoding="utf-8"))

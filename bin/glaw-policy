@@ -43,6 +43,7 @@ REQUIRED_DOCTOR_TESTS = (
     "citation_corpus_test:citation-corpus",
     "citation_typology_test:citation-typology",
     "groundedness_test:groundedness",
+    "compliance_audit_test:compliance-audit",
     "loop_test:orchestrator-loop",
     "golden_profile_test:golden-profiles",
     "memory_test:cross-matter-memory",

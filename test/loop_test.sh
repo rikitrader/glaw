@@ -77,6 +77,23 @@ PY
 rc2=$?
 ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "loop escalates after iteration cap without convergence"
 
+"$LOOP" status --json > "$TMP/loop-latched.json"; rc=$?
+python3 - "$TMP/loop-latched.json" <<'PY'
+import json
+import sys
+
+data = json.load(open(sys.argv[1], encoding="utf-8"))
+ok = (
+    data.get("quality_state") == "human_escalation_required"
+    and data.get("owner") == "human-oversight-board"
+    and data.get("latched_from")
+    and "remains latched" in data.get("reason", "")
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "loop keeps non-convergence escalation latched until oversight resume"
+
 "$LOOP" once --request-action file > "$TMP/loop-file.out" 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && grep -q 'HUMAN AUTHORITY BLOCKED' "$TMP/loop-file.out" && grep -q 'authority_blocked' "$TMP/matters/loop-routing/loop_decisions.jsonl" && echo 1 || echo 0)" "loop refuses and audits autonomous file request"
 

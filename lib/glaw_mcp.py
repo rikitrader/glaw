@@ -29,13 +29,15 @@ def tool_defs() -> list[dict]:
         },
         {
             "name": "glaw_execute",
-            "description": "Execute a whitelisted GLAW tool through argv-only glaw-host with pre/post conscience guards.",
+            "description": "Execute a whitelisted GLAW tool through argv-only glaw-host with RBAC plus pre/post conscience guards.",
             "inputSchema": {
                 "type": "object",
                 "properties": {
                     "tool": {"type": "string"},
                     "args": {"type": "array", "items": {"type": "string"}},
                     "matter": {"type": "string"},
+                    "role": {"type": "string"},
+                    "actor": {"type": "string"},
                     "timeout": {"type": "integer", "minimum": 1, "maximum": 300},
                 },
                 "required": ["tool", "args"],
@@ -63,6 +65,8 @@ def call_tool(name: str, arguments: dict | None = None) -> dict:
             args.get("args", []),
             matter=str(args.get("matter", "")),
             timeout=int(args.get("timeout", 30) or 30),
+            role=str(args.get("role", "")),
+            actor=str(args.get("actor", "")),
         )
         return {"content": text_content(data), "isError": data.get("status") != "pass"}
     return {
