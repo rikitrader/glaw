@@ -1,0 +1,286 @@
+#!/usr/bin/env python3
+"""glaw-sandbox - isolated failure-mode simulations for GLAW gates.
+
+Usage:
+  glaw-sandbox list [--json]
+  glaw-sandbox run [--scenario all|NAME] [--json]
+
+The sandbox never writes to the live matter store. Each scenario creates a
+temporary GLAW_HOME, runs real GLAW commands as black-box fixtures, and passes
+only when the expected fail-closed behavior is observable.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import subprocess
+import sys
+import tempfile
+from datetime import date, timedelta, timezone, datetime
+from pathlib import Path
+from typing import Callable
+
+ROOT = Path(__file__).resolve().parents[1]
+BIN = ROOT / "bin"
+sys.path.insert(0, str(ROOT / "lib"))
+
+
+AUTHORITY = (
+    "Simulation only; no filing, signing, serving, transmitting, charging, "
+    "paying, or live submission authority."
+)
+
+
+def now() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def run_cmd(args: list[str], *, home: Path, cwd: Path | None = None) -> dict:
+    env = os.environ.copy()
+    env["GLAW_HOME"] = str(home)
+    proc = subprocess.run(
+        args,
+        cwd=str(cwd or ROOT),
+        env=env,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.PIPE,
+        check=False,
+    )
+    return {
+        "args": args,
+        "returncode": proc.returncode,
+        "stdout": proc.stdout,
+        "stderr": proc.stderr,
+    }
+
+
+def parse_json(result: dict) -> dict:
+    try:
+        return json.loads(result.get("stdout") or "{}")
+    except json.JSONDecodeError:
+        return {}
+
+
+def check(check_id: str, ok: bool, detail: str) -> dict:
+    return {"id": check_id, "status": "pass" if ok else "fail", "detail": detail}
+
+
+def scenario(name: str, checks: list[dict], *, home: Path) -> dict:
+    failed = [item for item in checks if item["status"] != "pass"]
+    return {
+        "name": name,
+        "status": "pass" if not failed else "fail",
+        "home": str(home),
+        "checks": checks,
+    }
+
+
+def make_matter(home: Path, title: str) -> str:
+    result = run_cmd([str(BIN / "glaw"), "matter", "new", title], home=home)
+    if result["returncode"] != 0:
+        raise RuntimeError(result["stderr"] or result["stdout"] or "matter new failed")
+    slug = title.lower().replace(" ", "-")
+    return slug
+
+
+def simulate_conscience_human_act() -> dict:
+    with tempfile.TemporaryDirectory(prefix="glaw-sandbox-") as tmp:
+        home = Path(tmp)
+        slug = make_matter(home, "Sandbox Authority")
+        result = run_cmd(
+            [
+                str(BIN / "glaw-conscience"),
+                "check-call",
+                "--command",
+                "bin/glaw-loop once --request-action file",
+                "--matter",
+                slug,
+                "--json",
+            ],
+            home=home,
+        )
+        payload = parse_json(result)
+        failure_ids = {item.get("id") for item in payload.get("failures", [])}
+        checks = [
+            check("conscience_blocks_human_only_action", result["returncode"] == 1, "human-only request must be blocked"),
+            check("failure_id_is_explicit", "human_only_requested_action" in failure_ids, "failure must name human_only_requested_action"),
+        ]
+        return scenario("conscience-human-act", checks, home=home)
+
+
+def simulate_oversight_kill_switch() -> dict:
+    with tempfile.TemporaryDirectory(prefix="glaw-sandbox-") as tmp:
+        home = Path(tmp)
+        slug = make_matter(home, "Sandbox Oversight")
+        halt = run_cmd(
+            [str(BIN / "glaw-oversight"), "halt", "--by", "Sandbox Board", "--reason", "simulation halt", "--json"],
+            home=home,
+        )
+        status = run_cmd([str(BIN / "glaw-loop"), "status", "--matter", slug, "--json"], home=home)
+        payload = parse_json(status)
+        checks = [
+            check("halt_command_passes", halt["returncode"] == 0, "oversight halt should record kill-switch"),
+            check("loop_reports_oversight_gate", payload.get("next_gate") == "oversight", "loop must stop at oversight gate"),
+            check("loop_routes_to_board", payload.get("owner") == "human-oversight-board", "owner must be human oversight board"),
+            check("loop_reports_human_escalation", payload.get("quality_state") == "human_escalation_required", "halted loop must report human escalation"),
+        ]
+        return scenario("oversight-kill-switch", checks, home=home)
+
+
+def simulate_deadline_daemon() -> dict:
+    with tempfile.TemporaryDirectory(prefix="glaw-sandbox-") as tmp:
+        home = Path(tmp)
+        make_matter(home, "Sandbox Deadline")
+        evidence = home / "matters" / "sandbox-deadline" / "evidence"
+        evidence.mkdir(parents=True, exist_ok=True)
+        (evidence / "source.txt").write_text("deadline source\n", encoding="utf-8")
+        due = (date.today() + timedelta(days=5)).isoformat()
+        docket = run_cmd(
+            [
+                str(BIN / "glaw"),
+                "docket",
+                "add",
+                "--owner",
+                "sandbox docket",
+                "--source",
+                "SRC-0001 court order",
+                due,
+                "response deadline",
+            ],
+            home=home,
+        )
+        run = run_cmd([str(BIN / "glaw-daemon"), "once", "--json"], home=home)
+        payload = parse_json(run)
+        actions = payload.get("actions", [])
+        checks = [
+            check("docket_row_created", docket["returncode"] == 0, "source-backed deadline should be accepted"),
+            check("daemon_attention_required", run["returncode"] == 1 and payload.get("status") == "attention_required", "upcoming deadline must require attention"),
+            check("deadline_severity_high", bool(actions) and actions[0].get("severity") == "high", "deadline inside 7 days must be high severity"),
+            check("daemon_routes_through_loop", bool(actions) and "glaw-loop once" in actions[0].get("next_command", ""), "daemon must route through glaw-loop"),
+        ]
+        return scenario("deadline-daemon", checks, home=home)
+
+
+def simulate_jurisdiction_pack_fail() -> dict:
+    with tempfile.TemporaryDirectory(prefix="glaw-sandbox-") as tmp:
+        home = Path(tmp)
+        bad_pack = home / "bad-pack.json"
+        bad_pack.write_text(
+            json.dumps(
+                {
+                    "matter": "sandbox",
+                    "jurisdictions": [],
+                    "source_ids": [],
+                    "governing_law": {},
+                    "forum": {},
+                    "tax": {},
+                    "licenses": [],
+                    "filings": [],
+                    "deadlines": [],
+                    "adversarial_lenses": [],
+                }
+            ),
+            encoding="utf-8",
+        )
+        result = run_cmd([str(BIN / "glaw-jurisdiction-pack"), "validate", str(bad_pack), "--json"], home=home)
+        payload = parse_json(result)
+        checks = [
+            check("jurisdiction_gate_fails_bad_pack", result["returncode"] == 1, "empty jurisdiction pack must fail"),
+            check("failure_status_is_clear", payload.get("status") == "fail", "JSON status must be fail"),
+            check("failure_has_findings", bool(payload.get("failures") or payload.get("findings")), "failure must identify findings"),
+        ]
+        return scenario("jurisdiction-pack-fail", checks, home=home)
+
+
+def simulate_profile_map() -> dict:
+    import glaw_profiles
+
+    profile_names = sorted(set(glaw_profiles.COUNCIL_PROFILES) | set(glaw_profiles.ADVERSARIAL_PROFILES))
+    missing_profiles: list[str] = []
+    unmapped_reviewers: list[str] = []
+    for profile in profile_names:
+        council = glaw_profiles.COUNCIL_PROFILES.get(profile, ())
+        adversarial = glaw_profiles.ADVERSARIAL_PROFILES.get(profile, ())
+        if not council or not adversarial:
+            missing_profiles.append(profile)
+        for reviewer in list(council) + list(adversarial):
+            if reviewer not in glaw_profiles.REVIEWER_SKILL_MAP:
+                unmapped_reviewers.append(f"{profile}:{reviewer}")
+    checks = [
+        check("profiles_have_council_and_adversaries", not missing_profiles, "profiles with missing panels: " + ", ".join(missing_profiles[:10]) if missing_profiles else "all profiles have panels"),
+        check("reviewers_map_to_skills", not unmapped_reviewers, "unmapped reviewers: " + ", ".join(unmapped_reviewers[:10]) if unmapped_reviewers else "all reviewers map to skills"),
+    ]
+    return {
+        "name": "profile-map",
+        "status": "pass" if all(item["status"] == "pass" for item in checks) else "fail",
+        "home": "in-process",
+        "checks": checks,
+    }
+
+
+SCENARIOS: dict[str, tuple[str, Callable[[], dict]]] = {
+    "conscience-human-act": ("Conscience blocks autonomous human-only requested acts.", simulate_conscience_human_act),
+    "oversight-kill-switch": ("Oversight halt stops glaw-loop and routes to the Board.", simulate_oversight_kill_switch),
+    "deadline-daemon": ("Daemon surfaces sourced deadlines and routes through glaw-loop.", simulate_deadline_daemon),
+    "jurisdiction-pack-fail": ("Jurisdiction pack gate fails closed on unsupported matrices.", simulate_jurisdiction_pack_fail),
+    "profile-map": ("Profiles resolve council/adversarial reviewers to skills.", simulate_profile_map),
+}
+
+
+def cmd_list(args: argparse.Namespace) -> int:
+    payload = {
+        "status": "pass",
+        "scenarios": [{"name": name, "description": desc} for name, (desc, _fn) in SCENARIOS.items()],
+        "authority": AUTHORITY,
+    }
+    if args.json:
+        print(json.dumps(payload, indent=2, sort_keys=False))
+    else:
+        print("GLAW SANDBOX SCENARIOS")
+        for item in payload["scenarios"]:
+            print(f"- {item['name']}: {item['description']}")
+        print(AUTHORITY)
+    return 0
+
+
+def cmd_run(args: argparse.Namespace) -> int:
+    selected = list(SCENARIOS) if args.scenario == "all" else [args.scenario]
+    reports = [SCENARIOS[name][1]() for name in selected]
+    failed = [report for report in reports if report["status"] != "pass"]
+    payload = {
+        "ts": now(),
+        "status": "pass" if not failed else "fail",
+        "scenario": args.scenario,
+        "scenarios": reports,
+        "authority": AUTHORITY,
+    }
+    if args.json:
+        print(json.dumps(payload, indent=2, sort_keys=False))
+    else:
+        print(f"GLAW SANDBOX {payload['status'].upper()}: {args.scenario}")
+        for report in reports:
+            print(f"  {report['status']}: {report['name']}")
+            for item in report["checks"]:
+                print(f"    {item['status']}: {item['id']} - {item['detail']}")
+        print(AUTHORITY)
+    return 0 if not failed else 1
+
+
+def main(argv: list[str]) -> int:
+    ap = argparse.ArgumentParser(prog="glaw-sandbox")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    p_list = sub.add_parser("list")
+    p_list.add_argument("--json", action="store_true")
+    p_list.set_defaults(func=cmd_list)
+    p_run = sub.add_parser("run")
+    p_run.add_argument("--scenario", choices=["all", *SCENARIOS.keys()], default="all")
+    p_run.add_argument("--json", action="store_true")
+    p_run.set_defaults(func=cmd_run)
+    args = ap.parse_args(argv)
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))

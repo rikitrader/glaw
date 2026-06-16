@@ -225,9 +225,9 @@ The more autonomous GLAW gets, the more these bind. They are the organism's cons
 | **No host embedding** | standalone skill | Extism plugin + MCP + conscience adoption | 3 |
 | **Citations not corpus-backed** | model + `glaw-cites` | wired statute/case corpus (CAP/CourtListener/U.S.C./CFR) | 4 |
 | **No constitutional/legislative/judicial seats** | firm-only | the Branches (`/glaw-constitutional` …) | 4 |
-| **Automated tests need broader golden coverage** | doctor + hard gates + per-profile golden matters | golden-output tests per seat + sandbox sim | 2–6 |
+| **Automated tests need broader golden coverage** | doctor + hard gates + per-profile golden matters + `bin/glaw-sandbox` isolated failure-mode simulations | golden-output tests per seat and more scenario fixtures | 2–6 |
 | **Real filing connectivity is partial** | scaffolds (IRS/EFW2) | transmitter creds + EDGAR/court e-file (human-sealed) | 4–5 |
-| **Formal oversight tooling is early** | `/glaw-oversight-board` + `bin/glaw-oversight` kill-switch/ledger | standing Oversight Board policy packs + sandbox simulations | 6 |
+| **Formal oversight tooling is early** | `/glaw-oversight-board` + `bin/glaw-oversight` kill-switch/ledger + sandbox halt fixture | standing Oversight Board policy packs and deeper tabletop simulations | 6 |
 | **Single-jurisdiction bias is early** | `/glaw-jurisdiction` + `bin/glaw-jurisdiction-pack` require source-backed jurisdiction matrices | deeper country/state packs and local-counsel playbooks | 4–5 |
 
 ---
@@ -278,6 +278,11 @@ the seal stays human as a legal and ethics constraint.
   source-only standing goals, all-matter docket scanning, missed/upcoming deadline routing,
   `$GLAW_HOME/daemon/runs.jsonl` audit rows, and oversight kill-switch compliance. It performs
   one scan per invocation so cron/host schedulers can call it without gaining filing authority.
+- ✅ **P2-G7 · Sandbox simulation runner**: `/glaw-sandbox` + `bin/glaw-sandbox` create
+  isolated temporary `$GLAW_HOME` fixtures and run real commands to prove fail-closed behavior
+  for conscience human-only requests, Oversight Board kill-switch routing, daemon deadline
+  scans, jurisdiction pack failures, and profile-map consistency. `bin/glaw-doctor` runs the
+  sandbox regression so autonomy claims stay executable, not just documented.
 
 ### Phase 3 (Harness Integration) — add
 - ✅ **P3-G1 · Policy-as-fail-closed-CI-gate + observability**: `bin/glaw-policy check` now
