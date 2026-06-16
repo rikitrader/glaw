@@ -448,6 +448,13 @@ def accounting_control_manifest(d: Path, profile: str, source_manifest: list[dic
     elif not cited:
         manifest["missing"].append("current source evidence id")
 
+    ledger = control.get("ledger", {})
+    if ledger.get("status") != "pass":
+        manifest["missing"].append("ledger.status=pass")
+    manifest["artifact_hashes"].append(
+        _artifact_hash(str(ledger.get("artifact", "")), d, "ledger", manifest["missing"])
+    )
+
     books = control.get("books_doctor", {})
     if books.get("status") != "pass":
         manifest["missing"].append("books_doctor.status=pass")

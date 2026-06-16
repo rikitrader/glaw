@@ -164,12 +164,17 @@ def main() -> int:
     tax_src = Path(args.tax_tieout) if args.tax_tieout else None
 
     books_out = run_books_doctor(ledger, rec_src, d)
+    ledger_dest = copy_artifact(ledger, d / "workpapers" / "ledger.json")
     rec_dest = copy_artifact(rec_src, d / "workpapers" / "bank-rec.json")
     rec = read_json(rec_dest)
     payload = {
         "schema_version": 1,
         "status": "pass",
         "source": args.source,
+        "ledger": {
+            "status": "pass",
+            "artifact": rel(ledger_dest, d),
+        },
         "books_doctor": {
             "status": "pass",
             "artifact": rel(books_out, d),

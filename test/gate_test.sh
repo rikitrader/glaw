@@ -309,6 +309,7 @@ packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before accounting control manifest"
 mkdir -p "$M/workpapers"
+printf '{"rows":[],"audit":[]}\n' > "$M/workpapers/ledger.json"
 printf 'books doctor pass\n' > "$M/workpapers/books-doctor.txt"
 printf '{"reconciled":true,"unreconciled_difference":"0","book_only":[],"bank_only":[]}\n' > "$M/workpapers/bank-rec.json"
 cat > "$M/accounting_control.json" <<'JSON'
@@ -316,6 +317,10 @@ cat > "$M/accounting_control.json" <<'JSON'
   "schema_version": 1,
   "status": "pass",
   "source": "SRC-0001 bank statement, ledger, bank reconciliation, and tax tie-out source package",
+  "ledger": {
+    "status": "pass",
+    "artifact": "workpapers/ledger.json"
+  },
   "books_doctor": {
     "status": "pass",
     "artifact": "workpapers/books-doctor.txt",
@@ -344,6 +349,12 @@ packet["accounting_control_manifest"] = {
     "missing": [],
     "sha256": hashlib.sha256(control.read_bytes()).hexdigest(),
     "artifact_hashes": [
+        {
+            "label": "ledger",
+            "path": "workpapers/ledger.json",
+            "sha256": hashlib.sha256((d / "workpapers/ledger.json").read_bytes()).hexdigest(),
+            "size_bytes": (d / "workpapers/ledger.json").stat().st_size,
+        },
         {
             "label": "books_doctor",
             "path": "workpapers/books-doctor.txt",
@@ -455,6 +466,11 @@ row["decision_hash"] = hashlib.sha256(
 open(sys.argv[1], "w", encoding="utf-8").write(json.dumps(row) + "\n")
 PY
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after all file gates"
+cp "$M/workpapers/ledger.json" "$M/workpapers/ledger.baseline.json"
+printf '{"rows":[{"tampered":true}]}\n' > "$M/workpapers/ledger.json"
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-packet accounting ledger tamper"
+cp "$M/workpapers/ledger.baseline.json" "$M/workpapers/ledger.json"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact accounting ledger restored"
 cp "$M/workpapers/books-doctor.txt" "$M/workpapers/books-doctor.baseline.txt"
 printf 'tampered workpaper\n' >> "$M/workpapers/books-doctor.txt"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-packet accounting workpaper tamper"
