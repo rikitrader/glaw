@@ -217,7 +217,7 @@ from urllib.parse import urlparse
 d = pathlib.Path(sys.argv[1])
 root = pathlib.Path(sys.argv[2])
 sys.path.insert(0, str(root / "lib"))
-from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, REVIEWER_SKILL_MAP, TRACKS
+from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, REVIEWER_SKILL_MAP, TRACKS, profile_for_track
 
 GENERIC_INTAKE_REVIEWER_RE = re.compile(
     r"^\s*(?:intake\s+)?(?:reviewer|operator|user|clerk|agent|professional|counsel)\s*$"
@@ -831,6 +831,11 @@ except json.JSONDecodeError:
 missing_intake = intake_missing_fields(intake)
 if missing_intake:
     print("current intake.json incomplete: " + ", ".join(missing_intake))
+    sys.exit(1)
+track = intake.get("universal", {}).get("workflow_track") or intake.get("workflow_track")
+expected_profile = profile_for_track(track)
+if profile != expected_profile:
+    print(f"final packet profile {profile} does not match intake workflow profile {expected_profile}")
     sys.exit(1)
 
 deliverables = [p for p in sorted(d.rglob("*")) if p.is_file() and is_external_text_deliverable(p)]

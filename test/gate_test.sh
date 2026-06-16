@@ -588,6 +588,18 @@ row["decision_hash"] = hashlib.sha256(
 open(sys.argv[1], "w", encoding="utf-8").write(json.dumps(row) + "\n")
 PY
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after all file gates"
+cp "$M/final_packet.json" "$M/final_packet.profile-baseline.json"
+python3 - "$M/final_packet.json" <<'PY'
+import json, sys
+p = sys.argv[1]
+packet = json.load(open(p, encoding="utf-8"))
+packet["workflow_profile"] = "tax"
+open(p, "w", encoding="utf-8").write(json.dumps(packet) + "\n")
+PY
+"$GATE" check file m >"$TMP/profile-mismatch.out" 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && grep -q 'does not match intake workflow profile accounting' "$TMP/profile-mismatch.out" && echo 1 || echo 0)" "file BLOCKED by final packet profile mismatch with intake"
+cp "$M/final_packet.profile-baseline.json" "$M/final_packet.json"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact final packet profile restored"
 cp "$M/workpapers/ledger.json" "$M/workpapers/ledger.baseline.json"
 printf '{"rows":[{"tampered":true}]}\n' > "$M/workpapers/ledger.json"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-packet accounting ledger tamper"

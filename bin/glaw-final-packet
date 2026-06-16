@@ -665,7 +665,15 @@ def cmd_build(args: argparse.Namespace) -> int:
     root = Path(__file__).resolve().parents[1]
     intake = read_json(d / "intake.json", {})
     intake_missing = intake_missing_fields(intake)
-    profile = args.profile if args.profile != "auto" else workflow_profile(intake)
+    derived_profile = workflow_profile(intake)
+    profile = args.profile if args.profile != "auto" else derived_profile
+    if profile not in COUNCIL_PROFILES or profile not in ADVERSARIAL_PROFILES:
+        raise SystemExit(f"ERROR: unknown workflow profile: {profile}")
+    if args.profile != "auto" and profile != derived_profile:
+        raise SystemExit(
+            "ERROR: final packet profile must match intake workflow profile "
+            f"({derived_profile}); got {profile}"
+        )
     timeline_rows = read_jsonl(d / "timeline.jsonl")
     red_flags = read_jsonl(d / "red_flags.jsonl")
     council = [r for r in read_jsonl(d / "council.jsonl") if r.get("profile") == profile]

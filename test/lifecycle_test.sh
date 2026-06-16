@@ -302,6 +302,8 @@ Attorney work-product - not legal advice. Prepared for licensed review.
 MD
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && [ -f "$TMP/matters/$SLUG/final_packet.json" ] && echo 1 || echo 0)" "final packet ready after council and red flags clear"
+"$PACKET" build --profile tax >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by explicit profile mismatch with intake"
 python3 - "$TMP/matters/$SLUG/final_packet.json" <<'PY'
 import json, sys
 p = sys.argv[1]
