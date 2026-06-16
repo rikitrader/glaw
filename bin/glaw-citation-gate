@@ -17,6 +17,10 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
 
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "lib"))
+from glaw_groundedness import audit_matter
+
 
 BLOCKING = {"pending", "needs-substitute", "struck", "weak"}
 DEFECT_TYPES = {"incorrect", "misgrounded", "ungrounded", "incomplete"}
@@ -289,6 +293,18 @@ def cmd_complete(args: argparse.Namespace) -> int:
     rc = cmd_status(args)
     if rc != 0:
         return rc
+    groundedness = audit_matter(d)
+    groundedness["ts"] = now()
+    groundedness["matter"] = d.name
+    (d / "groundedness.json").write_text(
+        json.dumps(groundedness, indent=2, sort_keys=False) + "\n",
+        encoding="utf-8",
+    )
+    if groundedness["status"] != "pass":
+        print("CITATIONS BLOCKED: groundedness audit failed")
+        for failure in groundedness.get("failures", []):
+            print(f"  {failure}")
+        return 1
     timeline(d, "citations_verified")
     timeline(d, "citation_gate_complete")
     print("CITATIONS COMPLETE")

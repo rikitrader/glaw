@@ -283,11 +283,13 @@ the seal stays human as a legal and ethics constraint.
   rows now require a support summary, and failed rows must classify the defect as **incorrect**,
   **misgrounded**, **ungrounded**, or **incomplete**. `glaw-gate` revalidates the same contract so
   manual ledger edits cannot bypass the citation typology.
-- **P4-G3 · Auditable groundedness scoring** (HalluGraph-style): Entity-Grounding +
-  Relation-Preservation metrics with a full audit trail from each assertion back to source
-  passages — composes with GLAW's existing SRC-#### + SHA-256 hashing.
+- ✅ **P4-G3 · Auditable groundedness scoring**: `bin/glaw-groundedness` computes
+  Entity-Grounding + Relation-Preservation metrics for verified citation rows against the
+  captured corpus segment, writes `groundedness.json`, and `glaw-citation-gate complete` blocks
+  if the score is below threshold. The audit trail carries citation row hash, source hash, and
+  segment hash.
 
-*Suggested build order: P3 host/observability → P4-G3 groundedness scoring.*
+*Suggested build order: P3 host/observability → P3 RBAC/SOC2 mapping.*
 
 ---
 

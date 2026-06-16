@@ -366,6 +366,7 @@ REQUIRED_GATE_ARTIFACTS = (
     "ethics.json",
     "citation_corpus.jsonl",
     "citations.jsonl",
+    "groundedness.json",
     "council.jsonl",
     "adversarial.jsonl",
 )

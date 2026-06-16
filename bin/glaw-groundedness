@@ -1,0 +1,76 @@
+#!/usr/bin/env python3
+"""glaw-groundedness - audit citation propositions against captured corpus segments.
+
+Usage:
+  glaw-groundedness audit [--matter <slug>] [--json]
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "lib"))
+from glaw_groundedness import audit_matter
+
+
+def now() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def home() -> Path:
+    return Path(os.environ.get("GLAW_HOME", str(Path.home() / ".glaw")))
+
+
+def active_slug() -> str:
+    p = home() / ".active"
+    return p.read_text(encoding="utf-8").strip() if p.exists() else ""
+
+
+def matter_dir(slug: str | None) -> Path:
+    s = slug or active_slug()
+    if not s:
+        raise SystemExit("ERROR: no active matter. Run `glaw matter new \"<name>\"` first.")
+    d = home() / "matters" / s
+    if not d.is_dir():
+        raise SystemExit(f"ERROR: matter not found: {s}")
+    return d
+
+
+def cmd_audit(args: argparse.Namespace) -> int:
+    d = matter_dir(args.matter)
+    result = audit_matter(d)
+    result["ts"] = now()
+    result["matter"] = d.name
+    (d / "groundedness.json").write_text(json.dumps(result, indent=2, sort_keys=False) + "\n", encoding="utf-8")
+    if args.json:
+        print(json.dumps(result, indent=2, sort_keys=False))
+    else:
+        print(f"GROUNDEDNESS {d.name}: {result['status']}")
+        for row in result["rows"]:
+            print(
+                f"  {row['citation_id']} entity={row['entity_grounding']} "
+                f"relation={row['relation_preservation']} corpus={row['corpus_id']}"
+            )
+        for failure in result["failures"]:
+            print(f"  BLOCKED: {failure}")
+    return 0 if result["status"] == "pass" else 1
+
+
+def main() -> int:
+    ap = argparse.ArgumentParser(prog="glaw-groundedness")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    p = sub.add_parser("audit")
+    p.add_argument("--matter", default=None)
+    p.add_argument("--json", action="store_true")
+    p.set_defaults(func=cmd_audit)
+    args = ap.parse_args()
+    return args.func(args)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

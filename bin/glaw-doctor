@@ -143,7 +143,7 @@ declare -a TOOLS=(
   "glaw-loop|status"
   "glaw-learnings|stats" "glaw-reflect|"
   "glaw-contract-score|scaffold" "glaw-publish|" "glaw-redline|" "glaw-redline-docx|" "glaw-chief-decision|"
-  "glaw-review-chain|" "glaw-adversarial|" "glaw-ethics|" "glaw-upl-check|" "glaw-citation-corpus|status" "glaw-citation-gate|" "glaw-docket-gate|"
+  "glaw-review-chain|" "glaw-adversarial|" "glaw-ethics|" "glaw-upl-check|" "glaw-citation-corpus|status" "glaw-citation-gate|" "glaw-groundedness|audit" "glaw-docket-gate|"
 )
 for entry in "${TOOLS[@]}"; do
   tool="${entry%%|*}"; args="${entry#*|}"
@@ -489,7 +489,7 @@ for p in "$GLAW"/bin/matter-ops/*.py; do
 done
 [ "$mo_fail" = 0 ] && ok "all $mo_n bin/matter-ops/*.py compile (incl. facts_validate/facts_gate guard)"
 # regression tests (safety-critical paths): launch-guard, hard gates, full lifecycle, profile routing
-for t in facts_validate_test:launch-guard gate_test:hard-gate lifecycle_test:full-lifecycle tax_profile_test:tax-profile sec_reporting_profile_test:sec-reporting-profile authority_gate_test:authority-gate conscience_test:autonomous-conscience citation_corpus_test:citation-corpus citation_typology_test:citation-typology loop_test:orchestrator-loop golden_profile_test:golden-profiles memory_test:cross-matter-memory; do
+for t in facts_validate_test:launch-guard gate_test:hard-gate lifecycle_test:full-lifecycle tax_profile_test:tax-profile sec_reporting_profile_test:sec-reporting-profile authority_gate_test:authority-gate conscience_test:autonomous-conscience citation_corpus_test:citation-corpus citation_typology_test:citation-typology groundedness_test:groundedness loop_test:orchestrator-loop golden_profile_test:golden-profiles memory_test:cross-matter-memory; do
   script="$GLAW/test/${t%%:*}.sh"; name="${t#*:}"
   [ -x "$script" ] || continue
   if "$script" >/tmp/glaw-$$.out 2>&1; then

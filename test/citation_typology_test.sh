@@ -40,8 +40,8 @@ ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "incorrect defect type can be recorded
 ok "$([ "$rc" = 1 ] && grep -q 'incorrect' "$TMP/status-blocked.out" && echo 1 || echo 0)" "status prints typed blocking citation"
 
 "$CORPUS" capture --id CORP-0001 --source-url "https://uscode.house.gov/" \
-  --text "26 U.S.C. 6001 supports recordkeeping duties for tax substantiation." \
-  --segment "supports recordkeeping duties" >/dev/null; rc=$?
+  --text "26 U.S.C. 6001 says books must be retained and supports recordkeeping duties for tax substantiation." \
+  --segment "books must be retained and supports recordkeeping duties" >/dev/null; rc=$?
 ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "citation corpus captures source and segment hashes"
 
 "$CITES" record --id C-0002 --proposition "Books must be retained" --authority "26 U.S.C. 6001" \

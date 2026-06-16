@@ -143,7 +143,7 @@ ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "citation verified row blocked without
 ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "citation verified row blocked without http source URL"
 "$CITES" record --id C-0001 --proposition 'tax return must tie to books' --authority '26 U.S.C. § 6001' --status verified --source-url 'https://' --reviewer legal-research >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "citation verified row blocked by malformed http source URL"
-"$CORPUS" capture --id CORP-0001 --source-url 'https://uscode.house.gov/' --text '26 U.S.C. § 6001 supports maintaining records sufficient to establish tax liability.' --segment 'records sufficient to establish tax liability' >/dev/null
+"$CORPUS" capture --id CORP-0001 --source-url 'https://uscode.house.gov/' --text '26 U.S.C. § 6001 supports maintaining books and records so the tax return can tie to books and establish tax liability.' --segment 'tax return can tie to books and establish tax liability' >/dev/null
 "$CITES" record --id C-0001 --proposition 'tax return must tie to books' --authority '26 U.S.C. § 6001' --status verified --source-url 'https://uscode.house.gov/' --reviewer legal-research --support-summary 'The cited section supports maintaining records sufficient to establish tax liability.' --corpus-id CORP-0001 >/dev/null
 cp "$TMP/matters/$SLUG/citations.jsonl" "$TMP/matters/$SLUG/citations.clean.jsonl"
 python3 - "$TMP/matters/$SLUG/citations.jsonl" <<'PY'

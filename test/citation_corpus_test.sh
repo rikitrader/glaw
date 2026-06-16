@@ -14,8 +14,8 @@ CITES="$ROOT/bin/glaw-citation-gate"
 "$GLAW" matter new "Citation Corpus" >/dev/null
 
 "$CORPUS" capture --id CORP-1 --source-url "https://uscode.house.gov/" \
-  --text "26 U.S.C. 6001 supports records sufficient to establish tax liability." \
-  --segment "records sufficient to establish tax liability" >/dev/null; rc=$?
+  --text "26 U.S.C. 6001 supports tax records sufficient to establish liability and support the return." \
+  --segment "tax records sufficient to establish liability" >/dev/null; rc=$?
 ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "corpus capture writes source and segment hashes"
 
 "$CORPUS" status >/dev/null 2>&1; rc=$?
@@ -29,7 +29,7 @@ ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "citation record blocks corpus/source-
 
 "$CITES" record --id C-1 --proposition "Tax records must support the return" \
   --authority "26 U.S.C. 6001" --status verified --source-url "https://uscode.house.gov/" \
-  --reviewer legal-research --support-summary "The captured segment supports recordkeeping substantiation." \
+  --reviewer legal-research --support-summary "The captured segment supports tax records sufficient to establish liability." \
   --corpus-id CORP-1 >/dev/null; rc=$?
 ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "citation record accepts matching corpus id"
 
