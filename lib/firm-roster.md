@@ -15,6 +15,7 @@ domain below maps to a seat.
 | ReasoningBank | `/glaw-reasoningbank` | Trajectory store (task→verdict→outcome→score) + outcome-aware retrieval; distills to `glaw-learnings`, mirrors to Qdrant/AgentDB |
 | Forms library + fill-engine | `/glaw-forms` | Picks the right SEC-derived master (option/plan/RSU/SAFE/note), fills from the cap table, renders house style, gates issuance |
 | Review bench | `/glaw-autocounsel` | Runs strategy + structure + adversarial back-to-back |
+| Autonomy daemon | `/glaw-daemon` | Source-only standing-goal and docket watcher. Engine: `bin/glaw-daemon`; scans all matters, routes via `glaw-loop`, and stops under the Oversight Board kill-switch |
 | Oversight Board | `/glaw-oversight-board` | Human-governance kill-switch, non-convergence escalation, high-impact autonomy review, and Board decision ledger. Engine: `bin/glaw-oversight`; `glaw-loop` stops while halted |
 | General Counsel | `/glaw-ethics-conflicts` | Conflicts, engagement letters, RPC ethics, UPL gate |
 | Legal Research | `/glaw-legal-research` | Citation verification — anti-hallucination guardrail |

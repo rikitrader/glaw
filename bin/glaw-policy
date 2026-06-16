@@ -34,6 +34,7 @@ REQUIRED_DOCTOR_TESTS = (
     "mcp_test:mcp-bridge",
     "extism_test:extism-contract",
     "headless_test:headless-report",
+    "daemon_test:standing-goal-daemon",
     "constitutional_test:constitutional-branch",
     "oversight_test:oversight-board",
     "conscience_test:autonomous-conscience",
@@ -47,6 +48,7 @@ REQUIRED_DOCTOR_TESTS = (
 REQUIRED_TOOL_SMOKES = (
     "glaw-policy|check",
     "glaw-headless|--goal",
+    "glaw-daemon|status",
     "glaw-host|manifest",
     "glaw-mcp|tools",
     "glaw-extism|tool_metadata",

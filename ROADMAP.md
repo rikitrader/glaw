@@ -274,6 +274,10 @@ the seal stays human as a legal and ethics constraint.
   provide a global halt/resume state, source-backed escalation ledger, RBAC ADMIN Board
   decisions, and `glaw-loop` now stops routing while the kill-switch is active. Non-converging
   loop routes are written to the oversight ledger instead of living only in `loop_decisions.jsonl`.
+- ✅ **P2-G6 · Standing-goal docket daemon**: `/glaw-daemon` + `bin/glaw-daemon` provide
+  source-only standing goals, all-matter docket scanning, missed/upcoming deadline routing,
+  `$GLAW_HOME/daemon/runs.jsonl` audit rows, and oversight kill-switch compliance. It performs
+  one scan per invocation so cron/host schedulers can call it without gaining filing authority.
 
 ### Phase 3 (Harness Integration) — add
 - ✅ **P3-G1 · Policy-as-fail-closed-CI-gate + observability**: `bin/glaw-policy check` now
