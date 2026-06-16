@@ -169,12 +169,17 @@ import json
 import pathlib
 import re
 import sys
+from urllib.parse import urlparse
 
 d = pathlib.Path(sys.argv[1])
 root = pathlib.Path(sys.argv[2])
 sys.path.insert(0, str(root / "lib"))
 from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, REVIEWER_SKILL_MAP, TRACKS
-HTTP_URL_RE = re.compile(r"^https?://", re.IGNORECASE)
+
+
+def valid_http_url(value):
+    parsed = urlparse(str(value).strip())
+    return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
 
 REQUIRED_INTAKE = (
     "matter_name",
@@ -973,7 +978,7 @@ for cid, row in latest_citations.items():
         not str(row.get("proposition", "")).strip()
         or not str(row.get("authority", "")).strip()
         or not str(row.get("reviewer", "")).strip()
-        or not HTTP_URL_RE.match(str(row.get("source_url", "")))
+        or not valid_http_url(row.get("source_url", ""))
     )
     if not cid or status in {"pending", "needs-substitute", "struck", "weak"} or verified_incomplete:
         blocking_citations.append(cid or row.get("authority") or "unnamed")

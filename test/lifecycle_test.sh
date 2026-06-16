@@ -132,6 +132,8 @@ cp "$TMP/matters/$SLUG/adversarial.clean.jsonl" "$TMP/matters/$SLUG/adversarial.
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked before citation gate completes"
 "$CITES" record --id C-0001 --proposition 'tax return must tie to books' --authority '26 U.S.C. § 6001' --status verified --source-url 'not-a-url' >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "citation verified row blocked without http source URL"
+"$CITES" record --id C-0001 --proposition 'tax return must tie to books' --authority '26 U.S.C. § 6001' --status verified --source-url 'https://' >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "citation verified row blocked by malformed http source URL"
 "$CITES" record --id C-0001 --proposition 'tax return must tie to books' --authority '26 U.S.C. § 6001' --status verified --source-url 'https://uscode.house.gov/' >/dev/null
 cp "$TMP/matters/$SLUG/citations.jsonl" "$TMP/matters/$SLUG/citations.clean.jsonl"
 python3 - "$TMP/matters/$SLUG/citations.jsonl" <<'PY'
