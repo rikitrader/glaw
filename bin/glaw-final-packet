@@ -548,6 +548,18 @@ def _read_accounting_artifact(path_text: str, d: Path, label: str, missing: list
     return data
 
 
+def _require_empty_array(data: dict, field: str, label: str, missing: list[str]) -> None:
+    if field not in data:
+        missing.append(f"{label}.artifact.{field} array")
+        return
+    value = data.get(field)
+    if not isinstance(value, list):
+        missing.append(f"{label}.artifact.{field} array")
+        return
+    if value:
+        missing.append(f"{label}.artifact.{field} empty")
+
+
 def accounting_control_manifest(d: Path, profile: str, source_manifest: list[dict]) -> dict:
     required = profile in ACCOUNTING_CONTROL_PROFILES
     path = d / "accounting_control.json"
@@ -680,12 +692,11 @@ def accounting_control_manifest(d: Path, profile: str, source_manifest: list[dic
                 manifest["missing"].append("audit_tieout.artifact.icfr_reviewed=true")
             if not _boolish(audit_artifact.get("pcaob_reviewed")):
                 manifest["missing"].append("audit_tieout.artifact.pcaob_reviewed=true")
-            if audit_artifact.get("open_deficiencies") not in ([], None):
-                manifest["missing"].append("audit_tieout.artifact.open_deficiencies empty")
-            if audit_artifact.get("material_weaknesses") not in ([], None):
-                manifest["missing"].append("audit_tieout.artifact.material_weaknesses empty")
-            if audit_artifact.get("unresolved_audit_differences") not in ([], None):
-                manifest["missing"].append("audit_tieout.artifact.unresolved_audit_differences empty")
+            _require_empty_array(audit_artifact, "open_deficiencies", "audit_tieout", manifest["missing"])
+            _require_empty_array(audit_artifact, "material_weaknesses", "audit_tieout", manifest["missing"])
+            _require_empty_array(
+                audit_artifact, "unresolved_audit_differences", "audit_tieout", manifest["missing"]
+            )
 
     if manifest["missing"]:
         manifest["status"] = "fail"

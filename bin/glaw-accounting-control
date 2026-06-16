@@ -165,6 +165,15 @@ def tax_tieout_block(path: Path | None, d: Path, required: bool) -> dict | None:
     return block
 
 
+def require_list_field(data: dict, key: str) -> list:
+    if key not in data:
+        raise SystemExit(f"ERROR: SEC audit tie-out requires explicit {key} array")
+    value = data.get(key)
+    if not isinstance(value, list):
+        raise SystemExit(f"ERROR: SEC audit tie-out {key} must be a JSON array")
+    return value
+
+
 def audit_tieout_block(path: Path | None, d: Path, required: bool) -> dict | None:
     if path is None:
         if required:
@@ -175,9 +184,9 @@ def audit_tieout_block(path: Path | None, d: Path, required: bool) -> dict | Non
     financial_statements_tie = boolish(data.get("financial_statements_tie"))
     icfr_reviewed = boolish(data.get("icfr_reviewed"))
     pcaob_reviewed = boolish(data.get("pcaob_reviewed"))
-    open_deficiencies = data.get("open_deficiencies") or []
-    material_weaknesses = data.get("material_weaknesses") or []
-    unresolved_audit_differences = data.get("unresolved_audit_differences") or []
+    open_deficiencies = require_list_field(data, "open_deficiencies")
+    material_weaknesses = require_list_field(data, "material_weaknesses")
+    unresolved_audit_differences = require_list_field(data, "unresolved_audit_differences")
     block = {
         "status": "pass"
         if (

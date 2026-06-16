@@ -131,8 +131,20 @@ cat > "$M/workpapers/audit-tieout-bad.json" <<'JSON'
   "unresolved_audit_differences": []
 }
 JSON
+cat > "$M/workpapers/audit-tieout-malformed.json" <<'JSON'
+{
+  "financial_statements_tie": true,
+  "icfr_reviewed": true,
+  "pcaob_reviewed": true,
+  "open_deficiencies": {},
+  "material_weaknesses": [],
+  "unresolved_audit_differences": []
+}
+JSON
 "$CONTROL" --matter "$SLUG" --profile sec-reporting --source "SRC-0001 SEC reporting ledger and bank reconciliation support reviewed" --ledger "$M/workpapers/ledger.json" --bank-rec "$M/workpapers/bank-rec-input.json" >/dev/null 2>"$TMP/control-missing-audit.out"; rc=$?
 ok "$([ "$rc" = 1 ] && grep -q 'audit-tieout' "$TMP/control-missing-audit.out" && echo 1 || echo 0)" "SEC accounting control blocked without audit tie-out"
+"$CONTROL" --matter "$SLUG" --profile sec-reporting --source "SRC-0001 SEC reporting ledger and bank reconciliation support reviewed" --ledger "$M/workpapers/ledger.json" --bank-rec "$M/workpapers/bank-rec-input.json" --audit-tieout "$M/workpapers/audit-tieout-malformed.json" >/dev/null 2>"$TMP/control-malformed-audit.out"; rc=$?
+ok "$([ "$rc" = 1 ] && grep -q 'open_deficiencies must be a JSON array' "$TMP/control-malformed-audit.out" && echo 1 || echo 0)" "SEC accounting control blocked by malformed audit issue array"
 "$CONTROL" --matter "$SLUG" --profile sec-reporting --source "SRC-0001 SEC reporting ledger and bank reconciliation support reviewed" --ledger "$M/workpapers/ledger.json" --bank-rec "$M/workpapers/bank-rec-input.json" --audit-tieout "$M/workpapers/audit-tieout-bad.json" >/dev/null 2>"$TMP/control-bad-audit.out"; rc=$?
 ok "$([ "$rc" = 1 ] && grep -q 'SEC audit tie-out' "$TMP/control-bad-audit.out" && echo 1 || echo 0)" "SEC accounting control blocked by open audit deficiency"
 cat > "$M/workpapers/audit-tieout-good.json" <<'JSON'
@@ -195,6 +207,47 @@ decision_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
 PY
 "$GLAW" stage file >/dev/null 2>"$TMP/stage-file-audit-tamper.out"; rc=$?
 ok "$([ "$rc" = 1 ] && grep -q 'current accounting control is incomplete' "$TMP/stage-file-audit-tamper.out" && echo 1 || echo 0)" "SEC file gate blocks audit tie-out workpaper content even with matching packet hashes"
+python3 - "$M" <<'PY'
+import hashlib
+import json
+import pathlib
+import sys
+
+d = pathlib.Path(sys.argv[1])
+audit_path = d / "workpapers" / "audit-tieout.json"
+audit_path.write_text(json.dumps({
+    "financial_statements_tie": True,
+    "icfr_reviewed": True,
+    "pcaob_reviewed": True,
+    "open_deficiencies": {},
+    "material_weaknesses": [],
+    "unresolved_audit_differences": [],
+}) + "\n", encoding="utf-8")
+
+packet_path = d / "final_packet.json"
+packet = json.loads(packet_path.read_text(encoding="utf-8"))
+manifest = packet["accounting_control_manifest"]
+for item in manifest["artifact_hashes"]:
+    if item["label"] == "audit_tieout":
+        item["sha256"] = hashlib.sha256(audit_path.read_bytes()).hexdigest()
+        item["size_bytes"] = audit_path.stat().st_size
+manifest["status"] = "fail"
+manifest["missing"] = ["audit_tieout.artifact.open_deficiencies array"]
+packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
+
+decision_path = d / "decisions.jsonl"
+lines = [line for line in decision_path.read_text(encoding="utf-8").splitlines() if line.strip()]
+row = json.loads(lines[-1])
+row["approved_packet_sha256"] = hashlib.sha256(packet_path.read_bytes()).hexdigest()
+row.pop("decision_hash", None)
+row["decision_hash"] = hashlib.sha256(
+    json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
+).hexdigest()
+lines[-1] = json.dumps(row)
+decision_path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+PY
+"$GLAW" stage file >/dev/null 2>"$TMP/stage-file-audit-malformed.out"; rc=$?
+ok "$([ "$rc" = 1 ] && grep -q 'current accounting control is incomplete' "$TMP/stage-file-audit-malformed.out" && echo 1 || echo 0)" "SEC file gate blocks malformed audit tie-out arrays even with matching packet hashes"
 cp "$M/final_packet.audit-baseline.json" "$M/final_packet.json"
 cp "$M/decisions.audit-baseline.jsonl" "$M/decisions.jsonl"
 cp "$M/workpapers/audit-tieout.baseline.json" "$M/workpapers/audit-tieout.json"
