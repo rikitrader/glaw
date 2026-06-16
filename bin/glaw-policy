@@ -29,6 +29,7 @@ REQUIRED_DOCTOR_TESTS = (
     "lifecycle_test:full-lifecycle",
     "sec_reporting_profile_test:sec-reporting-profile",
     "tax_wrapper_golden_test:tax-wrapper-golden",
+    "tax_wrapper_coverage_test:tax-wrapper-coverage",
     "authority_gate_test:authority-gate",
     "rbac_test:rbac-soc2",
     "host_adapter_test:host-adapter",

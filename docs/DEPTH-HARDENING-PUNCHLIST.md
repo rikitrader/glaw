@@ -96,7 +96,7 @@ The breadth is done and the safety spine is **verified real** (authority gate, l
 - **Current state:** load-bearing IRS/state calcs with no test / no lib-engine backing / not even in the doctor smoke array. (Many other tax tools *are* covered via `lib/bookkeeping/test_finance*.py` — these are the ones that are not.)
 - **Required fix:** add at least a golden-value test per uncovered calc tool (one known input → known output), or fold them into the existing finance-engine test pattern.
 - **Acceptance:** every `bin/glaw-*` calc tool has either a golden-value test or a lib-engine test touching its math.
-- **Progress:** `test/tax_wrapper_golden_test.sh` covers the named representative tools in this item with exact wrapper-level golden values: `glaw-scorp-aaa`, `glaw-partner-basis`, `glaw-subpart-f`, `glaw-combined-unitary`, `glaw-tfrp`, `glaw-ptet`, `glaw-oic`, `glaw-sfr`, `glaw-wbo-award`, and `glaw-qm`. Remaining work: inventory every other calc wrapper and either add wrapper goldens or prove lib-engine coverage.
+- **Progress:** `test/tax_wrapper_golden_test.sh` covers the named representative tools in this item with exact wrapper-level golden values: `glaw-scorp-aaa`, `glaw-partner-basis`, `glaw-subpart-f`, `glaw-combined-unitary`, `glaw-tfrp`, `glaw-ptet`, `glaw-oic`, `glaw-sfr`, `glaw-wbo-award`, and `glaw-qm`. `test/tax_wrapper_coverage.json` plus `test/tax_wrapper_coverage_test.sh` now lock 22 wrapper-to-module-to-evidence mappings covering the named representatives and the W3/W4/W5 entity/state/international engine set. Remaining work: inventory every other calc wrapper and either add wrapper goldens or prove lib-engine coverage.
 
 ---
 
