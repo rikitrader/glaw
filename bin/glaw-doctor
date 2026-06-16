@@ -148,6 +148,7 @@ declare -a TOOLS=(
   "glaw-extism|tool_metadata --json"
   "glaw-constitution-score|scaffold"
   "glaw-jurisdiction-pack|scaffold"
+  "glaw-jurisdiction-pack|list"
   "glaw-oversight|status --json"
   "glaw-rbac|check --operation audit --role AUDITOR --actor doctor"
   "glaw-conscience|check-call --command bin/glaw-intake"

@@ -34,11 +34,12 @@ The breadth is done and the safety spine is **verified real** (authority gate, l
 
 ## P1 — Substantive content behind real gates
 
-### H-3 · Jurisdiction-pack ships zero real legal data — `OPEN`
+### H-3 · Jurisdiction-pack ships zero real legal data — `DONE`
 - **Files:** `bin/glaw-jurisdiction-pack` (+ wherever the pack data would live).
 - **Current state:** schema validator with one placeholder Delaware scaffold ("example filing deadline", "SRC-0001 …"). Enforces discipline on a matrix someone else must populate; easy to mistake for "done."
 - **Required fix:** seed at least the high-frequency jurisdictions actually used by live matters (DE, FL, TX, NY + federal) with **source-backed** entity/tax/licensing/filing-authority rows, each carrying a real `SRC-####`. Keep the validator; give it real data to validate.
 - **Acceptance:** `glaw-jurisdiction-pack validate` passes on a **populated** (non-scaffold) DE+FL+TX+federal pack with zero `review`/placeholder warnings.
+- **Closed:** `jurisdiction/packs/us-core.json` now seeds DE, FL, TX, NY, and federal corporate filing authority with official source URLs and source catalog entries; `glaw-jurisdiction-pack` lists bundled packs, validates source catalog URLs, rejects scaffold/placeholder text, and `jurisdiction_pack_test.sh` asserts the scaffold fails while the populated pack passes with zero review warnings.
 
 ### H-4 · Branch seats are thin routing shells — `OPEN` `[SSOT]` (roster touch)
 - **Files:** `constitutional/SKILL.md`, `legislative/SKILL.md`, `judicial/SKILL.md`, `admin-law/SKILL.md`; ref in `lib/firm-roster.md`.

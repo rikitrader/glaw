@@ -58,6 +58,7 @@ REQUIRED_TOOL_SMOKES = (
     "glaw-extism|tool_metadata",
     "glaw-constitution-score|scaffold",
     "glaw-jurisdiction-pack|scaffold",
+    "glaw-jurisdiction-pack|list",
     "glaw-oversight|status",
     "glaw-rbac|check",
     "glaw-conscience|check-call",

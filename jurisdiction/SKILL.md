@@ -32,8 +32,9 @@ regime. Its job is to prevent hidden single-jurisdiction assumptions.
 
 ```bash
 bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
-echo "--- jurisdiction pack scaffold ---"
-bin/glaw-jurisdiction-pack scaffold | head -40
+echo "--- jurisdiction packs ---"
+bin/glaw-jurisdiction-pack list
+bin/glaw-jurisdiction-pack validate jurisdiction/packs/us-core.json --json
 ```
 
 Read `lib/firm-roster.md` before routing jurisdiction-specific work.
@@ -55,6 +56,11 @@ Use the deterministic shape:
 bin/glaw-jurisdiction-pack scaffold > jurisdiction-pack.json
 ```
 
+For common U.S. entity, annual-report, franchise-tax, and federal corporate
+income-tax matters, start from `jurisdiction/packs/us-core.json` and narrow it
+to the matter facts. The scaffold is only a template shape; it must not be used
+as production legal data.
+
 For each jurisdiction, complete: `governing_law`, `forum`, `tax`, `licenses`,
 `filings`, `deadlines`, and `adversarial_lenses`. Every conclusion must cite a
 current matter source ID such as `SRC-0001`.
@@ -67,7 +73,8 @@ bin/glaw-jurisdiction-pack validate jurisdiction-pack.json --json
 
 Failures block reliance on the pack. `review` statuses are allowed only as
 explicit open issues and must be carried into red flags, final packet conditions,
-or the owning seat's workplan.
+or the owning seat's workplan. Final sign-off packs must pass with zero review
+warnings and no scaffold or placeholder text.
 
 ### Step 4 - Route specialist review
 

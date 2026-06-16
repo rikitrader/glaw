@@ -1,0 +1,269 @@
+{
+  "matter": "us-core-entity-tax-filing-authority-pack",
+  "source_ids": [
+    "SRC-0001",
+    "SRC-0002",
+    "SRC-0003",
+    "SRC-0004",
+    "SRC-0005"
+  ],
+  "source_catalog": {
+    "SRC-0001": {
+      "title": "Delaware Division of Corporations Annual Report and Franchise Tax",
+      "url": "https://corp.delaware.gov/frtax/",
+      "authority": "State of Delaware Division of Corporations",
+      "accessed": "2026-06-16"
+    },
+    "SRC-0002": {
+      "title": "Florida Division of Corporations File Annual Report",
+      "url": "https://dos.fl.gov/sunbiz/manage-business/efile/annual-report/",
+      "authority": "Florida Department of State Division of Corporations",
+      "accessed": "2026-06-16"
+    },
+    "SRC-0003": {
+      "title": "Texas Comptroller Franchise Tax",
+      "url": "https://comptroller.texas.gov/taxes/franchise/",
+      "authority": "Texas Comptroller of Public Accounts",
+      "accessed": "2026-06-16"
+    },
+    "SRC-0004": {
+      "title": "New York Department of State Biennial Statements",
+      "url": "https://dos.ny.gov/biennial-statements-business-corporations-and-limited-liability-companies",
+      "authority": "New York Department of State",
+      "accessed": "2026-06-16"
+    },
+    "SRC-0005": {
+      "title": "IRS About Form 1120",
+      "url": "https://www.irs.gov/forms-pubs/about-form-1120",
+      "authority": "Internal Revenue Service",
+      "accessed": "2026-06-16"
+    }
+  },
+  "jurisdictions": [
+    {
+      "name": "Delaware",
+      "role": "entity domicile and franchise-tax authority",
+      "source_ids": [
+        "SRC-0001"
+      ],
+      "governing_law": {
+        "status": "mapped",
+        "basis": "Delaware entity maintenance and franchise-tax routing are anchored to the Division of Corporations source in SRC-0001."
+      },
+      "forum": {
+        "status": "mapped",
+        "basis": "Delaware entity status, registered-agent, and filing authority questions route to the Division of Corporations channel in SRC-0001."
+      },
+      "tax": {
+        "status": "mapped",
+        "basis": "Domestic corporations file annual reports and franchise tax through SRC-0001; Delaware LLC, LP, and GP annual tax routing is also stated in SRC-0001."
+      },
+      "licenses": {
+        "status": "mapped",
+        "basis": "Entity maintenance is source-backed by SRC-0001; separate operating licenses must be routed by activity after intake identifies the regulated business line."
+      },
+      "filings": {
+        "status": "mapped",
+        "basis": "Annual report, amended annual report, foreign corporation annual report, and LLC or partnership tax obligations are mapped to SRC-0001."
+      },
+      "deadlines": [
+        {
+          "due": "March 1 annually",
+          "desc": "Domestic corporation annual report and franchise-tax receipt deadline.",
+          "source": "SRC-0001"
+        },
+        {
+          "due": "June 1 annually",
+          "desc": "Delaware LLC, LP, and GP annual tax deadline.",
+          "source": "SRC-0001"
+        },
+        {
+          "due": "June 30 annually",
+          "desc": "Foreign corporation annual report deadline.",
+          "source": "SRC-0001"
+        }
+      ],
+      "adversarial_lenses": [
+        "state regulator",
+        "tax authority",
+        "opposing counsel",
+        "enforcement agency",
+        "outside critic"
+      ]
+    },
+    {
+      "name": "Florida",
+      "role": "foreign or domestic registration and annual-report authority",
+      "source_ids": [
+        "SRC-0002"
+      ],
+      "governing_law": {
+        "status": "mapped",
+        "basis": "Florida annual-report and active-status obligations for corporations, LLCs, LPs, and LLLPs are mapped to SRC-0002."
+      },
+      "forum": {
+        "status": "mapped",
+        "basis": "Florida Division of Corporations records, entity status, filing confirmation, and dissolution or revocation paths route through SRC-0002."
+      },
+      "tax": {
+        "status": "mapped",
+        "basis": "SRC-0002 states annual-report payment handling and late-fee consequences; tax return work must route separately to the owning tax seat."
+      },
+      "licenses": {
+        "status": "mapped",
+        "basis": "SRC-0002 identifies annual-report maintenance and points donation-soliciting nonprofits to Florida FDACS registration where applicable."
+      },
+      "filings": {
+        "status": "mapped",
+        "basis": "Annual report, amended annual report, reinstatement, dissolution, withdrawal, and status-certificate workflows are source-backed by SRC-0002."
+      },
+      "deadlines": [
+        {
+          "due": "May 1 annual-report late-fee trigger",
+          "desc": "For profit corporations, LLCs, LPs, and LLLPs, file by May 1 to avoid the annual-report late fee described by the Florida Division of Corporations.",
+          "source": "SRC-0002"
+        },
+        {
+          "due": "Third Friday in September annually",
+          "desc": "Annual reports are due by the third Friday in September to avoid administrative dissolution or revocation in Florida records.",
+          "source": "SRC-0002"
+        }
+      ],
+      "adversarial_lenses": [
+        "state regulator",
+        "tax authority",
+        "opposing counsel",
+        "enforcement agency",
+        "outside critic"
+      ]
+    },
+    {
+      "name": "Texas",
+      "role": "franchise-tax authority and entity account-status regulator",
+      "source_ids": [
+        "SRC-0003"
+      ],
+      "governing_law": {
+        "status": "mapped",
+        "basis": "Texas franchise-tax applicability for taxable entities formed, organized, or doing business in Texas is mapped to SRC-0003."
+      },
+      "forum": {
+        "status": "mapped",
+        "basis": "Account-status, tax-certificate, termination, conversion, merger, and withdrawal routing are mapped to Comptroller processes in SRC-0003."
+      },
+      "tax": {
+        "status": "mapped",
+        "basis": "Texas franchise tax report, payment, extension, threshold, and rate references are source-backed by SRC-0003."
+      },
+      "licenses": {
+        "status": "mapped",
+        "basis": "SRC-0003 covers franchise-tax account status; activity-specific licenses must route from intake facts to the responsible Texas regulator."
+      },
+      "filings": {
+        "status": "mapped",
+        "basis": "Annual franchise-tax reports, final franchise-tax reports, extensions, common-owner information, and account updates are mapped to SRC-0003."
+      },
+      "deadlines": [
+        {
+          "due": "May 15 annually",
+          "desc": "Annual Texas franchise-tax report due date, moving to the next business day if May 15 falls on a weekend or holiday.",
+          "source": "SRC-0003"
+        },
+        {
+          "due": "Within 60 days after nexus ends",
+          "desc": "Out-of-state entity final report and payment deadline after ceasing Texas nexus.",
+          "source": "SRC-0003"
+        }
+      ],
+      "adversarial_lenses": [
+        "state regulator",
+        "tax authority",
+        "opposing counsel",
+        "enforcement agency",
+        "outside critic"
+      ]
+    },
+    {
+      "name": "New York",
+      "role": "biennial-statement and service-of-process record authority",
+      "source_ids": [
+        "SRC-0004"
+      ],
+      "governing_law": {
+        "status": "mapped",
+        "basis": "New York business-corporation and LLC biennial-statement obligations are mapped to Department of State guidance in SRC-0004."
+      },
+      "forum": {
+        "status": "mapped",
+        "basis": "Service-of-process address records, certificate status impact, and Department of State filing route are mapped to SRC-0004."
+      },
+      "tax": {
+        "status": "mapped",
+        "basis": "SRC-0004 is an entity-record source; New York tax filings must route separately to the tax seat after intake identifies tax type and nexus."
+      },
+      "licenses": {
+        "status": "mapped",
+        "basis": "Biennial statement and status-record duties are source-backed by SRC-0004; licenses require activity-specific routing after intake."
+      },
+      "filings": {
+        "status": "mapped",
+        "basis": "Biennial statements, amendments, online filing, fee, and past-due remediation paths are mapped to SRC-0004."
+      },
+      "deadlines": [
+        {
+          "due": "Calendar month of formation or authorization every two years",
+          "desc": "Business corporations and LLCs file the biennial statement during the calendar month in which the original formation or authority filing occurred.",
+          "source": "SRC-0004"
+        }
+      ],
+      "adversarial_lenses": [
+        "state regulator",
+        "tax authority",
+        "opposing counsel",
+        "enforcement agency",
+        "outside critic"
+      ]
+    },
+    {
+      "name": "Federal",
+      "role": "IRS corporate income-tax filing authority",
+      "source_ids": [
+        "SRC-0005"
+      ],
+      "governing_law": {
+        "status": "mapped",
+        "basis": "Federal corporate income-tax return routing for corporations is anchored to IRS Form 1120 source material in SRC-0005."
+      },
+      "forum": {
+        "status": "not_applicable",
+        "basis": "SRC-0005 maps federal filing authority, not contract forum selection; disputes route to tax controversy or litigation seats by matter facts."
+      },
+      "tax": {
+        "status": "mapped",
+        "basis": "Form 1120 corporate income-tax filing, schedules, instructions, and related IRS materials are mapped to SRC-0005."
+      },
+      "licenses": {
+        "status": "not_applicable",
+        "basis": "SRC-0005 is a federal tax-form authority; federal operating licenses must be routed from activity facts to the responsible regulator."
+      },
+      "filings": {
+        "status": "mapped",
+        "basis": "Corporate income-tax return preparation and related form instruction routing are mapped to SRC-0005."
+      },
+      "deadlines": [
+        {
+          "due": "Entity-specific tax-year deadline from current IRS Form 1120 instructions",
+          "desc": "Before filing, compute the federal corporate return deadline from the taxpayer year-end, extension posture, and current IRS instructions linked from SRC-0005.",
+          "source": "SRC-0005"
+        }
+      ],
+      "adversarial_lenses": [
+        "state regulator",
+        "tax authority",
+        "opposing counsel",
+        "enforcement agency",
+        "outside critic"
+      ]
+    }
+  ]
+}

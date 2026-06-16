@@ -3,6 +3,7 @@
 
 Usage:
   glaw-jurisdiction-pack scaffold
+  glaw-jurisdiction-pack list
   glaw-jurisdiction-pack validate <pack.json> [--json]
 
 The pack is a deterministic checklist. It does not state current law by itself;
@@ -17,7 +18,10 @@ import sys
 from pathlib import Path
 from typing import Any
 
+ROOT = Path(__file__).resolve().parents[1]
+PACK_DIR = ROOT / "jurisdiction" / "packs"
 SRC_RE = re.compile(r"\bSRC-[0-9]{4}\b")
+PLACEHOLDER_RE = re.compile(r"\b(example|placeholder|todo|tbd|verify|sample)\b|\[[^\]]+\]", re.I)
 
 REQUIRED_PACK_FIELDS = ("matter", "source_ids", "jurisdictions")
 REQUIRED_JURISDICTION_FIELDS = (
@@ -86,6 +90,21 @@ def valid_srcs(value: Any) -> set[str]:
     return found
 
 
+def placeholder_hits(value: Any, path: str = "") -> list[str]:
+    hits: list[str] = []
+    if isinstance(value, str):
+        if PLACEHOLDER_RE.search(value):
+            hits.append(path or "<root>")
+    elif isinstance(value, list):
+        for idx, item in enumerate(value):
+            hits.extend(placeholder_hits(item, f"{path}[{idx}]" if path else f"[{idx}]"))
+    elif isinstance(value, dict):
+        for key, item in value.items():
+            next_path = f"{path}.{key}" if path else str(key)
+            hits.extend(placeholder_hits(item, next_path))
+    return hits
+
+
 def validate(pack: dict[str, Any]) -> dict[str, Any]:
     failures: list[dict[str, str]] = []
     warnings: list[dict[str, str]] = []
@@ -98,6 +117,27 @@ def validate(pack: dict[str, Any]) -> dict[str, Any]:
     source_ids = {src for src in source_ids if isinstance(src, str) and SRC_RE.fullmatch(src)}
     if not source_ids:
         failures.append({"id": "source_ids", "detail": "pack requires at least one SRC-#### source id"})
+    placeholder_paths = placeholder_hits(pack)
+    if placeholder_paths:
+        failures.append({
+            "id": "placeholder",
+            "detail": "pack contains scaffold/placeholder text: " + ", ".join(sorted(set(placeholder_paths))[:8]),
+        })
+
+    source_catalog = pack.get("source_catalog") or {}
+    if source_catalog and not isinstance(source_catalog, dict):
+        failures.append({"id": "source_catalog", "detail": "source_catalog must be an object keyed by SRC-####"})
+        source_catalog = {}
+    for src in source_ids:
+        entry = source_catalog.get(src)
+        if source_catalog and not isinstance(entry, dict):
+            failures.append({"id": "source_catalog", "detail": f"{src} missing source_catalog entry"})
+            continue
+        if isinstance(entry, dict):
+            url = str(entry.get("url", "")).strip()
+            title = str(entry.get("title", "")).strip()
+            if not title or not url.startswith("https://"):
+                failures.append({"id": "source_catalog", "detail": f"{src} requires title and https URL"})
 
     jurisdictions = pack.get("jurisdictions") or []
     if not isinstance(jurisdictions, list) or not jurisdictions:
@@ -180,6 +220,7 @@ def main(argv: list[str]) -> int:
     ap = argparse.ArgumentParser(prog="glaw-jurisdiction-pack")
     sub = ap.add_subparsers(dest="cmd", required=True)
     sub.add_parser("scaffold")
+    sub.add_parser("list")
     v = sub.add_parser("validate")
     v.add_argument("pack")
     v.add_argument("--json", action="store_true")
@@ -187,6 +228,10 @@ def main(argv: list[str]) -> int:
 
     if args.cmd == "scaffold":
         print(json.dumps(SCAFFOLD, indent=2, sort_keys=False))
+        return 0
+    if args.cmd == "list":
+        for path in sorted(PACK_DIR.glob("*.json")):
+            print(path.relative_to(ROOT))
         return 0
     try:
         report = validate(load(args.pack))

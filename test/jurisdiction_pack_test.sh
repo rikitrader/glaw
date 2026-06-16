@@ -18,15 +18,37 @@ python3 - "$TMP/report.json" <<'PY'
 import json, sys
 data=json.load(open(sys.argv[1]))
 ok=(
-    data.get("status") == "pass"
-    and data.get("jurisdiction_count") == 1
-    and "state regulator" in data.get("required_adversarial_lenses", [])
-    and "not legal advice" in data.get("authority", "")
+    data.get("status") == "fail"
+    and any(row.get("id") == "placeholder" for row in data.get("failures", []))
 )
 sys.exit(0 if ok else 1)
 PY
 rc2=$?
-ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "complete jurisdiction pack passes with adversarial lenses"
+ok "$([ "$rc" = 1 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "scaffold fails production validation as placeholder data"
+
+"$PACK" list > "$TMP/list.txt"; rc=$?
+grep -q 'jurisdiction/packs/us-core.json' "$TMP/list.txt"; rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "pack list includes source-backed US core pack"
+
+"$PACK" validate "$ROOT/jurisdiction/packs/us-core.json" --json > "$TMP/us-core-report.json"; rc=$?
+python3 - "$TMP/us-core-report.json" "$ROOT/jurisdiction/packs/us-core.json" <<'PY'
+import json, sys
+report=json.load(open(sys.argv[1]))
+pack=json.load(open(sys.argv[2]))
+names={row.get("name") for row in pack.get("jurisdictions", [])}
+catalog=pack.get("source_catalog", {})
+ok=(
+    report.get("status") == "pass"
+    and report.get("jurisdiction_count") >= 5
+    and not report.get("warnings")
+    and {"Delaware", "Florida", "Texas", "New York", "Federal"} <= names
+    and all(str(row.get("url", "")).startswith("https://") for row in catalog.values())
+    and "not legal advice" in report.get("authority", "")
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "source-backed US core jurisdiction pack passes with zero review warnings"
 
 printf '{"matter":"bad","source_ids":[],"jurisdictions":[]}' > "$TMP/bad.json"
 "$PACK" validate "$TMP/bad.json" --json > "$TMP/bad-report.json"; rc=$?
@@ -40,7 +62,7 @@ PY
 rc2=$?
 ok "$([ "$rc" = 1 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "pack fails closed without sources or jurisdictions"
 
-python3 - "$TMP/scaffold.json" "$TMP/missing-lens.json" <<'PY'
+python3 - "$ROOT/jurisdiction/packs/us-core.json" "$TMP/missing-lens.json" <<'PY'
 import json, sys
 data=json.load(open(sys.argv[1]))
 data["jurisdictions"][0]["adversarial_lenses"]=["state regulator"]
