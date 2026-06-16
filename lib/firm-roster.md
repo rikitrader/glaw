@@ -216,6 +216,15 @@ Covers: **Civil** litigation, trial, disputes.
 | **Insurance coverage & bad-faith (policyholder)** — policy parse (grant/exclusions/conditions), duty-to-defend vs -indemnify, appraisal vs suit, first-/third-party bad faith + FL §624.155 Civil Remedy Notice; pairs with `/glaw-roofer-accounting` for Xactimate/restoration claims | `/glaw-insurance-coverage` |
 | **Consumer protection / debt-collection defense** — FDCPA §1692, FCRA §1681 (credit disputes), TCPA §227, FL FDUTPA + FCCPA §559; debt validation, statutory+actual damages, dispute letter / answer + counterclaim; consumer-side mirror of creditor `/glaw-recover-payment` | `/glaw-consumer-protection` |
 
+## Public Law & Governance Branch
+Covers: constitutional limits, public-law drafting, agency action, model adjudication, and government-policy review. This branch prepares attorney work-product only; it does not enact, adjudicate, enforce, file, or bind anyone.
+| Seat | Skill |
+|------|-------|
+| **Constitutional law** — standing, justiciability, state action, scrutiny tier, federalism, separation of powers, First/Fourth/Fifth/Fourteenth Amendment frameworks, and scored risk matrix (`bin/glaw-constitution-score`) | `/glaw-constitutional` |
+| **Legislative drafting** — bills, model statutes, ordinances, findings, legislative history, implementation schedule, and public-law drafting package | `/glaw-legislative` |
+| **Administrative law** — APA notice-and-comment, agency authority, administrative record, Loper Bright statutory interpretation, arbitrary-and-capricious risk, exhaustion/finality, and remedies | `/glaw-admin-law` |
+| **Judicial modeling** — bench memos, model opinions/orders, standards-of-review maps, findings/conclusions drafts, and adjudication simulations for review only | `/glaw-judicial` |
+
 ## Family & Domestic Relations Division
 Covers: divorce/dissolution, child custody & support, marital property, marital agreements.
 | Seat | Skill |

@@ -142,6 +142,10 @@ The first new branch. A **`/glaw-constitutional`** department plus supporting se
 **New tooling for the branch**
 - `glaw-constitution-score` — deterministic scoring of a measure against constitutional risk
   factors (scrutiny tier, nexus, less-restrictive-means), mirroring `glaw-contract-score`.
+  **Shipped:** `/glaw-constitutional`, `/glaw-legislative`, `/glaw-admin-law`,
+  `/glaw-judicial`, `bin/glaw-constitution-score`, and `test/constitutional_test.sh`
+  are wired into `glaw-doctor` + `glaw-policy` so branch drift breaks the same gates
+  as the core firm.
 - A **statute/precedent corpus** adapter (Caselaw Access Project / Court Listener / public
   U.S. Code & CFR) feeding `glaw-legal-research` so citations are *verifiable*, not invented.
 

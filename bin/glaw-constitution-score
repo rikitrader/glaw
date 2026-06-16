@@ -1,0 +1,208 @@
+#!/usr/bin/env python3
+"""Deterministic constitutional-risk scorer.
+
+The tool intentionally scores risk factors only. It does not decide rights,
+issue rulings, or replace legal research. High-stakes conclusions must be tied
+to matter source IDs such as SRC-0001.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import sys
+from pathlib import Path
+from typing import Any
+
+SRC_RE = re.compile(r"\bSRC-[0-9]{4}\b")
+
+
+SCAFFOLD: dict[str, Any] = {
+    "matter": "example-public-law-review",
+    "sources": ["SRC-0001"],
+    "government_actor": True,
+    "action_type": "policy",
+    "asserted_rights": ["speech"],
+    "fundamental_right": True,
+    "suspect_class": False,
+    "content_based_speech": True,
+    "search_seizure": False,
+    "due_process": True,
+    "equal_protection": False,
+    "federalism": False,
+    "separation_of_powers": False,
+    "legitimate_interest": "public safety",
+    "nexus_evidence": "SRC-0001 record evidence links action to stated interest",
+    "tailoring_evidence": "SRC-0001 narrow scope and exceptions",
+    "less_restrictive_means_analyzed": False,
+}
+
+
+def boolish(value: Any) -> bool:
+    return bool(value) if not isinstance(value, str) else value.lower() in {"1", "true", "yes", "y"}
+
+
+def load_input(path: str | None) -> dict[str, Any]:
+    if not path or path == "-":
+        text = sys.stdin.read()
+    else:
+        text = Path(path).read_text(encoding="utf-8")
+    if not text.strip():
+        raise ValueError("empty input")
+    data = json.loads(text)
+    if not isinstance(data, dict):
+        raise ValueError("input must be a JSON object")
+    return data
+
+
+def source_ids(data: dict[str, Any]) -> set[str]:
+    raw = data.get("sources") or data.get("source_ids") or []
+    if isinstance(raw, str):
+        raw = [raw]
+    ids = {item for item in raw if isinstance(item, str) and SRC_RE.fullmatch(item)}
+    for key, value in data.items():
+        if key in {"sources", "source_ids"}:
+            continue
+        if isinstance(value, str):
+            ids.update(SRC_RE.findall(value))
+    return ids
+
+
+def scrutiny_tier(data: dict[str, Any]) -> str:
+    if boolish(data.get("content_based_speech")) or boolish(data.get("fundamental_right")) or boolish(data.get("suspect_class")):
+        return "strict"
+    if boolish(data.get("speech_restriction")) or boolish(data.get("gender_classification")):
+        return "intermediate"
+    if boolish(data.get("search_seizure")) or boolish(data.get("due_process")) or boolish(data.get("administrative_action")):
+        return "record-sensitive"
+    return "rational-basis"
+
+
+def score(data: dict[str, Any]) -> dict[str, Any]:
+    ids = source_ids(data)
+    blockers: list[str] = []
+    findings: list[str] = []
+    points = 0
+
+    if not ids:
+        blockers.append("missing SRC-#### source support")
+        points += 25
+
+    if not boolish(data.get("government_actor")):
+        blockers.append("state action/government actor not established")
+        points += 15
+
+    tier = scrutiny_tier(data)
+    if tier == "strict":
+        points += 35
+        findings.append("strict scrutiny indicators present")
+        if not boolish(data.get("less_restrictive_means_analyzed")):
+            blockers.append("strict-scrutiny posture lacks less-restrictive-means analysis")
+            points += 20
+        if not data.get("tailoring_evidence"):
+            blockers.append("strict-scrutiny posture lacks tailoring evidence")
+            points += 15
+    elif tier == "intermediate":
+        points += 24
+        findings.append("intermediate scrutiny indicators present")
+        if not data.get("tailoring_evidence"):
+            blockers.append("intermediate-scrutiny posture lacks tailoring evidence")
+            points += 12
+    elif tier == "record-sensitive":
+        points += 18
+        findings.append("record-sensitive constitutional/admin posture")
+        if not data.get("nexus_evidence"):
+            blockers.append("record-sensitive posture lacks nexus/record evidence")
+            points += 12
+    else:
+        points += 8
+        findings.append("rational-basis indicators present")
+
+    factor_weights = {
+        "search_seizure": 12,
+        "due_process": 10,
+        "equal_protection": 10,
+        "federalism": 8,
+        "separation_of_powers": 8,
+        "prior_restraint": 15,
+        "retroactive_burden": 8,
+        "takings": 10,
+    }
+    for key, weight in factor_weights.items():
+        if boolish(data.get(key)):
+            points += weight
+            findings.append(key.replace("_", " ") + " issue present")
+
+    if not data.get("legitimate_interest"):
+        blockers.append("government interest not stated")
+        points += 8
+    if not data.get("nexus_evidence"):
+        blockers.append("nexus evidence not stated")
+        points += 8
+
+    points = max(0, min(100, points))
+    if blockers:
+        readiness = "blocked"
+    elif points >= 70:
+        readiness = "high-risk attorney review"
+    elif points >= 40:
+        readiness = "review required"
+    else:
+        readiness = "low-to-moderate risk review"
+
+    return {
+        "status": "blocked" if blockers else "pass",
+        "matter": data.get("matter", "unknown"),
+        "scrutiny_tier": tier,
+        "risk_score": points,
+        "readiness": readiness,
+        "source_ids": sorted(ids),
+        "findings": findings,
+        "blockers": blockers,
+        "adversarial_lenses": [
+            "civil-liberties challenger",
+            "government defense counsel",
+            "skeptical judge",
+            "admin-record reviewer",
+            "outside public-accountability critic",
+        ],
+        "human_authority_boundary": (
+            "GLAW may prepare analysis only; filing, signing, service, enforcement, "
+            "or binding adjudication requires an authorized human."
+        ),
+    }
+
+
+def main(argv: list[str]) -> int:
+    ap = argparse.ArgumentParser(prog="glaw-constitution-score")
+    ap.add_argument("input", nargs="?", help="JSON file or - for stdin")
+    ap.add_argument("--json", action="store_true", help="emit JSON report")
+    ap.add_argument("--scaffold", action="store_true", help="emit example input JSON")
+    args = ap.parse_args(argv)
+
+    if args.scaffold or args.input == "scaffold":
+        print(json.dumps(SCAFFOLD, indent=2, sort_keys=False))
+        return 0
+
+    try:
+        data = load_input(args.input)
+        report = score(data)
+    except Exception as exc:
+        print(f"glaw-constitution-score: {exc}", file=sys.stderr)
+        return 2
+
+    if args.json:
+        print(json.dumps(report, indent=2, sort_keys=False))
+    else:
+        print(f"matter: {report['matter']}")
+        print(f"status: {report['status']}")
+        print(f"scrutiny_tier: {report['scrutiny_tier']}")
+        print(f"risk_score: {report['risk_score']}")
+        print(f"readiness: {report['readiness']}")
+        for blocker in report["blockers"]:
+            print(f"blocker: {blocker}")
+    return 1 if report["status"] == "blocked" else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))

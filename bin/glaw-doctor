@@ -144,6 +144,7 @@ declare -a TOOLS=(
   "glaw-host|manifest --json"
   "glaw-mcp|tools --json"
   "glaw-extism|tool_metadata --json"
+  "glaw-constitution-score|scaffold"
   "glaw-rbac|check --operation audit --role AUDITOR --actor doctor"
   "glaw-conscience|check-call --command bin/glaw-intake"
   "glaw-loop|status"
@@ -495,7 +496,7 @@ for p in "$GLAW"/bin/matter-ops/*.py; do
 done
 [ "$mo_fail" = 0 ] && ok "all $mo_n bin/matter-ops/*.py compile (incl. facts_validate/facts_gate guard)"
 # regression tests (safety-critical paths): launch-guard, hard gates, full lifecycle, profile routing
-for t in facts_validate_test:launch-guard gate_test:hard-gate lifecycle_test:full-lifecycle tax_profile_test:tax-profile sec_reporting_profile_test:sec-reporting-profile authority_gate_test:authority-gate rbac_test:rbac-soc2 host_adapter_test:host-adapter mcp_test:mcp-bridge extism_test:extism-contract headless_test:headless-report conscience_test:autonomous-conscience citation_corpus_test:citation-corpus citation_typology_test:citation-typology groundedness_test:groundedness policy_test:policy-contract loop_test:orchestrator-loop golden_profile_test:golden-profiles memory_test:cross-matter-memory; do
+for t in facts_validate_test:launch-guard gate_test:hard-gate lifecycle_test:full-lifecycle tax_profile_test:tax-profile sec_reporting_profile_test:sec-reporting-profile authority_gate_test:authority-gate rbac_test:rbac-soc2 host_adapter_test:host-adapter mcp_test:mcp-bridge extism_test:extism-contract headless_test:headless-report constitutional_test:constitutional-branch conscience_test:autonomous-conscience citation_corpus_test:citation-corpus citation_typology_test:citation-typology groundedness_test:groundedness policy_test:policy-contract loop_test:orchestrator-loop golden_profile_test:golden-profiles memory_test:cross-matter-memory; do
   script="$GLAW/test/${t%%:*}.sh"; name="${t#*:}"
   [ -x "$script" ] || continue
   if "$script" >/tmp/glaw-$$.out 2>&1; then
