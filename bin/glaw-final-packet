@@ -13,7 +13,14 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "lib"))
-from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, REVIEWER_SKILL_MAP, TRACKS, profile_for_track
+from glaw_profiles import (
+    ADVERSARIAL_PROFILES,
+    COUNCIL_PROFILES,
+    GOVERNMENT_ADVERSARY_LENSES,
+    REVIEWER_SKILL_MAP,
+    TRACKS,
+    profile_for_track,
+)
 
 
 REQUIRED_INTAKE = (
@@ -386,6 +393,26 @@ def review_evidence_manifest(
     return rows
 
 
+def government_adversary_manifest(senior_review_evidence_manifest: list[dict]) -> list[dict]:
+    rows = []
+    for item in senior_review_evidence_manifest:
+        if item.get("kind") != "adversarial":
+            continue
+        lens = str(item.get("name", ""))
+        if lens not in GOVERNMENT_ADVERSARY_LENSES:
+            continue
+        rows.append(
+            {
+                "lens": lens,
+                "status": item.get("status", "fail"),
+                "missing": item.get("missing", []),
+                "evidence_cited_source_ids": item.get("cited_source_ids", []),
+                "attack_cited_source_ids": item.get("attack_cited_source_ids", []),
+            }
+        )
+    return rows
+
+
 def red_flag_resolution_manifest(red_flags: list[dict], source_manifest: list[dict]) -> list[dict]:
     source_ids = [item["id"] for item in source_manifest]
     rows = []
@@ -634,6 +661,19 @@ def render_md(packet: dict) -> str:
     lines.extend(["", "## Council Reviews"])
     for row in packet["council_reviews"]:
         lines.append(f"- {row.get('profile')} / {row.get('role')}: {row.get('decision')}")
+    lines.extend(["", "## Government Adversary Reviews"])
+    government_rows = packet.get("government_adversary_manifest", [])
+    if government_rows:
+        for item in government_rows:
+            mark = "x" if item.get("status") == "pass" else " "
+            missing = item.get("missing") or []
+            suffix = "" if not missing else f" — missing {', '.join(missing)}"
+            lines.append(
+                f"- [{mark}] {item.get('lens')} evidence={','.join(item.get('evidence_cited_source_ids') or [])} "
+                f"attack={','.join(item.get('attack_cited_source_ids') or [])}{suffix}"
+            )
+    else:
+        lines.append("- none")
     lines.extend(["", "## Reviewer Identity Manifest"])
     for item in packet.get("reviewer_identity_manifest", []):
         mark = "x" if item.get("status") == "pass" else " "
@@ -709,6 +749,10 @@ def cmd_build(args: argparse.Namespace) -> int:
     senior_review_evidence_clear = bool(senior_review_evidence_manifest) and all(
         item["status"] == "pass" for item in senior_review_evidence_manifest
     )
+    government_adversary_rows = government_adversary_manifest(senior_review_evidence_manifest)
+    government_adversary_clear = bool(government_adversary_rows) and all(
+        item["status"] == "pass" for item in government_adversary_rows
+    )
     red_flag_resolution_evidence_manifest = red_flag_resolution_manifest(red_flags, source_manifest)
     red_flag_resolution_evidence_clear = all(
         item["status"] == "pass" for item in red_flag_resolution_evidence_manifest
@@ -773,6 +817,7 @@ def cmd_build(args: argparse.Namespace) -> int:
             int(item.get("size_bytes", 0)) > 0 for item in source_manifest
         ),
         "senior_review_evidence_source_clear": senior_review_evidence_clear,
+        "government_adversary_manifest_clear": government_adversary_clear,
         "reviewer_identity_manifest_clear": reviewer_identity_clear,
         "professional_report_manifest_clear": report_quality_clear,
         "accounting_control_manifest_clear": accounting_control["status"] in {"pass", "not_required"},
@@ -806,6 +851,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         "external_text_deliverable_hashes": external_text_deliverable_hashes,
         "source_evidence_manifest": source_manifest,
         "senior_review_evidence_manifest": senior_review_evidence_manifest,
+        "government_adversary_manifest": government_adversary_rows,
         "red_flag_resolution_evidence_manifest": red_flag_resolution_evidence_manifest,
         "reviewer_identity_manifest": reviewer_identity,
         "accounting_control_manifest": accounting_control,

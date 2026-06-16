@@ -217,7 +217,14 @@ from urllib.parse import urlparse
 d = pathlib.Path(sys.argv[1])
 root = pathlib.Path(sys.argv[2])
 sys.path.insert(0, str(root / "lib"))
-from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, REVIEWER_SKILL_MAP, TRACKS, profile_for_track
+from glaw_profiles import (
+    ADVERSARIAL_PROFILES,
+    COUNCIL_PROFILES,
+    GOVERNMENT_ADVERSARY_LENSES,
+    REVIEWER_SKILL_MAP,
+    TRACKS,
+    profile_for_track,
+)
 
 GENERIC_INTAKE_REVIEWER_RE = re.compile(
     r"^\s*(?:intake\s+)?(?:reviewer|operator|user|clerk|agent|professional|counsel)\s*$"
@@ -554,6 +561,24 @@ def review_evidence_manifest(council_rows, adversarial_rows, profile, source_man
             "missing": missing,
             "cited_source_ids": cited,
             "attack_cited_source_ids": attack_cited,
+        })
+    return rows
+
+
+def government_adversary_manifest(senior_review_evidence_manifest):
+    rows = []
+    for item in senior_review_evidence_manifest:
+        if item.get("kind") != "adversarial":
+            continue
+        lens = str(item.get("name", ""))
+        if lens not in GOVERNMENT_ADVERSARY_LENSES:
+            continue
+        rows.append({
+            "lens": lens,
+            "status": item.get("status", "fail"),
+            "missing": item.get("missing", []),
+            "evidence_cited_source_ids": item.get("cited_source_ids", []),
+            "attack_cited_source_ids": item.get("attack_cited_source_ids", []),
         })
     return rows
 
@@ -905,6 +930,25 @@ failing_review_evidence = [
 ]
 if failing_review_evidence:
     print("current senior review(s) fail source evidence IDs: " + "; ".join(failing_review_evidence))
+    sys.exit(1)
+expected_government_adversary_manifest = packet.get("government_adversary_manifest")
+if expected_government_adversary_manifest is None:
+    print("final_packet.json missing government_adversary_manifest")
+    sys.exit(1)
+current_government_adversary_manifest = government_adversary_manifest(current_review_evidence_manifest)
+if expected_government_adversary_manifest != current_government_adversary_manifest:
+    print("current government adversary manifest does not match final_packet.json")
+    sys.exit(1)
+failing_government_adversaries = [
+    f"{item['lens']} missing {', '.join(item['missing'])}"
+    for item in current_government_adversary_manifest
+    if item.get("status") != "pass"
+]
+if not current_government_adversary_manifest:
+    print("current government adversary manifest is empty")
+    sys.exit(1)
+if failing_government_adversaries:
+    print("current government adversary review(s) fail source evidence IDs: " + "; ".join(failing_government_adversaries))
     sys.exit(1)
 red_flag_rows_for_evidence = read_jsonl(d / "red_flags.jsonl")
 expected_red_flag_resolution_manifest = packet.get("red_flag_resolution_evidence_manifest")

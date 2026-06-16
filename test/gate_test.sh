@@ -210,6 +210,7 @@ cat > "$M/final_packet.json" <<'JSON'
     "external_deliverable_present": true,
     "source_evidence_manifest_clear": true,
     "senior_review_evidence_source_clear": true,
+    "government_adversary_manifest_clear": true,
     "professional_report_manifest_clear": true,
     "upl_footer_clear": true
   }
@@ -400,6 +401,21 @@ packet["senior_review_evidence_manifest"] = [
         "outside-critic",
     ]
 ]
+packet["government_adversary_manifest"] = [
+    {
+        "lens": name,
+        "status": "pass",
+        "missing": [],
+        "evidence_cited_source_ids": ["SRC-0001"],
+        "attack_cited_source_ids": ["SRC-0001"],
+    }
+    for name in [
+        "irs-examiner",
+        "state-tax-auditor",
+        "tax-court-counsel",
+        "penalty-reviewer",
+    ]
+]
 packet["red_flag_resolution_evidence_manifest"] = []
 packet["nonblocking_red_flag_manifest"] = []
 packet["report_quality_manifest"] = [{
@@ -452,6 +468,39 @@ packet["nonblocking_red_flag_manifest"] = [{
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "source-backed nonblocking medium red flag proceeds to next gate"
+fixture_py "$M" <<'PY'
+import json, pathlib, sys
+d = pathlib.Path(sys.argv[1])
+packet_path = d / "final_packet.json"
+packet = json.loads(packet_path.read_text(encoding="utf-8"))
+packet["government_adversary_manifest"] = [
+    row for row in packet["government_adversary_manifest"] if row["lens"] != "irs-examiner"
+]
+packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
+PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by stale government adversary manifest"
+fixture_py "$M" <<'PY'
+import json, pathlib, sys
+d = pathlib.Path(sys.argv[1])
+packet_path = d / "final_packet.json"
+packet = json.loads(packet_path.read_text(encoding="utf-8"))
+packet["government_adversary_manifest"] = [
+    {
+        "lens": name,
+        "status": "pass",
+        "missing": [],
+        "evidence_cited_source_ids": ["SRC-0001"],
+        "attack_cited_source_ids": ["SRC-0001"],
+    }
+    for name in [
+        "irs-examiner",
+        "state-tax-auditor",
+        "tax-court-counsel",
+        "penalty-reviewer",
+    ]
+]
+packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
+PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before accounting control manifest"
 mkdir -p "$M/workpapers"
 printf '{"rows":[],"audit":[]}\n' > "$M/workpapers/ledger.json"
