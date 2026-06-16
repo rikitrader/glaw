@@ -63,7 +63,11 @@ ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "ethics engagement blocked by non-curr
 "$GLAW" stage strategy >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && echo 1 || echo 0)" "strategy clears after intake/conflicts"
 
-"$FLAGS" add --severity high --owner cfo --source test --finding 'cash tie-out missing' --required-fix 'attach bank reconciliation' >/dev/null
+"$FLAGS" add --severity high --owner cfo --source test --finding 'cash tie-out missing' --required-fix 'attach bank reconciliation' >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "red flag add blocked without source evidence id"
+"$FLAGS" add --severity high --owner cfo --source "SRC-9999 stale bank statement" --finding 'cash tie-out missing' --required-fix 'attach bank reconciliation' >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "red flag add blocked by non-current source evidence id"
+"$FLAGS" add --severity high --owner cfo --source "SRC-0001 bank statement" --finding 'cash tie-out missing' --required-fix 'attach bank reconciliation' >/dev/null
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "final packet blocked by open high red flag"
 "$FLAGS" resolve RF-0001 --evidence 'bank reconciliation attached' >/dev/null 2>&1; rc=$?

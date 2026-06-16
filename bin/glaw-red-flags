@@ -85,6 +85,19 @@ def invalid_resolution_sources(rows: list[dict], d: Path) -> list[str]:
     return failures
 
 
+def validate_current_source_text(text: str, d: Path, label: str) -> list[str]:
+    cited = cited_source_ids(text)
+    current = current_source_ids(d)
+    if not cited:
+        return [f"{label} missing source id"]
+    if not current:
+        return [f"{label} cites {', '.join(sorted(cited))} but no source artifacts exist"]
+    stale = sorted(cited - current)
+    if stale:
+        return [f"{label} cites non-current source id(s): {', '.join(stale)}"]
+    return []
+
+
 def write_rows(d: Path, rows: list[dict]) -> None:
     ledger_path(d).write_text("".join(json.dumps(r, sort_keys=False) + "\n" for r in rows), encoding="utf-8")
 
@@ -96,6 +109,12 @@ def timeline(d: Path, event: str, **extra: object) -> None:
 
 def cmd_add(args: argparse.Namespace) -> int:
     d = matter_dir(args.matter)
+    source_failures = validate_current_source_text(args.source, d, "red flag source")
+    if source_failures:
+        print("ERROR: red flag source must cite a current source artifact id from evidence/, sources/, or source_documents/", file=sys.stderr)
+        for failure in source_failures:
+            print(f"ERROR: {failure}", file=sys.stderr)
+        return 1
     rows = read_rows(d)
     rid = args.id or f"RF-{len(rows) + 1:04d}"
     row = {
