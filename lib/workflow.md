@@ -112,6 +112,9 @@ filing, service, signature, live transmission, payment, or charging. Those actio
 `bin/glaw-authority check <action> --human-authority "<name/role>"` or provide
 `GLAW_HUMAN_AUTHORITY_ACTOR`. Existing executable paths enforce this where they can commit an
 authority act today: `glaw-chief-decision --signoff` and `glaw-irs-file submit --live`.
+`bin/glaw-loop` is the autonomous routing layer: it may report the next owner and gate, but
+it refuses human-only authority requests and must never file, sign, serve, transmit, pay, or
+charge on its own.
 
 ## Connected skill inventory (by layer)
 - **In-house seats:** all `glaw-*` (pipeline + 20+ practice/litigation-support seats).

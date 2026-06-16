@@ -1,0 +1,257 @@
+#!/usr/bin/env python3
+"""glaw-loop - fail-closed orchestrator loop for matter routing.
+
+Usage:
+  glaw-loop status [--matter <slug>] [--json]
+  glaw-loop once [--matter <slug>] [--json] [--request-action <file|serve|sign|transmit|charge|pay|submit-live>]
+
+The loop reports the next gate/department that owns the matter. It may prepare
+work, but it never files, serves, signs, transmits, pays, or charges.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import subprocess
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "lib"))
+from glaw_authority import HUMAN_ONLY_ACTIONS, require_human_authority
+from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, profile_for_track
+
+
+def now() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def home() -> Path:
+    return Path(os.environ.get("GLAW_HOME", str(Path.home() / ".glaw")))
+
+
+def active_slug() -> str:
+    p = home() / ".active"
+    return p.read_text(encoding="utf-8").strip() if p.exists() else ""
+
+
+def matter_dir(slug: str | None) -> Path:
+    s = slug or active_slug()
+    if not s:
+        raise SystemExit("ERROR: no active matter. Run `glaw matter new \"<name>\"` first.")
+    d = home() / "matters" / s
+    if not d.is_dir():
+        raise SystemExit(f"ERROR: matter not found: {s}")
+    return d
+
+
+def read_json(path: Path, default):
+    if not path.exists():
+        return default
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        return default
+
+
+def read_jsonl(path: Path) -> list[dict]:
+    if not path.exists():
+        return []
+    rows = []
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        if line.strip():
+            try:
+                rows.append(json.loads(line))
+            except json.JSONDecodeError:
+                rows.append({"event": "invalid_jsonl"})
+    return rows
+
+
+def has_event(rows: list[dict], event: str) -> bool:
+    return any(row.get("event") == event for row in rows)
+
+
+def run_tool(*args: str) -> tuple[int, str]:
+    proc = subprocess.run(
+        [str(ROOT / "bin" / args[0]), *args[1:]],
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        check=False,
+    )
+    return proc.returncode, proc.stdout.strip()
+
+
+def gate_check(stage: str, slug: str) -> tuple[bool, str]:
+    rc, output = run_tool("glaw-gate", "check", stage, slug)
+    return rc == 0, output
+
+
+def matter_profile(d: Path) -> tuple[str, str]:
+    intake = read_json(d / "intake.json", {})
+    track = intake.get("universal", {}).get("workflow_track") or intake.get("workflow_track") or "unset"
+    return str(track), profile_for_track(track)
+
+
+def route_from_state(d: Path) -> dict:
+    slug = d.name
+    stage = (d / ".stage").read_text(encoding="utf-8").strip() if (d / ".stage").exists() else "intake"
+    rows = read_jsonl(d / "timeline.jsonl")
+    track, profile = matter_profile(d)
+    strategy_clear, strategy_output = gate_check("strategy", slug)
+    file_clear, file_output = gate_check("file", slug)
+    retro_clear, retro_output = gate_check("matter-retro", slug)
+
+    decision = {
+        "ts": now(),
+        "matter": slug,
+        "stage": stage,
+        "workflow_track": track,
+        "workflow_profile": profile,
+        "quality_state": "blocked",
+        "next_gate": "",
+        "owner": "",
+        "next_command": "",
+        "reason": "",
+        "council_required": list(COUNCIL_PROFILES.get(profile, ())),
+        "adversarial_required": list(ADVERSARIAL_PROFILES.get(profile, ())),
+        "human_only_actions": sorted(HUMAN_ONLY_ACTIONS),
+        "authority": "quality routing only; no filing/signing/service/payment/charge/live transmission",
+    }
+
+    if not strategy_clear:
+        missing_intake = not has_event(rows, "intake_complete")
+        missing_conflicts = not has_event(rows, "conflicts_cleared")
+        decision.update({
+            "next_gate": "strategy",
+            "owner": "intake/ethics",
+            "next_command": "bin/glaw-intake status && bin/glaw-ethics status",
+            "reason": strategy_output or "intake and conflicts must clear before strategy",
+        })
+        if missing_intake:
+            decision["owner"] = "intake"
+            decision["next_command"] = "bin/glaw-intake status"
+        elif missing_conflicts:
+            decision["owner"] = "ethics-conflicts"
+            decision["next_command"] = "bin/glaw-ethics status"
+        return decision
+
+    if stage == "intake":
+        decision.update({
+            "quality_state": "ready_for_next_stage",
+            "next_gate": "strategy",
+            "owner": "orchestrator",
+            "next_command": "bin/glaw stage strategy",
+            "reason": "intake and conflicts are clear; strategy may begin",
+        })
+        return decision
+
+    if not file_clear:
+        if not has_event(rows, "citations_verified"):
+            owner = "legal-research"
+            command = "bin/glaw-citation-gate status"
+        elif not has_event(rows, "adversarial_done"):
+            owner = "adversarial"
+            command = "bin/glaw-adversarial status --profile auto"
+        elif not has_event(rows, "red_flags_clear"):
+            owner = "red-flags"
+            command = "bin/glaw-red-flags status"
+        elif not has_event(rows, "final_packet_ready"):
+            owner = "final-packet"
+            command = "bin/glaw-final-packet build --profile auto"
+        elif not has_event(rows, "chief_approved"):
+            owner = "chief-counsel"
+            command = "bin/glaw-chief-decision --approve-final ..."
+        else:
+            owner = "file-gate"
+            command = "bin/glaw-gate check file"
+        decision.update({
+            "next_gate": "file",
+            "owner": owner,
+            "next_command": command,
+            "reason": file_output or "file gate is not clear",
+        })
+        return decision
+
+    if stage != "file":
+        decision.update({
+            "quality_state": "ready_for_next_stage",
+            "next_gate": "file",
+            "owner": "orchestrator",
+            "next_command": "bin/glaw stage file",
+            "reason": "all file quality gates are clear; filing still requires human authority",
+        })
+        return decision
+
+    if not retro_clear:
+        decision.update({
+            "next_gate": "matter-retro",
+            "owner": "docket",
+            "next_command": "bin/glaw-docket-gate status",
+            "reason": retro_output or "docket gate must clear before close-out",
+        })
+        return decision
+
+    decision.update({
+        "quality_state": "ready_for_closeout",
+        "next_gate": "matter-retro",
+        "owner": "matter-retro",
+        "next_command": "bin/glaw stage matter-retro",
+        "reason": "all quality gates are clear; close-out may proceed after human authority checks for any binding act",
+    })
+    return decision
+
+
+def print_report(decision: dict) -> None:
+    print(f"GLAW LOOP: {decision['matter']}")
+    print(f"  stage: {decision['stage']}  track: {decision['workflow_track']}  profile: {decision['workflow_profile']}")
+    print(f"  state: {decision['quality_state']}")
+    print(f"  next gate: {decision['next_gate'] or '(none)'}")
+    print(f"  owner: {decision['owner'] or '(none)'}")
+    print(f"  next command: {decision['next_command'] or '(none)'}")
+    print(f"  reason: {decision['reason'] or '(none)'}")
+    if decision.get("adversarial_required"):
+        print("  adversarial lenses: " + ", ".join(decision["adversarial_required"]))
+    print("  authority: " + decision["authority"])
+
+
+def main(argv: list[str]) -> int:
+    ap = argparse.ArgumentParser(prog="glaw-loop")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    for name in ("status", "once"):
+        p = sub.add_parser(name)
+        p.add_argument("--matter", default=None)
+        p.add_argument("--json", action="store_true")
+        if name == "once":
+            p.add_argument("--request-action", default="")
+    args = ap.parse_args(argv)
+
+    d = matter_dir(args.matter)
+    requested = getattr(args, "request_action", "")
+    if requested:
+        ok, result = require_human_authority(requested, context=f"glaw-loop {d.name}")
+        if not ok:
+            if args.json:
+                print(json.dumps({
+                    "ts": now(),
+                    "matter": d.name,
+                    "quality_state": "authority_blocked",
+                    "requested_action": requested,
+                    "reason": result,
+                }, indent=2))
+            else:
+                print(result)
+            return 1
+
+    decision = route_from_state(d)
+    if args.json:
+        print(json.dumps(decision, indent=2, sort_keys=False))
+    else:
+        print_report(decision)
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))

@@ -139,6 +139,7 @@ declare -a TOOLS=(
   "glaw-irs-file|scaffold 1099-NEC" "glaw-court-scrape|--list __none__"
   "glaw-compliance-audit|" "glaw-doc-extract|" "glaw-exempt-org|" "glaw-assemble|"
   "glaw-accounting-control|"
+  "glaw-loop|status"
   "glaw-contract-score|scaffold" "glaw-publish|" "glaw-redline|" "glaw-redline-docx|" "glaw-chief-decision|"
   "glaw-review-chain|" "glaw-adversarial|" "glaw-ethics|" "glaw-upl-check|" "glaw-citation-gate|" "glaw-docket-gate|"
 )
@@ -486,7 +487,7 @@ for p in "$GLAW"/bin/matter-ops/*.py; do
 done
 [ "$mo_fail" = 0 ] && ok "all $mo_n bin/matter-ops/*.py compile (incl. facts_validate/facts_gate guard)"
 # regression tests (safety-critical paths): launch-guard, hard gates, full lifecycle, profile routing
-for t in facts_validate_test:launch-guard gate_test:hard-gate lifecycle_test:full-lifecycle tax_profile_test:tax-profile sec_reporting_profile_test:sec-reporting-profile authority_gate_test:authority-gate; do
+for t in facts_validate_test:launch-guard gate_test:hard-gate lifecycle_test:full-lifecycle tax_profile_test:tax-profile sec_reporting_profile_test:sec-reporting-profile authority_gate_test:authority-gate loop_test:orchestrator-loop; do
   script="$GLAW/test/${t%%:*}.sh"; name="${t#*:}"
   [ -x "$script" ] || continue
   if "$script" >/tmp/glaw-$$.out 2>&1; then

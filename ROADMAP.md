@@ -228,6 +228,63 @@ The more autonomous GLAW gets, the more these bind. They are the organism's cons
 
 ---
 
+## 8.5 Hardening addendum (v1.x -> 2.0) - 2026-06-16
+
+This addendum records concrete hardening work that has landed, and separates it
+from roadmap items that still need implementation and source verification before
+they can be treated as product guarantees.
+
+**Shipped this cycle (credit):**
+- ✅ **Authority/seal gate as code** — `bin/glaw-authority` + `lib/glaw_authority.py`
+  (`HUMAN_ONLY_ACTIONS`, `require_human_authority`), wired into `glaw-chief-decision` /
+  `glaw-irs-file` / `glaw-doctor`, with `test/authority_gate_test.sh`. Realizes §7.1 as an
+  execution-ring deny-list (file/serve/sign/transmit/charge/pay/submit-live).
+- ✅ **Figures freshness gate** — `tax-legal-shared/current-figures.md` + `REVERIFY.md` close
+  the stale-figures poisoning path (workflow gate #7).
+- ✅ **`bin/glaw-loop`** — fail-closed Chief routing loop that reports the next owner/gate,
+  lists the Council/adversarial profile for the matter, and refuses human-only authority
+  requests. This is the first executable Phase-2 autonomy primitive; it routes work but does
+  not file, serve, sign, transmit, pay, or charge.
+
+**The legal ceiling (frames all autonomy work).** Human professional review and
+authorization remain mandatory for acts that bind a client or third party. "Fully
+autonomous" is bounded to analysis, drafting, routing, QA, and workpaper assembly;
+the seal stays human as a legal and ethics constraint.
+
+### Phase 2 (Autonomy Core) — add
+- **P2-G1 · Per-profile golden matters** in `glaw-doctor`: one frozen known-good matter per
+  workflow profile that must always reach `chief_approved`. The profile-consistency check
+  already ships; golden matters are the remaining counterweight against gate over-blocking.
+- **P2-G2 · Maker-checker discipline for `glaw-loop`**: explicit acceptance criteria, an
+  iteration cap, and a human-escalation fallback on non-convergence.
+- **P2-G3 · Cross-matter memory**: promote `glaw-reasoningbank` to a queryable long-term store
+  with selective retrieval and auditable source links.
+- **P2-G4 · Multi-point guardrails**: in autonomous mode, run conscience checks at tool-call and
+  tool-response, not only the file gate — intermediate agents can introduce/propagate defects.
+
+### Phase 3 (Harness Integration) — add
+- **P3-G1 · Policy-as-fail-closed-CI-gate + observability**: unify benchmarks, traces, and CI
+  quality gates under one contract; a policy violation fails CI even at high quality score.
+- **P3-G2 · Full RBAC + SOC2 mapping** around the shipped authority gate: roles
+  READER/WRITER/ADMIN/**AUDITOR** + execution rings, SOC2-mapped audit logging — required when
+  GLAW runs embedded in a host (zeroclaw-x0 / MCP).
+
+### Phase 4 (Branches + corpus) — add
+- **P4-G1 · Wire a verifiable corpus BEHIND the citation gate** (CourtListener/CAP), retrieving
+  minimal text segments and source hashes. The corpus feeds, never replaces, the deterministic
+  citation gate.
+- **P4-G2 · Encode the falsifiable hallucination typology** in `glaw-citation-gate`: a
+  proposition fails if **incorrect** or **misgrounded** (cites a source that doesn't support it);
+  **ungrounded** and **incomplete** are tracked separately.
+- **P4-G3 · Auditable groundedness scoring** (HalluGraph-style): Entity-Grounding +
+  Relation-Preservation metrics with a full audit trail from each assertion back to source
+  passages — composes with GLAW's existing SRC-#### + SHA-256 hashing.
+
+*Suggested build order: P2-G1 (cheap, closes the regression risk) → P4-G2 (spec-only) →
+P2-G3 + loop discipline → P4-G1 corpus → P3 host/observability.*
+
+---
+
 ## 9. Contributing to the roadmap
 
 Pick a Phase-2 item (the Autonomy Core is the unlock), or propose a Branch seat under
