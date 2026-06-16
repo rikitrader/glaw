@@ -228,7 +228,7 @@ The more autonomous GLAW gets, the more these bind. They are the organism's cons
 | **Automated tests need broader golden coverage** | doctor + hard gates + per-profile golden matters | golden-output tests per seat + sandbox sim | 2–6 |
 | **Real filing connectivity is partial** | scaffolds (IRS/EFW2) | transmitter creds + EDGAR/court e-file (human-sealed) | 4–5 |
 | **Formal oversight tooling is early** | `/glaw-oversight-board` + `bin/glaw-oversight` kill-switch/ledger | standing Oversight Board policy packs + sandbox simulations | 6 |
-| **Single-jurisdiction bias** | US-centric | jurisdiction packs (state, federal, international) | 4–5 |
+| **Single-jurisdiction bias is early** | `/glaw-jurisdiction` + `bin/glaw-jurisdiction-pack` require source-backed jurisdiction matrices | deeper country/state packs and local-counsel playbooks | 4–5 |
 
 ---
 
@@ -320,6 +320,10 @@ the seal stays human as a legal and ethics constraint.
   captured corpus segment, writes `groundedness.json`, and `glaw-citation-gate complete` blocks
   if the score is below threshold. The audit trail carries citation row hash, source hash, and
   segment hash.
+- ✅ **P4-G4 · Jurisdiction-pack gate**: `/glaw-jurisdiction` + `bin/glaw-jurisdiction-pack`
+  require source-backed state/federal/international matrices for governing law, forum, tax,
+  licensing, filings, deadlines, and government/adversarial lenses. This turns
+  single-jurisdiction bias into an executable review item instead of a prose caveat.
 
 *Suggested build order: branch seats.*
 

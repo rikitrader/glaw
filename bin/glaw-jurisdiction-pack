@@ -1,0 +1,200 @@
+#!/usr/bin/env python3
+"""glaw-jurisdiction-pack - source-backed jurisdiction matrix gate.
+
+Usage:
+  glaw-jurisdiction-pack scaffold
+  glaw-jurisdiction-pack validate <pack.json> [--json]
+
+The pack is a deterministic checklist. It does not state current law by itself;
+each jurisdiction-specific conclusion must cite source IDs from the matter.
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import re
+import sys
+from pathlib import Path
+from typing import Any
+
+SRC_RE = re.compile(r"\bSRC-[0-9]{4}\b")
+
+REQUIRED_PACK_FIELDS = ("matter", "source_ids", "jurisdictions")
+REQUIRED_JURISDICTION_FIELDS = (
+    "name",
+    "role",
+    "source_ids",
+    "governing_law",
+    "forum",
+    "tax",
+    "licenses",
+    "filings",
+    "deadlines",
+    "adversarial_lenses",
+)
+REQUIRED_LENSES = {
+    "state regulator",
+    "tax authority",
+    "opposing counsel",
+    "enforcement agency",
+    "outside critic",
+}
+
+SCAFFOLD: dict[str, Any] = {
+    "matter": "example-cross-jurisdiction-matter",
+    "source_ids": ["SRC-0001"],
+    "jurisdictions": [
+        {
+            "name": "Delaware",
+            "role": "entity domicile",
+            "source_ids": ["SRC-0001"],
+            "governing_law": {"status": "mapped", "basis": "SRC-0001 charter/source document"},
+            "forum": {"status": "mapped", "basis": "SRC-0001 forum clause or procedural source"},
+            "tax": {"status": "review", "basis": "SRC-0001 tax registration/source document"},
+            "licenses": {"status": "review", "basis": "SRC-0001 activity and location source"},
+            "filings": {"status": "mapped", "basis": "SRC-0001 filing calendar source"},
+            "deadlines": [{"due": "2026-09-15", "desc": "example filing deadline", "source": "SRC-0001"}],
+            "adversarial_lenses": [
+                "state regulator",
+                "tax authority",
+                "opposing counsel",
+                "enforcement agency",
+                "outside critic",
+            ],
+        }
+    ],
+}
+
+
+def load(path: str) -> dict[str, Any]:
+    data = json.loads(Path(path).read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError("pack must be a JSON object")
+    return data
+
+
+def valid_srcs(value: Any) -> set[str]:
+    found: set[str] = set()
+    if isinstance(value, str):
+        found.update(SRC_RE.findall(value))
+    elif isinstance(value, list):
+        for item in value:
+            found.update(valid_srcs(item))
+    elif isinstance(value, dict):
+        for item in value.values():
+            found.update(valid_srcs(item))
+    return found
+
+
+def validate(pack: dict[str, Any]) -> dict[str, Any]:
+    failures: list[dict[str, str]] = []
+    warnings: list[dict[str, str]] = []
+
+    for field in REQUIRED_PACK_FIELDS:
+        if field not in pack:
+            failures.append({"id": "pack_field", "detail": f"missing {field}"})
+
+    source_ids = set(pack.get("source_ids") or [])
+    source_ids = {src for src in source_ids if isinstance(src, str) and SRC_RE.fullmatch(src)}
+    if not source_ids:
+        failures.append({"id": "source_ids", "detail": "pack requires at least one SRC-#### source id"})
+
+    jurisdictions = pack.get("jurisdictions") or []
+    if not isinstance(jurisdictions, list) or not jurisdictions:
+        failures.append({"id": "jurisdictions", "detail": "pack requires at least one jurisdiction"})
+        jurisdictions = []
+
+    names: set[str] = set()
+    for idx, item in enumerate(jurisdictions, start=1):
+        if not isinstance(item, dict):
+            failures.append({"id": "jurisdiction_shape", "detail": f"jurisdiction {idx} must be an object"})
+            continue
+        name = str(item.get("name", "")).strip()
+        if name in names:
+            failures.append({"id": "duplicate_jurisdiction", "detail": f"duplicate jurisdiction: {name}"})
+        if name:
+            names.add(name)
+        for field in REQUIRED_JURISDICTION_FIELDS:
+            if field not in item:
+                failures.append({"id": "jurisdiction_field", "detail": f"{name or idx} missing {field}"})
+        item_sources = valid_srcs(item)
+        if not item_sources:
+            failures.append({"id": "jurisdiction_sources", "detail": f"{name or idx} has no SRC-#### support"})
+        unknown_sources = sorted(item_sources - source_ids)
+        if unknown_sources:
+            failures.append({"id": "unknown_source", "detail": f"{name or idx} cites source not in pack source_ids: {', '.join(unknown_sources)}"})
+        lenses = set(item.get("adversarial_lenses") or [])
+        missing_lenses = sorted(REQUIRED_LENSES - lenses)
+        if missing_lenses:
+            failures.append({"id": "adversarial_lenses", "detail": f"{name or idx} missing lenses: {', '.join(missing_lenses)}"})
+        for bucket in ("governing_law", "forum", "tax", "licenses", "filings"):
+            value = item.get(bucket)
+            if not isinstance(value, dict):
+                failures.append({"id": "bucket_shape", "detail": f"{name or idx}.{bucket} must be an object"})
+                continue
+            status = str(value.get("status", "")).strip().lower()
+            if status not in {"mapped", "review", "not_applicable"}:
+                failures.append({"id": "bucket_status", "detail": f"{name or idx}.{bucket} status must be mapped|review|not_applicable"})
+            if status == "review":
+                warnings.append({"id": "review_item", "detail": f"{name or idx}.{bucket} remains in review"})
+            if not valid_srcs(value):
+                failures.append({"id": "bucket_source", "detail": f"{name or idx}.{bucket} lacks SRC-#### basis"})
+        deadlines = item.get("deadlines")
+        if not isinstance(deadlines, list):
+            failures.append({"id": "deadlines_shape", "detail": f"{name or idx}.deadlines must be a list"})
+        else:
+            for d_idx, deadline in enumerate(deadlines, start=1):
+                if not isinstance(deadline, dict):
+                    failures.append({"id": "deadline_shape", "detail": f"{name or idx}.deadlines[{d_idx}] must be an object"})
+                    continue
+                if not deadline.get("due") or not deadline.get("desc"):
+                    failures.append({"id": "deadline_fields", "detail": f"{name or idx}.deadlines[{d_idx}] missing due/desc"})
+                if not valid_srcs(deadline):
+                    failures.append({"id": "deadline_source", "detail": f"{name or idx}.deadlines[{d_idx}] lacks SRC-#### source"})
+
+    return {
+        "status": "fail" if failures else "pass",
+        "matter": pack.get("matter", ""),
+        "jurisdiction_count": len(jurisdictions),
+        "failures": failures,
+        "warnings": warnings,
+        "required_adversarial_lenses": sorted(REQUIRED_LENSES),
+        "authority": "jurisdiction pack is a source-backed checklist, not legal advice or filing authority",
+    }
+
+
+def emit(report: dict[str, Any], as_json: bool) -> None:
+    if as_json:
+        print(json.dumps(report, indent=2, sort_keys=False))
+        return
+    print(f"JURISDICTION PACK: {report['status']}")
+    print(f"  matter: {report.get('matter')}")
+    print(f"  jurisdictions: {report.get('jurisdiction_count')}")
+    for failure in report.get("failures", []):
+        print(f"  fail: {failure.get('detail')}")
+    for warning in report.get("warnings", []):
+        print(f"  review: {warning.get('detail')}")
+
+
+def main(argv: list[str]) -> int:
+    ap = argparse.ArgumentParser(prog="glaw-jurisdiction-pack")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    sub.add_parser("scaffold")
+    v = sub.add_parser("validate")
+    v.add_argument("pack")
+    v.add_argument("--json", action="store_true")
+    args = ap.parse_args(argv)
+
+    if args.cmd == "scaffold":
+        print(json.dumps(SCAFFOLD, indent=2, sort_keys=False))
+        return 0
+    try:
+        report = validate(load(args.pack))
+    except Exception as exc:
+        report = {"status": "fail", "failures": [{"id": "load", "detail": str(exc)}], "warnings": []}
+    emit(report, getattr(args, "json", False))
+    return 0 if report["status"] == "pass" else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))
