@@ -1,0 +1,121 @@
+#!/usr/bin/env bash
+# sec_reporting_profile_test.sh — SEC reporting packets require books/reconciliation control.
+set -uo pipefail
+HERE="$(cd "$(dirname "$0")" && pwd)"
+ROOT="$HERE/.."
+pass=0; fail=0
+ok(){ if [ "$1" = 1 ]; then pass=$((pass+1)); echo "  ✓ $2"; else fail=$((fail+1)); echo "  ✗ FAIL: $2"; fi; }
+
+TMP="$(mktemp -d)"; export GLAW_HOME="$TMP"
+GLAW="$ROOT/bin/glaw"
+INTAKE="$ROOT/bin/glaw-intake"
+ETHICS="$ROOT/bin/glaw-ethics"
+COUNCIL="$ROOT/bin/glaw-council"
+ADVERSARIAL="$ROOT/bin/glaw-adversarial"
+CITES="$ROOT/bin/glaw-citation-gate"
+FLAGS="$ROOT/bin/glaw-red-flags"
+PACKET="$ROOT/bin/glaw-final-packet"
+CONTROL="$ROOT/bin/glaw-accounting-control"
+
+"$GLAW" matter new "SEC Reporting Profile" >/dev/null
+SLUG="sec-reporting-profile"
+M="$TMP/matters/$SLUG"
+mkdir -p "$M/evidence" "$M/workpapers"
+printf 'audited financial statement source package\n' > "$M/evidence/sec-source.txt"
+
+"$INTAKE" set workflow_track sec-reporting >/dev/null
+"$INTAKE" set client_names 'Acme PublicCo' >/dev/null
+"$INTAKE" set parties 'Acme PublicCo; SEC; auditor' >/dev/null
+"$INTAKE" set jurisdiction 'Federal securities' >/dev/null
+"$INTAKE" set goal 'prepare SEC reporting package with audited financial statement tie-out' >/dev/null
+"$INTAKE" set source_documents 'audited financials; trial balance; bank reconciliation' >/dev/null
+"$INTAKE" set deadlines '2026-08-10 Form 10-Q target' >/dev/null
+"$INTAKE" set facts_timeline '2026-06-30 quarter end' >/dev/null
+"$INTAKE" set open_questions 'confirm filer status and auditor consent' >/dev/null
+"$INTAKE" set conflicts_parties 'Acme PublicCo; SEC; auditor' >/dev/null
+"$INTAKE" set authorized_scope 'review and draft only; no filing without human approval' >/dev/null
+"$INTAKE" set track_specific.filer_status 'accelerated filer' >/dev/null
+"$INTAKE" set track_specific.period_end '2026-06-30' >/dev/null
+"$INTAKE" set track_specific.forms_needed '10-Q; 8-K if triggered' >/dev/null
+"$INTAKE" set track_specific.audited_financial_sources 'trial balance; audited financials; bank reconciliation' >/dev/null
+"$INTAKE" set track_specific.xbrl_scope 'cover financial statements and notes' >/dev/null
+"$INTAKE" complete --by 'Morgan Hale, SEC reporting reviewer' >/dev/null
+
+"$ETHICS" record-conflicts --status cleared --notes 'no conflict in SEC reporting fixture' --source 'SRC-0001 party list reviewed' >/dev/null
+"$ETHICS" draft-engagement --scope 'review and draft SEC reporting work-product only' --responsible-professional 'Alex Rivera, licensed attorney' --source 'SRC-0001 authorized scope reviewed' >/dev/null
+"$ETHICS" complete >/dev/null
+"$FLAGS" complete >/dev/null
+
+"$COUNCIL" status --profile auto >"$TMP/council.out" 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && grep -q 'COUNCIL sec-reporting' "$TMP/council.out" && grep -q 'sec-counsel' "$TMP/council.out" && grep -q 'audit-reviewer' "$TMP/council.out" && echo 1 || echo 0)" "council auto-selects SEC reporting profile"
+for role in sec-counsel accounting-reviewer disclosure-reviewer audit-reviewer outside-critic; do
+  "$COUNCIL" record --profile auto --role "$role" --decision approve --evidence "SRC-0001 $role SEC reporting support reviewed" --notes "$role source-backed SEC reporting conclusion" >/dev/null
+done
+"$COUNCIL" complete --profile auto >/dev/null
+
+"$ADVERSARIAL" status --profile auto >"$TMP/adversarial.out" 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && grep -q 'ADVERSARIAL sec-reporting' "$TMP/adversarial.out" && grep -q 'sec-staff-reviewer' "$TMP/adversarial.out" && grep -q 'pcaob-audit-reviewer' "$TMP/adversarial.out" && echo 1 || echo 0)" "adversarial auto-selects SEC/PCAOB profile"
+for lens in sec-staff-reviewer pcaob-audit-reviewer disclosure-counsel irs-examiner outside-critic; do
+  "$ADVERSARIAL" record --profile auto --lens "$lens" --decision survive --attack "SRC-0001 $lens challenged SEC reporting tie-out and found no fatal defect" --evidence "SRC-0001 SEC reporting support reviewed" >/dev/null
+done
+"$ADVERSARIAL" complete --profile auto >/dev/null
+
+"$CITES" record --id C-SEC-0001 --proposition 'SEC reporting financial statements must tie to source books and controls' --authority 'Regulation S-X' --status verified --source-url 'https://www.ecfr.gov/' --reviewer legal-research >/dev/null
+"$CITES" complete >/dev/null
+
+cat > "$M/sec-report.md" <<'MD'
+# SEC Reporting Review
+
+Owner: GLAW SEC Reporting
+Report voice: SEC disclosure and audit-control report.
+Findings: Financial reporting package ties to source support.
+Evidence: SRC-0001 audited financial statement source package.
+Red flags: none.
+Sign-off conditions: licensed securities counsel and auditor review before filing.
+
+Attorney work-product - not legal advice. Prepared for licensed review.
+MD
+
+"$PACKET" build >/dev/null 2>"$TMP/packet-missing-control.out"; rc=$?
+ok "$([ "$rc" = 1 ] && grep -q 'accounting_control.json' "$TMP/packet-missing-control.out" && echo 1 || echo 0)" "SEC final packet blocked before accounting control"
+
+cat > "$M/workpapers/ledger.json" <<'JSON'
+{
+  "rows": [
+    {
+      "booking_date": "2026-06-30",
+      "description": "SEC reporting cash balance",
+      "normalized_description": "SEC REPORTING CASH BALANCE",
+      "amount": "100.00",
+      "currency": "USD",
+      "category": "Equity:Owner:Contributions",
+      "transaction_hash": "sec-fixture-001",
+      "source_method": "deterministic"
+    }
+  ],
+  "audit": [
+    {
+      "source": "evidence/sec-source.txt",
+      "balance_status": "verified"
+    }
+  ]
+}
+JSON
+cat > "$M/workpapers/bank-rec-input.json" <<'JSON'
+{
+  "matched": 1,
+  "book_only": [],
+  "bank_only": [],
+  "sum_book": "100.00",
+  "sum_bank": "100.00",
+  "unreconciled_difference": "0.00",
+  "reconciled": true
+}
+JSON
+"$CONTROL" --matter "$SLUG" --profile sec-reporting --source "SRC-0001 SEC reporting ledger and bank reconciliation support reviewed" --ledger "$M/workpapers/ledger.json" --bank-rec "$M/workpapers/bank-rec-input.json" >/dev/null
+"$PACKET" build >/dev/null 2>"$TMP/packet-ready.out"; rc=$?
+ok "$([ "$rc" = 0 ] && grep -q '"workflow_profile": "sec-reporting"' "$M/final_packet.json" && grep -q '"required": true' "$M/final_packet.json" && echo 1 || echo 0)" "SEC final packet ready after accounting control"
+
+echo
+echo "0 failures — $pass passed, $fail failed"
+[ "$fail" = 0 ]

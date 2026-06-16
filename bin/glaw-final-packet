@@ -219,7 +219,7 @@ SOURCE_EVIDENCE_PARTS = {
     "sources",
 }
 SOURCE_ID_RE = re.compile(r"\bSRC-\d{4}\b")
-ACCOUNTING_CONTROL_PROFILES = {"accounting", "tax"}
+ACCOUNTING_CONTROL_PROFILES = {"accounting", "tax", "sec-reporting"}
 REQUIRED_GATE_ARTIFACTS = (
     "intake.json",
     "ethics.json",

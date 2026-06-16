@@ -160,7 +160,7 @@ def tax_tieout_block(path: Path | None, d: Path, required: bool) -> dict | None:
 def main() -> int:
     ap = argparse.ArgumentParser(prog="glaw-accounting-control")
     ap.add_argument("--matter", default=None)
-    ap.add_argument("--profile", choices=["accounting", "tax"], default="accounting")
+    ap.add_argument("--profile", choices=["accounting", "tax", "sec-reporting"], default="accounting")
     ap.add_argument("--source", required=True, help='current source basis, e.g. "SRC-0001 bank source package"')
     ap.add_argument("--ledger", required=True, help="ledger JSON consumed by glaw-books-doctor")
     ap.add_argument("--bank-rec", required=True, help="JSON output from glaw-bank-rec --format json")
