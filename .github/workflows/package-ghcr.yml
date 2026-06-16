@@ -32,6 +32,21 @@ jobs:
         with:
           ref: ${{ steps.ref.outputs.raw }}
 
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify source before package
+        shell: bash
+        run: |
+          set -euo pipefail
+          GLAW_SKILL_DIR="$GITHUB_WORKSPACE" GLAW_SKILLS_ROOT="$HOME/.claude/skills" bash bin/glaw-setup
+          GLAW_SKILL_DIR="$GITHUB_WORKSPACE" GLAW_SKILLS_ROOT="$HOME/.codex/skills" bash bin/glaw-setup
+          GLAW_DOCTOR_CORE=1 bash bin/glaw-doctor
+          python3 bin/glaw-policy check
+          GLAW="$GITHUB_WORKSPACE" bash bin/glaw-bookkeeping-doctor
+          ! find . \( -name requirements.txt -o -name pyproject.toml -o -name package.json -o -name package-lock.json -o -name yarn.lock -o -name pnpm-lock.yaml \) -print | grep -q .
+
       - name: Login to GHCR
         shell: bash
         run: |

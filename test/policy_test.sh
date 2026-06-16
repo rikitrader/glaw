@@ -15,7 +15,7 @@ import json
 import sys
 data = json.load(open(sys.argv[1], encoding="utf-8"))
 ids = {item["id"] for item in data["checks"]}
-need = {"ci_policy_contract", "doctor_required_tests", "gate_required_artifacts", "pre_push_gate"}
+need = {"ci_policy_contract", "package_policy_contract", "doctor_required_tests", "gate_required_artifacts", "pre_push_gate"}
 sys.exit(0 if data["status"] == "pass" and need <= ids else 1)
 PY
 rc2=$?
@@ -24,6 +24,7 @@ ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "policy check passes
 FIX="$TMP/repo"
 mkdir -p "$FIX/.github/workflows" "$FIX/bin" "$FIX/.githooks"
 cp "$ROOT/.github/workflows/ci.yml" "$FIX/.github/workflows/ci.yml"
+cp "$ROOT/.github/workflows/package-ghcr.yml" "$FIX/.github/workflows/package-ghcr.yml"
 cp "$ROOT/bin/glaw-policy" "$FIX/bin/glaw-policy"
 cp "$ROOT/bin/glaw-commit-gate" "$FIX/bin/glaw-commit-gate"
 cp "$ROOT/bin/glaw-doctor" "$FIX/bin/glaw-doctor"

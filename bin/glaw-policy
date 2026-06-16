@@ -23,6 +23,13 @@ REQUIRED_CI_SNIPPETS = (
     "python3 bin/glaw-policy check",
     "Zero third-party package guard",
 )
+REQUIRED_PACKAGE_SNIPPETS = (
+    "GLAW_DOCTOR_CORE=1 bash bin/glaw-doctor",
+    "python3 bin/glaw-policy check",
+    "bash bin/glaw-bookkeeping-doctor",
+    "docker build -f packaging/Containerfile",
+    "docker push",
+)
 REQUIRED_DOCTOR_TESTS = (
     "facts_validate_test:launch-guard",
     "gate_test:hard-gate",
@@ -115,6 +122,7 @@ def check_executable(path: Path, label: str) -> dict:
 
 def policy_report(root: Path) -> dict:
     ci = read(root / ".github/workflows/ci.yml")
+    package = read(root / ".github/workflows/package-ghcr.yml")
     doctor = read(root / "bin/glaw-doctor")
     gate = read(root / "bin/glaw-gate")
     packet = read(root / "bin/glaw-final-packet")
@@ -126,6 +134,8 @@ def policy_report(root: Path) -> dict:
     checks = [
         check_file(root / ".github/workflows/ci.yml", "ci_workflow_exists"),
         check_contains("ci_policy_contract", ci, REQUIRED_CI_SNIPPETS),
+        check_file(root / ".github/workflows/package-ghcr.yml", "package_workflow_exists"),
+        check_contains("package_policy_contract", package, REQUIRED_PACKAGE_SNIPPETS),
         check_contains("doctor_required_tests", doctor, REQUIRED_DOCTOR_TESTS),
         check_contains("doctor_tool_smokes", doctor, REQUIRED_TOOL_SMOKES),
         check_contains("gate_required_artifacts", gate, REQUIRED_GATE_ARTIFACTS),

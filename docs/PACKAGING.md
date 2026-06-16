@@ -7,9 +7,9 @@ and lockfiles.
 The GitHub Package is therefore an OCI source artifact published to GHCR:
 
 ```bash
-docker build -f packaging/Containerfile -t ghcr.io/rikitrader/glaw:1.2.0 .
-docker tag ghcr.io/rikitrader/glaw:1.2.0 ghcr.io/rikitrader/glaw:latest
-docker push ghcr.io/rikitrader/glaw:1.2.0
+docker build -f packaging/Containerfile -t ghcr.io/rikitrader/glaw:1.2.1 .
+docker tag ghcr.io/rikitrader/glaw:1.2.1 ghcr.io/rikitrader/glaw:latest
+docker push ghcr.io/rikitrader/glaw:1.2.1
 docker push ghcr.io/rikitrader/glaw:latest
 ```
 

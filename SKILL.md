@@ -1,6 +1,6 @@
 ---
 name: glaw
-version: 1.2.0
+version: 1.2.1
 description: "GLAW — a virtual corporate law firm. Opens a matter (litigation case OR corp/fund build) and drives it through intake → strategy → structure → draft → adversarial → file → docket → retro, routing each task to a specialist seat. Use for: 'open a matter', 'build a company/corp/fund', 'start a case', 'run the firm', 'GLAW', or any multi-step legal+tax+corporate engagement."
 allowed-tools:
   - Bash
