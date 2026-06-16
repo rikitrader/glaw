@@ -642,16 +642,37 @@ packet["reviewer_identity_manifest"] = (
     + [row("council", name) for name in COUNCIL_PROFILES[profile]]
     + [row("adversarial", name) for name in ADVERSARIAL_PROFILES[profile]]
 )
+routes = {
+    "ethics-upl": ("bin/glaw-ethics status", "clear conflicts, engagement, and UPL footer evidence"),
+    "citation-grounding": ("bin/glaw-citation-gate status", "verify citations against the captured source corpus"),
+    "government-adversary": ("bin/glaw-adversarial status --profile auto", "record surviving government/regulatory/litigation adversary attacks"),
+    "senior-review-source-support": ("bin/glaw-council status --profile auto", "obtain source-backed senior reviewer approval notes"),
+    "red-flag-accountability": ("bin/glaw-red-flags status", "resolve blocking red flags and account for nonblocking flags"),
+    "source-evidence-chain": ("bin/glaw-final-packet build --profile auto", "refresh the source evidence manifest from current matter files"),
+    "professional-report-quality": ("bin/glaw-upl-check", "fix external reports so they carry owner, voice, findings, evidence, red flags, sign-off conditions, sources, and no placeholders"),
+    "reviewer-identity": ("bin/glaw-doctor", "repair reviewer skill mapping or identity markers"),
+    "accounting-control": ("bin/glaw-accounting-control", "run books-doctor, bank reconciliation, ledger, and tax tie-out controls"),
+}
+def compliance(row_id, owner):
+    next_command, required_fix = routes[row_id]
+    return {
+        "id": row_id,
+        "owner": owner,
+        "status": "pass",
+        "missing": [],
+        "next_command": next_command,
+        "required_fix": required_fix,
+    }
 packet["compliance_manifest"] = [
-    {"id": "ethics-upl", "owner": "glaw-ethics-conflicts", "status": "pass", "missing": []},
-    {"id": "citation-grounding", "owner": "glaw-legal-research", "status": "pass", "missing": []},
-    {"id": "government-adversary", "owner": "glaw-adversarial", "status": "pass", "missing": []},
-    {"id": "senior-review-source-support", "owner": "glaw-council", "status": "pass", "missing": []},
-    {"id": "red-flag-accountability", "owner": "glaw-red-flags", "status": "pass", "missing": []},
-    {"id": "source-evidence-chain", "owner": "glaw-final-packet", "status": "pass", "missing": []},
-    {"id": "professional-report-quality", "owner": "glaw-legal-writing", "status": "pass", "missing": []},
-    {"id": "reviewer-identity", "owner": "glaw-final-packet", "status": "pass", "missing": []},
-    {"id": "accounting-control", "owner": "glaw-accounting", "status": "pass", "missing": []},
+    compliance("ethics-upl", "glaw-ethics-conflicts"),
+    compliance("citation-grounding", "glaw-legal-research"),
+    compliance("government-adversary", "glaw-adversarial"),
+    compliance("senior-review-source-support", "glaw-council"),
+    compliance("red-flag-accountability", "glaw-red-flags"),
+    compliance("source-evidence-chain", "glaw-final-packet"),
+    compliance("professional-report-quality", "glaw-legal-writing"),
+    compliance("reviewer-identity", "glaw-final-packet"),
+    compliance("accounting-control", "glaw-accounting"),
 ]
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY

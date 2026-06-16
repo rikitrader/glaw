@@ -784,12 +784,62 @@ def accounting_control_manifest(profile, source_manifest):
     return manifest
 
 
+COMPLIANCE_ROW_ROUTES = {
+    "ethics-upl": (
+        "bin/glaw-ethics status",
+        "clear conflicts, engagement, and UPL footer evidence",
+    ),
+    "citation-grounding": (
+        "bin/glaw-citation-gate status",
+        "verify citations against the captured source corpus",
+    ),
+    "government-adversary": (
+        "bin/glaw-adversarial status --profile auto",
+        "record surviving government/regulatory/litigation adversary attacks",
+    ),
+    "senior-review-source-support": (
+        "bin/glaw-council status --profile auto",
+        "obtain source-backed senior reviewer approval notes",
+    ),
+    "red-flag-accountability": (
+        "bin/glaw-red-flags status",
+        "resolve blocking red flags and account for nonblocking flags",
+    ),
+    "source-evidence-chain": (
+        "bin/glaw-final-packet build --profile auto",
+        "refresh the source evidence manifest from current matter files",
+    ),
+    "professional-report-quality": (
+        "bin/glaw-upl-check",
+        "fix external reports so they carry owner, voice, findings, evidence, red flags, sign-off conditions, sources, and no placeholders",
+    ),
+    "reviewer-identity": (
+        "bin/glaw-doctor",
+        "repair reviewer skill mapping or identity markers",
+    ),
+    "accounting-control": (
+        "bin/glaw-accounting-control",
+        "run books-doctor, bank reconciliation, ledger, and tax tie-out controls",
+    ),
+    "accounting-control-not-required": (
+        "",
+        "no accounting control required for this profile",
+    ),
+}
+
+
 def _compliance_row(row_id, owner, ok, missing):
+    next_command, required_fix = COMPLIANCE_ROW_ROUTES.get(
+        row_id,
+        ("bin/glaw-final-packet build --profile auto", "refresh the final packet compliance manifest"),
+    )
     return {
         "id": row_id,
         "owner": owner,
         "status": "pass" if ok else "fail",
         "missing": missing,
+        "next_command": next_command,
+        "required_fix": required_fix,
     }
 
 

@@ -299,6 +299,10 @@ the seal stays human as a legal and ethics constraint.
   `glaw-accounting-control`, government-adversary failures to `/glaw-adversarial`,
   citation-grounding failures to `/glaw-legal-research`, red-flag failures to
   `/glaw-red-flags`, and general compliance failures to `/glaw-compliance`.
+- ✅ **P2-G11 · Self-routing compliance rows**: `glaw-final-packet` and `glaw-gate`
+  now require every compliance-manifest row to carry `owner`, `next_command`, and
+  `required_fix`, so the Orchestrator can route from the packet itself and stale
+  hand-edited manifests fail the file gate.
 
 ### Phase 3 (Harness Integration) — add
 - ✅ **P3-G1 · Policy-as-fail-closed-CI-gate + observability**: `bin/glaw-policy check` now
