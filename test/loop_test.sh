@@ -245,6 +245,44 @@ PY
 rc2=$?
 ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "loop routes failed government-adversary manifest to adversarial owner"
 
+cat > "$M2/final_packet.json" <<'JSON'
+{
+  "status": "blocked",
+  "compliance_manifest": [
+    {
+      "id": "red-flag-accountability",
+      "owner": "glaw-red-flags",
+      "status": "fail",
+      "missing": ["source_backed_resolution"],
+      "next_command": "bin/glaw-red-flags status",
+      "required_fix": "resolve blocking red flags and account for nonblocking flags",
+      "detail": "red-flag conditions are not ready for Chief approval"
+    }
+  ]
+}
+JSON
+"$LOOP" status --matter loop-compliance --json > "$TMP/loop-red-flags.json"; rc=$?
+python3 - "$TMP/loop-red-flags.json" <<'PY'
+import json
+import sys
+
+data = json.load(open(sys.argv[1], encoding="utf-8"))
+failures = data.get("compliance_failures") or []
+plan = data.get("compliance_action_plan") or []
+ok = (
+    data.get("next_gate") == "file"
+    and data.get("owner") == "red-flags"
+    and data.get("next_command") == "bin/glaw-red-flags status"
+    and failures
+    and failures[0].get("id") == "red-flag-accountability"
+    and plan
+    and plan[0].get("owner") == "glaw-red-flags"
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "loop routes failed red-flag-accountability manifest to red-flags owner"
+
 "$OVERSIGHT" halt --by "QA reviewer" --reason "test halt" >/dev/null
 "$LOOP" status --json > "$TMP/loop-halted.json"; rc=$?
 python3 - "$TMP/loop-halted.json" <<'PY'

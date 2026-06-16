@@ -434,6 +434,110 @@ def simulate_sec_pcaob_tabletop() -> dict:
         return scenario("sec-pcaob-tabletop", checks, home=home)
 
 
+def simulate_citation_grounding_routing() -> dict:
+    with tempfile.TemporaryDirectory(prefix="glaw-sandbox-") as tmp:
+        home = Path(tmp)
+        slug, matter = ready_matter(home, "Sandbox Citation Grounding", "accounting-tax")
+        (matter / "final_packet.json").write_text(
+            json.dumps(
+                {
+                    "status": "blocked",
+                    "compliance_manifest": [
+                        {
+                            "id": "citation-grounding",
+                            "owner": "glaw-legal-research",
+                            "status": "fail",
+                            "missing": ["trusted_corpus_match", "groundedness"],
+                            "next_command": "bin/glaw-citation-gate status",
+                            "required_fix": "Capture allowlisted authority, verify the proposition against the corpus segment, and rerun groundedness.",
+                        }
+                    ],
+                }
+            ),
+            encoding="utf-8",
+        )
+        result = run_cmd([str(BIN / "glaw-loop"), "status", "--matter", slug, "--json"], home=home)
+        payload = parse_json(result)
+        plan = payload.get("compliance_action_plan") or []
+        first = plan[0] if plan else {}
+        checks = [
+            check("loop_status_passes", result["returncode"] == 0, "loop status should emit a routing decision"),
+            check("routes_to_legal_research", payload.get("owner") == "legal-research", "citation-grounding failure must route to legal research"),
+            check("uses_citation_gate_status", payload.get("next_command") == "bin/glaw-citation-gate status", "next command must call citation gate status"),
+            check("citation_fix_is_preserved", "allowlisted authority" in first.get("required_fix", ""), "action plan must preserve corpus-grounding fix text"),
+        ]
+        return scenario("citation-grounding-routing", checks, home=home)
+
+
+def simulate_red_flag_accountability_routing() -> dict:
+    with tempfile.TemporaryDirectory(prefix="glaw-sandbox-") as tmp:
+        home = Path(tmp)
+        slug, matter = ready_matter(home, "Sandbox Red Flag Accountability", "accounting-tax")
+        (matter / "final_packet.json").write_text(
+            json.dumps(
+                {
+                    "status": "blocked",
+                    "compliance_manifest": [
+                        {
+                            "id": "red-flag-accountability",
+                            "owner": "glaw-red-flags",
+                            "status": "fail",
+                            "missing": ["owner_assigned_resolution", "source_backed_condition"],
+                            "next_command": "bin/glaw-red-flags status",
+                            "required_fix": "Assign a senior owner, source the red-flag condition, and record whether the Chief carries or resolves it.",
+                        }
+                    ],
+                }
+            ),
+            encoding="utf-8",
+        )
+        result = run_cmd([str(BIN / "glaw-loop"), "status", "--matter", slug, "--json"], home=home)
+        payload = parse_json(result)
+        failures = payload.get("compliance_failures") or []
+        checks = [
+            check("loop_status_passes", result["returncode"] == 0, "loop status should emit a routing decision"),
+            check("routes_to_red_flags", payload.get("owner") == "red-flags", "red-flag failure must route to red-flags owner"),
+            check("uses_red_flags_status", payload.get("next_command") == "bin/glaw-red-flags status", "next command must call red-flags status"),
+            check("carries_red_flag_failure", bool(failures) and failures[0].get("id") == "red-flag-accountability", "routing payload must carry the failed red-flag row"),
+        ]
+        return scenario("red-flag-accountability-routing", checks, home=home)
+
+
+def simulate_report_quality_routing() -> dict:
+    with tempfile.TemporaryDirectory(prefix="glaw-sandbox-") as tmp:
+        home = Path(tmp)
+        slug, matter = ready_matter(home, "Sandbox Report Quality", "sec-reporting")
+        (matter / "final_packet.json").write_text(
+            json.dumps(
+                {
+                    "status": "blocked",
+                    "compliance_manifest": [
+                        {
+                            "id": "professional-report-quality",
+                            "owner": "glaw-compliance",
+                            "status": "fail",
+                            "missing": ["Owner:", "Report voice:", "Evidence:", "Sign-off conditions:"],
+                            "next_command": "bin/glaw-upl-check",
+                            "required_fix": "Fix external reports so every deliverable has owner, voice, findings, evidence, red flags, sign-off conditions, sources, and no placeholders.",
+                        }
+                    ],
+                }
+            ),
+            encoding="utf-8",
+        )
+        result = run_cmd([str(BIN / "glaw-loop"), "status", "--matter", slug, "--json"], home=home)
+        payload = parse_json(result)
+        plan = payload.get("compliance_action_plan") or []
+        first = plan[0] if plan else {}
+        checks = [
+            check("loop_status_passes", result["returncode"] == 0, "loop status should emit a routing decision"),
+            check("routes_to_compliance", payload.get("owner") == "compliance", "report-quality failure must route to compliance"),
+            check("uses_final_packet_command", payload.get("next_command") == "bin/glaw-final-packet build --profile auto", "generic compliance failures must route through final-packet rebuild"),
+            check("report_quality_fix_is_preserved", "sign-off conditions" in first.get("required_fix", ""), "action plan must preserve professional report-quality fix text"),
+        ]
+        return scenario("report-quality-routing", checks, home=home)
+
+
 SCENARIOS: dict[str, tuple[str, Callable[[], dict]]] = {
     "conscience-human-act": ("Conscience blocks autonomous human-only requested acts.", simulate_conscience_human_act),
     "oversight-kill-switch": ("Oversight halt stops glaw-loop and routes to the Board.", simulate_oversight_kill_switch),
@@ -443,6 +547,9 @@ SCENARIOS: dict[str, tuple[str, Callable[[], dict]]] = {
     "government-adversary-routing": ("Loop routes final-packet government-adversary failures back to RED team.", simulate_government_adversary_routing),
     "fortune500-accounting-priority": ("Fortune 500 accounting/tax/SEC packet routes bank-rec and tax tie-out controls before downstream legal sign-off.", simulate_fortune500_accounting_priority),
     "sec-pcaob-tabletop": ("SEC reporting tabletop routes failed PCAOB/SEC adversarial lenses back to the RED team.", simulate_sec_pcaob_tabletop),
+    "citation-grounding-routing": ("Loop routes trusted-corpus and groundedness failures to legal research.", simulate_citation_grounding_routing),
+    "red-flag-accountability-routing": ("Loop routes unresolved source-backed red flags back to red-flag accountability.", simulate_red_flag_accountability_routing),
+    "report-quality-routing": ("Loop routes professional report-quality failures back through compliance/final-packet repair.", simulate_report_quality_routing),
 }
 
 

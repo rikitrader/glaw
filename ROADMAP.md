@@ -227,7 +227,7 @@ The more autonomous GLAW gets, the more these bind. They are the organism's cons
 
 | Area | Current shipped state | Residual work | Phase |
 |---|---|---|---|
-| **Autonomic loop** | `glaw-loop` routes fail-closed, records maker/checker decisions, latches non-convergence escalations, respects Oversight halt, emits self-routing compliance failures, and is covered by accounting/tax/SEC/PCAOB tabletop sandbox scenarios | richer matter-specific convergence fixtures across more specialist seats | 2–6 |
+| **Autonomic loop** | `glaw-loop` routes fail-closed, records maker/checker decisions, latches non-convergence escalations, respects Oversight halt, emits self-routing compliance failures, and is covered by accounting/tax/SEC/PCAOB, citation-grounding, red-flag, and report-quality tabletop sandbox scenarios | richer matter-specific convergence fixtures across more specialist seats | 2–6 |
 | **Cross-matter memory** | `glaw-learnings` is a queryable source-linked long-term store with reflected knowledge rules, isolated `$GLAW_HOME` tests, and workflow-track/matter-type weighted retrieval | broader retrieval quality evaluation fixtures across more departments | 2–6 |
 | **Host embedding** | `glaw-host`, `glaw-mcp`, and `glaw-extism` expose guarded argv-only execution with conscience and RBAC boundaries | hosted/multi-operator identity beyond local role assertion | 3–6 |
 | **Verifiable law** | citation corpus capture rejects off-allowlist URLs, treats pasted text as untrusted, supports allowlisted fetch and authenticated official copies, and gates citation typology + lexical groundedness | deeper authoritative corpus integrations and semantic authority checking beyond the lexical floor | 4–6 |
@@ -291,7 +291,10 @@ the seal stays human as a legal and ethics constraint.
   isolated temporary `$GLAW_HOME` fixtures and run real commands to prove fail-closed behavior
   for conscience human-only requests, Oversight Board kill-switch routing, daemon deadline
   scans, jurisdiction pack failures, profile-map consistency, and final-packet
-  government-adversary failures routing back to the RED-team owner. `bin/glaw-doctor` runs
+  government-adversary failures routing back to the RED-team owner. It also table-tests
+  Fortune 500 accounting-control priority, SEC/PCAOB adversarial routing, citation-grounding
+  repair through legal research, red-flag accountability routing, and professional
+  report-quality repair through compliance/final-packet rebuild. `bin/glaw-doctor` runs
   the sandbox regression so autonomy claims stay executable, not just documented.
 - ✅ **P2-G8 · Government-adversary coverage lock**: `lib/glaw_profiles.py` now carries
   `GOVERNMENT_ADVERSARY_LENSES`, and `bin/glaw-doctor`, `test/golden_profile_test.sh`, and

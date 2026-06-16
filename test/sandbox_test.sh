@@ -23,6 +23,9 @@ required={
     "government-adversary-routing",
     "fortune500-accounting-priority",
     "sec-pcaob-tabletop",
+    "citation-grounding-routing",
+    "red-flag-accountability-routing",
+    "report-quality-routing",
 }
 sys.exit(0 if data.get("status") == "pass" and required <= names else 1)
 PY
@@ -78,6 +81,57 @@ sys.exit(0 if ok else 1)
 PY
 rc2=$?
 ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "sandbox requires SEC/PCAOB adversarial tabletop routing"
+
+"$SANDBOX" run --scenario citation-grounding-routing --json > "$TMP/citation.json"; rc=$?
+python3 - "$TMP/citation.json" <<'PY'
+import json, sys
+data=json.load(open(sys.argv[1]))
+scenario=data.get("scenarios", [{}])[0]
+checks={item.get("id"): item.get("status") for item in scenario.get("checks", [])}
+ok=(
+    data.get("status") == "pass"
+    and scenario.get("name") == "citation-grounding-routing"
+    and checks.get("routes_to_legal_research") == "pass"
+    and checks.get("uses_citation_gate_status") == "pass"
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "sandbox requires citation-grounding legal-research routing"
+
+"$SANDBOX" run --scenario red-flag-accountability-routing --json > "$TMP/red-flags.json"; rc=$?
+python3 - "$TMP/red-flags.json" <<'PY'
+import json, sys
+data=json.load(open(sys.argv[1]))
+scenario=data.get("scenarios", [{}])[0]
+checks={item.get("id"): item.get("status") for item in scenario.get("checks", [])}
+ok=(
+    data.get("status") == "pass"
+    and scenario.get("name") == "red-flag-accountability-routing"
+    and checks.get("routes_to_red_flags") == "pass"
+    and checks.get("carries_red_flag_failure") == "pass"
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "sandbox requires red-flag accountability routing"
+
+"$SANDBOX" run --scenario report-quality-routing --json > "$TMP/report-quality.json"; rc=$?
+python3 - "$TMP/report-quality.json" <<'PY'
+import json, sys
+data=json.load(open(sys.argv[1]))
+scenario=data.get("scenarios", [{}])[0]
+checks={item.get("id"): item.get("status") for item in scenario.get("checks", [])}
+ok=(
+    data.get("status") == "pass"
+    and scenario.get("name") == "report-quality-routing"
+    and checks.get("routes_to_compliance") == "pass"
+    and checks.get("report_quality_fix_is_preserved") == "pass"
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "sandbox requires report-quality compliance routing"
 
 rm -rf "$TMP"
 echo

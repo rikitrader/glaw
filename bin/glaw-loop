@@ -145,7 +145,7 @@ def compliance_failure_route(failures: list[dict]) -> tuple[str, str, str]:
             "bin/glaw-citation-gate status",
             "final packet citation grounding is blocked: " + summary,
         )
-    if "red-flags" in row_ids or "glaw-red-flags" in owners:
+    if {"red-flags", "red-flag-accountability"} & row_ids or "glaw-red-flags" in owners:
         return (
             "red-flags",
             "bin/glaw-red-flags status",
