@@ -148,7 +148,7 @@ bin/glaw-final-packet build --profile auto
 
 `glaw-final-packet` writes `final_packet.json` and `final_packet.md`, then logs
 `final_packet_ready` only when intake/conflicts/ethics/citation corpus/citation ledger/adversarial, UPL footer
-checks, red flags, the required council profile, and at least one external-facing text deliverable
+checks, red flags, the required council profile, the compliance manifest, and at least one external-facing text deliverable
 are all explicitly completed and clear. Each external text deliverable must also pass the
 professional-report marker gate: `Owner:`, `Report voice:`, `Findings:`, `Evidence:`,
 `Red flags:`, and `Sign-off conditions:`, and it must not contain unresolved bracket
@@ -167,6 +167,10 @@ is missing or changed after packet generation. The packet also records a reviewe
 identity manifest: every required Council role and adversarial lens must resolve to a concrete
 GLAW skill file with `Identity:`, `Soul:`, and `Report voice:` posture markers, and the file gate
 blocks if those skill files change after packet generation.
+The packet also records a Chief Compliance Officer `compliance_manifest` tying ethics/UPL,
+citations, government adversary review, senior source support, red flags, source evidence,
+report quality, reviewer identity, and accounting controls into one file-readiness record.
+`glaw-gate` recomputes that manifest from live matter state and blocks if it is stale.
 
 ## Contract Review
 

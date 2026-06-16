@@ -1,6 +1,6 @@
 # GLAW Departments — full seat reference
 
-GLAW ships as **one self-contained app**. Current doctor coverage verifies **170 source
+GLAW ships as **one self-contained app**. Current doctor coverage verifies **179 source
 `SKILL.md` files**, **63 vendored seats**, and top-level `/glaw-*` command parity after
 `bin/glaw-setup`. The single source of truth for routing is
 [`../lib/firm-roster.md`](../lib/firm-roster.md); this page is the human-readable index.
@@ -26,6 +26,7 @@ tools.
 | Review bench (strategy+structure+adversarial back-to-back) | `/glaw-autocounsel` |
 | General Counsel — conflicts, engagement, UPL gate | `/glaw-ethics-conflicts` |
 | Legal Research — citation verification (anti-hallucination) | `/glaw-legal-research` |
+| Chief Compliance Officer — final compliance manifest + file-readiness exceptions | `/glaw-compliance` |
 | Writing desk — drafting style, brief/memo polish, Bluebook | `/glaw-legal-writing` |
 
 ## Corporate & Transactional

@@ -20,6 +20,7 @@ domain below maps to a seat.
 | Oversight Board | `/glaw-oversight-board` | Human-governance kill-switch, non-convergence escalation, high-impact autonomy review, and Board decision ledger. Engine: `bin/glaw-oversight`; `glaw-loop` stops while halted |
 | General Counsel | `/glaw-ethics-conflicts` | Conflicts, engagement letters, RPC ethics, UPL gate |
 | Legal Research | `/glaw-legal-research` | Citation verification — anti-hallucination guardrail |
+| Chief Compliance Officer | `/glaw-compliance` | Owns the final packet `compliance_manifest`, ties ethics/UPL, citation grounding, government adversaries, red flags, source evidence, report quality, reviewer identity, and accounting controls into one file-readiness compliance record |
 | Jurisdiction Pack | `/glaw-jurisdiction` | Source-backed state/federal/international matrix for governing law, forum, tax, licensing, filings, deadlines, and adversarial government lenses. Engine: `bin/glaw-jurisdiction-pack` |
 | Writing desk (**house writing standard, all workflows**) | `/glaw-legal-writing` | Legal Writing Master: IRAC/CREAC/CRRACC, active voice, Bluebook (binding/persuasive/secondary + pin cites), counterargument refutation; **deterministic QC** `bin/glaw-writing-check [--motion]` + the Court Motion Style Sheet (`lib/style/court-motion-style-sheet.md`) + the **Federal Filing Style Directive** (`lib/style/federal-filing-style.md`, `--federal`) with **auto-render** `bin/glaw-federal-format` + **auto-assert** `bin/glaw-format-check` (TNR/double/justified/1.25") |
 
