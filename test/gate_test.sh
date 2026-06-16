@@ -810,6 +810,91 @@ printf 'tampered workpaper\n' >> "$M/workpapers/books-doctor.txt"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-packet accounting workpaper tamper"
 cp "$M/workpapers/books-doctor.baseline.txt" "$M/workpapers/books-doctor.txt"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact accounting workpaper restored"
+cp "$M/final_packet.json" "$M/final_packet.accounting-baseline.json"
+cp "$M/decisions.jsonl" "$M/decisions.accounting-baseline.jsonl"
+cp "$M/workpapers/bank-rec.json" "$M/workpapers/bank-rec.baseline.json"
+fixture_py "$M" <<'PY'
+import hashlib, json, pathlib, sys
+d = pathlib.Path(sys.argv[1])
+rec_path = d / "workpapers/bank-rec.json"
+rec_path.write_text(json.dumps({
+    "reconciled": False,
+    "unreconciled_difference": "1.00",
+    "book_only": [{"id": "B1"}],
+    "bank_only": [],
+}) + "\n", encoding="utf-8")
+
+packet_path = d / "final_packet.json"
+packet = json.loads(packet_path.read_text(encoding="utf-8"))
+manifest = packet["accounting_control_manifest"]
+for item in manifest["artifact_hashes"]:
+    if item["label"] == "bank_reconciliation":
+        item["sha256"] = hashlib.sha256(rec_path.read_bytes()).hexdigest()
+        item["size_bytes"] = rec_path.stat().st_size
+manifest["status"] = "fail"
+manifest["missing"] = [
+    "bank_reconciliation.artifact.reconciled=true",
+    "bank_reconciliation.artifact.unreconciled_difference=0",
+    "bank_reconciliation.artifact.book_only empty",
+]
+packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
+
+decision_path = d / "decisions.jsonl"
+row = json.loads(decision_path.read_text(encoding="utf-8").splitlines()[-1])
+row["approved_packet_sha256"] = hashlib.sha256(packet_path.read_bytes()).hexdigest()
+row.pop("decision_hash", None)
+row["decision_hash"] = hashlib.sha256(
+    json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
+).hexdigest()
+decision_path.write_text(json.dumps(row) + "\n", encoding="utf-8")
+PY
+"$GATE" check file m >"$TMP/bank-rec-content.out" 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && grep -q 'current accounting control is incomplete' "$TMP/bank-rec-content.out" && echo 1 || echo 0)" "file BLOCKED by bank-rec workpaper content even with matching packet hashes"
+cp "$M/final_packet.accounting-baseline.json" "$M/final_packet.json"
+cp "$M/decisions.accounting-baseline.jsonl" "$M/decisions.jsonl"
+cp "$M/workpapers/bank-rec.baseline.json" "$M/workpapers/bank-rec.json"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact bank-rec workpaper restored"
+cp "$M/final_packet.json" "$M/final_packet.accounting-baseline.json"
+cp "$M/decisions.jsonl" "$M/decisions.accounting-baseline.jsonl"
+cp "$M/workpapers/tax-tieout.json" "$M/workpapers/tax-tieout.baseline.json"
+fixture_py "$M" <<'PY'
+import hashlib, json, pathlib, sys
+d = pathlib.Path(sys.argv[1])
+tax_path = d / "workpapers/tax-tieout.json"
+tax_path.write_text(json.dumps({
+    "provision_ties": False,
+    "internal": {"consistent": False},
+}) + "\n", encoding="utf-8")
+
+packet_path = d / "final_packet.json"
+packet = json.loads(packet_path.read_text(encoding="utf-8"))
+manifest = packet["accounting_control_manifest"]
+for item in manifest["artifact_hashes"]:
+    if item["label"] == "tax_tieout":
+        item["sha256"] = hashlib.sha256(tax_path.read_bytes()).hexdigest()
+        item["size_bytes"] = tax_path.stat().st_size
+manifest["status"] = "fail"
+manifest["missing"] = [
+    "tax_tieout.artifact.provision_ties=true",
+    "tax_tieout.artifact.internal.consistent=true",
+]
+packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
+
+decision_path = d / "decisions.jsonl"
+row = json.loads(decision_path.read_text(encoding="utf-8").splitlines()[-1])
+row["approved_packet_sha256"] = hashlib.sha256(packet_path.read_bytes()).hexdigest()
+row.pop("decision_hash", None)
+row["decision_hash"] = hashlib.sha256(
+    json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
+).hexdigest()
+decision_path.write_text(json.dumps(row) + "\n", encoding="utf-8")
+PY
+"$GATE" check file m >"$TMP/tax-tieout-content.out" 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && grep -q 'current accounting control is incomplete' "$TMP/tax-tieout-content.out" && echo 1 || echo 0)" "file BLOCKED by tax tie-out workpaper content even with matching packet hashes"
+cp "$M/final_packet.accounting-baseline.json" "$M/final_packet.json"
+cp "$M/decisions.accounting-baseline.jsonl" "$M/decisions.jsonl"
+cp "$M/workpapers/tax-tieout.baseline.json" "$M/workpapers/tax-tieout.json"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact tax tie-out workpaper restored"
 cp "$M/accounting_control.json" "$M/accounting_control.baseline.json"
 fixture_py "$M/accounting_control.json" <<'PY'
 import json, sys

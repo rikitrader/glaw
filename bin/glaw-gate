@@ -729,6 +729,27 @@ def _artifact_hash(path_text, label, missing):
     return {"label": label, "path": rel_path, "sha256": sha256_file(path), "size_bytes": size}
 
 
+def _read_accounting_artifact(path_text, label, missing):
+    if not str(path_text).strip():
+        return {}
+    path = (d / str(path_text)).resolve()
+    try:
+        path.relative_to(d.resolve())
+    except ValueError:
+        return {}
+    if not path.is_file():
+        return {}
+    try:
+        data = json.loads(path.read_text(encoding="utf-8"))
+    except json.JSONDecodeError:
+        missing.append(f"{label}.artifact valid JSON")
+        return {}
+    if not isinstance(data, dict):
+        missing.append(f"{label}.artifact JSON object")
+        return {}
+    return data
+
+
 def accounting_control_manifest(profile, source_manifest):
     required = profile in ACCOUNTING_CONTROL_PROFILES
     path = d / "accounting_control.json"
@@ -798,6 +819,18 @@ def accounting_control_manifest(profile, source_manifest):
     manifest["artifact_hashes"].append(
         _artifact_hash(rec.get("artifact", ""), "bank_reconciliation", manifest["missing"])
     )
+    rec_artifact = _read_accounting_artifact(
+        rec.get("artifact", ""), "bank_reconciliation", manifest["missing"]
+    )
+    if rec_artifact:
+        if not _boolish(rec_artifact.get("reconciled")):
+            manifest["missing"].append("bank_reconciliation.artifact.reconciled=true")
+        if not _zeroish(rec_artifact.get("unreconciled_difference")):
+            manifest["missing"].append("bank_reconciliation.artifact.unreconciled_difference=0")
+        if rec_artifact.get("book_only") not in ([], None):
+            manifest["missing"].append("bank_reconciliation.artifact.book_only empty")
+        if rec_artifact.get("bank_only") not in ([], None):
+            manifest["missing"].append("bank_reconciliation.artifact.bank_only empty")
 
     if profile in {"accounting-tax", "tax"}:
         tax = control.get("tax_tieout", {})
@@ -810,6 +843,15 @@ def accounting_control_manifest(profile, source_manifest):
         manifest["artifact_hashes"].append(
             _artifact_hash(tax.get("artifact", ""), "tax_tieout", manifest["missing"])
         )
+        tax_artifact = _read_accounting_artifact(
+            tax.get("artifact", ""), "tax_tieout", manifest["missing"]
+        )
+        if tax_artifact:
+            internal = tax_artifact.get("internal") if isinstance(tax_artifact.get("internal"), dict) else tax_artifact
+            if not _boolish(tax_artifact.get("provision_ties", tax_artifact.get("consistent", False))):
+                manifest["missing"].append("tax_tieout.artifact.provision_ties=true")
+            if not _boolish(internal.get("consistent", False)):
+                manifest["missing"].append("tax_tieout.artifact.internal.consistent=true")
 
     if manifest["missing"]:
         manifest["status"] = "fail"

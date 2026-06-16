@@ -314,6 +314,13 @@ the seal stays human as a legal and ethics constraint.
   now require every compliance-manifest row to carry `owner`, `next_command`, and
   `required_fix`, so the Orchestrator can route from the packet itself and stale
   hand-edited manifests fail the file gate.
+- ✅ **P2-G11b · Accounting workpaper content revalidation**: `glaw-final-packet`
+  and `glaw-gate` now read the referenced bank-reconciliation and tax-tieout JSON
+  workpapers, not just the `accounting_control.json` summary and file hashes. A
+  packet is blocked when bank rec content is unreconciled, has nonzero
+  differences, or carries book/bank-only items, and tax profiles are blocked when
+  the underlying tax tie-out artifact does not prove provision and internal
+  consistency.
 - ✅ **P2-G12 · Oversight Board policy packs**: `/glaw-oversight-board` now ships
   source-controlled core and Fortune 500 accounting/SEC policy packs. `bin/glaw-oversight
   policy-list` validates every bundled pack, and `validate-policy` fails closed unless
