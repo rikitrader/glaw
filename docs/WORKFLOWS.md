@@ -47,7 +47,7 @@ Required gates:
 1. Structured intake and source-backed conflicts/engagement must clear before strategy.
 2. Legal citations must be verified through `glaw-citation-gate complete` before file; each verified row must preserve proposition, authority, reviewer, and HTTP(S) source URL.
 3. Adversarial review must pass before file.
-4. Critical/high red flags must be resolved before file.
+4. Critical/high red flags must be resolved before file; medium/low red flags may remain open only if owner-assigned, source-backed, and carried in the final packet.
 5. Final packet manifest must be ready before file.
 6. Chief/Council must approve final entry before file.
 7. External deliverables must include the attorney-review / not-legal-advice guardrail.
@@ -67,8 +67,10 @@ bin/glaw-chief-decision --chief "GLAW Chief Counsel" \
   --approve-final
 ```
 
-If the Council denies the final entry, record it with `--deny-final`; unresolved red flags
-route back to the owning department until fixed.
+If the Council denies the final entry, record it with `--deny-final`; unresolved critical/high
+red flags route back to the owning department until fixed. Open medium/low red flags must still
+name an owner, required fix, finding, and current `SRC-####` source so the Chief can approve with
+explicit risks/conditions instead of letting issues disappear.
 `--approve-final` is fail-closed: it first rebuilds `final_packet.json` against the current
 matter files, then refuses to log `chief_approved` unless the rebuilt packet is ready and
 `final_packet_ready` is in the matter timeline.
@@ -148,7 +150,9 @@ live under `evidence/`, `sources/`, or `source_documents/` and must be nonempty 
 must include source-backed evidence plus role-specific notes; required adversarial survivals must
 include source-backed evidence plus a source-cited challenge tested. A senior approval cannot be based on vague
 "reviewed" language. Resolved critical/high red flags must cite the same current source ID set,
-so an issue cannot be closed with unsupported "fixed" language. The packet JSON also records the
+so an issue cannot be closed with unsupported "fixed" language. Open medium/low red flags are
+nonblocking only when the packet records them with owner, required fix, finding, and current
+source citation; the file gate recomputes that manifest and blocks if it changes. The packet JSON also records the
 expected `final_packet.md` digest, and the file gate blocks if the human-readable markdown packet
 is missing or changed after packet generation. The packet also records a reviewer
 identity manifest: every required Council role and adversarial lens must resolve to a concrete

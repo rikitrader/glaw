@@ -122,6 +122,7 @@ cat > "$M/final_packet.json" <<'JSON'
     "accounting_council_complete": true,
     "red_flags_clear": true,
     "red_flag_resolution_evidence_clear": true,
+    "nonblocking_red_flags_accounted_clear": true,
     "external_deliverable_present": true,
     "source_evidence_manifest_clear": true,
     "senior_review_evidence_source_clear": true,
@@ -297,6 +298,7 @@ packet["senior_review_evidence_manifest"] = [
     for name in ["irs-examiner", "state-tax-auditor", "forensic-accountant", "cfo-controller", "outside-critic"]
 ]
 packet["red_flag_resolution_evidence_manifest"] = []
+packet["nonblocking_red_flag_manifest"] = []
 packet["report_quality_manifest"] = [{
     "path": "draft-report.md",
     "status": "pass",
@@ -307,6 +309,46 @@ packet["report_quality_manifest"] = [{
 }]
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
+printf '{"id":"RF-MED","severity":"medium","status":"open","finding":"watch item","source":"SRC-0001 bank statement"}\n' > "$M/red_flags.jsonl"
+python3 - "$M" <<'PY'
+import json, pathlib, sys
+d = pathlib.Path(sys.argv[1])
+packet_path = d / "final_packet.json"
+packet = json.loads(packet_path.read_text(encoding="utf-8"))
+packet["nonblocking_red_flag_manifest"] = [{
+    "id": "RF-MED",
+    "severity": "medium",
+    "status": "fail",
+    "missing": ["owner", "required_fix"],
+    "owner": "",
+    "required_fix": "",
+    "finding": "watch item",
+    "cited_source_ids": ["SRC-0001"],
+    "referenced_source_ids": ["SRC-0001"],
+}]
+packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
+PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by unowned nonblocking medium red flag"
+printf '{"id":"RF-MED","severity":"medium","status":"open","finding":"watch item","owner":"controller","required_fix":"carry in Chief conditions until closed","source":"SRC-0001 bank statement"}\n' > "$M/red_flags.jsonl"
+python3 - "$M" <<'PY'
+import json, pathlib, sys
+d = pathlib.Path(sys.argv[1])
+packet_path = d / "final_packet.json"
+packet = json.loads(packet_path.read_text(encoding="utf-8"))
+packet["nonblocking_red_flag_manifest"] = [{
+    "id": "RF-MED",
+    "severity": "medium",
+    "status": "pass",
+    "missing": [],
+    "owner": "controller",
+    "required_fix": "carry in Chief conditions until closed",
+    "finding": "watch item",
+    "cited_source_ids": ["SRC-0001"],
+    "referenced_source_ids": ["SRC-0001"],
+}]
+packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
+PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "source-backed nonblocking medium red flag proceeds to next gate"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before accounting control manifest"
 mkdir -p "$M/workpapers"
 printf '{"rows":[],"audit":[]}\n' > "$M/workpapers/ledger.json"
@@ -556,12 +598,23 @@ Sign-off conditions: licensed review.
 Attorney work-product - not legal advice. Prepared for licensed review.
 MD
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact source-cited deliverable restored"
+cp "$M/red_flags.jsonl" "$M/red_flags.baseline.jsonl"
+python3 - "$M/red_flags.jsonl" <<'PY'
+import json, sys
+p = sys.argv[1]
+row = json.loads(open(p, encoding="utf-8").read())
+row["required_fix"] = ""
+open(p, "w", encoding="utf-8").write(json.dumps(row) + "\n")
+PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by post-packet nonblocking red flag accountability tamper"
+cp "$M/red_flags.baseline.jsonl" "$M/red_flags.jsonl"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact nonblocking red flag ledger restored"
 printf '{"id":"RF-STALE","severity":"high","status":"open","finding":"new post-packet issue"}\n' > "$M/red_flags.jsonl"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by current post-packet high red flag"
 printf '{"id":"RF-STALE","severity":"high","status":"resolved","finding":"new post-packet issue","resolution_evidence":"fixed"}\n' > "$M/red_flags.jsonl"
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file STILL BLOCKED by new post-packet red flag ledger after resolution"
-rm -f "$M/red_flags.jsonl"
-ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after new post-packet red flag ledger removed"
+cp "$M/red_flags.baseline.jsonl" "$M/red_flags.jsonl"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact red flag ledger restored"
 cp "$M/citations.jsonl" "$M/citations.baseline.jsonl"
 cp "$M/council.jsonl" "$M/council.baseline.jsonl"
 cp "$M/adversarial.jsonl" "$M/adversarial.baseline.jsonl"

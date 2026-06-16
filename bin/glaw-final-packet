@@ -373,6 +373,47 @@ def red_flag_resolution_manifest(red_flags: list[dict], source_manifest: list[di
     return rows
 
 
+def nonblocking_red_flag_manifest(red_flags: list[dict], source_manifest: list[dict]) -> list[dict]:
+    source_ids = [item["id"] for item in source_manifest]
+    rows = []
+    for flag in red_flags:
+        severity = str(flag.get("severity", "")).lower()
+        if severity in {"critical", "high"}:
+            continue
+        if flag.get("status", "open") == "resolved":
+            continue
+        source = str(flag.get("source", ""))
+        cited = [sid for sid in source_ids if sid in source]
+        syntactic = sorted(set(SOURCE_ID_RE.findall(source)))
+        missing = []
+        if not severity:
+            missing.append("severity")
+        if not str(flag.get("finding", "")).strip():
+            missing.append("finding")
+        if not str(flag.get("owner", "")).strip():
+            missing.append("owner")
+        if not str(flag.get("required_fix", "")).strip():
+            missing.append("required_fix")
+        if not source.strip():
+            missing.append("source")
+        if not syntactic:
+            missing.append("source evidence id (SRC-####)")
+        elif not cited:
+            missing.append("current source evidence id")
+        rows.append({
+            "id": flag.get("id", ""),
+            "severity": severity,
+            "status": "pass" if not missing else "fail",
+            "missing": missing,
+            "owner": flag.get("owner", ""),
+            "required_fix": flag.get("required_fix", ""),
+            "finding": flag.get("finding", ""),
+            "cited_source_ids": cited,
+            "referenced_source_ids": syntactic,
+        })
+    return rows
+
+
 def _boolish(value) -> bool:
     if isinstance(value, bool):
         return value
@@ -530,6 +571,16 @@ def render_md(packet: dict) -> str:
             lines.append(f"- [{mark}] {item.get('id')} ({item.get('severity')}){suffix}")
     else:
         lines.append("- no resolved critical/high red flags")
+    lines.extend(["", "## Open Nonblocking Red Flags"])
+    nonblocking_flags = packet.get("nonblocking_red_flag_manifest", [])
+    if nonblocking_flags:
+        for item in nonblocking_flags:
+            mark = "x" if item.get("status") == "pass" else " "
+            missing = item.get("missing") or []
+            suffix = "" if not missing else f" — missing {', '.join(missing)}"
+            lines.append(f"- [{mark}] {item.get('id')} ({item.get('severity')}) owner={item.get('owner')}{suffix}")
+    else:
+        lines.append("- none")
     lines.extend(["", "## Council Reviews"])
     for row in packet["council_reviews"]:
         lines.append(f"- {row.get('profile')} / {row.get('role')}: {row.get('decision')}")
@@ -604,6 +655,10 @@ def cmd_build(args: argparse.Namespace) -> int:
     red_flag_resolution_evidence_clear = all(
         item["status"] == "pass" for item in red_flag_resolution_evidence_manifest
     )
+    nonblocking_red_flags = nonblocking_red_flag_manifest(red_flags, source_manifest)
+    nonblocking_red_flags_accounted_clear = all(
+        item["status"] == "pass" for item in nonblocking_red_flags
+    )
     reviewer_identity = reviewer_identity_manifest(profile, root)
     reviewer_identity_clear = bool(reviewer_identity) and all(
         item["status"] == "pass" for item in reviewer_identity
@@ -654,6 +709,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         f"{profile}_council_complete": has_event(timeline_rows, f"{profile}_council_complete") and rc_council == 0,
         "red_flags_clear": has_event(timeline_rows, "red_flags_clear") and rc_rf == 0,
         "red_flag_resolution_evidence_clear": red_flag_resolution_evidence_clear,
+        "nonblocking_red_flags_accounted_clear": nonblocking_red_flags_accounted_clear,
         "external_deliverable_present": bool(external_text_deliverables),
         "source_evidence_manifest_clear": bool(source_manifest) and all(
             int(item.get("size_bytes", 0)) > 0 for item in source_manifest
@@ -680,6 +736,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         "adversarial_check": adversarial_output,
         "council_check": council_output,
         "blocking_red_flags": blockers,
+        "nonblocking_red_flag_manifest": nonblocking_red_flags,
         "intake": intake,
         "intake_missing_fields": intake_missing,
         "docket": docket,

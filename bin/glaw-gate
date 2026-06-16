@@ -464,6 +464,47 @@ def red_flag_resolution_manifest(red_flags, source_manifest):
     return rows
 
 
+def nonblocking_red_flag_manifest(red_flags, source_manifest):
+    source_ids = [item["id"] for item in source_manifest]
+    rows = []
+    for flag in red_flags:
+        severity = str(flag.get("severity", "")).lower()
+        if severity in {"critical", "high"}:
+            continue
+        if flag.get("status", "open") == "resolved":
+            continue
+        source = str(flag.get("source", ""))
+        cited = [sid for sid in source_ids if sid in source]
+        syntactic = sorted(set(SOURCE_ID_RE.findall(source)))
+        missing = []
+        if not severity:
+            missing.append("severity")
+        if not str(flag.get("finding", "")).strip():
+            missing.append("finding")
+        if not str(flag.get("owner", "")).strip():
+            missing.append("owner")
+        if not str(flag.get("required_fix", "")).strip():
+            missing.append("required_fix")
+        if not source.strip():
+            missing.append("source")
+        if not syntactic:
+            missing.append("source evidence id (SRC-####)")
+        elif not cited:
+            missing.append("current source evidence id")
+        rows.append({
+            "id": flag.get("id", ""),
+            "severity": severity,
+            "status": "pass" if not missing else "fail",
+            "missing": missing,
+            "owner": flag.get("owner", ""),
+            "required_fix": flag.get("required_fix", ""),
+            "finding": flag.get("finding", ""),
+            "cited_source_ids": cited,
+            "referenced_source_ids": syntactic,
+        })
+    return rows
+
+
 def _boolish(value):
     if isinstance(value, bool):
         return value
@@ -744,6 +785,25 @@ failing_red_flag_resolutions = [
 ]
 if failing_red_flag_resolutions:
     print("current red flag resolution(s) fail source evidence IDs: " + "; ".join(failing_red_flag_resolutions))
+    sys.exit(1)
+expected_nonblocking_red_flag_manifest = packet.get("nonblocking_red_flag_manifest")
+if expected_nonblocking_red_flag_manifest is None:
+    print("final_packet.json missing nonblocking_red_flag_manifest")
+    sys.exit(1)
+current_nonblocking_red_flag_manifest = nonblocking_red_flag_manifest(
+    red_flag_rows_for_evidence,
+    current_source_manifest,
+)
+if expected_nonblocking_red_flag_manifest != current_nonblocking_red_flag_manifest:
+    print("current nonblocking red flag manifest does not match final_packet.json")
+    sys.exit(1)
+failing_nonblocking_red_flags = [
+    f"{item['id']} missing {', '.join(item['missing'])}"
+    for item in current_nonblocking_red_flag_manifest
+    if item.get("status") != "pass"
+]
+if failing_nonblocking_red_flags:
+    print("current nonblocking red flag(s) are not accountable: " + "; ".join(failing_nonblocking_red_flags))
     sys.exit(1)
 expected_reviewer_identity_manifest = packet.get("reviewer_identity_manifest") or []
 if not expected_reviewer_identity_manifest:
