@@ -350,6 +350,10 @@ the seal stays human as a legal and ethics constraint.
   require source-backed state/federal/international matrices for governing law, forum, tax,
   licensing, filings, deadlines, and government/adversarial lenses. This turns
   single-jurisdiction bias into an executable review item instead of a prose caveat.
+- ✅ **P4-G5 · Branch-seat substance packs**: `/glaw-constitutional`, `/glaw-legislative`,
+  `/glaw-judicial`, and `/glaw-admin-law` now each include a substantive reference checklist
+  plus model-output template, and `branch_substance_test.sh` makes `glaw-doctor` fail if a
+  branch loses source discipline, sign-off conditions, or authority-boundary language.
 
 *Suggested build order: branch seats.*
 

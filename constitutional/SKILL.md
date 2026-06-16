@@ -41,6 +41,10 @@ sed -n '/Public Law & Governance Branch/,/^$/p' lib/firm-roster.md 2>/dev/null
 
 Read `lib/firm-roster.md` before routing companion work.
 
+Primary branch workpapers:
+- `constitutional/references/scrutiny-tier-checklist.md`
+- `constitutional/templates/constitutional-bench-memo.md`
+
 ## Workflow
 
 ### Step 1 - Scope the government action and right
@@ -67,6 +71,11 @@ bin/glaw-constitution-score constitutional-input.json --json
 The score is not a legal conclusion. It identifies scrutiny tier, unsupported
 facts, adversarial lenses, and human-review blockers. Missing source IDs or
 unsupported high-stakes claims fail closed.
+
+Apply `constitutional/references/scrutiny-tier-checklist.md` before writing the
+memo. Use `constitutional/templates/constitutional-bench-memo.md` for the final
+branch output so threshold doctrines, scrutiny, record support, attacks, and
+sign-off conditions are explicit.
 
 ### Step 4 - Route the branch bench
 

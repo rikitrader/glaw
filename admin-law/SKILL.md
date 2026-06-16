@@ -38,6 +38,10 @@ sed -n '/Public Law & Governance Branch/,/^$/p' lib/firm-roster.md 2>/dev/null
 
 Read `lib/firm-roster.md` before routing companion work.
 
+Primary branch workpapers:
+- `admin-law/references/apa-record-review-checklist.md`
+- `admin-law/templates/administrative-record-index.md`
+
 ## Workflow
 
 ### Step 1 - Identify action and authority
@@ -51,6 +55,10 @@ Analyze statutory authority, procedure, notice, comment response, reasoned
 decision-making, evidentiary record, reliance interests, retroactivity,
 remedies, and stay/injunction posture. Route constitutional questions to
 `/glaw-constitutional` and statutory drafting fixes to `/glaw-legislative`.
+
+Apply `admin-law/references/apa-record-review-checklist.md` before conclusions.
+Use `admin-law/templates/administrative-record-index.md` for the record and
+procedure workpaper.
 
 ### Step 3 - Gate the authority
 

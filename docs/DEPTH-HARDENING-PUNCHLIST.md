@@ -41,11 +41,12 @@ The breadth is done and the safety spine is **verified real** (authority gate, l
 - **Acceptance:** `glaw-jurisdiction-pack validate` passes on a **populated** (non-scaffold) DE+FL+TX+federal pack with zero `review`/placeholder warnings.
 - **Closed:** `jurisdiction/packs/us-core.json` now seeds DE, FL, TX, NY, and federal corporate filing authority with official source URLs and source catalog entries; `glaw-jurisdiction-pack` lists bundled packs, validates source catalog URLs, rejects scaffold/placeholder text, and `jurisdiction_pack_test.sh` asserts the scaffold fails while the populated pack passes with zero review warnings.
 
-### H-4 · Branch seats are thin routing shells — `OPEN` `[SSOT]` (roster touch)
+### H-4 · Branch seats are thin routing shells — `DONE` `[SSOT]` (roster touch)
 - **Files:** `constitutional/SKILL.md`, `legislative/SKILL.md`, `judicial/SKILL.md`, `admin-law/SKILL.md`; ref in `lib/firm-roster.md`.
 - **Current state:** ~100-line shells with correct doctrine vocabulary but no embedded frameworks/checklists/model language (vs an 831-line mature seat). The `constitution-score` scorer itself is REAL.
 - **Required fix:** add per-branch `references/` + `templates/` (e.g., scrutiny-tier checklist, APA notice-and-comment record template, bench-memo skeleton, model-opinion structure). Bring each to parity with a mid-weight seat.
 - **Acceptance:** each branch seat ships at least one substantive reference doc and one model-output template; doctor self-containment still green.
+- **Closed:** constitutional, legislative, judicial, and admin-law seats now each ship a substantive reference checklist and model-output template, their `SKILL.md` files route users to those workpapers, and `branch_substance_test.sh` is enforced by `glaw-doctor`/`glaw-policy`.
 
 ---
 

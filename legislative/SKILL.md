@@ -37,6 +37,10 @@ sed -n '/Public Law & Governance Branch/,/^$/p' lib/firm-roster.md 2>/dev/null
 
 Read `lib/firm-roster.md` before routing companion work.
 
+Primary branch workpapers:
+- `legislative/references/model-law-drafting-checklist.md`
+- `legislative/templates/section-by-section-summary.md`
+
 ## Workflow
 
 ### Step 1 - Define authority and objective
@@ -51,6 +55,9 @@ Draft operative text, definitions, findings, severability, preemption, effective
 date, enforcement, reporting, and transition provisions. Route constitutional
 limits to `/glaw-constitutional`; agency implementation and APA risk to
 `/glaw-admin-law`; fiscal or tax effects to `/glaw-accounting` and tax seats.
+
+Apply `legislative/references/model-law-drafting-checklist.md` before drafting
+and deliver `legislative/templates/section-by-section-summary.md` with the text.
 
 ### Step 3 - Verify and adversarially review
 

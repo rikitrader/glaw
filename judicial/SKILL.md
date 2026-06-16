@@ -39,6 +39,10 @@ sed -n '/Public Law & Governance Branch/,/^$/p' lib/firm-roster.md 2>/dev/null
 
 Read `lib/firm-roster.md` before routing companion work.
 
+Primary branch workpapers:
+- `judicial/references/bench-memo-standards-guide.md`
+- `judicial/templates/model-opinion-skeleton.md`
+
 ## Workflow
 
 ### Step 1 - Lock the record
@@ -53,6 +57,10 @@ Prepare issue statements, rule statements, fact application, counterarguments,
 and disposition options. Route citation verification to `/glaw-legal-research`,
 constitutional questions to `/glaw-constitutional`, and appellate posture to
 `/glaw-appellate`.
+
+Apply `judicial/references/bench-memo-standards-guide.md` before drafting. Use
+`judicial/templates/model-opinion-skeleton.md` when a model order or opinion is
+requested, preserving the nonbinding model label.
 
 ### Step 3 - Separate model from authority
 
