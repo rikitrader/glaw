@@ -57,7 +57,7 @@ Run any tool with no arguments for its usage. `bin/glaw-doctor` smoke-tests them
 | Tool | Usage |
 |---|---|
 | `glaw-bureau-score` | `competency <json>` · `fraud <json>` → deterministic fraud score (0–100) + FBI competency scorecard |
-| `glaw-chief-decision` | record the Chief's PROCEED / WITH-FIXES / WITH-CONDITIONS sign-off → matter timeline + decision card; final approve/deny requires `--score`, `--grade`, `--risks`, `--conditions`, and `--rationale`; `--approve-final` rebuilds `final_packet.json`, requires it to be ready, requires a proceed/approve decision, requires the Chief rationale to cite a current `SRC-####`, requires every open nonblocking red flag ID to appear in `--risks` or `--conditions`, and binds approval to that packet's `generated_at` plus SHA-256 digest |
+| `glaw-chief-decision` | record the Chief's PROCEED / WITH-FIXES / WITH-CONDITIONS sign-off → matter timeline + decision card; final approve/deny requires `--score`, `--grade`, `--risks`, `--conditions`, and `--rationale`; `--approve-final` rebuilds `final_packet.json`, requires it to be ready, requires score ≥90 and an A-range grade, requires a proceed/approve decision, requires the Chief rationale to cite a current `SRC-####`, requires every open nonblocking red flag ID to appear in `--risks` or `--conditions`, and binds approval to that packet's `generated_at` plus SHA-256 digest |
 
 ## Zero-Dependency Policy
 

@@ -334,6 +334,10 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked without 
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked by mixed current and stale rationale sources"
 "$CHIEF" --chief "GLAW Chief Counsel" --score 95 --grade A --decision "PROCEED" --risks "none" --conditions "licensed signer final review" --rationale "SRC-0001 all gates clear and source manifests tie out" --approve-final --matter "$SLUG" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked without nonblocking red flag acknowledgment"
+"$CHIEF" --chief "GLAW Chief Counsel" --score 89 --grade A --decision "PROCEED" --risks "RF-0002 remains open as a nonblocking watch item" --conditions "licensed signer final review; RF-0002 carried until closed" --rationale "SRC-0001 all gates clear and source manifests tie out" --approve-final --matter "$SLUG" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked below score threshold"
+"$CHIEF" --chief "GLAW Chief Counsel" --score 95 --grade B --decision "PROCEED" --risks "RF-0002 remains open as a nonblocking watch item" --conditions "licensed signer final review; RF-0002 carried until closed" --rationale "SRC-0001 all gates clear and source manifests tie out" --approve-final --matter "$SLUG" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked without A-range grade"
 "$CHIEF" --chief "GLAW Chief Counsel" --score 95 --grade A --decision "DENY" --risks "none" --conditions "licensed signer final review" --rationale "SRC-0001 all gates clear and source manifests tie out" --approve-final --matter "$SLUG" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "chief final approval blocked by contradictory denial decision"
 "$CHIEF" --chief "GLAW Chief Counsel" --score 95 --grade A --decision "PROCEED" --risks "RF-0002 remains open as a nonblocking watch item" --conditions "licensed signer final review; RF-0002 carried until closed" --rationale "SRC-0001 all gates clear and source manifests tie out" --approve-final --matter "$SLUG" >/dev/null

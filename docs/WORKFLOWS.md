@@ -76,6 +76,8 @@ matter files, then refuses to log `chief_approved` unless the rebuilt packet is 
 `final_packet_ready` is in the matter timeline.
 Final approve/deny decisions also require a complete Chief card: `--score`, `--grade`,
 `--risks`, `--conditions`, and `--rationale`.
+Final approval requires score ≥90 and an A-range grade; lower-scored or non-A outcomes must
+be denied or routed back through red-flag fixes instead of logging `chief_approved`.
 For final approval, the Chief rationale must cite a current source ID from the rebuilt
 final packet, such as `SRC-0001`; the file gate revalidates that citation before filing.
 If the rebuilt packet carries open medium/low red flags, the Chief approval must name each

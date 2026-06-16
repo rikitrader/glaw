@@ -636,6 +636,34 @@ python3 - "$M/decisions.jsonl" <<'PY'
 import hashlib, json, sys
 p = sys.argv[1]
 row = json.loads(open(p, encoding="utf-8").read())
+row["score"] = "89"
+row.pop("decision_hash", None)
+row["decision_hash"] = hashlib.sha256(
+    json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
+).hexdigest()
+open(p, "w", encoding="utf-8").write(json.dumps(row) + "\n")
+PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by Chief approval score below threshold"
+cp "$M/decisions.baseline.jsonl" "$M/decisions.jsonl"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after Chief approval score restored"
+python3 - "$M/decisions.jsonl" <<'PY'
+import hashlib, json, sys
+p = sys.argv[1]
+row = json.loads(open(p, encoding="utf-8").read())
+row["grade"] = "B"
+row.pop("decision_hash", None)
+row["decision_hash"] = hashlib.sha256(
+    json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
+).hexdigest()
+open(p, "w", encoding="utf-8").write(json.dumps(row) + "\n")
+PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED by non-A Chief approval grade"
+cp "$M/decisions.baseline.jsonl" "$M/decisions.jsonl"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after Chief approval grade restored"
+python3 - "$M/decisions.jsonl" <<'PY'
+import hashlib, json, sys
+p = sys.argv[1]
+row = json.loads(open(p, encoding="utf-8").read())
 row["rationale"] = "all gates clear but no source citation"
 row.pop("decision_hash", None)
 row["decision_hash"] = hashlib.sha256(

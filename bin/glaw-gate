@@ -359,6 +359,7 @@ SOURCE_ID_RE = re.compile(r"\bSRC-\d{4}\b")
 ACCOUNTING_CONTROL_PROFILES = {"accounting", "tax", "sec-reporting"}
 NEGATIVE_DECISION_RE = re.compile(r"\b(DENY|DENIED|REJECT|REJECTED|REFUSE|REFUSED|BLOCK|BLOCKED|DO NOT PROCEED|NOT READY|WITH[- ]?FIXES|FIXES REQUIRED|FIX REQUIRED)\b", re.I)
 APPROVAL_DECISION_RE = re.compile(r"\b(PROCEED|APPROVE|APPROVED|READY|FILE-READY)\b", re.I)
+FINAL_APPROVAL_MIN_SCORE = 90.0
 REQUIRED_GATE_ARTIFACTS = (
     "intake.json",
     "ethics.json",
@@ -1156,6 +1157,18 @@ if not latest_final_row.get("conditions"):
     approval_missing.append("conditions")
 if approval_missing:
     print("latest Chief approval lacks complete sign-off field(s): " + ", ".join(approval_missing))
+    sys.exit(1)
+try:
+    approval_score = float(str(latest_final_row.get("score", "")).strip())
+except ValueError:
+    print("latest Chief approval score is not numeric")
+    sys.exit(1)
+if approval_score < FINAL_APPROVAL_MIN_SCORE:
+    print(f"latest Chief approval score below final approval threshold ({FINAL_APPROVAL_MIN_SCORE:.0f})")
+    sys.exit(1)
+approval_grade = str(latest_final_row.get("grade", "")).strip().upper()
+if not approval_grade.startswith("A"):
+    print("latest Chief approval grade is not A-range")
     sys.exit(1)
 nonblocking_flags_for_approval = [
     item for item in packet.get("nonblocking_red_flag_manifest", [])

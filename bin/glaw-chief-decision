@@ -26,6 +26,7 @@ SOURCE_ID_RE = re.compile(r"\bSRC-\d{4}\b")
 NEGATIVE_DECISION_RE = re.compile(r"\b(DENY|DENIED|REJECT|REJECTED|REFUSE|REFUSED|BLOCK|BLOCKED|DO NOT PROCEED|NOT READY|WITH[- ]?FIXES|FIXES REQUIRED|FIX REQUIRED)\b", re.I)
 APPROVAL_DECISION_RE = re.compile(r"\b(PROCEED|APPROVE|APPROVED|READY|FILE-READY)\b", re.I)
 DENIAL_DECISION_RE = re.compile(r"\b(DENY|DENIED|REJECT|REJECTED|REFUSE|REFUSED|DO NOT PROCEED)\b", re.I)
+FINAL_APPROVAL_MIN_SCORE = 90.0
 
 def now(): return datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
 def slugify(s): return re.sub(r"[^a-z0-9]+","-", s.lower()).strip("-")
@@ -82,6 +83,7 @@ def decision_hash(card):
 
 def validate_final_decision(d):
     missing = []
+    value = None
     for key in ("score", "grade", "risks", "conditions", "rationale"):
         if not str(d.get(key, "")).strip():
             missing.append(f"--{key}")
@@ -101,6 +103,13 @@ def validate_final_decision(d):
         return 1
     decision = str(d.get("decision", "")).strip()
     if d.get("approve-final"):
+        if value is None or value < FINAL_APPROVAL_MIN_SCORE:
+            print(f"FINAL APPROVAL BLOCKED: --approve-final requires score >= {FINAL_APPROVAL_MIN_SCORE:.0f}.")
+            return 1
+        grade = str(d.get("grade", "")).strip().upper()
+        if not grade.startswith("A"):
+            print("FINAL APPROVAL BLOCKED: --approve-final requires an A-range Chief grade.")
+            return 1
         if NEGATIVE_DECISION_RE.search(decision) or not APPROVAL_DECISION_RE.search(decision):
             print("FINAL APPROVAL BLOCKED: --approve-final requires a proceed/approve decision, not a contradictory denial or fix posture.")
             return 1
