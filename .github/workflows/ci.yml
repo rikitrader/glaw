@@ -24,9 +24,8 @@ jobs:
 
       - name: Deploy skills + run glaw-doctor (core mode)
         run: |
-          mkdir -p ~/.claude/skills
-          ln -s "$GITHUB_WORKSPACE" ~/.claude/skills/glaw
-          bash bin/glaw-setup
+          GLAW_SKILL_DIR="$GITHUB_WORKSPACE" GLAW_SKILLS_ROOT="$HOME/.claude/skills" bash bin/glaw-setup
+          GLAW_SKILL_DIR="$GITHUB_WORKSPACE" GLAW_SKILLS_ROOT="$HOME/.codex/skills" bash bin/glaw-setup
           GLAW_DOCTOR_CORE=1 bash bin/glaw-doctor
 
       - name: Policy contract gate
