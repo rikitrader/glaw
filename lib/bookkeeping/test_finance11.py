@@ -39,11 +39,14 @@ def test_export_html():
 
 def test_gsheet_guarded():
     import export_report as X
-    # with no token, the push is safely skipped (no crash, clear message)
-    os.environ.pop("HOME", None)
-    msg = X.push_gsheet("nonexistent-book", "x") if not (Path.home() / ".gcp" / "token.json").exists() else "skipped"
-    assert "skipped" in msg or "token.json" in msg or "https" in msg
-    print("  ✓ export: gsheet push is guarded on credentials (no crash without token)")
+    # Source-only mode writes a local CSV instead of requiring Google credentials.
+    os.environ["GLAW_HOME"] = tempfile.mkdtemp(prefix="glaw-gsheet-")
+    msg = X.push_gsheet("nonexistent-book", "x")
+    out = Path(msg)
+    assert out.name == "x.trial_balance.csv"
+    assert out.exists()
+    assert out.read_text(encoding="utf-8").startswith("Account,Debit,Credit")
+    print("  ✓ export: gsheet alias writes local CSV without Google credentials")
 
 
 def main() -> int:
