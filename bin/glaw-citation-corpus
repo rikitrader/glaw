@@ -23,27 +23,9 @@ from pathlib import Path
 from urllib.parse import urlparse
 from urllib.request import Request, urlopen
 
-APPROVED_AUTHORITY_DOMAINS = {
-    "uscode.house.gov",
-    "ecfr.gov",
-    "www.ecfr.gov",
-    "federalregister.gov",
-    "www.federalregister.gov",
-    "govinfo.gov",
-    "www.govinfo.gov",
-    "irs.gov",
-    "www.irs.gov",
-    "sec.gov",
-    "www.sec.gov",
-    "congress.gov",
-    "www.congress.gov",
-    "supremecourt.gov",
-    "www.supremecourt.gov",
-    "courtlistener.com",
-    "www.courtlistener.com",
-    "law.cornell.edu",
-    "www.law.cornell.edu",
-}
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "lib"))
+from glaw_authority_sources import authority_domain, approved_authority_url
 
 
 def now() -> str:
@@ -72,23 +54,6 @@ def matter_dir(slug: str | None) -> Path:
 def valid_http_url(value: str) -> bool:
     parsed = urlparse(str(value).strip())
     return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
-
-
-def authority_domain(value: str) -> str:
-    return (urlparse(str(value).strip()).hostname or "").lower()
-
-
-def approved_authority_url(value: str) -> bool:
-    host = authority_domain(value)
-    configured = {
-        item.strip().lower()
-        for item in os.environ.get("GLAW_AUTHORITY_DOMAINS", "").split(",")
-        if item.strip()
-    }
-    domains = APPROVED_AUTHORITY_DOMAINS | configured
-    return host in domains or any(
-        host.endswith("." + domain) for domain in domains if not domain.startswith("www.")
-    )
 
 
 def capture_method(args: argparse.Namespace) -> str:

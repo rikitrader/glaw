@@ -19,6 +19,7 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "lib"))
+from glaw_authority_sources import approved_authority_url
 from glaw_groundedness import audit_matter
 
 
@@ -27,49 +28,9 @@ DEFECT_TYPES = {"incorrect", "misgrounded", "ungrounded", "incomplete"}
 NONE_DEFECTS = {"", "none", "verified"}
 LEGAL_RESEARCH_REVIEWERS = {"legal-research", "glaw-legal-research", "/glaw-legal-research"}
 APPROVED_CORPUS_TRUST = {"authoritative", "authenticated-copy"}
-APPROVED_AUTHORITY_DOMAINS = {
-    "uscode.house.gov",
-    "ecfr.gov",
-    "www.ecfr.gov",
-    "federalregister.gov",
-    "www.federalregister.gov",
-    "govinfo.gov",
-    "www.govinfo.gov",
-    "irs.gov",
-    "www.irs.gov",
-    "sec.gov",
-    "www.sec.gov",
-    "congress.gov",
-    "www.congress.gov",
-    "supremecourt.gov",
-    "www.supremecourt.gov",
-    "courtlistener.com",
-    "www.courtlistener.com",
-    "law.cornell.edu",
-    "www.law.cornell.edu",
-}
-
-
 def valid_http_url(value: str) -> bool:
     parsed = urlparse(str(value).strip())
     return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
-
-
-def authority_domain(value: str) -> str:
-    return (urlparse(str(value).strip()).hostname or "").lower()
-
-
-def approved_authority_url(value: str) -> bool:
-    host = authority_domain(value)
-    configured = {
-        item.strip().lower()
-        for item in os.environ.get("GLAW_AUTHORITY_DOMAINS", "").split(",")
-        if item.strip()
-    }
-    domains = APPROVED_AUTHORITY_DOMAINS | configured
-    return host in domains or any(
-        host.endswith("." + domain) for domain in domains if not domain.startswith("www.")
-    )
 
 
 def valid_legal_research_reviewer(value: str) -> bool:

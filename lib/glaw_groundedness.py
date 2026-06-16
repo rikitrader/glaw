@@ -8,10 +8,10 @@ from __future__ import annotations
 
 import hashlib
 import json
-import os
 import re
 from pathlib import Path
-from urllib.parse import urlparse
+
+from glaw_authority_sources import approved_authority_url
 
 
 STOPWORDS = {
@@ -21,27 +21,6 @@ STOPWORDS = {
 MIN_ENTITY_GROUNDING = 0.50
 MIN_RELATION_PRESERVATION = 0.35
 APPROVED_CORPUS_TRUST = {"authoritative", "authenticated-copy"}
-APPROVED_AUTHORITY_DOMAINS = {
-    "uscode.house.gov",
-    "ecfr.gov",
-    "www.ecfr.gov",
-    "federalregister.gov",
-    "www.federalregister.gov",
-    "govinfo.gov",
-    "www.govinfo.gov",
-    "irs.gov",
-    "www.irs.gov",
-    "sec.gov",
-    "www.sec.gov",
-    "congress.gov",
-    "www.congress.gov",
-    "supremecourt.gov",
-    "www.supremecourt.gov",
-    "courtlistener.com",
-    "www.courtlistener.com",
-    "law.cornell.edu",
-    "www.law.cornell.edu",
-}
 
 
 def sha256_text(value: str) -> str:
@@ -54,23 +33,6 @@ def token_set(value: str) -> set[str]:
         for token in re.findall(r"[A-Za-z][A-Za-z0-9-]{2,}", str(value).lower())
         if token not in STOPWORDS
     }
-
-
-def authority_domain(value: str) -> str:
-    return (urlparse(str(value).strip()).hostname or "").lower()
-
-
-def approved_authority_url(value: str) -> bool:
-    host = authority_domain(value)
-    configured = {
-        item.strip().lower()
-        for item in os.environ.get("GLAW_AUTHORITY_DOMAINS", "").split(",")
-        if item.strip()
-    }
-    domains = APPROVED_AUTHORITY_DOMAINS | configured
-    return host in domains or any(
-        host.endswith("." + domain) for domain in domains if not domain.startswith("www.")
-    )
 
 
 def row_hash(row: dict) -> str:

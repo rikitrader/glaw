@@ -209,7 +209,6 @@ _file_artifacts_valid() {  # _file_artifacts_valid <matter-dir> <repo-root>
   python3 - "$1" "$2" <<'PY'
 import hashlib
 import json
-import os
 import pathlib
 import re
 import sys
@@ -226,6 +225,7 @@ from glaw_profiles import (
     TRACKS,
     profile_for_track,
 )
+from glaw_authority_sources import approved_authority_url
 
 GENERIC_INTAKE_REVIEWER_RE = re.compile(
     r"^\s*(?:intake\s+)?(?:reviewer|operator|user|clerk|agent|professional|counsel)\s*$"
@@ -241,44 +241,6 @@ def valid_http_url(value):
 
 
 APPROVED_CORPUS_TRUST = {"authoritative", "authenticated-copy"}
-APPROVED_AUTHORITY_DOMAINS = {
-    "uscode.house.gov",
-    "ecfr.gov",
-    "www.ecfr.gov",
-    "federalregister.gov",
-    "www.federalregister.gov",
-    "govinfo.gov",
-    "www.govinfo.gov",
-    "irs.gov",
-    "www.irs.gov",
-    "sec.gov",
-    "www.sec.gov",
-    "congress.gov",
-    "www.congress.gov",
-    "supremecourt.gov",
-    "www.supremecourt.gov",
-    "courtlistener.com",
-    "www.courtlistener.com",
-    "law.cornell.edu",
-    "www.law.cornell.edu",
-}
-
-
-def authority_domain(value):
-    return (urlparse(str(value).strip()).hostname or "").lower()
-
-
-def approved_authority_url(value):
-    host = authority_domain(value)
-    configured = {
-        item.strip().lower()
-        for item in os.environ.get("GLAW_AUTHORITY_DOMAINS", "").split(",")
-        if item.strip()
-    }
-    domains = APPROVED_AUTHORITY_DOMAINS | configured
-    return host in domains or any(
-        host.endswith("." + domain) for domain in domains if not domain.startswith("www.")
-    )
 
 
 def intake_reviewer_blocker(value):

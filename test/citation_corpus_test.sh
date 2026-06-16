@@ -20,22 +20,24 @@ ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "corpus fetch blocks non-approved auth
   --text "fake law" --segment "fake law" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "corpus capture rejects off-allowlist source URLs even with pasted text"
 
+GLAW_AUTHORITY_DOMAINS="example.com" "$CORPUS" capture --id BAD-ENV --source-url "https://example.com/fake-law" \
+  --text "fake law" --segment "fake law" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 2 ] && echo 1 || echo 0)" "runtime environment cannot approve fake authority domains"
+
 python3 - "$CORPUS" "$TMP" <<'PY'
 from __future__ import annotations
 
-import os
 import pathlib
 import runpy
 import sys
 from argparse import Namespace
 
 corpus = pathlib.Path(sys.argv[1])
-os.environ["GLAW_AUTHORITY_DOMAINS"] = "127.0.0.1"
 ns = runpy.run_path(str(corpus), run_name="glaw_citation_corpus_test")
 ns["source_text"].__globals__["fetch_url"] = lambda _url: "Fetched official source text supports real rules only."
 rc = ns["cmd_capture"](Namespace(
     id="BAD-SEGMENT",
-    source_url="http://127.0.0.1/authority.txt",
+    source_url="https://uscode.house.gov/authority.txt",
     text="",
     file="",
     fetch=True,
