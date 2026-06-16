@@ -172,6 +172,8 @@ cat > "$M2/final_packet.json" <<'JSON'
       "owner": "glaw-accounting",
       "status": "fail",
       "missing": ["bank_reconciliation", "tax_tie_out"],
+      "next_command": "bin/glaw-accounting-control",
+      "required_fix": "run books-doctor, bank reconciliation, ledger, and tax tie-out controls",
       "detail": "accounting controls must pass before file-readiness"
     }
   ]
@@ -184,6 +186,7 @@ import sys
 
 data = json.load(open(sys.argv[1], encoding="utf-8"))
 failures = data.get("compliance_failures") or []
+plan = data.get("compliance_action_plan") or []
 ok = (
     data.get("next_gate") == "file"
     and data.get("owner") == "accounting-control"
@@ -191,6 +194,10 @@ ok = (
     and "accounting controls are blocked" in data.get("reason", "")
     and failures
     and failures[0].get("id") == "accounting-control"
+    and plan
+    and plan[0].get("owner") == "glaw-accounting"
+    and plan[0].get("next_command") == "bin/glaw-accounting-control"
+    and "bank reconciliation" in plan[0].get("required_fix", "")
 )
 sys.exit(0 if ok else 1)
 PY
@@ -206,6 +213,8 @@ cat > "$M2/final_packet.json" <<'JSON'
       "owner": "glaw-adversarial",
       "status": "fail",
       "missing": ["government_adversary_manifest"],
+      "next_command": "bin/glaw-adversarial status --profile auto",
+      "required_fix": "record surviving government/regulatory/litigation adversary attacks",
       "detail": "no SEC/IRS/regulator RED-team attack survived against the source packet"
     }
   ]
@@ -218,6 +227,7 @@ import sys
 
 data = json.load(open(sys.argv[1], encoding="utf-8"))
 failures = data.get("compliance_failures") or []
+plan = data.get("compliance_action_plan") or []
 ok = (
     data.get("next_gate") == "file"
     and data.get("owner") == "adversarial"
@@ -225,6 +235,10 @@ ok = (
     and "government-adversary manifest is blocked" in data.get("reason", "")
     and failures
     and failures[0].get("id") == "government-adversary"
+    and plan
+    and plan[0].get("owner") == "glaw-adversarial"
+    and plan[0].get("next_command") == "bin/glaw-adversarial status --profile auto"
+    and "government/regulatory/litigation" in plan[0].get("required_fix", "")
 )
 sys.exit(0 if ok else 1)
 PY

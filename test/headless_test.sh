@@ -59,12 +59,16 @@ cat > "$TMP/matters/headless-routing/final_packet.json" <<'JSON'
       "id": "government-adversary",
       "owner": "glaw-adversarial",
       "status": "pass",
+      "next_command": "bin/glaw-adversarial status --profile auto",
+      "required_fix": "record surviving government/regulatory/litigation adversary attacks",
       "missing": []
     },
     {
       "id": "accounting-control",
       "owner": "glaw-accounting",
       "status": "fail",
+      "next_command": "bin/glaw-accounting-control",
+      "required_fix": "run books-doctor, bank reconciliation, ledger, and tax tie-out controls",
       "missing": ["bank_reconciliation"]
     }
   ],
@@ -90,6 +94,7 @@ python3 - "$TMP/report2.json" <<'PY'
 import json, sys
 data = json.load(open(sys.argv[1], encoding="utf-8"))
 artifacts = {row["path"] for row in data["shipped_artifacts"]}
+plan = data.get("compliance_action_plan") or []
 ok = (
     data["decisions"]
     and "final_packet.json" in artifacts
@@ -101,6 +106,11 @@ ok = (
     and data["final_packet"]["accounting_control_failures"][0]["path"] == "accounting_control.json"
     and data["government_adversary_manifest"][0]["lens"] == "irs-examiner"
     and not data["government_adversary_failures"]
+    and plan
+    and plan[0]["id"] == "accounting-control"
+    and plan[0]["owner"] == "glaw-accounting"
+    and plan[0]["next_command"] == "bin/glaw-accounting-control"
+    and "bank reconciliation" in plan[0]["required_fix"]
 )
 sys.exit(0 if ok else 1)
 PY

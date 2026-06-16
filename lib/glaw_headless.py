@@ -7,6 +7,7 @@ import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 
+from glaw_compliance import compliance_action_plan, compliance_failures
 
 ROOT = Path(__file__).resolve().parents[1]
 BIN = ROOT / "bin"
@@ -107,6 +108,7 @@ def final_packet_summary(matter: Path) -> dict:
             "government_adversary_manifest": [],
             "accounting_control_manifest": {},
             "compliance_failures": [],
+            "compliance_action_plan": [],
             "government_adversary_failures": [],
             "accounting_control_failures": [],
         }
@@ -125,9 +127,8 @@ def final_packet_summary(matter: Path) -> dict:
         "compliance_manifest": compliance,
         "government_adversary_manifest": government,
         "accounting_control_manifest": accounting_control,
-        "compliance_failures": [
-            item for item in compliance if item.get("status") != "pass"
-        ],
+        "compliance_failures": compliance_failures(compliance),
+        "compliance_action_plan": compliance_action_plan(compliance),
         "government_adversary_failures": [
             item for item in government if item.get("status") != "pass"
         ],
@@ -193,6 +194,7 @@ def report(goal: str, slug: str = "") -> dict:
         "government_adversary_manifest": packet_summary["government_adversary_manifest"],
         "accounting_control_manifest": packet_summary["accounting_control_manifest"],
         "compliance_failures": packet_summary["compliance_failures"],
+        "compliance_action_plan": packet_summary["compliance_action_plan"],
         "government_adversary_failures": packet_summary["government_adversary_failures"],
         "accounting_control_failures": packet_summary["accounting_control_failures"],
         "decisions": latest_decisions(matter),

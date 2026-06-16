@@ -21,6 +21,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "lib"))
 from glaw_authority import HUMAN_ONLY_ACTIONS, require_human_authority
+from glaw_compliance import compliance_action_plan, compliance_failures
 from glaw_oversight import escalate as oversight_escalate
 from glaw_oversight import status as oversight_status
 from glaw_profiles import ADVERSARIAL_PROFILES, COUNCIL_PROFILES, profile_for_track
@@ -104,14 +105,12 @@ def matter_profile(d: Path) -> tuple[str, str]:
 
 def final_packet_compliance_failures(d: Path) -> list[dict]:
     packet = read_json(d / "final_packet.json", {})
-    rows = packet.get("compliance_manifest")
-    if not isinstance(rows, list):
-        return []
-    failures = []
-    for row in rows:
-        if isinstance(row, dict) and row.get("status") != "pass":
-            failures.append(row)
-    return failures
+    return compliance_failures(packet.get("compliance_manifest"))
+
+
+def final_packet_compliance_action_plan(d: Path) -> list[dict]:
+    packet = read_json(d / "final_packet.json", {})
+    return compliance_action_plan(packet.get("compliance_manifest"))
 
 
 def compliance_failure_summary(failures: list[dict]) -> str:
@@ -358,6 +357,7 @@ def route_from_state(d: Path) -> dict:
         "human_only_actions": sorted(HUMAN_ONLY_ACTIONS),
         "authority": "quality routing only; no filing/signing/service/payment/charge/live transmission",
         "compliance_failures": [],
+        "compliance_action_plan": [],
     }
 
     if not strategy_clear:
@@ -402,6 +402,7 @@ def route_from_state(d: Path) -> dict:
             if failures:
                 owner, command, reason = compliance_failure_route(failures)
                 decision["compliance_failures"] = failures
+                decision["compliance_action_plan"] = final_packet_compliance_action_plan(d)
                 decision["reason"] = reason
             else:
                 owner = "final-packet"
