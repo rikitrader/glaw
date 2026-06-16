@@ -43,4 +43,10 @@ for event in \
 done
 ok
 
+grep -q -- "--profile sec-reporting --audit-tieout" "$ROOT/docs/WORKFLOWS.md" \
+  || fail "docs/WORKFLOWS.md must document SEC reporting accounting-control audit tie-out"
+grep -q "SEC audit/ICFR/PCAOB tie-out" "$ROOT/docs/tools.md" \
+  || fail "docs/tools.md must document SEC audit/ICFR/PCAOB tie-out gate"
+ok
+
 echo "$pass passed"

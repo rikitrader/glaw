@@ -241,16 +241,22 @@ bin/glaw-intake set track_specific.filing_or_exam_deadlines '2026-09-15 extended
 For a close, filing, tax, or audit-ready packet, run the control gate in strict mode:
 `bin/glaw-bank-rec --books <ledger.json> --bank <bank.json> --format json > bank_rec.json`
 then `bin/glaw-books-doctor <ledger.json> --rec bank_rec.json --require-rec`.
-Before the final packet can be ready for an accounting, accounting-tax, tax, or SEC-reporting profile, record those deterministic
-controls in `accounting_control.json` at the matter root. The gate requires `status: "pass"`,
-a current `SRC-####` in `source`, `books_doctor.require_rec: true`, a reconciled bank rec with
-zero book-only/bank-only rows and zero unreconciled difference, and for accounting-tax/tax profiles a passing
-`tax_tieout` block with provision and internal consistency both true. `final_packet.json` hashes
-that control artifact, and `glaw-gate check file` rejects later edits until the packet and Chief
-approval are rebuilt.
+Before the final packet can be ready for an accounting, accounting-tax, tax, or
+SEC-reporting profile, record those deterministic controls in
+`accounting_control.json` at the matter root. The gate requires `status:
+"pass"`, a current `SRC-####` in `source`, `books_doctor.require_rec: true`, a
+reconciled bank rec with zero book-only/bank-only rows and zero unreconciled
+difference, and for accounting-tax/tax profiles a passing `tax_tieout` block
+with provision and internal consistency both true. For SEC-reporting profiles it
+also requires a passing `audit_tieout` block proving financial-statement tie,
+ICFR review, PCAOB review, zero open deficiencies, zero material weaknesses, and
+zero unresolved audit differences. `final_packet.json` hashes that control
+artifact, and `glaw-gate check file` re-reads the referenced workpapers and
+rejects later edits until the packet and Chief approval are rebuilt.
 Use the generator instead of hand-editing the control file:
 `bin/glaw-accounting-control --source "SRC-0001 bank source package" --ledger ledger.json --bank-rec bank_rec.json --profile accounting`.
-For SEC reporting packets, use `--profile sec-reporting`.
+For SEC reporting packets, use
+`--profile sec-reporting --audit-tieout audit_tieout.json`.
 For mixed bookkeeping + tax packets, use `--profile accounting-tax --tax-tieout tax_tieout.json`.
 For pure tax packets, use `--profile tax --tax-tieout tax_tieout.json`.
 
