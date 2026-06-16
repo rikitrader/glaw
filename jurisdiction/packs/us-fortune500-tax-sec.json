@@ -1,0 +1,249 @@
+{
+  "matter": "us-fortune500-tax-sec-accounting-authority-pack",
+  "source_ids": [
+    "SRC-0001",
+    "SRC-0002",
+    "SRC-0003",
+    "SRC-0004",
+    "SRC-0005"
+  ],
+  "source_catalog": {
+    "SRC-0001": {
+      "title": "IRS About Form 1120, U.S. Corporation Income Tax Return",
+      "url": "https://www.irs.gov/forms-pubs/about-form-1120",
+      "authority": "Internal Revenue Service",
+      "accessed": "2026-06-16"
+    },
+    "SRC-0002": {
+      "title": "SEC Forms List",
+      "url": "https://www.sec.gov/about/forms/secforms",
+      "authority": "U.S. Securities and Exchange Commission",
+      "accessed": "2026-06-16"
+    },
+    "SRC-0003": {
+      "title": "PCAOB AS 2201: An Audit of Internal Control Over Financial Reporting That Is Integrated with An Audit of Financial Statements",
+      "url": "https://pcaobus.org/oversight/standards/auditing-standards/details/AS2201",
+      "authority": "Public Company Accounting Oversight Board",
+      "accessed": "2026-06-16"
+    },
+    "SRC-0004": {
+      "title": "FASB Accounting Standards Codification",
+      "url": "https://asc.fasb.org/",
+      "authority": "Financial Accounting Standards Board",
+      "accessed": "2026-06-16"
+    },
+    "SRC-0005": {
+      "title": "FinCEN Beneficial Ownership Information Reporting",
+      "url": "https://www.fincen.gov/boi",
+      "authority": "Financial Crimes Enforcement Network",
+      "accessed": "2026-06-16"
+    }
+  },
+  "jurisdictions": [
+    {
+      "name": "Federal Tax",
+      "role": "corporate income-tax return authority and IRS adversary lane",
+      "source_ids": [
+        "SRC-0001"
+      ],
+      "governing_law": {
+        "status": "mapped",
+        "basis": "Federal corporate income-tax return work is routed to IRS Form 1120 source material in SRC-0001."
+      },
+      "forum": {
+        "status": "mapped",
+        "basis": "IRS return, examination, assessment, transcript, and controversy routes are anchored to the federal tax authority source in SRC-0001."
+      },
+      "tax": {
+        "status": "mapped",
+        "basis": "Domestic corporations use Form 1120 to report income, gains, losses, deductions, credits, and income-tax liability under SRC-0001."
+      },
+      "licenses": {
+        "status": "not_applicable",
+        "basis": "SRC-0001 is a federal income-tax return authority; operating licenses route to the activity-specific regulator after intake."
+      },
+      "filings": {
+        "status": "mapped",
+        "basis": "Corporate income-tax return preparation, instructions, schedules, and related IRS materials route through SRC-0001."
+      },
+      "deadlines": [
+        {
+          "due": "Entity-specific federal return due date from current IRS instructions",
+          "desc": "Compute the Form 1120 filing and extension deadline from the taxpayer year-end, return posture, and current IRS instructions linked from SRC-0001.",
+          "source": "SRC-0001"
+        }
+      ],
+      "adversarial_lenses": [
+        "state regulator",
+        "tax authority",
+        "opposing counsel",
+        "enforcement agency",
+        "outside critic"
+      ]
+    },
+    {
+      "name": "SEC Reporting",
+      "role": "Exchange Act reporting and disclosure authority",
+      "source_ids": [
+        "SRC-0002"
+      ],
+      "governing_law": {
+        "status": "mapped",
+        "basis": "SEC periodic and current-reporting work routes to the SEC forms list and filing instructions in SRC-0002."
+      },
+      "forum": {
+        "status": "mapped",
+        "basis": "SEC filing, comment-letter, amendment, disclosure-review, and EDGAR form-routing issues are mapped to SRC-0002."
+      },
+      "tax": {
+        "status": "not_applicable",
+        "basis": "SRC-0002 is a securities-disclosure authority; tax-return positions route to the federal tax lane in SRC-0001."
+      },
+      "licenses": {
+        "status": "mapped",
+        "basis": "Registrant reporting posture and form eligibility are securities-compliance routing questions anchored to SRC-0002."
+      },
+      "filings": {
+        "status": "mapped",
+        "basis": "Annual, quarterly, current, registration, proxy, ownership, and other SEC forms route through SRC-0002 before EDGAR submission."
+      },
+      "deadlines": [
+        {
+          "due": "Registrant-specific deadline from current SEC form and filer-status rules",
+          "desc": "Compute the filing calendar from form type, fiscal period, filer status, event trigger, and current SEC instructions linked from SRC-0002.",
+          "source": "SRC-0002"
+        }
+      ],
+      "adversarial_lenses": [
+        "state regulator",
+        "tax authority",
+        "opposing counsel",
+        "enforcement agency",
+        "outside critic"
+      ]
+    },
+    {
+      "name": "PCAOB Audit",
+      "role": "issuer-audit and internal-control adversary lane",
+      "source_ids": [
+        "SRC-0003"
+      ],
+      "governing_law": {
+        "status": "mapped",
+        "basis": "Integrated audit and internal-control-over-financial-reporting testing routes to PCAOB AS 2201 in SRC-0003."
+      },
+      "forum": {
+        "status": "mapped",
+        "basis": "Issuer-audit inspection, deficiency, restatement, and audit-review challenges route to the PCAOB authority source in SRC-0003."
+      },
+      "tax": {
+        "status": "not_applicable",
+        "basis": "SRC-0003 is an audit-standard authority; tax-return assertions route to the federal tax lane in SRC-0001."
+      },
+      "licenses": {
+        "status": "mapped",
+        "basis": "Issuer-audit engagement, control testing, and audit-firm compliance questions route through the PCAOB standard source in SRC-0003."
+      },
+      "filings": {
+        "status": "mapped",
+        "basis": "Audit-control support for SEC reporting packets is mapped to AS 2201 source material in SRC-0003 before Chief approval."
+      },
+      "deadlines": [
+        {
+          "due": "Audit timetable tied to issuer reporting calendar and current audit plan",
+          "desc": "Tie internal-control testing, deficiency evaluation, management representation, and audit sign-off timing to the reporting calendar and PCAOB audit standard source in SRC-0003.",
+          "source": "SRC-0003"
+        }
+      ],
+      "adversarial_lenses": [
+        "state regulator",
+        "tax authority",
+        "opposing counsel",
+        "enforcement agency",
+        "outside critic"
+      ]
+    },
+    {
+      "name": "US GAAP",
+      "role": "accounting recognition, measurement, presentation, and disclosure authority",
+      "source_ids": [
+        "SRC-0004"
+      ],
+      "governing_law": {
+        "status": "mapped",
+        "basis": "Accounting recognition, measurement, presentation, and disclosure research routes to the FASB Accounting Standards Codification source in SRC-0004."
+      },
+      "forum": {
+        "status": "not_applicable",
+        "basis": "SRC-0004 is an accounting-authority source, not a court forum; disputes route by matter type after intake."
+      },
+      "tax": {
+        "status": "mapped",
+        "basis": "Book-tax difference analysis must reconcile GAAP accounting positions from SRC-0004 to tax-return positions routed under SRC-0001."
+      },
+      "licenses": {
+        "status": "not_applicable",
+        "basis": "SRC-0004 is an accounting-standard source; professional licensing is handled by the responsible CPA/auditor authority outside this pack."
+      },
+      "filings": {
+        "status": "mapped",
+        "basis": "GAAP financial statement assertions, footnotes, and SEC reporting support must cite accounting guidance routed through SRC-0004."
+      },
+      "deadlines": [
+        {
+          "due": "Financial-close calendar before report issuance",
+          "desc": "Complete accounting-policy research, close entries, tie-outs, and footnote support before the human-sealed reporting deadline using SRC-0004 as the accounting-authority lane.",
+          "source": "SRC-0004"
+        }
+      ],
+      "adversarial_lenses": [
+        "state regulator",
+        "tax authority",
+        "opposing counsel",
+        "enforcement agency",
+        "outside critic"
+      ]
+    },
+    {
+      "name": "FinCEN AML and BOI",
+      "role": "beneficial-ownership and financial-crimes compliance authority",
+      "source_ids": [
+        "SRC-0005"
+      ],
+      "governing_law": {
+        "status": "mapped",
+        "basis": "Beneficial-ownership reporting and AML-adjacent compliance routing are anchored to FinCEN BOI authority in SRC-0005."
+      },
+      "forum": {
+        "status": "mapped",
+        "basis": "FinCEN reporting, correction, exemption, and enforcement-response paths route through SRC-0005."
+      },
+      "tax": {
+        "status": "not_applicable",
+        "basis": "SRC-0005 is a beneficial-ownership and financial-crimes source; tax-return issues route to SRC-0001."
+      },
+      "licenses": {
+        "status": "mapped",
+        "basis": "FinCEN reporting status, exemption analysis, and financial-crimes compliance implications are mapped to SRC-0005."
+      },
+      "filings": {
+        "status": "mapped",
+        "basis": "BOI report, correction, update, exemption, and supporting documentation workflows route through SRC-0005."
+      },
+      "deadlines": [
+        {
+          "due": "Entity-specific BOI deadline from current FinCEN guidance",
+          "desc": "Compute the reporting, update, correction, or exemption deadline from current FinCEN BOI guidance linked in SRC-0005.",
+          "source": "SRC-0005"
+        }
+      ],
+      "adversarial_lenses": [
+        "state regulator",
+        "tax authority",
+        "opposing counsel",
+        "enforcement agency",
+        "outside critic"
+      ]
+    }
+  ]
+}

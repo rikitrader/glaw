@@ -235,7 +235,7 @@ The more autonomous GLAW gets, the more these bind. They are the organism's cons
 | **Automated tests** | doctor + hard gates + per-profile golden matters + sandbox fault simulations + tax wrapper golden/coverage manifest | more golden-output tests per specialist seat and scenario diversity | 2–6 |
 | **Filing connectivity** | filing tools remain human-sealed; IRS/EFW2/packet scaffolds are gated and kill-switch aware | real transmitter credentials and EDGAR/court e-file integrations under human seal | 4–6 |
 | **Oversight tooling** | `/glaw-oversight-board` + `bin/glaw-oversight` provide kill-switch, source-backed escalation ledger, RBAC ADMIN Board decisions, a validated source-controlled core policy pack, sandbox halt fixtures, and fail-closed Fortune 500 accounting/SEC tabletop simulations | additional industry-specific tabletop simulations and policy packs | 6 |
-| **Jurisdiction discipline** | `/glaw-jurisdiction` + `bin/glaw-jurisdiction-pack` enforce source-backed matrices; `jurisdiction/packs/us-core.json` seeds DE, FL, TX, NY, and federal corporate filing authority | more state/country packs and local-counsel playbooks | 4–6 |
+| **Jurisdiction discipline** | `/glaw-jurisdiction` + `bin/glaw-jurisdiction-pack` enforce source-backed matrices; `jurisdiction/packs/us-core.json` seeds DE, FL, TX, NY, and federal corporate filing authority, and `jurisdiction/packs/us-fortune500-tax-sec.json` seeds federal tax, SEC reporting, PCAOB audit, US GAAP, and FinCEN lanes | more state/country packs and local-counsel playbooks | 4–6 |
 
 ---
 
@@ -359,6 +359,10 @@ the seal stays human as a legal and ethics constraint.
   require source-backed state/federal/international matrices for governing law, forum, tax,
   licensing, filings, deadlines, and government/adversarial lenses. This turns
   single-jurisdiction bias into an executable review item instead of a prose caveat.
+- ✅ **P4-G4b · Fortune 500 authority pack**: `jurisdiction/packs/us-fortune500-tax-sec.json`
+  adds a source-backed federal tax, SEC reporting, PCAOB audit, US GAAP, and FinCEN matrix
+  for accounting/tax/SEC packets, and `jurisdiction_pack_test.sh` requires it to validate
+  with zero review warnings.
 - ✅ **P4-G5 · Branch-seat substance packs**: `/glaw-constitutional`, `/glaw-legislative`,
   `/glaw-judicial`, and `/glaw-admin-law` now each include a substantive reference checklist
   plus model-output template, and `branch_substance_test.sh` makes `glaw-doctor` fail if a

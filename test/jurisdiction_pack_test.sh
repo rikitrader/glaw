@@ -30,6 +30,9 @@ ok "$([ "$rc" = 1 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "scaffold fails prod
 grep -q 'jurisdiction/packs/us-core.json' "$TMP/list.txt"; rc2=$?
 ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "pack list includes source-backed US core pack"
 
+grep -q 'jurisdiction/packs/us-fortune500-tax-sec.json' "$TMP/list.txt"; rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "pack list includes Fortune 500 tax/SEC/accounting pack"
+
 "$PACK" validate "$ROOT/jurisdiction/packs/us-core.json" --json > "$TMP/us-core-report.json"; rc=$?
 python3 - "$TMP/us-core-report.json" "$ROOT/jurisdiction/packs/us-core.json" <<'PY'
 import json, sys
@@ -49,6 +52,27 @@ sys.exit(0 if ok else 1)
 PY
 rc2=$?
 ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "source-backed US core jurisdiction pack passes with zero review warnings"
+
+"$PACK" validate "$ROOT/jurisdiction/packs/us-fortune500-tax-sec.json" --json > "$TMP/fortune500-report.json"; rc=$?
+python3 - "$TMP/fortune500-report.json" "$ROOT/jurisdiction/packs/us-fortune500-tax-sec.json" <<'PY'
+import json, sys
+report=json.load(open(sys.argv[1]))
+pack=json.load(open(sys.argv[2]))
+names={row.get("name") for row in pack.get("jurisdictions", [])}
+catalog=pack.get("source_catalog", {})
+required={"Federal Tax", "SEC Reporting", "PCAOB Audit", "US GAAP", "FinCEN AML and BOI"}
+ok=(
+    report.get("status") == "pass"
+    and report.get("jurisdiction_count") >= 5
+    and not report.get("warnings")
+    and required <= names
+    and all(str(row.get("url", "")).startswith("https://") for row in catalog.values())
+    and "not legal advice" in report.get("authority", "")
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 0 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "source-backed Fortune 500 tax/SEC/accounting pack passes with zero review warnings"
 
 printf '{"matter":"bad","source_ids":[],"jurisdictions":[]}' > "$TMP/bad.json"
 "$PACK" validate "$TMP/bad.json" --json > "$TMP/bad-report.json"; rc=$?
