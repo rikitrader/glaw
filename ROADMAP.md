@@ -56,15 +56,16 @@ this roadmap adds. It deliberately mirrors `zeroclaw-x0`'s own crates (`conscien
                         ▼
    ACT     → draft / redline / file-prep / investigate / model
                         ▼
-   VERIFY  → the 4 gates + adversarial RED→BLUE + glaw-doctor   ← the CONSCIENCE
+   VERIFY  → the enforced gate chain + adversarial RED→BLUE + glaw-doctor   ← the CONSCIENCE
                         ▼
    LEARN   → write matter memory, update playbooks, retro       ← persistent MEMORY
                         └────────────► back to SENSE
 ```
 
-- **Conscience = the gates.** Conflicts, citation-verification, adversarial-survival, and
-  the UPL/lawful-analysis disclaimer are the organism's refusal reflexes. In a host runtime
-  they become a *veto* on any action that fails them.
+- **Conscience = the gates.** Structured intake, conflicts, citation verification,
+  adversarial survival, red-flag clearance, final packet readiness, Chief/Council approval,
+  UPL/lawful-analysis disclaimers, and docket closure are the organism's refusal reflexes.
+  In a host runtime they become a *veto* on any action that fails them.
 - **Memory = matters + playbooks.** Every matter already leaves `matter.md` / `docket.jsonl`
   / `timeline.jsonl`. The roadmap promotes this to a queryable long-term memory the
   organism reasons over.
@@ -171,8 +172,10 @@ permission-gated host functions (`zc_http_request`, `zc_env_read`) and plugin ex
 - **GLAW-as-plugin:** ship a thin Extism plugin (`glaw-plugin`) that exports `tool_metadata`
   for each GLAW CLI and `execute` to run it under zeroclaw's permission gates. The 20 tools
   become 20 zeroclaw tools.
-- **Conscience adoption:** map GLAW's 4 gates into `zeroclaw-conscience` so the host's own
-  refusal layer enforces conflicts/citations/adversarial/UPL on *any* legal action.
+- **Conscience adoption:** map GLAW's enforced gate chain into `zeroclaw-conscience` so the
+  host's own refusal layer enforces intake, conflicts, citations, adversarial review, red
+  flags, final-packet readiness, Chief/Council approval, UPL, and docket closure on *any*
+  legal action.
 - **Memory bridge:** persist GLAW matter state through `zeroclaw-memory` so the agent
   remembers matters across runs.
 - **Hardware-aware caveat:** zeroclaw-x0 also has `robot-kit`/`zeroclaw-hardware`; GLAW
@@ -201,7 +204,8 @@ The more autonomous GLAW gets, the more these bind. They are the organism's cons
 1. **Humans hold the seal.** No autonomous path may *file, serve, charge, sanction, pay,
    sign for a person, or otherwise bind/coerce anyone.* Those require an authorized human act.
    GLAW prepares; a person commits.
-2. **The gates cannot be disabled.** Conflicts → citations → adversarial → UPL run on every
+2. **The gates cannot be disabled.** Intake → conflicts → citations → adversarial review →
+   red flags → final packet → Chief/Council approval → UPL → docket closure run on every
    matter, autonomous or not. A position the firm's own adversary destroys is not acted on.
 3. **Lawful analysis only.** Investigations/intel seats are analytical work-product. No
    covert ops, surveillance, intrusion, or illegal collection — ever.

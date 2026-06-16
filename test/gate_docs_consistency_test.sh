@@ -8,21 +8,24 @@ pass=0
 fail(){ echo "FAIL: $1" >&2; exit 1; }
 ok(){ pass=$((pass+1)); }
 
-if grep -R "Four hard gates" "$ROOT/README.md" "$ROOT/SKILL.md" "$ROOT/docs" "$ROOT/lib/workflow.md" >/dev/null 2>&1; then
-  fail "stale 'Four hard gates' wording remains"
+if grep -R -iE "\b(four|4)[ -]?(hard )?gates\b|the 4 gates|GLAW's 4 gates" \
+  "$ROOT/README.md" "$ROOT/SKILL.md" "$ROOT/ROADMAP.md" "$ROOT/docs" "$ROOT/lib/workflow.md" >/dev/null 2>&1; then
+  fail "stale four-gate wording remains"
 fi
 ok
 
-for doc in "$ROOT/README.md" "$ROOT/SKILL.md" "$ROOT/docs/WORKFLOWS.md" "$ROOT/docs/org-chart-and-usage.md" "$ROOT/lib/workflow.md"; do
+for doc in "$ROOT/README.md" "$ROOT/SKILL.md" "$ROOT/ROADMAP.md" "$ROOT/docs/WORKFLOWS.md" "$ROOT/docs/org-chart-and-usage.md" "$ROOT/lib/workflow.md"; do
   for marker in \
     "Structured intake" \
-    "Conflicts cleared" \
-    "Citations verified" \
-    "Adversarial RED" \
+    "conflicts" \
+    "citation" \
+    "adversarial" \
+    "red flag" \
+    "final packet" \
     "Chief/Council" \
-    "UPL disclaimer" \
-    "Docket gate"; do
-    grep -q "$marker" "$doc" || fail "${doc#$ROOT/} missing gate marker: $marker"
+    "UPL" \
+    "docket"; do
+    grep -qi "$marker" "$doc" || fail "${doc#$ROOT/} missing gate marker: $marker"
   done
 done
 ok

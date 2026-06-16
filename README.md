@@ -426,7 +426,7 @@ flowchart LR
     class P4,P5,P6 future
 ```
 
-**The organism loop** — how it thinks. The 4 gates are its conscience; matters are its memory. The seal stays in human hands: no autonomous path may file, charge, sanction, pay, or bind anyone.
+**The organism loop** — how it thinks. The enforced gate chain is its conscience; matters are its memory. The seal stays in human hands: no autonomous path may file, charge, sanction, pay, or bind anyone.
 
 ```mermaid
 flowchart LR
@@ -434,7 +434,7 @@ flowchart LR
     O["🧭 ORIENT<br/>classify · route to dept"]
     D["♟️ DECIDE<br/>strategy · the Chief"]
     A["✍️ ACT<br/>draft · redline · investigate"]
-    V["⚖️ VERIFY<br/>the 4 gates · adversarial"]
+    V["⚖️ VERIFY<br/>gate chain · adversarial"]
     L["🧠 LEARN<br/>memory · playbooks"]
     S --> O --> D --> A --> V --> L --> S
     V -. "fails a gate" .-> H["🙋 HUMAN<br/>holds the seal"]
