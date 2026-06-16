@@ -79,6 +79,13 @@ def evidence_source_ids(evidence: str) -> list[str]:
     return sorted(set(re.findall(r"\bSRC-\d{4}\b", evidence)))
 
 
+def source_text_from(*parts: str) -> str:
+    ids: list[str] = []
+    for part in parts:
+        ids.extend(evidence_source_ids(part))
+    return " ".join(sorted(set(ids)))
+
+
 def is_source_evidence(path: Path, root: Path) -> bool:
     if not path.is_file():
         return False
@@ -155,19 +162,21 @@ def add_red_flag(d: Path, *, profile: str, role: str, severity: str, finding: st
                  conditions: list[str], notes: str) -> None:
     existing = read_jsonl(d / "red_flags.jsonl")
     rid = f"RF-{len(existing) + 1:04d}"
+    origin = f"council:{profile}:{role}"
     row = {
         "ts": now(),
         "id": rid,
         "severity": severity,
         "owner": role,
-        "source": f"council:{profile}:{role}",
+        "source": source_text_from(finding, notes, *conditions),
+        "origin": origin,
         "finding": finding,
         "required_fix": "; ".join(conditions) if conditions else (notes or "Resolve council finding."),
         "status": "open",
         "resolution_evidence": "",
     }
     append_jsonl(d / "red_flags.jsonl", row)
-    timeline(d, "red_flag_opened", id=rid, severity=severity, owner=role, source=row["source"])
+    timeline(d, "red_flag_opened", id=rid, severity=severity, owner=role, source=row["source"], origin=origin)
 
 
 def cmd_record(args: argparse.Namespace) -> int:

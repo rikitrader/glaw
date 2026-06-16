@@ -155,19 +155,21 @@ def open_red_flag(d: Path, *, profile: str, lens: str, row: dict) -> None:
     existing = read_jsonl(d / "red_flags.jsonl")
     rid = f"RF-{len(existing) + 1:04d}"
     severity = "critical" if row["decision"] == "strike" else "high"
+    origin = f"adversarial:{profile}:{lens}"
     flag = {
         "ts": now(),
         "id": rid,
         "severity": severity,
         "owner": lens,
-        "source": f"adversarial:{profile}:{lens}",
+        "source": " ".join(evidence_source_ids(row["attack"])),
+        "origin": origin,
         "finding": row["attack"] or f"{lens} returned {row['decision']}",
         "required_fix": row["cure"] or "Rebuild or drop the attacked position and re-run RED review.",
         "status": "open",
         "resolution_evidence": "",
     }
     append_jsonl(d / "red_flags.jsonl", flag)
-    timeline(d, "red_flag_opened", id=rid, severity=severity, owner=lens, source=flag["source"])
+    timeline(d, "red_flag_opened", id=rid, severity=severity, owner=lens, source=flag["source"], origin=origin)
 
 
 def cmd_record(args: argparse.Namespace) -> int:

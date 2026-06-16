@@ -337,11 +337,11 @@ printf 'negative finding source\n' > "$TMP/matters/$GUARD_SLUG/evidence/source.t
 "$COUNCIL" record --profile accounting --role cfo --decision fix --red-flags "unsupported cash variance" --conditions "reconcile cash" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "council fix blocked without source-backed red flag"
 "$COUNCIL" record --profile accounting --role cfo --decision fix --red-flags "SRC-0001 unsupported cash variance" --conditions "reconcile cash" >/dev/null
-ok "$([ -f "$TMP/matters/$GUARD_SLUG/red_flags.jsonl" ] && grep -q 'council:accounting:cfo' "$TMP/matters/$GUARD_SLUG/red_flags.jsonl" && echo 1 || echo 0)" "council fix opens source-backed red flag"
+ok "$([ -f "$TMP/matters/$GUARD_SLUG/red_flags.jsonl" ] && grep -q '"source": "SRC-0001"' "$TMP/matters/$GUARD_SLUG/red_flags.jsonl" && grep -q '"origin": "council:accounting:cfo"' "$TMP/matters/$GUARD_SLUG/red_flags.jsonl" && echo 1 || echo 0)" "council fix opens source-backed red flag"
 "$ADVERSARIAL" record --profile accounting --lens irs-examiner --decision fix --attack "return tie-out fails" --cure "reconcile tax return" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "adversarial fix blocked without source-backed attack"
 "$ADVERSARIAL" record --profile accounting --lens irs-examiner --decision fix --attack "SRC-0001 return tie-out fails" --cure "reconcile tax return" >/dev/null
-ok "$([ "$(grep -c 'red_flag_opened' "$TMP/matters/$GUARD_SLUG/timeline.jsonl")" -ge 2 ] && echo 1 || echo 0)" "adversarial fix opens source-backed red flag"
+ok "$([ "$(grep -c 'red_flag_opened' "$TMP/matters/$GUARD_SLUG/timeline.jsonl")" -ge 2 ] && grep -q '"origin": "adversarial:accounting:irs-examiner"' "$TMP/matters/$GUARD_SLUG/red_flags.jsonl" && echo 1 || echo 0)" "adversarial fix opens source-backed red flag"
 
 rm -rf "$TMP"
 echo
