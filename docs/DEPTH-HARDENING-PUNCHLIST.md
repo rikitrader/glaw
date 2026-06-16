@@ -91,11 +91,12 @@ The breadth is done and the safety spine is **verified real** (authority gate, l
 - **Acceptance:** `compliance_audit_test.sh` exists and is picked up by the doctor test-runner loop.
 - **Closed:** `test/compliance_audit_test.sh` asserts HAVE/ACTION/GAP/optional-missing classification and is included in `bin/glaw-doctor`.
 
-### H-10 · ~99 tax/practice-group CLI wrappers are smoke-or-less — `OPEN`
+### H-10 · ~99 tax/practice-group CLI wrappers are smoke-or-less — `IN-PROGRESS`
 - **Files:** e.g. `bin/glaw-scorp-aaa`, `glaw-partner-basis`, `glaw-subpart-f`, `glaw-combined-unitary`, `glaw-tfrp`, `glaw-ptet`, `glaw-oic`, `glaw-sfr`, `glaw-wbo-award`, `glaw-qm` (representative).
 - **Current state:** load-bearing IRS/state calcs with no test / no lib-engine backing / not even in the doctor smoke array. (Many other tax tools *are* covered via `lib/bookkeeping/test_finance*.py` — these are the ones that are not.)
 - **Required fix:** add at least a golden-value test per uncovered calc tool (one known input → known output), or fold them into the existing finance-engine test pattern.
 - **Acceptance:** every `bin/glaw-*` calc tool has either a golden-value test or a lib-engine test touching its math.
+- **Progress:** `test/tax_wrapper_golden_test.sh` covers the named representative tools in this item with exact wrapper-level golden values: `glaw-scorp-aaa`, `glaw-partner-basis`, `glaw-subpart-f`, `glaw-combined-unitary`, `glaw-tfrp`, `glaw-ptet`, `glaw-oic`, `glaw-sfr`, `glaw-wbo-award`, and `glaw-qm`. Remaining work: inventory every other calc wrapper and either add wrapper goldens or prove lib-engine coverage.
 
 ---
 
