@@ -245,9 +245,11 @@ Before the final packet can be ready for an accounting, accounting-tax, tax, or
 SEC-reporting profile, record those deterministic controls in
 `accounting_control.json` at the matter root. The gate requires `status:
 "pass"`, a current `SRC-####` in `source`, `books_doctor.require_rec: true`, a
-reconciled bank rec with zero book-only/bank-only rows and zero unreconciled
-difference, and for accounting-tax/tax profiles a passing `tax_tieout` block
-with provision and internal consistency both true. For SEC-reporting profiles it
+reconciled bank rec with explicit empty `book_only` and `bank_only` JSON arrays,
+zero book-only/bank-only rows, and zero unreconciled difference. For
+accounting-tax/tax profiles it requires a passing `tax_tieout` block with
+provision and internal consistency both parsing to true; string `"false"` and
+missing consistency fields fail closed. For SEC-reporting profiles it
 also requires a passing `audit_tieout` block proving financial-statement tie,
 ICFR review, PCAOB review, zero open deficiencies, zero material weaknesses, and
 zero unresolved audit differences. `final_packet.json` hashes that control

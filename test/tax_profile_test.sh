@@ -96,6 +96,17 @@ ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "accounting control blocked by mixed c
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "tax accounting control blocked without tax tie-out artifact"
 "$CONTROL" --matter "$SLUG" --profile accounting-tax --source "SRC-0001 tax source package reviewed" --ledger "$TMP/matters/$SLUG/workpapers/ledger.json" --bank-rec "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "accounting-tax control blocked without tax tie-out artifact"
+cat > "$TMP/matters/$SLUG/workpapers/bank-rec-missing-arrays.json" <<'JSON'
+{
+  "matched": 1,
+  "sum_book": "100.00",
+  "sum_bank": "100.00",
+  "unreconciled_difference": "0.00",
+  "reconciled": true
+}
+JSON
+"$CONTROL" --matter "$SLUG" --profile accounting --source "SRC-0001 tax source package reviewed" --ledger "$TMP/matters/$SLUG/workpapers/ledger.json" --bank-rec "$TMP/matters/$SLUG/workpapers/bank-rec-missing-arrays.json" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "accounting control blocked by bank rec missing explicit exception arrays"
 cat > "$TMP/matters/$SLUG/workpapers/tax-tieout-bad.json" <<'JSON'
 {
   "provision_ties": false,
@@ -108,6 +119,26 @@ JSON
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "tax accounting control blocked by failing tax tie-out"
 "$CONTROL" --matter "$SLUG" --profile accounting-tax --source "SRC-0001 tax source package reviewed" --ledger "$TMP/matters/$SLUG/workpapers/ledger.json" --bank-rec "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" --tax-tieout "$TMP/matters/$SLUG/workpapers/tax-tieout-bad.json" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "accounting-tax control blocked by failing tax tie-out"
+cat > "$TMP/matters/$SLUG/workpapers/tax-tieout-string-provision-false.json" <<'JSON'
+{
+  "provision_ties": "false",
+  "internal": {
+    "consistent": true
+  }
+}
+JSON
+"$CONTROL" --matter "$SLUG" --profile tax --source "SRC-0001 tax source package reviewed" --ledger "$TMP/matters/$SLUG/workpapers/ledger.json" --bank-rec "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" --tax-tieout "$TMP/matters/$SLUG/workpapers/tax-tieout-string-provision-false.json" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "tax accounting control blocked by string false provision tie-out"
+cat > "$TMP/matters/$SLUG/workpapers/tax-tieout-string-internal-false.json" <<'JSON'
+{
+  "provision_ties": true,
+  "internal": {
+    "consistent": "false"
+  }
+}
+JSON
+"$CONTROL" --matter "$SLUG" --profile tax --source "SRC-0001 tax source package reviewed" --ledger "$TMP/matters/$SLUG/workpapers/ledger.json" --bank-rec "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" --tax-tieout "$TMP/matters/$SLUG/workpapers/tax-tieout-string-internal-false.json" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "tax accounting control blocked by string false internal consistency"
 cat > "$TMP/matters/$SLUG/workpapers/tax-tieout-good.json" <<'JSON'
 {
   "provision_ties": true,

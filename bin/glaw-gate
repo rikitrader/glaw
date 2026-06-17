@@ -839,10 +839,8 @@ def accounting_control_manifest(profile, source_manifest):
             manifest["missing"].append("bank_reconciliation.artifact.reconciled=true")
         if not _zeroish(rec_artifact.get("unreconciled_difference")):
             manifest["missing"].append("bank_reconciliation.artifact.unreconciled_difference=0")
-        if rec_artifact.get("book_only") not in ([], None):
-            manifest["missing"].append("bank_reconciliation.artifact.book_only empty")
-        if rec_artifact.get("bank_only") not in ([], None):
-            manifest["missing"].append("bank_reconciliation.artifact.bank_only empty")
+        _require_empty_array(rec_artifact, "book_only", "bank_reconciliation", manifest["missing"])
+        _require_empty_array(rec_artifact, "bank_only", "bank_reconciliation", manifest["missing"])
 
     if profile in {"accounting-tax", "tax"}:
         tax = control.get("tax_tieout", {})

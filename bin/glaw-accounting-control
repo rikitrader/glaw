@@ -118,10 +118,19 @@ def run_books_doctor(ledger: Path, rec: Path, d: Path) -> Path:
     return out
 
 
+def require_array_field(data: dict, key: str, label: str) -> list:
+    if key not in data:
+        raise SystemExit(f"ERROR: {label} requires explicit {key} array")
+    value = data.get(key)
+    if not isinstance(value, list):
+        raise SystemExit(f"ERROR: {label} {key} must be a JSON array")
+    return value
+
+
 def bank_rec_block(rec: dict, artifact: str) -> dict:
-    book_only = rec.get("book_only") or []
-    bank_only = rec.get("bank_only") or []
-    reconciled = bool(rec.get("reconciled"))
+    book_only = require_array_field(rec, "book_only", "bank reconciliation")
+    bank_only = require_array_field(rec, "bank_only", "bank reconciliation")
+    reconciled = boolish(rec.get("reconciled"))
     diff = str(rec.get("unreconciled_difference", ""))
     try:
         diff_is_zero = Decimal(diff) == 0
@@ -152,26 +161,17 @@ def tax_tieout_block(path: Path | None, d: Path, required: bool) -> dict | None:
     data = read_json(path)
     dest = copy_artifact(path, d / "workpapers" / "tax-tieout.json")
     internal = data.get("internal") if isinstance(data.get("internal"), dict) else data
-    provision_ties = data.get("provision_ties", data.get("consistent", False))
-    internal_consistency = internal.get("consistent", False)
+    provision_ties = boolish(data.get("provision_ties", data.get("consistent", False)))
+    internal_consistency = boolish(internal.get("consistent", False))
     block = {
         "status": "pass" if provision_ties and internal_consistency else "fail",
         "artifact": rel(dest, d),
-        "provision_ties": bool(provision_ties),
-        "internal_consistency": bool(internal_consistency),
+        "provision_ties": provision_ties,
+        "internal_consistency": internal_consistency,
     }
     if block["status"] != "pass":
         raise SystemExit("ERROR: tax tie-out did not pass provision/internal consistency checks")
     return block
-
-
-def require_list_field(data: dict, key: str) -> list:
-    if key not in data:
-        raise SystemExit(f"ERROR: SEC audit tie-out requires explicit {key} array")
-    value = data.get(key)
-    if not isinstance(value, list):
-        raise SystemExit(f"ERROR: SEC audit tie-out {key} must be a JSON array")
-    return value
 
 
 def audit_tieout_block(path: Path | None, d: Path, required: bool) -> dict | None:
@@ -184,9 +184,9 @@ def audit_tieout_block(path: Path | None, d: Path, required: bool) -> dict | Non
     financial_statements_tie = boolish(data.get("financial_statements_tie"))
     icfr_reviewed = boolish(data.get("icfr_reviewed"))
     pcaob_reviewed = boolish(data.get("pcaob_reviewed"))
-    open_deficiencies = require_list_field(data, "open_deficiencies")
-    material_weaknesses = require_list_field(data, "material_weaknesses")
-    unresolved_audit_differences = require_list_field(data, "unresolved_audit_differences")
+    open_deficiencies = require_array_field(data, "open_deficiencies", "SEC audit tie-out")
+    material_weaknesses = require_array_field(data, "material_weaknesses", "SEC audit tie-out")
+    unresolved_audit_differences = require_array_field(data, "unresolved_audit_differences", "SEC audit tie-out")
     block = {
         "status": "pass"
         if (
