@@ -142,6 +142,22 @@ def require_boolish_field(data: dict, key: str, label: str) -> bool:
     return boolish(data.get(key))
 
 
+def require_equal_field(data: dict, key: str, expected: object, label: str) -> None:
+    if data.get(key) != expected:
+        raise SystemExit(f"ERROR: {label} requires {key}={expected!r}")
+
+
+def require_decimal_field(data: dict, key: str, label: str) -> str:
+    if key not in data:
+        raise SystemExit(f"ERROR: {label} requires explicit {key} amount")
+    value = str(data.get(key))
+    try:
+        Decimal(value)
+    except InvalidOperation:
+        raise SystemExit(f"ERROR: {label} {key} must be a decimal amount") from None
+    return value
+
+
 def bank_rec_block(rec: dict, artifact: str) -> dict:
     book_only = require_array_field(rec, "book_only", "bank reconciliation")
     bank_only = require_array_field(rec, "bank_only", "bank reconciliation")
@@ -175,7 +191,15 @@ def tax_tieout_block(path: Path | None, d: Path, required: bool) -> dict | None:
         return None
     data = read_json(path)
     dest = copy_artifact(path, d / "workpapers" / "tax-tieout.json")
+    require_equal_field(data, "schema_version", 1, "tax tie-out")
+    require_equal_field(data, "source_tool", "glaw-tax-tieout", "tax tie-out")
+    require_equal_field(data, "mode", "recompute", "tax tie-out")
+    require_decimal_field(data, "recomputed_total_provision", "tax tie-out")
+    require_decimal_field(data, "posted_income_tax_expense", "tax tie-out")
     internal = require_object_field(data, "internal", "tax tie-out")
+    require_equal_field(internal, "source_tool", "glaw-tax-tieout", "tax tie-out internal")
+    require_decimal_field(internal, "income_tax_expense", "tax tie-out internal")
+    require_decimal_field(internal, "expense_should_equal", "tax tie-out internal")
     provision_ties = require_boolish_field(data, "provision_ties", "tax tie-out")
     internal_consistency = require_boolish_field(internal, "consistent", "tax tie-out internal")
     block = {

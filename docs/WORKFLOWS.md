@@ -250,8 +250,12 @@ zero book-only/bank-only rows, and zero unreconciled difference. For
 accounting-tax/tax profiles it requires a passing `tax_tieout` block with
 the canonical `glaw-tax-tieout --rate --format json` shape: `provision_ties`
 must parse true and `internal` must be a JSON object whose `consistent` field
-parses true. Top-level `consistent` shortcuts, string `"false"`, and missing
-consistency fields fail closed. For SEC-reporting profiles it
+parses true. The workpaper must also carry `schema_version: 1`,
+`source_tool: "glaw-tax-tieout"`, `mode: "recompute"`, and parseable
+`recomputed_total_provision` / `posted_income_tax_expense` amounts, with matching
+internal provenance and numeric consistency amounts. Top-level `consistent`
+shortcuts, string `"false"`, minimal boolean JSON, and missing consistency fields
+fail closed. For SEC-reporting profiles it
 also requires a passing `audit_tieout` block proving financial-statement tie,
 ICFR review, PCAOB review, zero open deficiencies, zero material weaknesses, and
 zero unresolved audit differences. `final_packet.json` hashes that control

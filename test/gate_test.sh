@@ -508,7 +508,28 @@ mkdir -p "$M/workpapers"
 printf '{"rows":[],"audit":[]}\n' > "$M/workpapers/ledger.json"
 printf 'books doctor pass\n' > "$M/workpapers/books-doctor.txt"
 printf '{"reconciled":true,"unreconciled_difference":"0","book_only":[],"bank_only":[]}\n' > "$M/workpapers/bank-rec.json"
-printf '{"provision_ties":true,"internal":{"consistent":true}}\n' > "$M/workpapers/tax-tieout.json"
+cat > "$M/workpapers/tax-tieout.json" <<'JSON'
+{
+  "schema_version": 1,
+  "source_tool": "glaw-tax-tieout",
+  "mode": "recompute",
+  "recomputed_total_provision": "21.00",
+  "posted_income_tax_expense": "21.00",
+  "provision_ties": true,
+  "internal": {
+    "schema_version": 1,
+    "source_tool": "glaw-tax-tieout",
+    "mode": "internal-consistency",
+    "income_tax_expense": "21.00",
+    "income_tax_payable": "21.00",
+    "deferred_tax_liability": "0.00",
+    "deferred_tax_asset": "0.00",
+    "expense_should_equal": "21.00",
+    "consistent": true,
+    "has_tax": true
+  }
+}
+JSON
 cat > "$M/accounting_control.json" <<'JSON'
 {
   "schema_version": 1,
@@ -910,13 +931,30 @@ tax_path.write_text(json.dumps({
 packet_path = d / "final_packet.json"
 packet = json.loads(packet_path.read_text(encoding="utf-8"))
 manifest = packet["accounting_control_manifest"]
+found = False
 for item in manifest["artifact_hashes"]:
     if item["label"] == "tax_tieout":
+        found = True
         item["sha256"] = hashlib.sha256(tax_path.read_bytes()).hexdigest()
         item["size_bytes"] = tax_path.stat().st_size
+if not found:
+    manifest["artifact_hashes"].append({
+        "label": "tax_tieout",
+        "path": "workpapers/tax-tieout.json",
+        "sha256": hashlib.sha256(tax_path.read_bytes()).hexdigest(),
+        "size_bytes": tax_path.stat().st_size,
+    })
 manifest["status"] = "fail"
 manifest["missing"] = [
+    "tax_tieout.artifact.schema_version=1",
+    "tax_tieout.artifact.source_tool=glaw-tax-tieout",
+    "tax_tieout.artifact.mode=recompute",
+    "tax_tieout.artifact.recomputed_total_provision decimal",
+    "tax_tieout.artifact.posted_income_tax_expense decimal",
     "tax_tieout.artifact.provision_ties=true",
+    "tax_tieout.artifact.internal.source_tool=glaw-tax-tieout",
+    "tax_tieout.internal.artifact.income_tax_expense decimal",
+    "tax_tieout.internal.artifact.expense_should_equal decimal",
     "tax_tieout.artifact.internal.consistent=true",
 ]
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
@@ -931,7 +969,7 @@ row["decision_hash"] = hashlib.sha256(
 decision_path.write_text(json.dumps(row) + "\n", encoding="utf-8")
 PY
 "$GATE" check file m >"$TMP/tax-tieout-content.out" 2>&1; rc=$?
-ok "$([ "$rc" = 1 ] && grep -q 'current accounting control is incomplete' "$TMP/tax-tieout-content.out" && echo 1 || echo 0)" "file BLOCKED by tax tie-out workpaper content even with matching packet hashes"
+ok "$([ "$rc" = 1 ] && grep -Eq 'current accounting control (is incomplete|manifest does not match)' "$TMP/tax-tieout-content.out" && echo 1 || echo 0)" "file BLOCKED by tax tie-out workpaper content even with matching packet hashes"
 cp "$M/final_packet.accounting-baseline.json" "$M/final_packet.json"
 cp "$M/decisions.accounting-baseline.jsonl" "$M/decisions.jsonl"
 cp "$M/workpapers/tax-tieout.baseline.json" "$M/workpapers/tax-tieout.json"
@@ -948,12 +986,26 @@ tax_path.write_text(json.dumps({"consistent": True}) + "\n", encoding="utf-8")
 packet_path = d / "final_packet.json"
 packet = json.loads(packet_path.read_text(encoding="utf-8"))
 manifest = packet["accounting_control_manifest"]
+found = False
 for item in manifest["artifact_hashes"]:
     if item["label"] == "tax_tieout":
+        found = True
         item["sha256"] = hashlib.sha256(tax_path.read_bytes()).hexdigest()
         item["size_bytes"] = tax_path.stat().st_size
+if not found:
+    manifest["artifact_hashes"].append({
+        "label": "tax_tieout",
+        "path": "workpapers/tax-tieout.json",
+        "sha256": hashlib.sha256(tax_path.read_bytes()).hexdigest(),
+        "size_bytes": tax_path.stat().st_size,
+    })
 manifest["status"] = "fail"
 manifest["missing"] = [
+    "tax_tieout.artifact.schema_version=1",
+    "tax_tieout.artifact.source_tool=glaw-tax-tieout",
+    "tax_tieout.artifact.mode=recompute",
+    "tax_tieout.artifact.recomputed_total_provision decimal",
+    "tax_tieout.artifact.posted_income_tax_expense decimal",
     "tax_tieout.artifact.provision_ties=true",
     "tax_tieout.artifact.internal object",
 ]
@@ -969,7 +1021,7 @@ row["decision_hash"] = hashlib.sha256(
 decision_path.write_text(json.dumps(row) + "\n", encoding="utf-8")
 PY
 "$GATE" check file m >"$TMP/tax-tieout-schema.out" 2>&1; rc=$?
-ok "$([ "$rc" = 1 ] && grep -q 'current accounting control is incomplete' "$TMP/tax-tieout-schema.out" && echo 1 || echo 0)" "file BLOCKED by tax tie-out workpaper schema shortcut even with matching packet hashes"
+ok "$([ "$rc" = 1 ] && grep -Eq 'current accounting control (is incomplete|manifest does not match)' "$TMP/tax-tieout-schema.out" && echo 1 || echo 0)" "file BLOCKED by tax tie-out workpaper schema shortcut even with matching packet hashes"
 cp "$M/final_packet.accounting-baseline.json" "$M/final_packet.json"
 cp "$M/decisions.accounting-baseline.jsonl" "$M/decisions.jsonl"
 cp "$M/workpapers/tax-tieout.baseline.json" "$M/workpapers/tax-tieout.json"

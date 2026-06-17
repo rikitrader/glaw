@@ -10,6 +10,7 @@ import re
 import subprocess
 import sys
 from datetime import datetime, timezone
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "lib"))
@@ -508,6 +509,16 @@ def _int_value(value) -> int:
         return -1
 
 
+def _decimal_present(data: dict, field: str, label: str, missing: list[str]) -> None:
+    if field not in data:
+        missing.append(f"{label}.artifact.{field} decimal")
+        return
+    try:
+        Decimal(str(data.get(field)))
+    except InvalidOperation:
+        missing.append(f"{label}.artifact.{field} decimal")
+
+
 def _artifact_hash(path_text: str, d: Path, label: str, missing: list[str]) -> dict:
     if not path_text.strip():
         missing.append(f"{label}.artifact")
@@ -663,14 +674,27 @@ def accounting_control_manifest(d: Path, profile: str, source_manifest: list[dic
             str(tax.get("artifact", "")), d, "tax_tieout", manifest["missing"]
         )
         if tax_artifact:
+            if tax_artifact.get("schema_version") != 1:
+                manifest["missing"].append("tax_tieout.artifact.schema_version=1")
+            if tax_artifact.get("source_tool") != "glaw-tax-tieout":
+                manifest["missing"].append("tax_tieout.artifact.source_tool=glaw-tax-tieout")
+            if tax_artifact.get("mode") != "recompute":
+                manifest["missing"].append("tax_tieout.artifact.mode=recompute")
+            _decimal_present(tax_artifact, "recomputed_total_provision", "tax_tieout", manifest["missing"])
+            _decimal_present(tax_artifact, "posted_income_tax_expense", "tax_tieout", manifest["missing"])
             _require_artifact_boolish_true(
                 tax_artifact, "provision_ties", "tax_tieout", manifest["missing"]
             )
             internal = tax_artifact.get("internal")
             if not isinstance(internal, dict):
                 manifest["missing"].append("tax_tieout.artifact.internal object")
-            elif not _boolish(internal.get("consistent", False)):
-                manifest["missing"].append("tax_tieout.artifact.internal.consistent=true")
+            else:
+                if internal.get("source_tool") != "glaw-tax-tieout":
+                    manifest["missing"].append("tax_tieout.artifact.internal.source_tool=glaw-tax-tieout")
+                _decimal_present(internal, "income_tax_expense", "tax_tieout.internal", manifest["missing"])
+                _decimal_present(internal, "expense_should_equal", "tax_tieout.internal", manifest["missing"])
+                if not _boolish(internal.get("consistent", False)):
+                    manifest["missing"].append("tax_tieout.artifact.internal.consistent=true")
 
     if profile == "sec-reporting":
         audit = control.get("audit_tieout", {})

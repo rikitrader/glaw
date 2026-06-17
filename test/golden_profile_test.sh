@@ -167,8 +167,24 @@ def write_accounting_inputs(matter: Path) -> tuple[Path, Path, Path, Path]:
         "reconciled": True,
     }, indent=2) + "\n", encoding="utf-8")
     tax.write_text(json.dumps({
+        "schema_version": 1,
+        "source_tool": "glaw-tax-tieout",
+        "mode": "recompute",
+        "recomputed_total_provision": "21.00",
+        "posted_income_tax_expense": "21.00",
         "provision_ties": True,
-        "internal": {"consistent": True},
+        "internal": {
+            "schema_version": 1,
+            "source_tool": "glaw-tax-tieout",
+            "mode": "internal-consistency",
+            "income_tax_expense": "21.00",
+            "income_tax_payable": "21.00",
+            "deferred_tax_liability": "0.00",
+            "deferred_tax_asset": "0.00",
+            "expense_should_equal": "21.00",
+            "consistent": True,
+            "has_tax": True,
+        },
     }, indent=2) + "\n", encoding="utf-8")
     audit.write_text(json.dumps({
         "financial_statements_tie": True,

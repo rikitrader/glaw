@@ -42,7 +42,8 @@ def internal_consistency(book: str, as_of: str | None = None) -> dict:
     def_liab = -bal.get("Liabilities:Deferred Tax", Decimal("0"))
     def_asset = bal.get("Assets:Deferred Tax", Decimal("0"))
     expected_expense = _q(payable + def_liab - def_asset)
-    return {"income_tax_expense": str(_q(expense)), "income_tax_payable": str(_q(payable)),
+    return {"schema_version": 1, "source_tool": "glaw-tax-tieout", "mode": "internal-consistency",
+            "income_tax_expense": str(_q(expense)), "income_tax_payable": str(_q(payable)),
             "deferred_tax_liability": str(_q(def_liab)), "deferred_tax_asset": str(_q(def_asset)),
             "expense_should_equal": str(expected_expense),
             "consistent": _q(expense) == expected_expense, "has_tax": expense != 0 or payable != 0}
@@ -62,7 +63,10 @@ def recompute(book: str, rate, *, rules: str | None = None, assets=None, year=No
     prov = TP.provision(pretax, permanent, temporary, _dec(rate))
     bal = L.Ledger(book).balances(as_of)
     posted_expense = _q(bal.get("Expenses:Income Tax", Decimal("0")))
-    out = {"recomputed_total_provision": str(prov["total_provision"]),
+    out = {"schema_version": 1,
+           "source_tool": "glaw-tax-tieout",
+           "mode": "recompute",
+           "recomputed_total_provision": str(prov["total_provision"]),
            "posted_income_tax_expense": str(posted_expense),
            "provision_ties": _q(_dec(prov["total_provision"])) == posted_expense,
            "internal": internal_consistency(book, as_of)}

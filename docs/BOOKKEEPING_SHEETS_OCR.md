@@ -70,7 +70,7 @@ Business return lines are generated from the posted ledger, not freehand:
 GLAW_HOME="$HOME/.glaw" GLAW="$PWD" bin/glaw-return-map --book company --form 1120 --format json > /tmp/1120.json
 GLAW="$PWD" bin/glaw-fill-form --form 1120 --data /tmp/1120.json --out /tmp/1120
 GLAW_HOME="$HOME/.glaw" GLAW="$PWD" bin/glaw-tax-provision --book company --rate 21 --post --date 2026-12-31
-GLAW_HOME="$HOME/.glaw" GLAW="$PWD" bin/glaw-tax-tieout --book company --rate 21
+GLAW_HOME="$HOME/.glaw" GLAW="$PWD" bin/glaw-tax-tieout --book company --rate 21 --format json > /tmp/tax-tieout.json
 ```
 
 `glaw-fill-form` writes a `.fill.json` payload and `.fill.txt` review checklist for manual entry into official IRS PDFs, e-file systems, or tax software. It does not rewrite official PDF binaries without a PDF library.

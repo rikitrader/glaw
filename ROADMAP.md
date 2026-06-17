@@ -330,6 +330,11 @@ the seal stays human as a legal and ethics constraint.
   (`provision_ties` plus `internal.consistent`) with strict boolish handling so
   string `"false"` or top-level-only consistency shortcuts cannot become a
   passing control summary.
+- ✅ **P2-G11b.2 · Tax tie-out provenance and numeric workpaper contract**:
+  `glaw-tax-tieout` now emits source-only provenance (`schema_version`,
+  `source_tool`, `mode`) plus recomputed/posted provision amounts, and
+  `glaw-accounting-control`, `glaw-final-packet`, and `glaw-gate` reject minimal
+  boolean tax JSON that lacks those engine provenance and numeric tie-out fields.
 - ✅ **P2-G11c · SEC audit/ICFR tie-out control**: SEC-reporting accounting controls
   now require a referenced audit-tieout JSON workpaper proving financial-statement
   tie, ICFR review, PCAOB review, zero open deficiencies, zero material weaknesses,

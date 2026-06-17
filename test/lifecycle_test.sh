@@ -278,9 +278,23 @@ cat > "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" <<'JSON'
 JSON
 cat > "$TMP/matters/$SLUG/workpapers/tax-tieout.json" <<'JSON'
 {
+  "schema_version": 1,
+  "source_tool": "glaw-tax-tieout",
+  "mode": "recompute",
+  "recomputed_total_provision": "21.00",
+  "posted_income_tax_expense": "21.00",
   "provision_ties": true,
   "internal": {
-    "consistent": true
+    "schema_version": 1,
+    "source_tool": "glaw-tax-tieout",
+    "mode": "internal-consistency",
+    "income_tax_expense": "21.00",
+    "income_tax_payable": "21.00",
+    "deferred_tax_liability": "0.00",
+    "deferred_tax_asset": "0.00",
+    "expense_should_equal": "21.00",
+    "consistent": true,
+    "has_tax": true
   }
 }
 JSON

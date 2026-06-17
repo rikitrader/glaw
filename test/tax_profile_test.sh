@@ -153,11 +153,35 @@ cat > "$TMP/matters/$SLUG/workpapers/tax-tieout-missing-internal.json" <<'JSON'
 JSON
 "$CONTROL" --matter "$SLUG" --profile tax --source "SRC-0001 tax source package reviewed" --ledger "$TMP/matters/$SLUG/workpapers/ledger.json" --bank-rec "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" --tax-tieout "$TMP/matters/$SLUG/workpapers/tax-tieout-missing-internal.json" >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "tax accounting control blocked by tax tie-out missing internal object"
-cat > "$TMP/matters/$SLUG/workpapers/tax-tieout-good.json" <<'JSON'
+cat > "$TMP/matters/$SLUG/workpapers/tax-tieout-minimal-boolean.json" <<'JSON'
 {
   "provision_ties": true,
   "internal": {
     "consistent": true
+  }
+}
+JSON
+"$CONTROL" --matter "$SLUG" --profile tax --source "SRC-0001 tax source package reviewed" --ledger "$TMP/matters/$SLUG/workpapers/ledger.json" --bank-rec "$TMP/matters/$SLUG/workpapers/bank-rec-input.json" --tax-tieout "$TMP/matters/$SLUG/workpapers/tax-tieout-minimal-boolean.json" >/dev/null 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && echo 1 || echo 0)" "tax accounting control blocked by minimal boolean tax tie-out without engine provenance"
+cat > "$TMP/matters/$SLUG/workpapers/tax-tieout-good.json" <<'JSON'
+{
+  "schema_version": 1,
+  "source_tool": "glaw-tax-tieout",
+  "mode": "recompute",
+  "recomputed_total_provision": "21.00",
+  "posted_income_tax_expense": "21.00",
+  "provision_ties": true,
+  "internal": {
+    "schema_version": 1,
+    "source_tool": "glaw-tax-tieout",
+    "mode": "internal-consistency",
+    "income_tax_expense": "21.00",
+    "income_tax_payable": "21.00",
+    "deferred_tax_liability": "0.00",
+    "deferred_tax_asset": "0.00",
+    "expense_should_equal": "21.00",
+    "consistent": true,
+    "has_tax": true
   }
 }
 JSON

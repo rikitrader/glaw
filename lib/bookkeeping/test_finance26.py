@@ -37,6 +37,12 @@ def test_recompute_ties():
     import importlib
     importlib.reload(TT)
     d = TT.recompute("co", "21", rules="default")   # no temp diff via rules here → tests internal + provision
+    assert d["schema_version"] == 1
+    assert d["source_tool"] == "glaw-tax-tieout"
+    assert d["mode"] == "recompute"
+    assert "recomputed_total_provision" in d
+    assert "posted_income_tax_expense" in d
+    assert d["internal"]["source_tool"] == "glaw-tax-tieout"
     assert d["internal"]["consistent"]
     # internal consistency is the robust GL-only check
     print("  ✓ tie-out: posted provision is internally consistent (expense == payable + deferred)")
