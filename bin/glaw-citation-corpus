@@ -32,44 +32,19 @@ from glaw_authority_sources import (
     authority_sources,
     approved_authority_url,
 )
-
-
-DEFAULT_MAX_AGE_DAYS = 180
+from glaw_corpus_freshness import (
+    DEFAULT_MAX_AGE_DAYS,
+    row_age_days,
+    freshness_failure as _shared_freshness_failure,
+)
 
 
 def now() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def parse_ts(value: str) -> datetime | None:
-    text = str(value or "").strip()
-    if not text:
-        return None
-    if text.endswith("Z"):
-        text = text[:-1] + "+00:00"
-    try:
-        parsed = datetime.fromisoformat(text)
-    except ValueError:
-        return None
-    if parsed.tzinfo is None:
-        parsed = parsed.replace(tzinfo=timezone.utc)
-    return parsed.astimezone(timezone.utc)
-
-
-def row_age_days(row: dict) -> int | None:
-    parsed = parse_ts(str(row.get("ts", "")))
-    if not parsed:
-        return None
-    return (datetime.now(timezone.utc) - parsed).days
-
-
 def freshness_failure(row: dict, max_age_days: int) -> str:
-    age = row_age_days(row)
-    if age is None:
-        return f"{row.get('id')}: corpus capture timestamp is missing or invalid"
-    if age > max_age_days:
-        return f"{row.get('id')}: corpus capture is stale ({age} days old; max {max_age_days})"
-    return ""
+    return _shared_freshness_failure(row, row.get("id"), max_age_days=max_age_days, style="prefix")
 
 
 def home() -> Path:

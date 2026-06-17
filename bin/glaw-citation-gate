@@ -21,6 +21,10 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "lib"))
 from glaw_authority_sources import approved_authority_url
 from glaw_groundedness import audit_matter
+from glaw_corpus_freshness import (
+    DEFAULT_MAX_AGE_DAYS,
+    freshness_failure as _shared_freshness_failure,
+)
 
 
 BLOCKING = {"pending", "needs-substitute", "struck", "weak"}
@@ -28,7 +32,6 @@ DEFECT_TYPES = {"incorrect", "misgrounded", "ungrounded", "incomplete"}
 NONE_DEFECTS = {"", "none", "verified"}
 LEGAL_RESEARCH_REVIEWERS = {"legal-research", "glaw-legal-research", "/glaw-legal-research"}
 APPROVED_CORPUS_TRUST = {"authoritative", "authenticated-copy"}
-DEFAULT_MAX_AGE_DAYS = 180
 def valid_http_url(value: str) -> bool:
     parsed = urlparse(str(value).strip())
     return parsed.scheme in {"http", "https"} and bool(parsed.netloc)
@@ -69,35 +72,8 @@ def now() -> str:
     return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
 
-def parse_ts(value: str) -> datetime | None:
-    text = str(value or "").strip()
-    if not text:
-        return None
-    if text.endswith("Z"):
-        text = text[:-1] + "+00:00"
-    try:
-        parsed = datetime.fromisoformat(text)
-    except ValueError:
-        return None
-    if parsed.tzinfo is None:
-        parsed = parsed.replace(tzinfo=timezone.utc)
-    return parsed.astimezone(timezone.utc)
-
-
-def row_age_days(row: dict) -> int | None:
-    parsed = parse_ts(str(row.get("ts", "")))
-    if not parsed:
-        return None
-    return (datetime.now(timezone.utc) - parsed).days
-
-
 def corpus_freshness_failure(row: dict, corpus_id: str, max_age_days: int = DEFAULT_MAX_AGE_DAYS) -> str:
-    age = row_age_days(row)
-    if age is None:
-        return f"corpus {corpus_id} capture timestamp is missing or invalid"
-    if age > max_age_days:
-        return f"corpus {corpus_id} capture is stale ({age} days old; max {max_age_days})"
-    return ""
+    return _shared_freshness_failure(row, corpus_id, max_age_days=max_age_days, style="corpus")
 
 
 def home() -> Path:
