@@ -326,8 +326,10 @@ the seal stays human as a legal and ethics constraint.
 - ✅ **P2-G11b.1 · Accounting/tax schema fail-closed hardening**: `glaw-accounting-control`,
   `glaw-final-packet`, and `glaw-gate` now require bank-reconciliation workpapers
   to carry explicit JSON arrays for `book_only` and `bank_only`, and tax tie-outs
-  parse provision/internal consistency through strict boolish handling so string
-  `"false"` cannot become a passing control summary.
+  must use the canonical `glaw-tax-tieout --rate --format json` shape
+  (`provision_ties` plus `internal.consistent`) with strict boolish handling so
+  string `"false"` or top-level-only consistency shortcuts cannot become a
+  passing control summary.
 - ✅ **P2-G11c · SEC audit/ICFR tie-out control**: SEC-reporting accounting controls
   now require a referenced audit-tieout JSON workpaper proving financial-statement
   tie, ICFR review, PCAOB review, zero open deficiencies, zero material weaknesses,

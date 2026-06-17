@@ -936,6 +936,44 @@ cp "$M/final_packet.accounting-baseline.json" "$M/final_packet.json"
 cp "$M/decisions.accounting-baseline.jsonl" "$M/decisions.jsonl"
 cp "$M/workpapers/tax-tieout.baseline.json" "$M/workpapers/tax-tieout.json"
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact tax tie-out workpaper restored"
+cp "$M/final_packet.json" "$M/final_packet.accounting-baseline.json"
+cp "$M/decisions.jsonl" "$M/decisions.accounting-baseline.jsonl"
+cp "$M/workpapers/tax-tieout.json" "$M/workpapers/tax-tieout.baseline.json"
+fixture_py "$M" <<'PY'
+import hashlib, json, pathlib, sys
+d = pathlib.Path(sys.argv[1])
+tax_path = d / "workpapers/tax-tieout.json"
+tax_path.write_text(json.dumps({"consistent": True}) + "\n", encoding="utf-8")
+
+packet_path = d / "final_packet.json"
+packet = json.loads(packet_path.read_text(encoding="utf-8"))
+manifest = packet["accounting_control_manifest"]
+for item in manifest["artifact_hashes"]:
+    if item["label"] == "tax_tieout":
+        item["sha256"] = hashlib.sha256(tax_path.read_bytes()).hexdigest()
+        item["size_bytes"] = tax_path.stat().st_size
+manifest["status"] = "fail"
+manifest["missing"] = [
+    "tax_tieout.artifact.provision_ties=true",
+    "tax_tieout.artifact.internal object",
+]
+packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
+
+decision_path = d / "decisions.jsonl"
+row = json.loads(decision_path.read_text(encoding="utf-8").splitlines()[-1])
+row["approved_packet_sha256"] = hashlib.sha256(packet_path.read_bytes()).hexdigest()
+row.pop("decision_hash", None)
+row["decision_hash"] = hashlib.sha256(
+    json.dumps(row, sort_keys=True, separators=(",", ":")).encode("utf-8")
+).hexdigest()
+decision_path.write_text(json.dumps(row) + "\n", encoding="utf-8")
+PY
+"$GATE" check file m >"$TMP/tax-tieout-schema.out" 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && grep -q 'current accounting control is incomplete' "$TMP/tax-tieout-schema.out" && echo 1 || echo 0)" "file BLOCKED by tax tie-out workpaper schema shortcut even with matching packet hashes"
+cp "$M/final_packet.accounting-baseline.json" "$M/final_packet.json"
+cp "$M/decisions.accounting-baseline.jsonl" "$M/decisions.jsonl"
+cp "$M/workpapers/tax-tieout.baseline.json" "$M/workpapers/tax-tieout.json"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after exact tax tie-out schema restored"
 cp "$M/accounting_control.json" "$M/accounting_control.baseline.json"
 fixture_py "$M/accounting_control.json" <<'PY'
 import json, sys

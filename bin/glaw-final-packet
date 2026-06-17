@@ -560,6 +560,14 @@ def _require_empty_array(data: dict, field: str, label: str, missing: list[str])
         missing.append(f"{label}.artifact.{field} empty")
 
 
+def _require_artifact_boolish_true(data: dict, field: str, label: str, missing: list[str]) -> None:
+    if field not in data:
+        missing.append(f"{label}.artifact.{field}=true")
+        return
+    if not _boolish(data.get(field)):
+        missing.append(f"{label}.artifact.{field}=true")
+
+
 def accounting_control_manifest(d: Path, profile: str, source_manifest: list[dict]) -> dict:
     required = profile in ACCOUNTING_CONTROL_PROFILES
     path = d / "accounting_control.json"
@@ -655,10 +663,13 @@ def accounting_control_manifest(d: Path, profile: str, source_manifest: list[dic
             str(tax.get("artifact", "")), d, "tax_tieout", manifest["missing"]
         )
         if tax_artifact:
-            internal = tax_artifact.get("internal") if isinstance(tax_artifact.get("internal"), dict) else tax_artifact
-            if not _boolish(tax_artifact.get("provision_ties", tax_artifact.get("consistent", False))):
-                manifest["missing"].append("tax_tieout.artifact.provision_ties=true")
-            if not _boolish(internal.get("consistent", False)):
+            _require_artifact_boolish_true(
+                tax_artifact, "provision_ties", "tax_tieout", manifest["missing"]
+            )
+            internal = tax_artifact.get("internal")
+            if not isinstance(internal, dict):
+                manifest["missing"].append("tax_tieout.artifact.internal object")
+            elif not _boolish(internal.get("consistent", False)):
                 manifest["missing"].append("tax_tieout.artifact.internal.consistent=true")
 
     if profile == "sec-reporting":

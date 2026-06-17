@@ -248,8 +248,10 @@ SEC-reporting profile, record those deterministic controls in
 reconciled bank rec with explicit empty `book_only` and `bank_only` JSON arrays,
 zero book-only/bank-only rows, and zero unreconciled difference. For
 accounting-tax/tax profiles it requires a passing `tax_tieout` block with
-provision and internal consistency both parsing to true; string `"false"` and
-missing consistency fields fail closed. For SEC-reporting profiles it
+the canonical `glaw-tax-tieout --rate --format json` shape: `provision_ties`
+must parse true and `internal` must be a JSON object whose `consistent` field
+parses true. Top-level `consistent` shortcuts, string `"false"`, and missing
+consistency fields fail closed. For SEC-reporting profiles it
 also requires a passing `audit_tieout` block proving financial-statement tie,
 ICFR review, PCAOB review, zero open deficiencies, zero material weaknesses, and
 zero unresolved audit differences. `final_packet.json` hashes that control
