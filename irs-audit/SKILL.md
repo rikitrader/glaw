@@ -30,6 +30,11 @@ general ledger** so nothing is fabricated.
 
 > Attorney/CPA work-product, not advice. Carries the UPL footer from `/glaw-ethics-conflicts`.
 
+> **Self-contained seat.** This seat ships its own `references/` knowledge base (grounded in the
+> IRS Tax Tip corpus + primary authority — IRC/IRM/Pub/Form). **Read `references/persona-and-guardrails.md`
+> first**; quote all dollar figures/rates from `tax-legal-shared/current-figures.md`. See the
+> **Reference Files** index below.
+
 ## Preamble (run first)
 ```bash
 bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
@@ -100,6 +105,20 @@ A complete, signature-ready audit-response file: the SOL position, the transcrip
 a GL-tied substantiation index, the Form 4549 recompute, the penalty-abatement request, the
 response/protest/petition, a docket of jurisdictional deadlines — every figure traced to the
 posted ledger, survived the IRS-examiner adversarial pass.
+
+## Reference Files
+
+The seat's self-contained knowledge base. Grounded in primary authority (IRC/IRM/Pub/Form), with
+the IRS Tax Tip corpus as its topic spine; every dollar figure defers to `tax-legal-shared/current-figures.md`.
+
+- `references/persona-and-guardrails.md` — Tone, the UPL/"not advice" rule, the eggshell-audit & criminal-exposure gate (IRS-CI / §7525 limits / voluntary disclosure / Kovel), and the zero-fabrication / tie-to-the-ledger rule. **Read first.**
+- `references/taxpayer-bill-of-rights.md` — All 10 taxpayer rights (IRC §7803(a)(3)), each mapped to a concrete audit/appeals lever (appeal, finality/SOL, retain representation, challenge-and-be-heard). The spine of the seat.
+- `references/notices-and-letters.md` — Exam/collection notice map: CP2000, 30-day letter (525/692/950), 90-day statutory notice of deficiency (§6212/§6213), IDR (Form 4564), Form 4549/886-A, and the CP14→CP504→Letter 1058 collection track — the clock each starts and whether it's jurisdictional.
+- `references/examination-workflow.md` — Exam types, the ASED/CSED/RSED clocks, IDR-response discipline, the audit→30-day→Appeals→90-day→Tax Court ladder, audit reconsideration, and the IRS-examiner RED→BLUE gate.
+- `references/penalty-relief.md` — FTA → reasonable cause → statutory decision tree, penalty mechanics (§6651/§6662/§6663/§6699/§6698/§6672/§6721-22), order of operations, Form 843. Rates defer to current-figures.
+- `references/scams-and-data-security.md` — "Letter ≠ phone call" authentication, ERC promoter schemes (withdrawal/VDP), IP PIN, Form 14039, and the preparer WISP / Pub 4557 / data-theft response steps.
+- `references/transcripts-and-reconstruction.md` — Wage & Income vs. Account vs. Return vs. Record-of-Account transcripts, how to pull them, the W&I reconciliation gate, and Cohan-rule reconstruction (with §274(d) limits).
+- `references/sources-corpus-index.md` — Provenance ledger: IRS Tax Tip issue → topic → KB file, plus the primary-authority map (IRC/IRM/Pub/Form/case law) the KB rests on. Notes that Tax Tips are summaries; the KB rests on primary law.
 
 ## Not legal or tax advice
 IRS-controversy work-product, not legal or tax advice, and not a substitute for an enrolled

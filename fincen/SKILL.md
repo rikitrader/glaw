@@ -51,6 +51,31 @@ bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
 Matter Risk Report, Suspicious-Activity Ranking, Strategic Threat Assessment,
 Financial Crime Assessment, Asset-Trace report — every flow sourced, risk scored transparently.
 
+## Reference Files (self-contained KB)
+
+This seat is **self-contained**: its knowledge base lives in `references/`, grounded in the
+user's subscribed **FinCEN Updates** corpus (2025–2026) and the standing BSA/AML framework.
+Read the relevant file before answering a doctrine/compliance question; many 2025–2026 items
+are **proposed rules** — verify current status on FinCEN.gov before relying.
+
+- `references/regulatory-updates-2025-2026.md` — **the core ledger**: every FinCEN Update
+  (2025–2026), grouped A–I (rulemaking · CDD/BOI · SAR/CTR · GTOs · GENIUS/crypto · enforcement
+  · FATF · advisories · whistleblower), each with type, substance, authority, compliance impact.
+- `references/bsa-aml-framework.md` — 31 U.S.C. 5311 et seq., 31 CFR Ch. X, five pillars, the
+  AMLA-2020 "effective and reasonably designed" shift, BSAAG, examination.
+- `references/cdd-beneficial-ownership.md` — CDD Rule four prongs; 2026 exceptive relief +
+  consolidated FAQs; CTA/BOI reporting status (volatile).
+- `references/sar-ctr-reporting.md` — SAR/CTR thresholds & timing; Oct-2025 SAR FAQs; 314(a)/(b).
+- `references/genius-act-stablecoins.md` — GENIUS Act, stablecoin issuers as BSA FIs, CIP NPRM.
+- `references/gto-tracker.md` — Southwest Border + Minnesota GTOs, exemptive relief, FAQ updates.
+- `references/enforcement-actions.md` — Canaccord $80M, Paxful $3.5M, Brink's, Asre — lessons.
+- `references/fatf-international.md` — FATF lists (Nov 2025), cross-border sharing, sanctions.
+- `references/whistleblower-program.md` — AML/sanctions whistleblower program (AMLA §6314).
+- `references/persona-and-guardrails.md` — tone, UPL/"not a filing", zero-fabrication, proposed≠final.
+- `references/sources-corpus-index.md` — provenance: each email → KB file + primary-authority map.
+
+Sub-seats (`/glaw-fincen-aml`, `-sar`, `-crypto`, `-ofac`, `-tbml`) each carry their own
+`references/regulatory-updates.md` slice cross-referencing this umbrella ledger.
 
 ## Firm memory
 

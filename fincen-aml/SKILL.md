@@ -96,6 +96,15 @@ An **AML case file** + investigation package, every claim SOURCED:
 
 Unsupported links are listed separately as **LEADS**, never as findings.
 
+## Reference Files
+
+This seat is self-contained. Its regulatory-change slice (program-reform NPRM, CDD relief +
+consolidated FAQs, BSAAG, MSB registration, AML-program enforcement lessons) lives in
+`references/regulatory-updates.md`, which cross-references the umbrella ledger at
+`../fincen/references/regulatory-updates-2025-2026.md` and the standing framework at
+`../fincen/references/bsa-aml-framework.md` + `../fincen/references/cdd-beneficial-ownership.md`.
+Many 2025–2026 items are **proposed rules** — verify current status on FinCEN.gov.
+
 ## Lawful-investigation guardrail
 Analytical work-product for a licensed professional to review — **not** a regulatory
 filing and **not** a charging decision. Lawful, public/record data only; no illegal
