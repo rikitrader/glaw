@@ -33,6 +33,11 @@ expressly defers: FBAR, Form 8938, the §962 election, and the disclosure path f
 
 > Attorney/CPA work-product, not advice. Carries the UPL footer from `/glaw-ethics-conflicts`.
 
+> **Self-contained seat.** This seat ships its own `references/` knowledge base (grounded in
+> primary authority — IRC / Title 31 / Treas. Reg. / Form / treaty). **Read
+> `references/persona-and-guardrails.md` first**; quote all rates/thresholds from
+> `tax-legal-shared/current-figures.md`. See the **Reference Files** index below.
+
 ## Preamble (run first)
 ```bash
 bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
@@ -125,6 +130,17 @@ F/FDII/BEAT/163(j)), the 5471/5472/8865 schedules, the FBAR + Form 8938 determin
 election memo, the delinquency/disclosure-path recommendation, any filled IRS PDFs, and a docket
 of filing deadlines — every figure tied to the books, survived the international-examiner
 adversarial pass.
+
+## Reference Files
+
+The seat's self-contained knowledge base. Grounded in primary authority (IRC / Title 31 / Treas.
+Reg. / Form / treaty); every rate and threshold defers to `tax-legal-shared/current-figures.md`.
+
+- `references/persona-and-guardrails.md` — Tone, the two-regime (taxable vs. reportable) discipline, the UPL/"not advice" rule, the willfulness / criminal-exposure gate (Streamlined non-willful cert vs. VDP; §7525 limits), and the zero-fabrication rule. **Read first.**
+- `references/anti-deferral-income-inclusions.md` — The income-tax half: CFC/U.S.-shareholder gateway (§957/§951(b)/§958), Subpart F (§954), GILTI→NCTI (§951A), FDII→FDDEI and the §250 deduction, BEAT (§59A), §163(j), the FTC (§901/§904/§960), and Pillar Two — with the OBBBA-2025 changes flagged.
+- `references/foreign-asset-reporting.md` — The information-return half: FBAR (FinCEN 114, 31 U.S.C. §5314), Form 8938 (§6038D), Forms 5471/5472/8865/8858 and their per-form penalties, the §962 election, and the delinquency cure paths (SDO/SFO/delinquent-info-return/VDP) keyed on willfulness.
+- `references/treaties-residency-and-withholding.md` — U.S. tax residency (§7701(b) substantial presence; treaty tie-breakers; §877A exit tax), source rules (§861–865), FDAP vs. ECI, and the withholding regimes (Chapter 3 §1441, Chapter 4 FATCA §1471–1474, FIRPTA §1445, partnership §1446), plus the FATCA/CRS reality.
+- `references/sources-and-authority.md` — Authority index: IRC sections (income + information + withholding), the Title-31 FBAR statutes, Forms, treaty articles, and cases (*Bittner*, *Boyle*) the KB rests on, plus the shared-canon pointers.
 
 ## Not legal or tax advice
 International-tax work-product, not legal or tax advice, and not a substitute for an enrolled

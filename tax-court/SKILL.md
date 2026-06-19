@@ -32,6 +32,11 @@ settlement track, and trial. It is the tax-specialist complement to `/glaw-feder
 
 > Attorney work-product, not advice. Carries the UPL footer from `/glaw-ethics-conflicts`.
 
+> **Self-contained seat.** This seat ships its own `references/` knowledge base (grounded in
+> primary authority — IRC / Tax Court Rules / decided cases). **Read `references/persona-and-guardrails.md`
+> first**; quote all dollar thresholds from `tax-legal-shared/current-figures.md`. See the
+> **Reference Files** index below.
+
 ## Preamble (run first)
 ```bash
 bash bin/glaw-preamble.sh 2>/dev/null || echo "ACTIVE_MATTER: none"
@@ -110,6 +115,17 @@ controversy-scope memo, the S-election decision, the litigation theory with a ha
 litigation assessment, the petition, the Branerton/stipulation and Appeals-referral record, and
 the settlement-or-trial recommendation — every position tied to the audit record, survived the
 Chief Counsel adversarial pass.
+
+## Reference Files
+
+The seat's self-contained knowledge base. Grounded in primary authority (IRC / Tax Court Rules /
+decided cases); every dollar threshold defers to `tax-legal-shared/current-figures.md`.
+
+- `references/persona-and-guardrails.md` — Tone, the UPL/"not advice" rule, the criminal-exposure / eggshell gate, and the zero-fabrication / tie-to-the-record rule. **Read first.**
+- `references/jurisdiction-and-the-90-day-clock.md` — What gives the Tax Court jurisdiction (the valid §6212 notice of deficiency; CDP §6330; innocent-spouse; whistleblower), the jurisdictional 90/150-day clock (§6213(a)), §7502 timely-mailing, the §6213 assessment bar, and the prepayment-vs-refund forum choice.
+- `references/small-case-election-and-procedure.md` — The §7463 S election ($50k ceiling; final & unappealable), burden of proof (Rule 142 / §7491 / fraud), the regular-case timeline, the settlement track, and §7430 cost recovery / qualified offers.
+- `references/settlement-stipulation-and-trial.md` — The Rule 91 stipulation as the battlefield, Branerton informal discovery, hazards-of-litigation settlement with IRS Counsel, trial (Rule 143 evidence; Rule 143(g) expert reports), Rule 155 computation, finality (§7481), and the Chief Counsel adversarial gate.
+- `references/sources-and-authority.md` — Authority index: IRC sections, Tax Court Rules, and decided cases (*Welch*, *Branerton*, *Golsen*, *Boechler*, *Flora*, *Cohan*) the KB rests on, plus the shared-canon pointers.
 
 ## Not legal or tax advice
 Tax-litigation work-product, not legal or tax advice, and not a substitute for admitted counsel
