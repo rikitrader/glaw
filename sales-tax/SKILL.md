@@ -73,6 +73,19 @@ where nexus exists; file and remit on time. Route the recurring deadlines to `/g
 A nexus map, a taxability matrix, the sales-tax liability entries, and a multi-jurisdiction
 filing calendar (on the docket) — collected, accrued, and remitted, never commingled.
 
+## Reference Files
+
+The seat's self-contained knowledge base. Grounded in primary authority (state statutes/regs, the
+controlling Commerce-Clause cases, SSUTA, MTC); every dollar/transaction threshold and rate defers
+to `tax-legal-shared/current-figures.md` and the state's current rate table.
+
+- `references/persona-and-guardrails.md` — Tone, the UPL/"not advice" rule, the no-single-national-rule discipline, and the zero-fabrication / trust-fund-first rule. **Read first.**
+- `references/nexus-and-economic-nexus.md` — Physical vs. economic nexus, *Complete Auto*, the overruling of *Quill* by ***South Dakota v. Wayfair*** (2018), the `$100k / 200-txn` threshold pattern (verify per state), marketplace-facilitator laws, and click-through / affiliate nexus.
+- `references/taxability-and-exemptions.md` — TPP vs. services vs. digital goods / SaaS, bundling, the common exemptions (resale, manufacturing, agricultural, nonprofit/governmental), exemption/resale certificates, and sourcing (origin vs. destination).
+- `references/registration-collection-remittance.md` — Permit registration (and the VDA-before-registration order), collection mechanics, the trust-fund journal entry, filing frequency, SST/CSP, returns, and use tax (consumer + seller's).
+- `references/audits-and-voluntary-disclosure.md` — DOR sales-tax audits, sampling and certificate cure, successor / bulk-sale liability, responsible-person personal liability, Voluntary Disclosure Agreements (VDAs), and amnesty.
+- `references/sources-and-authority.md` — Authority index: the constitutional/federal cases (*Complete Auto*, *Quill*, *Wayfair*, *Overstock*, P.L. 86-272), the state-law pattern, SSUTA, MTC, and the shared-canon pointers (figures defer to current-figures.md).
+
 ## Not legal or accounting advice
 Indirect-tax work-product, not legal, tax, or accounting advice. Prepared for review by a
 licensed CPA / attorney. Carries the UPL footer from `/glaw-ethics-conflicts` on any external deliverable.

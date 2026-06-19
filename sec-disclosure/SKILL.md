@@ -134,6 +134,19 @@ the Commission. Materiality is argued from the total mix, never assumed. No fabr
 filings, statements, or scores — ever. The UPL guardrail lives in
 `/glaw-ethics-conflicts`, and its footer gates every external deliverable.
 
+## Reference Files
+
+The seat's self-contained knowledge base. Grounded in primary authority (Securities Act of 1933,
+Securities Exchange Act of 1934, Rule 10b-5, Reg FD, Reg G, Reg S-K, and the controlling Supreme
+Court materiality cases); SEC C&DIs/SABs are persuasive staff guidance. Every figure defers to
+`tax-legal-shared/current-figures.md` or the current SEC rule.
+
+- `references/persona-and-guardrails.md` — Tone, the UPL/"not advice" rule, the assumed-materiality and lead-vs-finding limits, detect-don't-charge, and the zero-fabrication / anchor-to-the-record rule. **Read first.**
+- `references/materiality-and-duty-to-disclose.md` — The total-mix standard (*TSC v. Northway*, *Basic v. Levinson*, *Matrixx*), probability × magnitude for contingent events, SAB 99 qualitative materiality, the duty to disclose / correct / update, and the half-truth principle (*Omnicare*).
+- `references/reg-fd-mda-and-risk-factors.md` — Regulation FD (no selective disclosure of MNPI; the public-disclosure timing), MD&A Item 303 (the known-trend two-part test), and risk factors Item 105 (the realized-as-hypothetical and boilerplate tells).
+- `references/non-gaap-forward-looking-and-insider-policy.md` — Non-GAAP measures (Reg G / S-K Item 10(e) / C&DIs), the PSLRA forward-looking-statement safe harbor (and its exclusions / bespeaks-caution), and insider-trading-policy & Rule 10b5-1 plan disclosure (cooling-off, good faith).
+- `references/sources-and-authority.md` — Authority index: statutes/rules (§§10(b)/14(a)/17(a), Reg FD/G, Item 303/105/10(e), 10b5-1, PSLRA), the cases (*TSC*, *Basic*, *Matrixx*, *Omnicare*, *Janus*, *Lorenzo*), and SEC staff guidance, plus the shared-canon pointers.
+
 ## Firm memory
 
 Before substantive work, query the firm memory so known defects are not repeated:
