@@ -5,6 +5,10 @@ and the operative lesson for a GLAW client. Penalty authority: **31 U.S.C. 5321*
 **5322** (criminal, willful).
 
 ## 2026-03-06 — Canaccord Genuity LLC — **$80,000,000** (historic) `broker-dealer`
+- **Confirmed:** FinCEN news release Mar 6, 2026; **Consent Order No. 2026-01**. Largest
+  BSA penalty ever against a broker-dealer. Canaccord admitted willful BSA violations
+  (failure to maintain an effective AML program, failure to conduct foreign-correspondent
+  due diligence, failure to file SARs).
 - **Facts:** securities-fraud-related BSA violations; FinCEN's framing tied AML-program and
   SAR failures to underlying securities fraud (microcap/penny-stock context typical of such
   cases).
@@ -14,6 +18,10 @@ and the operative lesson for a GLAW client. Penalty authority: **31 U.S.C. 5321*
   surveillance, suspicious-trading SAR triggers, and independent testing.
 
 ## 2025-12-09 — Paxful — **$3,500,000** `crypto MSB`
+- **Confirmed:** FinCEN news release Dec 9, 2025 (consent order dated Aug 12, 2025). Paxful,
+  Inc. and Paxful USA, Inc. admitted willful BSA violations — failure to register as an MSB,
+  failure to maintain an effective AML program, and failure to file SARs. (The order
+  structures payment in part; the assessed civil money penalty is **$3.5M**.)
 - **Facts:** the peer-to-peer convertible-virtual-currency platform facilitated suspicious
   activity involving illicit actors; AML-program and SAR shortcomings.
 - **Violation type:** MSB AML-program + SAR failures (31 CFR 1022.210 / 1022.320).
@@ -22,6 +30,11 @@ and the operative lesson for a GLAW client. Penalty authority: **31 U.S.C. 5321*
   OFAC screening are not optional for CVC money transmitters.
 
 ## 2025-02-06 — Brink's Global Services USA, Inc. — **$37,000,000** `cross-border cash`
+- **Confirmed:** FinCEN news release Feb 6, 2025. FinCEN's **first** action against an
+  armored-car company; paired with a DOJ Non-Prosecution Agreement, Brink's agreed to pay
+  **$42M total over three years** (the FinCEN civil money penalty is **$37M**). Conduct
+  involved bulk-currency shipments across the Southwest border (2018–2020) for high-risk
+  entities, including a Mexican currency exchanger that later pleaded guilty.
 - **Facts (corpus):** BSA violations tied to cross-border movement of currency / armored-cash
   logistics; reporting/program failures.
 - **Lesson:** **cross-border bulk-cash carriers** are BSA-covered; cross-border currency

@@ -8,7 +8,7 @@ it, and the primary-authority map. Source feed: `fincenupdates@public.govdeliver
 
 | Date | Headline (FinCEN Update) | Type | Consumed by |
 |---|---|---|---|
-| 2026-06-18 | GENIUS Act CIP joint NPRM (Fed. Reg. 2026-12460) | NPRM | genius-act-stablecoins.md; regulatory-updates §E; crypto seat |
+| 2026-06-18 | GENIUS Act CIP joint NPRM (Fed. Reg. doc. 2026-12460; pub. 2026-06-22) | NPRM | genius-act-stablecoins.md; regulatory-updates §E; crypto seat |
 | 2026-06-12 | Guidance: eliminate fraud via information sharing (314(b)) | Advisory | sar-ctr-reporting.md; regulatory-updates §I |
 | 2026-06-11 | Spanish translation — 2026 FIFA World Cup HT notice | Notice | regulatory-updates §H; tbml seat |
 | 2026-06-05 | Joint advisory: non-work-authorized populations & employers | Advisory | regulatory-updates §H |
@@ -18,8 +18,8 @@ it, and the primary-authority map. Source feed: `fincenupdates@public.govdeliver
 | 2026-04-30 | RMSB registration OMB renewal (Form 107) — comment req | OMB/PRA | bsa-aml-framework.md; regulatory-updates §A |
 | 2026-04-16 | FY2025 Year in Review | Report | regulatory-updates §A |
 | 2026-04-09 | Updated FAQs — Minnesota (Hennepin/Ramsey) GTO | FAQ | gto-tracker.md; regulatory-updates §D |
-| 2026-04-08 | Treasury proposes GENIUS Act illicit-finance rule | NPRM | genius-act-stablecoins.md; regulatory-updates §E |
-| 2026-04-07 | NPRM: fundamentally reform FI AML/CFT programs (withdraws Jul-2024) | NPRM | bsa-aml-framework.md; regulatory-updates §A; aml seat |
+| 2026-04-08 | Treasury (FinCEN+OFAC) proposes GENIUS Act PPSI AML/CFT + sanctions rule (Fed. Reg. doc. 2026-06963; pub. 2026-04-10) | NPRM | genius-act-stablecoins.md; regulatory-updates §E |
+| 2026-04-07 | NPRM: fundamentally reform FI AML/CFT programs (Fed. Reg. doc. 2026-07033; pub. 2026-04-10; withdraws Jul-3-2024 NPRM) | NPRM | bsa-aml-framework.md; regulatory-updates §A; aml seat |
 | 2026-03-19 | FAQs — Southwest Border GTO | FAQ | gto-tracker.md; regulatory-updates §D |
 | 2026-03-10 | Expanded Southwest Border GTO | GTO | gto-tracker.md; regulatory-updates §D; tbml seat |
 | 2026-03-06 | $80M penalty — Canaccord Genuity LLC | Enforcement | enforcement-actions.md; regulatory-updates §F |
@@ -63,15 +63,35 @@ it, and the primary-authority map. Source feed: `fincenupdates@public.govdeliver
 - **CTA / BOI:** 31 U.S.C. 5336; 31 CFR 1010.380
 - **Whistleblower:** AMLA § 6314 → 31 U.S.C. 5323
 - **Penalties:** 31 U.S.C. 5321 (civil) / 5322 (criminal)
-- **GENIUS Act CIP NPRM:** Fed. Reg. 2026-12460
+- **AML/CFT Program reform NPRM (2026-04-07):** Fed. Reg. doc. **2026-07033**, pub. 2026-04-10
+- **GENIUS PPSI AML/CFT + sanctions NPRM (2026-04-08):** Fed. Reg. doc. **2026-06963**, pub. 2026-04-10
+- **GENIUS PPSI CIP NPRM (2026-06-18):** Fed. Reg. doc. **2026-12460**, pub. 2026-06-22
 
-## Items that could NOT be grounded to a precise primary citation
-- The **2026-04-07 program-reform NPRM** and **2026-04-08 GENIUS illicit-finance NPRM**:
-  substance confirmed from the FinCEN Update; **precise Fed. Reg. numbers not independently
-  confirmed here** — named accurately without a fabricated number. Verify on
-  federalregister.gov.
-- Exact **GTO thresholds, ZIP codes, and expiration dates**: deliberately not stated as
-  numbers — they change per modification; read the current order.
+## Citation-verification status (verified 2026-06-18 against federalregister.gov / fincen.gov / fatf-gafi.org)
+
+### CONFIRMED to a precise primary citation
+- **2026-04-07 program-reform NPRM** → Fed. Reg. doc. **2026-07033** (pub. 2026-04-10),
+  "Anti-Money Laundering and Countering the Financing of Terrorism Programs"; comment period
+  closed 2026-06-09; proposed 12-month post-final implementation. **Expressly supersedes and
+  withdraws the July 3, 2024 program NPRM** (FinCEN states it will not finalize the 2024
+  proposal). Still PROPOSED.
+- **2026-04-08 GENIUS illicit-finance NPRM** → Fed. Reg. doc. **2026-06963** (pub. 2026-04-10),
+  "Permitted Payment Stablecoin Issuer AML/CFT Program and Sanctions Compliance Program
+  Requirements"; **joint FinCEN + OFAC**; comment closed 2026-06-09. Still PROPOSED.
+- **2026-06-18 GENIUS CIP NPRM** → Fed. Reg. doc. **2026-12460** CONFIRMED CORRECT
+  (public inspection; scheduled pub. 2026-06-22; Docket FINCEN-2026-0100). Still PROPOSED.
+- **Enforcement amounts/dates** — Canaccord **$80M** (2026-03-06, Consent Order 2026-01),
+  Paxful **$3.5M** (2026-12-09 release / order 2025-08-12), Brink's **$37M** (2025-02-06,
+  $42M total w/ DOJ NPA) — all CONFIRMED.
+- **Southwest Border GTO terms** — CONFIRMED: expanded order lowers CTR threshold to **$1,000**
+  (original 2025 order $200), AZ/CA/NM/TX border ZIPs, effective **2026-03-07 to 2026-09-02**.
+- **FATF call-for-action list** — Oct 22–24, 2025 plenary (lists dated 24 Oct 2025):
+  **DPRK, Iran, Myanmar** CONFIRMED (countermeasures for DPRK/Iran; EDD only for Myanmar).
+  Oct-2025 grey-list removals: Burkina Faso, Mozambique, Nigeria, South Africa.
+
+### STILL PENDING / deliberately not pinned to a number
+- **Minnesota (Hennepin/Ramsey) GTO** exact threshold, covered institutions detail, and
+  expiration — not independently confirmed; read the current order on FinCEN.gov.
 - Current **CTA/BOI reporting scope**: in flux; not stated as a fixed obligation.
 
 ---

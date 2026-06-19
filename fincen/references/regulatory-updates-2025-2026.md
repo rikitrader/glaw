@@ -8,11 +8,14 @@ release type, the substance, the primary authority, and a one-line **Compliance 
 for a GLAW client.
 
 > **Status discipline.** Many of the most consequential 2026 items are **PROPOSED rules
-> (NPRMs)** with open comment periods and no settled effective date. An NPRM is *not law*.
-> Where a precise Federal Register citation is not independently confirmed below, the rule
-> is named accurately without a fabricated number. **Always verify current status
-> (proposed vs. interim-final vs. final, comment deadline, effective date) on FinCEN.gov
-> and federalregister.gov before relying on any entry.**
+> (NPRMs)** with closed/closing comment periods and no settled effective date. An NPRM is
+> *not law* — comment periods closing does not make a rule final. Federal Register document
+> numbers for the three major 2026 NPRMs were **verified 2026-06-18** (program reform
+> 2026-07033; GENIUS PPSI AML/CFT+sanctions 2026-06963; GENIUS PPSI CIP 2026-12460); where a
+> precise citation is still not independently confirmed, the item is named accurately without
+> a fabricated number. **Always re-verify current status (proposed vs. interim-final vs.
+> final, comment deadline, effective date) on FinCEN.gov and federalregister.gov before
+> relying on any entry.**
 
 Legend for **Type**: NPRM (notice of proposed rulemaking) · Final · FAQ · Advisory ·
 Alert · Notice · GTO (geographic targeting order) · Enforcement · Exemptive/Exceptive
@@ -28,13 +31,17 @@ Relief · OMB/PRA (paperwork-renewal comment request) · Report · Admin (organi
   "effective and reasonably designed"** programs. Implements the mandate of the
   **Anti-Money Laundering Act of 2020 (AMLA)** and the AMLA-directed requirement that
   Treasury issue national AML/CFT **Priorities** that institutions must incorporate.
-- **Critical mechanics:** this NPRM **fully supersedes and withdraws** the **July 3, 2024**
-  proposed program rule (89 Fed. Reg., "AML/CFT Program" NPRM). Treat the 2024 proposal as
-  dead; the 2026 proposal is the live text.
+- **Citation (confirmed):** "Anti-Money Laundering and Countering the Financing of Terrorism
+  Programs," **91 Fed. Reg. (FinCEN doc. 2026-07033), published April 10, 2026**
+  (announced April 7, 2026). **Comment period closed June 9, 2026**; FinCEN proposed a
+  12-month implementation period after a final rule. Still **PROPOSED** — no final rule.
+- **Critical mechanics (confirmed):** this NPRM **expressly supersedes and withdraws** the
+  **July 3, 2024** proposed program rule. FinCEN states it does not intend to finalize the
+  2024 Program NPRM and that it should be considered withdrawn and superseded by the 2026
+  proposal. Treat the 2024 proposal as dead; the 2026 proposal is the live text.
 - **Authority:** 31 U.S.C. 5318(h) (program requirement); AMLA-2020 §§ 6101, 6002, 6101(b)
   (effective-and-reasonably-designed standard, Priorities); 31 CFR Chapter X program
-  sections (1020.210, 1022.210, 1023.210, etc.). Verify the Fed. Reg. NPRM number on
-  federalregister.gov.
+  sections (1020.210, 1022.210, 1023.210, etc.).
 - **Compliance impact:** every covered client's written AML program will need to be
   re-anchored to a **documented risk assessment** that maps to the national Priorities;
   start the gap analysis now, but **do not rebuild to proposed text as if final**.
@@ -109,6 +116,12 @@ Relief · OMB/PRA (paperwork-renewal comment request) · Report · Admin (organi
   services businesses** in specified Southwest-border ZIP codes (well below the $10,000 CTR
   threshold) to surface cartel/bulk-cash activity.
 - **Authority:** GTO authority under 31 U.S.C. 5326; 31 CFR 1010.370.
+- **Current terms (confirmed for the expanded order):** the expanded SWB GTO lowers the
+  CTR threshold to **$1,000** (the original March 2025 order used **$200**), covering MSBs
+  in specified counties/ZIP codes in **Arizona, California, New Mexico, and Texas** near the
+  Southwest border, effective **March 7, 2026 through September 2, 2026** (CTR filing window
+  extended from 15 to 30 days for the order's duration). Terms change with each
+  modification — confirm the live order text before advising.
 - **Compliance impact:** MSBs in covered ZIPs must file CTRs at the **GTO's lower
   threshold** for the order's duration; confirm covered ZIPs and the exact threshold from
   the current order text (terms change with each modification).
@@ -137,10 +150,18 @@ Relief · OMB/PRA (paperwork-renewal comment request) · Report · Admin (organi
 ## (E) Crypto / Stablecoin — GENIUS Act
 
 ### 2026-04-08 — Treasury Proposes Rule to Implement the GENIUS Act's Illicit-Finance Requirements `NPRM`
-- **Substance:** Treasury/FinCEN proposes rules implementing the **GENIUS Act**'s
-  anti-illicit-finance provisions for the **payment-stablecoin** regime.
+- **Substance:** Treasury — **FinCEN jointly with OFAC** — proposes rules implementing the
+  **GENIUS Act**'s anti-illicit-finance provisions for the **payment-stablecoin** regime:
+  treating permitted payment stablecoin issuers (PPSIs) as BSA financial institutions and
+  requiring an **AML/CFT program** plus an **effective sanctions compliance program**.
+- **Citation (confirmed):** "Permitted Payment Stablecoin Issuer Anti-Money Laundering/
+  Countering the Financing of Terrorism Program and Sanctions Compliance Program
+  Requirements," **91 Fed. Reg. (FinCEN/OFAC doc. 2026-06963), published April 10, 2026**
+  (announced April 8, 2026). **Comment period closed June 9, 2026.** Still **PROPOSED.**
+  Distinct from the separate PPSI **CIP** NPRM below (doc. 2026-12460).
 - **Authority:** GENIUS Act (Guiding and Establishing National Innovation for U.S.
-  Stablecoins Act of 2025); BSA authorities at 31 U.S.C. 5311 et seq. Verify Fed. Reg. no.
+  Stablecoins Act of 2025); BSA authorities at 31 U.S.C. 5311 et seq.; OFAC sanctions
+  authorities (IEEPA).
 - **Compliance impact:** stablecoin issuers and intermediaries should map themselves to the
   proposed FI definition and begin scoping BSA program build-out (proposed, not final).
 
@@ -148,8 +169,12 @@ Relief · OMB/PRA (paperwork-renewal comment request) · Report · Admin (organi
 - **Substance:** FinCEN **jointly with the OCC, FRB, FDIC, and NCUA** proposes a rule
   treating **permitted payment stablecoin issuers** as **financial institutions under the
   BSA**, requiring each to maintain a **Customer Identification Program (CIP)**.
-- **Authority:** **Fed. Reg. 2026-12460** (joint NPRM); GENIUS Act; BSA CIP authority
-  31 U.S.C. 5318(l); CIP rules 31 CFR 1020.220 (analogous program to be applied to issuers).
+- **Citation (confirmed):** "Permitted Payment Stablecoin Issuer Customer Identification
+  Program," joint NPRM **FinCEN doc. 2026-12460** — on Federal Register **public inspection**
+  and scheduled for publication **June 22, 2026** (regulations.gov Docket **FINCEN-2026-0100**).
+  Still **PROPOSED.**
+- **Authority:** GENIUS Act; BSA CIP authority 31 U.S.C. 5318(l); CIP rules 31 CFR 1020.220
+  (analogous program to be applied to issuers).
 - **Compliance impact:** a permitted payment stablecoin issuer must plan to stand up a
   **CIP** (identity collection/verification, recordkeeping, OFAC list comparison) as part
   of a full BSA program — **but the rule is proposed; comment, do not yet build to final.**
@@ -184,10 +209,12 @@ Relief · OMB/PRA (paperwork-renewal comment request) · Report · Admin (organi
 ## (G) International / FATF
 
 ### 2025-11-21 — FATF Identifies Jurisdictions with AML/CFT/CPF Deficiencies `Advisory`
-- **Substance:** FinCEN relayed the **FATF** plenary update identifying jurisdictions with
-  AML / countering-financing-of-terrorism / counter-proliferation-financing deficiencies —
-  the FATF **"grey list"** (increased monitoring) and **"black list"** (call for action:
-  Iran, DPRK).
+- **Substance:** FinCEN relayed the **FATF** plenary update (FATF plenary **Oct 22–24, 2025**;
+  lists dated **24 Oct 2025**) identifying jurisdictions with AML / countering-financing-of-
+  terrorism / counter-proliferation-financing deficiencies — the FATF **"grey list"**
+  (increased monitoring) and **"black list"** (call for action). As of the Oct 2025 lists the
+  call-for-action jurisdictions are **DPRK, Iran, and Myanmar** — countermeasures urged for
+  **DPRK and Iran**; enhanced due diligence (no other countermeasures) for **Myanmar**.
 - **Authority:** FATF Recommendations; incorporated via FinCEN advisory and the
   general-due-diligence expectations of 31 CFR Chapter X.
 - **Compliance impact:** apply enhanced due diligence to transactions touching listed

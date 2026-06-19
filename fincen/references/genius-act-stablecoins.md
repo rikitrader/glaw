@@ -11,11 +11,19 @@ that on every output.
 
 ## B. The two 2026 FinCEN/Treasury rulemakings under the GENIUS Act
 ### 2026-04-08 — Treasury Proposes Rule to Implement GENIUS Act Illicit-Finance Requirements `NPRM`
-- Treasury/FinCEN proposes the broader anti-illicit-finance framework for the payment-
-  stablecoin regime. **Proposed, not final.**
+- **FinCEN jointly with OFAC** proposes the broader anti-illicit-finance framework for the
+  payment-stablecoin regime — treating PPSIs as BSA financial institutions and requiring an
+  **AML/CFT program** plus an **effective sanctions compliance program**. **Proposed, not final.**
+- **Citation (confirmed):** "Permitted Payment Stablecoin Issuer Anti-Money Laundering/
+  Countering the Financing of Terrorism Program and Sanctions Compliance Program
+  Requirements," **91 Fed. Reg. (doc. 2026-06963), published April 10, 2026**; comment period
+  closed **June 9, 2026**.
 
-### 2026-06-18 — GENIUS Act CIP Joint NPRM `NPRM` — **Fed. Reg. 2026-12460**
+### 2026-06-18 — GENIUS Act CIP Joint NPRM `NPRM` — **Fed. Reg. doc. 2026-12460**
 - **Joint** with the OCC, FRB, FDIC, NCUA.
+- **Citation (confirmed):** "Permitted Payment Stablecoin Issuer Customer Identification
+  Program," FinCEN doc. **2026-12460** — on Federal Register **public inspection**, scheduled
+  to publish **June 22, 2026** (regulations.gov Docket **FINCEN-2026-0100**).
 - **Core proposal:** treat **permitted payment stablecoin issuers** as **financial
   institutions under the BSA**, each required to maintain a **Customer Identification
   Program (CIP)**.

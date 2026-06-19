@@ -6,11 +6,15 @@ standards (the **FATF 40 Recommendations**). FinCEN relays FATF plenary outcomes
 financial institutions by advisory.
 
 ### The two FATF lists
-- **"Black list" — High-Risk Jurisdictions Subject to a Call for Action.** As of recent
-  plenaries: **Iran** and **DPRK (North Korea)** (countermeasures / enhanced scrutiny).
+- **"Black list" — High-Risk Jurisdictions Subject to a Call for Action.** As of the
+  **24 Oct 2025** plenary lists: **DPRK (North Korea)**, **Iran**, and **Myanmar**. FATF
+  urges **countermeasures** against DPRK and Iran; for **Myanmar** it calls for **enhanced
+  due diligence** but has **not** called for other countermeasures. (Confirm the current
+  composition each plenary — it can change.)
 - **"Grey list" — Jurisdictions Under Increased Monitoring.** A rotating set of countries with
   strategic AML/CFT deficiencies that have committed to remediate. **Membership changes at each
-  plenary** — never quote the grey list from memory.
+  plenary** — never quote the grey list from memory. (At the Oct 2025 plenary FATF **removed**
+  Burkina Faso, Mozambique, Nigeria, and South Africa.)
 
 ### 2025-11-21 — FATF Identifies Jurisdictions with AML/CFT/CPF Deficiencies `Advisory`
 - **Substance:** FinCEN's relay of the current FATF list update.
@@ -30,8 +34,8 @@ financial institutions by advisory.
   confidentiality constraints. Read with the 314(b) framework (`sar-ctr-reporting.md`).
 
 ## C. Sanctions interplay (hand to OFAC seat)
-- FATF call-for-action jurisdictions (Iran, DPRK) overlap heavily with **OFAC comprehensive
-  programs**. A FATF-listed nexus is frequently **also** an OFAC exposure.
+- FATF call-for-action jurisdictions (DPRK, Iran, Myanmar) overlap heavily with **OFAC
+  comprehensive/targeted programs**. A FATF-listed nexus is frequently **also** an OFAC exposure.
 - The **2026-05-11 IRGC alert** is the live example: an Iran/IRGC nexus is simultaneously a
   **SAR** trigger and an **OFAC** sanctions issue. Route sanctions doctrine to
   `/glaw-fincen-ofac` and `/glaw-regulatory-aml`.

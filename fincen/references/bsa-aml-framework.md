@@ -53,9 +53,10 @@ The **Anti-Money Laundering Act of 2020** (part of the FY21 NDAA) re-oriented th
   their risk assessments.
 - It created the **AML Whistleblower Program** (§ 6314 → 31 U.S.C. 5323) and the
   **Corporate Transparency Act** BOI regime (§ 6403 → 31 U.S.C. 5336).
-- **The 2026-04-07 program-reform NPRM** is FinCEN's attempt to write this shift into the
-  program rules — and it **withdraws the abandoned July 2024 proposal**
-  (`regulatory-updates-2025-2026.md` § A).
+- **The 2026-04-07 program-reform NPRM** (Fed. Reg. doc. **2026-07033**, pub. 2026-04-10;
+  comment closed 2026-06-09) is FinCEN's attempt to write this shift into the program rules —
+  and it **expressly supersedes and withdraws the July 3, 2024 proposal**
+  (`regulatory-updates-2025-2026.md` § A). Still proposed.
 
 ## 6. The BSA Advisory Group (BSAAG)
 The standing public-private body (Annunzio-Wylie Act § 1564) through which industry, law

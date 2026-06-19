@@ -28,6 +28,11 @@ specified Southwest-border ZIP codes (well below the $10,000 standard).
 
 - **Authority:** 31 U.S.C. 5326; 31 CFR 1010.370.
 - **Covered:** money services businesses in the listed ZIP codes.
+- **Current terms (confirmed for the expanded order):** CTR threshold lowered to **$1,000**
+  (original March 2025 order: **$200**), covering MSBs in specified counties/ZIP codes in
+  **Arizona, California, New Mexico, and Texas** near the Southwest border, effective
+  **March 7 – September 2, 2026**; CTR filing window extended to 30 days. New-coverage MSBs
+  had a 30-day compliance grace (filing began April 6, 2026).
 - **Compliance impact:** file CTRs at the **GTO's lower threshold** for the order's duration;
   keep the required records. Confirm covered ZIPs + exact threshold from the current order.
 - **Related:** 2025-12-22 data-driven border ML operation; 2025-06/08 fentanyl-counter orders
