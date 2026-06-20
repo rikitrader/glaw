@@ -96,6 +96,7 @@ Covers: **IRS**, tax planning, tax controversy.
 |------|-------|
 | Proactive tax minimization, QSBS §1202, asset protection, wealth | `glaw-tax-strategy` |
 | **Full tax-credit/incentive STRATEGY DOSSIER** (roadmap + step-by-step + deadlines + per-credit requirements: QSBS §1202, §83(b)/15620, §351, §409A, R&D §41/§174A, NOLs, §195/§248, ISOs) | `/glaw-credit-strategy` |
+| **Retirement-funded business structuring** — using a Roth/IRA/401(k) to capitalize a business (ROBS C-corp QES, Self-Directed/Solo-401(k) checkbook, or build-normally-then-fund-the-Roth); §4975 prohibited-transaction screen + UBIT/UBTI exposure + Solo-401(k)/Roth contribution + optimal-salary solver (`bin/contribution_calc.py`); IRS/DOL adversarial gate | `/glaw-robs-retirement-funding` |
 | Back taxes, non-filers, penalty abatement, OIC, IRS collections defense | `glaw-tax-compliance`, `glaw-tax-relief` |
 | **Back-tax & collections resolution** — file missing years from the GL + multi-year penalty/interest roll (`bin/glaw-back-filing`), SFR replacement (`bin/glaw-sfr`), offer in compromise + RCP (`bin/glaw-oic`), installment agreement (`bin/glaw-installment`), CNC/CDP (`bin/glaw-collections`), Trust Fund Recovery (`bin/glaw-tfrp`); Revenue-Officer adversarial gate | `/glaw-back-taxes` |
 | **IRS audit defense (exam → Appeals → Tax Court)** — triage notice + SOL clock (`bin/glaw-sol`), transcript reconstruction (`bin/glaw-transcript`), GL-tied substantiation + Form 4549 recompute (`bin/glaw-audit-package`), penalty abatement (`bin/glaw-abatement`); IRS-examiner adversarial gate | `/glaw-irs-audit` |
@@ -302,6 +303,7 @@ Covers: AML/sanctions, licensing/permits, privacy/data.
 |------|-------|
 | OFAC/sanctions, AML/KYC/BSA, FinCEN, MSB/MTL | `/glaw-regulatory-aml` |
 | Business/professional/occupational licensing, permits, foreign qualification | `/glaw-licensing` |
+| **Import / customs compliance** — HTS classification, duty + Section 301/232 + AD/CVD, MPF/HMF, PGA review (FDA/FCC/CPSC/EPA/USDA/DOT/ATF/OFAC), entry docs (ISF 10+2, bond, IOR), country-of-origin marking + UFLPA, landed cost; emits the Import Compliance Report; CBP/PGA adversarial gate. Routes duty->`/glaw-international-tax`, tax->`/glaw-sales-tax`, IP->`/glaw-ip-counsel`, supplier obligations->`/glaw-commercial-contracts` | `/glaw-import-customs` |
 | Privacy policy, ToS, DPA, GDPR/CCPA, breach response | `/glaw-privacy-data` |
 
 ## Private Client & Cross-Border Division
