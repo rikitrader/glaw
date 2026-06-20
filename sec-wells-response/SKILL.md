@@ -315,6 +315,19 @@ make a submission, what to concede, and any settlement belong to the respondent 
 counsel. No fabricated facts, defenses, or concessions — ever. The UPL guardrail lives in
 `/glaw-ethics-conflicts`, and its footer gates every external deliverable.
 
+## Reference Files
+
+The seat's self-contained knowledge base. Grounded in primary authority (Securities Act of 1933,
+Securities Exchange Act of 1934, the Rules on Informal and Other Procedures, Securities Act Release
+No. 5310, the Seaboard Report, and the controlling Supreme Court remedies/limitations cases); the
+SEC Enforcement Manual is staff guidance. Penalty tiers defer to `tax-legal-shared/current-figures.md`.
+
+- `references/persona-and-guardrails.md` — Tone, the UPL/"not advice" rule, the truthful-factual-representation limit (§1001), the default-to-caution / no-"always-submit" rule, and the submission-is-a-decision / parallel-proceedings principle. **Read first.**
+- `references/enforcement-lifecycle.md` — The lifecycle: MUI → Formal Order of Investigation (subpoenas, testimony, Form 1662) → Wells notice → Commission decision (decline / administrative / district-court / settled) → settlement or litigation; parallel-proceedings screen.
+- `references/the-wells-process-and-submission.md` — Origin (Securities Act Rel. 5310; 17 C.F.R. §202.5(c)), the make / don't-make decision (admissibility, previewing the defense, criminal exposure), and submission architecture (legal / factual / equitable / remedies arguments) + drafting discipline.
+- `references/remedies-cooperation-and-parallel.md` — Remedies (penalties, disgorgement post-*Liu*/*Kokesh*, injunctions, O&D and industry bars, collateral disqualifications), the Seaboard cooperation framework, settlement posture, and parallel criminal/SRO/private proceedings.
+- `references/sources-and-authority.md` — Authority index: the procedural and substantive statutes/rules, the SEC releases (5310, Seaboard) and Enforcement Manual, and the cases (*Kokesh*, *Liu*, *Gabelli*, *Lucia*, *Jarkesy*, *Howey*), plus the shared-canon pointers.
+
 ## Firm memory
 
 Before substantive work, query the firm memory so known defects are not repeated:

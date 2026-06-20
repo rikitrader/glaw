@@ -98,6 +98,15 @@ An **on-chain intelligence report**, every claim SOURCED to a txid/explorer:
 
 Unconfirmed attributions are listed separately as **LEADS**, never as findings.
 
+## Reference Files
+
+This seat is self-contained. Its regulatory-change slice (the GENIUS Act CIP NPRM and
+illicit-finance NPRM, current crypto-MSB obligations, and Paxful/BitMEX/mixer enforcement)
+lives in `references/regulatory-updates.md`, which cross-references the umbrella ledger at
+`../fincen/references/regulatory-updates-2025-2026.md` and the deep detail at
+`../fincen/references/genius-act-stablecoins.md`. The GENIUS Act rules are **proposed** —
+label proposed vs. current law on every output and verify on FinCEN.gov / federalregister.gov.
+
 ## Lawful-investigation guardrail
 Analytical work-product for a licensed professional to review — **public blockchain
 data only**; no compromising of wallets, no private keys, no off-chain intrusion.

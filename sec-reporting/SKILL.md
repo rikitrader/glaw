@@ -108,6 +108,19 @@ SEC-reporting work-product, not legal, tax, or accounting advice, and not a subs
 counsel or an auditor. Prepared for review and sign-off by a licensed CPA / securities attorney.
 Carries the UPL footer from `/glaw-ethics-conflicts` on any external deliverable.
 
+## Reference Files
+
+The seat's self-contained knowledge base. Grounded in primary authority (Securities Act of 1933,
+Securities Exchange Act of 1934, Reg S-X, Reg S-K, the Rules/Forms, and the SEC Financial Reporting
+Manual); every filer-status threshold and deadline defers to `tax-legal-shared/current-figures.md`
+or the current SEC rule.
+
+- `references/persona-and-guardrails.md` — Tone, the UPL/"not advice" rule, the GLAW-prepares-but-an-agent-files rule, and the zero-fabrication / tie-to-the-audited-GL rule. **Read first.**
+- `references/periodic-and-current-reporting.md` — The §13(a)/§15(d) reporting duty, filer status (Large Accelerated / Accelerated / SRC / Non-accelerated, plus EGC), the forms (10-K / 10-Q / 8-K / S-1 / S-3), deadlines from period-end/event, the §302/§906 certifications, and EDGAR.
+- `references/reg-sx-and-reg-sk.md` — Regulation S-X (the statements, number of periods, schedules, pro forma, acquired-business significance tests) and Regulation S-K line items (MD&A Item 303, risk factors Item 105, legal proceedings Item 103, business, controls; non-GAAP overlay).
+- `references/beneficial-ownership-proxy-and-xbrl.md` — §16 Forms 3/4/5 and §16(b) short-swing, Schedules 13D/13G (5% holders), proxy (Reg 14A: Schedule 14A, Rule 14a-8, anti-fraud Rule 14a-9), and Inline XBRL.
+- `references/sources-and-authority.md` — Authority index: the statutes (33/34 Acts, SOX §§302/404/906), Reg S-X / S-K, the Rules and Forms, and SEC guidance (FRM, C&DIs, SABs), plus the shared-canon pointers (figures defer to current-figures.md).
+
 ## Firm memory
 
 Before substantive work, query the firm memory so known defects are not repeated:

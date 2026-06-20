@@ -98,6 +98,15 @@ A **suspicious-activity analysis** (NOT a filed SAR), every claim SOURCED:
 
 Unsourced patterns are listed separately as **LEADS**, never as findings.
 
+## Reference Files
+
+This seat is self-contained. Its regulatory-change slice (the Oct-2025 SAR FAQs, CTR/GTO
+thresholds, and the advisory typologies — HT/World Cup, IRGC, sextortion, Sinaloa, non-work-
+authorized populations, 314(b)) lives in `references/regulatory-updates.md`, which
+cross-references the umbrella ledger at
+`../fincen/references/regulatory-updates-2025-2026.md` and the SAR/CTR detail at
+`../fincen/references/sar-ctr-reporting.md`. Verify FAQ text and thresholds on FinCEN.gov.
+
 ## Lawful-investigation guardrail
 Analytical work-product for a licensed professional to review — **not** a filed SAR,
 not a regulatory filing, and not a charging decision. The SAR-filing decision belongs

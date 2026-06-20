@@ -99,6 +99,16 @@ A **TBML analysis** (NOT a customs filing), every claim SOURCED:
 
 Unverified mismatches are listed separately as **LEADS**, never as findings.
 
+## Reference Files
+
+This seat is self-contained. Its regulatory-change slice (the Southwest Border + Minnesota
+GTOs and their FAQs/exemptive relief, the data-driven border operation, the Sinaloa cartel
+gambling finding, and the World-Cup/HT + non-work-authorized advisories) lives in
+`references/regulatory-updates.md`, which cross-references the umbrella ledger at
+`../fincen/references/regulatory-updates-2025-2026.md` and the GTO detail at
+`../fincen/references/gto-tracker.md`. GTO terms change per modification — verify the current
+order on FinCEN.gov.
+
 ## Lawful-investigation guardrail
 Analytical work-product for a licensed professional to review — **not** a customs
 filing and **not** a charging decision. Lawful, public/record data only; no illegal

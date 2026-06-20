@@ -100,6 +100,15 @@ A **sanctions-exposure analysis** (advisory, not a filing), every claim SOURCED:
 
 Unconfirmed matches are listed separately as **POTENTIAL HITS / LEADS**, never findings.
 
+## Reference Files
+
+This seat is self-contained. Its regulatory-change slice (the IRGC ML alert, the Nov-2025
+FATF list update, the Sinaloa primary-ML-concern finding, and cross-border info-sharing)
+lives in `references/regulatory-updates.md`, which cross-references the umbrella ledger at
+`../fincen/references/regulatory-updates-2025-2026.md` and the FATF/sanctions interplay at
+`../fincen/references/fatf-international.md`. FATF/OFAC lists change frequently — verify the
+current lists on FinCEN.gov / OFAC before relying.
+
 ## Lawful-investigation guardrail
 Analytical, advisory work-product for a licensed professional to review — **screening
 is advisory only**; OFAC licensing and voluntary self-disclosure are counsel's call,
