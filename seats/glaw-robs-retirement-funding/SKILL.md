@@ -75,7 +75,14 @@ a licensed ERISA attorney + CPA to review, sign, and execute — the agent never
   IRS framing: the 2008 ROBS Compliance Project memo; the plan must be a **bona fide, real operating
   business**, not a vehicle to extract cash. Watch **§410(b)** coverage / nondiscrimination once there are
   other eligible employees, **reasonable-compensation** doctrine on the owner's W-2, annual **independent
-  valuation** of the non-traded stock, and **Form 5500** every year.
+  valuation** of the non-traded stock, and **Form 5500** every year. Three ROBS-specific compliance traps:
+  (a) **Form 5500 from day one** — a ROBS plan files every year *regardless* of the $250k threshold that
+  exempts ordinary one-participant plans, because it holds a hard-to-value private-company-stock asset (filed
+  with DOL + IRS); (b) **the C-corp must STAY a C-corp** — electing S-corp status (or converting to LLC) exits
+  the ROBS strategy entirely and unwinds the QES basis; (c) **the plan must be offered to all eligible
+  employees, current and future** (not just the founder), or coverage fails. The plan needs **special plan
+  language permitting participants to buy employer stock** and a **TPA** fluent in ROBS; DB/profit-sharing
+  plans can also work, not only a 401(k). Full notes: `references/robs-thor-wealth.md`.
 - **Solo-401(k) contribution mechanics (one-participant plan)** — employee elective deferral + employer
   nonelective (25% of W-2 comp for a corp; ~20% of net SE income for a sole prop), combined under the
   **§415(c)** annual-additions cap. Roth designation of the employee deferral is permitted; **SECURE 2.0**
