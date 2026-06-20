@@ -92,6 +92,19 @@ a licensed ERISA attorney + CPA to review, sign, and execute — the agent never
 > All dollar figures are inflation-indexed annually. Treat every number as **VERIFY** against the current
 > IRS notice (contribution limits) / Rev. Proc. (trust brackets) before any client relies on it.
 
+## Ingested reference library (read the relevant doc before drafting)
+- `references/robs-irs-compliance-project.md` — **PRIMARY**: the IRS ROBS Compliance Project (IRS position +
+  the finding that **most ROBS businesses fail or are on the road to failure**; the 5500/5500-EZ/1120/1099-R
+  duties; the one-participant exception explicitly **not** applying). Underlying authority memo:
+  `references/forms/robs_guidelines_2008_memo.pdf` (Julianelle, 2008).
+- `references/robs-qes-redemption.md` — **exit/conversion**: the C-corp **cannot** convert out of C-corp
+  status until **all QES is redeemed from the plan**, at **current FMV** (not original cost).
+- `references/robs-legality-baumcpas.md` — the three QES conditions (adequate consideration, no commissions,
+  QES-only). `references/robs-thor-wealth.md` — the 5 steps + day-one Form 5500 + no-S-corp-conversion trap.
+- `references/forms/` — official IRS PDFs (5500, 5500-EZ, 1120, 1099-R, 5300, 5310) + `README.md` mapping each
+  form to its place in the ROBS lifecycle. **IRS-adviser posture:** the seat maps/drafts these for a licensed
+  attorney + CPA to review, sign, and file — *the agent never transmits to the IRS or DOL.*
+
 ## The dossier (always produce these sections, in order)
 1. **Recommendation up front** — which Vehicle (A/B/C/D) fits the stated goal, in one sentence, with the
    single biggest reason and the single biggest risk.
@@ -115,7 +128,11 @@ a licensed ERISA attorney + CPA to review, sign, and execute — the agent never
 7. **Cost & timeline** — realistic setup + annual cost ranges (ROBS provider/TPA, custodian, valuation, 5500
    prep) and who performs each; flag as ranges to VERIFY with providers.
 8. **Risks & IRS attack surface** — the disqualifiers to avoid, the "amount-and-timing" abuse pattern the IRS
-   targets, reasonable-comp and valuation soft spots, and an exit/unwind note.
+   targets, reasonable-comp and valuation soft spots. **Lead with the IRS's own finding that most ROBS
+   businesses fail or are on the road to failure** — the client is risking *retirement* capital. **Exit/unwind
+   path:** to ever leave C-corp status (e.g., elect S-corp), the plan's QES must first be **fully redeemed at
+   current FMV** (not original cost); partial redemptions need revaluation each round; plan termination is a
+   **Form 5310** event. Cite `references/robs-qes-redemption.md` + `references/robs-irs-compliance-project.md`.
 
 ## Calculator (zero-dependency, Codex- and Claude-runnable)
 `bin/contribution_calc.py` — Solo-401(k)/ROBS contribution + reverse optimal-salary solver. Stdlib only.
