@@ -57,6 +57,14 @@ a licensed ERISA attorney + CPA to review, sign, and execute — the agent never
   self-dealing; receipt of consideration). IRA consequence: **§408(e)(2)** deems the IRA distributed as of
   **Jan 1 of the year**, full ordinary tax + **10%** early penalty (a 401(k) instead faces the §4975 **15%
   → 100%** excise tier). *No "sweat equity," no salary, no personal use, no own-business purchase in B.*
+- **ROBS legality = the QES exemption, on three conditions** (IRC **§4975(d)(13)** + ERISA **§408(e)**/**§407(a)**) —
+  the rollover is legal *only* if it clears all three: (1) **adequate consideration** — every leg at FMV and
+  shares issued **proportionally** (the founder cannot take stock at $1 par while the plan pays $10,000/share
+  for the same company → *not* adequate consideration; this is *why the independent annual valuation is
+  load-bearing*); (2) **no commissions/kickbacks/finder's fees** — no commission "directly or indirectly to
+  the plan," and the entrepreneur may not personally benefit off the rollover; (3) **QES-only** — plan funds
+  may buy *only* Qualifying Employer Securities (no residential property, no unrelated assets). Miss any one →
+  it is a prohibited transaction again. Full notes: `references/robs-legality-baumcpas.md`.
 - **UBIT / UBTI — §§511–514** — a tax-exempt account that runs an **active trade or business** owes UBIT at
   **trust rates** (top 37% reached near ~$15,650 of taxable UBTI — VERIFY current threshold), after a **$1,000**
   specific deduction; custodian files **Form 990-T**. **UDFI:** the debt-financed fraction (margin, leverage,
