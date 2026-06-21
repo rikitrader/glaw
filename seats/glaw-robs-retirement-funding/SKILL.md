@@ -75,7 +75,14 @@ a licensed ERISA attorney + CPA to review, sign, and execute — the agent never
   IRS framing: the 2008 ROBS Compliance Project memo; the plan must be a **bona fide, real operating
   business**, not a vehicle to extract cash. Watch **§410(b)** coverage / nondiscrimination once there are
   other eligible employees, **reasonable-compensation** doctrine on the owner's W-2, annual **independent
-  valuation** of the non-traded stock, and **Form 5500** every year.
+  valuation** of the non-traded stock, and **Form 5500** every year. Three ROBS-specific compliance traps:
+  (a) **Form 5500 from day one** — a ROBS plan files every year *regardless* of the $250k threshold that
+  exempts ordinary one-participant plans, because it holds a hard-to-value private-company-stock asset (filed
+  with DOL + IRS); (b) **the C-corp must STAY a C-corp** — electing S-corp status (or converting to LLC) exits
+  the ROBS strategy entirely and unwinds the QES basis; (c) **the plan must be offered to all eligible
+  employees, current and future** (not just the founder), or coverage fails. The plan needs **special plan
+  language permitting participants to buy employer stock** and a **TPA** fluent in ROBS; DB/profit-sharing
+  plans can also work, not only a 401(k). Full notes: `references/robs-thor-wealth.md`.
 - **Solo-401(k) contribution mechanics (one-participant plan)** — employee elective deferral + employer
   nonelective (25% of W-2 comp for a corp; ~20% of net SE income for a sole prop), combined under the
   **§415(c)** annual-additions cap. Roth designation of the employee deferral is permitted; **SECURE 2.0**
@@ -84,6 +91,19 @@ a licensed ERISA attorney + CPA to review, sign, and execute — the agent never
 
 > All dollar figures are inflation-indexed annually. Treat every number as **VERIFY** against the current
 > IRS notice (contribution limits) / Rev. Proc. (trust brackets) before any client relies on it.
+
+## Ingested reference library (read the relevant doc before drafting)
+- `references/robs-irs-compliance-project.md` — **PRIMARY**: the IRS ROBS Compliance Project (IRS position +
+  the finding that **most ROBS businesses fail or are on the road to failure**; the 5500/5500-EZ/1120/1099-R
+  duties; the one-participant exception explicitly **not** applying). Underlying authority memo:
+  `references/forms/robs_guidelines_2008_memo.pdf` (Julianelle, 2008).
+- `references/robs-qes-redemption.md` — **exit/conversion**: the C-corp **cannot** convert out of C-corp
+  status until **all QES is redeemed from the plan**, at **current FMV** (not original cost).
+- `references/robs-legality-baumcpas.md` — the three QES conditions (adequate consideration, no commissions,
+  QES-only). `references/robs-thor-wealth.md` — the 5 steps + day-one Form 5500 + no-S-corp-conversion trap.
+- `references/forms/` — official IRS PDFs (5500, 5500-EZ, 1120, 1099-R, 5300, 5310) + `README.md` mapping each
+  form to its place in the ROBS lifecycle. **IRS-adviser posture:** the seat maps/drafts these for a licensed
+  attorney + CPA to review, sign, and file — *the agent never transmits to the IRS or DOL.*
 
 ## The dossier (always produce these sections, in order)
 1. **Recommendation up front** — which Vehicle (A/B/C/D) fits the stated goal, in one sentence, with the
@@ -108,7 +128,11 @@ a licensed ERISA attorney + CPA to review, sign, and execute — the agent never
 7. **Cost & timeline** — realistic setup + annual cost ranges (ROBS provider/TPA, custodian, valuation, 5500
    prep) and who performs each; flag as ranges to VERIFY with providers.
 8. **Risks & IRS attack surface** — the disqualifiers to avoid, the "amount-and-timing" abuse pattern the IRS
-   targets, reasonable-comp and valuation soft spots, and an exit/unwind note.
+   targets, reasonable-comp and valuation soft spots. **Lead with the IRS's own finding that most ROBS
+   businesses fail or are on the road to failure** — the client is risking *retirement* capital. **Exit/unwind
+   path:** to ever leave C-corp status (e.g., elect S-corp), the plan's QES must first be **fully redeemed at
+   current FMV** (not original cost); partial redemptions need revaluation each round; plan termination is a
+   **Form 5310** event. Cite `references/robs-qes-redemption.md` + `references/robs-irs-compliance-project.md`.
 
 ## Calculator (zero-dependency, Codex- and Claude-runnable)
 `bin/contribution_calc.py` — Solo-401(k)/ROBS contribution + reverse optimal-salary solver. Stdlib only.
