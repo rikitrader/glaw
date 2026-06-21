@@ -104,6 +104,11 @@ a licensed ERISA attorney + CPA to review, sign, and execute — the agent never
 - `references/forms/` — official IRS PDFs (5500, 5500-EZ, 1120, 1099-R, 5300, 5310) + `README.md` mapping each
   form to its place in the ROBS lifecycle. **IRS-adviser posture:** the seat maps/drafts these for a licensed
   attorney + CPA to review, sign, and file — *the agent never transmits to the IRS or DOL.*
+- `references/templates/qes-issuance-checklist.md` — the seat's **QES-issuance deliverable** (threshold →
+  charter/§409(l) → independent valuation → issuance mechanics → §4975 clearance → coverage → filing calendar →
+  audit binder → adversarial gate → sign-off). Render to a Google-Doc-ready HTML with
+  `bin/make_qes_checklist.py --company "<Name>" --out /tmp/qes.html` (zero-dep, stdlib); the agent then imports
+  it to **Google Docs** via `~/.gcp/token.json` (`files().create(mimeType=application/vnd.google-apps.document)`).
 
 ## The dossier (always produce these sections, in order)
 1. **Recommendation up front** — which Vehicle (A/B/C/D) fits the stated goal, in one sentence, with the
