@@ -158,13 +158,49 @@ current IRS notice. The agent must show the figures it used and label them VERIF
 6. **Route the build:** entity formation + cap table → `/glaw-entity-architect`; the actual formation/plan
    documents → `/glaw-draft`; QSBS/§83(b)/founder-stock interplay → `/glaw-credit-strategy` + `/glaw-83b-election`;
    securities/fund overlap → `glaw-pe-vc-counsel`; deep tax-controversy/UBIT modeling → `glaw-tax-strategy`.
-7. **Deliver** as Markdown; offer to publish (Google Doc + a deadline Google Sheet) and to calendar the ROBS
+7. **Adversarial flag (mandatory — do NOT skip).** Hand the dossier to `/glaw-adversarial` to RED-team it
+   (see the lens list below). Every surviving position must clear the red-team; any structure the firm's own
+   adversary destroys does **not** ship. Fold the flagged defects back into the dossier (BLUE rebuild) and
+   re-score before delivery.
+8. **Deliver** as Markdown; offer to publish (Google Doc + a deadline Google Sheet) and to calendar the ROBS
    compliance dates with `glaw docket add --owner <owner> --source "SRC-0001 <current source>"`. UPL footer on every deliverable.
+
+## Adversarial gate (required before sign-off)
+This seat **always** routes its dossier through `/glaw-adversarial` before any position is delivered, filed, or
+executed — the orchestrator treats this as a hard gate. Run these red-team lenses, each instructed to *flag and
+try to destroy* the structure:
+- **IRS EP examiner** — §4975 prohibited transaction (sweat equity, self-purchase, personal use, finder's fee),
+  the QES adequate-consideration / proportional-FMV test, "amount-and-timing" abuse, plan-language defects.
+- **DOL / EBSA investigator** — fiduciary self-dealing, ERISA §407/§408(e) QES conditions, coverage failures.
+- **Plan auditor / valuation examiner** — thin or stale independent stock valuation; redemption priced at cost
+  not current FMV.
+- **Qualification reviewer** — §410(b) coverage / nondiscrimination once there are other eligible employees,
+  Form 5500 (day-one filing), the C-corp-must-stay-a-C-corp rule, reasonable-comp on the owner's W-2.
+- **Skeptical client-side CPA** — is this even worth it vs. building normally and funding the Roth (Vehicle C/D)?
+  surface the IRS finding that most ROBS businesses fail.
+Each surviving position must be authority-verified through `/glaw-legal-research`. Score the rebuilt dossier via
+the firm's adversarial scorer; **survives-adversarial < 5 ⇒ no-file** (the firm-wide hard gate).
+
+## Pipeline placement — how `/glaw` orchestrates this seat
+The Managing Partner (`/glaw`) drives a retirement-funded-business matter through the standard **corp-build**
+pipeline, with this seat owning strategy/structure and the adversarial stage doing the flagging:
+
+| Stage | Owner | This seat's contribution |
+|-------|-------|--------------------------|
+| intake | `/glaw-intake` | conflicts + the facts in Workflow step 2 |
+| strategy | **this seat** | vehicle selection (A/B/C/D) + §4975 + UBIT screen |
+| structure | **this seat** + `/glaw-entity-architect` | C-corp + plan + QES + contribution math |
+| draft | `/glaw-draft` | formation/plan docs, rollover paperwork, the IRS forms in `references/forms/` |
+| **adversarial** | **`/glaw-adversarial`** | **flags** every defect via the lenses above → BLUE rebuild → score |
+| file | `/glaw-file` | signature-ready packet for the attorney/CPA (5500/1120/1099-R/5300) |
+| docket | `/glaw-docket` | the ROBS compliance calendar (annual 5500 + valuation) |
+| retro | `/glaw-matter-retro` | close-out + vault write |
 
 ## Gates
 Conflicts cleared before structuring · §4975 screen run before any vehicle is recommended · figures verified
-against current IRS guidance (`/glaw-legal-research` + CPA) before reliance · adversarial **IRS/DOL red-team**
-(`/glaw-adversarial`) before any filed position or executed ROBS · UPL disclaimer on every deliverable.
+against current IRS guidance (`/glaw-legal-research` + CPA) before reliance · **adversarial IRS/DOL red-team
+(`/glaw-adversarial`) is a hard gate before any filed position or executed ROBS — survives-adversarial < 5 ⇒
+no-file** · UPL disclaimer on every deliverable.
 
 > ATTORNEY/CPA WORK-PRODUCT — a licensed ERISA attorney + CPA must review, sign, and execute. The agent never
 > opens accounts, rolls funds, issues stock, or transmits to the IRS. Not legal/tax/investment advice.
