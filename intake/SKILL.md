@@ -102,6 +102,18 @@ bin/glaw-intake set track_specific.positions_or_issues '<credits, deductions, ne
 bin/glaw-intake set track_specific.filing_or_exam_deadlines '<due dates, notice response dates, SOL, Tax Court petition date>'
 ```
 
+For a **qualified retirement plan** compliance audit (401(k)/DB/profit-sharing/money-purchase/403(b)/SEP/SIMPLE),
+use the dedicated `qualified-plan` track and hand the lead to **`/glaw-qualified-plan`**, which scaffolds the six
+council seats and the 21-requirement matrix via `bin/qp_intake.py`:
+```bash
+bin/glaw-intake set workflow_track qualified-plan
+# then run the council scaffolder (creates matter files + one working file per seat):
+python3 seats/glaw-qualified-plan/bin/qp_intake.py \
+  --matter '<matter name>' --plan-type <401k|db|money-purchase|profit-sharing|403b|sep|simple> \
+  --sponsor '<plan sponsor>' --plan-year-end <MM-DD> --participants <N> --last-restatement <YYYY-MM-DD>
+```
+Gather the facts first with `seats/glaw-qualified-plan/templates/qualified-plan-intake-form.md`.
+
 ### Step 3 — Completeness sweep (Build-the-whole-file)
 Before handoff, do the thorough thing: name every party that could be added, every
 entity in the structure, every jurisdiction that could attach, every document still
