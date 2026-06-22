@@ -11,6 +11,12 @@
   Skadden/Practical Law 409A equity-pitfalls control map for option FMV, RSU timing,
   option modifications, dividend equivalents, material-event refresh, and
   appraiser/counsel/auditor sign-off boundaries.
+- **409A valuation workpapers and executable review.** Added source-document ingest
+  helpers, reviewer verdict checks, valuation-support workpapers, and Appendix D
+  templates for board approval, appraiser sign-off, ASC 718/820 audit support, and
+  IRS/409A legal-risk review. Aligned the OPM/IP, valuation adversary, and public
+  company valuation seats so full private-company 409A matters route through the
+  architect.
 - **Government-adversary routing regression.** Added a loop regression and sandbox scenario proving
   final-packet government/regulatory/litigation adversary failures route back to the adversarial
   owner instead of letting the orchestrator proceed.

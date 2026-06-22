@@ -27,6 +27,16 @@ Always present a WACC × terminal-growth sensitivity table and Bull/Base/Bear sc
 
 **Disclaimer**: Research/educational output. Not financial advice.
 
+## Boundary with 409A / private-company grant valuation
+
+This seat is for public-company or general company intrinsic valuation. If the
+request involves section 409A, option strike prices, private-company common FMV,
+RSUs, option grants, appraiser sign-off, ASC 718/820 grant accounting, or IRS
+safe-harbor reliance, route to `/glaw-valuation-409a-architect`. That architect
+owns source ingest, 409A legal/audit gates, reviewer-agent verdicts, and the
+Appendix D workpapers. Use this seat only as a supporting public-company comps or
+valuation-methodology input when the architect asks for it.
+
 ---
 
 ## Step 1: Detection Flow

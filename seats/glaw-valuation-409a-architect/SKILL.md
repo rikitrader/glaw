@@ -26,9 +26,12 @@ market + venture + scenario approaches, a latest priced-round anchor, a waterfal
 with the **conversion test**, an **OPM/Black-Scholes** cross-check, and a **round
 backsolve**, sensitivity analysis, and a legal/appraiser/auditor control gate.
 It self-validates the intake and writes a full audit trail.
-`bin/test_valuation_engine.py` locks the math and review controls (21 known-answer tests);
-`bin/report_generator.py` renders the memo. `references/skadden-409a-equity-pitfalls.md`
-maps the Skadden / Practical Law 409A equity-award pitfalls into the legal-audit gate.
+`bin/test_valuation_engine.py` locks the math and review controls (23 known-answer tests);
+`bin/report_generator.py` renders the memo. `bin/document_ingest.py` turns source
+CSVs/docs into an intake patch + source checklist. `bin/reviewer_check.py` makes
+the reviewer-agent briefs executable (`CLEAR`, `CLEAR WITH CONDITIONS`, `BLOCKED`).
+`references/skadden-409a-equity-pitfalls.md` maps the Skadden / Practical Law
+409A equity-award pitfalls into the legal-audit gate.
 
 ```bash
 cd seats/glaw-valuation-409a-architect
@@ -40,7 +43,8 @@ python3 bin/valuation_engine.py all      --intake intake.json --out ./out
 #   -> out/audit_log.json (every input, formula, intermediate, warning)
 python3 bin/report_generator.py --results out/results.json --audit out/audit_log.json \
         --intake intake.json --out out/memo.md --docx out/memo.docx
-python3 bin/test_valuation_engine.py                              # 21/21 must pass
+python3 bin/reviewer_check.py --results out/results.json --audit out/audit_log.json --role all
+python3 bin/test_valuation_engine.py                              # 23/23 must pass
 ```
 
 ## Seat map (who does what)
@@ -48,15 +52,15 @@ python3 bin/test_valuation_engine.py                              # 21/21 must p
 | Stage | Seat / engine | Output |
 |---|---|---|
 | 0 Validate | `bin/valuation_engine.py validate` | blocking errors + warnings |
-| 1 Intake | this skill + `AskUserQuestion` | filled `intake.json` |
+| 1 Intake | this skill + `AskUserQuestion` + `bin/document_ingest.py` | filled `intake.json`, `intake_patch.json`, source checklist |
 | 2 Cap-table audit | `bin/valuation_engine.py audit` | FD reconciliation + flags |
-| 3 Multi-approach value | `bin/valuation_engine.py value` | DCF · comps · VC · PWERM · priced round · waterfall · FMV · DLOM · strike · sensitivity |
+| 3 Multi-approach value | `bin/valuation_engine.py value` | DCF · comps · VC · PWERM · priced round · waterfall · FMV · DLOM · strike · sensitivity · reviewer support pack |
 | 4 OPM allocation + backsolve | engine `opm` / `opm_backsolve` (cross-check) + `/glaw-valuation-409a` `bin/opm.py` | Black-Scholes common allocation; equity backsolved from last round |
 | 5 IP valuation (if any) | `/glaw-valuation-409a` §6 | relief-from-royalty / cost / income |
 | 6 RED-team panel | `/glaw-valuation-adversary` | scored surviving attacks |
 | 7 RED/BLUE residual matrix | this skill + `references/seats-and-adversary.md` | HOLDS / HOLDS-COND / MATERIAL per seat |
 | 8 Compliance | `bin/valuation_engine.py compliance` | VALID / REVALUATION REQUIRED |
-| 9 Legal/appraiser audit | engine `legal_audit` + `agents/*` + `/glaw-chief-counsel` (or `/glaw-consensus`) | open controls, counsel/appraiser/auditor sign-off, fix-and-reattack |
+| 9 Legal/appraiser audit | engine `legal_audit` + `agents/*` + `bin/reviewer_check.py` + `/glaw-chief-counsel` (or `/glaw-consensus`) | open controls, counsel/appraiser/auditor verdicts, fix-and-reattack |
 | 10 Memo + audit trail | `bin/report_generator.py` | DRAFT memo + `audit_log.json` |
 
 ## Workflow (run in order; each stage gates the next)
@@ -77,6 +81,18 @@ sparse early-stage file may use a priced round as the valuation basis only when
 the round has `post_money` or `price_per_share` plus a usable fully diluted count.
 Fill `review_controls` from source documents; open controls must stay visible in
 the memo until appraiser/counsel/auditor review resolves them.
+When files are available, run:
+```bash
+python3 bin/document_ingest.py \
+  --cap-table-csv cap_table.csv \
+  --option-ledger-csv option_ledger.csv \
+  --financing-rounds-csv financing_rounds.csv \
+  --board-minutes board_minutes.pdf \
+  --award-agreements equity_awards.pdf \
+  --out intake_patch.json --checklist source_checklist.json
+```
+Merge the patch into `intake.json`; do not treat the patch as final without
+reviewing the source checklist.
 
 ### 2–3 — Audit + value (the math)
 Run `valuation_engine.py all`. Income + market + venture + scenario + latest
@@ -91,6 +107,8 @@ round. Divergence between the waterfall FMV and the OPM FMV (>40%) is flagged in
 the audit log — reconcile it (usually breakpoints or sigma/T). For the firm's
 canonical OPM, also run `../glaw-valuation-409a/bin/opm.py`. Prefer OPM for the
 final allocation when uncertainty is high.
+Review `results.json.valuation_support` for backsolve tie-out, volatility band,
+DLOM support, comps dispersion, approach dispersion, and PWERM sensitivity.
 
 ### 5 — IP valuation (if the matter has IP)
 Hand to `/glaw-valuation-409a` §6 (relief-from-royalty / cost-to-recreate / income
@@ -129,6 +147,11 @@ where ASC 718/820 applies. Use:
 - `agents/equity-awards-lawyer-agent.md`
 - `agents/auditor-tax-review-agent.md`
 
+Then run:
+```bash
+python3 bin/reviewer_check.py --results out/results.json --audit out/audit_log.json --role all
+```
+
 Then route to `/glaw-chief-counsel` (or `/glaw-consensus` for the scored panel +
 veto). Confirmed defects route back to the relevant seat, fix, **re-attack** —
 bounded (cap rounds; don't loop on genuinely missing inputs). Record any new
@@ -137,25 +160,33 @@ generalizable defect via the firm learnings ledger if available.
 ### 10 — Memo + audit trail
 Run `bin/report_generator.py` to emit the formal valuation memo (12 sections),
 fill Appendix C from `references/seats-and-adversary.md`, and attach
-`audit_log.json`. Every page carries the UPL footer and the appraiser-sign-off
-caveat.
+`audit_log.json`. Attach the templates in `templates/` as Appendix D workpapers.
+Every page carries the UPL footer and the appraiser-sign-off caveat.
 
 ## Final output (headline)
 Enterprise Value · Equity Value · Common FMV (waterfall **and** OPM) · DLOM ·
-**recommended 409A strike** · sensitivity table · legal/appraiser audit status ·
-defensibility score · compliance status · residual-risk ratings · paths to
-`intake.json`, `results.json`, `audit_log.json`, and the DRAFT memo.
+**recommended 409A strike** · sensitivity table · reviewer support pack ·
+legal/appraiser audit status · reviewer verdicts · defensibility score ·
+compliance status · residual-risk ratings · paths to `intake.json`,
+`intake_patch.json`, `source_checklist.json`, `results.json`, `audit_log.json`,
+and the DRAFT memo.
 
 ## Reference files
 - `references/seats-and-adversary.md` — the 8-seat RED/BLUE matrix + residual ratings (exam-ready draft definition)
 - `references/skadden-409a-equity-pitfalls.md` — Skadden / Practical Law equity-award pitfall map
 - `bin/valuation_engine.py` — stdlib-only engine (validate / audit / value / compliance / all)
 - `bin/report_generator.py` — results → 12-section Markdown/DOCX memo
-- `bin/test_valuation_engine.py` — 21 known-answer tests
+- `bin/document_ingest.py` — source CSV/doc path intake helper
+- `bin/reviewer_check.py` — executable reviewer verdict helper
+- `bin/test_valuation_engine.py` — 23 known-answer tests
 - `assets/intake_template.json` — copy-and-fill intake
 - `agents/appraiser-review-agent.md` — appraiser signability reviewer
 - `agents/equity-awards-lawyer-agent.md` — stock-option/RSU 409A counsel reviewer
 - `agents/auditor-tax-review-agent.md` — ASC 718/820, cheap-stock, tax reviewer
+- `templates/board-approval-checklist.md`
+- `templates/appraiser-signoff-checklist.md`
+- `templates/asc718-820-audit-workpaper.md`
+- `templates/irs-409a-legal-risk-matrix.md`
 
 ## Related GLAW seats
 `/glaw-valuation-409a` (OPM/IP math) · `/glaw-valuation-adversary` (RED panel) ·

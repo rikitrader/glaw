@@ -16,6 +16,12 @@ the same loop pattern as `/glaw-chief-counsel`, applied to valuation.
 After `/glaw-valuation-409a` drafts a memo, before it goes to the appraiser. Never let a valuation reach
 "ready" without surviving this panel.
 
+For full end-to-end 409A matters, invoke this panel from
+`/glaw-valuation-409a-architect` after the architect emits `results.json`,
+`audit_log.json`, `valuation_support`, and the Legal/Appraiser Audit Gate. Return
+surviving attacks to the architect so it can update Appendix C, run
+`bin/reviewer_check.py`, attach Appendix D workpapers, and route to Chief review.
+
 ## The adversary PANEL (spawn each as a distinct persona, in parallel via the Agent tool)
 Each persona attacks a different failure mode; run them through `/glaw-consensus` for the scored panel + veto.
 1. **IRS Valuation Examiner** (LEAD, veto) — FMV understated to cut the strike; §409A safe-harbor integrity; §6662 penalty exposure. Concedes nothing.
@@ -41,6 +47,9 @@ Invent an extra bespoke persona if a deal-specific angle is missed (e.g. IP-heav
 ## Method
 1. Pre-flight the firm memory: `python3 bin/glaw-learnings preflight` (pre-empt known cite/standard defects, e.g. the 409A independent-appraisal vs illiquid-startup standard).
 2. Read the draft memo + re-run `bin/opm.py` with the adversary's OWN sigma/DLOM/T to show how sensitive the FMV is (sensitivity analysis = the attack).
+   If the architect output is available, also read `results.json.valuation_support`
+   for backsolve tie-out, comps dispersion, DLOM support, PWERM sensitivity, and
+   approach dispersion.
 3. For each surviving attack: state theory + severity (critical/high/medium/low) + the specific fix.
 4. Score defensibility 0-10 and give a verdict: DEFENSIBLE (≥8, no surviving critical/high) or NEEDS-WORK.
 5. Route confirmed defects back to `/glaw-valuation-409a` to fix, then re-attack (bounded — mirror the Chief loop: cap rounds, don't loop on missing real inputs).

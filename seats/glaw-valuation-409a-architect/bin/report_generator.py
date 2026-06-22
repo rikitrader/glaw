@@ -98,6 +98,9 @@ def build_markdown(results, audit, intake=None):
     if round_basis:
         A(f"- Latest priced round anchor: {round_basis.get('round')} "
           f"({round_basis.get('basis')}) -> equity value {m(round_basis.get('equity_value'))}")
+    support = r.get("valuation_support") or {}
+    if support.get("approach_dispersion") is not None:
+        A(f"- Approach dispersion: {pct(support.get('approach_dispersion'))}")
     A("")
 
     # 4. Market Approach
@@ -192,6 +195,34 @@ def build_markdown(results, audit, intake=None):
         A(f"- Backsolve from {bs.get('round')}: equity {m(bs.get('backsolved_equity_value'))}")
     A("")
 
+    # 9b. Reviewer support
+    if support:
+        A("### Reviewer Support Workpaper")
+        A("")
+        bt = support.get("backsolve_tieout") or {}
+        if bt:
+            A(f"- Backsolve tie-out: {bt.get('round')} solved equity {m(bt.get('backsolved_equity_value'))}; "
+              f"round post-money {m(bt.get('implied_post_money'))}; divergence "
+              f"{pct(bt.get('divergence_vs_round_post_money'))}.")
+        vol = support.get("volatility_benchmark") or {}
+        if vol:
+            A(f"- Volatility benchmark: sigma {vol.get('sigma')} -> {vol.get('review_band')}. {vol.get('note')}")
+        dlom_support = support.get("dlom_support") or {}
+        if dlom_support:
+            A(f"- DLOM support: {pct(dlom_support.get('recommended_dlom'))} -> "
+              f"{dlom_support.get('review_band')}. {dlom_support.get('note')}")
+        comps_support = support.get("comps_scoring") or {}
+        if comps_support:
+            A(f"- Comps support: {comps_support.get('peer_count')} peers; EV/Revenue range/median "
+              f"{comps_support.get('ev_revenue_range_over_median')}. {comps_support.get('note')}")
+        if support.get("pwerm_sensitivity"):
+            A("")
+            A("| PWERM case | Factor | Equity value |")
+            A("|---|---:|---:|")
+            for row in support.get("pwerm_sensitivity", []):
+                A(f"| {row['case']} | {row['factor']} | {m(row['equity_value'])} |")
+        A("")
+
     # 10. Assumptions
     A("## 10. Assumptions")
     A("")
@@ -249,6 +280,13 @@ def build_markdown(results, audit, intake=None):
       "auditor, valuation analyst, board, CFO, tax counsel). Each lens -> HOLDS / "
       "HOLDS-CONDITIONED / MATERIAL. The safe-harbor reliance lens remains MATERIAL "
       "until a qualified independent appraiser signs.")
+    A("")
+    A("## Appendix D — Required Workpaper Templates")
+    A("")
+    A("- `templates/board-approval-checklist.md`")
+    A("- `templates/appraiser-signoff-checklist.md`")
+    A("- `templates/asc718-820-audit-workpaper.md`")
+    A("- `templates/irs-409a-legal-risk-matrix.md`")
     A("")
     return "\n".join(L)
 

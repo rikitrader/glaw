@@ -819,6 +819,92 @@ def sensitivity_analysis(fmv_marketable, dlom_pct, audit):
 
 
 # --------------------------------------------------------------------------- #
+# Valuation quality support                                                    #
+# --------------------------------------------------------------------------- #
+def valuation_support(intake, results_so_far, audit):
+    """Reviewer-facing support pack for assumptions, dispersion, and tie-outs."""
+    comps_r = results_so_far.get("comps") or {}
+    rec = results_so_far.get("reconciliation") or {}
+    pw = results_so_far.get("pwerm") or {}
+    dl = results_so_far.get("dlom") or {}
+    opm_r = results_so_far.get("opm") or {}
+    backsolve_r = results_so_far.get("opm_backsolve") or {}
+
+    ev_rev = comps_r.get("ev_revenue") or {}
+    ev_rev_range = None
+    if ev_rev.get("median") and ev_rev.get("high") is not None and ev_rev.get("low") is not None:
+        ev_rev_range = round((ev_rev["high"] - ev_rev["low"]) / ev_rev["median"], 3)
+
+    approach_evs = list((rec.get("approach_evs") or {}).values())
+    approach_dispersion = None
+    if approach_evs and rec.get("blended_enterprise_value"):
+        hi, lo = max(approach_evs), min(approach_evs)
+        approach_dispersion = round((hi - lo) / rec["blended_enterprise_value"], 3)
+
+    pw_base = pw.get("probability_weighted_equity_value")
+    pwerm_cases = []
+    if pw_base is not None:
+        for name, factor in (("downside_prob_shift", 0.85), ("base", 1.0), ("upside_prob_shift", 1.15)):
+            pwerm_cases.append({
+                "case": name,
+                "factor": factor,
+                "equity_value": money(pw_base * factor),
+            })
+
+    backsolve_tieout = None
+    if backsolve_r:
+        implied = backsolve_r.get("implied_post_money")
+        solved = backsolve_r.get("backsolved_equity_value")
+        divergence = None
+        if implied and solved:
+            divergence = round(abs(solved - implied) / implied, 3)
+        backsolve_tieout = {
+            "round": backsolve_r.get("round"),
+            "implied_post_money": implied,
+            "backsolved_equity_value": solved,
+            "divergence_vs_round_post_money": divergence,
+        }
+
+    sigma = opm_r.get("sigma")
+    sigma_band = "LOW" if sigma is not None and sigma < 0.35 else "HIGH" if sigma is not None and sigma > 0.90 else "NORMAL"
+    dlom_pct = dl.get("recommended_dlom")
+    dlom_band = "LOW" if dlom_pct is not None and dlom_pct < 0.10 else "HIGH" if dlom_pct is not None and dlom_pct > 0.35 else "SUPPORTED_RANGE"
+
+    result = {
+        "backsolve_tieout": backsolve_tieout,
+        "volatility_benchmark": {
+            "sigma": sigma,
+            "review_band": sigma_band,
+            "note": "Benchmark against sector public-company volatility before appraiser reliance.",
+        },
+        "dlom_support": {
+            "recommended_dlom": dlom_pct,
+            "review_band": dlom_band,
+            "note": "Tie DLOM to restricted-stock/protective-put/Finnerty-style support in the workpaper.",
+        },
+        "comps_scoring": {
+            "peer_count": len((intake.get("comparables", {}) or {}).get("peers") or []),
+            "ev_revenue_range_over_median": ev_rev_range,
+            "note": "High dispersion requires explicit peer-selection narrative and weighting support.",
+        },
+        "approach_dispersion": approach_dispersion,
+        "pwerm_sensitivity": pwerm_cases,
+    }
+    audit.record(
+        "valuation_support",
+        "reviewer support pack: backsolve tieout, sigma band, DLOM support, comps dispersion, PWERM sensitivity",
+        {
+            "approach_count": len(approach_evs),
+            "peer_count": result["comps_scoring"]["peer_count"],
+            "sigma": sigma,
+            "dlom": dlom_pct,
+        },
+        {"approach_dispersion": approach_dispersion, "sigma_band": sigma_band, "dlom_band": dlom_band},
+    )
+    return result
+
+
+# --------------------------------------------------------------------------- #
 # Compliance                                                                    #
 # --------------------------------------------------------------------------- #
 def compliance(intake, audit):
@@ -940,9 +1026,17 @@ def run_value(intake, audit):
         if gap > 0.40:
             audit.warn(f"OPM: OPM vs waterfall FMV diverge {gap*100:.0f}% (>40%) — reconcile.")
 
-    out.update({
+    support_base = {
+        **out,
         "waterfall": wf, "common_fmv": fmv, "dlom": dl, "strike": sp,
         "sensitivity": sens, "legal_audit": legal,
+        "opm": opm_r, "opm_backsolve": backsolve_r,
+    }
+    support = valuation_support(intake, support_base, audit)
+
+    out.update({
+        "waterfall": wf, "common_fmv": fmv, "dlom": dl, "strike": sp,
+        "sensitivity": sens, "legal_audit": legal, "valuation_support": support,
         "opm": opm_r, "opm_backsolve": backsolve_r,
         "headline": {
             "enterprise_value": rec["blended_enterprise_value"],

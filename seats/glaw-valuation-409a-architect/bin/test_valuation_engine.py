@@ -14,6 +14,7 @@ import sys
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import valuation_engine as E  # noqa: E402
+import reviewer_check as R  # noqa: E402
 
 
 def approx(a, b, tol=1e-6):
@@ -198,6 +199,25 @@ def test_sensitivity_analysis():
     assert approx(base["strike"], 1.40)
 
 
+def test_valuation_support():
+    intake = {"comparables": {"peers": [{"name": "a"}, {"name": "b"}]}}
+    results = {
+        "comps": {"ev_revenue": {"low": 2, "median": 4, "high": 6}},
+        "reconciliation": {"approach_evs": {"dcf": 100, "comps": 200},
+                           "blended_enterprise_value": 150},
+        "pwerm": {"probability_weighted_equity_value": 120},
+        "dlom": {"recommended_dlom": 0.30},
+        "opm": {"sigma": 0.60},
+        "opm_backsolve": {"round": "A", "implied_post_money": 100,
+                          "backsolved_equity_value": 90},
+    }
+    r = E.valuation_support(intake, results, A())
+    assert approx(r["approach_dispersion"], 2 / 3, tol=1e-3)
+    assert r["volatility_benchmark"]["review_band"] == "NORMAL"
+    assert r["dlom_support"]["review_band"] == "SUPPORTED_RANGE"
+    assert len(r["pwerm_sensitivity"]) == 3
+
+
 def test_legal_audit_flags_missing_controls():
     r = E.legal_audit({"review_controls": {
         "appraiser_engaged": False,
@@ -244,6 +264,32 @@ def test_legal_audit_ready():
     }}, A())
     assert r["status"] == "READY FOR APPRAISER/COUNSEL REVIEW"
     assert r["missing_controls"] == []
+
+
+def test_reviewer_check_verdicts():
+    legal = E.legal_audit({"review_controls": {
+        "appraiser_engaged": False,
+        "valuation_method_reasonable": True,
+        "valuation_freshness_confirmed": True,
+        "cap_table_source_attached": True,
+        "board_approval_planned": True,
+        "option_grant_dates_confirmed": False,
+        "option_exercise_price_fmv_on_grant_date": True,
+        "average_price_period_controls": True,
+        "option_modification_reviewed": True,
+        "dividend_equivalent_rights_reviewed": True,
+        "rsu_documents_reviewed": True,
+        "rsu_short_term_deferral_checked": True,
+        "rsu_payment_schedule_409a_compliant": True,
+        "release_timing_reviewed": True,
+        "material_events_reviewed": True,
+        "legal_counsel_review_required": True,
+        "auditor_review_required": True,
+    }}, A())
+    out = R.evaluate("all", {"legal_audit": legal}, {"warnings": []})
+    assert out["appraiser"]["verdict"] == "CLEAR WITH CONDITIONS"
+    assert out["equity-awards-lawyer"]["verdict"] == "CLEAR WITH CONDITIONS"
+    assert out["auditor-tax"]["verdict"] == "CLEAR"
 
 
 def test_dlom_band():

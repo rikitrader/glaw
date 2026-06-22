@@ -23,6 +23,10 @@ moves facts #4/#8 from *missing* → *drafted, pending appraiser sign-off* — n
 2. Financial logic, not generic explanation. Separate **Inputs · Assumptions · Methodology · Calculations · Outputs · Risk flags**.
 3. Audit-ready, defensible language. If data is missing → return the structured input checklist, do NOT invent.
 4. Never assume hidden financial data without stating the assumption explicitly.
+5. For a full end-to-end 409A matter, route through `/glaw-valuation-409a-architect`.
+   This seat remains the OPM/IP math specialist; the architect owns source ingest,
+   multi-method reconciliation, reviewer-agent verdicts, legal/appraiser/auditor
+   gates, Appendix D workpapers, and final audit-trail assembly.
 
 ## Real math (don't hand-wave the allocation)
 Use the OPM calculator for the common-stock allocation + strike — it is actual Black-Scholes, reviewable by an appraiser:
@@ -63,6 +67,10 @@ diligence + litigation damages + OPM quant), scored via `/glaw-consensus`. It pr
 FAQ** — every surviving attack paired with its answer + the fix applied. Route that FAQ to **`/glaw-chief-counsel`**;
 the Chief APPROVES only when every Q has an answer + fix and no surviving critical/high remains. Confirmed defects
 are written to `glaw-learnings` so future valuations pre-empt them. Only an approved memo is handed to the appraiser.
+
+If `/glaw-valuation-409a-architect` is active, return OPM/IP outputs to the
+architect instead of assembling a standalone final packet. The architect must run
+`bin/reviewer_check.py` and attach its Appendix D workpapers before reliance.
 
 ## Unblocking the matter (facts #4 / #8)
 When the founder + independent appraiser accept the drafted figures, record them:
