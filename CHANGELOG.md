@@ -2,6 +2,15 @@
 
 ## 1.2.2 — current main release and package refresh
 
+- **409A valuation architect seat.** Added `/glaw-valuation-409a-architect`, an
+  end-to-end draft 409A valuation orchestrator with DCF, market comps, VC method,
+  PWERM, latest priced-round anchoring, liquidation waterfall with conversion test,
+  OPM/Black-Scholes allocation, round backsolve, DLOM, strike-price sensitivity,
+  compliance, reproducible audit logs, and generated memo output. The seat includes
+  appraiser, equity-awards lawyer, and auditor/tax reviewer briefs plus a
+  Skadden/Practical Law 409A equity-pitfalls control map for option FMV, RSU timing,
+  option modifications, dividend equivalents, material-event refresh, and
+  appraiser/counsel/auditor sign-off boundaries.
 - **Government-adversary routing regression.** Added a loop regression and sandbox scenario proving
   final-packet government/regulatory/litigation adversary failures route back to the adversarial
   owner instead of letting the orchestrator proceed.
