@@ -7,12 +7,12 @@
 **A self-contained open-source virtual law firm you install as an AI agent skill. Not a chatbot — an org chart.**
 GLAW runs legal *matters* (build a company, structure a fund, prosecute or defend a case, investigate fraud) through an **8-stage pipeline**, routing each step to the right **department**, and produces **attorney work-product** — pleadings, contracts, redlines, dossiers, filings — for a licensed attorney to review and sign.
 
-**10 departments · 179 source skills · 63 vendored seats · 177 mirrored commands · hard-gated matter pipeline · FBI-style fraud dossiers · source-first bookkeeping with Google Sheets input + OCR orchestration. Attorney work-product, not legal advice.**
+**10 departments · 183 source skills · 67 vendored seats · 181 mirrored commands · hard-gated matter pipeline · FBI-style fraud dossiers · source-first bookkeeping with Google Sheets input + OCR orchestration. Attorney work-product for licensed attorney review, not legal advice.**
 
 [![GLAW Doctor](https://github.com/rikitrader/glaw/actions/workflows/ci.yml/badge.svg)](https://github.com/rikitrader/glaw/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-C9A227.svg)](LICENSE)
-[![Skills](https://img.shields.io/badge/skills-179-1A3FA0.svg)](lib/firm-roster.md)
-[![Tools](https://img.shields.io/badge/commands-177-1A3FA0.svg)](#-the-toolbelt-177-mirrored-commands)
+[![Skills](https://img.shields.io/badge/skills-183-1A3FA0.svg)](lib/firm-roster.md)
+[![Tools](https://img.shields.io/badge/commands-181-1A3FA0.svg)](#-the-toolbelt-181-mirrored-commands)
 [![Departments](https://img.shields.io/badge/departments-10-3B82F6.svg)](#%EF%B8%8F-the-departments)
 [![Pipeline](https://img.shields.io/badge/pipeline-8%20stages-3B82F6.svg)](#-the-workflow)
 [![Agent Skills](https://img.shields.io/badge/format-Agent%20Skills-000.svg)](https://agentskills.org)
@@ -29,7 +29,7 @@ GLAW runs legal *matters* (build a company, structure a fund, prosecute or defen
 ```bash
 # 1. install (any local checkout; setup deploys Claude + Codex skill roots)
 git clone https://github.com/rikitrader/glaw ~/glaw
-cd ~/glaw && ./setup                       # deploys source skills + 63 vendored seats + tools
+cd ~/glaw && ./setup                       # deploys source skills + 67 vendored seats + tools
 
 # 2. open a matter and let the firm work it
 /glaw                                       # "form a Delaware C-corp with a SAFE round"
@@ -69,7 +69,7 @@ Built on the **gstack** skill-orchestration methodology: a meta-skill orchestrat
 
 ## 🏛️ The Departments
 
-GLAW ships **179 source skills** organized into ten departments, including **63 self-contained specialist seats** vendored under [`seats/`](seats/) — `glaw-corporate-counsel`, `glaw-pe-vc-counsel`, `glaw-tax-strategy`, `glaw-financial-forensics`, the `glaw-fs-*` finance models, and more. **Zero external skill dependencies:** every seat the firm routes to travels with the repo and is deployed by `./setup`. A deterministic gate (`glaw-doctor`) proves it — every routed skill resolves, or CI fails.
+GLAW ships **183 source skills** organized into ten departments, including **67 self-contained specialist seats** vendored under [`seats/`](seats/) — `glaw-corporate-counsel`, `glaw-pe-vc-counsel`, `glaw-tax-strategy`, `glaw-financial-forensics`, the `glaw-fs-*` finance models, and more. **Zero external skill dependencies:** every seat the firm routes to travels with the repo and is deployed by `./setup`. A deterministic gate (`glaw-doctor`) proves it — every routed skill resolves, or CI fails.
 
 ```mermaid
 flowchart TD
@@ -99,8 +99,8 @@ flowchart TD
 | **Firm Management** | Opens matters, drives the pipeline, holds the gates | `/glaw`, `/glaw-autocounsel`, `/glaw-ethics-conflicts`, `/glaw-legal-research`, `/glaw-legal-writing` |
 | **Corporate & Transactional** | Entities, IP, contracts, employment, real estate | `/glaw-entity-architect`, `/glaw-ip-counsel`, `/glaw-commercial-contracts`, `/glaw-employment-counsel`, `/glaw-real-estate-counsel` |
 | **Securities, Funds & Capital Markets** | Fund formation, disclosure, insider/market-abuse, enforcement | `/glaw-sec`, `/glaw-sec-disclosure`, `/glaw-sec-adviser`, `/glaw-sec-insider`, `/glaw-sec-marketabuse`, `/glaw-sec-enforcement` |
-| **Tax & IRS** | Tax structuring, controversy, information returns | `/glaw-tax-report`, `/glaw-irs-file`, `/glaw-compliance-audit` |
-| **Accounting & Finance** | Forensics, audit-readiness, valuation, CFO modeling | `/glaw-accounting`, `/glaw-audit-assurance` |
+| **Tax & IRS** | Tax structuring, controversy, information returns, 409A defensibility | `/glaw-tax-report`, `/glaw-irs-file`, `/glaw-compliance-audit`, `/glaw-valuation-409a-architect` |
+| **Accounting & Finance** | Forensics, audit-readiness, valuation, CFO modeling | `/glaw-accounting`, `/glaw-audit-assurance`, `/glaw-company-valuation`, `/glaw-valuation-409a` |
 | **Litigation & Dispute Resolution** | Pleadings, motions, case law, evidence, veil-piercing | `/glaw-motion-drafting`, `/glaw-case-law-research`, `/glaw-evidence-timeline`, `/glaw-veil-piercing`, `/glaw-court-records` |
 | **Investigations Bureau** *(white-collar)* | FBI-style fraud investigation → dossier | `/glaw-investigations`, `/glaw-bureau`, `/glaw-bureau-counterfraud`, `/glaw-bureau-osint`, `/glaw-bureau-humint`, `/glaw-bureau-field`, `/glaw-bureau-cyber`, `/glaw-bureau-fusion`, `/glaw-bureau-prosecutor` |
 | **Intelligence Super-Structure** | Financial-intel + analysis cells + fusion command | `/glaw-command`, `/glaw-fincen` (`-aml/-sar/-ofac/-tbml/-crypto`), `/glaw-intel` (`-analyst/-geopolitical/-scitech/-counterintel`) |
@@ -140,7 +140,7 @@ flowchart LR
 5. **Red flags clear or explicitly carried** before filing — critical/high findings block.
 6. **Final packet ready** before filing — source manifest, reviewer evidence, and artifacts tie out.
 7. **Chief/Council approval** before filing — the Chief logs `chief_approved` on the current packet digest.
-8. **UPL disclaimer** on every external deliverable — GLAW produces *work-product*, not legal advice.
+8. **UPL footer** on every external text/DOCX deliverable — it must state attorney/CPA work-product, not legal/tax/accounting advice, and licensed attorney/CPA review.
 9. **Docket gate complete** before matter-retro — deadlines are owned and source-backed, or no-deadlines is justified.
 
 ### 🕵️ The dossier escalation
@@ -149,7 +149,7 @@ When an investigation surfaces **red flags past threshold** (fraud tier, sanctio
 
 ---
 
-## 🧰 The Toolbelt (177 Mirrored Commands)
+## 🧰 The Toolbelt (181 Mirrored Commands)
 
 GLAW's brains are markdown; its hands are small, transparent CLIs in [`bin/`](bin/). The runtime is source-first: bash, Python 3, repository libraries, and the Python standard library.
 
@@ -315,7 +315,7 @@ cd ~/glaw
 ./setup
 ```
 
-`./setup` deploys the native `/glaw-*` commands and 63 vendored seats into both `~/.claude/skills` and `${CODEX_HOME:-~/.codex}/skills`, then creates the state dir (`~/.glaw`). Set `GLAW_SKILLS_ROOT=/path/to/skills` when you intentionally want one target root. It does **not** install pip packages, npm packages, virtualenvs, or remote toolbelts. GLAW is source-first: every shipped CLI uses repository code plus the Python standard library.
+`./setup` deploys the native `/glaw-*` commands and 67 vendored seats into both `~/.claude/skills` and `${CODEX_HOME:-~/.codex}/skills`, then creates the state dir (`~/.glaw`). Set `GLAW_SKILLS_ROOT=/path/to/skills` when you intentionally want one target root. It does **not** install pip packages, npm packages, virtualenvs, or remote toolbelts. GLAW is source-first: every shipped CLI uses repository code plus the Python standard library.
 
 | Capability | Needs |
 |---|---|
@@ -370,7 +370,7 @@ GitHub Packages are published as a source-only GHCR artifact; see [`docs/PACKAGI
 glaw/
 ├── SKILL.md              # /glaw — the Managing Partner (orchestrator)
 ├── bin/                  # source-only CLIs: state machinery + local tools + bookkeeping + finance control
-├── seats/                # 63 SELF-CONTAINED specialist seats (glaw-*) + MANIFEST
+├── seats/                # 67 SELF-CONTAINED specialist seats (glaw-*) + MANIFEST
 │                         #   every skill the firm routes to — zero external deps
 ├── lib/
 │   ├── firm-roster.md    # SINGLE SOURCE OF TRUTH — seat → skill routing

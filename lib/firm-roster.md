@@ -102,6 +102,7 @@ Covers: **IRS**, tax planning, tax controversy.
 | **Back-tax & collections resolution** — file missing years from the GL + multi-year penalty/interest roll (`bin/glaw-back-filing`), SFR replacement (`bin/glaw-sfr`), offer in compromise + RCP (`bin/glaw-oic`), installment agreement (`bin/glaw-installment`), CNC/CDP (`bin/glaw-collections`), Trust Fund Recovery (`bin/glaw-tfrp`); Revenue-Officer adversarial gate | `/glaw-back-taxes` |
 | **IRS audit defense (exam → Appeals → Tax Court)** — triage notice + SOL clock (`bin/glaw-sol`), transcript reconstruction (`bin/glaw-transcript`), GL-tied substantiation + Form 4549 recompute (`bin/glaw-audit-package`), penalty abatement (`bin/glaw-abatement`); IRS-examiner adversarial gate | `/glaw-irs-audit` |
 | Tax-matter intake / triage | `glaw-tax-legal-intake` |
+| **409A valuation architect** (end-to-end draft 409A orchestration: intake gate, DCF/comps/VC/PWERM/priced-round reconciliation, waterfall with conversion test, OPM/backsolve cross-check, DLOM, strike, audit trail, RED/BLUE residual matrix, and appraiser sign-off gate) | `/glaw-valuation-409a-architect` |
 | **IP + 409A valuation engine** (audit-ready DRAFT FMV + strike via real OPM/Black-Scholes `bin/opm.py`; IP valuation; equity allocation OPM/PWERM + DLOM; risk scorecard) — fills facts #4/#8 pending appraiser sign-off | `/glaw-valuation-409a` |
 | **Valuation adversary** (IRS valuation-examiner RED-team: attacks FMV/DLOM/sigma/backsolve/comps; defensibility 0-10 + sensitivity) — mandatory pass before any valuation is "ready" | `/glaw-valuation-adversary` |
 | IRS-audit-shield reconstruction (forensic numbers) | `glaw-financial-forensics` |
@@ -204,6 +205,7 @@ Covers: **Financial**, accounting, CFO, valuation, audit/assurance.
 | Institutional CFO modeling, 3-statement, LBO/waterfall, EBITDA normalization | `glaw-institutional-finance` |
 | Construction/roofing CFO: job costing, WIP, % completion, Xactimate | `glaw-roofer-accounting` |
 | Business valuation | `glaw-company-valuation` |
+| 409A valuation orchestration, audit trail, RED/BLUE residual matrix, appraiser gate | `/glaw-valuation-409a-architect` |
 | Fractional-CFO action plan / ongoing | `glaw-mc-cfo-agent` |
 
 ## Litigation & Dispute Resolution Division

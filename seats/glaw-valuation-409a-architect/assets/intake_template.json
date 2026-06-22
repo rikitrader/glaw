@@ -1,0 +1,119 @@
+{
+  "entity": {
+    "company_name": "Acme Robotics, Inc.",
+    "state_of_incorporation": "Delaware",
+    "industry": "B2B SaaS / Robotics",
+    "valuation_date": "2026-06-22"
+  },
+  "financials": {
+    "revenue": [1200000, 2600000],
+    "ebitda": [-800000, -300000],
+    "cash": 4500000,
+    "debt": 500000,
+    "tax_rate": 0.21
+  },
+  "forecasts": {
+    "revenue": [4200000, 7500000, 12000000, 18000000, 25000000],
+    "ebitda": [-200000, 900000, 2800000, 5200000, 8000000],
+    "opex_pct": 0.72,
+    "capex": [300000, 400000, 500000, 600000, 700000],
+    "depreciation": [150000, 200000, 250000, 300000, 350000],
+    "working_capital_change": [100000, 150000, 200000, 250000, 300000],
+    "discount_rate": 0.25,
+    "terminal_growth": 0.03
+  },
+  "comparables": {
+    "peers": [
+      {"name": "PeerCo A", "ev": 120000000, "revenue": 20000000, "ebitda": 4000000},
+      {"name": "PeerCo B", "ev": 85000000,  "revenue": 17000000, "ebitda": 2500000},
+      {"name": "PeerCo C", "ev": 200000000, "revenue": 25000000, "ebitda": 6000000},
+      {"name": "PeerCo D", "ev": 60000000,  "revenue": 15000000, "ebitda": 1800000}
+    ]
+  },
+  "vc_method": {
+    "exit_year_revenue": 25000000,
+    "exit_multiple": 5.0,
+    "target_return": 10.0,
+    "investment": 0
+  },
+  "pwerm": {
+    "scenarios": [
+      {"name": "IPO",            "probability": 0.10, "exit_value": 400000000, "time_to_exit": 6},
+      {"name": "Acquisition",    "probability": 0.35, "exit_value": 150000000, "time_to_exit": 4},
+      {"name": "Private Growth", "probability": 0.30, "exit_value": 60000000,  "time_to_exit": 5},
+      {"name": "Downside",       "probability": 0.15, "exit_value": 15000000,  "time_to_exit": 3},
+      {"name": "Dissolution",    "probability": 0.10, "exit_value": 0,         "time_to_exit": 2}
+    ]
+  },
+  "shares": {
+    "common": 8000000,
+    "option_pool": 2000000,
+    "warrants": 100000,
+    "preferred": [
+      {
+        "name": "Series A",
+        "shares": 2500000,
+        "invested": 5000000,
+        "liquidation_multiple": 1.0,
+        "seniority": 1,
+        "participating": false,
+        "participation_cap": null,
+        "conversion_ratio": 1.0
+      },
+      {
+        "name": "Series Seed",
+        "shares": 1500000,
+        "invested": 1500000,
+        "liquidation_multiple": 1.0,
+        "seniority": 0,
+        "participating": false,
+        "participation_cap": null,
+        "conversion_ratio": 1.0
+      }
+    ],
+    "safes": [
+      {"name": "SAFE 2025", "amount": 750000, "valuation_cap": 15000000, "discount": 0.20, "as_converted_shares": 600000}
+    ],
+    "convertible_notes": []
+  },
+  "financing_rounds": [
+    {"round": "Series A", "date": "2025-09-01", "price_per_share": 2.00, "amount": 5000000, "post_money": 25000000}
+  ],
+  "weights": {"dcf": 0.40, "comps": 0.40, "vc": 0.20},
+  "dlom_profile": {
+    "stage": "early",
+    "annual_revenue": 2600000,
+    "recently_funded": true,
+    "liquidity_horizon_years": 4,
+    "exit_probability": 0.5
+  },
+  "compliance": {
+    "last_valuation_date": "2025-09-15"
+  },
+  "review_controls": {
+    "appraiser_engaged": false,
+    "valuation_method_reasonable": true,
+    "valuation_freshness_confirmed": true,
+    "cap_table_source_attached": true,
+    "board_approval_planned": true,
+    "option_grant_dates_confirmed": false,
+    "option_exercise_price_fmv_on_grant_date": true,
+    "average_price_period_controls": true,
+    "option_modification_reviewed": true,
+    "dividend_equivalent_rights_reviewed": true,
+    "rsu_documents_reviewed": true,
+    "rsu_short_term_deferral_checked": true,
+    "rsu_payment_schedule_409a_compliant": true,
+    "release_timing_reviewed": true,
+    "material_events_reviewed": true,
+    "legal_counsel_review_required": true,
+    "auditor_review_required": true
+  },
+  "material_events": {
+    "new_financing": false,
+    "ma_activity": false,
+    "material_contracts": false,
+    "major_revenue_change": false,
+    "debt_restructuring": false
+  }
+}
