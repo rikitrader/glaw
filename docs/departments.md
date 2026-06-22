@@ -1,7 +1,7 @@
 # GLAW Departments — full seat reference
 
-GLAW ships as **one self-contained app**. Current doctor coverage verifies **179 source
-`SKILL.md` files**, **63 vendored seats**, and top-level `/glaw-*` command parity after
+GLAW ships as **one self-contained app**. Current doctor coverage verifies **183 source
+`SKILL.md` files**, **67 vendored seats**, and 181 mirrored `/glaw` plus `/glaw-*` commands after
 `bin/glaw-setup`. The single source of truth for routing is
 [`../lib/firm-roster.md`](../lib/firm-roster.md); this page is the human-readable index.
 All seats listed below are bundled in this repo or implemented by repo-local `bin/glaw-*`
@@ -44,7 +44,8 @@ tools.
 `/glaw-accounting` (lead) · `/glaw-audit-assurance` · `/glaw-bookkeeping` ·
 `/glaw-ledger` · `/glaw-controller` · `/glaw-cfo` · `/glaw-audit` ·
 `/glaw-reconstruct` · `/glaw-financial-forensics` · `/glaw-roofer-accounting` ·
-`/glaw-company-valuation` · `/glaw-mc-cfo-agent`.
+`/glaw-company-valuation` · `/glaw-valuation-409a-architect` ·
+`/glaw-valuation-409a` · `/glaw-valuation-adversary` · `/glaw-mc-cfo-agent`.
 
 ## Litigation & Dispute Resolution
 `/glaw-motion-drafting` · `/glaw-case-law-research` · `/glaw-evidence-timeline` ·
