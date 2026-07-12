@@ -4,455 +4,319 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%E2%9A%96%3C/text%3E%3C/svg%3E">
-<title>GLAW · Intake</title>
+<title>GLAW Intake · One interview, the right department</title>
+<meta name="description" content="GLAW's routing interview classifies your legal matter, routes it to the owning department, and prepares the structured intake package.">
+<link rel="stylesheet" href="/tokens.css">
 <style>
-  :root{
-    --paper:#FAFAF7; --card:#FFFFFF; --ink:#181B20; --muted:#5C6472;
-    --hairline:#D9DBD5; --directive:#1B4796; --directive-soft:#EBF0FA;
-    --gate:#A8271E; --gate-soft:#F9ECEA; --clear:#1E7A46; --clear-soft:#EAF4EE;
-    --chipbg:#F0F1EC; --mono-bg:#F2F3EF; --shadow:0 1px 2px rgba(24,27,32,.05);
-  }
-  @media (prefers-color-scheme: dark){
-    :root{
-      --paper:#15171C; --card:#1C1F26; --ink:#E7E9EC; --muted:#9AA3B2;
-      --hairline:#31353E; --directive:#7FA3F0; --directive-soft:#1E2836;
-      --gate:#E5766D; --gate-soft:#33211F; --clear:#58B786; --clear-soft:#1D2E24;
-      --chipbg:#252932; --mono-bg:#23262E; --shadow:none;
-    }
-  }
   *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
   body{margin:0;background:var(--paper);color:var(--ink);
-    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:15px;line-height:1.55;
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:15.5px;line-height:1.55;
     -webkit-font-smoothing:antialiased}
-  code,.mono,textarea.mono{font-family:"SF Mono",Menlo,Consolas,monospace}
-  .wrap{max-width:880px;margin:0 auto;padding:0 24px 96px}
+  code,.mono{font-family:"SF Mono",Menlo,Consolas,monospace}
+  a{color:var(--directive)}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 28px}
 
-  header{border-bottom:3px double var(--hairline);padding:40px 0 24px;text-align:center}
-  .firm{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
-  h1{margin:10px 0 6px;font-size:clamp(24px,4vw,36px);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
-  .sub{max-width:60ch;margin:0 auto;color:var(--muted);font-size:14px}
-  .navrow{display:flex;justify-content:center;gap:10px;margin-top:16px}
-  .navrow a{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--directive);
-    text-decoration:none;border:1px solid var(--directive);border-radius:4px;padding:5px 12px}
-  .navrow a:hover,.navrow a:focus{background:var(--directive-soft);outline:none}
+  /* ---------- nav ---------- */
+  nav{position:sticky;top:0;z-index:10;background:var(--paper);border-bottom:1px solid var(--hairline)}
+  .navin{display:flex;align-items:center;justify-content:space-between;height:64px;gap:20px}
+  .wordmark{font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:14px;
+    color:var(--ink);text-decoration:none}
+  .wordmark span{color:var(--directive)}
+  .navlinks{display:flex;gap:22px;align-items:center}
+  .navlinks a{font-size:13px;color:var(--muted);text-decoration:none;letter-spacing:.02em}
+  .navlinks a:hover,.navlinks a:focus-visible{color:var(--directive)}
+  .cta{display:inline-block;background:var(--directive);color:var(--directive-ink);
+    font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+    padding:10px 20px;border-radius:4px;text-decoration:none;border:1px solid var(--directive)}
+  .cta:hover,.cta:focus-visible{filter:brightness(1.08)}
+  .cta:active{transform:translateY(1px)}
+  .cta.ghost{background:transparent;color:var(--directive)}
+  .navlinks a{padding:8px 2px}
+  @media(max-width:760px){.navlinks a:not(.cta):not(.keep){display:none}}
 
-  .upl{border-left:4px solid var(--gate);background:var(--gate-soft);padding:12px 16px;
-    border-radius:0 6px 6px 0;margin:22px 0;font-size:12.5px;color:var(--ink)}
-  .upl b{color:var(--gate)}
+  /* ---------- hero ---------- */
+  .hero{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;
+    align-items:center;padding:72px 0 80px}
+  @media(max-width:900px){.hero{grid-template-columns:1fr;gap:36px;padding:48px 0 56px}}
+  h1{margin:0 0 16px;font-size:clamp(34px,4.6vw,54px);font-weight:700;line-height:1.05;
+    letter-spacing:-.01em;text-wrap:balance}
+  .hero p{margin:0 0 26px;font-size:17px;color:var(--muted);max-width:44ch}
+  .herocta{display:flex;gap:12px;flex-wrap:wrap}
+  @media (prefers-reduced-motion: no-preference){
+    .hero>*{animation:rise .5s cubic-bezier(.16,1,.3,1) both}
+    .hero>:nth-child(2){animation-delay:.08s}
+    @keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  }
 
-  .steps{display:flex;gap:8px;margin:26px 0 18px;flex-wrap:wrap}
-  .stepdot{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
-    border:1px solid var(--hairline);border-radius:99px;padding:4px 12px;background:var(--card)}
-  .stepdot.on{border-color:var(--directive);color:var(--directive);font-weight:700}
-  .stepdot.done{border-color:var(--clear);color:var(--clear)}
+  /* live router widget (real component, links into /interview) */
+  .router{background:var(--card);border:1px solid var(--hairline);border-radius:6px;
+    box-shadow:var(--shadow);overflow:hidden}
+  .router-head{padding:13px 18px;border-bottom:1px solid var(--hairline);
+    font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .router a{display:flex;justify-content:space-between;align-items:center;gap:14px;
+    padding:11px 18px;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--hairline);
+    font-size:14px;transition:background .15s ease}
+  .router a:last-child{border-bottom:0}
+  .router a:hover,.router a:focus-visible{background:var(--directive-soft)}
+  .router a b{font-weight:600}
+  .router a small{color:var(--muted);font-size:12px;text-align:right;flex-shrink:0}
+  .router a:hover small{color:var(--directive)}
 
-  .panel{background:var(--card);border:1px solid var(--hairline);border-radius:6px;
-    box-shadow:var(--shadow);padding:22px 24px}
-  .panel h2{margin:0 0 4px;font-size:19px}
-  .panel .hint{color:var(--muted);font-size:13px;margin:0 0 18px}
+  /* ---------- sections ---------- */
+  section{padding:72px 0}
+  section+section{border-top:1px solid var(--hairline)}
+  h2{margin:0 0 10px;font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-.01em;text-wrap:balance}
+  .sectionlede{margin:0 0 40px;color:var(--muted);max-width:62ch}
 
-  .tracks{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:10px}
-  .trackbtn{text-align:left;background:var(--paper);border:1px solid var(--hairline);border-radius:6px;
-    padding:12px 14px;cursor:pointer;font:inherit;color:var(--ink)}
-  .trackbtn:hover,.trackbtn:focus{border-color:var(--directive);outline:none}
-  .trackbtn.sel{border-color:var(--directive);background:var(--directive-soft)}
-  .trackbtn code{font-size:11px;color:var(--directive)}
-  .trackbtn b{display:block;font-size:14px;margin:2px 0}
-  .trackbtn span{font-size:12px;color:var(--muted)}
+  /* pipeline rail */
+  .rail{display:flex;gap:0;overflow-x:auto;padding-bottom:8px;scroll-snap-type:x proximity}
+  .rail .stage{scroll-snap-align:start}
+  @media(max-width:760px){.rail{display:grid;grid-template-columns:1fr 1fr;overflow:visible}}
+  .rail .stage{flex:1 0 118px;position:relative;padding:16px 14px 14px;border-top:3px solid var(--hairline)}
+  .rail .stage.you{border-top-color:var(--directive)}
+  .rail .stage .no{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+  .rail .stage b{display:block;font-size:14.5px;margin:2px 0}
+  .rail .stage span{font-size:12px;color:var(--muted)}
+  .rail .stage.you .no{color:var(--directive);font-weight:700}
 
-  label{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--muted);margin:16px 0 5px}
-  label .req{color:var(--gate)}
-  input[type=text],input[type=date],textarea,select{
-    width:100%;background:var(--paper);border:1px solid var(--hairline);border-radius:4px;
-    padding:9px 11px;font:inherit;font-size:14px;color:var(--ink)}
-  input:focus,textarea:focus,select:focus{border-color:var(--directive);outline:none}
-  textarea{min-height:64px;resize:vertical}
-  .two{display:grid;grid-template-columns:1fr 1fr;gap:0 16px}
-  @media(max-width:620px){.two{grid-template-columns:1fr}}
+  /* steps (vertical) */
+  .steps{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+  @media(max-width:860px){.steps{grid-template-columns:1fr}}
+  .steplist{display:flex;flex-direction:column}
+  .step{display:grid;grid-template-columns:34px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--hairline)}
+  .step:last-child{border-bottom:0}
+  .step .n{width:34px;height:34px;border:2px solid var(--directive);border-radius:50%;
+    display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--directive);
+    font-size:14px;font-variant-numeric:tabular-nums}
+  .step h3{margin:4px 0 4px;font-size:16.5px}
+  .step p{margin:0;font-size:14px;color:var(--muted);max-width:52ch}
+  .pkg{background:var(--mono-bg);border:1px solid var(--hairline);border-radius:6px;
+    padding:16px 18px;font-size:12px;line-height:1.7;overflow-x:auto;white-space:pre}
+  .pkg .c{color:var(--muted)}
+  .pkg .k{color:var(--directive)}
 
-  .ddl-row{display:grid;grid-template-columns:160px 1fr 36px;gap:8px;margin-top:6px}
-  .ddl-row button{border:1px solid var(--hairline);background:var(--paper);border-radius:4px;
-    cursor:pointer;color:var(--gate);font-size:16px}
-  .addbtn{margin-top:8px;border:1px dashed var(--hairline);background:none;border-radius:4px;
-    padding:6px 14px;font:inherit;font-size:13px;color:var(--directive);cursor:pointer}
+  /* departments grid */
+  .depts{display:grid;grid-template-columns:repeat(12,1fr);gap:12px;grid-auto-flow:dense}
+  .dept{grid-column:span 3;background:var(--card);border:1px solid var(--hairline);border-radius:6px;
+    padding:16px 17px;text-decoration:none;color:var(--ink);display:block;transition:border-color .15s ease}
+  .dept:hover,.dept:focus-visible{border-color:var(--directive)}
+  .dept.wide{grid-column:span 6}
+  .dept.tint{background:var(--directive-soft);border-color:var(--directive)}
+  .dept.tint:hover,.dept.tint:focus-visible{background:var(--card)}
+  .dept.tintg{background:var(--clear-soft)}
+  .dept b{display:block;font-size:15px;margin-bottom:3px;text-wrap:balance}
+  .dept span{font-size:12.5px;color:var(--muted)}
+  @media(max-width:980px){.dept,.dept.wide{grid-column:span 6}}
+  @media(max-width:640px){.dept,.dept.wide{grid-column:span 12}}
+  .deptfoot{margin-top:18px;font-size:13.5px;color:var(--muted)}
 
-  .refine label{margin:0;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:400;
-    letter-spacing:0;text-transform:none;color:var(--ink);padding:7px 0;border-bottom:1px dashed var(--hairline)}
-  .refine input{width:auto}
+  /* gates band */
+  .gates{background:var(--card);border-top:1px solid var(--hairline)}
+  .gatesin{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+  @media(max-width:860px){.gatesin{grid-template-columns:1fr;gap:28px}}
+  .gatelist{display:flex;flex-direction:column;gap:0}
+  .gate{display:grid;grid-template-columns:26px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--hairline);align-items:baseline}
+  .gate:last-child{border-bottom:0}
+  .gate .m{color:var(--gate);font-weight:700;font-size:13px}
+  .gate div b{font-size:14.5px}
+  .gate div span{display:block;font-size:13px;color:var(--muted)}
+  .stamp{display:inline-block;border:2px solid var(--gate);color:var(--gate);
+    font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    padding:3px 10px;border-radius:3px;transform:rotate(-2deg);margin-bottom:14px}
 
-  .btnrow{display:flex;justify-content:space-between;gap:12px;margin-top:26px}
-  .btn{font:inherit;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-    border-radius:4px;padding:10px 22px;cursor:pointer;border:1px solid var(--hairline);
-    background:var(--card);color:var(--muted)}
-  .btn.primary{background:var(--directive);border-color:var(--directive);color:#fff}
-  :root[data-theme="dark"] .btn.primary,body .btn.primary{color:#fff}
-  .btn:disabled{opacity:.45;cursor:not-allowed}
+  /* api section */
+  .api{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
+  @media(max-width:860px){.api{grid-template-columns:1fr;gap:28px}}
+  .endpoint{display:grid;grid-template-columns:64px 1fr;gap:12px;padding:10px 0;
+    border-bottom:1px solid var(--hairline);font-size:13.5px;align-items:baseline}
+  .endpoint:last-child{border-bottom:0}
+  .endpoint .verb{font-family:"SF Mono",Menlo,Consolas,monospace;font-size:12px;font-weight:700;color:var(--directive)}
+  .endpoint code{font-size:12.5px}
+  .endpoint span{display:block;color:var(--muted);font-size:12.5px}
 
-  /* result */
-  .route-head{border-left:4px solid var(--clear);background:var(--clear-soft);padding:14px 18px;
-    border-radius:0 6px 6px 0;margin-bottom:18px}
-  .route-head b{font-size:17px}
-  .route-head .adv{font-size:12.5px;color:var(--muted);margin-top:2px}
-  .lbl{font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:16px 0 6px}
-  .seats{display:flex;flex-wrap:wrap;gap:5px}
-  .seats span{background:var(--chipbg);border-radius:3px;padding:2px 8px;font-size:12px;
-    font-family:"SF Mono",Menlo,Consolas,monospace}
-  .docket{border-left:3px solid var(--gate);padding-left:10px;font-size:13px;color:var(--muted)}
-  pre.out{background:var(--mono-bg);border:1px solid var(--hairline);border-radius:4px;
-    padding:12px 14px;font-size:12px;overflow-x:auto;max-height:340px}
-  .copyrow{display:flex;gap:8px;align-items:center;margin-top:6px}
-  .copybtn{font:inherit;font-size:12px;border:1px solid var(--hairline);background:var(--paper);
-    border-radius:4px;padding:5px 12px;cursor:pointer;color:var(--directive)}
-  .submitted{border:1px solid var(--clear);background:var(--clear-soft);border-radius:6px;
-    padding:12px 16px;margin-top:16px;font-size:14px}
-  .err{color:var(--gate);font-size:13px;margin-top:10px}
-  footer{margin-top:56px;border-top:3px double var(--hairline);padding-top:16px;text-align:center;
-    font-size:12px;color:var(--muted)}
+  /* final cta */
+  .final{background:var(--directive)}
+  .finalin{padding:64px 0;text-align:center}
+  .final h2{color:#fff}
+  .final p{color:rgba(255,255,255,.75);max-width:52ch;margin:8px auto 28px}
+  .final .cta{background:#fff;color:#1B4796;border-color:#fff}
+  .final .cta:hover,.final .cta:focus-visible{filter:brightness(.92)}
+  @media (prefers-color-scheme: dark){
+    .final{background:var(--directive-soft)}
+    .final h2{color:var(--ink)}
+    .final p{color:var(--muted)}
+    .final .cta{background:var(--directive);color:var(--directive-ink);border-color:var(--directive)}
+  }
+
+  footer{padding:36px 0 56px;font-size:12.5px;color:var(--muted)}
+  footer .upl{border-left:4px solid var(--gate);background:var(--gate-soft);padding:12px 16px;
+    border-radius:0 6px 6px 0;margin-bottom:20px;color:var(--ink)}
+  footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  footer a{color:var(--muted)}
 </style>
 </head>
 <body>
-<div class="wrap">
-<header>
-  <div class="firm">GLAW · Virtual Corporate Law Firm</div>
-  <h1>Matter Intake</h1>
-  <p class="sub">A routing interview. Answer the questions and the firm classifies your matter, routes it to the owning department and seats, and prepares the structured intake package.</p>
-  <div class="navrow">
-    <a href="/atlas">Workflow Atlas</a>
-    <a href="#" id="restart">Restart interview</a>
+<a class="skip" href="#pipeline">Skip to content</a>
+
+<nav aria-label="Main">
+  <div class="wrap navin">
+    <a class="wordmark" href="/">GLAW <span>Intake</span></a>
+    <div class="navlinks">
+      <a href="#how">How it works</a>
+      <a href="#departments">Departments</a>
+      <a href="#gates">Gates</a>
+      <a class="keep" href="/atlas">Atlas</a>
+      <a href="#api">API</a>
+      <a class="cta" href="/interview">Start intake</a>
+    </div>
   </div>
+</nav>
+
+<header class="wrap hero">
+  <div>
+    <h1>One interview. The right department.</h1>
+    <p>The routing interview classifies your matter, assigns the owning legal seats across 14 divisions, and prepares the structured intake package.</p>
+    <div class="herocta">
+      <a class="cta" href="/interview">Start intake</a>
+      <a class="cta ghost" href="/atlas">View the workflow atlas</a>
+    </div>
+  </div>
+  <nav class="router" aria-label="Route your matter">
+    <div class="router-head">Where does your matter go?</div>
+    <a href="/interview?track=litigation"><b>Sue or defend a claim</b><small>Litigation</small></a>
+    <a href="/interview?track=corp-build"><b>Form a company or fund</b><small>Corporate</small></a>
+    <a href="/interview?track=tax"><b>IRS notice, filing, or Tax Court</b><small>Tax &amp; IRS</small></a>
+    <a href="/interview?track=accounting-tax"><b>Rebuild or keep the books</b><small>Accounting</small></a>
+    <a href="/interview?track=investigation"><b>Prove fraud or theft</b><small>Investigations</small></a>
+    <a href="/interview?track=contract-review"><b>Review inbound paper</b><small>Contracts</small></a>
+    <a href="/interview?track=qualified-plan"><b>Audit a retirement plan</b><small>Qualified plans</small></a>
+    <a href="/interview?track=hybrid"><b>Something that spans several</b><small>Managing Partner</small></a>
+  </nav>
 </header>
 
-<div class="upl"><b>Not legal advice.</b> GLAW produces attorney work-product drafts for a licensed attorney to review, sign, and file. Submitting this form does not create an attorney-client relationship. Do not submit privileged or confidential information through this public form.</div>
+<section id="pipeline">
+  <div class="wrap">
+    <h2>Intake is stage one of a gated pipeline.</h2>
+    <p class="sectionlede">Every matter walks the same eight stages. Nothing reaches filing until research verifies every citation and the firm's own adversary fails to break the position.</p>
+    <div class="rail" role="list" tabindex="0" aria-label="The eight pipeline stages">
+      <div class="stage you" role="listitem"><span class="no">1</span><b>Intake</b><span>charter, routing, deadlines</span></div>
+      <div class="stage" role="listitem"><span class="no">2</span><b>Strategy</b><span>case theory or deal thesis</span></div>
+      <div class="stage" role="listitem"><span class="no">3</span><b>Structure</b><span>entities, parties, cap table</span></div>
+      <div class="stage" role="listitem"><span class="no">4</span><b>Draft</b><span>the actual documents</span></div>
+      <div class="stage" role="listitem"><span class="no">5</span><b>Adversarial</b><span>RED attack, BLUE rebuild</span></div>
+      <div class="stage" role="listitem"><span class="no">6</span><b>File</b><span>signature-ready packet</span></div>
+      <div class="stage" role="listitem"><span class="no">7</span><b>Docket</b><span>every deadline calendared</span></div>
+      <div class="stage" role="listitem"><span class="no">8</span><b>Retro</b><span>close-out and firm memory</span></div>
+    </div>
+  </div>
+</section>
 
-<div class="steps" id="stepdots"></div>
-<div id="view"></div>
+<section id="how">
+  <div class="wrap steps">
+    <div>
+      <h2>How the routing interview works</h2>
+      <p class="sectionlede">Four screens. At the end you get the routed department, the receiving seats, the deadlines to docket, and a package the firm's CLI runs verbatim.</p>
+      <div class="steplist">
+        <div class="step"><span class="n">1</span><div><h3>Classify the track</h3><p>Eight tracks. The track selects the review council and the government adversary your work will be tested against.</p></div></div>
+        <div class="step"><span class="n">2</span><div><h3>Capture the charter</h3><p>Parties, jurisdiction, goal, facts, documents on hand. Hard dates are docketed the moment they surface.</p></div></div>
+        <div class="step"><span class="n">3</span><div><h3>Refine the routing</h3><p>Track-specific fields plus refinements: an insurance denial pulls in coverage counsel, an offering pulls in the securities bench.</p></div></div>
+        <div class="step"><span class="n">4</span><div><h3>Get the package</h3><p>Division, seats, docket list, and the runnable intake script. Submit it to the firm or run it yourself.</p></div></div>
+      </div>
+    </div>
+    <div>
+      <div class="pkg" role="figure" tabindex="0" aria-label="Example intake package"><span class="c"># the package the interview generates</span>
+bin/glaw matter new <span class="k">'Smith v. Jones, nonpayment'</span>
+bin/glaw-intake set workflow_track <span class="k">litigation</span>
+bin/glaw-intake set parties <span class="k">'Smith LLC; Jones Corp'</span>
+bin/glaw-intake set jurisdiction <span class="k">'Florida; federal'</span>
+bin/glaw-intake set goal <span class="k">'judgment and collection'</span>
+bin/glaw docket add <span class="k">2026-09-01</span> <span class="k">'SOL: breach claim'</span>
+<span class="c"># conflicts gate, then a named reviewer signs</span>
+bin/glaw-intake complete --by <span class="k">'reviewing attorney'</span>
+bin/glaw stage strategy</div>
+    </div>
+  </div>
+</section>
 
-<footer>GLAW Intake · pipeline stage 1 · conflicts &amp; engagement are cleared by /glaw-ethics-conflicts before any substantive work.</footer>
+<section id="departments">
+  <div class="wrap">
+    <h2>Fourteen divisions. No gaps.</h2>
+    <p class="sectionlede">Every domain maps to a seat in the firm roster, over 180 specialist seats in total. The interview routes you to the owning division; the atlas shows each division's full intake flow.</p>
+    <div class="depts">
+      <a class="dept wide tint" href="/atlas"><b>Corporate &amp; Transactional</b><span>Entity architecture, governance, contracts, IP, employment, real estate</span></a>
+      <a class="dept" href="/atlas"><b>Securities, Funds &amp; Capital Markets</b><span>Fund formation, Reg D, SEC filings</span></a>
+      <a class="dept" href="/atlas"><b>Tax &amp; IRS</b><span>Planning, controversy, Tax Court</span></a>
+      <a class="dept" href="/atlas"><b>Accounting &amp; Finance</b><span>Books of record, close, audit</span></a>
+      <a class="dept" href="/atlas"><b>Litigation &amp; Dispute Resolution</b><span>Trial, recovery, appeals, coverage</span></a>
+      <a class="dept tintg" href="/atlas"><b>Investigations &amp; White-Collar</b><span>Fraud casework, follow the money</span></a>
+      <a class="dept" href="/atlas"><b>Intelligence Super-Structure</b><span>Four bureaus, one fusion command</span></a>
+      <a class="dept" href="/atlas"><b>SEC Enforcement</b><span>Market abuse, insider, Wells</span></a>
+      <a class="dept wide" href="/atlas"><b>Regulatory, Licensing &amp; Compliance</b><span>AML and sanctions, licensing and permits, customs, privacy</span></a>
+      <a class="dept" href="/atlas"><b>Private Client &amp; Cross-Border</b><span>Trusts, asset protection, immigration</span></a>
+      <a class="dept" href="/atlas"><b>Family &amp; Domestic Relations</b><span>Divorce, custody, support</span></a>
+      <a class="dept" href="/atlas"><b>Public Law &amp; Governance</b><span>Constitutional, legislative, agency</span></a>
+      <a class="dept" href="/atlas"><b>Litigation Support</b><span>Research, timelines, forensics</span></a>
+      <a class="dept" href="/atlas"><b>Legal Writing &amp; Production</b><span>House standard, every deliverable</span></a>
+    </div>
+    <p class="deptfoot">Each tile opens the workflow atlas: the division's capture list, machine fields, receiving seats, and what gets docketed on day one.</p>
+  </div>
+</section>
+
+<section id="gates" class="gates">
+  <div class="wrap gatesin">
+    <div>
+      <span class="stamp">Hard gates</span>
+      <h2>Nothing files on trust alone.</h2>
+      <p class="sectionlede">Nine gates stand between intake and a filed document. They are enforced in code: the pipeline refuses to advance until each gate logs its clearance event.</p>
+    </div>
+    <div class="gatelist">
+      <div class="gate"><span class="m">01</span><div><b>Structured intake complete</b><span>every required field, a named reviewer, no placeholders</span></div></div>
+      <div class="gate"><span class="m">02</span><div><b>Conflicts cleared</b><span>engagement letter drafted, ethics check logged before any substantive work</span></div></div>
+      <div class="gate"><span class="m">03</span><div><b>Citations verified</b><span>every authority checked by legal research; unverifiable positions do not file</span></div></div>
+      <div class="gate"><span class="m">04</span><div><b>Adversarial survival</b><span>the firm's own RED team attacks the position; only survivors advance</span></div></div>
+      <div class="gate"><span class="m">05</span><div><b>Red flags resolved</b><span>open flags route back to the owning department until cleared or carried explicitly</span></div></div>
+      <div class="gate"><span class="m">06</span><div><b>Final packet verified</b><span>rebuilt against current matter files, hash-recorded</span></div></div>
+      <div class="gate"><span class="m">07</span><div><b>Chief approval</b><span>the Council logs the file-readiness decision with score and conditions</span></div></div>
+      <div class="gate"><span class="m">08</span><div><b>UPL disclaimer</b><span>on every external deliverable, without exception</span></div></div>
+      <div class="gate"><span class="m">09</span><div><b>Docket complete</b><span>every deadline calendared, or no-deadlines recorded with a rationale</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="api">
+  <div class="wrap api">
+    <div>
+      <h2>Built for the firm's machinery</h2>
+      <p class="sectionlede">Every submission is stored and retrievable. The generated package runs verbatim on the GLAW CLI, so a matter opened here is a matter the firm can work immediately.</p>
+    </div>
+    <div>
+      <div class="endpoint"><span class="verb">POST</span><div><code>/api/intake</code><span>store a routed submission; returns its intake id</span></div></div>
+      <div class="endpoint"><span class="verb">GET</span><div><code>/api/intake/:id</code><span>retrieve one submission as JSON</span></div></div>
+      <div class="endpoint"><span class="verb">GET</span><div><code>/api/intakes</code><span>admin listing, bearer-token gated</span></div></div>
+      <div class="endpoint"><span class="verb">GET</span><div><code>/atlas</code><span>the full intake workflow atlas, every division</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="final">
+  <div class="wrap finalin">
+    <h2>Route your matter now.</h2>
+    <p>Four screens, no account, and the package is yours whether you submit it or run it yourself.</p>
+    <a class="cta" href="/interview">Start intake</a>
+  </div>
 </div>
 
-<script>
-"use strict";
-
-const TRACKS = {
-  "litigation": {
-    name:"Litigation (civil)", desc:"Assert or defend claims → pleadings and a trial path.",
-    division:"Litigation & Dispute Resolution", adversary:"Opposing counsel",
-    seats:["elite-corporate-counsel","federal-trial-counsel","recover-payment","fl-quantum-meruit","appellate","receivables-assignment"],
-    docket:["Statutes of limitation (docketed first)","Lien deadlines (Ch. 713)","CRN windows","Appeal clocks"],
-    fields:[
-      {k:"track_specific.forum",label:"Forum / venue",ph:"e.g. S.D. Fla.; Broward Circuit"},
-      {k:"track_specific.claims_defenses",label:"Claims / defenses in play",ph:"breach; quantum meruit; FDUTPA"}],
-    refine:[
-      {label:"Insurance claim denial / bad faith", seats:["insurance-coverage"]},
-      {label:"Debt-collection defense (FDCPA/FCRA/TCPA)", seats:["consumer-protection"]},
-      {label:"Family / divorce / custody / support", division:"Family & Domestic Relations", seats:["family-law"]},
-      {label:"Appeal already on foot", seats:["appellate"]}]
-  },
-  "corp-build": {
-    name:"Corp / fund build", desc:"Form entities, structure tax, paper governance or an offering.",
-    division:"Corporate & Transactional", adversary:"IRS + SEC + creditor red-team",
-    seats:["entity-architect","corporate-counsel","elite-corporate-counsel","commercial-contracts","ip-counsel"],
-    docket:["§83(b) 30-day clock","Closing dates","Board dates","Annual report / BOI"],
-    fields:[
-      {k:"track_specific.entities_to_form",label:"Entities to form / restructure",ph:"DE LLC holdco; FL opco"},
-      {k:"track_specific.formation_states",label:"Formation + operating states",ph:"Delaware; Florida"},
-      {k:"track_specific.cap_table_status",label:"Cap table status",ph:"none yet / draft / final"}],
-    refine:[
-      {label:"Raising outside capital (fund or offering)", division:"Securities, Funds & Capital Markets", seats:["pe-vc-counsel","fund-regulatory-council","institutional-finance"], docket:["Form D 15-day clock","Blue Sky notice filings"]},
-      {label:"Token / digital-securities component", seats:["tokenization-compliance"]},
-      {label:"Regulated activity (MSB/MTL, imports, privacy)", division:"+ Regulatory, Licensing & Compliance", seats:["regulatory-aml","licensing","privacy-data"]},
-      {label:"Estate / asset-protection layer", division:"+ Private Client & Cross-Border", seats:["estate-trusts","asset-protection"]},
-      {label:"Retirement-funded capitalization (ROBS / SDIRA)", seats:["robs-retirement-funding"]}]
-  },
-  "investigation": {
-    name:"Investigation (white-collar)", desc:"Uncover and prove fraud or theft; civil + criminal exposure.",
-    division:"Investigations & White-Collar Crime", adversary:"Defense counsel + DOJ/AUSA lens",
-    seats:["investigations","forensic-case-investigator","financial-forensics","command"],
-    docket:["Criminal + civil SOL","FUFTA §726.110 clocks","Preservation obligations"],
-    fields:[
-      {k:"track_specific.subjects",label:"Subjects and their entities",ph:"names; entities"},
-      {k:"track_specific.suspected_wrongdoing",label:"Suspected wrongdoing (one sentence)",ph:""},
-      {k:"track_specific.client_posture",label:"Client posture",ph:"victim / target / whistleblower"}],
-    refine:[
-      {label:"Securities conduct (10b-5, insider, manipulation)", division:"+ SEC Enforcement & Investigations", seats:["sec-enforcement","sec-investigator","sec-marketabuse","sec-insider"]},
-      {label:"Money-laundering / sanctions angle", seats:["fincen","fincen-aml","fincen-ofac"]},
-      {label:"Deep workup wanted (dossier)", seats:["command → bureau/fincen/intel/sec cells"]}]
-  },
-  "accounting-tax": {
-    name:"Accounting / bookkeeping", desc:"Rebuild or keep the books; audit-ready output.",
-    division:"Accounting & Finance", adversary:"Forensic auditor + IRS Revenue Agent",
-    seats:["accounting","bookkeeping","ledger","controller","cfo","audit"],
-    docket:["Filing deadlines per form","Period-close calendar"],
-    fields:[
-      {k:"track_specific.bank_statement_sources",label:"Bank statement sources",ph:"files, folders, or Sheets URLs"},
-      {k:"track_specific.tax_years",label:"Tax years in scope",ph:"2023; 2024; 2025"},
-      {k:"track_specific.entity_tax_type",label:"Entity tax type",ph:"C-corp / S-corp / partnership / individual"},
-      {k:"track_specific.books_status",label:"Books status",ph:"unknown / reconstructed / closed"},
-      {k:"track_specific.irs_forms_needed",label:"IRS forms needed",ph:"1120; 941; 1099"}],
-    refine:[
-      {label:"Full forensic reconstruction from raw statements", seats:["forensic-reconstruction","reconstruct"]},
-      {label:"Ongoing close + reporting", seats:["close","dashboard","narrative"]}]
-  },
-  "tax": {
-    name:"Tax compliance / controversy", desc:"Filing, planning, exam, or Tax Court — no full reconstruction.",
-    division:"Tax & IRS", adversary:"IRS / state / penalty profile",
-    seats:["tax-legal-intake","tax-strategy","tax-compliance","tax-relief"],
-    docket:["SOL clocks","90-day Tax Court petition date","Notice response dates","Filing due dates"],
-    fields:[
-      {k:"track_specific.tax_years",label:"Tax years in scope",ph:"2022; 2023"},
-      {k:"track_specific.taxpayer_type",label:"Taxpayer type",ph:"C-corp / S-corp / partnership / individual / exempt-org"},
-      {k:"track_specific.tax_forms_needed",label:"Forms needed",ph:"1120; 1040; 990; 706; 709"},
-      {k:"track_specific.source_records",label:"Source records on hand",ph:"returns; notices; transcripts; K-1s"},
-      {k:"track_specific.positions_or_issues",label:"Positions / issues",ph:"credits; penalties; nexus; elections"},
-      {k:"track_specific.filing_or_exam_deadlines",label:"Filing / exam deadlines",ph:"notice response dates; SOL"}],
-    refine:[
-      {label:"Back taxes / non-filer / collections", seats:["back-taxes"]},
-      {label:"Active IRS exam / audit", seats:["irs-audit"]},
-      {label:"90-day letter → Tax Court", seats:["tax-court"]},
-      {label:"International (GILTI / FBAR / 5471)", seats:["international-tax"]},
-      {label:"Exempt org / foundation (990, 1023)", seats:["exempt-org"]},
-      {label:"Estate & gift returns (706 / 709)", seats:["estate-gift-returns"]}]
-  },
-  "contract-review": {
-    name:"Contract review", desc:"Inbound paper → CUAD 41-category review, scorecard, redline.",
-    division:"Corporate & Transactional", adversary:"Counterparty's counsel",
-    seats:["contract-review","commercial-contracts","elite-corporate-counsel"],
-    docket:["Signature / response deadline","Renewal & termination windows"],
-    fields:[
-      {k:"track_specific.contract_type",label:"Contract type",ph:"MSA / SaaS / NDA / supply / lease"},
-      {k:"track_specific.counterparty",label:"Counterparty",ph:""},
-      {k:"track_specific.our_side",label:"Our side of the paper",ph:"customer / vendor / licensor"}],
-    refine:[
-      {label:"Fast NDA triage only", seats:["triage-nda (fast lane)"]}]
-  },
-  "qualified-plan": {
-    name:"Qualified plan audit", desc:"401(k)/DB/PS plan vs the 21 §401(a) requirements.",
-    division:"Tax & IRS (Qualified Plan Council)", adversary:"IRS-EP / DOL-EBSA",
-    seats:["qualified-plan (6-seat council via qp_intake.py)"],
-    docket:["Restatement deadlines","5500 due dates","EPCRS correction windows"],
-    fields:[
-      {k:"track_specific.plan_type",label:"Plan type",ph:"401k / db / profit-sharing / 403b / sep / simple"},
-      {k:"track_specific.sponsor",label:"Plan sponsor",ph:""},
-      {k:"track_specific.plan_year_end",label:"Plan year end (MM-DD)",ph:"12-31"},
-      {k:"track_specific.participants",label:"Participant count",ph:""},
-      {k:"track_specific.last_restatement",label:"Last restatement (YYYY-MM-DD)",ph:""}],
-    refine:[]
-  },
-  "hybrid": {
-    name:"Both / hybrid", desc:"e.g. form a holdco AND pursue a claim through it — tracks sequenced.",
-    division:"Managing Partner sequences the tracks", adversary:"Per component track",
-    seats:["glaw (Managing Partner)"],
-    docket:["Union of each component track's clocks"],
-    fields:[{k:"track_specific.components",label:"Component tracks + order",ph:"1) corp-build holdco 2) litigation via holdco"}],
-    refine:[]
-  }
-};
-
-const CHARTER = [
-  {k:"matter_name",label:"Matter name",req:true,ph:"Smith v. Jones — nonpayment",type:"text"},
-  {k:"client_names",label:"Client(s)",req:true,ph:"Client A; Client B",type:"text"},
-  {k:"parties",label:"All parties & related entities",req:true,ph:"clients; adverse parties; affiliates; control persons",type:"area"},
-  {k:"jurisdiction",label:"Jurisdiction(s)",req:true,ph:"Delaware; Florida; federal",type:"text"},
-  {k:"goal",label:"Goal — what success looks like",req:true,ph:"entity stood up / judgment / settlement / offering closed",type:"area"},
-  {k:"facts_timeline",label:"Key facts & timeline (dated events)",req:false,ph:"2026-01-01 event…",type:"area"},
-  {k:"source_documents",label:"Documents on hand",req:false,ph:"contracts; bank records; prior filings; returns",type:"area"},
-  {k:"open_questions",label:"Open questions / known gaps",req:false,ph:"missing statement; confirm ownership",type:"area"}
-];
-
-let step = 0;
-const state = { track:null, charter:{}, extra:{}, refine:[], deadlines:[{date:"",desc:""}] };
-const $ = (s)=>document.querySelector(s);
-
-function dots(){
-  const names=["Track","Charter","Specifics","Routing"];
-  $("#stepdots").innerHTML = names.map((n,i)=>
-    `<span class="stepdot ${i===step?"on":i<step?"done":""}">${i+1} · ${n}</span>`).join("");
-}
-
-function render(){
-  dots();
-  if(step===0) renderTrack();
-  else if(step===1) renderCharter();
-  else if(step===2) renderSpecifics();
-  else renderResult();
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-
-function renderTrack(){
-  $("#view").innerHTML = `<div class="panel">
-    <h2>What kind of matter is this?</h2>
-    <p class="hint">This sets the track — which selects the Council profile and the government adversarial lens the matter will face downstream.</p>
-    <div class="tracks">${Object.entries(TRACKS).map(([id,t])=>`
-      <button type="button" class="trackbtn ${state.track===id?"sel":""}" data-id="${id}">
-        <code>${id}</code><b>${t.name}</b><span>${t.desc}</span>
-      </button>`).join("")}
+<footer>
+  <div class="wrap">
+    <div class="upl"><b>Not legal advice.</b> GLAW produces attorney work-product drafts for a licensed attorney to review, sign, and file. Using this site does not create an attorney-client relationship. Do not submit privileged or confidential information through this public form.</div>
+    <div class="row">
+      <span>GLAW · Virtual Corporate Law Firm</span>
+      <span><a href="/interview">Intake</a> · <a href="/atlas">Atlas</a> · <a href="#gates">Gates</a></span>
     </div>
-    <div class="btnrow"><span></span>
-      <button type="button" class="btn primary" id="next" ${state.track?"":"disabled"}>Continue →</button>
-    </div></div>`;
-  document.querySelectorAll(".trackbtn").forEach(b=>b.addEventListener("click",()=>{
-    state.track=b.dataset.id; renderTrack();
-  }));
-  $("#next").addEventListener("click",()=>{step=1;render();});
-}
+  </div>
+</footer>
 
-function fieldHtml(f,val){
-  const v = val||"";
-  return `<label>${f.label}${f.req?' <span class="req">*</span>':""}</label>` +
-    (f.type==="area"
-      ? `<textarea data-k="${f.k}" placeholder="${f.ph||""}">${v}</textarea>`
-      : `<input type="text" data-k="${f.k}" value="${v.replace(/"/g,"&quot;")}" placeholder="${f.ph||""}">`);
-}
-
-function renderCharter(){
-  $("#view").innerHTML = `<div class="panel">
-    <h2>Matter charter</h2>
-    <p class="hint">The universal capture — every track fills these. Hard dates get docketed the moment they surface.</p>
-    ${CHARTER.map(f=>fieldHtml(f,state.charter[f.k])).join("")}
-    <label>Hard dates / deadlines</label>
-    <div id="ddls">${state.deadlines.map((d,i)=>`
-      <div class="ddl-row">
-        <input type="date" data-di="${i}" value="${d.date}">
-        <input type="text" data-dd="${i}" value="${(d.desc||"").replace(/"/g,"&quot;")}" placeholder="what happens on this date">
-        <button type="button" data-del="${i}" aria-label="remove">×</button>
-      </div>`).join("")}</div>
-    <button type="button" class="addbtn" id="addddl">+ add deadline</button>
-    <div class="err" id="err"></div>
-    <div class="btnrow">
-      <button type="button" class="btn" id="back">← Back</button>
-      <button type="button" class="btn primary" id="next">Continue →</button>
-    </div></div>`;
-  bindCharter();
-}
-
-function bindCharter(){
-  document.querySelectorAll("[data-k]").forEach(el=>el.addEventListener("input",()=>{state.charter[el.dataset.k]=el.value;}));
-  document.querySelectorAll("[data-di]").forEach(el=>el.addEventListener("input",()=>{state.deadlines[+el.dataset.di].date=el.value;}));
-  document.querySelectorAll("[data-dd]").forEach(el=>el.addEventListener("input",()=>{state.deadlines[+el.dataset.dd].desc=el.value;}));
-  document.querySelectorAll("[data-del]").forEach(el=>el.addEventListener("click",()=>{state.deadlines.splice(+el.dataset.del,1); if(!state.deadlines.length)state.deadlines.push({date:"",desc:""}); renderCharter();}));
-  $("#addddl").addEventListener("click",()=>{state.deadlines.push({date:"",desc:""}); renderCharter();});
-  $("#back").addEventListener("click",()=>{step=0;render();});
-  $("#next").addEventListener("click",()=>{
-    const missing = CHARTER.filter(f=>f.req && !(state.charter[f.k]||"").trim());
-    if(missing.length){ $("#err").textContent="Required: "+missing.map(f=>f.label).join(" · "); return; }
-    step=2;render();
-  });
-}
-
-function renderSpecifics(){
-  const t = TRACKS[state.track];
-  $("#view").innerHTML = `<div class="panel">
-    <h2>${t.name} — specifics</h2>
-    <p class="hint">Track-specific fields (they map 1:1 to <code>bin/glaw-intake set track_specific.*</code>) and routing refinements.</p>
-    ${t.fields.map(f=>fieldHtml({...f,type:"text"},state.extra[f.k])).join("")||'<p class="hint">No extra fields for this track.</p>'}
-    ${t.refine.length?`<label>Routing refinements</label><div class="refine">${t.refine.map((r,i)=>`
-      <label><input type="checkbox" data-ri="${i}" ${state.refine.includes(i)?"checked":""}> ${r.label}</label>`).join("")}</div>`:""}
-    <div class="btnrow">
-      <button type="button" class="btn" id="back">← Back</button>
-      <button type="button" class="btn primary" id="next">Route the matter →</button>
-    </div></div>`;
-  document.querySelectorAll("[data-k]").forEach(el=>el.addEventListener("input",()=>{state.extra[el.dataset.k]=el.value;}));
-  document.querySelectorAll("[data-ri]").forEach(el=>el.addEventListener("change",()=>{
-    const i=+el.dataset.ri;
-    state.refine = el.checked ? [...state.refine,i] : state.refine.filter(x=>x!==i);
-  }));
-  $("#back").addEventListener("click",()=>{step=1;render();});
-  $("#next").addEventListener("click",()=>{step=3;render();});
-}
-
-function routing(){
-  const t = TRACKS[state.track];
-  const divisions=[t.division], seats=[...t.seats], docket=[...t.docket];
-  state.refine.forEach(i=>{const r=t.refine[i]; if(!r)return;
-    if(r.division) divisions.push(r.division);
-    if(r.seats) seats.push(...r.seats);
-    if(r.docket) docket.push(...r.docket);
-  });
-  return {divisions:[...new Set(divisions)], seats:[...new Set(seats)], docket:[...new Set(docket)], adversary:t.adversary};
-}
-
-const shq = (s)=>"'"+String(s||"").replace(/'/g,"'\\''")+"'";
-
-function buildScript(r){
-  const c=state.charter, L=[];
-  L.push(`# GLAW intake package — generated by the public routing interview`);
-  L.push(`bin/glaw matter new ${shq(c.matter_name)}`);
-  L.push(`bin/glaw-intake set workflow_track ${state.track}`);
-  const map={client_names:"client_names",parties:"parties",jurisdiction:"jurisdiction",goal:"goal",
-    facts_timeline:"facts_timeline",source_documents:"source_documents",open_questions:"open_questions"};
-  Object.entries(map).forEach(([k,f])=>{ if((c[k]||"").trim()) L.push(`bin/glaw-intake set ${f} ${shq(c[k].trim())}`); });
-  L.push(`bin/glaw-intake set conflicts_parties ${shq(c.parties||"")}`);
-  L.push(`bin/glaw-intake set authorized_scope 'review/analyze/draft only; no filing without human approval'`);
-  Object.entries(state.extra).forEach(([k,v])=>{ if((v||"").trim()) L.push(`bin/glaw-intake set ${k} ${shq(v.trim())}`); });
-  const ddls=state.deadlines.filter(d=>d.date&&d.desc.trim());
-  if(ddls.length){ L.push(`# hard dates → docket now`);
-    ddls.forEach(d=>L.push(`bin/glaw docket add --owner "intake docket clerk" --source "SRC-0001 public intake form" ${d.date} ${shq(d.desc.trim())}`));
-    L.push(`bin/glaw-intake set deadlines ${shq(ddls.map(d=>d.date+" "+d.desc.trim()).join("; "))}`);
-  }
-  L.push(`# review, then sign with a NAMED reviewer and clear conflicts:`);
-  L.push(`bin/glaw-intake status`);
-  L.push(`# /glaw-ethics-conflicts → bin/glaw-ethics complete`);
-  L.push(`bin/glaw-intake complete --by '<named intake reviewer>'`);
-  L.push(`bin/glaw stage strategy && bin/glaw timeline-log intake_done`);
-  return L.join("\n");
-}
-
-function renderResult(){
-  const r = routing(), t = TRACKS[state.track], script = buildScript(r);
-  $("#view").innerHTML = `<div class="panel">
-    <div class="route-head">
-      <b>Routed: ${r.divisions.join(" + ")}</b>
-      <div class="adv">Track <code>${state.track}</code> · downstream adversarial lens: ${r.adversary}</div>
-    </div>
-    <div class="lbl">Receiving seats</div>
-    <div class="seats">${r.seats.map(s=>`<span>${s}</span>`).join("")}</div>
-    <div class="lbl">Docket immediately</div>
-    <div class="docket">${r.docket.join(" · ")}</div>
-    <div class="lbl">Intake package (runs on the firm's GLAW CLI)</div>
-    <pre class="out" id="script">${script.replace(/&/g,"&amp;").replace(/</g,"&lt;")}</pre>
-    <div class="copyrow">
-      <button type="button" class="copybtn" id="copy">Copy script</button>
-      <button type="button" class="copybtn" id="dl">Download intake.sh</button>
-    </div>
-    <div class="btnrow">
-      <button type="button" class="btn" id="back">← Back</button>
-      <button type="button" class="btn primary" id="submit">Submit intake to the firm</button>
-    </div>
-    <div id="subresult"></div>
-  </div>`;
-  $("#back").addEventListener("click",()=>{step=2;render();});
-  $("#copy").addEventListener("click",async()=>{await navigator.clipboard.writeText(script); $("#copy").textContent="Copied ✓";});
-  $("#dl").addEventListener("click",()=>{
-    const a=document.createElement("a");
-    a.href=URL.createObjectURL(new Blob([script],{type:"text/x-shellscript"}));
-    a.download="intake.sh"; a.click();
-  });
-  $("#submit").addEventListener("click",async()=>{
-    $("#submit").disabled=true; $("#submit").textContent="Submitting…";
-    try{
-      const res=await fetch("/api/intake",{method:"POST",headers:{"content-type":"application/json"},
-        body:JSON.stringify({track:state.track, goal:state.charter.goal, matter_name:state.charter.matter_name,
-          charter:state.charter, track_specific:state.extra, deadlines:state.deadlines.filter(d=>d.date),
-          routing:r, script})});
-      const out=await res.json();
-      if(!res.ok) throw new Error(out.error||res.status);
-      $("#subresult").innerHTML=`<div class="submitted"><b>Intake #${out.id} recorded ${out.ts}.</b><br>
-        The matter now enters the firm pipeline: conflicts &amp; engagement gate first (/glaw-ethics-conflicts) — no substantive work before it clears.</div>`;
-      $("#submit").textContent="Submitted ✓";
-    }catch(e){
-      $("#subresult").innerHTML=`<div class="err">Submission failed: ${String(e.message)}. The script above still works — run it directly on the GLAW CLI.</div>`;
-      $("#submit").disabled=false; $("#submit").textContent="Submit intake to the firm";
-    }
-  });
-}
-
-$("#restart").addEventListener("click",(e)=>{e.preventDefault();
-  step=0; state.track=null; state.charter={}; state.extra={}; state.refine=[]; state.deadlines=[{date:"",desc:""}];
-  render();
-});
-
-render();
-</script>
 </body>
 </html>

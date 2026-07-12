@@ -1,0 +1,490 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%E2%9A%96%3C/text%3E%3C/svg%3E">
+<title>GLAW · Intake</title>
+<link rel="stylesheet" href="/tokens.css">
+<style>
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:15px;line-height:1.55;
+    -webkit-font-smoothing:antialiased}
+  code,.mono,textarea.mono{font-family:"SF Mono",Menlo,Consolas,monospace}
+  .wrap{max-width:880px;margin:0 auto;padding:0 24px 96px}
+
+  header{border-bottom:3px double var(--hairline);padding:40px 0 24px;text-align:center}
+  .firm{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+  h1{margin:10px 0 6px;font-size:clamp(24px,4vw,36px);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+  .sub{max-width:60ch;margin:0 auto;color:var(--muted);font-size:14px}
+  .navrow{display:flex;justify-content:center;gap:10px;margin-top:16px}
+  .navrow a,.navrow button{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--directive);
+    text-decoration:none;border:1px solid var(--directive);border-radius:4px;padding:5px 12px;
+    background:none;font-family:inherit;cursor:pointer}
+  .navrow a:hover,.navrow button:hover{background:var(--directive-soft)}
+
+  .upl{border-left:4px solid var(--gate);background:var(--gate-soft);padding:12px 16px;
+    border-radius:0 6px 6px 0;margin:22px 0;font-size:12.5px;color:var(--ink)}
+  .upl b{color:var(--gate)}
+
+  .steps{display:flex;gap:8px;margin:26px 0 18px;flex-wrap:wrap;list-style:none;padding:0}
+  .stepdot{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);
+    border:1px solid var(--hairline);border-radius:99px;padding:4px 12px;background:var(--card)}
+  .stepdot.on{border-color:var(--directive);color:var(--directive);font-weight:700}
+  .stepdot.done{border-color:var(--clear);color:var(--clear)}
+
+  .panel{background:var(--card);border:1px solid var(--hairline);border-radius:6px;
+    box-shadow:var(--shadow);padding:22px 24px}
+  .panel h2{margin:0 0 4px;font-size:19px}
+  .panel .hint{color:var(--muted);font-size:13px;margin:0 0 18px}
+
+  .tracks{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(230px,100%),1fr));gap:10px}
+  .trackbtn{text-align:left;background:var(--paper);border:1px solid var(--hairline);border-radius:6px;
+    padding:12px 14px;cursor:pointer;font:inherit;color:var(--ink)}
+  .trackbtn:hover{border-color:var(--directive)}
+  .trackbtn.sel{border-color:var(--directive);background:var(--directive-soft)}
+  .trackbtn code{font-size:11px;color:var(--directive)}
+  .trackbtn b{display:block;font-size:14px;margin:2px 0}
+  .trackbtn span{font-size:12px;color:var(--muted)}
+
+  label,.grouplbl{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--muted);margin:16px 0 5px}
+  label .req{color:var(--gate)}
+  input[type=text],input[type=date],textarea,select{
+    width:100%;background:var(--paper);border:1px solid var(--ctl-border);border-radius:4px;
+    padding:9px 11px;font:inherit;font-size:14px;color:var(--ink)}
+  input:focus,textarea:focus,select:focus{border-color:var(--directive)}
+  textarea{min-height:64px;resize:vertical}
+
+  .ddl-row{display:grid;grid-template-columns:160px 1fr 36px;gap:8px;margin-top:6px}
+  @media(max-width:480px){
+    .ddl-row{grid-template-columns:1fr 36px}
+    .ddl-row input[type=date]{grid-column:1/-1}
+  }
+  .ddl-row button{border:1px solid var(--hairline);background:var(--paper);border-radius:4px;
+    cursor:pointer;color:var(--gate);font-size:16px}
+  .addbtn{margin-top:8px;border:1px dashed var(--hairline);background:none;border-radius:4px;
+    padding:6px 14px;font:inherit;font-size:13px;color:var(--directive);cursor:pointer}
+
+  .refine label{margin:0;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:400;
+    letter-spacing:0;text-transform:none;color:var(--ink);padding:7px 0;border-bottom:1px dashed var(--hairline)}
+  .refine input{width:auto}
+
+  .btnrow{display:flex;justify-content:space-between;gap:12px;margin-top:26px}
+  .btn{font:inherit;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+    border-radius:4px;padding:10px 22px;cursor:pointer;border:1px solid var(--hairline);
+    background:var(--card);color:var(--muted)}
+  .btn.primary{background:var(--directive);border-color:var(--directive);color:var(--directive-ink)}
+  .btn.primary:hover:not(:disabled){filter:brightness(1.08)}
+  .btn:active:not(:disabled){transform:translateY(1px)}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+
+  /* result */
+  .route-head{border-left:4px solid var(--clear);background:var(--clear-soft);padding:14px 18px;
+    border-radius:0 6px 6px 0;margin-bottom:18px}
+  .route-head b{font-size:17px}
+  .route-head .adv{font-size:12.5px;color:var(--muted);margin-top:2px}
+  .lbl{font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:16px 0 6px}
+  .seats{display:flex;flex-wrap:wrap;gap:5px}
+  .seats span{background:var(--chipbg);border-radius:3px;padding:2px 8px;font-size:12px;
+    font-family:"SF Mono",Menlo,Consolas,monospace}
+  .docket{border-left:3px solid var(--gate);padding-left:10px;font-size:13px;color:var(--muted)}
+  pre.out{background:var(--mono-bg);border:1px solid var(--hairline);border-radius:6px;
+    padding:12px 14px;font-size:12px;overflow-x:auto;max-height:340px}
+  .copyrow{display:flex;gap:8px;align-items:center;margin-top:6px}
+  .copybtn{font:inherit;font-size:12px;border:1px solid var(--hairline);background:var(--paper);
+    border-radius:4px;padding:5px 12px;cursor:pointer;color:var(--directive)}
+  .submitted{border:1px solid var(--clear);background:var(--clear-soft);border-radius:6px;
+    padding:12px 16px;margin-top:16px;font-size:14px}
+  .err{color:var(--gate);font-size:13px;margin-top:10px}
+  footer{margin-top:56px;border-top:3px double var(--hairline);padding-top:16px;text-align:center;
+    font-size:12px;color:var(--muted)}
+</style>
+</head>
+<body>
+<a class="skip" href="#view">Skip to the form</a>
+<div class="wrap">
+<header>
+  <div class="firm">GLAW · Virtual Corporate Law Firm</div>
+  <h1>Matter Intake</h1>
+  <p class="sub">A routing interview. Answer the questions and the firm classifies your matter, routes it to the owning department and seats, and prepares the structured intake package.</p>
+  <div class="navrow">
+    <a href="/">Home</a>
+    <a href="/atlas">Workflow Atlas</a>
+    <button type="button" id="restart">Restart interview</button>
+  </div>
+</header>
+
+<div class="upl"><b>Not legal advice.</b> GLAW produces attorney work-product drafts for a licensed attorney to review, sign, and file. Submitting this form does not create an attorney-client relationship. Do not submit privileged or confidential information through this public form.</div>
+
+<ol class="steps" id="stepdots" aria-label="Interview progress"></ol>
+<div id="view"></div>
+<div class="vh" id="live" aria-live="polite"></div>
+
+<footer>GLAW Intake · pipeline stage 1 · conflicts &amp; engagement are cleared by /glaw-ethics-conflicts before any substantive work.</footer>
+</div>
+
+<script>
+"use strict";
+
+const TRACKS = {
+  "litigation": {
+    name:"Litigation (civil)", desc:"Assert or defend claims → pleadings and a trial path.",
+    division:"Litigation & Dispute Resolution", adversary:"Opposing counsel",
+    seats:["elite-corporate-counsel","federal-trial-counsel","recover-payment","fl-quantum-meruit","appellate","receivables-assignment"],
+    docket:["Statutes of limitation (docketed first)","Lien deadlines (Ch. 713)","CRN windows","Appeal clocks"],
+    fields:[
+      {k:"track_specific.forum",label:"Forum / venue",ph:"e.g. S.D. Fla.; Broward Circuit"},
+      {k:"track_specific.claims_defenses",label:"Claims / defenses in play",ph:"breach; quantum meruit; FDUTPA"}],
+    refine:[
+      {label:"Insurance claim denial / bad faith", seats:["insurance-coverage"]},
+      {label:"Debt-collection defense (FDCPA/FCRA/TCPA)", seats:["consumer-protection"]},
+      {label:"Family / divorce / custody / support", division:"Family & Domestic Relations", seats:["family-law"]},
+      {label:"Appeal already on foot", seats:["appellate"]}]
+  },
+  "corp-build": {
+    name:"Corp / fund build", desc:"Form entities, structure tax, paper governance or an offering.",
+    division:"Corporate & Transactional", adversary:"IRS + SEC + creditor red-team",
+    seats:["entity-architect","corporate-counsel","elite-corporate-counsel","commercial-contracts","ip-counsel"],
+    docket:["§83(b) 30-day clock","Closing dates","Board dates","Annual report / BOI"],
+    fields:[
+      {k:"track_specific.entities_to_form",label:"Entities to form / restructure",ph:"DE LLC holdco; FL opco"},
+      {k:"track_specific.formation_states",label:"Formation + operating states",ph:"Delaware; Florida"},
+      {k:"track_specific.cap_table_status",label:"Cap table status",ph:"none yet / draft / final"}],
+    refine:[
+      {label:"Raising outside capital (fund or offering)", division:"Securities, Funds & Capital Markets", seats:["pe-vc-counsel","fund-regulatory-council","institutional-finance"], docket:["Form D 15-day clock","Blue Sky notice filings"]},
+      {label:"Token / digital-securities component", seats:["tokenization-compliance"]},
+      {label:"Regulated activity (MSB/MTL, imports, privacy)", division:"+ Regulatory, Licensing & Compliance", seats:["regulatory-aml","licensing","privacy-data"]},
+      {label:"Estate / asset-protection layer", division:"+ Private Client & Cross-Border", seats:["estate-trusts","asset-protection"]},
+      {label:"Retirement-funded capitalization (ROBS / SDIRA)", seats:["robs-retirement-funding"]}]
+  },
+  "investigation": {
+    name:"Investigation (white-collar)", desc:"Uncover and prove fraud or theft; civil + criminal exposure.",
+    division:"Investigations & White-Collar Crime", adversary:"Defense counsel + DOJ/AUSA lens",
+    seats:["investigations","forensic-case-investigator","financial-forensics","command"],
+    docket:["Criminal + civil SOL","FUFTA §726.110 clocks","Preservation obligations"],
+    fields:[
+      {k:"track_specific.subjects",label:"Subjects and their entities",ph:"names; entities"},
+      {k:"track_specific.suspected_wrongdoing",label:"Suspected wrongdoing (one sentence)",ph:""},
+      {k:"track_specific.client_posture",label:"Client posture",ph:"victim / target / whistleblower"}],
+    refine:[
+      {label:"Securities conduct (10b-5, insider, manipulation)", division:"+ SEC Enforcement & Investigations", seats:["sec-enforcement","sec-investigator","sec-marketabuse","sec-insider"]},
+      {label:"Money-laundering / sanctions angle", seats:["fincen","fincen-aml","fincen-ofac"]},
+      {label:"Deep workup wanted (dossier)", seats:["command → bureau/fincen/intel/sec cells"]}]
+  },
+  "accounting-tax": {
+    name:"Accounting / bookkeeping", desc:"Rebuild or keep the books; audit-ready output.",
+    division:"Accounting & Finance", adversary:"Forensic auditor + IRS Revenue Agent",
+    seats:["accounting","bookkeeping","ledger","controller","cfo","audit"],
+    docket:["Filing deadlines per form","Period-close calendar"],
+    fields:[
+      {k:"track_specific.bank_statement_sources",label:"Bank statement sources",ph:"files, folders, or Sheets URLs"},
+      {k:"track_specific.tax_years",label:"Tax years in scope",ph:"2023; 2024; 2025"},
+      {k:"track_specific.entity_tax_type",label:"Entity tax type",ph:"C-corp / S-corp / partnership / individual"},
+      {k:"track_specific.books_status",label:"Books status",ph:"unknown / reconstructed / closed"},
+      {k:"track_specific.irs_forms_needed",label:"IRS forms needed",ph:"1120; 941; 1099"}],
+    refine:[
+      {label:"Full forensic reconstruction from raw statements", seats:["forensic-reconstruction","reconstruct"]},
+      {label:"Ongoing close + reporting", seats:["close","dashboard","narrative"]}]
+  },
+  "tax": {
+    name:"Tax compliance / controversy", desc:"Filing, planning, exam, or Tax Court, no full reconstruction.",
+    division:"Tax & IRS", adversary:"IRS / state / penalty profile",
+    seats:["tax-legal-intake","tax-strategy","tax-compliance","tax-relief"],
+    docket:["SOL clocks","90-day Tax Court petition date","Notice response dates","Filing due dates"],
+    fields:[
+      {k:"track_specific.tax_years",label:"Tax years in scope",ph:"2022; 2023"},
+      {k:"track_specific.taxpayer_type",label:"Taxpayer type",ph:"C-corp / S-corp / partnership / individual / exempt-org"},
+      {k:"track_specific.tax_forms_needed",label:"Forms needed",ph:"1120; 1040; 990; 706; 709"},
+      {k:"track_specific.source_records",label:"Source records on hand",ph:"returns; notices; transcripts; K-1s"},
+      {k:"track_specific.positions_or_issues",label:"Positions / issues",ph:"credits; penalties; nexus; elections"},
+      {k:"track_specific.filing_or_exam_deadlines",label:"Filing / exam deadlines",ph:"notice response dates; SOL"}],
+    refine:[
+      {label:"Back taxes / non-filer / collections", seats:["back-taxes"]},
+      {label:"Active IRS exam / audit", seats:["irs-audit"]},
+      {label:"90-day letter → Tax Court", seats:["tax-court"]},
+      {label:"International (GILTI / FBAR / 5471)", seats:["international-tax"]},
+      {label:"Exempt org / foundation (990, 1023)", seats:["exempt-org"]},
+      {label:"Estate & gift returns (706 / 709)", seats:["estate-gift-returns"]}]
+  },
+  "contract-review": {
+    name:"Contract review", desc:"Inbound paper → CUAD 41-category review, scorecard, redline.",
+    division:"Corporate & Transactional", adversary:"Counterparty's counsel",
+    seats:["contract-review","commercial-contracts","elite-corporate-counsel"],
+    docket:["Signature / response deadline","Renewal & termination windows"],
+    fields:[
+      {k:"track_specific.contract_type",label:"Contract type",ph:"MSA / SaaS / NDA / supply / lease"},
+      {k:"track_specific.counterparty",label:"Counterparty",ph:""},
+      {k:"track_specific.our_side",label:"Our side of the paper",ph:"customer / vendor / licensor"}],
+    refine:[
+      {label:"Fast NDA triage only", seats:["triage-nda (fast lane)"]}]
+  },
+  "qualified-plan": {
+    name:"Qualified plan audit", desc:"401(k)/DB/PS plan vs the 21 §401(a) requirements.",
+    division:"Tax & IRS (Qualified Plan Council)", adversary:"IRS-EP / DOL-EBSA",
+    seats:["qualified-plan (6-seat council via qp_intake.py)"],
+    docket:["Restatement deadlines","5500 due dates","EPCRS correction windows"],
+    fields:[
+      {k:"track_specific.plan_type",label:"Plan type",ph:"401k / db / profit-sharing / 403b / sep / simple"},
+      {k:"track_specific.sponsor",label:"Plan sponsor",ph:""},
+      {k:"track_specific.plan_year_end",label:"Plan year end (MM-DD)",ph:"12-31"},
+      {k:"track_specific.participants",label:"Participant count",ph:""},
+      {k:"track_specific.last_restatement",label:"Last restatement (YYYY-MM-DD)",ph:""}],
+    refine:[]
+  },
+  "hybrid": {
+    name:"Both / hybrid", desc:"e.g. form a holdco AND pursue a claim through it; tracks sequenced.",
+    division:"Managing Partner sequences the tracks", adversary:"Per component track",
+    seats:["glaw (Managing Partner)"],
+    docket:["Union of each component track's clocks"],
+    fields:[{k:"track_specific.components",label:"Component tracks + order",ph:"1) corp-build holdco 2) litigation via holdco"}],
+    refine:[]
+  }
+};
+
+const CHARTER = [
+  {k:"matter_name",label:"Matter name",req:true,ph:"Smith v. Jones, nonpayment",type:"text"},
+  {k:"client_names",label:"Client(s)",req:true,ph:"Client A; Client B",type:"text"},
+  {k:"parties",label:"All parties & related entities",req:true,ph:"clients; adverse parties; affiliates; control persons",type:"area"},
+  {k:"jurisdiction",label:"Jurisdiction(s)",req:true,ph:"Delaware; Florida; federal",type:"text"},
+  {k:"goal",label:"Goal: what success looks like",req:true,ph:"entity stood up / judgment / settlement / offering closed",type:"area"},
+  {k:"facts_timeline",label:"Key facts & timeline (dated events)",req:false,ph:"2026-01-01 event…",type:"area"},
+  {k:"source_documents",label:"Documents on hand",req:false,ph:"contracts; bank records; prior filings; returns",type:"area"},
+  {k:"open_questions",label:"Open questions / known gaps",req:false,ph:"missing statement; confirm ownership",type:"area"}
+];
+
+let step = 0;
+let booted = false;
+const state = { track:null, charter:{}, extra:{}, refine:[], deadlines:[{date:"",desc:""}] };
+const $ = (s)=>document.querySelector(s);
+const esc = (s)=>String(s??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");
+const STEP_NAMES=["Track","Charter","Specifics","Routing"];
+
+function dots(){
+  $("#stepdots").innerHTML = STEP_NAMES.map((n,i)=>
+    `<li class="stepdot ${i===step?"on":i<step?"done":""}" ${i===step?'aria-current="step"':""}>${i<step?"✓ ":""}${i+1} · ${n}</li>`).join("");
+}
+
+function render(){
+  dots();
+  if(step===0) renderTrack();
+  else if(step===1) renderCharter();
+  else if(step===2) renderSpecifics();
+  else renderResult();
+  document.title = `GLAW Intake · Step ${step+1} of 4, ${STEP_NAMES[step]}`;
+  const smooth = matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth";
+  if (booted){
+    window.scrollTo({top:0,behavior:smooth});
+    const h = $("#view h2");
+    if (h){ h.setAttribute("tabindex","-1"); h.focus({preventScroll:true}); }
+    $("#live").textContent = `Step ${step+1} of 4: ${STEP_NAMES[step]}`;
+  }
+  booted = true;
+}
+
+function renderTrack(){
+  $("#view").innerHTML = `<div class="panel">
+    <h2>What kind of matter is this?</h2>
+    <p class="hint">This sets the track, which selects the Council profile and the government adversarial lens the matter will face downstream.</p>
+    <div class="tracks">${Object.entries(TRACKS).map(([id,t])=>`
+      <button type="button" class="trackbtn ${state.track===id?"sel":""}" data-id="${id}" aria-pressed="${state.track===id}">
+        <code>${id}</code><b>${t.name}</b><span>${t.desc}</span>
+      </button>`).join("")}
+    </div>
+    <div class="btnrow"><span></span>
+      <button type="button" class="btn primary" id="next" ${state.track?"":"disabled"}>Continue →</button>
+    </div></div>`;
+  document.querySelectorAll(".trackbtn").forEach(b=>b.addEventListener("click",()=>{
+    state.track=b.dataset.id;
+    document.querySelectorAll(".trackbtn").forEach(x=>{
+      x.classList.toggle("sel", x===b);
+      x.setAttribute("aria-pressed", String(x===b));
+    });
+    $("#next").disabled = false;
+  }));
+  $("#next").addEventListener("click",()=>{step=1;render();});
+}
+
+function fieldHtml(f,val){
+  const v = esc(val||""), id = "f-"+f.k.replace(/\W+/g,"-"), req = f.req?' aria-required="true"':"";
+  return `<label for="${id}">${f.label}${f.req?' <span class="req" aria-hidden="true">*</span>':""}</label>` +
+    (f.type==="area"
+      ? `<textarea id="${id}" data-k="${f.k}"${req} placeholder="${esc(f.ph)}">${v}</textarea>`
+      : `<input type="text" id="${id}" data-k="${f.k}"${req} value="${v}" placeholder="${esc(f.ph)}">`);
+}
+
+function renderCharter(){
+  $("#view").innerHTML = `<div class="panel">
+    <h2>Matter charter</h2>
+    <p class="hint">The universal capture: every track fills these. Hard dates get docketed the moment they surface.</p>
+    ${CHARTER.map(f=>fieldHtml(f,state.charter[f.k])).join("")}
+    <p class="grouplbl">Hard dates / deadlines</p>
+    <div id="ddls">${state.deadlines.map((d,i)=>`
+      <div class="ddl-row">
+        <input type="date" data-di="${i}" value="${esc(d.date)}" aria-label="Deadline ${i+1} date">
+        <input type="text" data-dd="${i}" value="${esc(d.desc)}" placeholder="what happens on this date" aria-label="Deadline ${i+1} description">
+        <button type="button" data-del="${i}" aria-label="Remove deadline ${i+1}">×</button>
+      </div>`).join("")}</div>
+    <button type="button" class="addbtn" id="addddl">+ add deadline</button>
+    <div class="err" id="err" role="alert"></div>
+    <div class="btnrow">
+      <button type="button" class="btn" id="back">← Back</button>
+      <button type="button" class="btn primary" id="next">Continue →</button>
+    </div></div>`;
+  bindCharter();
+}
+
+function bindCharter(){
+  document.querySelectorAll("[data-k]").forEach(el=>el.addEventListener("input",()=>{state.charter[el.dataset.k]=el.value;}));
+  document.querySelectorAll("[data-di]").forEach(el=>el.addEventListener("input",()=>{state.deadlines[+el.dataset.di].date=el.value;}));
+  document.querySelectorAll("[data-dd]").forEach(el=>el.addEventListener("input",()=>{state.deadlines[+el.dataset.dd].desc=el.value;}));
+  document.querySelectorAll("[data-del]").forEach(el=>el.addEventListener("click",()=>{
+    state.deadlines.splice(+el.dataset.del,1);
+    if(!state.deadlines.length)state.deadlines.push({date:"",desc:""});
+    renderCharter();
+    $("#addddl").focus();
+  }));
+  $("#addddl").addEventListener("click",()=>{
+    state.deadlines.push({date:"",desc:""});
+    renderCharter();
+    const rows=document.querySelectorAll("[data-di]");
+    rows[rows.length-1]?.focus();
+  });
+  $("#back").addEventListener("click",()=>{step=0;render();});
+  $("#next").addEventListener("click",()=>{
+    const missing = CHARTER.filter(f=>f.req && !(state.charter[f.k]||"").trim());
+    document.querySelectorAll("[data-k]").forEach(el=>el.removeAttribute("aria-invalid"));
+    if(missing.length){
+      $("#err").textContent="Required: "+missing.map(f=>f.label).join(" · ");
+      missing.forEach(f=>{
+        const el=document.querySelector(`[data-k="${f.k}"]`);
+        if(el){ el.setAttribute("aria-invalid","true"); el.setAttribute("aria-describedby","err"); }
+      });
+      document.querySelector('[aria-invalid="true"]')?.focus();
+      return;
+    }
+    step=2;render();
+  });
+}
+
+function renderSpecifics(){
+  const t = TRACKS[state.track];
+  $("#view").innerHTML = `<div class="panel">
+    <h2>${t.name}: specifics</h2>
+    <p class="hint">Track-specific fields (they map 1:1 to <code>bin/glaw-intake set track_specific.*</code>) and routing refinements.</p>
+    ${t.fields.map(f=>fieldHtml({...f,type:"text"},state.extra[f.k])).join("")||'<p class="hint">No extra fields for this track.</p>'}
+    ${t.refine.length?`<label>Routing refinements</label><div class="refine">${t.refine.map((r,i)=>`
+      <label><input type="checkbox" data-ri="${i}" ${state.refine.includes(i)?"checked":""}> ${r.label}</label>`).join("")}</div>`:""}
+    <div class="btnrow">
+      <button type="button" class="btn" id="back">← Back</button>
+      <button type="button" class="btn primary" id="next">Route the matter →</button>
+    </div></div>`;
+  document.querySelectorAll("[data-k]").forEach(el=>el.addEventListener("input",()=>{state.extra[el.dataset.k]=el.value;}));
+  document.querySelectorAll("[data-ri]").forEach(el=>el.addEventListener("change",()=>{
+    const i=+el.dataset.ri;
+    state.refine = el.checked ? [...state.refine,i] : state.refine.filter(x=>x!==i);
+  }));
+  $("#back").addEventListener("click",()=>{step=1;render();});
+  $("#next").addEventListener("click",()=>{step=3;render();});
+}
+
+function routing(){
+  const t = TRACKS[state.track];
+  const divisions=[t.division], seats=[...t.seats], docket=[...t.docket];
+  state.refine.forEach(i=>{const r=t.refine[i]; if(!r)return;
+    if(r.division) divisions.push(r.division);
+    if(r.seats) seats.push(...r.seats);
+    if(r.docket) docket.push(...r.docket);
+  });
+  return {divisions:[...new Set(divisions)], seats:[...new Set(seats)], docket:[...new Set(docket)], adversary:t.adversary};
+}
+
+const shq = (s)=>"'"+String(s||"").replace(/'/g,"'\\''")+"'";
+
+function buildScript(r){
+  const c=state.charter, L=[];
+  L.push(`# GLAW intake package, generated by the public routing interview`);
+  L.push(`bin/glaw matter new ${shq(c.matter_name)}`);
+  L.push(`bin/glaw-intake set workflow_track ${state.track}`);
+  const map={client_names:"client_names",parties:"parties",jurisdiction:"jurisdiction",goal:"goal",
+    facts_timeline:"facts_timeline",source_documents:"source_documents",open_questions:"open_questions"};
+  Object.entries(map).forEach(([k,f])=>{ if((c[k]||"").trim()) L.push(`bin/glaw-intake set ${f} ${shq(c[k].trim())}`); });
+  L.push(`bin/glaw-intake set conflicts_parties ${shq(c.parties||"")}`);
+  L.push(`bin/glaw-intake set authorized_scope 'review/analyze/draft only; no filing without human approval'`);
+  Object.entries(state.extra).forEach(([k,v])=>{ if((v||"").trim()) L.push(`bin/glaw-intake set ${k} ${shq(v.trim())}`); });
+  const ddls=state.deadlines.filter(d=>d.date&&d.desc.trim());
+  if(ddls.length){ L.push(`# hard dates → docket now`);
+    ddls.forEach(d=>L.push(`bin/glaw docket add --owner "intake docket clerk" --source "SRC-0001 public intake form" ${d.date} ${shq(d.desc.trim())}`));
+    L.push(`bin/glaw-intake set deadlines ${shq(ddls.map(d=>d.date+" "+d.desc.trim()).join("; "))}`);
+  }
+  L.push(`# review, then sign with a NAMED reviewer and clear conflicts:`);
+  L.push(`bin/glaw-intake status`);
+  L.push(`# /glaw-ethics-conflicts → bin/glaw-ethics complete`);
+  L.push(`bin/glaw-intake complete --by '<named intake reviewer>'`);
+  L.push(`bin/glaw stage strategy && bin/glaw timeline-log intake_done`);
+  return L.join("\n");
+}
+
+function renderResult(){
+  const r = routing(), t = TRACKS[state.track], script = buildScript(r);
+  $("#view").innerHTML = `<div class="panel">
+    <div class="route-head">
+      <b>Routed: ${r.divisions.join(" + ")}</b>
+      <div class="adv">Track <code>${state.track}</code> · downstream adversarial lens: ${r.adversary}</div>
+    </div>
+    <div class="lbl">Receiving seats</div>
+    <div class="seats">${r.seats.map(s=>`<span>${s}</span>`).join("")}</div>
+    <div class="lbl">Docket immediately</div>
+    <div class="docket">${r.docket.join(" · ")}</div>
+    <div class="lbl">Intake package (runs on the firm's GLAW CLI)</div>
+    <pre class="out" id="script">${script.replace(/&/g,"&amp;").replace(/</g,"&lt;")}</pre>
+    <div class="copyrow">
+      <button type="button" class="copybtn" id="copy" aria-live="polite">Copy script</button>
+      <button type="button" class="copybtn" id="dl">Download intake.sh</button>
+    </div>
+    <div class="btnrow">
+      <button type="button" class="btn" id="back">← Back</button>
+      <button type="button" class="btn primary" id="submit">Submit intake to the firm</button>
+    </div>
+    <div id="subresult" aria-live="polite"></div>
+  </div>`;
+  $("#back").addEventListener("click",()=>{step=2;render();});
+  $("#copy").addEventListener("click",async()=>{await navigator.clipboard.writeText(script); $("#copy").textContent="Copied ✓";});
+  $("#dl").addEventListener("click",()=>{
+    const a=document.createElement("a");
+    a.href=URL.createObjectURL(new Blob([script],{type:"text/x-shellscript"}));
+    a.download="intake.sh"; a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+  });
+  $("#submit").addEventListener("click",async()=>{
+    $("#submit").disabled=true; $("#submit").textContent="Submitting…";
+    try{
+      const res=await fetch("/api/intake",{method:"POST",headers:{"content-type":"application/json"},
+        body:JSON.stringify({track:state.track, goal:state.charter.goal, matter_name:state.charter.matter_name,
+          charter:state.charter, track_specific:state.extra, deadlines:state.deadlines.filter(d=>d.date),
+          routing:r, script})});
+      const out=await res.json();
+      if(!res.ok) throw new Error(out.error||res.status);
+      $("#subresult").innerHTML=`<div class="submitted"><b>Intake #${esc(out.id)} recorded ${esc(out.ts)}.</b><br>
+        The matter now enters the firm pipeline: the conflicts and engagement gate runs first (/glaw-ethics-conflicts); no substantive work before it clears.</div>`;
+      $("#submit").textContent="Submitted ✓";
+    }catch(e){
+      $("#subresult").innerHTML=`<div class="err">Submission failed: ${esc(e.message)}. The script above still works; run it directly on the GLAW CLI.</div>`;
+      $("#submit").disabled=false; $("#submit").textContent="Submit intake to the firm";
+    }
+  });
+}
+
+$("#restart").addEventListener("click",(e)=>{e.preventDefault();
+  step=0; state.track=null; state.charter={}; state.extra={}; state.refine=[]; state.deadlines=[{date:"",desc:""}];
+  history.replaceState(null,"",location.pathname);
+  render();
+});
+
+const preTrack = new URLSearchParams(location.search).get("track");
+if (preTrack && TRACKS[preTrack]) { state.track = preTrack; step = 1; }
+render();
+</script>
+</body>
+</html>

@@ -55,6 +55,10 @@
 
   /* ---------- masthead (house style: centered all-caps title) ---------- */
   header{border-bottom:3px double var(--hairline);padding:56px 0 32px;text-align:center}
+  .navrow{display:flex;justify-content:center;gap:10px;margin-top:16px}
+  .navrow a{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--directive);text-decoration:none;border:1px solid var(--directive);border-radius:4px;padding:5px 12px}
+  .navrow a:hover{background:var(--directive-soft)}
+  a:focus-visible{outline:2px solid var(--directive);outline-offset:2px}
   .firm{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
   h1{
     margin:14px 0 10px;font-size:clamp(28px,4.4vw,44px);font-weight:700;
@@ -71,7 +75,7 @@
   .lede{color:var(--muted);max-width:78ch;margin:0 0 26px}
 
   /* ---------- universal spine ---------- */
-  .spine{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
+  .spine{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:14px}
   .step{
     background:var(--card);border:1px solid var(--hairline);border-radius:6px;
     padding:16px 18px 14px;box-shadow:var(--shadow);position:relative;
@@ -106,13 +110,13 @@
   .directive b{color:var(--directive)}
 
   /* ---------- track router ---------- */
-  .tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(220px,100%),1fr));gap:12px}
   .track{
     background:var(--card);border:1px solid var(--hairline);border-radius:6px;
     padding:13px 15px;box-shadow:var(--shadow);
   }
   .track code{font-size:12px;color:var(--directive)}
-  .track h4{margin:4px 0 4px;font-size:14.5px}
+  .track h3{margin:4px 0 4px;font-size:14.5px}
   .track p{margin:0;font-size:12.5px;color:var(--muted)}
 
   /* ---------- departments ---------- */
@@ -159,7 +163,7 @@
   /* ---------- standing rules ---------- */
   .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
   .rule{background:var(--card);border:1px solid var(--hairline);border-radius:6px;padding:14px 16px}
-  .rule h4{margin:0 0 4px;font-size:13.5px}
+  .rule h3{margin:0 0 4px;font-size:13.5px}
   .rule p{margin:0;font-size:12.5px;color:var(--muted)}
   .rule code{font-size:11.5px;color:var(--directive)}
 
@@ -167,10 +171,6 @@
     margin-top:72px;border-top:3px double var(--hairline);padding-top:18px;
     text-align:center;font-size:12px;color:var(--muted);max-width:80ch;
     margin-left:auto;margin-right:auto;
-  }
-  @media (prefers-reduced-motion: no-preference){
-    .dept{transition:border-color .15s ease}
-    .dept:hover{border-color:var(--directive)}
   }
 </style>
 </head>
@@ -180,6 +180,10 @@
   <div class="firm">GLAW · Virtual Corporate Law Firm · Pipeline Stage 1</div>
   <h1>Intake Workflow Atlas</h1>
   <p class="sub">How a loose request becomes a structured matter — the <b>universal intake spine</b> every matter runs, the <b>track router</b>, and the <b>department-specific intake flow</b> for all fourteen divisions. Source of truth: <b>lib/firm-roster.md</b> · <b>/glaw-intake</b>.</p>
+  <div class="navrow">
+    <a href="/">Home</a>
+    <a href="/interview">Start intake</a>
+  </div>
 </header>
 
 <!-- ================= UNIVERSAL SPINE ================= -->
@@ -245,14 +249,14 @@ bin/glaw timeline-log intake_done</code>
 <h2>Track Router</h2>
 <p class="lede">Step 1 assigns one of eight tracks. The track selects the Council profile and the government adversarial lens the matter will face downstream.</p>
 <div class="tracks">
-  <div class="track"><code>litigation</code><h4>Litigation (civil)</h4><p>Assert or defend claims → pleadings and a trial path. Adversary: opposing counsel.</p></div>
-  <div class="track"><code>corp-build</code><h4>Corp / fund build</h4><p>Form entities, structure tax, paper governance/offering. Adversary: IRS + SEC + creditor.</p></div>
-  <div class="track"><code>investigation</code><h4>Investigation</h4><p>White-collar/criminal — lead hands to /glaw-investigations; deep workups via /glaw-command.</p></div>
-  <div class="track"><code>accounting-tax</code><h4>Accounting / bookkeeping</h4><p>Rebuild or keep the books; bank-statement sources captured at intake.</p></div>
-  <div class="track"><code>tax</code><h4>Tax compliance / controversy</h4><p>Filing, planning, exam, or Tax Court without full reconstruction. Adversary: IRS/state/penalty.</p></div>
-  <div class="track"><code>contract-review</code><h4>Contract review</h4><p>Inbound paper → CUAD 41-category review + scorecard + redline chain.</p></div>
-  <div class="track"><code>qualified-plan</code><h4>Qualified plan</h4><p>401(k)/DB/PS audit — lead to /glaw-qualified-plan; council scaffolded by qp_intake.py.</p></div>
-  <div class="track"><code>hybrid</code><h4>Both / hybrid</h4><p>e.g. form a holdco AND pursue a claim through it — tracks sequenced by the Managing Partner.</p></div>
+  <div class="track"><code>litigation</code><h3>Litigation (civil)</h3><p>Assert or defend claims → pleadings and a trial path. Adversary: opposing counsel.</p></div>
+  <div class="track"><code>corp-build</code><h3>Corp / fund build</h3><p>Form entities, structure tax, paper governance/offering. Adversary: IRS + SEC + creditor.</p></div>
+  <div class="track"><code>investigation</code><h3>Investigation</h3><p>White-collar/criminal — lead hands to /glaw-investigations; deep workups via /glaw-command.</p></div>
+  <div class="track"><code>accounting-tax</code><h3>Accounting / bookkeeping</h3><p>Rebuild or keep the books; bank-statement sources captured at intake.</p></div>
+  <div class="track"><code>tax</code><h3>Tax compliance / controversy</h3><p>Filing, planning, exam, or Tax Court without full reconstruction. Adversary: IRS/state/penalty.</p></div>
+  <div class="track"><code>contract-review</code><h3>Contract review</h3><p>Inbound paper → CUAD 41-category review + scorecard + redline chain.</p></div>
+  <div class="track"><code>qualified-plan</code><h3>Qualified plan</h3><p>401(k)/DB/PS audit — lead to /glaw-qualified-plan; council scaffolded by qp_intake.py.</p></div>
+  <div class="track"><code>hybrid</code><h3>Both / hybrid</h3><p>e.g. form a holdco AND pursue a claim through it — tracks sequenced by the Managing Partner.</p></div>
 </div>
 
 <!-- ================= DEPARTMENTS ================= -->
@@ -579,12 +583,12 @@ bin/glaw timeline-log intake_done</code>
 <!-- ================= STANDING RULES ================= -->
 <h2>Standing Rules That Bind Every Intake</h2>
 <div class="rules">
-  <div class="rule"><h4>Named reviewer or no gate</h4><p>Generic placeholders (<code>TBD</code>, <code>operator</code>, <code>[REVIEWER]</code>) do not clear <code>bin/glaw-intake complete</code>. A named, accountable intake reviewer signs.</p></div>
-  <div class="rule"><h4>Route, never freelance</h4><p>If a seat in the roster owns the question, route there. The roster is the firm's no-gaps guarantee — every domain maps to a seat.</p></div>
-  <div class="rule"><h4>Ingest before reading</h4><p>Every evidence file passes <code>bin/glaw-doc-extract</code> first; <code>.meta.json</code> forensic metadata feeds backdating detection and event dating.</p></div>
-  <div class="rule"><h4>Score every upload</h4><p>Contract → <code>glaw-contract-score</code> · financial/fraud → <code>glaw-bureau-score</code> · compliance → <code>glaw-compliance-audit</code>. The scorecard is a deliverable.</p></div>
-  <div class="rule"><h4>Firm memory preflight</h4><p><code>glaw-learnings preflight</code> before substantive work; new defects written back via <code>glaw-learnings add</code> + <code>glaw-reflect --apply</code>.</p></div>
-  <div class="rule"><h4>Docket at intake</h4><p>Hard dates are calendared the moment they surface — SOL, lien, Form D, BOI, 706/709, Wells — with an owner and a source cite.</p></div>
+  <div class="rule"><h3>Named reviewer or no gate</h3><p>Generic placeholders (<code>TBD</code>, <code>operator</code>, <code>[REVIEWER]</code>) do not clear <code>bin/glaw-intake complete</code>. A named, accountable intake reviewer signs.</p></div>
+  <div class="rule"><h3>Route, never freelance</h3><p>If a seat in the roster owns the question, route there. The roster is the firm's no-gaps guarantee — every domain maps to a seat.</p></div>
+  <div class="rule"><h3>Ingest before reading</h3><p>Every evidence file passes <code>bin/glaw-doc-extract</code> first; <code>.meta.json</code> forensic metadata feeds backdating detection and event dating.</p></div>
+  <div class="rule"><h3>Score every upload</h3><p>Contract → <code>glaw-contract-score</code> · financial/fraud → <code>glaw-bureau-score</code> · compliance → <code>glaw-compliance-audit</code>. The scorecard is a deliverable.</p></div>
+  <div class="rule"><h3>Firm memory preflight</h3><p><code>glaw-learnings preflight</code> before substantive work; new defects written back via <code>glaw-learnings add</code> + <code>glaw-reflect --apply</code>.</p></div>
+  <div class="rule"><h3>Docket at intake</h3><p>Hard dates are calendared the moment they surface — SOL, lien, Form D, BOI, 706/709, Wells — with an owner and a source cite.</p></div>
 </div>
 
 <footer>
