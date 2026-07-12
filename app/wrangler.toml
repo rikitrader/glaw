@@ -1,0 +1,14 @@
+# GLAW public intake app — dashboard + routing interview + intake capture API.
+# public/atlas.html is a copy of ../lib/intake-atlas.html — the dashboard/SKILL.md
+# sync rule applies: roster/intake changes update both copies in the same change.
+name = "glaw-intake"
+main = "src/worker.js"
+compatibility_date = "2026-07-01"
+
+[assets]
+directory = "./public"
+binding = "ASSETS"
+
+[[kv_namespaces]]
+binding = "INTAKE_KV"
+id = "879f3d111bbb4957a670b9039105c114"

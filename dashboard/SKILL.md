@@ -110,6 +110,14 @@ to divisions, tracks, `track_specific` fields, or intake gates in those sources 
 matching card in the atlas in the same change. The atlas may ride along in a
 `bin/glaw-publish` bundle as a firm-ops page.
 
+**Public app (LIVE):** the atlas + a routing **intake interview** are deployed as a
+Cloudflare Worker at **https://glaw-intake.rikitrader.workers.dev** (source: `app/`).
+The interview classifies the track, captures the charter + `track_specific` fields,
+routes to the owning division/seats, stores the submission (KV, `POST /api/intake`),
+and emits the runnable `bin/glaw-intake` script. Admin list: `GET /api/intakes` with
+`Authorization: Bearer $INTAKE_ADMIN_TOKEN` (Worker secret). `app/public/atlas.html`
+is a copy of `lib/intake-atlas.html` — same sync rule, both copies in the same change.
+
 ## Not legal or accounting advice
 CFO-work-product, not legal, tax, or accounting advice. Prepared for review by a licensed CPA /
 attorney. Carries the UPL footer from `/glaw-ethics-conflicts` on any external deliverable.
