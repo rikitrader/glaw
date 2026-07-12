@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ctext y=%27.9em%27 font-size=%2790%27%3E%E2%9A%96%3C/text%3E%3C/svg%3E">
+<title>GLAW · Intake Workflow Atlas</title>
+<style>
+  :root{
+    --paper:#FAFAF7;
+    --card:#FFFFFF;
+    --ink:#181B20;
+    --muted:#5C6472;
+    --hairline:#D9DBD5;
+    --directive:#1B4796;      /* house blue callout */
+    --directive-soft:#EBF0FA;
+    --gate:#A8271E;           /* hard-gate red */
+    --gate-soft:#F9ECEA;
+    --clear:#1E7A46;          /* cleared / complete */
+    --clear-soft:#EAF4EE;
+    --chipbg:#F0F1EC;
+    --mono-bg:#F2F3EF;
+    --shadow:0 1px 2px rgba(24,27,32,.05);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#15171C; --card:#1C1F26; --ink:#E7E9EC; --muted:#9AA3B2;
+      --hairline:#31353E; --directive:#7FA3F0; --directive-soft:#1E2836;
+      --gate:#E5766D; --gate-soft:#33211F; --clear:#58B786; --clear-soft:#1D2E24;
+      --chipbg:#252932; --mono-bg:#23262E; --shadow:none;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#15171C; --card:#1C1F26; --ink:#E7E9EC; --muted:#9AA3B2;
+    --hairline:#31353E; --directive:#7FA3F0; --directive-soft:#1E2836;
+    --gate:#E5766D; --gate-soft:#33211F; --clear:#58B786; --clear-soft:#1D2E24;
+    --chipbg:#252932; --mono-bg:#23262E; --shadow:none;
+  }
+  :root[data-theme="light"]{
+    --paper:#FAFAF7; --card:#FFFFFF; --ink:#181B20; --muted:#5C6472;
+    --hairline:#D9DBD5; --directive:#1B4796; --directive-soft:#EBF0FA;
+    --gate:#A8271E; --gate-soft:#F9ECEA; --clear:#1E7A46; --clear-soft:#EAF4EE;
+    --chipbg:#F0F1EC; --mono-bg:#F2F3EF; --shadow:0 1px 2px rgba(24,27,32,.05);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--paper); color:var(--ink);
+    font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size:15px; line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  code,.mono{font-family:"SF Mono",Menlo,Consolas,monospace}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px 96px}
+
+  /* ---------- masthead (house style: centered all-caps title) ---------- */
+  header{border-bottom:3px double var(--hairline);padding:56px 0 32px;text-align:center}
+  .firm{font-size:12px;letter-spacing:.28em;text-transform:uppercase;color:var(--muted)}
+  h1{
+    margin:14px 0 10px;font-size:clamp(28px,4.4vw,44px);font-weight:700;
+    letter-spacing:.08em;text-transform:uppercase;text-wrap:balance;
+  }
+  .sub{max-width:62ch;margin:0 auto;color:var(--muted)}
+  .sub b{color:var(--ink);font-weight:600}
+
+  h2{
+    font-size:13px;letter-spacing:.22em;text-transform:uppercase;
+    color:var(--directive);margin:64px 0 8px;display:flex;align-items:center;gap:14px;
+  }
+  h2::after{content:"";flex:1;border-top:1px solid var(--hairline)}
+  .lede{color:var(--muted);max-width:78ch;margin:0 0 26px}
+
+  /* ---------- universal spine ---------- */
+  .spine{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:14px}
+  .step{
+    background:var(--card);border:1px solid var(--hairline);border-radius:6px;
+    padding:16px 18px 14px;box-shadow:var(--shadow);position:relative;
+  }
+  .step .n{
+    font-size:11px;letter-spacing:.14em;color:var(--muted);text-transform:uppercase;
+    font-variant-numeric:tabular-nums;
+  }
+  .step h3{margin:6px 0 6px;font-size:16px;font-weight:700}
+  .step p{margin:0 0 10px;color:var(--muted);font-size:13.5px}
+  .cmd{
+    display:block;background:var(--mono-bg);border:1px solid var(--hairline);
+    border-radius:4px;padding:8px 10px;font-size:12px;overflow-x:auto;
+    white-space:pre;color:var(--ink);
+  }
+  .step.gatecard{border-color:var(--gate);background:var(--gate-soft)}
+  .step.gatecard .n{color:var(--gate)}
+  .stamp{
+    display:inline-block;border:2px solid var(--gate);color:var(--gate);
+    font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    padding:2px 8px;border-radius:3px;transform:rotate(-2deg);margin-bottom:8px;
+  }
+  .step.clearcard{border-color:var(--clear);background:var(--clear-soft)}
+  .step.clearcard .n{color:var(--clear)}
+
+  /* ---------- directive callout (house blue) ---------- */
+  .directive{
+    border-left:4px solid var(--directive);background:var(--directive-soft);
+    padding:14px 18px;border-radius:0 6px 6px 0;margin:22px 0 0;
+    color:var(--ink);font-size:13.5px;max-width:100%;
+  }
+  .directive b{color:var(--directive)}
+
+  /* ---------- track router ---------- */
+  .tracks{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+  .track{
+    background:var(--card);border:1px solid var(--hairline);border-radius:6px;
+    padding:13px 15px;box-shadow:var(--shadow);
+  }
+  .track code{font-size:12px;color:var(--directive)}
+  .track h4{margin:4px 0 4px;font-size:14.5px}
+  .track p{margin:0;font-size:12.5px;color:var(--muted)}
+
+  /* ---------- departments ---------- */
+  .depts{display:grid;grid-template-columns:repeat(auto-fit,minmax(480px,1fr));gap:18px}
+  @media(max-width:560px){.depts{grid-template-columns:1fr}}
+  .dept{
+    background:var(--card);border:1px solid var(--hairline);border-radius:6px;
+    box-shadow:var(--shadow);display:flex;flex-direction:column;
+  }
+  .dept-head{padding:16px 20px 12px;border-bottom:1px solid var(--hairline)}
+  .dept-head .covers{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+  .dept-head h3{margin:4px 0 2px;font-size:18px;font-weight:700;text-wrap:balance}
+  .dept-head .lead{font-size:12.5px;color:var(--muted)}
+  .dept-head .lead code{color:var(--directive);font-size:12px}
+  .badges{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .badge{
+    font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+    padding:2px 8px;border-radius:3px;border:1px solid var(--directive);color:var(--directive);
+  }
+  .dept-body{padding:14px 20px 18px;display:flex;flex-direction:column;gap:13px;flex:1}
+  .blk .lbl{
+    font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--muted);margin-bottom:6px;
+  }
+  .blk ul{margin:0;padding-left:18px;font-size:13px;color:var(--ink)}
+  .blk li{margin:2px 0}
+  .blk li::marker{color:var(--directive)}
+  .fields,.seats{display:flex;flex-wrap:wrap;gap:5px}
+  .fields code{
+    background:var(--mono-bg);border:1px solid var(--hairline);border-radius:3px;
+    padding:2px 7px;font-size:11.5px;
+  }
+  .seats span{
+    background:var(--chipbg);border-radius:3px;padding:2px 8px;font-size:12px;
+    font-family:"SF Mono",Menlo,Consolas,monospace;
+  }
+  .docket{border-left:3px solid var(--gate);padding-left:10px;font-size:12.5px;color:var(--muted)}
+  .docket b{color:var(--gate);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;display:block;margin-bottom:2px}
+  .dept-gate{
+    border-top:1px dashed var(--hairline);padding:10px 20px;font-size:12px;color:var(--muted);
+  }
+  .dept-gate code{font-size:11px;color:var(--gate)}
+
+  /* ---------- standing rules ---------- */
+  .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:12px}
+  .rule{background:var(--card);border:1px solid var(--hairline);border-radius:6px;padding:14px 16px}
+  .rule h4{margin:0 0 4px;font-size:13.5px}
+  .rule p{margin:0;font-size:12.5px;color:var(--muted)}
+  .rule code{font-size:11.5px;color:var(--directive)}
+
+  footer{
+    margin-top:72px;border-top:3px double var(--hairline);padding-top:18px;
+    text-align:center;font-size:12px;color:var(--muted);max-width:80ch;
+    margin-left:auto;margin-right:auto;
+  }
+  @media (prefers-reduced-motion: no-preference){
+    .dept{transition:border-color .15s ease}
+    .dept:hover{border-color:var(--directive)}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="firm">GLAW · Virtual Corporate Law Firm · Pipeline Stage 1</div>
+  <h1>Intake Workflow Atlas</h1>
+  <p class="sub">How a loose request becomes a structured matter — the <b>universal intake spine</b> every matter runs, the <b>track router</b>, and the <b>department-specific intake flow</b> for all fourteen divisions. Source of truth: <b>lib/firm-roster.md</b> · <b>/glaw-intake</b>.</p>
+</header>
+
+<!-- ================= UNIVERSAL SPINE ================= -->
+<h2>The Universal Intake Spine</h2>
+<p class="lede">Every matter, regardless of department, runs these six steps. The two red blocks are code-gated — <code>glaw stage strategy</code> refuses to advance until <code>intake_complete</code> and <code>conflicts_cleared</code> both exist in the matter timeline.</p>
+
+<div class="spine">
+  <div class="step">
+    <div class="n">Step 0 · Open</div>
+    <h3>Open the matter</h3>
+    <p>Creates <code>matter.md</code> + the structured form <code>intake.json</code> under <code>~/.glaw/matters/&lt;slug&gt;/</code>.</p>
+    <code class="cmd">bin/glaw matter new "&lt;matter name&gt;"</code>
+  </div>
+  <div class="step">
+    <div class="n">Step 1 · Classify</div>
+    <h3>Pick the track</h3>
+    <p>AskUserQuestion → write <code>type:</code> into the charter and set the machine track. Investigation matters hand the lead to <code>/glaw-investigations</code> immediately.</p>
+    <code class="cmd">bin/glaw-intake set workflow_track &lt;track&gt;</code>
+  </div>
+  <div class="step">
+    <div class="n">Step 2 · Capture</div>
+    <h3>Charter + machine fields</h3>
+    <p>Interview: parties · jurisdiction · goal · facts/timeline · documents on hand · hard dates. Mirror every answer into <code>intake.json</code>.</p>
+    <code class="cmd">bin/glaw-intake set parties '…'
+bin/glaw-intake set jurisdiction '…'
+bin/glaw-intake set goal '…'
+bin/glaw-intake set deadlines '…'</code>
+  </div>
+  <div class="step gatecard">
+    <div class="n">Step 2b · Docket</div>
+    <span class="stamp">Calendar now</span>
+    <h3>Hard dates → docket</h3>
+    <p>SOL, lien deadlines, closings, board dates, notice-response clocks — docketed at intake, never later.</p>
+    <code class="cmd">bin/glaw docket add --owner "intake docket clerk" \
+  --source "SRC-0001 intake source" &lt;date&gt; "&lt;deadline&gt;"</code>
+  </div>
+  <div class="step">
+    <div class="n">Step 3 · Sweep</div>
+    <h3>Completeness sweep</h3>
+    <p>Build the whole file: every party that could be added, every entity, every jurisdiction that could attach, every missing document — gaps listed explicitly.</p>
+    <code class="cmd">bin/glaw-intake status   # missing fields ⇒ do not advance</code>
+  </div>
+  <div class="step gatecard">
+    <div class="n">Step 4 · Hard gate</div>
+    <span class="stamp">Hard Gate</span>
+    <h3>Conflicts + engagement</h3>
+    <p><code>/glaw-ethics-conflicts</code> runs the conflicts check against captured parties, drafts the engagement letter, stamps the UPL disclaimer. Intake never clears conflicts itself.</p>
+    <code class="cmd">bin/glaw-ethics complete   # logs conflicts_cleared</code>
+  </div>
+  <div class="step clearcard">
+    <div class="n">Step 5 · Advance</div>
+    <h3>Complete → strategy</h3>
+    <p>A <b>named</b> intake reviewer signs — placeholders (“TBD”, “operator”) do not clear the gate.</p>
+    <code class="cmd">bin/glaw-intake complete --by '&lt;named reviewer&gt;'
+bin/glaw stage strategy
+bin/glaw timeline-log intake_done</code>
+  </div>
+</div>
+
+<div class="directive"><b>Standing directive.</b> Before substantive work on any track: <code>python3 bin/glaw-learnings preflight [matter-slug]</code> — firm memory is consulted so known defects are never repeated. Every evidence file routes through <code>bin/glaw-doc-extract</code> before any seat reads it, and any document a user uploads as a sample gets scored (contract → <code>glaw-contract-score</code>; financial/fraud → <code>glaw-bureau-score fraud</code>; compliance → <code>glaw-compliance-audit</code>).</div>
+
+<!-- ================= TRACK ROUTER ================= -->
+<h2>Track Router</h2>
+<p class="lede">Step 1 assigns one of eight tracks. The track selects the Council profile and the government adversarial lens the matter will face downstream.</p>
+<div class="tracks">
+  <div class="track"><code>litigation</code><h4>Litigation (civil)</h4><p>Assert or defend claims → pleadings and a trial path. Adversary: opposing counsel.</p></div>
+  <div class="track"><code>corp-build</code><h4>Corp / fund build</h4><p>Form entities, structure tax, paper governance/offering. Adversary: IRS + SEC + creditor.</p></div>
+  <div class="track"><code>investigation</code><h4>Investigation</h4><p>White-collar/criminal — lead hands to /glaw-investigations; deep workups via /glaw-command.</p></div>
+  <div class="track"><code>accounting-tax</code><h4>Accounting / bookkeeping</h4><p>Rebuild or keep the books; bank-statement sources captured at intake.</p></div>
+  <div class="track"><code>tax</code><h4>Tax compliance / controversy</h4><p>Filing, planning, exam, or Tax Court without full reconstruction. Adversary: IRS/state/penalty.</p></div>
+  <div class="track"><code>contract-review</code><h4>Contract review</h4><p>Inbound paper → CUAD 41-category review + scorecard + redline chain.</p></div>
+  <div class="track"><code>qualified-plan</code><h4>Qualified plan</h4><p>401(k)/DB/PS audit — lead to /glaw-qualified-plan; council scaffolded by qp_intake.py.</p></div>
+  <div class="track"><code>hybrid</code><h4>Both / hybrid</h4><p>e.g. form a holdco AND pursue a claim through it — tracks sequenced by the Managing Partner.</p></div>
+</div>
+
+<!-- ================= DEPARTMENTS ================= -->
+<h2>Department Intake Flows</h2>
+<p class="lede">Each division runs the spine, then adds its own capture list, machine fields, and routing. <b>Capture</b> = what intake interviews for · <b>Fields</b> = <code>bin/glaw-intake set</code> keys · <b>Routes to</b> = the seats that receive the matter after conflicts clear.</p>
+
+<div class="depts">
+
+  <!-- Corporate & Transactional -->
+  <div class="dept">
+    <div class="dept-head">
+      <div class="covers">Corporate · entity · IP · contracts · employment · real estate</div>
+      <h3>Corporate &amp; Transactional</h3>
+      <div class="lead">Lead seats: <code>/glaw-entity-architect</code> · <code>glaw-corporate-counsel</code></div>
+      <div class="badges"><span class="badge">Track: corp-build</span><span class="badge">contract-review</span></div>
+    </div>
+    <div class="dept-body">
+      <div class="blk"><div class="lbl">Capture at intake</div><ul>
+        <li>Entities to form or restructure; state(s) of formation + operation</li>
+        <li>Owners, control persons, cap table on hand; founder stock / §83(b) exposure</li>
+        <li>Contracts in play (MSA/SaaS/NDA/supply) and inbound paper to review</li>
+        <li>IP assets (marks, patents, code, trade secrets) and current assignments</li>
+        <li>Headcount + employment posture; real-estate holdings or leases</li>
+      </ul></div>
+      <div class="blk"><div class="lbl">Fields</div><div class="fields"><code>parties</code><code>jurisdiction</code><code>goal</code><code>source_documents</code><code>deadlines</code><code>conflicts_parties</code></div></div>
+      <div class="blk"><div class="lbl">Routes to</div><div class="seats"><span>entity-architect</span><span>corporate-counsel</span><span>elite-corporate-counsel</span><span>ip-counsel</span><span>commercial-contracts</span><span>contract-review</span><span>employment-counsel</span><span>real-estate-counsel</span><span>83b-election</span></div></div>
+      <div class="docket"><b>Docket now</b>§83(b) 30-day clock · closing dates · board dates · annual report / BOI</div>
+    </div>
+    <div class="dept-gate">Uploaded contracts: <code>glaw-doc-extract</code> → review → <code>glaw-contract-score</code> + redline — the scorecard is itself a deliverable.</div>
+  </div>
+
+  <!-- Securities, Funds & Capital Markets -->
+  <div class="dept">
+    <div class="dept-head">
+      <div class="covers">VC fund · private equity · fund management · SEC compliance</div>
+      <h3>Securities, Funds &amp; Capital Markets</h3>
+      <div class="lead">Lead seats: <code>glaw-pe-vc-counsel</code> · <code>glaw-fund-regulatory-council</code></div>
+      <div class="badges"><span class="badge">Track: corp-build</span></div>
+    </div>
+    <div class="dept-body">
+      <div class="blk"><div class="lbl">Capture at intake</div><ul>
+        <li>Fund vs operating-company raise; target size and GP/LP economics</li>
+        <li>Exemption path — Reg D 506(b)/(c), Reg S, Reg CF; investor count + accreditation</li>
+        <li>States where investors sit (Blue Sky map); adviser registration posture</li>
+        <li>Any token / digital-securities component (transfer agent, KYW)</li>
+        <li>Existing offering docs, LPA/PPM drafts, subscription paper</li>
+      </ul></div>
+      <div class="blk"><div class="lbl">Fields</div><div class="fields"><code>parties</code><code>jurisdiction</code><code>goal</code><code>source_documents</code><code>deadlines</code></div></div>
+      <div class="blk"><div class="lbl">Routes to</div><div class="seats"><span>pe-vc-counsel</span><span>fund-regulatory-council</span><span>tokenization-compliance</span><span>institutional-finance</span></div></div>
+      <div class="docket"><b>Docket now</b>Form D 15-day clock · Form ADV/PF windows · Blue Sky notice filings · closing dates</div>
+    </div>
+    <div class="dept-gate">Fund math (waterfalls, NAV, master-feeder) executes through <code>glaw-institutional-finance</code> + the fs-* layer.</div>
+  </div>
+
+  <!-- Tax & IRS -->
+  <div class="dept">
+    <div class="dept-head">
+      <div class="covers">IRS · tax planning · tax controversy</div>
+      <h3>Tax &amp; IRS</h3>
+      <div class="lead">Intake router seat: <code>glaw-tax-legal-intake</code></div>
+      <div class="badges"><span class="badge">Track: tax</span><span class="badge">qualified-plan</span></div>
+    </div>
+    <div class="dept-body">
+      <div class="blk"><div class="lbl">Capture at intake</div><ul>
+        <li>Taxpayer type and years in scope; returns filed vs missing</li>
+        <li>Notices received (CP/exam/90-day letter) and their response clocks</li>
+        <li>Positions or issues: credits, deductions, nexus, penalties, elections</li>
+        <li>Source records: returns, transcripts, GL exports, bank records, K-1s</li>
+        <li>Retirement-plan angle? → hand lead to <code>/glaw-qualified-plan</code> (qp_intake.py scaffolds the 6-seat council)</li>
+      </ul></div>
+      <div class="blk"><div class="lbl">Fields (track_specific)</div><div class="fields"><code>tax_years</code><code>taxpayer_type</code><code>tax_forms_needed</code><code>source_records</code><code>positions_or_issues</code><code>filing_or_exam_deadlines</code></div></div>
+      <div class="blk"><div class="lbl">Routes to</div><div class="seats"><span>tax-strategy</span><span>credit-strategy</span><span>tax-compliance</span><span>tax-relief</span><span>back-taxes</span><span>irs-audit</span><span>tax-court</span><span>international-tax</span><span>exempt-org</span><span>estate-gift-returns</span><span>irs-whistleblower</span><span>robs-retirement-funding</span></div></div>
+      <div class="docket"><b>Docket now</b>SOL clocks (<code>bin/glaw-sol</code>) · 90-day Tax Court petition date · notice response dates · filing due dates</div>
+    </div>
+    <div class="dept-gate">Track <code>tax</code> auto-selects the tax Council + IRS/state/penalty adversarial profile downstream.</div>
+  </div>
+
+  <!-- Accounting & Finance -->
+  <div class="dept">
+    <div class="dept-head">
+      <div class="covers">Financial · accounting · CFO · valuation · audit</div>
+      <h3>Accounting &amp; Finance</h3>
+      <div class="lead">Division lead: <code>/glaw-accounting</code> · loop run by <code>/glaw-cfo</code></div>
+      <div class="badges"><span class="badge">Track: accounting-tax</span></div>
+    </div>
+    <div class="dept-body">
+      <div class="blk"><div class="lbl">Capture at intake</div><ul>
+        <li>Bank/card statement sources — files, folders, or Sheets URLs, per account</li>
+        <li>Entity tax type and years in scope; current books status</li>
+        <li>IRS forms the engagement must produce (1120/1065/1040/941/1099…)</li>
+        <li>Reconstruction vs ongoing close vs audit-prep — picks the engine</li>
+      </ul></div>
+      <div class="blk"><div class="lbl">Fields (track_specific)</div><div class="fields"><code>bank_statement_sources</code><code>tax_years</code><code>entity_tax_type</code><code>books_status</code><code>irs_forms_needed</code></div></div>
+      <div class="blk"><div class="lbl">Routes to</div><div class="seats"><span>bookkeeping → bank-ingest</span><span>ledger</span><span>controller</span><span>cfo</span><span>audit</span><span>reconstruct</span><span>forensic-reconstruction</span><span>close</span><span>ap-ar</span><span>payroll</span><span>treasury</span></div></div>
+      <div class="docket"><b>Docket now</b>Filing deadlines per form · period-close calendar · covenant / min-cash checkpoints</div>
+    </div>
+    <div class="dept-gate">Books never ship raw: <code>glaw-books-doctor</code> gate → statements → adversarial loop → CFO sign-off.</div>
+  </div>
+
+  <!-- Litigation -->
+  <div class="dept">
+    <div class="dept-head">
+      <div class="covers">Civil litigation · trial · disputes · recovery</div>
+      <h3>Litigation &amp; Dispute Resolution</h3>
+      <div class="lead">Lead seats: <code>glaw-elite-corporate-counsel</code> · <code>glaw-federal-trial-counsel</code></div>
+      <div class="badges"><span class="badge">Track: litigation</span></div>
+    </div>
+    <div class="dept-body">
+      <div class="blk"><div class="lbl">Capture at intake</div><ul>
+        <li>All parties + related entities + control persons (feeds conflicts check)</li>
+        <li>Forum and jurisdiction: state vs federal nexus, venue, removal risk</li>
+        <li>Operative dispute: dated event timeline, claims/defenses in play</li>
+        <li>Evidence on hand — contracts, bank records, communications → doc-extract</li>
+        <li>Relief sought: judgment, settlement posture, collection reality</li>
+      </ul></div>
+      <div class="blk"><div class="lbl">Fields</div><div class="fields"><code>parties</code><code>jurisdiction</code><code>facts_timeline</code><code>goal</code><code>source_documents</code><code>deadlines</code></div></div>
+      <div class="blk"><div class="lbl">Routes to</div><div class="seats"><span>recover-payment</span><span>fl-quantum-meruit</span><span>federal-trial-counsel</span><span>appellate</span><span>insurance-coverage</span><span>consumer-protection</span><span>receivables-assignment</span><span>veil-piercing</span></div></div>
+      <div class="docket"><b>Docket now</b>Statutes of limitation (first thing docketed) · lien deadlines (Ch. 713) · CRN windows · appeal clocks</div>
+    </div>
+    <div class="dept-gate">Evidence → <code>glaw-doc-extract</code> → <code>/glaw-evidence-timeline</code>; nothing files until citations verify + RED→BLUE survives.</div>
+  </div>
+
+  <!-- Family -->
+  <div class="dept">
+    <div class="dept-head">
+      <div class="covers">Divorce · custody · support · marital property · agreements</div>
+      <h3>Family &amp; Domestic Relations</h3>
+      <div class="lead">Lead seat: <code>/glaw-family-law</code></div>
+      <div class="badges"><span class="badge">Track: litigation (family)</span></div>
+    </div>
+    <div class="dept-body">
+      <div class="blk"><div class="lbl">Capture at intake</div><ul>
+        <li>Marriage dates, children, current living/custody arrangement</li>
+        <li>Property regime: TX community property vs FL §61.075 equitable distribution</li>
+        <li>Income of both parties (child-support engine input) and existing orders</li>
+        <li>Safety posture — protective orders needed now → docket immediately</li>
+        <li>Retirement accounts (QDRO), tax and estate cleanup to route out</li>
+      </ul></div>
+      <div class="blk"><div class="lbl">Fields</div><div class="fields"><code>parties</code><code>jurisdiction</code><code>facts_timeline</code><code>goal</code><code>deadlines</code></div></div>
+      <div class="blk"><div class="lbl">Routes to</div><div class="seats"><span>family-law</span><span>estate-trusts (cleanup)</span><span>tax-strategy (filing status)</span><span>qualified-plan (QDRO)</span></div></div>
+      <div class="docket"><b>Docket now</b>Temporary-orders hearings · disclosure deadlines · waiting periods · protective-order dates</div>
+    </div>
+    <div class="dept-gate">Petition → temporary orders → financial disclosure → parenting plan → property division → decree.</div>
+  </div>
+
+  <!-- Investigations -->
+  <div class="dept">
+    <div class="dept-head">
+      <div class="covers">Criminal · fraud investigation · forensic case-building</div>
+      <h3>Investigations &amp; White-Collar Crime</h3>
+      <div class="lead">Division lead: <code>/glaw-investigations</code> — takes the lead <b>at Step 1</b></div>
+      <div class="badges"><span class="badge">Track: investigation</span></div>
+    </div>
+    <div class="dept-body">
+      <div class="blk"><div class="lbl">Capture at intake</div><ul>
+        <li>Suspected wrongdoing in one sentence; subjects and their entities</li>
+        <li>Flow of funds as currently understood; accounts and transfers known</li>
+        <li>Records available vs records to obtain (bank, corporate, court)</li>
+        <li>Client posture: victim, target, whistleblower, or counterparty</li>
+        <li>Parallel exposure — civil claim, referral, or both</li>
+      </ul></div>
+      <div class="blk"><div class="lbl">Fields</div><div class="fields"><code>parties</code><code>facts_timeline</code><code>source_documents</code><code>goal</code><code>authorized_scope</code></div></div>
+      <div class="blk"><div class="lbl">Routes to</div><div class="seats"><span>forensic-case-investigator</span><span>financial-forensics</span><span>elite-corporate-counsel</span><span>federal-trial-counsel</span><span>restructuring (§548)</span><span>command (deep workup)</span></div></div>
+      <div class="docket"><b>Docket now</b>Criminal + civil SOL · FUFTA §726.110 clocks · preservation obligations</div>
+    </div>
+    <div class="dept-gate">Strategy = theory of wrongdoing · structure = entity &amp; flow-of-funds map · draft = exposure matrix → complaint or referral.</div>
+  </div>
+
+  <!-- Intelligence -->
+  <div class="dept">
+    <div class="dept-head">
+      <div class="covers">FBI · FinCEN · CIA · SEC cells under one fusion command</div>
+      <h3>Intelligence Super-Structure</h3>
+      <div class="lead">Master command: <code>/glaw-command</code></div>
+      <div class="badges"><span class="badge">Track: investigation</span><span class="badge">Triage-first</span></div>
+    </div>
+    <div class="dept-body">
+      <div class="blk"><div class="lbl">Intake behavior (differs from all others)</div><ul>
+        <li><b>Triage every case</b> — no matter opens straight into a dossier</li>
+        <li><b>Always returns a briefing</b>, even when nothing escalates</li>
+        <li>Escalates to a full DOSSIER only when red flags clear the threshold</li>
+        <li>Scores at intake: <code>bin/glaw-bureau-score fraud|competency</code></li>
+      </ul></div>
+      <div class="blk"><div class="lbl">Routes to (bureaus)</div><div class="seats"><span>bureau (FBI)</span><span>fincen (CFIO)</span><span>intel (CIA)</span><span>sec (Enforcement)</span><span>IRS-CI → financial-forensics</span></div></div>
+      <div class="blk"><div class="lbl">Cells behind the bureaus</div><div class="seats"><span>field</span><span>cyber</span><span>osint</span><span>humint</span><span>fusion</span><span>counterfraud</span><span>prosecutor</span><span>sar</span><span>aml</span><span>ofac</span><span>crypto</span><span>tbml</span><span>analyst</span><span>counterintel</span></div></div>
+    </div>
+    <div class="dept-gate">Adversarial review + scorecards run on <b>every</b> issue; dossier spec lives in <code>lib/bureau-roster.md</code>.</div>
+  </div>
+
+  <!-- SEC Enforcement -->
+  <div class="dept">
+    <div class="dept-head">
+      <div class="covers">Securities enforcement · market abuse · disclosure</div>
+      <h3>SEC Enforcement &amp; Investigations</h3>
+      <div class="lead">Lead seats: <code>/glaw-sec-enforcement</code> · <code>/glaw-sec-investigator</code></div>
+      <div class="badges"><span class="badge">Track: investigation</span><span class="badge">litigation</span></div>
+    </div>
+    <div class="dept-body">
+      <div class="blk"><div class="lbl">Capture at intake</div><ul>
+        <li>Issuer / ticker, conduct window, and the filings or trades at issue</li>
+        <li>Client posture: respondent (Wells), whistleblower (Form TCR), or plaintiff</li>
+        <li>Theory: 10b-5, manipulation (spoofing/layering/wash), insider/MNPI, FCPA</li>
+        <li>10-K/10-Q risk language to analyze; expert-witness needs (Rule 26/Daubert)</li>
+      </ul></div>
+      <div class="blk"><div class="lbl">Routes to</div><div class="seats"><span>sec-marketabuse</span><span>sec-insider</span><span>sec-fcpa</span><span>sec-whistleblower</span><span>sec-wells-response</span><span>disclosure-risk-analyzer</span><span>expert-witness</span><span>financial-forensics</span></div></div>
+      <div class="docket"><b>Docket now</b>Wells response deadline · §2462 five-year clock · TCR / award filing windows</div>
+    </div>
+    <div class="dept-gate">Litigation support: evidence-timeline + case-law-research; sweeps via <code>glaw-sec-enforcement-swarm</code>.</div>
+  </div>
+
+  <!-- Regulatory -->
+  <div class="dept">
+    <div class="dept-head">
+      <div class="covers">AML/sanctions · licensing/permits · privacy · customs</div>
+      <h3>Regulatory, Licensing &amp; Compliance</h3>
+      <div class="lead">Lead seats: <code>/glaw-regulatory-aml</code> · <code>/glaw-licensing</code></div>
+      <div class="badges"><span class="badge">Track: corp-build</span><span class="badge">compliance</span></div>
+    </div>
+    <div class="dept-body">
+      <div class="blk"><div class="lbl">Capture at intake</div><ul>
+        <li>Regulated activity: money transmission (MSB/MTL), crypto, imports, data</li>
+        <li>Jurisdictions of operation → license classes + foreign qualification</li>
+        <li>AML surface: KYC program status, OFAC screening, FinCEN obligations</li>
+        <li>Import posture: HTS classes, PGA agencies, ISF/bond/IOR status</li>
+        <li>Privacy surface: GDPR/CCPA scope, DPAs in place, breach history</li>
+      </ul></div>
+      <div class="blk"><div class="lbl">Routes to</div><div class="seats"><span>regulatory-aml</span><span>licensing</span><span>import-customs</span><span>privacy-data</span><span>compliance (CCO)</span></div></div>
+      <div class="docket"><b>Docket now</b>License renewal dates · BOI · foreign-qualification annual reports · breach-notification clocks</div>
+    </div>
+    <div class="dept-gate">Import matters fan out: duty → international-tax · sales/use → sales-tax · IP → ip-counsel · supplier terms → commercial-contracts.</div>
+  </div>
+
+  <!-- Private Client -->
+  <div class="dept">
+    <div class="dept-head">
+      <div class="covers">Estate/trusts · asset protection · restructuring · immigration · offshore</div>
+      <h3>Private Client &amp; Cross-Border</h3>
+      <div class="lead">Lead seat: <code>/glaw-estate-trusts</code></div>
+      <div class="badges"><span class="badge">Track: corp-build</span><span class="badge">hybrid</span></div>
+    </div>
+    <div class="dept-body">
+      <div class="blk"><div class="lbl">Capture at intake</div><ul>
+        <li>Family + asset map: entities, accounts, real property, retirement plans</li>
+        <li>Protection goal vs existing creditor exposure (FUFTA/solvency screen input)</li>
+        <li>Residency/citizenship of every stakeholder; offshore holdings, FBAR scope</li>
+        <li>Existing instruments: wills, trusts, operating agreements, prior gifts (709 history)</li>
+        <li>Distress posture — workout, bankruptcy, creditor rights → restructuring</li>
+      </ul></div>
+      <div class="blk"><div class="lbl">Routes to</div><div class="seats"><span>estate-trusts</span><span>asset-protection</span><span>estate-gift-returns</span><span>exempt-org</span><span>restructuring</span><span>immigration</span><span>international</span></div></div>
+      <div class="docket"><b>Docket now</b>706 nine-month clock + portability · 709 April 15 · visa windows · FBAR/8938 deadlines</div>
+    </div>
+    <div class="dept-gate">Asset-protection designs run the 5-dept compliance gate (FUFTA / solvency / IRS / FinCEN-OFAC / ethics) before drafting.</div>
+  </div>
+
+  <!-- Public Law -->
+  <div class="dept">
+    <div class="dept-head">
+      <div class="covers">Constitutional · legislative · administrative · judicial modeling</div>
+      <h3>Public Law &amp; Governance</h3>
+      <div class="lead">Seats: <code>/glaw-constitutional</code> · <code>/glaw-legislative</code> · <code>/glaw-admin-law</code> · <code>/glaw-judicial</code></div>
+      <div class="badges"><span class="badge">Track: hybrid</span><span class="badge">Work-product only</span></div>
+    </div>
+    <div class="dept-body">
+      <div class="blk"><div class="lbl">Capture at intake</div><ul>
+        <li>Government action at issue: statute, rule, agency order, enforcement</li>
+        <li>Standing posture — injury, traceability, redressability; justiciability risks</li>
+        <li>Administrative record status; exhaustion/finality posture (APA)</li>
+        <li>Drafting ask: bill, model statute, ordinance, or bench memo/model opinion</li>
+      </ul></div>
+      <div class="blk"><div class="lbl">Routes to</div><div class="seats"><span>constitutional (+ glaw-constitution-score)</span><span>legislative</span><span>admin-law</span><span>judicial</span></div></div>
+      <div class="docket"><b>Docket now</b>Comment-period close dates · petition/appeal clocks · session calendars</div>
+    </div>
+    <div class="dept-gate">This branch prepares attorney work-product only — it does not enact, adjudicate, enforce, file, or bind anyone.</div>
+  </div>
+
+  <!-- Litigation Support -->
+  <div class="dept">
+    <div class="dept-head">
+      <div class="covers">Service desk — 10 discrete callable agents</div>
+      <h3>Litigation Support</h3>
+      <div class="lead">Intake here = <b>which case + which artifact</b>, not a new matter</div>
+      <div class="badges"><span class="badge">Attaches to an existing matter</span></div>
+    </div>
+    <div class="dept-body">
+      <div class="blk"><div class="lbl">Capture at intake</div><ul>
+        <li>The matter this work attaches to (or open one via the spine first)</li>
+        <li>The artifact requested: research memo, timeline, motion, forensic trace</li>
+        <li>Sources to ingest → <code>glaw-doc-extract</code> (metadata feeds precise event dating)</li>
+      </ul></div>
+      <div class="blk"><div class="lbl">The ten agents</div><div class="seats"><span>contract-review</span><span>case-law-research</span><span>court-records (PACER/CL)</span><span>fraud detection</span><span>veil-piercing</span><span>evidence-timeline</span><span>financial-forensics</span><span>motion-drafting</span><span>adversarial (RED→BLUE)</span><span>strategy</span></div></div>
+      <div class="blk"><div class="lbl">Research chain</div><ul>
+        <li>case-law-research finds → <code>glaw-cites</code> extracts → legal-research verifies → motion-drafting uses → legal-writing polishes</li>
+      </ul></div>
+    </div>
+    <div class="dept-gate">Every drafted legal proposition passes <code>/glaw-legal-research</code> before <code>/glaw-file</code> — the anti-hallucination guardrail.</div>
+  </div>
+
+  <!-- Legal Writing -->
+  <div class="dept">
+    <div class="dept-head">
+      <div class="covers">Copywriter · drafting · rendering — every deliverable exits here</div>
+      <h3>Legal Writing &amp; Document Production</h3>
+      <div class="lead">House standard: <code>/glaw-legal-writing</code></div>
+      <div class="badges"><span class="badge">All tracks</span><span class="badge">Exit gate</span></div>
+    </div>
+    <div class="dept-body">
+      <div class="blk"><div class="lbl">Capture at intake</div><ul>
+        <li>Deliverable format: memo, motion, brief, client letter, marketing copy</li>
+        <li>Court + style directive — motion style sheet vs Federal Filing Style (<code>--federal</code>)</li>
+        <li>Citation posture: Bluebook binding/persuasive/secondary + pin cites</li>
+      </ul></div>
+      <div class="blk"><div class="lbl">QC pipeline</div><ul>
+        <li><code>bin/glaw-writing-check [--motion|--federal]</code> — deterministic QC</li>
+        <li><code>bin/glaw-federal-format</code> auto-render · <code>bin/glaw-format-check</code> (TNR/double/justified/1.25")</li>
+        <li><code>bin/glaw-publish &lt;matter&gt;</code> — house-style HTML bundle (Helvetica, justified 12pt/1.5, blue callouts)</li>
+      </ul></div>
+      <div class="blk"><div class="lbl">Routes to</div><div class="seats"><span>legal-writing</span><span>copywriting</span><span>copy-editing</span><span>make-pdf</span><span>docx</span><span>document-generate</span></div></div>
+    </div>
+    <div class="dept-gate">Rule 5: final wording/format polish goes through <code>/glaw-legal-writing</code> before file. UPL disclaimer on every external deliverable.</div>
+  </div>
+
+</div>
+
+<!-- ================= STANDING RULES ================= -->
+<h2>Standing Rules That Bind Every Intake</h2>
+<div class="rules">
+  <div class="rule"><h4>Named reviewer or no gate</h4><p>Generic placeholders (<code>TBD</code>, <code>operator</code>, <code>[REVIEWER]</code>) do not clear <code>bin/glaw-intake complete</code>. A named, accountable intake reviewer signs.</p></div>
+  <div class="rule"><h4>Route, never freelance</h4><p>If a seat in the roster owns the question, route there. The roster is the firm's no-gaps guarantee — every domain maps to a seat.</p></div>
+  <div class="rule"><h4>Ingest before reading</h4><p>Every evidence file passes <code>bin/glaw-doc-extract</code> first; <code>.meta.json</code> forensic metadata feeds backdating detection and event dating.</p></div>
+  <div class="rule"><h4>Score every upload</h4><p>Contract → <code>glaw-contract-score</code> · financial/fraud → <code>glaw-bureau-score</code> · compliance → <code>glaw-compliance-audit</code>. The scorecard is a deliverable.</p></div>
+  <div class="rule"><h4>Firm memory preflight</h4><p><code>glaw-learnings preflight</code> before substantive work; new defects written back via <code>glaw-learnings add</code> + <code>glaw-reflect --apply</code>.</p></div>
+  <div class="rule"><h4>Docket at intake</h4><p>Hard dates are calendared the moment they surface — SOL, lien, Form D, BOI, 706/709, Wells — with an owner and a source cite.</p></div>
+</div>
+
+<footer>
+  GLAW produces attorney work-product drafts for a licensed attorney to review, sign, and file. It does not form an attorney-client relationship and does not substitute for a member of the bar. The UPL guardrail lives in /glaw-ethics-conflicts.
+</footer>
+</div>
+</body>
+</html>

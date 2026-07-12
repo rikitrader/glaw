@@ -1,7 +1,7 @@
 ---
 name: glaw-dashboard
-version: 1.0.0
-description: "GLAW Management Dashboard seat — the monthly KPI pack read straight off the ledger statements. Computes margins (gross, operating, net), liquidity (current and quick ratio, working capital), efficiency (DSO, DPO, cash conversion cycle), leverage (debt-to-equity, interest coverage), and cash (monthly burn, runway in months) — then tells the period-over-period story in plain language. Pulls comparatives from the statements, budget variance from glaw-budget, and runway from glaw-treasury. Presented by glaw-cfo; ratio definitions come from glaw-glossary. Use for: 'management dashboard', 'KPI pack', 'board report', 'metrics report', 'how is the business doing', 'margins', 'liquidity ratios', 'cash runway', 'burn rate', 'DSO', 'period over period'."
+version: 1.1.0
+description: "GLAW Management Dashboard seat — the monthly KPI pack read straight off the ledger statements. Computes margins (gross, operating, net), liquidity (current and quick ratio, working capital), efficiency (DSO, DPO, cash conversion cycle), leverage (debt-to-equity, interest coverage), and cash (monthly burn, runway in months) — then tells the period-over-period story in plain language. Pulls comparatives from the statements, budget variance from glaw-budget, and runway from glaw-treasury. Presented by glaw-cfo; ratio definitions come from glaw-glossary. Also serves the firm ops panel: the visual Intake Workflow Atlas at lib/intake-atlas.html. Use for: 'management dashboard', 'KPI pack', 'board report', 'metrics report', 'how is the business doing', 'margins', 'liquidity ratios', 'cash runway', 'burn rate', 'DSO', 'period over period', 'intake atlas', 'show the intake workflow'."
 allowed-tools:
   - Bash
   - Read
@@ -18,6 +18,8 @@ triggers:
   - cash runway
   - margin trend
   - period over period
+  - intake atlas
+  - intake workflow
 ---
 
 ## When to invoke this skill
@@ -88,6 +90,33 @@ A one-page management KPI dashboard: margins, liquidity, efficiency, leverage, a
 with its prior-period comparative, budget variance, and canonical formula — plus a short
 period-over-period narrative flagging the few metrics that actually moved and a current cash
 runway in months. Every figure traces to a closed statement line.
+
+## Firm intake atlas (ops panel)
+
+Besides the financial KPI pack, this seat serves the firm's **visual intake map**:
+`lib/intake-atlas.html` — the universal intake spine (six steps, with the docket and
+conflicts blocks rendered as the code-gated stops they are), the eight-track router, and
+a department-specific intake flow for all fourteen divisions, in house style (light + dark).
+
+When the user asks "show me the intake workflow", "how does intake work", or "intake atlas",
+open it directly from the repo root:
+
+```bash
+open "$(git rev-parse --show-toplevel 2>/dev/null || pwd)/lib/intake-atlas.html"
+```
+
+The atlas is derived from `lib/firm-roster.md` + `intake/SKILL.md`. **Sync rule:** any change
+to divisions, tracks, `track_specific` fields, or intake gates in those sources updates the
+matching card in the atlas in the same change. The atlas may ride along in a
+`bin/glaw-publish` bundle as a firm-ops page.
+
+**Public app (LIVE):** the atlas + a routing **intake interview** are deployed as a
+Cloudflare Worker at **https://glaw-intake.rikitrader.workers.dev** (source: `app/`).
+The interview classifies the track, captures the charter + `track_specific` fields,
+routes to the owning division/seats, stores the submission (KV, `POST /api/intake`),
+and emits the runnable `bin/glaw-intake` script. Admin list: `GET /api/intakes` with
+`Authorization: Bearer $INTAKE_ADMIN_TOKEN` (Worker secret). `app/public/atlas.html`
+is a copy of `lib/intake-atlas.html` — same sync rule, both copies in the same change.
 
 ## Not legal or accounting advice
 CFO-work-product, not legal, tax, or accounting advice. Prepared for review by a licensed CPA /
