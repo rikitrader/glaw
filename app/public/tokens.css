@@ -1,0 +1,56 @@
+/* GLAW Intake — shared design tokens (single source of truth for all three pages).
+   Pages keep layout CSS inline; palette/theme/focus/control tokens live ONLY here. */
+:root{
+  color-scheme: light dark;
+  --paper:#FAFAF7; --card:#FFFFFF; --ink:#181B20; --muted:#5C6472;
+  --hairline:#D9DBD5; --ctl-border:#878E99;
+  --directive:#1B4796; --directive-ink:#FFFFFF; --directive-soft:#EBF0FA;
+  --gate:#A8271E; --gate-soft:#F9ECEA;
+  --clear:#1E7A46; --clear-soft:#EAF4EE;
+  --chipbg:#F0F1EC; --mono-bg:#F2F3EF;
+  --shadow:0 1px 2px rgba(24,27,32,.05);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --paper:#15171C; --card:#1C1F26; --ink:#E7E9EC; --muted:#9AA3B2;
+    --hairline:#31353E; --ctl-border:#6B7380;
+    --directive:#7FA3F0; --directive-ink:#12151B; --directive-soft:#1E2836;
+    --gate:#E5766D; --gate-soft:#33211F;
+    --clear:#58B786; --clear-soft:#1D2E24;
+    --chipbg:#252932; --mono-bg:#23262E; --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#15171C; --card:#1C1F26; --ink:#E7E9EC; --muted:#9AA3B2;
+  --hairline:#31353E; --ctl-border:#6B7380;
+  --directive:#7FA3F0; --directive-ink:#12151B; --directive-soft:#1E2836;
+  --gate:#E5766D; --gate-soft:#33211F;
+  --clear:#58B786; --clear-soft:#1D2E24;
+  --chipbg:#252932; --mono-bg:#23262E; --shadow:none;
+}
+:root[data-theme="light"]{
+  --paper:#FAFAF7; --card:#FFFFFF; --ink:#181B20; --muted:#5C6472;
+  --hairline:#D9DBD5; --ctl-border:#878E99;
+  --directive:#1B4796; --directive-ink:#FFFFFF; --directive-soft:#EBF0FA;
+  --gate:#A8271E; --gate-soft:#F9ECEA;
+  --clear:#1E7A46; --clear-soft:#EAF4EE;
+  --chipbg:#F0F1EC; --mono-bg:#F2F3EF;
+  --shadow:0 1px 2px rgba(24,27,32,.05);
+}
+
+/* Focus is never removed, only replaced — one visible ring everywhere. */
+a:focus-visible, button:focus-visible, input:focus-visible,
+textarea:focus-visible, select:focus-visible, [tabindex]:focus-visible{
+  outline:2px solid var(--directive); outline-offset:2px;
+}
+
+::placeholder{ color:var(--muted); opacity:1; }
+
+/* Skip link (first element in body on form pages). */
+.skip{position:absolute;left:-9999px;top:0;background:var(--directive);
+  color:var(--directive-ink);padding:10px 18px;border-radius:0 0 4px 0;
+  font-weight:700;text-decoration:none;z-index:100}
+.skip:focus{left:0}
+
+/* Visually hidden live-region text. */
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
