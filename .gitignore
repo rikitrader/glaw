@@ -29,3 +29,6 @@ matters/
 # vendored bookkeeping engine — commit source, not the venv
 lib/bookkeeping/.venv/
 lib/bookkeeping/**/__pycache__/
+
+# Wrangler local cache/state (holds account metadata)
+.wrangler/
