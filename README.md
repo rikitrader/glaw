@@ -4,10 +4,10 @@
 
 # GLAW · The Open-Source Virtual Law Firm
 
-**A self-contained open-source virtual law firm you install as an AI agent skill. Not a chatbot — an org chart.**
-GLAW runs legal *matters* (build a company, structure a fund, prosecute or defend a case, investigate fraud) through an **8-stage pipeline**, routing each step to the right **department**, and produces **attorney work-product** — pleadings, contracts, redlines, dossiers, filings — for a licensed attorney to review and sign.
+**A self-contained open-source virtual law firm you install as an AI agent skill. Not a chatbot — an org chart, an API, and a paid-agent market.**
+GLAW runs legal *matters* (build a company, structure a fund, prosecute or defend a case, investigate fraud) through an **8-stage pipeline**, routing each step to the right **department**, and produces **attorney work-product** — pleadings, contracts, redlines, dossiers, filings — for a licensed attorney to review and sign. The repo now also ships an **X402 payment Worker** that treats every `SKILL.md` as a billable agent with a service matrix, MCP tools, API endpoints, USDC exact-payment flow, and Conway-style paid-agent survival.
 
-**10 departments · 183 source skills · 67 vendored seats · 181 mirrored commands · hard-gated matter pipeline · FBI-style fraud dossiers · source-first bookkeeping with Google Sheets input + OCR orchestration. Attorney work-product for licensed attorney review, not legal advice.**
+**10 departments · 183 source skills · 67 vendored seats · 181 mirrored commands · hard-gated matter pipeline · MCP/API intake · X402 paid-agent matrix · Conway agent-life scheduler · FBI-style fraud dossiers · source-first bookkeeping with Google Sheets input + OCR orchestration. Attorney work-product for licensed attorney review, not legal advice.**
 
 [![GLAW Doctor](https://github.com/rikitrader/glaw/actions/workflows/ci.yml/badge.svg)](https://github.com/rikitrader/glaw/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-C9A227.svg)](LICENSE)
@@ -15,6 +15,8 @@ GLAW runs legal *matters* (build a company, structure a fund, prosecute or defen
 [![Tools](https://img.shields.io/badge/commands-181-1A3FA0.svg)](#-the-toolbelt-181-mirrored-commands)
 [![Departments](https://img.shields.io/badge/departments-10-3B82F6.svg)](#%EF%B8%8F-the-departments)
 [![Pipeline](https://img.shields.io/badge/pipeline-8%20stages-3B82F6.svg)](#-the-workflow)
+[![X402](https://img.shields.io/badge/X402-paid%20agents-16a34a.svg)](x402/)
+[![MCP](https://img.shields.io/badge/MCP-tools-0f766e.svg)](x402/#glaw-x402)
 [![Agent Skills](https://img.shields.io/badge/format-Agent%20Skills-000.svg)](https://agentskills.org)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-22c55e.svg)](CONTRIBUTING.md)
 [![Roadmap](https://img.shields.io/badge/roadmap-autonomous%20agency-8b5cf6.svg)](ROADMAP.md)
@@ -33,9 +35,14 @@ cd ~/glaw && ./setup                       # deploys source skills + 67 vendored
 
 # 2. open a matter and let the firm work it
 /glaw                                       # "form a Delaware C-corp with a SAFE round"
+
+# 3. optional: run the X402/MCP paid-agent Worker
+cd x402 && npm run db:migrate:local && npm run dev
 ```
 
 GLAW turns one prompt into a **staffed engagement**: intake → strategy → structure → draft → adversarial red-team → file → docket → close — with **hard gates** (structured intake, conflicts, citations, adversarial RED→BLUE, red flags, final packet, Chief/Council approval, UPL, docket) it will not skip.
+
+For paid agent orchestration, [`x402/`](x402/) exposes the same firm as a chargeable service matrix: each skill becomes an agent, services quote in USDC atomic units, X402 settlement authorizes work, and MCP/API clients can call the matrix, quote, charge, and paid-work tools.
 
 ---
 
