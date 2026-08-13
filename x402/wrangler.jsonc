@@ -1,0 +1,28 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "glaw-x402",
+  "main": "src/worker.mjs",
+  "compatibility_date": "2026-08-13",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": {
+    "enabled": true,
+    "head_sampling_rate": 1
+  },
+  "vars": {
+    "GLAW_X402_ENABLED": "false",
+    "X402_NETWORK": "eip155:84532",
+    "GLAW_SERVICE_BASE_URL": "http://localhost:8787",
+    "WORK_AUTH_TTL_SECONDS": "86400"
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "glaw-x402",
+      "database_id": "REPLACE_WITH_D1_DATABASE_ID",
+      "migrations_dir": "migrations"
+    }
+  ],
+  "triggers": {
+    "crons": ["0 5 * * *"]
+  }
+}
