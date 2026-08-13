@@ -1,0 +1,28 @@
+{
+  "name": "glaw-x402",
+  "version": "0.1.0",
+  "private": true,
+  "description": "GLAW agent charge matrix with X402 payment, REST API, and MCP JSON-RPC surfaces.",
+  "type": "module",
+  "scripts": {
+    "start": "wrangler dev",
+    "start:node": "node src/server.mjs",
+    "dev": "wrangler dev",
+    "dev:node": "node --watch src/server.mjs",
+    "deploy": "wrangler deploy",
+    "db:migrate:local": "wrangler d1 migrations apply glaw-x402 --local",
+    "db:migrate:remote": "wrangler d1 migrations apply glaw-x402 --remote",
+    "catalog:export": "node scripts/export-catalog.mjs",
+    "catalog:import": "node scripts/import-catalog.mjs",
+    "test": "node --test",
+    "verify": "node --test"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "latest",
+    "@types/node": "^26.2.0",
+    "wrangler": "^4.104.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
