@@ -5,24 +5,42 @@ set -uo pipefail
 ROOT="${GLAW:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
 PY="$(command -v python3)"
 FAIL=0
+RUN_DIR="${TMPDIR:-/tmp}/glaw-bookkeeping-doctor.$(date +%Y%m%dT%H%M%S).$$"
+mkdir -p "$RUN_DIR"
 
 ok(){ printf '  ✅ %s\n' "$1"; }
 bad(){ printf '  ❌ %s\n' "$1"; FAIL=$((FAIL+1)); }
 skip(){ printf '  ⚠️  %s\n' "$1"; }
+note(){ printf '  ℹ️  %s\n' "$1"; }
+
+finish() {
+  if [ "$FAIL" -ne 0 ]; then
+    note "failure artifacts: $RUN_DIR"
+  else
+    rm -rf "$RUN_DIR"
+  fi
+}
+trap finish EXIT
 
 run_py_test() {
   local test="$1"
-  if GLAW="$ROOT" GLAW_HOME="$(mktemp -d)" PYTHONPATH="$ROOT/lib/bookkeeping:$ROOT" "$PY" "$ROOT/lib/bookkeeping/$test" >/tmp/glaw-bkdoc.out 2>&1; then
+  local test_out="$RUN_DIR/${test%.py}.out"
+  local test_home
+  test_home="$(mktemp -d "${TMPDIR:-/tmp}/glaw-bkdoc-home.XXXXXX")"
+  if GLAW="$ROOT" GLAW_HOME="$test_home" PYTHONPATH="$ROOT/lib/bookkeeping:$ROOT" "$PY" "$ROOT/lib/bookkeeping/$test" >"$test_out" 2>&1; then
     ok "$test"
   else
     bad "$test"
-    sed 's/^/      /' /tmp/glaw-bkdoc.out
+    sed 's/^/      /' "$test_out"
   fi
+  rm -rf "$test_home"
 }
 
 echo "═══ GLAW BOOKKEEPING DOCTOR ═══"
+note "root: $ROOT"
+note "run dir: $RUN_DIR"
 
-tmp="$(mktemp -d)"
+tmp="$(mktemp -d "${TMPDIR:-/tmp}/glaw-bkdoc.XXXXXX")"
 sample="$tmp/bank.csv"
 cat >"$sample" <<'CSV'
 date,description,amount
@@ -52,38 +70,38 @@ else
   sed 's/^/      /' "$tmp/rec.err"
 fi
 
-if GLAW="$ROOT" "$ROOT/bin/glaw-books-doctor" "$tmp/ingest.json" --rec "$tmp/rec.json" --require-rec >/tmp/glaw-books-doc.out 2>&1; then
+if GLAW="$ROOT" "$ROOT/bin/glaw-books-doctor" "$tmp/ingest.json" --rec "$tmp/rec.json" --require-rec >"$RUN_DIR/glaw-books-doctor.out" 2>&1; then
   ok "books doctor over ingest JSON requires bank rec"
 else
   bad "books doctor over ingest JSON requires bank rec"
-  sed 's/^/      /' /tmp/glaw-books-doc.out
+  sed 's/^/      /' "$RUN_DIR/glaw-books-doctor.out"
 fi
 
-ledger_home="$(mktemp -d)"
-if GLAW_HOME="$ledger_home" GLAW="$ROOT" "$ROOT/bin/glaw-ledger" --book doctor post --date 2026-01-01 --debit Assets:Cash 1000 --credit Income:Revenue 1000 >/tmp/glaw-ledger-doc.out 2>&1 \
-  && GLAW_HOME="$ledger_home" GLAW="$ROOT" "$ROOT/bin/glaw-ledger" --book doctor post --date 2026-01-02 --debit Expenses:COGS:Materials 250 --credit Assets:Cash 250 >/tmp/glaw-ledger-doc.out 2>&1 \
-  && GLAW_HOME="$ledger_home" GLAW="$ROOT" "$ROOT/bin/glaw-books-doctor" --book doctor >/tmp/glaw-ledger-doc.out 2>&1; then
+ledger_home="$(mktemp -d "${TMPDIR:-/tmp}/glaw-bkdoc-ledger.XXXXXX")"
+if GLAW_HOME="$ledger_home" GLAW="$ROOT" "$ROOT/bin/glaw-ledger" --book doctor post --date 2026-01-01 --debit Assets:Cash 1000 --credit Income:Revenue 1000 >"$RUN_DIR/glaw-ledger-doctor.out" 2>&1 \
+  && GLAW_HOME="$ledger_home" GLAW="$ROOT" "$ROOT/bin/glaw-ledger" --book doctor post --date 2026-01-02 --debit Expenses:COGS:Materials 250 --credit Assets:Cash 250 >>"$RUN_DIR/glaw-ledger-doctor.out" 2>&1 \
+  && GLAW_HOME="$ledger_home" GLAW="$ROOT" "$ROOT/bin/glaw-books-doctor" --book doctor >>"$RUN_DIR/glaw-ledger-doctor.out" 2>&1; then
   ok "ledger wrapper executable + book gate"
 else
   bad "ledger wrapper executable + book gate"
-  sed 's/^/      /' /tmp/glaw-ledger-doc.out
+  sed 's/^/      /' "$RUN_DIR/glaw-ledger-doctor.out"
 fi
 
 if GLAW_HOME="$ledger_home" GLAW="$ROOT" "$ROOT/bin/glaw-return-map" --book doctor --form 1120 --format json >"$tmp/1120.json" 2>"$tmp/1120.err" \
-  && GLAW="$ROOT" "$ROOT/bin/glaw-fill-form" --form 1120 --data "$tmp/1120.json" --out "$tmp/1120" >/tmp/glaw-fill-doc.out 2>&1 \
+  && GLAW="$ROOT" "$ROOT/bin/glaw-fill-form" --form 1120 --data "$tmp/1120.json" --out "$tmp/1120" >"$RUN_DIR/glaw-fill-form.out" 2>&1 \
   && [ -s "$tmp/1120.fill.json" ] && [ -s "$tmp/1120.fill.txt" ]; then
   ok "IRS return map + form fill package ties to ledger"
 else
   bad "IRS return map + form fill package ties to ledger"
-  cat "$tmp/1120.err" /tmp/glaw-fill-doc.out 2>/dev/null | sed 's/^/      /'
+  cat "$tmp/1120.err" "$RUN_DIR/glaw-fill-form.out" 2>/dev/null | sed 's/^/      /'
 fi
 
 if GLAW_HOME="$ledger_home" GLAW="$ROOT" "$ROOT/bin/glaw-tax-provision" --book doctor --rate 21 --post --date 2026-12-31 --format json >"$tmp/provision.json" 2>"$tmp/provision.err" \
-  && GLAW_HOME="$ledger_home" GLAW="$ROOT" "$ROOT/bin/glaw-tax-tieout" --book doctor --rate 21 >/tmp/glaw-tax-tieout.out 2>&1; then
+  && GLAW_HOME="$ledger_home" GLAW="$ROOT" "$ROOT/bin/glaw-tax-tieout" --book doctor --rate 21 >"$RUN_DIR/glaw-tax-tieout.out" 2>&1; then
   ok "tax provision + tax tie-out from ledger"
 else
   bad "tax provision + tax tie-out from ledger"
-  cat "$tmp/provision.err" /tmp/glaw-tax-tieout.out 2>/dev/null | sed 's/^/      /'
+  cat "$tmp/provision.err" "$RUN_DIR/glaw-tax-tieout.out" 2>/dev/null | sed 's/^/      /'
 fi
 
 run_py_test test_sources.py
@@ -93,10 +111,10 @@ run_py_test test_finance45.py
 
 bad_pdf="$tmp/bad.pdf"
 printf '%s' '%PDF-1.4' >"$bad_pdf"
-if GLAW="$ROOT" "$ROOT/bin/glaw-bank-ingest" "$bad_pdf" --format json >/tmp/glaw-pdf-doc.out 2>/tmp/glaw-pdf-doc.err; then
+if GLAW="$ROOT" "$ROOT/bin/glaw-bank-ingest" "$bad_pdf" --format json >"$RUN_DIR/glaw-pdf-doc.out" 2>"$RUN_DIR/glaw-pdf-doc.err"; then
   bad "bad PDF should fail cleanly"
 else
-  if grep -q 'Traceback' /tmp/glaw-pdf-doc.err; then
+  if grep -q 'Traceback' "$RUN_DIR/glaw-pdf-doc.err"; then
     bad "bad PDF emitted traceback"
   else
     ok "bad PDF clean error path"
@@ -113,13 +131,14 @@ manifest_scan="$(find "$ROOT/lib/bookkeeping" \( -name requirements.txt -o -name
 if [ -n "$manifest_scan" ]; then
   bad "package manifest found in bookkeeping engine"
   printf '%s\n' "$manifest_scan" | sed 's/^/      /'
+  printf '%s\n' "$manifest_scan" >"$RUN_DIR/manifest-scan.txt"
 else
   ok "no bookkeeping package manifests"
 fi
 
-if grep -rIE '^\s*(from|import)\s+(pydantic|pandas|lxml|defusedxml|pypdf|PyPDF2|pypdfium2|litellm|polars|fastapi|uvicorn|google|googleapiclient|openpyxl|docxtpl|eyecite|jsonschema|juriscraper|requests)\b' "$ROOT/bin" "$ROOT/lib" "$ROOT/federal-trial-counsel" "$ROOT/seats" "$ROOT/docx" >/tmp/glaw-import-scan.out 2>/dev/null; then
+if grep -rIE '^\s*(from|import)\s+(pydantic|pandas|lxml|defusedxml|pypdf|PyPDF2|pypdfium2|litellm|polars|fastapi|uvicorn|google|googleapiclient|openpyxl|docxtpl|eyecite|jsonschema|juriscraper|requests)\b' "$ROOT/bin" "$ROOT/lib" "$ROOT/federal-trial-counsel" "$ROOT/seats" "$ROOT/docx" >"$RUN_DIR/glaw-import-scan.out" 2>/dev/null; then
   bad "direct third-party Python import found"
-  sed 's/^/      /' /tmp/glaw-import-scan.out
+  sed 's/^/      /' "$RUN_DIR/glaw-import-scan.out"
 else
   ok "no direct third-party Python imports"
 fi

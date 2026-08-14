@@ -21,4 +21,28 @@ if [ "$mode" = "pre-commit" ]; then
 fi
 
 echo "GLAW commit gate ($mode): running bin/glaw-doctor"
-bash bin/glaw-doctor
+DOCTOR_TIMEOUT_SECONDS="${GLAW_DOCTOR_TIMEOUT_SECONDS:-900}"
+doctor_runner=(bash bin/glaw-doctor)
+
+if command -v timeout >/dev/null 2>&1; then
+  doctor_runner=(timeout "$DOCTOR_TIMEOUT_SECONDS" bash bin/glaw-doctor)
+elif command -v gtimeout >/dev/null 2>&1; then
+  doctor_runner=(gtimeout "$DOCTOR_TIMEOUT_SECONDS" bash bin/glaw-doctor)
+fi
+
+set +e
+"${doctor_runner[@]}"
+rc=$?
+set -e
+
+if [ "$rc" -eq 0 ]; then
+  echo "GLAW commit gate ($mode): PASS"
+  exit 0
+fi
+
+if [ "$rc" -eq 124 ]; then
+  echo "GLAW commit gate ($mode): TIMEOUT after ${DOCTOR_TIMEOUT_SECONDS}s" >&2
+else
+  echo "GLAW commit gate ($mode): FAIL (exit $rc)" >&2
+fi
+exit "$rc"
