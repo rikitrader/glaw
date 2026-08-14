@@ -18,6 +18,7 @@ FLAGS="$ROOT/bin/glaw-red-flags"
 PACKET="$ROOT/bin/glaw-final-packet"
 CONTROL="$ROOT/bin/glaw-accounting-control"
 CHIEF="$ROOT/bin/glaw-chief-decision"
+PREMIUM="$ROOT/bin/glaw-premium-lanes"
 
 "$GLAW" matter new "SEC Reporting Profile" >/dev/null
 SLUG="sec-reporting-profile"
@@ -158,6 +159,7 @@ cat > "$M/workpapers/audit-tieout-good.json" <<'JSON'
 }
 JSON
 "$CONTROL" --matter "$SLUG" --profile sec-reporting --source "SRC-0001 SEC reporting ledger bank reconciliation audit and ICFR support reviewed" --ledger "$M/workpapers/ledger.json" --bank-rec "$M/workpapers/bank-rec-input.json" --audit-tieout "$M/workpapers/audit-tieout-good.json" >/dev/null
+"$PREMIUM" materialize-source-ingest --matter-slug "$SLUG" --json >/dev/null
 "$PACKET" build >/dev/null 2>"$TMP/packet-ready.out"; rc=$?
 ok "$([ "$rc" = 0 ] && grep -q '"workflow_profile": "sec-reporting"' "$M/final_packet.json" && grep -q '"required": true' "$M/final_packet.json" && grep -q '"label": "audit_tieout"' "$M/final_packet.json" && echo 1 || echo 0)" "SEC final packet ready after audit-backed accounting control"
 "$CHIEF" --matter "$SLUG" --chief "GLAW Chief Counsel" --score 95 --grade A --decision PROCEED --risks none --conditions "licensed SEC counsel and auditor review before filing" --rationale "SRC-0001 SEC reporting packet, audit tie-out, ICFR, and PCAOB control evidence reviewed" --approve-final >/dev/null

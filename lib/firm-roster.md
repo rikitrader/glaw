@@ -49,6 +49,22 @@ domain below maps to a seat.
    **Lawyer-grade output:** `bin/glaw-redline-docx <contract.docx> <findings.json>` bridges the same
    findings into a local DOCX redline artifact plus normalized redline JSON for attorney review.
 
+## Premium Client Lanes
+
+For Fortune 500, enterprise, tax-system, entrepreneur/founder, unicorn, investor/capital-raise,
+or UHNW/family-office matters, `/glaw` must read
+`lib/client-lanes/fortune500-tax-entrepreneur.md` before assigning seats. That file is the
+firm-level assembly map for premium matters: it converts the specialist roster into concrete
+client lanes, names the lead seats, requires the deliverables index, identifies the SEC/IRS/
+auditor/opposing-counsel adversaries, and lists hard no-go items.
+
+| Client lane | Typical trigger | Lead bench |
+|---|---|---|
+| Fortune 500 Enterprise Counsel | public company, public-ready issuer, PE-backed platform, multinational, regulated enterprise | Corporate, SEC reporting/disclosure, tax provision, accounting/audit, compliance, litigation, regulatory |
+| Tax System and IRS Engine | proactive tax, return mapping, credits, audit, controversy, entity tax, estate/gift/GST | Tax strategy, tax compliance, tax provision, accounting, IRS audit, Tax Court, estate-gift returns |
+| Entrepreneur, Founder, and Unicorn Advisor | formation, founder stock, 83(b), QSBS, 409A, capital raise, investor tax, exit | Corporate counsel, tax strategy, 83(b), PE/VC, fund regulatory, valuation, institutional finance, estate/trusts |
+| UHNW and Family Office Overlay | trusts, dynasty planning, investment LLC, asset protection, philanthropy, succession | Estate/trusts, tax strategy, asset protection, estate/gift returns, exempt org, institutional finance |
+
 ## Matter pipeline (stages)
 | Stage | Skill | Produces |
 |-------|-------|----------|

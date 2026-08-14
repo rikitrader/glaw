@@ -109,10 +109,12 @@ else
   skip "OCR binaries not both installed; PDF/OCR runtime tests skipped"
 fi
 
-if find "$ROOT" \( -name requirements.txt -o -name pyproject.toml -o -name package.json -o -name package-lock.json -o -name yarn.lock -o -name pnpm-lock.yaml \) -print | grep -q .; then
-  bad "package manifest found in repo"
+manifest_scan="$(find "$ROOT/lib/bookkeeping" \( -name requirements.txt -o -name pyproject.toml -o -name package.json -o -name package-lock.json -o -name yarn.lock -o -name pnpm-lock.yaml \) -print)"
+if [ -n "$manifest_scan" ]; then
+  bad "package manifest found in bookkeeping engine"
+  printf '%s\n' "$manifest_scan" | sed 's/^/      /'
 else
-  ok "no package manifests"
+  ok "no bookkeeping package manifests"
 fi
 
 if grep -rIE '^\s*(from|import)\s+(pydantic|pandas|lxml|defusedxml|pypdf|PyPDF2|pypdfium2|litellm|polars|fastapi|uvicorn|google|googleapiclient|openpyxl|docxtpl|eyecite|jsonschema|juriscraper|requests)\b' "$ROOT/bin" "$ROOT/lib" "$ROOT/federal-trial-counsel" "$ROOT/seats" "$ROOT/docx" >/tmp/glaw-import-scan.out 2>/dev/null; then

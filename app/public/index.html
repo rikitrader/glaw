@@ -112,6 +112,16 @@
   @media(max-width:640px){.dept,.dept.wide{grid-column:span 12}}
   .deptfoot{margin-top:18px;font-size:13.5px;color:var(--muted)}
 
+  /* premium lanes */
+  .lanes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+  .lane{border:1px solid var(--hairline);border-top:3px solid var(--directive);
+    padding:15px 16px;border-radius:6px;background:var(--card)}
+  .lane b{display:block;font-size:14.5px;margin-bottom:4px}
+  .lane span{display:block;color:var(--muted);font-size:12.5px}
+  .lane code{display:inline-block;margin-top:10px;font-size:11.5px;color:var(--directive)}
+  @media(max-width:900px){.lanes{grid-template-columns:1fr 1fr}}
+  @media(max-width:560px){.lanes{grid-template-columns:1fr}}
+
   /* gates band */
   .gates{background:var(--card);border-top:1px solid var(--hairline)}
   .gatesin{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:start}
@@ -232,10 +242,26 @@ bin/glaw-intake set workflow_track <span class="k">litigation</span>
 bin/glaw-intake set parties <span class="k">'Smith LLC; Jones Corp'</span>
 bin/glaw-intake set jurisdiction <span class="k">'Florida; federal'</span>
 bin/glaw-intake set goal <span class="k">'judgment and collection'</span>
-bin/glaw docket add <span class="k">2026-09-01</span> <span class="k">'SOL: breach claim'</span>
+MATTER_DIR="$(bin/glaw home)/matters/$(bin/glaw slug)"
+mkdir -p "$MATTER_DIR/evidence"
+printf '%s\n' 'Public intake source for Smith v. Jones' > "$MATTER_DIR/evidence/public-intake.txt"
+bin/glaw docket add --owner <span class="k">'intake docket clerk'</span> --source <span class="k">'SRC-0001 public intake form'</span> <span class="k">2026-09-01</span> <span class="k">'SOL: breach claim'</span>
 <span class="c"># conflicts gate, then a named reviewer signs</span>
-bin/glaw-intake complete --by <span class="k">'reviewing attorney'</span>
+bin/glaw-intake complete --by <span class="k">'&lt;named intake reviewer&gt;'</span>
 bin/glaw stage strategy</div>
+    </div>
+  </div>
+</section>
+
+<section id="premium-lanes">
+  <div class="wrap">
+    <h2>Premium lanes for enterprise, tax, and founder work.</h2>
+    <p class="sectionlede">Complex matters get a lane packet layered over the ordinary track. The packet names the lead seats, required outputs, adversarial reviewers, docket obligations, and attorney/CPA/local-counsel review conditions. The public API also infers these premium lanes server-side from raw matter facts and returns a source-only handoff package with lane attach commands, the `glaw-intake premium` scope tag, complete, render, check, and docket commands plus the checklist families each active-matter packet must clear, so the active-matter handoff does not depend on browser-only routing.</p>
+    <div class="lanes">
+      <div class="lane"><b>Fortune 500 Enterprise Counsel</b><span>Board authority, 10-K/10-Q/8-K, S-1/proxy, Section 16, Inline XBRL, SOX 302/404, ICFR, PCAOB, ASC 740, Reg FD, compliance, M&amp;A, litigation holds.</span><code>fortune500-enterprise</code></div>
+      <div class="lane"><b>Tax System And IRS Engine</b><span>Source evidence, current figures, return-line maps, R&amp;D §41/§174A, IRA energy credits, 3800/6765/3468/8974, transferability, recapture, 8275, SALT, FBAR/FATCA, ASC 740, e-file handoff, controversy.</span><code>tax-system</code></div>
+      <div class="lane"><b>Founder And Unicorn Advisor</b><span>Formation, IP, 83(b), QSBS certificate, §1202, §1045, 409A, Reg D/CF/A/S raise, investor suitability, KYC/AML/OFAC, W-9/W-8, K-1/1099/1042-S, side letters, communications, transfer controls, exit.</span><code>founder-unicorn</code></div>
+      <div class="lane"><b>UHNW Family Office Overlay</b><span>Full trust taxonomy, dynasty/SLAT/GRAT/QPRT/ILIT, CRT/CLT, DAPT/offshore, QSST/ESBT, investment LLC, situs, trustee, GST, philanthropy.</span><code>uhnw-family-office</code></div>
     </div>
   </div>
 </section>
@@ -289,11 +315,11 @@ bin/glaw stage strategy</div>
   <div class="wrap api">
     <div>
       <h2>Built for the firm's machinery</h2>
-      <p class="sectionlede">Every submission is stored and retrievable. The generated package runs verbatim on the GLAW CLI, so a matter opened here is a matter the firm can work immediately.</p>
+      <p class="sectionlede">Every submission is stored and retrievable. The generated source-only handoff package includes evidence text, intake set commands, premium-scope tags, premium-lane checklist families, manifest freshness contract, and packet gate commands for the GLAW CLI, so a matter opened here is a matter the firm can work immediately after conflicts review.</p>
     </div>
     <div>
-      <div class="endpoint"><span class="verb">POST</span><div><code>/api/intake</code><span>store a routed submission; returns its intake id</span></div></div>
-      <div class="endpoint"><span class="verb">GET</span><div><code>/api/intake/:id</code><span>retrieve one submission as JSON</span></div></div>
+      <div class="endpoint"><span class="verb">POST</span><div><code>/api/intake</code><span>store a routed submission; infers premium lanes server-side and returns its intake id plus handoff package</span></div></div>
+      <div class="endpoint"><span class="verb">GET</span><div><code>/api/intake/:id</code><span>retrieve one submission as JSON, bearer-token gated</span></div></div>
       <div class="endpoint"><span class="verb">GET</span><div><code>/api/intakes</code><span>admin listing, bearer-token gated</span></div></div>
       <div class="endpoint"><span class="verb">GET</span><div><code>/atlas</code><span>the full intake workflow atlas, every division</span></div></div>
     </div>

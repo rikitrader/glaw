@@ -1,0 +1,3164 @@
+#!/usr/bin/env python3
+"""glaw-premium-lanes - list, validate, playbook, scaffold, attach, complete, docket, render, and check premium GLAW lanes."""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import os
+import re
+import subprocess
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+
+ROOT = Path(__file__).resolve().parents[1]
+MANIFEST = ROOT / "lib" / "client-lanes" / "premium-lanes.json"
+GLAW_HOME = Path(os.environ.get("GLAW_HOME", str(Path.home() / ".glaw"))).expanduser().resolve()
+REQUIRED_LANES = {"fortune500-enterprise", "tax-system", "founder-unicorn", "uhnw-family-office"}
+REQUIRED_LANE_FIELDS = (
+    "name",
+    "track_defaults",
+    "lead_seats",
+    "workstreams",
+    "phase_playbook",
+    "required_lane_packet",
+    "adversarial_reviewers",
+    "docket_items",
+)
+REQUIRED_PACKET_TERMS = (
+    "executive decision memo",
+    "lane map and seat ownership table",
+    "tax strategy and compliance calendar",
+    "risk matrix with regulator/opponent attack lines",
+    "implementation checklist with signer, filing, advisor, and deadline owner",
+    "docket export",
+)
+REQUIRED_NO_GO_TERMS = (
+    "hiding beneficial ownership",
+    "backdating",
+    "QSBS, credits, or deductions are guaranteed",
+    "unregistered securities offerings",
+    "no business purpose or economic substance",
+    "without human authority",
+)
+UHNW_TRUST_TAXONOMY_TERMS = (
+    "revocable living trust",
+    "A-B / bypass / credit-shelter trust",
+    "testamentary trust",
+    "irrevocable gift trust",
+    "dynasty / GST trust",
+    "IDGT",
+    "GRAT / GRUT",
+    "QPRT",
+    "SLAT",
+    "ILIT",
+    "CRT / CRAT / CRUT / NIMCRUT",
+    "CLT / CLAT / CLUT",
+    "DAPT",
+    "offshore APT",
+    "DING / NING / ING",
+    "special needs trust",
+    "QSST / ESBT",
+    "land trust",
+    "Delaware statutory trust / DST",
+    "business/statutory trust",
+    "rabbi / secular trust",
+    "qualified plan / IRA custodial trust",
+    "purpose trust",
+    "constructive / resulting trust",
+)
+SCHWAB_TRUST_TOPIC_TERMS = (
+    "Schwab trusts topic source update note: https://www.schwab.com/learn/topic/trusts dated source refresh and visible topic-index capture",
+    "Schwab 2026 topic-index capture: How to Plan Around Estate Tax Uncertainties (Aug. 11, 2026), SLATs: An Estate-Planning Strategy for Couples (Jul. 21, 2026), The Case for Establishing a Dynasty Trust (Jul. 2, 2026), Could a Trust Fit Your Estate Plan? (Jun. 22, 2026), Taxation Nation: Which State Taxes Matter to You? (Jun. 11, 2026), Using an IRA to Fund a Life Insurance Trust (Jun. 5, 2026), Estate Planning: Equal or Equitable Distribution? (Mar. 6, 2026), We Asked Our Experts: Do You Need a Trust? (Dec. 8, 2025), Estate Planning: Lessons from a Loss (Nov. 28, 2025), and Avoiding Restrictions With a Discretionary Trust (Nov. 14, 2025), with source URL, publication date, topic relevance, and not-legal-advice boundary recorded",
+    "estate-tax uncertainty: A-B/bypass, GRAT, CRT, federal/state estate-tax uncertainty, and old formula-clause review",
+    "SLAT planning: separate-property funding, community-property partition, reciprocal-trust doctrine, HEMS/independent trustee, access risk, basis tradeoff, and optional dynasty/GST design",
+    "dynasty trust planning: GST allocation, situs, trustee location, duration/perpetuities law, distribution standards, creditor/divorce protection, and income-tax posture",
+    "ILIT and IRA funding: RMD/income-tax modeling, underwriting, Form 709, Crummey notices, policy economics, incidents of ownership, and section 2035 three-year-rule screen",
+    "QPRT planning: retained term, section 7520 valuation, survival risk, post-term leaseback, basis tradeoff, property tax, title, and insurance review",
+    "discretionary trust planning: trustee discretion, HEMS or incentive standards, beneficiary conflict, oversight cost, and professional co-trustee option",
+    "equal-versus-equitable distributions: family governance, beneficiary fairness, difficult-to-divide assets, advance gifts, special assets, and communication memo",
+    "state tax and situs: state income, estate, inheritance, trustee situs, beneficiary residency, asset-protection law, dynasty rules, and corporate trustee availability",
+    "special-needs, conservatorship, and incapacity planning: benefits preservation, care plan, POA, healthcare directive, successor fiduciary, and administrative powers",
+    "family wealth mission and beneficiary readiness: mission statement, stewardship, staged distributions, values, heir preparedness, and trustee-beneficiary communication",
+    "trust funding and administration basics: title audit, beneficiary designation review, probate avoidance, executor/trustee selection, fiduciary liability, records, tax payment order, and periodic review",
+    "charitable trust routing: CRT/CRAT/CRUT/NIMCRUT/CLT comparison, payout/reporting tests, gain deferral, income stream, deduction, and philanthropic intent",
+    "beneficiary divorce and asset protection: spendthrift/discretionary drafting, separate-property records, marital-property interface, and fraudulent-transfer screen",
+    "family support transactions: gift, loan, co-ownership, adult-child home purchase, family loan terms, mortgage, tax, estate, and securities/entity side effects",
+    "page-level source drift control: pages 1 through 4 of the Schwab trusts topic index are captured with title, date, URL, and routing note before relying on the benchmark",
+    "founder and business-owner succession crosswalk: IP protection, assignment, governance, and estate-transfer issues from the Schwab trust index are routed to corporate/IP/tax seats where relevant",
+)
+ENTITY_TOPOLOGY_TERMS = (
+    "default chassis: irrevocable dynasty or investment trust owns an investment LLC for diversified brokerage assets, alternatives, private fund interests, real estate interests, crypto custody vehicles, and family investment administration",
+    "direct trust-owned asset lane: assets bypass the investment LLC when tax, issuer, transfer, securities, ERISA, insurance, or fiduciary rules make direct ownership preferable",
+    "founder restricted stock and 83(b) carve-out: transfer timing, service-provider status, vesting, valuation, and 30-day election proof reviewed before any trust or LLC funding",
+    "QSBS section 1202 carve-out: original issue holder, qualified shareholder, holding period, transfer history, section 1202(g), section 1045, gross-assets, active-business, redemption, and shareholder-level limits reviewed before transfer",
+    "S-corp stock carve-out: QSST, ESBT, grantor trust, eligible shareholder, single-class-stock, election, consent, and termination-risk screen before trust or LLC ownership",
+    "life-insurance carve-out: ILIT ownership, incidents of ownership, new-policy versus transferred-policy, section 2035, premium gifts, Crummey notices, underwriting, and policy-economics screen",
+    "retirement-asset carve-out: beneficiary designation, prohibited transaction, RMD, inherited-IRA, UBIT/UBTI, custodial agreement, and qualified-plan rules reviewed before any trust or LLC routing",
+    "issuer-restricted private securities carve-out: issuer consent, transfer restrictions, subscription terms, KYC/AML/OFAC, tax forms, ERISA, custody, valuation, and securities-law limits reviewed before transfer",
+    "investment LLC governance: manager/trustee authority, operating agreement, capital-call and distribution controls, investment policy statement, fiduciary accounting, charging-order law, books, K-1/reporting, custody, and valuation cadence",
+    "trust administration and funding: completed gift, GST allocation, grantor/non-grantor classification, situs, trustee powers, solvency certificate, fraudulent-transfer screen, title assignment, beneficiary designations, and periodic review",
+    "tax and compliance model: income-tax owner, estate/gift/GST effect, basis and section 1014 tradeoff, section 704 partnership reporting where relevant, state tax, SEC/private-offering transfer, BOI/beneficial ownership, and Form 709/1041/K-1 calendar",
+    "adversarial topology review: IRS estate/gift/QSBS examiner, SEC or issuer transfer reviewer, creditor/fraudulent-transfer counsel, trustee fiduciary reviewer, valuation/appraiser, and investor tax counsel pass before funding",
+)
+SOURCE_INGEST_TERMS = (
+    "local source inventory: /Users/ricardoprieto/Desktop/TAX CREDIT/Options to Broaden the US Tax Base (May 2024 Update).pdf mapped to QSBS, trusts, grantor trusts, multiple-trust stacking, partnership/entity basis, PPLI/PPA, trust reporting proposals, and IRS anti-abuse review",
+    "local source inventory: /Users/ricardoprieto/Desktop/TAX CREDIT/what-are-the-different-types-of-irrevocable-trusts.pdf mapped to irrevocable trust administration, grantor-trust income-tax posture, GRAT, QPRT, irrevocable gift trust, ILIT, and trustee focus",
+    "local source inventory: /Users/ricardoprieto/Desktop/TAX CREDIT/fy2026h1_tab8.pdf mapped to tax expenditure and credit inventory, QSBS, R&E/R&D, state credits, investment credits, brownfields, LIHTC, historic, climatetech, qualified conversion, internship, transferability, and refundability concepts",
+    "local source inventory: /Users/ricardoprieto/Desktop/TAX CREDIT/F_PUB_550.pdf mapped to investment income, capital gain/loss, basis, holding periods, investment interest, tax shelters/reportable transactions, and Pub. 550 small-business-stock reporting context",
+    "local source inventory: /Users/ricardoprieto/Desktop/LLC/FormCandOS.pdf mapped to Reg CF offering statement, LLC agreement, risk factors, investor acknowledgments, subscription mechanics, transfer restrictions, series LLC governance, beneficial ownership, and issuer/investor tax disclaimers",
+    "local source inventory: /Users/ricardoprieto/Desktop/SEC/id257bpm.pdf mapped to SEC delinquent-reporting enforcement, investor-protection rationale, public-reporting consequences, adversarial SEC lens, and investor communications controls",
+    "extraction evidence: each local source has an extracted text or markdown artifact, nonempty hash, page/file provenance, and source-evidence row before it supports a conclusion",
+    "external authority refresh: IRS Instructions for Schedule D (Form 1120-S), current 26 U.S.C. section 1202 text, section 1045, Treasury/IRS guidance, and CLA QSBS proposed revenue procedure source are dated and reconciled against local source conclusions",
+    "source routing: every local and external source is assigned to tax qualification, capital-raising disclosure, investor reporting, wealth/asset sheltering, SEC/investor communications, or adversarial review owner",
+    "ingest conclusions: tax qualification, capital-raising disclosure, and wealth/asset sheltering are separated into distinct workstreams with no blended shortcut recommendation",
+    "source-backed no-go screen: tax shelters, reportable transactions, promoted credit claims, PPLI/PPA, multiple-trust stacking, grantor-trust freezes, backdating, sham entities, and guaranteed QSBS/credit claims receive IRS/SEC/adversarial review before use",
+    "output traceability: every QSBS certificate, tax-credit claim, investor tax statement, offering disclosure, trust/LLC topology memo, and tax-return position cites the source-ingest row or marks the source not applicable with rationale",
+)
+LOCAL_SOURCE_INGEST_FILES = (
+    {
+        "id": "tax-base-options",
+        "path": "/Users/ricardoprieto/Desktop/TAX CREDIT/Options to Broaden the US Tax Base (May 2024 Update).pdf",
+        "lane": "tax-system",
+        "routing": "QSBS, trusts, grantor trusts, multiple-trust stacking, partnership/entity basis, PPLI/PPA, trust reporting proposals, and IRS anti-abuse review",
+    },
+    {
+        "id": "irrevocable-trust-types",
+        "path": "/Users/ricardoprieto/Desktop/TAX CREDIT/what-are-the-different-types-of-irrevocable-trusts.pdf",
+        "lane": "uhnw-family-office",
+        "routing": "irrevocable trust administration, grantor-trust income-tax posture, GRAT, QPRT, irrevocable gift trust, ILIT, and trustee focus",
+    },
+    {
+        "id": "fy2026-tax-expenditures",
+        "path": "/Users/ricardoprieto/Desktop/TAX CREDIT/fy2026h1_tab8.pdf",
+        "lane": "tax-system",
+        "routing": "tax expenditure and credit inventory, QSBS, R&E/R&D, state credits, investment credits, brownfields, LIHTC, historic, climatetech, transferability, and refundability concepts",
+    },
+    {
+        "id": "pub-550-investment-income",
+        "path": "/Users/ricardoprieto/Desktop/TAX CREDIT/F_PUB_550.pdf",
+        "lane": "tax-system",
+        "routing": "investment income, capital gain/loss, basis, holding periods, investment interest, tax shelters/reportable transactions, and Pub. 550 small-business-stock reporting context",
+    },
+    {
+        "id": "llc-form-c-offering",
+        "path": "/Users/ricardoprieto/Desktop/LLC/FormCandOS.pdf",
+        "lane": "founder-unicorn",
+        "routing": "Reg CF offering statement, LLC agreement, risk factors, investor acknowledgments, subscription mechanics, transfer restrictions, series LLC governance, beneficial ownership, and issuer/investor tax disclaimers",
+    },
+    {
+        "id": "sec-delinquent-reporting",
+        "path": "/Users/ricardoprieto/Desktop/SEC/id257bpm.pdf",
+        "lane": "fortune500-enterprise",
+        "routing": "SEC delinquent-reporting enforcement, investor-protection rationale, public-reporting consequences, adversarial SEC lens, and investor communications controls",
+    },
+)
+CREATIVE_PLANNING_BENCHMARK_TERMS = (
+    "Creative Planning public-site benchmark source refresh: https://creativeplanning.com/sitemap/, family office, wealth management, tax planning, business services, M&A/exit, risk/insurance, international, and specialty-service pages dated before use",
+    "whole-client inventory: household, income, balance sheet, investments, trusts, business entities, real estate, retirement assets, insurance, debt, private fund interests, crypto/digital assets, advisors, goals, and jurisdiction facts",
+    "wealth-management and financial-planning lane: goals, cash flow, investment policy, asset allocation, concentration risk, liquidity, debt, retirement, tax-aware portfolio overlay, and recurring review cadence",
+    "tax-planning and compliance lane: current figures, return posture, entity tax, credits, SALT, international, estimated tax, controversy, authority freshness, and CPA/preparer handoff",
+    "estate, trust, and wealth-transfer lane: trust taxonomy, fiduciary map, situs, beneficiary designations, title/funding, gift/GST/estate tax, philanthropy, and administration cadence",
+    "business-owner and founder lane: entity/org chart, governance, cap table, QSBS, 83(b), 409A, tax credits, capital raise, M&A/exit, succession, payroll, accounting, insurance, and technology/legal operations",
+    "risk, insurance, and asset-protection lane: insurance inventory, liability exposure, solvency, fraudulent-transfer screen, entity separateness, cyber/privacy, professional liability, and creditor/opponent review",
+    "investor and capital lane: securities exemption, investor eligibility, KYC/AML/OFAC/source-of-funds, subscription documents, risk factors, tax statements, data room, communications controls, and post-close reporting",
+    "family-office and UHNW lane: coordinated entities, trusts, investment governance, family governance, philanthropy, bill pay/accounting dashboard, reporting cadence, privacy, and next-generation readiness",
+    "international and specialty-practice lane: cross-border residency/assets/entities/beneficiaries, FinCEN/FBAR/FATCA/withholding, and specialty profiles such as professional athletes, dentists, law enforcement, aviation, and special needs routed to owning seats",
+    "integrated handoff rules: founder stock/QSBS, trusts plus concentrated stock, business exit/succession, credits in investor materials, UHNW multi-entity families, and international facts each trigger the required secondary lanes",
+    "integrated deliverables: source/evidence binder, lane map, seat ownership table, entity/trust/org chart, tax roadmap, investor/board packet, estate/trust plan, asset-protection plan, compliance calendar, dashboard, and recurring review schedule",
+    "accounting, CFO, and dashboard bridge: books close, payroll, bill pay, valuation, audit/tax provision where relevant, KPI reporting, covenant or liquidity monitoring, and advisor-facing workpapers",
+    "adversarial benchmark review: IRS, SEC, creditor/fraudulent-transfer counsel, fiduciary/trustee reviewer, valuation/appraiser, auditor/PCAOB where relevant, investor counsel, privacy/security, and Chief Compliance Officer pass before release",
+    "benchmark boundary: Creative Planning materials are used only as a public-market service taxonomy and intake-flow benchmark; GLAW must not copy branding, claims, client counts, awards, product language, or substitute benchmark pages for licensed legal/tax/investment advice",
+)
+FOUNDER_CAPITAL_RAISE_TERMS = (
+    "exemption selection: Reg D 506(b), Reg D 506(c), Reg CF, Reg A, Reg S, intrastate, or registered offering",
+    "investor class map: accredited, qualified purchaser, qualified client, retail crowdfunding, non-U.S., tax-exempt, foreign, and strategic investors",
+    "solicitation and integration memo",
+    "bad-actor disqualification screen",
+    "broker-dealer, finder, referral-fee, and transaction-compensation analysis",
+    "investor KYC/AML/OFAC/source-of-funds review",
+    "subscription agreement and investor questionnaire",
+    "PPM/OM/Form C/Form 1-A disclosure stack",
+    "risk-factor bank: tax, securities, dilution, liquidity, valuation, conflicts, related-party, regulatory, transfer, custody, and reporting",
+    "use-of-proceeds and funds-flow controls",
+    "cap table, dilution, SAFE/note/preferred modeling, and option-pool impact",
+    "Form D, Blue Sky, Reg CF/Form C amendments, Reg A updates, and state notice calendar",
+    "investor tax disclosure and no-guarantee QSBS/credit statement",
+    "QSBS issuer and shareholder information statement",
+    "tax-exempt/foreign investor blocker, withholding, UBIT/ECI, and K-1/1099/shareholder-reporting screen",
+    "side-letter, MFN, information-rights, pro-rata, ROFR/co-sale, and transfer-restriction matrix",
+    "data-room index and version-controlled disclosure archive",
+    "post-raise investor update, annual tax statement, and reporting calendar",
+)
+INVESTOR_PURPOSE_TERMS = (
+    "investor persona and capacity map: individual, entity, trust, IRA/qualified plan, family office, fund, strategic, tax-exempt, foreign, and nominee/beneficial-owner screen",
+    "investor eligibility and suitability: accredited investor, qualified purchaser, qualified client, sophistication, investment limits, bad-actor and disqualification status",
+    "KYC, AML, OFAC, sanctions, politically exposed person, source-of-funds, source-of-wealth, and beneficial-ownership verification",
+    "subscription agreement, investor questionnaire, W-9/W-8, entity authority, trust/IRA custodian authority, and signature authority package",
+    "risk acknowledgement and disclosure receipt: PPM/OM/Form C/Form 1-A, risk factors, conflicts, fees, valuation, dilution, liquidity, transfer limits, and tax risk",
+    "tax reporting profile: K-1/1099/1042-S/1099-B/Form 3921/3922/shareholder statement, withholding, FATCA/CRS, UBIT, ECI, PFIC/CFC, and state tax screen",
+    "QSBS and tax-credit investor statement: no guarantee, issuer evidence, shareholder holding-period tracking, section 1045 rollover, section 1202 limitations, and reporting owner",
+    "side letter, MFN, pro-rata, information rights, ROFR/co-sale, major-investor rights, confidentiality, transfer restriction, and most-favored-nation matrix",
+    "funds-flow and custody controls: escrow, wire instructions, anti-fraud callback, allocation, closing mechanics, refund handling, and investor ledger tie-out",
+    "communications controls: investor updates, projections, performance claims, testimonials, selective disclosure, Reg FD where relevant, marketing archive, and version control",
+    "post-close reporting calendar: capital account, cap table, investor ledger, annual tax package, financial statements, notices, consents, amendments, and board/investor approvals",
+    "secondary transfer and exit screen: transfer agent or ledger update, securities-law restriction, right of first refusal, tax withholding, 1045/1202 liquidity, tender/secondary, and lock-up",
+    "investor complaint, rescission, fraud, misstatement, blue-sky, SEC/state examiner, IRS investor-tax, and plaintiff counsel adversarial review pass",
+    "data privacy and retention: investor PII, tax IDs, bank details, secure storage, retention, access logs, deletion limits, and breach-response owner",
+)
+QSBS_CERTIFICATE_TERMS = (
+    "QSBS source refresh: IRC section 1202, section 1045, Treasury/IRS current guidance, and 2023 CLA Proposed Revenue Procedure to Standardize the Information Corporations Give Shareholders to Show That Stock is QSBS",
+    "issuer status: domestic C corporation at issuance and during substantially all tested years; not DISC/former DISC, RIC, REIT, REMIC, cooperative, or section 936 corporation",
+    "original-issue acquisition: issuance date, shareholder name, certificate/ledger entry, consideration paid, services/property detail, underwriter status, 83(b)/restricted-stock status, SAFE/note/option conversion path, and no acquisition for stock unless section 1202(f)/(h) exception applies",
+    "qualified-small-business gross-assets test: cash, adjusted basis, contributed-property FMV, immediate pre/post-issuance aggregate gross assets, $50 million threshold, and supporting balance-sheet/valuation workpapers",
+    "controlled-group and subsidiary look-through: 50 percent parent-child controlled-group members, subsidiaries owned by vote or value, predecessor corporations, and member-by-member asset records",
+    "active-business requirement: 80 percent active qualified trade or business assets, excluded service/investment/farming/hotel/restaurant/mining/finance businesses, startup/R&E/section 41/software royalty safe harbors, working-capital limits, real-property cap, and stock/securities cap",
+    "annual QSBS checklist: each tested year C-corp status, controlled group, subsidiaries, asset categories, trade/business classification, active-business percentage, share issuances, redemptions, and report-agreement confirmation",
+    "redemption taint screen: related-party redemptions two years before/after issuance, significant redemptions one year before/after issuance, de minimis/service/death/disability/divorce exceptions, value calculations, and related-party attribution map",
+    "shareholder-side facts: acquisition chain, pass-through/gift/death/reorganization/section 351 history, holding period, sale or exchange, offsetting short position, replacement QSBS purchase within 60 days for section 1045, and shareholder-specific limitation tracking",
+    "QSBS corporation certificate: officer-signed factual certificate, counsel-reviewed legal issue list, record-retention covenant, statement of unsupported assertions, negative/qualified responses, and notice if records cannot support a favorable answer",
+    "shareholder information package: issuer evidence, shareholder evidence, no-guarantee statement, return attachment/disclosure recommendation, Form 8949/Schedule D/section 1202 or 1045 reporting owner, and penalty/reasonable-cause memo",
+    "investor and transfer structuring: direct ownership versus trust/partnership/LLC/IRA ownership, grantor/non-grantor trust screen, pass-through section 1202(g), section 1045 rollover, contribution-to-partnership taint, and founder direct-ownership carve-out",
+    "exit and M&A preservation: merger/reorganization section 1202(h), stock-for-stock exchange limits, built-in gain tracking, rollover/secondary/tender planning, escrows/holdbacks, and buyer diligence response",
+    "adversarial review: IRS QSBS examiner, shareholder tax advisor, company counsel, investor counsel, valuation/appraiser, and plaintiff/misrepresentation reviewer pass before any QSBS statement is used",
+)
+TAX_CREDIT_TERMS = (
+    "tax-credit source refresh: IRC sections, Treasury/IRS notices, forms, instructions, current-year inflation figures, state credit guidance, and expiration/phaseout/effective-date ledger",
+    "credit inventory and routing: R&D section 41/174A, payroll credit, section 45X/45Y/48/48E/30C/45V/45Q/45L/179D, LIHTC, NMTC, WOTC, ERC/historic claims, disaster, foreign tax credit, AMT, state and local credits, and industry-specific incentives",
+    "eligibility screen: taxpayer/entity type, activity, location, placed-in-service or wage period, ownership, related-party, aggregation, controlled-group, tax-exempt/government/foreign investor, and anti-abuse limits",
+    "source evidence index: contracts, invoices, payroll, time records, GL accounts, fixed-asset register, engineering records, location data, certification letters, permits, interconnection/utility documents, and document hashes",
+    "R&D substantiation: business component, permitted purpose, technological uncertainty, process of experimentation, qualified research expenses, wage/supply/contract allocation, section 174/174A capitalization, and payroll-credit election support",
+    "energy and IRA credit substantiation: prevailing wage/apprenticeship, domestic content, energy community, low-income community, beginning-of-construction, placed-in-service, transfer election, direct pay, registration number, and recapture monitoring",
+    "credit computation workpaper: base amount, incremental or percentage calculation, limitation ordering, carryforward/carryback, basis reduction, passive activity, at-risk, AMT, section 38 general business credit, and book-to-tax tie-out",
+    "forms and filing package: Form 3800, 6765, 3468, 8835, 8911, 8933, 8974, 8994/8995 where relevant, Form 8275/8275-R disclosure, state credit forms, and e-file/transmitter/MeF handoff owner",
+    "return-position authority: substantial authority/reasonable basis/more-likely-than-not screen, business-purpose/economic-substance memo, penalty-defense memo, preparer-signoff conditions, and no-live-filing authority check",
+    "transferability, monetization, and investor reporting: section 6418 transfer, section 6417 direct pay, tax-credit purchase agreement, indemnity/insurance, buyer diligence file, investor K-1/1099/shareholder statement, and no-guarantee disclosure",
+    "recapture and compliance calendar: placed-in-service, annual certification, wage/apprenticeship cure, basis/event changes, disposition, casualty, production/measurement period, carryforward expiry, amended return, and statute-of-limitations docket",
+    "state/local and international coordination: nexus, apportionment, addback, conformity/decoupling, grants versus credits, clawback, sales/use/property tax incentives, withholding, treaty, and foreign tax credit interaction",
+    "financial-statement and audit tie-out: ASC 740, uncertain tax position, ETR, deferred tax, grant accounting, capitalization, auditor PBC bridge, control-owner evidence, and management representation",
+    "adversarial review: IRS credit examiner, state credit authority, forensic accountant, auditor/PCAOB where relevant, investor/buyer counsel, and Chief Compliance Officer pass before claiming, selling, transferring, or reporting any credit",
+)
+TAX_ENGINE_TERMS = (
+    "source evidence intake: taxpayer profile, entity chart, source-file index, missing-information list, and document hashes",
+    "current-law and current-figures freshness ledger",
+    "primary-law citation corpus and authority hierarchy",
+    "entity classification, tax election, basis, AAA, capital account, and section 704/1368/1202 screen",
+    "GL trial-balance tie-out, book-to-tax M-1/M-3 bridge, return-line map, and control manifest",
+    "credit and incentive eligibility, substantiation, wage/capex/time-record support, recapture, transferability, and return-position owner",
+    "return-position authority level, business-purpose/economic-substance memo, Form 8275/8275-R disclosure, and penalty-defense analysis",
+    "IRS notice, transcript, account module, statute-of-limitations, response-deadline, Appeals, and Tax Court docket ledger",
+    "SALT nexus, apportionment, sourcing, throwback, PTET, franchise/margin, sales/use tax, and state-credit matrix",
+    "international information-return, FBAR/FATCA, Form 8938, 5471, 5472, 8865, 8858, GILTI, Subpart F, FDII, BEAT, 962, withholding, and treaty screen",
+    "estate, gift, GST, trust 1041/DNI, Form 706, Form 709, DSUE/portability, and appraisal tie-out where relevant",
+    "tax provision ASC 740, current/deferred tax, ETR, uncertain-tax-position register, and auditor/PBC bridge where relevant",
+    "IRS/state/international adversarial examiner pass and controversy decision memo",
+    "return/payment/e-file/transmitter/MeF/IRIS/SSA BSO handoff and no-live-filing authority check",
+    "recurring docket: returns, extensions, estimated taxes, notices, elections, credit certifications, information returns, and trust administration",
+)
+ENTERPRISE_GOVERNANCE_TERMS = (
+    "board authority, delegation, subsidiaries, signatory, and approval matrix",
+    "public-company reporting profile: filer status, 10-K, 10-Q, 8-K, S-1, proxy, Form 4/Section 16, Reg S-K, Reg S-X, and Inline XBRL screen",
+    "MD&A, risk-factor, forward-looking statement, non-GAAP, KPIs, segment, related-party, cyber, climate, and litigation disclosure controls",
+    "SOX 302/906 certification, SOX 404 ICFR, disclosure controls and procedures, control-owner evidence, and deficiency/material-weakness remediation",
+    "audit committee, PBC list, auditor independence, PCAOB inspection/challenge response, management representation, and audit-adjustment log",
+    "ASC 740 current/deferred tax, ETR, UTP register, valuation allowance, tax provision close calendar, and auditor tie-out",
+    "enterprise regulatory map: SEC, DOJ, FTC, CFPB, FinCEN/BSA/AML, OFAC, state AG, licensing, privacy, employment, and industry regulator exposure",
+    "litigation hold, document preservation, investigation chronology, privilege log, custodians, and evidence timeline",
+    "M&A/capital markets financing/offering exemption, diligence request list, material contracts, debt/covenant, and closing checklist",
+    "subsidiary, foreign qualification, annual report, franchise tax, BOI/beneficial ownership, registered agent, and officer/director calendar",
+    "privacy/data, cybersecurity incident, vendor, employment, whistleblower, FCPA/anti-corruption, sanctions, and trade compliance screen",
+    "board/investor disclosure packet, investor-relations controls, analyst guidance, earnings release, and selective-disclosure/Reg FD review",
+    "chief compliance, auditor/PCAOB, SEC enforcement/disclosure, plaintiff/opposing counsel, regulator, and IRS adversarial review pass",
+    "recurring docket: SEC reports, board/audit committee meetings, close calendar, certifications, annual reports, franchise tax, litigation holds, and regulator response deadlines",
+)
+OPTIONAL_CHECKLISTS = {
+    "creative_planning_required": ("item", CREATIVE_PLANNING_BENCHMARK_TERMS, "creative-planning-benchmark-lanes.md integrated advisory lane-routing benchmark screen"),
+    "trust_taxonomy_required": ("type", UHNW_TRUST_TAXONOMY_TERMS, "trust-taxonomy-routing.md classification and asset-fit screen"),
+    "schwab_trust_topic_required": ("topic", SCHWAB_TRUST_TOPIC_TERMS, "schwab-trusts-benchmark.md topic-index source refresh and public-market trust planning screen"),
+    "entity_topology_required": ("item", ENTITY_TOPOLOGY_TERMS, "trusts-for-tax-and-protection.md dynasty/investment trust plus investment LLC and direct-ownership carve-out screen"),
+    "source_ingest_required": ("item", SOURCE_INGEST_TERMS, "source-ingest-tax-credit-llc-sec.md local PDF/external authority source-ingest screen"),
+    "capital_raise_required": ("item", FOUNDER_CAPITAL_RAISE_TERMS, "founder-unicorn-tax-capital-playbook.md securities/tax/investor screen"),
+    "investor_required": ("item", INVESTOR_PURPOSE_TERMS, "fortune500-tax-entrepreneur.md investor-purpose onboarding/tax/reporting screen"),
+    "qsbs_required": ("item", QSBS_CERTIFICATE_TERMS, "fortune500-tax-entrepreneur.md QSBS issuer/shareholder certificate screen"),
+    "tax_credit_required": ("item", TAX_CREDIT_TERMS, "fortune500-tax-entrepreneur.md tax-credit substantiation/transferability/return-position screen"),
+    "tax_engine_required": ("item", TAX_ENGINE_TERMS, "fortune500-tax-entrepreneur.md tax-system source and return-position screen"),
+    "enterprise_required": ("item", ENTERPRISE_GOVERNANCE_TERMS, "fortune500-tax-entrepreneur.md enterprise governance/reporting/control screen"),
+}
+OBJECTIVE_AUDIT_REQUIREMENTS = (
+    {
+        "id": "fortune500_lawyer",
+        "label": "Fortune 500 lawyer / enterprise counsel lane",
+        "lane": "fortune500-enterprise",
+        "fields": ("enterprise_required", "creative_planning_required"),
+        "terms": (
+            "board authority, delegation, subsidiaries, signatory, and approval matrix",
+            "public-company reporting profile: filer status, 10-K, 10-Q, 8-K, S-1, proxy, Form 4/Section 16, Reg S-K, Reg S-X, and Inline XBRL screen",
+            "SOX 302/906 certification, SOX 404 ICFR, disclosure controls and procedures, control-owner evidence, and deficiency/material-weakness remediation",
+            "chief compliance, auditor/PCAOB, SEC enforcement/disclosure, plaintiff/opposing counsel, regulator, and IRS adversarial review pass",
+        ),
+        "references": ("lib/client-lanes/fortune500-tax-entrepreneur.md",),
+    },
+    {
+        "id": "tax_system",
+        "label": "Tax system and IRS engine",
+        "lane": "tax-system",
+        "fields": ("tax_engine_required", "tax_credit_required", "source_ingest_required", "creative_planning_required"),
+        "terms": (
+            "source evidence intake: taxpayer profile, entity chart, source-file index, missing-information list, and document hashes",
+            "GL trial-balance tie-out, book-to-tax M-1/M-3 bridge, return-line map, and control manifest",
+            "return-position authority level, business-purpose/economic-substance memo, Form 8275/8275-R disclosure, and penalty-defense analysis",
+            "tax-credit source refresh: IRC sections, Treasury/IRS notices, forms, instructions, current-year inflation figures, state credit guidance, and expiration/phaseout/effective-date ledger",
+        ),
+        "references": (
+            "seats/glaw-tax-strategy/references/source-ingest-tax-credit-llc-sec.md",
+            "tax-legal-shared/current-figures.md",
+        ),
+    },
+    {
+        "id": "entrepreneur_founder_unicorn",
+        "label": "Entrepreneur, founder, and unicorn advisor",
+        "lane": "founder-unicorn",
+        "fields": ("capital_raise_required", "investor_required", "qsbs_required", "entity_topology_required", "source_ingest_required"),
+        "terms": (
+            "exemption selection: Reg D 506(b), Reg D 506(c), Reg CF, Reg A, Reg S, intrastate, or registered offering",
+            "investor tax disclosure and no-guarantee QSBS/credit statement",
+            "QSBS source refresh: IRC section 1202, section 1045, Treasury/IRS current guidance, and 2023 CLA Proposed Revenue Procedure to Standardize the Information Corporations Give Shareholders to Show That Stock is QSBS",
+            "founder restricted stock and 83(b) carve-out: transfer timing, service-provider status, vesting, valuation, and 30-day election proof reviewed before any trust or LLC funding",
+        ),
+        "references": (
+            "seats/glaw-tax-strategy/references/founder-unicorn-tax-capital-playbook.md",
+            "seats/glaw-tax-strategy/references/entity-and-holdco-structures.md",
+        ),
+    },
+    {
+        "id": "investor_raise",
+        "label": "Investor and capital-raise purpose",
+        "lane": "founder-unicorn",
+        "fields": ("capital_raise_required", "investor_required"),
+        "terms": (
+            "investor class map: accredited, qualified purchaser, qualified client, retail crowdfunding, non-U.S., tax-exempt, foreign, and strategic investors",
+            "KYC, AML, OFAC, sanctions, politically exposed person, source-of-funds, source-of-wealth, and beneficial-ownership verification",
+            "communications controls: investor updates, projections, performance claims, testimonials, selective disclosure, Reg FD where relevant, marketing archive, and version control",
+            "investor complaint, rescission, fraud, misstatement, blue-sky, SEC/state examiner, IRS investor-tax, and plaintiff counsel adversarial review pass",
+        ),
+        "references": (
+            "seats/glaw-pe-vc-counsel/SKILL.md",
+            "seats/glaw-tax-strategy/references/founder-unicorn-tax-capital-playbook.md",
+        ),
+    },
+    {
+        "id": "trust_asset_shelter",
+        "label": "Irrevocable dynasty/investment trust, investment LLC, and direct-ownership carve-outs",
+        "lane": "uhnw-family-office",
+        "fields": ("trust_taxonomy_required", "schwab_trust_topic_required", "entity_topology_required", "creative_planning_required"),
+        "terms": (
+            "revocable living trust",
+            "dynasty / GST trust",
+            "GRAT / GRUT",
+            "QPRT",
+            "ILIT",
+            "default chassis: irrevocable dynasty or investment trust owns an investment LLC for diversified brokerage assets, alternatives, private fund interests, real estate interests, crypto custody vehicles, and family investment administration",
+            "direct trust-owned asset lane: assets bypass the investment LLC when tax, issuer, transfer, securities, ERISA, insurance, or fiduciary rules make direct ownership preferable",
+            "Schwab trusts topic source update note: https://www.schwab.com/learn/topic/trusts dated source refresh and visible topic-index capture",
+        ),
+        "references": (
+            "seats/glaw-tax-strategy/references/trust-taxonomy-routing.md",
+            "seats/glaw-tax-strategy/references/trusts-for-tax-and-protection.md",
+            "seats/glaw-tax-strategy/references/schwab-trusts-benchmark.md",
+        ),
+    },
+)
+TRUST_TAXONOMY_REFERENCE = ROOT / "seats" / "glaw-tax-strategy" / "references" / "trust-taxonomy-routing.md"
+TRUST_TOPOLOGY_REFERENCE = ROOT / "seats" / "glaw-tax-strategy" / "references" / "trusts-for-tax-and-protection.md"
+SCHWAB_TRUST_REFERENCE = ROOT / "seats" / "glaw-tax-strategy" / "references" / "schwab-trusts-benchmark.md"
+ALL_TRUST_REQUIRED_TYPES = (
+    "Revocable living trust",
+    "A-B / bypass / credit-shelter trust",
+    "Testamentary trust",
+    "Irrevocable gift trust",
+    "Dynasty / GST trust",
+    "IDGT",
+    "GRAT",
+    "GRUT",
+    "QPRT",
+    "SLAT",
+    "ILIT",
+    "CRT / CRAT / CRUT / NIMCRUT",
+    "CLT / CLAT / CLUT",
+    "Charitable trust / private foundation-adjacent trust",
+    "DAPT",
+    "Offshore APT",
+    "DING / NING / ING",
+    "Spendthrift trust",
+    "Discretionary trust",
+    "Special needs trust - third-party",
+    "Special needs trust - first-party / d4A",
+    "Pooled special needs trust / d4C",
+    "Medicaid income trust / Miller trust / QIT",
+    "QSST",
+    "ESBT",
+    "Voting trust",
+    "Land trust",
+    "Delaware statutory trust / DST",
+    "Business trust / Massachusetts trust",
+    "Investment trust / fixed investment trust",
+    "Rabbi trust",
+    "Secular trust",
+    "Qualified plan trust",
+    "IRA / custodial trust",
+    "Totten / payable-on-death trust",
+    "Constructive / resulting trust",
+    "Blind trust",
+    "Purpose trust / pet trust / gun trust",
+)
+UNRESOLVED_PLACEHOLDER_RE = re.compile(r"\[(?:[A-Z][A-Z0-9 _./:-]{1,}|VERIFY|TODO|TBD)[^\]]*\]")
+UNRESOLVED_REVIEW_RE = re.compile(r"(?:^|\n)REVIEW\s*:", re.IGNORECASE)
+
+
+def load_manifest() -> dict[str, Any]:
+    data = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    if not isinstance(data, dict):
+        raise ValueError("premium lane manifest must be a JSON object")
+    return data
+
+
+def manifest_sha256() -> str:
+    return hashlib.sha256(MANIFEST.read_bytes()).hexdigest()
+
+
+def shutil_which(name: str) -> str:
+    for folder in os.environ.get("PATH", "").split(os.pathsep):
+        candidate = Path(folder) / name
+        if candidate.is_file() and os.access(candidate, os.X_OK):
+            return str(candidate)
+    return ""
+
+
+def local_source_ingest_report(data: dict[str, Any]) -> dict[str, Any]:
+    failures: list[dict[str, str]] = []
+    rows: list[dict[str, Any]] = []
+    source_terms = "\n".join(SOURCE_INGEST_TERMS)
+    pdftotext = shutil_which("pdftotext")
+    for spec in LOCAL_SOURCE_INGEST_FILES:
+        path = Path(str(spec["path"]))
+        row: dict[str, Any] = {
+            "id": spec["id"],
+            "path": str(path),
+            "lane": spec["lane"],
+            "routing": spec["routing"],
+            "exists": path.is_file(),
+            "size_bytes": 0,
+            "sha256": "",
+            "extractor": "pdftotext" if pdftotext else "",
+            "extraction_status": "missing_source",
+            "extracted_chars": 0,
+            "extracted_sha256": "",
+            "source_ingest_term_present": str(path) in source_terms,
+        }
+        if not row["source_ingest_term_present"]:
+            failures.append({"id": "source_ingest_term_missing", "detail": f"source-ingest manifest omits local source: {path}"})
+        if not path.is_file():
+            failures.append({"id": "local_source_missing", "detail": f"local source missing: {path}"})
+            rows.append(row)
+            continue
+        row["size_bytes"] = path.stat().st_size
+        row["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+        if row["size_bytes"] <= 0 or len(row["sha256"]) != 64:
+            failures.append({"id": "local_source_hash_missing", "detail": f"local source lacks nonempty sha256 proof: {path}"})
+        if not pdftotext:
+            row["extraction_status"] = "extractor_missing"
+            failures.append({"id": "local_source_extractor_missing", "detail": "pdftotext is required to prove local PDF source extraction"})
+            rows.append(row)
+            continue
+        try:
+            proc = subprocess.run(
+                [pdftotext, "-layout", str(path), "-"],
+                cwd=str(ROOT),
+                capture_output=True,
+                text=True,
+                check=False,
+                timeout=30,
+            )
+            text = proc.stdout or ""
+            row["extracted_chars"] = len(text.strip())
+            row["extracted_sha256"] = hashlib.sha256(text.encode("utf-8", errors="replace")).hexdigest() if text.strip() else ""
+            row["extraction_status"] = "pass" if proc.returncode == 0 and row["extracted_chars"] > 0 else "fail"
+            if row["extraction_status"] != "pass":
+                detail = (proc.stderr or proc.stdout or "empty extraction").strip()
+                failures.append({"id": "local_source_extraction_failed", "detail": f"{path}: {detail[:240]}"})
+        except subprocess.TimeoutExpired:
+            row["extraction_status"] = "timeout"
+            failures.append({"id": "local_source_extraction_timeout", "detail": f"local source extraction timed out: {path}"})
+        rows.append(row)
+    return {
+        "status": "fail" if failures else "pass",
+        "source_count": len(rows),
+        "required_source_count": len(LOCAL_SOURCE_INGEST_FILES),
+        "total_size_bytes": sum(int(row.get("size_bytes", 0)) for row in rows),
+        "extracted_char_count": sum(int(row.get("extracted_chars", 0)) for row in rows),
+        "extractor": "pdftotext" if pdftotext else "",
+        "sources": rows,
+        "failures": failures,
+        "authority": "deterministic local-source evidence audit only; it proves local file presence, file hashes, and extractable text hashes, not legal/tax advice or source-currentness",
+    }
+
+
+def local_source_ingest_ledger_markdown(report: dict[str, Any], matter_slug: str, generated_at: str) -> str:
+    lines = [
+        "# Local Source Ingest Evidence Ledger",
+        "",
+        f"matter_slug: {matter_slug}",
+        f"generated_at: {generated_at}",
+        f"status: {report.get('status')}",
+        f"extractor: {report.get('extractor') or 'missing'}",
+        f"source_count: {report.get('source_count')} / {report.get('required_source_count')}",
+        f"extracted_char_count: {report.get('extracted_char_count')}",
+        "",
+        "Authority boundary: deterministic local-source evidence only. This ledger proves local file presence, source-file SHA-256, extractable-text SHA-256, byte counts, character counts, and lane routing. It is not legal, tax, securities, accounting, fiduciary, investment, or filing advice.",
+        "",
+        "| Row | Source id | Lane | Status | Source SHA-256 | Extracted SHA-256 | Path | Routing |",
+        "|---|---|---|---|---|---|---|---|",
+    ]
+    for idx, row in enumerate(report.get("sources", []), start=1):
+        source_row_id = f"LSI-{idx:04d}"
+        routing = str(row.get("routing", "")).replace("|", "/")
+        path = str(row.get("path", "")).replace("|", "/")
+        lines.append(
+            "| "
+            + " | ".join([
+                source_row_id,
+                str(row.get("id", "")),
+                str(row.get("lane", "")),
+                str(row.get("extraction_status", "")),
+                str(row.get("sha256", "")),
+                str(row.get("extracted_sha256", "")),
+                path,
+                routing,
+            ])
+            + " |"
+        )
+    if report.get("failures"):
+        lines.extend(["", "## Failures", ""])
+        for failure in report.get("failures", []):
+            lines.append(f"- {failure.get('id')}: {failure.get('detail')}")
+    lines.append("")
+    return "\n".join(lines)
+
+
+def materialize_local_source_ingest(data: dict[str, Any], slug: str | None) -> dict[str, Any]:
+    resolved_slug, path = matter_dir(slug)
+    report = local_source_ingest_report(data)
+    generated_at = now()
+    sources = path / "sources"
+    sources.mkdir(parents=True, exist_ok=True)
+    ledger_rows = []
+    for idx, row in enumerate(report.get("sources", []), start=1):
+        if not isinstance(row, dict):
+            continue
+        ledger_rows.append({
+            "source_row_id": f"LSI-{idx:04d}",
+            "id": row.get("id"),
+            "lane": row.get("lane"),
+            "routing": row.get("routing"),
+            "path": row.get("path"),
+            "exists": row.get("exists"),
+            "size_bytes": row.get("size_bytes"),
+            "sha256": row.get("sha256"),
+            "extractor": row.get("extractor"),
+            "extraction_status": row.get("extraction_status"),
+            "extracted_chars": row.get("extracted_chars"),
+            "extracted_sha256": row.get("extracted_sha256"),
+            "source_ingest_term_present": row.get("source_ingest_term_present"),
+        })
+    ledger = {
+        "schema_version": 1,
+        "matter_slug": resolved_slug,
+        "generated_at": generated_at,
+        "status": report.get("status"),
+        "source_count": report.get("source_count"),
+        "required_source_count": report.get("required_source_count"),
+        "total_size_bytes": report.get("total_size_bytes"),
+        "extracted_char_count": report.get("extracted_char_count"),
+        "extractor": report.get("extractor"),
+        "sources": ledger_rows,
+        "failures": report.get("failures", []),
+        "authority": report.get("authority"),
+    }
+    json_path = sources / "local-source-ingest-ledger.json"
+    md_path = sources / "local-source-ingest-ledger.md"
+    json_path.write_text(json.dumps(ledger, indent=2, sort_keys=False) + "\n", encoding="utf-8")
+    md_path.write_text(local_source_ingest_ledger_markdown(report, resolved_slug, generated_at), encoding="utf-8")
+    result = {
+        "status": report.get("status"),
+        "matter_slug": resolved_slug,
+        "generated_at": generated_at,
+        "json_path": str(json_path),
+        "markdown_path": str(md_path),
+        "json_sha256": hashlib.sha256(json_path.read_bytes()).hexdigest(),
+        "markdown_sha256": hashlib.sha256(md_path.read_bytes()).hexdigest(),
+        "source_count": report.get("source_count"),
+        "required_source_count": report.get("required_source_count"),
+        "extracted_char_count": report.get("extracted_char_count"),
+        "failures": report.get("failures", []),
+        "authority": "materializes deterministic local-source ingest proof into the matter sources folder only; no filing, signature, tax-return position, offering, transfer, or legal reliance authority",
+    }
+    return result
+
+
+def validate_manifest(data: dict[str, Any]) -> dict[str, Any]:
+    failures: list[dict[str, str]] = []
+    lanes = data.get("lanes")
+    if not isinstance(lanes, dict):
+        failures.append({"id": "lanes", "detail": "manifest requires lanes object"})
+        lanes = {}
+    missing_lanes = sorted(REQUIRED_LANES - set(lanes))
+    if missing_lanes:
+        failures.append({"id": "required_lanes", "detail": "missing lanes: " + ", ".join(missing_lanes)})
+    packet = data.get("required_packet")
+    packet_text = "\n".join(str(item) for item in packet) if isinstance(packet, list) else ""
+    if not isinstance(packet, list):
+        failures.append({"id": "required_packet", "detail": "required_packet must be a list"})
+    for term in REQUIRED_PACKET_TERMS:
+        if term not in packet_text:
+            failures.append({"id": "required_packet", "detail": f"missing packet term: {term}"})
+    no_go = data.get("hard_no_go")
+    no_go_text = "\n".join(str(item) for item in no_go) if isinstance(no_go, list) else ""
+    if not isinstance(no_go, list):
+        failures.append({"id": "hard_no_go", "detail": "hard_no_go must be a list"})
+    for term in REQUIRED_NO_GO_TERMS:
+        if term not in no_go_text:
+            failures.append({"id": "hard_no_go", "detail": f"missing no-go term: {term}"})
+    for lane_id, lane in sorted(lanes.items()):
+        if not isinstance(lane, dict):
+            failures.append({"id": "lane_shape", "detail": f"{lane_id} must be an object"})
+            continue
+        for field in REQUIRED_LANE_FIELDS:
+            if field not in lane:
+                failures.append({"id": "lane_field", "detail": f"{lane_id} missing {field}"})
+        for field in ("track_defaults", "lead_seats", "workstreams", "phase_playbook", "required_lane_packet", "adversarial_reviewers", "docket_items"):
+            value = lane.get(field)
+            if not isinstance(value, list) or len(value) < 3:
+                failures.append({"id": "lane_depth", "detail": f"{lane_id}.{field} needs at least 3 entries"})
+        if not any("glaw" in str(seat) for seat in lane.get("lead_seats", [])):
+            failures.append({"id": "lead_seats", "detail": f"{lane_id} has no GLAW lead seat"})
+        reviewers = "\n".join(str(item) for item in lane.get("adversarial_reviewers", []))
+        if not any(term in reviewers for term in ("IRS", "SEC", "tax", "regulator")):
+            failures.append({"id": "adversarial_reviewers", "detail": f"{lane_id} lacks regulator/tax adversary"})
+        benchmark_items = lane.get("creative_planning_required")
+        benchmark_text = "\n".join(str(item) for item in benchmark_items) if isinstance(benchmark_items, list) else ""
+        if not isinstance(benchmark_items, list) or len(benchmark_items) < len(CREATIVE_PLANNING_BENCHMARK_TERMS):
+            failures.append({"id": "creative_planning_required", "detail": f"{lane_id} needs full Creative Planning integrated advisory benchmark checklist"})
+        for term in CREATIVE_PLANNING_BENCHMARK_TERMS:
+            if term not in benchmark_text:
+                failures.append({"id": "creative_planning_required", "detail": f"{lane_id} missing Creative Planning benchmark item: {term}"})
+        if lane_id == "uhnw-family-office":
+            taxonomy = lane.get("trust_taxonomy_required")
+            taxonomy_text = "\n".join(str(item) for item in taxonomy) if isinstance(taxonomy, list) else ""
+            if not isinstance(taxonomy, list) or len(taxonomy) < len(UHNW_TRUST_TAXONOMY_TERMS):
+                failures.append({"id": "trust_taxonomy_required", "detail": "uhnw-family-office needs full trust taxonomy list"})
+            for term in UHNW_TRUST_TAXONOMY_TERMS:
+                if term not in taxonomy_text:
+                    failures.append({"id": "trust_taxonomy_required", "detail": f"uhnw-family-office missing trust type: {term}"})
+            schwab_topics = lane.get("schwab_trust_topic_required")
+            schwab_text = "\n".join(str(item) for item in schwab_topics) if isinstance(schwab_topics, list) else ""
+            if not isinstance(schwab_topics, list) or len(schwab_topics) < len(SCHWAB_TRUST_TOPIC_TERMS):
+                failures.append({"id": "schwab_trust_topic_required", "detail": "uhnw-family-office needs full Schwab trusts topic-index checklist"})
+            for term in SCHWAB_TRUST_TOPIC_TERMS:
+                if term not in schwab_text:
+                    failures.append({"id": "schwab_trust_topic_required", "detail": f"uhnw-family-office missing Schwab trust topic: {term}"})
+            topology_items = lane.get("entity_topology_required")
+            topology_text = "\n".join(str(item) for item in topology_items) if isinstance(topology_items, list) else ""
+            if not isinstance(topology_items, list) or len(topology_items) < len(ENTITY_TOPOLOGY_TERMS):
+                failures.append({"id": "entity_topology_required", "detail": "uhnw-family-office needs full dynasty/investment trust plus investment LLC topology checklist"})
+            for term in ENTITY_TOPOLOGY_TERMS:
+                if term not in topology_text:
+                    failures.append({"id": "entity_topology_required", "detail": f"uhnw-family-office missing entity topology item: {term}"})
+        if lane_id == "founder-unicorn":
+            raise_items = lane.get("capital_raise_required")
+            raise_text = "\n".join(str(item) for item in raise_items) if isinstance(raise_items, list) else ""
+            if not isinstance(raise_items, list) or len(raise_items) < len(FOUNDER_CAPITAL_RAISE_TERMS):
+                failures.append({"id": "capital_raise_required", "detail": "founder-unicorn needs full capital raise checklist"})
+            for term in FOUNDER_CAPITAL_RAISE_TERMS:
+                if term not in raise_text:
+                    failures.append({"id": "capital_raise_required", "detail": f"founder-unicorn missing capital raise item: {term}"})
+            investor_items = lane.get("investor_required")
+            investor_text = "\n".join(str(item) for item in investor_items) if isinstance(investor_items, list) else ""
+            if not isinstance(investor_items, list) or len(investor_items) < len(INVESTOR_PURPOSE_TERMS):
+                failures.append({"id": "investor_required", "detail": "founder-unicorn needs full investor-purpose checklist"})
+            for term in INVESTOR_PURPOSE_TERMS:
+                if term not in investor_text:
+                    failures.append({"id": "investor_required", "detail": f"founder-unicorn missing investor-purpose item: {term}"})
+            qsbs_items = lane.get("qsbs_required")
+            qsbs_text = "\n".join(str(item) for item in qsbs_items) if isinstance(qsbs_items, list) else ""
+            if not isinstance(qsbs_items, list) or len(qsbs_items) < len(QSBS_CERTIFICATE_TERMS):
+                failures.append({"id": "qsbs_required", "detail": "founder-unicorn needs full QSBS issuer/shareholder certificate checklist"})
+            for term in QSBS_CERTIFICATE_TERMS:
+                if term not in qsbs_text:
+                    failures.append({"id": "qsbs_required", "detail": f"founder-unicorn missing QSBS certificate item: {term}"})
+            topology_items = lane.get("entity_topology_required")
+            topology_text = "\n".join(str(item) for item in topology_items) if isinstance(topology_items, list) else ""
+            if not isinstance(topology_items, list) or len(topology_items) < len(ENTITY_TOPOLOGY_TERMS):
+                failures.append({"id": "entity_topology_required", "detail": "founder-unicorn needs full dynasty/investment trust plus investment LLC topology checklist"})
+            for term in ENTITY_TOPOLOGY_TERMS:
+                if term not in topology_text:
+                    failures.append({"id": "entity_topology_required", "detail": f"founder-unicorn missing entity topology item: {term}"})
+            source_items = lane.get("source_ingest_required")
+            source_text = "\n".join(str(item) for item in source_items) if isinstance(source_items, list) else ""
+            if not isinstance(source_items, list) or len(source_items) < len(SOURCE_INGEST_TERMS):
+                failures.append({"id": "source_ingest_required", "detail": "founder-unicorn needs full local source-ingest checklist"})
+            for term in SOURCE_INGEST_TERMS:
+                if term not in source_text:
+                    failures.append({"id": "source_ingest_required", "detail": f"founder-unicorn missing source-ingest item: {term}"})
+        if lane_id == "tax-system":
+            tax_items = lane.get("tax_engine_required")
+            tax_text = "\n".join(str(item) for item in tax_items) if isinstance(tax_items, list) else ""
+            if not isinstance(tax_items, list) or len(tax_items) < len(TAX_ENGINE_TERMS):
+                failures.append({"id": "tax_engine_required", "detail": "tax-system needs full tax engine checklist"})
+            for term in TAX_ENGINE_TERMS:
+                if term not in tax_text:
+                    failures.append({"id": "tax_engine_required", "detail": f"tax-system missing tax engine item: {term}"})
+            credit_items = lane.get("tax_credit_required")
+            credit_text = "\n".join(str(item) for item in credit_items) if isinstance(credit_items, list) else ""
+            if not isinstance(credit_items, list) or len(credit_items) < len(TAX_CREDIT_TERMS):
+                failures.append({"id": "tax_credit_required", "detail": "tax-system needs full tax-credit substantiation checklist"})
+            for term in TAX_CREDIT_TERMS:
+                if term not in credit_text:
+                    failures.append({"id": "tax_credit_required", "detail": f"tax-system missing tax-credit item: {term}"})
+            source_items = lane.get("source_ingest_required")
+            source_text = "\n".join(str(item) for item in source_items) if isinstance(source_items, list) else ""
+            if not isinstance(source_items, list) or len(source_items) < len(SOURCE_INGEST_TERMS):
+                failures.append({"id": "source_ingest_required", "detail": "tax-system needs full local source-ingest checklist"})
+            for term in SOURCE_INGEST_TERMS:
+                if term not in source_text:
+                    failures.append({"id": "source_ingest_required", "detail": f"tax-system missing source-ingest item: {term}"})
+        if lane_id == "fortune500-enterprise":
+            enterprise_items = lane.get("enterprise_required")
+            enterprise_text = "\n".join(str(item) for item in enterprise_items) if isinstance(enterprise_items, list) else ""
+            if not isinstance(enterprise_items, list) or len(enterprise_items) < len(ENTERPRISE_GOVERNANCE_TERMS):
+                failures.append({"id": "enterprise_required", "detail": "fortune500-enterprise needs full enterprise governance/reporting/control checklist"})
+            for term in ENTERPRISE_GOVERNANCE_TERMS:
+                if term not in enterprise_text:
+                    failures.append({"id": "enterprise_required", "detail": f"fortune500-enterprise missing enterprise item: {term}"})
+    return {
+        "status": "fail" if failures else "pass",
+        "lane_count": len(lanes),
+        "lanes": sorted(lanes),
+        "failures": failures,
+        "authority": "premium lane packets are attorney/CPA work-product scaffolds; they do not file, sign, transmit, or give legal advice",
+    }
+
+
+def objective_audit(data: dict[str, Any]) -> dict[str, Any]:
+    manifest_report = validate_manifest(data)
+    trust_report = trust_taxonomy_report(data)
+    blueprint_report = founder_blueprint(data, "premium-objective-audit")
+    tax_blueprint_report = tax_engine_blueprint(data, "premium-objective-audit")
+    enterprise_blueprint_report = enterprise_blueprint(data, "premium-objective-audit")
+    firm_blueprint_report = firm_blueprint(data, "premium-objective-audit")
+    source_ingest_report = local_source_ingest_report(data)
+    lanes = data.get("lanes") if isinstance(data.get("lanes"), dict) else {}
+    rows: list[dict[str, Any]] = []
+    failures: list[dict[str, str]] = []
+    for requirement in OBJECTIVE_AUDIT_REQUIREMENTS:
+        lane_id = str(requirement["lane"])
+        lane = lanes.get(lane_id) if isinstance(lanes, dict) else None
+        row_failures: list[dict[str, str]] = []
+        evidence: list[str] = []
+        if not isinstance(lane, dict):
+            row_failures.append({"id": "lane_missing", "detail": f"{lane_id} missing"})
+        else:
+            field_text = "\n".join(
+                "\n".join(str(item) for item in lane.get(field, []))
+                for field in requirement["fields"]
+            )
+            for term in requirement["terms"]:
+                if term in field_text:
+                    evidence.append(term)
+                else:
+                    row_failures.append({"id": "objective_term_missing", "detail": f"{requirement['id']} missing term: {term}"})
+            lead_seats = lane.get("lead_seats")
+            reviewers = lane.get("adversarial_reviewers")
+            if not isinstance(lead_seats, list) or not lead_seats:
+                row_failures.append({"id": "lead_seats_missing", "detail": f"{requirement['id']} lacks lead seats"})
+            if not isinstance(reviewers, list) or not reviewers:
+                row_failures.append({"id": "adversarial_reviewers_missing", "detail": f"{requirement['id']} lacks adversarial reviewers"})
+        for ref in requirement["references"]:
+            path = ROOT / str(ref)
+            if path.is_file() and path.stat().st_size > 0:
+                evidence.append(str(ref))
+            else:
+                row_failures.append({"id": "reference_missing", "detail": f"{requirement['id']} missing reference: {ref}"})
+        rows.append({
+            "id": requirement["id"],
+            "label": requirement["label"],
+            "lane_id": lane_id,
+            "status": "fail" if row_failures else "pass",
+            "fields": list(requirement["fields"]),
+            "evidence": evidence,
+            "failures": row_failures,
+        })
+        failures.extend(row_failures)
+
+    if manifest_report.get("status") != "pass":
+        failures.extend({"id": "manifest_validation", "detail": item.get("detail", "")} for item in manifest_report.get("failures", []))
+    if trust_report.get("status") != "pass":
+        failures.extend({"id": "trust_taxonomy_audit", "detail": item.get("detail", "")} for item in trust_report.get("failures", []))
+    if blueprint_report.get("status") != "pass":
+        failures.extend({"id": "founder_blueprint_audit", "detail": item.get("detail", "")} for item in blueprint_report.get("failures", []))
+    if tax_blueprint_report.get("status") != "pass":
+        failures.extend({"id": "tax_engine_blueprint_audit", "detail": item.get("detail", "")} for item in tax_blueprint_report.get("failures", []))
+    if enterprise_blueprint_report.get("status") != "pass":
+        failures.extend({"id": "enterprise_blueprint_audit", "detail": item.get("detail", "")} for item in enterprise_blueprint_report.get("failures", []))
+    if firm_blueprint_report.get("status") != "pass":
+        failures.extend({"id": "firm_blueprint_audit", "detail": item.get("detail", "")} for item in firm_blueprint_report.get("failures", []))
+    if source_ingest_report.get("status") != "pass":
+        failures.extend({"id": "local_source_ingest_audit", "detail": item.get("detail", "")} for item in source_ingest_report.get("failures", []))
+
+    required_tools = (
+        "bin/glaw-intake",
+        "bin/glaw-premium-lanes",
+        "bin/glaw-final-packet",
+        "bin/glaw-gate",
+        "lib/glaw_premium_scope.py",
+        "lib/glaw_headless.py",
+    )
+    tool_rows: list[dict[str, str]] = []
+    for rel in required_tools:
+        path = ROOT / rel
+        status = "pass" if path.is_file() and path.stat().st_size > 0 else "fail"
+        tool_rows.append({"path": rel, "status": status})
+        if status != "pass":
+            failures.append({"id": "tool_missing", "detail": f"required objective tool missing: {rel}"})
+
+    return {
+        "status": "fail" if failures else "pass",
+        "objective": "Fortune 500 lawyer, tax system, entrepreneur/founder, investor/capital raise, QSBS, trust, and premium-lane GLAW buildout",
+        "manifest_status": manifest_report.get("status"),
+        "manifest_sha256": manifest_sha256(),
+        "trust_taxonomy_status": trust_report.get("status"),
+        "trust_taxonomy_summary": {
+            "trust_type_count": trust_report.get("trust_type_count"),
+            "required_type_count": trust_report.get("required_type_count"),
+            "source": trust_report.get("source"),
+            "default_topology": trust_report.get("default_topology", {}),
+            "direct_ownership_carveout_count": len(trust_report.get("direct_ownership_carveouts", [])),
+            "direct_ownership_carveouts": trust_report.get("direct_ownership_carveouts", []),
+            "schwab_benchmark": trust_report.get("schwab_benchmark", {}),
+        },
+        "founder_blueprint_status": blueprint_report.get("status"),
+        "founder_blueprint_summary": {
+            "lanes": blueprint_report.get("lanes", []),
+            "phase_count": len(blueprint_report.get("sequence", [])),
+            "phase_names": [item.get("phase") for item in blueprint_report.get("sequence", []) if isinstance(item, dict)],
+            "lead_seat_count": len(blueprint_report.get("lead_seats", [])),
+            "docket_item_count": len(blueprint_report.get("docket_items", [])),
+            "adversarial_reviewer_count": len(blueprint_report.get("adversarial_reviewers", [])),
+            "source_ingest_item_count": len(blueprint_report.get("source_ingest_required", [])),
+            "trust_type_count": blueprint_report.get("trust_taxonomy", {}).get("trust_type_count"),
+            "direct_ownership_carveout_count": len(blueprint_report.get("trust_taxonomy", {}).get("direct_ownership_carveouts", [])),
+            "kickoff_commands": blueprint_report.get("kickoff_commands", []),
+        },
+        "tax_engine_blueprint_status": tax_blueprint_report.get("status"),
+        "tax_engine_blueprint_summary": {
+            "lanes": tax_blueprint_report.get("lanes", []),
+            "phase_count": len(tax_blueprint_report.get("sequence", [])),
+            "phase_names": [item.get("phase") for item in tax_blueprint_report.get("sequence", []) if isinstance(item, dict)],
+            "lead_seat_count": len(tax_blueprint_report.get("lead_seats", [])),
+            "tax_engine_item_count": len(tax_blueprint_report.get("tax_engine_required", [])),
+            "tax_credit_item_count": len(tax_blueprint_report.get("tax_credit_required", [])),
+            "source_ingest_item_count": len(tax_blueprint_report.get("source_ingest_required", [])),
+            "creative_planning_item_count": len(tax_blueprint_report.get("creative_planning_required", [])),
+            "docket_item_count": len(tax_blueprint_report.get("docket_items", [])),
+            "adversarial_reviewer_count": len(tax_blueprint_report.get("adversarial_reviewers", [])),
+            "kickoff_commands": tax_blueprint_report.get("kickoff_commands", []),
+        },
+        "enterprise_blueprint_status": enterprise_blueprint_report.get("status"),
+        "enterprise_blueprint_summary": {
+            "lanes": enterprise_blueprint_report.get("lanes", []),
+            "phase_count": len(enterprise_blueprint_report.get("sequence", [])),
+            "phase_names": [item.get("phase") for item in enterprise_blueprint_report.get("sequence", []) if isinstance(item, dict)],
+            "lead_seat_count": len(enterprise_blueprint_report.get("lead_seats", [])),
+            "enterprise_item_count": len(enterprise_blueprint_report.get("enterprise_required", [])),
+            "creative_planning_item_count": len(enterprise_blueprint_report.get("creative_planning_required", [])),
+            "required_packet_count": len(enterprise_blueprint_report.get("required_packet", [])),
+            "docket_item_count": len(enterprise_blueprint_report.get("docket_items", [])),
+            "adversarial_reviewer_count": len(enterprise_blueprint_report.get("adversarial_reviewers", [])),
+            "kickoff_commands": enterprise_blueprint_report.get("kickoff_commands", []),
+        },
+        "firm_blueprint_status": firm_blueprint_report.get("status"),
+        "firm_blueprint_summary": {
+            "lanes": firm_blueprint_report.get("lanes", []),
+            "phase_count": len(firm_blueprint_report.get("sequence", [])),
+            "phase_names": [item.get("phase") for item in firm_blueprint_report.get("sequence", []) if isinstance(item, dict)],
+            "lead_seat_count": len(firm_blueprint_report.get("lead_seats", [])),
+            "docket_item_count": len(firm_blueprint_report.get("docket_items", [])),
+            "adversarial_reviewer_count": len(firm_blueprint_report.get("adversarial_reviewers", [])),
+            "component_statuses": firm_blueprint_report.get("component_statuses", {}),
+            "source_count": firm_blueprint_report.get("source_ingest", {}).get("source_count"),
+            "trust_type_count": firm_blueprint_report.get("trust_taxonomy", {}).get("trust_type_count"),
+            "kickoff_commands": firm_blueprint_report.get("kickoff_commands", []),
+        },
+        "local_source_ingest_status": source_ingest_report.get("status"),
+        "local_source_ingest_summary": {
+            "source_count": source_ingest_report.get("source_count"),
+            "required_source_count": source_ingest_report.get("required_source_count"),
+            "total_size_bytes": source_ingest_report.get("total_size_bytes"),
+            "extracted_char_count": source_ingest_report.get("extracted_char_count"),
+            "extractor": source_ingest_report.get("extractor"),
+            "sources": [
+                {
+                    "id": row.get("id"),
+                    "path": row.get("path"),
+                    "lane": row.get("lane"),
+                    "sha256": row.get("sha256"),
+                    "size_bytes": row.get("size_bytes"),
+                    "extraction_status": row.get("extraction_status"),
+                    "extracted_chars": row.get("extracted_chars"),
+                    "extracted_sha256": row.get("extracted_sha256"),
+                }
+                for row in source_ingest_report.get("sources", [])
+                if isinstance(row, dict)
+            ],
+        },
+        "requirements": rows,
+        "tools": tool_rows,
+        "failures": failures,
+        "authority": "deterministic coverage audit only; it proves local GLAW objective surfaces exist, not legal/tax advice or live filing authority",
+    }
+
+
+def parse_trust_taxonomy_rows() -> list[dict[str, Any]]:
+    if not TRUST_TAXONOMY_REFERENCE.is_file():
+        return []
+    rows: list[dict[str, Any]] = []
+    in_table = False
+    for line in TRUST_TAXONOMY_REFERENCE.read_text(encoding="utf-8", errors="replace").splitlines():
+        if line.startswith("| Type | Main job | Tax posture | Key administration | GLAW routing |"):
+            in_table = True
+            continue
+        if not in_table:
+            continue
+        if line.startswith("|---"):
+            continue
+        if not line.startswith("|"):
+            if rows:
+                break
+            continue
+        parts = [part.strip() for part in line.strip().strip("|").split("|")]
+        if len(parts) != 5:
+            continue
+        trust_type, main_job, tax_posture, key_administration, routing = parts
+        routing_seats = [seat.strip(" `") for seat in routing.split(",") if seat.strip()]
+        rows.append({
+            "type": trust_type,
+            "main_job": main_job,
+            "tax_posture": tax_posture,
+            "key_administration": key_administration,
+            "routing": routing_seats,
+        })
+    return rows
+
+
+def trust_taxonomy_report(data: dict[str, Any]) -> dict[str, Any]:
+    rows = parse_trust_taxonomy_rows()
+    row_types = {row.get("type", "") for row in rows}
+    failures: list[dict[str, str]] = []
+    for trust_type in ALL_TRUST_REQUIRED_TYPES:
+        if trust_type not in row_types:
+            failures.append({"id": "trust_type_missing", "detail": f"missing trust type: {trust_type}"})
+    for rel, path in (
+        ("seats/glaw-tax-strategy/references/trust-taxonomy-routing.md", TRUST_TAXONOMY_REFERENCE),
+        ("seats/glaw-tax-strategy/references/trusts-for-tax-and-protection.md", TRUST_TOPOLOGY_REFERENCE),
+        ("seats/glaw-tax-strategy/references/schwab-trusts-benchmark.md", SCHWAB_TRUST_REFERENCE),
+    ):
+        if not path.is_file() or path.stat().st_size <= 0:
+            failures.append({"id": "reference_missing", "detail": f"missing reference: {rel}"})
+    lanes = data.get("lanes") if isinstance(data.get("lanes"), dict) else {}
+    uhnw_lane = lanes.get("uhnw-family-office") if isinstance(lanes, dict) else None
+    if not isinstance(uhnw_lane, dict):
+        failures.append({"id": "lane_missing", "detail": "uhnw-family-office missing"})
+        uhnw_lane = {}
+    taxonomy_text = "\n".join(str(item) for item in uhnw_lane.get("trust_taxonomy_required", []))
+    for term in UHNW_TRUST_TAXONOMY_TERMS:
+        if term not in taxonomy_text:
+            failures.append({"id": "uhnw_taxonomy_missing", "detail": f"UHNW lane missing taxonomy term: {term}"})
+    topology_text = "\n".join(str(item) for item in uhnw_lane.get("entity_topology_required", []))
+    for term in ENTITY_TOPOLOGY_TERMS:
+        if term not in topology_text:
+            failures.append({"id": "entity_topology_missing", "detail": f"UHNW lane missing topology term: {term}"})
+    schwab_text = "\n".join(str(item) for item in uhnw_lane.get("schwab_trust_topic_required", []))
+    for term in SCHWAB_TRUST_TOPIC_TERMS:
+        if term not in schwab_text:
+            failures.append({"id": "schwab_topic_missing", "detail": f"UHNW lane missing Schwab topic: {term}"})
+    return {
+        "status": "fail" if failures else "pass",
+        "trust_type_count": len(rows),
+        "required_type_count": len(ALL_TRUST_REQUIRED_TYPES),
+        "source": str(TRUST_TAXONOMY_REFERENCE.relative_to(ROOT)),
+        "manifest_sha256": manifest_sha256(),
+        "trust_types": rows,
+        "default_topology": {
+            "chassis": "irrevocable dynasty or investment trust owns an investment LLC for diversified investments and family investment administration",
+            "direct_ownership_rule": "assets bypass the investment LLC when tax, issuer, transfer, securities, ERISA, insurance, or fiduciary rules make direct trust ownership preferable",
+        },
+        "direct_ownership_carveouts": list(ENTITY_TOPOLOGY_TERMS),
+        "schwab_benchmark": {
+            "source": "https://www.schwab.com/learn/topic/trusts",
+            "reference": str(SCHWAB_TRUST_REFERENCE.relative_to(ROOT)),
+            "required_topics": list(SCHWAB_TRUST_TOPIC_TERMS),
+        },
+        "failures": failures,
+        "authority": "deterministic trust taxonomy and routing audit only; licensed counsel, tax, fiduciary, securities, and investment review remains required before implementation",
+    }
+
+
+def lane_or_fail(data: dict[str, Any], lane_id: str) -> dict[str, Any]:
+    lanes = data.get("lanes", {})
+    lane = lanes.get(lane_id)
+    if not isinstance(lane, dict):
+        raise SystemExit(f"unknown lane '{lane_id}'. valid lanes: {', '.join(sorted(lanes))}")
+    return lane
+
+
+def scaffold(data: dict[str, Any], lane_id: str, matter: str) -> dict[str, Any]:
+    lane = lane_or_fail(data, lane_id)
+    required_packet = list(data["required_packet"]) + list(lane.get("required_lane_packet", []))
+    return {
+        "matter": matter,
+        "lane_id": lane_id,
+        "lane_name": lane["name"],
+        "manifest_source": str(MANIFEST.relative_to(ROOT)),
+        "manifest_version": data.get("version"),
+        "manifest_sha256": manifest_sha256(),
+        "scaffolded_at": now(),
+        "track_defaults": lane["track_defaults"],
+        "lead_seats": lane["lead_seats"],
+        "workstreams": [{"name": item, "owner": "", "status": "not_started"} for item in lane["workstreams"]],
+        "phase_playbook": [{"phase": item, "owner": "", "status": "not_started"} for item in lane.get("phase_playbook", [])],
+        "required_packet": [{"item": item, "owner": "", "status": "not_started"} for item in required_packet],
+        "required_lane_packet": [{"item": item, "owner": "", "status": "not_started"} for item in lane.get("required_lane_packet", [])],
+        **{
+            field: [{key: item, "owner": "", "status": "not_started"} for item in lane.get(field, [])]
+            for field, (key, _terms, _proof) in OPTIONAL_CHECKLISTS.items()
+            if field in lane
+        },
+        "adversarial_reviewers": [{"reviewer": item, "status": "not_started"} for item in lane["adversarial_reviewers"]],
+        "docket_items": [{"item": item, "due": "", "source": "SRC-0001", "owner": ""} for item in lane["docket_items"]],
+        "hard_no_go": data["hard_no_go"],
+        "gates": [
+            "structured intake complete",
+            "conflicts cleared",
+            "citations verified",
+            "adversarial RED to BLUE",
+            "red flags clear or carried",
+            "final packet ready",
+            "Chief/Council approved",
+            "UPL footer",
+            "docket gate complete",
+        ],
+        "authority": "draft planning scaffold only; licensed counsel/CPA review and human authority required for filings, signatures, payments, and live submissions",
+    }
+
+
+def playbook(data: dict[str, Any], lane_id: str, matter: str) -> dict[str, Any]:
+    lane = lane_or_fail(data, lane_id)
+    required_packet = list(data["required_packet"]) + list(lane.get("required_lane_packet", []))
+    return {
+        "matter": matter,
+        "lane_id": lane_id,
+        "lane_name": lane["name"],
+        "source": str(MANIFEST.relative_to(ROOT)),
+        "manifest_version": data.get("version"),
+        "manifest_sha256": manifest_sha256(),
+        "recommended_track_defaults": lane.get("track_defaults", []),
+        "lead_seats": lane.get("lead_seats", []),
+        "kickoff_commands": [
+            f"bin/glaw matter new {json.dumps(matter)}",
+            f"bin/glaw-premium-lanes attach {lane_id}",
+            f"bin/glaw-premium-lanes complete --lane {lane_id} --owner \"named lead\" --docket-owner \"docket owner\" --due YYYY-MM-DD --source \"SRC-0001 basis\"",
+            f"bin/glaw-premium-lanes render-packet --lane {lane_id} --owner \"named lead\" --source \"SRC-0001 basis\"",
+            f"bin/glaw-premium-lanes check-packet --lane {lane_id}",
+            f"bin/glaw-premium-lanes docket --lane {lane_id}",
+        ],
+        "phases": [{"phase": item, "gate": "owner, source evidence, reviewer survival, and docket owner required"} for item in lane.get("phase_playbook", [])],
+        "workstreams": [{"name": item, "owner": ""} for item in lane.get("workstreams", [])],
+        "required_packet": [{"item": item, "owner": "", "proof": "source-backed workpaper or rendered packet template"} for item in required_packet],
+        **{
+            field: [{key: item, "proof": proof} for item in lane.get(field, [])]
+            for field, (key, _terms, proof) in OPTIONAL_CHECKLISTS.items()
+            if field in lane
+        },
+        "adversarial_reviewers": [{"reviewer": item, "attack_required": True} for item in lane.get("adversarial_reviewers", [])],
+        "docket_items": [{"item": item, "source": "SRC-0001 basis", "owner": "", "due": "YYYY-MM-DD"} for item in lane.get("docket_items", [])],
+        "hard_no_go": data.get("hard_no_go", []),
+        "gate_sequence": [
+            "structured intake complete",
+            "conflicts cleared",
+            "premium lane packet attached",
+            "owners and phase playbook complete",
+            "adversarial reviewers survived",
+            "rendered templates hashed",
+            "docket rows materialized",
+            "final packet rebuilt",
+            "Chief/Council approved",
+        ],
+        "authority": "source-only kickoff playbook; it does not give legal, tax, investment, accounting, fiduciary, or securities advice and does not authorize filing, signing, payment, transmission, offering, transfer, or tax-return positions",
+    }
+
+
+def playbook_markdown(plan: dict[str, Any]) -> str:
+    def bullets(items: list[Any], key: str | None = None) -> str:
+        rows: list[str] = []
+        for item in items:
+            if isinstance(item, dict):
+                value = item.get(key or "item") or item.get("name") or item.get("phase") or item.get("reviewer") or ""
+            else:
+                value = item
+            rows.append(f"- {value}")
+        return "\n".join(rows) or "- none"
+
+    commands = "\n".join(str(cmd) for cmd in plan.get("kickoff_commands", []))
+    return f"""# {plan.get('lane_name', 'Premium Lane')} Kickoff Playbook
+
+Matter: {plan.get('matter', '')}
+Lane ID: {plan.get('lane_id', '')}
+Source: {plan.get('source', '')}
+
+## Recommended Tracks
+
+{bullets(plan.get('recommended_track_defaults', []))}
+
+## Lead Seats
+
+{bullets(plan.get('lead_seats', []))}
+
+## Kickoff Commands
+
+```bash
+{commands}
+```
+
+## Phase Gates
+
+{bullets(plan.get('phases', []), 'phase')}
+
+## Required Packet
+
+{bullets(plan.get('required_packet', []), 'item')}
+
+## Creative Planning Required
+
+{bullets(plan.get('creative_planning_required', []), 'item')}
+
+## Trust Taxonomy Required
+
+{bullets(plan.get('trust_taxonomy_required', []), 'type')}
+
+## Schwab Trust Topic Required
+
+{bullets(plan.get('schwab_trust_topic_required', []), 'topic')}
+
+## Entity Topology Required
+
+{bullets(plan.get('entity_topology_required', []), 'item')}
+
+## Source Ingest Required
+
+{bullets(plan.get('source_ingest_required', []), 'item')}
+
+## Capital Raise Required
+
+{bullets(plan.get('capital_raise_required', []), 'item')}
+
+## Investor Required
+
+{bullets(plan.get('investor_required', []), 'item')}
+
+## QSBS Required
+
+{bullets(plan.get('qsbs_required', []), 'item')}
+
+## Tax Credit Required
+
+{bullets(plan.get('tax_credit_required', []), 'item')}
+
+## Tax Engine Required
+
+{bullets(plan.get('tax_engine_required', []), 'item')}
+
+## Enterprise Required
+
+{bullets(plan.get('enterprise_required', []), 'item')}
+
+## Adversarial Reviewers
+
+{bullets(plan.get('adversarial_reviewers', []), 'reviewer')}
+
+## Docket Items
+
+{bullets(plan.get('docket_items', []), 'item')}
+
+## Hard No-Go Controls
+
+{bullets(plan.get('hard_no_go', []))}
+
+## Gate Sequence
+
+{bullets(plan.get('gate_sequence', []))}
+
+## Authority Boundary
+
+{plan.get('authority', '')}
+"""
+
+
+def _items(lane: dict[str, Any], field: str) -> list[str]:
+    values = lane.get(field, [])
+    return [str(item) for item in values] if isinstance(values, list) else []
+
+
+def founder_blueprint(data: dict[str, Any], matter: str) -> dict[str, Any]:
+    founder = lane_or_fail(data, "founder-unicorn")
+    uhnw = lane_or_fail(data, "uhnw-family-office")
+    trust_report = trust_taxonomy_report(data)
+    capital_raise = _items(founder, "capital_raise_required")
+    investor = _items(founder, "investor_required")
+    qsbs = _items(founder, "qsbs_required")
+    topology = _items(founder, "entity_topology_required") or _items(uhnw, "entity_topology_required")
+    source_ingest = _items(founder, "source_ingest_required")
+    required_packet = list(data.get("required_packet", [])) + _items(founder, "required_lane_packet")
+    return {
+        "status": "pass" if trust_report.get("status") == "pass" else "fail",
+        "matter": matter,
+        "source": str(MANIFEST.relative_to(ROOT)),
+        "manifest_version": data.get("version"),
+        "manifest_sha256": manifest_sha256(),
+        "lanes": ["founder-unicorn", "tax-system", "uhnw-family-office"],
+        "lead_seats": sorted(set(founder.get("lead_seats", []) + uhnw.get("lead_seats", []))),
+        "sequence": [
+            {
+                "phase": "1. Intake, source ingest, and conflicts",
+                "owner": "glaw-tax-legal-intake",
+                "outputs": [
+                    "source-evidence binder for TAX CREDIT, LLC, SEC, QSBS, trust, offering, investor, and local client files",
+                    "structured intake premium tags for founder-unicorn, tax-system, and UHNW/family-office where facts trigger them",
+                    "conflicts, engagement, UPL, jurisdiction pack, current figures, and citation-corpus freshness",
+                ],
+                "gate": "no strategy or recommendation until intake and ethics gates are complete",
+            },
+            {
+                "phase": "2. Formation, founder stock, and QSBS",
+                "owner": "glaw-corporate-counsel + glaw-tax-strategy + glaw-83b-election",
+                "outputs": [
+                    "C-corp/LLC/partnership comparison and investor-fit entity choice",
+                    "founder stock, IP assignment, 83(b)/Form 15620 proof, cap table, 409A plan, and annual QSBS evidence file",
+                    "QSBS proposed-revenue-procedure certificate workpaper with unsupported assertions and negative/qualified responses called out",
+                ],
+                "required": qsbs,
+            },
+            {
+                "phase": "3. Raise money legally",
+                "owner": "glaw-pe-vc-counsel + glaw-fund-regulatory-council",
+                "outputs": [
+                    "offering exemption memo, solicitation/integration screen, bad-actor screen, broker-dealer/finder analysis, and Form D/Blue Sky/Reg CF/Reg A calendar",
+                    "subscription package, investor questionnaire, risk-factor bank, data room, use-of-proceeds, funds-flow, and cap-table dilution model",
+                    "no public or investor-facing use until securities counsel clears the exemption, communications archive, and filing calendar",
+                ],
+                "required": capital_raise,
+            },
+            {
+                "phase": "4. Investor tax and onboarding package",
+                "owner": "glaw-tax-strategy + glaw-regulatory-aml",
+                "outputs": [
+                    "investor persona/capacity/authority/beneficial-owner map",
+                    "KYC/AML/OFAC/source-of-funds/source-of-wealth file, W-9/W-8/tax profile, withholding and UBIT/ECI/FATCA/CRS screen",
+                    "no-guarantee QSBS/credit statement, reporting calendar, side-letter matrix, communications controls, complaint log, and privacy/retention control",
+                ],
+                "required": investor,
+            },
+            {
+                "phase": "5. Shelter and family-office topology",
+                "owner": "glaw-estate-trusts + glaw-asset-protection + glaw-tax-strategy",
+                "outputs": [
+                    "irrevocable dynasty/investment trust plus investment LLC default chassis for diversified investments",
+                    "direct trust-owned asset lane for QSBS, 83(b), S-corp, life insurance, retirement assets, and issuer-restricted private securities where tax or transfer rules require it",
+                    "solvency, fraudulent-transfer, gift/GST/Form 709, trustee, situs, fiduciary accounting, investment policy, and periodic review workpapers",
+                ],
+                "required": topology,
+                "trust_taxonomy_summary": trust_report.get("trust_type_count"),
+            },
+            {
+                "phase": "6. Exit, liquidity, and post-raise operations",
+                "owner": "glaw-institutional-finance + glaw-company-valuation + glaw-corporate-counsel",
+                "outputs": [
+                    "exit waterfall, 1045/1202 liquidity analysis, secondary/tender/lock-up screen, and buyer diligence response",
+                    "post-close investor reporting, annual tax packages, board approvals, cap-table hygiene, books close, tax calendar, and docketed recurring obligations",
+                    "Chief/Council approval only after RED to BLUE review by IRS, SEC/state examiner, investor counsel, fiduciary/trustee, valuation/appraiser, creditor, and outside critic",
+                ],
+                "required": required_packet,
+            },
+        ],
+        "source_ingest_required": source_ingest,
+        "required_packet": required_packet,
+        "trust_taxonomy": {
+            "status": trust_report.get("status"),
+            "trust_type_count": trust_report.get("trust_type_count"),
+            "required_type_count": trust_report.get("required_type_count"),
+            "direct_ownership_carveouts": trust_report.get("direct_ownership_carveouts", []),
+            "schwab_benchmark": trust_report.get("schwab_benchmark", {}),
+        },
+        "docket_items": sorted(set(founder.get("docket_items", []) + uhnw.get("docket_items", []))),
+        "adversarial_reviewers": sorted(set(founder.get("adversarial_reviewers", []) + uhnw.get("adversarial_reviewers", []))),
+        "hard_no_go": data.get("hard_no_go", []),
+        "kickoff_commands": [
+            "bin/glaw-intake premium founder-unicorn tax-system uhnw-family-office",
+            "bin/glaw-premium-lanes attach founder-unicorn",
+            "bin/glaw-premium-lanes attach tax-system",
+            "bin/glaw-premium-lanes attach uhnw-family-office",
+            "bin/glaw-premium-lanes complete --lane founder-unicorn --owner \"named lead\" --docket-owner \"docket owner\" --due YYYY-MM-DD --source \"SRC-0001 basis\"",
+            "bin/glaw-premium-lanes render-packet --lane founder-unicorn --owner \"named lead\" --source \"SRC-0001 basis\"",
+            "bin/glaw-premium-lanes docket --lane founder-unicorn",
+            "bin/glaw-final-packet build --profile auto",
+        ],
+        "failures": trust_report.get("failures", []),
+        "authority": "deterministic founder/operator blueprint only; it does not offer securities, give tax/legal/investment/fiduciary advice, shelter assets, file forms, sign documents, transfer property, or authorize investor communications without licensed professional and human approval",
+    }
+
+
+def founder_blueprint_markdown(plan: dict[str, Any]) -> str:
+    def bullets(items: list[Any]) -> str:
+        return "\n".join(f"- {item}" for item in items) or "- none"
+
+    phase_blocks = []
+    for phase in plan.get("sequence", []):
+        outputs = bullets(phase.get("outputs", []))
+        required = bullets(phase.get("required", [])[:8])
+        phase_blocks.append(
+            f"## {phase.get('phase')}\n\n"
+            f"Owner: {phase.get('owner')}\n\n"
+            f"Gate: {phase.get('gate', 'source-backed owner/reviewer/docket proof required')}\n\n"
+            f"Outputs:\n{outputs}\n\n"
+            f"Required controls:\n{required}"
+        )
+    return f"""# Founder Capital, Investor, QSBS, and Shelter Blueprint
+
+Matter: {plan.get('matter', '')}
+Source: {plan.get('source', '')}
+Manifest SHA-256: {plan.get('manifest_sha256', '')}
+
+## Lanes
+
+{bullets(plan.get('lanes', []))}
+
+## Kickoff Commands
+
+```bash
+{chr(10).join(plan.get('kickoff_commands', []))}
+```
+
+{chr(10).join(phase_blocks)}
+
+## Trust Taxonomy
+
+- status: {plan.get('trust_taxonomy', {}).get('status')}
+- trust types: {plan.get('trust_taxonomy', {}).get('trust_type_count')} / {plan.get('trust_taxonomy', {}).get('required_type_count')}
+
+## Direct Ownership Carve-Outs
+
+{bullets(plan.get('trust_taxonomy', {}).get('direct_ownership_carveouts', []))}
+
+## Docket Items
+
+{bullets(plan.get('docket_items', []))}
+
+## Adversarial Reviewers
+
+{bullets(plan.get('adversarial_reviewers', []))}
+
+## Hard No-Go Controls
+
+{bullets(plan.get('hard_no_go', []))}
+
+## Authority Boundary
+
+{plan.get('authority', '')}
+"""
+
+
+def tax_engine_blueprint(data: dict[str, Any], matter: str) -> dict[str, Any]:
+    tax = lane_or_fail(data, "tax-system")
+    founder = lane_or_fail(data, "founder-unicorn")
+    uhnw = lane_or_fail(data, "uhnw-family-office")
+    tax_engine = _items(tax, "tax_engine_required")
+    tax_credit = _items(tax, "tax_credit_required")
+    source_ingest = _items(tax, "source_ingest_required")
+    creative = _items(tax, "creative_planning_required")
+    estate_topology = _items(uhnw, "entity_topology_required")
+    required_packet = list(data.get("required_packet", [])) + _items(tax, "required_lane_packet")
+    failures: list[dict[str, str]] = []
+    required_terms = (
+        "GL trial-balance tie-out, book-to-tax M-1/M-3 bridge, return-line map, and control manifest",
+        "forms and filing package: Form 3800, 6765, 3468, 8835, 8911, 8933, 8974, 8994/8995 where relevant, Form 8275/8275-R disclosure, state credit forms, and e-file/transmitter/MeF handoff owner",
+        "return-position authority level, business-purpose/economic-substance memo, Form 8275/8275-R disclosure, and penalty-defense analysis",
+        "SALT nexus, apportionment, sourcing, throwback, PTET, franchise/margin, sales/use tax, and state-credit matrix",
+        "international information-return, FBAR/FATCA, Form 8938, 5471, 5472, 8865, 8858, GILTI, Subpart F, FDII, BEAT, 962, withholding, and treaty screen",
+        "return/payment/e-file/transmitter/MeF/IRIS/SSA BSO handoff and no-live-filing authority check",
+    )
+    proof_text = "\n".join(tax_engine + tax_credit + source_ingest + required_packet)
+    for term in required_terms:
+        if term not in proof_text:
+            failures.append({"id": "tax_engine_blueprint_term_missing", "detail": f"missing tax-engine blueprint term: {term}"})
+    return {
+        "status": "fail" if failures else "pass",
+        "matter": matter,
+        "source": str(MANIFEST.relative_to(ROOT)),
+        "manifest_version": data.get("version"),
+        "manifest_sha256": manifest_sha256(),
+        "lanes": ["tax-system", "founder-unicorn", "uhnw-family-office"],
+        "lead_seats": sorted(set(tax.get("lead_seats", []) + founder.get("lead_seats", []) + uhnw.get("lead_seats", []))),
+        "sequence": [
+            {
+                "phase": "1. Intake, source evidence, current law, and current figures",
+                "owner": "glaw-tax-legal-intake + glaw-legal-research",
+                "outputs": [
+                    "taxpayer profile, entity chart, source-file index, document hashes, missing-information list, and jurisdiction pack",
+                    "current-law/current-figures freshness ledger and primary-law citation corpus before tax positions are drafted",
+                    "local TAX CREDIT, LLC, SEC, QSBS, trust, credit, offering, and investor sources routed to owning seats with dated evidence rows",
+                ],
+                "required": source_ingest,
+                "gate": "no tax position, credit claim, investor tax statement, or controversy recommendation without source-backed intake and authority freshness",
+            },
+            {
+                "phase": "2. Entity classification, elections, basis, QSBS, and ownership",
+                "owner": "glaw-tax-strategy + glaw-corporate-counsel + /glaw-entity-architect",
+                "outputs": [
+                    "C-corp, S-corp, partnership, LLC, disregarded-entity, and trust tax classification map",
+                    "election calendar, section 1202/QSBS, section 1045, section 351, section 704, section 1368 AAA, basis, and capital-account workplan",
+                    "founder, investor, pass-through, trust, and direct-ownership carve-out routing where tax rules make that preferable",
+                ],
+                "required": [
+                    "entity classification, tax election, basis, AAA, capital account, section 704, section 1368, and section 1202/QSBS screen",
+                    *[item for item in tax_engine if any(token in item for token in ("entity classification", "basis", "704", "1368", "1202"))],
+                    *_items(founder, "qsbs_required")[:6],
+                ],
+            },
+            {
+                "phase": "3. Accounting-to-tax bridge",
+                "owner": "/glaw-accounting + /glaw-controller + /glaw-tax-provision + /glaw-audit",
+                "outputs": [
+                    "GL trial-balance tie-out, book-to-tax M-1/M-3 bridge, return-line map, and control manifest",
+                    "deferred-tax roll-forward, ASC 740, ETR, uncertain-tax-position register, and auditor/PBC bridge where relevant",
+                    "reconciliation workpapers that let the preparer, auditor, IRS examiner, and CFO trace numbers back to the books",
+                ],
+                "required": [item for item in tax_engine if any(token in item for token in ("GL trial-balance", "tax provision", "ASC 740", "return-line"))],
+            },
+            {
+                "phase": "4. Credits, incentives, substantiation, transferability, and recapture",
+                "owner": "/glaw-credit-strategy + glaw-tax-strategy + /glaw-fixed-assets + /glaw-tax-provision",
+                "outputs": [
+                    "credit inventory across R&D, payroll, energy/IRA, LIHTC, NMTC, WOTC, historic, disaster, foreign, AMT, state/local, and industry incentives",
+                    "substantiation file with contracts, invoices, payroll, time records, GL accounts, fixed-asset register, engineering records, certifications, permits, and hashes",
+                    "Form 3800/6765/3468/8974/8275 package, section 6417 direct pay, section 6418 transferability, recapture monitoring, investor reporting, and no-guarantee disclosure",
+                ],
+                "required": tax_credit,
+            },
+            {
+                "phase": "5. SALT, international, information returns, and withholding",
+                "owner": "glaw-tax-strategy + /glaw-international-tax + /glaw-sales-tax",
+                "outputs": [
+                    "state nexus, apportionment, sourcing, throwback, PTET, franchise/margin, sales/use tax, and state-credit matrix",
+                    "international information-return, FBAR/FATCA, Forms 8938/5471/5472/8865/8858, GILTI, Subpart F, FDII, BEAT, section 962, withholding, and treaty screen",
+                    "investor, foreign, tax-exempt, pass-through, and trust reporting obligations separated from entity-level return mechanics",
+                ],
+                "required": [item for item in tax_engine if any(token in item for token in ("SALT", "international", "FBAR", "withholding"))],
+            },
+            {
+                "phase": "6. Compliance, controversy, filing handoff, and no-live-filing authority",
+                "owner": "glaw-tax-compliance + /glaw-irs-audit + /glaw-tax-court",
+                "outputs": [
+                    "return-position authority, business-purpose/economic-substance memo, Form 8275/8275-R disclosure, and penalty-defense analysis",
+                    "IRS notice, transcript, account module, statute-of-limitations, response-deadline, Appeals, and Tax Court docket ledger",
+                    "return/payment/e-file/transmitter/MeF/IRIS/SSA BSO handoff with explicit no-live-filing authority check",
+                ],
+                "required": [item for item in tax_engine if any(token in item for token in ("return-position", "IRS notice", "return/payment", "recurring docket"))],
+                "gate": "GLAW prepares work product only; human authority, licensed reviewer sign-off, and approved filing channels are required for filing, transmission, payment, or signature",
+            },
+            {
+                "phase": "7. Wealth, estate, trust, gift, GST, 1041/DNI, and investor tax overlay",
+                "owner": "glaw-tax-strategy + /glaw-estate-trusts + /glaw-estate-gift-returns + /glaw-asset-protection",
+                "outputs": [
+                    "estate, gift, GST, trust 1041/DNI, Form 706, Form 709, DSUE/portability, appraisal, and fiduciary-tax screen where relevant",
+                    "irrevocable dynasty/investment trust plus investment LLC default chassis with direct trust-owned carve-outs where tax or transfer rules require them",
+                    "investor tax package crosswalk for K-1/1099/1042-S, withholding, UBIT/ECI, FATCA/CRS, QSBS, credits, and side-letter reporting promises",
+                ],
+                "required": [item for item in tax_engine if any(token in item for token in ("estate", "gift", "trust 1041", "DNI"))] + estate_topology,
+            },
+        ],
+        "tax_engine_required": tax_engine,
+        "tax_credit_required": tax_credit,
+        "source_ingest_required": source_ingest,
+        "creative_planning_required": creative,
+        "required_packet": required_packet,
+        "docket_items": sorted(set(tax.get("docket_items", []) + founder.get("docket_items", []) + uhnw.get("docket_items", []))),
+        "adversarial_reviewers": sorted(set(tax.get("adversarial_reviewers", []) + [
+            "IRS credit examiner",
+            "state credit authority",
+            "IRS international examiner",
+            "forensic accountant",
+            "auditor/PCAOB lens",
+            "investor tax counsel",
+            "Chief Compliance Officer",
+        ])),
+        "hard_no_go": data.get("hard_no_go", []),
+        "kickoff_commands": [
+            "bin/glaw-intake premium tax-system",
+            "bin/glaw-premium-lanes attach tax-system",
+            "bin/glaw-premium-lanes complete --lane tax-system --owner \"named tax lead\" --docket-owner \"docket owner\" --due YYYY-MM-DD --source \"SRC-0001 basis\"",
+            "bin/glaw-premium-lanes render-packet --lane tax-system --owner \"named tax lead\" --source \"SRC-0001 basis\"",
+            "bin/glaw-premium-lanes check-packet --lane tax-system",
+            "bin/glaw-premium-lanes docket --lane tax-system",
+            "bin/glaw-final-packet build --profile auto",
+        ],
+        "failures": failures,
+        "authority": "deterministic tax-engine operator blueprint only; it does not give legal, tax, accounting, investment, fiduciary, or securities advice and does not file, sign, transmit, pay, shelter assets, or authorize return positions without licensed professional and human approval",
+    }
+
+
+def tax_engine_blueprint_markdown(plan: dict[str, Any]) -> str:
+    def bullets(items: list[Any]) -> str:
+        return "\n".join(f"- {item}" for item in items) or "- none"
+
+    phase_blocks = []
+    for phase in plan.get("sequence", []):
+        outputs = bullets(phase.get("outputs", []))
+        required = bullets(phase.get("required", [])[:8])
+        phase_blocks.append(
+            f"## {phase.get('phase')}\n\n"
+            f"Owner: {phase.get('owner')}\n\n"
+            f"Gate: {phase.get('gate', 'source-backed owner/reviewer/docket proof required')}\n\n"
+            f"Outputs:\n{outputs}\n\n"
+            f"Required controls:\n{required}"
+        )
+    return f"""# Tax System, Credits, Compliance, And Controversy Blueprint
+
+Matter: {plan.get('matter', '')}
+Source: {plan.get('source', '')}
+Manifest SHA-256: {plan.get('manifest_sha256', '')}
+
+## Lanes
+
+{bullets(plan.get('lanes', []))}
+
+## Kickoff Commands
+
+```bash
+{chr(10).join(plan.get('kickoff_commands', []))}
+```
+
+{chr(10).join(phase_blocks)}
+
+## Tax Engine Required
+
+{bullets(plan.get('tax_engine_required', []))}
+
+## Tax Credit Required
+
+{bullets(plan.get('tax_credit_required', []))}
+
+## Source Ingest Required
+
+{bullets(plan.get('source_ingest_required', []))}
+
+## Creative Planning Benchmark Required
+
+{bullets(plan.get('creative_planning_required', []))}
+
+## Docket Items
+
+{bullets(plan.get('docket_items', []))}
+
+## Adversarial Reviewers
+
+{bullets(plan.get('adversarial_reviewers', []))}
+
+## Hard No-Go Controls
+
+{bullets(plan.get('hard_no_go', []))}
+
+## Authority Boundary
+
+{plan.get('authority', '')}
+"""
+
+
+def enterprise_blueprint(data: dict[str, Any], matter: str) -> dict[str, Any]:
+    enterprise = lane_or_fail(data, "fortune500-enterprise")
+    tax = lane_or_fail(data, "tax-system")
+    enterprise_required = _items(enterprise, "enterprise_required")
+    creative = _items(enterprise, "creative_planning_required")
+    required_packet = list(data.get("required_packet", [])) + _items(enterprise, "required_lane_packet")
+    failures: list[dict[str, str]] = []
+    required_terms = (
+        "board authority, delegation, subsidiaries, signatory, and approval matrix",
+        "public-company reporting profile: filer status, 10-K, 10-Q, 8-K, S-1, proxy, Form 4/Section 16, Reg S-K, Reg S-X, and Inline XBRL screen",
+        "SOX 302/906 certification, SOX 404 ICFR, disclosure controls and procedures, control-owner evidence, and deficiency/material-weakness remediation",
+        "audit committee, PBC list, auditor independence, PCAOB inspection/challenge response, management representation, and audit-adjustment log",
+        "ASC 740 current/deferred tax, ETR, UTP register, valuation allowance, tax provision close calendar, and auditor tie-out",
+        "enterprise regulatory map: SEC, DOJ, FTC, CFPB, FinCEN/BSA/AML, OFAC, state AG, licensing, privacy, employment, and industry regulator exposure",
+        "board/investor disclosure packet, investor-relations controls, analyst guidance, earnings release, and selective-disclosure/Reg FD review",
+    )
+    proof_text = "\n".join(enterprise_required + creative + required_packet)
+    for term in required_terms:
+        if term not in proof_text:
+            failures.append({"id": "enterprise_blueprint_term_missing", "detail": f"missing enterprise blueprint term: {term}"})
+    return {
+        "status": "fail" if failures else "pass",
+        "matter": matter,
+        "source": str(MANIFEST.relative_to(ROOT)),
+        "manifest_version": data.get("version"),
+        "manifest_sha256": manifest_sha256(),
+        "lanes": ["fortune500-enterprise", "tax-system"],
+        "lead_seats": sorted(set(enterprise.get("lead_seats", []) + tax.get("lead_seats", []))),
+        "sequence": [
+            {
+                "phase": "1. Intake, conflicts, jurisdiction, authority, and enterprise triage",
+                "owner": "/glaw-intake + /glaw-ethics-conflicts + /glaw-jurisdiction",
+                "outputs": [
+                    "public, public-ready, PE-backed, multinational, regulated, or enterprise-scale trigger classification",
+                    "conflicts, engagement, UPL, source evidence, current figures, and jurisdiction pack before board, investor, auditor, or regulator use",
+                    "board authority, delegation, subsidiaries, signatory, approval, beneficial-ownership, foreign-qualification, annual-report, and franchise-tax intake map",
+                ],
+                "required": [
+                    "board authority, delegation, subsidiaries, signatory, approval, beneficial ownership, foreign-qualification, annual-report, and franchise-tax intake map",
+                    *[item for item in enterprise_required if any(token in item for token in ("board authority", "subsidiary", "annual report", "foreign qualification", "beneficial ownership"))],
+                ],
+                "gate": "no enterprise recommendation until conflicts, engagement, current source evidence, and jurisdiction routing are complete",
+            },
+            {
+                "phase": "2. Board governance, subsidiaries, approvals, and entity authority",
+                "owner": "glaw-corporate-counsel + /glaw-entity-architect + glaw-elite-corporate-counsel",
+                "outputs": [
+                    "board authority and delegation matrix with subsidiaries, officers, signatories, committees, reserved powers, and approval thresholds",
+                    "subsidiary/foreign-qualification/registered-agent/beneficial-ownership calendar and corporate separateness controls",
+                    "board, investor, lender, and regulator decision memo with signer, filing, advisor, and deadline owner",
+                ],
+                "required": [item for item in enterprise_required if any(token in item for token in ("board authority", "subsidiary", "M&A/capital markets", "recurring docket"))],
+            },
+            {
+                "phase": "3. SEC disclosure, capital markets, investor relations, and Reg FD",
+                "owner": "/glaw-sec-reporting + /glaw-sec-disclosure + /glaw-disclosure-risk-analyzer",
+                "outputs": [
+                    "filer-status profile and 10-K/10-Q/8-K/S-1/proxy/Form 4/Section 16 issue list",
+                    "Reg S-K, Reg S-X, MD&A, risk-factor, forward-looking statement, non-GAAP, KPI, segment, related-party, cyber, climate, litigation, and Inline XBRL control calendar",
+                    "earnings-release, analyst-guidance, investor-relations, selective-disclosure/Reg FD, and board/investor communications control packet",
+                ],
+                "required": [item for item in enterprise_required if any(token in item for token in ("public-company reporting", "MD&A", "board/investor disclosure"))],
+            },
+            {
+                "phase": "4. Audit, SOX, ICFR, PCAOB, close, and accounting controls",
+                "owner": "/glaw-accounting + /glaw-controller + /glaw-audit + /glaw-audit-assurance",
+                "outputs": [
+                    "close calendar, SOX 302/906 certification, SOX 404 ICFR map, disclosure controls and procedures, control-owner evidence, and remediation tracker",
+                    "audit committee, PBC list, auditor independence, PCAOB inspection/challenge response, management representation, and audit-adjustment log",
+                    "bank reconciliation, accounting-control manifest, financial statement tie-out, and material-weakness remediation evidence where profile requires it",
+                ],
+                "required": [item for item in enterprise_required if any(token in item for token in ("SOX", "audit committee", "PCAOB", "material-weakness"))],
+            },
+            {
+                "phase": "5. Enterprise tax, ASC 740, SALT, international, and tax provision",
+                "owner": "glaw-tax-strategy + /glaw-tax-provision + /glaw-international-tax + /glaw-sales-tax",
+                "outputs": [
+                    "ASC 740 current/deferred tax, ETR, UTP register, valuation allowance, tax provision close calendar, and auditor tie-out",
+                    "enterprise tax position memo with SALT, international, estimated tax, return posture, current-figure freshness, and CPA/preparer handoff",
+                    "tax-system lane handoff for book-to-tax, credits, disclosure, controversy, and no-live-filing authority when tax facts drive board or investor disclosures",
+                ],
+                "required": [
+                    "GL trial-balance tie-out, ASC 740 tax provision, ETR, UTP, valuation allowance, SALT, international, and auditor tax tie-out handoff",
+                    *[item for item in enterprise_required if any(token in item for token in ("ASC 740", "IRS", "tax provision"))],
+                    *_items(tax, "tax_engine_required")[:5],
+                ],
+            },
+            {
+                "phase": "6. M&A, financing, capital markets, contracts, privacy, employment, and operations",
+                "owner": "glaw-elite-corporate-counsel + glaw-pe-vc-counsel + /glaw-commercial-contracts + /glaw-privacy-data + /glaw-employment-counsel",
+                "outputs": [
+                    "M&A/capital markets financing/offering exemption analysis, diligence request list, material-contracts, debt/covenant, and closing checklist",
+                    "contract playbook, scorecards/redlines, vendor-risk matrix, privacy/data map, employment compliance, whistleblower, FCPA/anti-corruption, sanctions, and trade compliance screen",
+                    "use of institutional finance models and accounting workpapers when board, lender, investor, auditor, or regulator decisions depend on numbers",
+                ],
+                "required": [item for item in enterprise_required if any(token in item for token in ("M&A/capital markets", "privacy/data", "vendor", "employment", "FCPA"))],
+            },
+            {
+                "phase": "7. Regulatory, enforcement, investigations, litigation hold, and evidence timeline",
+                "owner": "/glaw-compliance + /glaw-regulatory-aml + /glaw-sec + /glaw-investigations + /glaw-evidence-timeline",
+                "outputs": [
+                    "enterprise regulatory map across SEC, DOJ, FTC, CFPB, FinCEN/BSA/AML, OFAC, state AG, licensing, privacy, employment, and industry regulators",
+                    "litigation hold, document preservation, investigation chronology, privilege log, custodians, evidence timeline, and enforcement exposure matrix",
+                    "remediation plan and source-backed response path for regulator, auditor, board, investor, plaintiff, or opposing-counsel attacks",
+                ],
+                "required": [item for item in enterprise_required if any(token in item for token in ("enterprise regulatory map", "litigation hold", "chief compliance"))],
+            },
+            {
+                "phase": "8. Board, auditor, investor, regulator, and Chief sign-off packet",
+                "owner": "/glaw-compliance + /glaw-chief-counsel + /glaw-legal-writing",
+                "outputs": [
+                    "client-facing packet with executive decision memo, lane map, source/evidence binder, risk matrix, implementation checklist, docket export, and review conditions",
+                    "adversarial pass from IRS examiner, SEC enforcement/disclosure reviewer, auditor/PCAOB lens, plaintiff/opposing counsel, regulator, Chief Compliance Officer, and cross-border reviewers where facts trigger them",
+                    "final packet and Chief approval only after current artifacts, citations, figures, source evidence, UPL footer, report quality, reviewer identity, premium freshness, and docket gates are current",
+                ],
+                "required": required_packet,
+                "gate": "no filing, public-company use, board release, investor communication, signature, payment, or live transmission without licensed reviewer and human authority",
+            },
+        ],
+        "enterprise_required": enterprise_required,
+        "creative_planning_required": creative,
+        "required_packet": required_packet,
+        "docket_items": sorted(set(enterprise.get("docket_items", []) + tax.get("docket_items", []))),
+        "adversarial_reviewers": sorted(set(enterprise.get("adversarial_reviewers", []) + [
+            "SEC enforcement/disclosure reviewer",
+            "auditor/PCAOB lens",
+            "plaintiff/opposing counsel",
+            "regulator",
+            "IRS examiner",
+            "Chief Compliance Officer",
+            "treaty/CFC/transfer-pricing reviewer",
+            "sanctions reviewer",
+            "data-transfer reviewer",
+        ])),
+        "hard_no_go": data.get("hard_no_go", []),
+        "kickoff_commands": [
+            "bin/glaw-intake premium fortune500-enterprise tax-system",
+            "bin/glaw-premium-lanes attach fortune500-enterprise",
+            "bin/glaw-premium-lanes complete --lane fortune500-enterprise --owner \"named enterprise lead\" --docket-owner \"docket owner\" --due YYYY-MM-DD --source \"SRC-0001 basis\"",
+            "bin/glaw-premium-lanes render-packet --lane fortune500-enterprise --owner \"named enterprise lead\" --source \"SRC-0001 basis\"",
+            "bin/glaw-premium-lanes check-packet --lane fortune500-enterprise",
+            "bin/glaw-premium-lanes docket --lane fortune500-enterprise",
+            "bin/glaw-final-packet build --profile auto",
+        ],
+        "failures": failures,
+        "authority": "deterministic Fortune 500 enterprise operator blueprint only; it does not give legal, tax, accounting, investment, securities, public-company disclosure, audit, or fiduciary advice and does not file, sign, transmit, pay, publish disclosure, or authorize board, investor, auditor, or regulator use without licensed professional and human approval",
+    }
+
+
+def enterprise_blueprint_markdown(plan: dict[str, Any]) -> str:
+    def bullets(items: list[Any]) -> str:
+        return "\n".join(f"- {item}" for item in items) or "- none"
+
+    phase_blocks = []
+    for phase in plan.get("sequence", []):
+        outputs = bullets(phase.get("outputs", []))
+        required = bullets(phase.get("required", [])[:8])
+        phase_blocks.append(
+            f"## {phase.get('phase')}\n\n"
+            f"Owner: {phase.get('owner')}\n\n"
+            f"Gate: {phase.get('gate', 'source-backed owner/reviewer/docket proof required')}\n\n"
+            f"Outputs:\n{outputs}\n\n"
+            f"Required controls:\n{required}"
+        )
+    return f"""# Fortune 500 Enterprise Counsel Blueprint
+
+Matter: {plan.get('matter', '')}
+Source: {plan.get('source', '')}
+Manifest SHA-256: {plan.get('manifest_sha256', '')}
+
+## Lanes
+
+{bullets(plan.get('lanes', []))}
+
+## Kickoff Commands
+
+```bash
+{chr(10).join(plan.get('kickoff_commands', []))}
+```
+
+{chr(10).join(phase_blocks)}
+
+## Enterprise Required
+
+{bullets(plan.get('enterprise_required', []))}
+
+## Creative Planning Benchmark Required
+
+{bullets(plan.get('creative_planning_required', []))}
+
+## Docket Items
+
+{bullets(plan.get('docket_items', []))}
+
+## Adversarial Reviewers
+
+{bullets(plan.get('adversarial_reviewers', []))}
+
+## Hard No-Go Controls
+
+{bullets(plan.get('hard_no_go', []))}
+
+## Authority Boundary
+
+{plan.get('authority', '')}
+"""
+
+
+def firm_blueprint(data: dict[str, Any], matter: str) -> dict[str, Any]:
+    enterprise = enterprise_blueprint(data, matter)
+    tax = tax_engine_blueprint(data, matter)
+    founder = founder_blueprint(data, matter)
+    trust_report = trust_taxonomy_report(data)
+    source_report = local_source_ingest_report(data)
+    lanes = ["fortune500-enterprise", "tax-system", "founder-unicorn", "uhnw-family-office"]
+    failures: list[dict[str, str]] = []
+    components = {
+        "enterprise": enterprise.get("status"),
+        "tax_engine": tax.get("status"),
+        "founder": founder.get("status"),
+        "trust_taxonomy": trust_report.get("status"),
+        "local_source_ingest": source_report.get("status"),
+    }
+    for name, status in components.items():
+        if status != "pass":
+            failures.append({"id": "component_failed", "detail": f"{name} component status is {status}"})
+    required_terms = (
+        "Fortune 500 enterprise",
+        "tax system",
+        "founder",
+        "investor",
+        "QSBS",
+        "dynasty/investment trust",
+        "investment LLC",
+        "source ingest",
+        "final packet",
+        "Chief approval",
+    )
+    proof_text = "\n".join(
+        str(item)
+        for item in (
+            enterprise.get("sequence", [])
+            + tax.get("sequence", [])
+            + founder.get("sequence", [])
+            + enterprise.get("kickoff_commands", [])
+            + tax.get("kickoff_commands", [])
+            + founder.get("kickoff_commands", [])
+            + ["Fortune 500 enterprise", "tax system"]
+        )
+    )
+    for term in required_terms:
+        if term not in proof_text:
+            failures.append({"id": "firm_blueprint_term_missing", "detail": f"missing firm blueprint term: {term}"})
+    lead_seats = sorted(set(
+        enterprise.get("lead_seats", [])
+        + tax.get("lead_seats", [])
+        + founder.get("lead_seats", [])
+    ))
+    docket_items = sorted(set(
+        enterprise.get("docket_items", [])
+        + tax.get("docket_items", [])
+        + founder.get("docket_items", [])
+    ))
+    adversarial = sorted(set(
+        enterprise.get("adversarial_reviewers", [])
+        + tax.get("adversarial_reviewers", [])
+        + founder.get("adversarial_reviewers", [])
+        + [
+            "IRS examiner",
+            "SEC enforcement/disclosure reviewer",
+            "auditor/PCAOB lens",
+            "investor counsel",
+            "trustee/fiduciary reviewer",
+            "creditor/fraudulent-transfer reviewer",
+            "Chief Compliance Officer",
+            "outside critic",
+        ]
+    ))
+    return {
+        "status": "fail" if failures else "pass",
+        "matter": matter,
+        "source": str(MANIFEST.relative_to(ROOT)),
+        "manifest_version": data.get("version"),
+        "manifest_sha256": manifest_sha256(),
+        "lanes": lanes,
+        "component_statuses": components,
+        "lead_seats": lead_seats,
+        "sequence": [
+            {
+                "phase": "1. One front door: intake, conflicts, source ingest, and jurisdiction",
+                "owner": "/glaw-intake + /glaw-ethics-conflicts + /glaw-jurisdiction + glaw-tax-legal-intake",
+                "outputs": [
+                    "premium tags for Fortune 500 enterprise, tax system, founder, investor/capital raise, and UHNW/family-office facts",
+                    "conflicts, engagement, UPL, jurisdiction pack, current figures, citation corpus, and local source ingest before strategy",
+                    "materialized source-ingest ledger for TAX CREDIT, LLC, SEC, QSBS, trust, offering, investor, and tax-publication sources",
+                ],
+                "gate": "no strategy, tax position, investor communication, transfer, or public-company use until intake, ethics, and source evidence are current",
+            },
+            {
+                "phase": "2. Fortune 500 enterprise bench",
+                "owner": "/glaw-sec-reporting + /glaw-accounting + /glaw-compliance + glaw-corporate-counsel",
+                "outputs": [
+                    "board authority, delegation, subsidiaries, signatories, approvals, beneficial ownership, annual report, and franchise-tax map",
+                    "SEC 10-K/10-Q/8-K/S-1/proxy/Form 4, Reg S-K, Reg S-X, Inline XBRL, MD&A, risk-factor, KPI, non-GAAP, and Reg FD controls",
+                    "SOX 302/906, SOX 404 ICFR, audit/PBC/PCAOB, ASC 740 tax provision, enterprise regulatory, enforcement, and litigation-hold packet",
+                ],
+                "required": enterprise.get("enterprise_required", [])[:10],
+            },
+            {
+                "phase": "3. Tax system and IRS engine",
+                "owner": "glaw-tax-strategy + /glaw-tax-provision + /glaw-credit-strategy + /glaw-irs-audit",
+                "outputs": [
+                    "entity classification, elections, basis, QSBS, controlled-group, SALT, international, trust 1041/DNI, gift/GST, and filing calendar",
+                    "GL trial-balance to book-to-tax M-1/M-3, return-line map, ASC 740, ETR, UTP, deferred-tax, and auditor-PBC bridge",
+                    "tax credit inventory, substantiation, Form 3800/6765/3468/8974/8275, transferability/direct-pay, recapture, controversy, and no-live-filing handoff",
+                ],
+                "required": tax.get("tax_engine_required", [])[:10],
+            },
+            {
+                "phase": "4. Entrepreneur, founder, QSBS, and capital raise",
+                "owner": "glaw-corporate-counsel + glaw-pe-vc-counsel + /glaw-fund-regulatory-council + /glaw-83b-election",
+                "outputs": [
+                    "formation, IP assignment, founder stock, 83(b)/Form 15620, cap table, 409A plan, and QSBS evidence file",
+                    "offering exemption, solicitation/integration, bad-actor, broker-dealer/finder, Form D, Blue Sky, Reg CF, Reg A, risk factors, data room, and funds-flow",
+                    "subscription agreement, investor questionnaire, side letters, MFN/pro-rata/information rights, communications archive, complaint control, and rescission/misstatement screen",
+                ],
+                "required": founder.get("required_packet", [])[:10],
+            },
+            {
+                "phase": "5. Investor tax, onboarding, and reporting promises",
+                "owner": "glaw-tax-strategy + /glaw-regulatory-aml + glaw-fs-kyc-doc-parse + glaw-fs-kyc-rules",
+                "outputs": [
+                    "investor persona, capacity, authority, beneficial-owner, source-of-funds, source-of-wealth, KYC, AML, OFAC, sanctions, and suitability screen",
+                    "tax-exempt, foreign, trust, IRA/qualified plan, blocker, withholding, UBIT, ECI, FATCA, CRS, K-1, 1099, 1042-S, Form 3921/3922, and shareholder statement matrix",
+                    "no-guarantee QSBS/credit disclosure and version-controlled investor update, marketing-claim, projection, testimonial, privacy, and retention controls",
+                ],
+                "required": lane_or_fail(data, "founder-unicorn").get("investor_required", [])[:10],
+            },
+            {
+                "phase": "6. Trust, investment LLC, asset shelter, and direct ownership carve-outs",
+                "owner": "/glaw-estate-trusts + /glaw-asset-protection + /glaw-estate-gift-returns + glaw-tax-strategy",
+                "outputs": [
+                    "default irrevocable dynasty/investment trust owning an investment LLC for diversified investments",
+                    "direct trust-owned asset lane where QSBS, 83(b), S-corp, insurance, retirement, issuer transfer, ERISA, securities, or fiduciary rules make direct ownership preferable",
+                    "trust taxonomy, Schwab topic benchmark, situs, trustee, beneficiary, fiduciary accounting, investment policy, solvency, fraudulent-transfer, gift/GST/Form 709, and recurring administration package",
+                ],
+                "required": trust_report.get("direct_ownership_carveouts", []),
+            },
+            {
+                "phase": "7. CFO, accounting, dashboard, and investor/board numbers",
+                "owner": "/glaw-accounting + /glaw-controller + /glaw-cfo + /glaw-audit + glaw-institutional-finance",
+                "outputs": [
+                    "ledger, bank reconciliation, close calendar, trial balance, financial statements, tax provision, management dashboard, KPI pack, and audit-ready workpapers",
+                    "models for raise, use-of-proceeds, runway, dilution, valuation, exit waterfall, M&A, tax estimates, and investor/board reporting",
+                    "numbers traceable to source files, source hashes, workpaper hashes, accounting-control manifest, and adversarial finance review",
+                ],
+                "required": data.get("required_packet", []),
+            },
+            {
+                "phase": "8. Whole-client advisory handoff and Creative Planning benchmark classification",
+                "owner": "/glaw-compliance + /glaw-dashboard + /glaw-docket + /glaw-chief-counsel",
+                "outputs": [
+                    "whole-client inventory across wealth management, financial planning, tax, estate/trust, business owner, risk, insurance, asset protection, investor/capital, family office, international, CFO, and dashboard lanes",
+                    "each Creative Planning benchmark item classified complete, rejected, or not applicable with dated source refresh and no copied branding or claims",
+                    "integrated deliverables: source/evidence binder, lane map, seat table, org chart, tax roadmap, investor/board packet, estate plan, asset-protection plan, compliance calendar, dashboard, and recurring review schedule",
+                ],
+                "required": lane_or_fail(data, "fortune500-enterprise").get("creative_planning_required", [])[:10],
+            },
+            {
+                "phase": "9. RED to BLUE adversarial review and Chief decision",
+                "owner": "/glaw-adversarial + /glaw-council + /glaw-legal-research + /glaw-chief-counsel",
+                "outputs": [
+                    "IRS, SEC, auditor/PCAOB, investor counsel, fiduciary/trustee, creditor, regulator, opposing counsel, valuation/appraiser, and outside-critic attacks",
+                    "citation gate, source corpus, groundedness, reviewer identity, professional report quality, UPL, compliance manifest, and premium packet freshness checks",
+                    "Chief approval bound to the current final packet hash only after artifacts are fresh",
+                ],
+                "required": adversarial[:10],
+            },
+            {
+                "phase": "10. Implementation, docket, and human authority boundary",
+                "owner": "/glaw-file + /glaw-docket + /glaw-matter-retro + /glaw-oversight-board",
+                "outputs": [
+                    "implementation checklist with signer, filing party, advisor, deadline owner, dependency owner, packet artifact, and human approval condition",
+                    "docket rows for SEC, Blue Sky, Form D, 83(b), 409A, tax payments, return deadlines, annual reports, trust administration, board approvals, and recurring review",
+                    "no filing, signature, live transmission, payment, transfer, tax-return position, investor communication, board release, or public-company disclosure without licensed professional review and human authority",
+                ],
+                "gate": "final-packet and file gates remain quality gates only; human-only actions stay outside autonomous authority",
+            },
+        ],
+        "trust_taxonomy": {
+            "status": trust_report.get("status"),
+            "trust_type_count": trust_report.get("trust_type_count"),
+            "required_type_count": trust_report.get("required_type_count"),
+            "direct_ownership_carveouts": trust_report.get("direct_ownership_carveouts", []),
+            "schwab_benchmark": trust_report.get("schwab_benchmark", {}),
+        },
+        "source_ingest": {
+            "status": source_report.get("status"),
+            "source_count": source_report.get("source_count"),
+            "required_source_count": source_report.get("required_source_count"),
+            "extracted_char_count": source_report.get("extracted_char_count"),
+            "extractor": source_report.get("extractor"),
+        },
+        "docket_items": docket_items,
+        "adversarial_reviewers": adversarial,
+        "hard_no_go": data.get("hard_no_go", []),
+        "kickoff_commands": [
+            "bin/glaw-intake premium fortune500-enterprise tax-system founder-unicorn uhnw-family-office",
+            "bin/glaw-premium-lanes materialize-source-ingest --json",
+            "bin/glaw-premium-lanes attach fortune500-enterprise",
+            "bin/glaw-premium-lanes attach tax-system",
+            "bin/glaw-premium-lanes attach founder-unicorn",
+            "bin/glaw-premium-lanes attach uhnw-family-office",
+            "bin/glaw-premium-lanes render-packet --lane fortune500-enterprise --owner \"named enterprise lead\" --source \"SRC-0001 basis\"",
+            "bin/glaw-premium-lanes render-packet --lane tax-system --owner \"named tax lead\" --source \"SRC-0001 basis\"",
+            "bin/glaw-premium-lanes render-packet --lane founder-unicorn --owner \"named founder lead\" --source \"SRC-0001 basis\"",
+            "bin/glaw-final-packet build --profile auto",
+            "bin/glaw-chief-decision --approve-final",
+        ],
+        "failures": failures,
+        "authority": "deterministic integrated GLAW firm blueprint only; it does not give legal, tax, accounting, investment, securities, fiduciary, or public-company disclosure advice and does not file, sign, transmit, pay, transfer assets, publish, or authorize investor/board/regulator use without licensed professional review and human authority",
+    }
+
+
+def firm_blueprint_markdown(plan: dict[str, Any]) -> str:
+    def bullets(items: list[Any]) -> str:
+        return "\n".join(f"- {item}" for item in items) or "- none"
+
+    phase_blocks = []
+    for phase in plan.get("sequence", []):
+        outputs = bullets(phase.get("outputs", []))
+        required = bullets(phase.get("required", [])[:8])
+        phase_blocks.append(
+            f"## {phase.get('phase')}\n\n"
+            f"Owner: {phase.get('owner')}\n\n"
+            f"Gate: {phase.get('gate', 'source-backed owner/reviewer/docket proof required')}\n\n"
+            f"Outputs:\n{outputs}\n\n"
+            f"Required controls:\n{required}"
+        )
+    return f"""# Integrated GLAW Fortune 500, Tax System, Founder, Investor, and Trust Blueprint
+
+Matter: {plan.get('matter', '')}
+Source: {plan.get('source', '')}
+Manifest SHA-256: {plan.get('manifest_sha256', '')}
+
+## Component Statuses
+
+{bullets([f"{key}: {value}" for key, value in plan.get('component_statuses', {}).items()])}
+
+## Lanes
+
+{bullets(plan.get('lanes', []))}
+
+## Kickoff Commands
+
+```bash
+{chr(10).join(plan.get('kickoff_commands', []))}
+```
+
+{chr(10).join(phase_blocks)}
+
+## Source Ingest
+
+- status: {plan.get('source_ingest', {}).get('status')}
+- sources: {plan.get('source_ingest', {}).get('source_count')} / {plan.get('source_ingest', {}).get('required_source_count')}
+- extracted chars: {plan.get('source_ingest', {}).get('extracted_char_count')}
+
+## Trust Taxonomy
+
+- status: {plan.get('trust_taxonomy', {}).get('status')}
+- trust types: {plan.get('trust_taxonomy', {}).get('trust_type_count')} / {plan.get('trust_taxonomy', {}).get('required_type_count')}
+
+## Direct Ownership Carve-Outs
+
+{bullets(plan.get('trust_taxonomy', {}).get('direct_ownership_carveouts', []))}
+
+## Docket Items
+
+{bullets(plan.get('docket_items', []))}
+
+## Adversarial Reviewers
+
+{bullets(plan.get('adversarial_reviewers', []))}
+
+## Hard No-Go Controls
+
+{bullets(plan.get('hard_no_go', []))}
+
+## Authority Boundary
+
+{plan.get('authority', '')}
+"""
+
+
+def slugify(text: str) -> str:
+    out = []
+    last_dash = False
+    for char in text.lower():
+        if char.isalnum():
+            out.append(char)
+            last_dash = False
+        elif not last_dash:
+            out.append("-")
+            last_dash = True
+    return "".join(out).strip("-")
+
+
+def item_slug(text: str) -> str:
+    slug = slugify(text) or "packet-item"
+    if len(slug) <= 96:
+        return slug
+    digest = hashlib.sha256(text.encode("utf-8")).hexdigest()[:10]
+    return f"{slug[:85].rstrip('-')}-{digest}"
+
+
+def now() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def require_iso_date(value: str, label: str) -> str:
+    if not has_text(value):
+        raise SystemExit(f"{label} is required")
+    try:
+        datetime.strptime(value, "%Y-%m-%d")
+    except ValueError as exc:
+        raise SystemExit(f"{label} must be YYYY-MM-DD") from exc
+    return value
+
+
+def escape_jsonl_text(value: Any) -> str:
+    return str(value).replace("\\", "\\\\").replace('"', '\\"')
+
+
+def matter_dir(slug: str | None) -> tuple[str, Path]:
+    if not slug:
+        active = GLAW_HOME / ".active"
+        if not active.is_file():
+            raise SystemExit("no active matter; pass --matter-slug or run: glaw matter new <name>")
+        slug = active.read_text(encoding="utf-8").strip()
+    if not slug:
+        raise SystemExit("empty active matter slug")
+    path = GLAW_HOME / "matters" / slug
+    if not path.is_dir():
+        raise SystemExit(f"matter not found: {slug}")
+    return slug, path
+
+
+def sync_intake_premium_lane(matter_path: Path, lane_id: str, ts: str) -> list[str]:
+    intake_path = matter_path / "intake.json"
+    try:
+        intake = json.loads(intake_path.read_text(encoding="utf-8")) if intake_path.is_file() else {}
+    except json.JSONDecodeError as exc:
+        raise SystemExit(f"cannot sync premium lane scope; invalid intake.json: {exc}") from exc
+    if not isinstance(intake, dict):
+        raise SystemExit("cannot sync premium lane scope; intake.json must contain a JSON object")
+    universal = intake.setdefault("universal", {})
+    if not isinstance(universal, dict):
+        raise SystemExit("cannot sync premium lane scope; intake universal section must be a JSON object")
+    existing = universal.get("premium_lanes", [])
+    if not isinstance(existing, list):
+        existing = [existing]
+    lanes: list[str] = []
+    for value in existing:
+        text = str(value or "").strip()
+        if not text or text == "none":
+            continue
+        if text not in lanes:
+            lanes.append(text)
+    if lane_id not in lanes:
+        lanes.append(lane_id)
+    universal["premium_lanes"] = lanes
+    intake.setdefault("matter_slug", matter_path.name)
+    intake["updated_at"] = ts
+    intake_path.write_text(json.dumps(intake, indent=2, sort_keys=False) + "\n", encoding="utf-8")
+    return lanes
+
+
+def attach(data: dict[str, Any], lane_id: str, slug: str | None, matter_name: str | None) -> dict[str, Any]:
+    resolved_slug, path = matter_dir(slug)
+    name = matter_name or resolved_slug
+    packet = scaffold(data, lane_id, name)
+    packet["matter_slug"] = resolved_slug
+    packet["attached_at"] = now()
+    packet["source_evidence"] = "evidence/zz-premium-lane-source.txt"
+    intake_premium_lanes = sync_intake_premium_lane(path, lane_id, packet["attached_at"])
+
+    evidence = path / "evidence"
+    workpapers = path / "workpapers"
+    evidence.mkdir(parents=True, exist_ok=True)
+    workpapers.mkdir(parents=True, exist_ok=True)
+
+    source_path = evidence / "zz-premium-lane-source.txt"
+    source_path.write_text(
+        "\n".join([
+            "SRC premium lane scaffold basis",
+            f"lane_id: {lane_id}",
+            f"lane_name: {packet['lane_name']}",
+            f"manifest: {MANIFEST.relative_to(ROOT)}",
+            f"manifest_version: {packet.get('manifest_version')}",
+            f"manifest_sha256: {packet.get('manifest_sha256')}",
+            f"matter_slug: {resolved_slug}",
+            f"created_at: {packet['attached_at']}",
+            "purpose: source evidence for premium lane packet and docket planning",
+            "",
+        ]),
+        encoding="utf-8",
+    )
+
+    packet_path = workpapers / f"premium-lane-{lane_id}.json"
+    packet_path.write_text(json.dumps(packet, indent=2, sort_keys=False) + "\n", encoding="utf-8")
+
+    timeline = path / "timeline.jsonl"
+    event = {
+        "ts": packet["attached_at"],
+        "event": "premium_lane_attached",
+        "lane_id": lane_id,
+        "lane_name": packet["lane_name"],
+        "artifact": str(packet_path.relative_to(path)),
+        "source": str(source_path.relative_to(path)),
+    }
+    with timeline.open("a", encoding="utf-8") as fh:
+        fh.write(json.dumps(event, sort_keys=False) + "\n")
+
+    return {
+        "status": "attached",
+        "matter_slug": resolved_slug,
+        "lane_id": lane_id,
+        "lane_name": packet["lane_name"],
+        "artifact": str(packet_path),
+        "source": str(source_path),
+        "timeline_event": "premium_lane_attached",
+        "intake_premium_lanes": intake_premium_lanes,
+    }
+
+
+def packet_path_from_args(lane_id: str | None, slug: str | None, path: str | None) -> Path:
+    if path:
+        return Path(path)
+    if not lane_id:
+        raise SystemExit("check-packet requires <packet.json> or --lane <lane>")
+    _, matter = matter_dir(slug)
+    return matter / "workpapers" / f"premium-lane-{lane_id}.json"
+
+
+def matter_path_for_packet(path: Path) -> Path | None:
+    try:
+        resolved = path.resolve()
+    except FileNotFoundError:
+        return None
+    for parent in resolved.parents:
+        if parent.parent.name == "matters" and parent.parent.parent == GLAW_HOME:
+            return parent
+    return None
+
+
+def has_text(value: Any) -> bool:
+    return isinstance(value, str) and bool(value.strip())
+
+
+def sha256_file(path: Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as fh:
+        for chunk in iter(lambda: fh.read(1024 * 1024), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def rendered_template_path(matter_path: Path, lane_id: str, idx: int, item_name: str) -> Path:
+    return matter_path / "drafts" / f"premium-lane-{lane_id}" / f"{idx:02d}-{item_slug(item_name)}.md"
+
+
+def rendered_template_manifest(path: Path, packet: dict[str, Any]) -> list[dict[str, Any]]:
+    rows: list[dict[str, Any]] = []
+    matter_path = matter_path_for_packet(path)
+    lane_id = str(packet.get("lane_id", ""))
+    required = packet.get("required_packet", [])
+    if not matter_path or not isinstance(required, list):
+        return rows
+    for idx, row in enumerate(required, start=1):
+        if not isinstance(row, dict):
+            continue
+        item_name = str(row.get("item", ""))
+        template = rendered_template_path(matter_path, lane_id, idx, item_name)
+        if not template.is_file():
+            continue
+        rows.append({
+            "item": item_name,
+            "path": str(template.relative_to(matter_path)),
+            "bytes": template.stat().st_size,
+            "sha256": sha256_file(template),
+        })
+    return rows
+
+
+def rendered_template_failures(path: Path, packet: dict[str, Any]) -> list[dict[str, str]]:
+    failures: list[dict[str, str]] = []
+    matter_path = matter_path_for_packet(path)
+    lane_id = str(packet.get("lane_id", ""))
+    required = packet.get("required_packet", [])
+    if not matter_path:
+        failures.append({"id": "rendered_templates", "detail": "packet is not inside a GLAW matter; rendered templates cannot be verified"})
+        return failures
+    if not isinstance(required, list):
+        return failures
+    required_terms = ("Owner:", "Report voice:", "Findings:", "Evidence:", "Red flags:", "Sign-off conditions:", "## UPL / Human Authority Footer")
+    for idx, row in enumerate(required, start=1):
+        if not isinstance(row, dict):
+            continue
+        item_name = str(row.get("item", ""))
+        template = rendered_template_path(matter_path, lane_id, idx, item_name)
+        rel = str(template.relative_to(matter_path))
+        if not template.is_file():
+            failures.append({"id": "rendered_template_missing", "detail": f"missing rendered packet template: {rel}"})
+            continue
+        text = template.read_text(encoding="utf-8", errors="replace")
+        missing_terms = [term for term in required_terms if term not in text]
+        if missing_terms:
+            failures.append({"id": "rendered_template_quality", "detail": f"{rel} missing: {', '.join(missing_terms)}"})
+        if lane_id and f"Lane ID: {lane_id}" not in text:
+            failures.append({"id": "rendered_template_lane", "detail": f"{rel} missing lane scope"})
+        if item_name and item_name not in text:
+            failures.append({"id": "rendered_template_item", "detail": f"{rel} missing packet item label"})
+        placeholders = sorted(set(UNRESOLVED_PLACEHOLDER_RE.findall(text)))
+        if placeholders or "DRAFT CONTENT TO BE COMPLETED" in text:
+            failures.append({"id": "rendered_template_placeholder", "detail": f"{rel} contains unresolved placeholder text"})
+        if UNRESOLVED_REVIEW_RE.search(text):
+            failures.append({"id": "rendered_template_review_marker", "detail": f"{rel} contains unresolved REVIEW marker"})
+    return failures
+
+
+def check_packet(path: Path) -> dict[str, Any]:
+    failures: list[dict[str, str]] = []
+    try:
+        packet = json.loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        return {"status": "fail", "packet": str(path), "failures": [{"id": "load", "detail": str(exc)}]}
+    if not isinstance(packet, dict):
+        return {"status": "fail", "packet": str(path), "failures": [{"id": "shape", "detail": "packet must be a JSON object"}]}
+
+    for field in ("matter", "lane_id", "lane_name", "lead_seats", "workstreams", "phase_playbook", "required_packet", "required_lane_packet", "adversarial_reviewers", "docket_items", "hard_no_go", "gates", "authority"):
+        if field not in packet:
+            failures.append({"id": "packet_field", "detail": f"missing {field}"})
+
+    current_manifest_sha = manifest_sha256()
+    if packet.get("manifest_source") != str(MANIFEST.relative_to(ROOT)):
+        failures.append({"id": "manifest_freshness", "detail": f"packet missing current manifest source {MANIFEST.relative_to(ROOT)}"})
+    if packet.get("manifest_sha256") != current_manifest_sha:
+        failures.append({"id": "manifest_stale", "detail": f"premium lane packet was scaffolded from stale manifest digest; reattach or scaffold from {MANIFEST.relative_to(ROOT)}"})
+
+    for field in ("lead_seats", "workstreams", "phase_playbook", "required_packet", "required_lane_packet", "adversarial_reviewers", "docket_items", "hard_no_go", "gates"):
+        if field in packet and not isinstance(packet.get(field), list):
+            failures.append({"id": "packet_shape", "detail": f"{field} must be a list"})
+    for field in OPTIONAL_CHECKLISTS:
+        if field in packet and not isinstance(packet.get(field), list):
+            failures.append({"id": "packet_shape", "detail": f"{field} must be a list"})
+
+    for idx, row in enumerate(packet.get("workstreams", []) if isinstance(packet.get("workstreams"), list) else [], start=1):
+        if not isinstance(row, dict):
+            failures.append({"id": "workstream_shape", "detail": f"workstreams[{idx}] must be an object"})
+            continue
+        if not has_text(row.get("owner")):
+            failures.append({"id": "workstream_owner", "detail": f"workstreams[{idx}] lacks owner"})
+        if row.get("status") not in {"complete", "blocked_with_owner"}:
+            failures.append({"id": "workstream_status", "detail": f"workstreams[{idx}] status must be complete|blocked_with_owner"})
+
+    for idx, row in enumerate(packet.get("phase_playbook", []) if isinstance(packet.get("phase_playbook"), list) else [], start=1):
+        if not isinstance(row, dict):
+            failures.append({"id": "phase_shape", "detail": f"phase_playbook[{idx}] must be an object"})
+            continue
+        if not has_text(row.get("owner")):
+            failures.append({"id": "phase_owner", "detail": f"phase_playbook[{idx}] lacks owner"})
+        if row.get("status") not in {"complete", "blocked_with_owner"}:
+            failures.append({"id": "phase_status", "detail": f"phase_playbook[{idx}] status must be complete|blocked_with_owner"})
+
+    lane_packet_items = {row.get("item") for row in packet.get("required_lane_packet", []) if isinstance(row, dict)}
+    required_items = {row.get("item") for row in packet.get("required_packet", []) if isinstance(row, dict)}
+    missing_lane_items = sorted(str(item) for item in lane_packet_items - required_items if item)
+    if missing_lane_items:
+        failures.append({"id": "required_lane_packet", "detail": "required_packet omits lane-specific items: " + ", ".join(missing_lane_items)})
+
+    for idx, row in enumerate(packet.get("required_packet", []) if isinstance(packet.get("required_packet"), list) else [], start=1):
+        if not isinstance(row, dict):
+            failures.append({"id": "required_packet_shape", "detail": f"required_packet[{idx}] must be an object"})
+            continue
+        if not has_text(row.get("owner")):
+            failures.append({"id": "required_packet_owner", "detail": f"required_packet[{idx}] lacks owner"})
+        if row.get("status") not in {"complete", "not_applicable_with_rationale"}:
+            failures.append({"id": "required_packet_status", "detail": f"required_packet[{idx}] status must be complete|not_applicable_with_rationale"})
+        if row.get("status") == "not_applicable_with_rationale" and not has_text(row.get("rationale")):
+            failures.append({"id": "required_packet_rationale", "detail": f"required_packet[{idx}] lacks not-applicable rationale"})
+
+    for field, (key, terms, _proof) in OPTIONAL_CHECKLISTS.items():
+        if field not in packet:
+            continue
+        rows = packet.get(field, []) if isinstance(packet.get(field), list) else []
+        row_text = "\n".join(str(row.get(key, "")) for row in rows if isinstance(row, dict))
+        for term in terms:
+            if term not in row_text:
+                failures.append({"id": field, "detail": f"missing required item: {term}"})
+        for idx, row in enumerate(rows, start=1):
+            if not isinstance(row, dict):
+                failures.append({"id": f"{field}_shape", "detail": f"{field}[{idx}] must be an object"})
+                continue
+            if not has_text(row.get("owner")):
+                failures.append({"id": f"{field}_owner", "detail": f"{field}[{idx}] lacks owner"})
+            if row.get("status") not in {"complete", "not_applicable_with_rationale"}:
+                failures.append({"id": f"{field}_status", "detail": f"{field}[{idx}] status must be complete|not_applicable_with_rationale"})
+            if row.get("status") == "not_applicable_with_rationale" and not has_text(row.get("rationale")):
+                failures.append({"id": f"{field}_rationale", "detail": f"{field}[{idx}] lacks not-applicable rationale"})
+
+    for idx, row in enumerate(packet.get("adversarial_reviewers", []) if isinstance(packet.get("adversarial_reviewers"), list) else [], start=1):
+        if not isinstance(row, dict):
+            failures.append({"id": "reviewer_shape", "detail": f"adversarial_reviewers[{idx}] must be an object"})
+            continue
+        if row.get("status") != "survived":
+            failures.append({"id": "reviewer_status", "detail": f"adversarial_reviewers[{idx}] must be survived"})
+
+    for idx, row in enumerate(packet.get("docket_items", []) if isinstance(packet.get("docket_items"), list) else [], start=1):
+        if not isinstance(row, dict):
+            failures.append({"id": "docket_shape", "detail": f"docket_items[{idx}] must be an object"})
+            continue
+        if not has_text(row.get("owner")):
+            failures.append({"id": "docket_owner", "detail": f"docket_items[{idx}] lacks owner"})
+        if not has_text(row.get("due")):
+            failures.append({"id": "docket_due", "detail": f"docket_items[{idx}] lacks due date"})
+        if not has_text(row.get("source")) or "SRC-" not in str(row.get("source")):
+            failures.append({"id": "docket_source", "detail": f"docket_items[{idx}] lacks SRC source"})
+
+    gates = set(packet.get("gates", []) if isinstance(packet.get("gates"), list) else [])
+    for gate in ("structured intake complete", "conflicts cleared", "citations verified", "adversarial RED to BLUE", "Chief/Council approved", "UPL footer", "docket gate complete"):
+        if gate not in gates:
+            failures.append({"id": "gate", "detail": f"missing gate: {gate}"})
+    if not any("without human authority" in str(item) for item in packet.get("hard_no_go", []) if isinstance(packet.get("hard_no_go"), list)):
+        failures.append({"id": "hard_no_go", "detail": "missing human-authority no-go"})
+    if "legal advice" not in str(packet.get("authority", "")).lower() and "licensed counsel" not in str(packet.get("authority", "")).lower():
+        failures.append({"id": "authority", "detail": "authority disclaimer missing licensed-counsel/legal-advice language"})
+    failures.extend(rendered_template_failures(path, packet))
+    rendered_templates = rendered_template_manifest(path, packet)
+
+    return {
+        "status": "fail" if failures else "pass",
+        "packet": str(path),
+        "lane_id": packet.get("lane_id", ""),
+        "rendered_templates": rendered_templates,
+        "failures": failures,
+        "authority": "packet readiness check is a source-only gate; it does not approve filing or replace Chief/Council approval",
+    }
+
+
+def complete_packet(
+    path: Path,
+    owner: str,
+    docket_owner: str,
+    due: str,
+    source: str,
+    reviewer_status: str,
+    as_of: str | None = None,
+) -> dict[str, Any]:
+    if not has_text(owner):
+        raise SystemExit("--owner is required")
+    docket_owner = docket_owner or owner
+    require_iso_date(due, "--due")
+    if not has_text(source) or "SRC-" not in source:
+        raise SystemExit("--source must include an SRC- source reference")
+    if reviewer_status != "survived":
+        raise SystemExit("--reviewer-status currently supports only survived")
+
+    try:
+        packet = json.loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        raise SystemExit(f"cannot load packet: {exc}") from exc
+    if not isinstance(packet, dict):
+        raise SystemExit("packet must be a JSON object")
+
+    stamp = as_of or now()
+    for row in packet.get("workstreams", []):
+        if isinstance(row, dict):
+            row["owner"] = row.get("owner") or owner
+            row["status"] = "complete"
+            row["completed_at"] = row.get("completed_at") or stamp
+    for row in packet.get("phase_playbook", []):
+        if isinstance(row, dict):
+            row["owner"] = row.get("owner") or owner
+            row["status"] = "complete"
+            row["completed_at"] = row.get("completed_at") or stamp
+    for row in packet.get("required_packet", []):
+        if isinstance(row, dict):
+            row["owner"] = row.get("owner") or owner
+            row["status"] = "complete"
+            row["completed_at"] = row.get("completed_at") or stamp
+    for row in packet.get("required_lane_packet", []):
+        if isinstance(row, dict):
+            row["owner"] = row.get("owner") or owner
+            row["status"] = "complete"
+            row["completed_at"] = row.get("completed_at") or stamp
+    for field in OPTIONAL_CHECKLISTS:
+        for row in packet.get(field, []):
+            if isinstance(row, dict):
+                row["owner"] = row.get("owner") or owner
+                row["status"] = "complete"
+                row["completed_at"] = row.get("completed_at") or stamp
+    for row in packet.get("adversarial_reviewers", []):
+        if isinstance(row, dict):
+            row["status"] = reviewer_status
+            row["reviewed_at"] = row.get("reviewed_at") or stamp
+    for row in packet.get("docket_items", []):
+        if isinstance(row, dict):
+            row["owner"] = row.get("owner") or docket_owner
+            row["due"] = row.get("due") or due
+            row["source"] = row.get("source") if has_text(row.get("source")) and "SRC-" in str(row.get("source")) else source
+
+    packet["completed_at"] = stamp
+    packet["completed_by"] = owner
+    packet["completion_authority"] = "source-only lane packet completion; this is not a filing, signature, payment, legal opinion, or Chief/Council approval"
+    path.write_text(json.dumps(packet, indent=2, sort_keys=False) + "\n", encoding="utf-8")
+
+    report = check_packet(path)
+    matter_path = matter_path_for_packet(path)
+    timeline_event = ""
+    if matter_path:
+        timeline_event = "premium_lane_packet_completed"
+        event = {
+            "ts": stamp,
+            "event": timeline_event,
+            "lane_id": packet.get("lane_id", ""),
+            "lane_name": packet.get("lane_name", ""),
+            "artifact": str(path.resolve().relative_to(matter_path.resolve())),
+            "source": source,
+            "status": report["status"],
+        }
+        with (matter_path / "timeline.jsonl").open("a", encoding="utf-8") as fh:
+            fh.write(json.dumps(event, sort_keys=False) + "\n")
+
+    return {
+        "status": report["status"],
+        "packet": str(path),
+        "lane_id": packet.get("lane_id", ""),
+        "completed_at": stamp,
+        "completed_by": owner,
+        "timeline_event": timeline_event,
+        "failures": report.get("failures", []),
+        "authority": packet["completion_authority"],
+    }
+
+
+def docket_packet(path: Path) -> dict[str, Any]:
+    report = check_packet(path)
+    if report["status"] != "pass":
+        return {
+            "status": "fail",
+            "packet": str(path),
+            "docketed": [],
+            "skipped": [],
+            "failures": report.get("failures", []),
+            "authority": "docket materialization refused because the premium lane packet is incomplete",
+        }
+    try:
+        packet = json.loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        return {"status": "fail", "packet": str(path), "failures": [{"id": "load", "detail": str(exc)}]}
+    matter_path = matter_path_for_packet(path)
+    if not matter_path:
+        return {
+            "status": "fail",
+            "packet": str(path),
+            "docketed": [],
+            "skipped": [],
+            "failures": [{"id": "matter_path", "detail": "packet is not inside a GLAW matter workpapers directory"}],
+            "authority": "docket materialization writes only to matter-local docket.jsonl",
+        }
+    docket_path = matter_path / "docket.jsonl"
+    existing = docket_path.read_text(encoding="utf-8", errors="replace") if docket_path.exists() else ""
+    stamp = now()
+    docketed: list[dict[str, str]] = []
+    skipped: list[dict[str, str]] = []
+    with docket_path.open("a", encoding="utf-8") as fh:
+        for idx, row in enumerate(packet.get("docket_items", []), start=1):
+            if not isinstance(row, dict):
+                continue
+            due = require_iso_date(str(row.get("due", "")), f"docket_items[{idx}].due")
+            desc = f"Premium lane {packet.get('lane_id', '')}: {row.get('item', '')}"
+            owner = str(row.get("owner", "")).strip()
+            source = str(row.get("source", "")).strip()
+            key = f'"due":"{escape_jsonl_text(due)}","desc":"{escape_jsonl_text(desc)}"'
+            if key in existing:
+                skipped.append({"due": due, "desc": desc, "reason": "already_docketed"})
+                continue
+            entry = {
+                "ts": stamp,
+                "due": due,
+                "desc": desc,
+                "status": "open",
+                "owner": owner,
+                "source": source,
+                "lane_id": str(packet.get("lane_id", "")),
+                "premium_lane_artifact": str(path.resolve().relative_to(matter_path.resolve())),
+            }
+            fh.write(json.dumps(entry, sort_keys=False, separators=(",", ":")) + "\n")
+            docketed.append({"due": due, "desc": desc, "owner": owner, "source": source})
+            existing += key
+
+    timeline_event = "premium_lane_docketed"
+    event = {
+        "ts": stamp,
+        "event": timeline_event,
+        "lane_id": packet.get("lane_id", ""),
+        "lane_name": packet.get("lane_name", ""),
+        "artifact": str(path.resolve().relative_to(matter_path.resolve())),
+        "docketed_count": len(docketed),
+        "skipped_count": len(skipped),
+    }
+    with (matter_path / "timeline.jsonl").open("a", encoding="utf-8") as fh:
+        fh.write(json.dumps(event, sort_keys=False) + "\n")
+
+    return {
+        "status": "pass",
+        "packet": str(path),
+        "lane_id": packet.get("lane_id", ""),
+        "docketed": docketed,
+        "skipped": skipped,
+        "timeline_event": timeline_event,
+        "authority": "source-only docket materialization; it does not file, sign, transmit, pay, or approve legal advice",
+    }
+
+
+def packet_docketed(matter_path: Path, packet_path: Path, lane_id: str) -> bool:
+    docket_path = matter_path / "docket.jsonl"
+    if not docket_path.is_file():
+        return False
+    try:
+        artifact = str(packet_path.resolve().relative_to(matter_path.resolve()))
+    except ValueError:
+        artifact = packet_path.name
+    for line in docket_path.read_text(encoding="utf-8", errors="replace").splitlines():
+        if not line.strip():
+            continue
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        if row.get("lane_id") == lane_id and row.get("premium_lane_artifact") == artifact:
+            return True
+    return False
+
+
+def next_status_command(slug: str, lane_id: str, failures: list[dict[str, Any]], docketed: bool) -> str:
+    ids = {str(row.get("id", "")) for row in failures if isinstance(row, dict)}
+    if "manifest_stale" in ids or "manifest_freshness" in ids:
+        return f"bin/glaw-premium-lanes attach {lane_id} --matter-slug {slug}"
+    rendered_ids = {item for item in ids if item.startswith("rendered_template_")}
+    docket_ids = {"docket_materialized"}
+    metadata_ids = ids - rendered_ids - docket_ids
+    if metadata_ids:
+        return f"bin/glaw-premium-lanes complete --lane {lane_id} --matter-slug {slug} --owner \"named lead\" --docket-owner \"docket owner\" --due YYYY-MM-DD --source \"SRC-0001 basis\""
+    if rendered_ids:
+        return f"bin/glaw-premium-lanes render-packet --lane {lane_id} --matter-slug {slug} --owner \"named lead\" --source \"SRC-0001 basis\""
+    if ids & docket_ids:
+        return f"bin/glaw-premium-lanes docket --lane {lane_id} --matter-slug {slug}"
+    if not docketed:
+        return f"bin/glaw-premium-lanes docket --lane {lane_id} --matter-slug {slug}"
+    return f"bin/glaw-final-packet build --profile auto"
+
+
+def matter_status(slug: str | None) -> dict[str, Any]:
+    resolved_slug, matter_path = matter_dir(slug)
+    workpapers = matter_path / "workpapers"
+    paths = sorted(workpapers.glob("premium-lane-*.json")) if workpapers.is_dir() else []
+    if not paths:
+        return {
+            "status": "fail",
+            "matter_slug": resolved_slug,
+            "lane_count": 0,
+            "lanes": [],
+            "failures": [{"id": "premium_lane_missing", "detail": "no premium lane packets are attached to this matter"}],
+            "action_plan": [{
+                "id": "premium_lane_missing",
+                "owner": "GLAW Managing Partner",
+                "next_command": "bin/glaw-premium-lanes attach <lane> --matter-slug " + resolved_slug,
+                "required_fix": "attach at least one required premium lane packet for Fortune 500, tax-system, founder/unicorn, investor, or UHNW work",
+            }],
+            "authority": "source-only matter status; it does not approve filing or replace Chief/Council approval",
+        }
+
+    lanes: list[dict[str, Any]] = []
+    failures: list[dict[str, Any]] = []
+    action_plan: list[dict[str, Any]] = []
+    for path in paths:
+        try:
+            packet = json.loads(path.read_text(encoding="utf-8"))
+        except Exception as exc:
+            lane_id = path.stem.removeprefix("premium-lane-")
+            packet_failures = [{"id": "load", "detail": str(exc)}]
+            docketed = False
+            check_status = "fail"
+            rendered_templates: list[dict[str, Any]] = []
+            lane_name = lane_id
+        else:
+            lane_id = str(packet.get("lane_id") or path.stem.removeprefix("premium-lane-"))
+            lane_name = str(packet.get("lane_name") or lane_id)
+            check = check_packet(path)
+            packet_failures = list(check.get("failures", []))
+            check_status = str(check.get("status", "fail"))
+            rendered_templates = list(check.get("rendered_templates", []))
+            docketed = packet_docketed(matter_path, path, lane_id)
+        lane_failures = list(packet_failures)
+        if check_status == "pass" and not docketed:
+            lane_failures.append({"id": "docket_materialized", "detail": f"{lane_id} packet passes check-packet but recurring obligations are not materialized in docket.jsonl"})
+        lane_status = "pass" if check_status == "pass" and docketed else "fail"
+        next_command = next_status_command(resolved_slug, lane_id, lane_failures, docketed)
+        row = {
+            "lane_id": lane_id,
+            "lane_name": lane_name,
+            "status": lane_status,
+            "packet": str(path),
+            "check_packet_status": check_status,
+            "docketed": docketed,
+            "rendered_template_count": len(rendered_templates),
+            "failure_count": len(lane_failures),
+            "failures": lane_failures,
+            "next_command": next_command,
+        }
+        lanes.append(row)
+        if lane_failures:
+            failures.extend({"lane_id": lane_id, **failure} for failure in lane_failures if isinstance(failure, dict))
+            action_plan.append({
+                "id": lane_failures[0].get("id", "premium_lane_packet") if isinstance(lane_failures[0], dict) else "premium_lane_packet",
+                "lane_id": lane_id,
+                "owner": "premium lane lead",
+                "next_command": next_command,
+                "required_fix": lane_failures[0].get("detail", "complete the premium lane packet") if isinstance(lane_failures[0], dict) else "complete the premium lane packet",
+            })
+
+    return {
+        "status": "pass" if lanes and all(row["status"] == "pass" for row in lanes) else "fail",
+        "matter_slug": resolved_slug,
+        "lane_count": len(lanes),
+        "lanes": lanes,
+        "failures": failures,
+        "action_plan": action_plan,
+        "authority": "source-only matter status; premium lane readiness still requires final-packet, Chief/Council, UPL, citation, adversarial, and docket gates",
+    }
+
+
+def lane_template_body(packet: dict[str, Any], item: dict[str, Any], source: str, owner: str) -> str:
+    lane_id = packet.get("lane_id", "")
+    item_name = item.get("item", "")
+    workstreams = "\n".join(f"- {row.get('name', '')} | owner {row.get('owner', owner)}" for row in packet.get("workstreams", []) if isinstance(row, dict))
+    phases = "\n".join(f"- {row.get('phase', '')} | owner {row.get('owner', owner)}" for row in packet.get("phase_playbook", []) if isinstance(row, dict))
+    lane_packet = "\n".join(f"- {row.get('item', '')} | owner {row.get('owner', owner)}" for row in packet.get("required_lane_packet", []) if isinstance(row, dict))
+    creative_planning = "\n".join(f"- {row.get('item', '')} | owner {row.get('owner', owner)} | status {row.get('status', 'not_started')}" for row in packet.get("creative_planning_required", []) if isinstance(row, dict))
+    trust_taxonomy = "\n".join(f"- {row.get('type', '')} | owner {row.get('owner', owner)} | status {row.get('status', 'not_started')}" for row in packet.get("trust_taxonomy_required", []) if isinstance(row, dict))
+    schwab_topics = "\n".join(f"- {row.get('topic', '')} | owner {row.get('owner', owner)} | status {row.get('status', 'not_started')}" for row in packet.get("schwab_trust_topic_required", []) if isinstance(row, dict))
+    entity_topology = "\n".join(f"- {row.get('item', '')} | owner {row.get('owner', owner)} | status {row.get('status', 'not_started')}" for row in packet.get("entity_topology_required", []) if isinstance(row, dict))
+    source_ingest = "\n".join(f"- {row.get('item', '')} | owner {row.get('owner', owner)} | status {row.get('status', 'not_started')}" for row in packet.get("source_ingest_required", []) if isinstance(row, dict))
+    capital_raise = "\n".join(f"- {row.get('item', '')} | owner {row.get('owner', owner)} | status {row.get('status', 'not_started')}" for row in packet.get("capital_raise_required", []) if isinstance(row, dict))
+    investor = "\n".join(f"- {row.get('item', '')} | owner {row.get('owner', owner)} | status {row.get('status', 'not_started')}" for row in packet.get("investor_required", []) if isinstance(row, dict))
+    qsbs = "\n".join(f"- {row.get('item', '')} | owner {row.get('owner', owner)} | status {row.get('status', 'not_started')}" for row in packet.get("qsbs_required", []) if isinstance(row, dict))
+    tax_credit = "\n".join(f"- {row.get('item', '')} | owner {row.get('owner', owner)} | status {row.get('status', 'not_started')}" for row in packet.get("tax_credit_required", []) if isinstance(row, dict))
+    tax_engine = "\n".join(f"- {row.get('item', '')} | owner {row.get('owner', owner)} | status {row.get('status', 'not_started')}" for row in packet.get("tax_engine_required", []) if isinstance(row, dict))
+    enterprise = "\n".join(f"- {row.get('item', '')} | owner {row.get('owner', owner)} | status {row.get('status', 'not_started')}" for row in packet.get("enterprise_required", []) if isinstance(row, dict))
+    reviewers = "\n".join(f"- {row.get('reviewer', '')}: {row.get('status', 'not_started')}" for row in packet.get("adversarial_reviewers", []) if isinstance(row, dict))
+    docket = "\n".join(f"- {row.get('due', '')}: {row.get('item', '')} ({row.get('owner', owner)}; {row.get('source', source)})" for row in packet.get("docket_items", []) if isinstance(row, dict))
+    no_go = "\n".join(f"- {row}" for row in packet.get("hard_no_go", []))
+    return f"""# {packet.get('lane_name', 'Premium Lane')} - {item_name}
+
+Owner: {item.get('owner') or owner}
+Report voice: GLAW premium client lane work-product for licensed attorney/CPA/local-counsel review.
+Findings: Draft the {item_name} for {packet.get('matter', 'the matter')} under the {packet.get('lane_name', lane_id)} lane.
+Evidence: {source} premium lane packet, matter evidence, current law/figures, financial data, and client-provided assumptions must be verified before reliance.
+Red flags: Do not rely on this draft if any hard no-go item, stale source, unresolved reviewer attack, missing owner, or undocketed deadline remains.
+Sign-off conditions: Licensed attorney/CPA/local counsel, Chief/Council, citation, adversarial, UPL, final-packet, and docket gates must clear before external use.
+
+## Lane Scope
+
+- Lane ID: {lane_id}
+- Matter: {packet.get('matter', '')}
+- Packet item: {item_name}
+- Status: {item.get('status', 'not_started')}
+
+## Seat Ownership
+
+{workstreams or '- Pending seat ownership.'}
+
+## Phase Playbook
+
+{phases or '- Pending lane phase playbook.'}
+
+## Lane-Specific Packet Items
+
+{lane_packet or '- Pending lane-specific packet items.'}
+
+## Creative Planning Required
+
+{creative_planning or '- No lane-specific Creative Planning integrated advisory benchmark checklist required.'}
+
+## Trust Taxonomy Required
+
+{trust_taxonomy or '- No lane-specific trust taxonomy required.'}
+
+## Schwab Trust Topic Required
+
+{schwab_topics or '- No lane-specific Schwab trust topic-index checklist required.'}
+
+## Entity Topology Required
+
+{entity_topology or '- No lane-specific entity topology checklist required.'}
+
+## Source Ingest Required
+
+{source_ingest or '- No lane-specific local source-ingest checklist required.'}
+
+## Capital Raise Required
+
+{capital_raise or '- No lane-specific capital raise checklist required.'}
+
+## Investor Required
+
+{investor or '- No lane-specific investor-purpose checklist required.'}
+
+## QSBS Required
+
+{qsbs or '- No lane-specific QSBS certificate checklist required.'}
+
+## Tax Credit Required
+
+{tax_credit or '- No lane-specific tax-credit substantiation checklist required.'}
+
+## Tax Engine Required
+
+{tax_engine or '- No lane-specific tax engine checklist required.'}
+
+## Enterprise Required
+
+{enterprise or '- No lane-specific enterprise checklist required.'}
+
+## Required Analysis
+
+1. State the decision or client action requested.
+2. Identify the governing entity, tax, securities, accounting, investor, trust, or board rule.
+3. Tie every conclusion to source evidence and current figures.
+4. Identify implementation owner, signer, filing party, advisor, deadline, and dependency.
+5. For every premium lane, classify every Creative Planning integrated advisory benchmark item as complete, rejected, or not applicable with source date, lane routing, owner, and rationale before saying the packet reflects a whole-client advisory flow.
+6. For UHNW/founder wealth planning, classify every trust type required by `trust-taxonomy-routing.md` as selected, rejected, or not applicable with rationale.
+7. For UHNW work, classify every Schwab trust topic-index item as complete, rejected, or not applicable with rationale and source date before saying the trust lane reflects current public-market trust planning questions.
+8. For founder/UHNW topology work, classify every dynasty trust, investment LLC, direct-ownership carve-out, tax, securities, creditor, fiduciary, and funding item as complete, rejected, or not applicable with rationale before moving any asset.
+9. For source-ingest work, classify every local PDF, external authority refresh, extraction artifact, routing owner, no-go source, and output traceability row as complete, rejected, or not applicable before relying on source-ingested material.
+10. For founder/investor fundraising, classify every capital-raise item as complete, rejected, or not applicable with rationale before investor-facing use.
+11. For investor-purpose work, classify every investor onboarding, tax, reporting, communications, transfer, and complaint-control item as complete, rejected, or not applicable with rationale before investor-facing use.
+12. For QSBS work, classify every issuer, shareholder, certificate, annual checklist, redemption, gross-assets, active-business, section 1045, section 1202, ownership, and M&A preservation item as complete, rejected, or not applicable with rationale before any QSBS statement is used.
+13. For tax-credit work, classify every credit eligibility, substantiation, computation, form, return-position, transferability, recapture, state/local, ASC 740, and adversarial item as complete, rejected, or not applicable with rationale before claiming, selling, transferring, reporting, or modeling any credit.
+14. For tax-system work, classify every tax engine item as complete, rejected, or not applicable with rationale before any return position, filing packet, investor tax statement, or controversy recommendation is used.
+15. For enterprise work, classify every enterprise governance/reporting/control item as complete, rejected, or not applicable with rationale before board, investor, auditor, regulator, or public-company use.
+16. State open questions and facts that would change the recommendation.
+
+## Regulator/Opponent Review
+
+{reviewers or '- Pending adversarial review.'}
+
+## Docket Handoff
+
+{docket or '- Pending docket rows.'}
+
+## Hard No-Go Screen
+
+{no_go}
+
+## Workpaper Build Plan
+
+- Decision memo: state the recommended action, alternatives rejected, and decision owner.
+- Source tie-out: cite each controlling document, source evidence row, current figure, and open assumption.
+- Tax/legal/security/accounting analysis: route each conclusion to the owning GLAW seat and governing rule.
+- Implementation lane: identify signer, filing party, advisor, jurisdiction, deadline, and handoff artifact.
+- Adversarial response: answer the regulator, investor counsel, IRS, SEC, creditor, trustee, auditor, or opposing-counsel attack that applies.
+- Sign-off record: name the licensed reviewer conditions that remain before external use.
+
+## UPL / Human Authority Footer
+
+Attorney work-product draft for review by licensed counsel/CPA/local counsel. This file does not give legal, tax, accounting, investment, or fiduciary advice; does not create an attorney-client relationship by itself; and does not authorize any filing, signature, service, payment, transmission, securities offering, tax return position, trust transfer, or other binding act without express human authority.
+"""
+
+
+def render_packet_templates(path: Path, owner: str, source: str) -> dict[str, Any]:
+    if not has_text(owner):
+        raise SystemExit("--owner is required")
+    if not has_text(source) or "SRC-" not in source:
+        raise SystemExit("--source must include an SRC- source reference")
+    try:
+        packet = json.loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        return {"status": "fail", "packet": str(path), "failures": [{"id": "load", "detail": str(exc)}]}
+    if not isinstance(packet, dict):
+        return {"status": "fail", "packet": str(path), "failures": [{"id": "shape", "detail": "packet must be a JSON object"}]}
+    matter_path = matter_path_for_packet(path)
+    if not matter_path:
+        return {
+            "status": "fail",
+            "packet": str(path),
+            "failures": [{"id": "matter_path", "detail": "packet is not inside a GLAW matter workpapers directory"}],
+        }
+    lane_id = str(packet.get("lane_id", "premium-lane"))
+    out_dir = matter_path / "drafts" / f"premium-lane-{lane_id}"
+    out_dir.mkdir(parents=True, exist_ok=True)
+    rendered: list[dict[str, str]] = []
+    for idx, item in enumerate(packet.get("required_packet", []), start=1):
+        if not isinstance(item, dict):
+            continue
+        filename = f"{idx:02d}-{item_slug(str(item.get('item', 'packet item')))}.md"
+        out = out_dir / filename
+        out.write_text(lane_template_body(packet, item, source, owner), encoding="utf-8")
+        rendered.append({"item": str(item.get("item", "")), "path": str(out.relative_to(matter_path))})
+
+    stamp = now()
+    event = {
+        "ts": stamp,
+        "event": "premium_lane_templates_rendered",
+        "lane_id": lane_id,
+        "lane_name": packet.get("lane_name", ""),
+        "artifact": str(path.resolve().relative_to(matter_path.resolve())),
+        "rendered_count": len(rendered),
+        "source": source,
+    }
+    with (matter_path / "timeline.jsonl").open("a", encoding="utf-8") as fh:
+        fh.write(json.dumps(event, sort_keys=False) + "\n")
+
+    return {
+        "status": "pass",
+        "packet": str(path),
+        "lane_id": lane_id,
+        "rendered": rendered,
+        "timeline_event": "premium_lane_templates_rendered",
+        "authority": "source-only draft template rendering; attorney/CPA/local-counsel review and human authority are required before external use",
+    }
+
+
+def emit(value: Any, as_json: bool) -> None:
+    if as_json:
+        print(json.dumps(value, indent=2, sort_keys=False))
+    elif isinstance(value, dict) and "status" in value:
+        print(f"PREMIUM LANES: {value['status']}")
+        print(f"  lanes: {value.get('lane_count')}")
+        for failure in value.get("failures", []):
+            print(f"  fail: {failure.get('detail')}")
+    else:
+        print(json.dumps(value, indent=2, sort_keys=False))
+
+
+def emit_playbook(plan: dict[str, Any], as_json: bool) -> None:
+    if as_json:
+        print(json.dumps(plan, indent=2, sort_keys=False))
+    else:
+        print(playbook_markdown(plan))
+
+
+def emit_trust_taxonomy(report: dict[str, Any], as_json: bool) -> None:
+    if as_json:
+        print(json.dumps(report, indent=2, sort_keys=False))
+        return
+    print(f"TRUST TAXONOMY: {report.get('status')}")
+    print(f"  source: {report.get('source')}")
+    print(f"  trust_types: {report.get('trust_type_count')}")
+    for row in report.get("trust_types", []):
+        print(f"  - {row.get('type')}: {row.get('tax_posture')} -> {', '.join(row.get('routing', []))}")
+    for failure in report.get("failures", []):
+        print(f"  fail: {failure.get('detail')}")
+
+
+def emit_founder_blueprint(report: dict[str, Any], as_json: bool) -> None:
+    if as_json:
+        print(json.dumps(report, indent=2, sort_keys=False))
+        return
+    print(founder_blueprint_markdown(report))
+
+
+def emit_tax_engine_blueprint(report: dict[str, Any], as_json: bool) -> None:
+    if as_json:
+        print(json.dumps(report, indent=2, sort_keys=False))
+        return
+    print(tax_engine_blueprint_markdown(report))
+
+
+def emit_enterprise_blueprint(report: dict[str, Any], as_json: bool) -> None:
+    if as_json:
+        print(json.dumps(report, indent=2, sort_keys=False))
+        return
+    print(enterprise_blueprint_markdown(report))
+
+
+def emit_firm_blueprint(report: dict[str, Any], as_json: bool) -> None:
+    if as_json:
+        print(json.dumps(report, indent=2, sort_keys=False))
+        return
+    print(firm_blueprint_markdown(report))
+
+
+def emit_source_ingest(report: dict[str, Any], as_json: bool) -> None:
+    if as_json:
+        print(json.dumps(report, indent=2, sort_keys=False))
+        return
+    print(f"LOCAL SOURCE INGEST: {report.get('status')}")
+    print(f"  sources: {report.get('source_count')} / {report.get('required_source_count')}")
+    print(f"  extractor: {report.get('extractor') or 'missing'}")
+    print(f"  extracted chars: {report.get('extracted_char_count')}")
+    for row in report.get("sources", []):
+        print(f"  - {row.get('id')}: {row.get('extraction_status')} {row.get('sha256', '')[:12]} {row.get('path')}")
+    for failure in report.get("failures", []):
+        print(f"  fail: {failure.get('detail')}")
+
+
+def main(argv: list[str]) -> int:
+    ap = argparse.ArgumentParser(prog="glaw-premium-lanes")
+    sub = ap.add_subparsers(dest="cmd", required=True)
+    sub.add_parser("list")
+    show = sub.add_parser("show")
+    show.add_argument("lane")
+    show.add_argument("--json", action="store_true")
+    pb = sub.add_parser("playbook")
+    pb.add_argument("lane")
+    pb.add_argument("--matter", default="premium-lane-matter")
+    pb.add_argument("--json", action="store_true")
+    scaf = sub.add_parser("scaffold")
+    scaf.add_argument("lane")
+    scaf.add_argument("--matter", default="premium-lane-matter")
+    scaf.add_argument("--json", action="store_true")
+    att = sub.add_parser("attach")
+    att.add_argument("lane")
+    att.add_argument("--matter-slug", default="")
+    att.add_argument("--matter", default="")
+    att.add_argument("--json", action="store_true")
+    chk = sub.add_parser("check-packet")
+    chk.add_argument("packet", nargs="?")
+    chk.add_argument("--lane", default="")
+    chk.add_argument("--matter-slug", default="")
+    chk.add_argument("--json", action="store_true")
+    comp = sub.add_parser("complete")
+    comp.add_argument("packet", nargs="?")
+    comp.add_argument("--lane", default="")
+    comp.add_argument("--matter-slug", default="")
+    comp.add_argument("--owner", required=True)
+    comp.add_argument("--docket-owner", default="")
+    comp.add_argument("--due", required=True)
+    comp.add_argument("--source", required=True)
+    comp.add_argument("--reviewer-status", default="survived")
+    comp.add_argument("--json", action="store_true")
+    dock = sub.add_parser("docket")
+    dock.add_argument("packet", nargs="?")
+    dock.add_argument("--lane", default="")
+    dock.add_argument("--matter-slug", default="")
+    dock.add_argument("--json", action="store_true")
+    status = sub.add_parser("status")
+    status.add_argument("--matter-slug", default="")
+    status.add_argument("--json", action="store_true")
+    audit = sub.add_parser("audit-objective")
+    audit.add_argument("--json", action="store_true")
+    trust = sub.add_parser("trust-taxonomy")
+    trust.add_argument("--json", action="store_true")
+    src_ingest = sub.add_parser("source-ingest-audit")
+    src_ingest.add_argument("--json", action="store_true")
+    src_mat = sub.add_parser("materialize-source-ingest")
+    src_mat.add_argument("--matter-slug", default="")
+    src_mat.add_argument("--json", action="store_true")
+    founder = sub.add_parser("founder-blueprint")
+    founder.add_argument("--matter", default="founder-capital-shelter-matter")
+    founder.add_argument("--json", action="store_true")
+    tax_bp = sub.add_parser("tax-engine-blueprint")
+    tax_bp.add_argument("--matter", default="tax-system-engine-matter")
+    tax_bp.add_argument("--json", action="store_true")
+    ent_bp = sub.add_parser("enterprise-blueprint")
+    ent_bp.add_argument("--matter", default="fortune500-enterprise-matter")
+    ent_bp.add_argument("--json", action="store_true")
+    firm_bp = sub.add_parser("firm-blueprint")
+    firm_bp.add_argument("--matter", default="integrated-glaw-premium-matter")
+    firm_bp.add_argument("--json", action="store_true")
+    rend = sub.add_parser("render-packet")
+    rend.add_argument("packet", nargs="?")
+    rend.add_argument("--lane", default="")
+    rend.add_argument("--matter-slug", default="")
+    rend.add_argument("--owner", required=True)
+    rend.add_argument("--source", required=True)
+    rend.add_argument("--json", action="store_true")
+    val = sub.add_parser("validate")
+    val.add_argument("--json", action="store_true")
+    args = ap.parse_args(argv)
+    data = load_manifest()
+    if args.cmd == "list":
+        for lane_id, lane in sorted(data.get("lanes", {}).items()):
+            print(f"{lane_id}\t{lane.get('name', '')}")
+        return 0
+    if args.cmd == "show":
+        emit({"lane_id": args.lane, **lane_or_fail(data, args.lane)}, args.json)
+        return 0
+    if args.cmd == "playbook":
+        emit_playbook(playbook(data, args.lane, args.matter), args.json)
+        return 0
+    if args.cmd == "scaffold":
+        emit(scaffold(data, args.lane, args.matter), args.json)
+        return 0
+    if args.cmd == "attach":
+        emit(attach(data, args.lane, args.matter_slug or None, args.matter or None), args.json)
+        return 0
+    if args.cmd == "check-packet":
+        report = check_packet(packet_path_from_args(args.lane or None, args.matter_slug or None, args.packet))
+        emit(report, args.json)
+        return 0 if report["status"] == "pass" else 1
+    if args.cmd == "complete":
+        report = complete_packet(
+            packet_path_from_args(args.lane or None, args.matter_slug or None, args.packet),
+            args.owner,
+            args.docket_owner or args.owner,
+            args.due,
+            args.source,
+            args.reviewer_status,
+        )
+        emit(report, args.json)
+        return 0 if report["status"] == "pass" else 1
+    if args.cmd == "docket":
+        report = docket_packet(packet_path_from_args(args.lane or None, args.matter_slug or None, args.packet))
+        emit(report, args.json)
+        return 0 if report["status"] == "pass" else 1
+    if args.cmd == "status":
+        report = matter_status(args.matter_slug or None)
+        emit(report, args.json)
+        return 0 if report["status"] == "pass" else 1
+    if args.cmd == "audit-objective":
+        report = objective_audit(data)
+        emit(report, args.json)
+        return 0 if report["status"] == "pass" else 1
+    if args.cmd == "trust-taxonomy":
+        report = trust_taxonomy_report(data)
+        emit_trust_taxonomy(report, args.json)
+        return 0 if report["status"] == "pass" else 1
+    if args.cmd == "source-ingest-audit":
+        report = local_source_ingest_report(data)
+        emit_source_ingest(report, args.json)
+        return 0 if report["status"] == "pass" else 1
+    if args.cmd == "materialize-source-ingest":
+        report = materialize_local_source_ingest(data, args.matter_slug or None)
+        emit(report, args.json)
+        return 0 if report["status"] == "pass" else 1
+    if args.cmd == "founder-blueprint":
+        report = founder_blueprint(data, args.matter)
+        emit_founder_blueprint(report, args.json)
+        return 0 if report["status"] == "pass" else 1
+    if args.cmd == "tax-engine-blueprint":
+        report = tax_engine_blueprint(data, args.matter)
+        emit_tax_engine_blueprint(report, args.json)
+        return 0 if report["status"] == "pass" else 1
+    if args.cmd == "enterprise-blueprint":
+        report = enterprise_blueprint(data, args.matter)
+        emit_enterprise_blueprint(report, args.json)
+        return 0 if report["status"] == "pass" else 1
+    if args.cmd == "firm-blueprint":
+        report = firm_blueprint(data, args.matter)
+        emit_firm_blueprint(report, args.json)
+        return 0 if report["status"] == "pass" else 1
+    if args.cmd == "render-packet":
+        report = render_packet_templates(
+            packet_path_from_args(args.lane or None, args.matter_slug or None, args.packet),
+            args.owner,
+            args.source,
+        )
+        emit(report, args.json)
+        return 0 if report["status"] == "pass" else 1
+    report = validate_manifest(data)
+    emit(report, args.json)
+    return 0 if report["status"] == "pass" else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))

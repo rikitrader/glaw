@@ -44,7 +44,9 @@ echo "--- roster ---"
 sed -n '/## Matter pipeline/,/## Routing rule/p' lib/firm-roster.md 2>/dev/null | head -40
 ```
 
-Read `lib/firm-roster.md` in full before assigning any seat.
+Read `lib/firm-roster.md` in full before assigning any seat. For Fortune 500,
+tax-system, entrepreneur/founder, unicorn, investor, or UHNW/family-office matters,
+also read `lib/client-lanes/fortune500-tax-entrepreneur.md` before assigning seats.
 
 ## The pipeline
 
@@ -52,10 +54,16 @@ Read `lib/firm-roster.md` in full before assigning any seat.
 intake → strategy → structure → draft → adversarial → file → docket → matter-retro
 ```
 
-Branched at intake into three tracks:
+Branched at intake into three tracks, with premium client lanes layered on top for
+Fortune 500 enterprise, tax-system, entrepreneur/founder, unicorn, investor, and
+UHNW/family-office matters:
 - **litigation** (civil): strategy = case theory, structure = parties/claims map, draft = pleadings/motions, adversarial = opposing counsel red-team, file = court e-filing packet.
 - **corp-build** (company/fund): strategy = deal thesis, structure = entity org chart + tax + cap table, draft = formation/governance/offering docs, adversarial = IRS + SEC + creditor red-team, file = EDGAR/IARD/state filing packet.
 - **investigation** (white-collar/criminal): led by `/glaw-investigations`, with the **Intelligence Super-Structure** (`/glaw-command`) for deep workups — FBI bureau (`/glaw-bureau`) + FinCEN (`/glaw-fincen`) + CIA (`/glaw-intel`) + SEC (`/glaw-sec`) cells. `/glaw-command` **triages → always briefs → escalates to a full DOSSIER only when red flags clear the threshold**, with adversarial review + scorecards on every issue. strategy = theory of wrongdoing, structure = entity & flow-of-funds map, draft = exposure matrix → complaint or referral, file = complaint or referral package.
+
+The premium lane map lives at `lib/client-lanes/fortune500-tax-entrepreneur.md` and
+defines the required lead seats, deliverables, adversarial reviewers, and no-go items
+for enterprise counsel, tax, founder/unicorn, and family-office work.
 
 Each stage is its own skill (`/glaw-<stage>`); this orchestrator sequences them and
 holds the gates. Stages route work to the **divisions** in `lib/firm-roster.md`
@@ -92,6 +100,11 @@ Options:
 - **Corp/fund build** — form entities, structure tax, paper governance/offering.
 - **Investigation (white-collar/criminal)** — uncover and prove fraud/theft; build civil + criminal exposure via `/glaw-investigations`, then feed litigation or a referral.
 - **Both / hybrid** — e.g. form a holdco AND pursue a claim through it; or investigate, then sue. Sequence the tracks.
+
+Premium lane tags, applied after the track, are: Fortune 500 enterprise, tax system,
+entrepreneur/founder/unicorn, investor/capital raise, and UHNW/family office. If any
+tag applies, the stage lead must include the lane deliverables and reviewers from
+`lib/client-lanes/fortune500-tax-entrepreneur.md`.
 
 ### Step 2 — Conflicts + engagement gate (HARD GATE)
 Before any substantive work, invoke `/glaw-ethics-conflicts`. It runs the conflicts

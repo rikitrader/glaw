@@ -65,6 +65,7 @@ Stored under the matter `…/drafts/` (asset-protection set) and `/private/tmp/a
 | **Self-settled DAPT** (you settle, you benefit) | Settlor's future creditors, in DAPT states (e.g., NV, SD, DE, AK, WY, TN…) | Usually grantor | Weak/untested against non-resident settlors & full-faith-credit; see Klabacka vs. the skeptical line |
 | **DING/NING** (incomplete-gift non-grantor trust) | State income-tax savings + some protection | Non-grantor, incomplete gift | Income-tax tool first; verify PLR line + your state |
 | **LLC/holdco layering** under the trust | Charging-order-only protection on the entity | Pass-through/J corp | Pairs with the trust; entity-architect designs it |
+| **Dynasty/investment trust + investment LLC** | Multi-generational investment pool and diversified assets | Grantor or non-grantor; GST planning | Use direct trust ownership carve-outs for QSBS, 83(b), S-corp stock, insurance, retirement assets, and issuer-restricted securities |
 
 ## Grounded case-law references (extracted from the ingested PDFs — VERIFY each before citing)
 These case names appear in the sources above; the lawyer must pull and confirm each (use the court-research
@@ -98,7 +99,7 @@ Before any structure is finalized or funded, route through ALL of these and reco
    what keeps them solvent). Route numbers to `/glaw-accounting` / `glaw-financial-forensics`.
 3. **Tax/IRS** → `glaw-tax-strategy` + the Tax/IRS division: grantor vs non-grantor status, gift-tax/Form 709,
    income-tax (DING/NING) treatment, §2036/2038 estate inclusion, foreign-trust reporting (3520/3520-A) if any
-   offshore element. No step that is tax evasion.
+   offshore element, and QSBS/§83(b)/S-corp direct-ownership carve-outs. No step that is tax evasion.
 4. **FinCEN / AML / OFAC / FBI compliance** → `/glaw-fincen` (+ `/glaw-investigations`, `/glaw-bureau-counterfraud`):
    **FinCEN BOI** reporting for trust-owned entities; source-of-funds / AML clean; **OFAC/sanctions screening**
    (critical given any Venezuela nexus — see [[venezuela_data_sources]]); no structuring, no concealment.
@@ -110,7 +111,9 @@ A structure that fails ANY gate does not get drafted/funded. Log each pass in th
 2. **Intake** (AskUserQuestion): goal; are there ANY known/threatened/foreseeable claims (gate 1 — if yes, stop);
    net worth + solvency; what assets (founder stock, cash, real estate); residency/situs; married/heirs; foreign nexus.
 3. **Design** the structure (table above), with `/glaw-entity-architect` for the LLC/holdco layer and the
-   `roofai_holdings` holdco if relevant.
+   `roofai_holdings` holdco if relevant. If founder stock, QSBS, a capital raise, or investor-facing tax
+   benefits are involved, read `seats/glaw-tax-strategy/references/founder-unicorn-tax-capital-playbook.md`
+   and route to `glaw-tax-strategy`, `glaw-pe-vc-counsel`, and `glaw-83b-election`.
 4. **Run the compliance gate** (all 5). Record passes.
 5. **Draft the trust documents** (templates in the matter's asset-protection drafts; fill via
    `seats/glaw-credit-strategy/bin/fill_form.py` for any fillable PDFs, or as text instruments).
@@ -122,7 +125,8 @@ A structure that fails ANY gate does not get drafted/funded. Log each pass in th
 Trust agreement (third-party irrevocable / DAPT / DING variants) · Certification of Trust · Schedule A (assets) ·
 Assignment/Transfer of membership interests & stock into trust · Spendthrift + Trust Protector provisions ·
 Trust Protector appointment & acceptance · Solvency Affidavit · Gift memo/Form 709 cover · Trustee acceptance ·
-Funding letter. (See the matter's asset-protection document set.)
+Funding letter · Direct-ownership carve-out schedule · QSBS/83(b)/S-corp transfer review memo where applicable.
+(See the matter's asset-protection document set.)
 
 ## How this wires into the whole GLAW pipeline (every stage + agent + checklist)
 The asset-protection engagement threads the standard GLAW pipeline; each stage fires specific seats, checklists,

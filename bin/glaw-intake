@@ -12,6 +12,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "lib"))
 from glaw_profiles import TRACKS
+from glaw_premium_scope import normalize_lane_tag, premium_lane_requirement
 
 
 REQUIRED = (
@@ -225,7 +226,12 @@ def cmd_status(args: argparse.Namespace) -> int:
     d = matter_dir(args.slug)
     form = load_form(d)
     missing = missing_fields(form)
+    premium = premium_lane_requirement(form)
     print(f"INTAKE {d.name}: {form.get('status', 'draft')}")
+    if premium.get("required"):
+        print("premium_lanes: " + ", ".join(premium.get("required_lanes") or []))
+    elif premium.get("basis") == "explicit_no_premium_lanes":
+        print("premium_lanes: none")
     if missing:
         print("missing:")
         for item in missing:
@@ -264,6 +270,41 @@ def cmd_show(args: argparse.Namespace) -> int:
     return 0
 
 
+def cmd_premium(args: argparse.Namespace) -> int:
+    d = matter_dir(args.slug)
+    form = load_form(d)
+    universal = form.setdefault("universal", {})
+    if args.clear:
+        universal["premium_lanes"] = ["none"]
+        save_form(d, form)
+        print("premium_lanes: none")
+        return 0
+    if not args.lanes:
+        premium = premium_lane_requirement(form)
+        if premium.get("required"):
+            print("premium_lanes: " + ", ".join(premium.get("required_lanes") or []))
+        else:
+            print("premium_lanes: none")
+        return 0
+    lanes = []
+    invalid = []
+    for value in args.lanes:
+        lane = normalize_lane_tag(value)
+        if not lane:
+            invalid.append(value)
+            continue
+        if lane not in lanes:
+            lanes.append(lane)
+    if invalid:
+        print("ERROR: unknown premium lane(s): " + ", ".join(invalid), file=sys.stderr)
+        print("valid lanes: fortune500-enterprise, tax-system, founder-unicorn, uhnw-family-office", file=sys.stderr)
+        return 2
+    universal["premium_lanes"] = lanes
+    save_form(d, form)
+    print("premium_lanes: " + ", ".join(lanes))
+    return 0
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(prog="glaw-intake")
     sub = ap.add_subparsers(dest="cmd", required=True)
@@ -276,6 +317,11 @@ def main() -> int:
     p.add_argument("value")
     p.add_argument("--slug", default=None)
     p.set_defaults(func=cmd_set)
+    p = sub.add_parser("premium", help="set or show canonical premium lane tags")
+    p.add_argument("lanes", nargs="*")
+    p.add_argument("--slug", default=None)
+    p.add_argument("--clear", action="store_true")
+    p.set_defaults(func=cmd_premium)
     p = sub.add_parser("status", help="show missing required intake fields")
     p.add_argument("slug", nargs="?")
     p.set_defaults(func=cmd_status)

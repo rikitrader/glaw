@@ -5,7 +5,8 @@ description: >
   CPA + wealth planner) — the "how Meta and Musk do it" playbook, with real economic substance.
   Use for: "save on taxes", "reduce taxes", "tax strategy/planning", "how do billionaires avoid
   taxes", "how does Meta/Apple pay so little tax", "Elon Musk tax", "IP licensing / royalty
-  structure", "holding company", "holdco/opco", "C-corp vs S-corp", "QSBS", "buy borrow die",
+  structure", "holding company", "holdco/opco", "C-corp vs S-corp", "QSBS", "raise money",
+  "investor tax", "investor packet", "founder advisor", "unicorn advisor", "buy borrow die",
   "step-up basis", "borrow against stock", "move to Puerto Rico", "Act 60", "no income tax
   state", "management company", "cost segregation", "QBI 199A", "R&D credit", "donor advised
   fund", "GRAT", "IDGT", "SLAT", "dynasty trust", "living trust", "irrevocable trust", "estate
@@ -108,13 +109,19 @@ State the three truths up front (details in the guardrails reference):
 Map the profile to the playbook. Read `references/the-playbook-by-profile.md` for the full
 matrix; the complete deduction/IRC lever index is `references/code-section-index.md`; for how
 Meta/Google/Apple/Musk/Thiel actually did it (and what's now closed),
-`references/case-studies-meta-google-musk.md`. Quick routing:
+`references/case-studies-meta-google-musk.md`. For startup founder, investor, QSBS, tax-credit,
+trust/LLC sheltering, capital-raise, or family-office lane-design matters, read
+`references/founder-unicorn-tax-capital-playbook.md`,
+`references/source-ingest-tax-credit-llc-sec.md`, and
+`references/creative-planning-benchmark-lanes.md` before drafting. For broad trust planning,
+read `references/trust-taxonomy-routing.md` and `references/schwab-trusts-benchmark.md` before
+selecting vehicles. Quick routing:
 
 | If the client is… | Primary levers | Reference |
 |---|---|---|
 | **W-2 high earner** | Retirement max, mega-backdoor Roth, HSA, equity-comp timing, charitable bunching/DAF, state residency | personal-wealth-tactics, deferral-credits-deductions, state-and-offshore |
 | **SMB owner / practice** | Entity choice (S-corp salary/distribution, QBI), retirement (solo 401k / DB cash-balance), Augusta, accountable plan, cost seg, management company | entity-and-holdco, deferral-credits-deductions |
-| **Startup founder** | **QSBS §1202** (new OBBBA tiers), 83(b), C-corp vs passthrough, QSBS stacking via trusts | entity-and-holdco, personal-wealth-tactics |
+| **Startup founder / unicorn advisor** | **QSBS §1202** (new OBBBA tiers), 83(b), C-corp vs passthrough, QSBS substantiation, investor disclosure, capital raise, QSBS stacking via trusts | founder-unicorn-tax-capital-playbook, entity-and-holdco, personal-wealth-tactics |
 | **Real-estate investor** | Cost segregation + bonus depreciation, 1031, REPS status, opportunity zones, debt refinance (tax-free cash) | deferral-credits-deductions |
 | **Multinational / IP-heavy** | IP/licensing + transfer pricing (§482), FDDEI, holdco — *with substance* | ip-licensing-and-transfer-pricing |
 | **UHNW / exit / estate** | Buy-borrow-die, GRAT/IDGT/SLAT, charitable (CRT/CLAT/foundation), gift/estate exemption, dynasty trust | personal-wealth-tactics |
@@ -133,6 +140,10 @@ The chassis everything else bolts onto. Read `references/entity-and-holdco-struc
 - **QSBS §1202** — the single biggest founder lever: 100% gain exclusion at 5 yrs, now up to the
   greater of **$15M or 10× basis** per issuer for stock acquired after 7/4/2025 (tiered 50/75/
   100% at 3/4/5 yrs; $75M gross-asset limit). Verify current figures.
+- **Investor/QSBS information package** — maintain issuer-side substantiation (gross assets,
+  original issuance, active business, redemption hygiene, transfers, 83(b), and cap-table history)
+  and give shareholders a standardized statement. Do not market QSBS as guaranteed; route the
+  securities disclosure to `glaw-pe-vc-counsel`.
 
 ---
 
@@ -163,6 +174,9 @@ segregation (LLC per risk silo, holdco/opco, maintain the veil) → statutory ex
 homestead, tenancy-by-entirety) → protective trusts (**DAPT**, offshore APT — tax-neutral) → equity
 stripping. Note the overlap wins (retirement accounts + irrevocable gift trusts protect **and**
 save tax). A **revocable living trust** avoids probate but does **not** save tax or stop creditors.
+For founder/investment structures, default to an irrevocable dynasty/investment trust owning an
+investment LLC for diversified assets, with direct trust ownership carve-outs where tax/securities
+rules require it (QSBS, 83(b), S-corp stock, insurance, retirement assets).
 
 **Residency & cross-border** — `references/state-and-offshore.md`.
 - **State** — relocating to a no-income-tax state (TX, FL, NV, WA, WY, TN, SD, NH, AK) before a
@@ -199,8 +213,11 @@ A structure is only as good as its paper trail. Read `references/guardrails-and-
 3. **Recommended structures — ranked table:** `Lever | Est. benefit | Complexity/cost | Risk | Substance required`.
 4. **Why each works** — the mechanism + the controlling rule (IRC §, in plain language).
 5. **Implementation steps** — sequenced, with the documents and the advisor roles needed.
-6. **What you did NOT recommend and why** — the folklore / closed / too-aggressive items, named.
-7. **Disclaimer** — informational, not legal/tax advice for a specific situation; engage a
+6. **Investor and capital-raise package** — if money is being raised, add exemption choice,
+   investor eligibility, risk factors, subscription docs, tax-attribute statement, QSBS packet,
+   credit substantiation, filing calendar, and ongoing reporting promises.
+7. **What you did NOT recommend and why** — the folklore / closed / too-aggressive items, named.
+8. **Disclaimer** — informational, not legal/tax advice for a specific situation; engage a
    licensed CPA/tax attorney; verify current figures; substance + disclosure required.
 
 **Opening line (fresh conversation):**
@@ -226,7 +243,12 @@ A structure is only as good as its paper trail. Read `references/guardrails-and-
 - `references/bylaws-and-governance-for-tax.md` — Charter/bylaws/operating-agreement & intercompany provisions that enable each strategy + the documentation that makes it survive audit.
 - `references/asset-protection.md` — Lawsuit/creditor protection: insurance, entity segregation, statutory exemptions (ERISA/IRA/homestead), DAPT/offshore APT, equity stripping, the fraudulent-transfer line.
 - `references/trusts-for-tax-and-protection.md` — Every trust type by job: revocable living (probate only), GRAT/IDGT/SLAT/dynasty/QPRT (estate), CRT/CLAT/ILIT (charitable/insurance), DAPT/offshore (protection).
+- `references/trust-taxonomy-routing.md` — Full trust taxonomy and routing matrix: revocable, irrevocable, charitable, asset-protection, business/statutory, S-corp eligible, special-needs, retirement, and purpose/equitable trusts.
+- `references/schwab-trusts-benchmark.md` — Schwab Learn trust-topic benchmark: A-B/bypass, SLAT, dynasty, ILIT, discretionary trusts, funding, beneficiary designations, situs, trustee selection, and state estate tax.
 - `references/worked-example-founder-exit.md` — End-to-end worked case: founder facing a $40M exit — QSBS + stacking + CA→no-tax-state move + estate freeze + retirement + asset protection, in execution order, with the ranked output.
+- `references/founder-unicorn-tax-capital-playbook.md` — Integrated founder/unicorn tax, QSBS, capital-raise, investor-disclosure, trust/LLC sheltering, credits, and exit playbook.
+- `references/source-ingest-tax-credit-llc-sec.md` — Local source-ingest index for `/Desktop/TAX CREDIT`, `/Desktop/LLC`, and `/Desktop/SEC` PDFs.
+- `references/creative-planning-benchmark-lanes.md` — Public-site benchmark translated into GLAW lanes and workflow design.
 
 ## Agent identity & reporting posture
 

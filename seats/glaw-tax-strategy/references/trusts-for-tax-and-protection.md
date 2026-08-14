@@ -4,6 +4,14 @@ A trust is a tool, not a magic word. Each type does a *specific* job; using the 
 expecting a living trust to save income tax) is the common mistake. Verify current exemptions per
 Step 1a; involve an estate attorney to draft.
 
+For the full classification map, read `trust-taxonomy-routing.md` before drafting. It covers
+revocable, A-B/bypass, testamentary, irrevocable gift, dynasty/GST, IDGT, GRAT/GRUT, QPRT,
+SLAT, ILIT, charitable remainder/lead trusts, DAPT/offshore APT, DING/NING/ING, discretionary
+trusts, special-needs trusts, QSST/ESBT, land trusts, DSTs, business/statutory trusts,
+rabbi/secular trusts, qualified-plan trusts, purpose trusts, and equitable remedy trusts.
+Also read `schwab-trusts-benchmark.md` for public trust-education workflow themes: funding,
+beneficiary designations, situs, trustee selection, state estate tax, and distribution design.
+
 ## First distinction: revocable vs irrevocable
 
 | | **Revocable living trust** | **Irrevocable trust** |
@@ -19,7 +27,20 @@ Step 1a; involve an estate attorney to draft.
 > incapacity/death administration. Don't oversell it. (It does carry assets to a **§1014 step-up**
 > at death like other owned property.)
 
+## Administration first: titles and beneficiaries
+
+Before drafting clever trusts, verify the transfer mechanics:
+
+- Beneficiary designations control retirement accounts, IRAs, life insurance, annuities, and many
+  financial contracts. If they conflict with the will/trust, the designation can win.
+- Asset titling and transfer-on-death/payable-on-death directions are the next priority.
+- A revocable trust that is not funded may fail to avoid probate for the omitted asset.
+- Every trust plan needs a title/funding checklist and periodic beneficiary-designation review.
+
 ## Estate-freeze / wealth-transfer trusts (move appreciation out of the estate)
+- **A-B / bypass / credit-shelter trust** — married-couple first-death structure; may preserve
+  estate/GST exemption and help with state estate-tax planning. Review older mandatory formulas
+  in light of current exemption and consider disclaimer flexibility with counsel.
 - **GRAT (§2702)** — put appreciating assets in; take back an annuity; growth above the §7520
   hurdle passes to heirs **gift-tax-free**. Great with volatile/high-growth assets; "zeroed-out"
   GRATs minimize gift cost.
@@ -71,3 +92,52 @@ Step 1a; involve an estate attorney to draft.
 - Grantor-trust status, GST allocation, and basis (carryover gift basis vs §1014 step-up) interact;
   coordinate income, estate, and protection goals together. This is attorney-drafted work; the
   skill designs the plan and hands off for execution.
+
+## Dynasty investment trust + investment LLC
+
+Default founder/UHNW wealth chassis:
+
+```text
+Irrevocable dynasty / investment trust
+  |
+  |-- Investment LLC: diversified brokerage assets, alternatives, private fund interests,
+  |   real estate interests, crypto custody vehicles, and family investment administration
+  |
+  |-- Direct trust-owned assets where tax, issuer, or securities rules require it
+```
+
+The investment LLC can centralize management, improve administration, add charging-order style
+protection where state law supports it, and keep investment authority in a manager/trustee
+framework. It is not a tax eraser and does not cure a bad transfer.
+
+Direct-ownership carve-outs:
+
+| Asset | Do not automatically put into investment LLC because... |
+|---|---|
+| Founder restricted stock / 83(b) shares | Transfer timing, service-provider status, vesting, valuation, and the 30-day election can be disrupted. |
+| QSBS / section 1202 stock | Holder, original issuance, transfer, holding-period, and shareholder-level limits require a specific analysis. |
+| S-corp stock | Wrong trust/shareholder type can terminate the S election; analyze QSST/ESBT/grantor trust status. |
+| Life insurance | ILIT ownership rules usually control. |
+| Retirement assets | Trust/LLC ownership during life can trigger prohibited-transaction or distribution issues. |
+| Issuer-restricted private securities | Subscription, transfer, KYC, tax, ERISA, and securities rules may require consent or direct ownership. |
+
+## Irrevocable trust administration
+
+As opposed to revocable trusts, GRATs, QPRTs, irrevocable gift trusts, and ILITs are
+irrevocable: the grantor generally cannot change them after execution except through
+limited powers expressly allowed by the instrument and applicable law. Many are drafted
+as grantor trusts for income-tax purposes during the grantor's lifetime, so the grantor
+pays income tax on trust income while appreciation can be moved outside the taxable
+estate if the structure is respected.
+
+Trustee administration focus:
+
+| Trust type | Primary purpose | Trustee focus |
+|---|---|---|
+| GRAT | Transfer appreciation above the section 7520 hurdle. | Annuity payments, valuation support, term calendar, no prohibited commutation/exchange unless counsel approves. |
+| QPRT | Transfer residence at a discounted value while grantor retains term use. | Residence use, expenses, insurance, term-end transfer/leaseback, no unauthorized sale/refinance. |
+| Irrevocable gift trust / dynasty trust | Completed gift, GST planning, creditor/divorce protection for descendants. | Separate accounts, discretionary distributions, GST allocation, Crummey notices if used, fiduciary investment process. |
+| IDGT | Estate freeze with grantor-trust income-tax treatment. | Installment note payments, seed capital, valuation, grantor-tax burn, no sloppy commingling. |
+| ILIT | Keep life insurance proceeds outside estate. | Policy ownership, premium gifts, Crummey notices, beneficiary records, premium calendar, incidents-of-ownership guardrails. |
+
+For founder stock, read `founder-unicorn-tax-capital-playbook.md` before funding the trust.

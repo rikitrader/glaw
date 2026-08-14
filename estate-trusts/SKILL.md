@@ -34,6 +34,14 @@ the actual estate/gift/GST computation and the planning strategy to `glaw-tax-st
 It is the natural partner to `/glaw-structure` — the org chart that holds the
 business is often the same wall that protects the family's wealth.
 
+For any broad trust-planning question, read
+`seats/glaw-tax-strategy/references/trust-taxonomy-routing.md` before selecting vehicles. The
+taxonomy prevents mixing legal-purpose trusts, tax-classification trusts, charitable trusts,
+business/statutory trusts, S-corp eligible trusts, special-needs trusts, and equitable remedy
+trusts. Read `seats/glaw-tax-strategy/references/schwab-trusts-benchmark.md` for the trust
+education benchmark: funding, beneficiary designations, situs, trustee selection, state estate
+tax, discretionary distributions, and family communication.
+
 ## Preamble (run first)
 
 ```bash
@@ -63,16 +71,29 @@ accounts, life insurance, digital assets) and how each is **titled**. Capture th
 goals: probate avoidance, creditor protection, tax minimization, incapacity
 planning, business succession, charitable intent. Identify the governing state(s)
 and any spousal/community-property and elective-share considerations.
+First priority: beneficiary designations and titling. Retirement accounts, IRAs, insurance,
+annuities, TOD/POD accounts, and joint title can override will/trust terms, so verify them before
+assuming the drafted trust controls the asset.
 
 ### Step 2 — Select the vehicles (AskUserQuestion on the big forks)
 Match goals to instruments:
 - **Foundational** — pour-over will, revocable living trust (probate avoidance,
   incapacity), financial power of attorney, healthcare directive / living will /
-  HIPAA authorization, designation of guardian.
+  HIPAA authorization, designation of guardian, A-B/bypass/credit-shelter review for married
+  couples where state estate tax, GST, or older formula language matters.
 - **Tax-driven irrevocable** — **ILIT** (keep life-insurance proceeds out of the
   taxable estate), **GRAT** (freeze appreciation, low gift cost), **IDGT** (sale to
-  an intentionally defective grantor trust), **SLAT** (use exemption while spouse
-  retains indirect access).
+  an intentionally defective grantor trust), **GRUT**, **QPRT**, **SLAT** (use exemption
+  while spouse retains indirect access), irrevocable gift trust, dynasty/GST trust.
+- **Charitable / split-interest** — CRT/CRAT/CRUT/NIMCRUT, CLT/CLAT/CLUT, charitable
+  trust, private-foundation-adjacent structures; route exempt-org compliance where needed.
+- **Tax-classification-sensitive** — grantor/non-grantor, simple/complex, foreign/domestic,
+  QSST, ESBT, DING/NING/ING, business/statutory trust, investment trust/DST.
+- **Special-purpose** — special-needs trusts, Medicaid/Miller/QIT, land trusts, voting
+  trusts, rabbi/secular trusts, qualified-plan/IRA trusts, purpose/pet/gun trusts.
+- **Distribution design** — discretionary vs mandatory, HEMS, 5-or-5 powers, special needs,
+  equal vs equitable distributions, incentives, substance-use clauses, creditor/divorce terms,
+  personal-property memoranda, and beneficiary communication.
 - **Creditor-driven** — **DAPT** in a permitting jurisdiction, spendthrift
   provisions, and entity layering (LLC/LP) coordinated with `/glaw-structure`.
 - **Business succession** — **buy-sell agreement** (cross-purchase vs.

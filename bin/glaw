@@ -53,7 +53,7 @@ _stale_source_ids() {
   local text="$1" dir="$2" ref
   while IFS= read -r ref; do
     [ -n "$ref" ] || continue
-    if ! _current_source_ids "$dir" | grep -Fxq "$ref"; then
+    if ! grep -Fxq "$ref" < <(_current_source_ids "$dir"); then
       echo "$ref"
     fi
   done < <(printf '%s' "$text" | grep -Eo 'SRC-[0-9]{4}' | LC_ALL=C sort -u || true)

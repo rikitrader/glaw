@@ -238,6 +238,22 @@ bin/glaw-intake set track_specific.positions_or_issues 'credits; deductions; pen
 bin/glaw-intake set track_specific.filing_or_exam_deadlines '2026-09-15 extended return due; verify notice response date'
 ```
 
+For Fortune 500, tax-system, founder/unicorn, investor/capital-raise, or UHNW/
+family-office work, tag the intake before final-packet review so the file gate
+knows which lane packets are mandatory:
+
+```bash
+bin/glaw-intake premium tax-system founder-unicorn uhnw-family-office
+bin/glaw-premium-lanes attach tax-system
+bin/glaw-premium-lanes attach founder-unicorn
+bin/glaw-premium-lanes attach uhnw-family-office
+bin/glaw-premium-lanes status --json
+```
+
+Use `bin/glaw-intake premium --clear` only when the matter is explicitly standard
+scope. Otherwise, required premium tags make stale or missing lane workpapers block
+`bin/glaw-final-packet build` and `bin/glaw-gate check file`.
+
 For a close, filing, tax, or audit-ready packet, run the control gate in strict mode:
 `bin/glaw-bank-rec --books <ledger.json> --bank <bank.json> --format json > bank_rec.json`
 then `bin/glaw-books-doctor <ledger.json> --rec bank_rec.json --require-rec`.

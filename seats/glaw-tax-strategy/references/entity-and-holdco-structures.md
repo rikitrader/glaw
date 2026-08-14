@@ -49,6 +49,40 @@ substance loss. Document the services, the people, and the pricing.
   per-issuer cap (multiplies the exclusion). Real gifts, real trusts.
 - Excludes most service businesses (SSTBs) — it's aimed at operating/tech/product companies.
 
+### QSBS issuer records and shareholder statements
+
+Do not treat QSBS as a slogan in investor materials. The issuer should maintain a
+substantiation packet and give holders a standardized shareholder statement because the
+shareholder usually cannot prove qualification without issuer records.
+
+Minimum issuer file:
+- C-corp status and entity history.
+- Original issuance records, stock class, issue date, consideration, and cap-table history.
+- Gross-asset test support before and immediately after issuance.
+- Active-business support for substantially all of the holder's period.
+- Excluded-business screen.
+- Redemption/repurchase log for holder-related and significant redemptions.
+- 83(b)/Form 15620 proof for restricted stock.
+- Transfer, gift, trust, conversion, exchange, and section 1045 rollover history.
+
+Shareholder statement:
+- issuer and holder identity; stock class/shares/date/consideration;
+- issuer's position on original issuance, gross assets, active business, and redemptions;
+- known transfer/conversion history; and
+- warning that section 1202 eligibility is holder-specific and must be reviewed by tax counsel.
+
+### Trust / LLC direct-ownership carve-out
+
+For diversified post-liquidity investments, a dynasty/investment trust commonly owns an
+investment LLC. That default should not be applied mechanically to founder stock.
+
+- Founder restricted stock and 83(b) shares: route to `glaw-83b-election`; direct issuance to
+  the correct taxpayer matters.
+- QSBS shares: prefer direct non-corporate holder or direct trust-holder analysis before using
+  an LLC; interposed entities can complicate original issuance, holder, transfer, and reporting.
+- S-corp shares: verify QSST/ESBT/grantor-trust eligibility and elections before trust ownership.
+- Private fund/SPV interests: read subscription transfer, KYC, tax, ERISA, and custody limits.
+
 ## State of formation
 
 - **Delaware** — default for venture-backed C-corps (case law, investor expectation).

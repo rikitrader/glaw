@@ -53,6 +53,46 @@ Use primary-source URLs wherever possible:
 
 ## Active Figure Entries
 
-No reusable numeric figure is currently approved in this source index. Workflows
-that require a current tax/legal number must add a sourced `FIG-YYYY-####` entry
-first, then cite that figure ID in the workpaper or report.
+figure_id: FIG-2026-QSBS-0001
+label: QSBS aggregate gross asset threshold for stock issued after July 4, 2025
+jurisdiction: US federal
+tax_year_or_period: stock issued after 2025-07-04
+value: $75,000,000, indexed for taxable years beginning after 2026
+as_of: 2026-08-13
+source_url: https://uscode.house.gov/view.xhtml?edition=prelim&path=%2Fprelim%40title26%2FsubtitleA%2Fchapter1%2FsubchapterP
+source_owner: U.S. Code, 26 U.S.C. section 1202
+verified_by: GLAW Tax Strategy
+notes: IRS 2025 Schedule D (Form 1120-S) instructions also state the $75M threshold and the $50M rule for stock issued on or before July 4, 2025.
+
+figure_id: FIG-2026-QSBS-0002
+label: QSBS aggregate gross asset threshold for stock issued on or before July 4, 2025
+jurisdiction: US federal
+tax_year_or_period: stock issued on or before 2025-07-04
+value: $50,000,000
+as_of: 2026-08-13
+source_url: https://www.irs.gov/instructions/i1120ssd
+source_owner: IRS Instructions for Schedule D (Form 1120-S), 2025
+verified_by: GLAW Tax Strategy
+notes: Verify against issuer-specific acquisition/issuance date and all predecessor/controlled-group assets.
+
+figure_id: FIG-2026-QSBS-0003
+label: QSBS post-July 4, 2025 per-issuer dollar cap
+jurisdiction: US federal
+tax_year_or_period: stock issued after 2025-07-04
+value: $15,000,000 or 10 times basis, subject to current-law holder-specific rules
+as_of: 2026-08-13
+source_url: https://uscode.house.gov/view.xhtml?edition=prelim&path=%2Fprelim%40title26%2FsubtitleA%2Fchapter1%2FsubchapterP
+source_owner: U.S. Code, 26 U.S.C. section 1202
+verified_by: GLAW Tax Strategy
+notes: Confirm married filing allocation, prior exclusions, holder transfers, and state conformity before use.
+
+figure_id: FIG-2026-QSBS-0004
+label: QSBS post-July 4, 2025 holding-period tiers
+jurisdiction: US federal
+tax_year_or_period: stock issued after 2025-07-04
+value: 50% exclusion after at least 3 years; 75% after at least 4 years; 100% after at least 5 years
+as_of: 2026-08-13
+source_url: https://uscode.house.gov/view.xhtml?edition=prelim&path=%2Fprelim%40title26%2FsubtitleA%2Fchapter1%2FsubchapterP
+source_owner: U.S. Code, 26 U.S.C. section 1202
+verified_by: GLAW Tax Strategy
+notes: Stock acquired on or before July 4, 2025 remains subject to the prior more-than-5-year framework.

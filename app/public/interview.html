@@ -70,6 +70,8 @@
   .refine label{margin:0;display:flex;align-items:center;gap:8px;font-size:13px;font-weight:400;
     letter-spacing:0;text-transform:none;color:var(--ink);padding:7px 0;border-bottom:1px dashed var(--hairline)}
   .refine input{width:auto}
+  .premium{margin-top:18px;border-top:1px solid var(--hairline);padding-top:14px}
+  .premium .hint{margin-bottom:8px}
 
   .btnrow{display:flex;justify-content:space-between;gap:12px;margin-top:26px}
   .btn{font:inherit;font-size:13px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
@@ -243,6 +245,33 @@ const TRACKS = {
   }
 };
 
+const PREMIUM_LANES = {
+  "fortune500-enterprise": {
+    name:"Fortune 500 enterprise",
+    desc:"Board, SEC, audit, SOX, enterprise tax, M&A, regulator readiness.",
+    defaultTracks:["corp-build","accounting-tax","hybrid"],
+    terms:["fortune 500","public company","sec reporting","sox","audit committee","10-k","10-q","8-k","enterprise"]
+  },
+  "tax-system": {
+    name:"Tax system / IRS engine",
+    desc:"Entity tax architecture, compliance calendar, credits, provision, exam posture.",
+    defaultTracks:["tax","accounting-tax","hybrid"],
+    terms:["irs","tax","credit","deduction","return","notice","audit","706","709","gst","estate tax","gift tax"]
+  },
+  "founder-unicorn": {
+    name:"Founder / unicorn advisor",
+    desc:"Formation, 83(b), QSBS, capital raise, investor tax disclosure, exit planning.",
+    defaultTracks:["corp-build","tax","hybrid"],
+    terms:["founder","startup","qsbs","1202","83(b)","83b","safe","preferred","series a","raise","investor","unicorn","409a"]
+  },
+  "uhnw-family-office": {
+    name:"UHNW / family office",
+    desc:"Trust taxonomy, dynasty/SLAT/GRAT/QPRT/ILIT, investment LLC, situs, trustee, GST.",
+    defaultTracks:["corp-build","tax","hybrid"],
+    terms:["trust","dynasty","slat","grat","qprt","ilit","estate","family office","gst","investment llc","asset protection","beneficiary"]
+  }
+};
+
 const CHARTER = [
   {k:"matter_name",label:"Matter name",req:true,ph:"Smith v. Jones, nonpayment",type:"text"},
   {k:"client_names",label:"Client(s)",req:true,ph:"Client A; Client B",type:"text"},
@@ -256,7 +285,7 @@ const CHARTER = [
 
 let step = 0;
 let booted = false;
-const state = { track:null, charter:{}, extra:{}, refine:[], deadlines:[{date:"",desc:""}] };
+const state = { track:null, charter:{}, extra:{}, refine:[], premium:[], deadlines:[{date:"",desc:""}] };
 const $ = (s)=>document.querySelector(s);
 const esc = (s)=>String(s??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/"/g,"&quot;");
 const STEP_NAMES=["Track","Charter","Specifics","Routing"];
@@ -370,12 +399,19 @@ function bindCharter(){
 
 function renderSpecifics(){
   const t = TRACKS[state.track];
+  const suggested = suggestedPremiumLaneIds();
   $("#view").innerHTML = `<div class="panel">
     <h2>${t.name}: specifics</h2>
     <p class="hint">Track-specific fields (they map 1:1 to <code>bin/glaw-intake set track_specific.*</code>) and routing refinements.</p>
     ${t.fields.map(f=>fieldHtml({...f,type:"text"},state.extra[f.k])).join("")||'<p class="hint">No extra fields for this track.</p>'}
     ${t.refine.length?`<label>Routing refinements</label><div class="refine">${t.refine.map((r,i)=>`
       <label><input type="checkbox" data-ri="${i}" ${state.refine.includes(i)?"checked":""}> ${r.label}</label>`).join("")}</div>`:""}
+    <div class="premium">
+      <label>Premium lane handoff</label>
+      <p class="hint">Select any high-complexity lane that applies. These attach internal GLAW workpapers; they are not legal, tax, investment, or securities advice.</p>
+      <div class="refine">${Object.entries(PREMIUM_LANES).map(([id,l])=>`
+        <label><input type="checkbox" data-pi="${id}" ${state.premium.includes(id)?"checked":""}> <span><b>${l.name}</b> - ${l.desc}${suggested.includes(id)?" Suggested":""}</span></label>`).join("")}</div>
+    </div>
     <div class="btnrow">
       <button type="button" class="btn" id="back">← Back</button>
       <button type="button" class="btn primary" id="next">Route the matter →</button>
@@ -385,8 +421,25 @@ function renderSpecifics(){
     const i=+el.dataset.ri;
     state.refine = el.checked ? [...state.refine,i] : state.refine.filter(x=>x!==i);
   }));
+  document.querySelectorAll("[data-pi]").forEach(el=>el.addEventListener("change",()=>{
+    const id=el.dataset.pi;
+    state.premium = el.checked ? [...new Set([...state.premium,id])] : state.premium.filter(x=>x!==id);
+  }));
   $("#back").addEventListener("click",()=>{step=1;render();});
   $("#next").addEventListener("click",()=>{step=3;render();});
+}
+
+function corpus(){
+  const c=state.charter;
+  return [state.track,Object.values(c).join(" "),Object.values(state.extra).join(" "),
+    state.refine.map(i=>TRACKS[state.track]?.refine[i]?.label||"").join(" ")].join(" ").toLowerCase();
+}
+
+function suggestedPremiumLaneIds(){
+  const text = corpus();
+  return Object.entries(PREMIUM_LANES)
+    .filter(([id,l])=>l.defaultTracks.includes(state.track) || l.terms.some(term=>text.includes(term)))
+    .map(([id])=>id);
 }
 
 function routing(){
@@ -397,15 +450,37 @@ function routing(){
     if(r.seats) seats.push(...r.seats);
     if(r.docket) docket.push(...r.docket);
   });
-  return {divisions:[...new Set(divisions)], seats:[...new Set(seats)], docket:[...new Set(docket)], adversary:t.adversary};
+  const premium_lanes = state.premium.map(id=>({id, name:PREMIUM_LANES[id]?.name || id, reason:PREMIUM_LANES[id]?.desc || ""}));
+  if(state.premium.includes("fortune500-enterprise")){ seats.push("glaw-sec-reporting","glaw-sec-disclosure","glaw-tax-provision","glaw-compliance"); docket.push("SEC disclosure and audit committee calendar"); }
+  if(state.premium.includes("tax-system")){ seats.push("glaw-tax-legal-intake","glaw-tax-strategy","glaw-tax-compliance","glaw-tax-provision"); docket.push("Tax return, notice, credit, and authority-refresh calendar"); }
+  if(state.premium.includes("founder-unicorn")){ seats.push("glaw-83b-election","glaw-pe-vc-counsel","glaw-valuation-409a-architect","glaw-institutional-finance"); docket.push("83(b), Form D, Blue Sky, 409A, and QSBS calendar"); }
+  if(state.premium.includes("uhnw-family-office")){ seats.push("glaw-estate-trusts","glaw-asset-protection","glaw-estate-gift-returns"); docket.push("Trust funding, Form 709/GST, administration, and beneficiary-designation calendar"); }
+  return {divisions:[...new Set(divisions)], seats:[...new Set(seats)], docket:[...new Set(docket)], premium_lanes, adversary:t.adversary};
 }
 
 const shq = (s)=>"'"+String(s||"").replace(/'/g,"'\\''")+"'";
 
 function buildScript(r){
   const c=state.charter, L=[];
+  const evidence = [
+    `Matter: ${c.matter_name || ""}`,
+    `Track: ${state.track}`,
+    `Client names: ${c.client_names || ""}`,
+    `Parties: ${c.parties || ""}`,
+    `Jurisdiction: ${c.jurisdiction || ""}`,
+    `Goal: ${c.goal || ""}`,
+    `Facts timeline: ${c.facts_timeline || ""}`,
+    `Source documents: ${c.source_documents || ""}`,
+    `Open questions: ${c.open_questions || ""}`,
+    `Routing divisions: ${r.divisions.join("; ")}`,
+    `Routing seats: ${r.seats.join("; ")}`,
+    `Premium lanes: ${r.premium_lanes.map(l=>`${l.id} - ${l.name}`).join("; ") || "none"}`
+  ].join("\n");
   L.push(`# GLAW intake package, generated by the public routing interview`);
   L.push(`bin/glaw matter new ${shq(c.matter_name)}`);
+  L.push(`MATTER_DIR="$(bin/glaw home)/matters/$(bin/glaw slug)"`);
+  L.push(`mkdir -p "$MATTER_DIR/evidence"`);
+  L.push(`printf '%s\\n' ${shq(evidence)} > "$MATTER_DIR/evidence/public-intake.txt"`);
   L.push(`bin/glaw-intake set workflow_track ${state.track}`);
   const map={client_names:"client_names",parties:"parties",jurisdiction:"jurisdiction",goal:"goal",
     facts_timeline:"facts_timeline",source_documents:"source_documents",open_questions:"open_questions"};
@@ -413,6 +488,14 @@ function buildScript(r){
   L.push(`bin/glaw-intake set conflicts_parties ${shq(c.parties||"")}`);
   L.push(`bin/glaw-intake set authorized_scope 'review/analyze/draft only; no filing without human approval'`);
   Object.entries(state.extra).forEach(([k,v])=>{ if((v||"").trim()) L.push(`bin/glaw-intake set ${k} ${shq(v.trim())}`); });
+  if(r.premium_lanes.length){
+    L.push(`# premium lane handoff -> creates source evidence, active-matter workpaper, and timeline event`);
+    L.push(`bin/glaw-intake premium ${r.premium_lanes.map(l=>l.id).join(" ")}`);
+    r.premium_lanes.forEach(l=>{
+      L.push(`bin/glaw-premium-lanes attach ${l.id} --matter ${shq(c.matter_name || l.name)}`);
+    });
+    L.push(`# premium lane packets must later complete, render, check, docket, and pass final freshness gates`);
+  }
   const ddls=state.deadlines.filter(d=>d.date&&d.desc.trim());
   if(ddls.length){ L.push(`# hard dates → docket now`);
     ddls.forEach(d=>L.push(`bin/glaw docket add --owner "intake docket clerk" --source "SRC-0001 public intake form" ${d.date} ${shq(d.desc.trim())}`));
@@ -437,6 +520,8 @@ function renderResult(){
     <div class="seats">${r.seats.map(s=>`<span>${s}</span>`).join("")}</div>
     <div class="lbl">Docket immediately</div>
     <div class="docket">${r.docket.join(" · ")}</div>
+    ${r.premium_lanes.length?`<div class="lbl">Premium lane packets</div>
+    <div class="seats">${r.premium_lanes.map(l=>`<span>${l.id}</span>`).join("")}</div>`:""}
     <div class="lbl">Intake package (runs on the firm's GLAW CLI)</div>
     <pre class="out" id="script">${script.replace(/&/g,"&amp;").replace(/</g,"&lt;")}</pre>
     <div class="copyrow">
@@ -463,7 +548,7 @@ function renderResult(){
       const res=await fetch("/api/intake",{method:"POST",headers:{"content-type":"application/json"},
         body:JSON.stringify({track:state.track, goal:state.charter.goal, matter_name:state.charter.matter_name,
           charter:state.charter, track_specific:state.extra, deadlines:state.deadlines.filter(d=>d.date),
-          routing:r, script})});
+          premium_lanes:r.premium_lanes, routing:r, script})});
       const out=await res.json();
       if(!res.ok) throw new Error(out.error||res.status);
       $("#subresult").innerHTML=`<div class="submitted"><b>Intake #${esc(out.id)} recorded ${esc(out.ts)}.</b><br>
@@ -477,7 +562,7 @@ function renderResult(){
 }
 
 $("#restart").addEventListener("click",(e)=>{e.preventDefault();
-  step=0; state.track=null; state.charter={}; state.extra={}; state.refine=[]; state.deadlines=[{date:"",desc:""}];
+  step=0; state.track=null; state.charter={}; state.extra={}; state.refine=[]; state.premium=[]; state.deadlines=[{date:"",desc:""}];
   history.replaceState(null,"",location.pathname);
   render();
 });

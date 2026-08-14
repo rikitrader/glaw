@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from glaw_compliance import compliance_action_plan, compliance_failures
+from glaw_premium_scope import premium_lane_requirement
 
 ROOT = Path(__file__).resolve().parents[1]
 BIN = ROOT / "bin"
@@ -95,7 +96,115 @@ def shipped_artifacts(matter: Path) -> list[dict]:
         path = matter / name
         if path.exists():
             artifacts.append({"path": name, "bytes": path.stat().st_size})
+    for path in sorted((matter / "workpapers").glob("premium-lane-*.json")):
+        artifacts.append({"path": str(path.relative_to(matter)), "bytes": path.stat().st_size})
+    for path in sorted((matter / "drafts").glob("premium-lane-*/*.md")):
+        artifacts.append({"path": str(path.relative_to(matter)), "bytes": path.stat().st_size})
     return artifacts
+
+
+def premium_lane_status(matter: Path) -> dict:
+    requirement = premium_lane_requirement(read_json(matter / "intake.json", {}))
+    rc, output = run_tool(["glaw-premium-lanes", "status", "--matter-slug", matter.name, "--json"])
+    try:
+        report = json.loads(output)
+    except json.JSONDecodeError:
+        return {
+            "present": False,
+            "status": "fail",
+            "lane_count": 0,
+            "lanes": [],
+            "failures": [{"id": "premium_lane_status", "detail": output or "glaw-premium-lanes did not return JSON"}],
+            "action_plan": [{
+                "id": "premium_lane_status",
+                "owner": "glaw-premium-lanes",
+                "next_command": f"bin/glaw-premium-lanes status --matter-slug {matter.name} --json",
+                "required_fix": "repair the premium lane matter-wide status command before relying on headless readiness",
+            }],
+            "returncode": rc,
+            "authority": "report-only premium lane status; readiness still requires final-packet and Chief/Council gates",
+        }
+    lanes = report.get("lanes") if isinstance(report.get("lanes"), list) else []
+    if not lanes and not requirement.get("required"):
+        return {
+            "present": False,
+            "status": "not_required",
+            "lane_count": 0,
+            "lanes": [],
+            "failures": [],
+            "action_plan": [],
+            "requirement": requirement,
+            "returncode": rc,
+            "authority": "report-only premium lane status; no premium lane required by intake metadata",
+        }
+    if not lanes and requirement.get("required"):
+        required_lanes = list(requirement.get("required_lanes") or [])
+        return {
+            "present": False,
+            "status": "fail",
+            "lane_count": 0,
+            "lanes": [],
+            "failures": [
+                {"id": "premium_lane_missing", "detail": f"required premium lane packet missing: {lane_id}", "lane_id": lane_id}
+                for lane_id in required_lanes
+            ],
+            "action_plan": [
+                {
+                    "id": "premium_lane_missing",
+                    "lane_id": lane_id,
+                    "owner": "glaw-premium-lanes",
+                    "missing": ["premium_lane_missing"],
+                    "next_command": f"bin/glaw-premium-lanes attach {lane_id} --matter-slug {matter.name}",
+                    "required_fix": "attach the required premium lane packet for this matter scope before final-packet or file-gate reliance",
+                }
+                for lane_id in required_lanes
+            ],
+            "requirement": requirement,
+            "returncode": rc,
+            "authority": "report-only premium lane status; readiness still requires final-packet and Chief/Council gates",
+        }
+    lane_missing: dict[str, list[str]] = {}
+    for row in lanes:
+        if not isinstance(row, dict):
+            continue
+        packet = row.get("packet")
+        lane_id = str(row.get("lane_id") or "")
+        lane_failures = row.get("failures") if isinstance(row.get("failures"), list) else []
+        lane_missing[lane_id] = [item.get("id", "premium_lane_packet") for item in lane_failures if isinstance(item, dict)]
+        if isinstance(packet, str):
+            try:
+                packet_path = Path(packet).resolve()
+                row["artifact"] = str(packet_path.relative_to(matter.resolve()))
+            except ValueError:
+                packet_path = Path(packet)
+                row["artifact"] = packet
+            packet_data = read_json(packet_path, {})
+            if isinstance(packet_data, dict):
+                row.setdefault("completed_at", packet_data.get("completed_at", ""))
+                row.setdefault("completed_by", packet_data.get("completed_by", ""))
+    action_plan = report.get("action_plan", [])
+    if not isinstance(action_plan, list):
+        action_plan = []
+    normalized_plan = []
+    for item in action_plan:
+        if not isinstance(item, dict):
+            continue
+        row = dict(item)
+        row["owner"] = "glaw-premium-lanes"
+        lane_id = str(row.get("lane_id") or "")
+        row.setdefault("missing", lane_missing.get(lane_id, [str(row.get("id", "premium_lane_packet"))]))
+        normalized_plan.append(row)
+    return {
+        "present": bool(lanes),
+        "status": report.get("status", "fail"),
+        "lane_count": report.get("lane_count", len(lanes)),
+        "lanes": lanes,
+        "failures": report.get("failures", []),
+        "action_plan": normalized_plan,
+        "requirement": requirement,
+        "returncode": rc,
+        "authority": "report-only premium lane status; readiness still requires final-packet and Chief/Council gates",
+    }
 
 
 def final_packet_summary(matter: Path) -> dict:
@@ -175,6 +284,7 @@ def report(goal: str, slug: str = "") -> dict:
     gates = gate_status(matter_slug)
     open_gates = [row for row in gates if row["status"] != "pass"]
     packet_summary = final_packet_summary(matter)
+    premium_lanes = premium_lane_status(matter)
     return {
         "schema_version": 1,
         "status": "pass" if not open_gates and loop.get("quality_state") in {"ready_for_next_stage", "ready_for_closeout"} else "blocked",
@@ -190,6 +300,10 @@ def report(goal: str, slug: str = "") -> dict:
         "open_gates": open_gates,
         "gate_status": gates,
         "final_packet": packet_summary,
+        "premium_lanes": premium_lanes,
+        "premium_lane_requirement": premium_lanes.get("requirement", {}),
+        "premium_lane_failures": premium_lanes["failures"],
+        "premium_lane_action_plan": premium_lanes["action_plan"],
         "compliance_manifest": packet_summary["compliance_manifest"],
         "government_adversary_manifest": packet_summary["government_adversary_manifest"],
         "accounting_control_manifest": packet_summary["accounting_control_manifest"],
