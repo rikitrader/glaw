@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "id": "mdfl-2025",
+  "status": "verified",
+  "checked_on": "2026-08-13",
+  "effective_from": "2025-11-01",
+  "court_code": "mdfl",
+  "court": "United States District Court for the Middle District of Florida",
+  "divisions": ["Fort Myers", "Jacksonville", "Ocala", "Orlando", "Tampa"],
+  "motion_rules": {
+    "motion_page_limit": 25,
+    "response_page_limit": 20,
+    "ordinary_response_days_after_service": 14,
+    "extended_response_days_after_service": 21,
+    "extended_response_categories": [
+      "motion to dismiss",
+      "motion for judgment on the pleadings",
+      "motion for summary judgment",
+      "motion to exclude or limit expert testimony",
+      "motion to certify a class",
+      "motion for new trial",
+      "motion to alter or amend judgment"
+    ],
+    "reply_as_of_right": false
+  },
+  "sources": [
+    {
+      "id": "MDFL-0001",
+      "url": "https://www.flmd.uscourts.gov/announcements/amended-local-rules-effective-november-1-2025",
+      "description": "Official amendment notice and effective date"
+    },
+    {
+      "id": "MDFL-0002",
+      "url": "https://www.flmd.uscourts.gov/local-rules/rule-301-motions-briefs-and-other-legal-memorandums",
+      "description": "Current Local Rule 3.01 page limits and response times"
+    },
+    {
+      "id": "MDFL-0003",
+      "url": "https://www.flmd.uscourts.gov/cmecf",
+      "description": "Official district CM/ECF information"
+    }
+  ],
+  "authority_boundary": "This pack does not replace the assigned judge's orders, CM/ECF administrative procedures, division assignment rules, or a filing-day source refresh."
+}

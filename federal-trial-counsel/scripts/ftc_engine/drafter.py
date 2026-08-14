@@ -27,6 +27,7 @@ class JurisdictionAnalysis:
     standing_injury: bool
     standing_causation: bool
     standing_redressability: bool
+    failures: list[str] = field(default_factory=list)
 
 
 @dataclass
@@ -65,19 +66,39 @@ def analyze_jurisdiction(case_data: dict) -> JurisdictionAnalysis:
             citations.append("28 U.S.C. 1331")
             break
 
-    # Check diversity
-    basis = "federal_question"
+    # Check diversity. Citizenship cannot be inferred from an address, and an
+    # amount is not assumed merely because damages are requested.
+    basis = "federal_question" if has_federal else "unverified"
+    failures: list[str] = []
     if has_federal:
         analysis = "Federal question jurisdiction: claims arise under federal law."
     else:
-        p_states = {p.get("citizenship") for p in parties.get("plaintiffs", [])}
-        d_states = {d.get("citizenship") for d in parties.get("defendants", [])}
-        if p_states and d_states and not p_states.intersection(d_states):
+        p_states = {p.get("domicile") for p in parties.get("plaintiffs", []) if p.get("domicile")}
+        d_states = {d.get("domicile") for d in parties.get("defendants", []) if d.get("domicile")}
+        amount = case_data.get("amount_in_controversy", {})
+        amount_value = amount.get("value") if isinstance(amount, dict) else None
+        try:
+            amount_ok = float(amount_value) > 75000
+        except (TypeError, ValueError):
+            amount_ok = False
+        parties_complete = (
+            bool(parties.get("plaintiffs")) and bool(parties.get("defendants"))
+            and len(p_states) == len(parties.get("plaintiffs", []))
+            and len(d_states) == len(parties.get("defendants", []))
+        )
+        diversity_ok = parties_complete and not p_states.intersection(d_states) and amount_ok
+        if diversity_ok:
             basis = "diversity"
             citations.append("28 U.S.C. 1332")
             analysis = "Diversity jurisdiction: complete diversity and amount in controversy exceeds $75,000."
         else:
-            analysis = "Jurisdiction basis requires further analysis."
+            if not parties_complete:
+                failures.append("every individual party requires domicile; residence is insufficient")
+            if p_states.intersection(d_states):
+                failures.append("opposing parties share citizenship")
+            if not amount_ok:
+                failures.append("a supported amount in controversy exceeding $75,000 is required")
+            analysis = "Jurisdiction is not established: " + "; ".join(failures)
 
     # Venue
     court_state = court.get("state", "")
@@ -109,6 +130,7 @@ def analyze_jurisdiction(case_data: dict) -> JurisdictionAnalysis:
         standing_injury=has_injury,
         standing_causation=has_causation,
         standing_redressability=has_redress,
+        failures=failures,
     )
 
 
@@ -201,9 +223,16 @@ def generate_count(case_data: dict, claim_key: str, count_num: int) -> str:
     if count_num > 1:
         lines.append(f"     Plaintiff re-alleges and incorporates by reference all preceding paragraphs.\n")
 
-    # Generate allegations based on claim type
-    lines.append(f"     As a direct and proximate result of {defendant}'s conduct, {plaintiff} suffered injuries and damages.")
-    lines.append(f"\n     [DEVELOP SPECIFIC ELEMENT-BY-ELEMENT ALLEGATIONS FOR {meta.name}]")
+    element_map = case_data.get("claim_elements", {}).get(claim_key, [])
+    if element_map:
+        for index, item in enumerate(element_map, start=1):
+            if not isinstance(item, dict) or not item.get("element") or not item.get("allegation") or not item.get("source_ids"):
+                lines.append(f"     [FACT REQUIRED: verified allegation and source IDs for element {index}]")
+                continue
+            sources = ", ".join(str(value) for value in item["source_ids"])
+            lines.append(f"     {item['allegation']} (Sources: {sources})")
+    else:
+        lines.append(f"     [FACT REQUIRED: source-backed element-to-fact map for {meta.name}]")
 
     return "\n".join(lines)
 
@@ -245,8 +274,14 @@ def generate_complaint(case_data: dict) -> str:
     ]
 
     jx = analyze_jurisdiction(case_data)
-    sections.append(f"\nJURISDICTION\n\n     This Court has jurisdiction pursuant to {', '.join(jx.citations) or '[CITE]'} because {jx.analysis}")
-    sections.append(f"\nVENUE\n\n     Venue is proper pursuant to 28 U.S.C. 1391(b) because a substantial part of events occurred in this District.")
+    if jx.satisfied:
+        sections.append(f"\nJURISDICTION\n\n     This Court has jurisdiction pursuant to {', '.join(jx.citations)} because {jx.analysis}")
+    else:
+        sections.append(f"\nJURISDICTION\n\n     [JURISDICTION REVIEW REQUIRED: {jx.analysis}]")
+    if jx.venue_proper:
+        sections.append("\nVENUE\n\n     Venue is alleged under 28 U.S.C. 1391(b), subject to counsel verification of the supporting venue facts.")
+    else:
+        sections.append("\nVENUE\n\n     [VENUE REVIEW REQUIRED: district-specific venue facts have not been established.]")
     sections.append("\n" + "\n".join(generate_factual_allegations(case_data)))
     sections.append("\n                       CAUSES OF ACTION\n")
 

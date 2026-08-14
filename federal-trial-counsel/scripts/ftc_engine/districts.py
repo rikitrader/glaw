@@ -81,6 +81,8 @@ class DistrictConfig:
     special_rules: list[str] = field(default_factory=list)
     judges: list[JudgeInfo] = field(default_factory=list)
     last_updated: str = "2025-01"
+    verification_status: str = "requires_reverification"
+    authority_url: str = ""
 
 
 @dataclass
@@ -102,9 +104,9 @@ DISTRICTS: dict[str, DistrictConfig] = {
         state="Florida",
         divisions=["Tampa", "Orlando", "Jacksonville", "Fort Myers", "Ocala"],
         motion_page_limit=25,
-        response_page_limit=25,
+        response_page_limit=20,
         reply_page_limit=10,
-        response_days=21,
+        response_days=14,
         reply_days=7,
         interrogatory_limit=25,
         deposition_limit=10,
@@ -117,11 +119,17 @@ DISTRICTS: dict[str, DistrictConfig] = {
         clerk_phone="(407) 835-4200",
         local_rule_prefix="Local Rule",
         special_rules=[
+            "Local Rule 3.01(c): responses are limited to 20 pages",
+            "Local Rule 3.01(d): ordinary responses are due in 14 days; specified dispositive, expert, class, and post-trial motions receive 21 days",
+            "Local Rule 3.01(e): no reply as a matter of right except the rule's stated exceptions",
             "Local Rule 3.01(g): meet-and-confer must be in person or by phone, NOT email",
             "Local Rule 9.01: mediation required for all cases",
             "Local Rule 6.01: magistrate consent required for dispositive matters",
             "Pro se handbook available at flmd.uscourts.gov",
         ],
+        last_updated="2025-11-01",
+        verification_status="verified",
+        authority_url="https://www.flmd.uscourts.gov/local-rules/rule-301-motions-briefs-and-other-legal-memorandums",
     ),
 
     "sdfl": DistrictConfig(

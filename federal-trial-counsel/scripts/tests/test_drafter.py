@@ -15,12 +15,22 @@ class TestAnalyzeJurisdiction:
         assert "28 U.S.C. 1331" in jx.citations
 
     def test_diversity_jurisdiction(self, minimal_case):
+        minimal_case["parties"]["plaintiffs"][0]["domicile"] = "Florida"
+        minimal_case["parties"]["defendants"][0]["domicile"] = "Delaware"
+        minimal_case["amount_in_controversy"] = {"value": 100000}
+        minimal_case["claims_requested"] = ["unknown_state_claim"]
+        jx = analyze_jurisdiction(minimal_case)
+        assert jx.basis == "diversity"
+        assert jx.satisfied is True
+
+    def test_diversity_does_not_infer_domicile_or_amount(self, minimal_case):
         minimal_case["parties"]["plaintiffs"][0]["citizenship"] = "Florida"
         minimal_case["parties"]["defendants"][0]["citizenship"] = "Delaware"
-        minimal_case["claims_requested"] = ["fcra_inaccurate_reporting"]
+        minimal_case["claims_requested"] = ["unknown_state_claim"]
         jx = analyze_jurisdiction(minimal_case)
-        # FCRA is federal_question, so it should still be federal_question
-        assert jx.satisfied is True
+        assert jx.basis == "unverified"
+        assert jx.satisfied is False
+        assert jx.failures
 
     def test_standing_injury(self, sample_case):
         jx = analyze_jurisdiction(sample_case)
@@ -102,6 +112,23 @@ class TestGenerateCount:
     def test_count_2_incorporates(self, sample_case):
         count = generate_count(sample_case, "1983_fourth_false_arrest", 2)
         assert "re-alleges" in count.lower()
+
+    def test_count_never_emits_generic_develop_placeholder(self, sample_case):
+        count = generate_count(sample_case, "1983_fourth_excessive_force", 1)
+        assert "DEVELOP SPECIFIC" not in count
+        assert "FACT REQUIRED" in count
+
+    def test_count_uses_source_backed_element_map(self, sample_case):
+        sample_case["claim_elements"] = {
+            "1983_fourth_excessive_force": [{
+                "element": "state action",
+                "allegation": "Officer Brown acted under color of state law.",
+                "source_ids": ["SRC-0001"],
+            }]
+        }
+        count = generate_count(sample_case, "1983_fourth_excessive_force", 1)
+        assert "Officer Brown acted under color of state law" in count
+        assert "SRC-0001" in count
 
 
 class TestGeneratePrayer:

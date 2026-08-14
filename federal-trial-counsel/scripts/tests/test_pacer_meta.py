@@ -74,7 +74,7 @@ class TestNatureOfSuit:
     def test_unknown_claim_fallback(self):
         case = {"claims_requested": ["unknown_xyz"]}
         code, text = _determine_nature_of_suit(case)
-        assert code  # Should return something
+        assert code == ""  # Never guess a filing code.
 
 
 class TestJS44:
@@ -194,6 +194,14 @@ class TestCitizenship:
         code = _get_citizenship_code({"entity_type": "federal_agency"})
         assert "Government" in code
 
+    def test_llc_uses_member_citizenship(self):
+        code = _get_citizenship_code({
+            "entity_type": "llc",
+            "members": [{"entity_type": "individual", "citizenship": "Florida"}],
+        })
+        assert "members" in code
+        assert "Florida" in code
+
 
 class TestFilingPackage:
     """Test complete filing package generation."""
@@ -209,6 +217,13 @@ class TestFilingPackage:
         minimal_case["claims_requested"] = ["1983_fourth_excessive_force"]
         pkg = generate_filing_package(minimal_case)
         assert any("attorney" in w.lower() for w in pkg.warnings)
+
+    def test_unknown_metadata_blocks_with_warnings(self, minimal_case):
+        minimal_case["claims_requested"] = ["unknown_xyz"]
+        pkg = generate_filing_package(minimal_case)
+        assert pkg.js44.nature_of_suit_code == ""
+        assert pkg.js44.basis_of_jurisdiction == ""
+        assert any("blocked" in warning.lower() for warning in pkg.warnings)
 
     def test_notice_of_interested_parties(self, corporate_case):
         notice = generate_notice_of_interested_parties(corporate_case)

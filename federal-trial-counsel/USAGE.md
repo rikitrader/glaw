@@ -175,7 +175,7 @@ ftc cases
 
 ### Step-by-Step Walkthrough
 
-**Step 1 — Court & Jurisdiction**: Select from 94 federal districts or enter manually. Specify the division (Orlando, Tampa, Jacksonville, etc.).
+**Step 1 — Court & Jurisdiction**: Select one of 7 built-in district configurations or enter the court manually. Only the M.D. Florida local-rule pack is currently verified; every other district requires current local-rule review. Specify the division (Orlando, Tampa, Jacksonville, etc.).
 
 **Step 2 — Plaintiffs**: Enter one or more plaintiffs. For each: name, entity type (individual, corporation, LLC, partnership, municipality), citizenship/domicile, and contact information. Corporate parties get additional fields for state of incorporation and principal place of business (for diversity jurisdiction analysis).
 
@@ -235,7 +235,7 @@ At the start of both new and existing case flows, the wizard asks if you have do
 │ ftc generate │ Generate specific document for a case                │
 │ ftc outputs  │ List generated files for a case                      │
 │ ftc status   │ Show case workflow progress                          │
-│ ftc districts│ List all 94 federal districts                        │
+│ ftc district │ Manage 7 built-in district configurations           │
 │ ftc questions│ Generate verification questions                      │
 │ ftc calendar │ Generate filing calendar                             │
 │ ftc setup    │ Configure local state; no packages are installed     │
@@ -565,7 +565,7 @@ npx ts-node scripts/courtlistener/cli.ts \
 |--------|-----------|-------------|
 | `terminal` | (none) | Display output in terminal only |
 | `markdown` | `.md` | Save as Markdown files |
-| `docx` | `.docx` | Court-formatted Word (TNR 14pt, double-spaced, 1" margins) |
+| `docx` | `.docx` | Court-formatted Word (TNR 12pt, double-spaced, 1" baseline margins) |
 | `both` | `.md` + `.docx` | Save both formats |
 
 ### Save Location Options (Step 11)
@@ -681,7 +681,7 @@ cli.py (entry point)
   ├── wizard.py (12-step interactive flow)
   │     ├── case_manager.py (CRUD, state, persistence)
   │     ├── doc_analyzer.py (intake pipeline)
-  │     ├── districts.py (94 federal districts)
+  │     ├── districts.py (7 built-in district configurations; M.D. Fla. verified)
   │     └── [all generation modules below]
   │
   ├── claims.py (45 causes of action)

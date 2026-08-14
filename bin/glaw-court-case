@@ -1,0 +1,110 @@
+#!/usr/bin/env python3
+"""glaw-court-case — fail-closed court routing and supervised filing/service handoffs.
+
+Commands:
+  route --input CASE.json [--json]
+  prepare --input CASE.json --output-dir DIR [--json]
+  handoff --packet court-filing-manifest.json --output HANDOFF.json [--json]
+  submit --packet court-filing-manifest.json --live --human-authority NAME --role ADMIN [--json]
+  record-receipt --packet MANIFEST.json --receipt RECEIPT.json --actor NAME [--json]
+  service-handoff --packet MANIFEST.json --output HANDOFF.json [--json]
+  record-service --packet MANIFEST.json --proof PROOF.json --actor NAME [--json]
+"""
+from __future__ import annotations
+
+import argparse
+import json
+import sys
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "lib"))
+from glaw_court import (
+    create_handoff,
+    live_submit,
+    load_json,
+    prepare_packet,
+    record_receipt,
+    record_service,
+    route_case,
+    service_handoff,
+)
+
+
+def emit(data: dict, as_json: bool) -> None:
+    if as_json:
+        print(json.dumps(data, indent=2))
+        return
+    print(f"COURT CASE: {data.get('status', 'unknown')}")
+    selected = data.get("selected") or data.get("route", {}).get("selected") or {}
+    if selected:
+        print("route: " + json.dumps(selected, sort_keys=True))
+    for item in data.get("failures", []) or data.get("missing", []):
+        print(f"- {item}")
+    if data.get("reason"):
+        print(data["reason"])
+    if data.get("manifest_path"):
+        print(f"manifest: {data['manifest_path']}")
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(prog="glaw-court-case")
+    sub = parser.add_subparsers(dest="command", required=True)
+    route = sub.add_parser("route")
+    route.add_argument("--input", required=True)
+    route.add_argument("--json", action="store_true")
+    prepare = sub.add_parser("prepare")
+    prepare.add_argument("--input", required=True)
+    prepare.add_argument("--output-dir", required=True)
+    prepare.add_argument("--json", action="store_true")
+    handoff = sub.add_parser("handoff")
+    handoff.add_argument("--packet", required=True)
+    handoff.add_argument("--output", required=True)
+    handoff.add_argument("--json", action="store_true")
+    submit = sub.add_parser("submit")
+    submit.add_argument("--packet", required=True)
+    submit.add_argument("--live", action="store_true")
+    submit.add_argument("--human-authority", default="")
+    submit.add_argument("--role", default="")
+    submit.add_argument("--json", action="store_true")
+    receipt = sub.add_parser("record-receipt")
+    receipt.add_argument("--packet", required=True)
+    receipt.add_argument("--receipt", required=True)
+    receipt.add_argument("--actor", required=True)
+    receipt.add_argument("--json", action="store_true")
+    service = sub.add_parser("service-handoff")
+    service.add_argument("--packet", required=True)
+    service.add_argument("--output", required=True)
+    service.add_argument("--json", action="store_true")
+    service_record = sub.add_parser("record-service")
+    service_record.add_argument("--packet", required=True)
+    service_record.add_argument("--proof", required=True)
+    service_record.add_argument("--actor", required=True)
+    service_record.add_argument("--json", action="store_true")
+    args = parser.parse_args()
+
+    try:
+        if args.command == "route":
+            result = route_case(load_json(Path(args.input).resolve()))
+        elif args.command == "prepare":
+            result = prepare_packet(Path(args.input), Path(args.output_dir))
+        elif args.command == "handoff":
+            result = create_handoff(Path(args.packet), Path(args.output))
+        elif args.command == "submit":
+            if not args.live:
+                result = {"status": "blocked", "submitted": False, "reason": "submit requires --live; use handoff for preparation"}
+            else:
+                result = live_submit(Path(args.packet), args.human_authority, args.role)
+        elif args.command == "record-receipt":
+            result = record_receipt(Path(args.packet), Path(args.receipt), args.actor)
+        elif args.command == "service-handoff":
+            result = service_handoff(Path(args.packet), Path(args.output))
+        else:
+            result = record_service(Path(args.packet), Path(args.proof), args.actor)
+    except (OSError, ValueError, json.JSONDecodeError) as exc:
+        result = {"status": "blocked", "failures": [str(exc)]}
+    emit(result, args.json)
+    return 0 if result.get("status") in {"pass", "ready_for_human_filing", "ready_for_human_operator", "recorded"} else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

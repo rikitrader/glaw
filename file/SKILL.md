@@ -75,6 +75,8 @@ deadline against current rule before stating it — do not rely on memory.
 **Litigation** — assemble the court e-filing packet:
 - Complaint (final, post-adversarial), **civil cover sheet**, **summons** per defendant, **service list**, **exhibits index** + exhibits, proposed order(s), any required certificates (e.g. interested-parties, pre-suit notice).
 - For each: court (which division/county/federal district), e-filing system (e.g. state e-portal / PACER-CM/ECF), filing fee, and the controlling deadline (SOL, response window).
+- For ordinary federal or Florida civil cases, run `bin/glaw-court-case route --input case.json --json`, then `prepare` only after the five gate-evidence artifacts and final filing documents are present and hashed. Use `handoff` for the authorized operator. `submit --live` is intentionally blocked until a certified connector exists.
+- After the authorized human files or serves, use `record-receipt` or `record-service` with the official artifact. Never represent a prepared handoff as filed or served.
 
 ### Step 2 — Docket every deadline now
 For each filing line, calendar it immediately so nothing relies on memory:

@@ -114,6 +114,24 @@ class TestResponseEntries:
         entries = _build_response_entries(date(2026, 3, 1), minimal_case, timings)
         assert any("60 days" in " ".join(e.notes) for e in entries)
 
+    def test_answer_deadline_uses_actual_service_not_local_motion_period(self, minimal_case):
+        minimal_case["parties"]["defendants"] = [
+            {"name": "Acme", "type": "private", "service_date": "2026-03-10"},
+        ]
+        timings = {"response_days": 14, "answer_days": 21, "reply_days": 7, "mediation_required": False}
+        entry = _build_response_entries(date(2026, 3, 1), minimal_case, timings)[0]
+        assert entry.deadline == date(2026, 3, 31)
+        assert entry.is_estimate is False
+        assert entry.trigger_date == "2026-03-10"
+
+    def test_missing_service_date_is_clearly_estimated(self, minimal_case):
+        timings = {"response_days": 14, "answer_days": 21, "reply_days": 7, "mediation_required": False}
+        entry = _build_response_entries(date(2026, 3, 1), minimal_case, timings)[0]
+        assert entry.status == "estimated"
+        assert entry.is_estimate is True
+        assert entry.trigger_date == ""
+        assert "ESTIMATE ONLY" in " ".join(entry.notes)
+
 
 class TestCorporateDisclosureEntries:
     """Test corporate disclosure deadline entries."""
