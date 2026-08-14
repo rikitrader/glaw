@@ -4,6 +4,8 @@ set -uo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 ROOT="$HERE/.."
 TMP="$(mktemp -d)"; export GLAW_HOME="$TMP"
+source "$HERE/premium_source_fixture.sh"
+setup_premium_source_fixture "$TMP"
 
 python3 - "$ROOT" <<'PY'
 from __future__ import annotations
@@ -279,6 +281,7 @@ Attorney work-product - not legal advice. Prepared for licensed review.
             args.extend(["--audit-tieout", str(audit)])
         run(*args)
 
+    run("glaw-premium-lanes", "materialize-source-ingest", "--matter-slug", slug, "--json")
     run("glaw-final-packet", "build", "--profile", "auto", "--matter", slug)
     run("glaw-chief-decision", "--matter", slug,
         "--chief", "GLAW Chief Counsel", "--score", "95", "--grade", "A",

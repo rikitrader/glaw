@@ -17,6 +17,18 @@ GLAW is one app. The orchestrator routes work to skills, seats, and local CLIs f
 | Docket | `/glaw-docket` | Deadlines and reminders |
 | Retro | `/glaw-matter-retro` | Closeout, lessons, and state update |
 
+## Premium Client Lanes
+
+`lib/client-lanes/fortune500-tax-entrepreneur.md` is the firm-level assembly map for large
+client work:
+
+| Lane | Purpose |
+|---|---|
+| Fortune 500 Enterprise Counsel | Coordinates corporate, SEC, audit, tax provision, compliance, regulatory, and litigation seats for enterprise-scale clients |
+| Tax System and IRS Engine | Coordinates planning, compliance, accounting-to-tax, credits, state/international tax, controversy, and estate/gift work |
+| Entrepreneur, Founder, and Unicorn Advisor | Coordinates formation, IP, founder equity, 83(b), QSBS, 409A, capital raising, investor tax, exit, and family-office sheltering |
+| UHNW and Family Office Overlay | Coordinates trusts, investment LLCs, asset protection, philanthropic vehicles, and transfer-tax returns |
+
 ## Legal Modules
 
 | Area | Modules |
@@ -55,5 +67,6 @@ GLAW is one app. The orchestrator routes work to skills, seats, and local CLIs f
 | `bin/glaw-redline-docx` | local redline artifact generation |
 | `bin/glaw-publish` | local HTML/manifest publishing |
 | `bin/glaw-tax-report` | local tax form scaffold/validation |
+| `bin/glaw-premium-lanes` | premium Fortune 500/tax/founder/UHNW lane list, validation, kickoff playbook, packet scaffold, active-matter attach, source-only completion, packet template rendering, docket materialization, and packet readiness check |
 
 Run any command without arguments to print its usage.

@@ -33,6 +33,8 @@ fixture_py(){
 }
 
 TMP="$(mktemp -d)"; export GLAW_HOME="$TMP"
+source "$SCRIPT_DIR/premium_source_fixture.sh"
+setup_premium_source_fixture "$TMP"
 M="$TMP/matters/m"; mkdir -p "$M"; : > "$M/timeline.jsonl"; echo m > "$TMP/.active"
 log(){ printf '{"ts":"t","event":"%s"}\n' "$1" >> "$M/timeline.jsonl"; }
 chk(){ "$GATE" check "$1" m >"$TMP/last-gate.err" 2>&1; echo $?; }   # echoes exit code
@@ -212,6 +214,8 @@ cat > "$M/final_packet.json" <<'JSON'
     "senior_review_evidence_source_clear": true,
     "government_adversary_manifest_clear": true,
     "compliance_manifest_clear": true,
+    "premium_objective_audit_clear": true,
+    "materialized_source_ingest_clear": true,
     "professional_report_manifest_clear": true,
     "upl_footer_clear": true
   }
@@ -354,18 +358,25 @@ packet["report_quality_manifest"] = [{
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before source evidence manifest"
+"$ROOT/bin/glaw-premium-lanes" materialize-source-ingest --matter-slug m --json > "$TMP/materialized-source-ingest.json" || exit 1
 fixture_py "$M" <<'PY'
 import hashlib, json, pathlib, sys
 d = pathlib.Path(sys.argv[1])
 packet_path = d / "final_packet.json"
 packet = json.loads(packet_path.read_text(encoding="utf-8"))
-source = d / "evidence/bank.csv"
-packet["source_evidence_manifest"] = [{
-    "id": "SRC-0001",
-    "path": "evidence/bank.csv",
-    "sha256": hashlib.sha256(source.read_bytes()).hexdigest(),
-    "size_bytes": source.stat().st_size,
-}]
+source_paths = sorted(
+    p for p in d.rglob("*")
+    if p.is_file() and p.stat().st_size > 0 and {"evidence", "source_documents", "sources"} & set(p.relative_to(d).parts)
+)
+packet["source_evidence_manifest"] = [
+    {
+        "id": f"SRC-{idx:04d}",
+        "path": str(path.relative_to(d)),
+        "sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
+        "size_bytes": path.stat().st_size,
+    }
+    for idx, path in enumerate(source_paths, start=1)
+]
 packet["senior_review_evidence_manifest"] = [
     {
         "kind": "council",
@@ -621,7 +632,7 @@ packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before reviewer identity manifest"
 fixture_py "$M" "$ROOT" <<'PY'
-import hashlib, json, pathlib, sys
+import hashlib, json, pathlib, subprocess, sys
 d = pathlib.Path(sys.argv[1])
 root = pathlib.Path(sys.argv[2]).resolve()
 sys.path.insert(0, str(root / "lib"))
@@ -674,6 +685,8 @@ routes = {
     "professional-report-quality": ("bin/glaw-upl-check", "fix external reports so they carry owner, voice, findings, evidence, red flags, sign-off conditions, sources, and no placeholders"),
     "reviewer-identity": ("bin/glaw-doctor", "repair reviewer skill mapping or identity markers"),
     "accounting-control": ("bin/glaw-accounting-control", "run books-doctor, bank reconciliation, ledger, tax tie-out, and SEC audit tie-out controls"),
+    "premium-objective-audit": ("bin/glaw-premium-lanes audit-objective --json", "restore Fortune 500 lawyer, tax system, founder/entrepreneur, investor/capital-raise, QSBS, trust, asset-sheltering, Schwab trust benchmark, and premium-lane gate-tool coverage"),
+    "materialized-source-ingest": ("bin/glaw-premium-lanes materialize-source-ingest --json", "materialize the local TAX CREDIT, LLC, and SEC source-ingest ledger into matter sources before packet reliance"),
 }
 def compliance(row_id, owner):
     next_command, required_fix = routes[row_id]
@@ -695,7 +708,89 @@ packet["compliance_manifest"] = [
     compliance("professional-report-quality", "glaw-legal-writing"),
     compliance("reviewer-identity", "glaw-final-packet"),
     compliance("accounting-control", "glaw-accounting"),
+    compliance("premium-objective-audit", "glaw-premium-lanes"),
+    compliance("materialized-source-ingest", "glaw-premium-lanes"),
 ]
+proc = subprocess.run(
+    [str(root / "bin/glaw-premium-lanes"), "audit-objective", "--json"],
+    cwd=str(root),
+    capture_output=True,
+    text=True,
+    check=False,
+)
+report = json.loads(proc.stdout)
+packet["premium_objective_audit_manifest"] = {
+    "status": report.get("status", "fail"),
+    "objective": report.get("objective", ""),
+    "manifest_status": report.get("manifest_status", "fail"),
+    "manifest_sha256": report.get("manifest_sha256", ""),
+    "trust_taxonomy_status": report.get("trust_taxonomy_status", "fail"),
+    "trust_taxonomy_summary": report.get("trust_taxonomy_summary", {}),
+    "founder_blueprint_status": report.get("founder_blueprint_status", "fail"),
+    "founder_blueprint_summary": report.get("founder_blueprint_summary", {}),
+    "tax_engine_blueprint_status": report.get("tax_engine_blueprint_status", "fail"),
+    "tax_engine_blueprint_summary": report.get("tax_engine_blueprint_summary", {}),
+    "enterprise_blueprint_status": report.get("enterprise_blueprint_status", "fail"),
+    "enterprise_blueprint_summary": report.get("enterprise_blueprint_summary", {}),
+    "firm_blueprint_status": report.get("firm_blueprint_status", "fail"),
+    "firm_blueprint_summary": report.get("firm_blueprint_summary", {}),
+    "local_source_ingest_status": report.get("local_source_ingest_status", "fail"),
+    "local_source_ingest_summary": report.get("local_source_ingest_summary", {}),
+    "requirements": report.get("requirements", []),
+    "tools": report.get("tools", []),
+    "failures": report.get("failures", []),
+    "returncode": proc.returncode,
+    "authority": report.get("authority", ""),
+}
+summary = packet["premium_objective_audit_manifest"].get("local_source_ingest_summary", {})
+source_paths = {item.get("path") for item in packet.get("source_evidence_manifest", [])}
+json_rel = "sources/local-source-ingest-ledger.json"
+md_rel = "sources/local-source-ingest-ledger.md"
+json_path = d / json_rel
+md_path = d / md_rel
+missing = []
+ledger = json.loads(json_path.read_text(encoding="utf-8")) if json_path.is_file() else {}
+rows = ledger.get("sources", []) if isinstance(ledger.get("sources"), list) else []
+if json_rel not in source_paths:
+    missing.append("local-source-ingest-ledger.json source evidence row")
+if md_rel not in source_paths:
+    missing.append("local-source-ingest-ledger.md source evidence row")
+if ledger.get("status") != "pass":
+    missing.append("ledger status pass")
+if int(ledger.get("source_count", 0)) != int(summary.get("source_count", 0)):
+    missing.append("ledger source_count matches objective audit")
+if int(ledger.get("required_source_count", 0)) != int(summary.get("required_source_count", 0)):
+    missing.append("ledger required_source_count matches objective audit")
+if int(ledger.get("extracted_char_count", 0)) != int(summary.get("extracted_char_count", 0)):
+    missing.append("ledger extracted_char_count matches objective audit")
+if len(rows) != int(summary.get("source_count", 0)):
+    missing.append("ledger row count matches objective audit")
+packet["materialized_source_ingest_manifest"] = {
+    "required": True,
+    "status": "fail" if missing else "pass",
+    "missing": sorted(set(missing)),
+    "json_path": json_rel,
+    "markdown_path": md_rel,
+    "json_sha256": hashlib.sha256(json_path.read_bytes()).hexdigest() if json_path.is_file() else "",
+    "markdown_sha256": hashlib.sha256(md_path.read_bytes()).hexdigest() if md_path.is_file() else "",
+    "source_count": int(ledger.get("source_count", 0)) if ledger else 0,
+    "required_source_count": int(ledger.get("required_source_count", 0)) if ledger else 0,
+    "extracted_char_count": int(ledger.get("extracted_char_count", 0)) if ledger else 0,
+    "row_count": len(rows),
+    "source_rows_sha256": hashlib.sha256(json.dumps(rows, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest() if rows else "",
+    "sources": [
+        {
+            "source_row_id": row.get("source_row_id"),
+            "id": row.get("id"),
+            "lane": row.get("lane"),
+            "sha256": row.get("sha256"),
+            "extraction_status": row.get("extraction_status"),
+            "extracted_sha256": row.get("extracted_sha256"),
+        }
+        for row in rows
+        if isinstance(row, dict)
+    ],
+}
 packet_path.write_text(json.dumps(packet) + "\n", encoding="utf-8")
 PY
 ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED before deliverable hash manifest"
@@ -767,6 +862,105 @@ row["decision_hash"] = hashlib.sha256(
 open(sys.argv[1], "w", encoding="utf-8").write(json.dumps(row) + "\n")
 PY
 ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after all file gates"
+cp "$M/final_packet.json" "$M/final_packet.ready-before-premium.json"
+cp "$M/final_packet.md" "$TMP/final_packet.ready-before-premium.md"
+cp "$M/intake.json" "$M/intake.ready-before-premium.json"
+fixture_py "$M/intake.json" <<'PY'
+import json, sys
+p = sys.argv[1]
+data = json.load(open(p, encoding="utf-8"))
+data.setdefault("universal", {})["premium_lanes"] = ["founder-unicorn"]
+open(p, "w", encoding="utf-8").write(json.dumps(data) + "\n")
+PY
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED when intake newly requires premium lane packet"
+"$ROOT/bin/glaw-final-packet" build --profile auto --matter m >"$TMP/final-packet-missing-premium.out" 2>&1; rc=$?
+fixture_py "$M/final_packet.json" <<'PY'
+import json, sys
+packet = json.load(open(sys.argv[1], encoding="utf-8"))
+premium_rows = packet.get("premium_lane_manifest", [])
+compliance = {row.get("id"): row for row in packet.get("compliance_manifest", [])}
+row = compliance.get("premium-lane-packet", {})
+premium = premium_rows[0] if premium_rows else {}
+ids = {failure.get("id") for failure in premium.get("failures", [])}
+ok = (
+    packet.get("status") == "blocked"
+    and packet.get("premium_lane_requirement", {}).get("required") is True
+    and packet.get("premium_lane_requirement", {}).get("required_lanes") == ["founder-unicorn"]
+    and premium.get("lane_id") == "founder-unicorn"
+    and premium.get("status") == "fail"
+    and "premium_lane_missing" in ids
+    and row.get("status") == "fail"
+    and row.get("next_command") == "bin/glaw-premium-lanes attach founder-unicorn --matter-slug m"
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 1 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "final packet routes missing required premium lane to attach command"
+cp "$M/intake.ready-before-premium.json" "$M/intake.json"
+cp "$M/final_packet.ready-before-premium.json" "$M/final_packet.json"
+cp "$TMP/final_packet.ready-before-premium.md" "$M/final_packet.md"
+mkdir -p "$M/workpapers"
+"$ROOT/bin/glaw-premium-lanes" scaffold founder-unicorn --matter "Manual Gate Fixture" --json > "$M/workpapers/premium-lane-founder-unicorn.json"
+fixture_py "$M/workpapers/premium-lane-founder-unicorn.json" <<'PY'
+import json, sys
+p = sys.argv[1]
+packet = json.load(open(p, encoding="utf-8"))
+packet["manifest_sha256"] = "0" * 64
+open(p, "w", encoding="utf-8").write(json.dumps(packet) + "\n")
+PY
+"$ROOT/bin/glaw-final-packet" build --profile auto --matter m >"$TMP/final-packet-stale-premium.out" 2>&1; rc=$?
+fixture_py "$M/final_packet.json" <<'PY'
+import json, sys
+packet = json.load(open(sys.argv[1], encoding="utf-8"))
+premium_rows = packet.get("premium_lane_manifest", [])
+compliance = {row.get("id"): row for row in packet.get("compliance_manifest", [])}
+row = compliance.get("premium-lane-packet", {})
+premium = premium_rows[0] if premium_rows else {}
+ids = {failure.get("id") for failure in premium.get("failures", [])}
+ok = (
+    packet.get("status") == "blocked"
+    and premium.get("status") == "fail"
+    and "manifest_stale" in ids
+    and row.get("status") == "fail"
+    and "bin/glaw-premium-lanes attach founder-unicorn --matter-slug m" == row.get("next_command")
+    and "current premium-lanes manifest" in row.get("required_fix", "")
+)
+sys.exit(0 if ok else 1)
+PY
+rc2=$?
+ok "$([ "$rc" = 1 ] && [ "$rc2" = 0 ] && echo 1 || echo 0)" "final packet routes stale premium lane packet to manifest reattach"
+cp "$M/final_packet.ready-before-premium.json" "$M/final_packet.json"
+cp "$TMP/final_packet.ready-before-premium.md" "$M/final_packet.md"
+ok "$([ "$(chk file)" = 1 ] && echo 1 || echo 0)" "file BLOCKED when premium lane packet is added after final packet approval"
+rm -f "$M/workpapers/premium-lane-founder-unicorn.json"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after stale premium lane packet is removed"
+cp "$M/final_packet.json" "$M/final_packet.objective-baseline.json"
+fixture_py "$M/final_packet.json" <<'PY'
+import json, sys
+p = sys.argv[1]
+packet = json.load(open(p, encoding="utf-8"))
+packet.pop("premium_objective_audit_manifest", None)
+open(p, "w", encoding="utf-8").write(json.dumps(packet) + "\n")
+PY
+"$GATE" check file m >"$TMP/premium-objective-missing.out" 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && grep -q 'missing premium_objective_audit_manifest' "$TMP/premium-objective-missing.out" && echo 1 || echo 0)" "file BLOCKED by missing premium objective audit manifest"
+cp "$M/final_packet.objective-baseline.json" "$M/final_packet.json"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after premium objective audit manifest restored"
+cp "$M/final_packet.json" "$M/final_packet.materialized-source-baseline.json"
+cp "$M/decisions.jsonl" "$M/decisions.baseline.jsonl"
+cp "$M/sources/local-source-ingest-ledger.json" "$TMP/local-source-ingest-ledger.baseline.json"
+cp "$M/sources/local-source-ingest-ledger.md" "$TMP/local-source-ingest-ledger.baseline.md"
+fixture_py "$M/final_packet.json" <<'PY'
+import json, sys
+p = sys.argv[1]
+packet = json.load(open(p, encoding="utf-8"))
+packet.pop("materialized_source_ingest_manifest", None)
+open(p, "w", encoding="utf-8").write(json.dumps(packet) + "\n")
+PY
+"$GATE" check file m >"$TMP/materialized-source-missing.out" 2>&1; rc=$?
+ok "$([ "$rc" = 1 ] && grep -q 'missing materialized_source_ingest_manifest' "$TMP/materialized-source-missing.out" && echo 1 || echo 0)" "file BLOCKED by missing materialized source-ingest manifest"
+cp "$M/final_packet.materialized-source-baseline.json" "$M/final_packet.json"
+ok "$([ "$(chk file)" = 0 ] && echo 1 || echo 0)" "file CLEAR after materialized source-ingest ledger restored"
 cp "$M/final_packet.json" "$M/final_packet.compliance-baseline.json"
 cp "$M/groundedness.json" "$M/groundedness.baseline.json"
 cp "$M/decisions.jsonl" "$M/decisions.baseline.jsonl"

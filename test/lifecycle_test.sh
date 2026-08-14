@@ -7,6 +7,8 @@ pass=0; fail=0
 ok(){ if [ "$1" = 1 ]; then pass=$((pass+1)); echo "  ✓ $2"; else fail=$((fail+1)); echo "  ✗ FAIL: $2"; fi; }
 
 TMP="$(mktemp -d)"; export GLAW_HOME="$TMP"
+source "$HERE/premium_source_fixture.sh"
+setup_premium_source_fixture "$TMP"
 GLAW="$ROOT/bin/glaw"
 INTAKE="$ROOT/bin/glaw-intake"
 COUNCIL="$ROOT/bin/glaw-council"
@@ -19,6 +21,7 @@ CITES="$ROOT/bin/glaw-citation-gate"
 CORPUS="$ROOT/bin/glaw-citation-corpus"
 DOCKET="$ROOT/bin/glaw-docket-gate"
 CONTROL="$ROOT/bin/glaw-accounting-control"
+PREMIUM="$ROOT/bin/glaw-premium-lanes"
 
 "$GLAW" matter new "Lifecycle Accounting" >/dev/null
 SLUG="lifecycle-accounting"
@@ -325,6 +328,7 @@ Sign-off conditions: licensed review.
 
 Attorney work-product - not legal advice. Prepared for licensed review.
 MD
+"$PREMIUM" materialize-source-ingest --matter-slug "$SLUG" --json >/dev/null
 "$PACKET" build >/dev/null 2>&1; rc=$?
 ok "$([ "$rc" = 0 ] && [ -f "$TMP/matters/$SLUG/final_packet.json" ] && echo 1 || echo 0)" "final packet ready after council and red flags clear"
 "$PACKET" build --profile tax >/dev/null 2>&1; rc=$?

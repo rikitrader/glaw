@@ -22,6 +22,7 @@ from glaw_profiles import (
     profile_for_track,
 )
 from glaw_accounting_control import accounting_control_manifest
+from glaw_premium_scope import premium_lane_requirement
 
 
 REQUIRED_INTAKE = (
@@ -569,6 +570,18 @@ COMPLIANCE_ROW_ROUTES = {
         "",
         "no accounting control required for this profile",
     ),
+    "premium-lane-packet": (
+        "bin/glaw-premium-lanes status --json",
+        "complete premium lane owners, deliverables, rendered-template hash manifest, adversarial reviewers, docket items, docket materialization, and gate controls",
+    ),
+    "premium-objective-audit": (
+        "bin/glaw-premium-lanes audit-objective --json",
+        "restore Fortune 500 lawyer, tax system, founder/entrepreneur, investor/capital-raise, QSBS, trust, asset-sheltering, Schwab trust benchmark, and premium-lane gate-tool coverage",
+    ),
+    "materialized-source-ingest": (
+        "bin/glaw-premium-lanes materialize-source-ingest --json",
+        "materialize the local TAX CREDIT, LLC, and SEC source-ingest ledger into matter sources before packet reliance",
+    ),
 }
 
 
@@ -587,6 +600,304 @@ def _compliance_row(row_id: str, owner: str, ok: bool, missing: list[str]) -> di
     }
 
 
+def premium_lane_fix_for(row: dict, matter_slug: str) -> tuple[str, str]:
+    if row.get("next_command") and row.get("required_fix"):
+        return str(row["next_command"]), str(row["required_fix"])
+    lane_id = str(row.get("lane_id") or Path(str(row.get("path", ""))).stem.replace("premium-lane-", "", 1)).strip()
+    lane_arg = lane_id or "LANE"
+    failures = row.get("failures", []) if isinstance(row.get("failures"), list) else []
+    missing = [str(item.get("id", "premium_lane_packet")) for item in failures if isinstance(item, dict)]
+    rendered_missing = any(item.startswith("rendered_template") for item in missing)
+    metadata_missing = any(not item.startswith("rendered_template") for item in missing)
+    if "premium_lane_missing" in missing:
+        return (
+            f"bin/glaw-premium-lanes attach {lane_arg} --matter-slug {matter_slug}",
+            "attach the required premium lane packet for this matter scope before final-packet or file-gate reliance",
+        )
+    if "manifest_stale" in missing or "manifest_freshness" in missing:
+        return (
+            f"bin/glaw-premium-lanes attach {lane_arg} --matter-slug {matter_slug}",
+            "reattach or scaffold the premium lane packet from the current premium-lanes manifest before completing, rendering, docketing, or relying on final-packet artifacts",
+        )
+    if rendered_missing and not metadata_missing:
+        return (
+            f"bin/glaw-premium-lanes render-packet --lane {lane_arg} --matter-slug {matter_slug} --owner \"named lead\" --source \"SRC-0001 basis\"",
+            "render premium lane client packet templates with report headers, findings, evidence, red flags, sign-off conditions, and UPL/human-authority footer",
+        )
+    if "docket_materialized" in missing:
+        return (
+            f"bin/glaw-premium-lanes docket --lane {lane_arg} --matter-slug {matter_slug}",
+            "materialize the premium lane recurring obligations into docket.jsonl before final-packet or file-gate reliance",
+        )
+    return (
+        f"bin/glaw-premium-lanes complete --lane {lane_arg} --matter-slug {matter_slug} --owner \"named lead\" --docket-owner \"docket owner\" --due YYYY-MM-DD --source \"SRC-0001 basis\"",
+        "complete premium lane owners, deliverables, adversarial reviewer survivals, docket owner/date/source metadata, rendered-template hash manifest, and docket controls",
+    )
+
+
+def premium_lane_status_map(d: Path, root: Path) -> dict[str, dict]:
+    proc = subprocess.run(
+        [str(root / "bin/glaw-premium-lanes"), "status", "--matter-slug", d.name, "--json"],
+        cwd=str(root),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    try:
+        report = json.loads(proc.stdout)
+    except json.JSONDecodeError:
+        return {
+            "__error__": {
+                "status": "fail",
+                "failures": [{"id": "premium_lane_status", "detail": (proc.stdout + proc.stderr).strip()}],
+                "next_command": f"bin/glaw-premium-lanes status --matter-slug {d.name} --json",
+                "required_fix": "repair the premium lane matter-wide status command before relying on final-packet artifacts",
+            }
+        }
+    lanes = report.get("lanes") if isinstance(report.get("lanes"), list) else []
+    return {
+        str(row.get("lane_id") or ""): row
+        for row in lanes
+        if isinstance(row, dict)
+    }
+
+
+def premium_lane_manifest(d: Path, root: Path, requirement: dict | None = None) -> list[dict]:
+    rows = []
+    premium_status = premium_lane_status_map(d, root)
+    attached_lanes = set()
+    for path in sorted((d / "workpapers").glob("premium-lane-*.json")):
+        proc = subprocess.run(
+            [str(root / "bin/glaw-premium-lanes"), "check-packet", str(path), "--json"],
+            cwd=str(root),
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        try:
+            report = json.loads(proc.stdout)
+        except json.JSONDecodeError:
+            report = {
+                "status": "fail",
+                "lane_id": "",
+                "failures": [{"id": "check-packet", "detail": (proc.stdout + proc.stderr).strip()}],
+            }
+        lane_id = str(report.get("lane_id") or Path(str(path)).stem.replace("premium-lane-", "", 1))
+        status_report = premium_status.get(lane_id) or premium_status.get("__error__") or {}
+        status_failures = status_report.get("failures") if isinstance(status_report.get("failures"), list) else []
+        check_failures = report.get("failures") if isinstance(report.get("failures"), list) else []
+        failures = status_failures if status_report else check_failures
+        row = {
+            "path": str(path.relative_to(d)),
+            "sha256": sha256_file(path),
+            "lane_id": lane_id,
+            "status": "pass" if status_report.get("status") == "pass" and proc.returncode == 0 and report.get("status") == "pass" else "fail",
+            "check_packet_status": report.get("status", "fail"),
+            "docketed": bool(status_report.get("docketed")),
+            "rendered_templates": report.get("rendered_templates", []),
+            "failures": failures,
+        }
+        if status_report.get("next_command"):
+            row["next_command"] = status_report.get("next_command")
+        if status_report.get("required_fix"):
+            row["required_fix"] = status_report.get("required_fix")
+        row["next_command"], row["required_fix"] = premium_lane_fix_for(row, d.name)
+        rows.append(row)
+        attached_lanes.add(lane_id)
+    requirement = requirement or {"required": False, "required_lanes": []}
+    for lane_id in requirement.get("required_lanes") or []:
+        if lane_id in attached_lanes:
+            continue
+        row = {
+            "path": f"workpapers/premium-lane-{lane_id}.json",
+            "sha256": "",
+            "lane_id": lane_id,
+            "status": "fail",
+            "check_packet_status": "missing",
+            "docketed": False,
+            "rendered_templates": [],
+            "failures": [{
+                "id": "premium_lane_missing",
+                "detail": f"matter scope requires attached premium lane packet: {lane_id}",
+            }],
+        }
+        row["next_command"], row["required_fix"] = premium_lane_fix_for(row, d.name)
+        rows.append(row)
+    return rows
+
+
+def premium_objective_audit_manifest(root: Path) -> dict:
+    proc = subprocess.run(
+        [str(root / "bin/glaw-premium-lanes"), "audit-objective", "--json"],
+        cwd=str(root),
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    try:
+        report = json.loads(proc.stdout)
+    except json.JSONDecodeError:
+        return {
+            "status": "fail",
+            "objective": "Fortune 500 lawyer, tax system, entrepreneur/founder, investor/capital raise, QSBS, trust, and premium-lane GLAW buildout",
+            "manifest_status": "fail",
+            "manifest_sha256": "",
+            "trust_taxonomy_status": "fail",
+            "trust_taxonomy_summary": {},
+            "founder_blueprint_status": "fail",
+            "founder_blueprint_summary": {},
+            "tax_engine_blueprint_status": "fail",
+            "tax_engine_blueprint_summary": {},
+            "enterprise_blueprint_status": "fail",
+            "enterprise_blueprint_summary": {},
+            "firm_blueprint_status": "fail",
+            "firm_blueprint_summary": {},
+            "local_source_ingest_status": "fail",
+            "local_source_ingest_summary": {},
+            "requirements": [],
+            "tools": [],
+            "failures": [{"id": "premium_objective_audit", "detail": (proc.stdout + proc.stderr).strip()}],
+            "returncode": proc.returncode,
+            "authority": "deterministic coverage audit only; it proves local GLAW objective surfaces exist, not legal/tax advice or live filing authority",
+        }
+    return {
+        "status": report.get("status", "fail"),
+        "objective": report.get("objective", ""),
+        "manifest_status": report.get("manifest_status", "fail"),
+        "manifest_sha256": report.get("manifest_sha256", ""),
+        "trust_taxonomy_status": report.get("trust_taxonomy_status", "fail"),
+        "trust_taxonomy_summary": report.get("trust_taxonomy_summary", {}),
+        "founder_blueprint_status": report.get("founder_blueprint_status", "fail"),
+        "founder_blueprint_summary": report.get("founder_blueprint_summary", {}),
+        "tax_engine_blueprint_status": report.get("tax_engine_blueprint_status", "fail"),
+        "tax_engine_blueprint_summary": report.get("tax_engine_blueprint_summary", {}),
+        "enterprise_blueprint_status": report.get("enterprise_blueprint_status", "fail"),
+        "enterprise_blueprint_summary": report.get("enterprise_blueprint_summary", {}),
+        "firm_blueprint_status": report.get("firm_blueprint_status", "fail"),
+        "firm_blueprint_summary": report.get("firm_blueprint_summary", {}),
+        "local_source_ingest_status": report.get("local_source_ingest_status", "fail"),
+        "local_source_ingest_summary": report.get("local_source_ingest_summary", {}),
+        "requirements": report.get("requirements", []),
+        "tools": report.get("tools", []),
+        "failures": report.get("failures", []),
+        "returncode": proc.returncode,
+        "authority": report.get("authority", ""),
+    }
+
+
+def materialized_source_ingest_manifest(
+    d: Path,
+    source_manifest: list[dict],
+    premium_objective_audit: dict,
+) -> dict:
+    summary = premium_objective_audit.get("local_source_ingest_summary") or {}
+    required = premium_objective_audit.get("local_source_ingest_status") == "pass"
+    json_rel = "sources/local-source-ingest-ledger.json"
+    md_rel = "sources/local-source-ingest-ledger.md"
+    json_path = d / json_rel
+    md_path = d / md_rel
+    source_paths = {item.get("path") for item in source_manifest}
+    missing: list[str] = []
+    rows: list[dict] = []
+    ledger: dict = {}
+    if not required:
+        return {
+            "required": False,
+            "status": "not_required",
+            "missing": [],
+            "json_path": json_rel,
+            "markdown_path": md_rel,
+            "json_sha256": "",
+            "markdown_sha256": "",
+            "source_count": 0,
+            "required_source_count": 0,
+            "extracted_char_count": 0,
+            "row_count": 0,
+        }
+    if json_rel not in source_paths:
+        missing.append("local-source-ingest-ledger.json source evidence row")
+    if md_rel not in source_paths:
+        missing.append("local-source-ingest-ledger.md source evidence row")
+    if not json_path.is_file():
+        missing.append(json_rel)
+    if not md_path.is_file():
+        missing.append(md_rel)
+    if json_path.is_file():
+        try:
+            ledger = json.loads(json_path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            missing.append("local-source-ingest-ledger.json valid JSON")
+            ledger = {}
+    if ledger:
+        rows = ledger.get("sources") if isinstance(ledger.get("sources"), list) else []
+        if ledger.get("status") != "pass":
+            missing.append("ledger status pass")
+        if int(ledger.get("source_count", 0)) != int(summary.get("source_count", 0)):
+            missing.append("ledger source_count matches objective audit")
+        if int(ledger.get("required_source_count", 0)) != int(summary.get("required_source_count", 0)):
+            missing.append("ledger required_source_count matches objective audit")
+        if int(ledger.get("extracted_char_count", 0)) != int(summary.get("extracted_char_count", 0)):
+            missing.append("ledger extracted_char_count matches objective audit")
+        if len(rows) != int(summary.get("source_count", 0)):
+            missing.append("ledger row count matches objective audit")
+        summary_by_id = {
+            row.get("id"): row
+            for row in summary.get("sources", [])
+            if isinstance(row, dict)
+        }
+        for idx, row in enumerate(rows, start=1):
+            source_row_id = str(row.get("source_row_id", ""))
+            if source_row_id != f"LSI-{idx:04d}":
+                missing.append(f"ledger row {idx} stable LSI id")
+            sid = row.get("id")
+            expected = summary_by_id.get(sid)
+            if not expected:
+                missing.append(f"ledger row {sid or idx} matches objective source id")
+                continue
+            for key in ("path", "lane", "sha256", "size_bytes", "extraction_status", "extracted_chars", "extracted_sha256"):
+                if row.get(key) != expected.get(key):
+                    missing.append(f"ledger row {sid} {key} matches objective audit")
+            if len(str(row.get("sha256", ""))) != 64:
+                missing.append(f"ledger row {sid} source sha256")
+            if len(str(row.get("extracted_sha256", ""))) != 64:
+                missing.append(f"ledger row {sid} extracted sha256")
+            if row.get("extraction_status") != "pass":
+                missing.append(f"ledger row {sid} extraction pass")
+    if md_path.is_file():
+        text = md_path.read_text(encoding="utf-8", errors="replace")
+        if "Local Source Ingest Evidence Ledger" not in text:
+            missing.append("markdown ledger title")
+        for idx, row in enumerate(rows, start=1):
+            if f"LSI-{idx:04d}" not in text or str(row.get("id", "")) not in text:
+                missing.append(f"markdown ledger row {idx}")
+    return {
+        "required": True,
+        "status": "fail" if missing else "pass",
+        "missing": sorted(set(missing)),
+        "json_path": json_rel,
+        "markdown_path": md_rel,
+        "json_sha256": sha256_file(json_path) if json_path.is_file() else "",
+        "markdown_sha256": sha256_file(md_path) if md_path.is_file() else "",
+        "source_count": int(ledger.get("source_count", 0)) if ledger else 0,
+        "required_source_count": int(ledger.get("required_source_count", 0)) if ledger else 0,
+        "extracted_char_count": int(ledger.get("extracted_char_count", 0)) if ledger else 0,
+        "row_count": len(rows),
+        "source_rows_sha256": sha256_text(json.dumps(rows, sort_keys=True, separators=(",", ":"))) if rows else "",
+        "sources": [
+            {
+                "source_row_id": row.get("source_row_id"),
+                "id": row.get("id"),
+                "lane": row.get("lane"),
+                "sha256": row.get("sha256"),
+                "extraction_status": row.get("extraction_status"),
+                "extracted_sha256": row.get("extracted_sha256"),
+            }
+            for row in rows
+            if isinstance(row, dict)
+        ],
+    }
+
+
 def compliance_manifest(
     profile: str,
     gates: dict[str, bool],
@@ -599,8 +910,19 @@ def compliance_manifest(
     nonblocking_red_flags: list[dict],
     reviewer_identity: list[dict],
     report_quality_manifest: list[dict],
+    premium_lane_rows: list[dict],
+    premium_objective_audit: dict,
+    materialized_source_ingest: dict,
 ) -> list[dict]:
     accounting_required = accounting_control.get("required") is True
+    failing_premium_lanes = [item for item in premium_lane_rows if item.get("status") != "pass"]
+    premium_lane_route = failing_premium_lanes[0] if failing_premium_lanes else (premium_lane_rows[0] if premium_lane_rows else {})
+    objective_failures = premium_objective_audit.get("failures") if isinstance(premium_objective_audit.get("failures"), list) else []
+    objective_missing = [
+        f"{item.get('id', 'premium_objective_audit')}:{item.get('detail', item)}"
+        for item in objective_failures
+        if isinstance(item, dict)
+    ] or ["premium_objective_audit_manifest"]
     return [
         _compliance_row(
             "ethics-upl",
@@ -701,7 +1023,32 @@ def compliance_manifest(
             accounting_control.get("status") in {"pass", "not_required"},
             list(accounting_control.get("missing") or []),
         ),
-    ]
+        _compliance_row(
+            "premium-objective-audit",
+            "glaw-premium-lanes",
+            gates.get("premium_objective_audit_clear", False),
+            [] if gates.get("premium_objective_audit_clear", False) else objective_missing,
+        ),
+        _compliance_row(
+            "materialized-source-ingest",
+            "glaw-premium-lanes",
+            gates.get("materialized_source_ingest_clear", False),
+            list(materialized_source_ingest.get("missing") or []),
+        ),
+    ] + ([{
+        **_compliance_row(
+            "premium-lane-packet",
+            "glaw-premium-lanes",
+            gates.get("premium_lane_packet_clear", False),
+            [
+                f"{item.get('path')}:{';'.join(str(f.get('detail', f)) for f in item.get('failures', []))}"
+                for item in premium_lane_rows
+                if item.get("status") != "pass"
+            ],
+        ),
+        "next_command": premium_lane_route.get("next_command") or COMPLIANCE_ROW_ROUTES["premium-lane-packet"][0],
+        "required_fix": premium_lane_route.get("required_fix") or COMPLIANCE_ROW_ROUTES["premium-lane-packet"][1],
+    }] if premium_lane_rows else [])
 
 
 def run_check(cmd: list[str], cwd: Path) -> tuple[int, str]:
@@ -788,6 +1135,54 @@ def render_md(packet: dict) -> str:
         suffix = "" if not missing else f" — missing {', '.join(missing)}"
         lines.extend(["", "## Accounting Control"])
         lines.append(f"- [{mark}] accounting_control.json{suffix}")
+    premium_rows = packet.get("premium_lane_manifest", [])
+    lines.extend(["", "## Premium Lane Manifest"])
+    if premium_rows:
+        for row in premium_rows:
+            mark = "x" if row.get("status") == "pass" else " "
+            failures = row.get("failures") or []
+            suffix = "" if not failures else f" — failures {len(failures)}"
+            lines.append(
+                f"- [{mark}] {row.get('lane_id')} {row.get('path')} "
+                f"packet_sha256={row.get('sha256')}{suffix}"
+            )
+            rendered_templates = row.get("rendered_templates") or []
+            if rendered_templates:
+                for template in rendered_templates:
+                    digest = str(template.get("sha256", ""))
+                    short_digest = digest[:12] if digest else ""
+                    lines.append(
+                        f"  - rendered {template.get('path')} "
+                        f"item={template.get('item')} bytes={template.get('bytes')} sha256={short_digest}"
+                    )
+            else:
+                lines.append("  - rendered templates: none")
+    else:
+        lines.append("- none")
+    objective_audit = packet.get("premium_objective_audit_manifest", {})
+    lines.extend(["", "## Premium Objective Audit"])
+    if objective_audit:
+        mark = "x" if objective_audit.get("status") == "pass" and objective_audit.get("returncode") == 0 else " "
+        lines.append(f"- [{mark}] {objective_audit.get('objective', 'premium objective audit')}")
+        lines.append(f"  - manifest_sha256={objective_audit.get('manifest_sha256', '')}")
+        firm_summary = objective_audit.get("firm_blueprint_summary") or {}
+        if firm_summary:
+            lines.append(
+                "  - integrated firm blueprint: "
+                f"status={objective_audit.get('firm_blueprint_status', 'unknown')} "
+                f"phases={firm_summary.get('phase_count', 0)} "
+                f"lanes={len(firm_summary.get('lanes') or [])} "
+                f"sources={firm_summary.get('source_count', 0)} "
+                f"trust_types={firm_summary.get('trust_type_count', 0)}"
+            )
+            phase_names = firm_summary.get("phase_names") or []
+            for phase in phase_names[:10]:
+                lines.append(f"    - {phase}")
+        for requirement in objective_audit.get("requirements", []):
+            req_mark = "x" if requirement.get("status") == "pass" else " "
+            lines.append(f"  - [{req_mark}] {requirement.get('id')} lane={requirement.get('lane_id')}")
+    else:
+        lines.append("- missing")
     lines.extend(["", "## Compliance Manifest"])
     for item in packet.get("compliance_manifest", []):
         mark = "x" if item.get("status") == "pass" else " "
@@ -874,6 +1269,20 @@ def cmd_build(args: argparse.Namespace) -> int:
     report_quality_clear = bool(report_quality_manifest) and all(
         item["status"] == "pass" for item in report_quality_manifest
     )
+    premium_requirement = premium_lane_requirement(intake)
+    premium_lane_rows = premium_lane_manifest(d, root, premium_requirement)
+    premium_lane_clear = all(item["status"] == "pass" for item in premium_lane_rows)
+    premium_objective_audit = premium_objective_audit_manifest(root)
+    premium_objective_audit_clear = (
+        premium_objective_audit.get("status") == "pass"
+        and premium_objective_audit.get("returncode") == 0
+    )
+    materialized_source_ingest = materialized_source_ingest_manifest(
+        d,
+        source_manifest,
+        premium_objective_audit,
+    )
+    materialized_source_ingest_clear = materialized_source_ingest.get("status") in {"pass", "not_required"}
     gate_artifact_names = list(REQUIRED_GATE_ARTIFACTS)
     gate_artifact_names.extend(
         name for name in OPTIONAL_GATE_ARTIFACTS
@@ -923,6 +1332,9 @@ def cmd_build(args: argparse.Namespace) -> int:
         "reviewer_identity_manifest_clear": reviewer_identity_clear,
         "professional_report_manifest_clear": report_quality_clear,
         "accounting_control_manifest_clear": accounting_control["status"] in {"pass", "not_required"},
+        "premium_lane_packet_clear": premium_lane_clear,
+        "premium_objective_audit_clear": premium_objective_audit_clear,
+        "materialized_source_ingest_clear": materialized_source_ingest_clear,
         "upl_footer_clear": rc_upl == 0,
     }
     compliance_rows = compliance_manifest(
@@ -936,6 +1348,9 @@ def cmd_build(args: argparse.Namespace) -> int:
         nonblocking_red_flags=nonblocking_red_flags,
         reviewer_identity=reviewer_identity,
         report_quality_manifest=report_quality_manifest,
+        premium_lane_rows=premium_lane_rows,
+        premium_objective_audit=premium_objective_audit,
+        materialized_source_ingest=materialized_source_ingest,
     )
     compliance_clear = bool(compliance_rows) and all(item["status"] == "pass" for item in compliance_rows)
     gates["compliance_manifest_clear"] = compliance_clear
@@ -972,6 +1387,10 @@ def cmd_build(args: argparse.Namespace) -> int:
         "red_flag_resolution_evidence_manifest": red_flag_resolution_evidence_manifest,
         "reviewer_identity_manifest": reviewer_identity,
         "accounting_control_manifest": accounting_control,
+        "premium_lane_requirement": premium_requirement,
+        "premium_lane_manifest": premium_lane_rows,
+        "premium_objective_audit_manifest": premium_objective_audit,
+        "materialized_source_ingest_manifest": materialized_source_ingest,
         "report_quality_required_markers": list(REPORT_REQUIRED_MARKERS),
         "report_quality_manifest": report_quality_manifest,
         "gate_artifact_hashes": gate_artifact_hashes,

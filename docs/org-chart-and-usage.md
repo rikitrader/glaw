@@ -58,6 +58,21 @@ Branched at intake into **litigation**, **corp/fund build**, **investigation**,
 The routing table (with a domain → seat quick index, no gaps) is `lib/firm-roster.md`.
 The firm's principles are `ETHOS.md`.
 
+## Premium client lanes
+
+For large or high-stakes advisory work, GLAW assembles seats through
+`lib/client-lanes/fortune500-tax-entrepreneur.md`:
+
+| Lane | What it covers |
+|---|---|
+| Fortune 500 Enterprise Counsel | board/governance, public-company SEC reporting, SOX/audit, tax provision, M&A, commercial operations, disputes, enforcement readiness |
+| Tax System and IRS Engine | tax intake, current figures, entity tax, book-to-tax, credits, SALT, international, compliance, controversy, estate/gift |
+| Entrepreneur, Founder, and Unicorn Advisor | formation, IP, 83(b), QSBS, 409A, founder control, capital raise, investor tax/disclosure, exit, family-office sheltering |
+| UHNW and Family Office Overlay | revocable and irrevocable trusts, dynasty/GST, investment LLCs, asset protection, philanthropy, gift/estate/GST returns |
+
+The lane map does not bypass GLAW gates. It adds the required deliverables, named lead seats,
+regulator/opponent reviewers, and docket obligations for premium matters.
+
 ## Hard gates (never skipped)
 1. **Structured intake complete** before strategy.
 2. **Conflicts cleared** before strategy.
