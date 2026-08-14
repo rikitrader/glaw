@@ -7,6 +7,8 @@ pass=0; fail=0
 ok(){ if [ "$1" = 1 ]; then pass=$((pass+1)); echo "  ✓ $2"; else fail=$((fail+1)); echo "  ✗ FAIL: $2"; fi; }
 
 TMP="$(mktemp -d)"; export GLAW_HOME="$TMP"
+source "$HERE/premium_source_fixture.sh"
+setup_premium_source_fixture "$TMP"
 GLAW="$ROOT/bin/glaw"
 INTAKE="$ROOT/bin/glaw-intake"
 ETHICS="$ROOT/bin/glaw-ethics"

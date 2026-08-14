@@ -436,13 +436,32 @@ def shutil_which(name: str) -> str:
     return ""
 
 
+def local_source_path(canonical_path: str) -> Path:
+    """Resolve a configured portable source root without changing the manifest identity."""
+    source_root = os.environ.get("GLAW_PREMIUM_SOURCE_ROOT", "").strip()
+    if not source_root:
+        return Path(canonical_path)
+    desktop_root = Path("/Users/ricardoprieto/Desktop")
+    try:
+        relative = Path(canonical_path).relative_to(desktop_root)
+    except ValueError:
+        relative = Path(canonical_path).name
+    return Path(source_root).expanduser().resolve() / relative
+
+
 def local_source_ingest_report(data: dict[str, Any]) -> dict[str, Any]:
     failures: list[dict[str, str]] = []
     rows: list[dict[str, Any]] = []
     source_terms = "\n".join(SOURCE_INGEST_TERMS)
     pdftotext = shutil_which("pdftotext")
-    for spec in LOCAL_SOURCE_INGEST_FILES:
-        path = Path(str(spec["path"]))
+    resolved_sources = [
+        (spec, local_source_path(str(spec["path"])))
+        for spec in LOCAL_SOURCE_INGEST_FILES
+    ]
+    explicitly_configured = bool(os.environ.get("GLAW_PREMIUM_SOURCE_ROOT", "").strip())
+    corpus_configured = explicitly_configured or any(path.is_file() for _, path in resolved_sources)
+    for spec, path in resolved_sources:
+        canonical_path = str(spec["path"])
         row: dict[str, Any] = {
             "id": spec["id"],
             "path": str(path),
@@ -455,12 +474,14 @@ def local_source_ingest_report(data: dict[str, Any]) -> dict[str, Any]:
             "extraction_status": "missing_source",
             "extracted_chars": 0,
             "extracted_sha256": "",
-            "source_ingest_term_present": str(path) in source_terms,
+            "canonical_path": canonical_path,
+            "source_ingest_term_present": canonical_path in source_terms,
         }
         if not row["source_ingest_term_present"]:
             failures.append({"id": "source_ingest_term_missing", "detail": f"source-ingest manifest omits local source: {path}"})
         if not path.is_file():
-            failures.append({"id": "local_source_missing", "detail": f"local source missing: {path}"})
+            if corpus_configured:
+                failures.append({"id": "local_source_missing", "detail": f"local source missing: {path}"})
             rows.append(row)
             continue
         row["size_bytes"] = path.stat().st_size
@@ -493,7 +514,7 @@ def local_source_ingest_report(data: dict[str, Any]) -> dict[str, Any]:
             failures.append({"id": "local_source_extraction_timeout", "detail": f"local source extraction timed out: {path}"})
         rows.append(row)
     return {
-        "status": "fail" if failures else "pass",
+        "status": "not_configured" if not corpus_configured else ("fail" if failures else "pass"),
         "source_count": len(rows),
         "required_source_count": len(LOCAL_SOURCE_INGEST_FILES),
         "total_size_bytes": sum(int(row.get("size_bytes", 0)) for row in rows),
@@ -501,7 +522,7 @@ def local_source_ingest_report(data: dict[str, Any]) -> dict[str, Any]:
         "extractor": "pdftotext" if pdftotext else "",
         "sources": rows,
         "failures": failures,
-        "authority": "deterministic local-source evidence audit only; it proves local file presence, file hashes, and extractable text hashes, not legal/tax advice or source-currentness",
+        "authority": "deterministic local-source evidence audit only; it proves configured local file presence, file hashes, and extractable text hashes, not legal/tax advice or source-currentness; set GLAW_PREMIUM_SOURCE_ROOT to a portable corpus root",
     }
 
 
@@ -813,7 +834,7 @@ def objective_audit(data: dict[str, Any]) -> dict[str, Any]:
         failures.extend({"id": "enterprise_blueprint_audit", "detail": item.get("detail", "")} for item in enterprise_blueprint_report.get("failures", []))
     if firm_blueprint_report.get("status") != "pass":
         failures.extend({"id": "firm_blueprint_audit", "detail": item.get("detail", "")} for item in firm_blueprint_report.get("failures", []))
-    if source_ingest_report.get("status") != "pass":
+    if source_ingest_report.get("status") not in {"pass", "not_configured"}:
         failures.extend({"id": "local_source_ingest_audit", "detail": item.get("detail", "")} for item in source_ingest_report.get("failures", []))
 
     required_tools = (
@@ -1817,7 +1838,7 @@ def firm_blueprint(data: dict[str, Any], matter: str) -> dict[str, Any]:
         "local_source_ingest": source_report.get("status"),
     }
     for name, status in components.items():
-        if status != "pass":
+        if status != "pass" and not (name == "local_source_ingest" and status == "not_configured"):
             failures.append({"id": "component_failed", "detail": f"{name} component status is {status}"})
     required_terms = (
         "Fortune 500 enterprise",

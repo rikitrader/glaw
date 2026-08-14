@@ -33,6 +33,8 @@ fixture_py(){
 }
 
 TMP="$(mktemp -d)"; export GLAW_HOME="$TMP"
+source "$SCRIPT_DIR/premium_source_fixture.sh"
+setup_premium_source_fixture "$TMP"
 M="$TMP/matters/m"; mkdir -p "$M"; : > "$M/timeline.jsonl"; echo m > "$TMP/.active"
 log(){ printf '{"ts":"t","event":"%s"}\n' "$1" >> "$M/timeline.jsonl"; }
 chk(){ "$GATE" check "$1" m >"$TMP/last-gate.err" 2>&1; echo $?; }   # echoes exit code

@@ -4,6 +4,8 @@ set -uo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 ROOT="$HERE/.."
 TMP="$(mktemp -d)"
+source "$HERE/premium_source_fixture.sh"
+setup_premium_source_fixture "$TMP"
 pass=0; fail=0
 ok(){ if [ "$1" = 1 ]; then pass=$((pass+1)); echo "  ✓ $2"; else fail=$((fail+1)); echo "  ✗ FAIL: $2"; fi; }
 
@@ -110,9 +112,9 @@ ok=(
     and all(isinstance(row.get("sha256"), str) and len(row.get("sha256")) == 64 for row in source_rows if isinstance(row, dict))
     and all(row.get("extraction_status") == "pass" for row in source_rows if isinstance(row, dict))
     and all(isinstance(row.get("extracted_sha256"), str) and len(row.get("extracted_sha256")) == 64 for row in source_rows if isinstance(row, dict))
-    and "/Users/ricardoprieto/Desktop/TAX CREDIT/F_PUB_550.pdf" in source_paths
-    and "/Users/ricardoprieto/Desktop/LLC/FormCandOS.pdf" in source_paths
-    and "/Users/ricardoprieto/Desktop/SEC/id257bpm.pdf" in source_paths
+    and "TAX CREDIT/F_PUB_550.pdf" in source_paths
+    and "LLC/FormCandOS.pdf" in source_paths
+    and "SEC/id257bpm.pdf" in source_paths
     and isinstance(data.get("manifest_sha256"), str)
     and len(data.get("manifest_sha256", "")) == 64
     and rows.get("fortune500_lawyer", {}).get("status") == "pass"

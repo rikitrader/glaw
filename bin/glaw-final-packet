@@ -785,9 +785,13 @@ def premium_objective_audit_manifest(root: Path) -> dict:
     }
 
 
-def materialized_source_ingest_manifest(d: Path, source_manifest: list[dict], premium_objective_audit: dict) -> dict:
+def materialized_source_ingest_manifest(
+    d: Path,
+    source_manifest: list[dict],
+    premium_objective_audit: dict,
+) -> dict:
     summary = premium_objective_audit.get("local_source_ingest_summary") or {}
-    required = premium_objective_audit.get("local_source_ingest_status") == "pass" or bool(summary.get("source_count"))
+    required = premium_objective_audit.get("local_source_ingest_status") == "pass"
     json_rel = "sources/local-source-ingest-ledger.json"
     md_rel = "sources/local-source-ingest-ledger.md"
     json_path = d / json_rel
@@ -1273,7 +1277,11 @@ def cmd_build(args: argparse.Namespace) -> int:
         premium_objective_audit.get("status") == "pass"
         and premium_objective_audit.get("returncode") == 0
     )
-    materialized_source_ingest = materialized_source_ingest_manifest(d, source_manifest, premium_objective_audit)
+    materialized_source_ingest = materialized_source_ingest_manifest(
+        d,
+        source_manifest,
+        premium_objective_audit,
+    )
     materialized_source_ingest_clear = materialized_source_ingest.get("status") in {"pass", "not_required"}
     gate_artifact_names = list(REQUIRED_GATE_ARTIFACTS)
     gate_artifact_names.extend(

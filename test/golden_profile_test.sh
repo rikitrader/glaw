@@ -4,6 +4,8 @@ set -uo pipefail
 HERE="$(cd "$(dirname "$0")" && pwd)"
 ROOT="$HERE/.."
 TMP="$(mktemp -d)"; export GLAW_HOME="$TMP"
+source "$HERE/premium_source_fixture.sh"
+setup_premium_source_fixture "$TMP"
 
 python3 - "$ROOT" <<'PY'
 from __future__ import annotations
