@@ -15,12 +15,16 @@ set -uo pipefail
 SCRIPT_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 ROOT="${GLAW_SKILLS_ROOT:-${CODEX_HOME:-$HOME/.codex}/skills}"
 GLAW="${GLAW_SKILL_DIR:-$SCRIPT_ROOT}"
+DOCTOR_CORE="${GLAW_DOCTOR_CORE:-0}"
 FAIL=0; WARN=0
 ok(){ printf '  ✅ %s\n' "$1"; }
 bad(){ printf '  ❌ %s\n' "$1"; FAIL=$((FAIL+1)); }
 warn(){ printf '  ⚠️  %s\n' "$1"; WARN=$((WARN+1)); }
 
 echo "═══ GLAW DOCTOR ═══"
+if [ "$DOCTOR_CORE" = "1" ]; then
+  echo "mode: CORE"
+fi
 
 # ---- 1. SKILLS RESOLVE ----
 echo "[1/3] skills resolve"
@@ -471,6 +475,23 @@ if [ "${GLAW_FULL_BOOKKEEPING_SELFTEST:-0}" = "1" ]; then
   else
     bad "bin-scorer locks FAILED — run: $_BKPY $GLAW/lib/bookkeeping/test_bin_scorers.py"
   fi
+elif [ "$DOCTOR_CORE" = "1" ]; then
+  if printf 'date,description,amount\n2026-01-01,Doctor smoke,1.00\n' > /tmp/glaw-doctor-bank.csv \
+     && GLAW="$GLAW" "$GLAW/bin/glaw-bank-ingest" /tmp/glaw-doctor-bank.csv --format json >/dev/null 2>&1; then
+    ok "zero-dependency bookkeeping smoke passed (CSV ingest via in-repo glaw_engine)"
+  else
+    bad "zero-dependency bookkeeping smoke FAILED — run: GLAW=$GLAW $GLAW/bin/glaw-bank-ingest /tmp/glaw-doctor-bank.csv --format json"
+  fi
+  if [ -x "$GLAW/bin/glaw-bookkeeping-doctor" ]; then
+    if GLAW="$GLAW" "$GLAW/bin/glaw-bookkeeping-doctor" >/tmp/glaw-bookkeeping-doctor.out 2>&1; then
+      ok "bookkeeping/IRS/adversarial gate passed (bank rec + ledger + forms + tax tie-out)"
+    else
+      bad "bookkeeping/IRS/adversarial gate FAILED — run: GLAW=$GLAW $GLAW/bin/glaw-bookkeeping-doctor"
+      grep -E '❌|Traceback|ERROR|failure artifacts:' /tmp/glaw-bookkeeping-doctor.out | sed 's/^/    /'
+    fi
+  else
+    bad "glaw-bookkeeping-doctor missing/executable bit absent"
+  fi
 else
   if printf 'date,description,amount\n2026-01-01,Doctor smoke,1.00\n' > /tmp/glaw-doctor-bank.csv \
      && GLAW="$GLAW" "$GLAW/bin/glaw-bank-ingest" /tmp/glaw-doctor-bank.csv --format json >/dev/null 2>&1; then
@@ -502,7 +523,58 @@ for p in "$GLAW"/bin/matter-ops/*.py; do
 done
 [ "$mo_fail" = 0 ] && ok "all $mo_n bin/matter-ops/*.py compile (incl. facts_validate/facts_gate guard)"
 # regression tests (safety-critical paths): launch-guard, hard gates, full lifecycle, profile routing
-for t in facts_validate_test:launch-guard public_intake_test:public-intake intake_premium_test:intake-premium court_case_test:court-case gate_test:hard-gate lifecycle_test:full-lifecycle tax_profile_test:tax-profile sec_reporting_profile_test:sec-reporting-profile tax_wrapper_golden_test:tax-wrapper-golden tax_wrapper_gap_golden_test:tax-wrapper-gap-golden tax_wrapper_coverage_test:tax-wrapper-coverage roadmap_honesty_test:roadmap-honesty gate_docs_consistency_test:gate-docs-consistency premium_lane_test:premium-lanes premium_lane_cli_test:premium-lane-cli premium_lane_lifecycle_test:premium-lane-lifecycle compliance_manifest_contract_test:compliance-manifest-contract authority_gate_test:authority-gate rbac_test:rbac-soc2 host_adapter_test:host-adapter mcp_test:mcp-bridge extism_test:extism-contract headless_test:headless-report daemon_test:standing-goal-daemon sandbox_test:sandbox-simulation constitutional_test:constitutional-branch branch_substance_test:branch-substance jurisdiction_pack_test:jurisdiction-pack oversight_test:oversight-board conscience_test:autonomous-conscience authority_sources_test:authority-sources citation_corpus_test:citation-corpus citation_typology_test:citation-typology groundedness_test:groundedness compliance_audit_test:compliance-audit policy_test:policy-contract loop_test:orchestrator-loop golden_profile_test:golden-profiles memory_test:cross-matter-memory; do
+if [ "$DOCTOR_CORE" = "1" ]; then
+  TESTS=(
+    "facts_validate_test:launch-guard"
+    "court_case_test:court-case"
+    "gate_test:hard-gate"
+    "policy_test:policy-contract"
+    "jurisdiction_pack_test:jurisdiction-pack"
+  )
+else
+  TESTS=(
+    "facts_validate_test:launch-guard"
+    "public_intake_test:public-intake"
+    "intake_premium_test:intake-premium"
+    "court_case_test:court-case"
+    "gate_test:hard-gate"
+    "lifecycle_test:full-lifecycle"
+    "tax_profile_test:tax-profile"
+    "sec_reporting_profile_test:sec-reporting-profile"
+    "tax_wrapper_golden_test:tax-wrapper-golden"
+    "tax_wrapper_gap_golden_test:tax-wrapper-gap-golden"
+    "tax_wrapper_coverage_test:tax-wrapper-coverage"
+    "roadmap_honesty_test:roadmap-honesty"
+    "gate_docs_consistency_test:gate-docs-consistency"
+    "premium_lane_test:premium-lanes"
+    "premium_lane_cli_test:premium-lane-cli"
+    "premium_lane_lifecycle_test:premium-lane-lifecycle"
+    "compliance_manifest_contract_test:compliance-manifest-contract"
+    "authority_gate_test:authority-gate"
+    "rbac_test:rbac-soc2"
+    "host_adapter_test:host-adapter"
+    "mcp_test:mcp-bridge"
+    "extism_test:extism-contract"
+    "headless_test:headless-report"
+    "daemon_test:standing-goal-daemon"
+    "sandbox_test:sandbox-simulation"
+    "constitutional_test:constitutional-branch"
+    "branch_substance_test:branch-substance"
+    "jurisdiction_pack_test:jurisdiction-pack"
+    "oversight_test:oversight-board"
+    "conscience_test:autonomous-conscience"
+    "authority_sources_test:authority-sources"
+    "citation_corpus_test:citation-corpus"
+    "citation_typology_test:citation-typology"
+    "groundedness_test:groundedness"
+    "compliance_audit_test:compliance-audit"
+    "policy_test:policy-contract"
+    "loop_test:orchestrator-loop"
+    "golden_profile_test:golden-profiles"
+    "memory_test:cross-matter-memory"
+  )
+fi
+for t in "${TESTS[@]}"; do
   script="$GLAW/test/${t%%:*}.sh"; name="${t#*:}"
   [ -x "$script" ] || continue
   if "$script" >/tmp/glaw-$$.out 2>&1; then
