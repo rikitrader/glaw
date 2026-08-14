@@ -66,6 +66,10 @@ class TestDistrictConfig:
         assert d.sol_personal_injury_years == 4.0
         assert d.mediation_required is True
         assert "Orlando" in d.divisions
+        assert d.response_page_limit == 20
+        assert d.response_days == 14
+        assert d.verification_status == "verified"
+        assert d.last_updated == "2025-11-01"
 
     def test_sdny_three_year_sol(self):
         d = get_district("sdny")

@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "id": "federal-core-2025",
+  "status": "verified",
+  "checked_on": "2026-08-13",
+  "effective_from": "2025-12-01",
+  "scope": "United States district-court civil case initiation and national-rule baseline",
+  "rules": {
+    "federal_question": "28 U.S.C. § 1331",
+    "diversity": "28 U.S.C. § 1332; complete diversity and amount in controversy exceeding $75,000, exclusive of interest and costs",
+    "venue": "28 U.S.C. § 1391",
+    "commencement": "Fed. R. Civ. P. 3",
+    "summons": "Fed. R. Civ. P. 4(b)",
+    "service_limit_days": 90,
+    "ordinary_answer_days_after_service": 21,
+    "united_states_answer_days_after_service": 60,
+    "corporate_disclosure": "Fed. R. Civ. P. 7.1"
+  },
+  "required_initiating_documents": [
+    "complaint",
+    "JS-44 civil cover sheet or district-approved equivalent",
+    "summons for each defendant",
+    "Rule 7.1 disclosure when applicable",
+    "district-specific initiating documents and fee/IFP material"
+  ],
+  "filing_boundary": {
+    "system": "CM/ECF",
+    "registered_filer_required": true,
+    "attorney_admission_or_e-file_registration_required": true,
+    "pdf_required": true,
+    "court_specific_limits_must_be_reverified": true
+  },
+  "sources": [
+    {
+      "id": "FED-0001",
+      "url": "https://www.uscourts.gov/forms-rules/current-rules-practice-procedure",
+      "description": "Current national rules; Civil Rules last amended in 2025"
+    },
+    {
+      "id": "FED-0002",
+      "url": "https://www.uscourts.gov/forms-rules/current-rules-practice-procedure/federal-rules-civil-procedure",
+      "description": "Federal Rules of Civil Procedure in effect"
+    },
+    {
+      "id": "FED-0003",
+      "url": "https://pacer.uscourts.gov/file-case/how-file-case",
+      "description": "Official CM/ECF filing, registration, PDF, and court-specific requirements"
+    }
+  ],
+  "authority_boundary": "National baseline only. District local rules, standing orders, judge practices, fees, admission, divisional venue, sealed-filing rules, and CM/ECF event selection must be verified immediately before filing."
+}

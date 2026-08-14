@@ -291,7 +291,7 @@ ftc info CLAIM_KEY                   # Claim details with elements/defenses
 ftc district                         # Manage district configuration
 ftc deposition WITNESS_TYPE          # Generate deposition question outline
 ftc exhibits --case case.json        # Generate exhibit index
-ftc pacer --case case.json           # Generate PACER/ECF filing package
+ftc pacer --case case.json           # Generate review-only PACER/ECF metadata
 ftc monitor --case case.json         # Rule 11 duty monitor
 ftc calendar --case case.json        # Generate case filing calendar
 
@@ -400,7 +400,7 @@ federal-trial-counsel/
 │   │   ├── sol.py                    # Statute of limitations calculator
 │   │   ├── suggest.py                # Claim auto-suggestion from fact patterns
 │   │   ├── drafter.py                # Complaint drafter (caption, parties, counts, prayer)
-│   │   ├── exporter.py               # .docx exporter (court-formatted: TNR 14pt)
+│   │   ├── exporter.py               # .docx exporter (court-formatted: TNR 12pt)
 │   │   ├── questions.py              # Post-generation verification questions
 │   │   ├── wizard.py                 # 12-step interactive case wizard
 │   │   ├── case_manager.py           # Persistent case storage & workflow state
@@ -409,7 +409,7 @@ federal-trial-counsel/
 │   │   ├── deposition.py             # Deposition question outline generator
 │   │   ├── exhibits.py               # Exhibit index generator
 │   │   ├── filing_calendar.py        # Case filing calendar / document map
-│   │   ├── pacer_meta.py             # PACER/ECF filing package generator
+│   │   ├── pacer_meta.py             # Review-only PACER/ECF metadata generator
 │   │   ├── rule11_monitor.py         # Rule 11 duty monitor
 │   │   └── sample_case.json          # Example case input
 │   │
@@ -538,7 +538,7 @@ pytest -v --tb=short              # verbose with short tracebacks
 
 ## Legal Disclaimer
 
-This tool assists with legal drafting but does not constitute legal advice. All output should be reviewed by a licensed attorney before filing. The engine does NOT fabricate facts - it only uses facts provided in the input.
+This tool assists with legal drafting but does not constitute legal advice. All output must be reviewed by a licensed attorney before filing. PACER output is metadata for review, not a transmission to a court; unknown jurisdiction and nature-of-suit values remain blank. The engine does not sign, file, serve, transmit, or pay fees. Missing element-to-fact support is marked `FACT REQUIRED` rather than filled with invented allegations.
 
 ## License
 

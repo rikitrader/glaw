@@ -193,6 +193,23 @@ python3 -m ftc_engine.cli info 1983_fourth_excessive_force
 python3 -m ftc_engine.cli draft -i sample_case.json -o complaint.md
 ```
 
+Route and prepare a court packet only after the matter gates have produced
+source-backed approval artifacts:
+
+```bash
+bin/glaw-court-case route --input case.json --json
+bin/glaw-court-case prepare --input case.json --output-dir filing --json
+bin/glaw-court-case handoff --packet filing/court-filing-manifest.json --output filing/operator-handoff.json --json
+```
+
+The router covers the current national federal baseline, a verified M.D. Florida
+local-rule pack, and ordinary Florida monetary civil routing. Other federal
+districts require local-rule review; specialized Florida proceedings are
+excluded. `submit --live` always blocks until a certified court connector exists.
+After an authorized human files or completes service, record the official
+receipt/proof with `record-receipt` or `record-service`. See
+`docs/COURT-FILING-ROADMAP.md` for the coverage matrix and remaining work.
+
 TXT, MD, and DOCX intake documents are handled locally. PDFs that require binary parsing or OCR return a clear handoff message in the bundled zero-dependency build.
 
 ## Bookkeeping and Forensics

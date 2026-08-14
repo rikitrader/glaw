@@ -36,6 +36,8 @@ class CalendarEntry:
     depends_on: str = ""             # What triggers this deadline
     priority: str = "high"           # critical | high | medium | low
     notes: list[str] = field(default_factory=list)
+    is_estimate: bool = False
+    trigger_date: str = ""
 
 
 @dataclass
@@ -65,6 +67,7 @@ def _get_district_timings(district_code: str | None) -> dict:
     if not config:
         return {
             "response_days": 21, "reply_days": 7,
+            "answer_days": 21, "government_answer_days": 60,
             "motion_page_limit": 25, "district_name": "Unknown District",
             "mediation_required": False,
         }
@@ -72,6 +75,8 @@ def _get_district_timings(district_code: str | None) -> dict:
     return {
         "response_days": config.response_days,
         "reply_days": config.reply_days,
+        "answer_days": 21,
+        "government_answer_days": 60,
         "motion_page_limit": config.motion_page_limit,
         "district_name": config.name,
         "mediation_required": config.mediation_required,
@@ -163,16 +168,21 @@ def _build_response_entries(
     """Answer/MTD and reply deadlines."""
     entries = []
     defendants = case_data.get("parties", {}).get("defendants", [])
-    resp_days = timings["response_days"]
+    answer_days = timings.get("answer_days", 21)
+    government_answer_days = timings.get("government_answer_days", 60)
 
     for d in defendants:
         d_name = d.get("name", "Defendant")
         d_type = d.get("type", "private")
-        actual_days = 60 if d_type == "federal" else resp_days
-
-        # Assume service on day 30 (reasonable estimate)
-        est_service = filing_date + timedelta(days=30)
-        answer_deadline = est_service + timedelta(days=actual_days)
+        actual_days = government_answer_days if d_type == "federal" else answer_days
+        service_value = str(d.get("service_date") or "").strip()
+        estimated = not service_value
+        try:
+            service_trigger = date.fromisoformat(service_value) if service_value else filing_date + timedelta(days=30)
+        except ValueError:
+            service_trigger = filing_date + timedelta(days=30)
+            estimated = True
+        answer_deadline = service_trigger + timedelta(days=actual_days)
 
         entries.append(CalendarEntry(
             document=f"Answer/MTD from {d_name}",
@@ -183,7 +193,13 @@ def _build_response_entries(
             rule_authority="FRCP 12(a)(1)" if d_type != "federal" else "FRCP 12(a)(2)-(3)",
             priority="high",
             depends_on=f"Service on {d_name}",
-            notes=[f"{actual_days} days from service" + (" (60 days for U.S. government)" if d_type == "federal" else "")],
+            notes=[
+                f"{actual_days} days from actual service" + (" (U.S. government rule)" if d_type == "federal" else ""),
+                "ESTIMATE ONLY — record actual service before docket reliance" if estimated else "Service trigger supplied; recompute under Rule 6, waiver, order, weekend, holiday, and extension rules",
+            ],
+            status="estimated" if estimated else "pending",
+            is_estimate=estimated,
+            trigger_date=service_trigger.isoformat() if not estimated else "",
         ))
 
     return entries

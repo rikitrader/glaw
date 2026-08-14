@@ -107,27 +107,35 @@ def cmd_pacer(args):
 
     if args.all:
         pkg = generate_filing_package(case_data)
-        print(format_filing_package(pkg))
+        output_text = format_filing_package(pkg)
     elif args.js44:
         sheet = generate_js44(case_data)
-        print(format_js44(sheet))
+        output_text = format_js44(sheet)
     elif args.summons:
         summonses = generate_all_summonses(case_data)
-        for s in summonses:
-            print(format_summons(s))
-            print()
+        output_text = "\n\n".join(format_summons(s) for s in summonses)
     elif args.disclosure:
         disclosures = generate_all_disclosures(case_data)
+        lines = []
         if not disclosures:
-            print("No corporate parties requiring FRCP 7.1 disclosure.")
+            lines.append("No corporate parties requiring FRCP 7.1 disclosure.")
         for d in disclosures:
-            print(f"{d.party_name} ({d.party_type})")
-            print(f"  Parent: {d.parent_corporation}")
-            print(f"  10%+ Holder: {d.publicly_held_10pct}")
-            print()
+            lines.extend([
+                f"{d.party_name} ({d.party_type})",
+                f"  Parent: {d.parent_corporation}",
+                f"  10%+ Holder: {d.publicly_held_10pct}",
+                "",
+            ])
+        output_text = "\n".join(lines)
     else:
         pkg = generate_filing_package(case_data)
-        print(format_filing_package(pkg))
+        output_text = format_filing_package(pkg)
+
+    if args.output:
+        Path(args.output).write_text(output_text)
+        print(f"PACER/ECF metadata written to {args.output}")
+    else:
+        print(output_text)
 
 
 def cmd_calendar(args):

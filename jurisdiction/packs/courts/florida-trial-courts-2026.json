@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "id": "florida-trial-courts-2026",
+  "status": "verified-baseline",
+  "checked_on": "2026-08-13",
+  "state": "Florida",
+  "ordinary_civil_thresholds": {
+    "small_claims_max": 8000,
+    "county_civil_max": 50000,
+    "circuit_civil_min_exclusive": 50000,
+    "amount_basis": "exclusive of interest, costs, and attorney fees where the governing rule/statute so provides; verify claim-specific treatment"
+  },
+  "circuits": {
+    "1": ["Escambia", "Okaloosa", "Santa Rosa", "Walton"],
+    "2": ["Franklin", "Gadsden", "Jefferson", "Leon", "Liberty", "Wakulla"],
+    "3": ["Columbia", "Dixie", "Hamilton", "Lafayette", "Madison", "Suwannee", "Taylor"],
+    "4": ["Clay", "Duval", "Nassau"],
+    "5": ["Citrus", "Hernando", "Lake", "Marion", "Sumter"],
+    "6": ["Pasco", "Pinellas"],
+    "7": ["Flagler", "Putnam", "St. Johns", "Volusia"],
+    "8": ["Alachua", "Baker", "Bradford", "Gilchrist", "Levy", "Union"],
+    "9": ["Orange", "Osceola"],
+    "10": ["Hardee", "Highlands", "Polk"],
+    "11": ["Miami-Dade"],
+    "12": ["DeSoto", "Manatee", "Sarasota"],
+    "13": ["Hillsborough"],
+    "14": ["Bay", "Calhoun", "Gulf", "Holmes", "Jackson", "Washington"],
+    "15": ["Palm Beach"],
+    "16": ["Monroe"],
+    "17": ["Broward"],
+    "18": ["Brevard", "Seminole"],
+    "19": ["Indian River", "Martin", "Okeechobee", "St. Lucie"],
+    "20": ["Charlotte", "Collier", "Glades", "Hendry", "Lee"]
+  },
+  "portal_boundary": {
+    "system": "Florida Courts E-Filing Portal",
+    "county_case_type_subtype_verification_required": true,
+    "fees_calculated_by_portal_and_clerk": true,
+    "summons_workflow_varies_by_county": true,
+    "some_counties_require_paper_summons_and_check": true,
+    "exhibit_packaging_varies_by_county": true
+  },
+  "sources": [
+    {
+      "id": "FL-0001",
+      "url": "https://www.flcourts.gov/Florida-Courts/Trial-Courts-Circuit",
+      "description": "Official circuit structure, counties, and civil matters over $50,000"
+    },
+    {
+      "id": "FL-0002",
+      "url": "https://flcourts-media.flcourts.gov/content/download/2470505/opinion/Opinion_SC2024-1765.pdf",
+      "description": "Official Florida Supreme Court small-claims rule amendments retaining the $8,000 scope"
+    },
+    {
+      "id": "FL-0003",
+      "url": "https://myflcourtaccess.com/authority/faqs",
+      "description": "Official portal FAQ documenting county-specific summons, fees, case-type, and exhibit variation"
+    },
+    {
+      "id": "FL-0004",
+      "url": "https://myflcourtaccess.com/authority/",
+      "description": "Official Florida Courts E-Filing Authority portal"
+    }
+  ],
+  "excluded_from_automatic_routing": [
+    "probate",
+    "guardianship",
+    "family",
+    "juvenile",
+    "criminal",
+    "eviction",
+    "foreclosure",
+    "administrative appeal",
+    "extraordinary writ",
+    "claim with nonmonetary jurisdiction controlled by a special statute"
+  ],
+  "authority_boundary": "Ordinary Florida civil monetary routing only. Venue, service, pre-suit conditions, case type/subtype, clerk procedures, fees, summons method, exhibits, local administrative orders, and 2026 rule changes require source-backed verification before filing."
+}

@@ -66,6 +66,13 @@ For Fortune 500 accounting, tax, SEC, PCAOB, GAAP, or FinCEN packets, also load
 operations, privacy/data-broker, labor, workplace-safety, entity-maintenance, or
 franchise-tax exposure, also load `jurisdiction/packs/us-california-enterprise.json`.
 
+For an ordinary federal or Florida civil court matter, use
+`bin/glaw-court-case route --input case.json --json`. The bundled court packs are
+`courts/federal-core-2025.json`, `courts/mdfl-2025.json`, and
+`courts/florida-trial-courts-2026.json`. Only M.D. Florida has a verified local
+federal pack; every other federal district must remain in review. Florida routing
+excludes specialized proceedings listed in the state pack.
+
 For each jurisdiction, complete: `governing_law`, `forum`, `tax`, `licenses`,
 `filings`, `deadlines`, and `adversarial_lenses`. Every conclusion must cite a
 current matter source ID such as `SRC-0001`.

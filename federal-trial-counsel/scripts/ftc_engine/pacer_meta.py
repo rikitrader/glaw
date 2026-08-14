@@ -161,7 +161,7 @@ def _determine_nature_of_suit(case_data: dict) -> tuple[str, str]:
         if meta and meta.category in CATEGORY_NATURE_CODES:
             return CATEGORY_NATURE_CODES[meta.category]
 
-    return ("440", "Other Civil Rights")
+    return ("", "")
 
 
 def _determine_jurisdiction_basis(case_data: dict) -> str:
@@ -169,9 +169,9 @@ def _determine_jurisdiction_basis(case_data: dict) -> str:
     from .drafter import analyze_jurisdiction
     jx = analyze_jurisdiction(case_data)
 
-    if jx.basis == "federal_question":
+    if jx.satisfied and jx.basis == "federal_question":
         return "3"  # Federal Question
-    elif jx.basis == "diversity":
+    elif jx.satisfied and jx.basis == "diversity":
         return "4"  # Diversity
 
     # Check for government parties
@@ -183,7 +183,7 @@ def _determine_jurisdiction_basis(case_data: dict) -> str:
         if d.get("type") == "federal":
             return "2"  # U.S. Government Defendant
 
-    return "3"  # Default to federal question
+    return ""  # Fail closed; a human must select and verify the basis.
 
 
 def _get_cause_of_action(case_data: dict) -> str:
@@ -204,12 +204,18 @@ def _get_citizenship_code(party: dict) -> str:
 
     if etype == "individual":
         return f"Citizen of {citizenship}" if citizenship else "Citizen of this State"
-    elif etype in ("corporation", "llc"):
+    elif etype == "corporation":
         state = party.get("citizenship", party.get("state_of_incorporation", ""))
         ppb = party.get("principal_place_of_business", "")
         if state and ppb:
             return f"Incorporated in {state}, PPB in {ppb}"
         return f"Incorporated in {state}" if state else "Corporation"
+    elif etype in ("llc", "limited_liability_company"):
+        members = party.get("members", [])
+        if not members:
+            return "REVIEW REQUIRED: LLC citizenship follows every member"
+        citizenships = [_get_citizenship_code(member) for member in members]
+        return "LLC members: " + "; ".join(citizenships)
     elif etype == "federal_agency":
         return "U.S. Government"
     return citizenship or "Unknown"
@@ -394,6 +400,10 @@ def generate_filing_package(case_data: dict) -> PacerFilingPackage:
     # Validation warnings
     if not case_data.get("attorney"):
         warnings.append("No attorney information — placeholders used in JS-44 and summonses")
+    if not js44.basis_of_jurisdiction:
+        warnings.append("Jurisdiction basis is unverified — JS-44 filing is blocked pending attorney review")
+    if not js44.nature_of_suit_code:
+        warnings.append("Nature-of-suit code is unverified — select it from the current JS-44 code list")
     if js44.basis_of_jurisdiction == "4" and not js44.demand_amount:
         warnings.append("Diversity case requires amount in controversy > $75,000 — no demand amount specified")
 

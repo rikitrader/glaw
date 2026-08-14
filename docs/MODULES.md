@@ -63,6 +63,7 @@ client work:
 | `bin/glaw-bank-ingest` | source-first bank CSV ingest |
 | `bin/glaw-cites` | stdlib citation extraction |
 | `bin/glaw-court-scrape` | local court handoff/list |
+| `bin/glaw-court-case` | source-backed federal/Florida routing, hashed packet assembly, supervised filing/service handoff, and receipt recording |
 | `bin/glaw-assemble` | stdlib DOCX template fill |
 | `bin/glaw-redline-docx` | local redline artifact generation |
 | `bin/glaw-publish` | local HTML/manifest publishing |
