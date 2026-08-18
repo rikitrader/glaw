@@ -1,0 +1,278 @@
+{
+  "schema": "glaw-founder-control-authority-index/v1",
+  "as_of": "2026-08-18",
+  "refresh_required_days": 30,
+  "scope": [
+    "mandatory-law limits",
+    "fiduciary duties and standards of review",
+    "judicial review, remedies, and forum",
+    "dual-class and founder-control architecture",
+    "DGCL section 122(18) contracts"
+  ],
+  "jurisdiction_map": [
+    {
+      "forum": "Delaware Court of Chancery",
+      "role": "Primary trial forum for Delaware internal-affairs, fiduciary-duty, equitable, books-and-records, injunction, election, and governance disputes.",
+      "review": "Fact-intensive record review; can issue equitable relief and determine enforceability and corporate authority.",
+      "source": "https://courts.delaware.gov/chancery/"
+    },
+    {
+      "forum": "Delaware Supreme Court",
+      "role": "Final state appellate authority on Delaware corporate law; controls over Chancery where decisions conflict.",
+      "review": "Appeal, interlocutory review where permitted, and certified questions; current disposition must supersede trial-level statements.",
+      "source": "https://courts.delaware.gov/supreme/"
+    },
+    {
+      "forum": "Delaware Superior Court / federal court",
+      "role": "Contract, tort, securities, bankruptcy, and federal-question claims may proceed outside Chancery; federal claims and bankruptcy jurisdiction cannot be eliminated by a Delaware forum clause.",
+      "review": "Apply Delaware internal-affairs law where applicable, but preserve federal statutory jurisdiction and remedies.",
+      "source": "https://delcode.delaware.gov/title8/c001/sc07/index.html"
+    }
+  ],
+  "authority": [
+    {
+      "id": "moelis-supreme-2026",
+      "case": "Moelis & Company v. West Palm Beach Firefighters' Pension Fund",
+      "citation": "No. 340, 2024, 2026 WL 184868 (Del. Jan. 20, 2026)",
+      "court": "Delaware Supreme Court",
+      "tier": "binding",
+      "issue": "Facial challenge to extensive stockholder-agreement governance rights; laches; void versus voidable.",
+      "holding": "Reversed and vacated the Chancery judgment because the facial challenge accrued when the agreement was adopted and was barred by laches; the Supreme Court did not decide the merits of facial validity.",
+      "control_lesson": "Do not describe the Chancery merits ruling as the current controlling rule. Preserve prompt facial-review and later as-applied-review risk; do not rely on delay as a substitute for lawful drafting.",
+      "treatment": "Controls over Moelis Chancery on disposition; merits issue remains fact- and document-dependent.",
+      "courtlistener": "https://www.courtlistener.com/?q=Moelis%20West%20Palm%20Beach%20Firefighters&type=o",
+      "primary_source": "https://law.justia.com/cases/delaware/supreme-court/2026/340-2024.html",
+      "reviewed_at": "2026-08-18"
+    },
+    {
+      "id": "moelis-chancery-2024",
+      "case": "West Palm Beach Firefighters' Pension Fund v. Moelis & Company",
+      "citation": "311 A.3d 809 (Del. Ch. 2024)",
+      "court": "Delaware Court of Chancery",
+      "tier": "historical trial authority / adverse design signal",
+      "issue": "Stockholder agreement containing pre-approval, nomination, and committee-composition requirements.",
+      "holding": "Chancery held specified provisions facially invalid under DGCL §141(a) and §141(c). The judgment was later reversed/vacated on laches grounds without a Supreme Court merits holding.",
+      "control_lesson": "Use charter-based rights and §122(18) contracts only after checking certificate consistency, statutory limits, consideration, capacity, and as-applied fiduciary risk.",
+      "treatment": "Merits disposition superseded by Moelis Supreme; reasoning remains an adverse argument and drafting warning.",
+      "courtlistener": "https://www.courtlistener.com/?q=West%20Palm%20Beach%20Firefighters%20Moelis&type=o",
+      "primary_source": "https://law.justia.com/cases/delaware/court-of-chancery/2024/c-a-no-2023-0309-jtl-0.html",
+      "reviewed_at": "2026-08-18"
+    },
+    {
+      "id": "wagner-supreme-2026",
+      "case": "BRP Group, Inc. v. Ruby Wagner",
+      "citation": "No. 80, 2025, 2026 WL 1256588 (Del. May 7, 2026)",
+      "court": "Delaware Supreme Court",
+      "tier": "binding",
+      "issue": "Governance agreement consent rights and post-Moelis facial/as-applied challenge.",
+      "holding": "Reversed and remanded; after Moelis, the analysis focuses on the specific actors, conduct, timing, and scenario rather than treating the agreement as automatically incurably void.",
+      "control_lesson": "Every consent right needs an as-applied process file: who exercised it, why, what benefit was received, what alternatives were considered, and whether the action was coercive or conflicted.",
+      "treatment": "Current Supreme Court guidance; pair with Moelis Supreme and current §122(18).",
+      "courtlistener": "https://www.courtlistener.com/?q=BRP%20Group%20Ruby%20Wagner&type=o",
+      "primary_source": "https://law.justia.com/cases/delaware/supreme-court/2026/80-2025.html",
+      "reviewed_at": "2026-08-18"
+    },
+    {
+      "id": "match-2024",
+      "case": "In re Match Group, Inc. Derivative Litigation",
+      "citation": "315 A.3d 446 (Del. 2024)",
+      "court": "Delaware Supreme Court",
+      "tier": "binding",
+      "issue": "Controlling-stockholder transaction, conflicted benefit, independent committee, and stockholder vote.",
+      "holding": "A controller transaction receiving a non-ratable benefit requires the MFW protections to obtain business-judgment review: an independent committee and informed, uncoerced majority-of-the-minority vote, properly deployed.",
+      "control_lesson": "Founder control does not immunize related-party deals. Pre-clear conflicts, committee independence, disclosure, and disinterested voting before closing.",
+      "courtlistener": "https://www.courtlistener.com/?q=In%20re%20Match%20Group%20Derivative%20Litigation&type=o",
+      "primary_source": "https://law.justia.com/cases/delaware/supreme-court/2024/368-2022.html",
+      "reviewed_at": "2026-08-18"
+    },
+    {
+      "id": "rutledge-2026",
+      "case": "Rutledge v. Clearway Energy Group LLC",
+      "citation": "No. 248, 2025 (Del. Feb. 27, 2026)",
+      "court": "Delaware Supreme Court",
+      "tier": "binding",
+      "issue": "Constitutionality and operation of statutory controlling-stockholder transaction safe harbors under amended DGCL §144.",
+      "holding": "Upheld the statutory safe-harbor framework against the constitutional challenge presented.",
+      "control_lesson": "Run current §144 safe-harbor analysis for every controller transaction; do not assume MFW is the only route or that a contractual consent right supplies a safe harbor.",
+      "courtlistener": "https://www.courtlistener.com/?q=Rutledge%20Clearway%20Energy&type=o",
+      "primary_source": "https://law.justia.com/cases/delaware/supreme-court/2026/248-2025.html",
+      "reviewed_at": "2026-08-18"
+    },
+    {
+      "id": "coster-2023",
+      "case": "Coster v. UIP Companies, Inc.",
+      "citation": "300 A.3d 656 (Del. 2023)",
+      "court": "Delaware Supreme Court",
+      "tier": "binding",
+      "issue": "Stock issuance during a board-election deadlock that diluted a stockholder and changed voting control.",
+      "holding": "A formally valid issuance can still receive enhanced scrutiny when used for an inequitable purpose affecting the stockholder franchise; the court required analysis of purpose and effect, not price alone.",
+      "control_lesson": "Anti-dilution and board-size protections must not be used as entrenchment tools; document a legitimate corporate purpose, fair process, and non-coercive implementation.",
+      "courtlistener": "https://www.courtlistener.com/?q=Coster%20UIP&type=o",
+      "primary_source": "https://law.justia.com/cases/delaware/supreme-court/2023/163-2022.html",
+      "reviewed_at": "2026-08-18"
+    },
+    {
+      "id": "mfw-2014",
+      "case": "Kahn v. M&F Worldwide Corp.",
+      "citation": "88 A.3d 635 (Del. 2014)",
+      "court": "Delaware Supreme Court",
+      "tier": "binding",
+      "issue": "Controller squeeze-out and dual procedural protections.",
+      "holding": "When properly conditioned from inception on an independent special committee and informed, uncoerced majority-of-the-minority approval, the business-judgment rule can apply.",
+      "control_lesson": "Make conflict protections conditions precedent, not after-the-fact cleanup; preserve committee independence and complete disclosure evidence.",
+      "courtlistener": "https://www.courtlistener.com/?q=Kahn%20M%26F%20Worldwide&type=o",
+      "primary_source": "https://www.leagle.com/decision/indeco20140314045",
+      "reviewed_at": "2026-08-18"
+    },
+    {
+      "id": "schnell-1971",
+      "case": "Schnell v. Chris-Craft Industries, Inc.",
+      "citation": "285 A.2d 437 (Del. 1971)",
+      "court": "Delaware Supreme Court",
+      "tier": "binding",
+      "issue": "Technically valid advance-notice manipulation designed to obstruct stockholder voting.",
+      "holding": "Inequitable action does not become permissible merely because it is legally possible; courts can provide equitable relief against manipulation of the stockholder franchise.",
+      "control_lesson": "Founder-control mechanics need a legitimate purpose and clean notice/voting process; mechanical compliance is not a complete defense.",
+      "courtlistener": "https://www.courtlistener.com/?q=Schnell%20Chris-Craft&type=o",
+      "primary_source": "https://law.justia.com/cases/delaware/supreme-court/1971/285-a-2d-437-2.html",
+      "reviewed_at": "2026-08-18"
+    },
+    {
+      "id": "blasius-1988",
+      "case": "Blasius Industries, Inc. v. Atlas Corp.",
+      "citation": "564 A.2d 651 (Del. Ch. 1988)",
+      "court": "Delaware Court of Chancery",
+      "tier": "persuasive/coordinate trial authority; doctrinally integrated with Unocal/Coster",
+      "issue": "Board action primarily affecting stockholder voting power.",
+      "holding": "Board action taken for the primary purpose of interfering with the stockholder franchise receives exacting scrutiny.",
+      "control_lesson": "Do not use board expansion, issuance, conversion, or voting mechanics principally to entrench the Founder or defeat a legitimate vote.",
+      "courtlistener": "https://www.courtlistener.com/?q=Blasius%20Atlas&type=o",
+      "primary_source": "https://law.justia.com/cases/delaware/court-of-chancery/1988/564-a-2d-651-4.html",
+      "reviewed_at": "2026-08-18"
+    },
+    {
+      "id": "unocal-1985",
+      "case": "Unocal Corp. v. Mesa Petroleum Co.",
+      "citation": "493 A.2d 946 (Del. 1985)",
+      "court": "Delaware Supreme Court",
+      "tier": "binding",
+      "issue": "Board defensive measures affecting control and voting.",
+      "holding": "Defensive action receives enhanced scrutiny and must respond proportionately to a reasonably perceived threat.",
+      "control_lesson": "Founder vetoes, poison pills, voting restrictions, and anti-dilution provisions must be threat-linked, proportionate, and supported by a good-faith record.",
+      "courtlistener": "https://www.courtlistener.com/?q=Unocal%20Mesa%20Petroleum&type=o",
+      "primary_source": "https://law.justia.com/cases/delaware/supreme-court/1985/493-a-2d-946-2.html",
+      "reviewed_at": "2026-08-18"
+    },
+    {
+      "id": "qvc-1994",
+      "case": "Paramount Communications Inc. v. QVC Network Inc.",
+      "citation": "637 A.2d 34 (Del. 1994)",
+      "court": "Delaware Supreme Court",
+      "tier": "binding",
+      "issue": "Sale or change of control and board fiduciary obligations.",
+      "holding": "When a company is being sold or control is changing, directors must pursue the best value reasonably available for stockholders, subject to the applicable legal framework.",
+      "control_lesson": "Founder consent cannot force directors to reject a superior deal or prefer Founder interests when Revlon/QVC duties are triggered.",
+      "courtlistener": "https://www.courtlistener.com/?q=Paramount%20QVC&type=o",
+      "primary_source": "https://law.justia.com/cases/delaware/supreme-court/1994/637-a-2d-34-4.html",
+      "reviewed_at": "2026-08-18"
+    },
+    {
+      "id": "trados-2013",
+      "case": "In re Trados Inc. Shareholder Litigation",
+      "citation": "73 A.3d 17 (Del. Ch. 2013)",
+      "court": "Delaware Court of Chancery",
+      "tier": "persuasive/coordinate trial authority",
+      "issue": "Preferred liquidation preference, common stock value, and conflicted sale process.",
+      "holding": "Directors must account for the corporation’s and classes’ interests under the governing rights; conflict and value-allocation evidence can defeat deference.",
+      "control_lesson": "Model Class A, Class B, preferred, and founder economics separately; do not treat voting control as permission to disregard liquidation preferences or minority value.",
+      "courtlistener": "https://www.courtlistener.com/?q=In%20re%20Trados&type=o",
+      "primary_source": "https://law.justia.com/cases/delaware/court-of-chancery/2013/ca-1512-vcl.html",
+      "reviewed_at": "2026-08-18"
+    },
+    {
+      "id": "corwin-2015",
+      "case": "Corwin v. KKR Financial Holdings LLC",
+      "citation": "125 A.3d 304 (Del. 2015)",
+      "court": "Delaware Supreme Court",
+      "tier": "binding",
+      "issue": "Effect of informed, uncoerced stockholder approval on post-closing fiduciary claims.",
+      "holding": "A fully informed, uncoerced vote of disinterested stockholders can restore business-judgment review for certain non-controller transactions.",
+      "control_lesson": "The Founder’s super-vote may make a vote non-disinterested or ineffective for review purposes; preserve disclosure and controller-analysis records.",
+      "courtlistener": "https://www.courtlistener.com/?q=Corwin%20KKR%20Financial&type=o",
+      "primary_source": "https://law.justia.com/cases/delaware/supreme-court/2015/629-2014.html",
+      "reviewed_at": "2026-08-18"
+    },
+    {
+      "id": "oracle-2025",
+      "case": "In re Oracle Corporation Derivative Litigation",
+      "citation": "No. 139, 2024 (Del. 2025)",
+      "court": "Delaware Supreme Court",
+      "tier": "binding",
+      "issue": "Control analysis, conflicted fiduciary conduct, and derivative claims.",
+      "holding": "Control is a fact-sensitive inquiry; potential influence alone is not automatically enough, while conflicted fiduciary conduct remains independently reviewable.",
+      "control_lesson": "The 5.01% super-vote may create practical control even without majority economics; maintain a control-status memo and conflict protocols at every significant decision.",
+      "courtlistener": "https://www.courtlistener.com/?q=In%20re%20Oracle%20Corporation%20Derivative&type=o",
+      "primary_source": "https://law.justia.com/cases/delaware/supreme-court/2025/139-2024.html",
+      "reviewed_at": "2026-08-18"
+    },
+    {
+      "id": "tesla-2025",
+      "case": "In re Tesla, Inc. Derivative Litigation",
+      "citation": "Nos. 534, 2024; 10, 11 & 12, 2025 (Del. Dec. 19, 2025)",
+      "court": "Delaware Supreme Court",
+      "tier": "binding",
+      "issue": "Transaction-specific control, executive compensation, entire-fairness process, disclosure, and remedy.",
+      "holding": "The Supreme Court affirmed fiduciary-liability findings in relevant part but reversed the rescission remedy, reinstated the compensation plan, and awarded nominal damages and fees because rescission could not restore the parties to the status quo.",
+      "control_lesson": "A founder-control structure must preserve an independent compensation and transaction process, contemporaneous benchmarking, conflict recusals, complete disclosure, and a remedy analysis; control rights do not make a founder transaction-proof.",
+      "treatment": "Current Supreme Court authority; read together with the Chancery post-trial record and current Texas governing documents where applicable.",
+      "courtlistener": "https://www.courtlistener.com/?q=In%20re%20Tesla%20Derivative%20Litigation&type=o",
+      "primary_source": "https://law.justia.com/cases/delaware/supreme-court/2025/534-2024-10-11-and-12-2025.html",
+      "reviewed_at": "2026-08-18"
+    }
+  ],
+  "issuer_control_evidence": [
+    {
+      "issuer": "Meta Platforms, Inc.",
+      "jurisdiction": "Delaware",
+      "structure": "Class A common carries 1 vote per share; Class B common carries 10 votes per share. Class A and Class B generally vote together as one class.",
+      "reported_control": "Meta's 2025 proxy reported that Zuckerberg owned nearly all Class B stock; the filing reported approximately 61% of overall voting power with approximately 14% economic interest.",
+      "armor_lesson": "Put vote ratio, class voting, conversion, and adverse-change protections in the certificate; reconcile actual votes from the current proxy/cap table rather than relying on a ratio alone.",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/1326801/000132680125000040/meta-20250417.htm",
+      "charter_source": "https://www.sec.gov/Archives/edgar/data/1326801/000132680124000069/meta06302024-ex31.htm",
+      "courtlistener": "https://www.courtlistener.com/?q=Meta%20Platforms%20dual%20class%20Zuckerberg&type=o",
+      "reviewed_at": "2026-08-18"
+    },
+    {
+      "issuer": "Space Exploration Technologies Corp. (SpaceX)",
+      "jurisdiction": "Delaware at the referenced offering stage; verify the operative charter and governing law at each issuance or listing event",
+      "structure": "Public offering materials describe Class A, Class B, and Class C common stock, with Class B carrying 10 votes per share, Class B class votes, Class B director-election rights, and separate approval for specified adverse amendments and combinations.",
+      "reported_control": "The SEC offering materials state that Musk would control the voting power over selection of the board and shareholder matters after the offering, subject to the charter and offering assumptions.",
+      "armor_lesson": "A multi-class structure can combine ordinary votes, Class B separate votes, director-election rights, conversion rules, and role-removal provisions; every one must be tested against current charter text, exchange rules, securities disclosure, and applicable governing law.",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026036936/spaceexplorationtechnologi.htm",
+      "offering_source": "https://www.sec.gov/Archives/edgar/data/1181412/000162828026040610/spacexfwp.htm",
+      "courtlistener": "https://www.courtlistener.com/?q=SpaceX%20dual%20class%20Musk&type=o",
+      "reviewed_at": "2026-08-18"
+    },
+    {
+      "issuer": "Tesla, Inc.",
+      "jurisdiction": "Texas after June 13, 2024 reincorporation; historical fiduciary cases arose under Delaware law",
+      "structure": "Tesla's 2026 SEC security description reports one registered class of common stock with one vote per share; Musk's influence was not based on a dual-class super-vote in that filing.",
+      "reported_control": "Tesla is an essential negative example: practical or transaction-specific control can create fiduciary exposure even without majority voting power.",
+      "armor_lesson": "Do not confuse super-voting stock with fiduciary immunity. A founder with less than majority voting power may still be treated as a controller for a particular transaction based on influence, role, process, and evidence.",
+      "primary_source": "https://www.sec.gov/Archives/edgar/data/1318605/000162828026003952/tsla-2025x12x31xex417.htm",
+      "key_case": "https://law.justia.com/cases/delaware/supreme-court/2025/534-2024-10-11-and-12-2025.html",
+      "courtlistener": "https://www.courtlistener.com/?q=In%20re%20Tesla%20Derivative%20Litigation&type=o",
+      "reviewed_at": "2026-08-18"
+    }
+  ],
+  "operational_gates": [
+    "Identify the actual court, claim, remedy, and governing law; do not rely on a generic 'Delaware law' label.",
+    "Separate facial validity, as-applied validity, fiduciary review, contract remedies, and statutory safe-harbor analysis.",
+    "Check the newest Delaware Supreme Court disposition before relying on any Chancery opinion.",
+    "Preserve an adverse-authority memo for every founder-control provision.",
+    "Record whether the Founder acted as stockholder, director, officer, controller, or contracting party.",
+    "Use independent committee, disinterested vote, disclosure, and fairness procedures when a controller receives a non-ratable benefit.",
+    "Do not use dilution, board-size, or voting mechanisms for entrenchment or franchise interference.",
+    "Route disputes to Delaware counsel for forum, jurisdiction, remedy, and current-law review; this index is not a legal opinion."
+  ]
+}
