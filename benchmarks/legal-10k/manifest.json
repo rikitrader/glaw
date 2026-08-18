@@ -1,0 +1,75 @@
+{
+  "authority_policy": "No authority, question, or gold decision may be invented by the scaffold.",
+  "challenge_target": 0.2,
+  "created_at": "2026-08-18T19:19:07Z",
+  "domains": [
+    {
+      "count": 1500,
+      "id": "delaware-corporate"
+    },
+    {
+      "count": 1200,
+      "id": "securities-funds"
+    },
+    {
+      "count": 1000,
+      "id": "contracts"
+    },
+    {
+      "count": 1000,
+      "id": "employment"
+    },
+    {
+      "count": 1000,
+      "id": "federal-procedure-evidence"
+    },
+    {
+      "count": 1000,
+      "id": "tax"
+    },
+    {
+      "count": 800,
+      "id": "bankruptcy"
+    },
+    {
+      "count": 800,
+      "id": "administrative-law"
+    },
+    {
+      "count": 700,
+      "id": "constitutional-law"
+    },
+    {
+      "count": 500,
+      "id": "state-choice-of-law"
+    },
+    {
+      "count": 500,
+      "id": "citation-quotation-holding-traps"
+    }
+  ],
+  "gold_policy": "Only released rows with independent attorney review and source-backed authorities enter evaluation.",
+  "items_sha256": "ee0ccfa3f61bc22bc9c8db7d21eed1cc91446eb4d959f0b1a0f8347f34f6ed66",
+  "review_policy": "Two independent named counsel reviews; adjudicator required only for disagreement.",
+  "schema": "glaw-attorney-benchmark/v1",
+  "splits": {
+    "calibration": 0.1,
+    "development": 0.7,
+    "locked-evaluation": 0.2
+  },
+  "total": 10000,
+  "trap_types": [
+    "FABRICATED_CASE",
+    "WRONG_HOLDING",
+    "OVERRULED_PRECEDENT",
+    "SUPERSEDED_STATUTE",
+    "WRONG_JURISDICTION",
+    "WRONG_DATE",
+    "OMITTED_EXCEPTION",
+    "DISSENT_AS_HOLDING",
+    "PARTY_ARGUMENT_AS_HOLDING",
+    "FALSE_PREMISE",
+    "ADVERSE_AUTHORITY_OMISSION"
+  ],
+  "updated_at": "2026-08-18T19:25:17Z"
+}
