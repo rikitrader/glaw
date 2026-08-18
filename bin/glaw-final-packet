@@ -23,6 +23,8 @@ from glaw_profiles import (
 )
 from glaw_accounting_control import accounting_control_manifest
 from glaw_premium_scope import premium_lane_requirement
+from founder_control import verify_assurance_certificate
+from legal_governor.final_gate import evaluate as legal_governor_final_gate
 
 
 REQUIRED_INTAKE = (
@@ -68,6 +70,19 @@ def matter_dir(slug: str | None) -> Path:
     if not d.is_dir():
         raise SystemExit(f"ERROR: matter not found: {s}")
     return d
+
+
+FOUNDER_CONTROL_LANES = {"founder-control-stack", "founder-control-assurance", "founder-governance"}
+
+
+def founder_control_assurance_manifest(d: Path, root: Path, requirement: dict) -> dict:
+    required_lanes = set(requirement.get("required_lanes", []) if isinstance(requirement, dict) else [])
+    required = bool(required_lanes & FOUNDER_CONTROL_LANES)
+    if not required:
+        return {"status": "not_required", "required": False, "failures": []}
+    report = verify_assurance_certificate(d, root)
+    report["required"] = True
+    return report
 
 
 def read_json(path: Path, default):
@@ -582,6 +597,14 @@ COMPLIANCE_ROW_ROUTES = {
         "bin/glaw-premium-lanes materialize-source-ingest --json",
         "materialize the local TAX CREDIT, LLC, and SEC source-ingest ledger into matter sources before packet reliance",
     ),
+    "founder-control-assurance": (
+        "bin/glaw-founder-control verify --matter-slug <slug>",
+        "issue or refresh the source-backed founder-control certificate, cap-table math, voting-universe, ledger, and human-seal evidence",
+    ),
+    "legal-governor": (
+        "bin/glaw-legal-governor final-check --matter-slug <slug>",
+        "complete the source-locked RAG context, Claude/Codex parity, citation/adverse-authority/red-team review, and Governor counsel gate",
+    ),
 }
 
 
@@ -913,8 +936,12 @@ def compliance_manifest(
     premium_lane_rows: list[dict],
     premium_objective_audit: dict,
     materialized_source_ingest: dict,
+    founder_control_assurance_manifest: dict | None = None,
+    legal_governor_manifest: dict | None = None,
 ) -> list[dict]:
     accounting_required = accounting_control.get("required") is True
+    founder_control_assurance_manifest = founder_control_assurance_manifest or {}
+    legal_governor_manifest = legal_governor_manifest or {}
     failing_premium_lanes = [item for item in premium_lane_rows if item.get("status") != "pass"]
     premium_lane_route = failing_premium_lanes[0] if failing_premium_lanes else (premium_lane_rows[0] if premium_lane_rows else {})
     objective_failures = premium_objective_audit.get("failures") if isinstance(premium_objective_audit.get("failures"), list) else []
@@ -923,7 +950,7 @@ def compliance_manifest(
         for item in objective_failures
         if isinstance(item, dict)
     ] or ["premium_objective_audit_manifest"]
-    return [
+    rows = [
         _compliance_row(
             "ethics-upl",
             "glaw-ethics-conflicts",
@@ -1035,6 +1062,14 @@ def compliance_manifest(
             gates.get("materialized_source_ingest_clear", False),
             list(materialized_source_ingest.get("missing") or []),
         ),
+        _compliance_row(
+            "founder-control-assurance",
+            "glaw-founder-control",
+            gates.get("founder_control_assurance_clear", False),
+            [] if gates.get("founder_control_assurance_clear", False) else list(
+                (founder_control_assurance_manifest.get("failures") or ["founder-control-assurance certificate"])
+            ),
+        ),
     ] + ([{
         **_compliance_row(
             "premium-lane-packet",
@@ -1049,6 +1084,14 @@ def compliance_manifest(
         "next_command": premium_lane_route.get("next_command") or COMPLIANCE_ROW_ROUTES["premium-lane-packet"][0],
         "required_fix": premium_lane_route.get("required_fix") or COMPLIANCE_ROW_ROUTES["premium-lane-packet"][1],
     }] if premium_lane_rows else [])
+    if legal_governor_manifest.get("required"):
+        rows.append(_compliance_row(
+            "legal-governor",
+            "glaw-legal-governor",
+            legal_governor_manifest.get("status") == "pass",
+            list(legal_governor_manifest.get("failures") or []),
+        ))
+    return rows
 
 
 def run_check(cmd: list[str], cwd: Path) -> tuple[int, str]:
@@ -1272,6 +1315,8 @@ def cmd_build(args: argparse.Namespace) -> int:
     premium_requirement = premium_lane_requirement(intake)
     premium_lane_rows = premium_lane_manifest(d, root, premium_requirement)
     premium_lane_clear = all(item["status"] == "pass" for item in premium_lane_rows)
+    founder_control_assurance = founder_control_assurance_manifest(d, root, premium_requirement)
+    founder_control_assurance_clear = founder_control_assurance.get("status") in {"pass", "not_required"}
     premium_objective_audit = premium_objective_audit_manifest(root)
     premium_objective_audit_clear = (
         premium_objective_audit.get("status") == "pass"
@@ -1283,6 +1328,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         premium_objective_audit,
     )
     materialized_source_ingest_clear = materialized_source_ingest.get("status") in {"pass", "not_required"}
+    legal_governor_manifest = legal_governor_final_gate(d)
     gate_artifact_names = list(REQUIRED_GATE_ARTIFACTS)
     gate_artifact_names.extend(
         name for name in OPTIONAL_GATE_ARTIFACTS
@@ -1333,9 +1379,11 @@ def cmd_build(args: argparse.Namespace) -> int:
         "professional_report_manifest_clear": report_quality_clear,
         "accounting_control_manifest_clear": accounting_control["status"] in {"pass", "not_required"},
         "premium_lane_packet_clear": premium_lane_clear,
+        "founder_control_assurance_clear": founder_control_assurance_clear,
         "premium_objective_audit_clear": premium_objective_audit_clear,
         "materialized_source_ingest_clear": materialized_source_ingest_clear,
         "upl_footer_clear": rc_upl == 0,
+        "legal_governor_clear": legal_governor_manifest.get("status") in {"pass", "not_required"},
     }
     compliance_rows = compliance_manifest(
         profile,
@@ -1351,6 +1399,8 @@ def cmd_build(args: argparse.Namespace) -> int:
         premium_lane_rows=premium_lane_rows,
         premium_objective_audit=premium_objective_audit,
         materialized_source_ingest=materialized_source_ingest,
+        founder_control_assurance_manifest=founder_control_assurance,
+        legal_governor_manifest=legal_governor_manifest,
     )
     compliance_clear = bool(compliance_rows) and all(item["status"] == "pass" for item in compliance_rows)
     gates["compliance_manifest_clear"] = compliance_clear
@@ -1389,8 +1439,10 @@ def cmd_build(args: argparse.Namespace) -> int:
         "accounting_control_manifest": accounting_control,
         "premium_lane_requirement": premium_requirement,
         "premium_lane_manifest": premium_lane_rows,
+        "founder_control_assurance_manifest": founder_control_assurance,
         "premium_objective_audit_manifest": premium_objective_audit,
         "materialized_source_ingest_manifest": materialized_source_ingest,
+        "legal_governor_manifest": legal_governor_manifest,
         "report_quality_required_markers": list(REPORT_REQUIRED_MARKERS),
         "report_quality_manifest": report_quality_manifest,
         "gate_artifact_hashes": gate_artifact_hashes,
