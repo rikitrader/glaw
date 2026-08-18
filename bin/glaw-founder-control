@@ -1,0 +1,221 @@
+#!/usr/bin/env python3
+"""GLAW founder-control calculator, certificate, and transfer ledger."""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import sys
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "lib"))
+from founder_control import (  # noqa: E402
+    _canonical_sha256,
+    _sha256,
+    calculate,
+    ledger_digest,
+    minimum_multiplier,
+    sensitivity,
+    verify_assurance_certificate,
+)
+
+
+def now() -> str:
+    return datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
+
+
+def matter_path(slug: str) -> Path:
+    path = Path(sys.argv[0]).resolve()  # only used to keep error messages deterministic
+    del path
+    home = Path(__import__("os").environ.get("GLAW_HOME", str(Path.home() / ".glaw"))).expanduser().resolve()
+    result = home / "matters" / slug
+    if not result.is_dir():
+        raise SystemExit(f"matter does not exist: {slug}")
+    return result
+
+
+def load_json(path: Path) -> tuple[str, dict[str, Any]]:
+    raw = path.read_text(encoding="utf-8")
+    value = json.loads(raw)
+    if not isinstance(value, dict):
+        raise SystemExit("input must be a JSON object")
+    return raw, value
+
+
+def calculate_command(argv: list[str]) -> int:
+    parser = argparse.ArgumentParser(prog="glaw-founder-control")
+    parser.add_argument("input", nargs="?", default="-", help="JSON workpaper path, or - for stdin")
+    parser.add_argument("--sensitivity", action="store_true")
+    args = parser.parse_args(argv)
+    raw = sys.stdin.read() if args.input == "-" else Path(args.input).read_text(encoding="utf-8")
+    payload = json.loads(raw)
+    result = {
+        "schema": "glaw-founder-control/v2",
+        "input_sha256": hashlib.sha256(raw.encode("utf-8")).hexdigest(),
+        "result": calculate(payload).as_dict(),
+        "minimum_multiplier_lower_bound": str(minimum_multiplier(payload.get("threshold_percent", "5.01"), payload.get("vote_floor_percent", "50.1"))),
+    }
+    if args.sensitivity:
+        result["sensitivity"] = sensitivity(payload)
+    print(json.dumps(result, indent=2, sort_keys=True))
+    return 0 if result["result"]["status"] == "pass" else 1
+
+
+CONTROL_FLAGS = (
+    "cap_table_reconciled",
+    "voting_universe_reconciled",
+    "control_math_passed",
+    "dilution_reviewed",
+    "transfer_conversion_reviewed",
+    "document_precedence_clear",
+    "case_law_index_reviewed",
+    "jurisdiction_and_forum_reviewed",
+    "fiduciary_process_reviewed",
+    "accounting_tax_disclosure_handoff",
+    "human_seal_recorded",
+)
+
+
+def certify_command(argv: list[str]) -> int:
+    parser = argparse.ArgumentParser(prog="glaw-founder-control certify")
+    parser.add_argument("--matter-slug", required=True)
+    parser.add_argument("--input", required=True)
+    parser.add_argument("--reviewer", required=True)
+    parser.add_argument("--seal-id", required=True)
+    parser.add_argument("--source", required=True)
+    parser.add_argument("--event", default="assurance_review")
+    for flag in CONTROL_FLAGS:
+        parser.add_argument(f"--{flag.replace('_', '-')}", action="store_true", required=True)
+    args = parser.parse_args(argv)
+    if "SRC-" not in args.source:
+        raise SystemExit("--source must include an SRC- evidence id")
+    matter = matter_path(args.matter_slug)
+    input_path = Path(args.input).expanduser().resolve()
+    if matter not in input_path.parents or not input_path.is_file():
+        raise SystemExit("--input must be an existing file inside the matter directory")
+    raw, payload = load_json(input_path)
+    control = calculate(payload).as_dict()
+    ledger_sha, ledger_count, ledger_failures = ledger_digest(matter)
+    policy = ROOT / "lib" / "client-lanes" / "founder-control-assurance.json"
+    controls = {name: bool(getattr(args, name)) for name in CONTROL_FLAGS}
+    failures = list(control.get("failures", [])) + ledger_failures
+    if control.get("status") != "pass":
+        failures.append("control math did not pass")
+    if ledger_failures:
+        failures.append("transfer/conversion ledger is invalid")
+    certificate = {
+        "schema": "glaw-founder-control-certificate/v1",
+        "status": "pass" if not failures and all(controls.values()) else "fail",
+        "matter_slug": args.matter_slug,
+        "event": args.event,
+        "issued_at": now(),
+        "reviewer": args.reviewer,
+        "source": args.source,
+        "input_path": str(input_path.relative_to(matter)),
+        "input_sha256": hashlib.sha256(raw.encode("utf-8")).hexdigest(),
+        "policy_path": str(policy.relative_to(ROOT)),
+        "policy_sha256": _sha256(policy),
+        "ledger_sha256": ledger_sha,
+        "ledger_count": ledger_count,
+        "control_result": control,
+        "controls": controls,
+        "human_seal": {"seal_id": args.seal_id, "actor": args.reviewer, "required": True},
+        "failures": sorted(set(failures)),
+        "authority": "source-backed assurance workpaper; not a legal opinion, filing, signature, payment, or Chief/Council approval",
+    }
+    output = matter / "workpapers" / "founder-control-assurance.json"
+    output.parent.mkdir(parents=True, exist_ok=True)
+    output.write_text(json.dumps(certificate, indent=2, sort_keys=False) + "\n", encoding="utf-8")
+    timeline = matter / "timeline.jsonl"
+    with timeline.open("a", encoding="utf-8") as fh:
+        fh.write(json.dumps({"ts": certificate["issued_at"], "event": "founder_control_assurance_complete", "status": certificate["status"], "source": args.source, "certificate": str(output.relative_to(matter))}) + "\n")
+    verification = verify_assurance_certificate(matter, ROOT)
+    report = {"status": verification["status"], "certificate": str(output), "verification": verification}
+    print(json.dumps(report, indent=2, sort_keys=True))
+    return 0 if verification["status"] == "pass" else 1
+
+
+def ledger_command(argv: list[str]) -> int:
+    parser = argparse.ArgumentParser(prog="glaw-founder-control ledger")
+    parser.add_argument("--matter-slug", required=True)
+    parser.add_argument("--event-type", choices=("transfer", "conversion"), required=True)
+    parser.add_argument("--holder", required=True)
+    parser.add_argument("--shares", required=True)
+    parser.add_argument("--effective-date", required=True)
+    parser.add_argument("--source", required=True)
+    parser.add_argument("--reviewer", required=True)
+    parser.add_argument("--seal-id", required=True)
+    parser.add_argument("--from-class", default="")
+    parser.add_argument("--to-class", default="")
+    parser.add_argument("--from-holder", default="")
+    parser.add_argument("--to-holder", default="")
+    parser.add_argument("--reason", required=True)
+    args = parser.parse_args(argv)
+    if "SRC-" not in args.source:
+        raise SystemExit("--source must include an SRC- evidence id")
+    if args.event_type == "conversion" and (not args.from_class or not args.to_class):
+        raise SystemExit("conversion requires --from-class and --to-class")
+    if args.event_type == "transfer" and (not args.from_holder or not args.to_holder):
+        raise SystemExit("transfer requires --from-holder and --to-holder")
+    try:
+        shares = str(__import__("fractions").Fraction(args.shares))
+    except (ValueError, ZeroDivisionError):
+        raise SystemExit("--shares must be numeric")
+    matter = matter_path(args.matter_slug)
+    path = matter / "workpapers" / "founder-control-ledger.jsonl"
+    path.parent.mkdir(parents=True, exist_ok=True)
+    row = {
+        "schema": "glaw-founder-control-ledger/v1",
+        "event_type": args.event_type,
+        "event_id": "",
+        "recorded_at": now(),
+        "effective_date": args.effective_date,
+        "holder": args.holder,
+        "shares": shares,
+        "from_class": args.from_class,
+        "to_class": args.to_class,
+        "from_holder": args.from_holder,
+        "to_holder": args.to_holder,
+        "reason": args.reason,
+        "source": args.source,
+        "reviewer": args.reviewer,
+        "human_seal_id": args.seal_id,
+    }
+    row["event_id"] = _canonical_sha256(row)
+    row["row_hash"] = _canonical_sha256(row)
+    existing = path.read_text(encoding="utf-8") if path.exists() else ""
+    if any(json.loads(line).get("event_id") == row["event_id"] for line in existing.splitlines() if line.strip()):
+        raise SystemExit("duplicate ledger event")
+    with path.open("a", encoding="utf-8") as fh:
+        fh.write(json.dumps(row, sort_keys=True) + "\n")
+    digest, count, failures = ledger_digest(matter)
+    report = {"status": "pass" if not failures else "fail", "event_id": row["event_id"], "ledger_sha256": digest, "ledger_count": count, "failures": failures}
+    print(json.dumps(report, indent=2, sort_keys=True))
+    return 0 if report["status"] == "pass" else 1
+
+
+def verify_command(argv: list[str]) -> int:
+    parser = argparse.ArgumentParser(prog="glaw-founder-control verify")
+    parser.add_argument("--matter-slug", required=True)
+    args = parser.parse_args(argv)
+    report = verify_assurance_certificate(matter_path(args.matter_slug), ROOT)
+    print(json.dumps(report, indent=2, sort_keys=True))
+    return 0 if report["status"] == "pass" else 1
+
+
+def main(argv: list[str] | None = None) -> int:
+    argv = list(sys.argv[1:] if argv is None else argv)
+    if argv and argv[0] == "certify":
+        return certify_command(argv[1:])
+    if argv and argv[0] == "ledger":
+        return ledger_command(argv[1:])
+    if argv and argv[0] == "verify":
+        return verify_command(argv[1:])
+    return calculate_command(argv)
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
