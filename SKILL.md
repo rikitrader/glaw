@@ -45,7 +45,8 @@ sed -n '/## Matter pipeline/,/## Routing rule/p' lib/firm-roster.md 2>/dev/null 
 ```
 
 Read `lib/firm-roster.md` in full before assigning any seat. For Fortune 500,
-tax-system, entrepreneur/founder, unicorn, investor, or UHNW/family-office matters,
+tax-system, entrepreneur/founder, founder-governance/consent-rights, founder-control-stack,
+unicorn, investor, or UHNW/family-office matters,
 also read `lib/client-lanes/fortune500-tax-entrepreneur.md` before assigning seats.
 
 ## The pipeline
@@ -61,9 +62,21 @@ UHNW/family-office matters:
 - **corp-build** (company/fund): strategy = deal thesis, structure = entity org chart + tax + cap table, draft = formation/governance/offering docs, adversarial = IRS + SEC + creditor red-team, file = EDGAR/IARD/state filing packet.
 - **investigation** (white-collar/criminal): led by `/glaw-investigations`, with the **Intelligence Super-Structure** (`/glaw-command`) for deep workups — FBI bureau (`/glaw-bureau`) + FinCEN (`/glaw-fincen`) + CIA (`/glaw-intel`) + SEC (`/glaw-sec`) cells. `/glaw-command` **triages → always briefs → escalates to a full DOSSIER only when red flags clear the threshold**, with adversarial review + scorecards on every issue. strategy = theory of wrongdoing, structure = entity & flow-of-funds map, draft = exposure matrix → complaint or referral, file = complaint or referral package.
 
-The premium lane map lives at `lib/client-lanes/fortune500-tax-entrepreneur.md` and
-defines the required lead seats, deliverables, adversarial reviewers, and no-go items
-for enterprise counsel, tax, founder/unicorn, and family-office work.
+The premium lane map lives at `lib/client-lanes/fortune500-tax-entrepreneur.md` and the
+machine-readable lane manifest at `lib/client-lanes/premium-lanes.json`. These are the
+shared source of truth for Claude Code, Codex, and other Agent Skills-compatible clients.
+The `founder-governance` lane is mandatory for any corp/fund build that mentions founder
+consent, reserved matters, board veto/protective rights, Moelis, DGCL §122(18), board-size
+or nomination protections, or a Founder Rights Agreement. It is additive to the founder,
+tax, enterprise, and fund lanes.
+The `founder-control-stack` lane is mandatory when the objective is durable founder control
+after outside investment, including dual-class or super-voting stock, Class B protections,
+separate class votes, supermajority thresholds, founder director designation, conversion on
+transfer, founder succession, or Meta-style control math. It is the cross-strategy lane for
+PV/VC, PE, funds, corp-build, accounting, tax, and UHNW overlays.
+When the target is at least 5.01% economic ownership with more than 50.1% voting power, the
+lane must prove the control invariant mathematically, stress-test the vote multiplier and every
+dilution event, and separately gate anti-dilution, conversion, and any variable-vote formula.
 
 Each stage is its own skill (`/glaw-<stage>`); this orchestrator sequences them and
 holds the gates. Stages route work to the **divisions** in `lib/firm-roster.md`
@@ -102,9 +115,16 @@ Options:
 - **Both / hybrid** — e.g. form a holdco AND pursue a claim through it; or investigate, then sue. Sequence the tracks.
 
 Premium lane tags, applied after the track, are: Fortune 500 enterprise, tax system,
-entrepreneur/founder/unicorn, investor/capital raise, and UHNW/family office. If any
+entrepreneur/founder/unicorn, founder governance/consent rights, founder control stack,
+investor/capital raise,
+and UHNW/family office. If any
 tag applies, the stage lead must include the lane deliverables and reviewers from
 `lib/client-lanes/fortune500-tax-entrepreneur.md`.
+
+Claude/Codex parity rule: both clients use the same matter folder (`$GLAW_HOME`, normally
+`~/.glaw`), manifest, and `bin/` commands. Never create a Claude-only or Codex-only lane
+packet. Run `./setup` after lane changes so both skill roots receive the same source, then
+run `bin/glaw-doctor`.
 
 ### Step 2 — Conflicts + engagement gate (HARD GATE)
 Before any substantive work, invoke `/glaw-ethics-conflicts`. It runs the conflicts

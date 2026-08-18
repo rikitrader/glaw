@@ -1,0 +1,14 @@
+{
+  "schema": "glaw-deploy-parity-exceptions/v1",
+  "policy": "A listed exception is a user-owned seat copy. It may differ from the canonical repository seat, but both Claude and Codex installs must remain present and reviewable. The exception must be reapproved or removed before production reliance.",
+  "exceptions": [
+    {
+      "command": "glaw-asylum-sworn-statement",
+      "owner": "workspace owner",
+      "reason": "Pre-existing user-owned Claude/Codex seat copies contain divergent local work and must not be overwritten during deployment.",
+      "review_by": "2027-12-31",
+      "source": "seats/glaw-asylum-sworn-statement/SKILL.md",
+      "production_reliance": "blocked_until_reconciled"
+    }
+  ]
+}

@@ -15,7 +15,7 @@ CMD="$ROOT/bin/glaw-premium-lanes"
 python3 - "$TMP/validate.json" <<'PY'
 import json, sys
 data=json.load(open(sys.argv[1]))
-ok=(data.get("status") == "pass" and data.get("lane_count") == 4 and "work-product" in data.get("authority", ""))
+ok=(data.get("status") == "pass" and data.get("lane_count") == 7 and "work-product" in data.get("authority", ""))
 sys.exit(0 if ok else 1)
 PY
 rc2=$?

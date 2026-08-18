@@ -172,6 +172,58 @@ CREDIT, LLC, SEC, irrevocable-trust, QSBS, credit, offering, or investor-publica
 material in any QSBS certificate, capital-raise disclosure, investor tax statement, trust/LLC
 topology memo, tax-credit model, or founder sheltering recommendation.
 
+## Lane 3A: Founder Governance And Consent Rights
+
+Use this lane when the founder wants a Delaware control architecture built around contractual
+consent rights over extraordinary corporate actions. It is a governance implementation lane,
+not a blanket claim that the founder controls ordinary operations or can replace the board's
+fiduciary judgment.
+
+| Workstream | Lead seats | Required outputs |
+|---|---|---|
+| Authority refresh | `glaw-legal-research`, `glaw-corporate-counsel` | current-law ledger for DGCL §§141(a), 122(18), and 218; Moelis decision/post-enactment treatment; certificate/bylaws consistency review |
+| Control-stack architecture | `glaw-corporate-counsel`, `glaw-elite-corporate-counsel` | certificate + bylaws + Founder Rights Agreement + Voting Agreement responsibility map |
+| Reserved matters | `glaw-corporate-counsel`, `glaw-pe-vc-counsel` | board/committee/founder consent matrix with thresholds, direct/indirect coverage, notice, response, and evidence fields |
+| Board and committees | `glaw-corporate-counsel`, `glaw-sec-disclosure` | nomination, replacement, board-size, removal, committee, independence, and exchange-compatibility schedule |
+| Adversarial and implementation gate | `glaw-adversarial`, `glaw-tax-strategy` | control-risk, fiduciary-duty, investor, disclosure, tax, valuation, anti-circumvention, sunset, and Delaware-counsel review |
+
+The lane must expressly separate: (1) board authority and director fiduciary duties; (2) the
+founder's capacity as stockholder or beneficial owner; and (3) the corporation's contractual
+promise not to take listed actions without the required consent. The reserved-matters schedule
+should cover corporate structure, equity, extraordinary transactions, debt/financing, board
+composition, material IP/subsidiary actions, bankruptcy, amendment/waiver/termination, and
+anti-circumvention. Thresholds, aggregation, ownership-based sunset tiers, change-of-control
+treatment, emergency mechanics, and record retention must be explicit.
+
+Lane-specific packet items: authority ledger; control-stack diagram; Founder Rights Agreement
+issue list; reserved-matters matrix; board/committee rights schedule; transaction, financing,
+equity, IP, subsidiary, litigation, and bankruptcy controls; anti-circumvention and sunset
+schedule; consent notice/response protocol; control-risk memo; implementation checklist; and
+governance docket. Every legal conclusion remains subject to current-source verification and
+Delaware counsel review before adoption, enforcement, financing, IPO, or reliance.
+
+## Lane 3B: Founder Control Stack — Dual-Class, Charter, Contract, And Capital Math
+
+Attach this cross-strategy lane when the objective is durable founder control after outside
+investment. It intersects corp-build, VC/PE, fund, tax, accounting, enterprise/SEC, and UHNW
+work; it does not replace those lanes.
+
+| Control surface | Primary document/workpaper | Required review |
+|---|---|---|
+| Class A/B/C powers, votes, conversion, separate-class protections | Certificate of incorporation | Delaware corporate, securities, tax, and investor counsel |
+| Meetings, notice, quorum, committees, and procedures | Bylaws | Corporate counsel and governance reviewer |
+| Issuance, financing, equity plan, and consent record | Board/stockholder resolutions | Corporate, PE/VC, fund, and capitalization reviewers |
+| Reserved matters, founder consent, information, anti-circumvention | §122(18) Founder Rights Agreement | Delaware counsel, investor counsel, adversarial reviewer |
+| Director elections and nominee obligations | §218 Voting Agreement | Corporate, investor, fiduciary, and disclosure reviewers |
+| Transfers, automatic conversion, succession, trusts, and estate vehicles | Charter schedules and transfer/succession workpapers | Corporate, tax, estate/trust, and securities counsel |
+| Votes, dilution, conversion, ASC 718, valuation, and beneficial ownership | Cap table, vote ledger, accounting-control packet | CPA, auditor, valuation, tax, and SEC reviewers |
+
+The lane must model economic ownership separately from voting power for each financing round,
+option-pool increase, SAFE/note conversion, preferred conversion, PE investment, and prohibited
+transfer. It must distinguish super-voting stock, supermajority thresholds, Class B separate
+votes, board designation, and §122(18) consent rights. Any ratio such as 10:1 or 20:1 is an
+illustrative sensitivity case, not a default recommendation.
+
 ## Lane 4: UHNW And Family Office Overlay
 
 Apply this overlay to any enterprise owner, founder, investor, or executive with estate,
@@ -216,7 +268,8 @@ treated as implementation-ready.
 
 ## Firm-Level Flow
 
-1. Classify the matter by lane and track: enterprise, tax, entrepreneur/founder, UHNW overlay,
+1. Classify the matter by lane and track: enterprise, tax, entrepreneur/founder,
+   founder-governance/consent-rights, UHNW overlay,
    litigation, investigation, or hybrid.
 2. Open the matter and clear conflicts before any substantive recommendation.
 3. Build a source evidence manifest: documents, websites, statutes, figures, financial data,

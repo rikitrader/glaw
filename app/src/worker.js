@@ -44,6 +44,29 @@ const PREMIUM_LANES = {
       "venture", "cap table",
     ],
   },
+  "founder-governance": {
+    name: "Founder Governance And Consent Rights",
+    terms: [
+      "moelis", "122(18)", "dgcl 122", "founder governance", "founder consent",
+      "consent rights", "reserved matters", "protective provisions", "board composition",
+      "board size", "founder rights agreement", "veto rights", "voting agreement",
+    ],
+  },
+  "founder-control-stack": {
+    name: "Founder Control Stack — Dual-Class, Charter, Contract, and Capital Math",
+    terms: [
+      "founder control", "founder-control-stack", "dual-class", "dual class", "class b",
+      "super-voting", "super voting", "meta-style", "meta style", "founder charter",
+      "20:1", "10:1", "separate class vote", "automatic conversion", "founder succession",
+    ],
+  },
+  "founder-control-assurance": {
+    name: "Founder Control Assurance Lane",
+    terms: [
+      "founder control assurance", "control assurance", "control certificate", "voting universe",
+      "dilution assurance", "threshold breach", "founder-control-assurance",
+    ],
+  },
   "uhnw-family-office": {
     name: "UHNW And Family Office Overlay",
     terms: [
@@ -73,6 +96,28 @@ const LANE_CHECKLISTS = {
     "qsbs_required",
     "entity_topology_required",
     "source_ingest_required",
+  ],
+  "founder-governance": [
+    "creative_planning_required",
+    "governance_required",
+    "reserved_matters_required",
+    "authority_refresh_required",
+  ],
+  "founder-control-stack": [
+    "creative_planning_required",
+    "control_stack_required",
+    "document_allocation_required",
+    "capitalization_math_required",
+    "accounting_control_required",
+    "cross_strategy_required",
+    "threshold_control_required",
+    "dilution_protection_required",
+  ],
+  "founder-control-assurance": [
+    "control_assurance_required",
+    "voting_universe_required",
+    "document_precedence_required",
+    "human_seal_required",
   ],
   "uhnw-family-office": [
     "creative_planning_required",

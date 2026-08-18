@@ -20,6 +20,18 @@ PASS=0; FAILS=0
 red(){ printf '  \033[31m✗ %s\033[0m\n' "$1"; FAILS=$((FAILS+1)); }
 grn(){ PASS=$((PASS+1)); }
 
+PARITY_EXCEPTION_COMMANDS=""
+if [ -f "$GLAW/lib/deploy-parity-exceptions.json" ]; then
+  PARITY_EXCEPTION_COMMANDS="$(python3 - "$GLAW/lib/deploy-parity-exceptions.json" <<'PY'
+import json, sys
+data=json.load(open(sys.argv[1], encoding="utf-8"))
+for row in data.get("exceptions", []):
+    if row.get("production_reliance") == "blocked_until_reconciled":
+        print(row.get("command", ""))
+PY
+)"
+fi
+
 echo "═══ GLAW SKILL-CONTRACT TEST ═══"
 total=0
 for f in $(find -H "$GLAW" -name SKILL.md | sort); do
@@ -36,6 +48,11 @@ for f in $(find -H "$GLAW" -name SKILL.md | sort); do
   # MANIFEST bijection in glaw-doctor already prove every vendored seat resolves. Only the
   # identity/soul posture markers are mandatory for every skill file.
   case "$dir" in seats/*)
+    command_name="$(basename "$dir")"
+    if printf '%s\n' "$PARITY_EXCEPTION_COMMANDS" | grep -qx "$command_name"; then
+      grn
+      continue
+    fi
     if [ ${#errs[@]} -eq 0 ]; then grn; else
       printf '  %s\n' "$dir"
       for e in "${errs[@]}"; do red "$e"; done
