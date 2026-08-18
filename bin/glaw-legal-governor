@@ -1,0 +1,144 @@
+#!/usr/bin/env python3
+"""GLAW Legal Governor: fail-closed legal analysis and drafting gate."""
+from __future__ import annotations
+
+import argparse
+import json
+import os
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "lib"))
+from legal_governor.audit_log import verify as verify_audit  # noqa: E402
+from legal_governor.engine import assess, scaffold, write_assessment  # noqa: E402
+from legal_governor.final_gate import evaluate as evaluate_final_gate  # noqa: E402
+from legal_governor.matrix import resolve as resolve_matrix  # noqa: E402
+from legal_governor.parity import record as record_parity, verify as verify_parity  # noqa: E402
+from legal_governor.rag import build as build_rag, verify as verify_rag  # noqa: E402
+from legal_governor.provenance import ingest as ingest_source, load as load_sources  # noqa: E402
+from legal_governor.verification_bundle import validate as validate_bundle  # noqa: E402
+from legal_governor.evaluation import summarize as summarize_evaluation  # noqa: E402
+
+
+def matter_path(slug: str) -> Path:
+    home = Path(os.environ.get("GLAW_HOME", str(Path.home() / ".glaw"))).expanduser().resolve()
+    path = home / "matters" / slug
+    if not path.is_dir():
+        raise SystemExit(f"matter does not exist: {slug}")
+    return path
+
+
+def main(argv: list[str] | None = None) -> int:
+    parser = argparse.ArgumentParser(prog="glaw-legal-governor")
+    sub = parser.add_subparsers(dest="command", required=True)
+    p = sub.add_parser("scaffold")
+    p.add_argument("--matter-slug", required=True)
+    p.add_argument("--output", default="workpapers/legal-governor-input.json")
+    p = sub.add_parser("assess")
+    p.add_argument("--matter-slug", required=True)
+    p.add_argument("--input", required=True)
+    p = sub.add_parser("draft-check")
+    p.add_argument("--matter-slug", required=True)
+    p = sub.add_parser("verify-audit")
+    p.add_argument("--matter-slug", required=True)
+    p = sub.add_parser("context-build")
+    p.add_argument("--matter-slug", required=True)
+    p.add_argument("--input", required=True)
+    p = sub.add_parser("context-check")
+    p.add_argument("--matter-slug", required=True)
+    p = sub.add_parser("matrix")
+    p.add_argument("--matter-slug", required=True)
+    p.add_argument("--json", action="store_true")
+    p = sub.add_parser("parity-record")
+    p.add_argument("--matter-slug", required=True)
+    p.add_argument("--agent", required=True, choices=("claude", "codex"))
+    p.add_argument("--context-sha256", required=True)
+    p.add_argument("--analysis", required=True)
+    p.add_argument("--status", default="complete", choices=("complete", "pass", "pending"))
+    p = sub.add_parser("parity-check")
+    p.add_argument("--matter-slug", required=True)
+    p = sub.add_parser("final-check")
+    p.add_argument("--matter-slug", required=True)
+    p = sub.add_parser("source-ingest")
+    p.add_argument("--matter-slug", required=True)
+    p.add_argument("--input", required=True)
+    p = sub.add_parser("bundle-check")
+    p.add_argument("--matter-slug", required=True)
+    p.add_argument("--input", required=True)
+    p = sub.add_parser("evaluate")
+    p.add_argument("--input", required=True)
+    args = parser.parse_args(argv)
+    matter = matter_path(args.matter_slug)
+    if args.command == "scaffold":
+        output = matter / args.output
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_text(json.dumps(scaffold(), indent=2) + "\n", encoding="utf-8")
+        print(json.dumps({"status": "PASS", "output": str(output)}, indent=2))
+        return 0
+    if args.command == "assess":
+        payload = json.loads(Path(args.input).read_text(encoding="utf-8"))
+        report = write_assessment(matter, payload)
+        print(json.dumps(report, indent=2, sort_keys=True))
+        return 0 if report["drafting"]["status"] == "PASS" else 1
+    if args.command == "draft-check":
+        path = matter / "workpapers/legal-governor-report.json"
+        if not path.is_file():
+            print(json.dumps({"status": "BLOCK", "reason": "legal-governor report is missing"}, indent=2))
+            return 1
+        report = json.loads(path.read_text(encoding="utf-8"))
+        print(json.dumps(report.get("drafting", {"status": "BLOCK"}), indent=2, sort_keys=True))
+        return 0 if report.get("drafting", {}).get("status") == "PASS" else 1
+    if args.command == "context-build":
+        request = json.loads(Path(args.input).read_text(encoding="utf-8"))
+        context = build_rag(matter, request)
+        print(json.dumps({"status": "PASS", "context_sha256": context["context_sha256"], "path": str(matter / "workpapers/rag-context.json")}, indent=2))
+        return 0
+    if args.command == "context-check":
+        result = verify_rag(matter)
+        print(json.dumps(result, indent=2, sort_keys=True))
+        return 0 if result["status"] == "PASS" else 1
+    if args.command == "matrix":
+        intake = json.loads((matter / "intake.json").read_text(encoding="utf-8")) if (matter / "intake.json").is_file() else {}
+        matrix = resolve_matrix(ROOT, intake)
+        (matter / "workpapers").mkdir(parents=True, exist_ok=True)
+        (matter / "workpapers/dependency-matrix.json").write_text(json.dumps(matrix, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        print(json.dumps(matrix, indent=2, sort_keys=True))
+        return 0
+    if args.command == "parity-record":
+        row = record_parity(matter, args.agent, args.context_sha256, Path(args.analysis).expanduser().resolve(), args.status)
+        print(json.dumps(row, indent=2, sort_keys=True))
+        return 0
+    if args.command == "parity-check":
+        result = verify_parity(matter)
+        print(json.dumps(result, indent=2, sort_keys=True))
+        return 0 if result["status"] == "PASS" else 1
+    if args.command == "final-check":
+        result = evaluate_final_gate(matter)
+        print(json.dumps(result, indent=2, sort_keys=True))
+        return 0 if result["status"] in {"pass", "not_required"} else 1
+    if args.command == "source-ingest":
+        row = ingest_source(matter, json.loads(Path(args.input).read_text(encoding="utf-8")))
+        print(json.dumps({"status": "PASS", "source": row}, indent=2, sort_keys=True))
+        return 0
+    if args.command == "bundle-check":
+        bundle = json.loads(Path(args.input).read_text(encoding="utf-8"))
+        failures = validate_bundle(bundle, {str(row.get("id")): row for row in load_sources(matter)})
+        result = {"status": "PASS" if not failures else "BLOCK", "failures": failures}
+        (matter / "workpapers").mkdir(parents=True, exist_ok=True)
+        (matter / "workpapers/verification-bundle.json").write_text(json.dumps(bundle, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+        print(json.dumps(result, indent=2, sort_keys=True))
+        return 0 if not failures else 1
+    if args.command == "evaluate":
+        rows = json.loads(Path(args.input).read_text(encoding="utf-8"))
+        result = summarize_evaluation(rows)
+        print(json.dumps(result, indent=2, sort_keys=True))
+        return 0 if result.get("acceptance") else 1
+    audit = matter / "workpapers/legal-governor-audit.jsonl"
+    failures = verify_audit(audit)
+    print(json.dumps({"status": "PASS" if not failures else "BLOCK", "failures": failures}, indent=2))
+    return 0 if not failures else 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
