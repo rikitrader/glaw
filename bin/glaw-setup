@@ -3,6 +3,8 @@
 # mirroring gstack's ./setup. Creates a real top-level directory per sub-skill
 # with a SKILL.md symlink back to the canonical file under glaw/, so Claude Code,
 # Codex, or any Agent Skills-compatible client discovers each as its own skill.
+# User-owned divergent installs are governed by lib/deploy-parity-exceptions.json
+# and are never silently overwritten.
 # Idempotent.
 set -euo pipefail
 ROOT="${GLAW_SKILLS_ROOT:-${CODEX_HOME:-$HOME/.codex}/skills}"

@@ -1,0 +1,24 @@
+{
+  "schema": "glaw-founder-control-documents/v1",
+  "authority_order": [
+    "mandatory_delaware_law",
+    "certificate_of_incorporation",
+    "class_rights_and_statutory_votes",
+    "bylaws",
+    "board_and_stockholder_resolutions",
+    "founder_rights_agreement",
+    "voting_agreement",
+    "financing_and_investor_documents",
+    "internal_policies"
+  ],
+  "documents": [
+    {"id":"certificate","authority":"certificate_of_incorporation","owner":"Delaware corporate counsel","human_seal":true,"controls":["classes","votes","conversion","separate_class_vote","director_designation","Class B protections"]},
+    {"id":"bylaws","authority":"bylaws","owner":"corporate counsel","human_seal":true,"controls":["notice","quorum","meetings","committees","record_date"]},
+    {"id":"resolutions","authority":"board_and_stockholder_resolutions","owner":"corporate secretary","human_seal":true,"controls":["adoption","issuance","financing","equity_plan","consent_records"]},
+    {"id":"founder-rights-agreement","authority":"founder_rights_agreement","owner":"Delaware corporate counsel","human_seal":true,"controls":["reserved_matters","consent","information","anti_circumvention","amendment_lock"]},
+    {"id":"voting-agreement","authority":"voting_agreement","owner":"securities counsel","human_seal":true,"controls":["director_elections","founder_nominees","investor_nominees"]},
+    {"id":"cap-table-certificate","authority":"internal_policies","owner":"controller and corporate secretary","human_seal":true,"controls":["fully_diluted_ownership","voting_universe","transfer_ledger","conversion_ledger","evidence_digest"]},
+    {"id":"case-law-jurisdiction-index","authority":"mandatory_delaware_law","owner":"Delaware corporate counsel and legal research","human_seal":true,"controls":["current_appellate_treatment","facial_as_applied_posture","fiduciary_standard","forum_and_remedy","adverse_authority"]}
+  ],
+  "conflict_rule": "A lower-authority document cannot amend, waive, or override a higher-authority control; conflicts fail closed and require counsel resolution."
+}

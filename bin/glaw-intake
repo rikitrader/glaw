@@ -297,7 +297,7 @@ def cmd_premium(args: argparse.Namespace) -> int:
             lanes.append(lane)
     if invalid:
         print("ERROR: unknown premium lane(s): " + ", ".join(invalid), file=sys.stderr)
-        print("valid lanes: fortune500-enterprise, tax-system, founder-unicorn, uhnw-family-office", file=sys.stderr)
+        print("valid lanes: fortune500-enterprise, tax-system, founder-unicorn, founder-governance, uhnw-family-office", file=sys.stderr)
         return 2
     universal["premium_lanes"] = lanes
     save_form(d, form)

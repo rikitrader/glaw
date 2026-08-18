@@ -90,6 +90,23 @@ Branch on `MATTER_TYPE` from `matter.md`.
 5. **Exit.** Acquisition, IPO, secondary, fund wind-down/distribution waterfall.
    Route a valuation anchor to **`glaw-company-valuation`** where the thesis turns on a number.
 
+6. **Founder-governance trigger.** If the build involves founder consent, reserved matters,
+   board veto/protective rights, board-size or nomination protections, Moelis, DGCL §122(18),
+   or a Founder Rights Agreement, attach the shared `founder-governance` lane in addition to
+   the founder, tax, enterprise, or fund lanes. Route the control-stack thesis to
+   **`glaw-corporate-counsel`**, **`glaw-elite-corporate-counsel`**, **`glaw-legal-research`**,
+   **`glaw-pe-vc-counsel`**, and **`glaw-adversarial`**. Record whether the requested control
+   is extraordinary negative control or day-to-day operational control.
+
+7. **Founder-control-stack trigger.** If the objective is founder control after outside
+   investment, attach `founder-control-stack` across the applicable corp, PE/VC, fund, tax,
+   accounting, enterprise, and UHNW lanes. The strategy memo must compare: (a) economic
+   ownership; (b) voting power; (c) Class B separate-vote protections; (d) board designation;
+   (e) §122(18) contract rights; and (f) succession/transfer and sunset outcomes.
+   If the target is 5.01% economics → >50.1% voting control, calculate the minimum multiplier,
+   stress-test 20:1, 25:1, 50:1, and 100:1, and identify the anti-dilution mechanism needed to
+   prevent a 5.01% → 4.99% dilution attack.
+
 ### Direction gate (AskUserQuestion — HARD)
 
 Before structure, confirm direction with the client. Use **AskUserQuestion**:
