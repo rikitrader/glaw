@@ -16,7 +16,7 @@ from typing import Any
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "lib" / "client-lanes" / "premium-lanes.json"
 GLAW_HOME = Path(os.environ.get("GLAW_HOME", str(Path.home() / ".glaw"))).expanduser().resolve()
-REQUIRED_LANES = {"fortune500-enterprise", "tax-system", "founder-unicorn", "uhnw-family-office"}
+REQUIRED_LANES = {"fortune500-enterprise", "tax-system", "founder-unicorn", "uhnw-family-office", "founder-control-assurance"}
 REQUIRED_LANE_FIELDS = (
     "name",
     "track_defaults",
@@ -273,6 +273,110 @@ ENTERPRISE_GOVERNANCE_TERMS = (
     "chief compliance, auditor/PCAOB, SEC enforcement/disclosure, plaintiff/opposing counsel, regulator, and IRS adversarial review pass",
     "recurring docket: SEC reports, board/audit committee meetings, close calendar, certifications, annual reports, franchise tax, litigation holds, and regulator response deadlines",
 )
+FOUNDER_GOVERNANCE_TERMS = (
+    "Moelis architecture: board authority remains distinct from contractual founder consent rights",
+    "DGCL section 122(18) current-law verification and certificate/bylaws consistency review",
+    "founder capacity versus director capacity and fiduciary-duty separation memo",
+    "Founder Rights Agreement supported by board-approved consideration and defined contracting parties",
+    "certificate of incorporation, bylaws, Founder Rights Agreement, and Voting Agreement control-stack map",
+    "reserved-matters matrix with board, committee, founder-consent, threshold, notice, and evidence columns",
+    "corporate-structure reserved matters: charter, bylaws, classes, recapitalization, conversion, dissolution, and reincorporation",
+    "equity reserved matters: issuances, preferred stock, convertibles, warrants, option pool, redemptions, and voting-right changes",
+    "transaction reserved matters: merger, sale, acquisition, change of control, material assets, joint venture, IPO, and de-SPAC",
+    "debt and financing reserved matters: material borrowing, liens, guarantees, convertible debt, restructuring, and bankruptcy",
+    "board-composition protections: founder nomination, replacement, board-size change, removal, and committee-seat mechanics",
+    "direct and indirect action coverage including subsidiaries, affiliates, reorganizations, series transactions, and anti-circumvention",
+    "founder-rights amendment, waiver, termination, and non-circumvention lock with consent mechanics",
+    "ownership and role-based sunset tiers with objective thresholds, change-of-control treatment, and no perpetual-rights assumption",
+    "control-risk and fiduciary analysis distinguishing extraordinary negative control from day-to-day operational control",
+    "public-company, exchange, audit-committee, compensation-committee, independence, and disclosure-compatibility screen",
+    "consent process: notice, information package, response period, deemed-no-consent rule, emergency carve-outs, and record retention",
+    "legal-research source ledger for West Palm Beach Firefighters’ Pension Fund v. Moelis & Co., DGCL sections 141(a), 122(18), and 218",
+    "Delaware counsel review condition before adoption, amendment, enforcement, financing, IPO, or reliance on the governance stack",
+)
+FOUNDER_CONTROL_STACK_TERMS = (
+    "objective statement: preserve founder voting control after substantial outside investment without assuming perpetual or day-to-day operational control",
+    "economic ownership versus voting power model by financing round and dilution scenario",
+    "Class A investor common, Class B founder super-voting common, and optional Class C non-voting/economic common comparison",
+    "DGCL sections 151, 212, and 216 authority refresh for class powers, votes, and voting thresholds",
+    "Meta-style dual-class benchmark separated from transaction-specific legal recommendation",
+    "Class B vote ratio sensitivity analysis including 1:1, 10:1, 20:1, and negotiated alternatives",
+    "founder voting-control targets at greater than 50%, 66 2/3%, and 75% after Series A/B/C, PE, and fund-related dilution",
+    "separate Class B vote and protective provisions for adverse changes to Class B rights",
+    "founder director designation, replacement, board-size, committee, and removal mechanics",
+    "supermajority thresholds distinguished from super-voting shares and mapped to the protected action set",
+    "automatic conversion triggers for prohibited transfers, loss of beneficial ownership, and disqualifying events",
+    "permitted-transfer definitions for founder, spouse/estate, family trust, foundation, controlled LLC, and succession vehicle",
+    "death, disability, incapacity, divorce, creditor attachment, involuntary transfer, and founder succession treatment",
+    "charter/bylaws/board-resolution/Founder Rights Agreement/Voting Agreement document allocation",
+    "DGCL section 122(18) contract rights layered with charter Class B protections without duplicative or conflicting controls",
+    "PE/VC, fund, strategic, employee, and public-market investor negotiation and disclosure screen",
+    "tax, valuation, 409A, QSBS, compensation, withholding, and estate/trust consequences of class and transfer design",
+    "cap-table and accounting reconciliation of issued shares, votes, conversions, dilution, beneficial ownership, and class rights",
+    "SEC, exchange, proxy, related-party, dual-class, sunset, and investor disclosure readiness screen",
+    "Delaware corporate, securities, tax, accounting, valuation, and estate counsel sign-off conditions",
+)
+DOCUMENT_ALLOCATION_TERMS = (
+    "certificate of incorporation: classes, votes, preferences, conversion, separate-class votes, director designation, and protected Class B rights",
+    "bylaws: meeting, notice, quorum, voting procedure, committee, record-date, and implementation mechanics",
+    "board and stockholder resolutions: adoption, issuance, financing approvals, equity-plan approvals, and consent records",
+    "Founder Rights Agreement under DGCL section 122(18): contractual reserved matters, consent, information, anti-circumvention, and amendment locks",
+    "Voting Agreement under DGCL section 218: director elections, founder nominees, investor nominees, and agreed voting obligations",
+    "stock purchase, equity incentive, investor-rights, side-letter, and transfer-restriction document interfaces",
+    "cap table, capitalization ledger, beneficial-ownership register, and class/vote reconciliation workpapers",
+    "succession, permitted-transfer, trust, estate, and automatic-conversion schedules",
+    "disclosure and diligence package describing control, dilution, conflicts, transfer, sunset, and investor protections",
+)
+CAPITALIZATION_MATH_TERMS = (
+    "fully diluted Class A/Class B/Class C capitalization table",
+    "per-round issuance, option-pool, SAFE/note conversion, preferred conversion, and PE/fund dilution model",
+    "votes per share, total votes, founder voting percentage, and economic percentage reconciliation",
+    "control thresholds for ordinary matters, protected matters, supermajority matters, and separate Class B matters",
+    "sensitivity cases for founder ownership at 20%, 15%, 10%, and negotiated post-money dilution levels",
+    "automatic-conversion and transfer-event impact model",
+    "board-seat and director-designation math after board-size changes and investor rights",
+    "accounting tie-out between legal capitalization, transfer agent/ledger, equity-compensation system, and financial statements",
+)
+ACCOUNTING_CONTROL_TERMS = (
+    "share-class and vote-class subledger with authorized, issued, outstanding, reserved, and converted balances",
+    "round-close checklist reconciling legal documents, cap table, transfer records, equity compensation, and general ledger",
+    "dual-class vote and beneficial-ownership control report for board, investor, proxy, and audit support",
+    "automatic-conversion event log with approval, evidence, effective date, and ledger update owner",
+    "option, RSU, SAFE, note, preferred, warrant, and Class B dilution tie-out",
+    "ASC 718, valuation/409A, tax withholding, QSBS evidence, and related-party disclosure handoff where applicable",
+    "quarterly and annual founder-control covenant dashboard with threshold and sunset alerts",
+    "independent accounting, valuation, auditor, and counsel review before investor or public disclosure",
+)
+CROSS_STRATEGY_TERMS = (
+    "corp-build: charter, bylaws, board, cap table, financing, IP, and operating-company control map",
+    "PV/VC and PE: investor negotiation, protective provisions, preferred rights, board seats, exit, and control tradeoffs",
+    "funds: GP, management company, fund LP, carry, key-person, investment committee, and portfolio-company control interface",
+    "tax: QSBS, 83(b), 409A, compensation, transfer, estate/gift/GST, trust, withholding, and section 1202/1045 review",
+    "accounting/finance: capitalization, vote math, dilution, valuation, ASC 718, audit, and financial-statement controls",
+    "enterprise/SEC: dual-class disclosure, proxy, exchange, related-party, governance, and sunset review",
+    "UHNW/estate: permitted trust, family vehicle, succession, incapacity, divorce, creditor, and beneficial-ownership treatment",
+    "adversarial: investor, Delaware, SEC/exchange, IRS, auditor, valuation, creditor, fiduciary, and opposing-counsel attack pass",
+)
+THRESHOLD_CONTROL_TERMS = (
+    "control invariant: while founder economic ownership is at least 5.01%, founder voting power must remain greater than 50.1%",
+    "fixed-ratio voting formula: founder voting power = pM / (pM + 100 - p), where p is founder economic percentage and M is Class B votes/share",
+    "5.01% threshold calculation: to exceed 50.1% voting power, M must exceed approximately 19.03 votes/share before dilution, so 20:1 is a mathematical boundary and not a safety margin",
+    "5.01% sensitivity table: 10:1 = approximately 34.5%, 20:1 = approximately 51.3%, 25:1 = approximately 56.9%, 50:1 = approximately 72.5%, and 100:1 = approximately 84.1%",
+    "recommended design sensitivity: test 50:1 and 100:1 fixed-ratio alternatives against all capitalization and conversion events",
+    "founder voting-control floor, economic ownership threshold, and measurement date defined in the certificate and control workpapers",
+    "variable voting-power formula identified as a non-default concept requiring separate DGCL sections 151, 212, and 216 enforceability review",
+    "stockholder-vote control separated from board authority, fiduciary duties, Class B separate votes, and section 122(18) reserved-matter consent",
+)
+DILUTION_PROTECTION_TERMS = (
+    "anti-dilution trigger preventing specified issuances or actions from reducing founder economic ownership below 5.01% without Founder Consent",
+    "percentage-ownership denominator defined for outstanding shares and fully diluted shares",
+    "options, warrants, SAFEs, convertibles, preferred stock, acquisition shares, stock splits, recapitalizations, and equity plans included in dilution analysis",
+    "founder preemptive, participation, top-up, or equivalent purchase right analysis with securities and investor-negotiation review",
+    "permitted financing, employee-plan, acquisition, strategic, and emergency exceptions defined with aggregation and anti-circumvention rules",
+    "round-by-round dilution model showing whether the 5.01% economic threshold and 50.1% voting floor survive",
+    "automatic conversion or sunset consequences if founder falls below 5.01%, loses beneficial ownership, or triggers a prohibited transfer",
+    "solvency, fiduciary, equal-treatment, appraisal, disclosure, and Delaware-law limitations on anti-dilution protections",
+)
 OPTIONAL_CHECKLISTS = {
     "creative_planning_required": ("item", CREATIVE_PLANNING_BENCHMARK_TERMS, "creative-planning-benchmark-lanes.md integrated advisory lane-routing benchmark screen"),
     "trust_taxonomy_required": ("type", UHNW_TRUST_TAXONOMY_TERMS, "trust-taxonomy-routing.md classification and asset-fit screen"),
@@ -285,6 +389,16 @@ OPTIONAL_CHECKLISTS = {
     "tax_credit_required": ("item", TAX_CREDIT_TERMS, "fortune500-tax-entrepreneur.md tax-credit substantiation/transferability/return-position screen"),
     "tax_engine_required": ("item", TAX_ENGINE_TERMS, "fortune500-tax-entrepreneur.md tax-system source and return-position screen"),
     "enterprise_required": ("item", ENTERPRISE_GOVERNANCE_TERMS, "fortune500-tax-entrepreneur.md enterprise governance/reporting/control screen"),
+    "governance_required": ("item", FOUNDER_GOVERNANCE_TERMS, "founder-governance.md founder control-stack and consent-rights screen"),
+    "reserved_matters_required": ("item", FOUNDER_GOVERNANCE_TERMS, "founder-governance.md reserved-matters and consent matrix screen"),
+    "authority_refresh_required": ("item", FOUNDER_GOVERNANCE_TERMS, "founder-governance.md Delaware authority and current-law refresh"),
+    "control_stack_required": ("item", FOUNDER_CONTROL_STACK_TERMS, "founder-control-stack.md integrated control architecture screen"),
+    "document_allocation_required": ("item", DOCUMENT_ALLOCATION_TERMS, "founder-control-stack.md document allocation screen"),
+    "capitalization_math_required": ("item", CAPITALIZATION_MATH_TERMS, "founder-control-stack.md control and dilution model"),
+    "accounting_control_required": ("item", ACCOUNTING_CONTROL_TERMS, "founder-control-stack.md accounting and cap-table controls"),
+    "cross_strategy_required": ("item", CROSS_STRATEGY_TERMS, "founder-control-stack.md cross-strategy routing screen"),
+    "threshold_control_required": ("item", THRESHOLD_CONTROL_TERMS, "founder-control-stack.md 5.01% control invariant and voting-multiplier screen"),
+    "dilution_protection_required": ("item", DILUTION_PROTECTION_TERMS, "founder-control-stack.md anti-dilution and threshold-protection screen"),
 }
 OBJECTIVE_AUDIT_REQUIREMENTS = (
     {
@@ -669,11 +783,12 @@ def validate_manifest(data: dict[str, Any]) -> dict[str, Any]:
             failures.append({"id": "adversarial_reviewers", "detail": f"{lane_id} lacks regulator/tax adversary"})
         benchmark_items = lane.get("creative_planning_required")
         benchmark_text = "\n".join(str(item) for item in benchmark_items) if isinstance(benchmark_items, list) else ""
-        if not isinstance(benchmark_items, list) or len(benchmark_items) < len(CREATIVE_PLANNING_BENCHMARK_TERMS):
-            failures.append({"id": "creative_planning_required", "detail": f"{lane_id} needs full Creative Planning integrated advisory benchmark checklist"})
-        for term in CREATIVE_PLANNING_BENCHMARK_TERMS:
-            if term not in benchmark_text:
-                failures.append({"id": "creative_planning_required", "detail": f"{lane_id} missing Creative Planning benchmark item: {term}"})
+        if lane.get("benchmark_required", True):
+            if not isinstance(benchmark_items, list) or len(benchmark_items) < len(CREATIVE_PLANNING_BENCHMARK_TERMS):
+                failures.append({"id": "creative_planning_required", "detail": f"{lane_id} needs full Creative Planning integrated advisory benchmark checklist"})
+            for term in CREATIVE_PLANNING_BENCHMARK_TERMS:
+                if term not in benchmark_text:
+                    failures.append({"id": "creative_planning_required", "detail": f"{lane_id} missing Creative Planning benchmark item: {term}"})
         if lane_id == "uhnw-family-office":
             taxonomy = lane.get("trust_taxonomy_required")
             taxonomy_text = "\n".join(str(item) for item in taxonomy) if isinstance(taxonomy, list) else ""

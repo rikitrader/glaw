@@ -45,6 +45,26 @@ Branch on `MATTER_TYPE` from `matter.md`.
 
 ### Corp/fund build — Structure Memo + Org Chart
 
+Before drafting the org chart, apply the shared `founder-governance` lane when the matter
+contains founder consent, reserved matters, board veto/protective rights, board nomination or
+size protections, Moelis, DGCL §122(18), or a Founder Rights Agreement. This lane is additive:
+for a fund it runs alongside the GP/management-company/LP/feeder/blocker analysis; for a corp it
+runs alongside the charter, bylaws, cap-table, QSBS, financing, and holdco/opco analysis. Claude
+and Codex must attach the same lane manifest and write to the same matter folder.
+
+For `founder-control-stack`, produce the integrated control design: Class A/B/C capitalization
+and voting math after each financing round; charter allocation for classes, votes, separate-class
+protections, conversion, and director designation; bylaw and board-resolution mechanics; §122(18)
+Founder Rights Agreement and Voting Agreement allocation; permitted-transfer and succession rules;
+and accounting/cap-table controls that reconcile issued shares, votes, conversions, dilution,
+and beneficial ownership. Route to corporate, PE/VC/fund-regulatory, tax, valuation, accounting,
+SEC/disclosure, estate/trust, and adversarial seats as facts require.
+For a 5.01% control target, include the equation and sensitivity table, define the economic-
+ownership denominator, test every issuance/conversion/option/acquisition event, and specify
+preemptive/top-up or contractual protections against crossing below 5.01%. Any variable
+voting-power formula is a flagged alternative—not a presumed solution—and requires separate
+Delaware enforceability review.
+
 1. **Entity org chart.** Draw the full topology (ASCII tree): every entity, its
    owners, and the ownership percentages. Route to **`glaw-corporate-counsel`** and
    **`glaw-institutional-finance`**. Build the whole structure — name every entity that

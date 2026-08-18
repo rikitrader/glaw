@@ -12,7 +12,7 @@ GLAW="$ROOT/bin/glaw"
 LANES="$ROOT/bin/glaw-premium-lanes"
 HEAD="$ROOT/bin/glaw-headless"
 
-for lane in fortune500-enterprise tax-system founder-unicorn uhnw-family-office; do
+for lane in fortune500-enterprise tax-system founder-unicorn uhnw-family-office founder-control-assurance; do
   matter="Lifecycle $lane"
   "$GLAW" matter new "$matter" >/dev/null
   slug="$(printf '%s' "$matter" | tr '[:upper:]' '[:lower:]' | sed -E 's/[^a-z0-9]+/-/g; s/^-+|-+$//g')"

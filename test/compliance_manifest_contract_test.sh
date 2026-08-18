@@ -50,6 +50,7 @@ expected_route_ids = {
     "premium-lane-packet",
     "premium-objective-audit",
     "materialized-source-ingest",
+    "founder-control-assurance",
 }
 ok(set(routes) == expected_route_ids, "final-packet route table ids drifted")
 
@@ -71,6 +72,7 @@ failing_rows = rows_by_id(module.compliance_manifest(
         "red_flag_resolution_evidence_clear": False,
         "nonblocking_red_flags_accounted_clear": False,
         "source_evidence_manifest_clear": False,
+        "founder_control_assurance_clear": False,
     },
     accounting_control={
         "required": True,

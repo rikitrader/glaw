@@ -47,6 +47,8 @@ ADVERSARIAL  /glaw-adversarial  (RED-team → BLUE-team rebuild)        ← hard
         `glaw-citation-gate complete`                                  ← hard gate #3
 
 FILE  /glaw-file  (signature-ready packet + checklist; UPL disclaimer on every deliverable)
+  └─ GATE: every consequential legal matter must clear `/glaw-legal-governor`; missing jurisdiction, verified authority, adverse review, red-team, contradiction, or enforceability evidence fails closed
+  └─ GATE: corp/fund matters with founder-control objectives must clear the founder-control-assurance lane: cap table, voting universe, control math, dilution, document precedence, fiduciary, accounting, and human-seal checks
   └─ GATE: `glaw-red-flags status` must show no blocking critical/high findings
   └─ GATE: `glaw-red-flags complete` logs the explicit clear event
   └─ GATE: `glaw-upl-check <matter>` must show all external text deliverables carry the footer
@@ -85,14 +87,16 @@ pipeline stage directory. The implementation lives in `bin/glaw-council` plus
 
 ## Hard gates (orchestrator-enforced)
 1. Structured intake complete (`bin/glaw-intake complete`) before strategy.
-2. Conflicts cleared (`glaw-ethics complete`) before strategy.
-3. Adversarial RED→BLUE (`/glaw-adversarial`) before file.
-4. Citations verified (`glaw-citation-gate complete`) before file.
-5. Red flags clear or explicitly carried (`glaw-red-flags complete`) before file.
+2. Legal Governor assessed and drafting gate clear (`bin/glaw-legal-governor assess` + `draft-check`) before consequential drafting.
+3. Conflicts cleared (`glaw-ethics complete`) before strategy.
+4. Adversarial RED→BLUE (`/glaw-adversarial`) before file.
+5. Citations verified (`glaw-citation-gate complete`) before file.
+6. Red flags clear or explicitly carried (`glaw-red-flags complete`) before file.
 6. Final packet ready (`glaw-final-packet build --profile auto`) before file.
 7. Chief/Council approval (`glaw-chief-decision --approve-final`) before file.
 8. UPL disclaimer on every external deliverable (`glaw-upl-check`).
 9. Docket gate complete (`glaw-docket-gate complete`) before matter-retro.
+10. Founder-control assurance complete for applicable corp/fund matters; unresolved control or document-precedence exceptions block file readiness.
 
 Figures quoted from `tax-legal-shared/current-figures.md` must carry an "as of" date and
 current-source verification; stale figures are a citation/accounting defect, not a separate

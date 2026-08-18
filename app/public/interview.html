@@ -269,6 +269,12 @@ const PREMIUM_LANES = {
     desc:"Trust taxonomy, dynasty/SLAT/GRAT/QPRT/ILIT, investment LLC, situs, trustee, GST.",
     defaultTracks:["corp-build","tax","hybrid"],
     terms:["trust","dynasty","slat","grat","qprt","ilit","estate","family office","gst","investment llc","asset protection","beneficiary"]
+  },
+  "founder-control-assurance": {
+    name:"Founder control assurance",
+    desc:"Voting-universe reconciliation, dilution events, document precedence, fiduciary and accounting handoff.",
+    defaultTracks:["corp-build","accounting-tax","hybrid"],
+    terms:["control assurance","control certificate","voting universe","dilution assurance","threshold breach"]
   }
 };
 
@@ -455,6 +461,7 @@ function routing(){
   if(state.premium.includes("tax-system")){ seats.push("glaw-tax-legal-intake","glaw-tax-strategy","glaw-tax-compliance","glaw-tax-provision"); docket.push("Tax return, notice, credit, and authority-refresh calendar"); }
   if(state.premium.includes("founder-unicorn")){ seats.push("glaw-83b-election","glaw-pe-vc-counsel","glaw-valuation-409a-architect","glaw-institutional-finance"); docket.push("83(b), Form D, Blue Sky, 409A, and QSBS calendar"); }
   if(state.premium.includes("uhnw-family-office")){ seats.push("glaw-estate-trusts","glaw-asset-protection","glaw-estate-gift-returns"); docket.push("Trust funding, Form 709/GST, administration, and beneficiary-designation calendar"); }
+  if(state.premium.includes("founder-control-assurance")){ seats.push("glaw-corporate-counsel","glaw-legal-research","glaw-accounting","glaw-adversarial"); docket.push("Founder-control math, voting-universe, dilution, conversion, and human-seal assurance calendar"); }
   return {divisions:[...new Set(divisions)], seats:[...new Set(seats)], docket:[...new Set(docket)], premium_lanes, adversary:t.adversary};
 }
 
