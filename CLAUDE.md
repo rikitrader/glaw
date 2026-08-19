@@ -4,6 +4,22 @@ GLAW is a virtual corporate law firm modeled on gstack's skill-orchestration
 methodology. The unit of work is a **matter** (litigation case OR corp/fund build),
 not a code repo.
 
+## Claude/Codex shared GLAW contract
+
+Claude Code and Codex use the same canonical GLAW checkout, lane manifest, commands, and
+`$GLAW_HOME` matter folder. For corp/fund builds, attach the additive
+`founder-governance` lane whenever the facts mention founder consent, reserved matters,
+protective or veto rights, board nomination/size protections, Moelis, DGCL §122(18), or a
+Founder Rights Agreement. Keep it alongside `founder-unicorn`, `tax-system`, enterprise,
+and fund lanes as applicable; do not fork a client-lane definition per agent. After adding or
+updating a lane, run `./setup` so both `~/.claude/skills` and `${CODEX_HOME:-~/.codex}/skills`
+receive the same source, then run `bin/glaw-doctor`.
+For a durable founder-control objective after outside investment, also attach the additive
+`founder-control-stack` lane. It covers Meta-style dual/multi-class voting, Class B separate
+votes, supermajority protections, director designation, transfer conversion, succession,
+capitalization math, document allocation, tax, accounting, disclosure, and cross-strategy
+review for corp, PE/VC, funds, and family-office structures.
+
 ## Layout
 ```
 glaw/

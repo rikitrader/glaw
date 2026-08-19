@@ -50,6 +50,8 @@ expected_route_ids = {
     "premium-lane-packet",
     "premium-objective-audit",
     "materialized-source-ingest",
+    "founder-control-assurance",
+    "legal-governor",
 }
 ok(set(routes) == expected_route_ids, "final-packet route table ids drifted")
 
@@ -71,6 +73,7 @@ failing_rows = rows_by_id(module.compliance_manifest(
         "red_flag_resolution_evidence_clear": False,
         "nonblocking_red_flags_accounted_clear": False,
         "source_evidence_manifest_clear": False,
+        "founder_control_assurance_clear": False,
     },
     accounting_control={
         "required": True,
@@ -107,6 +110,11 @@ failing_rows = rows_by_id(module.compliance_manifest(
         "required": True,
         "status": "fail",
         "missing": ["sources/local-source-ingest-ledger.json"],
+    },
+    legal_governor_manifest={
+        "required": True,
+        "status": "fail",
+        "failures": ["verified Governor bundle required"],
     },
 ))
 expected_failing_ids = expected_route_ids - {"accounting-control-not-required"}

@@ -34,3 +34,32 @@ Date: 2026-08-13
 - These local edits were intentionally preserved and not reverted.
 - Future agents should not clean, reset, or overwrite these changes unless explicitly instructed.
 - Before merges, pulls, or commits, inspect `git status --short --branch` and separate intentional local work from branch-alignment changes.
+
+## Local GLAW Lane Merge and Readiness Status
+
+Date: 2026-08-18
+
+- Local lane branches created and preserved:
+  - `local/lane-legal-governor`
+  - `local/lane-founder-control`
+  - `local/lane-benchmark`
+  - `local/lane-providers`
+  - `local/lane-docs-platform`
+  - `local/main-clean`
+  - `local/merge-test`
+- All lanes merged locally through `local/merge-test` with no conflicts.
+- Verified aggregate merged into local `main` at `257bf51`.
+- Local `main` is clean and 12 commits ahead of `origin/main`; nothing was pushed.
+- Generated runtime artifacts remain local and are ignored: `workpapers/*.jsonl` and `benchmarks/**/runs/`.
+
+### Remaining material gaps
+
+- The 10,000-question benchmark is source-loaded but not attorney-gold-labeled: `reviews.jsonl` and `adjudications.jsonl` are empty, and benchmark items have no populated gold decisions or reviewer fields.
+- Current provider health shows Codex subscription CLI available but Claude subscription CLI `AUTH_REQUIRED`; valid dual-agent review cannot currently complete.
+- Existing benchmark runs show Alexandra unavailable and Governor `REVIEW_REQUIRED`; they do not establish benchmark accuracy.
+- The full Alexandra/Victor cross-review protocol is not implemented yet: red cross-review, blue rebuttal, red sur-rebuttal, claim battlefields, and final disagreement resolution remain outstanding.
+- `/legal/*` remote analysis routes are documented in `API.md` but are not implemented in the Cloudflare Worker; current Worker API is intake/KV only.
+- PostgreSQL/pgvector persistence, authenticated remote legal-analysis service, tenant isolation, and remote append-only audit storage are not deployed.
+- The Wilson confidence-interval evaluator exists, but no valid attorney-adjudicated PASS population exists; the `<3%` upper-bound target is unproven.
+
+Readiness status: `STRUCTURABLE_WITH_RISK`. Do not represent the system as production-ready, empirically validated, or capable of autonomous final legal approval until these gaps are closed.

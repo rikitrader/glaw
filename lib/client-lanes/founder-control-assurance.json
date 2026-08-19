@@ -1,0 +1,50 @@
+{
+  "schema": "glaw-founder-control-assurance/v1",
+  "threshold": {
+    "basis": "fully_diluted_economic_ownership",
+    "founder_percent": "5.01",
+    "voting_floor_percent": "50.1",
+    "strict": true
+  },
+  "human_seal": {
+    "required_for": ["sign", "file", "transmit", "pay", "bind", "waive", "approve_final"]
+  },
+  "precedence": [
+    "mandatory_delaware_law",
+    "certificate_of_incorporation",
+    "class_rights_and_statutory_votes",
+    "bylaws",
+    "board_and_stockholder_resolutions",
+    "founder_rights_agreement",
+    "voting_agreement",
+    "financing_and_investor_documents",
+    "internal_policies"
+  ],
+  "events": [
+    "financing", "equity_issuance", "option_pool_change", "safe_conversion",
+    "convertible_conversion", "preferred_conversion", "transfer", "succession",
+    "board_change", "board_size_change", "merger", "acquisition", "reorganization",
+    "subsidiary_transaction", "public_offering", "threshold_change", "voting_universe_change",
+    "quarterly_review", "annual_review"
+  ],
+  "required_controls": [
+    "cap_table_reconciled",
+    "voting_universe_reconciled",
+    "control_math_passed",
+    "dilution_reviewed",
+    "transfer_conversion_reviewed",
+    "document_precedence_clear",
+    "case_law_index_reviewed",
+    "jurisdiction_and_forum_reviewed",
+    "fiduciary_process_reviewed",
+    "accounting_tax_disclosure_handoff",
+    "human_seal_recorded"
+  ],
+  "authority_index": "lib/client-lanes/founder-control-stack/case-law-jurisdiction-index.json",
+  "authority_refresh": {
+    "required": true,
+    "maximum_age_days": 30,
+    "must_record": ["court", "jurisdiction", "procedural_posture", "disposition", "current_treatment", "source_url", "reviewed_at"],
+    "rule": "Do not treat a trial-court holding as current controlling law when a later appellate disposition exists. Preserve adverse authority and distinguish facial from as-applied review."
+  }
+}

@@ -60,6 +60,7 @@ fi
 
 if [ -z "${GLAW_SKILLS_ROOT:-}" ]; then
   if python3 - "$GLAW" "${CODEX_HOME:-$HOME/.codex}/skills" "${CLAUDE_HOME:-$HOME/.claude}/skills" <<'PY'
+import json
 import pathlib
 import sys
 
@@ -68,6 +69,15 @@ roots = [
     ("Codex", pathlib.Path(sys.argv[2]).expanduser()),
     ("Claude", pathlib.Path(sys.argv[3]).expanduser()),
 ]
+exceptions_path = glaw / "lib" / "deploy-parity-exceptions.json"
+exceptions = {}
+if exceptions_path.exists():
+    try:
+        payload = json.loads(exceptions_path.read_text(encoding="utf-8"))
+        exceptions = {row.get("command"): row for row in payload.get("exceptions", []) if isinstance(row, dict)}
+    except Exception as exc:
+        print(f"invalid deploy parity exception manifest: {exc}")
+        sys.exit(1)
 
 expected = {"glaw": (glaw / "SKILL.md").resolve()}
 for child in sorted(glaw.iterdir()):
@@ -104,6 +114,9 @@ for label, root in roots:
             continue
         resolved = skill.resolve()
         if resolved != target:
+            exception = exceptions.get(name)
+            if exception and all(exception.get(field) for field in ("owner", "reason", "review_by", "source", "production_reliance")):
+                continue
             failures.append(
                 f"{label} /{name} points to {resolved}, expected {target}"
             )
@@ -152,6 +165,11 @@ declare -a TOOLS=(
   "glaw-extism|tool_metadata --json"
   "glaw-constitution-score|scaffold"
   "glaw-premium-lanes|validate"
+  "glaw-founder-control|--help"
+  "glaw-legal-governor|--help"
+  "glaw-legal-governor|context-check"
+  "glaw-legal-governor|final-check"
+  "glaw-legal-governor|bundle-check"
   "glaw-jurisdiction-pack|scaffold"
   "glaw-jurisdiction-pack|list"
   "glaw-oversight|status --json"
@@ -530,6 +548,11 @@ if [ "$DOCTOR_CORE" = "1" ]; then
     "gate_test:hard-gate"
     "policy_test:policy-contract"
     "jurisdiction_pack_test:jurisdiction-pack"
+    "legal_governor_test:legal-governor"
+    "legal_governor_advanced_test:legal-governor-advanced"
+    "legal_benchmark_test:legal-benchmark"
+    "dual_attorney_test:dual-attorney"
+    "provider_adapters_test:provider-adapters"
   )
 else
   TESTS=(
@@ -549,6 +572,14 @@ else
     "premium_lane_test:premium-lanes"
     "premium_lane_cli_test:premium-lane-cli"
     "premium_lane_lifecycle_test:premium-lane-lifecycle"
+    "founder_control_test:founder-control-math"
+    "founder_control_assurance_test:founder-control-assurance"
+    "legal_governor_test:legal-governor"
+    "legal_governor_advanced_test:legal-governor-advanced"
+    "legal_benchmark_test:legal-benchmark"
+    "dual_attorney_test:dual-attorney"
+    "provider_adapters_test:provider-adapters"
+    "deploy_parity_exception_test:deploy-parity-exception"
     "compliance_manifest_contract_test:compliance-manifest-contract"
     "authority_gate_test:authority-gate"
     "rbac_test:rbac-soc2"
@@ -561,6 +592,7 @@ else
     "constitutional_test:constitutional-branch"
     "branch_substance_test:branch-substance"
     "jurisdiction_pack_test:jurisdiction-pack"
+    "legal_governor_test:legal-governor"
     "oversight_test:oversight-board"
     "conscience_test:autonomous-conscience"
     "authority_sources_test:authority-sources"
@@ -833,6 +865,12 @@ if [ -f "$GLAW/seats/MANIFEST" ]; then
   done
 fi
 [ "$bare_ref" = 0 ] && ok "core routing docs use /glaw-* names for bundled seats"
+
+if [ "$DOCTOR_CORE" = "1" ]; then
+  echo "═══ RESULT ═══"
+  echo "  failures: $FAIL   warnings: $WARN"
+  [ "$FAIL" = 0 ] && { echo "  HEALTHY ✅"; exit 0; } || { echo "  PROBLEMS FOUND ❌"; exit 1; }
+fi
 
 # ---- 4. SKILL CONTRACTS (per-skill, the ~40 personas) ----
 echo "[4/5] skill contracts (glaw-test)"
