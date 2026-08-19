@@ -29,12 +29,24 @@ else
 fi
 
 DOCTOR_TIMEOUT_SECONDS="${GLAW_DOCTOR_TIMEOUT_SECONDS:-900}"
-doctor_runner=("${doctor_env[@]}" bash bin/glaw-doctor)
+if [ "${#doctor_env[@]}" -gt 0 ]; then
+  doctor_runner=("${doctor_env[@]}" bash bin/glaw-doctor)
+else
+  doctor_runner=(bash bin/glaw-doctor)
+fi
 
 if command -v timeout >/dev/null 2>&1; then
-  doctor_runner=(timeout "$DOCTOR_TIMEOUT_SECONDS" "${doctor_env[@]}" bash bin/glaw-doctor)
+  if [ "${#doctor_env[@]}" -gt 0 ]; then
+    doctor_runner=(timeout "$DOCTOR_TIMEOUT_SECONDS" "${doctor_env[@]}" bash bin/glaw-doctor)
+  else
+    doctor_runner=(timeout "$DOCTOR_TIMEOUT_SECONDS" bash bin/glaw-doctor)
+  fi
 elif command -v gtimeout >/dev/null 2>&1; then
-  doctor_runner=(gtimeout "$DOCTOR_TIMEOUT_SECONDS" "${doctor_env[@]}" bash bin/glaw-doctor)
+  if [ "${#doctor_env[@]}" -gt 0 ]; then
+    doctor_runner=(gtimeout "$DOCTOR_TIMEOUT_SECONDS" "${doctor_env[@]}" bash bin/glaw-doctor)
+  else
+    doctor_runner=(gtimeout "$DOCTOR_TIMEOUT_SECONDS" bash bin/glaw-doctor)
+  fi
 fi
 
 set +e
