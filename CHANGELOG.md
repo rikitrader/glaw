@@ -1,5 +1,52 @@
 # Changelog
 
+## 1.3.0 — Legal Governor, founder-control, benchmark, and provider lanes
+
+- **Fail-closed Legal Governor.** Added source provenance, jurisdiction and premise
+  checks, citation/quote/holding/treatment validation, adverse-authority and red-team
+  gates, immutable audit records, confidence/evaluation scaffolding, drafting gates,
+  final-packet assurance checks, and deterministic `PASS` / `REVIEW_REQUIRED` /
+  `BLOCK` propagation.
+- **Founder-control architecture.** Added the 5.01% founder-control lane with
+  capitalization math, dual-class/super-voting modeling, reserved matters,
+  transfer/conversion controls, assurance certificates, document allocation, and
+  human-seal requirements. This is an analysis/control framework, not a guarantee
+  against mandatory law, fiduciary duties, or judicial review.
+- **Source-backed benchmark framework.** Added the stratified 10,000-item benchmark
+  structure, source packets, review/adjudication schemas, split metadata, and Wilson
+  confidence-interval evaluation code. Attorney gold labels remain unpopulated in
+  this release and the <3% PASS error target is not yet empirically established.
+- **Dual-attorney provider lanes.** Added Alexandra Vale / Blue and Victor Sterling /
+  Red routing, memory-firewall scaffolding, independent first-pass controls, and
+  subscription-CLI/API provider adapters with explicit billing-mode boundaries.
+- **Claude/Codex execution status.** Codex CLI subscription authentication was
+  verified; Claude CLI was installed but unavailable pending authentication at release
+  time. The Governor fails closed when dual review cannot complete.
+- **Local lane integration.** Added separately published legal-governor,
+  founder-control, benchmark, provider, and documentation lanes; integration was
+  merged through PR #117 after GitHub Doctor passed.
+- **Gate repair.** Fixed the empty provider-environment pre-push gate failure and
+  added Legal Governor compliance-route contract coverage.
+
+### Release verification
+
+- GitHub Doctor: passed with 0 failures and 0 warnings.
+- Required GitHub `doctor` check: passed.
+- Working tree and `origin/main`: synchronized at the release merge commit.
+- Full local lane tests: passed, including Governor, founder-control, benchmark,
+  provider, dual-attorney, assurance, and deploy-parity tests.
+
+### Known limitations
+
+- This release is not a claim of autonomous legal advice, attorney licensure, or
+  guaranteed enforceability.
+- Remote authenticated legal-analysis API and PostgreSQL/pgvector persistence are
+  not deployed by this source-only release.
+- Attorney-reviewed benchmark labels, full Blue/Red rebuttal rounds, and empirical
+  proof that the 95% confidence upper bound is below 3% remain future work.
+- Human counsel remains required for consequential legal documents, filings,
+  corporate approvals, securities instruments, and final legal judgment.
+
 ## 1.2.2 — current main release and package refresh
 
 - **409A valuation architect seat.** Added `/glaw-valuation-409a-architect`, an
