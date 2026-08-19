@@ -781,6 +781,10 @@ COMPLIANCE_ROW_ROUTES = {
         "bin/glaw-founder-control verify --matter-slug <slug>",
         "issue or refresh the source-backed founder-control certificate, cap-table math, voting-universe, ledger, and human-seal evidence",
     ),
+    "legal-governor": (
+        "bin/glaw-legal-governor final-check --matter-slug <slug>",
+        "complete the source-locked RAG context, Claude/Codex parity, citation/adverse-authority/red-team review, and Governor counsel gate",
+    ),
 }
 
 
