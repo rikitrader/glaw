@@ -1,0 +1,57 @@
+#!/usr/bin/env python3
+"""Create and validate provenance-preserving artifact manifests."""
+import argparse, hashlib, json, pathlib, re, sys
+
+TYPES = {"json", "xlsx", "pptx", "docx", "md", "html"}
+
+def digest(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as fh:
+        for block in iter(lambda: fh.read(1024 * 1024), b""):
+            h.update(block)
+    return h.hexdigest()
+
+def load(path):
+    try:
+        return json.loads(pathlib.Path(path).read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(f"cannot read JSON: {exc}") from exc
+
+def validate(data):
+    errors = []
+    for key in ("manifest_id", "lane_id", "version", "artifacts"):
+        if key not in data: errors.append(f"missing required field: {key}")
+    if not isinstance(data.get("manifest_id"), str) or not data.get("manifest_id", "").startswith("MAN-"): errors.append("manifest_id must start with MAN-")
+    if not isinstance(data.get("lane_id"), str) or not data.get("lane_id", "").startswith("LANE-"): errors.append("lane_id must start with LANE-")
+    if not isinstance(data.get("artifacts"), list) or not data.get("artifacts"): errors.append("artifacts must be a non-empty array")
+    else:
+        for i, item in enumerate(data["artifacts"]):
+            for key in ("artifact_id", "type", "path", "sha256", "status"):
+                if key not in item: errors.append(f"artifacts[{i}] missing {key}")
+            if item.get("type") not in TYPES: errors.append(f"artifacts[{i}] has unsupported type")
+            if not isinstance(item.get("sha256"), str) or not re.fullmatch(r"[a-f0-9]{64}", item.get("sha256", "")): errors.append(f"artifacts[{i}].sha256 must be 64 lowercase hex characters")
+            path = pathlib.Path(item.get("path", ""))
+            if not path.exists(): errors.append(f"artifacts[{i}].path does not exist")
+            elif re.fullmatch(r"[a-f0-9]{64}", item.get("sha256", "")) and digest(path) != item["sha256"]: errors.append(f"artifacts[{i}].sha256 does not match path")
+    return errors
+
+def main():
+    parser = argparse.ArgumentParser(prog="glaw-artifact")
+    sub = parser.add_subparsers(dest="command", required=True)
+    m = sub.add_parser("manifest"); m.add_argument("--manifest-id", required=True); m.add_argument("--lane-id", required=True); m.add_argument("paths", nargs="+")
+    v = sub.add_parser("validate"); v.add_argument("input")
+    args = parser.parse_args()
+    try:
+        if args.command == "manifest":
+            artifacts = []
+            for i, raw in enumerate(args.paths, 1):
+                path = pathlib.Path(raw); suffix = path.suffix.lower().lstrip(".") or "md"
+                if suffix not in TYPES: suffix = "md"
+                artifacts.append({"artifact_id": f"ART-{i:04d}", "type": suffix, "path": str(path), "sha256": digest(path), "status": "draft", "source_ids": []})
+            print(json.dumps({"manifest_id": args.manifest_id, "lane_id": args.lane_id, "version": "v1", "artifacts": artifacts}, indent=2, sort_keys=True)); return 0
+        data = load(args.input); errors = validate(data); print(json.dumps({"valid": not errors, "errors": errors}, indent=2, sort_keys=True)); return 0 if not errors else 1
+    except (OSError, ValueError) as exc:
+        print(str(exc), file=sys.stderr); return 2
+
+if __name__ == "__main__":
+    raise SystemExit(main())

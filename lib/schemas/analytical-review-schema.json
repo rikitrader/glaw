@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://glaw.local/schemas/analytical-review.schema.json",
+  "title": "GLAW Analytical Review",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["review_id", "artifact_type", "artifact_version", "reviewer", "scores", "decision", "human_approval_required"],
+  "properties": {
+    "review_id": {"type": "string", "pattern": "^AR-[0-9]{4,}$"},
+    "deal_or_matter_id": {"type": "string", "minLength": 1},
+    "artifact_type": {"type": "string", "enum": ["valuation_model", "investment_recommendation", "industry_analysis", "scenario_analysis", "portfolio_decision", "financial_model", "other"]},
+    "artifact_version": {"type": "string", "minLength": 1},
+    "producer": {"type": "string"},
+    "reviewer": {"type": "string", "minLength": 1},
+    "source_set": {"type": "array", "items": {"type": "string"}},
+    "scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_accuracy", "model_integrity", "valuation_soundness", "assumption_quality", "scenario_quality", "recommendation_quality"],
+      "properties": {
+        "source_accuracy": {"type": "number", "minimum": 0, "maximum": 20},
+        "model_integrity": {"type": "number", "minimum": 0, "maximum": 25},
+        "valuation_soundness": {"type": "number", "minimum": 0, "maximum": 20},
+        "assumption_quality": {"type": "number", "minimum": 0, "maximum": 15},
+        "scenario_quality": {"type": "number", "minimum": 0, "maximum": 10},
+        "recommendation_quality": {"type": "number", "minimum": 0, "maximum": 10}
+      }
+    },
+    "material_errors": {"type": "array", "items": {"type": "string"}},
+    "unsupported_claims": {"type": "array", "items": {"type": "string"}},
+    "required_corrections": {"type": "array", "items": {"type": "string"}},
+    "decision": {"type": "string", "enum": ["approve", "approved_with_conditions", "revise_required", "reject", "insufficient_evidence"]},
+    "confidence": {"type": "number", "minimum": 0, "maximum": 100},
+    "human_approval_required": {"type": "boolean"}
+  }
+}

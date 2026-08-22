@@ -94,3 +94,10 @@ Library code that historically depended on packages such as pandas, pydantic, lx
 python-docx, docxtpl, eyecite, juriscraper, jsonschema, or Google SDKs now uses in-repo
 compatibility modules or local stdlib fallbacks. Google Sheets input uses CSV export URLs.
 PDF/OCR bank ingestion uses repo code plus local binaries, not Python packages.
+| `glaw-lane` | `catalog` · `scaffold` · `validate` · `transition`; canonical workpapers, owner/status gates, artifact status, and human-approval state for M&A, public-markets, and assurance lanes |
+| `glaw-source-ledger` | `add` · `validate`; append-only source paths and SHA-256 provenance for analytical workpapers |
+| `glaw-artifact` | `manifest` · `validate`; hashed JSON/XLSX/PPTX/DOCX/Markdown/HTML artifact manifests |
+| `glaw-analytical-review` | `scaffold` · `validate` · `score`; AI analytical-artifact review scorecard with material-error penalties |
+| `glaw-transaction-comps` | `scaffold` · `validate` · `analyze`; precedent transaction multiples and statistics |
+| `glaw-cap-table-waterfall` | `scaffold` · `validate` · `analyze`; preference/conversion and holder proceeds waterfall |
+| `glaw-transaction-terms` | `scaffold` · `validate` · `normalize`; certainty-adjusted transaction economics |

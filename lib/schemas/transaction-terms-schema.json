@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://glaw.local/schemas/transaction-terms.schema.json",
+  "title": "GLAW Transaction Terms and Bid Comparison",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["analysis_id", "target", "bids"],
+  "properties": {
+    "analysis_id": {"type": "string", "pattern": "^TT-[0-9]{4,}$"},
+    "target": {"type": "string", "minLength": 1},
+    "currency": {"type": "string", "minLength": 3, "maxLength": 3},
+    "bids": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["bid_id", "bidder", "headline_value", "closing_certainty_pct", "financing_certainty_pct", "regulatory_risk_pct"],
+        "properties": {
+          "bid_id": {"type": "string", "minLength": 1},
+          "bidder": {"type": "string", "minLength": 1},
+          "headline_value": {"type": "number", "minimum": 0},
+          "cash_pct": {"type": "number", "minimum": 0, "maximum": 100},
+          "stock_pct": {"type": "number", "minimum": 0, "maximum": 100},
+          "rollover_pct": {"type": "number", "minimum": 0, "maximum": 100},
+          "earnout_value": {"type": "number", "minimum": 0},
+          "escrow_value": {"type": "number", "minimum": 0},
+          "termination_fee": {"type": "number", "minimum": 0},
+          "exclusivity_days": {"type": "integer", "minimum": 0},
+          "conditions_count": {"type": "integer", "minimum": 0},
+          "closing_certainty_pct": {"type": "number", "minimum": 0, "maximum": 100},
+          "financing_certainty_pct": {"type": "number", "minimum": 0, "maximum": 100},
+          "regulatory_risk_pct": {"type": "number", "minimum": 0, "maximum": 100},
+          "source_ids": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    }
+  }
+}

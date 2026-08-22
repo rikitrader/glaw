@@ -1,0 +1,99 @@
+#!/usr/bin/env python3
+"""Deterministic cap-table proceeds waterfall with preference/conversion comparison."""
+import argparse, json, pathlib, sys
+
+def load(path):
+    try:
+        return json.loads(pathlib.Path(path).read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(f"cannot read JSON: {exc}") from exc
+
+def validate(data):
+    errors = []
+    if not isinstance(data, dict) or not isinstance(data.get("analysis_id"), str) or not data["analysis_id"].startswith("WF-"):
+        errors.append("analysis_id must start with WF-")
+    if not isinstance(data.get("exit_value"), (int, float)) or data.get("exit_value", -1) < 0:
+        errors.append("exit_value must be non-negative numeric")
+    holders = data.get("holders")
+    if not isinstance(holders, list) or not holders:
+        errors.append("holders must be a non-empty array")
+        return errors
+    ids = set()
+    ownership = 0
+    for i, holder in enumerate(holders):
+        for key in ("holder_id", "name", "security_type", "shares", "ownership_pct"):
+            if key not in holder:
+                errors.append(f"holders[{i}] missing {key}")
+        if holder.get("holder_id") in ids:
+            errors.append(f"duplicate holder_id: {holder.get('holder_id')}")
+        ids.add(holder.get("holder_id"))
+        if not isinstance(holder.get("shares"), (int, float)) or holder.get("shares", 0) <= 0:
+            errors.append(f"holders[{i}].shares must be positive numeric")
+        pct = holder.get("ownership_pct")
+        if not isinstance(pct, (int, float)) or pct <= 0 or pct > 100:
+            errors.append(f"holders[{i}].ownership_pct must be between 0 and 100")
+        else:
+            ownership += pct
+        if holder.get("security_type") == "preferred" and holder.get("preference_amount", 0) < 0:
+            errors.append(f"holders[{i}].preference_amount must be non-negative")
+    if abs(ownership - 100) > 0.01:
+        errors.append(f"ownership_pct must sum to 100, got {ownership}")
+    return errors
+
+def analyze(data):
+    errors = validate(data)
+    if errors:
+        raise ValueError("invalid waterfall: " + "; ".join(errors))
+    exit_value = float(data["exit_value"])
+    prefs = [h for h in data["holders"] if h["security_type"] == "preferred"]
+    total_pref = sum(float(h.get("preference_amount", 0)) for h in prefs)
+    pref_paid = min(exit_value, total_pref)
+    payouts = {h["holder_id"]: 0.0 for h in data["holders"]}
+    if total_pref:
+        for holder in prefs:
+            payouts[holder["holder_id"]] = pref_paid * float(holder.get("preference_amount", 0)) / total_pref
+    remaining = max(0.0, exit_value - pref_paid)
+    participating = [h for h in data["holders"] if h["security_type"] == "common" or h.get("participating", False)]
+    participant_pct = sum(float(h["ownership_pct"]) for h in participating)
+    for holder in participating:
+        payouts[holder["holder_id"]] += remaining * float(holder["ownership_pct"]) / participant_pct if participant_pct else 0
+    if remaining and prefs:
+        non_participating = [h for h in prefs if not h.get("participating", False)]
+        conversion_total = sum(float(h.get("conversion_shares", h["shares"])) for h in data["holders"])
+        convert_payouts = {h["holder_id"]: exit_value * float(h.get("conversion_shares", h["shares"])) / conversion_total for h in data["holders"]} if conversion_total else {}
+        if any(convert_payouts[h["holder_id"]] > payouts[h["holder_id"]] for h in non_participating):
+            payouts = convert_payouts
+    rows = []
+    for holder in data["holders"]:
+        amount = payouts[holder["holder_id"]]
+        rows.append({"holder_id": holder["holder_id"], "name": holder["name"], "payout": round(amount, 8), "payout_pct": round(amount / exit_value * 100, 8) if exit_value else 0})
+    return {"analysis_id": data["analysis_id"], "currency": data.get("currency", "USD"), "exit_value": exit_value, "total_preference": total_pref, "preference_paid": pref_paid, "residual_value": remaining, "payouts": rows, "payout_total": round(sum(r["payout"] for r in rows), 8)}
+
+def main():
+    parser = argparse.ArgumentParser(prog="glaw-cap-table-waterfall")
+    sub = parser.add_subparsers(dest="command", required=True)
+    s = sub.add_parser("scaffold")
+    s.add_argument("--analysis-id", required=True)
+    s.add_argument("--exit-value", type=float, required=True)
+    v = sub.add_parser("validate")
+    v.add_argument("input")
+    a = sub.add_parser("analyze")
+    a.add_argument("input")
+    args = parser.parse_args()
+    if args.command == "scaffold":
+        print(json.dumps({"analysis_id": args.analysis_id, "exit_value": args.exit_value, "holders": []}, indent=2))
+        return 0
+    try:
+        data = load(args.input)
+        errors = validate(data)
+        if args.command == "validate":
+            print(json.dumps({"valid": not errors, "errors": errors}, indent=2, sort_keys=True))
+            return 0 if not errors else 1
+        print(json.dumps(analyze(data), indent=2, sort_keys=True))
+        return 0
+    except ValueError as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
+
+if __name__ == "__main__":
+    raise SystemExit(main())

@@ -52,6 +52,17 @@ client work:
 | Financial services | `/glaw-fs-3-statement-model`, `/glaw-fs-dcf-model`, `/glaw-fs-lbo-model`, `/glaw-fs-merger-model` |
 | Financial deliverables | `/glaw-fs-accrual-schedule`, `/glaw-fs-financial-plan`, `/glaw-fs-roll-forward`, `/glaw-fs-teaser`, `/glaw-fs-variance-commentary` |
 
+## M&A, Public Markets, and Analytical Assurance
+
+| Area | Modules |
+|---|---|
+| M&A economics | `/glaw-fs-transaction-comps`, `/glaw-fs-cap-table-waterfall`, `/glaw-fs-transaction-terms`, `/glaw-fs-bid-comparison` |
+| M&A process | `/glaw-fs-buyer-universe`, `/glaw-fs-ma-process-manager`, `/glaw-fs-dd-findings`, `/glaw-fs-ma-board-materials` |
+| Closing and integration | `/glaw-fs-closing-funds-flow`, `/glaw-fs-synergy-model`, `/glaw-fs-carveout-model`, `/glaw-fs-integration-100-day` |
+| Public markets / IR | `/glaw-fs-earnings-communications`, `/glaw-fs-guidance-scenarios`, `/glaw-fs-ir-materials`, `/glaw-fs-agm-materials`, `/glaw-fs-deal-announcement` |
+| Ownership / capital return | `/glaw-fs-shareholder-register`, `/glaw-fs-activist-vulnerability`, `/glaw-fs-capital-return` |
+| AI analytical assurance | `/glaw-fs-analytical-artifact-review`, `/glaw-fs-model-quality-audit`, `/glaw-fs-investment-recommendation-review`, `/glaw-fs-head-to-head-analysis`, `/glaw-fs-scenario-review` |
+
 ## Local CLI Commands
 
 | Command | Purpose |

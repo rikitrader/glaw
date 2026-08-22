@@ -154,6 +154,40 @@ MeF via EFIN/approved software, NOT this tool. W-2 → SSA BSO.
 filler, run under the bookkeeping local source runner (reporting-disabled PDF helper). Blank IRS PDFs are a manual drop-in per each seat's
 `forms/README.md` — the seat computes the values, the filler stamps them onto the real form.
 
+## M&A, Public Markets, and Analytical Assurance Division
+
+The expansion is tracked in `docs/MA-PUBLIC-MARKETS-ASSURANCE-TODO.md`. New seats must not
+be treated as production-ready until their structured contract, artifact output, deterministic
+checks, fixtures, and human-approval gate are present.
+
+| Seat | Skill | Status |
+|------|-------|--------|
+| Analytical artifact review | `glaw-fs-analytical-artifact-review` | **implemented** |
+| Transaction comps | `glaw-fs-transaction-comps` | **implemented** |
+| Cap table and equity waterfall | `glaw-fs-cap-table-waterfall` | **implemented** |
+| Transaction terms | `glaw-fs-transaction-terms` | **implemented** |
+| Bid comparison | `glaw-fs-bid-comparison` | **implemented contract** |
+| Buyer universe | `glaw-fs-buyer-universe` | **implemented contract** |
+| M&A process manager | `glaw-fs-ma-process-manager` | **implemented contract** |
+| Diligence findings | `glaw-fs-dd-findings` | **implemented contract** |
+| M&A board materials | `glaw-fs-ma-board-materials` | **implemented contract** |
+| Closing and funds flow | `glaw-fs-closing-funds-flow` | **implemented contract** |
+| Synergy model | `glaw-fs-synergy-model` | **implemented contract** |
+| Carve-out model | `glaw-fs-carveout-model` | **implemented contract** |
+| Integration / 100-day plan | `glaw-fs-integration-100-day` | **implemented contract** |
+| Earnings communications | `glaw-fs-earnings-communications` | **implemented contract** |
+| Guidance scenarios | `glaw-fs-guidance-scenarios` | **implemented contract** |
+| IR materials | `glaw-fs-ir-materials` | **implemented contract** |
+| AGM materials | `glaw-fs-agm-materials` | **implemented contract** |
+| Deal announcement | `glaw-fs-deal-announcement` | **implemented contract** |
+| Shareholder register | `glaw-fs-shareholder-register` | **implemented contract** |
+| Activist vulnerability | `glaw-fs-activist-vulnerability` | **implemented contract** |
+| Capital return | `glaw-fs-capital-return` | **implemented contract** |
+| Model quality audit | `glaw-fs-model-quality-audit` | **implemented contract** |
+| Investment recommendation review | `glaw-fs-investment-recommendation-review` | **implemented contract** |
+| Head-to-head analysis | `glaw-fs-head-to-head-analysis` | **implemented contract** |
+| Scenario review | `glaw-fs-scenario-review` | **implemented contract** |
+
 ## Accounting & Finance Division → lead `/glaw-accounting`
 | **Forensic reconstruction (re-runnable)** — rebuild gapless, fully-reconciled, audit-ready books from raw bank statements: month-by-month reconstruction → tamper-evident double-entry GL + chart of accounts (`bin/glaw-forensic-pipeline`) → 3-statement + SEC/IRS footnotes → credits + IRS-audit-readiness + forms package + error/resolution log + CFO/CEO reports; forensic-auditor adversarial gate | `/glaw-forensic-reconstruction` |
 | **Forensic period reports + trace** — monthly/yearly P&L + full transaction trace, every posting tied to its source statement + tamper-evident hash (`bin/glaw-forensic-reports`); wires categorized by their real ORIG:/BNF: counterparty | `/glaw-forensic-reconstruction` |

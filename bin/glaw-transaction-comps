@@ -1,0 +1,90 @@
+#!/usr/bin/env python3
+"""Deterministic precedent-transaction multiple and summary engine."""
+import argparse, json, math, pathlib, statistics, sys
+
+REQUIRED = ("transaction_id", "target", "enterprise_value", "ltm_revenue", "ltm_ebitda")
+
+def load(path):
+    try:
+        return json.loads(pathlib.Path(path).read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(f"cannot read JSON: {exc}") from exc
+
+def validate(data):
+    errors = []
+    if not isinstance(data, dict):
+        return ["input must be an object"]
+    if not isinstance(data.get("analysis_id"), str) or not data["analysis_id"].startswith("TC-"):
+        errors.append("analysis_id must start with TC-")
+    txns = data.get("transactions")
+    if not isinstance(txns, list) or not txns:
+        errors.append("transactions must be a non-empty array")
+        return errors
+    ids = set()
+    for i, txn in enumerate(txns):
+        if not isinstance(txn, dict):
+            errors.append(f"transactions[{i}] must be an object")
+            continue
+        for key in REQUIRED:
+            if key not in txn:
+                errors.append(f"transactions[{i}] missing {key}")
+        tid = txn.get("transaction_id")
+        if tid in ids:
+            errors.append(f"duplicate transaction_id: {tid}")
+        ids.add(tid)
+        for key in ("enterprise_value", "ltm_revenue", "ltm_ebitda"):
+            if not isinstance(txn.get(key), (int, float)) or isinstance(txn.get(key), bool) or txn[key] <= 0:
+                errors.append(f"transactions[{i}].{key} must be positive numeric")
+    return errors
+
+def quantiles(values):
+    ordered = sorted(values)
+    return {"min": ordered[0], "q1": statistics.quantiles(ordered, n=4, method="inclusive")[0] if len(ordered) > 1 else ordered[0], "median": statistics.median(ordered), "q3": statistics.quantiles(ordered, n=4, method="inclusive")[2] if len(ordered) > 1 else ordered[0], "max": ordered[-1]}
+
+def analyze(data):
+    errors = validate(data)
+    if errors:
+        raise ValueError("invalid transaction comps: " + "; ".join(errors))
+    rows = []
+    for txn in data["transactions"]:
+        ev = txn["enterprise_value"]
+        row = dict(txn)
+        row["ev_revenue"] = ev / txn["ltm_revenue"]
+        row["ev_ebitda"] = ev / txn["ltm_ebitda"]
+        if txn.get("ltm_ebit"):
+            row["ev_ebit"] = ev / txn["ltm_ebit"]
+        rows.append(row)
+    summary = {"transaction_count": len(rows), "ev_revenue": quantiles([r["ev_revenue"] for r in rows]), "ev_ebitda": quantiles([r["ev_ebitda"] for r in rows])}
+    if any("ev_ebit" in r for r in rows):
+        values = [r["ev_ebit"] for r in rows if "ev_ebit" in r]
+        summary["ev_ebit"] = quantiles(values)
+    return {"analysis_id": data["analysis_id"], "currency": data.get("currency", "USD"), "transactions": rows, "summary": summary}
+
+def main():
+    parser = argparse.ArgumentParser(prog="glaw-transaction-comps")
+    sub = parser.add_subparsers(dest="command", required=True)
+    s = sub.add_parser("scaffold")
+    s.add_argument("--analysis-id", required=True)
+    s.add_argument("--currency", default="USD")
+    v = sub.add_parser("validate")
+    v.add_argument("input")
+    a = sub.add_parser("analyze")
+    a.add_argument("input")
+    args = parser.parse_args()
+    if args.command == "scaffold":
+        print(json.dumps({"analysis_id": args.analysis_id, "currency": args.currency, "transactions": []}, indent=2))
+        return 0
+    try:
+        data = load(args.input)
+        errors = validate(data)
+        if args.command == "validate":
+            print(json.dumps({"valid": not errors, "errors": errors}, indent=2, sort_keys=True))
+            return 0 if not errors else 1
+        print(json.dumps(analyze(data), indent=2, sort_keys=True))
+        return 0
+    except ValueError as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
+
+if __name__ == "__main__":
+    raise SystemExit(main())

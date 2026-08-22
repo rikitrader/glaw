@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://glaw.local/schemas/lane-workpaper.schema.json",
+  "title": "GLAW Lane Workpaper",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["lane_id", "department", "lane", "record_type", "version", "status", "owner", "source_ids", "artifacts", "gates"],
+  "properties": {
+    "lane_id": {"type": "string", "pattern": "^LANE-[0-9]{4,}$"},
+    "matter_id": {"type": "string"},
+    "department": {"type": "string", "enum": ["ma", "public-markets", "assurance"]},
+    "lane": {"type": "string", "minLength": 1},
+    "record_type": {"type": "string", "minLength": 1},
+    "version": {"type": "string", "minLength": 1},
+    "status": {"type": "string", "enum": ["draft", "review", "approved_with_conditions", "approved", "revise_required", "rejected"]},
+    "owner": {"type": "string", "minLength": 1},
+    "source_ids": {"type": "array", "items": {"type": "string"}},
+    "artifacts": {"type": "array", "items": {"type": "object", "additionalProperties": false, "required": ["type", "path", "status"], "properties": {"type": {"type": "string"}, "path": {"type": "string"}, "status": {"type": "string", "enum": ["draft", "review", "approved"]}}}},
+    "gates": {"type": "object", "additionalProperties": false, "required": ["source_complete", "calculation_checked", "review_complete", "human_approval"], "properties": {"source_complete": {"type": "boolean"}, "calculation_checked": {"type": "boolean"}, "review_complete": {"type": "boolean"}, "human_approval": {"type": "boolean"}}},
+    "findings": {"type": "array", "items": {"type": "string"}},
+    "next_action": {"type": "string"}
+  }
+}

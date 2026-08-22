@@ -1,0 +1,95 @@
+#!/usr/bin/env python3
+"""Shared deterministic lane workpaper engine for M&A, public markets, and assurance."""
+import argparse, json, pathlib, sys
+
+ROOT = pathlib.Path(__file__).resolve().parents[1]
+CATALOG = json.loads((ROOT / "lib/lane-catalog.json").read_text(encoding="utf-8"))
+STATUSES = {"draft", "review", "approved_with_conditions", "approved", "revise_required", "rejected"}
+TRANSITIONS = {"draft": {"review", "rejected"}, "review": {"approved_with_conditions", "approved", "revise_required", "rejected"}, "approved_with_conditions": {"approved", "revise_required"}, "revise_required": {"review", "rejected"}, "approved": set(), "rejected": set()}
+
+def load(path):
+    try:
+        return json.loads(pathlib.Path(path).read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(f"cannot read JSON: {exc}") from exc
+
+def catalog_entry(department, lane):
+    for entry in CATALOG["departments"].get(department, []):
+        if entry["name"] == lane:
+            return entry
+    return None
+
+def validate(data):
+    errors = []
+    for key in ("lane_id", "department", "lane", "record_type", "version", "status", "owner", "source_ids", "artifacts", "gates"):
+        if key not in data:
+            errors.append(f"missing required field: {key}")
+    if data.get("status") not in STATUSES:
+        errors.append("invalid status")
+    entry = catalog_entry(data.get("department"), data.get("lane"))
+    if not entry:
+        errors.append("lane is not present in the canonical lane catalog")
+    elif data.get("record_type") != entry["record_type"]:
+        errors.append(f"record_type must be {entry['record_type']}")
+    if not isinstance(data.get("source_ids"), list):
+        errors.append("source_ids must be an array")
+    gates = data.get("gates", {})
+    for key in ("source_complete", "calculation_checked", "review_complete", "human_approval"):
+        if not isinstance(gates.get(key), bool):
+            errors.append(f"gates.{key} must be boolean")
+    artifacts = data.get("artifacts", [])
+    if not isinstance(artifacts, list) or not artifacts:
+        errors.append("artifacts must be a non-empty array")
+    else:
+        for i, artifact in enumerate(artifacts):
+            if not all(k in artifact for k in ("type", "path", "status")):
+                errors.append(f"artifacts[{i}] requires type, path, and status")
+    if data.get("status") == "approved":
+        if not all(gates.get(key) is True for key in ("source_complete", "calculation_checked", "review_complete", "human_approval")):
+            errors.append("approved workpapers require all four gates")
+        if any(a.get("status") != "approved" for a in artifacts if isinstance(a, dict)):
+            errors.append("approved workpapers require all artifacts approved")
+    return errors
+
+def scaffold(args):
+    entry = catalog_entry(args.department, args.lane)
+    if not entry:
+        raise ValueError("lane is not present in the canonical lane catalog")
+    return {"lane_id": args.lane_id, "matter_id": args.matter, "department": args.department, "lane": args.lane, "record_type": entry["record_type"], "version": "v1", "status": "draft", "owner": args.owner, "source_ids": [], "artifacts": [{"type": args.artifact_type, "path": "", "status": "draft"}], "gates": {"source_complete": False, "calculation_checked": False, "review_complete": False, "human_approval": False}, "findings": [], "next_action": "collect sources"}
+
+def transition(data, target):
+    errors = validate(data)
+    if errors:
+        raise ValueError("invalid workpaper: " + "; ".join(errors))
+    current = data["status"]
+    if target not in TRANSITIONS[current]:
+        raise ValueError(f"invalid transition: {current} -> {target}")
+    data = dict(data)
+    data["status"] = target
+    return data
+
+def main():
+    parser = argparse.ArgumentParser(prog="glaw-lane")
+    sub = parser.add_subparsers(dest="command", required=True)
+    c = sub.add_parser("catalog")
+    c.add_argument("--json", action="store_true")
+    s = sub.add_parser("scaffold")
+    s.add_argument("--lane-id", required=True); s.add_argument("--matter", default=""); s.add_argument("--department", required=True, choices=["ma", "public-markets", "assurance"]); s.add_argument("--lane", required=True); s.add_argument("--owner", required=True); s.add_argument("--artifact-type", default="workpaper")
+    v = sub.add_parser("validate"); v.add_argument("input")
+    t = sub.add_parser("transition"); t.add_argument("input"); t.add_argument("target", choices=sorted(STATUSES))
+    args = parser.parse_args()
+    try:
+        if args.command == "catalog":
+            print(json.dumps(CATALOG, indent=2, sort_keys=True) if args.json else "\n".join(f"{dept}/{item['name']} -> {item['seat']}" for dept, items in CATALOG["departments"].items() for item in items))
+            return 0
+        if args.command == "scaffold":
+            print(json.dumps(scaffold(args), indent=2, sort_keys=True)); return 0
+        data = load(args.input)
+        if args.command == "validate":
+            errors = validate(data); print(json.dumps({"valid": not errors, "errors": errors}, indent=2, sort_keys=True)); return 0 if not errors else 1
+        print(json.dumps(transition(data, args.target), indent=2, sort_keys=True)); return 0
+    except ValueError as exc:
+        print(str(exc), file=sys.stderr); return 2
+
+if __name__ == "__main__":
+    raise SystemExit(main())
