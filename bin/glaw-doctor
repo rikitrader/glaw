@@ -556,6 +556,7 @@ if [ "$DOCTOR_CORE" = "1" ]; then
     "all_lanes_test:all-lanes"
     "prophet_actuary_contract_test:prophet-actuary-contract"
     "prophet_actuary_agent_map_test:prophet-actuary-agent-map"
+    "seat_posture_contract_test:seat-posture-contract"
   )
 else
   TESTS=(
@@ -610,6 +611,7 @@ else
     "all_lanes_test:all-lanes"
     "prophet_actuary_contract_test:prophet-actuary-contract"
     "prophet_actuary_agent_map_test:prophet-actuary-agent-map"
+    "seat_posture_contract_test:seat-posture-contract"
   )
 fi
 for t in "${TESTS[@]}"; do
