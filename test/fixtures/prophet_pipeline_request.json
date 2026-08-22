@@ -1,0 +1,20 @@
+{
+  "schema_version": "prophet-pipeline/v1",
+  "run_id": "RUN-0001",
+  "valuation_date": "2026-08-22",
+  "model_version": "demo-prophet-compatible-v1",
+  "provider": "local",
+  "periods": 3,
+  "sources": [{"source_id":"SRC-0001","version":"approved-v1","effective_date":"2026-01-01"}],
+  "policies": [
+    {"policy_id":"POL-0001","premium":1000,"benefit":10000,"mortality":0.01,"lapse":0.02,"expense":0.1,"interest_rate":0.03},
+    {"policy_id":"POL-0002","premium":1200,"benefit":12000,"mortality":0.008,"lapse":0.015,"expense":0.09,"interest_rate":0.03}
+  ],
+  "assets": [{"asset_id":"AST-0001","balance":25000,"yield":0.04,"duration":4}],
+  "reinsurance": {"quota_share":0.2,"attachment":1000,"limit":3000},
+  "scenarios": {
+    "deterministic": [{"name":"BASE"},{"name":"ADVERSE","mortality_pct":0.2,"interest_bps":-200}],
+    "stochastic": {"seed":42,"iterations":25,"mortality_sigma":0.1,"lapse_sigma":0.1,"interest_sigma_bps":25,"claims_sigma":0.1},
+    "alm": {"interest_bps":-100}
+  }
+}

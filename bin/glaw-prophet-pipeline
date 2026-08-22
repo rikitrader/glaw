@@ -1,0 +1,168 @@
+#!/usr/bin/env python3
+"""Fail-closed insurance data -> model -> calculation -> scenarios -> results pipeline."""
+import argparse, hashlib, json, math, pathlib, platform, random, statistics, sys
+from concurrent.futures import ThreadPoolExecutor
+
+ROOT = pathlib.Path(__file__).resolve().parents[1]
+DOMAINS = ("deterministic", "stochastic", "alm")
+
+def read_json(path):
+    try:
+        return json.loads(pathlib.Path(path).read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(f"cannot read pipeline request: {exc}") from exc
+
+def sha(data):
+    return hashlib.sha256(json.dumps(data, sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+
+def validate(req):
+    errors = []
+    for key in ("schema_version", "run_id", "valuation_date", "model_version", "sources", "policies", "assets"):
+        if key not in req: errors.append(f"missing required field: {key}")
+    if req.get("schema_version") != "prophet-pipeline/v1": errors.append("schema_version must be prophet-pipeline/v1")
+    for key in ("sources", "policies", "assets"):
+        if not isinstance(req.get(key), list): errors.append(f"{key} must be an array")
+    for i, source in enumerate(req.get("sources", [])):
+        for key in ("source_id", "version", "effective_date"):
+            if key not in source: errors.append(f"sources[{i}] missing {key}")
+    for key in ("policy_id", "premium", "benefit"):
+        if req.get("policies") and any(key not in row for row in req["policies"]): errors.append(f"each policy requires {key}")
+    for key in ("asset_id", "balance", "yield"):
+        if any(key not in row for row in req.get("assets", [])): errors.append(f"each asset requires {key}")
+    ids = [row.get("policy_id") for row in req.get("policies", [])]
+    if len(ids) != len(set(ids)): errors.append("duplicate policy_id")
+    asset_ids = [row.get("asset_id") for row in req.get("assets", [])]
+    if len(asset_ids) != len(set(asset_ids)): errors.append("duplicate asset_id")
+    if req.get("periods", 5) < 1 or req.get("periods", 5) > 120: errors.append("periods must be 1-120")
+    return errors
+
+def capabilities(workers):
+    return {
+        "looped_modules": True,
+        "vectorization": False,
+        "multithreading": workers > 1,
+        "workers": workers,
+        "avx_cpus": False,
+        "gpu_acceleration": False,
+        "execution_note": "stdlib reference engine; AVX/GPU/vector providers require an explicitly configured adapter"
+    }
+
+def shock_value(value, pct=0, bps=0):
+    return max(0.0, value * (1 + pct) + bps / 10000)
+
+def policy_projection(policy, periods, scenario):
+    mortality = float(policy.get("mortality", policy.get("claim_rate", 0.01)))
+    lapse = float(policy.get("lapse", 0.02))
+    morbidity = float(policy.get("morbidity", 0.0))
+    expense_rate = float(policy.get("expense", 0.10))
+    interest = float(policy.get("interest_rate", 0.03))
+    claim_rate = float(policy.get("claim_rate", mortality + morbidity))
+    mortality = min(1.0, max(0.0, shock_value(mortality, scenario.get("mortality_pct", 0))))
+    lapse = min(1.0, max(0.0, shock_value(lapse, scenario.get("lapse_pct", 0))))
+    claim_rate = min(1.0, max(0.0, shock_value(claim_rate, scenario.get("claims_pct", 0))))
+    expense_rate = max(0.0, shock_value(expense_rate, scenario.get("expense_pct", 0)))
+    interest = interest + scenario.get("interest_bps", 0) / 10000
+    survival = 1.0
+    rows = []
+    for period in range(1, periods + 1):
+        premium = float(policy["premium"]) * survival
+        claims = float(policy["benefit"]) * survival * claim_rate
+        expenses = premium * expense_rate
+        investment = (premium + float(policy["benefit"])) * interest
+        rows.append({"period":period,"premium":premium,"claims":claims,"expenses":expenses,"investment_income":investment,"survival":survival})
+        survival *= max(0.0, 1 - claim_rate - lapse)
+    rate = max(-0.99, interest)
+    reserve = sum(row["claims"] / ((1 + rate) ** row["period"]) for row in rows)
+    return {"policy_id":policy["policy_id"],"cash_flows":rows,"premium":sum(r["premium"] for r in rows),"gross_claims":sum(r["claims"] for r in rows),"expenses":sum(r["expenses"] for r in rows),"investment_income":sum(r["investment_income"] for r in rows),"reserve":reserve,"closing_survival":survival}
+
+def project(req, scenario, workers):
+    periods = int(req.get("periods", 5))
+    policies = req["policies"]
+    if workers > 1:
+        with ThreadPoolExecutor(max_workers=workers) as pool:
+            rows = list(pool.map(lambda p: policy_projection(p, periods, scenario), policies))
+    else:
+        rows = [policy_projection(policy, periods, scenario) for policy in policies]
+    gross_claims = sum(row["gross_claims"] for row in rows)
+    reinsurance = req.get("reinsurance", {})
+    quota = float(reinsurance.get("quota_share", 0.0))
+    attachment = float(reinsurance.get("attachment", 0.0))
+    limit = float(reinsurance.get("limit", 0.0))
+    xol = min(max(gross_claims - attachment, 0.0), limit) if limit else 0.0
+    recovery = gross_claims * quota + xol
+    net_claims = max(0.0, gross_claims - recovery)
+    asset_income = sum(float(asset["balance"]) * (float(asset["yield"]) + scenario.get("interest_bps", 0) / 10000) for asset in req["assets"])
+    premiums = sum(row["premium"] for row in rows)
+    expenses = sum(row["expenses"] for row in rows)
+    reserves = sum(row["reserve"] for row in rows)
+    profit = premiums + asset_income + sum(row["investment_income"] for row in rows) - net_claims - expenses
+    assets = sum(float(asset["balance"]) for asset in req["assets"])
+    capital = assets - reserves
+    return {"policy_rows":rows,"premiums":premiums,"gross_claims":gross_claims,"reinsurance_recovery":recovery,"net_claims":net_claims,"expenses":expenses,"investment_income":asset_income + sum(row["investment_income"] for row in rows),"reserves":reserves,"assets":assets,"capital":capital,"profit":profit,"solvency_ratio":capital / max(reserves, 1.0)}
+
+def deterministic(req, workers):
+    scenarios = req.get("scenarios", {}).get("deterministic", [{"name":"BASE"}])
+    output = []
+    for scenario in scenarios:
+        row = project(req, scenario, workers)
+        output.append({"name":scenario.get("name", "SCENARIO"),"shocks":scenario,"results":row})
+    return output
+
+def stochastic(req, workers):
+    spec = req.get("scenarios", {}).get("stochastic", {})
+    iterations = int(spec.get("iterations", 100))
+    seed = int(spec.get("seed", 0))
+    if iterations < 1 or iterations > 100000: raise ValueError("stochastic iterations must be 1-100000")
+    rng = random.Random(seed)
+    shocks = [{"mortality_pct":rng.gauss(0, float(spec.get("mortality_sigma", .10))),"lapse_pct":rng.gauss(0, float(spec.get("lapse_sigma", .10))),"interest_bps":rng.gauss(0, float(spec.get("interest_sigma_bps", 50))),"claims_pct":rng.gauss(0, float(spec.get("claims_sigma", .10)))} for _ in range(iterations)]
+    rows = [project(req, shock, workers) for shock in shocks]
+    def summary(key):
+        values = sorted(float(row[key]) for row in rows)
+        return {"mean":statistics.fmean(values),"p05":values[max(0, int(.05 * len(values)) - 1)],"p50":values[len(values)//2],"p95":values[min(len(values)-1, int(.95 * len(values)))]}
+    return {"seed":seed,"iterations":iterations,"summaries":{key:summary(key) for key in ("profit","reserves","capital","solvency_ratio","net_claims")}}
+
+def alm(req):
+    periods = int(req.get("periods", 5))
+    scenario = req.get("scenarios", {}).get("alm", {"interest_bps":0})
+    asset_cf = sum(float(a["balance"]) * (float(a["yield"]) + scenario.get("interest_bps", 0)/10000) for a in req["assets"])
+    base = project(req, scenario, 1)
+    liability_cf = base["net_claims"] + base["expenses"]
+    asset_duration = sum(float(a.get("balance",0)) * float(a.get("duration",0)) for a in req["assets"]) / max(base["assets"], 1)
+    liability_duration = sum(row["reserve"] * (i + 1) for row in base["policy_rows"] for i in range(len(row["cash_flows"]))) / max(base["reserves"], 1)
+    return {"scenario":scenario,"asset_cash_flow":asset_cf,"liability_cash_flow":liability_cf,"liquidity_surplus":asset_cf - liability_cf,"asset_duration":asset_duration,"liability_duration":liability_duration,"duration_gap":asset_duration - liability_duration,"liquidity_shortfall":asset_cf < liability_cf}
+
+def reporting(base, alm_result):
+    return {
+        "ifrs17":{"status":"prepared_for_review","fulfillment_cash_flows":base["reserves"],"insurance_service_result":base["premiums"] - base["net_claims"] - base["expenses"],"risk_adjustment":"REQUIRES_APPROVED_METHODOLOGY","csm":"REQUIRES_CONTRACT_GROUPING"},
+        "ldti_gaap":{"status":"prepared_for_review","future_policy_benefits":base["reserves"],"discount_rate":"REQUIRES_APPROVED_CURVE","dac":"REQUIRES_ACCOUNTING_MAPPING"},
+        "solvency_ii_statutory":{"status":"prepared_for_review","technical_provisions":base["reserves"],"own_funds":base["capital"],"solvency_ratio":base["solvency_ratio"],"scr_mcr":"REQUIRES_REGULATORY_MODEL"},
+        "bi":{"status":"prepared_for_review","kpis":{"premiums":base["premiums"],"claims":base["net_claims"],"profit":base["profit"],"capital":base["capital"],"solvency_ratio":base["solvency_ratio"],"liquidity_surplus":alm_result["liquidity_surplus"]}},
+        "gl":{"status":"prepared_for_review","journal_posting":"BLOCKED_PENDING_ACCOUNTING_MAPPING","control_totals":{"premiums":base["premiums"],"claims":base["net_claims"],"expenses":base["expenses"],"profit":base["profit"]}}
+    }
+
+def run(req, workers):
+    errors = validate(req)
+    if errors: raise ValueError("invalid pipeline request: " + "; ".join(errors))
+    provider = req.get("provider", "local")
+    if provider != "local": raise ValueError("external-prophet provider is not configured; supply an approved adapter rather than impersonating FIS Prophet")
+    det = deterministic(req, workers)
+    base = det[0]["results"]
+    stoch = stochastic(req, workers)
+    alm_result = alm(req)
+    result = {"schema_version":"prophet-results/v1","run_id":req["run_id"],"status":"REVIEW","data_integration":{"source_count":len(req["sources"]),"policy_count":len(req["policies"]),"asset_count":len(req["assets"]),"input_sha256":sha(req),"lineage":[{"source_id":s["source_id"],"version":s["version"],"effective_date":s["effective_date"]} for s in req["sources"]]},"model":{"provider":provider,"model_version":req["model_version"],"periods":req.get("periods",5),"modules":["product_definitions","cash_flow_formulas","mortality_morbidity","lapse","expenses","interest_rates","guarantees_options","assets","reinsurance"]},"calculation":{"capabilities":capabilities(workers),"deterministic_base":base},"scenarios":{"deterministic":det,"stochastic":stoch},"alm":alm_result,"results":{"cash_flows":base["policy_rows"],"reserves":base["reserves"],"capital":base["capital"],"profit":base["profit"],"solvency":base["solvency_ratio"],"claims":base["net_claims"],"risk_metrics":{"gross_claims":base["gross_claims"],"reinsurance_recovery":base["reinsurance_recovery"]}},"reporting":reporting(base, alm_result),"release_gate":{"status":"HUMAN_REVIEW_REQUIRED","qualified_actuary_required":True,"accounting_mapping_required":True,"regulatory_review_required":True,"provider_adapter_required_for_fis_prophet":provider != "local"}}
+    return result
+
+def main():
+    parser = argparse.ArgumentParser(prog="glaw-prophet-pipeline"); sub = parser.add_subparsers(dest="command", required=True)
+    v = sub.add_parser("validate"); v.add_argument("input")
+    r = sub.add_parser("run"); r.add_argument("input"); r.add_argument("--workers", type=int, default=1)
+    args = parser.parse_args()
+    try:
+        req = read_json(args.input)
+        if args.command == "validate":
+            errors = validate(req); print(json.dumps({"valid":not errors,"errors":errors}, indent=2, sort_keys=True)); return 0 if not errors else 1
+        if args.workers < 1 or args.workers > 32: raise ValueError("workers must be 1-32")
+        print(json.dumps(run(req, args.workers), indent=2, sort_keys=True)); return 0
+    except ValueError as exc: print(str(exc), file=sys.stderr); return 2
+
+if __name__ == "__main__": raise SystemExit(main())
