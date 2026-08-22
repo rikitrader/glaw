@@ -1,0 +1,93 @@
+#!/usr/bin/env python3
+"""Normalize transaction terms and calculate certainty-adjusted economic value."""
+import argparse, json, pathlib, sys
+
+REQUIRED = ("bid_id", "bidder", "headline_value", "closing_certainty_pct", "financing_certainty_pct", "regulatory_risk_pct")
+
+def load(path):
+    try:
+        return json.loads(pathlib.Path(path).read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc:
+        raise ValueError(f"cannot read JSON: {exc}") from exc
+
+def validate(data):
+    errors = []
+    if not isinstance(data, dict) or not isinstance(data.get("analysis_id"), str) or not data["analysis_id"].startswith("TT-"):
+        errors.append("analysis_id must start with TT-")
+    if not isinstance(data.get("target"), str) or not data.get("target"):
+        errors.append("target is required")
+    bids = data.get("bids")
+    if not isinstance(bids, list) or not bids:
+        errors.append("bids must be a non-empty array")
+        return errors
+    ids = set()
+    for i, bid in enumerate(bids):
+        for key in REQUIRED:
+            if key not in bid:
+                errors.append(f"bids[{i}] missing {key}")
+        bid_id = bid.get("bid_id")
+        if bid_id in ids:
+            errors.append(f"duplicate bid_id: {bid_id}")
+        ids.add(bid_id)
+        if not isinstance(bid.get("headline_value"), (int, float)) or bid.get("headline_value", -1) < 0:
+            errors.append(f"bids[{i}].headline_value must be non-negative numeric")
+        for key in ("closing_certainty_pct", "financing_certainty_pct", "regulatory_risk_pct"):
+            value = bid.get(key)
+            if not isinstance(value, (int, float)) or not 0 <= value <= 100:
+                errors.append(f"bids[{i}].{key} must be between 0 and 100")
+        for key in ("cash_pct", "stock_pct", "rollover_pct"):
+            value = bid.get(key, 0)
+            if not isinstance(value, (int, float)) or not 0 <= value <= 100:
+                errors.append(f"bids[{i}].{key} must be between 0 and 100")
+    return errors
+
+def normalize(data):
+    errors = validate(data)
+    if errors:
+        raise ValueError("invalid transaction terms: " + "; ".join(errors))
+    rows = []
+    for bid in data["bids"]:
+        close = bid["closing_certainty_pct"] / 100
+        financing = bid["financing_certainty_pct"] / 100
+        regulatory = 1 - bid["regulatory_risk_pct"] / 100
+        earnout = bid.get("earnout_value", 0)
+        escrow = bid.get("escrow_value", 0)
+        certainty_factor = close * financing * regulatory
+        row = dict(bid)
+        row["total_stated_value"] = bid["headline_value"] + earnout - escrow
+        row["certainty_factor"] = round(certainty_factor, 8)
+        row["certainty_adjusted_value"] = round(bid["headline_value"] * certainty_factor + earnout * close * financing * regulatory - escrow * close, 8)
+        rows.append(row)
+    rows.sort(key=lambda row: row["certainty_adjusted_value"], reverse=True)
+    for rank, row in enumerate(rows, start=1):
+        row["economic_rank"] = rank
+    return {"analysis_id": data["analysis_id"], "target": data["target"], "currency": data.get("currency", "USD"), "bids": rows, "recommended_bid_id": rows[0]["bid_id"]}
+
+def main():
+    parser = argparse.ArgumentParser(prog="glaw-transaction-terms")
+    sub = parser.add_subparsers(dest="command", required=True)
+    s = sub.add_parser("scaffold")
+    s.add_argument("--analysis-id", required=True)
+    s.add_argument("--target", required=True)
+    v = sub.add_parser("validate")
+    v.add_argument("input")
+    n = sub.add_parser("normalize")
+    n.add_argument("input")
+    args = parser.parse_args()
+    if args.command == "scaffold":
+        print(json.dumps({"analysis_id": args.analysis_id, "target": args.target, "bids": []}, indent=2))
+        return 0
+    try:
+        data = load(args.input)
+        errors = validate(data)
+        if args.command == "validate":
+            print(json.dumps({"valid": not errors, "errors": errors}, indent=2, sort_keys=True))
+            return 0 if not errors else 1
+        print(json.dumps(normalize(data), indent=2, sort_keys=True))
+        return 0
+    except ValueError as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
+
+if __name__ == "__main__":
+    raise SystemExit(main())

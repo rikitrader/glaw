@@ -1,0 +1,37 @@
+#!/usr/bin/env python3
+"""Rank normalized bids using transparent certainty and execution weights."""
+import argparse, json, pathlib, sys
+
+def load(p):
+    try: return json.loads(pathlib.Path(p).read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as e: raise ValueError(f"cannot read JSON: {e}")
+
+def analyze(data):
+    bids = data.get("bids") if isinstance(data, dict) else None
+    if not isinstance(bids, list) or not bids: raise ValueError("bids must be a non-empty array")
+    weights = data.get("weights", {"value": 50, "execution": 30, "cash": 10, "terms": 10})
+    if abs(sum(weights.values()) - 100) > 1e-9: raise ValueError("weights must sum to 100")
+    keys = ["certainty_adjusted_value", "closing_certainty_pct", "financing_certainty_pct", "cash_pct"]
+    for bid in bids:
+        if any(k not in bid for k in keys): raise ValueError("normalized bids require certainty-adjusted value and execution fields")
+    def norm(key, value, invert=False):
+        vals = [float(b[key]) for b in bids]; lo, hi = min(vals), max(vals)
+        if hi == lo: return 100.0
+        score = (float(value) - lo) / (hi - lo) * 100
+        return 100 - score if invert else score
+    rows = []
+    for bid in bids:
+        execution = (float(bid["closing_certainty_pct"]) + float(bid["financing_certainty_pct"]) + (100 - float(bid.get("regulatory_risk_pct", 0)))) / 3
+        terms = 100 - min(100, float(bid.get("conditions_count", 0)) * 5 + float(bid.get("exclusivity_days", 0)) / 10)
+        score = (norm("certainty_adjusted_value", bid["certainty_adjusted_value"]) * weights["value"] + execution * weights["execution"] + float(bid["cash_pct"]) * weights["cash"] + terms * weights["terms"]) / 100
+        row = dict(bid); row["execution_score"] = round(execution, 8); row["terms_score"] = round(terms, 8); row["decision_score"] = round(score, 8); rows.append(row)
+    rows.sort(key=lambda x: x["decision_score"], reverse=True)
+    for i, row in enumerate(rows, 1): row["decision_rank"] = i
+    return {"analysis_id": data.get("analysis_id", ""), "weights": weights, "bids": rows, "recommended_bid_id": rows[0]["bid_id"]}
+
+def main():
+    p = argparse.ArgumentParser(prog="glaw-bid-comparison"); p.add_argument("input"); args = p.parse_args()
+    try: print(json.dumps(analyze(load(args.input)), indent=2, sort_keys=True)); return 0
+    except ValueError as e: print(str(e), file=sys.stderr); return 2
+
+if __name__ == "__main__": raise SystemExit(main())

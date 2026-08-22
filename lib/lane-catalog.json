@@ -1,0 +1,36 @@
+{
+  "version": "1.0.0",
+  "departments": {
+    "ma": [
+      {"name":"transaction-comps","seat":"glaw-fs-transaction-comps","record_type":"transaction_comps"},
+      {"name":"cap-table-waterfall","seat":"glaw-fs-cap-table-waterfall","record_type":"cap_table_waterfall"},
+      {"name":"transaction-terms","seat":"glaw-fs-transaction-terms","record_type":"transaction_terms"},
+      {"name":"bid-comparison","seat":"glaw-fs-bid-comparison","record_type":"bid_comparison"},
+      {"name":"buyer-universe","seat":"glaw-fs-buyer-universe","record_type":"buyer_universe"},
+      {"name":"ma-process-manager","seat":"glaw-fs-ma-process-manager","record_type":"ma_process"},
+      {"name":"dd-findings","seat":"glaw-fs-dd-findings","record_type":"diligence_findings"},
+      {"name":"ma-board-materials","seat":"glaw-fs-ma-board-materials","record_type":"ma_board_materials"},
+      {"name":"closing-funds-flow","seat":"glaw-fs-closing-funds-flow","record_type":"closing_funds_flow"},
+      {"name":"synergy-model","seat":"glaw-fs-synergy-model","record_type":"synergy_model"},
+      {"name":"carveout-model","seat":"glaw-fs-carveout-model","record_type":"carveout_model"},
+      {"name":"integration-100-day","seat":"glaw-fs-integration-100-day","record_type":"integration_100_day"}
+    ],
+    "public-markets": [
+      {"name":"earnings-communications","seat":"glaw-fs-earnings-communications","record_type":"earnings_communications"},
+      {"name":"guidance-scenarios","seat":"glaw-fs-guidance-scenarios","record_type":"guidance_scenarios"},
+      {"name":"ir-materials","seat":"glaw-fs-ir-materials","record_type":"ir_materials"},
+      {"name":"agm-materials","seat":"glaw-fs-agm-materials","record_type":"agm_materials"},
+      {"name":"deal-announcement","seat":"glaw-fs-deal-announcement","record_type":"deal_announcement"},
+      {"name":"shareholder-register","seat":"glaw-fs-shareholder-register","record_type":"shareholder_register"},
+      {"name":"activist-vulnerability","seat":"glaw-fs-activist-vulnerability","record_type":"activist_vulnerability"},
+      {"name":"capital-return","seat":"glaw-fs-capital-return","record_type":"capital_return"}
+    ],
+    "assurance": [
+      {"name":"analytical-artifact-review","seat":"glaw-fs-analytical-artifact-review","record_type":"analytical_review"},
+      {"name":"model-quality-audit","seat":"glaw-fs-model-quality-audit","record_type":"model_quality_audit"},
+      {"name":"investment-recommendation-review","seat":"glaw-fs-investment-recommendation-review","record_type":"investment_recommendation_review"},
+      {"name":"head-to-head-analysis","seat":"glaw-fs-head-to-head-analysis","record_type":"head_to_head_analysis"},
+      {"name":"scenario-review","seat":"glaw-fs-scenario-review","record_type":"scenario_review"}
+    ]
+  }
+}

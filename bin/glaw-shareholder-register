@@ -1,0 +1,22 @@
+#!/usr/bin/env python3
+"""Normalize ownership records and calculate concentration and ownership-base metrics."""
+import argparse, json, pathlib, sys
+
+def main():
+    p = argparse.ArgumentParser(prog="glaw-shareholder-register"); p.add_argument("input"); args = p.parse_args()
+    try: data = json.loads(pathlib.Path(args.input).read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as e: print(f"cannot read JSON: {e}", file=sys.stderr); return 2
+    holders = data.get("holders", []); outstanding = float(data.get("shares_outstanding", 0))
+    if not holders or outstanding <= 0: print("holders and positive shares_outstanding are required", file=sys.stderr); return 2
+    total = sum(float(h.get("shares", 0)) for h in holders)
+    if total > outstanding * 1.0001: print("holder shares exceed shares outstanding", file=sys.stderr); return 2
+    rows = []
+    for h in holders:
+        row = dict(h); row["ownership_pct"] = round(float(h.get("shares", 0)) / outstanding * 100, 8); rows.append(row)
+    rows.sort(key=lambda h: h["ownership_pct"], reverse=True)
+    institutional = sum(h["ownership_pct"] for h in rows if h.get("holder_type") == "institutional")
+    passive = sum(h["ownership_pct"] for h in rows if h.get("holder_type") == "passive")
+    top10 = sum(h["ownership_pct"] for h in rows[:10])
+    print(json.dumps({"register_id": data.get("register_id", ""), "as_of": data.get("as_of", ""), "holders": rows, "metrics": {"coverage_pct": round(total / outstanding * 100, 8), "top10_concentration_pct": round(top10, 8), "institutional_pct": round(institutional, 8), "passive_pct": round(passive, 8)}, "limitations": data.get("limitations", [])}, indent=2, sort_keys=True)); return 0
+
+if __name__ == "__main__": raise SystemExit(main())

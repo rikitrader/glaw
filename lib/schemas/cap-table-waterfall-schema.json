@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://glaw.local/schemas/cap-table-waterfall.schema.json",
+  "title": "GLAW Cap Table and Equity Waterfall",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["analysis_id", "exit_value", "holders"],
+  "properties": {
+    "analysis_id": {"type": "string", "pattern": "^WF-[0-9]{4,}$"},
+    "currency": {"type": "string", "minLength": 3, "maxLength": 3},
+    "exit_value": {"type": "number", "minimum": 0},
+    "holders": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["holder_id", "name", "security_type", "shares", "ownership_pct"],
+        "properties": {
+          "holder_id": {"type": "string", "minLength": 1},
+          "name": {"type": "string", "minLength": 1},
+          "security_type": {"type": "string", "enum": ["common", "preferred"]},
+          "shares": {"type": "number", "exclusiveMinimum": 0},
+          "ownership_pct": {"type": "number", "exclusiveMinimum": 0, "maximum": 100},
+          "preference_amount": {"type": "number", "minimum": 0},
+          "participating": {"type": "boolean"},
+          "conversion_shares": {"type": "number", "exclusiveMinimum": 0}
+        }
+      }
+    }
+  }
+}

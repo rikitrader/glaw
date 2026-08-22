@@ -1,0 +1,40 @@
+#!/usr/bin/env python3
+"""Append-only source provenance ledger for finance and public-markets workpapers."""
+import argparse, hashlib, json, pathlib, sys
+
+def digest(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as fh:
+        for block in iter(lambda: fh.read(1024 * 1024), b""): h.update(block)
+    return h.hexdigest()
+
+def main():
+    parser = argparse.ArgumentParser(prog="glaw-source-ledger")
+    sub = parser.add_subparsers(dest="command", required=True)
+    a = sub.add_parser("add"); a.add_argument("ledger"); a.add_argument("source_id"); a.add_argument("path"); a.add_argument("--kind", required=True); a.add_argument("--notes", default="")
+    v = sub.add_parser("validate"); v.add_argument("ledger")
+    args = parser.parse_args()
+    try:
+        ledger = pathlib.Path(args.ledger)
+        if args.command == "add":
+            row = {"source_id": args.source_id, "path": args.path, "sha256": digest(args.path), "kind": args.kind}
+            if args.notes: row["notes"] = args.notes
+            with ledger.open("a", encoding="utf-8") as fh: fh.write(json.dumps(row, sort_keys=True) + "\n")
+            print(json.dumps(row, sort_keys=True)); return 0
+        errors = []
+        seen = set()
+        for number, line in enumerate(ledger.read_text(encoding="utf-8").splitlines(), 1):
+            try: row = json.loads(line)
+            except json.JSONDecodeError: errors.append(f"line {number}: invalid JSON"); continue
+            for key in ("source_id", "path", "sha256", "kind"):
+                if key not in row: errors.append(f"line {number}: missing {key}")
+            if row.get("source_id") in seen: errors.append(f"line {number}: duplicate source_id")
+            seen.add(row.get("source_id"))
+            source_path = pathlib.Path(row.get("path", ""))
+            if not source_path.exists(): errors.append(f"line {number}: source path missing")
+            elif digest(row["path"]) != row.get("sha256"): errors.append(f"line {number}: source hash changed")
+        print(json.dumps({"valid": not errors, "errors": errors, "rows": len(seen)}, indent=2, sort_keys=True)); return 0 if not errors else 1
+    except (OSError, ValueError) as exc:
+        print(str(exc), file=sys.stderr); return 2
+
+if __name__ == "__main__": raise SystemExit(main())
