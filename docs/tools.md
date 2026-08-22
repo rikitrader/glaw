@@ -101,3 +101,7 @@ PDF/OCR bank ingestion uses repo code plus local binaries, not Python packages.
 | `glaw-transaction-comps` | `scaffold` · `validate` · `analyze`; precedent transaction multiples and statistics |
 | `glaw-cap-table-waterfall` | `scaffold` · `validate` · `analyze`; preference/conversion and holder proceeds waterfall |
 | `glaw-transaction-terms` | `scaffold` · `validate` · `normalize`; certainty-adjusted transaction economics |
+| `glaw-bid-comparison` | transparent weighted bid ranking using value, execution, cash, and terms scores |
+| `glaw-guidance-scenarios` | probability-weighted guidance cases and ranges |
+| `glaw-shareholder-register` | ownership coverage, concentration, institutional/passive mix, and holder metrics |
+| `glaw-head-to-head` | pairwise analytical-review scoring with material-error penalties |

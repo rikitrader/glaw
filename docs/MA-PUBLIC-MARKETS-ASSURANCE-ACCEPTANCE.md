@@ -61,4 +61,5 @@ these gates pass for the relevant lane.
 ./test/ma_public_assurance_contract_test.sh
 ./test/source_ledger_test.sh
 ./test/all_lanes_test.sh
+./test/extended_finance_engines_test.sh
 ```
