@@ -4,7 +4,7 @@ import argparse, json, pathlib, sys
 
 DOMAINS = {"LIFE", "HEALTH", "ANNUITIES", "PENSIONS", "PROPERTY_AND_CASUALTY", "COMMERCIAL_PROPERTY", "PERSONAL_LINES", "AUTO", "WORKERS_COMPENSATION", "CATASTROPHE", "REINSURANCE", "ALM", "CAPITAL_MODELING", "RESERVING", "PRICING", "UNDERWRITING", "CLAIMS", "IFRS17", "US_GAAP", "LDTI", "SOLVENCY_II", "STATUTORY_ACCOUNTING", "MODEL_GOVERNANCE", "MODEL_VALIDATION", "DATA_QUALITY", "ACTUARIAL_AI"}
 SCORE_KEYS = ("retrieval", "data", "methodology", "calculation", "regulatory", "model")
-GATE_KEYS = ("source_validated", "independent_calculation", "adversarial_review", "regulatory_review", "qa_complete", "human_actuary_required")
+GATE_KEYS = ("source_validated", "independent_calculation", "adversarial_review", "regulatory_review", "qa_complete", "human_actuary_required", "qualification_verified")
 WEIGHTS = {"retrieval": .15, "data": .15, "methodology": .20, "calculation": .20, "regulatory": .15, "model": .15}
 
 def read_json(path):
@@ -13,7 +13,7 @@ def read_json(path):
 
 def validate(data):
     errors = []
-    required = ("schema_version", "review_id", "question", "domains", "evidence", "assumptions", "scores", "gates", "verdict")
+    required = ("schema_version", "review_id", "question", "domains", "evidence", "assumptions", "scores", "gates", "professional_posture", "verdict")
     for key in required:
         if key not in data: errors.append(f"missing required field: {key}")
     if data.get("schema_version") != "prophet-actuary/v1": errors.append("schema_version must be prophet-actuary/v1")
@@ -30,6 +30,11 @@ def validate(data):
     gates = data.get("gates", {})
     for key in GATE_KEYS:
         if not isinstance(gates.get(key), bool): errors.append(f"gates.{key} must be boolean")
+    posture = data.get("professional_posture", {})
+    for key in ("education", "credentials"):
+        if not isinstance(posture.get(key), list) or not posture.get(key): errors.append(f"professional_posture.{key} must be a non-empty array")
+    for key in ("human_reviewer_required", "verified"):
+        if not isinstance(posture.get(key), bool): errors.append(f"professional_posture.{key} must be boolean")
     if data.get("verdict") not in {"PASS", "REVIEW", "BLOCK"}: errors.append("verdict must be PASS, REVIEW, or BLOCK")
     return errors
 
@@ -42,7 +47,8 @@ def score(data):
     if scores["regulatory"] < 50: overall = min(overall, 60); caps.append("regulatory_confidence_below_50")
     if scores["data"] < 50: overall = min(overall, 60); caps.append("data_confidence_below_50")
     if scores["calculation"] < 50: overall = min(overall, 60); caps.append("calculation_confidence_below_50")
-    missing_gates = [key for key in GATE_KEYS[:-1] if not data["gates"].get(key)]
+    missing_gates = [key for key in GATE_KEYS if key != "human_actuary_required" and not data["gates"].get(key)]
+    if not data["professional_posture"].get("verified"): missing_gates.append("professional_posture.verified")
     material = [item for item in data.get("findings", []) if item.upper().startswith(("CRITICAL", "HIGH", "MATERIAL"))]
     if material or caps or missing_gates:
         verdict = "BLOCK" if material or "regulatory_confidence_below_50" in caps or "calculation_confidence_below_50" in caps else "REVIEW"
@@ -53,7 +59,7 @@ def score(data):
     return {"overall": overall, "band": band, "verdict": verdict, "caps": caps, "missing_gates": missing_gates}
 
 def scaffold(args):
-    return {"schema_version":"prophet-actuary/v1", "review_id":args.review_id, "question":args.question, "domains":args.domain, "evidence":[], "assumptions":[], "scores":{key:0 for key in SCORE_KEYS}, "gates":{"source_validated":False,"independent_calculation":False,"adversarial_review":False,"regulatory_review":False,"qa_complete":False,"human_actuary_required":True}, "verdict":"BLOCK", "findings":["CRITICAL: evidence and validation gates are incomplete"], "missing_information":["authoritative sources","model version","assumption version","independent calculation"]}
+    return {"schema_version":"prophet-actuary/v1", "review_id":args.review_id, "question":args.question, "domains":args.domain, "evidence":[], "assumptions":[], "scores":{key:0 for key in SCORE_KEYS}, "gates":{"source_validated":False,"independent_calculation":False,"adversarial_review":False,"regulatory_review":False,"qa_complete":False,"human_actuary_required":True,"qualification_verified":False}, "professional_posture":{"education":["Actuarial Science","Mathematics","Statistics","Risk Management","related field"],"credentials":["ASA","ACAS"],"human_reviewer_required":True,"verified":False}, "verdict":"BLOCK", "findings":["CRITICAL: evidence, validation, and professional qualification gates are incomplete"], "missing_information":["authoritative sources","model version","assumption version","independent calculation","qualified human reviewer"]}
 
 def stress(args):
     base = float(args.base)
