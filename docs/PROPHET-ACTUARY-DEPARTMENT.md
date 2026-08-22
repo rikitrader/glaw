@@ -10,6 +10,15 @@ GLAW's PROPHET-ACTUARY department operationalizes that objective under a zero-tr
 
 `RETRIEVAL → SOURCE VALIDATION → ACTUARIAL REASONING → INDEPENDENT CALCULATION → ADVERSARIAL REVIEW → REGULATORY REVIEW → QA → FINAL VERDICT`
 
+## Professional qualification posture
+
+The accountable human actuarial reviewer should have a degree in **Actuarial Science,
+Mathematics, Statistics, Risk Management, or a related field**, and hold **ASA or ACAS**
+credentials (or a documented equivalent where the applicable professional or jurisdictional
+framework permits). The qualification record must be verified before a material review is
+released. The AI seats are analytical work-product roles, not claims of personal licensure or
+credential status.
+
 ## Prophet capability map
 
 | Prophet capability | Department control |
@@ -25,7 +34,7 @@ GLAW's PROPHET-ACTUARY department operationalizes that objective under a zero-tr
 
 ## Required output
 
-Every substantive review produces a structured evidence package, explicit assumptions, methodology, independent calculation, Prophet implementation view, validation results, stress tests, adversarial findings, regulatory review, missing information, confidence scores, materiality, and one of `PASS`, `REVIEW`, or `BLOCK`. A qualified human actuary must approve material production use.
+Every substantive review produces a structured evidence package, explicit assumptions, methodology, independent calculation, Prophet implementation view, validation results, stress tests, adversarial findings, regulatory review, missing information, confidence scores, materiality, professional qualification verification, and one of `PASS`, `REVIEW`, or `BLOCK`. A qualified human actuary must approve material production use.
 
 The machine contract is `lib/schemas/prophet-actuary-review-schema.json`; the deterministic engine is `bin/glaw-prophet-actuary`; lane routing is in `lib/lane-catalog.json`.
 

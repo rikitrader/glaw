@@ -18,7 +18,8 @@ import json, sys
 p = json.load(open(sys.argv[1]))
 p["evidence"] = [{"source_id":"SRC-0001","authority_tier":1,"version":"current","effective_date":"2026-01-01","citation":"official section 1"}]
 p["scores"] = {"retrieval":96,"data":94,"methodology":92,"calculation":95,"regulatory":91,"model":93}
-p["gates"] = {"source_validated":True,"independent_calculation":True,"adversarial_review":True,"regulatory_review":True,"qa_complete":True,"human_actuary_required":False}
+p["gates"] = {"source_validated":True,"independent_calculation":True,"adversarial_review":True,"regulatory_review":True,"qa_complete":True,"human_actuary_required":False,"qualification_verified":True}
+p["professional_posture"] = {"education":["Actuarial Science"],"credentials":["ASA"],"human_reviewer_required":True,"verified":True}
 p["findings"] = []
 p["verdict"] = "PASS"
 json.dump(p, open(sys.argv[1], "w"))

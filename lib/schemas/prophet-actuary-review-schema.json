@@ -4,7 +4,7 @@
   "title": "PROPHET-ACTUARY Review",
   "type": "object",
   "additionalProperties": false,
-  "required": ["schema_version", "review_id", "question", "domains", "evidence", "assumptions", "scores", "gates", "verdict"],
+  "required": ["schema_version", "review_id", "question", "domains", "evidence", "assumptions", "scores", "gates", "professional_posture", "verdict"],
   "properties": {
     "schema_version": {"type": "string", "const": "prophet-actuary/v1"},
     "review_id": {"type": "string", "pattern": "^PA-[0-9]{4,}$"},
@@ -13,7 +13,8 @@
     "evidence": {"type": "array", "items": {"type": "object", "required": ["source_id", "authority_tier", "version", "effective_date", "citation"], "properties": {"source_id": {"type": "string"}, "authority_tier": {"type": "integer", "minimum": 0, "maximum": 5}, "version": {"type": "string"}, "effective_date": {"type": "string"}, "citation": {"type": "string"}}}},
     "assumptions": {"type": "array", "items": {"type": "object", "required": ["name", "value", "source_id", "materiality"], "properties": {"name": {"type": "string"}, "value": {}, "source_id": {"type": "string"}, "materiality": {"type": "string", "enum": ["IMMATERIAL", "LOW", "MODERATE", "HIGH", "CRITICAL"]}}}},
     "scores": {"type": "object", "required": ["retrieval", "data", "methodology", "calculation", "regulatory", "model"], "properties": {"retrieval": {"type": "number", "minimum": 0, "maximum": 100}, "data": {"type": "number", "minimum": 0, "maximum": 100}, "methodology": {"type": "number", "minimum": 0, "maximum": 100}, "calculation": {"type": "number", "minimum": 0, "maximum": 100}, "regulatory": {"type": "number", "minimum": 0, "maximum": 100}, "model": {"type": "number", "minimum": 0, "maximum": 100}, "overall": {"type": "number", "minimum": 0, "maximum": 100}}},
-    "gates": {"type": "object", "required": ["source_validated", "independent_calculation", "adversarial_review", "regulatory_review", "qa_complete", "human_actuary_required"], "properties": {"source_validated": {"type": "boolean"}, "independent_calculation": {"type": "boolean"}, "adversarial_review": {"type": "boolean"}, "regulatory_review": {"type": "boolean"}, "qa_complete": {"type": "boolean"}, "human_actuary_required": {"type": "boolean"}}},
+    "gates": {"type": "object", "required": ["source_validated", "independent_calculation", "adversarial_review", "regulatory_review", "qa_complete", "human_actuary_required", "qualification_verified"], "properties": {"source_validated": {"type": "boolean"}, "independent_calculation": {"type": "boolean"}, "adversarial_review": {"type": "boolean"}, "regulatory_review": {"type": "boolean"}, "qa_complete": {"type": "boolean"}, "human_actuary_required": {"type": "boolean"}, "qualification_verified": {"type": "boolean"}}},
+    "professional_posture": {"type": "object", "additionalProperties": false, "required": ["education", "credentials", "human_reviewer_required", "verified"], "properties": {"education": {"type": "array", "minItems": 1, "items": {"type": "string"}}, "credentials": {"type": "array", "minItems": 1, "items": {"type": "string"}}, "human_reviewer_required": {"type": "boolean"}, "verified": {"type": "boolean"}}},
     "verdict": {"type": "string", "enum": ["PASS", "REVIEW", "BLOCK"]},
     "findings": {"type": "array", "items": {"type": "string"}},
     "missing_information": {"type": "array", "items": {"type": "string"}}

@@ -196,6 +196,13 @@ and model-governance release controls. It is a validation department, not a subs
 qualified actuary's required sign-off. Every material result follows:
 `retrieval → source validation → actuarial reasoning → independent calculation → adversarial review → regulatory review → QA → human verdict`.
 
+**Professional qualification posture:** accountable human actuarial reviewers should hold a
+degree in **Actuarial Science, Mathematics, Statistics, Risk Management, or a related field**
+and an **ASA or ACAS** credential (or a documented equivalent under the applicable professional
+and jurisdictional framework). Credential and education verification is a release gate; AI seats
+do not represent themselves as credentialed actuaries, and material production use always needs
+qualified human review and sign-off.
+
 | Seat | Skill | Owns |
 |------|-------|------|
 | Prophet Governor | `glaw-actuary-prophet-governor` | materiality, domain classification, agent assignment, confidence caps, PASS/REVIEW/BLOCK verdict |

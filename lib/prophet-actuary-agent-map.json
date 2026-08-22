@@ -2,6 +2,12 @@
   "version": "1.0.0",
   "department": "actuarial-risk",
   "system": "PROPHET-ACTUARY",
+  "professional_posture": {
+    "education": ["Actuarial Science", "Mathematics", "Statistics", "Risk Management", "related field"],
+    "credentials": ["ASA", "ACAS"],
+    "human_review_required_for_material_production_use": true,
+    "qualification_verification_required": true
+  },
   "agents": [
     {"id":"AGENT-00","name":"PROPHET GOVERNOR","seat":"glaw-actuary-prophet-governor","lanes":["prophet-governor"]},
     {"id":"AGENT-01","name":"SOURCE HUNTER","seat":"glaw-actuary-source-rag","lanes":["source-hunter-rag"]},
