@@ -98,6 +98,7 @@ PDF/OCR bank ingestion uses repo code plus local binaries, not Python packages.
 | `glaw-lane` | `catalog` · `scaffold` · `validate` · `transition`; canonical workpapers, owner/status gates, artifact status, and human-approval state for M&A, public-markets, and assurance lanes |
 | `glaw-source-ledger` | `add` · `validate`; append-only source paths and SHA-256 provenance for analytical workpapers |
 | `glaw-artifact` | `manifest` · `validate`; hashed JSON/XLSX/PPTX/DOCX/Markdown/HTML artifact manifests |
+| `glaw-registry` | `init` · `register` · `approve` · `validate` · `status`; append-only, hash-chained cross-department artifact/model registry with high-risk human approval gates |
 | `glaw-analytical-review` | `scaffold` · `validate` · `score`; AI analytical-artifact review scorecard with material-error penalties |
 | `glaw-transaction-comps` | `scaffold` · `validate` · `analyze`; precedent transaction multiples and statistics |
 | `glaw-cap-table-waterfall` | `scaffold` · `validate` · `analyze`; preference/conversion and holder proceeds waterfall |
