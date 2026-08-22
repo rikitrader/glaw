@@ -47,6 +47,7 @@ expected_route_ids = {
     "reviewer-identity",
     "accounting-control",
     "accounting-control-not-required",
+    "enterprise-registry",
     "premium-lane-packet",
     "premium-objective-audit",
     "materialized-source-ingest",
@@ -115,6 +116,11 @@ failing_rows = rows_by_id(module.compliance_manifest(
         "required": True,
         "status": "fail",
         "failures": ["verified Governor bundle required"],
+    },
+    registry_manifest={
+        "required": True,
+        "status": "fail",
+        "missing": ["high-risk artifacts lack approval: ART-0001"],
     },
 ))
 expected_failing_ids = expected_route_ids - {"accounting-control-not-required"}

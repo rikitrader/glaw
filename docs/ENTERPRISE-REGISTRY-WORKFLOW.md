@@ -23,4 +23,8 @@ a named human reviewer, role, and rationale.
 
 This registry complements, rather than replaces, the source ledger, artifact manifest,
 lane workpaper, Chief/Council decision, accounting controls, and citation gates. It does
-not sign, file, publish, transmit, or approve professional work by itself.
+not sign, file, publish, transmit, or approve professional work by itself. When a matter
+contains `registry.jsonl`, `glaw-final-packet` now validates the registry and includes its
+hash in the final-packet artifact hash set; a declared `universal.registry_required` matter
+with no registry is blocked. Existing matters without a registry remain backward-compatible
+until that control is declared.

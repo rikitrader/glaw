@@ -406,6 +406,7 @@ REQUIRED_GATE_ARTIFACTS = (
 OPTIONAL_GATE_ARTIFACTS = (
     "red_flags.jsonl",
     "accounting_control.json",
+    "registry.jsonl",
 )
 REPORT_REQUIRED_MARKERS = (
     "Owner:",
@@ -785,6 +786,10 @@ COMPLIANCE_ROW_ROUTES = {
         "bin/glaw-legal-governor final-check --matter-slug <slug>",
         "complete the source-locked RAG context, Claude/Codex parity, citation/adverse-authority/red-team review, and Governor counsel gate",
     ),
+    "enterprise-registry": (
+        "bin/glaw-registry validate <matter>/registry.jsonl",
+        "register every high-risk artifact/model and obtain named human approval before finalization",
+    ),
 }
 
 
@@ -1113,6 +1118,7 @@ def compliance_manifest(
     premium_lane_rows,
     premium_objective_audit,
     materialized_source_ingest,
+    registry_manifest=None,
 ):
     accounting_required = accounting_control.get("required") is True
     failing_premium_lanes = [item for item in premium_lane_rows if item.get("status") != "pass"]
@@ -1223,6 +1229,15 @@ def compliance_manifest(
             accounting_control.get("status") in {"pass", "not_required"},
             list(accounting_control.get("missing") or []),
         ),
+    ]
+    if registry_manifest is not None:
+        base_rows.append(_compliance_row(
+            "enterprise-registry",
+            "glaw-registry",
+            registry_manifest.get("status") in {"pass", "not_required"},
+            list(registry_manifest.get("missing") or []),
+        ))
+    base_rows.extend([
         _compliance_row(
             "premium-objective-audit",
             "glaw-premium-lanes",
@@ -1235,7 +1250,7 @@ def compliance_manifest(
             gates.get("materialized_source_ingest_clear", False),
             list(materialized_source_ingest.get("missing") or []),
         ),
-    ]
+    ])
     control_rows = []
     if "founder_control_assurance_clear" in gates:
         control_rows.append(_compliance_row(
@@ -1591,6 +1606,7 @@ current_compliance_manifest = compliance_manifest(
     premium_lane_rows=current_premium_lane_manifest,
     premium_objective_audit=current_premium_objective_audit,
     materialized_source_ingest=current_materialized_source_ingest,
+    registry_manifest=packet.get("registry_manifest"),
 )
 if expected_compliance_manifest != current_compliance_manifest:
     print("current compliance manifest does not match final_packet.json")

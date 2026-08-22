@@ -257,6 +257,7 @@ REQUIRED_GATE_ARTIFACTS = (
 OPTIONAL_GATE_ARTIFACTS = (
     "red_flags.jsonl",
     "accounting_control.json",
+    "registry.jsonl",
 )
 REPORT_REQUIRED_MARKERS = (
     "Owner:",
@@ -605,6 +606,10 @@ COMPLIANCE_ROW_ROUTES = {
         "bin/glaw-legal-governor final-check --matter-slug <slug>",
         "complete the source-locked RAG context, Claude/Codex parity, citation/adverse-authority/red-team review, and Governor counsel gate",
     ),
+    "enterprise-registry": (
+        "bin/glaw-registry validate <matter>/registry.jsonl",
+        "register every high-risk artifact/model and obtain named human approval before finalization",
+    ),
 }
 
 
@@ -938,10 +943,12 @@ def compliance_manifest(
     materialized_source_ingest: dict,
     founder_control_assurance_manifest: dict | None = None,
     legal_governor_manifest: dict | None = None,
+    registry_manifest: dict | None = None,
 ) -> list[dict]:
     accounting_required = accounting_control.get("required") is True
     founder_control_assurance_manifest = founder_control_assurance_manifest or {}
     legal_governor_manifest = legal_governor_manifest or {}
+    registry_manifest = registry_manifest or {"status": "not_required", "missing": []}
     failing_premium_lanes = [item for item in premium_lane_rows if item.get("status") != "pass"]
     premium_lane_route = failing_premium_lanes[0] if failing_premium_lanes else (premium_lane_rows[0] if premium_lane_rows else {})
     objective_failures = premium_objective_audit.get("failures") if isinstance(premium_objective_audit.get("failures"), list) else []
@@ -1051,6 +1058,12 @@ def compliance_manifest(
             list(accounting_control.get("missing") or []),
         ),
         _compliance_row(
+            "enterprise-registry",
+            "glaw-registry",
+            registry_manifest.get("status") in {"pass", "not_required"},
+            list(registry_manifest.get("missing") or []),
+        ),
+        _compliance_row(
             "premium-objective-audit",
             "glaw-premium-lanes",
             gates.get("premium_objective_audit_clear", False),
@@ -1097,6 +1110,30 @@ def compliance_manifest(
 def run_check(cmd: list[str], cwd: Path) -> tuple[int, str]:
     proc = subprocess.run(cmd, cwd=str(cwd), capture_output=True, text=True)
     return proc.returncode, (proc.stdout + proc.stderr).strip()
+
+
+def registry_manifest(d: Path, root: Path, intake: dict) -> dict:
+    path = d / "registry.jsonl"
+    declared = bool((intake.get("universal") or {}).get("registry_required"))
+    required = path.exists() or declared
+    if not required:
+        return {"required": False, "status": "not_required", "path": "", "sha256": "", "missing": []}
+    if not path.is_file():
+        return {"required": True, "status": "fail", "path": "registry.jsonl", "sha256": "", "missing": ["registry.jsonl"]}
+    rc, output = run_check([str(root / "bin/glaw-registry"), "validate", str(path)], root)
+    try:
+        report = json.loads(output)
+    except json.JSONDecodeError:
+        report = {"valid": False, "errors": [output or "registry validator produced no report"]}
+    return {
+        "required": True,
+        "status": "pass" if rc == 0 and report.get("valid") is True else "fail",
+        "path": "registry.jsonl",
+        "sha256": sha256_file(path),
+        "records": report.get("records", 0),
+        "approvals": report.get("approvals", 0),
+        "missing": list(report.get("errors") or []),
+    }
 
 
 def render_md(packet: dict) -> str:
@@ -1285,6 +1322,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         d, profile, source_manifest,
         source_id_re=SOURCE_ID_RE, accounting_control_profiles=ACCOUNTING_CONTROL_PROFILES,
     )
+    registry = registry_manifest(d, root, intake)
     senior_review_evidence_manifest = review_evidence_manifest(council, adversarial, profile, source_manifest)
     senior_review_evidence_clear = bool(senior_review_evidence_manifest) and all(
         item["status"] == "pass" for item in senior_review_evidence_manifest
@@ -1378,6 +1416,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         "reviewer_identity_manifest_clear": reviewer_identity_clear,
         "professional_report_manifest_clear": report_quality_clear,
         "accounting_control_manifest_clear": accounting_control["status"] in {"pass", "not_required"},
+        "enterprise_registry_clear": registry["status"] in {"pass", "not_required"},
         "premium_lane_packet_clear": premium_lane_clear,
         "founder_control_assurance_clear": founder_control_assurance_clear,
         "premium_objective_audit_clear": premium_objective_audit_clear,
@@ -1401,6 +1440,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         materialized_source_ingest=materialized_source_ingest,
         founder_control_assurance_manifest=founder_control_assurance,
         legal_governor_manifest=legal_governor_manifest,
+        registry_manifest=registry,
     )
     compliance_clear = bool(compliance_rows) and all(item["status"] == "pass" for item in compliance_rows)
     gates["compliance_manifest_clear"] = compliance_clear
@@ -1437,6 +1477,7 @@ def cmd_build(args: argparse.Namespace) -> int:
         "red_flag_resolution_evidence_manifest": red_flag_resolution_evidence_manifest,
         "reviewer_identity_manifest": reviewer_identity,
         "accounting_control_manifest": accounting_control,
+        "registry_manifest": registry,
         "premium_lane_requirement": premium_requirement,
         "premium_lane_manifest": premium_lane_rows,
         "founder_control_assurance_manifest": founder_control_assurance,
