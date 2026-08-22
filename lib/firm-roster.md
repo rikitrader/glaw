@@ -188,6 +188,36 @@ checks, fixtures, and human-approval gate are present.
 | Head-to-head analysis | `glaw-fs-head-to-head-analysis` | **implemented contract** |
 | Scenario review | `glaw-fs-scenario-review` | **implemented contract** |
 
+## Actuarial, Insurance Risk & Prophet Department → lead `glaw-actuary-prophet-governor`
+
+PROPHET-ACTUARY owns evidence-grounded actuarial modeling, FIS Insurance Risk Suite / Prophet
+implementation review, insurance-risk analysis, quantitative validation, regulatory accounting,
+and model-governance release controls. It is a validation department, not a substitute for a
+qualified actuary's required sign-off. Every material result follows:
+`retrieval → source validation → actuarial reasoning → independent calculation → adversarial review → regulatory review → QA → human verdict`.
+
+| Seat | Skill | Owns |
+|------|-------|------|
+| Prophet Governor | `glaw-actuary-prophet-governor` | materiality, domain classification, agent assignment, confidence caps, PASS/REVIEW/BLOCK verdict |
+| Source Hunter + RAG Skeptic | `glaw-actuary-source-rag` | tiered evidence, version/effective-date control, retrieval attacks, citations |
+| Prophet Architect | `glaw-actuary-prophet-architect` | Model Developer, Enterprise Manager, Assumptions Manager, Production Manager, Process Orchestrator, variables, dependencies, timing, model points |
+| Actuarial Method Reviewer | `glaw-actuary-method-review` | methodology, experience studies, assumptions, credibility, alternatives, limitations |
+| Pricing Actuary | `glaw-actuary-pricing` | frequency/severity, expenses, reinsurance, capital, rate adequacy, underwriting and elasticity |
+| Reserving Actuary | `glaw-actuary-reserving` | triangles, case/IBNR/IBNER, development, tail, ultimate, uncertainty, reserve adequacy |
+| Life & Health Actuary | `glaw-actuary-life-health` | mortality, morbidity, lapse, persistency, options, guarantees, utilization, medical trend |
+| P&C & Catastrophe Actuary | `glaw-actuary-pc-cat` | property/liability, CAT, PML/AAL, EP curves, climate and accumulation risk |
+| Reinsurance Actuary | `glaw-actuary-reinsurance` | treaty structure, attachment, limits, reinstatements, recoverables, counterparty risk |
+| ALM & Capital Specialist | `glaw-actuary-alm-capital` | asset/liability cash flows, duration, liquidity, stress capital, aggregation, diversification, tail risk |
+| Regulatory Accounting Specialist | `glaw-actuary-regulatory-accounting` | IFRS 17, US GAAP/LDTI, Solvency II, statutory accounting, disclosures and regulatory distinction |
+| Data Quality & Lineage Auditor | `glaw-actuary-data-lineage` | schema, missingness, duplicates, units, transformations, source-to-output traceability |
+| Quantitative Validation Unit | `glaw-actuary-quant-validation` | independent calculation, units, reconciliations, sensitivities, stresses, stochastic, property and metamorphic tests |
+| Adversarial Actuary | `glaw-actuary-adversarial` | hallucination, assumption, contrarian, edge-case, underwriting and prompt-attack review |
+| Model Governance & Release | `glaw-actuary-model-governance` | golden tests, regression, change control, approvals, release, post-release monitoring, human-in-loop gate |
+
+The machine-readable lane contract is `lib/lane-catalog.json`; deterministic controls are
+`bin/glaw-prophet-actuary`, `bin/glaw-lane`, `bin/glaw-source-ledger`, and the actuarial
+schemas under `lib/schemas/`.
+
 ## Accounting & Finance Division → lead `/glaw-accounting`
 | **Forensic reconstruction (re-runnable)** — rebuild gapless, fully-reconciled, audit-ready books from raw bank statements: month-by-month reconstruction → tamper-evident double-entry GL + chart of accounts (`bin/glaw-forensic-pipeline`) → 3-statement + SEC/IRS footnotes → credits + IRS-audit-readiness + forms package + error/resolution log + CFO/CEO reports; forensic-auditor adversarial gate | `/glaw-forensic-reconstruction` |
 | **Forensic period reports + trace** — monthly/yearly P&L + full transaction trace, every posting tied to its source statement + tamper-evident hash (`bin/glaw-forensic-reports`); wires categorized by their real ORIG:/BNF: counterparty | `/glaw-forensic-reconstruction` |
