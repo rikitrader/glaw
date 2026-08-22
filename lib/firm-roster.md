@@ -225,7 +225,32 @@ The machine-readable lane contract is `lib/lane-catalog.json`; deterministic con
 `bin/glaw-prophet-actuary`, `bin/glaw-lane`, `bin/glaw-source-ledger`, and the actuarial
 schemas under `lib/schemas/`.
 
+The production pipeline lanes are implemented by `bin/glaw-prophet-pipeline`:
+`data-integration-lineage → prophet-model-configuration → calculation-engine →
+deterministic-scenarios/stochastic-simulations/alm-scenarios → actuarial-results →
+reporting-gl-interfaces`. The local provider is a transparent reference engine; FIS Prophet,
+AVX, GPU, and enterprise-run adapters remain explicit provider integrations and fail closed
+when unconfigured.
+
 ## Accounting & Finance Division → lead `/glaw-accounting`
+
+### Enterprise Accounting & Assurance Department
+
+This department covers F500 financial-statement preparation, ASC/IFRS technical research,
+PCAOB/ISA audit and assurance, revenue, leases, consolidation, M&A transaction accounting,
+SAP/Oracle and consolidation-system controls, research-tool evidence, SOX, reference
+statements, technical memos, workpapers, and senior-judgment rubrics. The canonical lanes
+and controlled workflow are in `docs/ACCOUNTING-ASSURANCE-OPERATING-WORKFLOW.md`.
+
+### Legal Reasoning Benchmark Department
+
+`glaw-legal-reasoning-benchmark` authors self-contained law questions across IP/privacy/
+technology, regulatory/government, securities/capital markets, financial regulation,
+PE/M&A/structuring, antitrust, healthcare/life sciences/pharma, and environmental/energy/
+ESG/climate. `glaw-legal-reasoning-adversary` attacks ambiguity, jurisdiction, authorities,
+distractors, solvability, and false uniqueness. Its posture is benchmark work product for
+qualified attorney review, not legal advice. The workflow and criterion-referenced rubric
+are in `docs/LEGAL-REASONING-BENCHMARK-WORKFLOW.md`.
 | **Forensic reconstruction (re-runnable)** — rebuild gapless, fully-reconciled, audit-ready books from raw bank statements: month-by-month reconstruction → tamper-evident double-entry GL + chart of accounts (`bin/glaw-forensic-pipeline`) → 3-statement + SEC/IRS footnotes → credits + IRS-audit-readiness + forms package + error/resolution log + CFO/CEO reports; forensic-auditor adversarial gate | `/glaw-forensic-reconstruction` |
 | **Forensic period reports + trace** — monthly/yearly P&L + full transaction trace, every posting tied to its source statement + tamper-evident hash (`bin/glaw-forensic-reports`); wires categorized by their real ORIG:/BNF: counterparty | `/glaw-forensic-reconstruction` |
 | **Executable adversarial gate** — deterministic enforcement red-team (IRS Revenue Agent / forensic accountant / BSA examiner) → chief verdict; AUDIT-READY only when every critical/high finding is cleared with a source-backed resolution (`bin/glaw-forensic-adversarial`) | `/glaw-forensic-reconstruction`, `/glaw-adversarial` |

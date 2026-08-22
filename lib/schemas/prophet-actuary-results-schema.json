@@ -1,0 +1,20 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://glaw.local/schemas/prophet-actuary-results.schema.json",
+  "title":"PROPHET-ACTUARY Actuarial Results Package",
+  "type":"object",
+  "required":["schema_version","run_id","status","data_integration","model","calculation","scenarios","alm","results","reporting","release_gate"],
+  "properties": {
+    "schema_version":{"type":"string","const":"prophet-results/v1"},
+    "run_id":{"type":"string"},
+    "status":{"type":"string","enum":["PASS","REVIEW","BLOCK"]},
+    "data_integration":{"type":"object"},
+    "model":{"type":"object"},
+    "calculation":{"type":"object"},
+    "scenarios":{"type":"object"},
+    "alm":{"type":"object"},
+    "results":{"type":"object"},
+    "reporting":{"type":"object"},
+    "release_gate":{"type":"object"}
+  }
+}

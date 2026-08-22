@@ -32,6 +32,34 @@ credential status.
 | Flexible Results | seriatim/aggregated outputs, reporting, analytics and regulatory units of account |
 | Quality Assurance | regression, test packs, intended/unintended change analysis and release validation |
 
+## End-to-end production pipeline
+
+```text
+Insurance policies / assets / claims
+        ↓
+Data Integration + lineage + quality controls
+        ↓
+Prophet model configuration
+        ↓
+Calculation engine: looped modules + optional worker parallelism
+        ↓
+Deterministic scenarios ─┬─ Stochastic simulations ─┬─ ALM scenarios
+                         └──────────────┬───────────┘
+                                        ↓
+Actuarial results: cash flows, reserves, capital, profit, solvency, claims, risk metrics
+                                        ↓
+IFRS 17 / LDTI / GAAP / Solvency II / BI / GL prepared outputs
+```
+
+Run it with `bin/glaw-prophet-pipeline validate <request.json>` and
+`bin/glaw-prophet-pipeline run <request.json> [--workers N]`. Every run records source
+lineage and an input hash, uses a reproducible stochastic seed, and emits a
+`HUMAN_REVIEW_REQUIRED` release gate. The local reference engine reports vectorization,
+AVX, and GPU as unavailable rather than making unsupported performance claims.
+
+The request contract is `lib/schemas/prophet-actuary-pipeline-schema.json`; the results
+contract is `lib/schemas/prophet-actuary-results-schema.json`.
+
 ## Required output
 
 Every substantive review produces a structured evidence package, explicit assumptions, methodology, independent calculation, Prophet implementation view, validation results, stress tests, adversarial findings, regulatory review, missing information, confidence scores, materiality, professional qualification verification, and one of `PASS`, `REVIEW`, or `BLOCK`. A qualified human actuary must approve material production use.
