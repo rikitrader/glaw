@@ -74,7 +74,7 @@ def main():
     c = sub.add_parser("catalog")
     c.add_argument("--json", action="store_true")
     s = sub.add_parser("scaffold")
-    s.add_argument("--lane-id", required=True); s.add_argument("--matter", default=""); s.add_argument("--department", required=True, choices=["ma", "public-markets", "assurance"]); s.add_argument("--lane", required=True); s.add_argument("--owner", required=True); s.add_argument("--artifact-type", default="workpaper")
+    s.add_argument("--lane-id", required=True); s.add_argument("--matter", default=""); s.add_argument("--department", required=True, choices=["actuarial-risk", "ma", "public-markets", "assurance"]); s.add_argument("--lane", required=True); s.add_argument("--owner", required=True); s.add_argument("--artifact-type", default="workpaper")
     v = sub.add_parser("validate"); v.add_argument("input")
     t = sub.add_parser("transition"); t.add_argument("input"); t.add_argument("target", choices=sorted(STATUSES))
     args = parser.parse_args()

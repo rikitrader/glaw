@@ -1,6 +1,32 @@
 {
   "version": "1.0.0",
   "departments": {
+    "actuarial-risk": [
+      {"name":"prophet-governor","seat":"glaw-actuary-prophet-governor","record_type":"prophet_governance"},
+      {"name":"source-hunter-rag","seat":"glaw-actuary-source-rag","record_type":"actuarial_evidence"},
+      {"name":"source-validation-skeptic","seat":"glaw-actuary-source-rag","record_type":"source_validation"},
+      {"name":"prophet-implementation","seat":"glaw-actuary-prophet-architect","record_type":"prophet_implementation"},
+      {"name":"actuarial-methodology","seat":"glaw-actuary-method-review","record_type":"actuarial_methodology"},
+      {"name":"pricing-review","seat":"glaw-actuary-pricing","record_type":"pricing_review"},
+      {"name":"reserving-review","seat":"glaw-actuary-reserving","record_type":"reserving_review"},
+      {"name":"life-health-review","seat":"glaw-actuary-life-health","record_type":"life_health_review"},
+      {"name":"p-and-c-cat-review","seat":"glaw-actuary-pc-cat","record_type":"pc_cat_review"},
+      {"name":"reinsurance-review","seat":"glaw-actuary-reinsurance","record_type":"reinsurance_review"},
+      {"name":"alm-capital-review","seat":"glaw-actuary-alm-capital","record_type":"alm_capital_review"},
+      {"name":"ifrs17-review","seat":"glaw-actuary-regulatory-accounting","record_type":"ifrs17_review"},
+      {"name":"us-gaap-ldti-review","seat":"glaw-actuary-regulatory-accounting","record_type":"us_gaap_ldti_review"},
+      {"name":"solvency-statutory-review","seat":"glaw-actuary-regulatory-accounting","record_type":"solvency_statutory_review"},
+      {"name":"data-quality-lineage","seat":"glaw-actuary-data-lineage","record_type":"actuarial_data_quality"},
+      {"name":"independent-calculation","seat":"glaw-actuary-quant-validation","record_type":"independent_calculation"},
+      {"name":"reconciliation-unit-check","seat":"glaw-actuary-quant-validation","record_type":"actuarial_reconciliation"},
+      {"name":"sensitivity-stress-stochastic","seat":"glaw-actuary-quant-validation","record_type":"actuarial_stress_test"},
+      {"name":"hallucination-adversarial","seat":"glaw-actuary-adversarial","record_type":"actuarial_adversarial_review"},
+      {"name":"model-variable-formula-dependency","seat":"glaw-actuary-prophet-architect","record_type":"prophet_model_audit"},
+      {"name":"model-point-timing-audit","seat":"glaw-actuary-prophet-architect","record_type":"prophet_timing_audit"},
+      {"name":"golden-property-metamorphic-tests","seat":"glaw-actuary-model-governance","record_type":"actuarial_test_pack"},
+      {"name":"experience-study","seat":"glaw-actuary-method-review","record_type":"experience_study"},
+      {"name":"model-change-regression-release","seat":"glaw-actuary-model-governance","record_type":"model_release"}
+    ],
     "ma": [
       {"name":"transaction-comps","seat":"glaw-fs-transaction-comps","record_type":"transaction_comps"},
       {"name":"cap-table-waterfall","seat":"glaw-fs-cap-table-waterfall","record_type":"cap_table_waterfall"},

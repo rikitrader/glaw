@@ -553,6 +553,9 @@ if [ "$DOCTOR_CORE" = "1" ]; then
     "legal_benchmark_test:legal-benchmark"
     "dual_attorney_test:dual-attorney"
     "provider_adapters_test:provider-adapters"
+    "all_lanes_test:all-lanes"
+    "prophet_actuary_contract_test:prophet-actuary-contract"
+    "prophet_actuary_agent_map_test:prophet-actuary-agent-map"
   )
 else
   TESTS=(
@@ -604,6 +607,9 @@ else
     "loop_test:orchestrator-loop"
     "golden_profile_test:golden-profiles"
     "memory_test:cross-matter-memory"
+    "all_lanes_test:all-lanes"
+    "prophet_actuary_contract_test:prophet-actuary-contract"
+    "prophet_actuary_agent_map_test:prophet-actuary-agent-map"
   )
 fi
 for t in "${TESTS[@]}"; do

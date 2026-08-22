@@ -8,7 +8,7 @@
   "properties": {
     "lane_id": {"type": "string", "pattern": "^LANE-[0-9]{4,}$"},
     "matter_id": {"type": "string"},
-    "department": {"type": "string", "enum": ["ma", "public-markets", "assurance"]},
+    "department": {"type": "string", "enum": ["actuarial-risk", "ma", "public-markets", "assurance"]},
     "lane": {"type": "string", "minLength": 1},
     "record_type": {"type": "string", "minLength": 1},
     "version": {"type": "string", "minLength": 1},

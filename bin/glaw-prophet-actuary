@@ -1,0 +1,95 @@
+#!/usr/bin/env python3
+"""Deterministic PROPHET-ACTUARY routing, scoring, reconciliation, and stress engine."""
+import argparse, json, pathlib, sys
+
+DOMAINS = {"LIFE", "HEALTH", "ANNUITIES", "PENSIONS", "PROPERTY_AND_CASUALTY", "COMMERCIAL_PROPERTY", "PERSONAL_LINES", "AUTO", "WORKERS_COMPENSATION", "CATASTROPHE", "REINSURANCE", "ALM", "CAPITAL_MODELING", "RESERVING", "PRICING", "UNDERWRITING", "CLAIMS", "IFRS17", "US_GAAP", "LDTI", "SOLVENCY_II", "STATUTORY_ACCOUNTING", "MODEL_GOVERNANCE", "MODEL_VALIDATION", "DATA_QUALITY", "ACTUARIAL_AI"}
+SCORE_KEYS = ("retrieval", "data", "methodology", "calculation", "regulatory", "model")
+GATE_KEYS = ("source_validated", "independent_calculation", "adversarial_review", "regulatory_review", "qa_complete", "human_actuary_required")
+WEIGHTS = {"retrieval": .15, "data": .15, "methodology": .20, "calculation": .20, "regulatory": .15, "model": .15}
+
+def read_json(path):
+    try: return json.loads(pathlib.Path(path).read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc: raise ValueError(f"cannot read JSON: {exc}")
+
+def validate(data):
+    errors = []
+    required = ("schema_version", "review_id", "question", "domains", "evidence", "assumptions", "scores", "gates", "verdict")
+    for key in required:
+        if key not in data: errors.append(f"missing required field: {key}")
+    if data.get("schema_version") != "prophet-actuary/v1": errors.append("schema_version must be prophet-actuary/v1")
+    bad_domains = [d for d in data.get("domains", []) if d not in DOMAINS]
+    if bad_domains: errors.append("unsupported domains: " + ", ".join(bad_domains))
+    for i, row in enumerate(data.get("evidence", [])):
+        for key in ("source_id", "authority_tier", "version", "effective_date", "citation"):
+            if key not in row: errors.append(f"evidence[{i}] missing {key}")
+        if not isinstance(row.get("authority_tier"), int) or not 0 <= row.get("authority_tier", -1) <= 5: errors.append(f"evidence[{i}] authority_tier must be 0-5")
+    scores = data.get("scores", {})
+    for key in SCORE_KEYS:
+        value = scores.get(key)
+        if not isinstance(value, (int, float)) or not 0 <= value <= 100: errors.append(f"scores.{key} must be 0-100")
+    gates = data.get("gates", {})
+    for key in GATE_KEYS:
+        if not isinstance(gates.get(key), bool): errors.append(f"gates.{key} must be boolean")
+    if data.get("verdict") not in {"PASS", "REVIEW", "BLOCK"}: errors.append("verdict must be PASS, REVIEW, or BLOCK")
+    return errors
+
+def score(data):
+    errors = validate(data)
+    if errors: raise ValueError("invalid review: " + "; ".join(errors))
+    scores = data["scores"]
+    overall = round(sum(scores[key] * WEIGHTS[key] for key in SCORE_KEYS), 2)
+    caps = []
+    if scores["regulatory"] < 50: overall = min(overall, 60); caps.append("regulatory_confidence_below_50")
+    if scores["data"] < 50: overall = min(overall, 60); caps.append("data_confidence_below_50")
+    if scores["calculation"] < 50: overall = min(overall, 60); caps.append("calculation_confidence_below_50")
+    missing_gates = [key for key in GATE_KEYS[:-1] if not data["gates"].get(key)]
+    material = [item for item in data.get("findings", []) if item.upper().startswith(("CRITICAL", "HIGH", "MATERIAL"))]
+    if material or caps or missing_gates:
+        verdict = "BLOCK" if material or "regulatory_confidence_below_50" in caps or "calculation_confidence_below_50" in caps else "REVIEW"
+    elif overall >= 90 and not data["gates"].get("human_actuary_required"):
+        verdict = "PASS"
+    else: verdict = "REVIEW"
+    band = "Expert" if overall >= 95 else "Strong" if overall >= 90 else "Acceptable with review" if overall >= 80 else "Material improvement needed" if overall >= 70 else "Unreliable" if overall >= 50 else "Reject"
+    return {"overall": overall, "band": band, "verdict": verdict, "caps": caps, "missing_gates": missing_gates}
+
+def scaffold(args):
+    return {"schema_version":"prophet-actuary/v1", "review_id":args.review_id, "question":args.question, "domains":args.domain, "evidence":[], "assumptions":[], "scores":{key:0 for key in SCORE_KEYS}, "gates":{"source_validated":False,"independent_calculation":False,"adversarial_review":False,"regulatory_review":False,"qa_complete":False,"human_actuary_required":True}, "verdict":"BLOCK", "findings":["CRITICAL: evidence and validation gates are incomplete"], "missing_information":["authoritative sources","model version","assumption version","independent calculation"]}
+
+def stress(args):
+    base = float(args.base)
+    levels = (-.20, -.10, 0, .10, .20)
+    return {"metric":args.metric, "base":base, "scenarios":[{"shock_pct":int(level*100), "value":round(base * (1 + level), 8)} for level in levels]}
+
+def reconcile(args):
+    expected = args.opening + args.inflows - args.outflows + args.other
+    residual = round(args.closing - expected, 10)
+    return {"expected_closing":round(expected, 10), "reported_closing":args.closing, "residual":residual, "verdict":"PASS" if abs(residual) <= args.tolerance else "BLOCK"}
+
+def route(question):
+    q = question.lower()
+    rules = [("ifrs17-review", ("ifrs 17", "csm", "risk adjustment")), ("us-gaap-ldti-review", ("ldti", "future policy benefits", "dac")), ("reserving-review", ("reserve", "ibnr", "chain ladder")), ("pricing-review", ("pricing", "rate filing", "pure premium")), ("prophet-implementation", ("prophet", "model developer", "assumptions manager")), ("data-quality-lineage", ("data quality", "lineage", "missing values")), ("sensitivity-stress-stochastic", ("stress", "sensitivity", "stochastic"))]
+    for lane, words in rules:
+        if any(word in q for word in words): return lane
+    return "prophet-governor"
+
+def main():
+    parser = argparse.ArgumentParser(prog="glaw-prophet-actuary"); sub = parser.add_subparsers(dest="command", required=True)
+    s = sub.add_parser("scaffold"); s.add_argument("--review-id", required=True); s.add_argument("--question", required=True); s.add_argument("--domain", action="append", required=True, choices=sorted(DOMAINS))
+    v = sub.add_parser("validate"); v.add_argument("input")
+    c = sub.add_parser("score"); c.add_argument("input")
+    t = sub.add_parser("stress"); t.add_argument("--metric", required=True); t.add_argument("--base", required=True, type=float)
+    r = sub.add_parser("reconcile"); r.add_argument("--opening", required=True, type=float); r.add_argument("--inflows", required=True, type=float); r.add_argument("--outflows", required=True, type=float); r.add_argument("--other", default=0, type=float); r.add_argument("--closing", required=True, type=float); r.add_argument("--tolerance", default=.01, type=float)
+    route_cmd = sub.add_parser("route"); route_cmd.add_argument("question")
+    args = parser.parse_args()
+    try:
+        if args.command == "scaffold": result = scaffold(args)
+        elif args.command == "validate":
+            errors = validate(read_json(args.input)); result = {"valid":not errors,"errors":errors}
+        elif args.command == "score": result = score(read_json(args.input))
+        elif args.command == "stress": result = stress(args)
+        elif args.command == "reconcile": result = reconcile(args)
+        else: result = {"lane":route(args.question),"department":"actuarial-risk"}
+        print(json.dumps(result, indent=2, sort_keys=True)); return 0 if result.get("valid", True) and result.get("verdict") != "BLOCK" or args.command not in {"validate","reconcile"} else 1
+    except ValueError as exc: print(str(exc), file=sys.stderr); return 2
+
+if __name__ == "__main__": raise SystemExit(main())
