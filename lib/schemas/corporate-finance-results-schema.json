@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://glaw.local/schemas/corporate-finance-results-schema.json",
+  "title": "GLAW Corporate Finance Pipeline Result",
+  "type": "object",
+  "required": ["schema_version", "run_id", "three_statement", "dcf", "validation", "status"],
+  "properties": {"schema_version": {"const": "corporate-finance-results/v1"}, "run_id": {"type": "string"}, "status": {"enum": ["PASS", "REVIEW", "BLOCK"]}, "validation": {"type": "object", "required": ["checks", "passed", "human_approval_required"]}, "three_statement": {"type": "object"}, "dcf": {"type": "object"}, "trading_comps": {"type": "object"}, "transaction_comps": {"type": "object"}, "merger": {"type": "object"}, "waterfall": {"type": "object"}},
+  "additionalProperties": true
+}
