@@ -1,0 +1,141 @@
+#!/usr/bin/env python3
+"""Append-only enterprise artifact/model registry with hash-chained approvals."""
+from __future__ import annotations
+
+import argparse
+import hashlib
+import json
+import pathlib
+import re
+import sys
+from datetime import datetime, timezone
+
+SCHEMA = "glaw-registry/v1"
+HEX64 = re.compile(r"^[a-f0-9]{64}$")
+HIGH_RISK = {"high", "critical"}
+
+def now() -> str:
+    return datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+def canonical(value: object) -> bytes:
+    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=True).encode()
+
+def digest_bytes(value: bytes) -> str:
+    return hashlib.sha256(value).hexdigest()
+
+def digest_file(path: pathlib.Path) -> str:
+    h = hashlib.sha256()
+    with path.open("rb") as stream:
+        for block in iter(lambda: stream.read(1024 * 1024), b""):
+            h.update(block)
+    return h.hexdigest()
+
+def read_events(path: pathlib.Path) -> list[dict]:
+    if not path.exists():
+        raise ValueError(f"registry does not exist: {path}")
+    events = []
+    for number, line in enumerate(path.read_text(encoding="utf-8").splitlines(), 1):
+        if not line.strip():
+            continue
+        try:
+            row = json.loads(line)
+        except json.JSONDecodeError as exc:
+            raise ValueError(f"line {number}: invalid JSON: {exc}") from exc
+        if not isinstance(row, dict):
+            raise ValueError(f"line {number}: event must be an object")
+        events.append(row)
+    return events
+
+def event_hash(event: dict) -> str:
+    return digest_bytes(canonical({key: value for key, value in event.items() if key != "event_hash"}))
+
+def append_event(path: pathlib.Path, event_type: str, actor: str, payload: dict) -> dict:
+    events = read_events(path) if path.exists() else []
+    previous = events[-1]["event_hash"] if events else "0" * 64
+    event = {"schema_version": SCHEMA, "event_id": f"EVT-{len(events) + 1:06d}", "event_type": event_type, "occurred_at": now(), "actor": actor, "prev_hash": previous, "payload": payload}
+    event["event_hash"] = event_hash(event)
+    with path.open("a", encoding="utf-8") as stream:
+        stream.write(json.dumps(event, sort_keys=True) + "\n")
+    return event
+
+def validate(events: list[dict], check_files: bool = True) -> tuple[list[str], dict[str, dict], dict[str, dict]]:
+    errors: list[str] = []
+    records: dict[str, dict] = {}
+    approvals: dict[str, dict] = {}
+    previous = "0" * 64
+    if not events:
+        return ["registry is empty"], records, approvals
+    for index, event in enumerate(events, 1):
+        if event.get("schema_version") != SCHEMA: errors.append(f"event {index}: unsupported schema_version")
+        if event.get("prev_hash") != previous: errors.append(f"event {index}: prev_hash does not match chain")
+        if event.get("event_hash") != event_hash(event): errors.append(f"event {index}: event_hash mismatch")
+        previous = event.get("event_hash", "")
+        payload = event.get("payload", {})
+        if event.get("event_type") == "registry_initialized":
+            if index != 1: errors.append("registry_initialized must be the first event")
+        elif event.get("event_type") == "artifact_registered":
+            required = ("artifact_id", "kind", "path", "sha256", "department", "lane", "owner", "version", "risk_class")
+            for key in required:
+                if not payload.get(key): errors.append(f"event {index}: registration missing {key}")
+            if not HEX64.fullmatch(str(payload.get("sha256", ""))): errors.append(f"event {index}: registration sha256 invalid")
+            artifact_id = payload.get("artifact_id")
+            if artifact_id in records: errors.append(f"event {index}: duplicate artifact_id {artifact_id}")
+            records[artifact_id] = payload
+        elif event.get("event_type") == "artifact_approved":
+            artifact_id = payload.get("artifact_id")
+            if artifact_id not in records: errors.append(f"event {index}: approval references unknown artifact {artifact_id}")
+            else:
+                if payload.get("decision") not in {"approve", "reject"}: errors.append(f"event {index}: decision must be approve or reject")
+                if not payload.get("reviewer") or not payload.get("role") or not payload.get("rationale"): errors.append(f"event {index}: approval requires reviewer, role, and rationale")
+                if payload.get("decision") == "approve": approvals[artifact_id] = payload
+        else:
+            errors.append(f"event {index}: unknown event_type {event.get('event_type')}")
+    if check_files:
+        for artifact_id, record in records.items():
+            path = pathlib.Path(record["path"])
+            if not path.is_file(): errors.append(f"{artifact_id}: registered path missing: {path}")
+            elif digest_file(path) != record["sha256"]: errors.append(f"{artifact_id}: registered file hash changed")
+    return errors, records, approvals
+
+def named_actor(value: str) -> bool:
+    return len(re.findall(r"[A-Za-z][A-Za-z.'-]+", value or "")) >= 2
+
+def main() -> int:
+    parser = argparse.ArgumentParser(prog="glaw-registry")
+    sub = parser.add_subparsers(dest="command", required=True)
+    init = sub.add_parser("init"); init.add_argument("registry"); init.add_argument("--registry-id", required=True); init.add_argument("--actor", required=True)
+    reg = sub.add_parser("register"); reg.add_argument("registry"); reg.add_argument("--artifact-id", required=True); reg.add_argument("--kind", choices=["artifact", "model"], required=True); reg.add_argument("--path", required=True); reg.add_argument("--department", required=True); reg.add_argument("--lane", required=True); reg.add_argument("--owner", required=True); reg.add_argument("--version", required=True); reg.add_argument("--risk-class", choices=["low", "moderate", "high", "critical"], default="moderate"); reg.add_argument("--source-id", action="append", default=[]); reg.add_argument("--actor", required=True)
+    approve = sub.add_parser("approve"); approve.add_argument("registry"); approve.add_argument("--artifact-id", required=True); approve.add_argument("--decision", choices=["approve", "reject"], required=True); approve.add_argument("--reviewer", required=True); approve.add_argument("--role", required=True); approve.add_argument("--rationale", required=True)
+    val = sub.add_parser("validate"); val.add_argument("registry"); val.add_argument("--allow-missing-files", action="store_true")
+    status = sub.add_parser("status"); status.add_argument("registry")
+    args = parser.parse_args(); path = pathlib.Path(args.registry)
+    try:
+        if args.command == "init":
+            if path.exists() and path.stat().st_size: raise ValueError("registry already exists and is non-empty")
+            path.parent.mkdir(parents=True, exist_ok=True); append_event(path, "registry_initialized", args.actor, {"registry_id": args.registry_id})
+            print(json.dumps({"created": True, "registry": str(path), "schema_version": SCHEMA}, indent=2)); return 0
+        events = read_events(path); errors, records, approvals = validate(events, check_files=not getattr(args, "allow_missing_files", False))
+        if args.command == "register":
+            if errors: raise ValueError("invalid registry: " + "; ".join(errors))
+            if args.artifact_id in records: raise ValueError(f"artifact already registered: {args.artifact_id}")
+            source = pathlib.Path(args.path)
+            if not source.is_file(): raise ValueError(f"registered path does not exist: {source}")
+            payload = {"artifact_id":args.artifact_id,"kind":args.kind,"path":str(source.resolve()),"sha256":digest_file(source),"department":args.department,"lane":args.lane,"owner":args.owner,"version":args.version,"risk_class":args.risk_class,"source_ids":args.source_id}
+            print(json.dumps(append_event(path, "artifact_registered", args.actor, payload), indent=2, sort_keys=True)); return 0
+        if args.command == "approve":
+            if errors: raise ValueError("invalid registry: " + "; ".join(errors))
+            if args.artifact_id not in records: raise ValueError(f"unknown artifact: {args.artifact_id}")
+            if args.decision == "approve" and not named_actor(args.reviewer): raise ValueError("reviewer must be a named accountable person")
+            payload = {"artifact_id":args.artifact_id,"decision":args.decision,"reviewer":args.reviewer,"role":args.role,"rationale":args.rationale}
+            print(json.dumps(append_event(path, "artifact_approved", args.reviewer, payload), indent=2, sort_keys=True)); return 0
+        errors, records, approvals = validate(events, check_files=not getattr(args, "allow_missing_files", False))
+        if args.command == "validate":
+            missing = [key for key, row in records.items() if row.get("risk_class") in HIGH_RISK and key not in approvals]
+            if missing: errors.append("high-risk artifacts lack approval: " + ", ".join(sorted(missing)))
+            print(json.dumps({"valid":not errors,"errors":errors,"records":len(records),"approvals":len(approvals)}, indent=2, sort_keys=True)); return 0 if not errors else 1
+        rows = [{"artifact_id":key,"kind":row["kind"],"status":"approved" if key in approvals else "review","risk_class":row["risk_class"],"version":row["version"]} for key,row in sorted(records.items())]
+        print(json.dumps({"valid":not errors,"errors":errors,"records":rows}, indent=2, sort_keys=True)); return 0 if not errors else 1
+    except (OSError, ValueError) as exc:
+        print(str(exc), file=sys.stderr); return 2
+
+if __name__ == "__main__": raise SystemExit(main())
