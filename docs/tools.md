@@ -106,6 +106,7 @@ PDF/OCR bank ingestion uses repo code plus local binaries, not Python packages.
 | `glaw-corporate-finance` | `validate` · `run`; unified three-statement, DCF, comps, merger, and waterfall review with reconciliation and sensitivity gates |
 | `glaw-fpa-engine` | `validate` · `run`; budgets, long-range/rolling forecasts, headcount, CapEx payback, variance, profitability, and driver-based revenue planning |
 | `glaw-cross-review` | `start` · `record` · `check`; hash-bound Victor cross-review, Alexandra rebuttal, Victor sur-rebuttal, and independent adjudication protocol |
+| `glaw-dual-attorney` | independent Alexandra/Victor first passes; `--cross-review` initializes the hash-bound adversarial sequence and `--require-complete` blocks unavailable or invalid provider runs |
 | `glaw-cap-table-waterfall` | `scaffold` · `validate` · `analyze`; preference/conversion and holder proceeds waterfall |
 | `glaw-transaction-terms` | `scaffold` · `validate` · `normalize`; certainty-adjusted transaction economics |
 | `glaw-bid-comparison` | transparent weighted bid ranking using value, execution, cash, and terms scores |

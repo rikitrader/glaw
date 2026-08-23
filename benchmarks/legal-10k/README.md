@@ -42,6 +42,11 @@ credentials or SDK adapters are unavailable, the run is recorded as
 `AGENT_UNAVAILABLE` and the Governor returns `REVIEW_REQUIRED`; no synthetic
 opinion or gold label is created.
 
+Use `--require-complete` in release automation when both provider passes are a
+hard prerequisite. It exits nonzero with `BLOCKED` if either selected agent is
+unavailable or returns invalid output; exploratory runs may still emit a
+review-required evidence package.
+
 Only released rows enter evaluation. Disagreements require an independent third
 attorney adjudicator. `items.jsonl` contains gold records; model outputs belong
 under a separate run directory and cannot mutate the gold files.

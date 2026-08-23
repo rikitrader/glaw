@@ -15,6 +15,12 @@ CODE=$?
 set -e
 test "$CODE" -eq 0
 printf '%s\n' "$OUTPUT" | python3 -c 'import json,sys; x=json.load(sys.stdin); assert x["status"] == "EXECUTED"; assert x["count"] == 1; assert x["results"][0]["governor_status"] == "REVIEW_REQUIRED"; assert "BLUE_AGENT_UNAVAILABLE" in x["results"][0]["reason_codes"]; assert "RED_AGENT_UNAVAILABLE" in x["results"][0]["reason_codes"]'
+set +e
+STRICT_OUTPUT=$($ROOT/bin/glaw-dual-attorney --ids BENCH-000001 --require-complete 2>&1)
+STRICT_CODE=$?
+set -e
+test "$STRICT_CODE" -eq 1
+printf '%s\n' "$STRICT_OUTPUT" | python3 -c 'import json,sys; x=json.load(sys.stdin); assert x["status"] == "BLOCKED"; assert x["strict_gate"]["status"] == "BLOCK"'
 python3 - "$GLAW_BENCHMARK_HOME/runs/BENCH-000001" <<'PY'
 import json, sys
 from pathlib import Path
