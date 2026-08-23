@@ -60,5 +60,6 @@ Date: 2026-08-18
 - The Alexandra/Victor cross-review protocol is implemented locally and contract-tested in `bin/glaw-cross-review`; live provider execution and independent adjudication still require configured human/provider participation.
 - Authenticated `/legal/*` Worker routes, tenant binding, workflow-state gates, and append-only KV audit events are implemented and contract-tested. PostgreSQL/pgvector persistence and remote provider execution remain deployment options, not currently configured infrastructure.
 - The Wilson confidence-interval evaluator exists, but no valid attorney-adjudicated PASS population exists; the `<3%` upper-bound target is unproven.
+- Court-filing P0 metadata freshness is now implemented in `authority_freshness()` and enforced during packet preparation; live URL reachability, filing-day rule/fee/form refresh, certified court connectors, and broader jurisdiction packs remain external coverage gaps tracked in `docs/COURT-FILING-ROADMAP.md`.
 
 Readiness status: `STRUCTURABLE_WITH_RISK`. Do not represent the system as production-ready, empirically validated, or capable of autonomous final legal approval until these gaps are closed.
