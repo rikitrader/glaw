@@ -13,6 +13,10 @@ for dept,items in catalog['departments'].items():
     assert policies[dept]['required_gates'] and policies[dept]['workflow'] and policies[dept]['artifact_requirements']
     for item in items:
         n+=1; out=tmp/f'{n}.json'
+        seat=root/'seats'/item['seat']/'SKILL.md'
+        source=root/item['seat'].removeprefix('glaw-')/'SKILL.md'
+        seat=seat if seat.exists() else source
+        assert seat.exists() and f"name: {item['seat']}" in seat.read_text(), f"missing or mismatched seat: {item['seat']}"
         subprocess.run([str(root/'bin/glaw-lane'),'scaffold','--lane-id',f'POL-{n:04d}','--department',dept,'--lane',item['name'],'--owner',item['seat']],check=True,stdout=out.open('w'))
         data=json.loads(out.read_text())
         assert set(policies[dept]['required_gates']) <= set(data['required_gates'])
