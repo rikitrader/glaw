@@ -42,6 +42,9 @@ def validate(data):
         policy = policy_for(data["department"])
         if data.get("policy_id") not in (None, data["department"]):
             errors.append(f"policy_id must be {data['department']}")
+        engines = data.get("engine_commands", policy["engine_commands"])
+        if engines != policy["engine_commands"]:
+            errors.append("engine_commands must match the department policy")
         required = data.get("required_gates", policy["required_gates"])
         if not isinstance(required, list) or set(policy["required_gates"]) - set(required):
             errors.append("required_gates must include every department policy gate")
@@ -87,7 +90,7 @@ def scaffold(args):
     gates.update({key: False for key in policy["required_gates"]})
     artifact_types = list(dict.fromkeys([args.artifact_type, *policy["artifact_requirements"]]))
     artifacts = [{"type": kind, "path": "", "status": "draft"} for kind in artifact_types]
-    return {"lane_id": args.lane_id, "matter_id": args.matter, "department": args.department, "lane": args.lane, "record_type": entry["record_type"], "policy_id": args.department, "required_gates": policy["required_gates"], "workflow": policy["workflow"], "artifact_requirements": policy["artifact_requirements"], "version": "v1", "status": "draft", "owner": args.owner, "source_ids": [], "artifacts": artifacts, "gates": gates, "findings": [], "next_action": policy["workflow"][1] if len(policy["workflow"]) > 1 else "collect sources"}
+    return {"lane_id": args.lane_id, "matter_id": args.matter, "department": args.department, "lane": args.lane, "record_type": entry["record_type"], "policy_id": args.department, "engine_commands": policy["engine_commands"], "required_gates": policy["required_gates"], "workflow": policy["workflow"], "artifact_requirements": policy["artifact_requirements"], "version": "v1", "status": "draft", "owner": args.owner, "source_ids": [], "artifacts": artifacts, "gates": gates, "findings": [], "next_action": policy["workflow"][1] if len(policy["workflow"]) > 1 else "collect sources"}
 
 def transition(data, target):
     errors = validate(data)

@@ -4,7 +4,7 @@
   "title": "GLAW Lane Workpaper",
   "type": "object",
   "additionalProperties": false,
-  "required": ["lane_id", "department", "lane", "record_type", "policy_id", "required_gates", "workflow", "artifact_requirements", "version", "status", "owner", "source_ids", "artifacts", "gates"],
+  "required": ["lane_id", "department", "lane", "record_type", "policy_id", "engine_commands", "required_gates", "workflow", "artifact_requirements", "version", "status", "owner", "source_ids", "artifacts", "gates"],
   "properties": {
     "lane_id": {"type": "string", "pattern": "^LANE-[0-9]{4,}$"},
     "matter_id": {"type": "string"},
@@ -12,6 +12,7 @@
     "lane": {"type": "string", "minLength": 1},
     "record_type": {"type": "string", "minLength": 1},
     "policy_id": {"type": "string", "minLength": 1},
+    "engine_commands": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
     "required_gates": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
     "workflow": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
     "artifact_requirements": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
