@@ -18,4 +18,13 @@ assert r["waterfall"]["conserves_value"]
 assert r["dcf"]["sensitivity"]["implied_price"][1][1] == r["dcf"]["implied_price"]
 assert r["merger"]["pro_forma_eps"] > 0
 PY
+python3 - "$TMP/request.json" <<'PY'
+import json,sys
+p=json.load(open(sys.argv[1])); p["transaction_terms"]=[{"bid_id":"B1","bidder":"Buyer A","headline_value":1000,"closing_certainty_pct":95,"financing_certainty_pct":90,"regulatory_risk_pct":5,"cash_pct":100},{"bid_id":"B2","bidder":"Buyer B","headline_value":1050,"closing_certainty_pct":80,"financing_certainty_pct":80,"regulatory_risk_pct":20,"cash_pct":70}]; json.dump(p,open(sys.argv[1],"w"))
+PY
+"$ROOT/bin/glaw-corporate-finance" run "$TMP/request.json" > "$TMP/terms-result.json"
+python3 - "$TMP/terms-result.json" <<'PY'
+import json,sys
+r=json.load(open(sys.argv[1])); assert r["transaction_terms"]["available"]; assert r["transaction_terms"]["recommended_bid_id"]=="B1"; assert any(x["check"]=="transaction_terms_ranked" and x["passed"] for x in r["validation"]["checks"])
+PY
 echo "corporate finance pipeline: ok"

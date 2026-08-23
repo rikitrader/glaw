@@ -85,13 +85,25 @@ def waterfall(data):
     for h in holders: payouts.append({"holder":h["holder"],"payout":round(min(float(h.get("preference",0)),pref_paid)+remaining*float(h.get("ownership_pct",0))/100,8)})
     total=sum(x["payout"] for x in payouts); return {"available":True,"exit_value":exit_value,"preference_paid":round(pref_paid,8),"payouts":payouts,"payout_total":round(total,8),"conserves_value":abs(total-exit_value)<1e-7}
 
+def transaction_terms(data):
+    bids=data.get("transaction_terms",data.get("bids",[]))
+    if not bids:return {"available":False}
+    rows=[]
+    for bid in bids:
+        headline=num(bid.get("headline_value",bid.get("certainty_adjusted_value")),"transaction_terms.headline_value",0); close=float(bid.get("closing_certainty_pct",100))/100; financing=float(bid.get("financing_certainty_pct",100))/100; regulatory=1-float(bid.get("regulatory_risk_pct",0))/100; earnout=float(bid.get("earnout_value",0)); escrow=float(bid.get("escrow_value",0)); factor=close*financing*regulatory
+        rows.append({"bid_id":bid.get("bid_id",bid.get("id")),"bidder":bid.get("bidder",bid.get("name","")),"headline_value":headline,"cash_pct":float(bid.get("cash_pct",0)),"stock_pct":float(bid.get("stock_pct",0)),"rollover_pct":float(bid.get("rollover_pct",0)),"earnout_value":earnout,"escrow_value":escrow,"certainty_factor":round(factor,8),"certainty_adjusted_value":round(headline*factor+earnout*factor-escrow*close,8),"conditions_count":int(bid.get("conditions_count",0)),"exclusivity_days":float(bid.get("exclusivity_days",0))})
+    rows.sort(key=lambda x:x["certainty_adjusted_value"],reverse=True)
+    for rank,row in enumerate(rows,1):row["economic_rank"]=rank
+    return {"available":True,"bids":rows,"recommended_bid_id":rows[0]["bid_id"]}
+
 def run(data):
     errors=validate(data)
     if errors:raise ValueError("invalid corporate-finance request: "+"; ".join(errors))
-    model=statements(data); valuation=dcf(data,model); result={"schema_version":"corporate-finance-results/v1","run_id":data["run_id"],"currency":data.get("currency","USD"),"three_statement":model,"dcf":valuation,"trading_comps":multiples(data,"trading_comps","ltm_ebitda"),"transaction_comps":multiples(data,"transaction_comps","ltm_ebitda"),"merger":merger(data),"waterfall":waterfall(data)}
+    model=statements(data); valuation=dcf(data,model); result={"schema_version":"corporate-finance-results/v1","run_id":data["run_id"],"currency":data.get("currency","USD"),"three_statement":model,"dcf":valuation,"trading_comps":multiples(data,"trading_comps","ltm_ebitda"),"transaction_comps":multiples(data,"transaction_comps","ltm_ebitda"),"transaction_terms":transaction_terms(data),"merger":merger(data),"waterfall":waterfall(data)}
     checks=[{"check":"balance_sheet","passed":model["balance_sheet_balances"]},{"check":"cash_roll_forward","passed":model["cash_roll_forward"]},{"check":"dcf_sensitivity_complete","passed":all(len(row)==3 for row in valuation["sensitivity"]["implied_price"])}]
     if result["waterfall"]["available"]:checks.append({"check":"waterfall_conservation","passed":result["waterfall"]["conserves_value"]})
     if result["merger"]["available"]:checks.append({"check":"merger_eps_reproducible","passed":math.isfinite(result["merger"]["pro_forma_eps"])})
+    if result["transaction_terms"]["available"]:checks.append({"check":"transaction_terms_ranked","passed":bool(result["transaction_terms"].get("recommended_bid_id"))})
     result["validation"]={"checks":checks,"passed":all(c["passed"] for c in checks),"source_count":len(data.get("sources",[])),"human_approval_required":True}; result["status"]="REVIEW" if result["validation"]["passed"] else "BLOCK"; result["limitations"]=["Deterministic reference calculations only; reconcile to approved source models.","Outputs require qualified finance, tax, accounting, legal, and board review before reliance.","No transaction execution, filing, signing, or investment recommendation is performed."]; return result
 
 def main():
