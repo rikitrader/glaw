@@ -9,6 +9,7 @@ Commands:
   record-receipt --packet MANIFEST.json --receipt RECEIPT.json --actor NAME [--json]
   service-handoff --packet MANIFEST.json --output HANDOFF.json [--json]
   record-service --packet MANIFEST.json --proof PROOF.json --actor NAME [--json]
+  authority-check [--pack PACK.json ...] [--as-of YYYY-MM-DD] [--max-age-days N] [--json]
 """
 from __future__ import annotations
 
@@ -80,10 +81,20 @@ def main() -> int:
     service_record.add_argument("--proof", required=True)
     service_record.add_argument("--actor", required=True)
     service_record.add_argument("--json", action="store_true")
+    authority = sub.add_parser("authority-check")
+    authority.add_argument("--pack", action="append", default=[])
+    authority.add_argument("--as-of", default="")
+    authority.add_argument("--max-age-days", type=int, default=45)
+    authority.add_argument("--json", action="store_true")
     args = parser.parse_args()
 
     try:
-        if args.command == "route":
+        if args.command == "authority-check":
+            from datetime import date
+            from glaw_court import authority_freshness
+            as_of = date.fromisoformat(args.as_of) if args.as_of else None
+            result = authority_freshness(args.pack or None, as_of=as_of, max_age_days=args.max_age_days)
+        elif args.command == "route":
             result = route_case(load_json(Path(args.input).resolve()))
         elif args.command == "prepare":
             result = prepare_packet(Path(args.input), Path(args.output_dir))

@@ -16,6 +16,7 @@ with a licensed attorney or other authorized human filer.
 | Federal local rules | Middle District of Florida | Verified November 1, 2025 Rule 3.01 limits and response periods; every other district returns `review` |
 | Florida trial-court routing | All 67 counties and 20 circuits | Ordinary monetary civil only: small claims through $8,000, county civil through $50,000, circuit civil over $50,000 |
 | Filing packet | Federal and Florida routed cases | Required gate artifacts and every filing PDF are SHA-256 checked; post-packet edits block handoff |
+| Filing-day authority metadata gate | Federal core, M.D. Florida, and Florida trial-court packs | `bin/glaw-court-case authority-check` validates pack status, ISO review date, maximum age, and complete source metadata; packet preparation fails closed when the selected pack is stale or malformed |
 | Filing handoff | CM/ECF or Florida Courts E-Filing Portal | Preparation-only operator checklist; live submit fails closed because no certified connector exists |
 | Filing receipt | Human-filed matters | Records court, case number, filing time, actor, receipt artifact, and hashes |
 | Service handoff and proof | Supported packets | Preparation-only handoff; actual proof starts a review-required candidate response date |
@@ -37,7 +38,7 @@ bin/glaw-court-case record-service --packet filing/court-filing-manifest.json --
 
 | Priority | Gap | Completion condition |
 |---|---|---|
-| P0 | Filing-day authority refresh | Automated source freshness check for rules, local rules, fees, forms, administrative procedures, judge orders, and portal notices; any stale/unreachable source blocks |
+| P0 | Live filing-day authority refresh | The local metadata gate is implemented; remaining work is a controlled online refresh for rules, local rules, fees, forms, administrative procedures, judge orders, and portal notices, with unreachable sources blocking |
 | P0 | Certified live connectors | Court-approved CM/ECF and Florida portal adapters, test-environment certification, least-privilege credentials, human preview/consent, idempotency, receipt capture, rollback/recovery, and independent security review |
 | P0 | Exact official forms | Current fillable JS-44, AO 440, district/state summons, civil cover sheets, disclosure forms, accessibility, PDF/A where required, and byte-level validation against court rules |
 | P0 | Deadline engine | Rule-specific triggering events, service methods, holidays, extensions, judge orders, tolling, relation back, removal/remand, and docket reconciliation; no deadline becomes final without docket-counsel review |
