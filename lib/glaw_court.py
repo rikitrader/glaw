@@ -14,6 +14,7 @@ from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
+from urllib.request import Request, urlopen
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -72,6 +73,8 @@ def authority_freshness(
     *,
     as_of: date | None = None,
     max_age_days: int = 45,
+    check_urls: bool = False,
+    timeout_seconds: float = 5.0,
 ) -> dict[str, Any]:
     """Validate local source-backed freshness metadata for court packs.
 
@@ -81,6 +84,8 @@ def authority_freshness(
     """
     if max_age_days < 0:
         raise ValueError("max_age_days must be non-negative")
+    if timeout_seconds <= 0:
+        raise ValueError("timeout_seconds must be positive")
     names = pack_names or sorted(path.name for path in COURT_PACKS.glob("*.json"))
     checked_at = as_of or date.today()
     packs: list[dict[str, Any]] = []
@@ -122,6 +127,20 @@ def authority_freshness(
                     pack_failures.append(f"sources[{index}].{field} is required")
             if source.get("url") and not str(source["url"]).startswith(("https://", "http://")):
                 pack_failures.append(f"sources[{index}].url must be http(s)")
+            elif check_urls:
+                try:
+                    request = Request(
+                        str(source["url"]),
+                        headers={"Range": "bytes=0-0", "User-Agent": "GLAW-authority-check/1"},
+                    )
+                    with urlopen(request, timeout=timeout_seconds) as response:
+                        status_code = int(getattr(response, "status", 200))
+                        if status_code >= 400:
+                            pack_failures.append(f"sources[{index}] unreachable: HTTP {status_code}")
+                        else:
+                            response.read(1)
+                except Exception as exc:  # network failures must fail closed, never crash the CLI
+                    pack_failures.append(f"sources[{index}] unreachable: {type(exc).__name__}: {exc}")
         row = {
             "pack": name,
             "id": str(pack.get("id") or name),
@@ -138,9 +157,10 @@ def authority_freshness(
         "status": "pass" if not failures and packs else "block",
         "as_of": checked_at.isoformat(),
         "max_age_days": max_age_days,
+        "check_urls": check_urls,
         "packs": packs,
         "failures": failures,
-        "authority_boundary": "Offline metadata freshness only; source reachability, filing-day rule changes, portal notices, and human filing approval remain required.",
+        "authority_boundary": "Online mode checks configured source URLs for reachability; it does not prove source content is current, replace filing-day rule review, or provide human filing approval.",
     }
 
 
@@ -472,7 +492,7 @@ def _document_manifest(case_data: dict[str, Any], base: Path, route: dict[str, A
     return rows, failures
 
 
-def prepare_packet(case_path: Path, output_dir: Path) -> dict[str, Any]:
+def prepare_packet(case_path: Path, output_dir: Path, *, online_authority: bool = False) -> dict[str, Any]:
     case_path = case_path.resolve()
     case_data = load_json(case_path)
     route = route_case(case_data)
@@ -481,7 +501,7 @@ def prepare_packet(case_path: Path, output_dir: Path) -> dict[str, Any]:
         failures.append("forum routing must pass before packet preparation")
     selected = route.get("selected") or {}
     selected_authority = (
-        authority_freshness([str(selected.get("authority_pack"))])
+        authority_freshness([str(selected.get("authority_pack"))], check_urls=online_authority)
         if selected.get("authority_pack")
         else {"status": "block", "failures": ["selected route has no authority pack"]}
     )
@@ -508,6 +528,7 @@ def prepare_packet(case_path: Path, output_dir: Path) -> dict[str, Any]:
         "case_source_sha256": sha256_file(case_path),
         "route": route,
         "authority_freshness": selected_authority,
+        "online_authority_required": online_authority,
         "gate_evidence": gates,
         "documents": documents,
         "filing": {
