@@ -52,14 +52,13 @@ Date: 2026-08-18
 - Local `main` is clean and 12 commits ahead of `origin/main`; nothing was pushed.
 - Generated runtime artifacts remain local and are ignored: `workpapers/*.jsonl` and `benchmarks/**/runs/`.
 
-### Remaining material gaps
+### Remaining material gaps (updated 2026-08-23)
 
-- The 10,000-question benchmark is source-loaded but not attorney-gold-labeled: `reviews.jsonl` and `adjudications.jsonl` are empty, and benchmark items have no populated gold decisions or reviewer fields.
 - Current provider health shows Codex subscription CLI available but Claude subscription CLI `AUTH_REQUIRED`; valid dual-agent review cannot currently complete.
 - Existing benchmark runs show Alexandra unavailable and Governor `REVIEW_REQUIRED`; they do not establish benchmark accuracy.
-- The full Alexandra/Victor cross-review protocol is not implemented yet: red cross-review, blue rebuttal, red sur-rebuttal, claim battlefields, and final disagreement resolution remain outstanding.
-- `/legal/*` remote analysis routes are documented in `API.md` but are not implemented in the Cloudflare Worker; current Worker API is intake/KV only.
-- PostgreSQL/pgvector persistence, authenticated remote legal-analysis service, tenant isolation, and remote append-only audit storage are not deployed.
+- The 10,000-question benchmark remains source-loaded but not attorney-gold-labeled: `reviews.jsonl` and `adjudications.jsonl` remain empty until two independent named attorneys review the source-backed items.
+- The Alexandra/Victor cross-review protocol is implemented locally and contract-tested in `bin/glaw-cross-review`; live provider execution and independent adjudication still require configured human/provider participation.
+- Authenticated `/legal/*` Worker routes, tenant binding, workflow-state gates, and append-only KV audit events are implemented and contract-tested. PostgreSQL/pgvector persistence and remote provider execution remain deployment options, not currently configured infrastructure.
 - The Wilson confidence-interval evaluator exists, but no valid attorney-adjudicated PASS population exists; the `<3%` upper-bound target is unproven.
 
 Readiness status: `STRUCTURABLE_WITH_RISK`. Do not represent the system as production-ready, empirically validated, or capable of autonomous final legal approval until these gaps are closed.
