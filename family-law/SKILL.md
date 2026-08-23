@@ -150,3 +150,4 @@ Memory rule: every recurring error, rejected assumption, audit adjustment, citat
 Family-law work-product, not legal advice, and not a substitute for licensed counsel in the
 governing state. Prepared for review and signature by a licensed attorney. UPL footer from
 `/glaw-ethics-conflicts` on every external deliverable.
+**Domain:** family law professional domain, evidence, controls, and accountable human-review routing.

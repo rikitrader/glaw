@@ -100,3 +100,4 @@ python3 bin/glaw-reflect --apply
 
 Legislative drafting output is attorney work-product for authorized human review.
 GLAW does not enact, publish, file, or bind anyone by itself.
+**Domain:** legislative professional domain, evidence, controls, and accountable human-review routing.

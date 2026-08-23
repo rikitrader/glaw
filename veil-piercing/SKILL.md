@@ -198,3 +198,4 @@ This is attorney work-product — factor analysis, not a legal opinion. Piercing
 doctrine and the controlling standard belong to `glaw-elite-corporate-counsel`; every
 citation is verified by `/glaw-legal-research`. The UPL guardrail lives in
 `/glaw-ethics-conflicts`, and its footer gates every external deliverable.
+**Domain:** veil piercing professional domain, evidence, controls, and accountable human-review routing.

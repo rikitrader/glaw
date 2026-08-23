@@ -269,3 +269,4 @@ file; it does not form an attorney-client relationship or substitute for a membe
 the bar. The UPL footer that gates every external deliverable lives in
 `/glaw-ethics-conflicts`. Statutes, rates, and limitations periods cited here must be
 confirmed against current Florida law before use.
+**Domain:** recover payment professional domain, evidence, controls, and accountable human-review routing.

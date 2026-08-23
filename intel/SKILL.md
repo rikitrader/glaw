@@ -83,3 +83,4 @@ Memory rule: every recurring error, rejected assumption, audit adjustment, citat
 ## Not legal advice
 Strategic-intelligence work-product from lawful/public sources for licensed
 professionals. UPL footer: `/glaw-ethics-conflicts`.
+**Domain:** intel professional domain, evidence, controls, and accountable human-review routing.

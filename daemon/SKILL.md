@@ -116,3 +116,4 @@ python3 bin/glaw-reflect --apply
 Daemon output is operational work-product for authorized human review. It does
 not authorize legal, accounting, filing, payment, signature, service, or
 transmission acts.
+**Domain:** daemon professional domain, evidence, controls, and accountable human-review routing.

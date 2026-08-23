@@ -159,3 +159,4 @@ Retrieving a public court record is not legal advice. GLAW produces attorney
 work-product for a licensed attorney to review, sign, and file; it does not form an
 attorney-client relationship. The UPL footer that gates every external deliverable
 lives in `/glaw-ethics-conflicts`.
+**Domain:** court records professional domain, evidence, controls, and accountable human-review routing.

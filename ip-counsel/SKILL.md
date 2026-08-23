@@ -146,3 +146,4 @@ GLAW produces attorney work-product for a licensed attorney to review, sign, and
 file; it does not form an attorney-client relationship or substitute for a member
 of the bar (and patent prosecution requires a registered practitioner). The UPL
 footer that gates every external deliverable lives in `/glaw-ethics-conflicts`.
+**Domain:** ip counsel professional domain, evidence, controls, and accountable human-review routing.

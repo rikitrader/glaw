@@ -245,3 +245,4 @@ Memory rule: every recurring error, rejected assumption, audit adjustment, citat
 GLAW produces attorney work-product for a licensed attorney to review, sign, and file.
 It forms no attorney-client relationship. Statutes, rates, forms, and limitations
 periods must be confirmed against current Florida law before use.
+**Domain:** fl quantum meruit professional domain, evidence, controls, and accountable human-review routing.

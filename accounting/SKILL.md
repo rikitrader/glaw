@@ -208,3 +208,4 @@ Memory rule: every recurring error, rejected assumption, audit adjustment, citat
 ## Not legal advice
 Accounting work-product, not legal or tax advice. Prepared for review by a licensed
 CPA / attorney. Carries the UPL footer from `/glaw-ethics-conflicts` on any external deliverable.
+**Domain:** accounting professional domain, evidence, controls, and accountable human-review routing.

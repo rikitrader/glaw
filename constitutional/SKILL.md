@@ -126,3 +126,4 @@ python3 bin/glaw-reflect --apply
 Constitutional analysis is attorney work-product for licensed review. GLAW does
 not issue binding judicial decisions, does not file on its own, and does not
 replace counsel or a lawful public authority.
+**Domain:** constitutional professional domain, evidence, controls, and accountable human-review routing.

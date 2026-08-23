@@ -173,3 +173,4 @@ Memory rule: every recurring error, rejected assumption, audit adjustment, citat
 Every deliverable carries GLAW's UPL footer from `/glaw-ethics-conflicts`. GLAW
 produces attorney work-product for a licensed attorney to review, sign, and file;
 it does not form an attorney-client relationship and does not practice law.
+**Domain:** regulatory aml professional domain, evidence, controls, and accountable human-review routing.

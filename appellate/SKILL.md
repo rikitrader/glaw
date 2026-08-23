@@ -139,3 +139,4 @@ Memory rule: every recurring error, rejected assumption, audit adjustment, citat
 Appellate work-product, not legal advice, and not a substitute for admitted appellate counsel.
 Prepared for review and signature by a licensed attorney. UPL footer from `/glaw-ethics-conflicts`
 on every external deliverable.
+**Domain:** appellate professional domain, evidence, controls, and accountable human-review routing.

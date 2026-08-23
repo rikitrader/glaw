@@ -142,3 +142,4 @@ Research into authority is not legal advice. GLAW produces attorney work-product
 a licensed attorney to review, sign, and file; it does not form an attorney-client
 relationship. The UPL footer that gates every external deliverable lives in
 `/glaw-ethics-conflicts`.
+**Domain:** case law research professional domain, evidence, controls, and accountable human-review routing.

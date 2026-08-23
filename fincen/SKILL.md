@@ -107,3 +107,4 @@ Memory rule: every recurring error, rejected assumption, audit adjustment, citat
 ## Not legal advice
 Financial-intelligence work-product for licensed professionals; not a SAR filing or a
 charging/licensing decision. UPL footer: `/glaw-ethics-conflicts`.
+**Domain:** fincen professional domain, evidence, controls, and accountable human-review routing.

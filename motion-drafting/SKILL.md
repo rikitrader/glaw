@@ -165,3 +165,4 @@ file and the litigation judgment belong to `glaw-federal-trial-counsel` and
 `glaw-elite-corporate-counsel`; every citation is verified by `/glaw-legal-research`. The
 UPL guardrail lives in `/glaw-ethics-conflicts`, and its footer gates every external
 deliverable.
+**Domain:** motion drafting professional domain, evidence, controls, and accountable human-review routing.
