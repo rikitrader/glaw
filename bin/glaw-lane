@@ -51,6 +51,11 @@ def validate(data):
     for key in ("source_complete", "calculation_checked", "review_complete", "human_approval"):
         if not isinstance(gates.get(key), bool):
             errors.append(f"gates.{key} must be boolean")
+    if data.get("department") in POLICIES["policies"]:
+        policy = policy_for(data["department"])
+        for key in policy["required_gates"]:
+            if not isinstance(gates.get(key), bool):
+                errors.append(f"gates.{key} must be boolean for {data['department']} policy")
     artifacts = data.get("artifacts", [])
     if not isinstance(artifacts, list) or not artifacts:
         errors.append("artifacts must be a non-empty array")
@@ -67,6 +72,10 @@ def validate(data):
         missing = [key for key in policy["required_gates"] if data.get("gates", {}).get(key) is not True]
         if missing:
             errors.append("approved workpapers require policy gates: " + ", ".join(missing))
+        artifact_types = {a.get("type") for a in artifacts if isinstance(a, dict)}
+        missing_artifacts = [kind for kind in policy["artifact_requirements"] if kind not in artifact_types]
+        if missing_artifacts:
+            errors.append("approved workpapers require policy artifacts: " + ", ".join(missing_artifacts))
     return errors
 
 def scaffold(args):
@@ -76,7 +85,9 @@ def scaffold(args):
     policy = policy_for(args.department)
     gates = {"source_complete": False, "calculation_checked": False, "review_complete": False, "human_approval": False}
     gates.update({key: False for key in policy["required_gates"]})
-    return {"lane_id": args.lane_id, "matter_id": args.matter, "department": args.department, "lane": args.lane, "record_type": entry["record_type"], "policy_id": args.department, "required_gates": policy["required_gates"], "workflow": policy["workflow"], "artifact_requirements": policy["artifact_requirements"], "version": "v1", "status": "draft", "owner": args.owner, "source_ids": [], "artifacts": [{"type": args.artifact_type, "path": "", "status": "draft"}], "gates": gates, "findings": [], "next_action": policy["workflow"][1] if len(policy["workflow"]) > 1 else "collect sources"}
+    artifact_types = list(dict.fromkeys([args.artifact_type, *policy["artifact_requirements"]]))
+    artifacts = [{"type": kind, "path": "", "status": "draft"} for kind in artifact_types]
+    return {"lane_id": args.lane_id, "matter_id": args.matter, "department": args.department, "lane": args.lane, "record_type": entry["record_type"], "policy_id": args.department, "required_gates": policy["required_gates"], "workflow": policy["workflow"], "artifact_requirements": policy["artifact_requirements"], "version": "v1", "status": "draft", "owner": args.owner, "source_ids": [], "artifacts": artifacts, "gates": gates, "findings": [], "next_action": policy["workflow"][1] if len(policy["workflow"]) > 1 else "collect sources"}
 
 def transition(data, target):
     errors = validate(data)

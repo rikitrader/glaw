@@ -17,9 +17,11 @@ for dept,items in catalog['departments'].items():
         data=json.loads(out.read_text())
         assert set(policies[dept]['required_gates']) <= set(data['required_gates'])
         subprocess.run([str(root/'bin/glaw-lane'),'validate',str(out)],check=True,stdout=subprocess.DEVNULL)
-        data['status']='approved'; data['gates']={k:True for k in data['gates']}; data['artifacts'][0]['status']='approved'; out.write_text(json.dumps(data))
+        data['status']='approved'; data['gates']={k:True for k in data['gates']}; [a.update(status='approved') for a in data['artifacts']]; out.write_text(json.dumps(data))
         subprocess.run([str(root/'bin/glaw-lane'),'validate',str(out)],check=True,stdout=subprocess.DEVNULL)
         data['gates'][policies[dept]['required_gates'][0]]=False; out.write_text(json.dumps(data))
         if subprocess.run([str(root/'bin/glaw-lane'),'validate',str(out)],stdout=subprocess.DEVNULL).returncode == 0: raise AssertionError(f'approved policy bypass: {dept}/{item["name"]}')
+        data['gates'][policies[dept]['required_gates'][0]]=True; data['artifacts']=[a for a in data['artifacts'] if a['type'] != policies[dept]['artifact_requirements'][0]]; out.write_text(json.dumps(data))
+        if subprocess.run([str(root/'bin/glaw-lane'),'validate',str(out)],stdout=subprocess.DEVNULL).returncode == 0: raise AssertionError(f'approved artifact bypass: {dept}/{item["name"]}')
 print(f'lane policy contract: {n} lanes and {len(policies)} department policies pass')
 PY
