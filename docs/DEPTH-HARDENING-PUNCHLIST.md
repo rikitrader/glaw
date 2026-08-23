@@ -24,7 +24,7 @@ The breadth is done and the safety spine is **verified real** (authority gate, l
 
 ### H-2 · Groundedness is lexical, not semantic, and has no negative test — `DONE`
 - **Files:** `lib/glaw_groundedness.py`, `bin/glaw-groundedness`, `test/groundedness_test.sh`.
-- **Current state:** bag-of-words overlap (≥0.30 entity / ≥0.20 relation) vs the user's *own* segment; 30% shared words passes. "HalluGraph entity-grounding / relation-preservation" is named but not implemented. Only a happy-path test exists.
+- **Historical finding:** the original implementation used bag-of-words overlap (≥0.30 entity / ≥0.20 relation) against the user's own segment; the current implementation retains a deterministic lexical floor and explicitly does not claim semantic HalluGraph proof.
 - **Required fix:** (a) add a **negative fixture** — an unsupported proposition must FAIL the gate (highest priority, cheap); (b) raise the floor or move toward real entity/relation extraction (triples) rather than token overlap; (c) document the honest limitation in the gate output.
 - **Acceptance:** `groundedness_test.sh` includes a "must FAIL on unsupported claim" case that is asserted to be rejected.
 - **Closed:** `groundedness_test.sh` includes unsupported-claim and fabricated-pasted-corpus negative fixtures; `glaw_groundedness.py` blocks untrusted corpus rows directly and labels its output as a deterministic lexical floor, not semantic proof.
