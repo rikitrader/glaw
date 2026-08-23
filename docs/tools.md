@@ -104,6 +104,7 @@ PDF/OCR bank ingestion uses repo code plus local binaries, not Python packages.
 | `glaw-analytical-review` | `scaffold` · `validate` · `score`; AI analytical-artifact review scorecard with material-error penalties |
 | `glaw-transaction-comps` | `scaffold` · `validate` · `analyze`; precedent transaction multiples and statistics |
 | `glaw-corporate-finance` | `validate` · `run`; unified three-statement, DCF, comps, merger, and waterfall review with reconciliation and sensitivity gates |
+| `glaw-fpa-engine` | `validate` · `run`; budgets, long-range/rolling forecasts, headcount, CapEx payback, variance, profitability, and driver-based revenue planning |
 | `glaw-cap-table-waterfall` | `scaffold` · `validate` · `analyze`; preference/conversion and holder proceeds waterfall |
 | `glaw-transaction-terms` | `scaffold` · `validate` · `normalize`; certainty-adjusted transaction economics |
 | `glaw-bid-comparison` | transparent weighted bid ranking using value, execution, cash, and terms scores |

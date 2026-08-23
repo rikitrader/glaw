@@ -20,3 +20,9 @@ Required controls are source/version/unit preservation, cash and balance-sheet
 reconciliation, DCF WACC/growth sensitivity, disclosure of missing inputs, and
 qualified human approval. Failed conservation or reconciliation checks block
 release.
+
+The FP&A extension `bin/glaw-fpa-engine` covers annual budgets, multi-year plans,
+actual-versus-budget variance, rolling driver forecasts, bookings/pipeline
+coverage, headcount pacing, CapEx payback and prioritization, and segment
+profitability. It remains a controlled reference model: the CFO, FP&A owner,
+business owner, and controller approve before management or external use.

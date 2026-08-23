@@ -558,6 +558,7 @@ if [ "$DOCTOR_CORE" = "1" ]; then
     "prophet_actuary_agent_map_test:prophet-actuary-agent-map"
     "seat_posture_contract_test:seat-posture-contract"
     "lane_policy_contract_test:lane-policy-contract"
+    "fpa_engine_test:fpa-engine"
   )
 else
   TESTS=(
@@ -614,6 +615,7 @@ else
     "prophet_actuary_agent_map_test:prophet-actuary-agent-map"
     "seat_posture_contract_test:seat-posture-contract"
     "lane_policy_contract_test:lane-policy-contract"
+    "fpa_engine_test:fpa-engine"
   )
 fi
 for t in "${TESTS[@]}"; do
