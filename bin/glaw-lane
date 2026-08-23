@@ -4,6 +4,7 @@ import argparse, json, pathlib, sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
 CATALOG = json.loads((ROOT / "lib/lane-catalog.json").read_text(encoding="utf-8"))
+POLICIES = json.loads((ROOT / "lib/lane-policies.json").read_text(encoding="utf-8"))
 STATUSES = {"draft", "review", "approved_with_conditions", "approved", "revise_required", "rejected"}
 TRANSITIONS = {"draft": {"review", "rejected"}, "review": {"approved_with_conditions", "approved", "revise_required", "rejected"}, "approved_with_conditions": {"approved", "revise_required"}, "revise_required": {"review", "rejected"}, "approved": set(), "rejected": set()}
 
@@ -19,6 +20,12 @@ def catalog_entry(department, lane):
             return entry
     return None
 
+def policy_for(department):
+    policy = POLICIES["policies"].get(department)
+    if not policy:
+        raise ValueError(f"no lane policy for department: {department}")
+    return policy
+
 def validate(data):
     errors = []
     for key in ("lane_id", "department", "lane", "record_type", "version", "status", "owner", "source_ids", "artifacts", "gates"):
@@ -31,6 +38,13 @@ def validate(data):
         errors.append("lane is not present in the canonical lane catalog")
     elif data.get("record_type") != entry["record_type"]:
         errors.append(f"record_type must be {entry['record_type']}")
+    if data.get("department") in POLICIES["policies"]:
+        policy = policy_for(data["department"])
+        if data.get("policy_id") not in (None, data["department"]):
+            errors.append(f"policy_id must be {data['department']}")
+        required = data.get("required_gates", policy["required_gates"])
+        if not isinstance(required, list) or set(policy["required_gates"]) - set(required):
+            errors.append("required_gates must include every department policy gate")
     if not isinstance(data.get("source_ids"), list):
         errors.append("source_ids must be an array")
     gates = data.get("gates", {})
@@ -49,13 +63,20 @@ def validate(data):
             errors.append("approved workpapers require all four gates")
         if any(a.get("status") != "approved" for a in artifacts if isinstance(a, dict)):
             errors.append("approved workpapers require all artifacts approved")
+        policy = policy_for(data["department"])
+        missing = [key for key in policy["required_gates"] if data.get("gates", {}).get(key) is not True]
+        if missing:
+            errors.append("approved workpapers require policy gates: " + ", ".join(missing))
     return errors
 
 def scaffold(args):
     entry = catalog_entry(args.department, args.lane)
     if not entry:
         raise ValueError("lane is not present in the canonical lane catalog")
-    return {"lane_id": args.lane_id, "matter_id": args.matter, "department": args.department, "lane": args.lane, "record_type": entry["record_type"], "version": "v1", "status": "draft", "owner": args.owner, "source_ids": [], "artifacts": [{"type": args.artifact_type, "path": "", "status": "draft"}], "gates": {"source_complete": False, "calculation_checked": False, "review_complete": False, "human_approval": False}, "findings": [], "next_action": "collect sources"}
+    policy = policy_for(args.department)
+    gates = {"source_complete": False, "calculation_checked": False, "review_complete": False, "human_approval": False}
+    gates.update({key: False for key in policy["required_gates"]})
+    return {"lane_id": args.lane_id, "matter_id": args.matter, "department": args.department, "lane": args.lane, "record_type": entry["record_type"], "policy_id": args.department, "required_gates": policy["required_gates"], "workflow": policy["workflow"], "artifact_requirements": policy["artifact_requirements"], "version": "v1", "status": "draft", "owner": args.owner, "source_ids": [], "artifacts": [{"type": args.artifact_type, "path": "", "status": "draft"}], "gates": gates, "findings": [], "next_action": policy["workflow"][1] if len(policy["workflow"]) > 1 else "collect sources"}
 
 def transition(data, target):
     errors = validate(data)

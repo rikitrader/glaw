@@ -96,6 +96,7 @@ python-docx, docxtpl, eyecite, juriscraper, jsonschema, or Google SDKs now uses 
 compatibility modules or local stdlib fallbacks. Google Sheets input uses CSV export URLs.
 PDF/OCR bank ingestion uses repo code plus local binaries, not Python packages.
 | `glaw-lane` | `catalog` · `scaffold` · `validate` · `transition`; canonical workpapers, owner/status gates, artifact status, and human-approval state for M&A, public-markets, and assurance lanes |
+| `lib/lane-policies.json` | Department-specific workflow, artifact, reconciliation, source, adversarial, regulatory, and human-approval gates enforced by `glaw-lane` |
 | `test/seat_posture_contract_test.sh` | Contract test requiring every vendored seat to declare identity, soul, domain, report voice, and counter-lens |
 | `glaw-source-ledger` | `add` · `validate`; append-only source paths and SHA-256 provenance for analytical workpapers |
 | `glaw-artifact` | `manifest` · `validate`; hashed JSON/XLSX/PPTX/DOCX/Markdown/HTML artifact manifests |
