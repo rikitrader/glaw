@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://glaw.local/schemas/cross-review.schema.json",
+  "title": "GLAW Cross Review State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["protocol", "snapshot_hash", "blue_first_pass_hash", "red_first_pass_hash", "phases", "status", "governor_decision"],
+  "properties": {
+    "protocol": {"const": "glaw-cross-review/v1"},
+    "run_dir": {"type": "string"},
+    "created_at": {"type": "string"},
+    "updated_at": {"type": "string"},
+    "snapshot_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "blue_first_pass_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "red_first_pass_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "phases": {"type": "array", "maxItems": 4, "items": {"type": "object"}},
+    "status": {"enum": ["REVIEW_REQUIRED", "BLOCK"]},
+    "governor_decision": {"enum": ["REVIEW_REQUIRED", "BLOCK"]},
+    "resolution": {"type": ["string", "null"]},
+    "state_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

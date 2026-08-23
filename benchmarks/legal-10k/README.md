@@ -45,3 +45,11 @@ opinion or gold label is created.
 Only released rows enter evaluation. Disagreements require an independent third
 attorney adjudicator. `items.jsonl` contains gold records; model outputs belong
 under a separate run directory and cannot mutate the gold files.
+
+After both first passes complete, initialize the cross-review protocol with
+`bin/glaw-dual-attorney --cross-review`. The resulting run directory is then
+advanced only by the hash-bound sequence
+`bin/glaw-cross-review record`: red cross-review, blue rebuttal, red
+sur-rebuttal, and independent adjudication. `check` remains `BLOCK` until all
+four phases are present and the adjudicator records `RESOLVED`; even then the
+Governor remains `REVIEW_REQUIRED` pending human counsel approval.

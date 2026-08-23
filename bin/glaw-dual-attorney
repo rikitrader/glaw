@@ -15,13 +15,14 @@ def main() -> int:
     parser.add_argument("--red-provider", default=os.environ.get("GLAW_RED_PROVIDER", "configured"), choices=["configured", "claude", "anthropic", "codex", "openai"])
     parser.add_argument("--ids", nargs="*", help="specific BENCH IDs; default is all SOURCE_LOADED rows")
     parser.add_argument("--agent", choices=["both", "alexandra", "victor"], default="both", help="run one lane for a non-dual review, or both for independent review")
+    parser.add_argument("--cross-review", action="store_true", help="initialize the explicit red/blue cross-review protocol after first passes")
     args = parser.parse_args()
     root = Path(args.benchmark_root).expanduser().resolve()
     paths = benchmark.paths(root)
     rows = benchmark.read_jsonl(paths["items"])
     packets = {str(row.get("id")): row for row in benchmark.read_jsonl(paths["source_packets"])}
     selected = [row for row in rows if row.get("status") == "SOURCE_LOADED" and (not args.ids or row.get("id") in args.ids)]
-    result = dual_attorney.execute_pilot(root, selected, packets, blue_provider=args.blue_provider, red_provider=args.red_provider, agents=args.agent)
+    result = dual_attorney.execute_pilot(root, selected, packets, blue_provider=args.blue_provider, red_provider=args.red_provider, agents=args.agent, initialize_cross_review=args.cross_review)
     print(json.dumps(result, indent=2, sort_keys=True))
     return 0 if result["status"] == "EXECUTED" else 1
 
