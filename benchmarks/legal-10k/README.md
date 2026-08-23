@@ -51,6 +51,11 @@ Only released rows enter evaluation. Disagreements require an independent third
 attorney adjudicator. `items.jsonl` contains gold records; model outputs belong
 under a separate run directory and cannot mutate the gold files.
 
+The release gate also verifies reviewer/adjudicator identities, conflict
+attestations, signed row hashes, and that every review authority is contained in
+the item's source-backed authority set. Tampering or out-of-scope citations
+blocks release.
+
 After both first passes complete, initialize the cross-review protocol with
 `bin/glaw-dual-attorney --cross-review`. The resulting run directory is then
 advanced only by the hash-bound sequence
