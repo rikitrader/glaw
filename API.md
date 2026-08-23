@@ -15,8 +15,11 @@ GET  /legal/requests/:id/governor -> return workflow and gate status
 POST /legal/review/:id   -> append named human counsel review
 ```
 
-Every legal route requires `Authorization: Bearer $LEGAL_API_TOKEN`. Configure
-that secret in the Worker environment before use. Provider execution remains
+Every legal route requires `Authorization: Bearer $LEGAL_API_TOKEN`. For
+multi-tenant deployments, prefer the encrypted `LEGAL_TENANT_TOKENS` JSON
+secret (`{"tenant-id":"token"}`); each request and audit event is bound to the
+tenant resolved from the token. Configure the secret in the Worker environment
+before use. Provider execution remains
 local and command-driven through `bin/glaw-legal-governor`; remote route calls
 only record evidence supplied by an authenticated operator. Human approval is
 required before reliance on any conclusion.

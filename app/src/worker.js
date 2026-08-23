@@ -17,9 +17,17 @@ const authorized = (req, env) => {
   return Boolean(env.INTAKE_ADMIN_TOKEN) && token === env.INTAKE_ADMIN_TOKEN;
 };
 
-const legalAuthorized = (req, env) => {
+const legalPrincipal = (req, env) => {
   const token = (req.headers.get("authorization") || "").replace(/^Bearer\s+/i, "");
-  return Boolean(env.LEGAL_API_TOKEN) && token === env.LEGAL_API_TOKEN;
+  if (!token) return null;
+  if (env.LEGAL_TENANT_TOKENS) {
+    try {
+      const tenants = JSON.parse(env.LEGAL_TENANT_TOKENS);
+      const match = Object.entries(tenants).find(([, expected]) => expected === token);
+      if (match) return String(match[0]);
+    } catch { return null; }
+  }
+  return Boolean(env.LEGAL_API_TOKEN) && token === env.LEGAL_API_TOKEN ? "default" : null;
 };
 
 const legalJson = async (req) => {
@@ -32,14 +40,16 @@ const legalId = () => `LGL-${crypto.randomUUID().replace(/-/g, "").slice(0, 16)}
 
 const legalKey = (id) => `legal:request:${id}`;
 
-const loadLegalRequest = async (env, id) => {
+const loadLegalRequest = async (env, id, tenantId = null) => {
   const value = await env.INTAKE_KV.get(legalKey(id));
-  return value ? JSON.parse(value) : null;
+  if (!value) return null;
+  const record = JSON.parse(value);
+  return tenantId && record.tenant_id !== tenantId ? null : record;
 };
 
-const writeLegalEvent = async (env, requestId, event, payload = {}) => {
+const writeLegalEvent = async (env, requestId, event, payload = {}, tenantId = "default") => {
   const ts = new Date().toISOString();
-  const audit = { audit_id: legalId(), request_id: requestId, event, ts, payload };
+  const audit = { audit_id: legalId(), request_id: requestId, tenant_id: tenantId, event, ts, payload };
   await env.INTAKE_KV.put(`legal:audit:${ts}:${audit.audit_id}`, JSON.stringify(audit), {
     metadata: { request_id: requestId, event },
   });
@@ -308,7 +318,8 @@ export default {
     // record and append-only audit events; they never run a provider, declare
     // law verified, or authorize filing/signature/payment activity.
     if (url.pathname === "/legal/analyze" && req.method === "POST") {
-      if (!legalAuthorized(req, env)) return json({ error: "Unauthorized" }, 401);
+      const tenantId = legalPrincipal(req, env);
+      if (!tenantId) return json({ error: "Unauthorized" }, 401);
       let data;
       try { data = await legalJson(req); } catch (error) {
         return json({ error: error.message }, error.message === "Submission too large" ? 413 : 400);
@@ -320,13 +331,13 @@ export default {
       const id = legalId();
       const ts = new Date().toISOString();
       const record = {
-        id, matter_id: String(data.matter_id), question: String(data.question),
+        id, tenant_id: tenantId, matter_id: String(data.matter_id), question: String(data.question),
         jurisdiction: String(data.jurisdiction), source_ids: data.source_ids.map(String),
         request: data, created_at: ts, updated_at: ts, state: "RESEARCH_REQUIRED",
         governor_decision: "REVIEW_REQUIRED", stages: [], human_review: null,
       };
       await env.INTAKE_KV.put(legalKey(id), JSON.stringify(record), { metadata: { request_id: id, state: record.state } });
-      await writeLegalEvent(env, id, "ANALYSIS_REQUESTED", { source_ids: record.source_ids, jurisdiction: record.jurisdiction });
+      await writeLegalEvent(env, id, "ANALYSIS_REQUESTED", { source_ids: record.source_ids, jurisdiction: record.jurisdiction }, tenantId);
       return json({ ok: true, request_id: id, state: record.state, governor_decision: record.governor_decision });
     }
 
@@ -334,14 +345,15 @@ export default {
       : url.pathname === "/legal/verify" ? "VERIFICATION_COMPLETED"
       : url.pathname === "/legal/red-team" ? "RED_TEAM_COMPLETED" : null;
     if (legalStage && req.method === "POST") {
-      if (!legalAuthorized(req, env)) return json({ error: "Unauthorized" }, 401);
+      const tenantId = legalPrincipal(req, env);
+      if (!tenantId) return json({ error: "Unauthorized" }, 401);
       let data;
       try { data = await legalJson(req); } catch (error) {
         return json({ error: error.message }, error.message === "Submission too large" ? 413 : 400);
       }
       const requestId = String(data.request_id || "").trim();
       if (!requestId) return json({ error: "request_id is required" }, 400);
-      const record = await loadLegalRequest(env, requestId);
+      const record = await loadLegalRequest(env, requestId, tenantId);
       if (!record) return json({ error: "Not found" }, 404);
       const requiredByStage = {
         RESEARCH_COMPLETED: ["research"],
@@ -371,21 +383,23 @@ export default {
       const updated = await updateLegalState(env, record, nextState, {
         stages: [...(record.stages || []), { stage: legalStage, received_at: new Date().toISOString(), evidence: data }],
       });
-      await writeLegalEvent(env, requestId, legalStage, { actor: data.verified_by || data.attacker || "retrieval", state: nextState });
+      await writeLegalEvent(env, requestId, legalStage, { actor: data.verified_by || data.attacker || "retrieval", state: nextState }, tenantId);
       return json({ ok: true, request_id: requestId, state: updated.state, governor_decision: updated.governor_decision });
     }
 
     const governorMatch = url.pathname.match(/^\/legal\/requests\/([A-Za-z0-9-]+)\/governor$/);
     if (governorMatch && req.method === "GET") {
-      if (!legalAuthorized(req, env)) return json({ error: "Unauthorized" }, 401);
-      const record = await loadLegalRequest(env, governorMatch[1]);
+      const tenantId = legalPrincipal(req, env);
+      if (!tenantId) return json({ error: "Unauthorized" }, 401);
+      const record = await loadLegalRequest(env, governorMatch[1], tenantId);
       if (!record) return json({ error: "Not found" }, 404);
       return json({ request_id: record.id, state: record.state, governor_decision: record.governor_decision, stages: record.stages || [], human_review: record.human_review });
     }
 
     const reviewMatch = url.pathname.match(/^\/legal\/review\/([A-Za-z0-9-]+)$/);
     if (reviewMatch && req.method === "POST") {
-      if (!legalAuthorized(req, env)) return json({ error: "Unauthorized" }, 401);
+      const tenantId = legalPrincipal(req, env);
+      if (!tenantId) return json({ error: "Unauthorized" }, 401);
       let data;
       try { data = await legalJson(req); } catch (error) {
         return json({ error: error.message }, error.message === "Submission too large" ? 413 : 400);
@@ -394,13 +408,13 @@ export default {
       if (missing.length || !["APPROVE", "REVIEW_REQUIRED", "BLOCK"].includes(data.decision)) {
         return json({ error: "reviewer, notes, and decision (APPROVE, REVIEW_REQUIRED, or BLOCK) are required", missing }, 400);
       }
-      const record = await loadLegalRequest(env, reviewMatch[1]);
+      const record = await loadLegalRequest(env, reviewMatch[1], tenantId);
       if (!record) return json({ error: "Not found" }, 404);
       if (record.state !== "HUMAN_REVIEW_REQUIRED") return json({ error: "Human review is not yet unlocked by the workflow" }, 409);
       const review = { reviewer: String(data.reviewer), notes: String(data.notes), decision: data.decision, recorded_at: new Date().toISOString() };
       const nextState = data.decision === "APPROVE" ? "HUMAN_APPROVED" : data.decision === "BLOCK" ? "BLOCKED" : "HUMAN_REVIEW_REQUIRED";
       const updated = await updateLegalState(env, record, nextState, { human_review: review, governor_decision: data.decision === "APPROVE" ? "HUMAN_APPROVED" : "REVIEW_REQUIRED" });
-      await writeLegalEvent(env, record.id, "HUMAN_REVIEW_RECORDED", review);
+      await writeLegalEvent(env, record.id, "HUMAN_REVIEW_RECORDED", review, tenantId);
       return json({ ok: true, request_id: record.id, state: updated.state, governor_decision: updated.governor_decision });
     }
 
