@@ -391,6 +391,8 @@ def add_review(root: Path, review: dict) -> dict:
         raise ValueError(f"unknown benchmark id: {bid}")
     if item.get("status") == "RELEASED":
         raise ValueError("released benchmark rows are immutable")
+    if item.get("status") not in {"SOURCE_LOADED", "REVIEWED", "ADJUDICATED"}:
+        raise ValueError("review requires a source-loaded benchmark item")
     if reviewer_id not in _reviewer_map(p):
         raise ValueError(f"reviewer is not registered: {reviewer_id}")
     reviewer = _reviewer_map(p)[reviewer_id]
@@ -419,14 +421,30 @@ def add_review(root: Path, review: dict) -> dict:
 def adjudicate(root: Path, decision: dict) -> dict:
     p = paths(root)
     bid = str(decision.get("benchmark_id", ""))
+    item = next((row for row in read_jsonl(p["items"]) if row.get("id") == bid), None)
+    if not item:
+        raise ValueError(f"unknown benchmark id: {bid}")
+    if item.get("status") not in {"SOURCE_LOADED", "REVIEWED", "ADJUDICATED"}:
+        raise ValueError("adjudication requires a source-loaded benchmark item")
     reviews = [row for row in read_jsonl(p["reviews"]) if row.get("benchmark_id") == bid]
-    if len(reviews) < 2 or reviews[0].get("decision") == reviews[1].get("decision"):
+    reviewer_map = _reviewer_map(p)
+    if (
+        len(reviews) < 2
+        or reviews[0].get("reviewer_id") == reviews[1].get("reviewer_id")
+        or len({row.get("reviewer_id") for row in reviews}) < 2
+    ):
+        raise ValueError("adjudication requires two independent reviews")
+    for review in reviews[:2]:
+        error = _review_failure(review, item, reviewer_map.get(str(review.get("reviewer_id"))))
+        if error:
+            raise ValueError(error)
+    if reviews[0].get("decision") == reviews[1].get("decision"):
         raise ValueError("adjudication is required only when two independent reviews disagree")
     if decision.get("decision") not in DECISIONS or not str(decision.get("adjudication_reason", "")).strip():
         raise ValueError("adjudication requires a valid decision and reason")
     if decision.get("adjudicator") in {row.get("reviewer_id") for row in reviews}:
         raise ValueError("adjudicator must be independent from both reviewers")
-    if decision.get("adjudicator") not in _reviewer_map(p):
+    if decision.get("adjudicator") not in reviewer_map or reviewer_map[decision.get("adjudicator")].get("role") != "attorney":
         raise ValueError("adjudicator is not registered")
     row = dict(decision)
     row["adjudicated_at"] = now()

@@ -14,6 +14,27 @@ from legal_governor import benchmark
 root = Path(sys.argv[1])
 benchmark.scaffold(root)
 paths = benchmark.paths(root)
+draft_root = root.parent / "draft-only"
+benchmark.scaffold(draft_root)
+benchmark.register_reviewer(draft_root, {
+    "reviewer_id": "DRAFT-COUNSEL",
+    "role": "attorney",
+    "conflict_attestation": True,
+})
+try:
+    benchmark.add_review(draft_root, {
+        "benchmark_id": "BENCH-000001",
+        "reviewer_id": "DRAFT-COUNSEL",
+        "decision": "PASS",
+        "authorities": ["SRC-001"],
+        "reasoning_summary": "Not source loaded.",
+        "materiality": "HIGH",
+        "conflict_attestation": True,
+    })
+except ValueError as exc:
+    assert "source-loaded" in str(exc)
+else:
+    raise AssertionError("review was accepted for a DRAFT item")
 paths["source_packets"].write_text(json.dumps({
     "id": "PACKET-001",
     "authority_ids": ["SRC-001"],
