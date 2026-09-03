@@ -1,0 +1,876 @@
+                FOR PUBLICATION
+
+      UNITED STATES COURT OF APPEALS
+           FOR THE NINTH CIRCUIT
+
+UNITED STATES OF AMERICA,           No. 21-56228
+          Plaintiff-Appellee,
+                                       D.C. No.
+                                    2:20-cv-08466-
+ v.                                    DSF-PLA
+
+
+PETROSAUDI OIL SERVICES               OPINION
+(VENEZUELA) LTD.,
+          Claimant-Appellant,
+
+ v.
+
+ALL FUNDS HELD IN ESCROW
+BY CLYDE AND CO. IN THE
+UNITED KINGDOM AS DAMAGES
+OR RESTITUTION IN
+PETROSAUDI V. PDVSA
+UNCITRAL ARBITRATION,
+          Defendant,
+
+CLYDE & CO LLP,
+          Real-party-in-interest.
+2            UNITED STATES V. PETROSAUDI OIL SERV.
+
+
+
+UNITED STATES OF AMERICA,                    No. 22-55025
+          Plaintiff-Appellee,
+                                               D.C. No.
+    v.                                      2:20-cv-08466-
+                                               DSF-PLA
+
+PETROSAUDI OIL SERVICES
+(VENEZUELA) LTD.,
+          Claimant-Appellant,
+
+    v.
+
+ALL FUNDS HELD IN ESCROW
+BY CLYDE AND CO. IN THE
+UNITED KINGDOM AS DAMAGES
+OR RESTITUTION IN
+PETROSAUDI V. PDVSA
+UNCITRAL ARBITRATION,
+          Defendant,
+
+CLYDE & CO LLP,
+          Real-party-in-interest.
+
+         Appeal from the United States District Court
+            for the Central District of California
+          Dale S. Fischer, District Judge, Presiding
+
+           Argued and Submitted October 3, 2022
+                   Seattle, Washington
+
+                     Filed June 13, 2023
+              UNITED STATES V. PETROSAUDI OIL SERV.                3
+
+
+Before: William A. Fletcher, Mark J. Bennett, and Jennifer
+                 Sung, Circuit Judges.
+
+                 Opinion by Judge W. Fletcher
+
+
+                          SUMMARY*
+
+
+                        Civil Forfeiture
+
+    The panel affirmed the district court’s interlocutory
+orders entered as part of a civil forfeiture suit brought by the
+United States against a $380 million arbitration award fund,
+the majority of which is held in the United Kingdom.
+    The fund belongs to PetroSaudi Oil Services
+(Venezuela) Ltd., a private oil company incorporated in
+Barbados. PetroSaudi won the award in an arbitration
+proceeding against Petroleos de Venzuela, S.A., a
+Venezuelan state energy company. The portion of the fund
+held in the United Kingdom is held in an account controlled
+by the High Court of England and Wales. The Government
+sought forfeiture of the fund on the ground that it derived
+from proceeds of an illegal scheme to steal one billion
+dollars from the Malaysian sovereign wealth fund.
+    PetroSaudi challenged two district court orders: a
+warrant authorizing the arrest and seizure of any money
+released from the fund by the High Court, and a protective
+
+
+
+*
+ This summary constitutes no part of the opinion of the court. It has
+been prepared by court staff for the convenience of the reader.
+4           UNITED STATES V. PETROSAUDI OIL SERV.
+
+
+order directing PetroSaudi to deposit in the district court any
+money released to it from the fund after entry of the order.
+    Ordinarily, federal courts of appeals have appellate
+jurisdiction to review only “final decisions of the district
+courts.” 28 U.S.C. § 1291. Under the collateral order
+doctrine, the court has appellate jurisdiction to review an
+interlocutory order by a district court denying a defense of
+sovereign immunity. The panel held that PetroSaudi’s
+appeal from the district court’s order denying its motion to
+dismiss on the basis of foreign sovereign immunity and
+authorizing the arrest and seizure of the fund fell within this
+exception. In addition, 28 U.S.C. § 1292(a)(1) provides
+appellate jurisdiction to review interlocutory orders
+concerning injunctions. The panel held that PetroSaudi’s
+appeal from the district court’s protective order under 18
+U.S.C. § 983 fell within this exception. Accordingly, the
+court had jurisdiction to consider the appeals of the two
+orders.
+    PetroSaudi argued that both of the district court’s orders
+were inconsistent with the sovereign immunity of the United
+Kingdom. The panel assumed arguendo that PetroSaudi,
+though not itself a sovereign, could assert as a defense the
+sovereign immunity of the United Kingdom. Relying on the
+Foreign Sovereign Immunities Act (“FSIA”), PetroSaudi
+argued that the sovereign immunity of the United Kingdom
+prevented the district court from exercising jurisdiction over
+the arbitration award fund and issuing its two orders. The
+panel held that PetroSaudi’s argument failed. The FSIA
+specifies a number of exceptions to immunity. The parties
+disagreed on the proper reading of 28 U.S.C. § 1609, but
+both parties agreed that FSIA only protected from
+“attachment arrest and execution” property that is owned by
+a foreign sovereign. The panel held that PetroSaudi’s
+             UNITED STATES V. PETROSAUDI OIL SERV.            5
+
+
+premise that the fund was the property of the United
+Kingdom or of the High Court was unfounded. The panel
+held that PetroSaudi rather than the United Kingdom owned
+the arbitration fund. The panel concluded that the sovereign
+immunity of the United Kingdom, as codified in the FSIA,
+did not protect the arbitration award fund from the two
+orders issued by the district court.
+    In the alternative, PetroSaudi argued that the doctrine of
+prior exclusive jurisdiction precluded the district court from
+issuing the two orders. The doctrine allows the court that
+has first acquired jurisdiction over the res to adjudicate
+rights to that res without interference from another court that
+might later seek to acquire jurisdiction over it and to
+adjudicate rights to it. The panel held that the doctrine did
+not apply to these appeals because there was only one in rem
+suit—the civil forfeiture suit in the United States district
+court. The High Court proceedings were not themselves, nor
+were they part of, an in rem or quasi in rem suit. The panel
+concluded that because the doctrine of prior exclusive
+jurisdiction did not apply, the High Court’s present control
+of the arbitration fund was irrelevant.
+    Finally, PetroSaudi argued that the district court did not
+have jurisdiction to issue the protective order on December
+9, 2021, requiring PetroSaudi to deposit in the court any
+money released from the fund to PetroSaudi after the date of
+that order. The panel held that because the district court had
+in rem jurisdiction over the fund, it did not need in personam
+jurisdiction over PetroSaudi to issue an order preserving the
+fund. It followed that under its broad in rem jurisdiction in
+civil forfeiture suits, a district court could issue injunctions
+to preserve the availability of property subject to civil
+forfeiture. The district court could order PetroSaudi to
+deposit in the district court any money released to it from the
+6            UNITED STATES V. PETROSAUDI OIL SERV.
+
+
+fund. Second, PetroSaudi’s appeal of the district court’s
+October 14, 2021, order, issuing a warrant authorizing
+attachment and seizure of any portion of the fund that has
+been or may be released by the High Court, did not deprive
+the district court of jurisdiction to issue the protective order
+on December 9. The panel held that at the time of the filing
+of the appeal from the district court’s October 14 order, the
+district court had already issued an order whose purpose was
+to prevent improper dissipation of the res. The purpose of
+its subsequent protective order issued on December 9, was
+to further the purpose of its October 14 order. The district
+court therefore had authority under its in rem jurisdiction to
+issue the 18 U.S.C. § 983(j) protective order requiring
+PetroSaudi to deposit any funds that might be released to
+them or come into their possession.
+    The panel concluded that the district court had the
+authority to exercise in rem jurisdiction over the arbitration
+award fund. In the exercise of this jurisdiction, the district
+court had the authority to issue the arrest warrant authorizing
+the attachment and seizure of any portion of the fund
+released by or retained pursuant to the orders of the High
+Court and to issue the §983 protective order preserving
+assets of the fund.
+            UNITED STATES V. PETROSAUDI OIL SERV.        7
+
+
+                        COUNSEL
+
+Richard B. Raile (argued), David B. Rivkin Jr., Jonathan R.
+Barr, Kendall E. Wangsgard, Mark W. DeLaquil, and Lee A.
+Casey, Baker & Hostetler LLP, Washington, D.C.; Jonathan
+B. New, Baker & Hostetler LLP, New York, New York;
+Dyanne J. Cho, Baker & Hostetler LLP, Los Angeles,
+California; for Claimant-Appellant.
+Joshua L. Sohn (argued) and Barbara Y. Levy, Trial
+Attorneys; Deborah Connor, MLARS Chief; Kevin
+O’Driscoll, Deputy Assistant Attorney General; Kenneth A.
+Polite Jr., Assistant Attorney General; United States
+Department of Justice; Washington, D.C.; Jonathan Baum,
+Trial Attorney; Office of the United States Attorney; Los
+Angeles, California; for Plaintiff-Appellee.
+8            UNITED STATES V. PETROSAUDI OIL SERV.
+
+
+                          OPINION
+
+W. FLETCHER, Circuit Judge:
+
+     The United States (“the Government”) initiated a civil
+forfeiture suit in federal district court against a $380 million
+arbitration award fund, the majority of which is held in the
+United Kingdom. The fund belongs to PetroSaudi Oil
+Services (Venezuela) Ltd. (“PetroSaudi”), a private oil
+company incorporated in Barbados. PetroSaudi won the
+award in an arbitration proceeding against Petróleos de
+Venezuela, S.A. (“PDVSA”), a Venezuelan state energy
+company. The portion of the fund held in the United
+Kingdom (“the fund”) is held in an account controlled by the
+High Court of England and Wales (“the High Court”). The
+Government seeks forfeiture of the fund on the ground that
+it derives from proceeds of an illegal scheme to steal one
+billion dollars from the Malaysian sovereign wealth fund
+1Malaysia Development Berhad (“1MDB”).
+    In separate interlocutory appeals, PetroSaudi challenges
+two orders entered by the district court. One is a warrant
+authorizing the arrest and seizure of any money released
+from the fund by the High Court. The other is an order
+directing PetroSaudi to deposit in the district court any
+money released to it from the fund after entry of the order.
+The appeals have been consolidated in our court.
+    We affirm the district court in both appeals.
+                   I. Factual Background
+     The following narrative relies on factual allegations in
+the Government’s Third Amended Complaint and on matters
+of which we take judicial notice. At this stage of the
+litigation, the district court accepted the allegations as true
+            UNITED STATES V. PETROSAUDI OIL SERV.            9
+
+
+and construed them in the light most favorable to the non-
+moving party, the Government. See Faulkner v. ADT Sec.
+Servs., Inc., 706 F.3d 1017, 1019 (9th Cir. 2013). We do the
+same.
+               A. Money Stolen from 1MDB
+    The Government seeks forfeiture of the arbitration award
+fund under 18 U.S.C. § 981. Section 981 subjects property
+to forfeiture if it was “involved in a transaction or attempted
+transaction in violation of [18 U.S.C. § 1956],” id.
+§ 981(a)(1)(A), or if it “constitutes or is derived from
+proceeds traceable to a violation of [18 U.S.C. § 1956],” id.
+§ 981(a)(1)(C). The arbitration award fund is traceable to
+money stolen from 1MDB and laundered through
+PetroSaudi in violation of § 1956, a federal anti-money
+laundering statute.
+     PetroSaudi International Ltd. (“PSI”) is a private oil
+services company incorporated in Saudi Arabia. Tarek
+Obaid is a co-founder and CEO of PSI who initially held a
+fifty percent stake in the company. In 2013, Obaid became
+PSI’s sole stockholder.         Through PSI and various
+subsidiaries of PSI, Obaid worked with 1MDB insiders to
+steal one billion dollars from 1MDB.
+    In September 2009, 1MDB agreed to participated in a
+joint drilling venture with PetroSaudi Holdings (Cayman)
+Ltd., a wholly-owned subsidiary of PSI. 1MDB agreed to
+contribute $1 billion in cash, and PSI agreed to contribute
+drilling rights worth $2.7 billion it claimed to own in
+Turkmenistan and Argentina. PSI fraudulently represented
+both the value and the ownership of the drilling rights.
+     Obaid transferred to PSI $300 million of 1MDB’s $1
+billion contribution to the joint venture. He subsequently
+10          UNITED STATES V. PETROSAUDI OIL SERV.
+
+
+transferred $185 million of that $300 million from PSI to
+PetroSaudi Oil Services Ltd. (“PSOSL”). PSOSL used at
+least $179.6 million of this money to fund the Mariscal Sucre
+project, an oil-and-gas drilling project with PDVSA in
+Venezuela. Obaid also used additional amounts of 1MDB’s
+contribution to purchase assets for himself and others,
+including luxury real estate properties located in the United
+States.
+    PSOSL operated a drillship, the Discoverer, during the
+Mariscal Sucre project. Obaid later purchased a second
+drillship, the Saturn, to expand the scope of the project. The
+Saturn was purchased using funds from the Discoverer’s
+operations and from proceeds of a bond issue secured by the
+Discoverer and Saturn. Appellant PetroSaudi, a newly
+created PSI subsidiary, operated the Saturn and assumed
+control over the Discoverer contract with PDVSA.
+                B. The Arbitration Dispute
+    In 2015, PDVSA challenged the adequacy of
+PetroSaudi’s performance in the Mariscal Sucre project. At
+multiple points, PDVSA ordered the Saturn to stop
+operations and refused to pay PetroSaudi’s drilling invoices.
+As provided by the joint venture contract, the parties
+submitted their dispute to a Paris-based arbitration tribunal.
+    While the arbitration was pending, the arbitration
+tribunal ordered the parties to create an escrow account
+controlled by Clyde & Co., a United Kingdom-based law
+firm that was representing PetroSaudi in the arbitration. The
+tribunal ordered PDVSA to place $500 million—
+representing the amount of PetroSaudi’s unpaid invoices
+under the drilling contract—into the escrow account. On
+July 17, 2020, PetroSaudi prevailed in the arbitration and
+was awarded approximately $380 million. At the time of the
+            UNITED STATES V. PETROSAUDI OIL SERV.           11
+
+
+ruling, the escrowed amount was approximately $329
+million. The arbitration decision required that all of the
+escrowed fund be used in partial satisfaction of the
+arbitration award.
+  C. Subsequent Litigation Over the Arbitration Decision
+     On July 22, 2020, PDVSA applied to the Paris Court of
+Appeal to set aside the arbitration decision. In August 2020,
+PDVSA obtained an interim injunction from the High Court
+in the United Kingdom preventing Clyde & Co. from making
+payments to PetroSaudi while the Paris litigation was
+ongoing. On October 23, 2020, the High Court discharged
+the interim injunction. Relying on the arbitration tribunal’s
+decision, the High Court found that the “credit balance [of
+the escrow account] is confirmed as belonging to
+[PetroSaudi].” The High Court did not consider PDVSA’s
+pending application in the Paris Court of Appeal to be a
+sufficient ground on which to delay implementation of the
+arbitration award.
+    However, on September 16, 2020, the Government had
+begun a civil forfeiture proceeding against the arbitration
+award fund in the U.S. District Court for the Central District
+of California. The Government alleged that the fund, the
+defendant res in the suit, was subject to forfeiture because it
+was the proceeds of “(i) a foreign offense involving the
+misappropriation of public funds”; “(ii) wire fraud”; or “(iii)
+international transportation or receipt of stolen or
+fraudulently obtained property . . . and receipt of stolen
+money . . . , each of which is a specified unlawful activity
+under [18 U.S.C. § 1956], and a conspiracy to commit such
+offenses.” The district court had federal subject matter
+jurisdiction pursuant to 28 U.S.C. § 1355 because the
+Government plausibly alleged that “acts or omissions giving
+12          UNITED STATES V. PETROSAUDI OIL SERV.
+
+
+rise to the forfeiture” took place in the Central District of
+California. 28 U.S.C. § 1355(b)(1)(A). In particular, the
+Government alleged that money stolen from 1MDB had
+been laundered through the Central District of California and
+had been used to purchase luxury properties located there.
+    On October 14, 2020, the district court issued a warrant
+authorizing the arrest and seizure of “all funds held in escrow
+by Clyde & Co. in the United Kingdom as damages or
+restitution” in the arbitration between PetroSaudi and
+PDVSA. On November 13, 2020, PetroSaudi filed a claim
+in the district court pursuant to Rule G of the Federal Rules
+of Civil Procedure’s Supplemental Rules for Admiralty or
+Maritime Claims and Asset Forfeiture Actions and 18 U.S.C.
+§ 983(a)(4)(A), asserting a “vested ownership interest” in the
+fund.
+    The district court’s warrant was served on Clyde & Co.
+in London. The Government threatened to prosecute Clyde
+& Co. if it transferred the fund to PetroSaudi. Fearing
+criminal and civil liability in the United States, Clyde & Co.
+refused to disburse any of the funds from the escrow
+account. PetroSaudi asked the High Court to order Clyde &
+Co. to disburse money from the fund, consistent with that
+court’s October 2020 decision. In the alternative, PetroSaudi
+asked the High Court to order Clyde & Co. to transfer the
+fund to the High Court. On February 26, 2021, the High
+Court denied PetroSaudi’s requested relief.
+    On March 9, 2021, the district court granted PetroSaudi’s
+motion to dismiss the Government’s First Amended
+Complaint. The court recalled the outstanding arrest warrant
+and denied the Government’s motion for a protective order.
+PetroSaudi then began a new proceeding in the High Court
+against Clyde & Co. Because the district court had recalled
+             UNITED STATES V. PETROSAUDI OIL SERV.           13
+
+
+its warrant, Clyde & Co. was no longer at risk of criminal
+and civil liability in the United States. On March 23, 2021,
+the High Court granted PetroSaudi’s motion to transfer the
+fund from Clyde & Co.’s escrow account to the Court Funds
+Office. It also granted PetroSaudi’s motion to disburse
+money from the fund to cover PetroSaudi’s legal and
+business expenses.
+    Meanwhile, the civil forfeiture suit continued in the
+district court. On October 14, 2021, the court denied a
+motion to dismiss the Government’s Third Amended
+Complaint. On that same date, the district court issued a new
+warrant authorizing arrest and seizure of “any portions of the
+Defendant Assets that have been or may be released by the
+High Court of Justice.” On December 9, 2021, the district
+court issued a protective order under 18 U.S.C. § 983,
+requiring PetroSaudi and its agents “to deposit [in the district
+court] any of the Defendant funds that might be released to
+them” after the issuance of the court’s protective order. The
+protective order did not require PetroSaudi and its agents to
+deposit in the court any funds that had been released from
+the fund before the issuance of the order.
+    On November 4, 2021, PetroSaudi filed a new
+application in the High Court asking for an interim
+declaration that PetroSaudi’s “legal representatives,
+Armstrong Teasdale, have lawful authority under the laws of
+England and Wales to continue to comply with the [March
+23, 2021, order]” from the High Court. The Government
+engaged the United Kingdom’s National Crime Agency
+(“NCA”), and on December 15, 2021, the NCA filed a
+request for a prohibition order that would freeze the fund.
+   On April 13, 2022, the High Court granted its own
+prohibition order. The purpose of such a prohibition order
+14           UNITED STATES V. PETROSAUDI OIL SERV.
+
+
+is to “assist an overseas authority by freezing property which
+may become the subject of an external (recovery) order in
+that country.”       The High Court’s prohibition order
+“prevent[s] [PetroSaudi] from taking money out of the
+Fund” and “diminishing its value or granting an interest in
+it.” Justice Griffiths of the High Court noted that “[he did]
+not think . . . that [the High Court] should seek actively to
+protect the Fund from friendly foreign authorities with
+whom [the U.K.] has a Treaty obligation of mutual
+assistance and from which a Request in proper form has been
+received.” Although the High Court was “willing in
+principle for exclusions for legal and business expenses to
+be considered,” it was not satisfied that the evidence before
+it justified disbursements for such expenses.
+    The High Court subsequently moved the fund out of the
+Court Funds Office and placed it with a receiver. Initially,
+the receiver was directed to hold the fund “as agent for the
+Court Funds Office.” The High Court later changed its order
+to direct that the receiver hold the fund as “an officer” of the
+court, rather than as its “agent.”
+    PetroSaudi appealed from the district court’s order
+issuing a warrant authorizing arrest and seizure, issued on
+October 14, 2021. It separately appealed from the district
+court’s protective order, issued on December 9, 2021. We
+have consolidated the appeals and heard them together. We
+affirm the district court in both appeals.
+                   II. Standard of Review
+    “The existence of sovereign immunity and subject matter
+jurisdiction under the [Foreign Sovereign Immunities Act
+(“FSIA”)] are questions of law which we review de novo.”
+Corzo v. Banco Cent. de Reserva del Peru, 243 F.3d 519,
+522 (9th Cir. 2001); see also Britton v. Co-op Banking Grp.,
+             UNITED STATES V. PETROSAUDI OIL SERV.           15
+
+
+916 F.2d 1405, 1409 (9th Cir. 1990) (“We review
+jurisdictional challenges de novo.”).
+                 III. Appellate Jurisdiction
+    Ordinarily, federal courts of appeals have appellate
+jurisdiction to review only “final decisions of the district
+courts.” 28 U.S.C. § 1291. There are exceptions, however,
+that permit parties to appeal before a final judgment. Under
+the collateral order doctrine, we have appellate jurisdiction
+to review an interlocutory order by a district court denying a
+defense of sovereign immunity. See Compania Mexicana
+De Aviacion, S.A. v. U.S. Dist. Ct. for the Cent. Dist. of Cal.,
+859 F.2d 1354, 1358 (9th Cir. 1988) (holding that the denial
+of a motion to dismiss for sovereign immunity is an
+appealable collateral order). PetroSaudi’s appeal from the
+district court’s order denying its motion to dismiss on the
+basis of foreign sovereign immunity and authorizing the
+arrest and seizure of the fund falls under this exception.
+Additionally, 28 U.S.C. § 1292(a)(1) gives us appellate
+jurisdiction to review interlocutory orders “granting,
+continuing, modifying, refusing or dissolving injunctions, or
+refusing to dissolve or modify injunctions.” PetroSaudi’s
+appeal from the district court’s protective order under 18
+U.S.C. § 983 falls under this exception. Accordingly, we
+have jurisdiction to hear the consolidated appeals.
+                         IV. Analysis
+    PetroSaudi makes several arguments. We address them
+in turn.
+              A. Foreign Sovereign Immunity
+    PetroSaudi argues that both of the district court’s orders
+are inconsistent with the sovereign immunity of the United
+Kingdom. We are willing to assume arguendo that
+16           UNITED STATES V. PETROSAUDI OIL SERV.
+
+
+PetroSaudi, though not itself a sovereign, can assert as a
+defense the sovereign immunity of the United Kingdom. Cf.
+Peterson v. Islamic Republic of Iran, 627 F.3d 1117, 1123–
+24 (9th Cir. 2010) (holding that a district court can raise the
+issue of foreign sovereign immunity sua sponte). We note
+that the Second Circuit took a different approach in United
+States v. Assa Co., 934 F.3d 185, 188–190 (2nd Cir. 2019),
+holding that the FSIA does not apply in cases where a
+foreign state is not the party being sued, including in in rem
+forfeiture suits brought directly against property. Id. at 189.
+Accordingly, the Second Circuit held that “[t]he FSIA does
+not create jurisdiction over, and does not immunize a foreign
+state’s property from, in rem civil-forfeiture actions.” Id. at
+190. We need not decide if the Second Circuit’s approach
+was correct, as we reject PetroSaudi’s argument on a
+different ground.
+    Relying on the FSIA, PetroSaudi argues that the
+sovereign immunity of the United Kingdom prevents the
+district court from exercising jurisdiction over the arbitration
+award fund and issuing its two orders. For the reasons that
+follow, PetroSaudi’s argument fails.
+    The background assumption of the FSIA is that a foreign
+sovereign and its assets are immune from suit in state and
+federal courts in the United States. See 28 U.S.C. §§ 1604,
+1609. Against this background assumption, the FSIA
+specifies a number of exceptions to immunity. In the words
+of the Supreme Court:
+
+        The [FSIA] establishes a comprehensive
+        framework for determining whether a court
+        in this country, state or federal, may exercise
+        jurisdiction over a foreign state. Under the
+        Act, a “foreign state shall be immune from
+             UNITED STATES V. PETROSAUDI OIL SERV.           17
+
+
+        the jurisdiction of the courts of the United
+        States and of the States” unless one of several
+        statutorily defined exceptions applies. [28
+        U.S.C.] § 1604.
+
+Republic of Argentina v. Weltover, Inc., 504 U.S. 607, 610–
+11 (1992); see also Verlinden B. V. v. Cent. Bank of Nigeria,
+461 U.S. 480, 488–89 (1983) (same).
+    The FSIA’s “statutorily defined exceptions” to immunity
+from suit are found in 28 U.S.C. § 1605 (inter alia, waiver
+by the foreign state, commercial activity of the foreign state),
+§§ 1605A and 1605B (terrorism by a foreign state), and
+§ 1606 (extent of liability). Separately, 28 U.S.C. § 1609
+provides that the property of a foreign state held in the
+United States is immune from attachment, arrest and
+execution, except as provided in § 1610 (property involved
+in commercial activity) and § 1611 (property of the foreign
+central bank or of the military).
+    The parties disagree on the proper reading of § 1609.
+PetroSaudi contends that only foreign-sovereign-owned
+property in the United States is eligible for attachment,
+arrest, and execution under § 1609 and that property outside
+the United States enjoys complete immunity.             The
+Government, on the other hand, contends that § 1609
+protects from attachment, arrest, and execution only
+property that is owned by a foreign sovereign and is located
+in the United States. Thus, according to the Government,
+property owned by a foreign sovereign and held outside the
+United States enjoys no protection under the FSIA.
+    We need not decide this particular question because both
+parties agree that FSIA only protects from “attachment arrest
+and execution” property that is owned by a foreign
+18          UNITED STATES V. PETROSAUDI OIL SERV.
+
+
+sovereign. The essential premise of PetroSaudi’s sovereign
+immunity argument is that the arbitration award fund is the
+property of the United Kingdom, or—what amounts to the
+same thing—the property of the High Court. PetroSaudi’s
+sovereign immunity argument in its brief begins:
+
+       The district court erred in failing to dismiss
+       this civil-forfeiture action on sovereign-
+       immunity grounds. It is settled in this Circuit
+       that    sovereign     immunity      forecloses
+       jurisdiction over property owned by a foreign
+       sovereign that is “located outside the United
+       States.”
+
+    Blue Brief at 16 (emphasis added); see also, e.g., Blue
+Brief at 27 (“The district court ignored that before it was a
+motion to dismiss the Third Amended Complaint, and that
+complaint sought—and still seeks—to forfeit property
+owned by the United Kingdom.”); id. at 31 (“But sovereign
+immunity precludes service of the arrest warrant on the High
+Court, which owns defendant.”); id. at 34 (“The laws of the
+United Kingdom establish the High Court’s ownership of the
+funds . . . .”).
+    PetroSaudi’s premise that the fund is the property of the
+United Kingdom or of the High Court is unfounded. In the
+district court, the Government was willing to concede
+arguendo that the fund is the property of the United
+Kingdom. But, as explained in its brief to us, the
+Government was responding to an expert declaration on
+United Kingdom law filed by PetroSaudi only two weeks
+before the scheduled hearing date in the district court.
+According to that declaration, W.A. Sherratt Ltd v. John
+Bromley (Church Stretton) Ltd. [1985] 1 QB 1038, stands
+            UNITED STATES V. PETROSAUDI OIL SERV.          19
+
+
+for the proposition that a party paying money into court
+relinquishes ownership of the money. Therefore, according
+to the declaration, the arbitration award fund became the
+property of the United Kingdom when it was deposited with
+the High Court. Refuting the declaration on this point would
+have required the Government to retain and present a
+declaration of its own expert, and to seek a postponement of
+the hearing in the district court. Instead of seeking to rebut
+the expert declaration, the Government relied on a different
+argument to defeat PetroSaudi’s claim of sovereign
+immunity in the district court.
+    The Government has now had sufficient time to respond
+to PetroSaudi’s argument that the United Kingdom owned
+the arbitration award fund once PetroSaudi deposited the
+fund in the High Court. The Government points out that
+PetroSaudi’s expert declaration relied on dictum in Sherratt
+to support the proposition that United Kingdom became the
+owner of the fund. The declaration failed to mention a later-
+decided case that limits Sherratt’s dictum to the
+unexceptional proposition that a party paying money into the
+custody of the court gives up control of the property.
+However, that party does not relinquish any ownership rights
+it may have. See Crumpler & Anor v. Candey Ltd, [2018]
+EWCA (Civ) 2256 [87]–[88], [2019] WLR 2145. Based on
+Crumpler, we have no doubt that PetroSaudi rather than the
+United Kingdom owns the arbitration award fund. Indeed,
+the High Court repeatedly and unambiguously specified that
+the arbitration award fund is “undoubtedly the property of
+[PetroSaudi] alone,” and that the fund “belongs to
+[PetroSaudi].”
+    We therefore conclude that the sovereign immunity of
+the United Kingdom, as codified in the FSIA, does not
+20           UNITED STATES V. PETROSAUDI OIL SERV.
+
+
+protect the arbitration award fund from the two orders issued
+by the district court.
+               B. Prior Exclusive Jurisdiction
+    In the alternative, PetroSaudi argues that the doctrine of
+prior exclusive jurisdiction precludes the district court from
+issuing the two orders. Stated broadly, the doctrine provides
+that “when a court of competent jurisdiction has obtained
+possession, custody, or control of particular property, that
+possession may not be disturbed by any other court.” State
+Eng’r of Nev. v. S. Fork Band of Te-Moak Tribe of W.
+Shoshone Indians of Nev., 339 F.3d 804, 809 (9th Cir. 2003)
+(internal quotation omitted).
+    The doctrine allows the court that has first acquired
+jurisdiction over a res to adjudicate rights to that res without
+interference from another court that might later seek to
+acquire jurisdiction over it and to adjudicate rights to it. The
+doctrine applies to suits “brought to marshal assets,
+administer trusts, or liquidate estates, and in suits of a similar
+nature, where, to give effect to its jurisdiction, the court must
+control the property.” United States v. Bank of N.Y. & Trust
+Co., 296 U.S. 463, 477 (1936) (citations omitted). “If the
+two suits are in rem or quasi in rem, so that the court must
+have possession or control of the res in order to proceed with
+the cause and to grant the relief sought, the jurisdiction of
+one court must of necessity yield to that of the other.” Id.
+(citation omitted).
+    The government argues that the doctrine of prior
+exclusive jurisdiction does not apply because 28 U.S.C. §
+1355(b)(2), which governs federal court jurisdiction in civil
+forfeiture cases, displaces the doctrine by expressly
+authorizing U.S. courts to exercise jurisdiction over property
+that has been seized by a foreign government.
+            UNITED STATES V. PETROSAUDI OIL SERV.          21
+
+
+    We need not decide if the government is correct, as even
+assuming the doctrine is applicable here, we reject it for a
+different reason. The doctrine does not apply to the appeals
+before us because there is only one in rem suit—the civil
+forfeiture suit in the United States district court. The High
+Court proceedings are not themselves, nor are they part of,
+an in rem or quasi in rem suit. In rem suits “involv[e] or
+determin[e] the status of a thing, and therefore the rights of
+persons generally with respect to that thing.” In Rem,
+Black’s Law Dictionary (11th ed. 2019). Quasi in rem suits
+“involv[e] or determin[e] the rights of a person having an
+interest in property located within the court’s jurisdiction.”
+Quasi In Rem, Black’s Law Dictionary (11th ed. 2019). In
+the High Court proceedings, no party has asked the High
+Court to determine the status of the arbitration award fund or
+the rights of parties with respect to the fund. The parties
+have deposited the money in the High Court solely to
+preserve the fund while other proceedings determine rights
+to the fund.
+    In the August 2020 proceeding before the High Court,
+PDVSA applied for an interim injunction that would prevent
+Clyde & Co. from disbursing the fund while PDVSA’s
+appeal from the arbitration decision was pending in the Paris
+Court of Appeal. The Paris Court of Appeal, not the High
+Court, was responsible for deciding the merits of the
+underlying arbitration proceedings that determined
+substantive rights with respect to the fund. In the February
+and March 2021 proceedings before the High Court,
+PetroSaudi wanted Clyde & Co. to release money from the
+escrow account. But Clyde & Co. did not refuse to release
+money from the fund because it disputed PetroSaudi’s
+ownership of the fund. Rather, it was worried that a transfer
+might violate United States law. The High Court acted to
+22           UNITED STATES V. PETROSAUDI OIL SERV.
+
+
+preserve the fund. It did not seek to decide for itself the
+merits of claims to the fund. Finally, in the April 2022
+proceedings before the High Court, the NCA applied for, and
+the High Court granted, a Prohibition Order to freeze the
+fund in order to facilitate the Government’s civil forfeiture
+suit in the district court. The NCA did not dispute that
+PetroSaudi owns the arbitration award fund, subject to
+possible claims by others.
+    In short, the High Court did not take possession and
+control of the arbitration award fund, as a “subject of [an in
+rem or quasi in rem suit] in order to proceed with the [in rem
+or quasi in rem] cause and to grant the relief sought.” Penn
+Gen. Cas. Co. v. Pennsylvania ex rel. Schnader, 294 U.S.
+189, 195 (1935). Because there is only one in rem case, the
+doctrine of prior exclusive jurisdiction does not apply, and
+the High Court’s present control of the arbitration award
+fund is irrelevant.
+               C. Protective Order Jurisdiction
+     Finally, PetroSaudi argues that the district court did not
+have jurisdiction to issue the protective order on December
+9, 2021. The district court’s protective order required
+PetroSaudi to deposit in the court any money released from
+the fund to PetroSaudi after the date of the order. First,
+PetroSaudi argues that the district court did not have in
+personam jurisdiction over PetroSaudi and therefore could
+not order it to deposit in the district court any money released
+to it from the fund. Second, PetroSaudi argues that its appeal
+of the district court’s October 14 order deprived the district
+court of jurisdiction to issue the protective order on
+December 9. For the reasons that follow, both arguments
+fail.
+            UNITED STATES V. PETROSAUDI OIL SERV.           23
+
+
+     1. Lack of Personal Jurisdiction over PetroSaudi
+    Because the district court had in rem jurisdiction over the
+fund, it did not need in personam jurisdiction over
+PetroSaudi to issue an order preserving the fund. The court
+could therefore require PetroSaudi to deposit in the district
+court any money improperly released from the fund to
+PetroSaudi after the date of its order. The court’s in rem
+jurisdiction gave it the authority “against the world” to
+protect the fund against improper dissipation. That is, in
+civil forfeiture actions, a court exercises in rem jurisdiction
+and must “adjudicate the rights of the government to the
+property as against the whole world.” United States v. 51
+Pieces of Real Prop., Roswell, N.M., 17 F.3d 1306, 1309
+(10th Cir. 1994). To do so, courts need jurisdiction to issue
+orders protecting and preserving the res.
+    In rem civil forfeiture jurisdiction “is predicated on the
+‘fiction of convenience’ that an item of property is a person
+against whom suits can be filed and judgments entered.”
+United States v. Approximately $1.67 Million (US) in Cash,
+Stock & Other Valuable Assets, 513 F.3d 991, 996 (9th Cir.
+2008) (citing United States v. Ten Thousand Dollars
+($10,000) in U.S. Currency, 860 F.2d 1511, 1513 (9th Cir.
+1988)). “The fictions of in rem forfeiture were developed
+primarily to expand the reach of the courts and to furnish
+remedies for aggrieved parties.” Republic Nat’l Bank of
+Miami v. United States, 506 U.S. 80, 87 (1992).
+     Traditionally, “the court must have actual or constructive
+control over the res when an in rem forfeiture suit is
+initiated.” Approximately $1.67 Million, 513 F.3d at 996
+(citing United States v. James Daniel Good Real Prop., 510
+U.S. 43, 58 (1993)). However, 28 U.S.C. § 1355 relaxed this
+requirement. Constructive or actual control of the res is no
+24           UNITED STATES V. PETROSAUDI OIL SERV.
+
+
+longer necessary. Id. at 997–98. Section 1355 provides for
+the exercise of jurisdiction by a federal court over property
+subject to forfeiture, including property located in a foreign
+country, in any judicial district “in which any of the acts or
+omissions giving rise to the forfeiture occurred.” 28 U.S.C.
+§ 1355(b)(1)(A). As we explained in Approximately $1.67
+Million, “Where an act or omission giving rise to the
+forfeiture occurs in a district, the corresponding district
+possesses jurisdiction over the forfeiture action regardless of
+its control over the res.” Id. at 998.
+    We held in United States v. Obaid, 971 F.3d 1095, 1100–
+01 (9th Cir. 2020) (quoting Tenn. Student Assistance Corp.
+v. Hood, 541 U.S. 440, 453 (2004)), that “in an in rem [civil
+forfeiture] action, ‘jurisdiction over the person [who owns
+the property] is irrelevant if the court has jurisdiction over
+the property.’” We explained, “In an in rem action, the focus
+for the jurisdictional inquiry is the [property]. . . , rather than
+[the property owner’s] personal contacts with the forum.”
+Id. at 1106.
+    Read together, Approximately $ 1.67 Million and Obaid
+establish that a district court has in rem jurisdiction over
+property not within its actual or constructive control, even
+when it lacks personal jurisdiction over the property’s
+owner. It follows that under its broad in rem jurisdiction in
+civil forfeiture suits, a district court may issue injunctions to
+“preserve the availability of property subject to civil
+forfeiture.” 18 U.S.C. § 983(j)(1). We recognize that
+PetroSaudi may refuse to comply with the order and that the
+district court may have difficulty enforcing compliance. But
+limitations on the ability of the court to enforce compliance
+“determines only the effectiveness of the forfeiture orders of
+the district courts, not their jurisdiction to issue those
+            UNITED STATES V. PETROSAUDI OIL SERV.            25
+
+
+orders.” United States v. All Funds in Acct. in Banco
+Espanol de Credito, Spain, 295 F.3d 23, 27 (D.C. Cir. 2002).
+  2. Effect of PetroSaudi’s Appeal of the District Court’s
+                     October 14 Order
+    On November 4, 2021, PetroSaudi appealed the district
+court’s October 14 order issuing a warrant authorizing
+attachment and seizure of any portion of the fund that has
+been or may be released by the High Court. PetroSaudi
+argues that this appeal precluded the district court from
+issuing its protective order on December 9. PetroSaudi relies
+on the general rule that “[t]he filing of a notice of appeal
+‘confers jurisdiction on the court of appeals and divests the
+district court of its control over those aspects of the case
+involved in the appeal.’” United States v. Ortega-Lopez, 988
+F.2d 70, 72 (9th Cir. 1993) (quoting Griggs v. Provident
+Consumer Disc. Co., 459 U.S. 56, 58 (1982)).
+    This general divestment rule is a “judge-made doctrine
+designed to avoid the confusion and waste of time that might
+flow from putting the same issues before two courts at the
+same time.” Cal. Dep’t of Toxic Substances Control v. Com.
+Realty Projects, Inc., 309 F.3d 1113, 1120 (9th Cir. 2002)
+(quoting Kern Oil & Ref. Co. v. Tenneco Oil Co., 840 F.2d
+730, 734 (9th Cir. 1988)). It “is a rule of judicial economy
+and not one that strips the district court of subject matter
+jurisdiction.” Id. at 1121.
+    The divestment rule is subject to exceptions. For
+example, “[a] district court may retain jurisdiction when it
+has a duty to supervise the status quo during the pendency of
+an appeal, or in aid of execution of a judgment that has not
+been superseded.” Stein v. Wood, 127 F.3d 1187, 1189 (9th
+Cir. 1997) (internal citation omitted). A version of this
+exception exists here. PetroSaudi appealed from the district
+26           UNITED STATES V. PETROSAUDI OIL SERV.
+
+
+court’s October 14 order granting the Government’s
+application for a warrant authorizing attachment and seizure
+of “any portions of the Defendant Assets that have been or
+may be released by the High Court of Justice.” That is, at
+the time of the filing of the appeal from its October 14 order,
+the district court had already issued an order whose purpose
+was to prevent improper dissipation of the res. The purpose
+of its subsequent protective order, issued on December 9,
+was to further the purpose of its October 14 order. The
+district court thus had authority under its in rem jurisdiction
+to issue the § 983(j) protective order requiring PetroSaudi
+and any agents “to deposit any of the Defendant funds that
+might be released to them . . . , or that they otherwise come
+into possession.”
+                          Conclusion
+    We hold that the district court had the authority to
+exercise in rem jurisdiction over the arbitration award fund.
+The sovereign immunity of the United Kingdom is in no way
+affected by the district court’s exercise of jurisdiction. In the
+exercise of this jurisdiction, the district court had the
+authority to issue the arrest warrant authorizing the
+attachment and seizure of any portion of the fund released
+by or retained pursuant to the orders of the High Court and
+to issue the § 983 protective order preserving assets of the
+fund.
+     AFFIRMED.
+
