@@ -1,0 +1,44 @@
+{
+  "file name" : "Calendario_20Bancario_20Activo_202026.pdf-c9ddcb54da.pdf",
+  "number of pages" : 1,
+  "author" : null,
+  "title" : "FERIADOS Y BANCARIOS 2026",
+  "creation date" : "D:20251126105356-04'00'",
+  "modification date" : "D:20251126105356-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 7,
+    "page number" : 1,
+    "bounding box" : [ 486.85, 830.854, 1398.13, 1606.054 ],
+    "source" : "Calendario_20Bancario_20Activo_202026.pdf-c9ddcb54da_images/imageFile1.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 3,
+    "page number" : 1,
+    "bounding box" : [ -485.898, 861.05, 577.102, 1459.05 ],
+    "source" : "Calendario_20Bancario_20Activo_202026.pdf-c9ddcb54da_images/imageFile2.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 2,
+    "page number" : 1,
+    "bounding box" : [ -325.634, -16.828, 1999.29, 1413.895 ],
+    "source" : "Calendario_20Bancario_20Activo_202026.pdf-c9ddcb54da_images/imageFile3.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 5,
+    "page number" : 1,
+    "bounding box" : [ -533.87, -345.146, 625.09, 569.494 ],
+    "source" : "Calendario_20Bancario_20Activo_202026.pdf-c9ddcb54da_images/imageFile4.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 4,
+    "page number" : 1,
+    "bounding box" : [ 481.435, -276.903, 1363.012, 219.036 ],
+    "source" : "Calendario_20Bancario_20Activo_202026.pdf-c9ddcb54da_images/imageFile5.png"
+  } ]
+}
