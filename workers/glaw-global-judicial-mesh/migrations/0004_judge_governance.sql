@@ -1,0 +1,10 @@
+ALTER TABLE judge_observations ADD COLUMN tenant_id TEXT NOT NULL DEFAULT 'legacy';
+ALTER TABLE judge_observations ADD COLUMN recorded_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP;
+ALTER TABLE judge_observations ADD COLUMN verification_note TEXT;
+CREATE INDEX IF NOT EXISTS idx_judge_observations_tenant ON judge_observations(tenant_id, judge_id, matter_id);
+CREATE TABLE IF NOT EXISTS judge_sources (id TEXT PRIMARY KEY, tenant_id TEXT NOT NULL, judge_id TEXT NOT NULL, matter_id TEXT, source_class TEXT NOT NULL, source_url TEXT, source_hash TEXT, r2_key TEXT, title TEXT, effective_date TEXT, retrieved_at TEXT NOT NULL, verification_status TEXT NOT NULL DEFAULT 'UNVERIFIED', payload_json TEXT NOT NULL);
+ALTER TABLE judge_predictions ADD COLUMN tenant_id TEXT NOT NULL DEFAULT 'legacy';
+CREATE INDEX IF NOT EXISTS idx_judge_predictions_scope ON judge_predictions(tenant_id, judge_id, matter_id);
+CREATE INDEX IF NOT EXISTS idx_judge_sources_scope ON judge_sources(tenant_id, judge_id, matter_id);
+CREATE TABLE IF NOT EXISTS judge_profile_reviews (id INTEGER PRIMARY KEY AUTOINCREMENT, judge_id TEXT NOT NULL, reviewer TEXT NOT NULL, decision TEXT NOT NULL, notes TEXT, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS judge_adversarial_runs (id TEXT PRIMARY KEY, tenant_id TEXT NOT NULL, matter_id TEXT, judge_id TEXT NOT NULL, issue TEXT NOT NULL, status TEXT NOT NULL, payload_json TEXT NOT NULL, created_at TEXT NOT NULL);

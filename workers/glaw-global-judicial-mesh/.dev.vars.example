@@ -1,0 +1,4 @@
+# Copy to .dev.vars for local development. Never commit .dev.vars.
+GLAW_API_KEY=replace-with-local-client-key
+GLAW_ADMIN_API_KEY=replace-with-local-admin-key
+COURTLISTENER_TOKEN=

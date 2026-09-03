@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS judge_profiles (tenant_id TEXT NOT NULL, judge_id TEXT NOT NULL, payload_json TEXT NOT NULL, last_verified TEXT NOT NULL, status TEXT NOT NULL, PRIMARY KEY (tenant_id, judge_id));

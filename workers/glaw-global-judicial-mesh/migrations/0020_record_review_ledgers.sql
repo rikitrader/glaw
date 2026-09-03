@@ -1,0 +1,4 @@
+CREATE TABLE IF NOT EXISTS procedural_event_reviews (id INTEGER PRIMARY KEY AUTOINCREMENT, tenant_id TEXT NOT NULL, matter_id TEXT NOT NULL, event_id TEXT NOT NULL, reviewer TEXT NOT NULL, decision TEXT NOT NULL, notes TEXT NOT NULL, verification_source_url TEXT, verification_source_hash TEXT, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE INDEX IF NOT EXISTS idx_procedural_event_reviews_scope ON procedural_event_reviews(tenant_id, matter_id, event_id, created_at);
+CREATE TABLE IF NOT EXISTS discovery_object_reviews (id INTEGER PRIMARY KEY AUTOINCREMENT, tenant_id TEXT NOT NULL, matter_id TEXT NOT NULL, discovery_id TEXT NOT NULL, reviewer TEXT NOT NULL, decision TEXT NOT NULL, notes TEXT NOT NULL, verification_source_url TEXT, verification_source_hash TEXT, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE INDEX IF NOT EXISTS idx_discovery_object_reviews_scope ON discovery_object_reviews(tenant_id, matter_id, discovery_id, created_at);

@@ -44,6 +44,10 @@ GLAW turns one prompt into a **staffed engagement**: intake → strategy → str
 
 For paid agent orchestration, [`x402/`](x402/) exposes the same firm as a chargeable service matrix: each skill becomes an agent, services quote in USDC atomic units, X402 settlement authorizes work, and MCP/API clients can call the matrix, quote, charge, and paid-work tools.
 
+### Florida judicial discovery Worker
+
+The evidence-gated Cloudflare Worker for tenant-scoped judge profiles, case-based decision-support, adversarial review, and Florida civil-discovery auditing lives in [`workers/glaw-global-judicial-mesh/`](workers/glaw-global-judicial-mesh/). It includes durable D1/R2/Queue/Vectorize/Durable Object bindings, review ledgers, filing gates, and a read-only live verifier. Production deployment remains blocked until dedicated Cloudflare resources, secrets, live checks, and qualified human review are complete.
+
 ---
 
 ## ▶️ See a matter run

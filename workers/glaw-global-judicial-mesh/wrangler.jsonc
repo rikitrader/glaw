@@ -1,0 +1,16 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "glaw-global-judicial-mesh-placeholder",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-25",
+  "compatibility_flags": ["nodejs_compat"],
+  "observability": { "enabled": true },
+  "d1_databases": [{ "binding": "DB", "database_name": "glaw-judicial-mesh-placeholder", "database_id": "00000000000000000000000000000000", "migrations_dir": "migrations" }],
+  "r2_buckets": [{ "binding": "DOCUMENTS", "bucket_name": "glaw-judicial-documents-placeholder" }],
+  "kv_namespaces": [{ "binding": "CACHE", "id": "746057ac68054fc28c23d69fb1dcd145" }],
+  "queues": { "producers": [{ "binding": "INGESTION_QUEUE", "queue": "glaw-judicial-ingestion-production" }], "consumers": [{ "queue": "glaw-judicial-ingestion-production", "max_batch_size": 20, "max_batch_timeout": 30, "max_retries": 5 }] },
+  "vectorize": [{ "binding": "LEGAL_VECTORS", "index_name": "glaw-legal-v1-production" }],
+  "durable_objects": { "bindings": [{ "name": "ROUTER_COORDINATOR", "class_name": "RouterCoordinator" }, { "name": "JUDGE_PROFILE_COORDINATOR", "class_name": "JudgeProfileCoordinator" }, { "name": "MATTER_COORDINATOR", "class_name": "MatterCoordinator" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["RouterCoordinator"] }, { "tag": "v2", "new_sqlite_classes": ["JudgeProfileCoordinator"] }, { "tag": "v3", "new_sqlite_classes": ["MatterCoordinator"] }],
+  "vars": { "ENVIRONMENT": "production", "MOCK_PROVIDER_MODE": "false", "COURTLISTENER_BASE_URL": "https://www.courtlistener.com/api/rest/v4" }
+}
