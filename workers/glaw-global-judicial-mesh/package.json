@@ -1,0 +1,32 @@
+{
+  "name": "@glaw/global-judicial-mesh",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --config wrangler.local.jsonc",
+    "build": "tsc --noEmit",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "inventory": "node scripts/build-inventory.mjs",
+    "db:migrate:local": "wrangler d1 migrations apply DB --local --config wrangler.local.jsonc",
+    "db:migrate:remote": "wrangler d1 migrations apply DB --remote --config wrangler.jsonc",
+    "validate:deploy": "node scripts/validate-deploy.mjs",
+    "predeploy": "npm run typecheck && npm test && npm run validate:deploy",
+    "deploy": "npm run predeploy && wrangler deploy --config wrangler.jsonc",
+    "deploy:dry-run": "wrangler deploy --dry-run --config wrangler.jsonc",
+    "smoke:local": "node scripts/smoke-local.mjs",
+    "verify:live": "node scripts/verify-live.mjs"
+  },
+  "dependencies": {
+    "hono": "^4.9.0",
+    "@hono/zod-validator": "^0.4.3",
+    "zod": "^3.25.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260820.1",
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.0",
+    "wrangler": "^4.30.0"
+  }
+}

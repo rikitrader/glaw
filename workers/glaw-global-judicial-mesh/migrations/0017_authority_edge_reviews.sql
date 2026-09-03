@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS authority_edge_reviews (id INTEGER PRIMARY KEY AUTOINCREMENT, tenant_id TEXT NOT NULL, edge_id TEXT NOT NULL, reviewer TEXT NOT NULL, decision TEXT NOT NULL, notes TEXT NOT NULL, verification_source_url TEXT, verification_source_hash TEXT, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE INDEX IF NOT EXISTS idx_authority_edge_reviews_scope ON authority_edge_reviews(tenant_id, edge_id, created_at);

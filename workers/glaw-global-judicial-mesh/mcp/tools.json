@@ -1,0 +1,11 @@
+{
+  "status": "planned",
+  "tools": [
+    { "name": "search_cases", "endpoint": "/v1/cases/search" },
+    { "name": "global_legal_research", "endpoint": "/v1/research" },
+    { "name": "verify_citation", "endpoint": "/v1/citations/verify" },
+    { "name": "get_case", "endpoint": "/v1/cases/:id" },
+    { "name": "find_adverse_authority", "endpoint": "/v1/adverse-authority" }
+  ],
+  "note": "MCP schemas should be generated from the Zod contracts before activation. This manifest does not expose provider credentials or activate unreviewed adapters."
+}

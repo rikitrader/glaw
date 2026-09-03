@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS judge_source_reviews (id INTEGER PRIMARY KEY AUTOINCREMENT, tenant_id TEXT NOT NULL, source_id TEXT NOT NULL, judge_id TEXT NOT NULL, reviewer TEXT NOT NULL, decision TEXT NOT NULL, notes TEXT NOT NULL, verification_source_url TEXT, verification_source_hash TEXT, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE INDEX IF NOT EXISTS idx_judge_source_reviews_scope ON judge_source_reviews(tenant_id, source_id, judge_id, created_at);
