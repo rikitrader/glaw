@@ -1,0 +1,16 @@
+{
+  "file name" : "BalanceGeneralMarzo2021.pdf.pdf",
+  "number of pages" : 1,
+  "author" : null,
+  "title" : "Adobe Photoshop PDF",
+  "creation date" : "D:20210413143716-04'00'",
+  "modification date" : "D:20210413155615-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 1,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 792.0, 1224.0 ],
+    "source" : "BalanceGeneralMarzo2021.pdf_images/imageFile1.png"
+  } ]
+}

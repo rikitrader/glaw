@@ -1,0 +1,913 @@
+{
+  "file name" : "Balance_Bs_junio_2025.pdf.pdf",
+  "number of pages" : 1,
+  "author" : "NMadera",
+  "title" : "BALANCE - JUNIO 2025  - Semestral BS (002).pdf",
+  "creation date" : "D:20250714160213-04'00'",
+  "modification date" : "D:20250715135657Z",
+  "kids" : [ {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 61,
+    "page number" : 1,
+    "bounding box" : [ 494.136, 789.154, 546.643, 795.535 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.712,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Auditores Externos:"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 60,
+    "page number" : 1,
+    "bounding box" : [ 494.136, 782.912, 579.146, 789.874 ],
+    "font" : "ArialMT",
+    "font size" : 6.231,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Márquez Perdomo & Asociados"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 66,
+    "page number" : 1,
+    "bounding box" : [ 329.715, 764.711, 405.773, 785.135 ],
+    "font" : "ArialMT",
+    "font size" : 6.956,
+    "text color" : "[0.748047, 0.675781, 0.671875, 0.894531]",
+    "content" : "30/6/2025 31/12/2024 627.093.982"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 64,
+    "page number" : 1,
+    "bounding box" : [ 225.037, 764.712, 359.467, 772.483 ],
+    "font" : "ArialMT",
+    "font size" : 6.956,
+    "text color" : "[0.748047, 0.675781, 0.671875, 0.894531]",
+    "content" : "TOTAL PATRIMONIO: Bs 1.655.597.447"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 63,
+    "page number" : 1,
+    "bounding box" : [ 122.917, 761.448, 164.87, 769.062 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 3.286,
+    "text color" : "[0.716797, 0.654297, 0.666016, 0.761719]",
+    "content" : "BANCO MICROFINANCIERO RIF: J-31637417-3"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 65,
+    "page number" : 1,
+    "bounding box" : [ 20.616, 754.296, 580.104, 758.664 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile1.png"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 57,
+    "level" : "Doctitle",
+    "page number" : 1,
+    "bounding box" : [ 164.747, 742.635, 455.643, 750.611 ],
+    "heading level" : 1,
+    "font" : "Arial-BoldMT",
+    "font size" : 7.14,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "BALANCE GENERAL DE PUBLICACIÓN AL 30 DE JUNIO 2025 Y 31 DE DICIEMBRE 2024"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 58,
+    "page number" : 1,
+    "bounding box" : [ 274.589, 736.516, 340.342, 742.559 ],
+    "font" : "ArialMT",
+    "font size" : 5.409,
+    "text color" : "[0.748047, 0.675781, 0.671875, 0.894531]",
+    "content" : "(EXPRESADO EN BOLÍVARES)"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 10,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 21.741, 712.802, 579.019, 722.82 ],
+    "heading level" : 2,
+    "font" : "Arial-BoldMT",
+    "font size" : 3.944,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "ACTIVO 30/6/2025 31/12/2024 PASIVO Y PATRIMONIO 30/6/2025 31/12/2024 DISPONIBILIDADES ( 1.905.601.105) ( 792.429.243) CAPTACIONES DEL PÚBLICO ( 2.586.260.012) ( 1.181.445.514)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 11,
+    "page number" : 1,
+    "bounding box" : [ 21.741, 675.026, 579.018, 711.317 ],
+    "font" : "ArialMT",
+    "font size" : 3.155,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "Efectivo ( 347.910.109) ( 197.071.880) Depósitos a la vista ( 2.517.344.776) ( 1.097.471.571) Banco Central de Venezuela ( 1.043.121.336) ( 336.344.409) Cuentas corrientes no remuneradas ( 1.187.628.416) ( 471.546.807) Bancos y otras instituciones financieras del país ( 6.023) ( 5.990) Cuentas corrientes remuneradas ( 54.352.647) ( 15.123.488) Bancos y corresponsales del exterior ( 514.563.637) ( 259.006.964) Cuentas corrientes según Convenio Cambiario N°20 ( - ) ( - ) Oficina matriz y sucursales ( - ) ( - ) Depósitos y certificados a la vista ( 1.029.128.047) ( 495.394.410) Efectos de cobro inmediato ( - ) ( - ) Cuentas corrientes según Sistema de Mercado Cambiario de L.C ( 246.235.667) ( 115.406.867) (Provisión para disponibilidades) ( - ) ( - ) Fondos especiales en fideicomiso según Sistema de Mercado Cambiario de L.C ( - ) ( - )"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 12,
+    "page number" : 1,
+    "bounding box" : [ 314.781, 653.18, 579.018, 673.088 ],
+    "font" : "ArialMT",
+    "font size" : 3.155,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "Otras obligaciones a la vista ( 59.431.408) ( 77.938.489) Obligaciones por operaciones de mesa de dinero ( - ) ( - ) Depósitos de ahorro ( 9.483.828) ( 6.035.454) Depósitos a plazo ( - ) ( - )"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 13,
+    "page number" : 1,
+    "bounding box" : [ 21.741, 609.415, 579.019, 651.672 ],
+    "font" : "ArialMT",
+    "font size" : 3.155,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "INVERSIONES EN TITULOS VALORES ( 156.695.670) ( 100.974.290) Títulos valores emitidos por la institución ( - ) ( - ) Colocaciones en el Banco Central Venezuela y Operaciones Interbancarias ( 14.000.000) ( 50.000.000) Captaciones del público restringidas ( - ) ( - ) Inversiones en títulos valores para negociar ( - ) ( - ) Derechos y participaciones sobre títulos valores ( - ) ( - ) Inversiones en títulos valores disponibles para la venta ( 32.366) ( 12.743) OBLIGACIONES CON EL BANCO CENTRAL DE VENEZUELA ( - ) ( - ) Inversiones en títulos valores mantenidas hasta su vencimiento ( 90.676.514) ( 43.303.858) Inversiones de disponibilidad restringida ( 78.966.447) ( 7.657.689) CAPTACIONES Y OBLIGACIONES CON EL BANAVIH ( 21.704.195) ( 30.242.098) Inversiones en otros títulos valores ( - ) ( - ) Captaciones y Obligaciones con el Banco Nacional de Vivienda y Hábitat hasta un año ( 21.704.195) ( 30.242.098) (Provisión para inversiones en títulos valores) ( (26.979.657) ( - ) Captaciones y Obligaciones con el BANAVIH a mas de un año ( - ) ( - )"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 14,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 21.741, 598.115, 579.019, 602.521 ],
+    "heading level" : 2,
+    "font" : "Arial-BoldMT",
+    "font size" : 3.55,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "CARTERA DE CRÉDITOS ( 2.213.532.602) ( 962.869.863) OTROS FINANCIAMIENTOS OBTENIDOS ( 541.217.482) ( 271.272.283)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 15,
+    "page number" : 1,
+    "bounding box" : [ 21.741, 571.261, 579.018, 596.631 ],
+    "font" : "ArialMT",
+    "font size" : 3.155,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "Créditos vigentes ( 2.360.707.732) ( 972.349.067) Obligaciones con instituciones finan. del país hasta un año ( 541.217.482) ( 271.272.283) Créditos reestructurados ( - ) ( - ) Obligaciones con instituciones finan. del país a más de un año ( - ) ( - ) Créditos vencidos ( 301.225.715) ( 79.414.129) Obligaciones con instituciones finan. del exterior hasta un año ( - ) ( - ) Créditos en litigio ( - ) ( - ) Obligaciones con instituciones finan. del exterior a más de un año ( - ) ( - ) (Provisión para cartera de créditos) ( (448.400.845) ( (88.893.333) Obligaciones por otros financiamientos hasta un año ( - ) ( - )"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 16,
+    "page number" : 1,
+    "bounding box" : [ 21.741, 527.57, 579.019, 569.325 ],
+    "font" : "ArialMT",
+    "font size" : 3.155,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "Obligaciones por otros financiamientos a más de un año ( - ) ( - ) INTERESES Y COMISIONES POR COBRAR ( 18.962.167) ( 29.492.396) OTRAS OBLIGACIONES POR INTERMEDIACION FINANCIERA ( - ) ( - ) Rendimientos por cobrar por disponibilidades ( - ) ( - ) INTERESES Y COMISIONES POR PAGAR ( 48.559.733) ( 20.902.910) Rendimientos por cobrar por inversiones en títulos valores ( 63.157.116) ( 28.011.405) Gastos por pagar por captaciones del público ( 42.161.163) ( 16.454.831) Rendimientos por cobrar por cartera de créditos ( 24.180.108) ( 11.892.998) Gastos por pagar por obligaciones con el Banco Central de Venezuela ( - ) ( - ) Comisiones por cobrar ( 15.002.930) ( 29.913.895) Gastos por pagar por captaciones y obligaciones con BANAVIH ( 195.964) ( 363.072) Rendimientos y comisiones por cobrar otras cuentas por cobrar ( - ) ( - ) Gastos por pagar por otros financiamientos obtenidos ( 6.202.605) ( 4.085.008) (Provisión para rendimientos por cobrar y otros) ( (83.377.987) ( (40.325.901) Gastos por pagar otras obligac. por intermediación financiera ( - ) ( - )"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 17,
+    "page number" : 1,
+    "bounding box" : [ 21.741, 499.659, 579.019, 525.635 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 3.155,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "Gastos por pagar por otras obligaciones ( - ) ( - ) INVERSIONES EN EMPRESAS FILIALES, AFILIADAS Y SUCURSALES ( - ) ( - ) Gastos por pagar por obligaciones subordinadas ( - ) ( - ) Inversiones en empresas filiales y afiliadas ( - ) ( - ) ACUMULACIONES Y OTROS PASIVOS ( 468.041.076) ( 322.913.550) Inversiones en sucursales ( - ) ( - ) OBLIGACIONES SUBORDINADAS ( - ) ( - ) (Provisión para inversiones en empresas filiales, afiliadas y sucursales) ( - ) ( - ) OTRAS OBLIGACIONES ( - ) ( - )"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 18,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 314.781, 493.592, 579.019, 497.998 ],
+    "heading level" : 2,
+    "font" : "Arial-BoldMT",
+    "font size" : 3.944,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "TOTAL DEL PASIVO ( 3.665.782.497) ( 1.826.776.355)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 19,
+    "page number" : 1,
+    "bounding box" : [ 21.741, 482.67, 579.018, 492.538 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 3.55,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "BIENES REALIZABLES ( - ) ( - ) BIENES DE USO ( 92.560.445) ( 43.407.220) GESTION OPERATIVA ( - ) ( - )"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 20,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 21.741, 470.534, 312.431, 481.009 ],
+    "heading level" : 2,
+    "font" : "Arial-BoldMT",
+    "font size" : 3.944,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "OTROS ACTIVOS ( 934.027.954) ( 524.697.324) TOTAL DEL ACTIVO ( 5.321.379.944) ( 2.453.870.337)"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 21,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 21.741, 443.379, 312.431, 463.728 ],
+    "heading level" : 3,
+    "font" : "Arial-BoldMT",
+    "font size" : 3.55,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "CUENTAS CONTINGENTES DEUDORAS ( - ) ( - ) ACTIVOS DE LOS FIDEICOMISOS ( - ) ( - ) OTROS ENCARGOS DE CONFIANZA ( - ) ( - ) CUENTAS DEUDORAS POR OTROS ENCARGOS DE CONFIANZA"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 22,
+    "page number" : 1,
+    "bounding box" : [ 218.227, 440.95, 312.431, 444.475 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 3.155,
+    "text color" : "[0.0, 0.0, 0.0, 0.0]",
+    "content" : "( - ) ( - )"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 23,
+    "page number" : 1,
+    "bounding box" : [ 21.741, 421.535, 579.019, 441.883 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 3.55,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "(RÉGIMEN PRESTACIONAL DE VIVIENDA Y HÁBITAT) OTRAS CUENTAS DEUDORAS DE LOS FONDOS DE AHORRO PARA LA VIVIENDA ( - ) ( - ) TOTAL DEL PATRIMONIO ( 1.655.597.447) ( 627.093.982) OTRAS CUENTAS DE ORDEN DEUDORAS ( 3.373.592.720) ( 1.307.185.520) OTRAS CUENTAS DE REGISTRO DEUDORAS ( - ) ( - )"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 24,
+    "page number" : 1,
+    "bounding box" : [ 21.742, 416.225, 579.014, 423.058 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 3.55,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "TOTAL DEL PASIVO Y PATRIMONIO 5.321.379.944 2.453.870.337 ENCARGOS DE CONFIANZA PARA OPERACIONES EN CRIPTOACTIVO SOBERANOS ( - ) ( - )"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 25,
+    "page number" : 1,
+    "bounding box" : [ 260.258, 410.46, 340.31, 414.426 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 3.55,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "PATRIMONIO DE LOS FIDEICOMISOS (DETALLE)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 27,
+    "page number" : 1,
+    "bounding box" : [ 366.218, 403.488, 401.329, 408.851 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 2.367,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "ADM. PUBLICA ESTAT. MUNIC.Y DTTO.CAPITAL"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 26,
+    "page number" : 1,
+    "bounding box" : [ 21.747, 404.841, 296.959, 407.485 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 2.367,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "TIPOS DE FIDEICOMISO PERSONAS NATURALES PERSONAS JURIDICAS ADM. CENTRAL"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 28,
+    "page number" : 1,
+    "bounding box" : [ 428.679, 404.841, 535.666, 407.485 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 2.367,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "ENTES DESC.Y OTROS ORG. REG. ESPECIAL TOTAL"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 29,
+    "page number" : 1,
+    "bounding box" : [ 21.739, 385.122, 579.02, 402.619 ],
+    "font" : "ArialMT",
+    "font size" : 2.761,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "Inversión ( - ) ( - ) ( - ) ( - ) ( - ) ( - ) Garantía ( - ) ( - ) ( - ) ( - ) ( - ) ( - ) Administración ( - ) ( - ) ( - ) ( - ) ( - ) ( - ) Características Mixtas ( - ) ( - ) ( - ) ( - ) ( - ) ( - ) Otros ( - ) ( - ) ( - ) ( - ) ( - ) ( - )"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 30,
+    "page number" : 1,
+    "bounding box" : [ 21.741, 381.027, 579.018, 384.552 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 3.155,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "TOTAL ( - ) ( - ) ( - ) ( - ) ( - ) ( - )"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 31,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 175.315, 375.416, 424.367, 379.823 ],
+    "heading level" : 2,
+    "font" : "Arial-BoldMT",
+    "font size" : 3.944,
+    "text color" : "[0.0, 0.0, 0.0, 0.0]",
+    "content" : "ESTADO DE RESULTADOS DE PUBLICACIÓN POR LOS PERÍODOS FINALIZADOS EL 30 DE JUNIO DE 2025 Y 31 DE DICIEMBRE DE 2024"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H4",
+    "id" : 32,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 280.685, 371.015, 319.868, 374.1 ],
+    "heading level" : 4,
+    "font" : "Arial-BoldMT",
+    "font size" : 2.761,
+    "text color" : "[0.0, 0.0, 0.0, 0.0]",
+    "content" : "(EXPRESADO EN BOLIVARES)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 33,
+    "page number" : 1,
+    "bounding box" : [ 21.741, 328.084, 579.019, 370.267 ],
+    "font" : "ArialMT",
+    "font size" : 3.155,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "INGRESOS FINANCIEROS ( 812.886.147) ( 371.266.550) Otros ingresos operativos ( 326.884.786) ( 257.671.315) Ingresos por disponibilidades ( - ) ( - ) Otros gastos operativos ( (35.956.689) ( (39.286.713) Ingresos por inversiones en títulos valores ( 9.401.554) ( 19.292.348) MARGEN DE INTERMEDIACION FINANCIERA ( 402.732.753) ( 390.660.781) Ingresos por cartera de créditos ( 803.483.299) ( 351.974.202) GASTOS DE TRANSFORMACIÓN ( (298.398.113) ( (249.352.053) Ingresos por otras cuentas por cobrar ( - ) ( - ) Gastos de personal ( (137.814.351) ( (67.465.163) Ingresos por inversiones en empresas filiales, afiliadas y sucursales. ( - ) ( - ) Gastos Generales y Administrativos ( (149.062.846) ( (175.539.598) Ingresos por oficina principal y sucursales ( - ) ( - ) Aportes al Fondo de Garantía de Dépositos y Protección Bancaria ( (4.529.059) ( (2.446.921) Otros ingresos financieros ( 1.294) ( - ) Aportes a la Superintendencia de Bancos y Otras Instituciones Financieras ( (6.991.857) ( (3.900.371)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 34,
+    "page number" : 1,
+    "bounding box" : [ 21.741, 306.239, 579.019, 326.576 ],
+    "font" : "ArialMT",
+    "font size" : 3.155,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "MARGEN OPERATIVO BRUTO ( 104.334.640) ( 141.308.728) GASTOS FINANCIEROS ( (428.443.046) ( (145.635.288) Ingresos por bienes realizables ( - ) ( - ) Gastos por captaciones del público ( (329.551.703) ( (95.331.836) Ingresos por programas especiales ( - ) ( - ) Gastos por obligaciones con el Banco Central de Venezuela ( - ) ( - ) Ingresos operativos varios ( 10.388.163) ( 1.950.571)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 36,
+    "page number" : 1,
+    "bounding box" : [ 314.781, 295.317, 579.018, 304.304 ],
+    "font" : "ArialMT",
+    "font size" : 3.155,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "Gastos por bienes realizables ( - ) ( - ) Gastos por depreciación, amortización y desvalorización de bienes diversos ( - ) ( - )"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 35,
+    "page number" : 1,
+    "bounding box" : [ 21.741, 298.048, 312.43, 301.573 ],
+    "font" : "ArialMT",
+    "font size" : 3.155,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "Gastos por captaciones y obligaciones con el BANAVIH ( (3.632.945) ( (1.731.565)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 37,
+    "page number" : 1,
+    "bounding box" : [ 21.741, 251.326, 579.019, 293.381 ],
+    "font" : "ArialMT",
+    "font size" : 3.155,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "Gastos por otros financiamientos obtenidos ( (92.785.161) ( (48.571.443) Gastos operativos varios ( (15.256.682) ( (93.174.954) Gastos por otras obligaciones por intermediación financiera ( - ) ( - ) MARGEN OPERATIVO NETO ( 99.466.121) ( 50.084.346) Gastos por obligaciones subordinadas ( - ) ( - ) Ingresos extraordinarios ( - ) ( - ) Gastos por otras obligaciones ( - ) ( - ) Gastos extraordinarios ( - ) ( - ) Gastos por oficina principal y sucursales ( - ) ( - ) RESULTADO BRUTO ANTES DE IMPUESTOS ( 99.466.121) ( 50.084.346) Otros gastos financieros ( (2.473.238) ( (444) Impuesto sobre la renta ( (21.200.000) ( (14.100.000) MARGEN FINANCIERO BRUTO ( 384.443.101) ( 225.631.262) RESULTADO NETO ( 78.266.121) ( 35.984.346) Ingresos por recuperaciones de activos financieros ( 696.225) ( 49.906) APLICACIÓN DEL RESULTADO NETO"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 39,
+    "page number" : 1,
+    "bounding box" : [ 314.781, 240.704, 579.018, 249.69 ],
+    "font" : "ArialMT",
+    "font size" : 3.155,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "Reserva Legal ( - ) ( - ) Utilidades Estatutarias ( - ) ( - )"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 38,
+    "page number" : 1,
+    "bounding box" : [ 21.733, 243.434, 312.43, 246.959 ],
+    "font" : "ArialMT",
+    "font size" : 3.155,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "Gastos por incobrabilidad y desvalorización de activos financieros ( (273.334.669) ( (53.404.990)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 40,
+    "page number" : 1,
+    "bounding box" : [ 21.741, 228.568, 579.018, 238.769 ],
+    "font" : "ArialMT",
+    "font size" : 3.155,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "Gastos por incobrabilidad de créditos y otras cuentas por cobrar ( (266.650.591) ( (53.404.990) Otras Reservas de Capital ( 3.913.306) ( 1.799.217) Constitución de provisión y ajustes de disponibilidades ( (6.684.078) ( - ) Resultados Acumulados ( 74.352.815) ( 34.185.128)"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 41,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 21.741, 221.591, 579.019, 225.998 ],
+    "heading level" : 2,
+    "font" : "Arial-BoldMT",
+    "font size" : 3.55,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "MARGEN FINANCIERO NETO ( 111.804.656) ( 172.276.178) Aporte Fondo Nacional Antidrogas ( 500.379) ( 251.847)"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 70,
+    "page number" : 1,
+    "bounding box" : [ 469.416, 170.616, 535.944, 220.344 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile2.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 74,
+    "page number" : 1,
+    "bounding box" : [ 318.216, 135.816, 432.744, 212.424 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile3.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 88,
+    "page number" : 1,
+    "bounding box" : [ 28.536, 128.856, 160.584, 209.784 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile4.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 81,
+    "page number" : 1,
+    "bounding box" : [ 161.496, 142.056, 293.544, 204.024 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile5.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 86,
+    "page number" : 1,
+    "bounding box" : [ 161.494, 158.856, 272.186, 171.144 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile6.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 79,
+    "page number" : 1,
+    "bounding box" : [ 318.209, 165.578, 409.471, 171.144 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile7.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 99,
+    "page number" : 1,
+    "bounding box" : [ 157.179, 158.856, 160.584, 170.912 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile8.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 100,
+    "page number" : 1,
+    "bounding box" : [ 157.179, 158.856, 160.584, 170.912 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile9.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 72,
+    "page number" : 1,
+    "bounding box" : [ 469.416, 158.857, 535.944, 170.904 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile10.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 93,
+    "page number" : 1,
+    "bounding box" : [ 68.376, 160.536, 103.464, 170.664 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile11.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 95,
+    "page number" : 1,
+    "bounding box" : [ 68.376, 160.536, 103.464, 170.664 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile12.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 87,
+    "page number" : 1,
+    "bounding box" : [ 208.76, 167.5, 220.84, 170.184 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile13.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 73,
+    "page number" : 1,
+    "bounding box" : [ 489.096, 167.256, 511.944, 169.944 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile14.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 96,
+    "page number" : 1,
+    "bounding box" : [ 69.314, 167.02, 102.526, 169.704 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile15.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 80,
+    "page number" : 1,
+    "bounding box" : [ 341.003, 166.296, 409.224, 169.701 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile16.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 98,
+    "page number" : 1,
+    "bounding box" : [ 79.409, 162.936, 92.664, 165.62 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile17.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 97,
+    "page number" : 1,
+    "bounding box" : [ 79.876, 163.421, 91.964, 165.384 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile18.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 94,
+    "page number" : 1,
+    "bounding box" : [ 68.136, 160.296, 103.704, 161.064 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile19.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 68,
+    "page number" : 1,
+    "bounding box" : [ 469.416, 145.896, 535.944, 159.144 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile20.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 71,
+    "page number" : 1,
+    "bounding box" : [ 469.597, 158.88, 535.853, 159.144 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile21.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 85,
+    "page number" : 1,
+    "bounding box" : [ 161.52, 158.872, 272.292, 159.128 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile22.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 89,
+    "page number" : 1,
+    "bounding box" : [ 28.476, 150.696, 160.404, 151.224 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile23.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 75,
+    "page number" : 1,
+    "bounding box" : [ 317.976, 150.696, 432.744, 151.224 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile24.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 69,
+    "page number" : 1,
+    "bounding box" : [ 469.416, 150.696, 535.944, 151.224 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile25.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 82,
+    "page number" : 1,
+    "bounding box" : [ 161.52, 150.696, 293.412, 151.208 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile26.png"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 42,
+    "page number" : 1,
+    "bounding box" : [ 21.741, 124.348, 579.02, 145.016 ],
+    "font" : "ArialMT",
+    "font size" : 3.155,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "Inversiones cedidas ( - ) Microcréditos ( 2.634.021.258) Cartera agrícola del mes ( - ) Créditos al sector turismo según la legislación vigente ( - ) Cartera agrícola acumulada ( - ) Créditos hipotecarios según la Ley Especial de Protección al Deudor Hipotecario de Vivienda ( - ) Captaciones de entidades oficiales ( 1.284.263.720)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 84,
+    "page number" : 1,
+    "bounding box" : [ 21.741, 130.568, 265.118, 145.016 ],
+    "font" : "ArialMT",
+    "font size" : 3.155,
+    "text color" : "[0.748047, 0.677734, 0.669922, 0.902344]",
+    "content" : "Inversiones cedidas ( Cartera agrícola del mes Cartera agrícola acumulada"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 77,
+    "page number" : 1,
+    "bounding box" : [ 314.781, 135.119, 387.661, 145.016 ],
+    "font" : "ArialMT",
+    "font size" : 3.155,
+    "text color" : "[0.748047, 0.677734, 0.669922, 0.902344]",
+    "content" : "Microcréditos Créditos al sector turismo según la legislación vigente"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 83,
+    "page number" : 1,
+    "bounding box" : [ 263.976, 142.056, 265.224, 144.504 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile27.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 90,
+    "page number" : 1,
+    "bounding box" : [ 28.507, 142.06, 48.773, 144.5 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile28.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 76,
+    "page number" : 1,
+    "bounding box" : [ 318.19, 142.06, 332.93, 144.5 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile29.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 91,
+    "page number" : 1,
+    "bounding box" : [ 28.522, 135.099, 55.238, 138.264 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile30.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 78,
+    "page number" : 1,
+    "bounding box" : [ 318.183, 135.82, 387.657, 138.26 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile31.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 92,
+    "page number" : 1,
+    "bounding box" : [ 28.521, 130.539, 59.544, 133.704 ],
+    "source" : "Balance_Bs_junio_2025.pdf_images/imageFile32.png"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 43,
+    "page number" : 1,
+    "bounding box" : [ 314.781, 122.224, 578.167, 125.75 ],
+    "font" : "ArialMT",
+    "font size" : 3.155,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "Índice de Solvencia Patrimonial 41,71%"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 45,
+    "level" : "1",
+    "page number" : 1,
+    "bounding box" : [ 124.919, 111.916, 155.491, 117.279 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 2.367,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "2. SOLVENCIA BANCARIA Y CALIDAD DE ACTIVOS"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 44,
+    "level" : "1",
+    "page number" : 1,
+    "bounding box" : [ 43.359, 113.273, 103.143, 115.916 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 2.367,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "1. PATRIMONIO SEMESTRE"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 46,
+    "page number" : 1,
+    "bounding box" : [ 187.377, 113.273, 562.088, 115.916 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 2.367,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "SEMESTRE 3. GESTION ADMINISTRATIVA ( * ) SEMESTRE 4. RENTABILIDAD ( * ) SEMESTRE 5. LIQUIDEZ SEMESTRE"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 47,
+    "level" : "2",
+    "page number" : 1,
+    "bounding box" : [ 21.757, 85.209, 102.918, 109.999 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 21.757, 100.986, 102.077, 109.999 ],
+      "font" : "Arial-BoldMT",
+      "font size" : 3.155,
+      "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+      "content" : "1.1. 41,71%",
+      "kids" : [ {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 1,
+        "page number" : 1,
+        "bounding box" : [ 111.99, 107.356, 115.814, 109.999 ],
+        "font" : "Arial-BoldMT",
+        "font size" : 2.367,
+        "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+        "content" : "2.1."
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 2,
+        "page number" : 1,
+        "bounding box" : [ 188.41, 100.986, 198.775, 104.512 ],
+        "font" : "Arial-BoldMT",
+        "font size" : 3.155,
+        "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+        "content" : "16,84%"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 3,
+        "page number" : 1,
+        "bounding box" : [ 218.24, 107.356, 222.064, 109.999 ],
+        "font" : "Arial-BoldMT",
+        "font size" : 2.367,
+        "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+        "content" : "3.1."
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 4,
+        "page number" : 1,
+        "bounding box" : [ 324.641, 100.986, 335.007, 104.512 ],
+        "font" : "Arial-BoldMT",
+        "font size" : 3.155,
+        "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+        "content" : "30,53%"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 5,
+        "page number" : 1,
+        "bounding box" : [ 345.068, 107.356, 348.892, 109.999 ],
+        "font" : "Arial-BoldMT",
+        "font size" : 2.367,
+        "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+        "content" : "4.1."
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 6,
+        "page number" : 1,
+        "bounding box" : [ 434.419, 100.986, 443.085, 104.512 ],
+        "font" : "Arial-BoldMT",
+        "font size" : 3.155,
+        "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+        "content" : "4,39%"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 7,
+        "page number" : 1,
+        "bounding box" : [ 454.406, 107.356, 458.23, 109.999 ],
+        "font" : "Arial-BoldMT",
+        "font size" : 2.367,
+        "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+        "content" : "5.1."
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 8,
+        "page number" : 1,
+        "bounding box" : [ 35.646, 99.466, 561.032, 106.054 ],
+        "font" : "Arial-BoldMT",
+        "font size" : 2.367,
+        "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+        "content" : "ACTIVOPATRIMONIOTOTALCOMPUTABLE(COMPUTABLE) PROVISIONCARTERACARTERACREDITOCREDITOBRUTA (GASTOSACTIVOPERSONALPRODUCTIVO+ GASTOSPROMEDIOOPERATIVOS) ACTIVORESULTADOPROMEDIONETO CAPTACIONESDISPONIBILIDADESDEL PUBLICO 74,22%"
+      } ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 21.783, 85.209, 102.918, 94.222 ],
+      "font" : "Arial-BoldMT",
+      "font size" : 3.155,
+      "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+      "content" : "1.2. 146,49%",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 48,
+    "page number" : 1,
+    "bounding box" : [ 112.014, 91.578, 115.838, 94.222 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 2.367,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "2.2."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 50,
+    "page number" : 1,
+    "bounding box" : [ 218.265, 91.578, 222.089, 94.222 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 2.367,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "3.2."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 52,
+    "page number" : 1,
+    "bounding box" : [ 345.093, 91.578, 348.917, 94.222 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 2.367,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "4.2."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 54,
+    "page number" : 1,
+    "bounding box" : [ 454.431, 91.578, 458.255, 94.222 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 2.367,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "5.2."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 55,
+    "page number" : 1,
+    "bounding box" : [ 30.624, 83.689, 561.056, 90.278 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 2.367,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "(PATRIMONIOACTIVO+ GESTIONIMPRODUCTIVOOPERATIVA) CARTERACARTERAINMOVILIZADACREDITO BRUTABRUTA (GASTOS PERSONALINGRESOS+FINANCIEROSGASTOS OPERATIVOS) PATRIMONIORESULTADOPROMEDIONETO (DISPONIB.CAPTACIONES+ INVERS.DELTITULOSPUBLICOVAL.) 74,22%"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 49,
+    "page number" : 1,
+    "bounding box" : [ 188.581, 85.209, 198.779, 88.734 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 3.155,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "11,32%"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 51,
+    "page number" : 1,
+    "bounding box" : [ 324.666, 85.209, 335.031, 88.734 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 3.155,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "35,29%"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 53,
+    "page number" : 1,
+    "bounding box" : [ 433.564, 85.209, 443.929, 88.734 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 3.155,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "14,92%"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 67,
+    "page number" : 1,
+    "bounding box" : [ 21.741, 74.747, 187.212, 77.391 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 2.367,
+    "text color" : "[0.75, 0.679688, 0.669922, 0.902344]",
+    "content" : "( * ) ANUALIZADO, CALCULADO CON BASE EN SALDO PROMEDIO FUENTE : CIFRAS TOMADAS DEL BALANCE DEL BANCO AL : 30/06/2025"
+  } ]
+}
