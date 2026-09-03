@@ -47,6 +47,3 @@ departments/hanke-economics/runs/
 **/.mf/
 **/.dev.vars
 **/*.log
-
-# Acquired legal/economic corpus — retain locally; publish manifests and code only
-departments/hanke-economics/documents/
