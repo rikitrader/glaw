@@ -1,0 +1,1482 @@
+                                     PRECEDENTIAL
+
+        UNITED STATES COURT OF APPEALS
+             FOR THE THIRD CIRCUIT
+                  _____________
+
+Nos. 23-1647, 23-1648, 23-1649, 23-1650, 23-1651, 23-1652,
+                         23-1781
+                     _____________
+
+           OI EUROPEAN GROUP B.V.
+                     v.
+      BOLIVARIAN REPUBLIC OF VENEZUELA
+
+          PETROLEOS DE VENEZUELA, S.A.,
+                      Appellant in No. 23-1647
+                 _____________
+
+   NORTHROP GRUMMAN SHIP SYSTEMS, INC,
+           f/k/a Ingalls Shipbuilding, Inc.
+                          v.
+ THE MINISTRY OF DEFENSE OF THE REPUBLIC OF
+                   VENEZUELA
+
+          PETROLEOS DE VENEZUELA, S.A.,
+                       Appellant No. 23-1648
+                 _____________
+
+           ACL1 INVESTMENTS LTD.;
+           ACL2 INVESTMENTS LTD.;
+           LDO (CAYMAN) XVIII LTD.
+                     v.
+      BOLIVARIAN REPUBLIC OF VENEZUELA
+   PETROLEOS DE VENEZUELA, S.A.,
+                Appellant No. 23-1649
+          _____________
+
+     RUSORO MINING LIMITED
+               v.
+BOLIVARIAN REPUBLIC OF VENEZUELA
+
+   PETROLEOS DE VENEZUELA, S.A.,
+                Appellant No. 23-1650
+          _____________
+
+       KOCH MINERALS SARL;
+KOCH NITROGEN INTERNATIONAL SARL
+                v.
+BOLIVARIAN REPUBLIC OF VENEZUELA
+
+   PETROLEOS DE VENEZUELA, S.A.,
+                Appellant No. 23-1651
+          _____________
+
+        GOLD RESERVE INC.
+               v.
+BOLIVARIAN REPUBLIC OF VENEZUELA
+
+   PETROLEOS DE VENEZUELA, S.A.,
+                Appellant No. 23-1652
+          _____________
+
+      OI EUROPEAN GROUP B.V.
+                v.
+BOLIVARIAN REPUBLIC OF VENEZUELA,
+                Appellant No. 23-1781
+
+
+
+
+                  2
+                    _____________
+
+      On Appeal from the United States District Court
+                 for the District of Delaware
+(D.C. Nos. 1-19-mc-00290, 1-20-mc-00257, 1-21-mc-00046,
+                       1-21-mc-00481,
+             1-22-mc-00156, 1-22-mc-00453)
+        District Judge: Honorable Leonard P. Stark
+                       _____________
+
+                       Argued
+                     June 1, 2023
+                    _____________
+
+ Before: BIBAS, MATEY, and FREEMAN, Circuit Judges.
+
+                  (Filed: July 7, 2023)
+                    _____________
+
+Jonathan M. Albano
+Christopher L. Carter
+Morgan Lewis & Bockius
+One Federal Street
+Boston, MA 02110
+
+Jody C. Barillare
+Morgan Lewis & Bockius
+1201 N Market Street
+Suite 2201
+Wilmington, DE 19801
+
+James D. Nelson
+David B. Salmons [ARGUED]
+
+
+
+
+                           3
+Morgan Lewis & Bockius
+1111 Pennsylvania Avenue NW
+Suite 800 North
+Washington, DC 20004
+       Counsel for Plaintiff - Appellee in Nos. 23-1647 & 23-
+       1781
+
+Laura D. Jones
+Peter J. Keane
+Pachulski Stang Ziehl & Jones
+919 N Market Street
+P.O. Box 8705, 17th Floor
+Wilmington, DE 19801
+
+Robert H. Poole, II
+Alston & Bird
+1201 W Peachtree Street
+One Atlantic Center, Suite 4900
+Atlanta, GA 30309
+
+Rajat Rana
+Alexander A. Yanos
+Alston & Bird
+90 Park Avenue
+12th Floor
+New York, NY 10016
+       Counsel for Plaintiffs - Appellees in Nos. 23-1648 &
+       1651
+
+Joshua S. Bolian
+Riley & Jacobson
+1906 W End Avenue
+Nashville, TN 37203
+
+
+
+
+                             4
+Marie McManus Degnan
+Ashby & Geddes
+500 Delaware Avenue
+P.O. Box 1150, 8th Floor
+Wilmington, DE 19899
+      Counsel for Plaintiffs - Appellees in No. 23-1649
+
+James E. Berger
+DLA Piper
+1251 Avenue of the Americas
+27th Floor
+New York, NY 10020
+
+R. Craig Martin
+DLA Piper
+1201 N Market Street
+Suite 2100
+Wilmington, DE 19801
+       Counsel for Plaintiff - Appellee in No. 23-1650
+
+Katherine G. Connolly
+Norton Rose Fulbright
+555 California Street
+Suite 3300
+Los Angeles, CA 94104
+
+Matthew H. Kirtland
+Norton Rose Fulbright
+799 9th Street NW
+Suite 1000
+Washington, DC 20001
+
+
+
+
+                              5
+Kevin J. Mangan
+Stephanie S. Riley
+Matthew P. Ward
+Womble Bond Dickinson
+1313 N Market Street
+Suite 1200
+Wilmington, DE 19801
+       Counsel for Plaintiff - Appellee in No. 23-1652
+
+Aubre Dean
+Kevin A. Meehan
+Juan O. Perla
+Joseph D. Pizzurro
+Allesandra D. Tyler
+Curtis Mallet-Prevost Colt & Mosle
+101 Park Avenue
+34th floor
+New York, NY 10178
+       Counsel for Intervenor - Appellant Petroleos de
+       Venezuela, S.A. in Nos. 23-1647, 23-1648, 23-1649, 23-
+       1650, 23-1651, 23-1652, 23-1781
+
+Ginger D. Anders
+Kathleen A. Foley
+Elaine J. Goldenberg
+Donald B. Verrilli, Jr. [ARGUED]
+Sarah Weiner
+Munger Tolles & Olson
+601 Massachusetts Avenue NW
+Suite 500e
+Washington, DC 20001
+       Counsel for Defendant - Appellee Bolivarian Republic
+       of Venezuela in Nos. 23-1647, 23-1648, 23-1649, 23-
+
+
+
+
+                              6
+       1650, 23-1651, 23-1652, 23-1781
+
+Miguel A. Estrada
+Matthew S. Rozen
+Lucas C. Townsend
+Gibson Dunn & Crutcher
+1050 Connecticut Avenue NW
+Suite 300
+Washington, DC 20036
+
+Rahim Moloo
+Jason W. Myatt
+Robert L. Weigel
+Gibson Dunn & Crutcher
+200 Park Avenue
+47th Floor
+New York, NY 10166
+       Counsel Amicus Curiae Crystallex International Corp
+       in Nos. 23-1647, 23-1648, 23-1649, 23-1650, 23-1651,
+       23-1652, 23-1781
+
+                        ___________
+
+                OPINION OF THE COURT
+                     ____________
+
+MATEY, Circuit Judge.
+
+       Sovereignty shoulders “[t]hat power . . . whose actions
+are not subject to the controul of any other power, so as to be
+annulled at the pleasure of any other human will.” Hugo
+Grotius, The Rights of War and Peace 62 (A.C. Campbell
+
+
+
+
+                              7
+trans., M. Walter Dunne 1901) (1625).1 It is a recognition of
+authority long thought essential for the mutual flourishing of
+states and “the advantage of their affairs.” Emer de Vattel, The
+Law of Nations 17 (Béla Kapossy & Richard Whatmore eds.,
+2008) (1758). Congress codified its understanding of foreign
+sovereignty in the Foreign Sovereign Immunities Act of 1976
+(“FSIA”).
+
+       In this consolidated appeal, six judgment creditors of
+the Bolivarian Republic of Venezuela hope to attach property
+held by Petróleos de Venezuela, S.A. (“PDVSA”),
+Venezuela’s national oil company. It all arises from a long-
+running dispute. Four years ago, this Court wrote the most
+recent chapter, holding PDVSA operated as Venezuela’s alter
+ego and allowing a judgment creditor (Crystallex International
+Corporation) to attach PDVSA’s shares in a U.S. subsidiary.
+Our six creditors2 followed in those footsteps and registered
+
+
+
+       1
+         Sovereignty was widely understood as a necessary
+extension of the natural law. See, e.g., Thirty Hogsheads of
+Sugar v. Boyle, 13 U.S. (9 Cranch) 191, 198 (1815) (“The law
+of nations” is learned through “resort to the great principles of
+reason and justice.”). In the twentieth century, sovereignty slid
+more to matters of political and commercial concerns. See, e.g.,
+George K. Foster, When Commercial Meets Sovereign: A New
+Paradigm for Applying the Foreign Sovereign Immunities Act
+in Crossover Cases, 52 Hous. L. Rev. 361, 369–72 (2014).
+       2
+          OI European Group B.V. (“OIEG”); ACL1
+Investments Ltd., ACL2 Investments Ltd., and LDO (Cayman)
+XVIII Ltd.; Gold Reserve Inc.; Koch Minerals Sàrl and Koch
+Nitrogen International Sàrl; Northrop Grumman Ship Systems,
+Incorporated, formerly known as Ingalls Shipbuilding,
+
+
+
+
+                               8
+their arbitration awards against Venezuela in the District of
+Delaware, seeking a writ of attachment against PDVSA’s
+holdings. PDVSA resisted, arguing that changes in
+Venezuela’s government destroyed the factual foundations
+supporting our prior alter-ego decision. But even accounting
+for those differences, the District Court correctly concluded
+that PDVSA remains the alter ego of Venezuela. And because
+reviewing PDVSA’s other arguments would stretch the limited
+grant of our appellate jurisdiction well beyond the words
+written by Congress, we decline the invitation and will affirm
+the District Court’s judgment.
+
+                                I.
+
+        Venezuela boasts the “largest proven oil reserves in the
+world,” a stockpile long under the “significant control” of the
+state. App. 30 (citations omitted). Venezuela formed PDVSA
+in 1975 to exploit those resources, but this case has little to do
+with oil. It centers on Venezuela’s expropriation of glass
+containers and mining interests, missed payments for warship
+repairs, and bond defaults. And it continues a story we recently
+summarized in the parallel suit brought by Crystallex
+International Corporation against Venezuela over the
+expropriation of gold deposits. We begin with an even shorter
+summary.
+
+                               A.
+
+       In 2011, Venezuela nationalized several gold mines and
+seize the surrounding factories without compensation. That,
+Crystallex alleged, breached its agreement with Venezuela for
+
+Incorporated; and Rusoro Mining Limited. Together, we refer
+to them as “Creditors.”
+
+
+
+
+                                9
+development rights. See Crystallex Int’l Corp. v. Bolivarian
+Republic of Venezuela, 333 F. Supp. 3d 380, 386 (D. Del.
+2018) (“Crystallex I”). Crystallex won relief in an international
+arbitral tribunal, which awarded $1.2 billion plus interest. Id.
+The District Court for the District of Columbia confirmed the
+award, yielding a federal judgment. Crystallex Int’l Corp. v.
+Bolivarian Republic of Venezuela, 244 F. Supp. 3d 100, 122
+(D.D.C. 2017). When Venezuela did not pay, Crystallex
+registered its judgment with the Delaware District Court under
+28 U.S.C. § 19633 hoping to access the assets of PDVSA.
+Crystallex Int’l Corp. v. Bolivarian Republic of Venezuela, 932
+F.3d 126, 136 (3d Cir. 2019) (“Crystallex II”). Crystallex
+argued that, as a judgment creditor of Venezuela, it could look
+to PDVSA for satisfaction because PDVSA “is so extensively
+controlled by” Venezuela that it may be held liable for the
+government’s shortcomings. Id. at 140 (citations omitted). So
+Crystallex sued Venezuela4 to attach PDVSA’s shares in
+Petróleos de Venezuela Holding, Inc. (“PDVH”), PDVSA’s
+wholly owned United States subsidiary, under Federal Rule of
+Civil Procedure 69(a). Id. at 132–34. Doing so, Crystallex
+thought, would ultimately allow it to reach funds in CITGO
+Petroleum Corporation, a Delaware corporation indirectly
+
+       3
+          Stating that a registered judgment “shall have the same
+effect as a judgment of the district court of the district where
+registered and may be enforced in like manner.”
+        4
+          Federal courts have jurisdiction “to confirm an award
+made pursuant to . . . an agreement to arbitrate, if [] the
+arbitration takes place or is intended to take place in the United
+States.” 28 U.S.C. § 1605(a)(6). Crystallex’s arbitration
+proceedings against Venezuela occurred before the
+International Centre for Settlement of Investment Disputes in
+Washington, D.C. Crystallex I, 333 F. Supp. 3d at 386.
+
+
+
+
+                               10
+owned by PDVH.5 See Crystallex I, 333 F. Supp. 3d at 418
+n.36.
+
+       PDVSA intervened in the attachment proceeding and
+moved to dismiss based on its claim to sovereign immunity.
+Crystallex II, 932 F.3d at 134. The District Court denied the
+motion, finding PDVSA was Venezuela’s “alter ego” under the
+principles outlined in First National City Bank v. Banco Para
+El Comercio Exterior de Cuba, 462 U.S. 611 (1983)
+(“Bancec”). See Crystallex I, 333 F. Supp. 3d at 404–14. That
+finding made PDVSA’s property subject to execution to satisfy
+Venezuela’s debt. Id. at 416–17.
+
+       We affirmed that decision. See Crystallex II, 932 F.3d
+at 150–51. We pointed to Venezuela’s economic control over
+and profit-sharing with PDVSA, its heavy hand in managing
+PDVSA’s affairs, the value extracted from PDVSA, and the
+ability to avoid obligations in U.S. courts by retaining a
+separate identity. Id. at 146–49. All enough, we concluded, to
+show that PDVSA was Venezuela’s alter ego. Id. at 152
+(“Indeed, if the relationship between Venezuela and PDVSA
+cannot satisfy the Supreme Court’s extensive-control
+requirement, we know nothing that can.”). And we likewise
+affirmed the order permitting attachment of PDVSA’s shares
+under the FSIA. Id.
+
+
+
+
+      5
+         PDVSA wholly owns the Delaware corporation
+PDVH, which wholly owns CITGO Holding, Inc., which
+wholly owns CITGO Petroleum Corporation. Crystallex I, 333
+F. Supp. 3d at 418 n.36.
+
+
+
+
+                             11
+                              B.
+
+       Hoping to seize on Crystallex’s success, Creditors also
+obtained arbitration awards against Venezuela and
+Venezuela’s Ministry of Defense over debts incurred under
+broken contracts. Creditors then confirmed their arbitration
+awards in U.S. courts, registered those judgments with the
+Delaware District Court pursuant to 28 U.S.C. § 1963, and
+moved for writs of attachment on PDVSA’s shares of PDVH.6
+PDVSA intervened, stressing changes in the relationship
+between Venezuela and PDVSA since 2019.
+
+       In 2018, Venezuelan President Nicolás Maduro
+disqualified opposition candidates for the presidency and
+declared himself the victor. Dissatisfied, the National
+Assembly named opposition leader Juan Guaidó Interim
+President of Venezuela. In 2019, the U.S. Government
+recognized Guaidó as Interim President and explicitly
+withdrew recognition of the Maduro Government, although it
+acknowledged Maduro’s continued power in Venezuela. See
+Jiménez v. Palacios, 250 A.3d 814, 822 (Del. Ch. 2019). In
+2019, Guaidó took control of the shares of PDVH, appointing
+an ad hoc board of directors of PDVSA to manage the U.S.
+subsidiaries. Guaidó remained Interim President for the rest of
+the time period relevant to this appeal.
+
+       Despite those changes, the Delaware District Court
+granted Creditors’ motion, concluding they had rebutted the
+presumption that Venezuela and PDVSA are separate and
+established PDVSA as the alter ego of Venezuela subject to the
+
+       6
+         As in the Crystallex proceedings, the District Court
+had jurisdiction under the FSIA. See Crystallex Int’l Corp., 244
+F. Supp. 3d at 109 (applying 28 U.S.C. § 1605(a)(6)).
+
+
+
+
+                              12
+jurisdiction of the federal courts. Organizing its factual
+findings around the Bancec factors discussed below, the
+Delaware District Court comprehensively described PDVSA’s
+relationship to Venezuela—considering both the Guaidó
+Government’s control over PDVSA’s U.S. assets through its
+ad hoc administrative board (“Ad Hoc Board”) and the Maduro
+Regime’s ongoing control of PDVSA in Venezuela and
+abroad—and concluded PDVSA remains an alter ego of
+Venezuela. The Delaware District Court also “incorporate[d]
+by reference its analysis of the legal standards governing the
+issuance of writs of attachment (including its discussion of
+Federal Rule of Civil Procedure 69(a)(1) and 10 Del. C. §
+5031) with respect to property of an agency or instrumentality
+of a foreign sovereign as set out in Crystallex I.” App. 62
+(citing Crystallex I, 333 F. Supp. 3d at 388–89, 394–95, 399–
+401, 404–05).
+
+        PDVSA appealed (and Venezuela intervened),7
+challenging the alter-ego finding and asking us to consider the
+attachment issue under a theory of “pendent appellate
+jurisdiction.” PDVSA also asked for an emergency stay on
+both divestiture grounds and the traditional discretionary stay
+factors. After granting an administrative stay, we ordered
+merits briefing on an expedited schedule. Agreeing with the
+District Court’s well-reasoned opinion and declining to reach
+the attachment issue, we will affirm.8
+
+      7
+         In one of the OIEG matters, Venezuela appealed and
+PDVSA intervened.
+       8
+          The District Court had subject matter jurisdiction
+under 28 U.S.C. § 1963, and we discuss our jurisdiction under
+the collateral order doctrine in Section IV. “We review
+questions of law de novo and findings of fact for clear error,
+
+
+
+
+                              13
+                               II.
+
+        We review a narrow question: Did the District Court
+properly deny PDVSA immunity? The FSIA permitted the
+District Court to exercise jurisdiction over Venezuela to
+enforce a judgment based on confirmed arbitration awards
+against the country.9 And “so long as PDVSA is Venezuela’s
+alter ego under Bancec, the District Court had the power to
+issue a writ of attachment on that entity’s non-immune assets
+to satisfy the judgment against the country.” Crystallex II, 932
+F.3d at 139. Although PDVSA points to some changes in the
+
+
+and we review de novo the ultimate determination whether to
+treat PDVSA as Venezuela’s alter ego.” Crystallex II, 932 F.3d
+at 136.
+         9
+           The FSIA’s arbitration exception provides that “[a]
+foreign state shall not be immune . . . in any case . . . in which
+the action is brought . . . to confirm an award made pursuant
+to . . . an agreement to arbitrate, if . . . the arbitration takes
+place or is intended to take place in the United States.” 28
+U.S.C. § 1605(a)(6).
+         Creditors confirmed their arbitration awards in United
+States courts. They then registered their judgments in Delaware
+District Court. And “when a party establishes that an exception
+to sovereign immunity applies in a merits action that results in
+a federal judgment—here, the exception for confirming
+arbitration awards, 28 U.S.C. § 1605(a)(6)—that party does
+not need to establish yet another exception when it registers the
+judgment in another district court under 28 U.S.C. § 1963 and
+seeks enforcement in that court. Rather, the exception in the
+merits action sustains the court’s jurisdiction through
+proceedings to aid collection of a money judgment rendered in
+the case.” Crystallex II, 932 F.3d at 137 (cleaned up).
+
+
+
+
+                               14
+structure of Venezuela’s government, the nature of the nation’s
+continued involvement in PDVSA’s affairs again establishes
+that PDVSA is Venezuela’s alter ego, as will be discussed in
+Section III. But first, we explain the nature of our examination.
+
+                               A.
+
+       Enacted in 1976, the FSIA specifies when United States
+courts will recognize claims of sovereign immunity. Our
+interpretation of the text must give effect to the legislature’s
+charge, Brown v. Barry, 3 U.S. (3 Dall.) 365, 367 (1797), stated
+through the “ordinary meaning . . . at the time Congress
+enacted the statute,” Perrin v. United States, 444 U.S. 37, 42
+(1979). Because interpretation “is a holistic endeavor,” United
+Sav. Ass’n of Tex. v. Timbers of Inwood Forest Assocs., Ltd.,
+484 U.S. 365, 371 (1988), some context is key to
+understanding Congress’s aim, see Felix Frankfurter, Some
+Reflections on the Reading of Statutes, 47 Colum. L. Rev. 527,
+538–39 (1947) (Legislation “seeks to obviate some mischief,
+to supply an inadequacy, to effect a change of policy, to
+formulate a plan of government.”); see also 1 William
+Blackstone, Commentaries *61, *87 (George Sharswood ed.,
+1893) (1765).
+
+       The traditional understanding that foreign nations
+enjoyed “absolute independence” from federal jurisdiction,
+see, e.g., Schooner Exch. v. McFaddon, 11 U.S. (7 Cranch)
+116, 137 (1812), gave way to a restrictive theory of immunity
+as nations became more commercially interconnected, see
+George K. Foster, When Commercial Meets Sovereign: A New
+Paradigm for Applying the Foreign Sovereign Immunities Act
+in Crossover Cases, 52 Hous. L. Rev. 361, 369–72 (2014).
+Applying this restrictive theory, the Executive determined
+case-by-case whether a foreign nation would receive sovereign
+
+
+
+
+                               15
+immunity from suits in U.S. courts. See Letter from Jack B.
+Tate, Legal Adviser, Dep’t of State, to Philip B. Perlman,
+Acting Att’y Gen. (May 19, 1952), reprinted in 26 Dep’t St.
+Bull. 984, 984–85 (1952) (“Tate Letter”). But doing so proved
+difficult diplomatically and politically problematic for two
+reasons. First, the Executive’s determinations were
+standardless and unpredictable. See Victory Transp., Inc. v.
+Comisaria General de Abastecimientos y Transportes, 336
+F.2d 354, 359 (2d Cir. 1964) (“[T]he ‘Tate letter’ offers no
+guide-lines or criteria for differentiating between a sovereign’s
+private and public acts.”). Second, “foreign expropriation of
+American investment was a major foreign policy issue”
+because “major properties were seized without compensation”
+in countries like Cuba that went through critical regime
+changes. See Mark B. Feldman, A Drafter’s Interpretation of
+the FSIA, Am. Bar Ass’n Section of Int’l Law (Winter 2018),
+https://www.foster.com/assets/htmldocuments/pdfs/ABA-
+ACHL-Newsletter-Winter-2018.pdf. Victims of these
+expropriations generally “had to rely on the State Department
+to negotiate settlement with the foreign government,” but
+changing regimes and charged relations often left the State
+Department with no leverage and the victims no relief. See
+Expert Witness Report and Opinion of Mark B. Feldman in
+Supp. of Pl.’s Opp’n to Defs.’ Mot. Dismiss, In Re: Mezerhane
+v. Republica Bolivariana de Venezuela, No. 1:11-cv-23983
+(S.D. Fla. 2013) (“Feldman Report”), ECF No. 90-2.
+
+       So the Executive asked Congress to make the matter a
+judicial determination, reasoning “that courts are better
+equipped than the State Department to make immunity
+decisions based on law rather than politics.” Adam S. Chilton
+& Christopher A. Whytock, Foreign Sovereign Immunity and
+Comparative Institutional Competence, 163 U. Pa. L. Rev.
+
+
+
+
+                               16
+411, 412 (2015). Congress agreed, adopting the FSIA to charge
+judges, not diplomats, with applying the restrictive theory of
+foreign immunity.10 See Samantar v. Yousuf, 560 U.S. 305, 313
+(2010). Now, if a state, or its agency or instrumentality,
+“expropriate[s] . . . property in violation of international law,”
+“the state can expect to be held accountable for the
+expropriation in U.S. courts.” See Feldman Report, supra.
+
+                               B.
+
+        The FSIA provides that foreign states are immune from
+the jurisdiction of American courts, subject only to exceptions
+in previous international agreements and the FSIA itself. See
+28 U.S.C. § 1604. “Foreign state” is defined to include a
+political subdivision “or an agency or instrumentality of a
+foreign state.” Id. § 1603(a) (emphasis added).11 PDVSA
+
+       10
+           See Foster, supra, at 371–72; see also Letter from
+Robert S. Ingersoll, Deputy Sec’y of State, and Harold R.
+Tyler, Jr., Deputy Att’y Gen., to Carl O. Albert, Speaker of the
+House (Oct. 31, 1975), reprinted in H.R. Rep. No. 94-1487, at
+6634 (1976) (arguing for legislation governing foreign
+sovereign immunity “to facilitate and depoliticize litigation
+against foreign states” by “codify[ing] and refin[ing] the
+‘restrictive theory’ of sovereign immunity”).
+        11
+           An “agency or instrumentality of a foreign state” is
+defined as “any entity”:
+        (1) which is a separate legal person, corporate or
+        otherwise, and
+        (2) which is an organ of a foreign state or
+        political subdivision thereof, or a majority of
+        whose shares or other ownership interest is
+        owned by a foreign state or political subdivision
+        thereof, and
+
+
+
+
+                               17
+invokes this definition to claim sovereign immunity as an
+instrumentality of a foreign state. But if a foreign
+instrumentality’s entitlement to sovereign immunity depends
+on its shared identity with the “foreign state” itself, a natural
+reading of the FSIA would suggest that a foreign
+instrumentality shares the immunity of its sovereign owner. Cf.
+Roger O’Keefe, The Restatement of Foreign Sovereign
+Immunity: Tutto Il Mondo è Paese, 32 Eur. J. Int’l L. 1483,
+1488–90 (2021) (considering how instrumentalities
+“assimilate” to the legal personality of a foreign state under the
+FSIA). Meaning a determination that a foreign state is excepted
+from jurisdictional immunity under § 1605(a)(6) would also
+apply to its instrumentalities.
+
+        The Supreme Court rejected this reading in Bancec. See
+462 U.S. at 621. Although the Court acknowledged that
+§ 1603(a) defines a “foreign state” to include instrumentalities,
+id. at 620 n.7, it concluded “[t]he language and history of the
+FSIA clearly establish that the Act was not intended to affect
+the substantive law determining the liability of a foreign state
+or instrumentality, or the attribution of liability among
+instrumentalities of a foreign state,” id. at 620. So it directed
+courts to apply a “presumption” of independent legal status
+(and thus a separate sovereign immunity) to foreign
+instrumentalities. Id. at 628.
+
+
+
+
+      (3) which is neither a citizen of a State of the
+      United States as defined in section 1332(c) and
+      (e) of this title, nor created under the laws of any
+      third country.
+28 U.S.C. § 1603(b).
+
+
+
+
+                               18
+       That new presumption fused the law of corporations and
+nations.12 The Court observed that foreign states had started
+adopting the corporate practice of creating instrumentalities to
+enjoy benefits associated with independent governance. Id. at
+624. Without a presumption that an instrumentality’s assets
+and liabilities stand separate from those of the sovereign, third
+parties might worry that credit extended to an instrumentality
+will be freely diverted to satisfy its sovereign’s debts. Id. at
+625–26. And without “[d]ue respect for the actions taken by
+foreign sovereigns and for principles of comity between
+nations,” foreign sovereigns might leave opportunities to
+advance their unique interests, frustrating the very point of
+sovereign power. Id. at 626.13
+
+       But like any presumption, this one can be rebutted. The
+Court “suggested that liability [for instrumentalities] would be
+warranted, for example, ‘where a corporate entity is so
+extensively controlled by [the state] that a relationship of
+principal and agent is created,’ or where recognizing the state
+
+
+       12
+           At least one recent scholar has criticized this fusion,
+emphasizing the differences between private and public
+corporations when evaluating separate legal status. See
+generally W. Mark C. Weidemaier, Piercing the (Sovereign)
+Veil: The Role of Limited Liability in State-Owned Enterprises,
+46 B.Y.U. L. Rev. 795 (2021).
+        13
+           As was common at the time, the Court also quoted a
+House Report stating that 28 U.S.C. § 1610(b) would not allow
+execution against the property of one agency or instrumentality
+to satisfy the judgment of another—unless a court finds that
+“property held by one agency is really the property of another.”
+Bancec, 462 U.S. at 628 (quoting H.R. Rep. No. 94-1487, at
+29–30).
+
+
+
+
+                               19
+and its agency or instrumentality as distinct entities ‘would
+work fraud or injustice.’” Rubin v. Islamic Republic of Iran,
+138 S. Ct. 816, 822 (2018) (quoting Bancec, 462 U.S. at 629–
+30). And ever since, federal courts have coalesced around five
+factors (termed “the Bancec factors”) to aid their analysis. Id.
+at 823.14
+
+       As we did in Crystallex II, 932 F.3d at 141, we consider
+the Bancec factors described in Rubin and 28 U.S.C. § 1610(g).
+But we also take seriously the Supreme Court’s caution that
+Bancec wrote no “mechanical formula” for disregarding
+juridical separateness. Rubin, 138 S. Ct. at 822 (quoting
+Bancec, 462 U.S. at 633). The test instead derives from a rough
+analogy to American corporate law veil piercing,15 which is
+
+
+       14
+           Congress also noticed these factors and listed them in
+an amendment to the FSIA to abrogate Bancec in disputes
+about the property of state sponsors of terrorism. Rubin, 138 S.
+Ct. at 823 (citing 28 U.S.C. § 1610(g)).
+        15
+           American corporations received staunch protections
+through incorporation statutes passed throughout the
+nineteenth century. See, e.g., An Act Relative to Incorporations
+for Manufacturing Purposes, ch. 67, § 3, 1811 N.Y. Laws 350,
+351. Courts met abuses of the corporate form by disregarding
+these protections according to equitable considerations. See,
+e.g., Booth v. Bunce, 33 N.Y. 139, 157 (1865) (If “corporate
+bodies” are used “to cover up fraud,” they “are declared
+nullities; they are a perfect dead letter; the law looks upon them
+as if they had never been executed.”). When nations started
+acting like corporations in their commercial relations,
+governments began analyzing sovereign immunity claims
+through this corporate lens. Cf. Chilton & Whytock, supra, at
+451 (“[T]he prevailing legal standard did indeed systematically
+
+
+
+
+                               20
+itself “enveloped in the mists of metaphor.” Bancec, 462 U.S.
+at 623 (quoting Berkey v. Third Ave. Ry. Co., 244 N.Y. 84, 94
+(1926)). “Metaphors in law are to be narrowly watched, for
+starting as devices to liberate thought, they end often by
+enslaving it.” Id. (quoting Berkey, 244 N.Y. at 94).
+
+                              C.
+
+        Having surveyed the “why” and “how” behind
+instrumentality sovereignty, we turn to the “what”: the facts
+that should be considered. The District Court evaluated the
+actions of both the Guaidó and Maduro governments.
+Appellants’ arguments against this approach mostly skip
+references to the state and instead stress the word
+“government,” a term absent from the relevant FSIA
+provisions. Venezuela calls PDVSA’s relationship to the
+Maduro Regime “[i]rrelevant,” Venezuela Reply Br. 12, and
+insists we look only to the actions taken by the Guaidó
+Government and the Ad Hoc Board. We disagree. Text,
+tradition, and legislative aim all point to the sovereign nation
+of Venezuela as the operative comparator for our alter-ego
+analysis. So we must consider the actions of both governments.
+
+                               1.
+
+       First, the text. The FSIA codifies foreign sovereign
+immunity for a “foreign state,” 28 U.S.C. § 1604, which “on
+its face indicates a body politic that governs a particular
+
+
+
+influence the State Department’s immunity decisions:
+immunity was less likely when the foreign state was a
+corporate entity (and thus presumably engaged in commercial
+activity).”). The Supreme Court followed that path in Bancec.
+
+
+
+
+                              21
+territory,” Samantar, 560 U.S. at 314.16 One prominent legal
+dictionary defines “foreign state” as a “foreign country.”
+Foreign State, Black’s Law Dictionary (11th ed. 2019). And
+the definition has remained largely unchanged since before the
+FSIA’s passage. See Foreign State, Black’s Law Dictionary
+1578 (4th ed. 1968) (defining a “foreign state” as a “foreign
+country or nation”). Both entries stress the body politic—the
+country or nation—rather than the regime presently in power.
+That aligns with the common understanding of statehood,
+where governance is just one of several criteria used to define
+a state. See James Crawford, The Creation of States in
+International Law 45–46 (2d ed. 2006) (describing the
+“classical criteria for statehood” as a defined territory, a
+permanent population, an effective government, the capacity to
+enter into relations with other States, and independence);
+Restatement (Third) of Foreign Relations Law § 201 (1987)
+(“[A] state is an entity that has a defined territory and a
+permanent population, under the control of its own
+government, and that engages in, or has the capacity to engage
+in, formal relations with other such entities.”).
+
+       It also follows Bancec, where, despite the facts flowing
+from the aftermath of the Cuban Revolution, the Supreme
+Court never mentioned the Castro Regime. Instead, it framed
+its analysis as determining whether the government
+instrumentality of Cuba “may be held liable for actions taken
+by the sovereign.” Bancec, 462 U.S. at 621. Strong evidence
+that the relevant “government” in a Bancec analysis is the
+
+
+
+       16
+          The FSIA does not expressly define “foreign state,”
+except to say that it includes “an agency or instrumentality of
+a foreign state.” 28 U.S.C. § 1603(a).
+
+
+
+
+                              22
+foreign country’s        sovereign,    which     transcends      any
+administrator.
+
+                                 2.
+
+        Second, tradition, which accepted that the “sovereign
+power” does not change “whatever appearance the outward
+form and administration of the government may put on.” 1
+Blackstone, Commentaries *49. The Supreme Court has long
+embraced this differentiation between government
+representatives and a sovereign. Take The Sapphire, where
+French officials sued in a United States court for damages
+caused in a collision between a French and American ship. 78
+U.S. (11 Wall.) 164, 167 (1870). Defendants sought dismissal,
+arguing the collision happened under the reign of Napoleon III,
+who had just been deposed. Id. at 166. That was the wrong
+focus, the Court explained, because the “[t]he foreign state is
+the true and real owner of its public vessels of war. . . . The . . .
+party in power[] is but the agent and representative of the
+national sovereignty. A change in such representative works no
+change in the national sovereignty or its rights.” Id. at 168.
+
+        Or consider Guaranty Trust Co. of New York v. United
+States, where the Soviet Union sued to recover a bank deposit
+made sixteen years earlier by the Provisional Government of
+Russia. 304 U.S. 126, 129 (1938). All agreed that the Soviet
+Government had only recently been recognized by the United
+States, making this action one of the first for which its
+representatives could appear in U.S. courts on behalf of Russia.
+Id. at 138 n.4. Not enough to toll a six-year statute of
+limitations, said the Court, because, regardless of which
+representatives are recognized, the “the rights of a sovereign
+state are vested in the state rather than in any particular
+government which may purport to represent it.” Id. at 137.
+
+
+
+
+                                 23
+        More recently, in Samantar, the Supreme Court
+confirmed the continuing importance of the representative-
+sovereign distinction. There, the Court held an individual
+foreign official is not entitled to sovereign immunity as a
+“foreign state” under the FSIA. 560 U.S. at 308. A “state” is
+“an entity that has a defined territory and population under the
+control of a government and that engages in foreign relations.”
+Id. at 314 (quoting Restatement (Second) of Foreign Relations
+Law of the United States § 4 (1964–1965)). While the
+government controls the state, the state is more than its
+government. See id. (“[T]he [FSIA] establishes that ‘foreign
+state’ has a broader meaning, by mandating the inclusion of the
+state’s      political     subdivisions,      agencies,     and
+instrumentalities.”).
+
+       Now, as before, “[r]ulers come and go; governments
+end and forms of government change; but sovereignty
+survives.” United States v. Curtiss–Wright Export Corp., 299
+U.S. 304, 316 (1936).
+
+                               3.
+
+       Third, legislative aim as informed by history. An
+essential tool of statutory construction that uncovers 1) “how
+the common law stood at the making of the act”; 2) “what the
+mischief was, for which the common law did not provide”; and
+3) “what remedy the [legislature] provided to cure this
+mischief.” 1 Blackstone, Commentaries *87. All “to suppress
+the mischief and advance the remedy.” Id. As recounted, the
+FSIA was enacted against the common law of foreign
+sovereign immunity that included Executive determinations.
+But Congress understood the State Department to have “sought
+and supported the elimination of its role with respect to claims
+against foreign states and their agencies or instrumentalities.”
+
+
+
+
+                              24
+Samantar, 560 U.S. at 323 n.19. For this Court to hold that the
+decisions about sovereign immunity from suit are once again
+an Executive prerogative—whether by importing the act of
+state doctrine, the political question doctrine, or some other
+“doctrine”—would undermine the principal purpose of the
+FSIA: “to transfer primary responsibility for deciding ‘claims
+of foreign states to immunity’ from the State Department to the
+courts.” Id. at 313 (quoting 28 U.S.C. § 1602).
+
+                              D.
+
+       Knowing what facts to consider—the actions of both the
+Guaidó and Maduro governments as the totality of the
+sovereign conduct of Venezuela—similarly answers the
+“when” issue. The parties present dueling interpretations of the
+relevant timeframe for considering Venezuela’s actions. We
+did not resolve the issue in Crystallex II. See 932 F.3d at 144.
+On remand, the District Court thought it improper to consider
+any date after the service of the writ of attachment but
+acknowledged that consideration of historical events may be
+necessary for alter-ego analysis. Crystallex Int’l Corp. v.
+Bolivarian Republic of Venezuela, 2021 WL 129803, at *6 &
+n.4 (D. Del. Jan. 14, 2021). PDVSA and Venezuela argue that
+the relevant inquiry begins the moment of the filing of the
+
+
+
+
+                              25
+motion for a writ of attachment,17 while Creditors ask us to
+consider instead the time of the injury.18
+
+     We again decline to take either path. As with the
+commercial activity determination, “narrowing the temporal
+
+
+       17
+           Venezuela cites Dole Food Co. v. Patrickson, which
+held that, for federal removal jurisdiction, “instrumentality
+status is determined at the time of the filing of the complaint.”
+538 U.S. 468, 480 (2003). But removal is a time-specific
+inquiry, so there is no reason to assume that holding extends to
+all other parts of the FSIA.
+        18
+           Creditors offer mostly out-of-circuit or unpublished
+decisions for the notion that we look to the time the injury
+occurred. None address the alter ego concept or thoroughly
+compare competing time periods. See, e.g., Groden v. N&D
+Transp. Co., 866 F.3d 22, 30 (1st Cir. 2017) (discussing the
+“pertinent” time in an alter ego ERISA case as the time “when
+the withdrawal liability arose”); Energy Marine Servs., Inc. v.
+DB Mobility Logistics AG, No. 15-24-GMS, 2016 WL 284432,
+at *1, *3 (D. Del. Jan. 22, 2016) (stating the moment of injury
+is “the relevant time frame” with no justification); Trs. of Nat’l
+Elevator Indus. Pension v. Lutyk, 140 F. Supp. 2d 447, 457
+(E.D. Pa. 2001) (mentioning that “the relevant time period is
+the time at which the corporation incurred liability” in a
+corporate veil case), aff’d, 332 F.3d 188 (3d Cir. 2003) (no
+discussion of time frame); J.M. Thompson Co. v. Doral Mfg.
+Co., 324 S.E. 2d 909, 915 (N.C. Ct. App. 1985) (stating in a
+corporate alter ego case, “it must be shown that control was
+exercised at the time the acts complained of transpired”);
+Moran v. Johns-Manville Sales Corp., 691 F.2d 811, 817 (6th
+Cir. 1982) (“It is agency at the time of the tortious act, not at
+the time of litigation, that determines the corporation’s
+
+
+
+
+                               26
+inquiry” for alter-ego analysis “unnecessarily leaves room for
+manipulation.” See Crystallex II, 932 F.3d at 150. We would
+invite fraud and injustice—the very concerns carefully
+cautioned against in Bancec—by considering only how a state
+acts after learning that its actions surrounding an
+instrumentality are under scrutiny. Cf. Transamerica Leasing,
+Inc. v. La Republica de Venezuela, 200 F.3d 843, 850–51 (D.C.
+Cir. 2000) (considering, in alter-ego analysis, governmental
+action that occurred before plaintiffs sought financial redress).
+Little imagination is required: a state could quickly scale back
+oversight, announce laudable (but long-away) reforms, pass
+promises of new corporate independence, and perhaps
+commission a blue-ribbon study panel or two. All while its
+practices dating back to the injury show an alter ego
+relationship. Nor is exclusive reliance on the time of injury a
+satisfying approach. Cf. EM Ltd. v. Banco Central de la
+República Argentina, 800 F.3d 78, 84–85, 92–94 (2d Cir.
+2015) (considering, in alter-ego analysis, sovereign’s billion-
+dollar borrowing from instrumentality after plaintiffs first
+sought attachment). The conduct of the Castro Regime in
+Bancec19 shows how a state determined to avoid creditors
+
+
+liability.”); C M Corp. v. Oberer Dev. Co., 631 F.2d 536, 539
+(7th Cir. 1980) (considering in a corporate veil context whether
+there was “evidence that [companies] were shells or sham
+corporations during the period when appellants and their
+assignors were dealing with them”).
+        19
+            See Bancec, 462 U.S. at 615–16 (“Bancec was
+dissolved and its capital was split between Banco Nacional and
+‘the foreign trade enterprises or houses of the Ministry of
+Foreign Trade’ . . . . All of Bancec’s rights, claims, and assets
+‘peculiar to the banking business’ were vested in Banco
+Nacional . . . . All of Bancec’s ‘trading functions’ were to be
+
+
+
+
+                               27
+might simply drop vulnerable assets into a new instrumentality
+and thus “creat[e] juridical entities whenever the need arises.”
+462 U.S. at 633.
+
+       We heed the charge of the Supreme Court drawing on
+the “application of internationally recognized equitable
+principles to avoid the injustice that would result from
+permitting a foreign state to reap the benefits of our courts
+while avoiding the obligations of international law.” Id. at 633–
+34. And we conclude the alter-ego inquiry should consider all
+relevant facts up to the time of the service of the writ of
+attachment.
+
+                              III.
+
+      Considering the totality of Venezuela’s control over
+PDVSA, it is clear PDVSA is Venezuela’s alter ego. As in
+Crystallex II, we draw from the “Bancec factors,” namely:
+
+       (1) the level of economic control by the
+       government; (2) whether the entity’s profits go
+       to the government; (3) the degree to which
+       government officials manage the entity or
+       otherwise have a hand in its daily affairs; (4)
+       whether the government is the real beneficiary of
+       the entity’s conduct; and (5) whether adherence
+
+assumed by ‘the foreign trade enterprises or houses of the
+Ministry of Foreign Trade.’ . . . [T]he Ministry of Foreign
+Trade created Empresa. . . . Empresa was dissolved and
+Bancec’s rights relating to foreign commerce in sugar were
+assigned to Empresa Cubana Exportadora de Azucar y sus
+Derivados (Cuba Zucar), a state trading company, which is
+apparently still in existence.”) (citations omitted).
+
+
+
+
+                               28
+       to separate identities would entitle the foreign
+       state to benefits in United States courts while
+       avoiding its obligations.
+
+
+
+Crystallex II, 932 F.3d at 141 (quoting Rubin, 138 S. Ct. at
+823).
+
+                    1. Economic Control
+
+        Venezuela exerts significant economic control over
+PDVSA. Start with the Venezuelan Constitution: Article 12
+provides that hydrocarbon deposits within Venezuelan
+territory are government property, Article 302 reserves state
+control over petroleum activity, and Article 303 enshrines that
+the State must retain all shares in PDVSA. Crystallex II, 932
+F.3d at 147. These statements of authority are not merely
+aspirational; Venezuelan authorities have dictated PDVSA’s
+sales practices and prices, inside Venezuela and abroad. Id.
+From 2010 to 2016, PDVSA contributed around $77 billion to
+Venezuelan allies, and in 2017, topped off the tank with the
+announcement of a $1.2 billion payment on PDVSA bonds
+along with plans to restructure PDVSA’s debt. Id. at 147–48.
+
+      Appellants argue drastic changes arrived in 2019, but as
+the District Court explained, new structures did not alter
+Venezuela’s significant control. In March 2019, Maduro
+ordered the transfer of PDVSA’s European Office from Lisbon
+to Moscow. Manuel Salvador Quevedo Fernández, a National
+Guard Major General who was Minister of Housing and
+Habitat before being appointed by Maduro as both oil minister
+and president of PDVSA, announced the completion of the
+European Office’s move that September. A month later, he
+
+
+
+
+                              29
+signed a commercial contract with an Indian corporation. In
+May 2020, PDVSA on its website advised that, heeding
+Maduro’s directive, it would increase the price of gasoline in
+Venezuela. It also announced to owners of service stations that,
+under Maduro’s Executive Order 4.090, it could rescind
+service station licenses—which it promptly did.
+
+      Much the same has followed in the United States, where
+the Guaidó Government holds direct access to PDVSA’s U.S.
+bank accounts, manages (and offered to renegotiate) PDVSA’s
+bond debt, sent PDVSA money earmarked for legal bills, and
+considers PDVSA’s property “Venezuelan assets held abroad.”
+App. 44–46.
+
+       True, the Guaidó Government has encouraged
+PDVSA’s Ad Hoc Board to become more independent. But
+given the Maduro Government’s continued extreme control of
+PDVSA in Venezuela and abroad, and the Guaidó
+Government’s substantial control of PDVSA’s American
+operations, the facts reveal Venezuela’s significant economic
+control of PDVSA through both rival governments.
+
+                           2. Profits
+
+        Not all the Bancec factors are complicated inquires, and
+here, just as we explained in Crystallex II, “[a]s PDVSA’s lone
+shareholder, all profit ultimately runs to the Venezuelan
+government.” 932 F.3d at 148. Profits, we noted, that PDVSA
+paid back to Venezuela accompanied by taxes and royalties,
+sometimes at an artificially high rate. Id. And the Guaidó
+Government retains direct access to PDVSA’s U.S. bank
+
+
+
+
+                              30
+accounts, one of the assets PDVSA’s Ad Hoc Board has
+regularly characterized as Venezuela’s.
+
+                       3. Management
+
+       Venezuelan officials are vital to management of
+PDVSA and maintain a strong presence in its daily affairs. We
+explained that “President Maduro appoint[ed] PDVSA’s
+president, directors, vice-presidents, and members of its
+shareholder council.” Id. Appointments that included roles for
+military leaders and high government officials, sharing office
+space with the Ministry of Petroleum and Mining. Id. Even
+lower-level employees faced threats of termination if they did
+not attend Maduro’s political rallies and vote for his coalition
+in elections. See id. Nothing has changed since 2019, with
+Maduro calling on PDVSA workers to attack Guaidó, tasking
+the Minister of Petroleum to restructure PDVSA and attend an
+OPEC meeting on behalf of both Venezuela and PDVSA, and
+making political announcements from PDVSA’s offices.
+
+      Similarly, as the Delaware District Court found, “Mr.
+Guaidó [is empowered] to appoint and remove an Ad Hoc
+Board of Directors to exercise rights as PDV Holding’s
+shareholder, including appointing and removing board
+members to PDV Holding, CITGO, and other affiliates.” App.
+46–47 (citations omitted).20 “PDVSA’s Ad Hoc Board
+acknowledges that it operates at the ‘directives’ of the Guaidó
+Government.” App. 47. The National Assembly requires
+
+       20
+          Appellants argue the Guaidó Government has not
+pursued the same corrupt management as its predecessors, a
+point we need not refute. Because it is control, not corruption,
+that we evaluate—the means and ways of management, not the
+ends those actors pursue.
+
+
+
+
+                              31
+PDVSA to obtain prior approval for “national interest”
+contracts, which PDVSA’s Ad Hoc Board has suggested could
+cover all PDVSA’s agreements. App. 49. A theory consistent
+with PDVSA’s practice of sending every contract with foreign
+parties to the National Assembly for approval. All backed up
+by the Guaidó Government’s domination of PDVSA’s legal
+strategy, including sharing lawyers and directing when and
+how PDVSA pays its debts.
+
+       The parties disagree about the degree of that control,
+with PDVSA arguing it all falls short of complete day-to-day
+operational command. But neither this Court nor the Supreme
+Court has ever held absolute day-to-day control over
+operations to be necessary or even the touchstone of the alter-
+ego inquiry. We do not buck that trend, and instead look to all,
+not one, of the facts. Together, they reveal a high degree of
+governmental management of PDVSA’s affairs.
+
+                        4. Beneficiaries
+
+       PDVSA exists to benefit Venezuela. PDVSA paid
+Venezuela’s administrative fees for Venezuela’s arbitration
+with Crystallex, and Venezuela gave PDVSA a number of
+mining rights for no consideration. Crystallex II, 932 F.3d at
+149. Venezuela committed PDVSA to sell oil to Caribbean and
+Latin American allies at steep discounts to further Venezuela’s
+policies, often with deferred payments to Venezuela, not
+PDVSA. See id. at 147–49. Senior members of the Maduro
+Regime used PDVSA’s aircraft for state purposes, a practice
+that continued well after the 2019 election.
+
+         The Guaidó Government has not taken identical steps,
+but it still views PDVSA as key to advancing its political goals.
+The Delaware District Court found that PDVSA’s Ad Hoc
+
+
+
+
+                               32
+Board repeatedly described its mission as safeguarding its
+assets for the country of Venezuela, and that “Mr. Guaidó and
+his government regularly characterize PDVSA and its related
+assets, such as CITGO, as assets of the State.” App. 50. As
+Venezuela points out, the Guaidó Government’s declarations
+in the Democracy Transition Statute and Presidential Decree
+No. 3 have encouraged PDVSA to act economically rather than
+“on behalf of the government at its own expense.” Venezuela
+Opening Br. 37. But an instrumentality need not harm itself to
+benefit the sovereign. Together with the actions of PDVSA in
+Venezuela, this factor is satisfied.
+
+                          5. Equity
+
+       Consider, finally, how Venezuela arrives in this Court.
+The state owes on judgments but denies we have jurisdiction
+to allow remedies aimed at PDVSA. All while “PDVSA, and
+by extension Venezuela, derives significant benefits from the
+U.S. judicial system.” Crystallex II, 932 F.3d at 149. PDVSA
+enjoys the benefits and protections of United States law,
+including 2020 bonds “backed by the common stock and
+underlying assets of U.S.-based corporations,” with “the U.S.
+legal system [a]s the backstop that gives substantial assurance
+to investors who buy PDVSA’s debt.” Id. (internal citations
+omitted). Observations that still ring true.
+
+       Venezuela responds that this rationale would demand an
+alter-ego finding in every case. That concern is misplaced.
+Access to the courts of the United States is more than an
+incidental benefit for PDVSA and its three Delaware-
+corporation subsidiaries. And we again note that our analysis
+checks the entire record, not detached boxes.
+
+
+
+
+                              33
+       That all the Bancec factors weigh towards finding an
+alter-ego relationship does not control our inquiry, but it is
+more than mere coincidence. It reflects our long running
+practice of “declin[ing] to adhere blindly to the corporate form
+where doing so would cause such an injustice.” Bancec, 462
+U.S. at 632. For those reasons, PDVSA remains the alter ego
+of Venezuela and lacks sovereign immunity.21
+
+                               IV.
+
+        PDVSA and Venezuela ask us to consider an issue
+beyond the Delaware District Court’s denial of sovereign
+immunity: the attachment of PDVSA’s shares in PDVH. But
+Congress has only given the federal circuit courts jurisdiction
+over “appeals from all final decisions of the district courts.” 28
+U.S.C. § 1291. A “final decision” is “one which ends the
+litigation on the merits and leaves nothing for the court to do
+but execute the judgment.” Catlin v. United States, 324 U.S.
+229, 233 (1945). Often, that means dissatisfied parties must
+wait rather than appeal, even, as is common, when time is
+money. “[I]ndeed, ‘the possibility that a ruling may be
+erroneous and may impose additional litigation expense is not
+sufficient to set aside the finality requirement imposed by
+Congress.’” Weber v. McGrogan, 939 F.3d 232, 236 (3d Cir.
+
+       21
+         Even if we were to disregard the lessons we have
+taken from the history of sovereign immunity and the FSIA
+and look only to the actions of the Guaidó Government, the
+result would not change. The District Court found the Guaidó
+Government’s direction and control over PDVSA was
+analogous to the direction and control of the Maduro
+Government as identified by this Court in Crystallex II. That
+finding was not clearly erroneous based on the actions of the
+Guaidó Government we have detailed above.
+
+
+
+
+                               34
+2019) (quoting Richardson-Merrell, Inc. v. Koller, 472 U.S.
+424, 436 (1985)).
+
+        Despite the clarity of 28 U.S.C. § 1291, we have long
+allowed decisions denying sovereign immunity under the FSIA
+to be immediately appealed under the “collateral order
+doctrine.” See Fed. Ins. Co. v. Richard I. Rubin & Co., 12 F.3d
+1270, 1282 (3d Cir. 1993) (walking through the Cohen factors
+and joining other circuits in “decid[ing] that we have appellate
+jurisdiction [over denials of sovereign immunity under the
+FSIA] pursuant to the collateral order doctrine”).22
+
+
+       22
+           A conclusion reached by every other circuit to
+consider the question. See Segni v. Com. Off. of Spain, 816 F.2d
+344, 347 (7th Cir. 1987); Compania Mexicana De Aviacion,
+S.A. v. U.S. Dist. Court for Cent. Dist. of Cal., 859 F.2d 1354,
+1358 (9th Cir. 1988) (per curiam); Foremost-McKesson, Inc.
+v. Islamic Republic of Iran, 905 F.2d 438, 443 (D.C. Cir. 1990);
+Stena Rederi AB v. Comision de Contratos, 923 F.2d 380, 385
+(5th Cir. 1991); Eckert Int’l, Inc. v. Gov’t of Sovereign
+Democratic Republic of Fiji, 32 F.3d 77, 79 (4th Cir. 1994);
+Honduras Aircraft Registry, Ltd. v. Gov’t of Honduras, 129
+F.3d 543, 545 (11th Cir.1997); Rein v. Socialist People’s
+Libyan Arab Jamahiriya, 162 F.3d 748, 755–56 (2d Cir. 1998);
+Southway v. Cent. Bank of Nigeria, 198 F.3d 1210, 1214 (10th
+Cir. 1999); Ungar v. Palestine Liberation Org., 402 F.3d 274,
+293 (1st Cir. 2005); O’Bryan v. Holy See, 556 F.3d 361, 372
+(6th Cir. 2009). The Eighth Circuit does not appear to have
+directly addressed this point, although in passing seems to
+agree. See BP Chems. Ltd. v. Jiangsu SOPO Corp. (Grp.), 420
+F.3d 810, 818 (8th Cir. 2005).
+        Under Cohen’s test, concluding an appeal of a denial of
+sovereign immunity is immediately appealable makes sense. A
+
+
+
+
+                              35
+      Appellants ask us to take our jurisdiction even farther
+from the text of § 1291 and consider the propriety of
+attachment under the Federal Rules using “pendent appellate
+
+
+non-final order is reviewable under the collateral order
+doctrine if it: 1) conclusively determines the disputed issue; 2)
+resolves an important issue separate from the merits of the
+action; and 3) would be effectively unreviewable on appeal
+from the final judgment. See Mohawk Indus., Inc. v. Carpenter,
+558 U.S. 100, 105 (2009); Cohen v. Beneficial Indus. Loan
+Corp., 337 U.S. 541 (1949). Denials of sovereign immunity fit
+the bill. They conclusively determine whether a party is subject
+to continuing litigation, but are distinct from the merits. And
+reviewing a denial after a final judgment is of no help to the
+sovereign. All similar to denials of qualified immunity and
+Eleventh Amendment immunity the Supreme Court has held
+are immediately appealable under the collateral order doctrine.
+See, e.g., Mitchell v. Forsyth, 472 U.S. 511, 530 (1985); Puerto
+Rico Aqueduct and Sewer Auth. v. Metcalf & Eddy, Inc., 506
+U.S. 139, 141 (1993).
+        Still, concerns remain, and the Supreme Court has
+“described the conditions for collateral order appeal as
+stringent.” Digital Equip. Corp. v. Desktop Direct, Inc., 511
+U.S. 863, 868 (1994). The doctrine as announced through
+Cohen is an example of “the displacement of apparently
+controlling, nonjudicial, primary texts.” Mitchel de S.-O.-l’E.
+Lasser, “Lit. Theory” Put to the Test: A Comparative Literary
+Analysis of American Judicial Tests and French Judicial
+Discourse, 111 Harv. L. Rev. 689, 702 (1998). And the trend
+has only become trendier given the “textualization of
+precedent,” the practice of treating judicial opinions like
+statutes. See Peter M. Tiersma, The Textualization of
+Precedent, 82 Notre Dame L. Rev. 1187, 1188 (2007).
+
+
+
+
+                               36
+jurisdiction.” But the collateral order doctrine is already an
+expansion of § 1291, and pendent appellate jurisdiction further
+“drift[s] away from the statutory instructions Congress has
+given to control the timing of appellate proceedings.” Swint v.
+Chambers Cnty. Comm’n, 514 U.S. 35, 45 (1995). As the Court
+explained, the “procedure Congress ordered” for adding to “the
+list of orders appealable on an interlocutory basis” “is not
+expansion by court decision, but by rulemaking under § 2072”
+of the Rules Enabling Act. Id. at 48. Indeed, the unanimous
+Court declined to “definitively or preemptively settle . . .
+whether or when it may be proper for a court of appeals, with
+jurisdiction over one ruling, to review, conjunctively, related
+rulings that are not themselves independently appealable.” Id.
+at 50–51. Meaning the Court “reserved the very existence of”
+pendent appellate jurisdiction. Stephen I. Vladeck, Pendent
+Appellate Bootstrapping, 16 Green Bag 2d 199, 205 (2013).
+
+       Heeding that warning, in the years after Swint, this
+Court has exercised pendent appellate jurisdiction in only two
+narrow circumstances: 1) when an otherwise non-appealable
+order is “inextricably intertwined” with an appealable order,
+and 2) when “necessary to ensure meaningful review of the
+appealable order.” E.I. DuPont de Nemours & Co. v. Rhone
+Poulenc Fiber and Resin Intermediates, S.A.S., 269 F.3d 187,
+203 (3d Cir. 2001). Orders are “inextricably intertwined” “only
+when the appealable issue cannot be resolved without
+reference to the otherwise unappealable issue.” Reinig v. RBS
+Citizens, N.A., 912 F.3d 115, 130 (3d Cir. 2018) (citations and
+quotation marks omitted). That “the two orders arise out of the
+same factual matrix” is insufficient, “even if considering the
+orders together may be encouraged under considerations of
+efficiency.” Id. (citation and quotation marks omitted). The
+question is whether the appealable order can be “dispose[d]
+
+
+
+
+                              37
+of . . . without venturing into otherwise nonreviewable
+matters.” Id. at 131 (citation omitted). If so, we “have no
+need—and therefore no power—to examine the
+[nonreviewable] order.” Id. (citation omitted).
+
+        Venezuela argues not only that the immunity and
+attachment issues are “inextricably intertwined,” but that they
+are “coextensive.” Venezuela Opening Br. 44. Because the
+District Court applied the Bancec common law alter-ego test
+to the immunity inquiry, Venezuela says, “sufficient overlap in
+the facts relevant to both the appealable and nonappealable
+issues” warrants review of the attachment issue now.
+Venezuela Opening Br. 44–45 (citation omitted). We disagree.
+The immunity inquiry used the Bancec factors to determine
+whether a state exercises such extensive control over an
+instrumentality that it may be considered an “alter ego” of the
+state. The attachment inquiry invoked Bancec to evaluate
+whether PDVSA’s property can be attached to pay out a
+judgment. Resolution of the immunity issue does not dictate
+the outcome of the attachment issue. So we will not wade into
+the attachment waters, mindful that “loosely allowing pendent
+appellate jurisdiction would encourage parties to
+parlay . . . collateral orders into multi-issue interlocutory
+appeal tickets.” Swint, 514 U.S. at 49–50. Even if we could
+consider the attachment issue, we would decline to do so in our
+discretion. See United States v. Spears, 859 F.2d 284, 287 (3d
+Cir. 1988) (“[O]nce we have taken jurisdiction over one issue
+in a case, we may, in our discretion, consider otherwise
+nonappealable issues in the case as well, where there is
+sufficient overlap in the facts relevant to [the appealable and
+nonappealable] issues to warrant our exercising plenary
+authority over [the] appeal.” (quoting San Filippo v. United
+States Tr. Co., 737 F.2d 246, 255 (2d Cir. 1984))).
+
+
+
+
+                              38
+                             ***
+
+       The District Court did not clearly err in its factual
+determinations and did not legally err in its application of the
+Bancec factors. For the second time in five years, we conclude
+that PDVSA is the alter ego of Venezuela, and we will affirm
+the District Court’s denial of sovereign immunity to PDVSA.
+
+
+
+
+                              39
+

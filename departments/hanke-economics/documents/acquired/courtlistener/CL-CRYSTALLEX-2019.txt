@@ -1,0 +1,1671 @@
+                                        PRECEDENTIAL
+
+       UNITED STATES COURT OF APPEALS
+            FOR THE THIRD CIRCUIT
+               ________________
+
+               Nos. 18-2797 & 18-3124
+                 ________________
+
+  CRYSTALLEX INTERNATIONAL CORPORATION
+
+                           v.
+
+     BOLIVARIAN REPUBLIC OF VENEZUELA
+
+PETROLEOS DE VENEZUELA, S.A. (Intervenor in D.C.),
+                                     Appellant
+
+                  ________________
+
+      Appeal from the United States District Court
+               for the District of Delaware
+        (D.C. Civil Action No. 1-17-mc-00151)
+      District Judge: Honorable Leonard P. Stark
+                   ________________
+                     No. 18-2889
+                  ________________
+
+     In re: PETROLEOS DE VENEZUELA, S.A.,
+                                   Petitioner
+                   ________________
+
+             On Petition for Writ of Mandamus
+            from the United States District Court
+                 for the District of Delaware
+     (Related to D.C. Civil Action No. 1-17-mc-00151)
+                     ________________
+
+                  Argued April 15, 2019
+
+          Before: AMBRO, GREENAWAY, JR.,
+              and SCIRICA, Circuit Judges
+
+               (Opinion filed: July 29, 2019)
+
+Samuel Taylor Hirzel, II
+Heyman Enerio Gattuso & Hirzel
+300 Delaware Avenue, Suite 200
+Wilmington, DE 19801
+
+Kevin A. Meehan
+Julia Mosse
+Juan O. Perla
+Joseph D. Pizzurro (Argued)
+Curtis Mallet-Prevost Colt & Mosle
+101 Park Avenue, 35th Floor
+New York, NY 10178
+
+      Counsel for Intervenor-Appellant
+
+Miguel A. Estrada (Argued)
+Matthew S. Rozen
+
+
+
+
+                             2
+Lucas C. Townsend
+Gibson Dunn & Crutcher
+1050 Connecticut Avenue, N.W.
+Washington, DC 20036
+
+Rahim Moloo
+Jason W. Myatt
+Robert L. Weigel
+Gibson Dunn & Crutcher
+200 Park Avenue, 47th Floor
+New York, NY 10166
+
+Travis S. Hunter
+Jeffrey L. Moyer
+Raymond J. DiCamillo
+Richards Layton & Finger
+920 North King Street
+One Rodney Square
+Wilmington, DE 19801
+
+      Counsel for Appellee
+
+E. Whitney Debevoise, II
+Stephen K. Wirth
+Samuel F. Callahn
+Arnold & Porter Kaye Scholer LLP
+601 Massachusetts Avenue, N.W.
+Washington, DC 20001
+
+Paul J. Fishman
+Arnold & Porter Kaye Scholer LLP
+One Gateway Center, Suite 1025
+Newark, NJ 07102
+
+
+
+
+                              3
+Kent A. Yalowitz (Argued)
+Arnold & Porter Kaye Scholer LLP
+250 West 55th Street
+New York, NY 10019
+
+      Counsel for Intervenor-Appellant
+      Bolivarian Republic of Venezuela
+
+Amanda F. Davidoff (Argued)
+Sullivan & Cromwell LLP
+1700 New York Avenue, N.W., Suite 700
+Washington, DC 20006
+
+Sergio Galvis
+Joseph E. Neuhaus
+Andrew G. Ditderich
+Sullivan & Cromwell LLP
+125 Broad Street
+New York, NY 10004
+
+Carl N. Kunz, III
+Lewis H. Lazarus
+Morris James LLP
+500 Delaware Avenue, Suite 1500
+Wilmington, DE 19801
+
+      Counsel for Amicus Appellants
+      Blackrock Financial Management Inc.;
+      Contrarian Capital Management LLC
+
+
+
+
+                            4
+                     ________________
+
+                 OPINION OF THE COURT
+                    ________________
+
+AMBRO, Circuit Judge
+
+       Crystallex International Corp., a Canadian gold mining
+company, invested hundreds of millions of dollars to develop
+gold deposits in the Bolivarian Republic of Venezuela. In
+2011, Venezuela expropriated those deposits and transferred
+them to its state-owned oil company, Petróleos de Venezuela,
+S.A. (“PDVSA”). To seek redress, Crystallex invoked a
+bilateral investment treaty between Canada and Venezuela to
+file for arbitration before the International Centre for
+Settlement of Investment Disputes. The arbitration took place
+in Washington, D.C., and Crystallex won; the arbitration panel
+awarded it $1.2 billion plus interest for Venezuela’s
+expropriation of its investment. The United States District
+Court for the District of Columbia confirmed that award and
+issued a $1.4 billion federal judgment. Now Crystallex is
+trying to collect.
+       Unable to identify Venezuelan-held commercial assets
+in the United States that it can lawfully seize, Crystallex went
+after U.S.-based assets of PDVSA. Specifically, it sought to
+attach PDVSA’s shares in Petróleos de Venezuela Holding,
+Inc. (“PDVH”), its wholly owned U.S. subsidiary. PDVH is
+the holding company for CITGO Holding, Inc., which in turn
+owns CITGO Petroleum Corp. (“CITGO”), a Delaware
+Corporation headquartered in Texas (though best known for
+the CITGO sign outside Fenway Park in Boston).
+
+
+
+
+                               5
+        This attachment suit is governed by the Foreign
+Sovereign Immunities Act of 1976, 28 U.S.C. §§ 1602–1611
+(the “Sovereign Immunities Act”). Under federal common law
+first recognized by the Supreme Court in First National City
+Bank v. Banco Para El Comercio Exterior de Cuba
+(“Bancec”), 462 U.S. 611 (1983), a judgment creditor of a
+foreign sovereign may look to the sovereign’s instrumentality
+for satisfaction when it is “so extensively controlled by its
+owner that a relationship of principal and agent is created.” Id.
+at 629.
+        Interpreting Bancec, the District Court, per Chief Judge
+Stark, concluded that Venezuela’s control over PDVSA was
+sufficient to allow Crystallex to attach PDVSA’s shares of
+PDVH in satisfaction of its judgment against the country.
+PDVSA and Venezuela, along with PDVSA’s third-party
+bondholders as amici (the “Bondholders”), challenge this
+ruling.
+       Venezuela and the Bondholders do not substantially
+contest the District Court’s finding that it extensively
+controlled PDVSA. Rather, they raise various jurisdictional
+and equitable objections to the attachment. Likewise, PDVSA
+primarily contends that its tangential role in the dispute
+precludes execution against its assets under Bancec
+irrespective of the control Venezuela exerts over it.
+       We affirm the District Court’s order granting the writ of
+attachment and remand for further proceedings consistent with
+this opinion.1
+
+
+
+
+1
+  We also deny PDVSA’s petition for a writ of mandamus and
+dismiss as moot its second appeal.
+
+
+
+
+                               6
+I.     Background
+          Factual background
+
+       In 2002, Crystallex contracted with Corporación
+Venezolana de Guayanaan, an organ of the Venezuelan
+government, for the right to develop and extract exclusively for
+20 years the gold deposits at Las Cristinas, Venezuela. See
+Crystallex Int’l Corp. v. Bolivarian Republic of Venezuela
+(“D.C. Crystallex I”), 244 F. Supp. 3d 100, 105–06 (D.D.C.
+2017). The deposits are among the world’s largest. Per the
+contract, Crystallex spent hundreds of millions of dollars
+developing the Las Cristinas site. Id. at 106. It also performed
+various other obligations under the contract. Id.
+        In 2011, Venezuela nationalized its gold mines and
+seized the Las Cristinas works without providing
+compensation. As Crystallex asserts and PDVSA does not
+dispute, Venezuela then gave the mining rights at Las Cristinas
+to PDVSA for no consideration, and PDVSA subsequently
+“sold to the Venezuelan Central Bank 40% of its shares in the
+affiliate that was created to exercise those mining rights.” J.A.
+1194.
+
+       Later that year, Crystallex filed for arbitration under a
+bilateral investment treaty between Canada and Venezuela
+before the International Centre for Settlement of Investment
+Disputes. As noted earlier, the arbitration took place in
+Washington, D.C., and Crystallex won an arbitration award of
+$1.2 billion plus interest.
+       Crystallex had its award. Now it had to collect.
+
+
+
+
+                               7
+          Crystallex’s collection efforts
+                 Confirmation proceedings in the District
+                 of Columbia
+       Crystallex filed an action to confirm its award in the
+U.S. District Court for the District of Columbia. It properly
+served Venezuela, who appeared to defend it. The Court
+confirmed the award and entered a federal judgment in favor
+of Crystallex. D.C. Crystallex I, 244 F. Supp. 3d at 122–23.
+After Venezuela failed to satisfy the judgment within 30 days,
+the Court ruled that Crystallex could execute on it. Crystallex
+Int’l Corp. v. Bolivarian Republic of Venezuela, No. CV 16-
+0661 (RC), 2017 WL 6349729, at *1 (D.D.C. June 9, 2017).
+However, the Court expressly declined to address whether
+Crystallex could attach assets held by PDVSA and its
+subsidiaries. Id. at *2. Venezuela appealed the ruling, and the
+D.C. Circuit affirmed it. Crystallex Int’l Corp. v. Bolivarian
+Republic of Venezuela, No. 17-7068, 2019 WL 668270, at *2
+(D.C. Cir. Feb. 14, 2019).
+                 Delaware Uniform Fraudulent Transfer
+                 Act proceedings
+
+        While arbitration was pending and then after the award
+was announced, Crystallex brought suits against CITGO,
+CITGO Holding, PDVH, and PDVSA in the Delaware District
+Court. See Crystallex Int’l Corp. v. PDV Holding, Inc. (1:15-
+CV-1082); Crystallex Int’l Corp. v. PDV Holding, Inc. (1:16-
+CV-1007). It claimed that Venezuela refused to pay its
+arbitration award and “thwart[ed] enforcement” by transferring
+its assets among several entities—PDVSA, PDVH, and
+CITGO— allegedly in violation of the Delaware Uniform
+Fraudulent Transfer Act, 6 Del. C. §§ 1301–11. Crystallex
+Int’l Corp. v. Petróleos de Venezuela, S.A., 879 F.3d 79, 82 (3d
+Cir. 2018). The Court denied PDVH’s motion to dismiss, but
+
+
+
+
+                               8
+we reversed and held that a transfer from a non-debtor could
+not be a “fraudulent transfer” under the Act. Id. at 81 (“While
+we do not condone the debtor’s and the transferor’s actions, we
+must conclude that Crystallex has failed to state a claim under
+[the Act].”). That panel noted explicitly but reserved judgment
+on the question now before us—whether PDVSA could be
+liable for the arbitration award as an “alter ego” of Venezuela.
+Id. at 84 n.7.
+
+                 Proceedings in this appeal
+       While the award-confirmation appeal was pending in
+the D.C. Circuit, Crystallex followed up its judgment by filing
+an attachment action against Venezuela in the Delaware
+District Court. Under Federal Rule of Civil Procedure 69(a),
+Crystallex attempted to attach PDVH shares owned by
+PDVSA. That rule provides: “A money judgment is enforced
+by a writ of execution, unless the court directs otherwise. The
+procedure on execution—and in proceedings supplementary to
+and in aid of judgment or execution—must accord with the
+procedure of the state where the court is located,” here
+Delaware, “but a federal statute governs to the extent it
+applies.” Delaware law permits a judgment creditor to obtain
+a writ of attachment (known by its Latin name, fieri facias, or
+simply fi. fa.) over various forms of property belonging to the
+debtor, including its shares in a Delaware corporation. See 10
+Del. C. § 5031; 8 Del. C. § 324(a).
+       Though not named in the attachment proceeding,
+PDVSA intervened in the District Court. It moved to dismiss
+the proceeding on the ground of sovereign immunity under the
+Sovereign Immunities Act.
+       After several rounds of briefing and hearings, the
+District Court concluded that PDVSA was Venezuela’s “alter
+ego” under Bancec. Crystallex Int’l Corp. v. Bolivarian
+
+
+
+
+                               9
+Republic of Venezuela (“Del. Crystallex”), 333 F. Supp. 3d
+380, 414 (D. Del. 2018). The Court held (1) it had jurisdiction
+to order attachment against PDVSA’s U.S.-based commercial
+assets, and (2) Crystallex could attach PDVSA’s shares of
+PDVH to satisfy the judgment against Venezuela. A follow-
+up order, dated August 23, 2018, directed the Clerk to issue the
+writ and have it served in furtherance of an execution through
+a public sale of PDVH stock. PDVSA appealed both of these
+orders (docketed in our Court as Nos. 18-2797 & 18-3124), and
+also filed a petition for a writ of mandamus (No. 18-2889) to
+prevent completion of the sale during this appeal. We
+consolidated all three appeals for oral argument and resolution.
+       While they were pending before us, Venezuela moved
+to intervene and to stay these appeals for 120 days so that it
+could further evaluate its legal position. By order dated March
+20, 2019, we granted Venezuela’s motion to intervene and
+participate in oral argument. We also permitted it to file
+supplemental briefing. We did not rule on its motion to stay
+but stated we would consider that motion at oral argument. At
+that argument, Venezuela chose to forgo further pursuit of a
+stay. Oral Arg. Tr. at 180:1–7 (Apr. 15, 2019).
+          Relationship between Venezuela and PDVSA
+       The District Court’s primary ruling was that PDVSA is
+Venezuela’s “alter ego” under Bancec. Numerous facts are
+relevant to that determination, as discussed in more detail
+below. In general, it is undisputed the relationship between
+PDVSA and Venezuela has tightened significantly since 2002,
+when then-President Hugo Chávez fired roughly 40% of the
+PDVSA workforce for protesting increased Venezuelan
+control over the company. Since then PDVSA’s presidents
+have generally been senior members of the Venezuelan
+president’s cabinet, including members of the Venezuelan
+military. Venezuela has also passed various laws that require
+
+
+
+
+                              10
+PDVSA to fund both government initiatives and discretionary
+government funds. Venezuela controls PDVSA’s domestic oil
+production, sales, and pricing. It also requires that PDVSA
+supply Venezuela and its strategic allies with oil at below-
+market rates.
+
+          The Bondholders’ interests
+       Also relevant to this appeal are the various bonds that
+PDVSA has issued over the past decade or so. Several holders
+of PDVSA bonds due to mature in 2020 moved to intervene as
+amici in this appeal. They include BlackRock Financial
+Management, Inc. and Contrarian Capital Management, LLC.
+Their bonds have an outstanding face value of approximately
+$1.684 billion and are secured by a 50.1% collateral interest in
+PDVH’s shares of Citgo Holding, Inc. as security for the
+bonds. According to the Bondholders, PDVSA has also issued
+roughly $25 billion in bonds to U.S. and non-U.S. capital
+markets investors.
+
+          U.S. policy towards Venezuela and PDVSA
+      President Nicolas Maduro became the President of
+Venezuela in 2013. This year Juan Guaidó, Venezuelan’s
+opposition leader and president of the National Assembly, has
+made efforts to oust Maduro and take control of the
+Venezuelan government. The United States Government
+recognized Guaidó as the rightful leader of Venezuela on
+January 23, 2019.2
+
+
+2
+  As a practical matter, there is reason to believe that Guaidó’s
+regime does not have meaningful control over Venezuela or its
+principal instrumentalities such as PDVSA. Nonetheless,
+under Guaranty Trust Co. v. United States, 304 U.S. 126, 138
+
+
+
+
+                               11
+       Five days later, as part of a broader effort to convince
+the Maduro regime to cede power, the Office of Foreign Assets
+Control of the U.S. Department of the Treasury (“OFAC”)
+imposed new sanctions against PDVSA by adding it to the List
+of Specially Designated Nationals and Blocked Persons. As
+discussed further below, the U.S. Government has also
+promulgated several executive orders limiting transfer of
+Venezuelan or PDVSA-controlled assets in the United States.
+
+II.    Jurisdiction and standard of review
+        The parties dispute whether the District Court had
+jurisdiction to attach PDVSA’s property to satisfy the
+judgment against Venezuela. The Court held that it had both
+ancillary jurisdiction to enforce the judgment and an
+independent basis for jurisdiction per 28 U.S.C. § 1330 and 28
+U.S.C. § 1605(a)(6) because PDVSA was Venezuela’s alter
+ego. Section 1330 grants federal-court jurisdiction over “any
+nonjury civil action” against a foreign sovereign, so long as the
+sovereign is properly served under 28 U.S.C. § 1608 and is not
+entitled to sovereign immunity. See 28 U.S.C. § 1330(a)–(b).
+Under 28 U.S.C. § 1604, foreign sovereigns and their
+instrumentalities are entitled to sovereign immunity in U.S.
+courts except as provided in 28 U.S.C. §§ 1605–1607. Section
+1605(a)(6), the immunity exception applied by the District
+Court in this case, provides an exception to immunity for
+actions seeking to compel arbitration pursuant to an agreement
+or to enforce arbitration awards that meet certain criteria.
+       We have jurisdiction to review the District Court’s
+denial of PDVSA’s motion to dismiss as an immune sovereign
+
+
+(1938), we recognize Guaidó’s regime as authorized to speak
+and act on behalf of Venezuela in these appeals.
+
+
+
+
+                               12
+and the grant of Crystallex’s motion for a writ of attachment
+under Federal Rule of Civil Procedure 69. We have
+jurisdiction to review the former under the collateral order
+doctrine. See Fed. Ins. Co. v. Richard I. Rubin & Co., 12 F.3d
+1270, 1279–82 (3d Cir. 1993).3 Our jurisdiction exists for the
+latter because it amounted to a final judgment under 28 U.S.C.
+§ 1291 by leaving the District Court “nothing left to do but
+execute[.]” Bryan v. Erie Cnty. Office of Children and Youth,
+752 F.3d 316, 321 (3d Cir. 2014).
+       We review questions of law de novo and findings of fact
+for clear error, and we review de novo the ultimate
+determination whether to treat PDVSA as Venezuela’s alter
+ego. See Clientron Corp. v. Devon IT, Inc., 894 F.3d 568, 575
+(3d Cir. 2018).
+III.   Analysis
+       The parties raise a host of issues. We group them into
+three core inquiries: (A) whether the Bancec “alter ego”
+doctrine determines the District Court’s jurisdiction to attach
+PDVSA’s assets (it does), (B) the scope of the Bancec inquiry
+and whether its factors are satisfied here (they are), and (C)
+
+
+
+3
+  The collateral order doctrine allows us to exercise jurisdiction
+over interlocutory appeals, such as this one, when the order
+“conclusively determines the disputed question, resolves an
+important issue completely separate from the merits of the
+action, and is effectively unreviewable on appeal from a final
+judgment.” Fed. Ins. Co., 12 F.3d at 1279–80 (brackets and
+internal quotation marks omitted); see also Cohen v. Beneficial
+Industrial Loan Corp., 337 U.S. 541, 545–47 (1949)
+(articulating the doctrine).
+
+
+
+
+                               13
+whether PDVSA’s shares of PDVH are immune from
+attachment under the Sovereign Immunities Act (they are not).
+
+          Bancec controls the jurisdictional inquiry here.
+                 The District Court had jurisdiction over
+                 Venezuela.
+
+        As noted, Crystallex confirmed its arbitration award
+against Venezuela in the U.S. District Court for the District of
+Columbia, which yielded a federal judgment. It then registered
+that judgment for enforcement in the Delaware District Court
+under 28 U.S.C. § 1963. That section provides that a judgment
+so registered “shall have the same effect as a judgment of the
+district court of the district where registered and may be
+enforced in like manner.” Id. After registering the judgment,
+Crystallex moved to enforce it by attaching assets under
+Federal Rule of Civil Procedure 69(a).
+       As a threshold question, we consider whether the
+District Court in Delaware had jurisdiction over Venezuela, the
+only party named as a defendant here. It is undisputed that the
+D.C. District Court had jurisdiction over Venezuela under the
+Sovereign Immunity Act’s arbitration exception, 28 U.S.C. §
+1605(a)(6). It is well established that federal courts have
+ancillary jurisdiction to enforce their judgments. See IFC
+Interconsult, AG v. Safeguard Int’l Partners, LLC, 438 F.3d
+298, 311 (3d Cir. 2006). That jurisdiction applies to “a broad
+range of supplementary proceedings involving third parties to
+assist in the protection and enforcement of federal
+judgments—including attachment . . . [and] garnishment.”
+Peacock v. Thomas, 516 U.S. 349, 356, 359 & n.7 (1996).
+Furthermore, ancillary enforcement jurisdiction—or its
+functional equivalent—has been routinely applied to post-
+judgment enforcement proceedings against a foreign
+sovereign. See First City, Texas Houston, N.A. v. Rafidain
+
+
+
+
+                              14
+Bank, 281 F.3d 48, 53–54 (2d Cir. 2002); Peterson v. Islamic
+Republic of Iran, 627 F.3d 1117, 1123 (9th Cir. 2010);
+Transaero, Inc. v. La Fuerza Aerea Boliviana, 30 F.3d 148,
+150 (D.C. Cir. 1994). In other words, when a party establishes
+that an exception to sovereign immunity applies in a merits
+action that results in a federal judgment—here, the exception
+for confirming arbitration awards, 28 U.S.C. § 1605(a)(6)—
+that party does not need to establish yet another exception
+when it registers the judgment in another district court under
+28 U.S.C. § 1963 and seeks enforcement in that court. Rather,
+the exception in the merits action “sustain[s] the court’s
+jurisdiction through proceedings to aid collection of a money
+judgment rendered in the case . . . .” First City, 281 F.3d at
+53–54.
+       According to Venezuela, we should forbid Crystallex
+from using the § 1963 procedure in this case, as that procedure
+for registering a judgment cannot be applied to a foreign
+sovereign at all because it is “preempted by [the Sovereign
+Immunities Act].” (Venezuela Br. at 9–16.)4 Venezuela
+presents this position as a two-pronged jurisdictional
+argument. First, it contends that § 1963 does not confer
+personal jurisdiction over it because the only method for
+establishing jurisdiction is by making proper service under the
+Sovereign Immunities Act’s service provisions, 28 U.S.C.
+§ 1608. (Venezuela Br. at 9–12.) We disagree: § 1608 applies
+only to the “summons and complaint,” id., whereas “[s]ervice
+of post-judgment motions is not required.” Peterson, 627 F.3d
+at 1130.
+       Second, Venezuela asserts that § 1963 does not create
+subject matter jurisdiction over foreign sovereigns and cannot
+4
+  We note that, as a doctrinal matter, “preemption” generally
+refers to the effect of a federal statute on state law rather than
+on other federal statutes.
+
+
+
+
+                                15
+be used to “piggyback” on the subject-matter jurisdiction of the
+court that rendered the judgment being enforced. (Venezuela
+Br. at 12–16.) Regardless whether § 1963 separately confers
+subject-matter jurisdiction over foreign sovereigns, a district
+court has jurisdiction to enforce a federal judgment against a
+foreign sovereign when it is registered under § 1963. This is
+so, as noted, because the jurisdictional basis from the action
+resulting in the judgment carries over to the post-judgment
+enforcement proceeding in a manner akin to the ordinary
+operation of a district court’s enforcement jurisdiction over
+post-judgment proceedings. See First City, 281 F.3d at 53–54;
+Peterson, 627 F.3d at 1123; Transaero, 30 F.3d at 150.
+        A recent decision by the Supreme Court reinforces our
+rejection of Venezuela’s novel § 1963 argument. See Republic
+of Sudan v. Harrison, 139 S. Ct. 1048, 1054 (2019). It involved
+a § 1963 proceeding against the instrumentalities of a foreign
+sovereign—the same procedural posture we have here. The
+Court resolved that case on a ground not relevant here, but,
+notably, it expressed no concern about the use of a § 1963
+proceeding against a foreign sovereign. If Venezuela’s view
+of § 1963 were correct, Harrison would presumably have said
+so.5
+       In short, before the Delaware District Court and us is a
+continuation of the action in the D.C. District Court. As the
+latter had jurisdiction over Venezuela—by virtue of the
+Sovereign Immunities Act’s arbitration exception, 28 U.S.C.
+§ 1605(a)(6)—both Courts that follow, the Delaware District
+Court and our Court, also have jurisdiction.
+
+5
+  Indeed, Justice Thomas would have affirmed the Second
+Circuit’s exercise of jurisdiction—implicitly concluding there
+was no § 1963 jurisdictional problem. Id. at 1066 (Thomas, J.,
+dissenting).
+
+
+
+
+                              16
+                  The District Court properly used Bancec
+                  to extend its jurisdiction to assets held
+                  nominally by PDVSA.
+       Taking a different tack, PDVSA concedes the District
+Court had jurisdiction over Venezuela but believes that Bancec
+cannot be used to extend that jurisdiction to reach the assets of
+PDVSA, a non-party to the merits action. We part company
+again.
+
+        To reach this conclusion, we first consider our decision
+in Federal Insurance, 12 F.3d at 1287. There we joined other
+circuits in holding that, although the Bancec doctrine came in
+a case involving the shifting of substantive liability, it also
+applied to extend a district court’s jurisdiction over a foreign
+sovereign to reach an extensively controlled instrumentality.
+See id. (collecting cases). On a straightforward application of
+Federal Insurance, the District Court’s jurisdiction over
+Venezuela would extend to PDVSA so long as it is
+Venezuela’s alter ego under Bancec. See De Letelier v.
+Republic of Chile, 748 F.2d 790, 795 (2d Cir. 1984) (applying
+Bancec in post-judgment enforcement proceeding); Alejandre
+v. Telefonica Larga Distancia de Puerto Rico, Inc., 183 F.3d
+1277, 1288 (11th Cir. 1999) (same).
+        That potential application of Federal Insurance
+deserves a closer look. The decision was in the context of a
+merits action—it did not address the post-judgment
+enforcement setting we have here. 12 F.3d at 1287. According
+to PDVSA, that distinction makes all the difference. It claims
+that a district court cannot exercise post-judgment enforcement
+jurisdiction over a party other than the judgment debtor based
+
+
+
+
+                               17
+on a theory of “alter ego” or “veil piercing”6 unless it has an
+“independent basis” for jurisdiction over the third party.
+(PDVSA Br. at 24–27.) For that proposition, PDVSA cites
+Peacock, 516 U.S. at 357, in which a plaintiff who had
+obtained a federal judgment against his employer under the
+Employee Retirement Income Security Act of 1974 (“ERISA”)
+filed a new action in a federal court against a shareholder of the
+employer seeking to hold him liable by “piercing the corporate
+veil.” Id. at 353. The Court ruled that action was not within
+the district court’s ancillary enforcement jurisdiction because
+it does not extend to “a subsequent lawsuit to impose an
+obligation to pay an existing federal judgment on a person not
+already liable for that judgment.” Id. at 357.
+        According to PDVSA, Peacock precludes the District
+Court from exercising ancillary enforcement jurisdiction over
+this action because it seeks to “shift liability for payment of an
+existing judgment to a third party that is not otherwise liable
+on the judgment.” (PDVSA Br. at 24 (citing Peacock).) That
+reading of Peacock misfires. It was not a case involving
+foreign sovereigns or the Sovereign Immunities Act. The Act
+is a specialized jurisdictional statute designed to address a
+specific problem—the extent to which foreign sovereigns and
+their instrumentalities are immune from suit and attachment in
+our courts. And the Bancec doctrine—the applicability of
+which is the core question here—is a federal common-law
+outgrowth of that specialized statute. It (the doctrine) exists
+specifically to enable federal courts, in certain circumstances,
+to disregard the corporate separateness of foreign sovereigns to
+
+6
+  These terms in legal context mean that if an entity’s separate
+form (typically as a subsidiary corporation) is so disregarded
+by the one who controls it (the “parent”), the “corporate veil”
+can be “pierced,” that is, separateness is ignored.
+
+
+
+
+                               18
+avoid the unfair results from a rote application of the immunity
+provisions provided by the Sovereign Immunities Act.
+Nothing in Peacock leads us to believe the Supreme Court
+expected or intended its decision in that case to restrain the
+application of Bancec in post-judgment proceedings.
+
+        Moreover, in Rubin v. Islamic Republic of Iran, 138 S.
+Ct. 816, 823 (2018), the Supreme Court all but confirmed that
+Bancec can indeed be used to reach the assets of a foreign
+sovereign’s extensively controlled instrumentality through
+post-judgment attachment proceedings. The Court examined
+28 U.S.C. § 1610(g), a provision of the Sovereign Immunities
+Act related to attachments of assets held by agencies and
+instrumentalities of states that have sponsored terrorism. Id. It
+observed that § 1610(g)(1), which was added to the Sovereign
+Immunities Act by congressional amendment in 2008,
+“incorporate[s] almost verbatim the five Bancec factors [they
+are noted below], leaving no dispute that, at a minimum, §
+1610(g) serves to abrogate Bancec with respect to the liability
+of agencies and instrumentalities of a foreign state where a
+[terrorism-related-judgment] holder seeks to satisfy a
+judgment held against the foreign state.” Id. We take from this
+the implication that in ordinary FSIA attachment
+proceedings—i.e., those that do not involve judgments based
+on state-sponsored terrorism—the judgment holder may reach
+the assets of the foreign judgment debtor by satisfying the
+Bancec factors. See id. Indeed, the Court expressly stated that,
+where 28 U.S.C. § 1610(g) does not apply, a plaintiff with a
+judgment against the sovereign would need to satisfy the
+Bancec factors if it sought, for example, “to collect against
+assets located in the United States of a state-owned
+telecommunications company.” Id. at 23–24 (citing Alejandre,
+183 F.3d 1277) (emphasis added).
+       These analyses confirm the relevance of Bancec here:
+so long as PDVSA is Venezuela’s alter ego under Bancec, the
+
+
+
+
+                               19
+District Court had the power to issue a writ of attachment on
+that entity’s non-immune assets to satisfy the judgment against
+the country. See Hercaire Int’l, Inc. v. Argentina, 821 F.2d
+559, 563–65 (11th Cir. 1987) (looking to the Sovereign
+Immunities Act and Bancec to determine “whether the assets
+of a foreign state’s wholly-owned national airline are subject
+to execution to satisfy a judgment obtained against the foreign
+state, where the airline was neither a party to the litigation nor
+was in any way connected with the underlying transaction
+giving rise to the suit”); Arriba Ltd. v. Petroleos Mexicanos,
+962 F.2d 528, 532–38 (5th Cir. 1992) (doing the same to
+determine whether the district court had jurisdiction to conduct
+a garnishment proceeding against a foreign instrumentality,
+where the purported basis for jurisdiction was solely the
+actions of the instrumentality’s agents).
+          Whether Venezuela is PDVSA’s alter ego under
+          Bancec
+       “Due respect for the actions taken by foreign sovereigns
+and for principles of comity between nations” caused the
+Supreme Court to conclude in Bancec that “government
+instrumentalities established as juridical entities distinct and
+independent from their sovereign should normally be treated
+as such.” 462 U.S. at 626–27. Recognizing the respect due to
+foreign sovereigns, the Court adopted a “presumption of
+independent status” for instrumentalities. Id. at 627. PDVSA,
+as an instrumentality of Venezuela separately formed in 1976,
+is accorded that presumption. It is not to be taken lightly, as
+the District Court noted. Del. Crystallex, 333 F. Supp. 3d at
+396 (D. Del. 2018) (citing Arch Trading Corp. v. Republic of
+Ecuador, 839 F.3d 193, 201 (2d Cir. 2016)); see also De
+Letelier, 748 F.2d at 795 (“[B]oth Bancec and the [Sovereign
+Immunities Act’s] legislative history caution against too easily
+overcoming the presumption of separateness.”).
+
+
+
+
+                               20
+                  Extensive control standard under Bancec
+       In Bancec the Supreme Court allowed a U.S. bank to
+recover assets from a Cuban instrumentality to satisfy a debt
+owed by the Republic of Cuba. Bancec, 462 U.S. at 613. It
+held that while there exists a strong presumption that
+government instrumentalities have a separate legal identity
+(along with limited liability) from their “parent” governments,
+this presumption can be overcome in certain situations—for
+example, “where a corporate entity is so extensively controlled
+by its owner that a relationship of principal and agent is
+created, we have held that one may be held liable for the
+actions of the other.” Bancec, 462 U.S. at 629 (citing NLRB v.
+Deena Artware, Inc., 361 U.S. 398, 402–404 (1960)). “In
+addition,” it recognized “the broader equitable principle that
+the doctrine of corporate entity, recognized generally and for
+most purposes, will not be regarded when to do so would work
+fraud or injustice.” Id. (quoting Taylor v. Standard Gas Co.,
+306 U.S. 307, 322 (1939)). Thus we recognize Bancec
+establishes a disjunctive test for when the separate identities of
+sovereign and instrumentality should be disregarded: when
+there is “extensive[] control,” and when not disregarding
+separate identities would work a “fraud or injustice.” Rubin,
+138 S. Ct. at 823.
+
+       Bancec did not develop a “mechanical formula” for
+determining when these exceptions should apply, however,
+which left “lower courts with the task of assessing the
+availability of exceptions on a case-by-case basis.” Rubin, 138
+S. Ct. at 823. In ensuing decades district and circuit courts
+applied the Bancec extensive-control test in various contexts.
+Several multi-factor tests emerged in that period—the Second
+Circuit, for example, had a non-exhaustive five-factor test, see
+EM Ltd. v. Banco Cent. De La Republica Argentina, 800 F.3d
+
+
+
+
+                               21
+78, 91 (2d Cir. 2015), which the District Court applied here.7
+By and large the multi-factor tests for extensive control
+percolating through the federal courts covered similar ground,
+see, e.g., Walter Fuller Aircraft Sales, Inc. v. Republic of
+Philippines, 965 F.2d 1375, 1380 n.7, 1381 (5th Cir. 1992)
+(identifying five extensive-control factors), though at least one
+court has piled on the factors, see Bridas S.A.P.I.C. v. Gov’t of
+Turkmenistan, 447 F.3d 411, 418 (5th Cir. 2006) (recognizing
+21 factors relevant to extensive control);
+        In Rubin, the Supreme Court recently provided a further
+gloss on the Bancec factors, which we believe clarifies the
+analysis of the extensive-control prong here. The plaintiffs
+there held a § 1605A-judgment against the Islamic Republic of
+Iran and attempted to attach and execute against certain Iranian
+artifacts on loan to the University of Chicago. Rubin, 138 S.
+Ct. at 820. In the course of addressing whether that attachment
+
+7
+    These factors include:
+
+         whether the sovereign nation: (1) uses the
+         instrumentality’s property as its own; (2) ignores
+         the instrumentality’s separate status or ordinary
+         corporate formalities; (3) deprives the
+         instrumentality of the independence from close
+         political control that is generally enjoyed by
+         government agencies; (4) requires the
+         instrumentality to obtain approvals for ordinary
+         business decisions from a political actor; and (5)
+         issues policies or directives that cause the
+         instrumentality to act directly on behalf of the
+         sovereign state.
+
+EM Ltd., 800 F.3d at 91; Del. Crystallex, 333 F. Supp. 3d at
+401.
+
+
+
+
+                                22
+was proper (it was not), the Court identified five “Bancec
+factors” to aid circuit courts in their analysis:
+
+               (1) the level of economic control by the
+               government;
+               (2) whether the entity’s profits go to the
+               government;
+               (3) the degree to which government
+               officials manage the entity or otherwise
+               have a hand in its daily affairs;
+               (4) whether the government is the real
+               beneficiary of the entity’s conduct; and
+               (5) whether adherence to separate
+               identities would entitle the foreign state to
+               benefits in United States courts while
+               avoiding its obligations.
+Id. at 823 (quoting Walter Fuller Aircraft Sales, Inc., 965 F.2d
+at 1380 n.7). We use these factors identified in Rubin to
+structure our analysis here. At the same time, we recognize
+that they, like the other extensive control tests our sister circuits
+have adopted,8 are meant to aid case-by-case analysis rather
+
+8
+  We follow Crystallex’s suggestion to apply the Rubin factors,
+and neither Venezuela nor PDVSA indicates a preference
+between them and those the District Court applied. Either
+inquiry compels the same result. See generally Del. Crystallex,
+333 F. Supp. 3d at 406–14. But an unresolved point of
+ambiguity remains: whether the Rubin factors apply only to the
+extensive-control inquiry (as in Walter Fuller) or to both
+disjunctive tests. The parties do not address this issue, and so
+we leave it for a future panel.
+
+
+
+
+                                 23
+than establish a “mechanical formula” for identifying extensive
+control. Bancec, 462 U.S. at 633.
+
+                  Bancec’s scope
+        PDVSA and the Bondholders raise together six
+challenges to the District Court’s inquiry under Bancec: that (i)
+a sovereign’s extensive control, alone, cannot allow courts to
+ignore the separateness of a corporation from the country it is
+in, (ii) Crystallex must show PDVSA acted as Venezuela’s
+agent against Crystallex, (iii) we must consider the third-party
+interests of PDVSA’s bondholders, (iv) extensive control must
+be shown by clear and convincing evidence, (v) the Bancec
+inquiry must be examined in light of current circumstances,
+particularly the limited control of the Guaidó regime over
+PDVSA; and (vi) Bancec requires that courts also balance
+equities when they consider whether to discard an
+instrumentality’s presumption of separateness. We address
+each argument in turn.
+
+                i.   Bancec’s extensive control prong does
+                     not require a nexus between the
+                     plaintiff’s    injury     and     the
+                     instrumentality.
+       PDVSA contends that there must be some connection
+between the sovereign’s abuse of its instrumentality’s
+corporate form and the plaintiff’s injury. Indeed PDVSA
+declined our numerous invitations at oral argument to argue
+that any of the extensive control factors cut against Crystallex’s
+position. It reiterated its position that each is irrelevant here
+because Crystallex also needed to show that PDVSA did
+something to cause the plaintiff’s injury. Oral Arg. Tr. at
+97:22–104:12 (Apr. 15, 2019). We differ.
+
+
+
+
+                               24
+        First, though Bancec involved the “fraud or injustice”
+prong rather than the “extensive control” prong, no nexus
+existed between the dominated instrumentality and the
+plaintiff’s injury. Cuba had established in 1960 Banco Para El
+Comercio Exterior de Cuba (Bancec), “[a]n official
+autonomous credit institution for foreign trade . . . with full
+juridical capacity . . . of its own . . . .” Bancec, 462 U.S. at 613.
+Bancec was a creditor of Citibank and sued the bank to collect
+on a letter of credit. Days later, the Cuban government seized
+all of Citibank’s Cuba-based assets. Id. It also dissolved
+Bancec after that proceeding began, and the remainder of its
+case was handled by the Cuban Ministry of Foreign Trade. Id.
+at 615. Despite no link between Bancec and Cuba’s seizure of
+Citibank’s assets, the Supreme Court held Citibank could
+offset its debt to Bancec with the value of the expropriated
+assets. “Giving effect to Bancec’s separate juridical status in
+these circumstances” would cause an injustice. Id. at 632. In
+recounting the case’s history, the Court also expressly noted
+that the Second Circuit, from where the case came, had applied
+a nexus requirement and then did not adopt one itself. See id.
+at 619 (quoting the Second Circuit as saying the presumption
+of separate identities may be overcome only “when the subject
+matter of the counterclaim assertible against the state is state
+conduct in which the instrumentality had a key role”).
+       Like Bancec, not a single factor recognized in Rubin
+suggests any link between the dominated instrumentality and
+the injury to the plaintiff. The Rubin Court’s brief discussion
+of the hypothetical plaintiff seeking to collect against “the
+assets located in the United States of a state-owned
+telecommunications company,” and citation to Alejandre
+(which in turn involved no connection between the
+telecommunications agency and the plaintiff’s injury), likewise
+suggest no tying requirement. Rubin, 138 S. Ct. at 824.
+Similarly, the vast majority of circuits have required no link
+between the abuse of the corporate form and the plaintiff’s
+
+
+
+
+                                 25
+injury under the first Bancec path for veil-piercing. See, e.g.,
+EM Ltd. v. Republic of Argentina, 473 F.3d 463, 478 (2d Cir.
+2007); Flatow v. Islamic Republic of Iran, 308 F.3d 1065,
+1071–73 (9th Cir. 2002); Transamerica Leasing, Inc. v. La
+Republica de Venezuela, 200 F.3d 843, 848 (D.C. Cir. 2000);
+Hercaire Int’l, Inc. v. Argentina, 821 F.2d 559, 565 (11th Cir.
+1987).9
+        Second, as Crystallex observes, requiring an
+independent nexus requirement would likely read the Bancec
+extensive-control test out of the doctrine. When pressed at oral
+argument to identify the circumstances where Bancec could be
+applied, PDVSA offered two: under Bancec’s “fraud or
+injustice” prong (i.e., where a sovereign uses its
+instrumentality’s separate status to perpetuate a fraud or
+injustice) or where the instrumentality was itself “responsible
+on the arbitration award as a participant in the events.” Oral
+Arg. Tr. at 91: 7–18. But if the instrumentality were directly
+liable for the award, there would be no need to invoke Bancec
+at all. PDVSA thus tries to read the extensive control prong
+out of Bancec. We cannot.
+
+       The District Court concluded correctly that Bancec does
+not require a connection between a sovereign’s extensive
+control of its instrumentality and the plaintiff’s injury. Control
+
+
+9
+  One panel of the Fifth Circuit has suggested that Bancec’s
+alter ego standards are the same as common state-law
+requirements, many of which include a nexus requirement. See
+Bridas S.A.P.I.C. v. Gov’t of Turkmenistan, 447 F.3d 411, 416
+(5th Cir. 2006). But see First Inv. Corp. of Marshall Islands v.
+Fujian Mawei Shipbuilding, Ltd., 703 F.3d 742, 752–53 (5th
+Cir. 2012), as revised (Jan. 17, 2013).
+
+
+
+
+                               26
+alone, if sufficiently extensive, is an adequate basis to
+disregard an instrumentality’s separate status.10
+
+               ii.   Bancec does not require a principal-
+                     agent relationship.
+       PDVSA also argues that the requirement in Bancec of
+extensive control such “that a relationship of principal and
+
+10
+   At oral argument, PDVSA stressed that Bancec clearly
+assumed for “extensive control” a connection between the
+abused form and the plaintiff’s injury when it cited to the 1974
+edition of W.M. Fletcher, Cyclopedia of the Law of Private
+Corporations. Oral Arg. Tr. at 77: 9–11 (“Fletcher says
+domination and control [are] not enough. You need to have an
+abuse of the form that results in an injury to the plaintiff.”).
+But the excerpt Bancec quotes squarely contradicts such a
+narrow view: “[A] corporation will be looked upon as a legal
+entity as a general rule, and until sufficient reason to the
+contrary appears; but, when the notion of legal entity is used to
+defeat public convenience, justify wrong, protect fraud, or
+defend crime, the law will regard the corporation as an
+association of persons.” Bancec, 462 U.S. 611, 630 n.19
+(quoting 1 W.M. Fletcher, Cyclopedia of the Law of Private
+Corporations § 41 (rev. perm. ed. 1974)). Further, Bancec
+does not even cite to Fletcher to support the proposition that
+extensive control can be sufficient to disregard corporate
+formalities. For this, it cited to N.L.R.B. v. Deena Artware,
+Inc., 361 U.S. 398, 402 (1960), where the Court held that the
+National Labor Relations Board was entitled to seek discovery
+on an alternative theory of liability—“that these separate
+corporations are not what they appear to be, that in truth they
+are but divisions or departments of a ‘single enterprise.’” Id.
+at 402.
+
+
+
+
+                               27
+agent is created” requires the instrumentality to act as the
+sovereign’s agent with respect to the events in dispute. Bancec,
+462 U.S. at 629. Before Rubin, courts struggled with how to
+give meaning to Bancec’s apparent reference to a principal–
+agent relationship. See, e.g., Doe v. Holy See, 557 F.3d 1066,
+1080 (9th Cir. 2009). The most persuasive interpretation of the
+various approaches is by the D.C. Circuit, which recognized
+that “[c]ontrol by the sovereign is relevant in two distinct
+contexts[.]” Transamerica Leasing, 200 F.3d at 848. “First, .
+. . when it significantly exceeds the normal supervisory control
+exercised by any corporate parent over its subsidiary and,
+indeed, amounts to complete domination of the subsidiary.”
+Id. “Second, . . . when the sovereign exercises its control in
+such a way as to make the instrumentality its agent; in that case
+control renders the sovereign amenable to suit under ordinary
+agency principles.” Id. at 849. These examples of control are
+disjunctive. Only one method of domination needs to be
+shown, and Crystallex opts to pursue the former. Thus further
+discussion of a principal-agent relationship is not necessary.
+               iii.   Bancec does not require consideration
+                      of the third-party bondholders.
+       Amici bondholders of PDVSA contend Bancec’s
+extensive-control analysis requires consideration of the
+interests of other creditors of the judgment debtor’s alleged
+alter ego, both as a matter of doctrine and of equity. That
+argument, plausible on its face, does not prevail here. As a
+doctrinal matter, the overarching framework of the extensive-
+control test tells us that third-party creditors’ interest is a
+reason for—not a separate criterion of—the analysis. Bancec
+explained that those creditors’ interests are part of the reason
+the presumption of separate juridical status is so difficult to
+overcome: “Freely ignoring the separate status of government
+instrumentalities would result in a substantial uncertainty over
+whether an instrumentality’s assets would be diverted to satisfy
+
+
+
+
+                               28
+a claim against the sovereign, and might thereby cause third
+parties to hesitate before extending credit to a government
+instrumentality without the government’s guarantee.” 462
+U.S. at 626. For that reason (among others), Bancec counsels
+courts not to ignore separate status. See also De Letelier v.
+Republic of Chile, 748 F.2d 790, 795 n.1 (2d Cir. 1984) (noting
+that abuse of the corporate form of the type identified in
+Bancec “must be clearly demonstrated to justify holding the
+‘subsidiary’ liable for the debts of its sovereign ‘parent,’
+particularly where, as here, LAN apparently has non-party
+private bank creditors”). To add to this analysis an additional
+unspecific consideration of third-party interests would double-
+count the creditors’ concern in an arena of many competing
+concerns.
+        The difficulty of overcoming the Bancec presumption is
+also practical comfort: where there is extensive control, we can
+expect reasonable third parties to recognize the risks of
+extending credit. Here, for example, Venezuela’s relationship
+to PDVSA was clearly disclosed to any prospective holder of
+the latter’s bonds in the offering circular for that issuance: “We
+are controlled by the Venezuelan government”; obligations
+imposed by the government “may affect our . . . commercial
+affairs”; and “we cannot assure you that the Venezuelan
+government will not, in the future, impose further material
+commitments upon us or intervene in our commercial affairs.”
+JA-608. Perhaps recognizing that risk, the Bondholders
+protected their extension of credit to PDVSA by obtaining as
+collateral a 50.1% security interest in PDVH’s shares of Citgo
+Holding, Inc., which, of course, will not be impaired by the
+District Court’s writ of attachment.
+
+
+
+
+                               29
+               iv.   Timeframe: What is the appropriate
+                     point of reference for the extensive-
+                     control analysis?
+        Venezuela argues that the relevant time for a Bancec
+analysis of the relationship between a sovereign and its
+instrumentality is the moment the writ is issued. But it points
+to no authority for that proposition, and it does not explain why
+our review of the District Court’s Bancec analysis would be
+any different than in the normal course, where we render our
+decision based on the record before the district court and “do[]
+not purport to deal with possible later events.” Standard Oil
+Co. v. United States, 429 U.S. 17, 18 (1976) (per curiam);
+Rubin, 12 F.3d at 1284; Fassett v. Delta Kappa Epsilon (New
+York), 807 F.2d 1150, 1165 (3d Cir. 1986). We follow the
+standard practice. On remand, Venezuela may direct to the
+District Court credible arguments to expand the record with
+later events.
+                v.   The burden of proof is preponderance
+                     of the evidence.
+        PDVSA contends that the District Court erred by
+reviewing the parties’ evidence under a “preponderance of the
+evidence” rather than a “clear and convincing” burden of
+proof. We disagree, but also note that our decision as to the
+burden of proof has no effect on the outcome of our Bancec
+analysis; indeed, the implications of this question matter little
+to this appeal. PDVSA conceded as much at oral argument that
+our decision as to burden of proof has no effect on the outcome
+of our Bancec analysis. Oral Arg. Tr. at 95–96: 20–14 (Apr.
+15, 2019).
+       PDVSA points to our ruling in Trustees of Nat. Elevator
+Indus. Pension, Health Benefit & Educ. Funds v. Lutyk, 332
+F.3d 188, 194 (3d Cir. 2003), an ERISA veil-piercing case,
+
+
+
+
+                               30
+where at summary judgment we re-affirmed that “evidence
+justifying piercing the corporate veil must be ‘clear and
+convincing.’” Id. (quoting Kaplan v. First Options of Chicago,
+Inc., 19 F.3d 1503, 1522 (3d Cir. 1994), aff’d, 514 U.S. 938
+(1995)). Should this federal common law be applied here? We
+think not.
+       The Sovereign Immunities Act is the exclusive basis for
+finding jurisdiction in suits involving foreign sovereigns and
+instrumentalities, and Bancec is binding federal common law
+for disputes under the Act. Neither indicates that plaintiffs
+must show clear and convincing evidence, while many courts
+have applied a preponderance-of-the evidence standard to
+inquiries under it. See, e.g., Owens v. Republic of Sudan, 864
+F.3d 751, 784 (D.C. Cir. 2017); Sachs v. Republic of Austria,
+737 F.3d 584, 589 (9th Cir. 2013), rev’d on other grounds sub
+nom. OBB Personenverkehr AG v. Sachs, 136 S. Ct. 390
+(2015); S & Davis Int’l, Inc. v. The Republic of Yemen, 218
+F.3d 1292, 1300 (11th Cir. 2000); Kirschenbaum v. 650 Fifth
+Ave., 257 F. Supp. 3d 463, 472 (S.D.N.Y. 2017) (requiring
+preponderance of the evidence for Bancec inquiries); First Inv.
+Corp. of the Marshall Islands v. Fujian Mawei Shipbuilding,
+Ltd. of People’s Republic of China, 858 F. Supp. 2d 658, 668
+n.54 (E.D. La. 2012) (also conducting a Bancec extensive
+control inquiry), aff’d 703 F.3d 742 (5th Cir. 2012); In re 650
+Fifth Ave. & Related Properties, 881 F. Supp. 2d 533, 544
+(S.D.N.Y. 2012) (same); Kensington Int’l Ltd. v. Republic of
+Congo, No. 03 CIV. 4578 LAP, 2007 WL 1032269, at *5
+(S.D.N.Y. Mar. 30, 2007) (same). Further, no case cited by the
+parties suggests that the Bancec extensive-control inquiry
+requires clear and convincing evidence.
+       Lutyk drew from our Court’s existing precedent holding
+that, where a plaintiff relies on a fraud theory for alter ego, it
+must be shown by clear and convincing evidence. See Kaplan,
+19 F.3d at 1522. But here Crystallex does not attempt, nor
+
+
+
+
+                               31
+need, to satisfy an element of fraud.11 Further distinguishing
+Lutyk or Kaplan, it here seeks to survive a factual challenge
+under Rule 12(b)(1), which generally requires the plaintiff to
+establish jurisdiction by a preponderance of the evidence. See,
+e.g., Makarova v. United States, 201 F.3d 110, 113 (2d Cir.
+2000).
+       We also see scant policy reason to depart from existing
+caselaw and require plaintiffs to make a clear and convincing
+showing. The difficulties of marshaling evidence sufficient to
+show a Bancec relationship present “a substantial obstacle to
+[Sovereign Immunities Act] plaintiffs’ attempts to satisfy
+judgment.” Estate of Heiser v. Islamic Republic of Iran, 885
+F. Supp. 2d 429, 435 (D.D.C. 2012), aff’d 735 F.3d 934 (D.C.
+Cir. 2013). In addition to the initial information imbalance
+between the judgment creditor and the foreign sovereign, the
+creditor must gather evidence related to events, witnesses, and
+relationships between a foreign sovereign and its own
+instrumentality, the bulk of which is often within the territorial
+control of the sovereign itself, making discovery a particularly
+onerous task. Given the difficulties inherent in this evidence
+gathering,12 the preponderance standard is “the measure of
+respect due foreign sovereigns.” Bank of New York v.
+Yugoimport, 745 F.3d 599, 614 (2d Cir. 2014). A more
+onerous requirement would tip the balance too far in favor of
+11
+   Even if it did, as the Supreme Court has observed, the
+traditional state-law presumption in favor of clear and
+convincing evidence for fraud claims has not always extended
+to Congress, which frequently has required preponderance of
+the evidence for federal fraud claims. See Grogan v. Garner,
+498 U.S. 279, 288–89 (1991).
+12
+  The parties here rely chiefly on expert affidavits, publicly
+available corporate documents, and news articles.
+
+
+
+
+                               32
+the foreign sovereign at the expense of Bancec’s other core
+concern—ensuring that foreign states not dodge their
+obligations under international law. Thus we conclude that
+preponderance of the evidence is the appropriate burden of
+proof under Bancec.
+
+               vi.   Is there an equitable component to the
+                     “extensive control” prong of Bancec?
+        PDVSA proposes that an “equitable basis” is required
+“to rebut the presumption of separateness” under Bancec’s
+extensive-control prong. The District Court observed that even
+though Bancec’s two prongs are disjunctive, the extensive-
+control inquiry “inherently assumes that some element of
+unfairness would result if the Court fails to treat one entity as
+the alter ego of the other.” Del. Crystallex, 333 F. Supp. 3d at
+397 n.15. We need not determine whether this is an
+independent or necessary factor in an extensive-control
+inquiry. The test discussed in Rubin appears to treat it as such,
+and, as discussed below, it is easily satisfied here.
+          Extensive control determination under Bancec
+        Having clarified the contours of the Bancec extensive-
+control inquiry, our applying that analysis here is
+straightforward. Though the factors the District Court applied
+differ slightly from those in Rubin, they are similar enough that
+its factual findings, which we review for clear error, direct the
+same result under either approach to the Bancec inquiry. While
+PDVSA effectively conceded that Crystallex satisfied each
+factor under Rubin at oral argument, we summarize the
+evidence for the sake of clarity, as the facts are paramount in
+determining when control is so extensive that entity
+separateness fades away as a legal distinction.
+
+
+
+
+                               33
+                  Factor 1: the level of economic control by
+                  the government
+
+        Venezuela wields extensive economic control over
+PDVSA. Venezuela’s bondholder disclosures in 2011 and
+2016 stated: “[G]iven that we are controlled by the Venezuelan
+government, we cannot assure you that [it] will not, in the
+future, impose further material commitments upon us or
+intervene in our commercial affairs in a manner that will
+adversely affect our operations, cash flow and financial
+results.” JA-645; 1921. They leave no doubt Venezuela has
+the power to intervene and mandate PDVSA’s economic
+policies. In 2011 PDVSA disclosed that “the Venezuelan
+government required us to acquire several electricity
+generation and distribution companies, as well as certain food
+companies . . . [,] and required . . . us to acquire the assets of
+[another Venezuelan company] at a price to be determined in
+the future.” JA-608–09. The District Court found that
+Venezuela requires PDVSA to fund
+       Venezuelan programs that have nothing to do
+       with its business, causing PDVSA to take on
+       additional debt. Such programs include PDVSA
+       Agricola S.A., which subsidizes Venezuela’s
+       agriculture, industrial infrastructure, and
+       produce sectors, and PDVSA Desarrollos
+       Urbanos S.A., which subsidizes Venezuela’s
+       housing projects. . . .        PDVSA’s total
+       contributions to the Venezuelan budget between
+       2010 and 2016 were in excess of $119 billion.
+Del. Crystallex, 333 F. Supp. 3d at 409. In 2014 and 2015,
+PDVSA was required to contribute U.S. $974 million and U.S.
+$3.3 billion, respectively, to social programs and projects. Id.
+
+
+
+
+                               34
+        As its 2011 offering circular to prospective bondholders
+explains, PDVSA’s legal obligations stem in part from the
+Venezuelan constitution, which endows the State with
+significant control over PDVSA and the oil industry in the
+country. Article 12 provides hydrocarbon deposits within the
+territory of the state are the property of the Republic, JA-1722,
+and Article 302 reiterates “the State reserves to itself, through
+the pertinent organic law, and for reasons of national
+convenience, petroleum activity,” id. at 1558. Article 303
+addresses the state’s control over PDVSA specifically: “For
+reasons of economic and political sovereignty and national
+strategy, the State shall retain all shares in Petroleos de
+Venezeula, S.A.” E.g., JA-350; 386. In addition, as PDVSA
+disclosed to bondholders, under Article 5 of the Organic
+Hydrocarbons Law, its revenues “are required to be used to
+finance health and education, to create funds for
+macroeconomic stabilization and to make productive
+investments, all in favor of the Venezuelan people. Those
+social commitments may affect our ability to place additional
+funds in reserve for future uses and, indirectly, our commercial
+affairs.” Id. at 608.
+       The District Court also found that Venezuela exercises
+its economic control over PDVSA by dictating to whom
+PDVSA must sell oil to and at what price. The 2011 circular
+explains that “[t]he Venezuelan government, rather than the
+international market, determines the price of products . . . sold
+by us through our affiliates in the domestic market.” Id. at 643.
+Thus Venezuela “dictates the severely discounted price at
+which PDVSA must sell its product to Venezuelan citizens”
+and “forces PDVSA to ‘sell’ oil to third parties for no, or de
+minimis, consideration.” Del. Crystallex, 333 F. Supp. 3d at
+408 (internal quotation marks and citations omitted). Per
+Venezuela’s “Petrocaribe” agreements with its allies, PDVSA
+must provide oil to member states at a steep discount on price,
+along with a two-year grace period for payments, on a payment
+
+
+
+
+                               35
+schedule up to 25 years in length with interest rates as low as
+1% (with the option, on Venezuela’s part, to accept deferred
+payments directly in the form of goods and services). JA-928.
+Under the agreement, Venezuela “may acquire at preferential
+prices . . . sugar, bananas, or other goods or services to be
+determined, which are adversely affected by trade policies of
+rich countries.” Id. In other words, as the District Court found,
+PDVSA provides oil while Venezuela maintains the right to
+accept payment. PDVSA’s financial reports show that, from
+2010 to 2016, it contributed approximately USD $ 77 billion
+under the Petrocaribe agreements. Id. at 1178.
+       The District Court wasn’t finished: “Venezuela
+manipulates PDVSA’s conversion of U.S. Dollars to
+Venezuelan Bolivars to leverage PDVSA’s revenues. . . .
+PDVSA is required to convert foreign currency into
+Venezuelan Bolivars at an artificially low U.S. Dollar to
+Bolivar exchange rate (which is approximately 1/500th of the
+market rate).” Del. Crystallex, 333 F. Supp. 3d at 410 (internal
+quotation marks omitted).
+      Finally, Venezuela controls PDVSA’s debt structure.
+Dr. Roberto Rigobon’s supplemental declaration states that in
+November 2017 President Maduro decreed that Venezuela
+would restructure the external debt of both Venezuela and
+PDVSA. JA-2013. He also provided evidence that Venezuela
+made a $1.2 billion payment on a 2017 PDVSA bond. Id. at
+2014.
+                  Factor 2: whether the entity’s profits go to
+                  the government
+       As PDVSA’s lone shareholder, all profit ultimately runs
+to the Venezuelan government. In addition, PDVSA pays
+Venezuela taxes and royalties on the oil it produces. The
+Rigobon Declaration contends that PDVSA pays
+
+
+
+
+                               36
+“extraordinary taxes,” i.e., taxes at an artificial rate designed to
+collect more of PDVSA’s revenues. Id. at 1172.
+
+                  Factor 3: the degree to which government
+                  officials manage the entity or otherwise
+                  have a hand in its daily affairs
+
+        The Venezuelan government exercises direct and
+extensive control over PDVSA. President Maduro appoints
+PDVSA’s president, directors, vice-presidents, and members
+of its shareholder council. Del. Crystallex, 333 F. Supp. 3d at
+407–08. Crystallex introduced a declaration from Jose Ignacio
+Hernandez, a Venezuelan legal academic, which notes that it
+has been “commonplace” since 2002 for PDVSA’s president
+also to serve as Venezuela’s oil minister. JA-1195. “This
+arrangement allowed the Government to control the daily
+operations of PDVSA.” Id. PDVSA and Venezuela’s Ministry
+of Petroleum and Mining share physical office space for its
+headquarters. Id. at 1196 & n.51. In a 2014 speech discussing
+the state of Venezuelan control over PDVSA since this
+reorganization, then-PDVSA President Rafael Ramirez
+Carreño, and the country’s Vice Minister for Petroleum, stated
+that “we are one of the few oil producing countries in the world
+that has a strict and tight control over the sovereign
+management of its natural resources.” Id. at 594.
+       The military increasingly exercises control over
+PDVSA. In November 2017, President Maduro appointed
+Major General Manuel Quevedo as Petroleum Minister and
+PDVSA president. Id. at 2018. Earlier that year, he also
+created a new post—Executive Vice-President of PDVSA—
+and appointed Vice-Admiral Maribel del Carmen Parra de
+Mestre to the position. Id. at 1198.
+    Venezuela has also wielded substantial influence over
+PDVSA’s employees through a series of politically motivated
+
+
+
+
+                                37
+firings. The highest profile of these occurred in 2002, when
+President Chávez fired roughly 40% of the PDVSA workforce
+in response to a strike protesting his regime. Id. at 1054.
+Employees continue to face pressure from the state today. The
+District Court found that, “[a]s recently as July 2017,
+Venezuela continued to threaten to terminate PDVSA
+employees who were opposed to the governing regime.” Del.
+Crystallex, 333 F. Supp. 3d at 407. Employees face pressure
+to attend Socialist Party rallies and have been threatened with
+termination unless they voted in elections. Id. at 408.
+                 Factor 4: whether the government is the
+                 real beneficiary of the entity’s conduct
+        The District Court found that PDVSA’s cheap oil to
+Venezuela’s strategic allies also creates a mechanism whereby
+Venezuela extracts value from PDVSA’s oil without paying
+the company. “Venezuela also uses PDVSA to achieve its
+foreign policy goals by committing PDVSA to sell oil to
+certain Caribbean and Latin American nations at substantial
+discounts, without PDVSA’s consent. . . . Even when those oil
+debts are repaid, the money is given to Venezuela, not PDVSA.
+. . .” Id. at 410.
+        PDVSA’s actions with respect to this litigation also
+show how Venezuela is the real beneficiary of PDVSA’s
+conduct. For example, “it is undisputed that PDVSA paid the
+administrative fees Venezuela incurred in connection with the
+arbitration with Crystallex, which amounted to around
+$249,000.” Id. And, when Venezuela expropriated the La
+Cristinas mines, it gave to PDVSA for no consideration a
+number of mining rights, including rights in Las Cristinas that
+it had expropriated from Crystallex. JA-1194. This seamless
+transfer of value between PDVSA and Venezuela also suggests
+an alter ego relationship.
+
+
+
+
+                              38
+                  Factor 5: whether adherence to separate
+                  identities would entitle the foreign state to
+                  benefits in United States courts while
+                  avoiding its obligations
+        Venezuela owes Crystallex from a judgment that has
+been affirmed in our courts. Any outcome where Crystallex is
+not paid means that Venezuela has avoided its obligations. It
+is likewise clear from the record that PDVSA, and by extension
+Venezuela, derives significant benefits from the U.S. judicial
+system. Its 2020 bonds are backed by the common stock and
+underlying assets of U.S.-based corporations, and hence
+disputes stemming from default will be subject to U.S. laws
+and presumably be resolved through the U.S. legal system.13
+See, e.g., Bayrock Exhibit 6 at 131–32, Crystallex Int’l Corp.
+v. Bolivarian Republic of Venezuela, F. Supp. 3d 380 (D. Del.
+2018), ECF No. 99-1. Indeed, it is probable the U.S. legal
+
+
+
+13
+     Crystallex has not identified any Venezuelan commercial
+assets in Delaware or the District of Columbia and may be
+unable to find satisfaction if attachment of PDVSA property is
+impermissible. See Crystallex Int’l Corp. v. Bolivarian
+Republic of Venezuela, No. CV 16-0661 (RC), 2017 WL
+6349729, at *2 (D.D.C. June 9, 2017) (“Petitioner has been
+unable to identify any commercial assets belonging to
+[Respondent] in the District of Columbia but believes that
+Respondent possesses assets elsewhere in the United States,
+including in Delaware. . . . The assets Petitioner identifies are
+connected to Respondent through a variety of corporate
+structures . . .[,] in particular [Respondent’s] indirect
+subsidiaries, PDVH, CITGO Holding, and CITGO Petroleum
+. . . .”) (citations and internal quotations omitted).
+
+
+
+
+                               39
+system is the backstop that gives substantial assurance to
+investors who buy PDVSA’s debt.
+
+        Nor does ignoring separate identities run against the
+equities here. PDVSA profited directly from Crystallex’s
+injury: Venezuela transferred the rights to the expropriated
+mines to PDVSA for no consideration. Hence this factor too
+is satisfied.
+           PDVSA’s Shares of PDVH are attachable under
+           the Sovereign Immunities Act.
+       Crystallex must also show that the particular property at
+issue in the attachment action—the PDVH stock—is not
+immune from attachment under the Sovereign Immunities Act.
+It provides that “the property in the United States of a foreign
+state shall be immune from attachment arrest and execution”
+unless one of the Act’s statutory exceptions is met. 28 U.S.C.
+§ 1609. The exception Crystallex invokes states that the
+“property in the United States of a foreign state . . ., used for a
+commercial activity in the United States, shall not be immune
+from attachment in aid of execution, or from execution, upon a
+judgment entered by a court of the United States” based on an
+order confirming an arbitral award rendered against the foreign
+state. 28 U.S.C. § 1610(a)(6) (emphasis added).14
+       The Act defines “commercial activity” as “either a
+regular course of commercial conduct or a particular
+commercial transaction or act. The commercial character of an
+
+14
+     Section 1610(b) governs execution of a foreign
+instrumentality’s property, but only section 1610(a) is relevant
+because the jurisdictional immunity is overcome for
+Venezuela, not PDVSA, who only enters the picture as
+Venezuela’s alter ego.
+
+
+
+
+                                40
+activity shall be determined by reference to the nature of the
+course of conduct or particular transaction or act, rather than
+by reference to its purpose.” 28 U.S.C. § 1603(d). The
+Supreme Court in Republic of Argentina v. Weltover, Inc., 504
+U.S. 607, 613 (1992), stated that the phrase “commercial
+activity” captures the “distinction between state sovereign acts,
+on the one hand, and state commercial and private acts, on the
+other.” Id. “[W]hen a foreign government acts, not as a
+regulator of a market, but in the manner of a private player
+within it, the foreign sovereign’s actions are ‘commercial’
+within the meaning of the [Sovereign Immunities Act].” Id. at
+614. Commercial actions include those that “(whatever the
+motive behind them) are the type of actions by which a private
+party engages in ‘trade and traffic or commerce.’” Id. (quoting
+Black’s Law Dictionary) (emphasis in original).15
+        PDVSA contends that the commercial activity
+exception requires current commercial use (i.e., at the moment
+the writ is executed), which PDVSA contends is impeded by
+the current U.S. sanctions regime. There is some support for
+PDVSA’s interpretation. See Aurelius Capital Partners v.
+Republic of Argentina, 584 F.3d 120, 130 (2d Cir. 2009)
+(“[T]he property that is subject to attachment and execution
+must . . . have been ‘used for a commercial activity’ at the time
+the writ of attachment or execution is issued.”) (emphasis in
+original). But narrowing the temporal inquiry to the day the
+writ is executed unnecessarily leaves room for manipulation,
+as any jurisdictional determination under the Sovereign
+Immunities Act is immediately appealable for interlocutory
+review, and courts (like the District Court here) may elect not
+to issue the writ alongside analysis of the jurisdictional and
+
+15
+   Weltover involved the commercial-activity exception to
+jurisdictional immunity, 28 U.S.C. § 1605(a), but its
+interpretation of “commercial” would apply equally here.
+
+
+
+
+                               41
+execution immunity. A strict day-of-writ inquiry could allow
+parties to avoid execution by freezing assets or otherwise
+ceasing commercial use when the appeal decision is handed
+down. Instead, a totality-of-the-circumstances inquiry seems
+more appropriate, as the Fifth Circuit aptly described: “This
+analysis should include an examination of the uses of the
+property in the past as well as all facts related to its present use,
+with an eye toward determining whether the commercial use of
+the property, if any, is so exceptional that it is ‘an out of
+character’ use for that particular property.” Af-Cap Inc. v.
+Republic of Congo, 383 F.3d 361, 369 (5th Cir. 2004). And “it
+would be appropriate for a court to consider whether the use of
+the property in question was being manipulated by a sovereign
+nation to avoid being subject to garnishment under [the
+Sovereign Immunities Act].” Id. at 369 n.8.
+       But whether we apply the date the writ was issued—
+August 23, 2018—or the date of the August 9 opinion, PDVH
+shares are not immune from attachment. PDVSA argues that
+the shares cannot be used in commerce because they are subject
+of sanctions contained in two Executive Orders. See Exec.
+Order. No. 13835, 83 Fed. Reg. 24,001 (May 21, 2018) (“E.O.
+13835”); Exec. Order No. 13808, 82 Fed. Reg. 41, 155 (Aug.
+24, 2017) (“E.O. 13808”).
+
+       This argument fails because the sanctions regime
+prohibits only some commercial uses of the shares; other
+commercial uses continue to be exercised by Venezuela.
+Section 1(a)(iv) of E.O. 13808 bars PDVH from paying
+dividends or other distribution of profits to the Government of
+Venezuela,16 and section 1(b) prohibits the “purchase, directly
+
+
+16
+  The Executive Orders of our Government define “the
+Government of Venezuela” as specifically including PDVSA.
+
+
+
+
+                                 42
+or indirectly, by a United States person or within the United
+States, of securities from the Government of Venezuela.” In
+addition, Section 1(a)(iii) of E.O. 13835 precludes United
+States persons or those within the United States from engaging
+in any transactions, provisions of financing, and other dealings
+related to “the sale, transfer, assignment, or pledging as
+collateral by the Government of Venezuela of any equity
+interest in any entity in which [it] has a 50 percent or greater
+ownership interest.”
+       However, the shares can still be used by PDVSA to run
+its business as an owner, to appoint directors, approve
+contracts, and to pledge PDVH’s debts for its own short-term
+debt. Venezuela illustrates its continued use of this power,
+noting that President Guaidó in February 2019 appointed an ad
+hoc administrative board to represent PDVSA in its capacity as
+sole shareholder of PDVH for appointing a new board of
+directors of that entity. These actions are available to the sole
+shareholder of a company, and so the shares continue to be
+used in commerce.
+       This is not to say that the sanctions of PDVSA assets
+play no role in whether Crystallex ultimately recovers.
+According to a Treasury Department Frequently Asked
+Question, any attachment and execution against PDVSA’s
+shares of PDVH would likely need to be authorized by the
+Treasury Department. See Del. Crystallex, 333 F. Supp. 3d at
+420–21. In a case like this, “[Treasury’s Office of Foreign
+Asset Control, called by its acronym OFAC] would consider
+license applications seeking to attach and execute against such
+
+E.O. 13808, 82 Fed. Reg. 41156 (“[T]he term . . . means the
+Government of Venezuela, any political subdivision, agency or
+instrumentality thereof, including . . . [PDVSA] . . .”); E.O.
+13835, 83 Fed. Reg. 24001–02 (same).
+
+
+
+
+                               43
+equity interests on a case-by-case basis.” Id. at 421. Whether
+that FAQ is legally binding, Crystallex has committed that it
+“will seek clarification of the current license . . . and/or the
+issuance of an additional license to cover the eventual
+execution sale of the shares of PDVH once the [attachment
+w]rit has issued.” Id. at 421 n.40 (internal quotation marks
+omitted) (ellipsis in original).
+        Though the U.S. State Department has not sought to
+provide a statement of interest, it is nonetheless conceivable
+that short- or long-term U.S. foreign policy interests may be
+affected by attachment and execution of PDVSA’s assets. The
+Treasury sanctions provide an explicit mechanism to account
+for these. Whether the Treasury Department permits execution
+in this case, it is clear that the sanctions do not make the PDVH
+shares immune from attachment under the Sovereign
+Immunities Act.
+   IV.    Conclusion
+
+       Under the Foreign Sovereign Immunities Act, there is a
+strong presumption that a foreign sovereign and its
+instrumentalities are separate legal entities. But the Supreme
+Court made clear in Bancec and Rubin that in extraordinary
+circumstances—including where a foreign sovereign exerts
+dominion over the instrumentality so extensive as to be beyond
+normal supervisory control—equity requires that we ignore the
+formal separateness of the two entities. This clears that bar
+easily. Indeed, if the relationship between Venezuela and
+PDVSA cannot satisfy the Supreme Court’s extensive-control
+requirement, we know nothing that can.
+       The District Court acted within its jurisdiction when it
+issued a writ of attachment on PDVSA’s shares of PDVH to
+satisfy Crystallex’s judgment against Venezuela, and the
+
+
+
+
+                               44
+PDVH shares are not immune from attachment. Thus we
+affirm.
+
+
+
+
+                        45
+

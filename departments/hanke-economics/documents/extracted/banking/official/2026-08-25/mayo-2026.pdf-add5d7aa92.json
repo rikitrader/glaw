@@ -1,0 +1,2122 @@
+{
+  "file name" : "mayo-2026.pdf-add5d7aa92.pdf",
+  "number of pages" : 1,
+  "author" : null,
+  "title" : "AF Balance BNC_El Nacional_MAYO 2026 (1300x1900px) a COLOR ABIERTO",
+  "creation date" : "D:20260605120147-04'00'",
+  "modification date" : "D:20260605120147-04'00'",
+  "kids" : [ {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 131,
+    "level" : "3",
+    "page number" : 1,
+    "bounding box" : [ 1220.014, 1806.987, 1225.751, 1850.659 ],
+    "font" : "ArialMT",
+    "font size" : 5.135,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "RIF.:J-00256910-7"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 133,
+    "page number" : 1,
+    "bounding box" : [ 217.462, 1752.947, 339.129, 1781.927 ],
+    "font" : "Cosmos-Light",
+    "font size" : 8.844,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Junta Directiva Nogueroles García, Jorge Luis Presidente"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 134,
+    "page number" : 1,
+    "bounding box" : [ 355.129, 1699.886, 501.239, 1781.927 ],
+    "font" : "Cosmos-Light",
+    "font size" : 8.844,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Directores Principales Nogueroles García, Jorge Luis Halabi Harb, Anuar Hinestrosa Pocaterra, Luis Alberto Lepervanche Acedo, Luisa Teresa Ripanti Flores, Maritza Vollmer de Reuter, Luisa Mercedes Yánez Monteverde, Andrés Eduardo"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 135,
+    "page number" : 1,
+    "bounding box" : [ 528.707, 1710.498, 693.084, 1781.927 ],
+    "font" : "Cosmos-Light",
+    "font size" : 8.844,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Directores Suplentes Ortiz Cusnier, Alvar Nelson Mosquera Alejandro, María Eugenia Nogueroles Benacerraf, Victoria Sagrario Fernández-Feo García, Luis Enrique Blohm Fahrenberg, Carlos Henrique Larrazábal Gómez, Mariadela Joseﬁna"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 136,
+    "page number" : 1,
+    "bounding box" : [ 738.043, 1752.947, 865.741, 1781.927 ],
+    "font" : "Cosmos-Light",
+    "font size" : 8.844,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Comisarios Principales Alvarado Contreras, José Reyes Palmero Luján, Gordy"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 138,
+    "page number" : 1,
+    "bounding box" : [ 64.775, 1710.359, 198.08, 1774.884 ],
+    "font" : "Cosmos-Medium",
+    "font size" : 8.9,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Banco Nacional de Crédito. C.A. Banco Universal Capital Suscrito y Pagado: Bs. 257.919.300 Reservas y Superavit: Bs. 124.750.326.473"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 137,
+    "page number" : 1,
+    "bounding box" : [ 738.043, 1710.498, 856.72, 1739.478 ],
+    "font" : "Cosmos-Light",
+    "font size" : 8.844,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Comisarios Suplentes Finol Cabrera, Ramón Darío Palmero Castillo, Gordy Steve"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 121,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 507.859, 1672.499, 792.148, 1683.475 ],
+    "heading level" : 1,
+    "font" : "Helvetica-Bold",
+    "font size" : 10.976,
+    "text color" : "[0.0, 0.0, 0.0, 0.0]",
+    "content" : "Balance General de Publicación al 31 de Mayo de 2026"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 122,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 593.132, 1661.475, 706.864, 1670.949 ],
+    "heading level" : 2,
+    "font" : "Helvetica-Bold",
+    "font size" : 9.475,
+    "text color" : "[0.0, 0.0, 0.0, 0.0]",
+    "content" : "(Expresado en Bolívares)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 57,
+    "page number" : 1,
+    "bounding box" : [ 1054.168, 1624.326, 1106.558, 1651.547 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Balance de Operaciones en Venezuela"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 58,
+    "page number" : 1,
+    "bounding box" : [ 1164.53, 1624.326, 1225.652, 1651.547 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Consolidado con Sucursales en el Exterior"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 55,
+    "page number" : 1,
+    "bounding box" : [ 463.402, 1617.984, 515.793, 1646.098 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Balance de Operaciones en Venezuela"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 56,
+    "page number" : 1,
+    "bounding box" : [ 573.765, 1617.984, 634.887, 1646.098 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Consolidado con Sucursales en el Exterior"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 151,
+    "page number" : 1,
+    "bounding box" : [ 673.667, 1298.561, 1022.545, 1637.433 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "PASIVO Y PATRIMONIO PASIVO CAPTACIONES DEL PÚBLICO Depósitos a la Vista Cuentas Corrientes no Remuneradas Cuentas Corrientes Remuneradas Cuentas Corrientes según Convenio Cambiario No. 20 Depósitos y Certificados a la Vista Cuentas Corrientes según Sistema de Mercado Cambiario de Libre Convertibilidad Fondos Especiales en Fideicomiso según Sistema de Mercado Cambiario Otras Obligaciones a la Vista Obligaciones por Operaciones en Mesa de Dinero Depósitos de Ahorro Depósitos a Plazo Títulos Valores Emitidos por la Institución Captaciones del Públicos Restringidas Derechos y Participaciones sin Títulos Valores OBLIGACIONES CON EL BANCO CENTRAL DE VENEZUELA CAPTACIONES Y OBLIGACIONES CON EL BANCO NACIONAL DE VIVIENDA Y HÁBITAT OTROS FINANCIAMIENTOS OBTENIDOS Obligaciones con Instituciones Financieras del País hasta un año Obligaciones con Instituciones Financieras del País a más de un año Obligaciones con Instituciones Financieras del Exterior hasta un año Obligaciones con Instituciones Financieras del Exterior a más de un año Obligaciones por Otros Financiamientos hasta un año Obligaciones por Otros Financiamientos a más de un año OTRAS OBLIGACIONES POR INTERMEDIACIÓN FINANCIERA INTERESES Y COMISIONES POR PAGAR Gastos por Pagar por Captaciones del Público Gastos por Pagar por Obligaciones con el BCV Gastos por Pagar por Captaciones y Obligaciones con el Banco Nacional de Vivienda y Hábitat Gastos por Pagar por Otros Financiamientos Obtenidos Gastos por Pagar por Otras Obligaciones por Intermediación Financiera Gastos por Pagar por Otras Obligaciones Gastos por Pagar por Obligaciones Subordinadas ACUMULACIONES Y OTROS PASIVOS OBLIGACIONES SUBORDINADAS OTRAS OBLIGACIONES TOTAL DEL PASIVO"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 63,
+    "page number" : 1,
+    "bounding box" : [ 64.834, 1405.206, 352.535, 1628.849 ],
+    "font" : "Helvetica",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "ACTIVO DISPONIBILIDADES Efectivo Banco Central de Venezuela Bancos y Otras Instituciones Financieras del País Bancos y Corresponsales del Exterior Oficina Matriz y Sucursales Efectos de Cobro Inmediato (Provisión para Disponibilidades) INVERSIONES EN TÍTULOS VALORES Colocaciones en el Banco Central de Venezuela y Operaciones Interbancarias Inversiones en Títulos Valores para Negociar Inversiones en Títulos Valores Disponibles para la Venta Inversiones en Títulos Valores Mantenidos hasta su Vencimiento Inversiones de Disponibilidad Restringida Inversiones en Otros Títulos Valores (Provisión para Inversiones en Títulos Valores) CARTERA DE CRÉDITOS Créditos Vigentes Créditos Reestructurados Créditos Vencidos Créditos en Litigio (Provisión para Cartera de Créditos)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 176,
+    "page number" : 1,
+    "bounding box" : [ 1165.806, 1594.975, 1227.881, 1620.645 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "591.412.672.998 563.507.328.907 190.775.098.700"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 154,
+    "page number" : 1,
+    "bounding box" : [ 1049.431, 1594.975, 1111.505, 1620.645 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "552.161.402.748 536.692.589.315 163.752.477.562"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 84,
+    "page number" : 1,
+    "bounding box" : [ 454.606, 1603.18, 522.66, 1611.45 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "518.128.152.865"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 85,
+    "page number" : 1,
+    "bounding box" : [ 454.606, 1585.978, 522.66, 1602.849 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "51.749.036.981 129.724.579.450"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 177,
+    "page number" : 1,
+    "bounding box" : [ 1170.404, 1586.275, 1227.881, 1594.545 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "18.687.791.238"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 155,
+    "page number" : 1,
+    "bounding box" : [ 1054.029, 1586.275, 1111.505, 1594.545 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "18.687.791.238"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 178,
+    "level" : "1",
+    "page number" : 1,
+    "bounding box" : [ 1175.002, 1568.875, 1227.881, 1585.845 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 1175.002, 1577.575, 1227.881, 1585.845 ],
+      "font" : "Helvetica",
+      "font size" : 8.27,
+      "text color" : "[0.0, 0.0, 0.0, 1.0]",
+      "content" : "7.923.484.129",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 1175.002, 1568.875, 1227.881, 1577.145 ],
+      "font" : "Helvetica",
+      "font size" : 8.27,
+      "text color" : "[0.0, 0.0, 0.0, 1.0]",
+      "content" : "8.605.545.780",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 156,
+    "level" : "1",
+    "page number" : 1,
+    "bounding box" : [ 1058.627, 1568.875, 1111.505, 1585.845 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 1058.627, 1577.575, 1111.505, 1585.845 ],
+      "font" : "Helvetica",
+      "font size" : 8.27,
+      "text color" : "[0.0, 0.0, 0.0, 1.0]",
+      "content" : "7.923.484.129",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 1058.627, 1568.875, 1111.505, 1577.145 ],
+      "font" : "Helvetica",
+      "font size" : 8.27,
+      "text color" : "[0.0, 0.0, 0.0, 1.0]",
+      "content" : "8.605.545.780",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 86,
+    "page number" : 1,
+    "bounding box" : [ 489.902, 1577.378, 522.669, 1585.648 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "582.913"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 87,
+    "page number" : 1,
+    "bounding box" : [ 454.606, 1551.575, 522.669, 1577.047 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "336.653.953.521 0 0"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 179,
+    "page number" : 1,
+    "bounding box" : [ 1165.806, 1560.175, 1227.881, 1568.445 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "337.425.312.395"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 157,
+    "page number" : 1,
+    "bounding box" : [ 1049.431, 1560.175, 1111.505, 1568.445 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "337.633.193.941"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 180,
+    "page number" : 1,
+    "bounding box" : [ 1181.899, 1542.774, 1227.881, 1559.744 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "90.096.665 477.685.882"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 158,
+    "page number" : 1,
+    "bounding box" : [ 1065.524, 1542.774, 1111.505, 1559.744 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "90.096.665 477.685.882"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 88,
+    "page number" : 1,
+    "bounding box" : [ 447.951, 1542.974, 525.673, 1551.244 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "( 0)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 181,
+    "page number" : 1,
+    "bounding box" : [ 1170.404, 1525.374, 1227.889, 1542.344 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0 18.310.112.027"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 159,
+    "page number" : 1,
+    "bounding box" : [ 1054.029, 1525.374, 1111.513, 1542.344 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0 14.990.427.551"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 89,
+    "page number" : 1,
+    "bounding box" : [ 459.647, 1517.172, 522.66, 1534.043 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "20.087.228.117 6.002.818.000"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 182,
+    "level" : "1",
+    "page number" : 1,
+    "bounding box" : [ 1170.404, 1455.774, 1227.889, 1524.944 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 1175.002, 1473.174, 1227.889, 1524.944 ],
+      "font" : "Helvetica",
+      "font size" : 8.27,
+      "text color" : "[0.0, 0.0, 0.0, 1.0]",
+      "content" : "9.117.546.182 0 0 0 0 0",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 1170.404, 1455.774, 1227.881, 1472.744 ],
+      "font" : "Helvetica-Bold",
+      "font size" : 8.27,
+      "text color" : "[0.0, 0.0, 0.0, 1.0]",
+      "content" : "10.538.777.927 10.503.205.976",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 160,
+    "page number" : 1,
+    "bounding box" : [ 1081.617, 1473.174, 1111.513, 1524.944 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "700.000 0 0 0 0 0"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 90,
+    "page number" : 1,
+    "bounding box" : [ 464.688, 1482.769, 522.669, 1516.841 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0 1.637.900.078 3.368.105.679 9.078.404.360"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 91,
+    "page number" : 1,
+    "bounding box" : [ 447.951, 1465.567, 525.673, 1482.438 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0 ( 0)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 161,
+    "page number" : 1,
+    "bounding box" : [ 1054.029, 1455.774, 1111.505, 1472.744 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "10.503.205.977 10.503.205.976"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 92,
+    "page number" : 1,
+    "bounding box" : [ 454.606, 1439.765, 522.66, 1456.636 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "181.904.152.795 185.985.330.100"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 183,
+    "page number" : 1,
+    "bounding box" : [ 1223.291, 1447.074, 1227.889, 1455.344 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 162,
+    "level" : "1",
+    "page number" : 1,
+    "bounding box" : [ 1106.915, 1403.574, 1111.513, 1455.344 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 1106.915, 1447.074, 1111.513, 1455.344 ],
+      "font" : "Helvetica",
+      "font size" : 8.27,
+      "text color" : "[0.0, 0.0, 0.0, 1.0]",
+      "content" : "0",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 1106.915, 1403.574, 1111.513, 1446.644 ],
+      "font" : "Helvetica",
+      "font size" : 8.27,
+      "text color" : "[0.0, 0.0, 0.0, 1.0]",
+      "content" : "1 0 0 0 0",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 184,
+    "page number" : 1,
+    "bounding box" : [ 1186.498, 1403.574, 1227.889, 1446.644 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "35.571.951 0 0 0 0"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 93,
+    "page number" : 1,
+    "bounding box" : [ 464.688, 1422.563, 522.66, 1439.434 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "1.450.724.382 1.274.946.822"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 94,
+    "page number" : 1,
+    "bounding box" : [ 447.941, 1405.362, 525.652, 1422.232 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "22.382.378 ( 6.829.230.887)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 185,
+    "page number" : 1,
+    "bounding box" : [ 1181.899, 1386.174, 1227.881, 1403.144 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "305.233.089 143.415.179"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 163,
+    "page number" : 1,
+    "bounding box" : [ 1065.524, 1386.174, 1111.505, 1403.144 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "304.730.315 142.912.405"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 95,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 464.679, 1388.16, 522.651, 1396.43 ],
+    "heading level" : 3,
+    "font" : "Helvetica-Bold",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "1.521.058.977"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 64,
+    "page number" : 1,
+    "bounding box" : [ 64.834, 1336.286, 318.948, 1396.251 ],
+    "font" : "Helvetica",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "INTERESES Y COMISIONES POR COBRAR Rendimientos por Cobrar por Disponibilidades Rendimientos por Cobrar por Inversiones en Títulos Valores Rendimientos por Cobrar por Cartera de Créditos Comisiones por Cobrar Rendimientos y Comisiones por Cobrar por otras Cuentas por Cobrar (Provisión para Rendimientos por Cobrar y Otros)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 96,
+    "page number" : 1,
+    "bounding box" : [ 464.679, 1362.358, 522.66, 1387.829 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0 3.280.864.255 1.627.695.525"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 186,
+    "page number" : 1,
+    "bounding box" : [ 1223.291, 1368.774, 1227.889, 1385.744 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0 0"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 164,
+    "page number" : 1,
+    "bounding box" : [ 1106.915, 1368.774, 1111.513, 1385.744 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0 0"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 187,
+    "page number" : 1,
+    "bounding box" : [ 1181.899, 1333.973, 1227.889, 1368.344 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "161.817.910 0 0 0"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 165,
+    "page number" : 1,
+    "bounding box" : [ 1065.524, 1333.973, 1111.513, 1368.344 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "161.817.910 0 0 0"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 97,
+    "page number" : 1,
+    "bounding box" : [ 482.322, 1345.156, 522.66, 1362.027 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "8.149.065 0"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 98,
+    "page number" : 1,
+    "bounding box" : [ 447.941, 1336.555, 525.652, 1344.825 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "( 3.395.649.868)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 188,
+    "page number" : 1,
+    "bounding box" : [ 1170.404, 1307.873, 1227.889, 1333.543 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "71.210.163.654 0 0"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 166,
+    "page number" : 1,
+    "bounding box" : [ 1054.029, 1307.873, 1111.513, 1333.543 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "71.117.747.159 0 0"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 65,
+    "page number" : 1,
+    "bounding box" : [ 64.834, 1284.598, 332.269, 1327.331 ],
+    "font" : "Helvetica",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "INVERSIONES EN EMPRESAS FILIALES, AFILIADAS Y SUCURSALES Inversiones en Empresas Filiales y Afiliadas Inversiones en Sucursales (Provisión para Inversiones en Empresas Filiales, Afiliadas y Sucursales)"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 99,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 459.638, 1310.753, 522.651, 1319.023 ],
+    "heading level" : 3,
+    "font" : "Helvetica-Bold",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "17.998.961.518"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 100,
+    "page number" : 1,
+    "bounding box" : [ 459.638, 1293.551, 522.651, 1310.422 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "4.177.937.411 13.821.024.107"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 189,
+    "page number" : 1,
+    "bounding box" : [ 1165.806, 1281.773, 1227.881, 1307.443 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "673.466.847.668 38.803.055.686"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 167,
+    "page number" : 1,
+    "bounding box" : [ 1049.431, 1281.773, 1111.505, 1307.443 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "634.087.086.199 38.803.055.686"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 101,
+    "page number" : 1,
+    "bounding box" : [ 447.941, 1284.95, 525.664, 1293.22 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "( 0)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 152,
+    "page number" : 1,
+    "bounding box" : [ 673.667, 1159.361, 1018.873, 1289.431 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "GESTIÓN OPERATIVA PATRIMONIO Capital Social Capital Pagado Obligaciones Convertibles en Acciones Aportes Patrimoniales no Capitalizados Reservas de Capital Ajustes al Patrimonio Resultados Acumulados Ganancia o Pérdida no Realizada en Inversiones en Títulos Valores Disponibles para la Venta (Acciones en Tesorería) TOTAL DEL PATRIMONIO TOTAL DEL PASIVO Y PATRIMONIO"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 102,
+    "page number" : 1,
+    "bounding box" : [ 464.688, 1250.547, 522.66, 1276.019 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "22.803.970 4.103.812.641"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H4",
+    "id" : 66,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 64.834, 1215.703, 155.798, 1275.643 ],
+    "heading level" : 4,
+    "font" : "Helvetica-Bold",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "BIENES REALIZABLES BIENES DE USO OTROS ACTIVOS TOTAL DEL ACTIVO"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 190,
+    "page number" : 1,
+    "bounding box" : [ 1181.899, 1246.973, 1227.881, 1263.943 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "257.919.300 257.919.300"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 168,
+    "page number" : 1,
+    "bounding box" : [ 1065.524, 1246.973, 1111.505, 1263.943 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "257.919.300 257.919.300"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 191,
+    "page number" : 1,
+    "bounding box" : [ 1175.002, 1229.573, 1227.889, 1246.543 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0 1.392.764.220"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 169,
+    "page number" : 1,
+    "bounding box" : [ 1058.627, 1229.573, 1111.513, 1246.543 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0 1.392.764.220"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 103,
+    "level" : "2",
+    "page number" : 1,
+    "bounding box" : [ 459.421, 805.677, 522.66, 1241.616 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 459.647, 1233.346, 522.66, 1241.616 ],
+      "font" : "Helvetica-Bold",
+      "font size" : 8.27,
+      "text color" : "[0.0, 0.0, 0.0, 1.0]",
+      "content" : "54.132.216.775",
+      "kids" : [ {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 1,
+        "page number" : 1,
+        "bounding box" : [ 454.606, 1216.144, 522.66, 1224.414 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "797.898.387.658"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 2,
+        "page number" : 1,
+        "bounding box" : [ 567.84, 1603.147, 635.894, 1611.417 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "546.992.168.859"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 3,
+        "page number" : 1,
+        "bounding box" : [ 567.84, 1585.945, 635.894, 1602.816 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "51.749.036.981 129.724.579.450"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 4,
+        "page number" : 1,
+        "bounding box" : [ 603.136, 1577.345, 635.903, 1585.615 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "582.913"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 5,
+        "page number" : 1,
+        "bounding box" : [ 567.84, 1551.542, 635.903, 1577.014 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "365.517.969.515 0 0"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 6,
+        "page number" : 1,
+        "bounding box" : [ 562.463, 1542.941, 638.906, 1551.211 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "( 0)"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 7,
+        "page number" : 1,
+        "bounding box" : [ 572.881, 1517.139, 635.894, 1534.01 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "20.087.228.117 6.002.818.000"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 8,
+        "page number" : 1,
+        "bounding box" : [ 577.922, 1482.736, 635.903, 1516.808 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "0 1.637.900.078 3.368.105.679 9.078.404.360"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 9,
+        "page number" : 1,
+        "bounding box" : [ 562.463, 1465.534, 638.906, 1482.405 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "0 ( 0)"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 10,
+        "page number" : 1,
+        "bounding box" : [ 567.84, 1439.732, 635.894, 1456.603 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "206.088.939.187 209.630.466.724"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 11,
+        "page number" : 1,
+        "bounding box" : [ 577.922, 1422.53, 635.894, 1439.401 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "1.450.724.382 3.139.174.521"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 12,
+        "page number" : 1,
+        "bounding box" : [ 562.463, 1405.329, 638.895, 1422.199 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "22.382.378 ( 8.153.808.818)"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 13,
+        "page number" : 1,
+        "bounding box" : [ 577.922, 1388.127, 635.894, 1396.397 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "1.621.270.412"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 14,
+        "page number" : 1,
+        "bounding box" : [ 577.922, 1362.325, 635.903, 1387.796 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "0 3.280.864.255 1.822.014.740"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 15,
+        "page number" : 1,
+        "bounding box" : [ 595.566, 1345.179, 635.904, 1362.049 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "8.149.065 0"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 16,
+        "page number" : 1,
+        "bounding box" : [ 562.464, 1336.578, 638.896, 1344.848 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "( 3.489.757.648)"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 17,
+        "page number" : 1,
+        "bounding box" : [ 577.922, 1302.175, 635.895, 1319.045 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "4.177.937.411 4.177.937.411"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 18,
+        "page number" : 1,
+        "bounding box" : [ 562.464, 1284.973, 638.914, 1301.844 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "0 ( 0)"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 19,
+        "page number" : 1,
+        "bounding box" : [ 577.922, 1250.57, 635.895, 1276.041 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "22.803.970 4.114.004.947"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 20,
+        "page number" : 1,
+        "bounding box" : [ 567.84, 1216.167, 635.895, 1241.638 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "54.173.796.224 837.278.149.127"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 21,
+        "page number" : 1,
+        "bounding box" : [ 1164.737, 814.666, 1227.751, 822.936 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "73.883.350.238"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 22,
+        "page number" : 1,
+        "bounding box" : [ 1156.958, 744.661, 1230.752, 808.935 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "( 21.136.399.056) ( 3.682.966.399) ( 16.357.844.957) ( 415.999.341) ( 679.588.359)"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 23,
+        "page number" : 1,
+        "bounding box" : [ 1164.737, 716.659, 1227.751, 738.93 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "52.746.951.182 276.519.850"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 24,
+        "page number" : 1,
+        "bounding box" : [ 1177.34, 688.656, 1227.76, 710.928 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "0 211.739.236"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 25,
+        "page number" : 1,
+        "bounding box" : [ 1156.958, 646.653, 1230.752, 682.925 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "( 26.092.275) ( 0) ( 5.139.805.697)"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 26,
+        "page number" : 1,
+        "bounding box" : [ 1164.737, 618.651, 1227.751, 640.922 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "48.069.312.296 189.529.248"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 27,
+        "page number" : 1,
+        "bounding box" : [ 1156.958, 604.65, 1230.752, 612.92 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "( 41.891.142)"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 28,
+        "page number" : 1,
+        "bounding box" : [ 1164.737, 590.649, 1227.751, 598.919 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "48.216.950.402"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 29,
+        "page number" : 1,
+        "bounding box" : [ 1156.958, 576.648, 1230.752, 584.918 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "( 9.413.894.716)"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 30,
+        "page number" : 1,
+        "bounding box" : [ 1164.737, 562.646, 1227.751, 570.916 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "38.803.055.686"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 31,
+        "page number" : 1,
+        "bounding box" : [ 1048.348, 814.65, 1111.362, 822.92 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "73.931.150.101"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 32,
+        "page number" : 1,
+        "bounding box" : [ 1039.218, 744.644, 1114.363, 808.919 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "( 20.897.097.998) ( 3.579.261.174) ( 16.222.249.124) ( 415.999.341) ( 679.588.359)"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 33,
+        "page number" : 1,
+        "bounding box" : [ 1048.348, 702.641, 1111.371, 738.913 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "53.034.052.103 0 0"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 34,
+        "page number" : 1,
+        "bounding box" : [ 1060.951, 688.64, 1111.362, 696.91 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "181.474.824"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 35,
+        "page number" : 1,
+        "bounding box" : [ 1039.218, 646.637, 1114.413, 682.909 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "( 10.365.441) ( 0) ( 5.139.743.906)"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 36,
+        "page number" : 1,
+        "bounding box" : [ 1048.348, 618.634, 1111.362, 640.905 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "48.065.417.580 189.529.248"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 37,
+        "page number" : 1,
+        "bounding box" : [ 1039.218, 604.633, 1114.363, 612.903 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "( 41.891.142)"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 38,
+        "page number" : 1,
+        "bounding box" : [ 1048.348, 590.632, 1111.362, 598.902 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "48.213.055.686"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 39,
+        "page number" : 1,
+        "bounding box" : [ 1039.218, 576.631, 1114.363, 584.901 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "( 9.410.000.000)"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 40,
+        "page number" : 1,
+        "bounding box" : [ 1048.348, 562.63, 1111.362, 570.9 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "38.803.055.686"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 41,
+        "page number" : 1,
+        "bounding box" : [ 572.555, 815.634, 635.568, 823.904 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "57.466.775.285"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 42,
+        "page number" : 1,
+        "bounding box" : [ 577.596, 795.637, 635.568, 813.906 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "458.925.624 2.893.052.720"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 43,
+        "page number" : 1,
+        "bounding box" : [ 572.555, 785.639, 635.568, 793.909 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "53.835.844.425"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 44,
+        "page number" : 1,
+        "bounding box" : [ 585.157, 745.645, 635.577, 783.91 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "278.952.516 0 0 0"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 45,
+        "page number" : 1,
+        "bounding box" : [ 566.045, 645.661, 638.624, 743.917 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "( 4.330.885.349) ( 2.094.314.862) ( 0) ( 0) ( 2.005.863.686) ( 0) ( 0) ( 0) ( 0) ( 230.706.801)"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 46,
+        "page number" : 1,
+        "bounding box" : [ 575.556, 635.662, 638.569, 643.932 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "53.135.889.936"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 47,
+        "page number" : 1,
+        "bounding box" : [ 566.045, 595.669, 638.624, 633.934 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "2.047.495 ( 4.641.807.695) ( 4.641.807.695) ( 0)"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 48,
+        "page number" : 1,
+        "bounding box" : [ 575.556, 575.672, 638.569, 593.94 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "48.496.129.736 35.423.349.551"
+      }, {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 49,
+        "page number" : 1,
+        "bounding box" : [ 566.054, 565.673, 638.578, 573.943 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "( 10.036.129.049)"
+      } ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 459.421, 805.677, 522.434, 823.945 ],
+      "font" : "Helvetica-Bold",
+      "font size" : 8.27,
+      "text color" : "[0.0, 0.0, 0.0, 1.0]",
+      "content" : "55.489.084.020 280.019.261",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 192,
+    "page number" : 1,
+    "bounding box" : [ 1165.806, 1194.827, 1227.915, 1229.143 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "263.222.948 100.406.791.209 21.362.201.446 1.325.346.650"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 170,
+    "page number" : 1,
+    "bounding box" : [ 1049.431, 1194.773, 1111.505, 1229.143 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "263.222.948 100.406.791.209 21.362.201.446 1.325.346.650"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 193,
+    "page number" : 1,
+    "bounding box" : [ 1162.243, 1160.027, 1230.917, 1194.397 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "( 0) 125.008.245.773 837.278.149.127"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 171,
+    "page number" : 1,
+    "bounding box" : [ 1045.841, 1159.973, 1114.515, 1194.343 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "( 0) 125.008.245.773 797.898.387.658"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 144,
+    "page number" : 1,
+    "bounding box" : [ 68.261, 1077.992, 410.689, 1192.284 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Inversiones Cedidas Cartera al Sector Agroalimentario del Mes Cartera al Sector Agroalimentario Acumulada Captaciones de Entidades Oficiales Microcréditos y Otros Instrumentos de Financiamientos Créditos al Sector Turismo según la Legislación Vigente Créditos Hipotecarios según la Ley Especial de Protección al Deudor Hipotecario de Vivienda Índice de Solvencia Patrimonial Créditos Otorgados a la Actividad Manufacturera Créditos Otorgados al Sector Salud Créditos Otorgados al Sector Desarrollado por la Mujer (Credimujer)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 145,
+    "page number" : 1,
+    "bounding box" : [ 633.648, 1173.387, 638.246, 1192.259 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0 0"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 146,
+    "page number" : 1,
+    "bounding box" : [ 580.761, 1152.182, 638.238, 1171.054 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "2.801.794.786 13.592.522.727"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 194,
+    "page number" : 1,
+    "bounding box" : [ 1175.029, 1133.927, 1227.907, 1150.897 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "8.377.558.065 3.289.629.779"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 172,
+    "page number" : 1,
+    "bounding box" : [ 1058.627, 1133.873, 1111.505, 1150.843 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "8.377.558.065 3.289.629.779"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 153,
+    "page number" : 1,
+    "bounding box" : [ 673.667, 1081.06, 919.583, 1150.231 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Cuentas Contingentes Deudoras Activos de los Fideicomisos Otros Encargos de Confianza Cuentas Deudoras por Otros Encargos de Confianza (Regimen Prestacional de Vivienda y Hábitat) Otras Cuentas Deudoras de los Fondos de Ahorro para la Vivienda Otras Cuentas de Orden Deudoras Otras Cuentas de Registro Deudoras"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 147,
+    "page number" : 1,
+    "bounding box" : [ 585.359, 1141.58, 638.238, 1149.85 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "4.642.690.753"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 148,
+    "page number" : 1,
+    "bounding box" : [ 592.257, 1120.376, 638.246, 1139.248 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0 397.838.385"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 195,
+    "page number" : 1,
+    "bounding box" : [ 1191.122, 1107.826, 1227.915, 1133.497 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0 9.743.594"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 173,
+    "page number" : 1,
+    "bounding box" : [ 1074.72, 1107.772, 1111.513, 1133.443 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0 9.743.594"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 149,
+    "page number" : 1,
+    "bounding box" : [ 610.194, 1088.569, 638.238, 1118.044 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "25,55% 0 0"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 196,
+    "page number" : 1,
+    "bounding box" : [ 1165.824, 1090.426, 1227.907, 1107.396 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0 449.520.688.660"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 174,
+    "page number" : 1,
+    "bounding box" : [ 1049.422, 1090.372, 1111.505, 1107.342 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0 402.619.178.353"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 197,
+    "page number" : 1,
+    "bounding box" : [ 1223.309, 1081.726, 1227.907, 1089.996 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 175,
+    "page number" : 1,
+    "bounding box" : [ 1106.907, 1081.672, 1111.505, 1089.942 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 150,
+    "page number" : 1,
+    "bounding box" : [ 601.445, 1077.967, 638.23, 1086.237 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "4.215.216"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 112,
+    "level" : "Doctitle",
+    "page number" : 1,
+    "bounding box" : [ 519.344, 1048.115, 780.66, 1053.713 ],
+    "heading level" : 1,
+    "font" : "Cosmos-Medium",
+    "font size" : 10.976,
+    "text color" : "[0.0, 0.0, 0.0, 0.0]",
+    "content" : "Patrimonio Asignado de los Fideicomisos (Detalles)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 69,
+    "page number" : 1,
+    "bounding box" : [ 64.834, 1005.116, 117.68, 1023.382 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Tipos de Fideicomisos"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 75,
+    "page number" : 1,
+    "bounding box" : [ 271.331, 1005.148, 309.011, 1023.339 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Personas Naturales"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 74,
+    "page number" : 1,
+    "bounding box" : [ 424.318, 1005.148, 461.544, 1023.339 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Personas Jurídicas"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 78,
+    "page number" : 1,
+    "bounding box" : [ 958.297, 1004.907, 1098.917, 1023.166 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "EntesDescentralizadosyotros OrganismosconRégimenEspecial"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 79,
+    "page number" : 1,
+    "bounding box" : [ 1204.033, 1014.798, 1223.787, 1023.066 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Total"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 77,
+    "page number" : 1,
+    "bounding box" : [ 731.352, 1004.866, 880.246, 1023.058 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Administraciones Públicas, Estatales, Municipales y del Distrito Capital"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 76,
+    "page number" : 1,
+    "bounding box" : [ 569.351, 1004.833, 629.539, 1023.025 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Administración Central"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 70,
+    "page number" : 1,
+    "bounding box" : [ 64.834, 945.127, 152.152, 993.383 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Inversión Garantía Administración Características Mixtas Otros"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 123,
+    "page number" : 1,
+    "bounding box" : [ 270.135, 974.792, 300.031, 993.06 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "551.508 0"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 72,
+    "page number" : 1,
+    "bounding box" : [ 416.369, 974.792, 462.35, 993.06 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "24.859.378 362.474.138"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 127,
+    "page number" : 1,
+    "bounding box" : [ 811.324, 974.791, 815.922, 993.059 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0 0"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 82,
+    "page number" : 1,
+    "bounding box" : [ 1178.674, 974.791, 1224.655, 993.059 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "25.410.886 362.474.138"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 80,
+    "page number" : 1,
+    "bounding box" : [ 1029.042, 944.803, 1033.64, 993.059 ],
+    "font" : "Helvetica",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0 0 0 0 0"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 125,
+    "page number" : 1,
+    "bounding box" : [ 594.85, 944.802, 599.447, 993.058 ],
+    "font" : "Helvetica",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0 0 0 0 0"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 124,
+    "level" : "1",
+    "page number" : 1,
+    "bounding box" : [ 258.64, 924.799, 300.031, 973.063 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 258.64, 944.796, 300.031, 973.063 ],
+      "font" : "Helvetica",
+      "font size" : 8.27,
+      "text color" : "[0.0, 0.0, 0.0, 1.0]",
+      "content" : "53.998.000 0 0",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 258.64, 924.799, 300.023, 933.069 ],
+      "font" : "Helvetica-Bold",
+      "font size" : 8.27,
+      "text color" : "[0.0, 0.0, 0.0, 1.0]",
+      "content" : "54.549.508",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 73,
+    "level" : "1",
+    "page number" : 1,
+    "bounding box" : [ 409.472, 924.799, 462.359, 973.063 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 409.472, 954.795, 462.359, 973.063 ],
+      "font" : "Helvetica",
+      "font size" : 8.27,
+      "text color" : "[0.0, 0.0, 0.0, 1.0]",
+      "content" : "1.690.525.747 0",
+      "kids" : [ {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 51,
+        "page number" : 1,
+        "bounding box" : [ 425.565, 944.796, 462.35, 953.066 ],
+        "font" : "Helvetica",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "6.869.940"
+      } ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 409.472, 924.799, 462.35, 933.069 ],
+      "font" : "Helvetica-Bold",
+      "font size" : 8.27,
+      "text color" : "[0.0, 0.0, 0.0, 1.0]",
+      "content" : "2.084.729.203",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 128,
+    "page number" : 1,
+    "bounding box" : [ 769.933, 944.796, 815.922, 973.063 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "183.020.923 0 0"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 83,
+    "level" : "1",
+    "page number" : 1,
+    "bounding box" : [ 1171.777, 924.799, 1224.663, 973.063 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 1171.777, 954.794, 1224.663, 973.063 ],
+      "font" : "Helvetica-Bold",
+      "font size" : 8.27,
+      "text color" : "[0.0, 0.0, 0.0, 1.0]",
+      "content" : "1.927.544.671 0",
+      "kids" : [ {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 50,
+        "page number" : 1,
+        "bounding box" : [ 1187.87, 944.796, 1224.655, 953.066 ],
+        "font" : "Helvetica-Bold",
+        "font size" : 8.27,
+        "text color" : "[0.0, 0.0, 0.0, 1.0]",
+        "content" : "6.869.940"
+      } ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 1171.777, 924.799, 1224.655, 933.069 ],
+      "font" : "Helvetica-Bold",
+      "font size" : 8.27,
+      "text color" : "[0.0, 0.0, 0.0, 1.0]",
+      "content" : "2.322.299.635",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 71,
+    "page number" : 1,
+    "bounding box" : [ 64.834, 925.125, 84.588, 933.394 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Total"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 81,
+    "page number" : 1,
+    "bounding box" : [ 1029.042, 924.801, 1033.64, 933.07 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 126,
+    "page number" : 1,
+    "bounding box" : [ 594.85, 924.8, 599.447, 933.069 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "0"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 129,
+    "page number" : 1,
+    "bounding box" : [ 769.933, 924.799, 815.914, 933.069 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "183.020.923"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 119,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 449.908, 889.202, 850.104, 900.178 ],
+    "heading level" : 1,
+    "font" : "Helvetica-Bold",
+    "font size" : 10.976,
+    "text color" : "[0.0, 0.0, 0.0, 0.0]",
+    "content" : "Estado de Resultados de Publicación por el Periodo 01/01/2026 al 31/05/2026"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 120,
+    "page number" : 1,
+    "bounding box" : [ 591.607, 876.377, 705.339, 885.851 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 9.475,
+    "text color" : "[0.0, 0.0, 0.0, 0.0]",
+    "content" : "(Expresado en Bolívares)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 59,
+    "page number" : 1,
+    "bounding box" : [ 1054.176, 828.505, 1106.567, 856.619 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Balance de Operaciones en Venezuela"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 60,
+    "page number" : 1,
+    "bounding box" : [ 1164.538, 828.505, 1225.661, 856.619 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Consolidado con Sucursales en el Exterior"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 61,
+    "page number" : 1,
+    "bounding box" : [ 463.419, 828.505, 515.809, 856.619 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Balance de Operaciones en Venezuela"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 62,
+    "page number" : 1,
+    "bounding box" : [ 573.781, 828.505, 634.903, 856.619 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Consolidado con Sucursales en el Exterior"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 67,
+    "page number" : 1,
+    "bounding box" : [ 64.752, 565.618, 374.968, 823.808 ],
+    "font" : "Helvetica",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "INGRESOS FINANCIEROS Ingresos por Disponibilidades Ingresos por Inversiones en Títulos Valores Ingresos por Cartera de Créditos Ingresos por Otras Cuentas por Cobrar Ingresos por Inversiones en Empresas Filiales, Afiliadas y Sucursales Ingresos por Oficina Principal y Sucursales Otros Ingresos Financieros GASTOS FINANCIEROS Gastos por Captaciones del Público Gastos por Obligaciones con el Banco Central de Venezuela Gastos por Captaciones y Obligaciones con el Banco Nacional de Vivienda y Hábitat Gastos por Otros Financiamientos Obtenidos Gastos por Otras Obligaciones por Intermediación Financiera Gastos por Obligaciones Subordinadas Gastos por Otras Obligaciones Gastos por Oficina Principal y Sucursales Otros Gastos Financieros MARGEN FINANCIERO BRUTO Ingresos por Recuperaciones de Activos Financieros Gastos por Incobrabilidad y Desvalorización de Activos Financieros Gastos por Incobrabilidad de Créditos y Otras Cuentas por Cobrar Constitución de Provisión y Ajustes de Disponibilidades MARGEN FINANCIERO NETO Otros Ingresos Operativos Otros Gastos Operativos"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 68,
+    "page number" : 1,
+    "bounding box" : [ 674.527, 562.931, 958.507, 823.18 ],
+    "font" : "Helvetica",
+    "font size" : 8.269,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "MARGEN DE INTERMEDIACIÓN FINANCIERA GASTOS DE TRANSFORMACIÓN Gastos de Personal Gastos Generales y Administrativos Aportes al Fondo de Garantía de Depósitos y Protección Bancaria Aportes a la Superintendencia de Bancos y Otras Instituciones Financieras MARGEN OPERATIVO BRUTO Ingresos por Bienes Realizables Ingresos por Programas Especiales Ingresos Operativos Varios Gastos por Bienes Realizables Gastos por Depreciación, Amortización y Desvalorización de Bienes Diversos Gastos Operativos Varios MARGEN OPERATIVO NETO Ingresos Extraordinarios Gastos Extraordinarios RESULTADO BRUTO ANTES DE IMPUESTOS Impuesto Sobre la Renta RESULTADO NETO"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 104,
+    "page number" : 1,
+    "bounding box" : [ 459.421, 785.68, 522.434, 803.949 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "2.892.285.012 52.316.059.264"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 105,
+    "page number" : 1,
+    "bounding box" : [ 489.667, 745.686, 522.443, 783.952 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "720.483 0 0 0"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 106,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 451.823, 735.688, 525.435, 743.958 ],
+    "heading level" : 3,
+    "font" : "Helvetica-Bold",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "( 4.173.109.792)"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 107,
+    "level" : "3",
+    "page number" : 1,
+    "bounding box" : [ 451.823, 645.702, 525.435, 733.96 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 451.823, 705.693, 525.435, 733.96 ],
+      "font" : "Helvetica",
+      "font size" : 8.27,
+      "text color" : "[0.0, 0.0, 0.0, 1.0]",
+      "content" : "( 1.936.539.305) ( 0) ( 0)",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 451.823, 645.702, 525.435, 703.964 ],
+      "font" : "Helvetica",
+      "font size" : 8.27,
+      "text color" : "[0.0, 0.0, 0.0, 1.0]",
+      "content" : "( 2.005.863.686) ( 0) ( 0) ( 0) ( 0) ( 230.706.801)",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 108,
+    "page number" : 1,
+    "bounding box" : [ 459.421, 625.705, 522.434, 643.974 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "51.315.974.228 2.047.495"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 109,
+    "page number" : 1,
+    "bounding box" : [ 451.814, 595.71, 525.426, 623.977 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "( 4.188.294.032) ( 4.188.294.032) ( 0)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 110,
+    "page number" : 1,
+    "bounding box" : [ 459.411, 575.713, 522.425, 593.981 ],
+    "font" : "Helvetica-Bold",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "47.129.727.691 37.707.825.078"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 111,
+    "page number" : 1,
+    "bounding box" : [ 451.814, 565.715, 525.426, 573.985 ],
+    "font" : "Helvetica",
+    "font size" : 8.27,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "( 10.906.402.668)"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 116,
+    "page number" : 1,
+    "bounding box" : [ 588.994, 486.846, 715.719, 540.885 ],
+    "source" : "mayo-2026.pdf-add5d7aa92_images/imageFile1.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 140,
+    "page number" : 1,
+    "bounding box" : [ 994.382, 481.864, 1134.222, 538.688 ],
+    "source" : "mayo-2026.pdf-add5d7aa92_images/imageFile2.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 113,
+    "page number" : 1,
+    "bounding box" : [ 194.53, 480.499, 314.396, 537.69 ],
+    "source" : "mayo-2026.pdf-add5d7aa92_images/imageFile3.png"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H5",
+    "id" : 114,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 190.458, 482.648, 321.384, 492.391 ],
+    "heading level" : 5,
+    "font" : "HelveticaNeue-Bold",
+    "font size" : 8.174,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "JORGE L. NOGUEROLES GARCÍA"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H5",
+    "id" : 117,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 585.485, 482.648, 716.787, 492.391 ],
+    "heading level" : 5,
+    "font" : "HelveticaNeue-Bold",
+    "font size" : 8.174,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "KATIUSKA L. DEL VILLAR ARAUJO"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 142,
+    "page number" : 1,
+    "bounding box" : [ 1000.197, 482.648, 1131.091, 492.391 ],
+    "font" : "HelveticaNeue-Bold",
+    "font size" : 8.174,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "MARÍA ADELAIDA SIERRA GÓMEZ"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 143,
+    "page number" : 1,
+    "bounding box" : [ 997.817, 484.154, 1131.074, 492.313 ],
+    "source" : "mayo-2026.pdf-add5d7aa92_images/imageFile4.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 141,
+    "page number" : 1,
+    "bounding box" : [ 997.817, 484.154, 1131.074, 492.313 ],
+    "source" : "mayo-2026.pdf-add5d7aa92_images/imageFile5.png"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 115,
+    "page number" : 1,
+    "bounding box" : [ 238.324, 474.686, 271.247, 482.713 ],
+    "font" : "HelveticaNeue",
+    "font size" : 6.891,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Presidente"
+  }, {
+    "type" : "caption",
+    "id" : 118,
+    "page number" : 1,
+    "bounding box" : [ 627.092, 474.686, 672.907, 482.713 ],
+    "linked content id" : 116,
+    "font" : "HelveticaNeue",
+    "font size" : 6.891,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Auditor Interno"
+  }, {
+    "type" : "caption",
+    "id" : 139,
+    "page number" : 1,
+    "bounding box" : [ 1016.269, 474.686, 1112.751, 482.713 ],
+    "linked content id" : 140,
+    "font" : "HelveticaNeue",
+    "font size" : 6.891,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Vicepresidente de Contabilidad"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 53,
+    "page number" : 1,
+    "bounding box" : [ 47.253, 25.888, 1252.544, 454.414 ],
+    "source" : "mayo-2026.pdf-add5d7aa92_images/imageFile6.png"
+  } ]
+}
