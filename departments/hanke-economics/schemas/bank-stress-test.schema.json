@@ -1,0 +1,18 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Venezuela Independent Bank Stress Test",
+  "type":"object",
+  "required":["bank_id","baseline","scenarios","classification","source_ids","assumptions"],
+  "properties":{
+    "bank_id":{"type":"string"},
+    "baseline":{"type":"object","required":["capital","gross_loans","deposits","liquid_assets","RWA"]},
+    "scenarios":{"type":"array","items":{"type":"object","required":["scenario_id","deposit_withdrawal","NPL_multiplier","sovereign_haircut","VES_devaluation","credit_change","post_shock_capital","post_shock_CAR"]}},
+    "classification":{"enum":["GREEN","YELLOW","ORANGE","RED","BLACK","UNRESOLVED"]},
+    "source_ids":{"type":"array","items":{"type":"string"}},
+    "assumptions":{"type":"array","items":{"type":"string"}}
+  },
+  "classification_rule":"GREEN = CAR at or above minimum plus buffer; YELLOW = solvent but buffer impaired; ORANGE = capital restoration required; RED = regulatory capital breach; BLACK = negative equity; UNRESOLVED = critical baseline input unavailable.",
+  "loss_formula":"PostShockCapital = Capital - CreditLoss - SovereignLoss - FXLoss - LiquidityLoss",
+  "car_formula":"PostShockCAR = PostShockRegulatoryCapital / PostShockRWA",
+  "required_scenarios":["deposit_run","NPL_shock","provision_shock","sovereign_haircut","VES_devaluation","dollarization_conversion","encaje_release","credit_freeze","deposit_dollarization","combined_systemic_shock"]
+}

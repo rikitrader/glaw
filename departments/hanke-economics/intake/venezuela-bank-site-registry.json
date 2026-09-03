@@ -1,0 +1,27 @@
+{
+  "registry_id": "VEN-BANK-OFFICIAL-SITES-20260825",
+  "purpose": "Official bank website acquisition map for Venezuela bank financial statements.",
+  "rule": "A landing page or search result is not a verified observation. Downloaded statements require file hash, source URL, observation date, and document-level review.",
+  "banks": [
+    {"bank_id":"BANCO-DE-VENEZUELA","name":"Banco de Venezuela","official_site":"https://www.bancodevenezuela.com/index.html%40p%3D5414.html","financial_page":"https://www.bancodevenezuela.com/index.html%40p%3D5414.html"},
+    {"bank_id":"BANESCO","name":"Banesco Banco Universal","official_site":"https://www.banesco.com/","financial_page":"https://www.banesco.com/somosbanesco/balances/"},
+    {"bank_id":"BBVA-PROVINCIAL","name":"BBVA Provincial","official_site":"https://www.provincial.com/","financial_page":"https://www.provincial.com/personas/informacion-corporativa/informacion-financiera.html"},
+    {"bank_id":"MERCANTIL","name":"Mercantil Banco Universal","official_site":"https://www.mercantilbanco.com/","financial_page":"https://www.mercantilbanco.com/acerca-de-mercantil/informacion-financiera"},
+    {"bank_id":"BNC","name":"Banco Nacional de Crédito","official_site":"https://www.bncenlinea.com/","financial_page":"https://d3q4nr72nuserl.cloudfront.net/Reportes-Financieros-BNC"},
+    {"bank_id":"BANCAMIGA","name":"Bancamiga","official_site":"https://www.bancamiga.com/","financial_page":"https://www.bancamiga.com/"},
+    {"bank_id":"BANCO-DEL-TESORO","name":"Banco del Tesoro","official_site":"https://www.bt.gob.ve/","financial_page":"https://www.bt.gob.ve/"},
+    {"bank_id":"BANCARIBE","name":"Bancaribe","official_site":"https://www.bancaribe.com.ve/","financial_page":"https://www.bancaribe.com.ve/cifras-e-informes"},
+    {"bank_id":"BANCO-EXTERIOR","name":"Banco Exterior","official_site":"https://www.bancoexterior.com/","financial_page":"https://www.bancoexterior.com/"},
+    {"bank_id":"BANPLUS","name":"Banplus","official_site":"https://www.banplus.com/","financial_page":"https://www.banplus.com/estados-financieros/"},
+    {"bank_id":"FONDO-COMUN","name":"Banco Fondo Común","official_site":"https://www.bfc.com.ve/","financial_page":"https://www.bfc.com.ve/"},
+    {"bank_id":"VENEZOLANO-DE-CREDITO","name":"Banco Venezolano de Crédito","official_site":"https://www.bvc.com.ve/","financial_page":"https://www.bvc.com.ve/"},
+    {"bank_id":"BANCO-PLAZA","name":"Banco Plaza","official_site":"https://www.bancoplaza.com/","financial_page":"https://www.bancoplaza.com/tu-banco/informacion-financiera/estados-financieros/"},
+    {"bank_id":"BANCRECER","name":"Bancrecer","official_site":"https://www.bancrecer.com.ve/","financial_page":"https://www.bancrecer.com.ve/"},
+    {"bank_id":"SOFITASA","name":"Sofitasa","official_site":"https://www.sofitasa.com/","financial_page":"https://www.sofitasa.com/"},
+    {"bank_id":"BANCO-CARONI","name":"Banco Caroní","official_site":"https://www.bancocaroni.com.ve/","financial_page":"https://www.bancocaroni.com.ve/"},
+    {"bank_id":"BANFANB","name":"Banfanb","official_site":"https://www.banfanb.com.ve/","financial_page":"https://www.banfanb.com.ve/"},
+    {"bank_id":"BANCO-ACTIVO","name":"Banco Activo","official_site":"https://www.bancoactivo.com/","financial_page":"https://www.bancoactivo.com/"},
+    {"bank_id":"BANCO-DELSUR","name":"Banco del Sur","official_site":"https://www.delsur.com.ve/","financial_page":"https://www.delsur.com.ve/"},
+    {"bank_id":"100-BANCO","name":"100% Banco","official_site":"https://www.100banco.com/","financial_page":"https://www.100banco.com/"}
+  ]
+}

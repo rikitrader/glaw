@@ -1,0 +1,10 @@
+{
+  "schemaVersion":"0.1.0",
+  "status":"target-registry",
+  "confirmedWorkflows":["matter-pipeline","legal-governor","x402-paid-work","agent-life-cron"],
+  "workflowDsl":{"format":"YAML or JSON","canvasIsNotSourceOfTruth":true,"status":"proposed"},
+  "taxonomy":["organization","department","matter","workstream","workflow","subworkflow","task","agent-step","tool-or-rag-operation"],
+  "templates":["new-matter-intake","legal-research","litigation-analysis","contract-review","contract-drafting","corporate-formation","financing","m-and-a-due-diligence","tax-research","estate-planning","regulatory-analysis","compliance-review","internal-investigation","appeal-analysis"],
+  "reviewLoop":{"stages":["draft","red-team","issues","blue-team","revision","recheck","threshold"],"maxReviewRounds":3,"qualityThreshold":"configured per workflow","criticalFailureThreshold":"any unresolved critical finding"},
+  "departmentWorkflows":[{"id":"venezuela-monetary-reform","path":"departments/hanke-economics/workflows/venezuela-monetary-reform.yaml","status":"active-development","gates":["data","math","citation","red-blue-red","chief"]},{"id":"haeis-historical-benchmark-suite","path":"departments/hanke-economics/workflows/benchmark-suite.yaml","status":"active-development"},{"id":"glaw-property-claims","path":"departments/property-claims","status":"active-development","stages":["ingestion","normalization","identity","policy-law","evidence-causation","building-science","estimate-invoice","red-blue","white","human-review","report"],"gates":["document-completeness","policy-first","citation","red-blue","white-team","human-review"]}]
+}

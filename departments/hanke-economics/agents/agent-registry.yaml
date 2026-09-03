@@ -1,0 +1,44 @@
+schema_version: 0.1.0
+department: hanke-applied-economics
+agents:
+  - {id: chief-hanke-economist, name: Chief Hanke Economics Orchestrator, role: route questions, hold gates, arbitrate evidence, output: final-economic-report}
+  - {id: hanke-scholar, name: Hanke Scholarship Agent, role: reconstruct direct positions and evolution, output: hanke-position-record}
+  - {id: bibliography-agent, name: Hanke Bibliography and Corpus Agent, role: discover, deduplicate, classify, and track sources, output: corpus-registry}
+  - {id: monetary-agent, name: Monetary Economics Agent, role: money, velocity, inflation, and monetary disequilibrium, output: monetary-analysis}
+  - {id: monetary-flow-agent, name: Hanke/Greenwood Monetary-Flow Agent, role: Golden Growth Rate and Credit Counterparts analysis from source-bound monetary flows, output: monetary-flow-report}
+  - {id: hyperinflation-agent, name: Hyperinflation Agent, role: date, measure, and compare hyperinflation episodes, output: hyperinflation-dossier}
+  - {id: currency-board-agent, name: Currency Board Agent, role: test orthodox currency-board design, output: currency-board-analysis}
+  - {id: dollarization-agent, name: Dollarization Agent, role: model physical currency, base, banking, gradual, parallel, and board transitions, output: dollarization-analysis}
+  - {id: banking-credit-agent, name: Banking and Credit Agent, role: analyze bank balance sheets, liquidity, solvency, and credit, output: banking-analysis}
+  - {id: fiscal-dominance-agent, name: Fiscal Dominance Agent, role: trace deficit financing and fiscal-monetary interaction, output: fiscal-analysis}
+  - {id: sovereign-debt-agent, name: Sovereign Debt Agent, role: model debt sustainability and shocks, output: debt-analysis}
+  - {id: exchange-rate-agent, name: Exchange Rate Agent, role: compare official, parallel, and black-market rates, output: fx-analysis}
+  - {id: supply-side-agent, name: Supply-Side Economics Agent, role: analyze tax, incentives, regulation, and productivity, output: supply-side-analysis}
+  - {id: econometrician, name: Econometrician Agent, role: reproducible quantitative analysis with causal warnings, output: econometric-report}
+  - {id: advanced-modeling-agent, name: Advanced Economic Modeling Agent, role: execute transparent macro, system-dynamics, aggregate agent-based, and stress-grid models, output: modeled-scenario-report}
+  - {id: data-forensics-agent, name: Data Forensics Agent, role: verify units, dates, revisions, and comparability, output: data-audit}
+  - {id: historical-cases-agent, name: Historical Cases Agent, role: standardize country dossiers and comparisons, output: historical-comparison}
+  - {id: venezuela-agent, name: Venezuela Agent, role: maintain Venezuela monetary-reform intake and evidence separation, output: venezuela-dossier}
+  - {id: citation-auditor, name: Citation Auditor, role: independently verify attribution and anchors, output: citation-audit}
+  - {id: mathematical-verifier, name: Mathematical Verifier, role: reproduce calculations and reject arithmetic errors, output: math-audit}
+red_team:
+  - monetary-attacker
+  - banking-attacker
+  - fiscal-attacker
+  - historical-analogy-attacker
+  - data-attacker
+  - causality-attacker
+  - institutional-attacker
+  - political-economy-attacker
+  - crisis-simulator
+blue_team:
+  - hanke-defense-agent
+  - policy-engineer
+  - banking-defense-agent
+  - fiscal-defense-agent
+  - institutional-defense-agent
+  - transition-agent
+controls:
+  prohibited_actions: [invent_sources, invent_quotes, invent_pages, invent_statistics, override_blocked_attribution]
+  human_review_required: []
+  post_run_review_packet: [policy_recommendation, high_stakes_country_analysis, unresolved_critical_finding]

@@ -1,0 +1,9 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Venezuela Reserve Asset Record",
+  "type":"object",
+  "required":["asset_id","owner","asset_type","custodian","jurisdiction","market_value","liquidity_days","encumbrance_status","legal_status","usable_for_dollarization","source_id","verification_status"],
+  "properties":{
+    "asset_id":{"type":"string"},"owner":{"type":"string"},"asset_type":{"enum":["cash_deposit","foreign_security","foreign_bond","money_market_instrument","SDR","gold","IMF_position","other"]},"custodian":{"type":"string"},"jurisdiction":{"type":"string"},"currency":{"type":"string"},"market_value":{"type":["number","null"]},"book_value":{"type":["number","null"]},"haircut":{"type":["number","null"]},"maturity":{"type":["string","null"]},"liquidity_days":{"type":["number","null"]},"encumbrance_status":{"enum":["unencumbered","pledged","collateralized","unknown"]},"legal_status":{"enum":["unrestricted","sanctioned","frozen","attached","disputed","unknown"]},"usable_for_dollarization":{"enum":["100_PERCENT","HAIRCUT","ZERO_PENDING_ACCESS","UNKNOWN"]},"source_id":{"type":"string"},"citation_anchor":{"type":["string","null"]},"verification_status":{"enum":["VERIFIED","PROVISIONAL","DISPUTED","UNAVAILABLE"]}
+  }
+}

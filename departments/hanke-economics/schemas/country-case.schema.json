@@ -1,0 +1,10 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"haeis/country-case",
+  "type":"object",
+  "required":["id","country","episode","problem","hyperinflation_assessment","relevance_to_venezuela","stabilization","hanke_sources","counter_sources","data_requirements","non_comparabilities","posture_status"],
+  "properties":{
+    "id":{"type":"string"},"country":{"type":"string"},"episode":{"type":"string"},"problem":{"type":"string"},"hyperinflation_assessment":{"type":"string"},"relevance_to_venezuela":{"type":"string"},"stabilization":{"type":"string"},
+    "hanke_sources":{"type":"array","items":{"type":"string"}},"counter_sources":{"type":"array","items":{"type":"string"}},"data_requirements":{"type":"array","items":{"type":"string"}},"non_comparabilities":{"type":"array","items":{"type":"string"}},"posture_status":{"type":"string"}
+  },"additionalProperties":true
+}

@@ -1,0 +1,23 @@
+{
+  "generated_at":"2026-08-25",
+  "method":"Google-style site/filetype/title queries executed through the research search boundary",
+  "rule":"Discovery is not verification. Search snippets, mirrors, and bibliographic records cannot support claims without a locally hashed artifact and physical anchors.",
+  "queries":[
+    "site:sites.krieger.jhu.edu/iae filetype:pdf \"Steve H. Hanke\" Venezuela monetary",
+    "site:sites.krieger.jhu.edu/iae filetype:pdf \"Hanke\" \"Golden Growth Rate\"",
+    "site:bnb.bg filetype:pdf Bulgaria currency board 1997 law annual report",
+    "\"On Venezuela's Tragic Meltdown\" filetype:pdf",
+    "\"Venezuela Enters the Record Book\" filetype:pdf",
+    "\"Issues in Venezuelan Monetary and Economic Reform\" filetype:pdf"
+  ],
+  "leads":[
+    {"document_id":"DOC-HANKE-VEN-TESTIMONY-2017","url":"https://sites.krieger.jhu.edu/iae/files/2017/04/On_Venezuelas_Tragic_Meltdown.pdf","disposition":"RESTRICTED_HTTP_403","evidence_allowed":false},
+    {"document_id":"DOC-HANKE-BUSHNELL-VEN-2017","url":"https://sites.krieger.jhu.edu/iae/files/2018/02/Hanke-Bushnell_Venezuela.pdf","disposition":"RESTRICTED_HTTP_403","evidence_allowed":false},
+    {"document_id":"DOC-HANKE-VEN-SUPPLY-2017","url":"https://sites.krieger.jhu.edu/iae/files/2017/04/On_Venezuelas_SupplySide_Potential.pdf","disposition":"RESTRICTED_HTTP_403","evidence_allowed":false},
+    {"document_id":"DOC-HANKE-VEN-REMEMBRANCES","url":"https://sites.krieger.jhu.edu/iae/files/2019/10/Remembrances-Amended.pdf","disposition":"RESTRICTED_HTTP_403","evidence_allowed":false},
+    {"document_id":"DOC-HANKE-ECUADOR-RULELAW-2015","url":"https://sites.krieger.jhu.edu/iae/files/2017/04/Hanke_Rule-of-Law_Dollarization_Ecuador.pdf","disposition":"RESTRICTED_HTTP_403","evidence_allowed":false},
+    {"document_id":"DOC-HANKE-VEN-HYPER-2016","url":"https://sites.krieger.jhu.edu/iae/files/2017/04/Venezuela_Enters_the_Record_Book.pdf","disposition":"RESTRICTED_HTTP_403","evidence_allowed":false},
+    {"document_id":"DOC-WU-VEN-REFORM-2016","url":"https://sites.krieger.jhu.edu/iae/files/2017/04/Issues-in-Venezuelan-Monetary-and-Economic-Reform.pdf","disposition":"RESTRICTED_HTTP_403","evidence_allowed":false},
+    {"document_id":"DOC-BNB-ANNUAL-1998","url":"https://www.bnb.bg/bnbweb/groups/public/documents/bnb_publication/p_anualreports_1998_en.pdf","disposition":"VERIFIED_LOCAL_HASH_AND_ANCHORS","evidence_allowed":true}
+  ]
+}

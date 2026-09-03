@@ -1,0 +1,3 @@
+import type { TaskSpec } from '../types.ts';
+export interface TaskTemplate { id:string; gym:string; difficulty:TaskSpec['difficulty']; objective:(values:Record<string,string|number>)=>string; criteria:(values:Record<string,string|number>)=>TaskSpec['successCriteria']; maxSteps:number; }
+export function generateTasks(template:TaskTemplate,values:Array<Record<string,string|number>>):TaskSpec[]{return values.map((value,index)=>({id:`${template.id}-${index+1}`,gym:template.gym,difficulty:template.difficulty,objective:template.objective(value),hiddenGroundTruth:value,successCriteria:template.criteria(value),maxSteps:template.maxSteps,seed:Number(value.seed??index+1)}));}

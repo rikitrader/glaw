@@ -1,0 +1,8 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"HAEIS Source Conflict",
+  "type":"object",
+  "required":["conflict_id","variable","date","source_A","value_A","source_B","value_B","absolute_difference","percentage_difference","probable_reason","preferred_source","confidence","analyst_note"],
+  "properties":{"conflict_id":{"type":"string"},"variable":{"type":"string"},"date":{"type":"string","format":"date"},"source_A":{"type":"string"},"value_A":{},"source_B":{"type":"string"},"value_B":{},"absolute_difference":{"type":["number","null"]},"percentage_difference":{"type":["number","null"]},"probable_reason":{"type":"string"},"preferred_source":{"type":["string","null"]},"confidence":{"type":["number","null"],"minimum":0,"maximum":1},"analyst_note":{"type":"string"}},
+  "additionalProperties":false
+}

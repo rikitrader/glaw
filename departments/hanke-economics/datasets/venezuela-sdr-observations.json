@@ -1,0 +1,15 @@
+{
+  "dataset_id": "VEN-IMF-SDR-OBSERVATIONS-2026",
+  "country": "Venezuela",
+  "status": "VERIFIED_PRIMARY_INSTITUTIONAL",
+  "source_rule": "IMF SDR holdings and allocations are kept separate. Holdings are not automatically usable cash; accessibility and restrictions require separate analysis.",
+  "observations": [
+    {"observation_id":"IMF-VEN-SDR-2026-02-28","series_id":"IMF_SDR_HOLDINGS","value":3313045849,"unit":"SDR","observation_date":"2026-02-28","source_id":"DOC-IMF-SDR-VEN-2026-02","source_url":"https://www.imf.org/external/np/fin/tad/extsdr2.aspx?date1key=2026-02-28","citation_anchor":"Venezuela row: SDR Holdings 3,313,045,849; SDR Allocations 6,111,296,399","verification_status":"VERIFIED"},
+    {"observation_id":"IMF-VEN-SDR-2026-03-31","series_id":"IMF_SDR_HOLDINGS","value":3313045849,"unit":"SDR","observation_date":"2026-03-31","source_id":"DOC-IMF-SDR-VEN-2026-03","source_url":"https://www.imf.org/external/np/fin/tad/extsdr2.aspx?date1key=2026-03-31","citation_anchor":"Venezuela row: SDR Holdings 3,313,045,849; SDR Allocations 6,111,296,399","verification_status":"VERIFIED"},
+    {"observation_id":"IMF-VEN-SDR-2026-04-30","series_id":"IMF_SDR_HOLDINGS","value":3313017364,"unit":"SDR","observation_date":"2026-04-30","source_id":"DOC-IMF-SDR-VEN-2026-04","source_url":"https://www.imf.org/external/np/fin/tad/extsdr2.aspx?date1key=2026-04-30","citation_anchor":"Venezuela row: SDR Holdings 3,313,017,364; SDR Allocations 6,111,296,399","verification_status":"VERIFIED"},
+    {"observation_id":"IMF-VEN-SDR-2026-05-31","series_id":"IMF_SDR_HOLDINGS","value":3295625026,"unit":"SDR","observation_date":"2026-05-31","source_id":"DOC-IMF-SDR-VEN-2026-05","source_url":"https://www.imf.org/external/np/fin/tad/extsdr2.aspx?date1key=2026-05-31","citation_anchor":"Venezuela row: SDR Holdings 3,295,625,026; SDR Allocations 6,111,296,399","verification_status":"VERIFIED"},
+    {"observation_id":"IMF-VEN-SDR-ALLOCATION-2026-05-31","series_id":"IMF_SDR_ALLOCATIONS","value":6111296399,"unit":"SDR","observation_date":"2026-05-31","source_id":"DOC-IMF-SDR-VEN-2026-05","source_url":"https://www.imf.org/external/np/fin/tad/extsdr2.aspx?date1key=2026-05-31","citation_anchor":"Venezuela row: SDR Allocations 6,111,296,399","verification_status":"VERIFIED"},
+    {"observation_id":"IMF-VEN-SDR-CHARGES-2026","series_id":"IMF_NET_SDR_CHARGES","value":38911191,"unit":"SDR","observation_date":"2026-05-31","source_id":"DOC-IMF-PAYMENTS-VEN-2026-05","source_url":"https://www.imf.org/external/np/fin/tad/extforth.aspx?category=forth&date1key=2026-05-31&extend=y&memberkey1=1050&overforth=f&schedule=exp&trxtype=repchg&year=2026","citation_anchor":"Projected 2026 total net SDR charges: SDR 38,911,191; amounts are tentative projected payments","verification_status":"VERIFIED_WITH_PROJECTION_SCOPE"}
+  ],
+  "notes": ["SDR allocation is not holdings.", "SDR holdings are not automatically immediately convertible or legally deployable.", "A reserve waterfall must apply access, custody, encumbrance, and short-term-obligation tests before counting SDRs toward dollarization liquidity."]
+}

@@ -1,0 +1,18 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { PROPERTY_CLAIMS_ISSUES } from '../ontology/issues.ts';
+import { fingerprintPolicyClause, comparePolicyFingerprints } from '../policy/fingerprint.ts';
+import { calculateDeadline } from '../deadlines/engine.ts';
+import { canPublish } from '../rules/lifecycle.ts';
+import { completenessScore } from '../completeness/score.ts';
+import { diffRuleVersions } from '../changes/diff.ts';
+import { validateUntrustedSourcePath } from '../security/input.ts';
+import { SourceRegistryService } from '../sources/registry.ts';
+import { validateFixture } from '../benchmarks/fixture.ts';
+test('ontology contains the required property-claim vocabulary',()=>{assert.ok(PROPERTY_CLAIMS_ISSUES.includes('MATCHING'));assert.ok(PROPERTY_CLAIMS_ISSUES.includes('FEMA_NFIP'));assert.ok(PROPERTY_CLAIMS_ISSUES.length>100);});
+test('policy fingerprints remain unknown until source hashes are real',()=>{const a=fingerprintPolicyClause({sourceDocumentId:'D-1',formId:'HO-3',text:'we insure for direct physical loss'});assert.equal(a.status,'SOURCE_REQUIRED');assert.equal(comparePolicyFingerprints(a,a),'UNKNOWN');});
+test('deadline engine fails closed without a verified rule or trigger',()=>{assert.equal(calculateDeadline(undefined,undefined).status,'RULE_UNRESOLVED');assert.equal(calculateDeadline({ruleId:'R',jurisdiction:'TX',issue:'PROMPT_PAYMENT',trigger:'notice',days:30,calendarDays:true,validityFrom:'2026-01-01',validityTo:null,authorityRefs:['A'],exceptions:[]},undefined).status,'MISSING_TRIGGER');});
+test('publication and completeness gates do not overstate readiness',()=>{assert.equal(canPublish({ruleId:'R',jurisdiction:'TX',issue:'MATCHING',validity:{validFrom:'2026-01-01',validTo:null,systemFrom:'2026-01-01',systemTo:null},priority:1,if:{all:[],any:[],not:[]},then:{classification:'X',effects:[]},exceptions:[],authorityRefs:[],policyDependencies:[],factDependencies:[],confidence:50,humanReviewConditions:[],status:'DRAFT'}).ok,false);assert.equal(completenessScore({source:0,issue:40,temporal:80,precedent:0,citation:20,tests:80}).status,'RESEARCH_REQUIRED');});
+test('source changes and untrusted paths are explicit',()=>{assert.ok(diffRuleVersions({deadline:30},{deadline:60})[0].type==='DEADLINE_CHANGED');assert.ok(validateUntrustedSourcePath('../secret.pdf').length>0);});
+test('source registry requires content hash',()=>{const registry=new SourceRegistryService();assert.throws(()=>registry.addDocument({sourceId:'S',jurisdiction:'FL',authorityType:'STATUTE',title:'x',url:'https://example.gov',retrievedAt:'2026-01-01',contentHash:'UNHASHED',status:'HASHED'}),/hash/);});
+test('benchmark fixtures require expected authority and do not allow prohibited overlap',()=>{assert.ok(validateFixture({fixtureId:'F',jurisdiction:'FL',lossDate:'2026-01-01',issue:'MATCHING',policy:{},facts:{},expectedAuthorities:['A'],expectedClassification:'REQUIRES_HUMAN_REVIEW',prohibitedAuthorities:['B'],humanReviewExpected:true}).length===0);});

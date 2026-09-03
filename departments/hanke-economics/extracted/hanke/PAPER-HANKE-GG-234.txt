@@ -1,0 +1,478 @@
+                               SAE./No.234/April 2023
+                             /October 2021
+
+
+
+
+THE EUROZONE: A GOLDEN GROWTH
+ RATE AND CREDIT COUNTERPARTS
+           ANALYSIS
+
+
+Steve H. Hanke, John Greenwood, & Jingxing Zou
+   The Eurozone: A Golden Growth Rate and Credit Counterparts Analysis
+
+                   By Steve H. Hanke, John Greenwood, and Jingxing Zou
+
+                                         About the Series
+
+The Studies in Applied Economics series is under the general direction of Prof. Steve H. Hanke,
+Founder and Co-Director of the Johns Hopkins Institute for Applied Economics, Global Health
+and the Study of Business Enterprise (hanke@jhu.edu). The views expressed in each working
+paper are those of the authors and not necessarily those of the institutions’ that the authors are
+affiliated with.
+
+
+                                        About the Authors
+
+Steve H. Hanke is a Professor of Applied Economics and Founder & Co-Director of The Johns
+Hopkins Institute for Applied Economics, Global Health, and the Study of Business Enterprise in
+Baltimore. Prof. Hanke is a well-known currency reformer, and a currency and commodity trader.
+Prof. Hanke served on President Reagan’s Council of Economic Advisers, has been an adviser to
+five foreign heads of state and five foreign cabinet ministers, and has held a cabinet-level rank as
+a state counselor in both Lithuania and Montenegro. He has been awarded seven honorary
+doctorate degrees and is an Honorary Professor at four foreign institutions. He was President of
+Toronto Trust Argentina in Buenos Aires in 1995, when it was the world’s best-performing mutual
+fund. Currently, he serves as Chairman of the Supervisory Board of Advanced Metallurgical Group
+N.V. in Amsterdam. In 1998, he was named one of the twenty-five most influential people in the
+world by World Trade Magazine. In 2020, Prof. Hanke was named a Knight of the Order of the
+Flag.
+
+
+John Greenwood was until December 2021 the Chief Economist of Invesco Ltd., a global asset
+management company. As editor of the Asian Monetary Monitor over the period 1977-96, he is
+widely credited as the designer of the restored currency board system in Hong Kong at the time of
+the currency crisis in 1983, a model for numerous subsequent currency board systems. Holding an
+MA and Honorary Doctorate from the University of Edinburgh, he is the author of “Hong Kong’s
+
+                                                  1
+Link to the US Dollar – Origins and Evolution” (Hong Kong University Press, 2007 and 2022).
+He has been a Fellow at the Johns Hopkins Institute for Applied Economics, Global Health, and
+the Study of Business Enterprise since June 2016.
+
+
+Jingxing Zou (jzou12@jhu.edu) is a sophomore at the Johns Hopkins University in Baltimore,
+pursuing majors in applied mathematics and statistics and international studies, with a minor in
+economics. He contributed to this paper as the Chief of the Monetary Analysis Team at the Institute
+for Applied Economics, Global Health, and the Study of Business Enterprise in Spring 2023. He
+will graduate in May 2025.
+
+
+                                            Abstract
+
+
+This paper presents a Golden Growth Rate (GGR) analysis of the eurozone for the period 2010
+through 2019. A credit counterpart analysis for the period 2010 through 2022 is also presented
+with the purpose of understanding the drivers of the eurozone’s monetary growth.
+
+
+
+
+                                                2
+SECTION 1: Golden Growth Analysis1
+
+The GGR is the growth rate of the money supply that is consistent with hitting a defined inflation
+target. The following determination of the eurozone’s GGR covers the period of 2010 through
+2019; to avoid disruptions caused by the COVID-19 pandemic, the years thereafter are omitted.
+
+To calculate the GGR, we utilized the income form of the Quantity Theory of Money (QTM),
+!" = $%, where ! denotes the money supply; " denotes the average number of times per unit
+time that the money stock is used in making income transactions; $ denotes the price level; and %
+denotes real GDP (Py denotes nominal GDP). To operationalize the QTM, we used its percent-
+change form: &! + &" = &$ + &%.2
+
+To solve for the golden growth rate, we rearranged the equation to &! = &$ + &% − &", where
+&! represents the golden growth rate of the eurozone’s broad money supply, M3.3 In this scenario,
+because we are solving for the golden growth rate that is consistent with the eurozone’s inflation
+target, &P is the inflation target set by the ECB.4 &% is the eurozone’s average YoY change in real
+GDP5 over the period. To obtain &", for each year in the relevant time span (in this case, 2010-
+2019), we first divide the nominal GDP6 by the money supply to obtain the money velocity,
+     !"# %& '()* +%,-"). /01
+"=        !"# %& '()* 23
+                               . Then, we created a time series of yearly money velocity percent
+                           3(5)73(571)
+changes with &"(+) =         3(571)
+                                         . Taking the average of all &"(+) for all + in the relevant time
+span reduces the noise in the result. Thus, the final number, &", is an average of money velocity
+changes throughout the years.
+
+Between 2010 and 2019, the eurozone’s annual inflation target set by the ECB was constant at 2%.
+In the same period, the eurozone’s annual real GDP growth averaged 1.4%, and the average annual
+rate of change in velocity was -1.2%. Thus, the percentage-change-form of the Quantity Theory,
+&! = &$ + &% − &", determines that the eurozone’s golden growth rate for M3 is 2% +
+
+
+1
+  For treatment of the Quantity Theory of Money as it relates to Golden Growth Rates, see Greenwood-Hanke
+(2021) https://onlinelibrary.wiley.com/doi/abs/10.1111/jacf.12479
+2
+  For a derivation of the percent change form, see: Friedman 1987
+https://miltonfriedman.hoover.org/internal/media/dispatcher/214346/full
+3
+  European Central Bank Statistical Data Warehouse. Monetary aggregate M3 vis-a-vis euro area non-MFI excl.
+central gov. https://sdw.ecb.europa.eu/quickview.do?SERIES_KEY=117.BSI.M.U2.Y.V.M30.X.1.U2.2300.Z01.E
+4
+  European Central Bank Statistical Data Warehouse. HICP - Overall index.
+https://sdw.ecb.europa.eu/quickview.do?SERIES_KEY=122.ICP.M.U2.N.000000.4.ANR
+5
+  Eurostat. Real GDP growth rate – volume.
+https://ec.europa.eu/eurostat/databrowser/view/tec00115/default/table?lang=en
+6
+  European Central Bank Statistical Data Warehouse. Gross domestic product at market prices.
+https://sdw.ecb.europa.eu/quickview.do?SERIES_KEY=320.MNA.Q.N.I8.W2.S1.S1.B.B1GQ._Z._Z._Z.EUR.V.N
+
+                                                       3
+1.4% − (−1.2%) = 4.6% per year. The actual M3 growth in the eurozone was 3.4% per year,
+suggesting that the ECB has been increasing M3 at a lower rate than its golden growth rate.
+Not surprisingly, the eurozone’s average actual annual inflation between 2010-2019 (1.3%) was
+lower than the ECB’s target of 2%.
+
+The graphs below compare the eurozone’s golden growth rate with its actual money supply growth
+(Figure 1), and its inflation target with its actual inflation level (Figure 2).
+
+
+
+
+Source: European Central Bank Statistical Data Warehouse, Eurostat
+Calculations by Professor Steve H. Hanke
+
+
+
+
+Source: European Central Bank Statistical Data Warehouse, Eurostat
+Calculations by Professor Steve H. Hanke
+
+
+
+
+                                              4
+Section 2: ECB’s Monetary Operations
+To gain a full understanding of the ECB’s monetary policies and provide a necessary background
+for the changes in the money supply, we have analyzed the ECB’s balance sheet. Its changes in
+composition from 2010 through 2022 are presented in Figure 3 below. Figure 4 presents the YoY
+percentage changes in the eurozone’s M3. Together, Figure 3 and Figure 4 help understand the
+ECB’s operations and their effects on the money supply.
+
+
+
+
+Source: European Central Bank
+Prepared by Professor Steve H. Hanke
+
+Figure 4: ECB YOY % growth in M3, monthly data
+
+
+
+
+Source: European Central Bank7
+Prepared by Professor Steve H. Hanke
+
+
+7
+ European Central Bank Statistical Data Warehouse. Monetary aggregate M3 vis-a-vis euro area (index).
+https://sdw.ecb.europa.eu/quickview.do?SERIES_KEY=117.BSI.M.U2.Y.V.M30.X.I.U2.2300.Z01.A
+
+                                                      5
+The ECB’s monetary operations between 2010-2022 can be divided into three stages:
+   1. Longer-term refinancing operations (LTROs), 2011-20158
+      During this period, the ECB lent to banks without requiring them to make further loans to
+      companies. LTROs consisted of two operations, each with a maturity of 36 months and
+      with the option of early repayment after one year. The increase in ECB lending is reflected
+      through the increase in the ECB’s “refinancing operations” in Figure 3. Yet, since the banks
+      were not required to make further (new) loans, its impact on the money supply was
+      minimal; as Figure 4 shows, at best M3 growth reached about 4%/yr for some months in
+      2012, but quickly dropped close to 0%/yr by 2014, significantly below the eurozone’s
+      golden growth rate of 4.58%/yr.
+   2. Targeted long-term refinancing operations (TLTRO), 2014-present9
+          (1) TLTRO I, June 2014 - March 2016
+              TLTRO I was mostly a continuation of the LTROs. It consisted of eight quarterly
+              operations.
+          (2) TLTRO II, March 2016 - March 2019
+              In TLTRO II, the ECB set the maturity of its lendings to be four years. The
+              borrowing rates in the quarterly operations could be as low as the interest rate on
+              the ECB’s deposit facility (the eurozone overnight interbank rate). However, the
+              ECB still did not require, but only encouraged banks to increase loans to non-
+              financial corporations and households; according to the ECB, the more loans
+              commercial banks issue, the “more attractive the rate on their TLTRO II borrowings
+              becomes.”10
+          (3) TLTRO III, March 2019 - present
+              TLTRO III was different from the previous operations in that it required banks to
+              make new loans to companies as a condition for receiving ECB loans. In addition,
+              the maturity of these loans was changed to three years (with repayment options
+              after two years). During COVID-19, the ECB announced that the borrowing rates
+              under TLTRO III could be as low as 50 bps below the deposit facility rate, and as
+              a bank issues more loans, it receives a lower rate from the ECB. Combined with
+              the QE programme that had started in 2015, the increase in the money supply as a
+              result of TLTRO III was significant: about 10%/yr in 2020.
+   3. Quantitative easing (QE), 2015-present
+
+
+
+8
+  European Central Bank. “ECB announces measures to support bank lending and money market activity”.
+https://www.ecb.europa.eu/press/pr/date/2011/html/pr111208_1.en.html
+9
+  Banco de Portugal. “Targeted longer-term refinancing operations (TLTRO)”.
+https://www.bportugal.pt/en/page/polmon-
+tltro#:~:text=The%20Governing%20Council%20of%20the,thus%20strengthening%20monetary%20policy%20trans
+mission.
+10
+   European Central Bank. “Targeted longer-term refinancing operations (TLTROs)”.
+https://www.ecb.europa.eu/mopo/implement/omo/tltro/html/index.en.html
+
+                                                 6
+        In March 2015, in its initial “quantitative easing” programme, the ECB announced that it
+        would purchase €60 billion per month of euro-area bonds issued by Europe’s central
+        governments, agencies, and institutions. However, prior to 2020, these QE programmes
+        followed the “non-liquidity enhancing” model, where the ECB would purchase securities
+        from commercial banks, not the non-bank public. The ECB’s purchase of securities is
+        reflected in Figure 3. It is arguable that the QE programme may have had little impact in
+        initiating the increase in the money supply, since the growth in M3 had already started in
+        mid-2014, well before the ECB's QE began in March 2015 (though it most likely did help
+        sustain its growth rate).
+
+SECTION 3: Credit Counterpart Analysis11
+Credit counterpart analysis determines what causes the money supply to change. In general, the
+broad money supply (here, M3) is the sum of currencies held by the nonbank public (currencies
+are a liability of the central bank, but an asset of the nonbank public) plus all deposits of the
+nonbank public in the banking system (deposits are liabilities of banks, but an asset of the nonbank
+public)12. The counterparts of these monetary liabilities appear on the asset side of banks’ balance
+sheets and are equivalent to the sum of domestic loans and domestic securities, plus the reserves
+of banks held at the central bank, plus a residual item that accounts for any discrepancy. Expressed
+in terms of changes, this is:
+
+Liability side (of central banks):
+   1. Δ Broad Money = Δ Bank deposits + Δ Cash in circulation with the public, and
+
+Asset side (of commercial banks):
+   2. Δ Broad Money = Δ Commercial Bank Lending + Δ Securities (held by the banks) + Δ
+       Commercial bank reserves at the central bank +/- Δ Others (net)
+
+A credit counterpart analysis examines changes in the money supply (M3) from the asset side. In
+this memo, both annual and monthly data are used. The annual data gives an overview of the
+ECB’s monetary operations from 2010 through 2022, while the monthly data provide a more
+detailed analysis of the ECB’s policies before and during the COVID-19 pandemic from 2019
+through 2022.
+
+The assets of the eurozone's commercial banks are divided as follows:
+   (1) Reserves (commercial bank deposits at the central bank)
+
+11
+   For logic of the Credit Counterpart Analysis, see: Hanke (2017). https://www.e-elgar.com/shop/usd/money-in-
+the-great-recession-9781784717827.html.
+12
+   The ECB defines M3 as the sum of: (1) Currency in circulation + (2) overnight deposits + (3) deposits with an
+agreed maturity of up to two years + (4) deposits redeemable at notice of up to three months + (5) repurchase
+agreements + (6) money market fund shares/units + (7) debt securities with a maturity of up to two years
+Source: European Central Bank. Monetary Aggregates.
+https://www.ecb.europa.eu/stats/money_credit_banking/monetary_aggregates/html/index.en.html
+
+                                                        7
+         The ECB does not directly use the term “reserves.” Instead, since the commercial bank
+         reserves are the difference between the monetary base and currency in circulation, the
+         monthly data for “reserves” are extracted from “banks’ deposits at the ECB” from
+         Refinitiv Data Stream, and the annual data are from “liabilities to euro area credit
+         institutions related to MPOs (monetary policy operations) denominated in euro” from the
+         ECB’s Statistical Data Warehouse (SDW).13
+     (2) Loans
+         These include the commercial banks’ lendings to all institutions in the eurozone, excluding
+         the eurozone central banks (including the national central banks in each member state).14
+     (3) Securities
+         These include the commercial banks’ holdings of securities issued by all institutions in the
+         eurozone, excluding the eurozone central banks (including the national central banks in
+         each member state)15.
+     (4) Residuals
+         These are the difference between the money supply (M3) and the previous three categories.
+
+Figure 5 below shows the eurozone’s M3 growth and the four items that, in sum, are counterparts
+that contribute to M3. To better understand how each item contributes to M3 growth, we have also
+presented Figure 6, which contains M3 and each of its contributors, presented in percentage terms.
+The sum of these contributions in percentage terms (bank reserves, loans, securities, and residuals)
+is equal to the annual percentage change in M3. For example, in 2022, M3 grew by 4.4%. The
+contributors to this change were: bank reserves (0.8%), loans (-1.9%), claims on others (-0.1%),
+and residuals (5.6%), summing to the M3 growth rate of 4.4%.
+
+
+
+
+13
+   European Central Bank Statistical Data Warehouse. Liabilities to euro area credit institutions related to MPOs
+denominated in euro – Eurosystem.
+https://sdw.ecb.europa.eu/quickview.do?SERIES_KEY=123.ILM.W.U2.C.L020000.U2.EUR
+14
+   European Central Bank Statistical Data Warehouse. Loans vis-a-vis euro area MFI.
+https://sdw.ecb.europa.eu/quickview.do?SERIES_KEY=117.BSI.M.U2.N.A.A20.A.1.U2.1000.Z01.E
+15
+   European Central Bank Statistical Data Warehouse. Holdings of debt securities reported by MFI excluding ESCB
+in the euro area. https://sdw.ecb.europa.eu/quickview.do?SERIES_KEY=117.BSI.M.U2.N.A.A30.A.1.U2.0000.Z01.E
+
+                                                        8
+Source: European Central Bank
+Calculations by Professor Steve H. Hanke
+
+
+
+
+Source: European Central Bank
+Calculations by Professor Steve H. Hanke
+
+Figure 5 shows that the ECB’s reserves remained negligible before the ECB announced its first
+QE programme in 2015. In Figure 6, we also note the negligible/small contribution of commercial
+bank loans to M3 between 2012-2015 as a result of the ECB’s LTRO failing to require additional
+loans by banks; in fact, loan growth was negative before 2014.
+
+
+
+
+                                              9
+Figures 7 and 8 present the credit counterpart analysis using monthly data for the more recent
+period of 2019 through 2022. To better understand the ECB’s key monetary operations during this
+period, here is a brief overview16:
+
+     1. September 18th, 2019: The deposit facility rate was changed from -0.40% to -0.50%.17
+     2. March 18th, 2022: Pandemic Emergency Purchase Programme (PEPP); EUR 750 billion
+        was made available to purchase eligible assets under the existing asset purchase
+        programme (APP):
+            (a) bonds purchased directly from banks, which makes more funds available to lend to
+                households or businesses
+            (b) purchase of companies’ bonds, providing an additional source of credit.
+     3. June 4th, 2020: PEPP increased from EUR 750 billion to EUR 1.350 trillion
+     4. June 24th, 2020: The borrowing rate under the TLTRO III operations was decreased; the
+        borrowing rate can now be as low as 50 bps below the deposit facility rate.
+     5. December 10th, 2020: PEPP increased from EUR 1.350 trillion to EUR 1.850 trillion
+     6. June 23rd, 2022: The lowest rate for TLTRO III increased to the average interest rate.
+     7. July 27th, 2022: The deposit facility rate was raised to 0.00% from -0.50%.
+     8. September 14th, 2022: The deposit facility rate was again raised to 0.75% from 0.00%.
+
+As Figures 7 and 8 show, following the ECB’s enactment of the first PEPP (practically a form of
+quantitative easing) in March 2020, reserves and loans started to increase. The rate of increase
+accelerated following each increase in the amount purchased under the PEPP (June and December
+2020), peaking in December 2020 at a 15% YoY growth rate in reserves. According to the ECB,
+under these programmes, it purchased bonds from both companies and banks, a move different
+from its previous QE operations. This, together with its TLTRO operations that required banks to
+increase lending, stoked M3 to increase at 10% YoY in late 2020 and explains the large increase
+in the contribution of loans to M3 in 2020 in Figure 8.
+
+On 27th July 2022, the ECB, for the first time since 2013, lifted the deposit facility rate (the
+eurozone overnight interbank rate) out of negative territory to 0%. It further increased it by 75 bps
+on 14th September 2022. This marked the first time since July 2012 that the rate was positive. As
+we see in Figure 6, following this, the loan growth rate declined precipitously around September
+2022. In absolute terms, the quantity also started to decrease close to December 2022.
+Consequently, residuals, which are the difference between the money supply and reserves, loans,
+and securities, started to increase again. However, as Figure 3 shows, the securities held by the
+ECB have shown no sign of decrease, meaning that it had not yet begun quantitative tightening
+
+
+16
+   European Central Bank. “Our response to the coronavirus pandemic”.
+https://www.ecb.europa.eu/home/search/coronavirus/html/index.en.html
+17
+   European Central Bank Statistical Data Warehouse. “Key ECB interest rates”.
+https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_interest_rates/html/index.en.html
+
+                                                   10
+(QT). Yet, as commercial banks began repaying their loans from the ECB (note that loans under
+TLTRO had a three-year maturity), the percent increases in M3 started to decline.
+
+
+
+
+Source: European Central Bank
+Calculations by Professor Steve H. Hanke
+
+
+
+
+Source: European Central Bank, Refinitiv Data Stream
+Calculations by Professor Steve H. Hanke
+
+
+
+
+                                             11
+Sources
+
+      Banco de Portugal. “Targeted longer-term refinancing operations (TLTRO)”. Retrieved
+            from https://www.bportugal.pt/en/page/polmon-tltro.
+
+      European Central Bank.
+
+             “Monetary Aggregates”. Retrieved from
+                   https://www.ecb.europa.eu/stats/money_credit_banking/monetary_aggreg
+                   ates/html/index.en.html
+
+             “ECB announces measures to support bank lending and money market activity”.
+                   December 8, 2011. Retrieved from
+                   https://www.ecb.europa.eu/press/pr/date/2011/html/pr111208_1.en.html
+
+             “Targeted longer-term refinancing operations (TLTROs)”. Retrieved from
+                    https://www.ecb.europa.eu/mopo/implement/omo/tltro/html/index.en.html
+
+             “Our responses to the coronavirus pandemic”. Retrieved from
+                    https://www.ecb.europa.eu/home/search/coronavirus/html/index.en.html
+
+             “Key ECB interest rates”. Retrieved from
+                   https://www.ecb.europa.eu/stats/policy_and_exchange_rates/key_ecb_inte
+                   rest_rates/html/index.en.html
+
+      European Central Bank Statistical Data Warehouse.
+
+             Monetary aggregate M3 vis-a-vis euro area non-MFI excl. central gov. reported
+                   by MFI & central gov. & post office giro Inst. in the euro area (stock).
+                   Retrieved from
+                   https://sdw.ecb.europa.eu/quickview.do?SERIES_KEY=117.BSI.M.U2.Y.
+                   V.M30.X.1.U2.2300.Z01.E
+
+             Gross domestic product at market prices. Retrieved from
+                    https://sdw.ecb.europa.eu/quickview.do?SERIES_KEY=320.MNA.Q.N.I8
+                    .W2.S1.S1.B.B1GQ._Z._Z._Z.EUR.V.N
+
+             Harmonised Index of Consumer Prices (HICP). Retrieved from
+                  https://sdw.ecb.europa.eu/quickview.do?SERIES_KEY=122.ICP.M.U2.N.
+                  000000.4.ANR
+
+             Monetary aggregate M3 vis-a-vis euro area non-MFI excl. central gov. reported
+                   by MFI & central gov. & post office giro Inst. in the euro area (index).
+
+                                            12
+              Retrieved from
+              https://sdw.ecb.europa.eu/quickview.do?SERIES_KEY=117.BSI.M.U2.Y.
+              V.M30.X.I.U2.2300.Z01.A
+
+       Liabilities to euro area credit institutions related to MPOs denominated in euro -
+               Eurosystem. Retrieved from
+               https://sdw.ecb.europa.eu/quickview.do?SERIES_KEY=123.ILM.W.U2.C
+               .L020000.U2.EUR
+
+       Holdings of debt securities reported by MFI excluding ESCB in the euro area
+             (stock). Retrieved from
+             https://sdw.ecb.europa.eu/quickview.do?SERIES_KEY=117.BSI.M.U2.N.
+             A.A30.A.1.U2.0000.Z01.E
+
+       Loans vis-a-vis euro area MFI reported by MFI excluding ESCB in the euro area
+              (stock). Retrieved from
+              https://sdw.ecb.europa.eu/quickview.do?SERIES_KEY=117.BSI.M.U2.N.
+              A.A20.A.1.U2.1000.Z01.E
+
+Eurostat. Real GDP growth rate - volume. Retrieved from
+      https://ec.europa.eu/eurostat/databrowser/view/tec00115/default/table?lang=en
+
+Friedman, M. Quantity Theory of Money. In The New Palgrave: A Dictionary of
+      Economics, edited by John Eatwell, Murray Milgate, and Peter Newman, vol. 4,
+      pp. 3-20. New York: Stockton Press; and London: Macmillan, 1987. © Palgrave
+      Macmillan.
+      https://miltonfriedman.hoover.org/internal/media/dispatcher/214346/full
+
+Greenwood, J. and Hanke, S.H. (2021), On Monetary Growth and Inflation in Leading
+     Economies, 2021-2022: Relative Prices and the Overall Price Level. Journal of
+     Applied Corporate Finance, 33: 39-51. https://doi.org/10.1111/jacf.12479
+
+Hanke, S. (2017), Money in the Great Recession. Institute of International Monetary
+      Research. https://www.e-elgar.com/shop/usd/money-in-the-great-recession-
+      9781784717827.html
+
+
+
+
+                                       13
+

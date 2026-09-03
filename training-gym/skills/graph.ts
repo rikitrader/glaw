@@ -1,0 +1,3 @@
+export interface Skill { skillId:string; name:string; parentId:string|null; }
+export interface SkillScore { skillId:string; attempts:number; successes:number; score:number; }
+export class SkillGraph { private readonly skills=new Map<string,Skill>(); private readonly scores=new Map<string,SkillScore>(); add(skill:Skill){this.skills.set(skill.skillId,skill);} record(skillId:string,success:boolean){const current=this.scores.get(skillId)??{skillId,attempts:0,successes:0,score:0};current.attempts++;if(success)current.successes++;current.score=current.successes/current.attempts;this.scores.set(skillId,current);} getScores(){return [...this.scores.values()];} children(parentId:string){return [...this.skills.values()].filter((skill)=>skill.parentId===parentId);}}

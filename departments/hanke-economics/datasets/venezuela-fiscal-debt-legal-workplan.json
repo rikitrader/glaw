@@ -1,0 +1,20 @@
+{
+  "registry_id": "VEN-FISCAL-DEBT-LEGAL-WORKPLAN-20260825",
+  "status": "IN_PROGRESS",
+  "policy": {
+    "no_double_counting": "Claim, award, judgment, enforcement claim, and recovery are procedural stages of an underlying obligation and must not be summed as separate debt.",
+    "unverified_figures": "User-supplied or secondary estimates remain leads until the underlying document, date, currency, amount basis, and locator are acquired and reviewed."
+  },
+  "ledgers": [
+    {"id":"01_FISCAL","status":"SCHEMA_REQUIRED","required_sources":["ONAPRE","Budget Law","SENIAT","Treasury","Ministry of Finance","IMF"],"outputs":["revenue","expenditure","primary_balance","overall_balance","monetary_financing","payroll","pensions"]},
+    {"id":"02_DEBT_INSTRUMENTS","status":"SCHEMA_REQUIRED","required_sources":["prospectuses","indentures","OFAC annex","paying agents","lawful market records"],"outputs":["Republic","PDVSA","SOE","bilateral","multilateral","domestic"]},
+    {"id":"03_ARREARS","status":"SCHEMA_REQUIRED","required_sources":["creditor disclosures","company filings","Treasury audit","court records"],"outputs":["supplier","contractor","JV","bond interest","bilateral","trade credit"]},
+    {"id":"04_PROCEDURAL_DISPUTES","status":"SCHEMA_REQUIRED","required_sources":["ICSID","PCA","ICC","national courts","CourtListener/PACER where lawful"],"outputs":["claims","arbitration","awards","judgments","enforcement","recoveries"]},
+    {"id":"05_RESTRUCTURING","status":"SCHEMA_REQUIRED","required_sources":["government notices","exchange documents","adviser materials","creditor notices"],"outputs":["proposal vintages","haircuts","maturities","recovery values"]},
+    {"id":"06_CONSTITUTION_AND_STATUTES","status":"SCHEMA_REQUIRED","required_sources":["official gazette","Constitution","BCV Law","Banking Sector Law","FOGADE/SUDEBAN rules"],"outputs":["fact","interpretation","unresolved legal question"]},
+    {"id":"07_TRANSITION_LEGISLATION","status":"DESIGN_REQUIRED","required_sources":["legal analysis","existing statutes","draft instruments"],"outputs":["deposit conversion","contract conversion","wage/pension conversion","tax conversion","public debt","accounting"]},
+    {"id":"08_PAYMENT_AND_LIQUIDITY","status":"DESIGN_REQUIRED","required_sources":["BCV","SUDEBAN","bank payment rules","settlement records"],"outputs":["payment conversion","emergency liquidity facility","post-dollarization authority"]}
+  ],
+  "required_gates": ["fiscal_accounts_reconciled","instrument_ledger_reconciled","procedural_overlap_audited","restructuring_vintages_preserved","constitutional_analysis_complete","deposit_conversion_authority_defined","emergency_liquidity_funded_or_explicitly_unfunded"],
+  "current_policy_verdict": "BLOCKED_UNTIL_EVIDENCE_AND_LEGAL_GATES_CLOSE"
+}

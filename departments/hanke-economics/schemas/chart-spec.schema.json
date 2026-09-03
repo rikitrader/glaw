@@ -1,0 +1,8 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"HAEIS Chart Specification",
+  "type":"object",
+  "required":["chart_id","title","subtitle","economic_question","chart_type","x_variable","y_variable","secondary_y_variable","unit","frequency","start_date","end_date","source","transformation","annotations","confidence","interpretation","policy_implication"],
+  "properties":{"chart_id":{"type":"string"},"title":{"type":"string"},"subtitle":{"type":"string"},"economic_question":{"type":"string"},"chart_type":{"type":"string"},"x_variable":{"type":["string","null"]},"y_variable":{"type":["string","null"]},"secondary_y_variable":{"type":["string","null"]},"unit":{"type":"string"},"frequency":{"type":"string"},"start_date":{"type":["string","null"]},"end_date":{"type":["string","null"]},"source":{"type":"array","items":{"type":"string"}},"transformation":{"type":"array","items":{"type":"string"}},"annotations":{"type":"array","items":{"type":"string"}},"confidence":{"type":"string"},"interpretation":{"type":"string"},"policy_implication":{"type":"string"}},
+  "additionalProperties":false
+}

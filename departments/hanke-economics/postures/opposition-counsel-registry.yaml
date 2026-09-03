@@ -1,0 +1,15 @@
+schema_version: 0.1.0
+registry_id: opposition-counsel-postures
+respondent_posture: hanke
+postures:
+  - {id: friedman, name: Friedman, mission: challenge money-supply, velocity, rules, and expectations assumptions, required_evidence: [money-aggregate, velocity-or-money-demand, inflation-expectations, regime-rule]}
+  - {id: cagan, name: Cagan, mission: test hyperinflation mechanics, money demand, fiscal backing, and stabilization credibility, required_evidence: [inflation-frequency, money-demand, fiscal-financing, stabilization-break]}
+  - {id: sargent, name: Sargent, mission: test whether regime change is credible and fiscally supported, required_evidence: [fiscal-regime, expectations, institutional-commitment, stabilization-sequence]}
+  - {id: calvo, name: Calvo, mission: test sudden-stop, capital-flow, external-financing, and balance-of-payments risks, required_evidence: [capital-flows, reserves, external-debt, exchange-rate, sudden-stop-scenario]}
+  - {id: reinhart-rogoff, name: Reinhart / Rogoff, mission: test debt overhang, default history, restructuring, and crisis recurrence, required_evidence: [debt-stock, arrears, maturity, debt-service, restructuring-history]}
+  - {id: minsky, name: Minsky, mission: test endogenous financial fragility, leverage, maturity mismatch, and crisis feedbacks, required_evidence: [bank-balance-sheet, leverage, maturity-mismatch, liquidity-run, asset-quality]}
+  - {id: bagehot, name: Bagehot, mission: test lender-of-last-resort design and panic containment, required_evidence: [eligible-collateral, liquid-assets, emergency-facility, penalty-rate, resolution-authority]}
+  - {id: bernanke, name: Bernanke, mission: test credit-channel, financial-friction, and bank-intermediation effects, required_evidence: [credit, collateral, bank-capital, lending-rate, investment-response]}
+  - {id: goodhart, name: Goodhart, mission: test central-bank, regulation, macroprudential, and institutional assumptions, required_evidence: [legal-authority, supervision, resolution, payment-system, macroprudential-capacity]}
+  - {id: hausmann, name: Hausmann, mission: test productive-capacity, structural-transformation, and Venezuela-specific supply constraints, required_evidence: [productivity, infrastructure, oil-capacity, human-capital, export-diversification]}
+  - {id: hanke-respondent, name: Hanke respondent, mission: reconstruct only verified Hanke positions and answer objections with primary sources or concessions, required_evidence: [verified-hanke-text, locator, context, objection, response-or-concession]}

@@ -1,0 +1,57 @@
+id: venezuela-monetary-reform
+version: 0.1.0
+question: Would complete dollarization create monetary stability or cause liquidity and banking stress?
+nodes:
+  - question-intake
+  - hanke-corpus-search
+  - source-verification
+  - venezuela-data-intake
+  - data-forensics
+  - monetary-analysis
+  - banking-analysis
+  - fiscal-analysis
+  - exchange-rate-analysis
+  - dollarization-analysis
+  - currency-board-analysis
+  - historical-comparables
+  - econometric-stress-test
+  - posture-matrix
+  - red-team-1
+  - blue-team-1
+  - red-team-2
+  - data-audit
+  - math-audit
+  - citation-audit
+  - chief-arbitration
+  - policy-decision-matrix
+edges:
+  - [question-intake, hanke-corpus-search]
+  - [hanke-corpus-search, source-verification]
+  - [source-verification, venezuela-data-intake]
+  - [venezuela-data-intake, data-forensics]
+  - [data-forensics, monetary-analysis]
+  - [data-forensics, banking-analysis]
+  - [data-forensics, fiscal-analysis]
+  - [data-forensics, exchange-rate-analysis]
+  - [monetary-analysis, dollarization-analysis]
+  - [banking-analysis, dollarization-analysis]
+  - [fiscal-analysis, dollarization-analysis]
+  - [exchange-rate-analysis, dollarization-analysis]
+  - [dollarization-analysis, currency-board-analysis]
+  - [currency-board-analysis, historical-comparables]
+  - [historical-comparables, econometric-stress-test]
+  - [econometric-stress-test, posture-matrix]
+  - [posture-matrix, red-team-1]
+  - [red-team-1, blue-team-1]
+  - [blue-team-1, red-team-2]
+  - [red-team-2, data-audit]
+  - [data-audit, math-audit]
+  - [math-audit, citation-audit]
+  - [citation-audit, chief-arbitration]
+  - [chief-arbitration, policy-decision-matrix]
+gates:
+  - citations-verified
+  - calculations-reproduced
+  - critical-data-reconciled
+  - red-blue-red-complete
+stop_conditions: [critical-data-missing, unverified-citation, unresolved-math-error, catastrophic-unresolved-risk]

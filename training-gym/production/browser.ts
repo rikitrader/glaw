@@ -1,0 +1,4 @@
+export type BrowserAction = { type: 'navigate'|'click'|'type'|'select'|'scroll'|'upload'|'download'|'screenshot'; target?: string; value?: string };
+export interface SimulationBridge { execute(action: BrowserAction, episodeId: string): Promise<{ stateDelta: Record<string, unknown>; visibleText?: string; screenshotKey?: string }>; reset(episodeId: string): Promise<void>; }
+export interface BrowserSession { episodeId: string; execute(action: BrowserAction): Promise<unknown>; close(): Promise<void>; }
+export class SandboxedBrowserBoundary { private readonly bridge: SimulationBridge; private readonly episodeId: string; constructor(bridge: SimulationBridge, episodeId: string) { this.bridge = bridge; this.episodeId = episodeId; } execute(action: BrowserAction): Promise<unknown> { return this.bridge.execute(action, this.episodeId); } close(): Promise<void> { return this.bridge.reset(this.episodeId); } }

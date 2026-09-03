@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "0.1.0",
+  "country": "Venezuela",
+  "status": "RESEARCH_INTAKE_ONLY",
+  "verified_context_sources": [
+    {"source_id":"DOC-WB-VEN-GDP-2026","series_id":"NY.GDP.MKTP.CD","scope":"annual GDP current US$; returned rows and null status preserved; macro context only"},
+    {"source_id":"DOC-WB-VEN-GDP-GROWTH-2026","series_id":"NY.GDP.MKTP.KD.ZG","scope":"annual GDP growth; returned rows and null status preserved; macro context only"},
+    {"source_id":"DOC-WB-VEN-INFLATION-2026","series_id":"FP.CPI.TOTL.ZG","scope":"annual CPI inflation with incomplete coverage; not monthly hyperinflation evidence"},
+    {"source_id":"DOC-WB-VEN-OIL-RENTS-2026","series_id":"NY.GDP.PETR.RT.ZS","scope":"oil rents as percent of GDP; proxy only, not PDVSA revenue or oil output"},
+    {"source_id":"DOC-WB-VEN-REMITTANCES-2026","series_id":"BX.TRF.PWKR.CD.DT","scope":"personal remittances received; not physical USD circulation or bank dollar deposits"}
+  ],
+  "verified_secondary_context_sources": [
+    {"source_id":"DOC-VEN-BANESCO-H1-2025","scope":"secondary bank report; BCV-referenced M0/M2/official-FX context through June 2025; not a primary statistical response"},
+    {"source_id":"DOC-VEN-BDV-H2-2024","scope":"secondary bank report; BCV-referenced M2/base-money context through 27 December 2024; not a primary statistical response"},
+    {"source_id":"DOC-VEN-CEDICE-DEC-2024","scope":"secondary report; BCV-referenced reserves and M0/M2 context for 2024; gross/liquid reserves not reconciled"},
+    {"source_id":"DOC-VEN-UNDP-Q3-2025","scope":"secondary international-organization report; BCV-referenced M0/M2/reserve context through Q3 2025; not a primary statistical response"}
+  ],
+  "verified_historical_series": [
+    {"source_id":"DOC-IMF-MFS-ODC-VEN-ODCORP_A_ACO_PS_ODCS-2026","series_id":"ODCORP_A_ACO_PS_ODCS","country":"VEN","frequency":"M","transformation":"XDC","observation_count":169,"observation_start":"2001-M12","observation_end":"2015-M12","unit":"provider-defined XDC","release_metadata":"not provided per observation; historical artifact only"},
+    {"source_id":"DOC-IMF-MFS-ODC-VEN-ODCORP_A_F21_ACO_S121_ODCS-2026","series_id":"ODCORP_A_F21_ACO_S121_ODCS","country":"VEN","frequency":"M","transformation":"XDC","observation_count":169,"observation_start":"2001-M12","observation_end":"2015-M12","unit":"provider-defined XDC","release_metadata":"not provided per observation; historical artifact only"},
+    {"source_id":"DOC-IMF-MFS-ODC-VEN-ODCORP_L_F22_IBM_ODCS-2026","series_id":"ODCORP_L_F22_IBM_ODCS","country":"VEN","frequency":"M","transformation":"XDC","observation_count":169,"observation_start":"2001-M12","observation_end":"2015-M12","unit":"provider-defined XDC","release_metadata":"not provided per observation; historical artifact only"},
+    {"source_id":"DOC-IMF-MFS-ODC-VEN-ODCORP_L_F29_IBM_ODCS-2026","series_id":"ODCORP_L_F29_IBM_ODCS","country":"VEN","frequency":"M","transformation":"XDC","observation_count":169,"observation_start":"2001-M12","observation_end":"2015-M12","unit":"provider-defined XDC","release_metadata":"not provided per observation; historical artifact only"},
+    {"source_id":"DOC-IMF-MFS-ODC-VEN-ODCORP_L_F4_ODCS-2026","series_id":"ODCORP_L_F4_ODCS","country":"VEN","frequency":"M","transformation":"XDC","observation_count":169,"observation_start":"2001-M12","observation_end":"2015-M12","unit":"provider-defined XDC","release_metadata":"not provided per observation; historical artifact only"},
+    {"source_id":"DOC-IMF-MFS-ODC-VEN-ODCORP_NETAL_NCO_S1311MIXED_ODCS-2026","series_id":"ODCORP_NETAL_NCO_S1311MIXED_ODCS","country":"VEN","frequency":"M","transformation":"XDC","observation_count":169,"observation_start":"2001-M12","observation_end":"2015-M12","unit":"provider-defined XDC","release_metadata":"not provided per observation; historical artifact only"},
+    {"source_id":"DOC-IMF-MFS-CBS-VEN-CURRENCY-2026","series_id":"S121_L_CIC_IMB_CBS","country":"VEN","frequency":"M","transformation":"XDC","observation_count":153,"observation_start":"2001-M12","observation_end":"2014-M08","unit":"source-defined domestic currency; named unit not independently established","release_metadata":"not provided per observation; historical artifact only"},
+    {"source_id":"DOC-IMF-MFS-CBS-VEN-NFA-2026","series_id":"S121_N_NFRA_CBS","country":"VEN","frequency":"M","transformation":"XDC","observation_count":153,"observation_start":"2001-M12","observation_end":"2014-M08","unit":"source-defined domestic currency; named unit not independently established","release_metadata":"not provided per observation; historical artifact only"},
+    {"source_id":"DOC-IMF-MFS-CBS-VEN-NCG-2026","series_id":"S121_N_NCO_S1311MIXED_CBS","country":"VEN","frequency":"M","transformation":"XDC","observation_count":153,"observation_start":"2001-M12","observation_end":"2014-M08","unit":"source-defined domestic currency; named unit not independently established","release_metadata":"not provided per observation; historical artifact only"},
+    {"source_id":"DOC-IMF-MFS-CBS-VEN-PSCLAIMS-2026","series_id":"S121_A_ACO_PS_CBS","country":"VEN","frequency":"M","transformation":"XDC","observation_count":153,"observation_start":"2001-M12","observation_end":"2014-M08","unit":"source-defined domestic currency; named unit not independently established","release_metadata":"not provided per observation; historical artifact only"},
+    {"source_id":"DOC-IMF-MFS-CBS-VEN-NRESCLAIMS-2026","series_id":"S121_A_ACO_NRES_CBS","country":"VEN","frequency":"M","transformation":"XDC","observation_count":153,"observation_start":"2001-M12","observation_end":"2014-M08","unit":"source-defined domestic currency; named unit not independently established","release_metadata":"not provided per observation; historical artifact only"},
+    {"source_id":"DOC-IMF-MFS-MA-VEN-BM-2026","series_id":"BM_MAI","country":"VEN","frequency":"M","transformation":"XDC","observation_count":153,"observation_start":"2001-M12","observation_end":"2014-M08","unit":"provider-defined XDC","release_metadata":"not provided per observation; historical artifact only"},
+    {"source_id":"DOC-IMF-MFS-MA-VEN-BASE-2026","series_id":"NDMBM_MAI","country":"VEN","frequency":"M","transformation":"XDC","observation_count":239,"observation_start":"1996-M07","observation_end":"2016-M05","unit":"provider-defined XDC","release_metadata":"not provided per observation; historical artifact only"},
+    {"source_id":"DOC-IMF-MFS-MA-VEN-CURRENCY-2026","series_id":"CIC_OUTDCORP_MAI","country":"VEN","frequency":"M","transformation":"XDC","observation_count":153,"observation_start":"2001-M12","observation_end":"2014-M08","unit":"provider-defined XDC","release_metadata":"not provided per observation; historical artifact only"}
+  ],
+  "source_bound_rule": "No value may be entered without an observation date, release or vintage metadata, unit, series identifier, and verified source citation.",
+  "limitation_source_ids": ["DOC-IMF-VEN-REO-2025"],
+  "limitation_note": "The verified IMF source records incomplete metadata, reconciliation difficulties, and staff estimates for most 2018–24 indicators; it does not supply a complete current monetary-flow dataset.",
+  "provider_access_note": "The IMF documents SDMX 2.1 and SDMX 3.0 APIs, while its API exploration portal redirects to sign-in; no API credential or authenticated response is stored in HAEIS.",
+  "acquisition_targets": [
+    {
+      "source_id": "IMF-MFS-CBS-VEN",
+      "provider": "International Monetary Fund",
+      "dataset": "Monetary and Financial Statistics — Central Bank (MFS_CBS)",
+      "source_url": "https://data.imf.org/Datasets/MFS_CBS",
+      "dataset_urn": "IMF.STA:MFS_CBS(24.0.0)",
+      "data_explorer_url": "https://data.imf.org/en/Data%20Explorer?datasetUrn=IMF.STA%3AMFS_CBS%2824.0.0%29",
+      "api_standard": ["SDMX 2.1", "SDMX 3.0"],
+      "candidate_series": ["monetary base", "currency in circulation", "central-bank reserves", "central-bank balance-sheet counterparts"],
+      "status": "SOURCE_ROUTE_REQUIRES_QUERY_AND_VERIFICATION",
+      "evidence_rule": "Do not populate an observation until the returned country, series, unit, observation date, release/vintage metadata, and hashable response artifact pass data forensics."
+    },
+    {
+      "source_id": "IMF-IRFCL-VEN",
+      "provider": "International Monetary Fund",
+      "dataset": "International Reserves and Foreign Currency Liquidity (IRFCL)",
+      "source_url": "https://data.imf.org/Datasets/IRFCL",
+      "dataset_urn": "IMF.STA:IRFCL(11.0.0)",
+      "data_explorer_url": "https://data.imf.org/en/Data%20Explorer?datasetUrn=IMF.STA%3AIRFCL%2811.0.0%29",
+      "api_standard": ["SDMX 2.1", "SDMX 3.0"],
+      "candidate_series": ["official reserve assets", "other foreign-currency assets", "short-term foreign-currency obligations", "liquid-reserve components"],
+      "status": "QUERY_RETURNED_NO_OBSERVATIONS",
+      "evidence_rule": "Do not equate gross reserves with liquid eligible reserves; preserve the IMF dissemination disclaimer and reconcile reserve assets against liabilities."
+    },
+    {
+      "source_id": "IMF-DSBB-VEN-ILV",
+      "provider": "International Monetary Fund Dissemination Standards Bulletin Board",
+      "dataset": "Venezuela metadata for international liquidity and reserve dissemination",
+      "source_url": "https://dsbb.imf.org/e-gdds/dqaf-base/country/VEN/category/ILV00",
+      "api_standard": ["metadata HTML"],
+      "candidate_series": ["reserve definitions", "periodicity", "release lag", "revision status", "BCV dissemination locations"],
+      "status": "METADATA_ROUTE",
+      "evidence_rule": "Metadata may establish definitions and release practices only; it is not a substitute for the underlying observation artifact."
+    }
+  ],
+  "required_series": [
+    {"series_id":"BCV_MONETARY_BASE","name":"BCV monetary base","status":"UNAVAILABLE","required_unit":"VES or source-defined equivalent"},
+    {"series_id":"BCV_M1","name":"M1","status":"UNAVAILABLE","required_unit":"VES or source-defined equivalent"},
+    {"series_id":"BCV_M2","name":"M2 / BCV liquidez monetaria","status":"PROVISIONAL_SECONDARY_LEAD","required_unit":"VES or source-defined equivalent","source_ids":["WEB-BN-BALANCES-20260825"],"primary_source_required":true},
+    {"series_id":"BCV_CURRENCY_CIRCULATION","name":"currency in circulation","status":"UNAVAILABLE","required_unit":"VES or source-defined equivalent"},
+    {"series_id":"BCV_BANK_DEPOSITS","name":"bank deposits","status":"UNAVAILABLE","required_unit":"VES or source-defined equivalent"},
+    {"series_id":"BCV_BANK_RESERVES","name":"bank reserves","status":"UNAVAILABLE","required_unit":"VES or source-defined equivalent"},
+    {"series_id":"BCV_BANK_CREDIT","name":"bank credit","status":"UNAVAILABLE","required_unit":"VES or source-defined equivalent"},
+    {"series_id":"BCV_BANK_CAPITAL","name":"bank capitalization","status":"UNAVAILABLE","required_unit":"VES or source-defined equivalent"},
+    {"series_id":"VEN_OFFICIAL_FX","name":"official USD/VES","status":"PROVISIONAL_SECONDARY_LEAD","required_unit":"VES per USD","source_ids":["WEB-BN-BALANCES-20260825"],"primary_source_required":true},
+    {"series_id":"VEN_PARALLEL_FX","name":"parallel USD/VES","status":"UNAVAILABLE","required_unit":"VES per USD"},
+    {"series_id":"BCV_INTERNATIONAL_RESERVES","name":"international reserves","status":"UNAVAILABLE","required_unit":"USD or source-defined equivalent"},
+    {"series_id":"BCV_LIQUID_RESERVES","name":"liquid reserves","status":"UNAVAILABLE","required_unit":"USD or source-defined equivalent"},
+    {"series_id":"VEN_FISCAL_DEFICIT","name":"fiscal deficit and financing","status":"UNAVAILABLE","required_unit":"VES or percent of GDP"},
+    {"series_id":"VEN_OIL_REVENUE","name":"oil revenue","status":"UNAVAILABLE","required_unit":"USD or source-defined equivalent"},
+    {"series_id":"VEN_OIL_OUTPUT","name":"oil output","status":"UNAVAILABLE","required_unit":"barrels per day or source-defined equivalent"},
+    {"series_id":"VEN_SOVEREIGN_DEBT","name":"sovereign debt","status":"UNAVAILABLE","required_unit":"USD or source-defined equivalent"},
+    {"series_id":"VEN_PDVSA_DEBT","name":"PDVSA debt","status":"UNAVAILABLE","required_unit":"USD or source-defined equivalent"},
+    {"series_id":"VEN_REMITTANCES","name":"remittances","status":"UNAVAILABLE","required_unit":"USD or source-defined equivalent"},
+    {"series_id":"VEN_USD_CIRCULATION","name":"USD circulation and digital USD","status":"UNAVAILABLE","required_unit":"USD or source-defined equivalent"}
+  ]
+}

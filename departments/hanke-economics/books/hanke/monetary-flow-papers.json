@@ -1,0 +1,11 @@
+{
+  "schema_version":"0.1.0",
+  "framework":"Hanke/Greenwood Golden Growth Rate and Credit Counterparts analysis",
+  "authority_source":"https://sites.krieger.jhu.edu/iae/working-papers/studies-in-applied-economics/",
+  "status_rule":"Titles, authors, and series numbers are metadata-verified from the Johns Hopkins listing. Full-text claims and formulas remain blocked until each paper is locally acquired and reviewed.",
+  "papers":[
+    {"paper_id":"SAE-232","title":"United States: A Golden Growth Rate and Credit Counterparts Analysis","year":2023,"authors":["Steve H. Hanke","John Greenwood","Qiqin Sun"],"country":"United States","source_locator":"Studies in Applied Economics No. 232, April 2023","public_pdf_url":"https://www.dropbox.com/scl/fi/1tuvzza9l0aynxhsgsph7/US-GGR-CC.pdf?rlkey=464ijskijyuglycvwbtqc6120&dl=1","local_pdf":"documents/acquired/PAPER-HANKE-GG-232.pdf","text_path":"extracted/hanke/PAPER-HANKE-GG-232.txt","full_text_status":"VERIFIED_WITH_PAGE_ANCHORS","required_for_agent":true},
+    {"paper_id":"SAE-233","title":"United Kingdom: A Golden Growth Rate and Credit Counterparts Analysis","year":2023,"authors":["Steve H. Hanke","John Greenwood","Mike Hyo Jae An"],"country":"United Kingdom","source_locator":"Studies in Applied Economics No. 233, April 2023","public_pdf_url":"https://www.dropbox.com/scl/fi/vhkt5nu4dabo7nvpdw01t/UK-GGR-and-CC-Memo-93.pdf?rlkey=282qnm878b8ao5ur1d2176j14&dl=1","local_pdf":"documents/acquired/PAPER-HANKE-GG-233.pdf","text_path":"extracted/hanke/PAPER-HANKE-GG-233.txt","full_text_status":"VERIFIED_WITH_PAGE_ANCHORS","required_for_agent":true},
+    {"paper_id":"SAE-234","title":"The Eurozone: A Golden Growth Rate and Credit Counterparts Analysis","year":2023,"authors":["Steve H. Hanke","John Greenwood","Jingxing Zou"],"country":"Eurozone","source_locator":"Studies in Applied Economics No. 234, April 2023","public_pdf_url":"https://www.dropbox.com/scl/fi/xuurc8y48d5lehaj2x3h4/Eurozone-CC-and-GGR-memo-Edited-1.pdf?rlkey=61qufhili7bua6wh88vztg0s4&dl=1","local_pdf":"documents/acquired/PAPER-HANKE-GG-234.pdf","text_path":"extracted/hanke/PAPER-HANKE-GG-234.txt","full_text_status":"VERIFIED_WITH_PAGE_ANCHORS","required_for_agent":true}
+  ]
+}

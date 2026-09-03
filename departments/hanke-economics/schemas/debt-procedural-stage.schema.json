@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://glaw.local/haeis/schemas/debt-procedural-stage.schema.json",
+  "title": "Venezuela debt procedural stage",
+  "type": "object",
+  "required": ["stage_id", "economic_exposure_id", "stage_type", "amount_basis", "verification_status"],
+  "properties": {
+    "stage_id": {"type":"string"},
+    "economic_exposure_id": {"type":"string"},
+    "stage_type": {"enum":["CLAIM","ARBITRATION","AWARD","JUDGMENT","ENFORCEMENT","ATTACHMENT","RECOVERY","PAYMENT"]},
+    "court_or_tribunal": {"type":["string","null"]},
+    "case_number": {"type":["string","null"]},
+    "principal": {"type":["number","null"]},
+    "interest": {"type":["number","null"]},
+    "costs": {"type":["number","null"]},
+    "amount_basis": {"type":"string"},
+    "currency": {"type":["string","null"]},
+    "as_of_date": {"type":["string","null"]},
+    "source_document_ids": {"type":"array","items":{"type":"string"}},
+    "verification_status": {"enum":["VERIFIED","FOUND","UNVERIFIED","RESTRICTED","DISPUTED","UNAVAILABLE"]},
+    "do_not_add_to_underlying_obligation": {"const":true}
+  }
+}

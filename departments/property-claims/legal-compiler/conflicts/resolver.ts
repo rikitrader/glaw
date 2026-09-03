@@ -1,0 +1,2 @@
+import type { LegalConflict } from '../types/index.ts';
+export function resolveConflict(conflict:LegalConflict, inputs:{controllingCandidate?:string;humanApproved?:boolean}):{status:'RESOLVED'|'HUMAN_REVIEW_REQUIRED';selected?:string;reason:string} { if(inputs.humanApproved&&inputs.controllingCandidate) return {status:'RESOLVED',selected:inputs.controllingCandidate,reason:'human-approved controlling candidate recorded'}; return {status:'HUMAN_REVIEW_REQUIRED',reason:`${conflict.conflictType} cannot be resolved by vote; authority hierarchy and human review required`}; }

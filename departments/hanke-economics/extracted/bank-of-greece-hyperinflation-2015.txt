@@ -1,0 +1,1424 @@
+HOW CAN THE USE OF HISTORICAL
+MACROECONOMIC DATA SERIES SUPPORT
+ECONOMIC ANALYSIS AND POLICY-MAKING?                                                                                                Economic Bulletin
+THE NEW GREEK MACRO HISTORY DATABASE                                                                                             ISSN 1105 - 9729 (print)
+                                                                                                                                ISSN 2654 - 1904 (online)
+
+1833-1949 AS PART OF THE LARGE DATABASE
+OF SOUTHEAST EUROPEAN (SEE) COUNTRIES
+Sophia Lazaretou1
+Economic Analysis and Research Department
+
+
+1 INTRODUCTION                                         painstaking efforts to reverse their external
+                                                       imbalances by increasing competitiveness and
+In times of crisis, there is growing interest in       exports and reducing wages and incomes.
+identifying appropriate policy responses and in        Adjustment was achieved at the cost of high
+comparing with similar episodes in the past.           unemployment and capacity underutilisation,
+Policy responses are typically consistent with         while, at the same time, any efforts to restore
+the current economic orthodoxy. After all,             growth by increasing exports and total invest-
+every crisis that emerges is perceived as              ment activity were hampered both by signifi-
+unprecedented in intensity and duration. From          cant financing constraints and by weak aggre-
+an economic perspective, there are many alter-         gate demand in the European and the global
+native policies with different benefits and costs,     economy. Therefore, in countries with low
+so economists need to look for the option that         industrial production, shortage of natural
+is the least costly in terms of employment and         resources and low tourism activity, adjustment
+output. Besides, the world economy has so far          has been more painful, as it was achieved
+experienced several crises that repeat them-           mainly through lower domestic demand.
+selves over and over, but with important vari-
+ations from time to time that make each of             Greece is one of the countries that were dra-
+them unique, given the different local and             matically affected by the recent crisis, as in six
+international economic, social, cultural and           years it lost more than one fourth of its
+ethical contexts of their development. This            national product and one fifth of total employ-
+uniqueness implies that the ways to tackle the         ment. 2 Although its economic and monetary
+crises cannot be the same. Still, what remains         history is rich in crises and defaults, it has not
+the same is the question: “what is to blame”           been systematically studied, thus remaining
+and “what went wrong”.                                 largely unknown and hazy. This is partly due to
+                                                       the lack of data and of systematic data collec-
+The current European crisis triggered a heated         tion. To address this shortcoming, the Bank of
+debate about the optimal solution. It also made        Greece, along with six other European national
+it amply clear that each country is affected dif-      central banks, has participated in a research
+ferently, depending on the specific features and
+weaknesses of its economic structure and gover-        1 I would like to thank the participants in the seminar series (2014-
+                                                         2015) of the Greek Economic History Association, National Hel-
+nance. Those to suffer the most were countries           lenic Research Foundation, on 20 October 2014, for their com-
+with imbalances, namely with long-standing cur-          ments and suggestions. Special thanks go to George Kostelenos,
+                                                         Maria Christina Chatziioannou, Leda Papastefanaki and Socratis
+rent account deficits, either because of weak            Petmezas for a constructive exchange of views, as well as to Heather
+export activity due to low competitiveness or            Gibson and Hiona Balfoussia for their pertinent remarks. The
+                                                         Greek statistical database is included in the volume entitled South
+because of strong demand for imports due to              Eastern European Monetary and Economic Statistics from the
+                                                         Nineteenth Century to World War II (SEEMHN 2014) published
+unsustainable, domestic consumption-led growth.          by the Bank of Greece, the Bulgarian National Bank, the National
+With the outbreak of the global crisis, the per-         Bank of Romania and the Oesterreichische Nationalbank (Chap-
+                                                         ter III: “Greece: from 1833 to 1949”, pp. 101-170). The publication
+sistent external imbalances of these countries also      is prefaced by the governors of the central banks of Austria,
+caused internal imbalances, with rapid accumu-           Bulgaria, Romania and Greece, as well as by Michael Bordo,
+                                                         Luis Catão and Nikos Christodoulakis. The publication is
+lation of private and public debt, mass capital out-     available on the Bank of Greece website: http://www.bankof-
+                                                         greece.gr/Pages/en/Publications/Studies/ and http://www.bankof-
+flows, credit crunch, disinvestment, job losses and      greece.gr/Pages/en/Statistics/default.aspx.
+recession.                                               The views expressed in this article do not necessarily reflect those
+                                                         of the Bank of Greece. The author is solely responsible for any
+                                                         errors or omissions.
+Under the pressure of an abrupt drying-up of           2 Between 2007 and 2013, the gross domestic product at constant
+                                                         2010 prices dropped by 26.3%. Between 2008 and 2014, total
+private financial flows, deficit countries made          employment fell by 23%.
+
+
+                                                                                                                           41
+                                                                                                            Economic Bulletin
+                                                                                                                   July 2015       71
+     network established in 2006 for the purpose of        predict the crisis? Second, could economic
+     preparing a joint publication providing, for the      policy-makers have addressed the crisis more
+     first time, a complete, harmonised and com-           effectively, limiting its painful consequences
+     parable long-run statistical database on key          for the real economy? And third, why have we
+     macroeconomic and monetary variables for              not learned from history and from experience
+     Southeast European (SEE) countries (see               of past crisis episodes to avoid repeating the
+     SEEMHN 2014). Part of this large statistical          same mistakes and failings? As regards the
+     database is the Greek database, which spans           first question, it would probably be unfair to
+     over 100 years (1833-1949).                           expect economists, with the tools available to
+                                                           them, to provide safe and successful predic-
+     The availability of historical data series supports   tions about a complex reality. This is so for
+     analysis of past events from a quantitative per-      two reasons:
+     spective. This knowledge can serve as important
+     input in decision-making that will shape the          (i) Conventional economic thought has so far
+     future. The purpose of this article is twofold:       relied on a number of critical assumptions such
+     first, to present the Greek statistical database      as regularity, linearity, rational behaviour of
+     and, second, using specific examples of histori-      economic agents, market clearing, full adapt-
+     cal data series, to demonstrate the value of their    ability and risk certainty. Although these
+     use in understanding the mechanics behind the         assumptions are useful for solving mathemat-
+     creation and evolution of phenomena.                  ical economic models, they tend to oversim-
+                                                           plify the real world, often leading to policy
+     The article is structured as follows. Section 2,      implications that only come with a “normal
+     in the light of the current crisis, discusses the     conditions” caveat. This approach can provide
+     reasons why economics has moved away from             a more or less safe simulation of historical real-
+     analysing historical experience. Section 3            ity but, as a rule, fails to adequately predict the
+     explains why history and its quantitative doc-        future, since it overlooks information derived
+     umentation are necessary for appropriate pol-         from outliers that are frequent and sizeable
+     icy-making. Section 4 provides an outline of          enough to effectively shape reality.
+     the Greek statistical database and the under-
+     lying methodology, while Section 5 offers pol-        (ii) From the mid-1980s to 2008, economic
+     icy examples using historical quantitative data.      thought was dominated by the concept of
+     Finally, Section 6 summarises and concludes.          Great Moderation (see Stock and Watson
+                                                           2003, Hakkio 2013, Clark 2009). This refers to
+                                                           the perceived and measurable reduction in
+     2 ECONOMIC SCIENCE AND CRISES                         business cycle volatility after the high volatil-
+                                                           ity that prevailed in the preceding decades.
+     As soon as the crisis erupted in 2008, the con-       This statistical finding, reflected in low infla-
+     temporary economic thought was put to ques-           tion, moderate economic fluctuations and pre-
+     tion. Some have argued that the “dismal sci-          dictable outcomes, was interpreted (Bernanke
+     ence”, as it had been called earlier is in decline    2004) as the result of a combination of factors:4
+     as an academic discipline3 (see Financial             (a) an improved monetary policy framework
+     Times, “Economics needs to reflect a post-cri-        through the recognition of central bank inde-
+     sis world”, 25 September 2014) and that, to           pendence, which relieved monetary policy
+     stay relevant, it must be grounded in reality,
+     reflecting the post-crisis world (see Financial       3 Thomas Carlyle (1795-1881), a racial supremacist and anti-aboli-
+     Times, “Universities to revamp economic                 tionist, coined this phrase in his dispute with John Stuart Mill about
+                                                             whether the economic development of a nation was determined by
+     courses”, 22 September 2014). The debate was            race or by institutions.
+     dominated by three questions: first, why did          4 The phrase “good luck, good policy, good conduct” best exempli-
+                                                             fies the coexistence of all these factors. For a discussion of these
+     economists and economic historians fail to              factors, see Coric (2011).
+
+
+     41
+
+72   Economic Bulletin
+     July 2015
+from pressure to accommodate the govern-            Turning to the second question, despite the
+ment’s fiscal agenda and made monetary pol-         marked progress of economics and the
+icy implementation more transparent; (b) bet-       improvement in analytical tools at its disposal,
+ter financial supervision;5 (c) the development     it has not been possible to incorporate the
+of counter-cyclical automatic stabilisers that      impact of financial uncertainty and instability
+mitigate the adverse impact of business cycle       into the neoclassical model of optimal behav-
+shocks; (d) a structural shift from highly          iour, nor to formulate a comprehensive theory
+volatile sectors, such as the primary and sec-      that would explain the interaction between
+ondary sectors, to more predictable and less        financial developments and the macroecon-
+volatile ones, such as the tertiary sector; and     omy.7 Economists focus on macroeconomic
+(e) the absence of frequent and severe exter-       models that do not properly depict the finan-
+nal shocks.                                         cial system. Financial analysts, on the other
+                                                    hand, usually disregard the effects of financial
+Furthermore, institutional reforms to the func-     instability on the macroeconomy. The recent
+tioning of the labour market through the intro-     crisis is a case in point: in its initial phase, the
+duction of more flexible forms of employment,       steep fall in real estate prices undermined,
+as well as firms’ improved inventory manage-        through mortgage loans, the stability of the
+ment thanks to ICT advances were additional         financial system and of the real economy in
+factors behind lower macroeconomic volatility.      general.
+This environment of economic stability made
+economists believe that they had developed          Concerning the third question and the ability
+sufficient tools to control the volatility of the   to learn from historical experience, right after
+business cycle and created expectations of          the outbreak of the crisis economists delved
+“perpetual growth”. However, this same envi-        into the past trying to draw useful lessons.
+ronment in turn shaped a financial environ-         The Great Depression of the 1930s was the
+ment that encouraged the accumulation of            predominant area of focus. Nevertheless, nei-
+debt and excessive risk-taking, sowing the          ther economic theory nor economic history
+seeds of the crisis in the years that followed.     aim to formulate generalised lessons that
+                                                    could easily and safely be applied; this is so
+One might argue that a historical parallel to       because the lessons of history are typically
+Great Moderation was the New Age period on          time- and state-contingent, in the form of
+the aftermath of World War I. Rapid eco-            findings or conclusions applying only to the
+nomic growth in that period led to a fast rise      specific period of a given event and to the par-
+in asset prices in the late 1920s. High volatil-    ticular circumstances of its occurrence. In
+ity in money and capital markets was also           other words, they cannot be universally
+blamed for the foreign exchange crises of the       applied, since no event repeats itself identi-
+19th century. It was then considered necessary      cally. Therefore, an automated, mechanic and
+to introduce a new monetary institution in          generalised application of a lesson may lead
+every country, the central bank,6 which would       to unsound policy implications if taken out of
+have the exclusive privilege of issuing legal       context. The point is thus not to anxiously
+tender and would be mandated to maintain            glean lessons from the past and apply them to
+monetary and financial stability. However, as       the present, but to make the best possible
+the experience of the Great Depression              effort to conduct in-depth and extensive his-
+showed, this new institution failed to prevent      torical research in order to generate new
+the crisis or mitigate its impact on the business
+cycle; still, it demonstrated the importance of     5 Mainly with regard to the evolution of on-balance-sheet activities.
+                                                    6 In contrast with a note-issuing bank that also operated as a com-
+strict supervision of the banking system’s on-        mercial bank.
+balance-sheet activities and the need for           7 See Fabozzi et al. (2010) and Tobin (1958). For an empirical analy-
+                                                      sis of the relationship between monetary policy, securitisation and
+counter-cyclical fiscal policies.                     excessive risk-taking, see Jimenez et al. (2012).
+
+
+                                                                                                                       41
+                                                                                                        Economic Bulletin
+                                                                                                               July 2015    73
+     knowledge. This knowledge will become a              3 ECONOMIC HISTORY AND POLICY. WHY DOES
+     safe roadmap towards a more accurate under-            ECONOMICS NEED HISTORY?
+     standing of the present and appropriate pol-
+     icy-making to shape the future. Therefore,           Currently, economics and history are largely
+     every crisis affirms the need for more and bet-      separate disciplines. Economists and historians
+     ter research into economic history.                  rarely cross paths, and, if at all, only excep-
+                                                          tionally. Looking at academic terminology, it is
+     To attain this goal, two conditions must be          hard to find a commonly accepted definition of
+     met. First, emphasis should be placed on bet-        economic history. According to Douglas North
+     ter understanding and utilising country-spe-         (1981), economic history should explain the
+     cific experience and characteristics at differ-      structure and performance of economies over
+     ent periods of the past and comparing them           time.10 The term “performance”, in its original
+     with the experience of other countries in a          and main sense, denotes the evolution of
+     regional or global context. This would build a       macroeconomic fundamentals over time (“the
+     sample of observations from similar historical       typical concerns of economists”, aggregate
+     episodes, constantly enriched with new ones,         macro history11), such as production, industri-
+     which would provide invaluable information           alisation, consumption and investment, infla-
+     about the method and size of responses to a          tion and unemployment, optimal allocation of
+     global crisis and their results, since there is no   inputs to achieve the highest possible economic
+     single policy to address a crisis and, even if       growth rate, uneven distribution of income and
+     there were, it would have to be adjusted to the      its effects on growth. In this case, economic his-
+     specific temporal and geographical circum-           tory and the statistical processing of quantita-
+     stances in order to be effective. The current        tive data are the key analytical tools. The term
+     literature and debate among academics and            “structure” includes those characteristics of a
+     policy makers mainly focus on the monetary           society which are considered as determinants of
+     experience of major developed countries in           its performance, i.e. political and economic
+     Western Europe and of the United States,             institutions, technology, demographics. The
+     which are at the core of the global economic         word “explain” means “explicit theorising and
+     system and have historically played a leading        the potential of refutability”, while the phrase
+     role. At the same time, the monetary and eco-        “through time” refers to “temporal changes in
+     nomic history of the weak periphery countries        structure and performance”.
+     remains inadequately researched. Conse-
+     quently, policy decisions are largely made on        Others argue that economic history deals with
+     the basis of the experience of a few strong          the behaviour demonstrated in the past by spe-
+     economies. However, their generalised appli-
+     cation is not always safe.
+                                                          8 The need for economic history and historical statistics to assist the
+                                                             study of economic phenomena was underlined by Paul Samuelson.
+     The second condition refers to the availability         In one of his last interviews a few months before his death, he
+                                                             expressed the view that economists must “... have a very healthy
+     of reliable quantitative data as a necessary tool       respect for the study of economic history, because that’s the raw
+                                                             material out of which any of your conjectures or testing will come…
+     to study historical experience. Underpinning            But history does not tell its own story. You’ve got to bring to it all
+     economic history by long-run macroeconomic              the statistical testings that are possible...”. (“An interview with Paul
+                                                             Samuelson”, Part Two, Connor Clarke, June 2009, The Atlantic).
+     time series helps to substantiate and empiri-        9 Apart from the Bank of Greece’s initiative in the context of the
+     cally verify historical narratives, provide valid       SEEMHN research project, the first outcome of which is the com-
+                                                             pilation of the historical database for SEE countries, it is worth
+     evidence of the nature of determinants of the           mentioning two other similar activities: that of the Institute for New
+                                                             Economic Thinking, studying the experience of emerging market
+     phenomena and enrich our knowledge of his-              economies, and that of University College London, with its CORE
+     torical events and country experiences.8                (curriculum open access resources in economics) project, involv-
+                                                             ing the interactive (ebook-based) teaching of economics with an
+     Although history by definition does not teach           emphasis on historical quantitative documentation.
+     us about the present, it passes on knowledge         10 “I take it as the task of economic history to explain the structure and
+                                                             performance of economies through time” (Chapter 1, The Issues).
+     that is instrumental to policy-making.9              11 Adelman (2014).
+
+
+     41
+
+74   Economic Bulletin
+     July 2015
+cific economic agents such as enterprises and       In Greece, the split between economics and
+entrepreneurs, consumers and employees,             history is clear. Economic history is limited to
+savers and investors, interest groups, economic     a simple narrative of events as they unfolded.
+policy-makers and administrative bodies (dis-       The importance of a holistic study and teach-
+aggregated history). In this case, it borrows       ing of economic theory in the context of a thor-
+analytical tools from social sciences, such as      ough examination of historical episodes is sys-
+social anthropology. Once again, quantitative       tematically underplayed. Economic historians
+data processing is the main analytical tool for     are misleadingly stereotyped as “economists
+studying how the effects of an event are spread     that use historical statistics in their analysis” or
+across various economic and social agents,          “historians dealing with economics”. There
+which is the key question that economic history     also prevails a wrong view of economic histo-
+is called upon to answer.                           rians as “academics who are only interested in
+                                                    what happened in the past and do not deal with
+According to all definitions, the subject mat-      the present and current matters”.
+ter of economic history is the evolution of eco-
+nomic institutions and economic behaviour           In turn, economics overlooks the value of his-
+across time. Economic history does not only         torical research. To describe and study the
+study past economic activity, but also sheds        behaviour of economic agents, it mostly uses
+light on topical questions of relevance to pol-     mathematical models, the robustness of which
+icy-makers. In this sense, it bridges the past      is conditional on the validity of a number of
+with the present. To do this, it needs to blend     underlying assumptions that provide a simpli-
+economic theory and quantitative data with          fied picture of a complex economic reality. The
+methods from other disciplines such as demog-       solution of these models is based on deduction
+raphy, statistics and sociology.                    (hypothetical deductive models): economists
+                                                    propose a general theory and try to test its
+A good definition is given by the New Palgrave      validity by examining it in specific cases (top-
+Dictionary of Economics: “economic history          down approach). If the theory is verified, they
+focuses on the historical study of economic         then draw generalised conclusions, which how-
+development and growth...”. From a profes-          ever are only valid if the initial conditions were
+sional and academic point of view, economic         correct. However, they do not know the exact
+history was distinguished from economics with       functioning of the economy in the real world.
+the emergence of scientific societies in Great      Their knowledge is limited to the study of
+Britain in 1926 and then in the United States in    abstract models that are often based on wrong
+1941. As economics increasingly shifted away        assumptions, since economics, unlike the so-
+from history to the use of mathematical models      called “hard” sciences, is subject to strong data
+in the 1960s, the “new economic history” advo-      limitations. Moreover, the experimental
+cated the application of economic theory to his-    method cannot be applied to the collection of
+tory (“but its emphasis on data analysis retained   observations, since an economy cannot be sub-
+a bridge to other traditions”, see Field 2008).     jected to experimental conditions.
+
+Against this background, the compilation of         In other words, while hard sciences construct
+long-run time series, using information from        models to explain actual data collected by
+historical archives, should not be neglected. By    observation or experiment, an economist uses
+allowing for the quantitative analysis of his-      a model to describe how the world might work.
+torical events, these data fill the “knowledge      Theory is empirically verified either by inter-
+gap” and even bring unknown events to light.        preting econometric results or by identifying
+In turn, this new knowledge changes the exist-
+ing historiography and takes us further along       12 See e.g. Deane and Cole (1967), Feinstein (1972), Lindert (2004)
+the path towards the objective truth.12                and Crafts and Fearon (2013).
+
+
+                                                                                                                     41
+                                                                                                      Economic Bulletin
+                                                                                                             July 2015    75
+     stylised facts. However, both processes rely on      4 THE NEW GREEK HISTORICAL STATISTICAL
+     the use of a limited sample of observations            DATABASE, 1833-1949
+     under “normal conditions”; as a result, the
+     absence of a broader, long-term perspective          4.1 OUTLINE
+     can lead to wrong conclusions as to the robust-
+     ness of the economic model.                          The monetary history of the modern Greek
+                                                          State has not been adequately researched to
+     Against this backdrop, it is clear that econo-       date. Although there is an extensive body of lit-
+     mists argue on the basis of theory, while his-       erature, it largely consists of anniversary pub-
+     torians on the basis of facts. Economic histo-       lications, chronicles, albums and biographies,
+     rians have to do both, namely combine theory         exhibition catalogues or, at best, reprints of
+     with facts. Their analytical tools are empirical     past monographs and papers. These mainly
+     or historical inductive models.13 They are not       focus on a simple chronological narration of
+     confined, as historians are, to collecting and       monetary events, without attempting to iden-
+     studying a sample of events, or, as economists       tify and interpret the underlying mechanisms,
+     are, to making assumptions and verifying a           or on empirical verifications of some theory or
+     posteriori a general theory. On the contrary,        assumption using available long-run data
+     the first step in their analysis is to collect the   series. However, both approaches are far from
+     highest possible number of observations for an       a comprehensive and systematic study of mon-
+     actual event. High incidence of these obser-         etary phenomena in Greece.
+     vations ensures the success of the second step,
+     which involves the identification of a recurrent     An important obstacle has been the absence of
+     pattern and the construction of a behaviour          a comprehensive and reliable statistical histori-
+     model that would allow, as a third step, to          cal database on the Greek economy. The statis-
+     investigate the causes that generated a phe-         tical series available so far are incomplete, insuf-
+     nomenon and make alternative assumptions             ficient, fragmented and unofficial, and largely
+     about its occurrence. The final step is to draw      unknown to the broader research community; as
+     general conclusions or formulate theories. We        a result, efforts to utilise such data have only been
+     could describe the methodology by the fol-           sporadic, and the case of Greece only randomly
+     lowing scheme:                                       features in the international literature.
+
+                                                          By making the new statistical database avail-
+     quantitative data→pattern→assumptions→theory
+                                                          able to the international research community,
+                                                          the groundwork is laid for more systematic
+     For an economist, the steps of the technique         research into the economic, monetary and
+     would be employed in the reverse order.              banking history of modern Greece, with a view
+                                                          to building on existing knowledge and adding
+     Therefore, the compilation of reliable statistics    new knowledge that would contribute to
+     that capture, in a condensed manner, the inci-       informed policy-making. In greater detail, the
+     dence of an event and its specific features          use of this database as a tool for the quantita-
+     (magnitude, duration, intensity) is the ground-      tive documentation of the historical narrative
+     work for an economic historian’s research. By        is expected to help identify any parallels
+     extension, the condensation of historical expe-      between the past and the present and draw
+     rience and the use of quantitative data to sup-      appropriate policy implications, which is the
+     port it provide a deeper insight into the mech-      ultimate goal of the endeavour. In this respect,
+     anism generating an event and the causes for         the database should help to answer topical
+     its repetition. This knowledge is vital to draw-     questions such as:
+     ing useful conclusions that will help in eco-
+     nomic policy-making.                                 13 Known as bottom-up approach.
+
+
+     41
+
+76   Economic Bulletin
+     July 2015
+1. What are the specific characteristics that       comprises a total of 98 time series of annual
+   classify an economy in the periphery of the      and monthly data, grouped in six categories.
+   global monetary and economic system?             For the period 1833-1939, there is a complete
+                                                    set of annual and monthly time series for the
+2. Which factors can explain the economic           following broad categories of macroeconomic
+   backwardness of a country?                       data:
+
+3. Why does a country often experience an elu-      (1) monetary variables;
+   sive stability?                                  (2) interest rates;
+                                                    (3) exchange rates;
+4. What are the factors behind the persistent       (4) government finances;
+   trust deficit, which is understood as the lack   (5) prices, production and labour; and
+   of credible fiscal and monetary institutions,    (6) national accounts and population.
+   causing a country to suffer repeated confi-
+   dence crises?                                    For the period 1940-1949, there is a complete
+                                                    set of data on an annual and monthly basis for
+5. What were the benefits and risks of              three variables:
+   Greece’s effort to borrow policy credibility
+   by joining an economic or monetary club of       (1) monetary base;
+   strong economies and pegging to a mone-          (2) exchange rates; and
+   tary anchor?                                     (3) the cost-of-living index.
+
+6. What were the specific problems faced by         The database is divided into three parts. The
+   Greece whenever an international crisis          first part provides a brief but comprehensive
+   occurred? and                                    account of the most important monetary events
+                                                    in the country and an accurate analysis of the
+7. What did the day after look like?                institutional framework of monetary policy in
+                                                    each reviewed period. This was deemed nec-
+The answers to all these questions will provide     essary because collecting, recording, process-
+an in-depth understanding of the architecture       ing and verifying data and compiling indicators
+of the international monetary system which          for such long and distant periods require in-
+prevailed in each historical period and was         depth knowledge of the domestic and inter-
+joined by Greece; it will also help us identify     national institutional environment of economic
+the reasons why the country failed to reap the      and monetary policy. This knowledge helps us
+benefits of membership of successive monetary       to more strictly define the variables published.
+systems.
+                                                    The second part sets out definitions of vari-
+The Greek statistical database (Greek Macro         ables and provides detailed explanation of each
+History Database) is part of the large histori-     time series separately, in each of the six cate-
+cal statistical database of SEE countries (SEE      gories. It also details the method for compil-
+Macro History Database), included in the            ing new variables; for instance, money supply,
+joint publication entitled South-Eastern            long-term government borrowing costs and a
+European Monetary and Economic Statistics           proxy for public debt are given each two defi-
+from the Nineteenth Century to World War            nitions.
+II (SEEMEHN 2014, Chapter 3). It is acces-
+sible on the Bank of Greece website,                The third part presents in detail all the sources
+http://www.bankofgreece.gr/Pages/el/Publica-        of information. There is a focus on an accurate
+tions/Studies/SeemhnDataVolTables.aspx). It         description and discussion of primary sources,
+covers the period between 1833 and 1949 and         such as regular or occasional publications of
+
+                                                                                                        41
+                                                                                         Economic Bulletin
+                                                                                                July 2015    77
+     statistical bulletins, statistical yearbooks,         the same country. These variations typically
+     banks’ balance sheets and annual reports, gov-        reflect different monetary policy regimes.
+     ernment budgets and ex-post reports. Sec-
+     ondary sources are also discussed, mainly             Fourth, data were collected only from primary
+     including published original research, which is       sources.
+     mostly used to cross-check quantitative data
+     found in primary sources or to address gaps           Fifth, the method of presentation was the same
+     and breaks in the relevant time series.               across countries, with both aggregated and dis-
+                                                           aggregated data series. The time span of each
+     To facilitate users, an index table at the begin-     series is the longest possible, the unit of
+     ning of the Greek statistical database sum-           account is the legal tender of each country, the
+     marises all useful information, i.e. the defini-      frequency is annual and monthly, while the
+     tion of the group of key variables and their          method of linear interpolation was used in the
+     components, time span, data frequency, unit of        case of missing data.
+     account and series code. Finally, the database
+     is accompanied by charts plotting the evolution       Sixth, the compilation of new indicators mainly
+     and interactions of selected variables over           relates to GDP, government borrowing costs,
+     time.                                                 money supply and a proxy for public debt.
+
+     4.2 METHODOLOGY
+                                                           5 GREEK HISTORICAL TIME SERIES AND ECO-
+     To ensure reliability, accuracy and compara-            NOMIC POLICY: EXAMPLES
+     bility of quantitative data, all central banks par-
+     ticipating in the project agreed14 on a common        The analysis of simple policy examples using
+     methodology as regards a number of funda-             specific historical time series demonstrates
+     mental matters, such as selection and defini-         their importance for policy assessment. This
+     tion of variables, methods for the collection of      section focuses on four groups of variables.
+     information, techniques for compiling new
+     indices and missing data handling.                    5.1 MONETARY AGGREGATES
+
+     In more detail, first, the statistical database       Monetary aggregates are divided into two cat-
+     comprises information about a minimum but             egories of variables: (i) the country’s reserves;
+     adequate set of variables, common to all coun-        and (ii) measures of domestic money supply.
+     tries. Emphasis was placed on monetary vari-          For the purposes of quantitative presentation,
+     ables, in an aim to utilise the comparative           the first category is defined as the sum of: total
+     advantage offered by the archives of national         reserves in precious metal (gold and silver) in
+     central banks.                                        the form of barren metal or minted coins held
+                                                           in the vaults of all note-issuing banks until 1927
+     Second, the time series were compiled on the          and of the Bank of Greece since 1928); gold-
+     basis of commonly used definitions, as the best       based foreign exchange (usually French
+     way of achieving maximum conceptual accu-             francs and pounds sterling) in the form of
+     racy and harmonisation across countries and
+     across time (historical vs. current series) for       14 The successful completion of the project is primarily due to the
+     the same variable, thereby ensuring consis-              strong team spirit among participants. Regular meetings (13 in 7
+                                                              years) and daily online communications ensured that any problem
+     tency and continuity.                                    was promptly and effectively addressed. The roundtable format of
+                                                              regular meetings provided an opportunity for a fruitful exchange
+                                                              of progress reports, knowledge and information. Moreover, the set-
+     Third, each variable is described in detail,             ting up of sub-groups contributed to a quick, sound and useful
+     enabling to identify variations in the recording         process of peer review and editing. At the same time, the early util-
+                                                              isation of time series to study specific monetary phenomena has
+     method across countries and across time within           been a first test of their accuracy.
+
+
+     41
+
+78   Economic Bulletin
+     July 2015
+interest-bearing deposits with foreign central      the market exchange rate, but at the parity rate
+or correspondent banks, used to settle the          of the domestic currency vis-à-vis gold or gold-
+country’s international payments and back the       based foreign exchange. However, due to
+convertibility of banknotes; and gilt-edged         strong and constant depreciation pressures on
+bonds held as part of the central bank’s assets.    the domestic currency, the note-issuing/central
+                                                    bank, under its respective founding act,
+In selecting the items under the quantitative       reported all balance sheet items (assets and lia-
+definition of the reserves variable, we             bilities) expressed in the domestic currency on
+addressed two issues: conceptual content and        the basis of the market exchange rate as at the
+method of valuation. Specifically, in metallic      balance sheet date.
+monetary regimes, reserves were meant to
+ensure banknote convertibility. Nowadays,           The second category of monetary variables
+reserves data are built on two different con-       relates to measures of money supply. On the
+cepts (see IMF 2013, Balance of Payments and        first page of their classic book, Friedman and
+International Investment Position Manual):          Schwartz (1970) note that “... measuring
+“international reserves” or “official reserve       money is an activity that dates back to the
+assets”, and “foreign currency liquidity”.          beginning of the republic”. This is so because
+According to the first concept, international       knowing exactly how much money there is in
+reserves are used for the country’s interna-        the economy at any given time enables the con-
+tional transactions and for foreign exchange        duct of monetary policy that can support
+market interventions aimed to influence the         growth in an environment of monetary and for-
+international price of the currency. They are       eign exchange stability. This was very impor-
+recorded on the assets side of the central          tant in metallic monetary regimes, since the
+bank’s balance sheet. The second concept is         scarcity of precious metal forced the authori-
+broader and refers to both on- and off-balance-     ties to establish a minimum ratio of reserves to
+sheet items, not only of the central bank, but      banknotes in circulation, as excess uncovered
+also of the government, which are aimed to          note issue would undermine confidence in the
+meet demand for foreign exchange.                   banknote and strengthen inflationary and
+                                                    depreciation pressures, thereby jeopardising
+To avoid an overestimation of reserves, we          the monetary regime.
+adopted the first definition, which narrows the
+concept of the variable. Similarly, to avoid an     In Greece, although a national monetary sys-
+underestimation, we took into account the           tem was introduced right after independence,
+total level of reserves, not just the statutory     with the circulation of silver coins and paper
+lower limit15 as defined in the founding law and    notes (uncovered money), the systematic
+the statute of the note-issuing/central bank.       recording of banknotes in circulation on an
+The latter would perhaps be relevant if the         annual and monthly basis only started in 1841,
+objective of monetary policy was only to ensure     with the establishment of the National Bank of
+the statutory lower limit of reserves and the       Greece as a note-issuing bank. However, the
+upper limit of currency in circulation. How-        concepts of narrow or broad money used today
+ever, since the country’s reserves were used to     are nowhere to be found in those records. This
+fulfil foreign payment obligations arising from     was so because, according to the Currency
+international borrowing and a net liability posi-   School of the 19th century, banknotes were the
+tion, the concept of “official reserves” or         only substitute for physical money. Other types
+“international reserves” is more relevant.          of what we now see as money, such as bank
+                                                    deposits, were not included in the calculation
+A second issue refers to the method of valua-
+tion. Note-issuing banks used to report their       15 25% of currency in circulation for the National Bank of Greece and
+metallic and foreign exchange reserves not at          40% of the monetary base for the Bank of Greece.
+
+
+                                                                                                                       41
+                                                                                                        Economic Bulletin
+                                                                                                               July 2015    79
+      Chart 1 Monetary aggregates (1847-1939)
+
+
+
+                   Μ3
+                   Μ0
+
+      50                                                                                                                                 50
+
+
+      40                                                                                                                                 40
+
+
+      30                                                                                                                                 30
+
+
+      20                                                                                                                                 20
+
+
+      10                                                                                                                                 10
+
+
+        0                                                                                                                                 0
+
+
+      -10                                                                                                                               -10
+            1847         1857     1867        1877        1887        1897        1907         1917         1927        1939
+
+      Sources: SEEMHN (2014) and Bank of Greece.
+      Note: Annual percentage changes in averages. Own calculations, based on a 5-year rolling time span.
+
+
+
+     of money supply. Therefore, although metal-                          which an optimal measure should meet three
+     lic and foreign reserves were endogenously                           criteria: (i) high correlation with national out-
+     determined, the statutory reserve-to-banknote                        put; (ii) inclusion of several items treated as
+     ratio was determined exogenously, necessitat-                        money; and (iii) the highest correlation with
+     ing the precise knowledge of the stock of ban-                       either current or lagged values of real GDP.
+     knotes in circulation. However, with the emer-
+     gence of a bourgeois class in the last quarter of                    The importance of monitoring the evolution of
+     the 19th century, the domestic economy grad-                         these aggregates for the purposes of policy-
+     ually shifted from barter to a money economy,                        making is illustrated by two examples of pol-
+     and the banking system grew. This implied a                          icy pursued in the 1910s and 1930s. In partic-
+     broadening of the concept of money, at least                         ular, Chart 1 shows that, in the first decade of
+     as a medium of exchange. Until then, the time                        the 20th century, M0 and M3 moved in oppo-
+     series of currency in circulation underesti-                         site directions. M0, tracking banknote circu-
+     mated domestic money supply. Therefore, the                          lation, which was at the time fully controlled by
+     formulation of two alternative definitions of                        monetary authorities, follows a downward
+     money, one narrow as medium of exchange                              path, as a result of the very tight monetary pol-
+     and one broader as two measures of liquidity,                        icy under a strict stabilisation programme
+     helps to make safer estimates of the variable.                       agreed with foreign creditors in 1898. Through
+                                                                          a sterilisation policy, any increase in the coun-
+     In this context, and given the quantitative data                     try’s foreign reserve assets, mainly as a result
+     limitations, we compiled two monetary aggre-                         of higher foreign trade, was fully offset by a
+     gates: M3 (broad money), including less close                        larger decrease in banknote circulation. This
+     substitutes for money, such as bank deposits of                      policy was aimed to restore monetary and
+     any type and bank bonds, and M0 (narrow                              exchange rate stability, but did not yield the
+     money), also known as “monetary base”.16 We                          16 Two other indicators were also compiled: the reserve-to-banknote
+     used the monetary approach, according to                                ratio and the M3 multiplier.
+
+
+     41
+
+80   Economic Bulletin
+     July 2015
+expected results: excess demand for money           very high lending rates. The central bank, tak-
+intensified upward pressures on the exchange        ing into account the size of the monetary base,
+rate, causing deflation and keeping lending         assessed (perhaps erroneously) that monetary
+rates at high levels. The rising path of M3 dur-    conditions were tight and, right after its estab-
+ing the same period, solely driven by               lishment, cut its discount rate.
+increases in private deposits and cash trans-
+actions because of higher foreign trade,            The monetary policy implemented since mid-
+although implying satisfactory liquidity, failed    1931 proved to be equally ineffective. The
+to finance growth. Growth remained weak             banking crisis, as manifested by the mass
+after the recession of the 1890s, since it was      deposit withdrawals and bank defaults,
+forbidden by law to exceed a maximum, but           squeezed liquidity in the economy, as shown by
+narrow, limit of uncovered circulation.             the steep downward path of M3. At the same
+                                                    time, however, the Bank of Greece further
+The policy implemented in the context of the        tightened its monetary policy stance by suc-
+new monetary regime after 1910, with the            cessively raising its policy rate, which pushed
+delayed decision to link the drachma to the         further upwards market lending rates, thereby
+French franc at par, in an effort to counter        causing a credit squeeze that deepened the
+deflation and the rapid appreciation of the cur-    recession. Meanwhile, the requirement on
+rency, did not help at all to restore monetary      commercial banks to hold reserves with the
+stability. This time, as shown in the chart, M0     central bank, a measure aiming at improving
+and M3 moved in the same direction. Their co-       bank supervision in the wake of the banking
+movement is explained by the fact that the          crisis, implied an additional monetary policy
+increased inflow of foreign exchange led, in the    tightening, reflected in the upward path of M0,
+context of full and free convertibility, to con-    as opposed to the downward path of M3.
+tinuous and equal increases in the monetary
+base and therefore in liquidity, which fuelled      5.2 INTEREST RATES AND BORROWING COSTS
+domestic inflation. The adverse effects of this
+policy on the real exchange rate and the            5.2.1 Discount rate
+reserve asset position of the country became
+visible after 1914, when Greece insisted, after     In metallic monetary regimes, money supply
+the collapse of the international gold standard,    was controlled through changes in the inter-
+to maintain a de jure regime of stable exchange     est rate18 at which the note-issuing or the cen-
+rates.17                                            tral bank usually refinanced the domestic
+                                                    economy by discount and credit facilities to
+A second example is the monetary policy of the      commercial banks. In the case of Greece, in
+interwar period. In 1925, the Greek authorities     the absence of a central bank until April 1928,
+began a monetary tightening to counter the          the National Bank of Greece, being both a
+post-war very high inflation and marked depre-      note-issuing and a commercial bank, con-
+ciation of the currency. As shown in Chart 1,       trolled liquidity in the economy through the
+although the monetary base also declined after      interest rate at which it discounted three-
+1925, the liquidity index in the pre-crisis years   month commercial bills and notes. It applied
+followed a steep upward path, driven by high        the same rate on lending to merchants, other
+bank deposits accumulated during the strong         commercial banks, as well as the govern-
+monetary expansion of the war period. Most of       ment.19 Chart 2 shows the evolution of the dis-
+these deposits were very short-term (sight          17 For a detailed discussion of monetary policy implementation in
+deposits) because of low public confidence in          Greece during the period of the gold standard, see Lazaretou
+                                                       (1995) and SEEMHN (2014, Chapter 3).
+the currency. On the other hand, banks were         18 Also known as “bank rate” or “Lombard rate”.
+very liquid but were extremely reluctant to         19 Until 1880, when Greece regained access to international capital
+                                                       markets, the National Bank of Greece was the almost exclusive
+extend long-term loans, thereby maintaining            holder of public debt.
+
+
+                                                                                                                     41
+                                                                                                      Economic Bulletin
+                                                                                                             July 2015    81
+      Chart 2 The discount rate of the National Bank of Greece (1841-1928)
+
+
+      (%)
+
+      12                                                                                                                                                                                                                                                                                                                                                                                        12
+
+
+      10                                                                                                                                                                                                                                                                                                                                                                                        10
+
+
+        8                                                                                                                                                                                                                                                                                                                                                                                       8
+
+
+        6                                                                                                                                                                                                                                                                                                                                                                                       6
+
+
+        4                                                                                                                                                                                                                                                                                                                                                                                       4
+
+
+        2                                                                                                                                                                                                                                                                                                                                                                                       2
+
+
+        0                                                                                                                                                                                                                                                                                                                                                                                       0
+
+
+
+             June 1841   June 1844   June 1847   June 1850   June 1853   June 1856   June 1859   June 1862   June 1865   June 1868   June 1871   June 1874   June 1877   June 1880   June 1883   June 1886   June 1889   June 1892   June 1895   June 1898   June 1901   June 1904   June 1907   June 1910   June 1913   June 1916   June 1919   Dec. 1921   June 1924   June 1927   May 1928
+
+
+
+      Sources: SEEMHN (2014) and Bank of Greece.
+      Note: Based on the dates of change, in percentages per annum, end-of-month data.
+
+
+
+     count rate over time. The series was con-                                                                                                                                                               there a small and slow decline in the discount
+     structed on the basis of the available dates of                                                                                                                                                         rate, at a time when the Greek economy
+     interest rate changes, as derived from the                                                                                                                                                              started developing fast and there was a great
+     minutes of general meetings of shareholders                                                                                                                                                             need for cheap loans. The reluctance to
+     and annual reports of the National Bank of                                                                                                                                                              change the interest rate policy stance, as
+     Greece.                                                                                                                                                                                                 shown in the chart, does not seem to have sig-
+                                                                                                                                                                                                             nificantly helped to finance the growth efforts
+     A simple look at the chart shows that the                                                                                                                                                               of this period. It was only after 1923 that the
+     National Bank of Greece never considered its                                                                                                                                                            bank began to take the macroeconomy into
+     discount rate as a monetary policy tool. Its                                                                                                                                                            account, given the high post-war inflation and
+     changes were rather infrequent. In 80 years,                                                                                                                                                            strong depreciation pressures.
+     it changed this rate only 27 times. Decisions
+     to change the interest rates were dictated by                                                                                                                                                           The interest rate policy of the Bank of Greece
+     its commercial banking activities, competition                                                                                                                                                          was equally ineffective, as seen in Chart 3,
+     with other, smaller commercial banks, to                                                                                                                                                                which shows the discount rate and the short-
+     which it was usually reluctant to provide the                                                                                                                                                           term market lending rate. Both series were
+     required liquidity, and its concerns about pub-                                                                                                                                                         constructed on the basis of the dates of inter-
+     lic confidence in its banknote, rather than by                                                                                                                                                          est rate changes. We note that the central
+     macroeconomic considerations. For instance,                                                                                                                                                             bank’s effort to reduce market lending costs by
+     although at the start of its operations in                                                                                                                                                              cutting its rate from 10% to 9% in November
+     March 1841 it set its rate at 8%, much lower                                                                                                                                                            1928 and keeping it at this low level until Sep-
+     than the non-banking lending rate (20%), it                                                                                                                                                             tember 1931 ended up in failure since, because
+     kept it virtually unchanged until the early                                                                                                                                                             of the excess liquidity then available to com-
+     1890s. Only at the turn of the century was                                                                                                                                                              mercial banks, they did not need to resort to
+
+     41
+
+82   Economic Bulletin
+     July 2015
+ Chart 3 The discount rate of the Bank of Greece and the market lending rate
+ (May 1928-November 1941)
+
+ (%)
+           discount rate
+           short-term market lending rate
+
+ 14                                                                                                                                        14
+
+
+ 12                                                                                                                                        12
+
+
+ 10                                                                                                                                        10
+
+
+  8                                                                                                                                        8
+                         gold standard
+                         (1928-1931)          off gold
+  6                                           (1932)                                                                                       6
+                                                                                  sterling area
+                                                                                  (1936-1941)
+  4                                                                                                                                        4
+
+
+  2                                                                                                                                        2
+
+
+  0                                                                                                                                        0
+         1928     1929     1930     1931     1932     1933     1934     1935     1936     1937      1938      1939     1940       1941
+
+ Sources: SEEMHN (2014) and Bank of Greece.
+ Note: Based on the dates of change; 3-month market lending rate: simple annual average of the 4 largest commercial banks, in percentages
+ per annum, end-of-month data.
+
+
+
+central bank money for their refinancing.20 At                         foreign creditors were not willing to buy gov-
+the onset of the Great Depression, the Bank                            ernment bonds unless these were denominated
+responded by successive increases in its rate,21                       in an international hard currency. In the years
+pushing further upwards the market rate and                            of the gold standard, the issuance of debt by a
+causing a credit squeeze at a time when mon-                           developing country included a “gold clause” or
+etary policy relaxation was needed to promptly                         “currency clause”, i.e. a promise to repay the
+counter the negative impact of the recession.                          debt either in gold or in “gold-based foreign cur-
+                                                                       rency”. The high share of debt liabilities
+5.2.2 Government borrowing costs                                       increased the country’s foreign dependence,
+                                                                       since they were serviced through fixed payments
+A country’s creditworthiness is reflected in long-                     in hard currency, which were not linked to the
+term government bond yields. The market                                current economic situation.
+prices (annual since 1901 and monthly since
+1928) of the bonds of ten major foreign loans in                       As seen in Chart 4, which shows the average
+gold allow us to calculate the current yield as the                    annual unweighted current yield of ten gov-
+product of the face value and the coupon rate
+divided by the market price. Both in theory and                        20 In the years before the crisis, to raise liquidity, commercial banks
+                                                                          used to have recourse to the National Bank, where they kept their
+in practice, it is now a well-known fact that the                         deposits. Despite the decrease in the Bank of Greece’s rate, the
+less developed economies at the periphery of                              National Bank raised its own rate from 9% to 11%-13%; as a result,
+                                                                          the three-month market lending rate increased sharply.
+the system suffered from the “original sin”, i.e.                      21 In 1931, the Greek economy was already in recession and a credit
+                                                                          crunch (economic downturn and a drop in employment, bank runs,
+they were unable to issue international debt in                           bank defaults and cash hoarding). The policy response was hap-
+their own currency (Eichengreen and Haus-
+mann 1999, Eichengreen et al. 2003, Catão and
+                                                                          hazard and intensified uncertainty. Finally, opting to support a sta-
+                                                                          ble relationship with gold, the Bank of Greece increased its rate
+                                                                          from 9% to 12% in end-September 1931. One month later, it low-
+Milesi-Ferretti 2014). To prevent the risk of                             ered it to 11% and raised it again to 12% in mid-January 1932. One
+                                                                          month later, it cut it again to 11%. The slow but gradual decline
+debt monetisation and loss of their investment,                           in borrowing costs began in the second half of 1932.
+
+
+                                                                                                                                             41
+                                                                                                                              Economic Bulletin
+                                                                                                                                     July 2015    83
+      Chart 4 Government bond yields (1901-1940)
+
+
+      (%)
+
+      40                                                                                                                            40
+
+      35                                                                                                                            35
+
+      30                                                                                                                            30
+                                                                                              off gold and
+      25                                                         off gold                     debt default                          25
+                                                                 (1919)                          (1932)
+      20                                                                                                                            20
+
+                                                                                                                   Gold Bloc
+      15                                                                                                          sterling area     15
+                                                                                                                  (1933-1940)
+                                          gold standard
+      10                                  (1910-1914)                                                                               10
+
+        5                                                                                       gold standard                       5
+                                                                                                (1928-1931)
+        0                                                                                                                           0
+              1901 1903 1905 1907 1909 1911 1913 1915 1917 1919 1921 1923 1925 1927 1929 1931 1933 1935 1937 1939
+
+      Sources: SEEMHN (2014) and Bank of Greece.
+      Note: Current yield, simple annual average of the current yield of 10 long-term foreign fixed-rate government bonds in gold. Own
+      calculations based on released market bond prices.
+
+
+
+
+      Chart 5 Current yield on fixed-rate government bonds in gold of SEE countries (1876-1947)
+
+
+      (%)
+                Austria
+                Greece (right-hand scale)
+                Hungary
+                Romania (right-hand scale)
+                Bulgaria
+                Serbia/Yugoslavia (right-hand scale)
+
+      8                                                                                                                            40
+
+
+      7                                                                           gold-exchange standard                           35
+                                                                                       (1925-1931)
+
+      6                                                                                                                            30
+
+
+      5                                                                                                                            25
+
+
+      4                                                                                                                            20
+
+
+      3                                                                                                                            15
+
+
+      2                                                                                                                            10
+                                                 track to gold
+      1                                                                                                                            5
+
+
+      0                                                                                                                            0
+            1876 1880 1884 1888 1892 1896 1900 1904 1908 1912 1916 1920 1924 1928 1932 1936 1940 1944 1947
+
+      Sources: SEEMHN (2014) and Bank of Greece.
+      Note: Current yield, simple annual averages of long-term foreign loans in gold.
+
+
+     41
+
+84   Economic Bulletin
+     July 2015
+ernment bonds in the period 1901-1940, when-         ratio remained at the same low level of about
+ever the country made credible efforts to join       18%, whereas primary expenditure in times of
+the international monetary system, its bor-          peace was three to four times higher than
+rowing costs decreased substantially.22 By con-      taxes. This failure was due to the small tax
+trast, periods outside the international mone-       base, high tax collection costs and the unclear
+tary system were associated with very high bor-      and segmented tax framework.
+rowing costs or even inability to borrow. For
+example, after the country left in 1932 the – by     (ii) Data on Greece empirically confirm the
+then collapsing – gold-exchange standard, and        procyclical effect of fiscal policy, which is a
+also unilaterally defaulted on its public debt,      common characteristic of poor countries (see
+borrowing costs increased steeply within one         Kaminsky et al. 2004, Alesina et al. 2008, Woo
+year, up to three times compared with the pre-       2010).23 In good times, fiscal policy responded
+ceding year. What is particularly interesting is     by increasing expenditure, thereby widening
+that, despite the eagerness to find a compro-        the imbalance and amplifying the adverse
+mise solution and re-peg the currency to a           effects in bad times.
+monetary anchor in the context of the Gold
+Bloc in 1933 and, after its collapse, the sterling   (iii) Any increase in tax revenues stemmed
+area in 1936, borrowing costs never returned         from a significant rise in indirect taxation,
+to reasonable single-digit levels, such as those     which accounted for over 70% of total tax rev-
+prevailing in the gold-exchange standard             enue. Although indirect taxation immediately
+period (1928-1931). The global shortage of liq-      increased public revenues, it also caused strong
+uidity in a climate of international mistrust        social discontent, as it fell heavily on consumer
+after the 1929 crisis, as well as the past expe-     staples and mainly affected weaker income
+rience of unilateral debt default, prejudiced        brackets. This caused prolonged political insta-
+the country’s creditworthiness and drove yields      bility, e.g. in the late 1880s and the first half of
+more than four to five times higher, as shown        the 1930s, leading to adverse economic effects
+in the chart.                                        as well as to major changes in the form of gov-
+                                                     ernment.
+It is worth noting that the pattern of borrow-
+ing costs was common to all SEE countries (see       (iv) The government’s systematic recourse to
+Chart 5). Joining and staying on the gold stan-      borrowing to finance its expenditure increased
+dard, and even the effort and prospects of join-     its liabilities vis-à-vis the note-issuing/central
+ing, increased the credibility of economic pol-      bank, which was its main domestic creditor. As
+icy and improved the access of the periphery         shown in Chart 8, since early 1880, the ratio of
+to international capital markets.                    government debt to the central bank’s total
+                                                     assets, with only a few exceptions, rose to over
+5.3 FISCAL INDICATORS                                40%. The tight entanglement of the monetary
+                                                     authority with the fiscal authority caused an
+The recent compilation and publication of sta-       immobilisation of a substantial part of its assets
+tistics of key fiscal aggregates, such as revenue    and limited its scope for action to safeguard
+and expenditure, as well as a proxy for public       monetary and financial stability.
+debt allow us to study the fiscal policy imple-
+mented from 1833 to 1939. A simple look at           22 The yield differential between Greek and British bonds in the years
+                                                        of the gold standard never exceeded 380 basis points. In addition,
+Charts 6 and 7 reveals four salient features of         when the country joined the gold-exchange standard in 1928, the
+                                                        government’s borrowing costs less than halved, from 14.3% to 6.7%
+fiscal policy in this period:                           in 1923.
+                                                     23 The regression coefficient of the cyclical component of real out-
+                                                        put in the estimates of bivariate regressive schemes of public expen-
+(i) It is clear that the fiscal authorities failed      diture at constant prices and/or the fiscal deficit on the basis of his-
+to increase tax revenue. Between the start and          torical time series is positive and highly statistically significant. The
+                                                        cyclical component has been estimated as the deviations from a log-
+the end of the sample period, the tax-to-GDP            arithmic time trend.
+
+
+                                                                                                                             41
+                                                                                                              Economic Bulletin
+                                                                                                                     July 2015      85
+      Chart 6 Public revenue and indirect taxes (1833-1939)
+
+
+      (%)
+                  indirect taxes as % of total taxes
+                  total taxes as % of GDP
+
+      90                                                                                         90
+
+      80                                                                                         80
+
+      70                                                                                         70
+
+      60                                                                                         60
+
+      50                                                                                         50
+
+      40                                                                                         40
+
+      30                                                                                         30
+
+      20                                                                                         20
+
+      10                                                                                         10
+
+        0                                                                                        0
+       18
+       18
+       18
+       18
+       18
+       18
+       18
+       18
+       18
+       18 33
+          37
+          41
+          45
+          49
+          53
+          57
+          61
+          65
+       18
+       18
+       18
+       18
+       18
+       18
+       18
+       19
+       19 69
+          73
+          77
+          81
+          85
+          89
+          93
+          97
+          01
+          05
+       19
+       19
+       19
+       19
+       19
+       19
+       19
+       19
+       19 09
+          13
+          17
+          21
+          25
+          29
+          33
+          37
+          39
+
+      Sources: SEEMHN (2014) and Bank of Greece.
+      Note: Received tax revenues on the basis of the ex-post Budget Report.
+
+
+
+
+      Chart 7 Expenditure to tax revenue (1833-1939)
+
+
+
+                total spending to tax revenue
+                primary spending to tax revenue
+
+      8                                                                                              8
+
+
+      7                                                                                              7
+
+
+      6                                                                                              6
+
+
+      5                                                                                              5
+
+
+      4                                                                                              4
+
+
+      3                                                                                              3
+
+
+      2                                                                                              2
+
+
+      1                                                                                              1
+
+
+      0                                                                                              0
+     18
+     18
+     18
+     18
+     18
+     18
+     18
+     18
+     18
+     18 33
+        37
+        41
+        45
+        49
+        53
+        57
+        61
+        65
+     18
+     18
+     18
+     18
+     18
+     18
+     18
+     19
+     19 69
+        73
+        77
+        81
+        85
+        89
+        93
+        97
+        01
+        05
+     19
+     19
+     19
+     19
+     19
+     19
+     19
+     19
+     19 09
+        13
+        17
+        21
+        25
+        29
+        33
+        37
+        39
+      Sources: SEEMHN (2014) and Bank of Greece.
+      Note: Realised expenditure and received taxes on the basis of the ex-post Budget Report.
+
+
+     41
+
+86   Economic Bulletin
+     July 2015
+ Chart 8 Public debt as a percentage of the note-issuing/central bank's total assets (1842-1939)
+
+
+ (%)
+ 60                                                                                                                                        60
+
+
+ 50                                                                                                                                        50
+
+
+ 40                                                                                                                                        40
+
+
+ 30                                                                                                                                        30
+
+
+ 20                                                                                                                                        20
+
+
+ 10                                                                                                                                        10
+
+
+  0                                                                                                                                        0
+       42      50         8        66        74        82         0         8         6         4         2         0         39
+      18     18        18 5      18        18        18        18 9      18 9      19 0      19 1      19 2      19 3       19
+
+ Sources: SEEMHN (2014) and Bank of Greece.
+ Note: Debt liabilities (stock) of the central government to the National Bank of Greece and the Bank of Greece, as a percentage of their
+ total assets. Own calculations based on the data from the National Bank of Greece's balance sheet (1842-1927) and the Bank of Greece's
+ balance sheet (1928-1939). This series can be considered a proxy for public debt stock since, for its construction, due to lack of data, all
+ information on the bank's claims on the government has been retrieved from its balance sheet. They refer to total liabilities of the Greek
+ central government, including loans in banknotes, foreign exchange and gold, as well as Treasury bills and government bonds, that were
+ issued under national jurisdiction, regardless of the nationality of the creditor and/or the debt denomination currency. See Reinhart and
+ Rogoff's (2010) debt glossary.
+
+
+
+
+5.4 THE GREEK HYPERINFLATION                                             plagued the Greek economy until the mid-
+                                                                         1960s.
+Hyperinflation in Greece, according to
+Cagan’s definition 24 (1956), began in                                   The availability of monthly observations on the
+November 1943 and ended in November                                      monetary base and a cost-of-living index allow
+1944 (see Chart 9), although strong infla-                               us to calculate inflation tax revenue (seignior-
+tionary pressures re-emerged, but were                                   age). Its evolution between January 1939 and
+short-lived, in the last four months of 1945.                            December 1948 is shown in Chart 10. We note
+It was one of the 56 hyperinflation episodes                             that, despite continuous issuance of new
+in human history and one of the eight worst                              money, inflation tax revenue declined dra-
+in terms of the daily rate of increase in the                            matically month after month, eventually lead-
+price index (see Hanke and Krus 2012). Two                               ing to a steep rise in inflation, which
+reasons accounted for this. First, the com-                              approached three-digit figures. Mounting dis-
+plete lack of goods on the Greek market,                                 trust in the national currency, since no one
+since almost the entire production had been                              wanted to hold paper drachmas because of the
+confiscated by the occupation forces, and                                extremely high and rapid loss of their value,
+second, the continuous issuance of new                                   and the increasing circulation of gold sover-
+(uncovered) money to finance, through                                    eigns reduced demand for liquid assets in
+inflation, the maintenance costs of occupa-                              drachmas. Consequently, the inflation tax base
+tion troops and military operations in the
+eastern Mediterranean. Runaway inflation                                 24 Hyperinflation is defined to begin in the month when the rise in
+                                                                            prices exceeds 50%, month on month, and end in the month before
+triggered a flight from the drachma to the                                  the monthly price increase drops below such percentage and
+only safe haven, gold, thereby leading to the                               remains below 50% for at least one year. Although this is an ad hoc
+                                                                            definition, it adequately captures all hyperinflation episodes to
+so-called chrysophilia (love of gold), which                                date.
+
+
+                                                                                                                                             41
+                                                                                                                              Economic Bulletin
+                                                                                                                                     July 2015    87
+      Chart 9 The Greek hyperinflation episode (1943-1944)
+
+
+      (%)
+                    old series (left-hand scale)
+                    new series (right-hand scale)
+
+      500                                                                                                                                   100
+
+                                                    November 1943-November 1944
+                                                                                                                                             80
+      400
+
+                                                                                                                                             60
+      300
+
+                                                                                                                                             40
+      200
+                                                                                                                                             20
+
+      100
+                                                                                                                                              0
+
+           0
+                                                                                                                                            -20
+
+
+     -100                                                                                                                                   -40
+           N   ne 39
+             ov 939
+            Α 39
+               pr.1
+            Se 940
+                p. .1119
+                      9
+           MFe 940
+                 b.
+            Ju 941
+                ly
+            D 941
+               ec
+              ay 41  1
+                     1
+                    .11 9
+             Ο 42
+               ct
+            Μ 194
+               ar 2
+            Α 943
+               ug  19
+                   .
+                  .1
+             Ja 943 .1
+                 n.
+            Ju 944    1
+     Jan.
+               ne
+           Ν 194
+             ov
+            Α 44
+               pr.1 4
+            Se 945
+               p.
+            Fe 945
+                b.
+            Ju 946
+               ly .1 1
+                     19
+           Ju
+           ΜD 946
+               ec .1
+              ay 46
+            Ο 47
+               ct
+            Μ 194 .
+               ar 7
+            Α 948
+               ug
+            D 948
+               ec
+                   19
+                  .1
+                     1
+                    .1
+                       9
+                   .1   94 8
+
+      Sources: SEEMHN (2014) and Bank of Greece.
+      Note: Monthly percentage changes (first differences of the natural logarithms) of the cost-of-living index in Athens. Old series: up to 10
+      November 1944; new series: from 11 November 1944 onwards.
+
+
+
+
+      Chart 10 Seigniorage revenue (1939-1948)
+
+
+
+                 old series (left-hand scale)
+                 new series (right-hand scale)
+
+     12                                                                                                                                        6
+
+     10                                                                                                                                        5
+
+      8                                                                                                                                        4
+
+      6                                                                                                                                        3
+
+      4                                                                                                                                        2
+
+      2                                                                                                                                        1
+
+      0                                                                                                                                        0
+
+      -2                                                                                                                                      -1
+
+      -4                                                                                                                                      -2
+
+      -6                                                                                                                                      -3
+                1939          1940         1941       1942        1943         1944         1945         1946         1947         1948
+
+      Sources: SEEMHN (2014) and Bank of Greece.
+      Note: Own calculations; index 1938.09-1939.08=1. Seigniorage is measured as the product of the monthly rate of change in the monetary
+      base in period t and real money balances in period t-1, deflated by the cost-of-living index in Athens.
+
+
+     41
+
+88   Economic Bulletin
+     July 2015
+(i.e. liquid assets in drachmas) decreased to a      that this has been a constant pursuit of eco-
+minimum; as a result, tax revenue was non-           nomic policy-makers in these countries.
+existent despite the very high inflation rates.25
+                                                     The purpose of this article was to introduce the
+In other words, the occupation period was an         Greek statistical database and demonstrate its
+extreme example of the limitations of monetisa-      importance for the empirical documentation of
+tion of public deficits: while a sudden (unex-       the specific features of the Greek economy over
+pected) increase in money supply to cover the        time and the assessment of the policies imple-
+deficit may yield important revenue, an expected     mented. It discusses certain policy examples
+– even accelerating – increase causes, from a cer-   using quantitative data such as monetary indi-
+tain point on, such a large decrease in the demand   cators, borrowing costs and fiscal aggregates.
+for money and in the tax base that revenue falls.    The examples show that the same thread runs
+If the government insists on such a policy, the      through the monetary history of Greece and the
+accelerating increase in money supply leads to the   SEE countries: an agonising - and not always
+substitution of legal tender with other com-         successful - effort to join an economic and mon-
+modities that fulfil the functions of money, driv-   etary club of strong economies. The benefits
+ing government revenue down to zero.                 were readily measurable, reflected in low bor-
+                                                     rowing costs and access to cheap financing nec-
+                                                     essary to support growth in a context of low
+6 CONCLUDING REMARKS                                 national saving levels. The country’s intention
+                                                     to import policy credibility by participating in
+As regards European monetary developments,           the international monetary system and adopt-
+2015 started with two pieces of good news: the       ing a monetary anchor (i.e. by establishing a
+euro area entry of Lithuania, an emerging            minimum level for the reserve-to-banknote
+market and peripheral economy of New                 ratio and adhering to an irrevocable currency
+Europe, and the ECB’s announcement of the            peg) was dictated by the need to encourage its
+launch of its quantitative easing programme.         external trade and attract foreign capital, as well
+Both events in themselves send a hopeful mes-        as by the effort to put an end to periods of seri-
+sage about the monetary future of Europe, at         ous economic and political instability.
+a time when the core economies, after six
+years of crisis, are facing the challenge of stag-   The statistical series show that, although there
+nation or weak growth and deflation, while the       has been a measurable benefit in terms of bor-
+economies in the periphery continue to suffer        rowing costs, there have also been visible risks,
+from high debt, extremely low employment             especially when the country’s entry was not
+rates, mass and long-term unemployment, and          always accompanied by sound and credible fis-
+recession.                                           cal and monetary institutions. Often, also in
+                                                     view of negative international conjunctures,
+The recent adoption of the single currency by        the gap between will and skill has led to col-
+an emerging market peripheral economy                lapse and failure.
+attests to the intention of small and weaker
+                                                     25 The Greek confidence crisis, which peaked in July 2015 and took
+European economies to keep pace with Euro-              the form, at least initially, of a liquidity crisis and a bank run, lead-
+pean monetary developments and become                   ing to the imposition of a bank holiday and capital controls, pres-
+                                                        ents all the typical features of economic agents’ reaction to eco-
+members of the European economic family.                nomic panic and hyperinflation: distrust of money (plastic or elec-
+The publication, for the first time, of a com-          tronic) as a medium of exchange, an abrupt fall in demand for
+                                                        transaction balances, hoarding of the “good” currency, i.e. the euro,
+plete and comparable statistical database of            increased electronic money velocity, growing demand for consumer
+                                                        durables and luxury goods. However, keeping the euro as legal ten-
+economic and monetary variables for the SEE             der in the Greek economy prevented hyperinflation, which would
+countries spanning more than 100 years reveals          have emerged under a national or parallel currency scenario.
+
+
+
+
+                                                                                                                             41
+                                                                                                              Economic Bulletin
+                                                                                                                     July 2015      89
+     REFERENCES
+     Adelman, P. (2014), “What is Economic History?”, History Today, 35:2.
+     Alesina, A., F. Compante and G. Tabellini (2008), “Why is fiscal policy often procyclical?”, Jour-
+      nal of European Economic Association, 6, 1006-1036.
+     Bernanke, B. (2004), “The Great Moderation”. Speech at the 2004 meeting of the Eastern Eco-
+      nomic Association, 20 February.
+     Cagan, P. (1956), “The Monetary Dynamics of Hyperinflation”, in Milton Friedman (ed.), Stud-
+      ies in the Quantity of Money, 25-117, Chicago, University of Chicago Press.
+     Catão, L. and G.M. Milesi-Ferretti (2014), “External liabilities and crises”, Journal of Interna-
+      tional Economics, 94, 18-32.
+     Clark, T. (2009), “Is the Great Moderation over? An empirical analysis”, Federal Reserve Bank
+      of Kansas City, Economic Review, 94, 5-42.
+     Coric, B. (2011), “The sources of the Great Moderation: A review”, University of Split,
+      http://dx.doi.org/10.2139/ssrn.1641201.
+     Crafts, N. and P. Fearon (eds) (2013), The Great Depression of the 1930s: lessons for today,
+      Oxford University Press.
+     Deane, P. and W.A. Cole (1967), British Economic Growth, 1688-1959: Trends and Structure.
+      Cambridge: Cambridge University Press, second edition.
+     Eichengreen, B. and R. Hausmann (1999), “Exchange rates and financial fragility”, New challenges
+      for monetary policy, a symposium sponsored by the Federal Reserve of Kansas City, 329-368.
+     Eichengreen, B., R. Hausmann and U. Panizza (2003), “Currency mismatches, debt intolerance
+      and original sin: Why they are not the same and why it matters”, NBER Working Paper no.
+      10036.
+     Fabozzi, F.J., F. Modigliani and F.J. Jones (2010), Foundations of financial markets and insti-
+      tutions (Fourth Edition), Prentice Hall.
+     Feinstein, C. (1972), National income, expenditure and output of the United Kingdom 1855-1965,
+      Cambridge University Press.
+     Field, J.A. (2008), “Economic History”, in: Steven N. Durlauf and Lawrence E. Blume (eds), The
+      New Palgrave Dictionary of Economics, second edition, Palgrave, Macmillan.
+     Friedman, M. and A. Schwartz (1970), Monetary statistics of the United States, NBER.
+     Hakkio, C.S. (2013), “The Great Moderation 1982-2007”, www.federalreservehistory.org.
+     Hanke, S. and N. Krus (2012), “World hyperinflations”, Cato Working Paper no. 8.
+     IMF (2013), International reserves and foreign currency liquidity. Guidelines for a data template.
+     Jimenez, G., S. Ongena, J.-L. Peydró and J. Saurina (2012), “Credit supply and monetary pol-
+      icy: Identifying the bank balance sheet channel with loan applications”, American Economic
+      Review, 102, 2301-2326.
+     Kaminsky, G., C. Reinhart and C. Végh (2004), “When it rains it pours: Procyclical capital flows
+      and macroeconomic policies”, NBER Macroeconomic Annual, 19, 11-82.
+     Lazaretou, S. (1995), “Government spending, monetary policies and exchange rate regime
+      switches: The drachma in the gold standard period”, Explorations in Economic History, 32,
+      28-50.
+     Lindert, P.H. (2004), Growing public: Social spending and economic growth since the eighteenth
+      century, Cambridge University Press.
+     North, D. (1981), Structure and change in economic history, WW Norton and Company, Inc.
+     Reinhart, C.M. and K.S. Rogoff (2010), “From financial crash to debt crisis”, NBER Working
+      Paper no. 15795.
+     SEEMHN (2014), South-Eastern European monetary and economic statistics from the nineteenth
+      century to World War II, Bank of Greece, Bulgarian National Bank, National Bank of Roma-
+      nia, Oesterreichische Nationalbank, Athens, Sofia, Bucharest, Vienna.
+
+     41
+
+90   Economic Bulletin
+     July 2015
+Stock, J. and M. Watson (2003), “Has the business cycle changed and why”. Paper presented at
+ the Federal Reserve Bank of Kansas City symposium “Monetary Policy and Uncertainty: Adapt-
+ ing to a Changing Economy”, Jackson Hole, August 28-30.
+Tobin, J. (1958), “Liquidity preference as behavior towards risk”, Review of Economic Studies,
+ 25, 65-86.
+Woo, J. (2010), “Growth, income distribution and fiscal policy volatility”, IMF and DePaul Uni-
+ versity, July.
+
+
+
+
+                                                                                                   41
+                                                                                    Economic Bulletin
+                                                                                           July 2015    91
+

@@ -1,0 +1,24 @@
+import { createHash } from 'node:crypto';
+
+export type MatchingStatus = 'MATCHING_REQUIRED'|'MATCHING_POTENTIALLY_REQUIRED'|'LIMITED_MATCHING_REQUIRED'|'MATCHING_NOT_ESTABLISHED'|'POLICY_CONTROLS'|'FACT_DEPENDENT'|'POLICY_LANGUAGE_DEPENDENT'|'HUMAN_REVIEW_REQUIRED';
+export interface PolicyMatchingContext { claimId:string; jurisdiction:'FL'; dateOfLoss:string; policyForm:string; policyEdition:string; policyHash:string; coverageProvisions:string[]; lossSettlementProvisions:string[]; valuationProvisions:string[]; repairReplaceProvisions:string[]; pairSetProvisions:string[]; matchingRelatedEndorsements:string[]; roofEndorsements:string[]; cosmeticEndorsements:string[]; ordinanceLawEndorsements:string[]; component:string; material:string; directlyDamagedQuantity:number; requestedReplacementQuantity:number; exactMatchAvailable:boolean|null; reasonableMatchAvailable:boolean|null; technicalRepairFeasible:boolean|null; appearanceDifference:string; lineOfSight:boolean|null; facts:string[]; evidenceRefs:string[]; legalAuthorityRefs:string[]; humanReview:boolean; }
+export interface MatchingFinding { status:MatchingStatus; reasons:string[]; policyDependency:string[]; technicalQuestions:string[]; reviewReasons:string[]; xactimateConstraint:{ legalScopeStatus:MatchingStatus; component:string; directDamage:number; additionalScopeRequires:string[] }; }
+
+export function fingerprintPolicyClause(text:string, section:string, form:string, edition:string) { const normalized=text.toLowerCase().replace(/\s+/g,' ').trim(); return { fingerprintId:createHash('sha256').update(`${form}|${edition}|${section}|${normalized}`).digest('hex'), normalized, section, form, edition, criticalPhrases:normalized.match(/\b(match|like kind|quality|color|size|repair|replace|adjoining|pair|set|undamaged|cosmetic)\b/g) ?? [] }; }
+
+export function comparePolicyToCase(claimClause:string, caseClause:string, claimMeta:{form:string;edition:string}, caseMeta:{form:string;edition:string}) { const claim=fingerprintPolicyClause(claimClause,'claim',claimMeta.form,claimMeta.edition); const precedent=fingerprintPolicyClause(caseClause,'case',caseMeta.form,caseMeta.edition); const same=claim.normalized===precedent.normalized; const shared=claim.criticalPhrases.filter((phrase)=>precedent.criticalPhrases.includes(phrase)); const matchType=same?'EXACT_TEXT_MATCH':shared.length>=2?'FUNCTIONALLY_SIMILAR':'MATERIALLY_DIFFERENT'; return { claim, precedent, matchType, materialDifferences:same?[]:['form/edition or operative wording differs', ...claim.criticalPhrases.filter((phrase)=>!precedent.criticalPhrases.includes(phrase))], confidence:same?100:shared.length>=2?65:25, requiresHumanReview:!same }; }
+
+export function analyzeFloridaMatching(context:PolicyMatchingContext, statuteVerified:boolean, caseLawVerified:boolean):MatchingFinding {
+  const reasons:string[]=[]; const reviewReasons:string[]=[]; const technicalQuestions:string[]=[];
+  if (!statuteVerified) reviewReasons.push('Florida statutory authority is not verified for the requested date');
+  if (!caseLawVerified) reviewReasons.push('material Florida case-law/policy-language dependency remains unverified');
+  if (context.exactMatchAvailable===null || context.technicalRepairFeasible===null || context.lineOfSight===null) technicalQuestions.push('verify material availability, repair feasibility, and line-of-sight/appearance evidence');
+  if (!context.policyHash || !context.policyForm || !context.lossSettlementProvisions.length) reviewReasons.push('actual policy form, hash, and loss-settlement language are incomplete');
+  let status:MatchingStatus='MATCHING_NOT_ESTABLISHED';
+  if (context.matchingRelatedEndorsements.length || context.cosmeticEndorsements.length) { status='POLICY_LANGUAGE_DEPENDENT'; reasons.push('endorsement language may modify the base settlement provision'); }
+  else if (context.exactMatchAvailable===false && context.technicalRepairFeasible===false && context.lineOfSight===true && statuteVerified) { status='MATCHING_POTENTIALLY_REQUIRED'; reasons.push('nonmatching replacement and adjoining-area analysis are supported by the verified statutory framework, subject to policy terms and evidence'); }
+  else if (context.exactMatchAvailable===true) { status='MATCHING_NOT_ESTABLISHED'; reasons.push('an exact match is presently documented'); }
+  else status='FACT_DEPENDENT';
+  if (reviewReasons.length) status='HUMAN_REVIEW_REQUIRED';
+  return { status, reasons, policyDependency:['coverage grant','loss settlement','repair/replacement','endorsements','policy type'], technicalQuestions, reviewReasons, xactimateConstraint:{ legalScopeStatus:status, component:context.component, directDamage:context.directlyDamagedQuantity, additionalScopeRequires:['material unavailability verification','reasonable uniform appearance analysis','policy/case language review'] } };
+}

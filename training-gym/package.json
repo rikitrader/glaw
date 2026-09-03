@@ -1,0 +1,1 @@
+{"name":"@glaw/training-gym","private":true,"type":"module","scripts":{"test":"node --experimental-strip-types --test tests/*.test.ts"}}

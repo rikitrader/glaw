@@ -1,0 +1,26 @@
+{
+  "intake_id": "INTAKE-VEN-DISPUTED-CONTEXT-2025-001",
+  "created_at": "2026-08-25",
+  "requester": "",
+  "question": "What monetary, banking, and exchange-rate signals are visible in verified secondary Venezuela reports, and which policy-relevant conclusions remain blocked pending primary BCV and fiscal data?",
+  "country": "Venezuela",
+  "episode": "2024–Q3 2025 secondary-context analysis",
+  "decision_horizon": "historical context only",
+  "output_mode": "ANALYSIS",
+  "policy_options": [],
+  "required_postures": ["hanke", "monetarist", "central-banker", "commercial-bank", "data-forensics", "red-team-economics"],
+  "data_intake": [
+    {"name":"M0","label":"Base monetary (M0), September 2025","status":"DISPUTED","value":366332,"unit":"Bs million (source-defined)","series_id":"VEN_M0_SECONDARY_2025Q3","observation_date":"2025-09-30","release_date":null,"revision_date":null,"vintage":"UNDP Q3 2025 report; publication date not independently established","source_ids":["DOC-VEN-UNDP-Q3-2025"]},
+    {"name":"M2","label":"Broad money (M2), September 2025","status":"DISPUTED","value":514062,"unit":"Bs million (source-defined)","series_id":"VEN_M2_SECONDARY_2025Q3","observation_date":"2025-09-30","release_date":null,"revision_date":null,"vintage":"UNDP Q3 2025 report; publication date not independently established","source_ids":["DOC-VEN-UNDP-Q3-2025"]},
+    {"name":"Bank credit portfolio, September 2025","status":"DISPUTED","value":2690,"unit":"USD million (source-defined)","series_id":"VEN_BANK_CREDIT_SECONDARY_2025Q3","observation_date":"2025-09-30","release_date":null,"revision_date":null,"vintage":"UNDP Q3 2025 report; publication date not independently established","source_ids":["DOC-VEN-UNDP-Q3-2025"]},
+    {"name":"Official exchange rate, September 2025 close","status":"DISPUTED","value":179.43,"unit":"Bs/USD (source-defined)","series_id":"VEN_OFFICIAL_FX_SECONDARY_2025Q3","observation_date":"2025-09-30","release_date":null,"revision_date":null,"vintage":"UNDP Q3 2025 report; publication date not independently established","source_ids":["DOC-VEN-UNDP-Q3-2025"]},
+    {"name":"International reserves, December 2024","status":"DISPUTED","value":10266,"unit":"USD million (source-defined)","series_id":"VEN_RESERVES_SECONDARY_2024Q4","observation_date":"2024-12-31","release_date":null,"revision_date":null,"vintage":"CEDICE December 2024 report; publication date not independently established","source_ids":["DOC-VEN-CEDICE-DEC-2024"]},
+    {"name":"Base monetary (M0), June 2025","status":"DISPUTED","value":219648,"unit":"Bs million (source-defined)","series_id":"VEN_M0_SECONDARY_2025Q2","observation_date":"2025-06-30","release_date":null,"revision_date":null,"vintage":"Banesco first-semester 2025 report; publication date not independently established","source_ids":["DOC-VEN-BANESCO-H1-2025"]},
+    {"name":"Broad money (M2), June 2025","status":"DISPUTED","value":312122,"unit":"Bs million (source-defined)","series_id":"VEN_M2_SECONDARY_2025Q2","observation_date":"2025-06-30","release_date":null,"revision_date":null,"vintage":"Banesco first-semester 2025 report; publication date not independently established","source_ids":["DOC-VEN-BANESCO-H1-2025"]}
+  ],
+  "source_ids":["DOC-VEN-UNDP-Q3-2025","DOC-VEN-CEDICE-DEC-2024","DOC-VEN-BANESCO-H1-2025"],
+  "critical_unknowns":["primary BCV observation artifacts and release vintages","bank reserves and capital reconciliation","fiscal deficit and monetary financing","liquid-reserve definition and encumbrances","parallel-market FX series","legal and operational transition authority"],
+  "requested_deliverables":["data-forensics-report","disputed-context-monetary-analysis","scenario-input-audit","red-team-data-challenge"],
+  "status":"RESEARCH_INTAKE_ONLY",
+  "evidence_limitations":["All numeric inputs are DISPUTED because the locally verified documents are secondary reports that cite or reproduce BCV material.","No value in this intake supports a final policy recommendation or direct BCV attribution.","Release dates are not independently established; report-vintage strings are retained instead of inventing dates."]
+}

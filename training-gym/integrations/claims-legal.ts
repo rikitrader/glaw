@@ -1,0 +1,22 @@
+import type { AgentRunner, EpisodeFactory } from '../production/orchestrator.ts';
+import { EpisodeWorker, InMemoryEpisodeRepository } from '../production/orchestrator.ts';
+import { InMemoryJobQueue } from '../production/jobs.ts';
+import { InsuranceClaimsGym } from '../gyms/insurance-claims/index.ts';
+
+export type LegalPackageStatus = 'COMPLETE_VERIFIED'|'COMPLETE_WITH_CONFLICT'|'HUMAN_REVIEW_REQUIRED'|'RESEARCH_REQUIRED'|'POLICY_REQUIRED';
+export interface LegalAuthorityPackage { jurisdiction:string; issue:string; asOf:string; status:LegalPackageStatus; rules:readonly string[]; authorityRefs:readonly string[]; policyDependencies:readonly string[]; factDependencies:readonly string[]; humanReview:boolean; }
+export interface ClaimLegalConstraint { issue:string; status:string; ruleRefs:readonly string[]; requiredFacts:readonly string[]; humanReview:boolean; }
+export interface DefensibleClaimReport { claimId:string; jurisdiction:string; dateOfLoss:string; legalStatus:LegalPackageStatus; claimReviewStatus:'SUCCEEDED'|'FAILED'; constraints:ClaimLegalConstraint[]; findings:readonly {lineId:string; classification:string; rationale:string}[]; unresolved:string[]; trace:{authorityRefs:readonly string[]; policyForm:string; policyEdition:string}; }
+export interface LegalResolver { resolve(input:{jurisdiction:string; issue:string; dateOfLoss:string; policyForm:string; policyEdition:string}): Promise<LegalAuthorityPackage>; }
+
+export class ClaimLegalBridge {
+  private readonly resolveLegal:LegalResolver;
+  constructor(resolveLegal:LegalResolver) { this.resolveLegal=resolveLegal; }
+  async analyze(input:{claimId:string; jurisdiction:string; dateOfLoss:string; policyForm:string; policyEdition:string}, issues:readonly string[]):Promise<{packages:LegalAuthorityPackage[];constraints:ClaimLegalConstraint[];unresolved:string[]}> { const packages:LegalAuthorityPackage[]=[];const constraints:ClaimLegalConstraint[]=[];const unresolved:string[]=[];for(const issue of issues){const pkg=await this.resolveLegal.resolve({jurisdiction:input.jurisdiction,issue,dateOfLoss:input.dateOfLoss,policyForm:input.policyForm,policyEdition:input.policyEdition});packages.push(pkg);constraints.push({issue,status:pkg.status,ruleRefs:pkg.authorityRefs,requiredFacts:pkg.factDependencies,humanReview:pkg.humanReview});if(pkg.status==='RESEARCH_REQUIRED'||pkg.status==='POLICY_REQUIRED')unresolved.push(`${issue}:${pkg.status}`);}return {packages,constraints,unresolved}; }
+}
+
+export class DefensibleClaimPipeline {
+  private readonly bridge:ClaimLegalBridge; private readonly createGym:EpisodeFactory;
+  constructor(bridge:ClaimLegalBridge, createGym:EpisodeFactory=()=>new InsuranceClaimsGym()) { this.bridge=bridge; this.createGym=createGym; }
+  async run(input:{claimId:string;organizationId:string;dateOfLoss:string;jurisdiction:string;policyForm:string;policyEdition:string;issues:readonly string[]},agent:AgentRunner):Promise<DefensibleClaimReport>{const legal=await this.bridge.analyze(input,input.issues);const queue=new InMemoryJobQueue();const repository=new InMemoryEpisodeRepository();const worker=new EpisodeWorker(queue,repository,this.createGym);queue.enqueue({id:`job:${input.claimId}`,type:'episode_run',payload:{episodeId:input.claimId,experimentId:`legal:${input.claimId}`,organizationId:input.organizationId,taskId:'insurance-claims-evidence-review-001',seed:1},maxAttempts:1,idempotencyKey:`${input.claimId}:run`});await repository.create({id:input.claimId,organizationId:input.organizationId,experimentId:`legal:${input.claimId}`,taskId:'insurance-claims-evidence-review-001',status:'PENDING',seed:1,versionPins:{},createdAt:new Date().toISOString(),updatedAt:new Date().toISOString()},`${input.claimId}:authoritative`);await repository.transition(input.claimId,input.organizationId,{to:'QUEUED'});const result=await worker.runOnce(`claims-worker:${input.claimId}`,agent);const review=(result?.finalState as {review?:{findings?:{lineId:string;classification:string;rationale:string}[]}}|undefined)?.review;return {claimId:input.claimId,jurisdiction:input.jurisdiction,dateOfLoss:input.dateOfLoss,legalStatus:legal.unresolved.length?'RESEARCH_REQUIRED':legal.packages.some((pkg)=>pkg.humanReview)?'HUMAN_REVIEW_REQUIRED':legal.packages[0]?.status??'RESEARCH_REQUIRED',claimReviewStatus:result?.status??'FAILED',constraints:legal.constraints,findings:review?.findings??[],unresolved:legal.unresolved,trace:{authorityRefs:legal.packages.flatMap((pkg)=>pkg.authorityRefs),policyForm:input.policyForm,policyEdition:input.policyEdition}};}
+}

@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "0.1.0",
+  "dataset_id": "VENEZUELA-CITGO-PDVH-MASTER-EVIDENCE",
+  "status": "SOURCE_BOUND_FACTS",
+  "purpose": "Master evidence stack for CITGO, PDVH, PDVSA ownership, collateral, creditor attachment, sanctions, and enforcement records.",
+  "scope_rule": "This is an evidence ledger, not a valuation, current balance sheet, or final legal opinion. Ownership-chain facts, liens, claims, judgments, and attachment rights remain separate objects.",
+  "corporate_chain": {
+    "status": "VERIFIED",
+    "chain": [
+      { "entity": "PDVSA", "relationship": "shareholder of PDVH as described in the verified appellate record", "source_id": "SRC-CL-CRYSTALLEX-2019", "locator": "PDF p. 5", "status": "VERIFIED" },
+      { "entity": "PDV Holding, Inc. (PDVH)", "relationship": "holding company for CITGO Holding, Inc.", "source_id": "SRC-CL-CRYSTALLEX-2019", "locator": "PDF p. 5", "status": "VERIFIED" },
+      { "entity": "CITGO Holding, Inc.", "relationship": "wholly owned by PDVH and parent of CITGO Petroleum Corporation", "source_id": "SRC-CL-OI-EUROPEAN-2023", "locator": "PDF p. 11", "status": "VERIFIED" },
+      { "entity": "CITGO Petroleum Corporation", "relationship": "wholly owned by CITGO Holding, Inc. as described in the verified appellate record", "source_id": "SRC-CL-OI-EUROPEAN-2023", "locator": "PDF p. 11", "status": "VERIFIED" }
+    ]
+  },
+  "facts": [
+    {
+      "fact_id": "CITGO-FACT-001",
+      "fact": "Crystallex sought attachment of PDVSA shares in PDVH to satisfy a judgment against Venezuela.",
+      "fact_type": "ENFORCEMENT_CLAIM",
+      "status": "VERIFIED",
+      "source_id": "SRC-CL-CRYSTALLEX-2019",
+      "source_url": "https://www.courtlistener.com/opinion/4643670/crystallex-intl-corp-v-bolivarian-republic-de-venezuela-in-re-de/",
+      "local_path": "documents/acquired/courtlistener/CL-CRYSTALLEX-2019.pdf",
+      "sha256": "c266da162e33a5b712a63dfb25546fdd65584016ac2de5d4adfc3e7e5e64eca5",
+      "locator": "PDF pp. 9, 40–45",
+      "economic_use": "Creditor-attachment and asset-encumbrance evidence; not a CITGO valuation."
+    },
+    {
+      "fact_id": "CITGO-FACT-002",
+      "fact": "The appellate record states that PDVSA pledged a 50.1% security interest in PDVH shares as collateral for PDVSA debt.",
+      "fact_type": "COLLATERAL",
+      "status": "VERIFIED",
+      "source_id": "SRC-CL-CRYSTALLEX-2019",
+      "source_url": "https://www.courtlistener.com/opinion/4643670/crystallex-intl-corp-v-bolivarian-republic-de-venezuela-in-re-de/",
+      "local_path": "documents/acquired/courtlistener/CL-CRYSTALLEX-2019.pdf",
+      "sha256": "c266da162e33a5b712a63dfb25546fdd65584016ac2de5d4adfc3e7e5e64eca5",
+      "locator": "PDF p. 29",
+      "economic_use": "Collateral mapping; not proof of current ownership, lien priority, or current debt outstanding."
+    },
+    {
+      "fact_id": "CITGO-FACT-003",
+      "fact": "The appellate record states that PDVSA shares in PDVH were attachable under the applicable enforcement analysis.",
+      "fact_type": "COURT_HOLDING",
+      "status": "VERIFIED",
+      "source_id": "SRC-CL-CRYSTALLEX-2019",
+      "source_url": "https://www.courtlistener.com/opinion/4643670/crystallex-intl-corp-v-bolivarian-republic-de-venezuela-in-re-de/",
+      "local_path": "documents/acquired/courtlistener/CL-CRYSTALLEX-2019.pdf",
+      "sha256": "c266da162e33a5b712a63dfb25546fdd65584016ac2de5d4adfc3e7e5e64eca5",
+      "locator": "PDF pp. 40, 45",
+      "economic_use": "Legal encumbrance and enforcement evidence; must not be presented as a completed sale."
+    },
+    {
+      "fact_id": "CITGO-FACT-004",
+      "fact": "The OI appellate record describes attachment efforts involving PDVSA shares in PDVH and the CITGO ownership chain.",
+      "fact_type": "PARALLEL_ENFORCEMENT_RECORD",
+      "status": "VERIFIED",
+      "source_id": "SRC-CL-OI-EUROPEAN-2023",
+      "source_url": "https://www.courtlistener.com/opinion/9412117/oi-european-group-bv-v-bolivarian-republic-of-venezuela/",
+      "local_path": "documents/acquired/courtlistener/CL-OI-EUROPEAN-2023.pdf",
+      "sha256": "ab61ec6e212bbcaade540152b854cf498fec929a8f7d798e8f9b1138f2a3d791",
+      "locator": "PDF pp. 11–12, 33",
+      "economic_use": "Parallel-creditor and asset-enforcement evidence; do not add to the Crystallex claim."
+    },
+    {
+      "fact_id": "CITGO-FACT-005",
+      "fact": "The 2017 congressional hearing record discusses liens and mortgages involving portions of CITGO and PDVSA debt collateral, including a reported 49.9% interest and the other 50.1% interest.",
+      "fact_type": "CONTEMPORANEOUS_HEARING_RECORD",
+      "status": "VERIFIED",
+      "source_id": "SRC-CONGRESS-VEN-HEARING-2017",
+      "source_url": "https://www.congress.gov/115/chrg/CHRG-115hhrg24831/CHRG-115hhrg24831.pdf",
+      "local_path": "documents/acquired/DOC-CONGRESS-VEN-HEARING-2017.pdf",
+      "sha256": "5d5fdcc71e69dea3393728075c7f3e368f79f54d99f714b756e476ce08261f5d",
+      "locator": "PDF pp. 27, 58; transcript text anchors around CITGO lien and mortgage discussion",
+      "economic_use": "Contemporaneous congressional evidence and lead for primary lien documents; hearing testimony is not itself a title record or audited balance sheet."
+    }
+  ],
+  "required_next_documents": [
+    "PDVSA 2020 bond prospectus and indenture",
+    "PDVSA 2020 bond trustee and payment records",
+    "Rosneft/CITGO collateral and lien documents",
+    "PDVH, CITGO Holding, and CITGO Petroleum audited financial statements",
+    "Delaware District Court Crystallex docket, writs, sale orders, and creditor filings",
+    "CITGO valuation, dividend, cash-flow, debt, and restricted-cash records",
+    "OFAC licenses and sanctions-related authorization records"
+  ],
+  "prohibited_inferences": [
+    "Do not treat a lien as a completed transfer of ownership.",
+    "Do not treat an attachment order as a completed sale.",
+    "Do not treat hearing testimony as an audited financial statement.",
+    "Do not combine claim amounts from overlapping creditors.",
+    "Do not infer current CITGO enterprise value, equity value, or debt capacity from these records alone."
+  ]
+}

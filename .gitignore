@@ -36,3 +36,17 @@ lib/bookkeeping/**/__pycache__/
 # Local verification artifacts (preserve locally; do not commit generated runs)
 workpapers/*.jsonl
 benchmarks/**/runs/
+departments/hanke-economics/runs/
+.gstack/
+
+# JavaScript build and dependency artifacts — reproducible, never commit
+**/node_modules/
+**/dist/
+**/.astro/
+**/.vite/
+**/.mf/
+**/.dev.vars
+**/*.log
+
+# Acquired legal/economic corpus — retain locally; publish manifests and code only
+departments/hanke-economics/documents/

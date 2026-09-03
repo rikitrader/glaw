@@ -1,0 +1,4 @@
+import type { HumanLegalReviewRequest, HumanReviewDecision } from './human.ts';
+import type { DurableRepository } from '../persistence/repositories.ts';
+export class AuditedHumanReviewService { private readonly requests:DurableRepository<HumanLegalReviewRequest>; private readonly decisions:DurableRepository<HumanReviewDecision>; constructor(requests:DurableRepository<HumanLegalReviewRequest>,decisions:DurableRepository<HumanReviewDecision>){ this.requests=requests; this.decisions=decisions; } async submit(request:HumanLegalReviewRequest){await this.requests.put(request);} async decide(decision:HumanReviewDecision){const request=await this.requests.get(decision.reviewId);if(!request)throw new Error('review not found');if(request.status!=='PENDING')throw new Error('review is immutable after decision');await this.decisions.put(decision);}
+}

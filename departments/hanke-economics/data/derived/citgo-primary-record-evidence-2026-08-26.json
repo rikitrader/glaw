@@ -1,0 +1,43 @@
+{
+  "bundle_id": "VEN-CITGO-PRIMARY-RECORDS-20260826",
+  "status": "READ_SOURCE_BOUND",
+  "scope": "Two downloaded District of Delaware opinions. This is not a complete Citgo creditor-universe or debt balance.",
+  "records": [
+    {
+      "document_id": "DOC-DED-17MC151-20181130",
+      "title": "Crystallex / ConocoPhillips related cases memorandum order",
+      "court": "U.S. District Court for the District of Delaware",
+      "case_numbers": ["17-mc-151-LPS","15-cv-1082-LPS","16-cv-1007-LPS","16-cv-904-LPS","17-cv-28-LPS"],
+      "date": "2018-11-30",
+      "local_path": "documents/acquired/court/2026-08-26/ded-17-mc-151-crystallex-citgo.pdf",
+      "sha256": "7bd6c554e28bb397ea3072cd491596e402242ee3f33044f54f2372eb939b4d00",
+      "evidence_summary": [
+        {"locator":"PDF p. 1","fact":"The order identifies Crystallex, PDV Holding, ConocoPhillips Petrozuata and PDVSA-related actions in the caption."},
+        {"locator":"PDF p. 2","fact":"The court stayed the Crystallex Asset Proceeding and related cases pending the specified appellate/mandamus developments and required status reporting."}
+      ],
+      "amounts": [],
+      "limitations": ["This order does not establish a current outstanding debt amount.","This order is procedural and does not replace the underlying arbitration award or later enforcement record."],
+      "verification_status": "VERIFIED_LOCAL_READ"
+    },
+    {
+      "document_id": "DOC-DED-19-79-20231101",
+      "title": "Seven Creditors memorandum opinion on writs of attachment",
+      "court": "U.S. District Court for the District of Delaware",
+      "case_numbers": ["19-79","21-18","22-131","22-263","23-298","23-340","23-360","23-361","23-378","23-379","23-397"],
+      "date": "2023-11-01",
+      "local_path": "documents/acquired/court/2026-08-26/ded-19-79-citgo-attachments.pdf",
+      "sha256": "202ee0ded68142ae498a3e4e12c2b25bbc0021c7b2e038715f7cc979cbb7b625",
+      "evidence_summary": [
+        {"locator":"PDF pp. 1–2","fact":"The opinion states that seven sets of judgment creditors sought writs of attachment against PDVH shares owned by PDVSA, and that Venezuela and PDVSA opposed the motions."},
+        {"locator":"PDF p. 2","fact":"The opinion states the ownership chain as Venezuela → PDVSA → PDVH → CITGO Holding → CITGO Petroleum."},
+        {"locator":"PDF pp. 1–2","fact":"The court granted the seven creditors' motions for writs of attachment and denied the Venezuela Parties' motions to dismiss, subject to the opinion's reasoning and procedural terms."},
+        {"locator":"PDF pp. 2–3","fact":"The opinion identifies the seven creditor groups as Tidewater, Contrarian, Valores, Pharo, Lovati, Gramercy, and Saint-Gobain."},
+        {"locator":"PDF pp. 24–26 and 49–51","fact":"The opinion addresses the use of federal/FSIA and Rule 69 principles, PDVSA's alter-ego arguments, and the legal basis for attachment; these holdings must not be converted into a debt amount."}
+      ],
+      "amounts": [],
+      "limitations": ["The opinion does not by itself establish the total claims of all creditors.","Attachment authority is not the same as recovery, liquidation proceeds, or current outstanding debt.","Each creditor must be linked to its underlying obligation before aggregation."],
+      "verification_status": "VERIFIED_LOCAL_READ"
+    }
+  ],
+  "aggregation_rule": "Do not sum an arbitration award, judgment, attachment claim, or recovery as a separate liability when it maps to the same economic_exposure_id."
+}

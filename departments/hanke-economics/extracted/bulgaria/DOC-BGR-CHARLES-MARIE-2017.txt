@@ -1,0 +1,1386 @@
+           Bulgaria’s hyperinflation in 1997: transition, banking
+                       fragility and foreign exchange
+                                    Sébastien Charles, Jonathan Marie
+
+
+
+      To cite this version:
+     Sébastien Charles, Jonathan Marie. Bulgaria’s hyperinflation in 1997: transition, banking fragility and for-
+     eign exchange. Post-Communist Economies, 2017, 29 (3), pp.313-335. ⟨10.1080/14631377.2017.1339476⟩. ⟨hal-
+     01573503⟩
+
+
+
+
+                                        HAL Id: hal-01573503
+              https://sorbonne-paris-nord.hal.science/hal-01573503v1
+                                           Submitted on 28 Mar 2023
+
+
+
+
+    HAL is a multi-disciplinary open access archive             L’archive ouverte pluridisciplinaire HAL, est des-
+for the deposit and dissemination of scientific re-        tinée au dépôt et à la diffusion de documents scien-
+search documents, whether they are published or not.       tifiques de niveau recherche, publiés ou non, émanant
+The documents may come from teaching and research          des établissements d’enseignement et de recherche
+institutions in France or abroad, or from public or pri-   français ou étrangers, des laboratoires publics ou
+vate research centers.                                     privés.
+
+
+           Distributed under a Creative Commons CC BY 4.0 - Attribution - International License
+             Bulgaria’s Hyperinflation in 1997:
+    Transition, Banking Fragility, and Foreign Exchange
+
+
+
+                                    Sébastien CHARLES
+                                   Université Paris 8, LED
+                                   sebcharles92@yahoo.fr
+
+
+                                     Jonathan MARIE
+                      Université Paris 13, Sorbonne Paris Cité, CEPN
+                             jonathan.marie@univ-paris13.fr
+
+
+
+
+                                           Abstract
+        This article has two objectives: to study the 1997 episode of hyperinflation in
+        Bulgaria, and to compare and contrast this analysis with the post-Keynesian
+        theoretical approach. This approach highlights the role of three components
+        observed simultaneously in order to understand the emergence of
+        hyperinflation: a virulent distributive conflict; the presence of indexing
+        mechanisms; and finally flight from domestic currency into one or more
+        foreign currencies. The article reveals that a transitional economy like that of
+        Bulgaria in the 1990s may generate hyperinflation in the absence of any
+        violent distribution conflict: the transition and the banking crisis engender
+        inflation. The foreign exchange rate is decisive in the emergence of
+        hyperinflationary dynamics (and therefore mistrust of domestic currency).
+        This interpretation of hyperinflation is confirmed by an econometric analysis.
+
+
+
+
+Key words: hyperinflation, foreign exchange, transition, Bulgaria
+JEL codes: C12, E12, E31, P22
+
+To cite this article:
+       Sébastien Charles & Jonathan Marie (2017) Bulgaria’s hyperinflation in 1997:
+       transition,    banking   fragility   and    foreign   exchange, Post-Communist
+       Economies, 29:3, 313-335, DOI: 10.1080/14631377.2017.1339476
+1. Introduction
+
+     This article pursues two objectives. The first is to study an episode of hyperinflation in the
+context of a transitional economy. In February 1997, Bulgaria experienced an episode of
+hyperinflation at the same time as a banking and budgetary crisis. These last two aspects are
+generally at the centre of existing analyses; we focus instead on understanding and analysing
+the hyperinflation. The second objective is a theoretical one. The purpose is to compare and
+contrast Bulgaria’s hyperinflation within the framework of post-Keynesian analysis. This
+comparison should make it possible both to confirm that the framework of analysis is robust
+and possibly to suggest further developments or amendments.
+     Beyond the strictly empirical analysis, it seems logical to us to look into this episode on
+the basis of a theoretical proposition developed around the case of Argentinian hyperinflation
+in 1989 (see Marie, 2014). The analogy is all the more natural because the Argentinian
+hyperinflation, like the Bulgarian case, resulted in the adoption of a currency board (CB).1 In
+both instances, once the new monetary regime was adopted, the inflationary rhythms were
+largely dampened and the chances of a new hyperinflationary episode occurring faded. This
+work also takes up the proposition to model hyperinflation for a small open economy with a
+fixed foreign exchange rate (Charles and Marie, 2016).
+     The article is organised as follows. In the next section, we propose a definition of
+hyperinflation. This definition offers a qualitative characterization of hyperinflation and
+highlights the key role played by distributive conflict, indexation, and the flight from domestic
+money into a foreign currency. In the third section, we present the chronological sequence
+observed in Bulgaria, beginning with the 1989 transition and that led to the hyperinflation of
+1997. On the basis of stylized facts we show that the theoretical sequence revealed earlier does
+not correspond with the Bulgarian case. The fourth section proposes an amended theoretical
+sequence through which to understand the emergence of hyperinflation in a transitional
+economy. Section 5 seeks to confirm our propositions via a few econometric tests. A final
+section brings together our conclusions.
+
+
+2. The post-Keynesian interpretation of hyperinflation: distributive conflict, indexation,
+and the flight from domestic currency
+
+     Our definition of hyperinflation goes beyond the traditional quantitative vision of Cagan
+(1956) and provides an understanding of its origins. It is part of a double tradition. First it
+includes the role of the balance of payments dynamic, a factor at the heart of the analysis of
+1923 German hyperinflation proposed by Karl Helfferich (cf., Câmara and Vernengo, 2001).
+Here, outflows of domestic capital caused by reparations for war or financial charges due to
+massive foreign debt imposed constraints on foreign exchange causing external depreciation of
+domestic money and fuelling inflation. Secondly, post-Keynesian theory rests upon the
+distributive conflict and its development to explain inflationary dynamics. This connection
+between the distributive conflict and inflation was revealed by Aujac (1950) and Kalecki (1954).
+Inflation is the result of conflicting interests among social groups which, in seeking to acquire
+a greater share of national income, cause prices to rise. If, as we propose, hyperinflation is
+different in nature from inflation, hyperinflation develops in the context of high inflation.
+
+
+
+1
+ The CB is defined by three factors that are observed simultaneously: the foreign exchange rate is fixed, the
+unrestricted convertibility of domestic monetary units into foreign currencies is possible at any time, and it must
+constantly be checked that the monetary base is fully covered by foreign exchange reserves.
+
+
+                                                        1
+2.1 Distributive conflict as the driving force behind inflation
+
+     Within post-Keynesian theory, inflation reflects the existence of a distributive conflict and
+is generated in a given institutional and historical context. Along lines first developed by
+Rowthorn (1977), post-Keynesian authors have sought to develop models to explain inflation.
+     The general price level is determined by costs, which are borne by capitalists. The principal
+determinant of these costs is the cost of wages. Firms apply a mark-up to this cost in order to
+determine prices (Weintraub, 1978). A price variation occurs if the mark-up varies, if labour
+productivity changes, or if the nominal wage varies. This is how the distributive conflict
+intervenes in the inflationary process: all groups seek to secure the most favourable distribution
+of income for themselves. Wage labourers seek to do this by securing higher wages; capitalists
+by increasing their profits via price rises. A group’s ability to achieve its objective depends on
+its bargaining power. Wage labourers may enjoy substantial bargaining power, among other
+examples, if unemployment in the economy in question is low (Rowthorn, 1977), if
+unemployment is falling (Casetti, 2003). The bargaining power also depends on the type of
+union organizations (Susjan and Lah, 1997), or on the institutional framework (Setterfield,
+2007).
+     Capitalists’ market power is positively affected by the existence of oligopolistic markets
+or by the rate of use of capital (if they are in a situation where capital is under-used, firms tend
+to increase output rather than prices further to a rise in demand). In Rowthorn’s founding model,
+workers negotiate a nominal wage for the following period. Then firms fix prices, seeking to
+achieve the price level compatible with the desired mark-up. The rate of inflation is then the
+consequence of divergences between the objectives of firms (the mark-up aimed for) and of
+workers (the real wage sought). In the final resort, firms fix prices. They increase them when
+the actual mark-up is less than the desired mark-up. Thus, a mark-up target can be analysed as
+a real wage target. In other words in order to increase the mark-up, firms must successfully
+reduce real wages.
+     While the remuneration of labour is an important factor for firms’ costs, there are others.
+And when these costs vary, mark-ups are affected. Entrepreneurs may therefore attempt to pass
+on an increase in their non-wage costs to the real remuneration of workers. The impact of a
+variation in interest rates on the process of negotiation of wages and prices was emphasized by
+Galbraith (1957). If interest rates rise, firms will seek to pass on this rise in their financial costs
+via a price rise. The reasoning is valid, of course, if we consider changes in the prices of firms’
+inputs or changes in the foreign exchange rate of the domestic currency. So exchange rate pass-
+through is explained as follows (see, for example, Arestis and Milberg, 1994): depreciation of
+the domestic currency will affect firms’ profitability because imported inputs (or investment
+goods), the prices of which are in foreign currencies, come at a price expressed in the domestic
+currency, which is rising. Firms will then seek to counter this trend by raising prices.
+
+2.2 Indexation mechanisms develop in high inflationary regimes
+
+      An economy’s inflation rates may be persistently high. This kind of situation was to be
+observed, for example, in developed countries in the 1970s but also and above all in many Latin
+American countries until the late 1980s. During this period, neo-structuralist authors were to
+take a particular interest in the institutional mechanisms that increase or maintain an inflationary
+trajectory. These authors explain that agents’ behaviour will change when they come to
+understand that inflation may vary suddenly, when it is habitually high, or when it tends to rise.
+It is essential to include this factor in our thinking. Frankel (1979) reveals the importance of
+indexation in high inflation regimes. He explains that if inflation is high and volatile over
+several periods, agents will seek to develop indexation mechanisms to protect their real incomes
+
+
+                                                  2
+against the effects caused by a possible acceleration of inflation. This institutional mechanism
+naturally maintains inflation, but it may also accelerate it (see also Taylor, 2004).
+     Indexation phenomena add to the distributive conflict, making it difficult for a stable and
+low inflationary compromise to emerge over the share-out of value-added. Carvalho (1991)
+distinguishes between the moderate- and the high-inflation regimes by using the indexation
+criterion. He considers that annual inflation of close to 20% requires indexation mechanisms to
+be created. As the author acknowledges, indexation creates its own vulnerabilities, notably in
+propagating bursts of inflation.
+
+2.3 Hyperinflation: the flight from domestic currency -- the final stage in a causal sequence
+
+     The post-Keynesian analysis of hyperinflation was initiated by Kalecki (1962), who sees
+acceleration in the speed of circulation of money as the cause of the acceleration of prices. This
+acceleration of prices is brought about by the expected inflation rate. According to Kalecki,
+hyperinflation in a closed economy is a rapid and continuous rise in prices and the general
+tendency to convert money into goods. It is a flight from money, the rate of circulation of which
+accelerates. These two factors are inseparable. Kalecki reveals other important characteristics
+of hyperinflationary episodes. They go hand-in-hand with situations of shortages in the supply
+of goods, impoverishment of rentiers, and reductions in real wages, which, although they may
+benefit from inflation-indexing mechanisms, are penalized by the existence of adjustment lags.
+This means that only the profits of entrepreneurs, and above all those made by big business,
+thrive. Kalecki’s contribution is important in two ways. It highlights a qualitative aspect of
+hyperinflation: people abandon the use of means of payment as quickly as possible because
+they expect inflation to continue rising. But his contribution also emphasizes the consequences
+for distribution.
+     If this proposition is put together with that of Robinson (1951), the construction of the post-
+Keynesian view of hyperinflation can be completed. Robinson looks into the sequence of events
+leading to German hyperinflation in the early 1920s.2 Unlike Kalecki, she considers an open
+economy. She highlights the following sequence of events: inflation is initially high, caused by
+a virulent distributive conflict. Domestic inflation causes a downturn in the balance of trade.
+This downturn brings about a decline in the direct exchange rate of domestic money, which
+raises the price of imported goods expressed in domestic currency. The German economy at the
+time faced crippling foreign currency debt (as a consequence of the Treaty of Versailles). This
+mechanism feeds new price rises (firms want to maintain their mark-ups) and wage rises
+(workers want to maintain their real level of remuneration). For Robinson the collapse of
+foreign exchange led to hyperinflation. This analysis is part of the same lineage as Helfferich’s.
+     Our view of hyperinflation therefore takes the following form: hyperinflation is a
+phenomenon that is first caused by a violent distributive conflict. This conflict favours the
+adoption of indexation mechanisms, including on foreign exchange. Inflation is incompatible
+with external equilibria and the external depreciation of money feeds back into the price-wage
+loop. This is the sequence Robinson describes. If we add the role played by expectation, which
+Kalecki emphasizes, hyperinflation occurs when agents, anticipating the break-off in foreign
+exchange, turn away from the domestic currency and towards some substitute: foreign currency.
+This triggers a self-fulfilling phenomenon that entails the break-off of foreign exchange and
+any coherence provided by prices in domestic currency. This analysis is consistent with work
+proposed by neo-structuralists on the high inflation rates observed in Latin America in the 1980s.
+It also corroborates the remark made by Kaldor (1982) about the German situation in 1923: if
+
+2
+ The article was first published as a shorter version in 1938. It was a critique of The Economics of Inflation by
+Bresciani-Turroni (1968, first English edition 1931). That book analysed German hyperinflation in a thoroughly
+monetarist view, an interpretation that Robinson eschewed.
+
+
+                                                       3
+foreign exchange remains stable during the day, prices and wages do too. Ultimately
+hyperinflation is defined quantitatively: it is the phenomenon in a highly inflationary economy
+that attests to the generalized rejection of domestic currency in favour of a foreign currency.
+Finally, our generic sequence can be depicted like this:
+
+
+
+                                                                       Rise in inflation
+              Intense                        Wage
+                                                                       (reinforcement)
+            distributive                 indexation on
+                                                                         Endogenous
+              conflict                  prices triggered
+                                                                           process
+
+
+
+
+                                            If parity                      Greater
+           Hyperinflation                expected to be                 sensitivity to
+           because of run               broken (because                 exchange rate
+             to foreign                 TB < 0 and high                  differences
+              currency                  foreign currency               wages/exchange
+                                              debt)                      indexation
+N.B.: TB is the acronym for Trade Balance in our sequence
+
+     It integrates the driving role played by distributive conflict in inflation, the importance of
+indexation, and the importance of the foreign exchange rate in hyperinflation. We can take away
+from these considerations that, in the absence of any external debt in foreign currency, in the
+absence of price- and wage-indexing mechanisms, and in the absence of any distribution
+conflict, the terms of which may trigger high inflation, there is no cause to fear the emergence
+of a hyperinflationary phenomenon.
+
+
+3. On the transition to hyperinflation in Bulgaria
+
+3.1 Economic fragility before the onset of the post-socialist transition
+
+    Bulgaria entered into the post-socialist transitional phase late in 1989. On 17 November
+the President of the State Council of the Popular Republic of Bulgaria, Todor Jivkov, was
+overthrown by reformist Communists. On 15 January 1990 the monopoly of the Bulgarian
+Communist Party was rescinded. In June 1990 the first free, multi-party, legislative elections
+were held, and in July 1991 the country developed a new constitution marking its exit from the
+Council for Mutual Economic Assistance (CMEA or Comecon). Fresh legislative elections
+were organized in October 1991.
+
+     The change that Bulgaria underwent was especially sudden because the country was
+particularly close to the USSR. First politically: Jivkov, who led Bulgaria for 35 years, was
+known for systematically aligning his policy with that of Moscow (at least before perestroika,
+which he openly dismissed to the point just before his resignation). But Bulgaria was also
+particularly tied to the USSR economically: in the late 1980s, more than 50% of Bulgarian
+foreign trade was with the USSR, a record among all the CMEA countries (Dobrinsky, 2000).
+A further indication of this type (BNB, 1990, p. 73) was that the share of Bulgarian exports to
+
+
+                                                4
+socialist countries rose from 61.9% to 68.9% between 1980 and 1989, while the share of imports
+from “developed and industrialized” countries rose over the same period from 23.3% to 32.2%.
+This indicator reflects the fragility of Bulgarian productive structure on the eve of the collapse
+of the socialist bloc. Bulgaria was more dependent on outlets to socialist countries and imports
+from developed countries on the eve of the eastern bloc’s collapse. In addition, Bulgaria’s
+foreign trade prospects were diminished by the armed conflicts in the former Yugoslavia from
+1991 onwards. The UN imposed increasingly strict trade blockades from 1991 to 1993, which
+impeded Bulgaria’s access to Western European markets by cutting off the most direct and
+fastest trade routes (BNB, 1993, p. 32).
+     Dobrinsky (2000) indicates that Bulgaria saw its terms of trade substantially deteriorate
+during the 1970s and 1980s, causing its foreign debt to more than triple (from $2.9 billion in
+1984 to $10.7 billion in 1989). From March 1990 the Bulgarian government adopted a
+moratorium on the payment of its foreign debt. Poirot (2003) claims that this decision explains
+why Bulgaria received no effective support from the IMF or the World Bank. The same author
+also underscores the slowdown in economic growth in the 1980s and the decline in productive
+investment that led to insufficient capacity in the production of consumer goods. The mismatch
+between domestic productive supply and the development of consumption became very
+apparent in 1992: while consumption rose by more than 12% in that year, imports rose by 25%
+(see Table 1 below).
+
+3.2 Poor macroeconomic performance and the influence of monetary policy
+
+      Economic reform began in 1991 with the adoption of a stabilization programme. Prices
+were deregulated, planning was abandoned, free entry onto markets was sought after, as was
+the liberalization of foreign trade. Dobrinsky (2000, p. 583) reports that Bulgaria adopted a
+strategy of a floating exchange-rate with the stabilization of the monetary base. This strategy
+was akin to those adopted under structural adjustment plans negotiated with the IMF by other
+economies in the same period (a standard set of recommendations under the Washington
+Consensus), although the IMF did not intervene in Bulgaria at this time. Because Bulgaria was
+excluded from international financial markets, the authorities maintained foreign exchange
+controls.
+      These reforms did not place the Bulgarian economy on the road to catch-up, as was to be
+attested by the macroeconomic indicators. On the contrary, macroeconomic performance was
+particularly poor. Poirot (2003) estimates that GDP declined by 16.7% in 1991. This recession
+continued in 1992 and 1993 as shown in Table 1. Another noteworthy factor was that although
+GDP plummeted in 1992 and 1993, consumption growth rates were very high (more than 12%
+in 1992 and more than 10% in 1993). This upturn in consumption was made possible by a large
+fall in Bulgarians’ gross savings (Table 3), which fell (in real terms) by over 70% between 1991
+and 1993. The change in gross savings explains the change in consumption; we estimate that
+household consumption rose by 47 million Lev (2005) from 1991 to 1993, while gross savings
+fell by 46 million Lev against this background of falling GDP. Plainly the upturn in
+consumption was unsustainable.
+      Table 1 also shows the marked decline in investment from 1992 to 19943 and the systematic
+downturn in public spending over the whole of the period. The fall was significant in 1993 and
+continued year after year. This reduction in public spending contributed 1.7% of the total
+reduction in GDP in 1993 (cf. line G of contributions to growth). 4 The year 1993 was
+specifically marked by the downturn in exports in a difficult international context marked by
+
+3
+ Even if for 1994 the downturn in investment was actually caused by a collapse of stocks.
+4
+ This casts doubt on the plausibility of a hyperinflationary phenomenon supposedly caused by particularly lax
+public spending, a hypothesis that we do not try to check in this article.
+
+
+                                                     5
+the trade blockade of the former Yugoslavia referred to above, but also economic difficulties
+caused by monetary turmoil in Western Europe, and the real appreciation of the Bulgarian
+domestic currency (the variation in the exchange rate was lower than the rate of inflation). From
+that time on, the central bank sought to limit exchange rate fluctuations. It should be noted that
+slightly positive growth rates were observed in 1994 and 1995. These were made possible by a
+sharp increase in exports in 1994 and by increased investment in 1995.
+
+Table 1. Rate of growth of GDP, components of demand, and contributors to growth, 1992-
+1997
+                              1992        1993               1994            1995        1996     1997
+GDP growth rate               -7.25       -1.48              1.82             2.86       -9.40    -5.58
+
+Growth rate (%) of:
+C                            12.48        10.35            2.59              -1.82       -4.45    -7.53
+I                           -18.40       -24.30          -37.40              71.40      -53.00    14.90
+G                            -0.91        -8.66           -7.16              -8.65      -29.14    -0.75
+X                             0.56       -20.12           20.06               1.97       12.44    -0.76
+IM                           25.31       -14.73            1.50               4.16       -2.03     1.33
+
+Contributions to GDP
+growth rate (%):
+C                              6.75        6.79               1.90           -1.35       -3.14    -5.61
+I                             -4.15       -4.83              -5.72            6.71       -8.30     1.21
+G                             -0.17       -1.76              -1.35           -1.49       -4.45    -0.09
+X                              0.24       -9.48               7.67            0.89        5.56    -0.42
+IM                             9.92       -7.80               0.69            1.90       -0.94     0.67
+(X - IM)                      -9.68       -1.68              6.98            -1.01         6.5    -1.09
+Sources: IMF and BNB; authors’ calculations. Real data were estimated using the GDP deflator
+provided by BNB (2005 = 100)
+
+N.B.: Line I includes variations in stocks, which may lead to surprising results: in 1994,
+investments fell by 37.4% as inventory melted away because of economic growth, while
+corporate purchases of goods by way of investment rose by 8.2%. Conversely, in 1995, stocks
+clearly built up again, which, in accounting terms, boosted the measure of total investment.
+
+Table 2. Nominal growth rates (%)
+                            1991       1992           1993           1994        1995      1996   1997*
+Wages (public sector)      184.6       54.0           59.7            59.2       41.5     285.3   502.5
+CPI                        429.3       83.1           59.1           125.1       31.1     489.0   334.9
+Foreign exchange rate      727.1        7.4           42.0            83.5       10.8    1283.2    73.8
+Sources: IMF and BNG; authors’ calculations
+
+N.B.: all calculations made using data as of 1 January. The nominal growth rate of public sector
+wages for 1991 was calculated as: (wages as of 1 January 1992 - wages as of 1 January
+1991)/wages as of 1 January 1991´100. The growth rate of the foreign exchange rate is
+calculated from the indirect foreign exchange rate at the end of the month.
+*For 1997: calculation made over 11 months with data for December 1997/January 1997.
+
+
+
+
+                                                  6
+     It should be remembered that our concern is to understand price dynamics. Table 2 reveals
+that inflation, estimated from changes in the consumer price index (CPI), was very high from
+1991 onwards. It dipped in 1992 and 1993. For 1992, inflation peaked in May: while average
+monthly inflation over the year was about 5%, it stood at 11.9% in May. The number of basic
+necessities for which prices were controlled fell at the time from 14 to 8, while the government
+substantially raised the prices of electricity, coal, and gas (from 25%to 60%, see BNB, 1993,
+pp. 37 and 39).
+     While the variation in the foreign exchange rate was above inflation in 1991, it fell below
+inflation from 1992 to 1995 inclusive. That caused a fall in the competitiveness of Bulgarian
+prices or a real appreciation of the domestic currency. The wages referred to in Table 2 are
+public-sector wages, which are the only data available. The changes in them reveal a decline in
+real wages except for the year 1997. Even so, they rose considerably in nominal terms, which
+was most certainly favoured by mechanisms for index-linking wages to inflation, which
+mechanisms were put in place in 1990 (BNB, 1990, p. 27 or for more detailed explanations,
+OECD, 1997, p. 49).
+
+Table 3. Gross savings in millions of (2005) Leva
+                                     1991      1992      1993      1994      1995     1996      1997
+ Gross savings                      65.60     41.58     19.27     23.19     37.44     32.89     39.28
+Source: IMF and BNG; authors’ calculations, using the GDP deflator (2005 = 100).
+
+
+     Another surprising feature is evident from Table 2. What could explain the upturn in
+inflation in 1994 compared with 1993 (the rates of growth of the consumer price index were
+83.5% in 1994 and 42% in 1993)? The rise in economic activity (GDP growth rate of 1.82%)
+certainly favoured this phenomenon. It should also be pointed out that there was a surge in
+inflation in February 1994 (inflation for that month was 21.9% whereas on average it was
+slightly under 7% for the year). This surge was caused by the announcement of the introduction
+of VAT and the increase of energy prices (see BNB, 1994, pp. 30-31). But these explanations
+may seem inadequate: the rate of GDP growth was 2.73% in 1995 whereas inflation was curbed.
+It seems that the changing pattern of inflation cannot be understood without taking into account
+the changes in monetary policy, or more specifically, changes in the rates policy by the National
+Bank of Bulgaria (the central bank) over the period. Sgard (1999) also emphasizes the role
+played by this rates policy on the instability observed. Figure 1 plots changes in the interest rate
+consented by the central bank for refinancing operations of commercial banks from January
+1991 until April 1996. The rates shown were below the rates of inflation (this was also the case
+for average debt interest rates, that is, for interest rates applied to borrowers by banks): over the
+entire period, real interest rates were generally negative (except for much of the year 1995 and
+the first half of 1996 for the main refinancing rate and the debtor rate; see Poirot, 2003, p. 47
+for details).
+     Several periods can be identified. From the second half of 1991 to the beginning of the
+second half of 1992 was a period of stable interest rates. Then a period of unstable rates began:
+a fall in the third quarter 1992 (from 54%in June reaching 41% in September), a slight recovery
+in the first quarter of 1993, then a new fall from May to August 1993. This movement triggered
+a decline in the quantity of assets held in Lev for the profit of assets in dollars (theory of interest
+rate parity): foreign exchange reserves fell (the central bank was committed de facto to
+defending the exchange rate). The first substantial depreciations were observed as from the final
+quarter 1993: 3.26% in October and then 8.67% in November (see BNB, 1993, p. 65). Foreign
+exchange was truly unleashed in March (27% depreciation) and April 1994 (17%
+
+
+
+                                                  7
+depreciation). 5 It is obvious, from this point on, that foreign exchange fluctuations fuelled
+inflationary dynamics.
+
+Figure 1. Principal refinancing rate (bank rate), end of period, January 1991–April 1996
+             80
+             70
+             60
+             50
+             40
+             30
+             20
+             10
+              0
+
+
+                  1991M1   1991M4   1991M7   1991M10   1992M1   1992M4   1992M7   1992M10   1993M1   1993M4   1993M7   1993M10   1994M1   1994M4   1994M7   1994M10   1995M1   1995M4   1995M7   1995M10   1996M1   1996M4
+
+Source: IMF
+
+     As a result of these devaluations, the IMF intervened in April 1994 to put an end to the
+foreign exchange crisis, allowing the stock of reserves to rise from about US$1.5 billion in
+April 1994 to nearly $3 billion the following months (Dobrinsky, 2000)6 . That marked the
+beginning of the period during which a more restrictive monetary policy appeared:
+
+              “In contrast to the previous year, BNB interest rate policy in 1994 was consistently
+              restrictive, which reflected a general upward trend in nominal lending and deposit
+              rates. The basic interest rate was raised three times (20 percentage points) over 1994,
+              reaching the highest-ever level of 72% simple annual rate. Consequently, deposit
+              and lending interest rates reached record nominal highs as well, but the high
+              inflation rate changed them significantly in real terms” (BNB, 1994, p. 66).
+
+
+
+5
+  “As monthly inflation slowed in the first half of 1993 under an average effective basic annual interest rate of 60
+per cent, the relative return on lev denominated assets began to grow. Authorities responded to lower inflation by
+decreasing the basic rate on two occasions between August and October, bringing it down to 52 per cent. At the
+same time, monthly inflation steadily picked up from 1% in July to 4.2%in October, due in part to seasonal factors.
+The implied reduction in the expected return to lev-denominated assets appears to have triggered a portfolio shift
+of the population and investors. This is illustrated […] by the decline in foreign exchange reserves, which were
+used by monetary authorities to support the value of the lev. As this process continued, authorities eventually
+became alarmed and raised the basic rate, first to 63% in November and then to 69% in January 1994. They also
+allowed some limited depreciation of the currency. But, given the magnitude of the depletion of reserves and the
+knowledge that authorities could not prop up the value of the lev much longer, expectations had apparently already
+become too destabilised for the decline in money demand to be reversed. The BNB finally gave up defending the
+lev in March, leading to an immediate devaluation of the currency by almost 30% in that month, and another
+devaluation of 17% in April. This was followed by rapid inflation and continual instability until the latter months
+of the year” (OECD, 1997, pp.29-31).
+6
+  “the pressure on the exchange rate resulted in a run on the currency which lasted until March 1994. The end of
+the crisis came in April with the signing of a standby agreement with the IMF providing financial assistance to
+Bulgaria, in view of the London Club deal. It was complemented by further assistance from the World Bank and
+the EU” (Dobrinsky, 2000, p. 594)
+
+
+                                                                                                               8
+     The higher interest rates and the IMF intervention even attracted foreign capital that
+underpinned increased investment (Table 1). The pace of privatization accelerated, as did that
+of inward FDI (Poirot, 2003, p. 41). In 1995 and the beginning of 1996, Bulgaria resumed
+servicing its foreign debt:
+
+                “In 1995, BNB interest rate policy played a key role in reviving the confidence in
+                the national currency and suppressing inflationary expectations. In 1994, the BNB
+                in its attempts to tighten monetary constraints raised the basic interest rate on
+                several occasions to counterbalance the dramatic lev devaluation. In 1995 however,
+                the basic interest rate was gradually decreased from 72% to 34%. The basic interest
+                rate was gradually reduced on seven occasions between April and July. The BNB
+                actions proved to be conservative, given the slower decrease in the basic interest
+                rate relative to the inflation rate decline” (BNB, 1995, p. 62).
+
+     This improvement, which ultimately proved to be deceptive, was thwarted by the fragility
+of the banking and financial system, which became apparent from the end of 1995. For Sgard
+(1999, pp. 219-220), people were confronted with a continuum of “signs of financial weakening
+[which] multiplied over the years: expensive and ill-managed bank recapitalization at the end
+of 1993, a first foreign exchange crisis in 1994, a series of interventions by the central bank in
+small institutions in 1994 and 1995, and finally the takeover of a first-rank private bank in
+December 1995”.
+     This financial fragility is also at the core of Poirot’s (2003) analysis: he claims the fragility
+was the consequence of the continuation of a generalized mechanism of soft budget constraints
+and particularly persistent within state-controlled firms, compounded by a culture of “non-
+payment” to the banking sector facilitated by inadequate observance of contracts and rare and
+inefficient supervisory measures (Poirot, 2004, pp. 41-47). The concept of “loose budgetary
+constraint” (Kornai, 1979; 1986) stands against the principle of “hard budgetary constraint” that
+prevails in capitalist economies. In a socialist or even post-socialist environment, the survival
+of state enterprises does not depend on their economic performance but on relations with the
+bureaucracy that maintain financing. So, in the event of poor results, firms do not go bankrupt
+but continue to receive credit from the banking system, which is itself refinanced by the central
+bank.
+     Vahabi (2005, p. 150) shows that relations between the state and firms change radically in
+the course of post-socialist transformation, banks replace the state in financing firms but loose
+budgetary constraint remains a major problem in various post-socialist economies. In this way,
+recourse to the concept of loose budgetary constraint provides insight into the refinancing of
+insolvent banks by the central bank, as do loans granted by banks to insolvent firms.7 In addition,
+Berlemann and Nenovsky (2004) claim that the appearance of Ponzi type financial pyramids
+was facilitated by the liberal policy of the BNB with respect to granting banking licences: a
+large number and a wide variety of financial actors appeared. The same authors (p. 256) state
+that 35 out of 44 Bulgarian banks “were losing money” in June 1994. By way of illustration,
+Dilova (1999) shows that banks, knowing that they would be refinanced by the central bank
+whatever happened, felt no need to comply with prudential ratios and to check that their
+borrowers were solvent.
+     In agreement with contemporary analyses by the IMF, Poirot (2003) emphasizes that this
+financial fragility was a fundamental factor in understanding Bulgaria’s economic trajectory.
+But he refrains from seeing in this the consequence of too slow a mechanism of privatization,
+preferring to resort to the concept of “chaotic hysteresis” to understand the way in which a
+
+7
+    Claessens et al. (1997) show that this phenomenon was particularly widespread in state enterprises in Bulgaria.
+
+
+                                                          9
+transition economy found itself overly influenced by uncertainty and asymmetric information.
+These factors have made it possible for a dangerous mechanism to be put in place: collapse of
+the banking system was averted or delayed by refinancing conditions facilitated by the BNB, a
+behaviour that resulted in diminished confidence in the domestic currency with respect to
+foreign currencies at the very time when the central bank was seeking to maintain stable
+exchange rates.
+     The breach was opened in late 1995. The obvious overvaluing of foreign exchange went
+hand-in-hand with the current account deficit; a new valuation was expected. The share of
+deposits in foreign currency increased and substantial pressure grew on foreign exchange (see
+OECD, 1997 p. 32), which did not make the BNB change its strategy though:
+
+
+            “From December 1995 to June 1996, total refinancing of commercial banks with
+            the central bank increased by 145% while 90% of these flows carried no collateral.
+            In the face of growing pressure on the foreign exchange market, it committed itself
+            to a pointless and costly defence of its par value; refusing in particular to raise its
+            interest rates for long weeks” (Sgard, 1999, p. 220, see also Graph 3).
+
+     This mechanism increased doubts on international financial markets about the
+government’s capacity to procure the necessary foreign exchange to pay the interest due on its
+foreign debt: the financial and banking crisis was liable to degenerate into a public debt crisis.
+While the monthly rates of depreciation of the Lev had been less than 2% since November 1994
+(except for August 1995, during which month the currency fell against the dollar by 2.44%),
+the Lev depreciated by 3.23% in January 1996, 2.84% in February, 4.49% in March, and 4.61%
+in April. These movements fed inflation.
+
+3.3 Towards hyperinflation
+
+     The inflationary dynamic finally degenerated into hyperinflation early in 1996. This was
+underpinned by the macroeconomic instability described earlier. It will be remembered that it
+was characterized by high inflation, which became sensitive to variations in the foreign
+exchange rate. The true loss of confidence in Bulgarian currency became apparent in spring
+1996, caused by Bulgarians’ loss of confidence in the banking system. For Dobrinsky (2000),
+expectations about inflation changed in connection with the banking crisis and the drying up of
+the central bank’s foreign exchange reserves:
+
+            “Up to a point, the central bank defended the domestic currency by interventions in
+            the forex market, but the main outcome was the depletion of reserves. […] the 1996
+            crisis was amplified substantially by the almost complet loss of public confidence
+            in Bulgarian commercial banks. In the event, the run on the currency in 1996 was
+            coupled with a simultaneaous run on the banking system, resulting in massive
+            capital flight and the failure of 15 commercial banks” (Dobrinsky, 2000, p. 585).
+
+Sgard (1999) notes the crystallization of three factors during the first half of 1996: withdrawals
+by depositors, the fall in foreign exchange reserves, and agents’ expectations about the
+government’s difficulties in meeting its foreign financial obligations laid down by the 1994
+Brady plan. This dynamic can be seen in Figure 2 which reflects the fact that Bulgarians
+converted a growing share of their means of payment from the Lev into foreign currencies. In
+this way, Sgard (1999, p. 221) specifies that “for 1996 as a whole, 21% of deposits in Lev and
+
+
+
+
+                                               10
+42% of deposits in foreign currencies were withdrawn from banks, the latter figure representing
+70% of foreign exchange reserves at the start of the year”.
+
+Figure 2. Proportion of foreign currencies in M2, January 1996–June 1997
+             0,8
+             0,7
+             0,6
+             0,5
+
+             0,4
+             0,3
+             0,2
+             0,1
+              0
+
+                        1996/01   1996/02       1996/03     1996/04   1996/05   1996/06   1996/07      1996/08    1996/09       1996/10    1996/11   1996/12   1997/01    1997/02      1997/03   1997/04      1997/05
+
+ Source: IMF; authors’ calculations
+
+
+     Hyperinflation, defined as the flight from domestic currency into foreign currencies, was
+nonetheless warded off until 1997. In May 1996, a standby agreement was signed with the IMF:
+it enabled the Bulgarian government to meet its commitments towards its international creditors
+for 1996 deadlines. At the same time, the central bank raised its interest rates (see Figure 3),
+opening a period during which monetary policy was actively mobilized.
+
+Figure 3. Principal refinancing rate (bank rate), end of period, April 1996–July 1997
+       350
+
+       300
+
+       250
+
+       200
+
+       150
+
+       100
+
+        50
+
+         0
+
+
+               1996M4        1996M5         1996M6        1996M7      1996M8     1996M9      1996M10        1996M11         1996M12       1997M1     1997M2      1997M3       1997M4         1997M5        1997M6       1997M7
+
+ Source: IMF
+
+    However, fears about the state’s solvency and the capacity of the Bulgarian economy to
+obtain the foreign currency required for foreign payments were not lastingly attenuated. As the
+data presented by Sgard (1999, p. 223) show, whereas the primary budgetary balance moved
+
+
+                                                                                                             11
+from a surplus of 2.1% of GDP in the first quarter 1996 to a surplus of 11.7% in the final quarter,
+the budgetary deficit was still put at 11% of GDP at the end of 1996 because of an explosion in
+the burden of interest (estimated at 22.7% of GDP in the final quarter of 1996 compared with
+15.2% in the first quarter of the same year). In the space of one year, foreign public debt had
+risen from 73% of GDP to 243% by the end of 1996. This increase was caused by the marked
+appreciation of the Lev. But it was also caused mechanically by the change in monetary policy
+strategy identified in Figure 3 as new securities were issued at a far higher rate of interest than
+matured securities.
+     The change in monetary policy meant debtors were more exposed and entailed new bank
+failures although the conditions for refinancing commercial banks were still just as
+“unacademic”. Berlemann and Nenovsky (2004, p. 254) estimate that non-collateralized
+refinancing granted in June 1996 reached 80% of the refinancing granted to commercial banks,
+whether in domestic or foreign currencies. The growing tendency of Bulgarians to seek out
+foreign currency (US dollars and German marks) as an instrument of reserve value was not
+reversed. Accordingly, the flight of capital recorded in balance of payments statistics was
+substantial. In 1996, the balance of payments was largely negative (-$738 million) whereas the
+current balance was slightly positive ($15.7 million; IMF data). This phenomenon was caused
+by Bulgarians because the Lev was only convertible internally at the time (Poirot, 2003, p. 48).
+External speculation was therefore impossible.
+     Being trapped in this vicious circle, a conjunction of events that would have been harmless
+in other circumstances, was to prove decisive in the occurrence of hyperinflation in January–
+February 1997. In November 1996, acknowledging that the economic situation was explosive,
+and rather than addressing the balance of payments problem to avoid it flaring up, the IMF
+suspended payments of an instalment of standby credit and proposed the country adopt a
+currency board. The IMF claimed this measure could be expected to have two advantages:
+stopping inflation because of the rule on monetary issuing (each unit of domestic currency
+issued had to be covered by an equivalent value in foreign currency) and the guaranteeing of
+the value of monetary assets held in foreign currencies. This proposal caused “considerable
+debate” in Bulgaria as acknowledged by Gould (1999), who was the IMF’s senior economist at
+the time. Furthermore it came at a time of social and political upheaval: the electoral campaign
+for a new head of state was ending against this background of financial crisis.8 The high point
+of this crisis was certainly the attack on parliament on 10 January 1997 when rumours spread
+of a possible freezing of deposits and of default on domestic public debt. Hyperinflation then
+began, following the explosion in foreign exchange (see Figure 4); early legislative elections
+were called for April. In that month of April, the presidential majority managed to ratify the
+new agreements with the IMF and set up a currency board; this monetary regime was effective
+as of July 1997 and was still in force in 2016.
+
+
+
+
+8
+ The November 1996 presidential elections were won by the conservative movement candidate, causing a change
+of president, against the centre-left movement that maintained its parliamentary majority at the time.
+
+
+                                                    12
+Figure 4: Monthly inflation rate and foreign exchange variation rate, April 1996–July 1997
+           250
+
+           200
+
+           150
+
+           100
+
+            50
+
+              0
+
+           -50
+
+                  1996/04       1996/05      1996/06      1996/07       1996/08       1996/09         1996/10      1996/11       1996/12         1997/01      1997/02        1997/03        1997/04      1997/05      1997/06
+
+                                Monthly inflation rate                                                          Monthly variation in foreign exchange
+
+
+Source: IMF
+
+     The hyperinflation of January 1997 was the expression of rejection of the domestic
+currency. It was the consequence of the crisis of confidence in the domestic currency expressed
+by its users which can be explained by the totality of the sequence we have set out. In
+accordance with the proposal by Orléan (2007, p. 195), we take it that the change in the M/P
+ratio (means of payment available to non-financial agents/price) is an indicator that can be used
+to understand the monetary crisis of confidence. Figure 5 confirms that Bulgarians’ confidence
+in their currency declined over the whole of the period examined here, but that this decline
+occurred at different paces. The fall that first set in seemed to have been stemmed from summer
+1994 to spring 1996. Then, mistrust surged, which was logically marked by hyperinflation itself.
+As of spring 1997 the ratio was able to rise thanks to the adoption of the currency board.
+
+Figure 5. Real value of the monetary mass (M2) in millions of Leva, 1991-1997
+           400000
+           350000
+           300000
+           250000
+
+           200000
+           150000
+           100000
+            50000
+                  0
+
+                      1991/07   1991/11   1992/03   1992/07   1992/11   1993/03   1993/07   1993/11     1994/03   1994/07    1994/11   1995/03    1995/07   1995/11     1996/03   1996/07   1996/11   1997/03   1997/07   1997/11
+
+Source: authors’ calculations based on nominal M2 data in millions of Leva, deflated by CPI
+(base 1 in March 1994). Data from BNB.
+
+
+
+                                                                                                                13
+4. Proposition: an amended post-Keynesian sequence
+
+     The foregoing analysis fits in perfectly with the dynamic generating hyperinflation
+presented in Section 2. Remember that Section 2 showed that hyperinflation is generated by the
+conjunction of three factors. First the presence of a substantial distributive conflict that causes
+high inflation. Then, this high inflation triggers the development of price and wage indexing
+mechanisms, which in turn fuel the inflationary dynamic. Expectations of inflation change.
+Lastly, the dynamic of foreign exchange increasingly influences prices: hyperinflation arises
+when a run on foreign exchange occurs, the three cardinal factors of money having been
+annihilated.
+     For the Bulgaria of the 1990s it is difficult to find factors attesting to any particularly
+virulent distributive conflict. For one thing, unemployment was high over the whole of the
+period and rose clearly in 1992 and 1993 before falling in the following years (Figure 6).
+Accordingly workers’ bargaining power cannot, it seems, have been a driving force behind the
+high inflation observed from the early 1990s onward. Similarly, while the fall in unemployment
+from 1994 to 1996 may attest to a certain reinforcement of workers’ bargaining power, it is
+difficult to conclude that this was the cause of higher inflation. Besides, the proportion of wages
+in GDP declined from 50.7% of GDP in 1995 to 48.3% in 1996 and 42.8%9 in 1997, which
+seems to be incompatible with any strengthening of workers’ bargaining power.
+
+Figure 6. Unemployment rate in Bulgaria, 1991-1997
+            18
+
+            16
+
+            14
+
+            12
+
+            10
+
+             8
+
+             6
+
+             4
+
+                 1991/04   1991/08   1991/12   1992/04   1992/08   1992/12   1993/04   1993/08   1993/12   1994/04   1994/08   1994/12   1995/04   1995/08   1995/12   1996/04   1996/08   1996/12   1997/04
+
+Source: Ministry of Labour and Social Policy of the Republic of Bulgaria. Datastream: data
+extracted 9 June 2016.
+
+      It is also difficult to view that firms’ market power could be particularly high. The
+Bulgarian economy underwent a process of opening up to international trade and so local
+producers had to face new competition, which adversely affected their market power. Another
+factor that might be evidence of limited market power was that there remained unused
+productive capacity (the rate of use of productive capacity was very low, between 54-63%,
+although it strengthened over the same years in which unemployment fell, as Figure 7 shows).
+It is generally accepted that firms in such a situation of underused capacity seek to win market
+share rather than raise prices.
+
+9
+  Adjusted Wage Share ALCD0 series, AMECO, consulted on line on 16 September 2016. There is no estimation
+for the part of wages in GDP in Bulgaria before 1995.
+
+
+                                                                                                           14
+Figure 7. Rate of use of productive capacity, 1992-1997
+           64
+           62
+           60
+           58
+           56
+           54
+           52
+           50
+           48   15/02/92
+                15/05/92
+                15/08/92
+                15/11/92
+                15/02/93
+                15/05/93
+                15/08/93
+                15/11/93
+                15/02/94
+                15/05/94
+                15/08/94
+                15/11/94
+                15/02/95
+                15/05/95
+                15/08/95
+                15/11/95
+                15/02/96
+                15/05/96
+                15/08/96
+                15/11/96
+                15/02/97
+                15/05/97
+                15/08/97
+Source: DG ECFIN: Directorate General for Economic and Financial Affairs: Datastream: data
+extracted 9 June 2016.
+
+     These factors invite us to consider other causes than distributive conflict to understand the
+high levels of inflation in 1991 (see Table 2). The specialized literature on transitional
+economies provides convincing evidence for explaining why transition processes are generally
+accompanied by episodes of strong inflation.
+     First, it takes time for agents to adapt to an environment that has suddenly changed. Sapir
+(1995, p. 145) explains that “liberalization of the economy triggers a gigantic process of
+learning in which agents, through their personal experience, simultaneously shift the price
+structure”. He goes on to claim (p. 126) that “the combination of almost total liberalization of
+prices with the transition to convertibility, in a situation where markets are little developed,
+leads to the emergence of ‘noise’ in the information system. Relative prices become unstable”.
+These particular phenomena observed in the transition in progress go some way to explaining
+the raging inflation seen in Bulgaria in 1992.
+     Secondly, a theoretical concept may be suggested: this is the phenomenon of shortage
+inflation or ‘shortage-flation’. This mechanism, studied by, among others, Kolodko and
+McMahon (1987), refers to the underlying inflation in an administered economy. As prices are
+controlled and rigid, inflation cannot occur; adjustments are made by repressing demand and
+not all the quantities demanded can be obtained at the advertised price. There is then a supply
+shortage. The conditions for matching supply and demand on markets for goods change
+whenever prices are liberalized, as soon as the transition is initiated; inflation occurs, reducing
+shortages, causing a fall in demand, and possibly a rise in the incentive to invest which
+supposedly increases supply. These factors are consistent with macroeconomic dynamics
+described in the previous section with the analysis proposed by Taylor (1994, p. 69): “When
+constraints in all markets were suddenly lifted in a global shock incorporating near-total price
+liberalization, demand surged […] (exceeding) potential supply, some new limiting
+mechanisms had to appear. Prices jumps were the only possible outcome”.
+     Other factors affecting production supply were observed causing inflation in Bulgaria
+during the transition. Transitional economies usually have specific characteristics concerning
+inter-industry trade: low divisibility and low substitutability of products (Sapir, 1993). When
+commercial relations are altered by transition, shortages in supply may paralyse activity and
+fuel price rises. Generally, transaction costs are clearly higher during the transition, a
+
+
+                                                15
+phenomenon that is caused by uncertainty about suppliers and outlets, by the necessity to
+modify the production process, or by the break off in pre-existing commercial relations.
+Specifically, in the Bulgarian case, and in addition to the obsolescence of the productive
+apparatus mentioned in the previous section, Borenzstein et al. (1993, pp. 6-8) indicate that the
+productive supply must cope with various types of shock experienced in the early stages of
+transition. Such shocks generate shortages. Bulgarian producers had to face interruptions in the
+supply of imported raw materials (caused by the break-up of the USSR, formerly the principal
+supplier) and in semi-finished products. Repeated interruptions were also observed in nuclear
+electricity production. All of these factors increased productive difficulties and were liable to
+reinforce the inflationary dynamic. We now understand the appearance of substantial inflation
+in the absence of any virulent distributive conflict in Bulgaria. Distributive conflict was
+replaced by transition shock as the initial and main cause of inflation.
+     On this basis, there then developed mechanisms for index-linking wages to prices10 as seen
+in subsection 3.2 while the foreign exchange dynamic was to become progressively more
+important in the price dynamic, this foreign exchange dynamic itself being affected by the
+monetary policy conducted. We now find the factors present in the generic post-Keynesian
+sequence. However, the looping of the sequence observed in Bulgaria also differs from this
+generic sequence. It was not so much the fear of a balance of payments crisis that triggered the
+self-fulfilling expectation of a break in foreign exchange as mistrust of the corrupt domestic
+banking sector that annihilated confidence in the domestic currency and made people look for
+foreign currencies, thereby causing the foreign exchange rate to explode.
+     This analysis leads us to propose the amended causal sequence below:
+
+
+      Origin of                    Ever greater                     Loss of
+      inflation:                  sensitivity to                 confidence in                 Hyperinflation
+                                  exchange rate                    domestic                    because of run
+       Shock of                     variation                      currency                      to foreign
+     transition to                                              because of risk                   currency
+        market                   price/exchange                   of banking                         ($)
+       economy                     indexation                   sector collapse
+
+
+Here it is the bank panic that is decisive. The realization that the entire banking system might
+collapse causes mistrust of the national currency, which is the origin of the run to foreign
+currencies and the appearance of hyperinflation.
+
+
+
+
+10
+   Andreff (1994) shows that in centralized planned economies (such as Bulgaria before transition), there was a
+particular distribution conflict opposing households (receiving wages and consuming) and central planners
+(receiving investment funds and accumulating capital). Andreff (1994, p. 827) reveals that investment and real
+wages were closely correlated before the onset of transition in Bulgaria. He identifies evidence that indexation
+mechanisms were in place in the Bulgarian economy before transition. He explains that when the transition kicked
+in, an inflationary surge was mechanically followed by a rise in wages that fuelled inflation again: it was an inertial
+inflation mechanism that was particularly intense in Bulgaria compared with other transitional economies. This
+‘inertial’ component that was indexed on inflation highlighted by Andreff for the Bulgarian case is described by
+Taylor (1994, p. 67): “The post-socialist experience is depressingly similar, even to the extent to which inflationary
+processes are becoming institutionalized or inertial as economic actors learn to use whatever market power they
+possess to raise their prices in self-protection against generalized price increases. As argued below, an enhanced
+inertial component in the price spiral is one fundamental reason why it will be very difficult to reduce post-socialist
+inflations”.
+
+
+                                                         16
+5. An attempt at econometric confirmation
+
+     In this section, we perform a few simple econometric tests to investigate the key role played
+by the factors discussed above (primarily the foreign exchange rate and the index-linking
+phenomenon) in explaining first high inflation and then hyperinflation in Bulgaria.
+Nevertheless, so as not to exclude a priori more traditional explanations of inflation, we
+voluntarily remain within a general framework of study. Accordingly, we compare our findings
+with results from a monetarist perspective, emphasizing the role of the quantity of money as
+the explanation of the price explosion.
+     The analysis in the previous section and the Bulgarian data on prices show without a doubt
+the occurrence of two sub periods.11 The first ran from April 1991 to late March 1996. We
+ignore the early months of 1991 that correspond strictu sensu to the transition shock with the
+deregulation of many prices and the opening up of the economy. The second period, beginning
+in April 1996, covered the hyperinflationary phenomenon proper. The increase in monthly
+prices went into overdrive up until the hyperinflationary peak of February 1997 with monthly
+inflation at 242%. It ended in late June 1997 with the adoption of the currency board, which
+represented a radical change of monetary regime justifying the discontinuation of our analysis.
+     Initially, we conduct standard unit root tests to determine the order of integration of time-
+series. For the first period, these are performed with a constant (cf. Table 4), the presence of a
+trend being systematically rejected. In the augmented Dickey-Fuller (ADF) tests, the number
+of optimal lags is determined according to the Akaike information criterion. For the Phillips-
+Peron (PP) tests and Kwiatkowski-Phillips-Schmidt-Shinn (KPSS) tests, the number of lags is
+defined using the Newey-West procedure, the different results are shown in square brackets.
+Ultimately, the unit root hypothesis is systematically rejected at the critical 1% level for all the
+variables considered.12
+
+Table 4. Unit root tests for the first period, April 1991–March 1996
+ Variables                        ADF Test             PP Test                               KPSS Test
+
+     DLgpci                            –13.03***         [0]        –11.85*** [1]               0.38***          [0]
+     DLgexch                            –9.25***         [0]         –8.92*** [2]               0.09***          [3]
+     DLgm1                              –5.51***         [6]         –9.43*** [4]               0.08***          [5]
+
+*** significant at critical 1% level.
+
+     For the second period from April 1996 to June 1997, the power of the unit root tests poses
+a real problem because of the very insufficient number of observations available (n = 15). It is
+therefore preferable not to use the ADF and PP tests. Consequently, as an alternative, we use
+the KPSS test with a constant, even if it has also very moderate power for a small sample.
+Bearing in mind the limits stated above, Table 5 seems to show that the series considered are
+stationary at the 5% level for the hyper inflationary period in Bulgaria.
+
+
+
+
+11
+   The consumer price index is from the IMF’s IFS (International Financial Statistics) data base, the foreign
+exchange rate and monetary mass are from Bulgarian National Bank reports from 1991 to 1997. These data are
+those used previously in the article.
+12
+   ∆Lgpci is the first difference of the consumer price index logarithm; ∆Lgexch is the first difference of the indirect
+foreign exchange rate logarithm ($1 for ‘x’ Lev); ∆Lgm1 is the first difference of the logarithm of the monetary
+mass (M1). Here, therefore, we work directly in growth rates.
+
+
+                                                          17
+Table 5. Stationarity tests over the second period, April 1996–June 1997
+                             Variables                    KPSS Test
+
+                             DLgpci                             0.12**
+                             DLgexch                            0.08**
+                             DLgm1                              0.45**
+
+                            ** significant at critical 5% level.
+
+      In fact, this problem occurs systematically in studying hyperinflation and is widely
+recognized in the econometric literature (cf., among others, Slavova, 2003 and Petrovitc et al.,
+1999). Indeed, periods of hyperinflation or near-hyperinflation are often narrowly
+circumscribed in time. Moreover, we feel it is risky to use co-integration techniques to
+determine the existence of any long-term relationship between two or more variables over so
+short a period of time. It can be noted that this difficulty is not recent as it was pointed out quite
+rightly by Burdekin and Burkett (1998) on the subject of work by Michael et al. (1994) on
+German hyperinflation. Those investigators used, among other things, co-integration tests à la
+Engle and Granger (1987) for a period of less than 18 months, which is clearly in contradiction
+with the idea of a long-term relationship.
+      The use of co-integration techniques may call for circumspection even in the case of the
+first period of high inflation in Bulgaria (April 1991 to March 1996). While there is no room
+for doubt when these techniques are used in studies covering one or more decades, the question
+may legitimately arise from the point of view of the econometrics applied about a five-year
+period. In this article, it is the first reason that leads us to use growth rate data (inflation rate)
+rather than level data (consumer price index), which increases the probability of obtaining
+stationary data. This stationarity of time-series makes it possible to perform econometric
+regressions based on standard methods of the ordinary least squares (OLS) type. The second
+reason is the possibility of directly testing the quantity theory of money dynamically, with the
+rate of growth of the monetary mass explaining the rate of growth of prices.
+      In Table 6 we test the significance of several variables in determining high inflation in
+Bulgaria by the following regression:
+
+                   DLgpci = a0 + a1DLgexch + a2DLgexch(–1) + a3DLgpci(–1)
+                               + a4DLgm1 + a5DLgm1(–1) + a6Dum05:1992 + e
+
+where DLgpci, is the rate of growth of the consumer price index; DLgpci(–1) the rate of growth
+of the consumer price index lagged by one period; DLgexch the rate of growth of the foreign
+exchange rate; DLgexch(–1) the rate of growth of the foreign exchange rate lagged by one
+period; DLgm1 the rate of growth of the monetary mass; DLgm1(–1) the rate of growth of the
+monetary mass lagged by one period; Dum05:1992 the qualitative variable for May 1992, and e
+the error term.
+     Thus, we evaluate six econometric representations. Model (I) corresponds to the initial
+starting model that also includes a quantitative variable designed to account for a new wave of
+energy price deregulation (coal, gas, and oil), in May 1992 and forcing up inflation. It should
+be noted that in April 1994, Bulgaria introduced a new uniform rate VAT, which brought about
+a positive shock on prices. Here we could have introduced another quantitative variable to
+account for this event. However, we prefer to dismiss this possibility because another factor is
+superimposed during that same month of April: the sharp rise in regulated prices notably for
+electricity, fuels such as coal and petrol, and in transport and postal services (see BNB, 1994,
+
+
+                                                 18
+pp. 28 and 30-31). This superimposition of events would therefore overestimate the part played
+by a binary quantitative variable for April 1994, all the more so because it is impossible in the
+context of this article to determine how much of the effect is attributable to VAT and how much
+to price rises.
+     Models (II) and (III) are two fundamentally opposing representations. Model (II) is
+equivalent to the post-Keynesian view as amended and developed in the previous section. It
+reveals the importance and significance of the foreign exchange rate and indexation phenomena.
+Model (III) corresponds to the extended view of the quantity theory of money, explaining
+inflation by the rate of variation of the monetary mass and the rate of variation of the monetary
+mass lagged by one period. Where Bulgaria is concerned, explaining the rise in prices by the
+quantity of money produces inconclusive results judging by the non-significant values of the
+explanatory variables, the near zero determination coefficient, and the close autocorrelation of
+residuals. Model (IV) compared with (II) indicates the scale of price deregulation in late spring
+1992. Lastly, models (V) and (VI) pertain to an explanation of inflation that is strictly based on
+foreign exchange rate movements. Ultimately, paradigm (II), without the quantity of money,
+explains inflation significantly with an R2 of the order of 54%. We believe that this first period
+at least partly validates the amended post-Keynesian model based on the role of foreign
+exchange and index-linking phenomena, revealing the capacity of firms to pass on price rises
+(the pass-through principle).
+     Another point in connection with the initial shock of transition ought to be emphasized. By
+progressively reducing the first period of analysis of model (V), the unexplained character of
+inflation by the foreign exchange rate is limited. We attribute this to shortageflation, the effects
+of which diminish as time goes by and as the 1991 shock, with the first deregulation of prices
+and the opening up of the economy, recedes into the distance. By way of illustration, in model
+(Vb), for which the data begin later, in June 1992, inflation is explained to a greater extent by
+variations in the foreign exchange rate. The results are collected in Table 7 below.
+
+
+
+
+                                                19
+Table 6. Determinants of inflation in Bulgaria over the first period, April 1991 - March 1996
+
+
+                                               (I)              (II)               (III)             (IV)               (V)               (VI)
+Explanatory variables
+
+Constant                                     0.020***          0.021***           0.043***           0.024***          0.035***           0.037***
+                                            (3.646)           (4.727)            (9.012)            (4.847)           (9.272)            (9.140)
+
+Exchange rate variation                      0.223***          0.191***             _                0.184***          0.202***           0.256***
+                                            (3.531)           (3.219)                               (2.727)           (2.758)            (3.404)
+
+Exchange rate variation                      0.214***          0.249***             _                0.228***          0.149***            _
+lagged by one period                        (4.456)           (5.332)                               (4.335)           (2.912)
+
+Inflation lagged by one period               0.217***          0.233***             _                0.212***            _                 _
+                                            (3.911)           (4.171)                               (3.361)
+
+Monetary mass variation                    –0.089                _                0.000               _                  _                 _
+rate                                      (–1.047)                              (–0.003)
+
+Monetary mass variation                      0.142               _                0.237**             _                  _                 _
+rate lagged by one period                   (1.718)                              (2.172)
+
+Variable Dummy05:1992                        0.092***          0.090***             _                 _                  _                 _
+                                            (4.321)           (4.145)
+
+R²                                           0.579             0.540              0.078             0.396              0.274              0.166
+Breusch-Godfrey test (stat. LM)              4.111             2.791             15.773#            2.881              4.139              5.734#
+
+*** and ** significant at critical 1% and 5% levels. Student’s statistics are in brackets. # indicates autocorrelation at 5% level, the test is conducted
+for a maximum lag of order 4.
+
+
+                                                                           20
+Table 7. Results on shortened samples of the first period13
+
+                                                     (V)                   (Va)              (Vb)
+                                            04:1991–03:1996           01:1992–03:1996   06:1992–03:1996
+     Explanatory variables
+
+     Constant                                       0.035***               0.030***          0.026***
+
+     Exchange rate variation                        0.202***               0.203**           0.215***
+
+     Exchange rate variation                        0.149***               0.334***          0.382***
+     lagged by one period
+
+     R²                                             0.274                  0.470             0.608
+     Observations                                    60                      51               46
+
+ *** and ** significant at critical 1% and 5% levels.
+
+      The econometric results for the hyperinflationary period are collated in Table 8. Here we
+use the same order and the same explanatory variables as for the first period – with the obvious
+exception of the exclusion of the qualitative variable – so as to maintain a degree of
+homogeneity in the analysis. It should be noted immediately that, in the context of the general
+model (I), the monetary variables still display no significance. By subtracting these, it is
+interesting to observe that the explanatory power of models (II) and (IV) is not significantly
+weakened since the R2 values remain very high at 91.2 and 91%, respectively.
+      Model (III), exclusively based on elements relating to the quantity theory of money, yields
+inconclusive results for several reasons. First, the determination coefficient, of the order of 60%,
+remains very largely below that of the alternative models, resting on the importance of the
+foreign exchange rate and even on pass-through phenomena. Next, the presence of very high
+autocorrelation of errors (at minimum of order 4) suggests that the specifications that attribute
+a leading role to the variation in the quantity of money in explaining inflation are fragile in the
+case of Bulgaria. Finally, other regressions, not displayed in Table 8, show that the presence of
+the foreign exchange rate as an explanatory variable systematically ousts the significance of the
+monetary mass in determining inflation.
+      In contradistinction, models (V) and (VI) take account only of explanations involving
+variations in the foreign exchange rate. Here again, we observe very high R2 values in the
+absence of autocorrelation of errors. Finally, specification (IV) is the one that captures our
+attention because its explanatory power, in connection with the foregoing sections, remains
+greater than the other models.
+      The econometric analyses performed above adduce some evidence in favour of our
+amended sequence with respect to the periods of high inflation and hyperinflation in Bulgaria.
+Variations in the foreign exchange rate go a long way towards explaining the flight from
+domestic currency and the price explosion. Moreover, this explanatory power grows within the
+first period and between the two periods under consideration. Consequently, the initial effect
+of the transition on the price dynamic is progressively attenuated, giving way to a determination
+by the foreign exchange rate.
+
+
+
+13
+     Student’s statistics are omitted so as not to overburden the table.
+
+
+                                                            21
+Table 8. The determinants of hyperinflation in Bulgaria over the second period, April 1996–June 1997
+
+
+                                              (I)               (II)              (III)             (IV)               (V)                (VI)
+Explanatory variables
+
+Constant                                   –0.038             –0.041              0.003            –0.037             –0.002              0.051
+                                          (–0.753)           (–1.078)            (0.033)          (–1.028)           (–0.070)            (1.160)
+
+Exchange rate variation                      0.669***          0.828***             _               0.816***           0.763***           0.754***
+                                            (3.078)          (10.142)                             (10.865)            (8.685)            (6.788)
+
+Exchange rate variation                      0.065            –0.083                _                 _                0.260**             _
+lagged by one period                        (0.241)          (–0.484)                                                 (2.970)
+
+Inflation lagged by one period               0.318             0.458**              _               0.369***             _                 _
+                                            (0.959)           (2.226)                              (3.361)
+
+Monetary mass variation rate                 0.604               _                2.490***            _                  _                 _
+                                            (0.790)                              (4.325)
+
+Monetary mass variation rate               –0.450                _               –1.219**             _                  _                 _
+lagged by one period                      (–0.738)                              (–2.215)
+
+R²                                           0.918             0.912              0.609             0.910              0.873              0.779
+Breusch-Godfrey test (stat. LM)              4.935             5.381              7.912#            3.159              4.384              5.685
+
+*** and ** significant at critical 1% and 5% levels. Student’s statistics are in brackets. # indicates autocorrelation at 5% level, the test is performed
+for a maximum lag of order 4.
+
+
+
+
+                                                                           22
+6. Conclusion: an amended sequence…that does not challenge the generic reflection
+
+     This article reveals the trajectory leading to the hyperinflation observed in Bulgaria at the
+beginning of 1997. The inflationary shock of the transition acted as the seed bed on which the
+dynamic was able to develop, while the fragility of the banking sector and the monetary policy
+conducted were to nurture and then nourish Bulgarians’ loss of confidence in their currency and
+force them to look for substitutes - in this case, for foreign currencies. When loss of confidence
+crystallized, hyperinflation occurred.
+     The results of this study enhance the post-Keynesian theoretical framework explaining
+hyperinflation: the distributive conflict can be replaced by the transition shock in order to
+explain the high levels of inflation observed from the beginning of the sequence. This high
+inflation justifies the introduction of mechanisms for indexing prices and wages and changes in
+expectations. Econometric verifications prove that the foreign exchange dynamic is decisive in
+the hyperinflationary process. This confirms that hyperinflation must be understood as the
+rejection of domestic currency in favour of some foreign currency, justifying, if it is to be
+intelligible, a historical analysis in terms of political economy. A quantitative criterion would
+not be sufficient to define or identify hyperinflation.
+     Bulgarian hyperinflation was triggered when the country was in a situation of manifest
+uncertainty, immersed in a sizeable economic and political crisis. The monetary crisis was
+inseparable from the political crisis. The monetary crisis in its inflationary dimension came to
+an end with the introduction of a currency board. This monetary regime officialized the resort
+to foreign currencies (in this case the German mark) in order to instil the necessary confidence
+in the monetary unit.
+
+
+References
+
+Andreff W. (1995), “Quand la stabilisation dure… L’hypothèse d’une inflation inertielle en
+Europe centrale et orientale”, Revue Économique, vol.45, pp. 819-832.
+
+Arestis P., Milberg W. (1994), “Degree of Monopoly, Pricing and Flexible Exchange Rates”,
+Journal of Post-Keynesian Economics, vol. 16, pp. 167-188.
+
+Aujac, H. (1950), “L’Influence du Comportement des Groupes Sociaux sur le Développement
+d’une Inflation”, Économie Appliquée, vol. 2, pp. 279-300.
+
+Berlemann, M., Nenovsky, N. (2004), “Lending of First versus Lending of Last Resort: The
+Bulgarian Financial Crisis of 1996/1997”, Comparative Economic Studies, vol. 46, pp. 245-
+271.
+
+Borensztein, E., Demekas, D.G., Ostry J. (1993), “An Empirical Analysis of the Output
+Declines in Three Eastern European Countries”, IMF Staff Papers, vol.40, pp. 1-31.
+
+Bresciani-Turroni, C. (1968), The Economics of Inflation, Northampton, John Dickens (3rd
+edition) (first edition in English 1931).
+
+Bulgarian National Bank, Annual Report, 1991-1997.
+
+Burdekin, R.C.K., Burkett, P. (1998), “Economic History and Econometrics: a Cautionary Note
+from the Hyperinflation Front”, Applied Economics Letters, vol. 5, p. 251-254.
+
+
+                                               23
+Cagan, P. (1956), “The Monetary Dynamics of Hyperinflation”, in Studies in the Quantity
+Theory of Money, Friedman M. (ed), Chicago, Chicago University Press, pp. 25-117.
+
+Câmara, A., Vernengo, M. (2001), “The German Balance of Payment School and the Latin
+American Neo-Structuralists”, in Credit, Interest Rates and the Open Economy, Rochon L.P.,
+Vernengo, M. (eds.), Cheltenham, Edward Elgar, pp. 143-159.
+
+Carvalho F.J. (1991), “A Post Keynesian Approach to Inflation, High Inflation and
+Hyperinflation”, in Economic Problems of the 1990s, Davidson P. and Kregel J.A. (eds.),
+Cheltenham, Edward Elgar, pp. 69-84.
+
+Cassetti M. (2003), “Bargaining Power, Effective Demand and Technical Progress: a Kaleckian
+Model of Growth”, Cambridge Journal of Economics, vol. 27, pp. 449-464.
+
+Charles, S., Marie, J. (2016), “Hyperinflation in a Small Open Economy with a Fixed Exchange
+Rate: a Post-Keynesian View”, Journal of Post-Keynesian Economics, vol. 39, pp. 361-386.
+
+Claessens, S., Peters, R.K. (1997), “State Enterprise Performance and Soft Budget Constraints:
+the Case of Bulgaria”, Economics of Transition, vol. 5, pp. 305-322.
+
+Dilova-Kirkowa, S. (1999), “Corporate Governance in Bulgarian State-owned Banks (1992-
+1997)”, Post-Communist Economies, vol.11, pp. 253-265.
+
+Dobrinsky, R. (2000), “The Transition Crisis in Bulgaria”, Cambridge Journal of Economics,
+vol. 24, pp. 581-602.
+
+Engle, R.F., Granger, C.W.J. (1987), “Co-Integration and Error Correction: Representation,
+Estimation and Testing”, Econometrica, vol. 55, pp. 251-276.
+
+Frenkel, R. (1979), “Decisiones de Precio en Alta Inflación”, Desarrollo Económico, vol. 19,
+pp. 291-330.
+
+Galbraith J.K. (1957), “Market Structure and Stabilization Policy”, Review of Economics and
+Statistics, vol. 31, pp. 124-133.
+
+Gulde A.M. (1999), “The Role of the Currency Board in Bulgaria’s Stabilization ”, Finance
+and Development, vol.36, p. 1-8.
+
+Kaldor N. (1982), The Scourge of Monetarism, Oxford, Oxford University Press.
+
+Kalecki, M. (1954), Theory of Economic Dynamics, London, Allen and Unwin.
+
+Kolodko, G., McMahon, W. (1987), “Stagflation and Shortageflation: A Comparative
+Approach”, Kyklos, vol. 40, pp. 176-197.
+
+Kornai, J. (1979), “Resource-Constrained vs Demand-Constrained Systems”, Econometrica,
+vol. 47, pp. 801-819.
+
+Kornai, J. (1986), “The Soft Budget Constraint”, Kyklos, vol. 39, pp. 3-30.
+
+
+
+                                              24
+Marie, J. (2014), “Hyperinflation Argentine de 1989: une Interprétation Post-Keynésienne”,
+Revue de la Régulation, vol. 15.
+
+Michael, P., Nobay, A.R., Peel, D.A. (1994), “The German Hyperinflation and the Demand for
+Money Revisited”, International Economic Review, vol. 35, pp. 1–22.
+
+OECD (1997), “OECD Economic Surveys: Bulgaria. Special Features, Financial Stability, The
+Banking Sector Restructuring”, DOI: 10.1787/eco_surveys-bgr-1997-en.
+
+Orléan, A. (2007), “Crise de souveraineté et crise monétaire : l’hyperinflation allemande des
+années 1920”, dans La monnaie dévoilée par ses crises, vol.II, Théret B. (dir.), Paris, Éditions
+de l’école des hautes études en sciences sociales, pp. 187-219.
+
+Petrović, P., Bogetić, Ž, Vujošević, Z. (1999), “The Yugoslav Hyperinflation of 1992-1994:
+Causes, Dynamics, and Money Supply Process”, Journal of Comparative Economics, vol. 27,
+pp. 335-353.
+
+Poirot, C. (2003), “Did the Currency Board Resolve Bulgaria’s Financial Crisis of 1996-97?”,
+Journal of Post-Keynesian Economics, vol. 26, pp. 27-55.
+
+Robinson, J. (1951), “The Economics of Hyperinflation”, in Collected Economic Papers,
+Robinson J., vol. 1, Oxford, Basil Blackwell, pp. 69-77.
+
+Rowthorn, R. (1977), “Conflict, Inflation and Money”, Cambridge Journal of Economics, vol.
+1, pp. 215-229.
+
+Sapir, J. (1993), “Formes et Nature de l’Inflation”, Économie Internationale, vol. 34, pp. 25-
+65.
+
+Sapir, J. (1995), “L’inflation en Russie: inadaptation des politiques de stabilisation et spécificité
+du processus inflationniste”, Revue d’études comparatives Est-Ouest, vol. 2, pp. 113-159.
+
+Setterfield, M. (2007), “The Rise, Decline and Rise of Incomes Policies in the US during the
+Post-War Era: an Institutional-Analytical Explanation of Inflation and the Functional
+Distribution of Income”, Journal of Institutional Economics, vol. 3, pp. 127-146.
+
+Sgard, J. (1999), “Crise Financière, Inflation et Currency Board en Bulgarie (1991-1998) : les
+Leçons d’une Transition Indisciplinée”, Revue d’études comparatives Est-Ouest, vol. 30, pp.
+215-235.
+
+Slavova, S. (2003), “Money Demand during Hyperinflation and Stabilization: Bulgaria, 1991-
+2000”, Applied Economics, vol. 35, pp. 1303-1316.
+
+Susjan A., Lah M. (1997), “Inflation in the Transition Economies: the Post-Keynesian View”,
+Review of Political Economy, vol. 9, pp. 381-393.
+
+Taylor, L. (1994), “The Market Met Its Match: Lessons for the Future from the Transition’s
+Initial Years”, Journal of Comparative Economics, vol. 19, pp. 64-87.
+
+
+
+
+                                                 25
+Taylor L. (2004), Reconstructing Macroeconomics: Structuralists Proposals and Critiques of
+the Mainstream, Cambridge (MA), Harvard University Press.
+
+Vahabi, M. (1995), “La contrainte budgétaire lâche et la théorie économique”, Revue d’études
+comparatives Est-Ouest, vol. 36, pp. 143-176
+
+Weintraub S. (1978), Capitalism’s Inflation and Unemployment Crises, Reading (MA),
+Addison Wesley.
+
+
+
+
+                                            26
+

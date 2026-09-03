@@ -1,0 +1,12 @@
+{
+  "schemaVersion":"0.1.0",
+  "status":"catalog-only",
+  "legalAccessRule":"Index lawful public material; do not ingest copyrighted full books without lawful access.",
+  "taxonomies":["books","book_chapters","academic","working_papers","johns_hopkins","cato","currency_boards","dollarization","hyperinflation","banking","money_supply","exchange_rates","public_debt","supply_side","taxation","markets","commodities","country_cases","venezuela","argentina","ecuador","zimbabwe","balkans","interviews","lectures","testimony","articles","datasets"],
+  "counterCorpus":["IMF","BIS","Federal Reserve","World Bank","OECD","central banks","academic journals","monetary economists","banking economists","sovereign-risk researchers","fiscal economists"],
+  "documentIndex":"rag/document-index.json",
+  "countryCaseIndex":"country-cases/index.json",
+  "documents":[],
+  "statuses":["KNOWN","FOUND","INGESTED","INDEXED","VERIFIED","MISSING","RESTRICTED"],
+  "note":"Document metadata is maintained in document-index.json; this registry remains the collection-level contract."
+}

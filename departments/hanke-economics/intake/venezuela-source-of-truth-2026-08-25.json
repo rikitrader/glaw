@@ -1,0 +1,45 @@
+{
+  "intake_id": "VEN-SOURCE-OF-TRUTH-20260825",
+  "country": "Venezuela",
+  "status": "IN_PROGRESS",
+  "source_truth_policy": "BCV is canonical for monetary and official-FX observations; SUDEBAN and bank statements are canonical for banking observations; parallel FX and physical-dollar circulation are separately constructed and never silently equated with official data.",
+  "retrieval_cutoff": "2026-08-25",
+  "layers": [
+    {"layer_id":"01_BCV","authority":"Banco Central de Venezuela","domains":["monetary_base","base_components","M0","M1","M2_liquidez","BCV_balance_sheet","reserves","official_FX"],"target_status":"ACQUISITION_REQUIRED"},
+    {"layer_id":"02_BANKING","authority":"SUDEBAN and individual bank statements","domains":["VES_deposits","FX_deposits","credit","reserves","capital","liquidity","NPLs","encaje","bank_level_balance_sheets"],"target_status":"ACQUISITION_REQUIRED"},
+    {"layer_id":"03_PARALLEL_FX","authority":"Observable P2P and market-marker lanes","domains":["USDT_VES","P2P_quotes","merchant_count","volume","cash_quotes","composite_parallel_rate","FX_spread"],"target_status":"MODELLED_OBSERVATION_LANE"},
+    {"layer_id":"04_DOLLARIZATION","authority":"Survey, banking, payment, and market evidence","domains":["USD_cash_estimate","USD_bank_deposits","USDT","USD_transaction_share","currency_substitution"],"target_status":"ESTIMATION_REQUIRED"},
+    {"layer_id":"05_INTERNATIONAL","authority":"IMF, World Bank, IDB, UNDP, OPEC, ECLAC","domains":["historical_backfill","validation","comparators","external_accounts"],"target_status":"HISTORICAL_VALIDATION"}
+  ],
+  "quality_classes": {
+    "A1":"BCV original",
+    "A2":"SUDEBAN original",
+    "A3":"other Venezuelan government primary source",
+    "B1":"IMF / World Bank / IDB",
+    "B2":"audited bank statement",
+    "C1":"established research organization",
+    "C2":"financial press quoting primary data",
+    "D1":"observable Binance/P2P market",
+    "D2":"parallel-rate aggregator",
+    "E1":"modeled estimate",
+    "E2":"inferred or reconstructed"
+  },
+  "acquisition_rules": [
+    "Original BCV file preferred over press quotation.",
+    "BCV liquidez monetaria is retained as VEN_BCV_LIQUIDEZ and is not silently relabeled as standardized IMF M2.",
+    "Every observation preserves observation date, publication date, revision date, original URL, local artifact, SHA-256, and retrieval timestamp.",
+    "A secondary report can enter as PROVISIONAL or DISPUTED but cannot replace the primary source of truth.",
+    "Physical USD cash, bank USD deposits, and USDT remain separate categories.",
+    "Parallel FX uses timestamp-matched observations and a documented composite method.",
+    "No current policy gate opens from a lead observation alone."
+  ],
+  "next_actions": [
+    "Acquire BCV Base Monetaria tables and component series.",
+    "Acquire BCV Liquidez Monetaria releases and official FX files.",
+    "Acquire current SUDEBAN system reports and bank statements.",
+    "Build encaje legal event table from BCV resolutions.",
+    "Build timestamped parallel FX/P2P observation table.",
+    "Acquire Mercantil, Banesco, Banco de Venezuela, Provincial, Bancamiga, BNC, Banplus, Exterior, Bancaribe, and Tesoro reports.",
+    "Reconcile current observations against IMF historical series and existing secondary context."
+  ]
+}

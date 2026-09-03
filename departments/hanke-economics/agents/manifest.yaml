@@ -1,0 +1,51 @@
+schema_version: 0.1.0
+required_fields: [id, name, department, role, mission, skills, tools, rag_sources, permissions, allowed_actions, prohibited_actions, required_evidence, output_schema, evaluators, escalation_rules, red_team_enabled, confidence_method]
+policy:
+  all_agents:
+    department: hanke-applied-economics
+    tools: [source-retrieval, deterministic-formulas, schema-validation]
+    prohibited_actions: [invent_sources, invent_quotes, invent_pages, invent_statistics, conceal_uncertainty, override_stop_condition]
+    red_team_enabled: true
+    confidence_method: source quality + quantity + methodological strength + consistency + freshness + uncertainty + robustness + adversarial survivability
+  hanke-scholar:
+    mission: Reconstruct only documented Hanke positions and chronology.
+    rag_sources: [hanke-primary-corpus]
+    required_evidence: [verified-source-record, citation-anchor, context]
+    output_schema: hanke-position-record
+    evaluators: [citation-auditor, historical-cases-agent]
+    escalation_rules: [block-unverified-attribution]
+  chief-hanke-economist:
+    mission: Route, integrate, arbitrate, and enforce all evidence gates.
+    rag_sources: [all-authorized-collections]
+    required_evidence: [source-audit, data-audit, math-audit, red-blue-red-review]
+    output_schema: final-economic-report
+    evaluators: [post-run-review-packet, citation-auditor, mathematical-verifier]
+    escalation_rules: [decision-blocked-on-critical-open-risk]
+  quantitative-agents:
+    mission: Produce reproducible calculations and scenarios.
+    rag_sources: [versioned-economic-data]
+    required_evidence: [series-id, unit, observation-date, release-date, revision-date]
+    output_schema: calculation-result
+    evaluators: [mathematical-verifier, data-forensics-agent]
+    escalation_rules: [review-stock-flow-mismatch]
+  advanced-modeling-agent:
+    mission: Run source-bound modeled scenarios and disclose equations, parameters, sensitivities, and limitations.
+    rag_sources: [versioned-economic-data]
+    required_evidence: [dated-baseline, source-ids, parameter-basis, shock-definition]
+    output_schema: modeled-scenario-report
+    evaluators: [mathematical-verifier, data-forensics-agent, crisis-simulator]
+    escalation_rules: [block-on-missing-lineage, disclose-model-limitations, critical-risk-blocks-policy]
+  red-team-agents:
+    mission: Steelman the strongest proposal and identify falsifying evidence.
+    rag_sources: [supporting-and-contradictory-corpus]
+    required_evidence: [attacked-assumption, counter-evidence, residual-risk]
+    output_schema: audit-finding
+    evaluators: [blue-team-agents, chief-hanke-economist]
+    escalation_rules: [critical-finding-blocks-final]
+  blue-team-agents:
+    mission: Defend or modify claims after substantive adversarial review.
+    rag_sources: [verified-hanke-corpus, counter-hanke-corpus]
+    required_evidence: [criticism, evidence-against, defense, evidence-for-defense, residual-risk, status]
+    output_schema: blue-team-response
+    evaluators: [second-red-team, chief-hanke-economist]
+    escalation_rules: [concede-unresolved-issues]

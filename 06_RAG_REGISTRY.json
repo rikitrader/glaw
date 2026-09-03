@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "0.1.0",
+  "pipelines": [{
+    "id":"rag:source-locked",
+    "status":"confirmed",
+    "source":"matter workpapers/source-universe.jsonl",
+    "stages":["provenance/hash","lexical retrieval","citation-graph retrieval","verification","red-team","governor decision"],
+    "semanticEmbeddings":"unknown/unavailable unless explicitly configured",
+    "vectorStore":"not present in current repository",
+    "permissionFiltering":"not evidenced as a RAG-stage capability",
+    "citationValidation":"confirmed"
+  }]
+}

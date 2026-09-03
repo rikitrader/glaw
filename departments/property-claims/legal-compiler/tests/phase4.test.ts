@@ -1,0 +1,14 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { classifyIssue } from '../core/classifier.ts';
+import { generateBenchmarkCatalog } from '../benchmarks/generator.ts';
+import { LegalCompilerService, LegalRuleEvaluator } from '../core/services.ts';
+import { assessProductionReadiness } from '../core/readiness.ts';
+import { rejectExecutableRulePayload, safeJsonParse } from '../security/serialization.ts';
+import { LEGAL_API } from '../core/api.ts';
+test('issue classifier emits review-required candidates without deciding law',()=>{const results=classifyIssue('Does matching and depreciation apply?');assert.equal(results.length,2);assert.ok(results.every((item)=>item.humanReview));});
+test('benchmark generator creates 663 explicit research-required cells',()=>{const catalog=generateBenchmarkCatalog('2026-01-01');assert.equal(catalog.length,51*13);assert.ok(catalog.every((item)=>item.expectedClassification==='RESEARCH_REQUIRED'));});
+test('service façade exposes deterministic rule evaluation and unresolved decisions',()=>{const evaluator=new LegalRuleEvaluator();assert.equal(evaluator.evaluate({ruleId:'R',jurisdiction:'FL',issue:'MATCHING',validity:{validFrom:'2020',validTo:null,systemFrom:'2020',systemTo:null},priority:1,if:{all:[],any:[],not:[]},then:{classification:'X',effects:[]},exceptions:[],authorityRefs:['A'],policyDependencies:[],factDependencies:[],confidence:90,humanReviewConditions:[],status:'AUTHORITY_VERIFIED'},{}),true);const service=new LegalCompilerService();assert.equal(service.compile({claimId:'C',jurisdictionCandidates:['FL'],resolvedJurisdiction:'FL',policyEffectiveDate:null,policyExpirationDate:null,dateOfLoss:'2026-01-01',issue:'MATCHING',materialFacts:{}},{rules:[],propositions:[],authorities:[]}).status,'RULE_UNRESOLVED');});
+test('production readiness requires all independent gates',()=>{const result=assessProductionReadiness({authorities:[],rules:[],citationFailures:0,benchmarkPassed:false,redBluePassed:false,temporalPassed:false,humanApproved:false,conflicts:0});assert.equal(result.ready,false);assert.ok(result.reasons.length>=5);});
+test('security rejects executable rule content and malformed JSON',()=>{assert.ok(rejectExecutableRulePayload({if:'eval(1)'}).length>0);assert.throws(()=>safeJsonParse('{bad'),/invalid JSON/);});
+test('API surface includes compile, evaluate, explain, compare, and citation verification',()=>{assert.equal(LEGAL_API.compile,'POST /legal/compile');assert.equal(LEGAL_API.explain,'GET /legal/rules/:id/explain');assert.equal(LEGAL_API.verifyCitation,'POST /legal/verify-citation');});

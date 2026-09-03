@@ -1,0 +1,14 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { canAdvance, confidenceProfile, policyFirstGuard, whiteTeam } from '../src/engine.ts';
+import { normalizeEstimate, normalizeInvoice, registerDocument } from '../src/ingest.ts';
+import type { Argument, ClaimDigitalTwin } from '../src/domain.ts';
+
+const claim = { claimId:'CLM-TEST', carrier:'Carrier', insured:'Insured', property:{propertyId:'P-1',address:'UNKNOWN',state:'TX',rooms:[],status:'KNOWN' as const}, lossDate:'2026-01-01', reportedDate:'2026-01-02', causeOfLoss:'water', policyId:'POL-1', policyPeriod:'UNKNOWN', parties:[], documents:[], timeline:[], status:'KNOWN' as const };
+const twin = (overrides: Partial<ClaimDigitalTwin> = {}): ClaimDigitalTwin => ({ claim, evidence:[], causes:[], damages:[], estimates:[], invoices:[], equipment:[], moisture:[], arguments:[], status:'KNOWN', ...overrides });
+
+test('document registry refuses unverifiable or mutable source records', () => { assert.throws(() => registerDocument({docId:'D-1',filename:'x.pdf',sha256:'bad',documentType:'PDF',relevance:[],originalPath:'raw/x.pdf'}), /SHA256/); });
+test('normalizers preserve unknowns and calculate totals transparently', () => { const estimate = normalizeEstimate({estimateId:'E-1',source:'carrier',lines:[{lineId:'L-1',description:'air mover',quantity:2,unitPrice:50,rcv:100,depreciation:0}]}); assert.equal(estimate.totalRcv,100); assert.equal(estimate.lines[0].selector,'UNKNOWN'); const invoice = normalizeInvoice({invoiceId:'I-1',vendor:'V',invoiceDate:'2026-01-03',lines:[{lineId:'IL-1',description:'air movers',quantity:2,rate:50}]}); assert.equal(invoice.total,100); });
+test('policy-first guard blocks estimate reasoning without policy', () => { assert.ok(policyFirstGuard(twin()).some((item) => item.includes('policy'))); assert.equal(canAdvance('POLICY_LAW', twin()).ok, false); });
+test('confidence cannot be high when a critical dependency is weak', () => { assert.equal(confidenceProfile({fact:95,policy:98,legal:90,causation:25,scope:90,price:90}).overall,'UNDETERMINED'); });
+test('white team records partial support and missing evidence', () => { const issue = { issueId:'ISS-1',claimId:'CLM-TEST',issueType:'EQUIPMENT',description:'equipment duration',contractorPosition:'logs support two days',carrierPosition:'one day is enough',policyAuthority:[],legalAuthority:[],technicalAuthority:[],evidenceFor:['E-1'],evidenceAgainst:[],redTeam:{position:'',strongestAttack:'',survives:null,evidenceRefs:[]},blueTeam:{position:'',strongestAttack:'',survives:null,evidenceRefs:[]},financialImpact:{},confidence:confidenceProfile({fact:50,policy:0,legal:0,causation:50,scope:50,price:50}),missingInformation:[],humanReview:true } satisfies Argument; const finding = whiteTeam(issue); assert.equal(finding.disposition,'PARTIALLY_SUPPORTED'); assert.ok(finding.additionalEvidenceNeeded.length > 0); });

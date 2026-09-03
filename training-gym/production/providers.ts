@@ -1,0 +1,6 @@
+export interface ProviderRequest { messages: readonly { role: string; content: string }[]; tools?: readonly Record<string, unknown>[]; temperature?: number; maxTokens?: number; }
+export interface ProviderResponse { provider: string; model: string; text: string; toolCalls: readonly { name: string; arguments: Record<string, unknown> }[]; usage: { inputTokens: number; outputTokens: number }; latencyMs: number; requestId?: string; finishReason?: string; }
+export interface ModelProvider { readonly name: string; complete(request: ProviderRequest): Promise<ProviderResponse>; }
+export class ProviderError extends Error { readonly retryable: boolean; readonly status?: number; readonly requestId?: string; constructor(message: string, retryable: boolean, status?: number, requestId?: string) { super(message); this.retryable = retryable; this.status = status; this.requestId = requestId; } }
+export class DeterministicProvider implements ModelProvider { readonly name = 'deterministic-test'; constructor(private readonly response: ProviderResponse) {} async complete(): Promise<ProviderResponse> { return structuredClone(this.response); } }
+export function classifyProviderStatus(status: number): boolean { return status === 408 || status === 409 || status === 425 || status === 429 || status >= 500; }

@@ -1,0 +1,411 @@
+                              SAE./No.233/April 2023
+                             /October 2021
+
+
+
+
+UNITED STATES: A GOLDEN GROWTH
+ RATE AND CREDIT COUNTERPARTS
+           ANALYSIS
+
+
+ Steve H. Hanke, John Greenwood, & Qiqin Sun
+   United States: A Golden Growth Rate and Credit Counterparts Analysis
+
+                     By Steve H. Hanke, John Greenwood, and Qiqin Sun
+
+                                         About the Series
+
+The Studies in Applied Economics series is under the general direction of Prof. Steve H. Hanke,
+Founder and Co-Director of the Johns Hopkins Institute for Applied Economics, Global Health
+and the Study of Business Enterprise (hanke@jhu.edu). The views expressed in each working
+paper are those of the authors and not necessarily those of the institutions’ that the authors are
+affiliated with.
+
+
+                                        About the Authors
+
+Steve H. Hanke is a Professor of Applied Economics and Founder & Co-Director of The Johns
+Hopkins Institute for Applied Economics, Global Health, and the Study of Business Enterprise in
+Baltimore. Prof. Hanke is a well-known currency reformer, and a currency and commodity trader.
+Prof. Hanke served on President Reagan’s Council of Economic Advisers, has been an adviser to
+five foreign heads of state and five foreign cabinet ministers, and has held a cabinet-level rank as
+a state counselor in both Lithuania and Montenegro. He has been awarded seven honorary
+doctorate degrees and is an Honorary Professor at four foreign institutions. He was President of
+Toronto Trust Argentina in Buenos Aires in 1995, when it was the world’s best-performing mutual
+fund. Currently, he serves as Chairman of the Supervisory Board of Advanced Metallurgical Group
+N.V. in Amsterdam. In 1998, he was named one of the twenty-five most influential people in the
+world by World Trade Magazine. In 2020, Prof. Hanke was named a Knight of the Order of the
+Flag.
+
+
+John Greenwood was until December 2021 the Chief Economist of Invesco Ltd., a global asset
+management company. As editor of the Asian Monetary Monitor over the period 1977-96, he is
+widely credited as the designer of the restored currency board system in Hong Kong at the time of
+the currency crisis in 1983, a model for numerous subsequent currency board systems. Holding an
+MA and Honorary Doctorate from the University of Edinburgh, he is the author of “Hong Kong’s
+
+
+                                                  1
+Link to the US Dollar – Origins and Evolution” (Hong Kong University Press, 2007 and 2022).
+He has been a Fellow at the Johns Hopkins Institute for Applied Economics, Global Health, and
+the Study of Business Enterprise since June 2016.
+
+
+Qiqin Sun (qsun20@jhu.edu) is a sophomore at the Johns Hopkins University in Baltimore,
+pursuing majors in Economics, with a minor in applied maths & statistics. He contributed to this
+paper as Research Assistant of the Monetary Analysis Team at the Institute for Applied Economics,
+Global Health, and the Study of Business Enterprise in Spring 2023. He will graduate in May 2025.
+
+
+                                           Abstract
+
+This paper presents a Golden Growth Rate (GGR) analysis of the United States for the period
+2010 through 2019. A credit counterpart analysis for the period 2009 through 2022 is also
+presented with the purpose of analyzing post-financial-crisis monetary growth.
+
+
+
+
+                                               2
+SECTION 1: US Golden Growth Rate (GGR) Analysis1
+
+The GGR is the growth rate of the money supply that is consistent with hitting a defined inflation
+target. The deduction of the United States’ GGR uses data from the 2010-2019 period to exclude
+the abnormal shocks of the COVID-19 pandemic on economic activities.
+
+Calculation of the GGR features the income form of the Quantity Theory of Money (QTM):
+MV=Py, where M stands for the money supply; V stands for the average number of times the
+money stock is used in income transactions per unit time; P stands for the price level; y stands
+for real GDP. To operationalize the QTM, we can transform the income form into the percent-
+change form: ΔM + ΔV = ΔP + Δy.2
+
+One can calculate the GGR by rearranging the Percent-Change Form as: ΔM = ΔP + Δy – ΔV,
+where ΔM represents the GGR in broad money supply, M2.3 In this expression, ΔP denotes the
+annual inflation target of the Federal Reserve;4, 5 Δy is the average year-over-year (YoY)
+percentage change in real GDP in the United States. To obtain change in income velocity ΔV, we
+                                                                            !"# %& '()* +%,-"). /01
+first divide nominal GDP figures by the year-end M2 money supply, ! =            !"# %& '()* 23
+                                                                                                    .
+                                                                                                  4(6)84(681)
+Then, we calculate discrete percentage changes in income velocity, #!(%) = 4(681) , and take
+the average of such changes as ΔV. Inflation rate data, real GDP growth, and nominal GDP are
+retrieved from the Economic Intelligence Unit.6
+
+Then, we are able to plug in US economic statistics and calculate the GGR that is consistent with
+hitting the 2% inflation target. Between 2010 and 2019, the average US real GDP growth rate
+was 2.25%, while the average change in income velocity was -2.01%. Thus, based on the
+percent-change-form of the QTM, the GGR for M2 is ∆" = ∆$ + ∆& − ∆( = 2% + 2.25% - (-
+2.01%) = 6.26% per year. In reality, the average annual rate of change in M2 was 6.09% over
+the 2010-2019 period, slightly lower than the GGR. As a result, the average annual CPI inflation
+rate of the United States was 0.26 percentage points lower than the inflation target of 2%.
+
+The graphs below show the time paths of US annual inflation rates compared to the inflation
+target and annual M2 growth rates compared to the GGR from 2010 through 2019.
+
+
+
+
+1
+  For treatment of the Quantity Theory of Money as it relates to Golden Growth Rates, see Greenwood-Hanke (2021)
+https://onlinelibrary.wiley.com/doi/abs/10.1111/jacf.12479
+2
+  For a derivation of the percent change form, see: Friedman 1987
+https://miltonfriedman.hoover.org/internal/media/dispatcher/214346/full
+3
+  Federal Reserve Economic Data. M2. https://fred.stlouisfed.org/series/M2SL
+4
+  Board of Governors of the Federal Reserve System (2012). “Statement on Longer-Run Goals and Monetary Policy Strategy.”
+https://www.federalreserve.gov/monetarypolicy/files/fomc_longerrungoals.pdf
+5
+  The Federal Reserve announced its long-run inflation target in 2012 to be 2% on the Personal Consumption Expenditure Price
+Index (PCE). For simplicity, we apply the 2% target rate to CPI-based inflation statistics.
+6
+  Economist Intelligence Unit (EIU). Data. https://viewpoint.eiu.com/data/
+
+
+                                                              3
+4
+SECTION 2: Framework of Credit Counterpart (CC) Analysis – An Asset Approach7
+
+
+Credit Counterpart analysis reveals the drivers of changes in broad money supply. The monetary
+liabilities constituting M28 have counterparts on the asset side of commercial banks - bank lending,
+securities holdings, reserve assets, and residuals adjusting for discrepancies and omitted items.
+Expressed in terms of changes, we have:
+
+Liability side (of central banks):
+   1. Δ Broad Money = Δ Bank deposits + Δ Cash in circulation with the public, and
+
+Asset side (of commercial banks):
+   2. Δ Broad Money = Δ Commercial Bank Lending + Δ Securities (held by the banks) + Δ
+        Commercial bank reserves at the central bank +/- Δ Others (net)
+
+The second equation specifies the change in broad money supply as a sum of changes in major
+categories of assets held by commercial banks. Our analysis focuses on how market forces and
+the Fed’s policies lead to changes in M2 through changes in commercial bank assets over time.
+The following section consists of a brief overview of US credit counterparts using annual data
+and a detailed analysis of how the Fed’s operations influenced M2 through commercial banks’
+lending activities.
+
+For our analysis, we use data from the nine asset accounts in the consolidated balance sheet of
+US commercial banks from 2009 through the end of 2022. This is released periodically in H.8
+Tables by the Board of Governors of the Federal Reserve.9 All data are not seasonally adjusted
+and retrieved from the last weekly updates of each year or month from 2009 through 2022.
+Figure 3 shows the changes in M2 and major types of commercial bank assets in the United
+States from 2009 through 2022, using monthly data.
+
+The accounts can be categorized into four types:
+
+
+7
+  For logic of the Credit Counterpart Analysis, see: Hanke (2017). https://www.e-elgar.com/shop/usd/money-in-the-great-
+recession-9781784717827.html
+8
+  U.S M2 = (1) currency outside the U.S. Treasury, Federal Reserve Banks, and the vaults of depository institutions + (2) demand
+deposits at commercial banks (excluding those amounts held by depository institutions, the U.S. government, and foreign banks
+and official institutions) less cash items in the process of collection and Federal Reserve float + (3) other liquid deposits,
+consisting of other checkable deposits (or OCDs, which comprise negotiable order of withdrawal, or NOW, and automatic
+transfer service, or ATS, accounts at depository institutions, share draft accounts at credit unions, and demand deposits at thrift
+institutions) and savings deposits (including money market deposit accounts) + (4) small-denomination time deposits (time
+deposits in amounts of less than $100,000) less individual retirement account (IRA) and Keogh balances at depository institutions
++ (5) balances in retail money market funds (MMFs) less IRA and Keogh balances at MMFs.
+Board of Governors of the Federal Reserve System. Money Stock Measures – H.6
+https://www.federalreserve.gov/releases/h6/current/default.htm
+9
+  Board of Governors of the Federal Reserve System. Assets and Liabilities of Commercial Banks in the United States - H.8..
+https://www.federalreserve.gov/releases/h8
+
+
+                                                                5
+(1) Loans and Leases – sum of real estate loans, commercial and industrial loans, consumer
+    loans, all other loans and leases, and loans to commercial banks minus allowance.
+(2) Securities – treasury and agency securities, plus other securities.
+(3) Reserve and Cash – the cash assets held by commercial banks including deposits at the Fed.
+(4) Residuals – M2 less the sum of the three categories of assets identified above.
+
+The credit counterpart analysis breaks down the policies of the Federal Reserve into two major
+periods - the pre-pandemic period (2009-2019) and the pandemic period (2020-2022). Each
+period is made up of two stages - monetary easing at first and subsequent tightening. Shortly
+recapping the policy tools of the Fed is necessary before jumping into analysis.
+
+
+
+
+The following is a summary of the Fed’s monetary policies used in the pre-pandemic period:
+  ● Quantitative Easing (QE): QE is the monetary policy tool whereby the central bank
+       purchases a large, planned amount of government bonds or other securities to offer
+       liquidity in the financial market. In QE1 (November 2008), the Fed initially purchased
+       $600 billion of mortgage-backed securities and then ratcheted up the scale and scope of
+       the assets that it purchased. In QE2 (November 2010), the Fed aimed to buy $600 billion
+       of Treasury securities by the end of June 2011. In QE3 (September 2012), the Federal
+       Reserve planned to additionally conduct $40 billion in open-ended purchases of
+
+
+                                               6
+       mortgage-backed securities per month, and the volume of purchase was adjusted
+       subsequently with regard to economic conditions.10
+     ● Changes in the Fed’s Operating Procedures: To establish the federal funds market as
+       the principal target of monetary policies, the Fed started to pay interest on banks’ reserve
+       deposits at the Fed in 2008.11 It also created an overnight reverse repurchase agreement
+       (ON RRP) facility in 2014.12 Simultaneously, the Fed allowed the federal funds target to
+       rise above the zero bound for the first time after 2008.13
+     ● Quantitative Tightening (QT): QT is the reverse action of QE. After 2015, the Fed
+       aimed to stabilize its balance sheet and formally initiated a QT program in 2018 by
+       retiring some of its expired debts. The size of its balance sheet shrank rapidly in 2018
+       and 2019, but such pressure on economic activities forced QT to stop after one year.14
+
+During the COVID period, the Fed again pursued expansionary monetary policies, and with a
+typical lag, inflation followed. The following are a few policy tools the Fed used to
+overstimulate and then cool down the economy from 2020 through 2023:15
+    ● QE: The Fed set its rate of purchases to $80 billion per month in Treasuries and $40
+        billion in residential and commercial mortgage-backed securities in March 2020. The
+        pace of asset purchase remained intact until November 2021. It also purchased
+        commercial paper as part of the asset purchase program.
+    ● Federal Funds Rate: The Fed lowered the federal funds target to 0-0.25% in March
+        2020. However, as inflation hit high points afterwards, the Fed decided to lift the target
+        rate seven times consecutively in 2022, pulling it to 4.25%-4.5% at the end of the year.16
+    ● Direct Lending Programs: In 2020, the Fed started to offer more direct loans to banks
+        by cutting the discount rate from 2.25% to 0.25% to prevent bank panics. It also created
+        programs that lent directly to securities firms, state and local governments, and major
+        corporate employers.
+    ● Reserve Requirement: In March 2020, the FOMC decided to lower the reserve
+        requirement of commercial banks to 0%, which was confirmed formally in 2021.
+    ● Repo Facilities: The Fed extended the lengths and amount of its repo facilities in the
+        federal funds market and set up a permanent Standing Repo Facility to smooth money
+        markets in July 2021.
+
+
+10
+   Stephen D. Williamson (2017). “Quantitative Easing: How Well Does This Tool Work?”
+https://www.stlouisfed.org/publications/regional-economist/third-quarter-2017/quantitative-easing-how-well-does-this-tool-work
+11
+   Board of Governors of the Federal Reserve System. Interest on Reserve Balances.
+https://www.federalreserve.gov/monetarypolicy/reserve-balances.htm
+12
+   Board of Governors of the Federal Reserve System (2014). “Federal Reserve issues FOMC statement on policy normalization
+principles and plans.” https://www.federalreserve.gov/newsevents/pressreleases/monetary20140917c.htm
+13
+   Federal Reserve Economic Data. Federal Funds Target Range – Upper Limit. https://fred.stlouisfed.org/series/DFEDTARU
+14
+   Kristie M. Engemann (2019). “What is Quantitative Tightening?”
+https://www.stlouisfed.org/open-vault/2019/july/what-is-quantitative-tightening
+15
+   Eric Millstein and David Wessel (2021), “What did the Fed do in response to the COVID-19 Crisis.”
+https://www.brookings.edu/research/fed-response-to-covid19/
+16
+   Board of Governors of the Federal Reserve System. Open Market Operations.
+https://www.federalreserve.gov/monetarypolicy/openmarket.htm
+
+                                                              7
+     ● QT: As CPI inflation became troublingly high in 2021, reaching 9.1% YoY in July, the
+       Fed halted reinvestments in maturing Treasury bills and in maturing MBS each month.
+       The purchases were subject to $30 billion and $17.5 billion caps, respectively.17
+
+To give an insight into the impacts of the Fed’s operations, we can distinguish the contribution
+of changes in each category of bank assets to the changes in M2. Figure 4 on the next page
+shows the contribution of bank assets to M2 growth using annual data. For example, in January
+2016, where the contribution of reserves was -2.37 percentage points, the contribution of loans
+and leases was 5.31 points, and the contribution of residuals was 1.87 percentage points, which
+added up to 6.17% - the YoY growth rate in M2.
+
+There are a few general takeaways from Figure 4. One important observation is that
+contributions of reserves were significant only after the Fed conducted monetary expansions,
+namely in 2010-2011, 2013, and 2020-2021 periods. Another notable observation is that loans
+and leases were more important drivers of monetary expansions compared to securities, but
+changes in loans and leases were also more volatile than those of securities. Lastly,
+contributions of residuals were usually insignificant but moved drastically in 2009, 2013 and
+2020 in response to the Fed’s monetary expansions.
+
+
+
+
+17
+   Tim Sablik (2022). “The Fed Is Shrinking Its Balance Sheet. What Does That Mean?”
+https://www.richmondfed.org/publications/research/econ_focus/2022/q3_federal_reserve
+
+
+                                                            8
+We now provide more detail with monthly data. As elaborated before, we can divide the period
+of 2009-2022 into three periods: 2009-2015, 2016-2019, 2020-2022. The monthly YoY
+contributions of commercial bank assets are shown in Figure 5.18
+
+
+
+
+(1) 2009-2015: As seen in Figure 5, the effects of the three QEs were significant on reserves
+    held by commercial banks, resulting in three peaks in their contributions to the growth of
+    M2. However, QE1 did not result in the stimulation of bank lending, despite the provision of
+    plentiful reserves. Consequently, the Fed came up with QE2, which stabilized the
+    contribution of loans and leases in positive ranges in 2011, and QE3 to boost the recovery of
+    YoY increases in lending activities. Eventually, the contribution of loans and leases
+    recovered in 2012. Simultaneously, the banks were not willing to increase securities
+    holdings drastically due to the slow recovery of the economy. The contribution of residuals
+    was very positive before QE2 but declined sharply later on. Overall, growth in M2 was
+    moderate in all years aside from 2010, with most of the monetary expansion being explained
+    by the growth in commercial banks’ reserves, but not credit expansions.
+
+(2) 2016-2019: As economic activities went back to normal levels, the Fed started to stabilize
+    the size of its balance sheet after 2015 and retired parts of expired securities after 2018. As a
+    result, the contribution of reserves to M2 was mostly negative during the period. Under
+
+18
+  Data of Allowance for loans and leases is not available before July 2009, so there can be biases in YoY contribution margins
+before July 2010.
+
+
+                                                               9
+   tighter conditions in the money market, the commercial banks decelerated credit expansions
+   by reducing their lending and securities holdings. As a result of the fact that QT had created
+   a liquidity crisis, the Fed quickly abandoned its QT scheme in September 2019, and injected
+   $75 billion into the reverse repo market. With insignificant levels of residuals, the M2
+   growth rate underwent slight decreases compared to the previous period mainly because of
+   slower expansions in lending and negative changes in reserves.
+
+
+
+(3) 2020-2022: During the pandemic, the Fed cut the federal funds rate sharply between early
+    2020 and mid-2021 and conducted QE. The contribution of reserves surged up to 10% in
+    April and May 2020 and remained high throughout most of 2021. Meanwhile, the
+    commercial banks refrained from increasing their lending activities drastically as a recession
+    occurred. Instead, residuals rose quickly along with securities holdings. All credit
+    counterparts, aside from lending, supported the extremely high YoY growth rate in M2 in
+    2020 and 2021.
+
+   To counter the high inflation, resulting from excessive monetary growth in 2020-21, the Fed
+   started to lift federal funds targets and introduced QT. In consequence, the contribution of
+   reserves to the money supply abruptly fell in just a few months. The contribution of
+   securities declined, and the contribution of lending increased. The contribution of residuals
+   also plummeted almost instantly after the Fed put forth the policies. Despite the acceleration
+   in lending, the overall result of sharp decreases in the contribution margins of reserves,
+   securities, and residuals was a plummeting rate of YoY growth in M2 from above 10% in
+   December 2021 to negative levels in December 2022.
+
+
+
+
+                                                10
+References
+
+
+Board of Governors of the Federal Reserve System. Assets and Liabilities of Commercial Banks in the
+    United States - H.8. Retrieved from https://www.federalreserve.gov/releases/h8
+
+Board of Governors of the Federal Reserve System. Interest on Reserve Balances. Retrieved from
+    https://www.federalreserve.gov/monetarypolicy/reserve-balances.htm
+
+Board of Governors of the Federal Reserve System. Money Stock Measures – H.6. Retrieved from
+    https://www.federalreserve.gov/releases/h6/current/default.htm
+
+Board of Governors of the Federal Reserve System (2012). “Statement on Longer-Run Goals and
+    Monetary Policy Strategy.” Retrieved from
+    https://www.federalreserve.gov/monetarypolicy/files/fomc_longerrungoals.pdf
+
+Board of Governors of the Federal Reserve System (2014). “Federal Reserve issues FOMC statement
+    on policy normalization principles and plans.” Retrieved from
+    https://www.federalreserve.gov/newsevents/pressreleases/monetary20140917c.htm
+
+Board of Governors of the Federal Reserve System. Open Market Operations. Retrieved from
+    https://www.federalreserve.gov/monetarypolicy/openmarket.htm
+
+Economist Intelligence Unit. Data. Retrieved from https://viewpoint.eiu.com/data
+
+Federal Reserve Economic Data. M2. Retrieved from https://fred.stlouisfed.org/series/M2SL
+
+Federal Reserve Economic Data. Federal Funds Target Range – Upper Limit. Retrieved from
+    https://fred.stlouisfed.org/series/DFEDTARU
+
+Engemann, K.M. (2019). “What is Quantitative Tightening?”
+    https://www.stlouisfed.org/open-vault/2019/july/what-is-quantitative-tightening
+
+Friedman, Milton (1987). Quantity Theory of Money. In The New Palgrave: A Dictionary of
+    Economics, edited by John Eatwell, Murray Milgate, and Peter Newman, vol. 4, pp. 3-20. New
+    York: Stockton Press; and London: Macmillan, 1987. © Palgrave Macmillan.
+    https://miltonfriedman.hoover.org/internal/media/dispatcher/214346/full
+
+
+
+
+                                                  11
+Greenwood, J. and Hanke, S.H. (2021), On Monetary Growth and Inflation in Leading Economies,
+    2021-2022: Relative Prices and the Overall Price Level. Journal of Applied Corporate Finance, 33:
+    39-51. https://doi.org/10.1111/jacf.12479
+
+Hanke, S. (2017). Money in the Great Recession. Congdon, Tim, ed. Institute of International Monetary
+    Research. https://www.e-elgar.com/shop/usd/money-in-the-great-recession-9781784717827.html
+
+Millstein, E. and Wessel, D. (2021). “What did the Fed do in response to the COVID-19 Crisis.”
+    https://www.brookings.edu/research/fed-response-to-covid19
+
+Sablik, T. (2022). “The Fed Is Shrinking Its Balance Sheet. What Does That Mean?”
+    https://www.richmondfed.org/publications/research/econ_focus/2022/q3_federal_reserve
+
+Williamson, S.D. (2017). “Quantitative Easing: How Well Does This Tool Work?”
+    https://www.stlouisfed.org/publications/regional-economist/third-quarter-2017/quantitative-easing-
+    how-well-does-this-tool-work
+
+
+
+
+                                                  12
+

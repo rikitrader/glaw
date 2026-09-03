@@ -1,0 +1,46 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "glaw-control-plane-local",
+  "main": "dist/server/entry.mjs",
+  "compatibility_date": "2026-08-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "dist/client",
+    "binding": "ASSETS"
+  },
+  "vars": {
+    "APP_ENV": "local",
+    "CONTROL_PLANE_MODE": "local",
+    "CONTROL_PLANE_API_TOKEN": "local-dev-only-token",
+    "GLAW_AUDIT_SIGNING_SECRET": "local-dev-audit-secret",
+    "GLAW_AUDIT_SIGNING_KEY_ID": "local-dev-key"
+  },
+  "kv_namespaces": [
+    { "binding": "SESSION" }
+  ],
+  "d1_databases": [
+    {
+      "binding": "GLAW_DB",
+      "database_name": "glaw-control-plane-local",
+      "database_id": "local",
+      "migrations_dir": "db/migrations"
+    }
+  ],
+  "r2_buckets": [
+    {
+      "binding": "GLAW_OBJECTS",
+      "bucket_name": "glaw-control-plane-local"
+    }
+  ],
+  "queues": {
+    "producers": [
+      {
+        "binding": "GLAW_JOBS",
+        "queue": "glaw-control-plane-jobs-local"
+      }
+    ]
+  },
+  "observability": {
+    "enabled": false
+  }
+}

@@ -1,0 +1,3 @@
+APP_ENV=local
+CONTROL_PLANE_MODE=local
+LOCAL_ADMIN_EMAIL=local.admin@glaw.test

@@ -1,0 +1,30 @@
+{
+  "name": "@glaw/control-plane",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "dev:local": "wrangler dev --local --config wrangler.local.jsonc --port 8788",
+    "start:local": "npm run build && npm run dev:local",
+    "build": "astro build",
+    "check": "astro check",
+    "db:migrate:local": "wrangler d1 migrations apply GLAW_DB --local --config wrangler.local.jsonc",
+    "db:seed:local": "wrangler d1 execute GLAW_DB --local --file=db/seed/local.sql --config wrangler.local.jsonc",
+    "db:apply:local": "wrangler d1 migrations apply GLAW_DB --local --config wrangler.local.jsonc",
+    "test:local": "node scripts/local-smoke.mjs"
+    ,"test:operations": "node ../evals/operations/restore-test.mjs && node ../evals/operations/chaos-report.mjs && node ../evals/operations/siem-trace-evidence.mjs && node ../evals/operations/rollback-rehearsal.mjs && node ../evals/operations/load-report.mjs"
+  },
+  "dependencies": {
+    "@astrojs/cloudflare": "latest",
+    "@astrojs/react": "latest",
+    "@xyflow/react": "^12.11.3",
+    "astro": "latest",
+    "react": "latest",
+    "react-dom": "latest"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.10",
+    "typescript": "latest",
+    "wrangler": "latest"
+  }
+}

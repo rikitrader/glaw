@@ -1,0 +1,8 @@
+id: haeis-historical-benchmark-suite
+version: 0.1.0
+cases:
+  - {id: venezuela-dollarization, type: monetary-reform}
+  - {id: known-hyperinflation, type: hyperinflation}
+  - {id: orthodox-currency-board, type: currency-board}
+blind_test_rule: Only observations and sources available at the historical cutoff may be used for a forecast.
+scoring: Compare forecast, confidence, cited evidence, and realized outcome; retain failed and untestable forecasts.

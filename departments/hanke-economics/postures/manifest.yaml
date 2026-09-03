@@ -1,0 +1,7 @@
+schema_version: 0.1.0
+required_fields: [id, name, question, required_evidence, prohibited_shortcuts, output_schema, evaluators]
+posture_contract:
+  required_evidence: [shared-facts, assumptions, mechanism, supporting-evidence, contradictory-evidence, falsifier]
+  prohibited_shortcuts: [automatic-Hanke-agreement, caricature, unsupported-causal-claim]
+  output_schema: posture-assessment
+  evaluators: [data-forensics-agent, red-team-economics, chief-hanke-economist]

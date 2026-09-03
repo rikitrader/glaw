@@ -1,0 +1,112 @@
+{
+  "generatedAt": "2026-08-23T16:22:29.291Z",
+  "repository": "glaw-oss",
+  "runtime": {
+    "publicApp": "Cloudflare Worker + static assets",
+    "astro": true,
+    "graphRenderer": false,
+    "existingAppFiles": [
+      "app/public/atlas.html",
+      "app/public/index.html",
+      "app/public/interview.html",
+      "app/public/tokens.css"
+    ]
+  },
+  "findings": [
+    {
+      "id": "APP-001",
+      "severity": "confirmed",
+      "title": "Existing app is a Worker static-assets application",
+      "status": "confirmed",
+      "evidence": [
+        "app/wrangler.toml",
+        "app/src/worker.js",
+        "app/public/index.html"
+      ],
+      "recommendation": "Preserve app/ as the public intake surface while adding an authenticated Astro control plane."
+    },
+    {
+      "id": "APP-002",
+      "severity": "medium",
+      "title": "Astro control-plane scaffold exists but is not dependency-verified",
+      "status": "inferred",
+      "evidence": [
+        "control-plane/astro.config.mjs and control-plane/package.json"
+      ],
+      "recommendation": "Install dependencies and verify the Astro Cloudflare build; keep the scaffold additive."
+    },
+    {
+      "id": "APP-003",
+      "severity": "critical",
+      "title": "Interactive graph renderer is absent",
+      "status": "confirmed",
+      "evidence": [
+        "No @xyflow/react or reactflow dependency/reference found"
+      ],
+      "recommendation": "Add a React island only for graph/workflow interaction; keep business logic outside the canvas."
+    },
+    {
+      "id": "APP-004",
+      "severity": "high",
+      "title": "Control-plane persistence bindings are incomplete",
+      "status": "{\"d1\":false,\"r2\":false,\"queues\":false,\"durableObjects\":false,\"workflows\":false,\"vectorize\":false,\"aiGateway\":false}",
+      "evidence": [
+        "app/wrangler.toml contains an INTAKE_KV binding but no D1/R2/Queues/Workflows/DO/Vectorize/AI Gateway bindings"
+      ],
+      "recommendation": "Add bindings incrementally after workload-specific schemas and environment manifests exist."
+    },
+    {
+      "id": "APP-005",
+      "severity": "confirmed",
+      "title": "Current RAG is not represented as a semantic Vectorize pipeline",
+      "status": "confirmed",
+      "evidence": [
+        "06_RAG_REGISTRY.md and repository inventory describe source-locked lexical/citation retrieval"
+      ],
+      "recommendation": "Preserve lexical/citation retrieval as baseline; add permissioned Vectorize only after authorization and lineage tests."
+    },
+    {
+      "id": "APP-006",
+      "severity": "high",
+      "title": "Existing intake API uses KV for request/audit state",
+      "status": "confirmed",
+      "evidence": [
+        "app/src/worker.js",
+        "app/wrangler.toml"
+      ],
+      "recommendation": "Keep compatibility for existing public intake; move enterprise relational control-plane records to D1 behind an adapter."
+    },
+    {
+      "id": "APP-007",
+      "severity": "high",
+      "title": "No authenticated control-plane route exists",
+      "status": "confirmed",
+      "evidence": [
+        "app/public contains public intake pages only"
+      ],
+      "recommendation": "Add authentication and authorization before exposing matters, evidence, architecture, or audit data."
+    },
+    {
+      "id": "APP-008",
+      "severity": "medium",
+      "title": "Registry artifacts exist but lack a single validated loading contract",
+      "status": "confirmed",
+      "evidence": [
+        "GLAW_*_REGISTRY.json files exist; no registry validator was found before this audit"
+      ],
+      "recommendation": "Add schema validation, duplicate detection, provenance, and status-aware loaders."
+    },
+    {
+      "id": "APP-009",
+      "severity": "medium",
+      "title": "Existing repository has substantial deterministic test coverage",
+      "status": "confirmed",
+      "evidence": [
+        "test/",
+        "federal-trial-counsel/scripts/tests/",
+        "x402/test/"
+      ],
+      "recommendation": "Extend the existing contract-test style with registry, graph, authorization, Astro, and Worker integration tests."
+    }
+  ]
+}

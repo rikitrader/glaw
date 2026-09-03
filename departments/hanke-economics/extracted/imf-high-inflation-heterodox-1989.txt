@@ -1,0 +1,1387 @@
+                                          4
+             High Inflation, "Heterodox"
+            Stabilization, and Fiscal Policy
+
+                Mario I. Blejer and Adrienne Cheasty*
+
+
+
+                                  I. INTRODUCTlON
+
+
+T he role of fiscal policy differs, depending on the economic circumstances
+in which it is undertaken, on the additional policy instruments used, and
+on the specific objectives it is designed to achieve. This paper examines
+the stabilization programs introduced by Argentina, Bolivia, Brazil, and
+Israel between July 1985 and March 1986, when hyperinflation was an
+imminent threat to each of these economies, so that a primary policy aim
+had to be the attainment of a quick and drastic reduction in inflation.
+   These stabilization programs are interesting from a fiscal point of view,
+not only because the behavior of fiscal variables under very high inflation
+differs from fiscal responses under a regime of stable prices but also be­
+cause the packages contained some innovative elements, which, them­
+selves, affected the role that fiscal policy was called upon to play.
+   The programs were considered innovative for two reasons. First, they
+created major discontinuities in the trends of the main macroeconomic
+variables, rather than following the gradual adjustment paths of tradi­
+tional stabilization packages. For this reason, they have usually been re­
+ferred to as "shock" programs. Second, in most cases, they included a
+number of incomes-policy elements, such as wage and price freezes, to­
+gether with exchange rate pegging and deindexation measures. These
+components have been characterized as "heterodox;· as compared with
+the "orthodox" emphasis on demand management through fiscal and mon­
+etary instruments. However, in practice, traditional "fundamental" poli­
+cies, mainly in the monetary and fiscal areas, formed the bulk of each pro­
+gram. In fact, the designers of the shock programs considered the
+
+  *This paper was first published in the August 1988 issue (Vol. 16, No. 8) of World Devel·
+opment (Oxford. England: Pergamon Journals. Ltd.).
+
+
+
+                                             72
+
+
+     ©International Monetary Fund. Not for Redistribution
+                   MARIO I. BLEJER and ADRIENNE CHEASTY                                   73
+
+
+combination of heterodox and fundamental (demand-management) poli­
+cies crucial to the success of the programs.
+  The objective of this paper is to make the analytical aspects of the de­
+sign of these programs explicit, so that the relationship between their
+traditional and innovative elements is highlighted, with particular empha­
+sis on the role of fiscal policy.
+  The paper contains three main sections. The first substantive section
+(Section II) discusses briefly the economic rationale for the policy mea­
+sures in a representative shock program by putting them in the perspec­
+tive of recent theories of inflation determination. Section III provides a
+taxonomic description of the aims and measures of the shock programs,
+and, i n particular, the specific contribution of the heterodox elements. Sec­
+tion IV describes in detail the role played by fiscal policy, the interactions
+between inflation and budgetary policies, and the feedbacks between the
+heterodox and the fiscal elements of the programs, in order to throw light
+on the appropriate role of fiscal instruments in stemming hyperinfla­
+tionary pressures.1
+
+
+
+  II. ANALYTICAL UNDERPINNINGS OF THE SHOCK PROGRAMS
+
+1. Inertia, Credibility, and Money Supply
+
+  Although the designers of the shock programs each started with differ­
+ent aims, policy constraints, and country characteristics, their approaches
+to the inflation problem were similar. The general view was that, once
+inflation reaches a very high rate, two different kinds of variables become
+important in its generation and perpetuation. First, as recognized in tradi­
+tional adjustment programs, demand pressures on domestic prices aris­
+ing from excess absorption are a crucial determinant of inflation. This
+implies    that    fundamental variables must                be   restricted; demand­
+management policies, therefore, have a central role to play in the shock
+programs. Second, and less traditionally, inflation is also considered to be
+strongly influenced by inertial forces, which are determined mainly by
+expectational variables. Inflationary expectations (either informal or insti­
+tutionalized into indexation schemes) tend to be self-fulfilling, since indi­
+viduals' behavior is consistent with their predictions about inflation.
+Given a history of high inflation, and the expectation that the inflation
+pattern will be difficult to break, inertia will affect the response to an ac-
+
+
+   •ln. many cases, available data were not specific enough to quantify the issues discussed
+in this paper. The issues are included. however, because of both their conceptual importance
+and the large body of qualitative evidence that indicates their significance in the context of
+the shock programs.
+
+
+
+
+    ©International Monetary Fund. Not for Redistribution
+74                      HIGH INFLATION AND FISCAL POLICY
+
+
+
+tual change in policy regime - greatly reducing the flexibility of economic
+policy, slowing the speed of reaction to policy change, and so increasing
+the costs of adjustment. The heterodox elements of the shock programs
+were an attempt to break free of inertia by severing the link between
+yesterday's and today's inflation.
+  The relationship between inertial forces and demand-management poli­
+cies operates in two directions. On the one hand, it must be recognized
+that inertial forces cannot be translated into effective price increases un­
+less monetary policy is accommodating. In traditional models of inflation,
+the money supply is a truly discretionary policy variable and, therefore,
+inertial inflation cannot play a permanent role. If a government decides to
+stop increasing the money supply, incipient inflation, arising from expecta­
+tions or from higher demand, will not be realized, because people will not
+have the liquidity to bid up the general price level (though relative prices
+may change as demand shifts).
+     On the other hand, it is obvious from the many failed attempts at stabi­
+lization in Argentina, Bolivia, Brazil, and Israel that, in reality, the process
+of money creation may be subject to many pressures and be propelled by
+the inflationary process itself. The impetus to increase the money supply
+may come, therefore, from outside the realm of the monetary authorities.
+In particular, monetary policy is rarely completely independent of fiscal
+policy. In most cases, then, a restrictive monetary policy will be difficult to
+implement, unless the fiscal forces or other outside influences which affect
+money creation are controlled. Furthermore, if the monetary authorities
+attempt to cut the money supply (or reduce its rate of growth) without
+arranging for complementary decisions to be taken in other sectors of the
+economy, the adjustment of these other sectors to decreased liquidity may
+be haphazard and painful.
+     While, on the one hand, monetary control can vitiate the potential influ­
+ence of inertia on the price level, on the other hand, the prior existence of
+inertia may reduce the effectiveness of traditional demand-management
+policies. The argument is as follows: One thesis of the rational­
+expectations school2 says that inflation can be stopped abruptly, with low
+transition costs, if the government implements drastic fiscal and mone­
+tary policies which are consistent with price stability. However, in order
+to be effective, these policies must be    credible- the public must be con­
+vinced that fiscal and monetary restraint will be maintained for a long
+time. Unfortunately, there is no simple way in which the government can
+convince the public that its policies will be sustained. If, for example, the
+public does not believe that the government can persist in the enforce­
+ment of tight policies because it fears high unemployment, then inflation-
+
+
+     2See. for example. Sargent (1 982).
+
+
+
+
+      ©International Monetary Fund. Not for Redistribution
+                 MARIO I. BLEJER and ADRIENNE CHEASTY                     75
+
+
+
+ary expectations will remain entrenched. Faced with this situation, the
+government will not be inclined to adopt tight policies at all, and, since
+high inflation will persist, the public's expectations will have proved to be
+self-justifying or "rational:'
+  In countries with a long history of inflation and failures of disinflation­
+ary policies, the public may not accept the government's announced long­
+term disinflationary targets because of deep-rooted pessimism about the
+government's ability to control inflation. This causes considerable down­
+ward rigidity in basic, longer-term inflationary expectations. These basic
+inflationary expectations are, in addition to institutional mechanisms, the
+forces behind the concept of "expectational inflationary inertia" and make
+use of a monetary and fiscal squeeze as the basic disinflationary instru­
+ment very costly. 'lb avoid the high costs, in terms of employment and
+output, that arise from the combination of monetary restraint and infla­
+tionary inertia, the "heterodox" stabilization packages augmented de­
+mand management with temporary incomes policies, including initial
+price freezes.
+  The question is, of course, what ensures that the expectational inertia
+will be overcome by the package of wage-pric�xchange rate freezes.
+Certainly, there is no guarantee that incomes policy will reduce basic infla­
+tionary expectations, but there are two indications that it could. First,
+provided that the proper adjustments in the fundamentals (such as the
+current account of the balance of payments and the budget deficit) have
+been made, the imposition of a price (and an exchange rate) freeze can
+help the government demonstrate that the economy can function effec­
+tively without inflation and without any stresses in strategic areas - such
+as the current account or the debt-income ratio. As a result of this demon­
+stration effect, individual agents may become convinced that low inflation
+is a realistic possibility.
+  Second, as long as the government combines incomes policy with a
+fixed exchange rate, there is an explicit or implicit commitment not to
+resort to inflation to achieve other objectives (by, for instance, allowing
+real wages to erode, in order to make the economy more competitive).
+When the fundamentals are consistent, this commitment may be credible
+and may carry over to the period after controls are lifted.
+  'lb summarize, program designers augmented traditional demand­
+management theories by considering that the money supply is usually
+accommodating and that it might be forced to accommodate not only
+demand pressures created by an elevated level of absorption but also de­
+mand pressures created by individuals who behaved "as i f " absorption
+was high, even when it was not. Given the added cost that these "inertial"
+demand pressures implied for traditional stabilization programs (a cost
+which some felt explained the failure of traditional stabilization programs
+
+
+
+
+    ©International Monetary Fund. Not for Redistribution
+76                     HIGH INFLATION AND FISCAL POLICY
+
+
+
+in the past), it was important to add "transitional" policies which would
+change expectational and indexation-induced inflation without a pro­
+longed lagged adjustment period.
+
+2. Inflation-Tax Financing of Fiscal Deficit
+
+  Although there are many plausible mechanisms through which mone­
+tary expansion is generated by the inflation process itself,3 one central
+variable behind money supply growth is the fiscal deficit.4 One way of
+describing, somewhat simplistically, the relationship between inflation,
+the deficit, and the money supply is in terms of the so-called inflation-tax
+model.
+  When the desired deficit cannot be financed by debt issue, the govern­
+ment will generally finance it by money creation. The real deficit is thus
+financed by changes in the real value of the debt and inflation-tax revenue
+on holdings of real money balances. However, the demand for real money
+balances falls as inflation rises. In other words, the base of the inflation
+tax is eroded as the tax rate rises. Hence, if the government wishes to
+maintain a given real deficit regardless of the inflation rate, it will have to
+"levy" the inflation tax necessary to finance that deficit by increasing the
+nominal money stock at higher and higher rates as the inflation rate rises.
+This model of inflation has the implication that countries may face a maxi­
+mum sustainable fiscal deficit (indicated by D* in Figure 1), given their
+private sectors' willingness to hold other types of government debt. In
+brief, if the government tries to finance a deficit higher than this maxi­
+mum, the money supply will always exceed the demand for money, so that
+the necessary inflation-tax revenue will not be forthcoming. If the govern­
+ment persists in printing money, inflation will get higher and higher with-
+
+
+
+
+     3Monetary policy is quite likely to be accommodating when there is high inflation be­
+cause (i) there may be no formal poUcy of restricting credit to the private sector. even
+though the authorities have decided to impose f  iscal restraint; or (ii) even if the monetary
+authorities desire to reduce private sector credit pari passu with public sector credit. they
+will face strong resistance. Pressures will come, for example, from firms that have granted
+wage increases consistent with high inflation and will face difficulties and, ultimately, bank­
+ruptcy if they do not get the credit they need to pay these increases.
+   4There are clearly many other sources of monetary growth that do not originate in fiscal
+deficits. A detailed examination of the working of monetary policy instruments and the
+evolution of monetary and reserve aggregates is needed to complete a theory of monetary
+hyperinflation. This, however, goes beyond the scope of this paper. On this subject. see. for
+example. Calvo and Fernandez (1983). They analyze the possibility of affecting the steady­
+state level of inflation, at a given budget deficit, by means of monetary management, mainly
+through changes in the reserve ratio of commercial banks.
+
+
+
+
+      ©International Monetary Fund. Not for Redistribution
+                   MARIO I. BLEJER and ADRIENNE CHEASTY                                   77
+
+
+                  Figure 1.     Limitations on Inflation-Tax Revenue
+
+
+
+          7T
+(Inflation)
+
+
+
+
+                                                                 Inflation-tax revenue
+
+                    Note: 00 denotes an ··efficiently financed"" deficit. o, the same
+                 deficit ··inefficiently financed."" and o• the maximum sustainable
+                 deficit.
+
+
+
+
+out increasing the government's control of real resources. In these circum­
+stances, hyperinflation will be a strong possibility.5
+   According to this hypothesis, then, there is an absolute limit to govern­
+ment's deficit financing. This limit is determined by the attainment of a
+"threshold" inflation rate. If this inflation rate is exceeded, then adjusting
+the money supply would not allow the government to maintain its real
+deficit.6
+
+   5In perfect-foresight models, a sufficient condition for the emergence of hyperinflation
+
+would be an exogenous, nonmarginal shock to push the inflation rate past the threshold at
+which the deficit becomes unsustainable. In models which include any element of inertia,
+either caused by expectations or any other structural rigidity, hyperinflation can be induced
+without an exogenous shock.
+   &This is strictly correct in the steady state. Calvo (1978) and Sarro and Gordon (1983)
+have developed models in which the government can continue to extract resources even at
+very high rates of inflation. Their models demonstrate that when inflationary expectations,
+formed rationally in the light of the government's revenue objectives, are given at a particu·
+lar date, the government can generate more revenue if it selects a rate of monetary expan·
+
+
+
+
+     ©International Monetary Fund. Not for Redistribution
+78                   HIGH INFLATION AND FISCAL POLICY
+
+
+
+     A second implication of this hypothesis is that, for the more plausible
+shapes of the money-demand schedule, the same deficit could be observed
+at a high inflation rate as at a low inflation rate.7 (In Figure 1, the deficit is
+the same at 1r0W0) and 7r 1 (D 1 ).) At the high inflation rate, 1r" the deficit
+would be financed "inefficiently:' Hence, in economies experiencing very
+high levels of inflation, an effective policy of increasing the demand for
+money might allow the government to maintain the deficit at its current
+level while reducing inflation. Given the dependence of money demand on
+inflationary expectations and general confidence in the economy, the pol­
+icy problem is to find the combination of expectation-changing policies suf­
+ficient to permit the economy to jump from the "high-inflation trap;·
+where real money demand is low, to the "efficiently" financed deficit,
+where desired money holdings are higher. If it were, indeed, possible for
+the government to maintain its deficit, and hence its real level of absorp­
+tion, and still bring down the inflation rate through expectational policies,
+a more general question would then become relevant: Might it not be pos­
+sible to reduce the inflation rate without cutting real output? In the shock­
+program countries, the search for ways to cut inflation while minimizing
+output loss became very important and gave a rationale for the implemen­
+tation of policies, such as price freezes and exchange rate fixing, which
+were considered necessary to ensure a transition from one equilibrium
+level of inflation to another.8
+
+
+
+
+                  III. TERMS OF THE SHOCK PROGRAMS
+
+
+     Despite substantial differences in specific policies from country to coun­
+try, the twin concepts of the importance of government credibility and the
+limits to inflationary financing of the fiscal deficit described in Section II
+
+
+sion greater than is expected by the public. When the public eventually begins to anticipate
+the greater expansion and revises its expectations, the government can choose an even
+higher rate of monetary growth. and so on. Such a process could theoretically result in
+infinite rates of monetary expansion and inflation, and in such a situation there would be no
+equilibrium.
+  7This exposition does not take into account the inverse relationship between normal
+taxes and inflation-tax financing which has been pointed out by T.mzi (1977). This relation­
+ship and its implications will be discussed in Section IV.
+   ssruno and Fischer (1985) commented that ..The existence or a high inOation trap sug­
+gests that it may be possible to reduce the inOation rate in a high inflation economy by
+policies typically regarded as unsound, such as fixing the exchange rate, or freezing nominal
+wages or prices, in an attempt to make the transition from a high to a low inflation steady­
+state:·
+
+
+
+
+      ©International Monetary Fund. Not for Redistribution
+               MARIO I. BLEJER and ADRIENNE CHEASTY                       79
+
+
+may be seen as the pillars upon which the shock programs were built. The
+rationale for the general features which were common to the various pro­
+grams is based on these concepts, which also provide the basis for a con­
+sistent classification of the different categories of measures adopted as
+part of the disinflation strategy.
+
+1. General Features
+  The first common feature of the programs was the authorities' aim of
+bringing down inflation drasticaUy and immediately. This must be seen
+in the context of the historical record: the failure of the authorities' pre­
+vious attempts to slow inflation gradually and the resulting skepticism
+concerning stabilization schemes.
+  A second common feature was their comprehensiveness: the programs
+encompassed policies directed at most of the more important macroeco­
+nomic variables. A comprehensive plan was considered necessary be­
+cause the objective was to bring down inflation immediately. A partial
+approach could have resulted in serious distortions which might have en­
+dangered the entire plan in the short term and damaged the country's
+growth potential over the medium term; for example, if wage policy had
+been excluded from the plan, a rise in real wages (in terms of tradable
+goods) would have led to a balance of payments crisis. However, a compre­
+hensive plan was also necessitated by the authorities' understanding of
+how inflation was determined. On the one hand, if inflation was generated
+by both excess absorption and inertial forces, a successful plan could not
+confine itself to the adjustment of the key macroeconomic variables, such
+as the current account or public debt ratios, but should include nominal
+policies which address expectations. On the other hand, a successful pro­
+gram could not deal only with inflationary inertia when the fiscal stance
+and other fundamental variables were incompatible with low inflation lev­
+els and with sustainable growth.
+   The third common feature of the programs was the attempted synchro­
+nization of the heterodox policies, especially that of the exchange rate and
+wage policies with the price freeze. When inflation was to be abruptly
+halted, such precise alignment in the timing of all of the policy measures
+was viewed as essential if serious distortions in relative prices were to be
+avoided in the initial stages of the program.
+
+2. Classification of Shock-Program Measures
+  The elements of a broadly defined or "representative" shock program
+can be grouped into three different types: (1) preparatory reforms;
+(2) expectation-adjusting policies; and (3) demand-management policies. A
+short description of the measures in each category is provided here.
+
+
+
+
+    ©International Monetary Fund. Not for Redistribution
+80                HIGH INFLATION AND FISCAL POLICY
+
+
+a. Preparatory Reforms
+  These were implemented prior to the formal launching of the plan and
+included equilibrating adjustments in key relative prices (goods prices,
+wages, exc·hange rate, interest rate, etc.) and, in some cases, structural
+reforms in fiscal, monetary, and other key policy areas.
+  The need to resort to some pre-equilibration mechanisms arose from
+the perception that the creation of large discontinuities in inflation
+through the administrative control of nominal variables, including wage
+and price freezes, might exacerbate existing disequilibria in one or more
+markets. If markets were in disequilibrium at the time their prices were
+frozen, then pressures to equilibrate would be manifested through quan­
+tity adjustments, as well as continued price pressures. Hence, a logical
+precursor of the freezes contained in the shock programs would be at­
+tempts to equilibrate goods, factor, and asset markets, so that legislation
+would merely validate and publicize the underlying economic realities,
+rather than trying to force an unrealistic alignment of markets.
+  A clear trade-off between equilibrating and non-equilibrating prices
+was perceived prior to the program. On the one hand, upward price ad­
+justments made at the beginning of the program would, indeed, have
+hampered the dec l
+                ine of inflation and, thus, eroded the credibility of the
+program. On the other hand, if prior equilibration had not taken place,
+price freezes would soon have come under strain when pressures to cor­
+rect the disequilibrium prices emerged. In addition, freezing prices when
+they were out of equilibrium could tend to perpetuate any distortions that
+might follow disinflation. Moreover, if the disequilibrium price freeze
+were maintained for a significant period, these distortions would seriously
+damage the country's ability to grow by responding to economic
+incentives.
+
+b. Expectation-Adjusting PoUcies
+  Expectation-adjusting policies were "impact" measures, whose effects
+were expected to be felt immediately after the policy announcement was
+made. Their objective was to attack directly the inertial component of
+inflation by creating a hiatus between past and present inflation and, in
+this manner, dampening expectations of future inflation. Two types of
+measures in this category could be distinguished: (1) temporary "shock"
+measures, and (2) impact measures on fundamental variables.
+  'J.emporarg "Shock"Measures.     Some "shock" measures were designed to
+be transitional. They were to lead a frontal attack on inertia designed to
+bring about abrupt changes in expectations. Measures of this sort
+included freezes of key prices and were designed to create large
+                                    icy regimes and to affect basically all
+discontinuities with the previous po l
+
+
+
+
+     ©International Monetary Fund. Not for Redistribution
+                   MARIO I. BLEJER and ADRIENNE CHEASTY                             81
+
+
+relative prices: (1) domestic prices. (2) the exchange rate, (3) wages,
+(4) returns to forward contracts, and (5) returns to financial assets. In cases
+where indexation mechanisms had institutionalized the inflation link,
+these types of policies could include a direct (e.g.. legislated) break in the
+indexation system. Furthermore, in all of the shock programs, the
+announcement of the program was, itself, considered important in
+affecting expectations. Thus, in each country, the policy package was
+announced formally and en bloc by the authorities.
+     Impact Measures on Fundamental Variables.         Other shock measures were
+designed to overcome inertia by adopting policies which would generate a
+confident and sustained conviction that future government actions would
+be consistent with lower inflation rates. Since expectations are usually
+rooted in the actual behavior of fundamental variables, the shock
+measures included the following: (1) very large immediate (in some
+cases, one-time or temporary) adjustments in fiscal variables;9 and
+(2) announcements of future radical changes in these variables.
+     Impact measures differed from traditional demand-management poli­
+cies in that they had one or more of the following characteristics: (1) they
+were expected to have an immediate impact on the fiscal deficit, domestic
+credit, the trade balance, etc.; (2) the immediate adjustments they implied
+were large in size relative to traditional measures taken via more perma­
+nent, sustainable demand-management policies; and (3) given their once­
+and-for-aU nature, or the detrimental effects that they could have had in
+the long run, they were expected to be temporary.
+     Announcements of future reforms were intended to affect fundamental
+variables in the longer run; their immediate impact was to lend credibility
+to the government's declared intention to sustain the changed policy
+regime.
+
+c.   'Jradilional Demand-Management Policies
+     In tandem with the impact measures. more conventional policies were
+used to aUeviate demand pressures. They included mainly deficit reduc­
+tion and credit restraint, and were expected to have the traditional grad­
+ual impact on the economy.
+
+3. Some Remarks on Heterodox Elements of Programs
+
+     Of the various categories of policies incorporated in the shock pro­
+grams, the highly visible impact, or expectation-adjusting, policies have
+
+
+
+     9The main impact measures on fundamental variables were the introduction or forced·
+saving schemes. which substituted for other tax revenue in the short run. In the public
+mind. these forced·saving schemes became strongly identified with the shock programs.
+
+
+
+
+      ©International Monetary Fund. Not for Redistribution
+82                    HIGH INFLATION AND FISCAL POLICY
+
+
+given rise to the most debate. Some of these are fiscal in nature and will
+be discussed in the next section. Others, including direct controls and vari­
+ous deindexation mechanisms, were intended to change recalcitrant infla­
+tionary expectations without having a major effect on traditional fiscal
+and other demand-management variables. As will be discussed later, even
+when impact policies are intended to alter expectations rather than the
+"fundamentals;· they are normally associated with budgetary costs and
+reductions in activity, and, therefore, it would be misleading to claim that
+such policies can reduce inflation without adversely affecting the real side
+of the economy. In addition to asking questions about the indirect cost of
+impact policies, one may also ask what specific role these policies have
+played. Without understanding their mechanisms, one cannot assess the
+extent to which the shock programs actually departed from traditional
+stabilization packages.
+     The assumptions underlying the inclusion of policies to overcome iner­
+tia in most of the stabilization programs were as follows: (1) that inflation·
+ary expectations take time to adjust and may prolong inflation beyond the
+point where underlying fundamental variables warrant price increases;
+and (2) that inflationary expectations can only be affected in the short
+term by impact policies, including price and wage controls. However, even
+if (1) is a correct description of reality, expectations could change rapidly in
+response to drastic and credible changes in fiscal and monetary variables,
+without the government having to resort to additional impact measures,
+as assumed in (2). Moreover, even when impact policies are deemed an
+essential component of the stabilization package, it is important to con­
+sider their costs and the complications involved in their implementation.
+
+a.   Price Controls
+     Price controls have been among the more prominent impact policies
+used. While there is little disagreement with the notion that without fun­
+damental adjustments, price controls cannot alter the underlying infla­
+tionary pressures in the economy, it has also become apparent that the
+implementation of price and wage controls at disequilibrium levels makes
+them untenable, increases their distortionary effects, and thus hinders
+economic growth. Moreover, if the controls are not expected to be sus­
+tained, people will move out of money and nominal assets and into goods
+at an accelerated rate, thus exacerbating the inflationary pressure on the
+price level and making expectations of inflation and the rupture of price
+controls self-fulfilling.
+  In addition, wage and price controls may be associated with extra out­
+put losses arising from the large discontinuities, the administrative com­
+plications, and the uncertainties that wage and price freezes create in the
+economy. In other words, a program with price controls could conceivably
+
+
+
+
+      ©International Monetary Fund. Not for Redistribution
+                 MARIO !. BLEJER and ADRIENNE CHEASTY                               83
+
+
+imply a larger output loss than would be expected at the outset of a pro­
+gram without incomes policies.
+  The types of costs that arise from price controls may well have a direct
+fiscal component. Even if prices are, and remain, in equilibrium, the ad­
+ministrative (and, in some cases, political) costs to government of control­
+ling prices directly are significant. If prices start in a disequilibrium posi·
+tion, either the government or the private sector will have to bear the
+cost of the discrepancy between the quantities supplied and demanded.
+When the government bears the cost- through increasing producer sub­
+sidies, for example- the price of the good has only been controlled in a
+very narrow sense and the operation has a clear fiscal cost.
+  It should be noted that no matter how carefully prices are aligned in
+equilibrium at the beginning of a program, only rarely will that equilib­
+rium remain relevant once the program goes into effect. Setting equilib­
+rium prices in one regime: initiating a program whose main aim is a dras­
+tic, sudden, and complete change in that regime; and expecting prices to
+be invariant to the change makes sense only in a world where not only
+inflation but also any reduction in the government deficit and any changes
+in exchange and interest rates, as well as labor and financial markets, are
+all completely neutral with respect to the structure of relative commodity
+prices. More generally, only technologically neutral growth would be com­
+patible with such a policy regime (a condition more restrictive than most
+theoretical assumptions about growth and one very unlikely to be achiev­
+able in practice).
+  A specific problem associated with freezing prices when they are out of
+equilibrium relates to public sector tariffs. If they are fixed at a disequilib­
+rium level at the outset of the program, this implies the emergence of a
+subsidy on public services. Maintaining the price freeze will not only en­
+sure the perpetuation of this subsidy but may also lead to the gradual
+substitution of government services for high-priced goods. Insofar as this
+takes place, it will increase the total amount of government subsidy
+payments.
+  In general, any subsidy element in prices which remains during a freeze
+will tend to worsen the budget deficit and/or the financial situation of pub­
+lic enterprises. This, in turn, constitutes an expansionary fiscal policy, in­
+creasing both demand pressures and expected inflation.10 If, however, the
+subsidy is not recognized in the government budget but, instead, must be
+borne by private sector producers, shortages will occur which will worsen
+inflationary expectations and diminish the credibility of the government's
+policy stance. Hence, use of a disequilibrium set of prices lowers the prob-
+
+
+
+   1°Chu and Feltenstein (1978) show that this happened in Argentina during the 1970s.
+
+
+
+
+    ©International Monetary Fund. Not for Redistribution
+84                    HIGH INFLATION AND FISCAL POLICY
+
+
+
+ability that a price freeze can be sustained, in addition to substantially
+raising its cost and its impact on the budget.
+     When the economy is at full employment, the ability of price controls to
+suppress inflation may be diminished further. Controls may be more
+costly and less effective than under conditions of excess capacity, because
+supply constraints become apparent almost immediately and, conse­
+quently, all the extra pressure created by increased subsidies and trans­
+fers has to be repressed through the price freeze at a high and increasing
+cost. A relatively slack economy, therefore, makes a price freeze less
+likely to be involuntarily removed and less costly to administer.
+     The contribution of sectoral excess supplies was apparent in the seem­
+ingly well-managed price freezes in both Israel and Argentina, where ex­
+cess supplies (1) permitted the price freeze to work, and (2) reduced the
+costs associated with its removal.11 However, it is possible that the cre­
+ation of excess supplies can be achieved only at the expense of the pro­
+gram goals of minimum output loss and reactivation of long-term growth.
+For instance, it has been suggested that the maintenance of a very high
+interest rate immediately after the introduction of a shock program will
+encourage the running down of inventories and, thus, alJeviate prior sup­
+ply constraints.12 The corollary to a policy of maintaining very high inter­
+est rates, however, is that investment will be depressed, perhaps to such
+an extent that total production falls, creating sizable output losses.
+     In practice, high ex post real interest rates appeared in most of the
+shock-program countries, but these arose either because financial risks
+and inflationary expectations did not diminish or as a consequence of the
+restrictions on financing the public sector through credit creation, coupled
+with the impact of the increase in the demand for money that was created
+when inflation fell. In other words, given the fact that its other policies
+affected the interest rate, the government had very limited scope for an
+independent interest rate policy as a means of controlling the amount of
+slack in goods markets and, thus, phasing out the price freeze.
+
+b. Deindexation Schemes
+     Another issue to which the shock programs attached great importance
+was the removal of formal indexation. According to the theory of inertial
+inflation, one of the main culprits in prolonging inflation, after underlying
+real causes of price pressure are removed, is widespread indexation of the
+economy. The indexation mechanisms have two components: (1) a mechan­
+ical link between past inflation and present price increases and (2) an ex-
+
+
+
+
+     "See Blejer and Liviatan 0987).
+     12Ibid.
+
+
+
+
+      ©International Monetary Fund. Not for Redistribution
+                  MARIO J. BLEJER and ADRIENNE CHEASTY                                   85
+
+
+pectational component, whereby indexation schemes minimize the vari­
+ance of expected future incomes in such a way that individuals do not
+anticipate large discontinuities in either their permanent incomes or in
+the consumption power that those incomes provide. Therefore, if a dein­
+dexation scheme were to be successful, it would have to, on the one hand,
+create an abrupt discontinuity between past and present price increases
+and, on the other, generate changes in expected permanent income signifi­
+cant enough to make individuals alter their consumption patterns.
+  The effort to deindex the economy in the context of the shock programs
+may be analyzed by looking separately at labor and capital markets. It can
+fairly be said, in both cases, that the amount of deindexation which actu­
+ally took place was minimal, despite the prominence accorded to it in the
+programs.
+  Regarding wages, the so-called "deindexation schemes" did not result
+in any long-run changes in the expectations of individuals about the level
+of their permanent incomes which might have changed their consumption
+and savings patterns, nor did they bring about any structural change in
+the system, and in the mechanics, of wage formation. Although wages
+were frozen in all the countries considered except Bolivia, the public was,
+in general, given to understand that the freeze was a short-term measure
+and that former levels of real wages could be restored, if not by legisla­
+tion, then through the bargaining process. In fact, in some cases. there
+was refinement of the protection with which the indexation mechanisms
+offset the effect of inflation on incomes.13 In theory, the price freeze itself
+would have accomplished the same end as the deindexation schemes. If
+the freeze had succeeded in abruptly cutting inflation, from then on the
+relevant inflation rate to be taken into account in the indexation equations
+would have been correspondingly less important. This is, in fact, what
+happened. The price freeze dampened the inflationary spiral. However, if
+inflation should increase again, for any exogenous reason, the same infla­
+tion growth as before could occur in each country, given that the wage­
+indexation mechanisms, although s l
+                                 ightly changed in some cases, remain
+essentially in place.
+  Analogously, there was very little deindexation of financial assets. In
+Argentina, there were no formal deindexation announcements concern­
+ing financial assets, although the application of the conversion scale to
+financial contracts was regarded as a deindexation measure, sufficient in
+itself to accomplish deindexation. In Israel, the indexation of long-term
+
+
+
+   13ln Israel, for example, since October 1985 formal indexation of wages has been re·
+stored. and it has even been enhanced: cost of living adjustments of 80 percent will hence­
+forth be paid after the cumulative increase in the consumer price index reaches 4 percent. or
+every three months.
+
+
+
+
+    ©International Monetary Fund. Not for Redistribution
+86                HIGH INFLATION AND FISCAL POLICY
+
+
+financial assets was not disrupted. The only substantive change was the
+prohibition of foreign exchange-linked deposits with maturities of less
+than one year. Likewise. in Brazil, the only deindexation that was en­
+forced was on financial instruments of less than one year·s maturity. While
+a year's standstill was imposed on the indexation of longer-term assets,
+this pause was costless to asset holders (unless they tried prematurely to
+liquidate their assets), because long-term assets could be indexed to a new
+government bond, which would, by design, be fully adjusted for inflation.
+   As was true for wages, the most important program element in the
+treatment of financial assets was the breaking of the link between past
+inflation and present returns. This was done in Argentina and Brazil by
+applying a conversion table to financial contracts in an effort to eliminate
+the expected (but, because of the price freeze, unrealized) inflation compo­
+nent of the contracts. This prevented potentially large real transfers of
+income from debtors to creditors, thus avoiding creation of dissatisfaction
+which could have undermined the price freeze in the same way that dis­
+satisfaction created by forcing firms to fulfill past wage contracts at the
+expense of profits could have. Again, as was true for wages, the disrup­
+tion was a purely temporary, though politically important, phenomenon,
+and the crucial characteristic of an indexation scheme- the ability to in­
+dex wealth to inflation- remained substantively unchanged.
+   In summary, wage and asset-return freezes and conversion tables can­
+not be seen as true deindexation schemes. They did not create any dura­
+ble change in the ability of the economy to prevent the re-emergence of
+inflation. In that respect, the importance accorded them by the designers
+of the shock programs (relative to fiscal and monetary policy) may have
+been excessive. Given the use of the other "impact" measures, however, a
+necessary role did emerge for them in legitimizing the use of incomes poli­
+cies and price freezes in order to validate the legislated disruptions in
+ wage and price trends and, thus, to overcome inertia.
+
+
+
+
+             IV. FISCAL POLICY AND HIGH INFLATIO
+
+
+  In the shock programs, fiscal policy was used to achieve by far the
+greater part of the adjustment of fundamental variables. Performance un­
+der the stabilization programs highlighted the fact that high inflation and
+the implementation of shock measures have some particular implications
+for fiscal policy, which are analyzed in this section.
+   The traditional conclusion that cutting the fiscal deficit leads to reduc­
+tions in inflation is supported by the inflationary-financing model: since
+
+
+
+
+     ©International Monetary Fund. Not for Redistribution
+                MARIO I. BLEJER and ADRIENNE CHEASTY                         87
+
+
+deficits are assumed to be financed by the inflation tax, a smaller deficit
+will "require" less inflation. However, the optimal fiscal policy for bringing
+down very high inflation may be different from the optimal fiscal policy in
+an economy with a stable price level, because the former will be compli­
+cated by the interrelationships between fiscal policy and inflation, as well
+as by the possible existence of inertial inflation, in which the fiscal policy
+stance plays a less direct role.
+  A number of these issues are discussed here, with particular focus on
+the following five aspects: (1) the size of the deficit may itself be a function
+of the inflation rate; (2) different fiscal policies may affect inflation in dif­
+ferent ways, so that success in reducing inflation through cutting the defi­
+cit will depend on the specific type of policy used to reduce excess govern­
+ment absorption; (3) different fiscal policies have different effects on
+aggregate demand and on output, so that the optimal fiscal package
+should attain the necessary reduction in absorption while minimizing out­
+put losses; (4) the composition of economic activity, and specifically of the
+financial system, is not invariant to inflation, which suggests that tax
+bases may not be inflation-neutral; and (5) even if inflation is not reduced,
+attempts to reduce it through impact policies may affect the budget.
+
+1. Effects of Inflation on the Budget
+  While the size of the fiscal deficit affects inflation because of inflation·
+tax requirements, the other methods of financing the deficit are not invar­
+iant to inflation. This weakens the neat, hypothesized dichotomy between
+inertial and demand-driven inflation, because if it is the case that the
+higher is inflationary financing, and the lower are traditional revenues,
+then reducing the inflation rate may allow a higher level of public spend­
+ing to be sustained (financed by a recovery in traditional revenues), even if
+all fiscal policies remain unchanged. As 'Thnzi (1978) has shown, the net
+gain from inflation-tax revenue, in terms of ability to finance a fiscal defi­
+cit, is much smaller when the loss in traditional revenues is taken into
+account than when the inflation tax is calculated in isolation. In the long
+run, the economy's growth potential without inflation (as compared with
+its potential in an inflationary environment) may be much greater than is
+usually recognized.
+  The calculation of the low-inflation budget corresponding to a given set
+of policies in a country suffering from high inflation is complicated by the
+fact that while almost every element of the budget is affected by inflation,
+these elements have different elasticities. If the elasticity of government
+expenditure with respect to increases in nominal income is greater than
+the nominal income elasticity of government revenue, then the real deficit
+will rise with inflation, faster than the simple real-money-balances model
+
+
+
+
+    ©International Monetary Fund. Not for Redistribution
+88                   HIGH INFLATION AND FISCAL POLICY
+
+
+would predict.14 Likewise. reductions in inflation may generate unex­
+pected gains or losses in revenues and expenditures.
+  On the expenditure side, the inclusion of nominal government interest
+payments in the deficit greatly magnifies the percentage increase in inter­
+est payments, relative to the percentage increases in other expenditure
+and in revenue, as the inflation rate rises. This effect is particularly
+marked when most of the debt is not indexed and nominal interest rates
+are flexible.15
+  On the revenue side, it can be shown that the real value of tax collec­
+tions falls when inflation is high, because of the inevitable lag between the
+date the tax legally falls due and its date of collection (and because of
+other elements of the tax system).16 Bracket creep in progressive-income­
+tax schedules offsets some of the collection lag-induced decline, but coun­
+tries with high inflation quickly develop indexed tax systems, which pro­
+tect taxpayers against inflation-induced increases in their real tax
+obligations.'7
+     In order to minimize the negative impact of inflation on the budget,
+revenue buoyancy should be maximized and administrative lags mini­
+mized. If taxes and other instruments are to grow in line with nominal
+income, regressive schedules should be avoided, as should specific tax
+rates. Negotiated values applied to imports or domestic goods subject to
+excises can also lead to large losses of buoyancy as inflation increases. The
+same is true of public sector tariffs, which are often the most difficult
+prices in the economy to index fully. Furthermore, it should be noted that
+utility bills are often paid far less frequently than other obligations. Subsi­
+dies also tend to emerge on central bank interest rates, and these, too,
+contribute to the public sector deficit, whether or not the subsidy is made
+explicit in public sector accounts.
+     Lags in revenue collection are usually not balanced by lags in expendi­
+ture. It has often been said that the government is more efficient in index­
+ing its obligations than its assets. For instance, attempts to lag payment
+of the public sector wage bill may cut this month's inflation, but this will
+
+
+
+    "This is one explanation of why countries tend to find themselves in the high·
+equilibrium inflation trap. rather than at an inflation level corresponding to an efficiently
+financed deficit. The presence of inflation-endogenous elements in the budget makes the
+deficit likely to overshoot the low-level equilibrium.
+    t5Jt could be argued, however, that because the inflation component of interest is not
+income but rather amortization. the impact on demand of interest payments that reflect
+inflation is much smaller than the impact of other expenditure components. (See Thnzi,
+Blejer. and Thijeiro (1987).)
+    t6See Thnzi (1977).
+    17Besides, income taxes have tended to be less important in the shock-program countries
+than in industrial countries.
+
+
+
+
+      ©International Monetary Fund. Not for Redistribution
+                   MARIO I. BLEJER and ADRIENNE CHEASTY                                   89
+
+
+probably make deindexation much less acceptable to public servants
+should the government later decide to implement an adjustment
+program.
+   On the one hand, in the initial phases of the programs, the "passive"
+reductions in the deficit as inflation fell were very striking. In Brazil, the
+drop in inflation reduced the public sector borrowing requirement from '2:7
+percent of gross domestic product (GDP) in 1985 to an estimated 10 per­
+cent in 1986,18 with nearly 18 percentage points of this reduction arising
+from the reduction in indexed debt service. The Argentine deficit also fell
+significantly, and while this drop also partly reflected a fall in monetary
+correction payments, the impact of the automatic effect on revenue recov­
+ery associated with the slowdown of inflation was particularly striking.19
+   On the other hand, it is ironic to note that the revenue gain associated
+with the slowing down of inflation is smaller, the more perfectly the fiscal
+system has adapted to inflation prior to a stabilization program (by mini­
+mizing collection lags. etc.). The Brazilian tax reform of December 1985
+provided a good example of the possible post-inflation costs of having suc­
+ceeded in adapting to inflation. The tax reform included a reduction in
+withholding to facilitate the indexing of tax liabilities, which, in turn, was
+designed to improve real revenues. However, the reduction in withhold­
+ing implied that lags in collecting revenue were lengthened. Under high
+inflation, because of the impact of indexing tax liabilities, the gains from
+the reduction in withholding apparently had exceeded the losses; under
+low inflation, only the losses from the longer collection lag remained.
+Moreover, when inflation is high, it may pay the government to introduce
+complex administrative systems, with much policing and high penalties,
+in order to minimize losses from lagged payments. Once inflation falls to
+reasonable levels, however, these systems may be inappropriate and cost
+more than they earn for the government, given that the cost of any delay
+has dropped.20
+
+
+
+
+   1BBefore further fiscal reforms were implemented in November 1986.
+   191'he characterization of this increase in revenue as "automatic" does not imply that it
+should not be counted when evaluating the fiscal effort undertaken as part of the program.
+The increased real revenue represented a cost to the private sector and, in that sense. is not
+qualitatively different from an increase in revenue generated by higher tax rates.
+   20The tendency of high inflation to generate complex administrative and regulatory
+structures will damage a country's ability to return to growth after the shock program un·
+less there is a concomitant liberalization of the system. The need for such liberalization was
+ignored in shock programs other than the one in Bolivia (except for the structural fiscal
+measures, which are discussed in the next section), despite its possible importance for sus·
+taining the programs' success in the long term.
+
+
+
+
+     ©International Monetary Fund. Not for Redistribution
+90                  HIGH INFLATION AND FISCAL POLICY
+
+
+
+2. Tax Rate Increases Versus Cuts in Government Activity
+
+  In practice, cutting deficits tends very often to affect the level of prices.
+Hence, in situations where price stability is a central goal, restrictive fis­
+cal measures must be chosen with special care. In inertial systems where
+inflationary spirals are fueled by formal and informal indexation, deficit
+cutting through relative price realignments (such as increasing indirect
+tax rates, reducing government subsidies, or raising public sector fees
+and tariffs) may impart an upward push to inflation which more than off­
+sets any gradual alleviation of price pressures brought about through
+budget contraction. If the government wants to cut the deficit through
+revenue measures, it will thus be important to remove or relax indexation
+mechanisms beforehand. While inflation persists, however, individuals
+will be wary of permitting the government to remove these "insurance
+systems" which prevent their wealth from being eroded. Hence, s i
+                                                               multa­
+neous implementation of tax changes and indexation-removal schemes
+may be crucial to the success of both policies. This is an additional reason
+why, in the shock programs, the "synchronization" of policies (discussed in
+the previous section) played an important role.
+  If indexation schemes cannot be canceled, it is likely that reducing the
+deficit through reductions in real government activity- for example, by
+cutting expenditures on wages or goods and services-will be more suc­
+cessful in inducing a quick fall in inflation than will tax, tariff, or subsidy
+adjustments. It is also probable that cuts in transfers will affect inflation
+only with a lag if transfer recipients have slowly adapting expectations or
+if they perceive the transfer cut as temporary: their demand will not fall
+immediately by the full amount of the cut in their current income.
+  However, cuts in government activity may be regarded as undesirable,
+since they may create political difficulties by placing the full burden of
+adjustment on a few people (civil servants and government suppliers). In
+addition, governments may not be convinced that their levels of absorp­
+tion are too high or unsustainable.21 lf inflation is inertial (in the sense that
+it could be reduced without reducing the sustainable deficit), then cuts in
+government activity could be inappropriate. (This issue is discussed in de­
+tail in the next subsection.)
+  In the recent shock programs, the major instruments used to reduce
+the fiscal deficit were rate increases and subsidy cuts, rather than reduc­
+tions in government activity. The importance of fiscal contraction in bring­
+ing down prices, through whatever method, was viewed as outweighing
+any negative impact of the rate increases on the price level. Moreover, it
+
+
+
+  21None or the countries discussed was considered to be at full employment and. thus,
+government demand was viewed as a crucial component or effective aggregate demand.
+
+
+
+
+     ©International Monetary Fund. Not for Redistribution
+                   MARIO I. BLEJER and ADRIENNE CHEASTY                                   91
+
+
+was also claimed that severe rate increases at the outset of a program
+could actually mitigate inflationary expectations, since they would reduce
+the government's need to implement further price shocks in the future, as
+well as pre-empting relative price distortions, as discussed above.
+   The experience of the shock programs suggests that large rate changes
+may be undertaken with relatively small effects on the price index.22 This
+suggests that, empirically, governments need not be overly concerned
+with using price-related instruments to cut the fiscal deficit, despite the
+arguments outlined above.23
+
+3. Fiscal Policy Implications of Minimizing Output Losses
+   One of the most consuming concerns in implementing the shock pro­
+grams was the desire to avoid recession during the period of adjustment.
+As discussed earlier, it was believed that output losses could be avoided,
+inasmuch as inflation was inertial-that is, it could be reduced without
+cuts in aggregate demand. Ideally, expectations would be changed with­
+out changing the government deficit. In reality, however, temporary defi­
+cit cuts were seen as efficacious ways of changing people's expectations,
+raising their confidence in economic management, and increasing their
+demand for money-even if inflation was purely inertial.24 Implicit in this
+belief was the idea that the improvement in private sector expectations
+would lead to a surge in activity which would offset the decline in govern­
+ment absorption. In general, tax- and price-changing policies have a
+smaller multiplier effect on aggregate demand than government direct
+expenditure; this would suggest that deficit cuts implemented with the
+objective of changing expectations, rather than purely to cut total absorp­
+tion, should be effected by changes in prices rather than in government
+
+
+
+   221n Brazil, for example, compulsory levies of 25-30 percent on cars, gasoline, and alcohol
+were introduced in July 1986. Following the introduction of these measures, the authorities
+modified the index used to measure official inflation in order to purge the impact of the
+levies from the index. For July and August, inflation was 5.3 percent in the unpurged ver·
+sion, and 2.9 percent in the purged version, of the index. Likewise, in Bolivia, where, at the
+outset of the program, the price of gasoline rose by 750 percent, and domestic prices of other
+publicly provided goods and services were raised to reflect the 93 percent devaluation, the
+inflation rate in the month following the start of the program was 56 percent­
+tO percentage points lower than the 66 percent rate of the month before implementation of
+the program. !All the figures represent monthly averages.)
+   23This conclusion is probably valid, even though part of the explanation for the insignifi·
+cant impact on prices could be problems with the way the price indices were constructed.
+   24Many economists have suggested that the long-run sustainable deficit would probably
+have to be overshot during a shock program, not only in order to convince people of the
+government's determination to switch to conservative fiscal ma.nagement but also to gener·
+ate excess supplies in the economy which would allow price freezes to be maintained. (See
+Blejer and Liviatan (1987), and Dornbusch and Fischer (1986).)
+
+
+
+
+     ©International Monetary Fund. Not for Redistribution
+92                        HIGH INFLATION AND FISCAL POLICY
+
+
+
+activity. It is also possible that policies which affect prices are more easily
+reversible than those which involve reductions in staff and in mainte­
+nance, so that rate changes are more suited to temporary deficit cuts.
+These characteristics of price-realigning fiscal policies, together with evi­
+dence from the shock programs that the price adjustments provoke rela­
+tively little inflation, suggest that as a general rule, price-realigning fiscal
+policies are probably a more efficient means of achieving deficit reduction
+than cuts in activity. However, though increases in taxes and prices may
+have a smaller impact on present growth than decreases in government
+activity, it has been argued, with respect to minimizing output losses over
+the longer run, that pricing measures will depress long-term future
+growth by damaging incentives in the economy.25 If high marginal tax
+rates are inimical to growth, the tax base may deteriorate (relative to
+GDP if the high rates lead to shifts out of taxed activities, or in line with
+the fall in GDP if growth prospects are damaged). In other words, closing
+the short-run deficit may be done at the cost of increasing pressures on
+the long-run deficit. If the public perceives an inconsistency, the govern­
+ment's fiscal policy will not be credible, and inflationary expectations will
+not be reduced by the imposition of short-run fiscal restrictions.
+  The extensive use of temporary fiscal measures in the recent shock
+programs has constituted a striking difference between them and more
+traditional adjustment programs. An explanation for this is that the em­
+phasis in the shock programs on announcement effects and quick results
+meant that if deficit cuts were to be used to reduce inertial inflation, they
+would have to be large and to generate a very rapid inflow of real re­
+sources to the government. The need for a large collection of revenue up
+front is, by definition, almost too extreme to be sustained without large
+output losses, and the usual presumption is that extreme measures will be
+replaced later by gradual policies on either the revenue or the expendi­
+ture side. In other words, the reduction in permanent income is expected
+to be much smaller than the immediate reduction in current income. This
+presumption itself, however, ensures that the public will accept much
+larger temporary deficit cuts than permanent ones and therefore allows
+expeCtations to be affected more quickly.
+  'Thmporary overshooting of fiscal adjustment may also give the govern­
+ment room to implement long-run, growth- (and possibly revenue-)
+enhancing structural changes which are costly in the short run. An exam­
+ple of this, in the context of the shock programs, was provided by the cuts
+in government employment, which reduced long-run labor costs but ne­
+cessitated immediate provision of funds for relocation and redundancy
+payments.
+
+
+     25Liviatan (1986).
+
+
+
+      ©International Monetary Fund. Not for Redistribution
+               MARIO I. BLEJER and ADRIENNE CHEASTY                     93
+
+
+   The largest temporary measures in the programs were the forced­
+saving schemes. In conception, these were designed to have no effect
+whatsoever on permanent incomes. It should be noted in this context that
+the impact of forced-saving schemes on the government's long-run financ­
+ing gap is more or less invariant to whether or not the government pays
+back the forced loan. On the one hand, if the loan is repaid, government
+expenditure will rise by that amount in the year the repayment takes
+place. On the other hand, repayment creates credibility in the loan as an
+asset and permits the government to refinance the loan. If the loan is not
+repaid, present government expenditure will be lower, but the govern­
+ment will find it more difficult to raise revenue through such a scheme
+again. In both cases, the net impact on the financing gap could be the
+same.
+   While temporary fiscal measures have immediate effects which cannot
+be sustained, structuralfiscal measures which improve future fiscal man­
+agement will sustain the long-run fiscal balance but may have no immedi­
+ate revenue impact. Such measures (such as the announcement of tax re­
+forms in Argentina and Bolivia, and of civil service reform in Israel) are
+included in shock programs because of the support they supposedly give
+government credibility-in other words, they have a pure, though tern�
+rary, announcement effect. Their value depends on how plausible they are
+ex ante (so that their announcement will have some impact), and on how
+ soon they actually begin to be carried out. If the policies are not imple­
+ mented, government credibility will be eroded; there will be a "reverse
+announcement effect" in the sense that, because the policy was intro­
+duced with much publicity, government failure to implement it will be
+more noticeable than if it had never been publicized, and future promises
+to use such policy measures will be received with less confidence.
+   A related reason to include announcements of future fiscal policies in a
+shock program is that they minimize the loss of future output by provid­
+ing guidelines for long-range private sector decisions. In particular, pri­
+vate investment may depend on future, as well as present, rates of inter­
+ est, so that government's projected credit use over the life of a planned
+investment may affect that investment decision.
+
+4. Growth of the Financial System Under Inflation
+   and Its Tax Implications
+   A feature of tax systems in many high-inflation countries is their rela­
+tively strong reliance on financial transactions as a tax base. This occurs
+for two reasons. First, the financial system's share of GDP tends to grow
+as the country adapts successfully to inflation. The financial structure
+gets larger and more sophisticated, since, in order to preserve the na­
+tional currency as the unit of account, more complicated financial transac-
+
+
+
+
+    ©International Monetary Fund. Not for Redistribution
+94                    HIGH INFLATION AND FISCAL POLICY
+
+
+tions are developed which incorporate indexation mechanisms to capture
+changes in nominal values more completely. Hence, the share of income
+and profits taxes, etc. from the financial sector may grow more rapidly
+than the rate of inflation.26 Second, as inflation rises, the government's
+traditional inflation tax base, money, shrinks. The logical alternative tax
+bases are the money substitutes which have become attractive as infla­
+tion hedges.
+     If the volume of financial transactions is, indeed, affected by the infla­
+tionary process, it could also be expected that a fall in the rate of inflation
+will reduce the relative size of the financial sector. In particular, the de­
+mand for money substitutes tends to fall drastically as inflation disap­
+pears, since they become less valuable as inflation hedges. It is therefore
+likely that, following rapid disinflation, financial tax bases will shrink,
+both on asset transactions and on incomes.27 Revenue losses on income
+taxes will be exacerbated if banks may offset losses they may incur
+against their tax obligations.
+     This effect was observed in practice. In the countries which introduced
+shock programs, the financial sector fell into difficulties as inflation
+dropped. In Brazil, for example, the private banking system shed 140,000
+workers in the first weeks of the program. Brazil also suffered revenue
+losses as a consequence of the tax reform implemented just before the
+Cruzado Plan. Financial system taxes were adjusted in the reform, with
+relatively higher rates being placed on inflation-hedging assets and trans­
+actions (such as stock exchange trading) which helped maintain real
+wealth, and relatively lower rates on assets whose returns were not so
+elastic with respect to inflation. These reforms meant that when inflation
+fell, the private sector's shift into the latter type of assets created a per­
+manent revenue loss.
+     The public financial sector, in particular, may be expected to be vulnera­
+ble to the large inflation cut observed during the initial phase of a success­
+ful shock program. Public sector banks will be worse off than their private
+sector counterparts if they are not free to shed labor. Also, public bank
+portfolios (particularly in development banks) tend to be in longer-term
+and less tradable assets, so that portfolios can react to large changes in
+inflation only with long lags. In the interim, the profitability, and indeed
+the viability, of the public financial sector may be endangered.
+
+   26The gro"!Vth of the financial sector with the increase in the rate of inflation is likely to
+reach a limit. If hyperinflation develops, a shift away from use of the national currency as
+the unit of account and an extreme shortening in the length of contracts will be observed.
+The process is generally accompanied by extensive financial disintermediation.
+   :I?The validity of this argument hinges on the type of interest rate policy followed, since
+changes in relative interest rates could affect the relative sizes of the various segments of
+the financial system, thus differentially affecting the asset income tax base.
+
+
+
+      ©International Monetary Fund. Not for Redistribution
+                MARIO I. BLEJER and ADRIENNE CHEASTY                      95
+
+
+   While inflation may affect the financial sector, government manage­
+ment and regulation of asset markets may affect the rate of inflation.
+Given an excess money supply, pressures on domestic goods prices will be
+higher, the fewer the domestic and foreign assets that individuals are per­
+mitted to hold. Limitations on the types of assets and on the available
+composition of private portfolios may arise because capital markets are
+relatively unsophisticated. However, government regulations, such as ex­
+change restrictions and institutionally set interest rates, also shrink port­
+folio options and may thereby exacerbate inflation.
+
+5. The Interrelationship of Fiscal and Impact Policies
+   in Shock Programs
+
+   Regardless of the degree of success of impact policies in reducing infla­
+tion, they themselves may be expensive for the budget. For instance, the
+cost of implementing a price freeze may be substantial. If public utility
+prices are frozen at low rates, the budget will suffer. If prices are frozen
+with an element of government subsidy in them, the subsidy will be per­
+petuated; and if they happen to be frozen at low disequilibrium rates rela­
+tive to prices of other goods, the aggregate subsidy will increase as indi­
+viduals substitute the relatively cheaper subsidized goods for competing
+ones.
+   Other labor policies of the government may also be expensive. For ex­
+ample, redundancy payments and pension, social security, or health
+scheme payoffs make the costs of laying off public servants quite high in
+terms of a single year's deficit.
+   If successful adjustment generates a sudden improvement in the bal­
+ance of payments, which leads to a drop in revenue from trade taxes, this
+loss must also be factored into post-program revenue projections. In
+Argentina, for example, the shortfall in 1985 revenue owing to external
+restraint was estimated at half a percentage point of GDP.
+
+
+
+
+                            V. CONCLUSIONS
+
+   The experiences of Argentina, Bolivia, Brazil, and Israel under the re­
+cent shock programs offer insights concerning, first, the innovative ele­
+ments of the packages and, second, fiscal policy in the presence of high
+inflation and unorthodox strategies for curbing it. It is certainly true that
+these programs, and in particular their so-called heterodox components,
+have succeed d in catching public attention and mobilizing public support,
+at least in the short run, for the implementation of policies that usually
+involve significant costs during the period of adjustment. Public confi-
+
+
+
+
+    ©International Monetary Fund. Not for Redistribution
+96                   HIGH INFLATION AND FISCAL POLICY
+
+
+
+dence in the government and in its policies is such a crucial element in
+restoring stability and in attaining a successful level of economic manage­
+ment, recovery, and growth that these programs' innovations cannot be
+dismissed lightly.
+     However, it is difficult to make stronger claims about the virtues of
+shock programs based on the recent evidence. Although direct controls
+and freezes can attain a very dramatic and immediate fall in the rate of
+inflation, it has not proven possible to reduce inflation for more than a
+short period by means of impact policies alone. In fact, there are strong
+indications that the size and quality of adjustment of fundamental vari­
+ables was the most compelling catalyst in achieving inflation cuts, possi­
+bly through their impact on expectations, as well as their direct impact on
+excess absorption. Likewise, it is becoming increasingly clear that pure
+expectational policies cannot play a decisive and independent role in actu­
+ally changing deep-rooted public perceptions and bringing down inflation
+without imposing real losses on the economy.
+     Furthermore, freezes, controls, and incomes policies are not costless.
+They entail administrative and political costs, as well as economic costs in
+terms of shortages, bottlenecks, losses of efficiency, and, possibly, damage
+to long-run growth potential, particularly when prices are frozen out of
+equilibrium. Moreover, they may also have a fiscal cost by causing the
+budget to deteriorate, thus eroding the authorities' ability to adjust the
+fundamental variables successfully. When evaluating the benefits of these
+policies, it is important to consider these implicit and explicit costs.
+     The assumptions on which the use of impact policies has been based
+may be difficult to define in operational terms, particularly the concept of
+inertial inflation as an independent source of price pressures. It is, in fact,
+possible that the inertial component of inflation is not separable from the
+"real" component, so that, though price freezes are actually working to
+overcome some inertia in inflation, their influence cannot be perceived
+unless a fundamental adjustment is taking place at the same time. More
+generally, given their direct and indirect dependence on the reduction of
+excess absorption, as well as the danger they entail of compromising a
+country's long-run growth potential, the shock programs have not re­
+vealed any practical or painless way of cutting inflation.
+     We are, however, not left with the result that traditional demand­
+management policies function exactly as economists had always believed
+in adjusting the price level. In particular, the conduct and effects of fiscal
+policy in high-inflation countries, by themselves or in the context of shock
+programs, may differ from what is described in conventional analyses.
+Fiscal management becomes more difficult, in that policymakers must
+take into account additional complications arising from the persistence of
+the inflationary process and from the transition from high to lower levels
+
+
+
+
+      ©International Monetary Fund. Not for Redistribution
+                  MARIO I. BLEJER and ADRIENNE CHEASTY                                  97
+
+
+of inflation. Of these, we have discussed the facts that a high-inflation
+deficit is not the same as a low-inflation deficit; that a tax base which is
+optimal under high inflation may disappear as inflation drops; and that
+administrative mechanisms which are cost-effective under high inflation
+may appear too cumbersome under lower inflation.
+  On the one hand, some of the general intuitions embodied in the shock
+programs may also provide important lessons for fiscal policy. Large, tem­
+porary fiscal measures may play a valuable role in adjustment, as may
+announcements of future changes in fiscal regime. On the other hand,
+some accepted beliefs about fiscal policy do not seem to have been sup­
+ported in practice. For example, deficit reduction through tax and rate
+increases was not shown to generate significantly higher inflation than
+deficit adjustment through cuts in activity.
+  In sum, from the evidence at hand at this point, it could be said that
+while shock programs have heightened our awareness that the manipula­
+tion of expectations may significantly affect the outcome of an adjustment
+program, expectation�hanging policies are not a substitute for fundamen­
+tal adjustment achieved by adopting an appropriate fiscal and monetary
+stance, and may be successful only when implemented in conjunction with
+traditional demand-management policies. The implementation of the lat­
+ter policies is not, unfortunately, as straightforward in the presence of
+expectation�hanging policies as in the traditional case; and the success of
+the policies, when they are called upon to ward off hyperinflation, is more
+difficult to ensure than when inflation is not an important determinant of
+the behavior of fiscal variables.
+
+
+
+
+                                    REFERENCES
+
+
+Barro, Robert J., and David B. Gordon, "Rules, Discretion and Reputation in a Model of
+  Monetary Policy;• JO'Urnal of Monetary EcO'Mmics (Amsterdam), Vol. 12 (July 1983),
+  pp.101-21.
+Blejer, Mario I., and Nissan Liviatan, "Fighting Hyperinflation: Stabilization Strategies in
+  Argentina and Israel, 1985-86;' Sto.ffPapers, International Monetary Fund (Washington),
+  Vol. 34 (September 19871, pp. 409-38.
+Bruno, Michael, and Stanley Fischer, "Expectations and the High Inflation Trap" (unpub­
+  lished, September 1985).
+Calvo, Guillenno A., "Optimal Seigniorage from Money Creation: An Analysis in Terms of
+  the Optimum Balance of Payments Deficit Problem;• JO'Urnal of Monetary EcO'Mmics
+  (Amsterdam), Vol. 4 (�ugust 1978), pp. 503-17.
+__     , and Roque B. Fernandez, "Competitive Banks and the Inflation Thx;' EcO'Mmic
+  Letters (Lausanne), Vol. 12 (Nos. 3-4, 1983), pp. 313-17.
+
+
+
+
+    ©International Monetary Fund. Not for Redistribution
+98                     HIGH INFLATION AND FISCAL POLICY
+
+
+
+Chu, Ke-young, and Andrew Feltenstein, "Relative Price Distortions and Inflation: The
+  Case of Argentina, 1963-76;' Staff Papers, International Monetary Fund (Washington),
+  Vol. 25 (September 1978), pp. 453-93.
+Dornbusch, Rudiger, and Stanley Fischer, "Stopping Hyperinflations Past and Present;•
+  Weltwirtschaftliches Archiv (Tuebingen), Vol. 122 (No. 1, 1986), pp. 1-14.
+Liviatan, Nissan, "Inflation and Stabilization in Israel: Conceptual Issues and Interpretation
+  of Developments" (unpublished, International Monetary Fund, November 4, 1986).
+Sargent, Thomas J , "The Ends of Four Big Inflations;· in lnfln,tWn: Causes and Effects, ed.
+                   .
+
+
+  by Robert E. Hall (University of Chicago Press, 1982), pp. 41-97.
+Tanzi, Vito, "Inflation, Lags in Collection, and the Real Value of Tax Revenue;· StaffPapers,
+  International Monetary Fund (Washington), Vol. 24 (March 1977), pp. 154-67.
+__     , "Inflation, Real Tax Revenue, and the Case for Inflationary Finance: Theory with an
+  Application to Argentina:· Staff Papers, International Monetary Fund (Washington),
+  Vol. 25 (September 1978), pp. 417-51.
+__     , Mario I. Blejer, and Mario 0. 'Thijeiro, "Inflation and the Measurement of Fiscal
+  Deficits" (unpublished, International Monetary Fund, March 13, 1987).
+
+
+
+
+     ©International Monetary Fund. Not for Redistribution
+

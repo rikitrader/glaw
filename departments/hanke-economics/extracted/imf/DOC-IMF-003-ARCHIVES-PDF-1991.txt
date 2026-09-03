@@ -1,0 +1,2860 @@
+MASTER    FILES
+R001-1 C-525                                                           U440
+
+                                                               Thi\ I\ a working pqwr and the author wwld welcome any
+ IMF WORKING            PAPER                                  c‘ommsnl\     on the prcwnt hxt. Cltati~)n\ should refer IO an
+                                                               unpuhll~hcd      manuscript.  mcnliomng    rhc author and the
+                                                               date crt’ iahuancc by Ihc Intcrnalionul   Monetary  Fund. The
+ 0 1991 International     Monetary     Fund                    view cxprcxwd       arc thaw ot’ Ihc author and do not neces-
+                                                               arily   rcprcxcnt thohc 11f the Fund.
+
+
+
+
+WP/91/107                               INTERNATIONAL MONETARYFUND
+
+                                                Research       Department
+
+
+                     StoDDing        High     Inflation:        An Analvtical             Overview         I/
+
+                                     Prepared        by Carlos        A. VCgh
+
+                         Authorized           for    Distribution         by Mohsin          S. Khan
+
+                                                    November 1991
+
+
+
+
+                                                           Abstract
+
+        This paper reviews the evidence on stabilization                    plans in high
+inflation      countries      within   a unified    theoretical      framework.         The evidence
+suggests that hyperinflations              have been stopped almost           instantaneously
+with no major output costs, while stabilization                     programs in chronic-
+inflation      countries      have resulted      in an initial      expansion      followed    by
+a later     recession,      in addition     to a sustained       real exchange rate
+appreciation       and current       account deficits.         These outcomes turn out
+to be consistent         with the predictions         of the analytical         model.
+
+
+JEL Classification           Number:
+  F41
+
+
+
+
+   u     The author is grateful     to Pierre-Richard   Agknor, Satil Lizondo,   Peter
+Montiel,    Carmen Reinhart,    Ratna Sahay, and, especially,     Mohsin Khan for
+helpful    comments and suggestions.       This paper has greatly   benefited  from the
+author's    joint  work with Guillermo     Calvo on stabilization    policy.
+                                                                  Contents                              Page
+
+       I.      Introduction                                                                               1
+
+  II.          Stylized           Facts      of High-Inflation           Stabilization                    3
+
+
+               1.       Hyperinflations                                                                   7
+
+                                 European hyperinflations                                                 7
+                                 Taiwanese Hyperinflation                                                 8
+                        C.       The Bolivian  Hyperinflation                                             8
+
+                 2.          Chronic      inflations                                                      9
+
+                                 Heterodox   programs of the 1960s                                       10
+                        b":      Southern-Cone    stabilizations of the late                     70's    11
+                        C.       Heterodox programs of the mid-1980's                                    12
+
+                 3.          Stylized      facts       in chronic-inflation          stabilization       13
+
+III.           The Analytical               Model                                                       14
+
+  IV.          Stopping           Hyperinflation                                                        19
+
+               1.       Absence of backward-looking        behavior                                     20
+               2.       Credibility                                                                     20
+               3.       Matching    theory with evidence                                                22
+               4.       Ex-ante versus ex-post     credibility                                          23
+
+       V.      Temporary           Reduction           in the Devaluation          Rate                 26
+
+ VI.           Policy          Implications            and Conclusions                                  31
+
+References                                                                                              35
+
+Tables
+
+1.          Inflation           Variability      in Argentina,
+            Bolivia,           Brazil,      and Uruguay                                                  6
+
+2.          Inflation,            Revenues, and Seigniorage                   in
+            Argentina,            Bolivia  and Brazil                                                   22
+.
+
+
+
+
+    Figures
+
+    1.    Argentina:       12-Month Inflation     Rate          4a
+    2.    Brazil:     12-Month Inflation      Rate              4b
+    3.    Uruguay:      12-Month Inflation     Rate             4c
+    4.    Bolivia:      12-Month Inflation     Rate             4d
+    5.    Bolivian    Stabilization                             8a
+    6.    Argentinean      1967 Stabilization                 10a
+    7.    Uruguayan 1968 Stabilization                        lob
+    8.    Argentinean      Tablita                            12a
+    9.    Chilean Tablita                                     12b
+    10.   Uruguayan Tablita                                   12c
+    11.   Israeli    Stabilization                            12d
+    12.   Austral    Plan                                     12e
+    13.   Mexico Stabilization                                12f
+    14.   Temporary Reduction       in Devaluation     Rate   28a
+                                             I.   Introduction
+
+        High inflation       has been a recurrent         problem in developing        countries.
+More often than not, stabilization                programs designed to stop high inflation
+are short-lived,         and inflation      resurges with a vengeance.             The frequent
+failure     of stabilization        programs makes the public            skeptical   of the chances
+of success of any new attempt.                High inflation      becomes entrenched,       and
+countries     have no choice but to learn how to live with high inflation                         by
+creating     various     indexing    mechanisms.       As countries       adapt to higher
+inflation      and the credibility         of policymakers       suffers    with each failed
+program,     the eradication        of inflation      becomes an even more elusive          goal.
+
+        As stabilization          programs are implemented             and then abandoned,
+economists      have focused on developing                analytical      frameworks that may be
+helpful    in understanding           the problems of stopping              high inflation.          After   the
+Southern-Cone        stabilization         programs of the late 1970's,                 for instance,      a
+large literature         developed       trying     to explain       what was viewed at the time as
+the most puzzling           feature     of those programs,           namely, the large real-
+exchange-rate        appreciation        that resulted        from the slow convergence              of the
+inflation      rate to the rate of devaluation.                    The slow response of inflation
+prompted some influential               economists      to conclude       that incomes policies
+should be a key component of future                   stabilization         programs.         The lessons of
+the late 1970's undoubtedly                influenced      the design of the so-called               heterodox
+programs of the mid 1980's,                which in turn brought            forth new issues--most
+notably,     the expansion         of real activity          at the beginning           of the programs,
+followed     by a later        slowdown (see Kiguel and Liviatan                   (1990)).      While such a
+business-cycle         associated      with exchange-rate-based               stabilization       had already
+been discussed         in connection         with the Southern-Cone             stabilization       programs,
+the issue of real-exchange-rate                  appreciation        had, to a large extent,
+overshadowed       it.
+
+        While new experiences         have brought      about novel features       that need to be
+explained,      a consensus has emerged within            the profession     on some key issues
+in stabilization        policy.      For instance,      most economists     would agree that
+fiscal    adjustment      is a necessary      condition     for a successful     stabilization,
+independently       of whether incomes policies           are used or not.       If stabilization
+programs keep failing            due to a lack of fiscal        adjustment   (for instance,        the
+Brazilian      Cruzado plan of 1985), it should most probably                be attributed       to
+political      and institutional       considerations       rather    than to economic ignorance
+on the part of policymakers.            'l/
+
+        More interestingly,         even in the presence of a serious  fiscal
+adjustment,     stabilization        programs seem to have a hard time achieving    the
+goal of low inflation.             Factors such as real exchange rate appreciation,
+current    account deficits,         and rising real domestic interest   rates may all
+
+
+  1/    It should not be concluded,    however, that economic analysis   has
+nothing    to contribute to the issue,   as the expanding  literature  on political
+economy suggests.
+                                                     - 2 -
+
+
+
+contribute      to put pressure         on policymakers          and force them to give up
+programs that,         in the first       instance,      seem well conceived.               Therefore,
+understanding        why such problems may arise clearly                     constitutes        an essential
+step in the fight          against    inflation.         Furthermore,         it   is   essential     to
+analyze     these issues in a general equilibrium                    framework.           Otherwise,     the
+incompatibility          of different       objectives     at an analytical             level--let     alone at
+a practical       level- -may go undetected.              For instance,          theory suggests and
+experience      seems to confirm          that inflation         stabilization          is accompanied by
+an appreciation          of the real exchange rate.               Therefore,         aiming at achieving
+low inflation        and real-exchange-rate            stability        simultaneously          would appear
+not to be feasible.
+
+         This paper surveys the main issues associated                   with exchange-rate-based
+stabilization.         lJ   Specifically,         it first     reviews the stylized      facts that
+have characterized          attempts      to stop both hyperinflation         and chronic
+inflation.         Then, a unified        analytical       framework is presented      in order to
+contrast       the predictions      of the model with the empirical             evidence.      Finally,
+policy      conclusions     are drawn in light           of the analysis.
+
+        The model utilized           in this paper is the one developed by Calvo and Vegh
+(1991).       While the choice of a particular             model is to a large extent
+arbitrary,      there are substantial         benefits      from such a strategy,      especially
+in terms of keeping the discussion               clearly      focused by concentrating      on one
+particular      model.      Calvo and Vegh's (1991) model relies            on intertemporal
+substitution       effects     as the key channel through which non-credible
+stabilization       policies--stabilization          policies      that are viewed by the public
+as temporary--have          real effects.     2/
+
+         An important        result   of the model is that if the authorities                    announced
+a reduction        of the rate of devaluation           that is credible.          in the sense that
+the oolicv       is viewed as permanent by the public,                inflation       falls
+instantaneously         without     any output costs.        Sticky prices         do not prevent       an
+instantaneous         adjustment     because all price-setting            behavior      is forward
+looking.       It is argued that the analytical              exercise      of a permanent reduction
+in the rate of devaluation              is, to a first      approximation,         relevant      for
+interpreting        the end of hyperinflations.             The reasons are that,            first,
+hyperinflationary          processes      are characterized      by the absence of backward-
+looking      behavior;     and, second, it has been argued that programs designed to
+stop hyperinflations            are more credible       than those designed to stop high but
+
+
+    1/    Experience     shows that stabilization       programs that attempt       to stop high
+inflation      are often based on the control          of the nominal exchange rate.
+Therefore,       this paper will      focus on exchange-rate-based     stabilization.         See
+Calvo and Vegh (1990a) for an analysis               of money-based stabilization.
+    L?/ Real effects       from exchange-rate      management have also been explained           by
+the presence of wealth effects.              For instance,    Helpman and Razin (1987)
+emphasize wealth effects           that arise from the absence of Ricardian
+equivalence.         Drazen and Helpman's       (1987, 1988) analyze wealth effects         that
+result     from anticipated      future    changes in government spending.
+                                                        - 3 -
+
+
+
+persistent      inflation.      The evidence   seems to bear out the prediction     that
+hyperinflations          can be stopped abruptly   and at small output costs--although
+the evidence        on the latter    is a matter of controversy.
+
+         If the authorities             announce a stabilization               plan based on reducing             the
+rate of devaluation              but the public          perceives        the policy       as not credible--in
+the sense that it expects the higher                         rate of devaluation            to resume at some
+later      date--the       effects      of the policy          will    be the same as those that would
+result      from a temporary            reduction      in the rate of devaluation.                    The model
+predicts       that a non-credible             reduction        in the rate of devaluation                 leads to
+an exnansion          in the home-goods sector.                 a current      account deficit.            real
+appreciation.           and a lower domestic real interest                     rate.       Later in the
+program.       there is sharp contraction                  in the home goods sector.                  It is argued
+that this experiment               may be useful         in interpreting            stabilization          in
+chronic-inflation              countries     where the failure              of many past attempts             at
+controlling         inflation,        and the adjustment             of the economy to living                with high
+inflation        make any attempt           to stop inflation             less than fully          credible.      The
+stylized       facts are apparently              consistent         with the predictions            of the model.
+The behavior          of the domestic real interest                    rate,   however,       remains a thorny
+issue because although                it has fallen          in some stabilization              programs--most
+notably,       the Southern-Cone            programs--it          has risen in most programs.
+
+       The paper proceeds as follows.              Section      II reviews     the stabilization
+episodes that will           serve as reference     points      throughout     the paper and
+summarizes the stylized             facts that need to be explained.               Section    III
+introduces       the model and analyzes         the effects       of a permanent reduction           in
+the rate of devaluation.               Section  IV discusses       the end of hyperinflations           in
+light    of the model.          Section V examines a temporary            reduction      in the rate of
+devaluation,         and links    the theoretical      framework with evidence             on stopping
+chronic     inflation.        Section VI briefly      analyzes       the effects     of backward
+indexation.          Section VII draws policy        implications       from the analysis         and
+provides      concluding      remarks.
+
+
+                    II.     Stvlized      Facts    of Hizh-Inflation           Stabilization
+
+         Since the main objective          of this study is to link theory with evidence,
+there will     be numerous references           to episodes of hyperinflation            and chronic
+inflation.       It will    prove useful,       therefore,       to group the different       episodes
+in some systematic        way.      Besides providing        a basis for further       references,
+this classification         highlights       the fact that many stabilization           plans shared
+some fundamental        characteristics.          These common features,         in turn,    have not
+only generated      important       discussions     in the literature,       but have also been
+influential      in the design of subsequent             stabilization    plans.    lJ
+
+
+
+
+  1/  This is not           to deny the        importance       of factors       which     were specific         to
+each stabilization            episode.
+                                                          - 4 -
+
+
+
+         For practical         purposes,      the term "hyperinflation"                 will       be defined        as in
+Cagan's (1956) classic               paper. L/ At a conceptual                  level,       it is useful          to
+keep in mind the distinction                  between "hyperinflation"                 and "chronic-
+inflation,"        emphasized by Pazos (1972),                    in his well-known            study of Latin-
+American high inflations.                  Pazos (1972) argues that chronic                        inflation
+exhibits       two key characteristics.                  First,      chronic    inflation          may last for
+many years;        it is not a temporary               phenomenon as is the case of most hyper-
+inflations.          Second, chronic          inflation         has an intermediate              intensity--higher
+than that of moderate inflation                    but much lower than that of hyperinfla-
+tion--which        results       from the fact that countries                 learn how to live with high
+and persistent          inflation      by creating          various      mechanisms,         and are therefore
+able to continue            to function.          Inflation         does not have an inherent
+propensity       to accelerate          or, if it does, it soon reaches a new plateau.                                 In
+hyperinflations,            however,     the rate of inflation               oscillates          freely,      before
+accelerating         exponentially         in the last six months or so in most cases.
+Pazos (1972, p. 19), commenting on the inflation                              rate during            the German
+hyperinflation,           points     out that "oscillations               were so large and so erratic
+that the chart          [of the inflation             rate]     seems to register            the movements of an
+object      that has been let loose in a frictionless                         environment            and is
+reacting,       without      offering      resistance,          to the external          forces being applied
+to it."
+
+         Although     there is not a generally-accepted                 definition       of what
+constitutes        a "chronic          inflation"    country,      some cases are beyond dispute.
+Figures       1 through       3 illustrate        the 12-month inflation          rate during    the last
+30 years in Argentina,                 Brazil,    and Uruguay--which       would be considered,          by
+most definitions,             chronic-inflation         countries.      Figure 4 shows the 12-month
+inflation       rate during          the same period for Bolivia,            a traditionally       low-
+inflation       country      which ended up in hyperinflation.                  These countries       provide
+an interesting          illustration           of the inflationary      process over long periods            of
+time in both chronic-inflation                    and low-inflation      countries.
+
+         In Argentina,    except for a four-month          period   in 1961 and a seventeen-
+month period       that runs from November 1968 to March 1970, the 12-month
+inflation      has always been above 10 percent            (see Figure 1).       Moreover,
+beginning      in June 1976, when the inflation            rate surpassed     100 percent    for
+the first      time since December 1959, inflation             never fell    below 50 percent
+and only rarely        did it fall     below 100 percent.       2/    In June 1985, inflation
+surpassed      1,000 percent.        The Austral  Plan (June 1985) prevented           the economy
+from falling       into hyperinflation       but, finally,       in June 1990, hyperinflation
+
+
+   1/    Cagan (1956, p.25) defines            hyperinflations      "as beginning    in the month
+the  rise in prices         exceeds 50 percent        and as ending in the month before the
+monthly      rise in prices       drops below that amount and stays below for at least
+a year."        Note, for further       reference,      that a 50 percent    monthly rate is
+equivalent        to a 12,875 percent       yearly    rate.
+  u      Inflation     fell    below 100 percent        only twice:    for a period of 11 months
+in 1980 and 1981 (the Tablita              program) and a 10 month period          in 1985 and
+1986 (the Austral          Plan))
+                                                              -    4a -
+
+
+
+Figure             1. Argentina:                                  E-Month                         Inflation                      Rate
+
+                                                     1958.01                -        1988.12
+
+
+
+
+            1000 -
+
+
+
+
+              250-
+
+
+                         ;.:;..--':
+                   O-
+                            58    60    62   64    66    60       70   72       74    76     78   80    82    84   86     88
+                            S
+
+
+
+
+                                                        1985.01             -        1990.09
+
+          25000
+
+
+          20000-                                                                                                         \
+                                                                                                                   \
+
+    f-4
+    ;a      15000-
+    t
+    c
+    4
+    c
+    i       10000-
+    zi
+
+            iooo        -
+
+
+
+                                                                                                                             1
+
+                                 1985             1986             1987               1988             1989             1990
+
+
+
+
+  Sour-w:          IFS
+                                              - 4b -
+
+
+    Figure            2.      Brazil:        E-Month                 Inflation              Rate
+
+                                         1958.01      -    1987.09
+
+             350
+
+             300
+
+             250
+          2
+          x
+          5 200
+          p.
+          g 150
+          b
+          Pa
+             100
+
+              50
+
+                  0
+                       60     62 64   66 68    70     72 74   76   78   80     82   84 86
+
+
+
+
+                                         1985.01       -   1990.12
+
+            7000
+
+            6000
+
+         5000
+      :
+      it
+      t 4000
+      D,
+      g     3000
+      6
+      p. 2000
+            .1
+         1000
+
+                  0
+
+
+
+                       1985       1986         1987        1988         1989         1990
+
+
+
+
+Source:     IFS
+                                       - 4c -
+
+
+
+
+Figure          3.    Uruguay:           1%Month       Inflation   Rate
+                                1958 .Ol -   1990.12
+200
+
+
+
+
+150
+
+
+
+
+100
+
+
+
+
+ 50
+                     II ‘%,
+                         4(/’    1.
+                                 1.
+
+  0
+         1960
+                                                         - 4d -
+
+
+Figure         4.       Bolivia:                 E-Month                              Inflation                 Rate
+
+
+
+
+            -so\       ,,,        (,     l ,‘,,,,,,,,,,,,,,,,I
+                        60   62        64 66 68 70                        72     74        76    78   80       82
+
+
+
+
+                                                1980.01           -            1989.12
+
+           25000
+
+
+
+           20000
+
+    k
+    g      15000
+    t
+    a
+    2
+    !i     loooo
+    a
+
+            5ocfo
+
+
+                                                     -
+                   (                   I                              1
+                                                                                      L
+                                                                                                           ,
+
+                       80    81            82     83        84            85          86        87    88       89
+
+
+
+
+ Source:     IFS
+                                                    - 5 -
+
+
+
+(which lasted 11 months) could not be avoided.                       Argentina  thus provides            a
+case study of how a chronic-inflation country                      may end up in hyperinflation.
+
+        The 12-month inflation     rate in Brazil      has never been below 10 percent
+since February     1958 (see Figure 2).        It reached 100 percent          in March 1981
+and, except for 9 months in 1982, never fell             below that level.           The 1,000
+percent    mark was reached in December 1988 and the economy was in hyper-
+inflation    in December 1989.      As in the case of Argentina,           inflation     rates of
+above of 1,000 percent       a year eventually      led to hyperinflation.
+
+      Unlike   the cases of Argentina           and Brazil,    inflation     in Uruguay has not
+reached hyperinflationary           proportions     at the end of this thirty-year          period
+(see Figure 3).       The reason is that inflation           has never gone beyond levels
+above 200 percent.       (In fact,      only rarely    did inflation       go over the 100
+percent   mark.)     However, except for a 13-month period               in 1982 (at the end of
+the Tablita    program),     inflation       has always been above 30 percent         since
+November 1970.
+
+        Bolivia     illustrates        how a low inflation      country  can find itself      in a
+full-blown       hyperinflation          in a short-period     of time.    Between January      1959
+and July 1979, the average 12-month inflation                     rate was 11 percent.      The 100
+percent      mark was reached in July 1982 and the process was explosive                    from
+then on.        When inflation         reached the 500 percent mark in May 1984, the
+economy had gone into hyperinflation.                    Thus, in contrast     to Argentina     and
+Brazil,      high levels        of inflation    in Bolivia     quickly  degenerated    into
+hyperinflation.
+
+        As indicated     above, Pazos (1972) associates              high oscillations            of the
+inflation      rate with hyperinflationary            periods.     To illustrate            this point,
+the 30-year period         from 1960 to 1989 in the four countries                    illustrated        in
+Figures    1 through 4 has been divided             into five-year        periods.        u     Table 1
+    shows the mean, standard           deviation,     and coefficient        of variation         of the
+monthly inflation        rate in each of these four countries                  for the six five-year
+periods.       Except for Uruguay,          the correlation      coefficient        between the mean
+and the standard        deviation      is always above 80 percent.              The highest         standard
+deviations       are present     during periods       that include       hyperinflations          (almost
+30 percent       in Argentina      and Bolivia     during    1985-1989).         In this sense,
+therefore,       higher  inflation       is associated      with higher      variability.           Note,
+however,     that the correlation          between the mean and the coefficient                   of
+variation      is, if anything,        negative.      The highest      coefficient          of variations
+correspond       to the periods       of lowest inflation        (Bolivia      between 1960 and
+1970).
+
+
+
+
+   u      Since it    is generally  not possible            to reject   non-stationarity             of the
+inflation      rate   in these countries,   these           figures   should be taken         with
+caution.
+                                                                              -6-
+
+
+
+
+Tablo      1.    Vwiability   of monthly      inflation      rata   in Argentina,          Bolivia,      Brazil,    and    Uruguay
+
+         Period                       Argentina                                Bolivia                                       Brazil                  Uruguay
+                              Mean       S. D.            c. v.      Mean        S. D.                C.V.         Mean       S. D.   c. v.   Mean     S. D.   c. v.
+
+ 1960.01        - 1964.12     1.66         2.13           1.28        0.49          1.55              3.16         3.80       2.29    0.60    1.99     2.53    1.27
+
+ 1965.01        - 1969.12     1.69         2.93           1.73        0.49          1.70              3.47         2.32       1.37    0.59    4.41     4.28    0.97
+
+ 1970.01        - 1974.12     2.98         3.28           1.10        1.81          4.14              2.57         1.53       0.81    0.53    4.26     4.26    1 .oo
+
+ 1975.01        - 1979.12     10.34        7.09           0.89        1.24          3.01              2.43         3.21        1.30   0.40    3.90     2.11    0.54
+
+ 1960.01        - 1964.12     11.30        5.99           0.53       12.13          15.24             1.28         7.22       2.23    0.31    2.94     2.48    0.84
+
+ 1965.01        - 1969.12     17.90        29.77          1.86       11.85          29.55             2.49         16.34      11.74   0.72    4.71     1.70    0.38
+
+
+
+
+ Zorreiation       (M, SD)                 0.86                                     0.91                                      0.96                     0.23
+
+ Zorrelation       (M, CV)                 -0.14                                    -0.74                                     0.40                    -.065
+                                                   - 7 -
+
+
+
+
+1.     Hvverinflations
+
+       For the purposes         of this   paper,    it   is useful    to div ide hyperinflations
+as follows:
+
+      a>    European hyperinflations            of the 1920's and 1940 ‘S.
+      b)    The Taiwanese hyperinflation             of 1945-1949.
+      c)    The Bolivian  hyperinflation           of 1985.
+
+a.     EuroDean     hvperinflations
+
+       This group includes      the seven hyperinflations         that took place in Europe
+after    World War I and World War II: Austria          (October 1921-August           1922),
+Germany (August 1922-November 1923), Greece (November 1943-November 1944),
+Hungary (March 1923-February          1924, and August 1945-July           1946), Poland
+(January     1923-January   1924), and Russia (December 1921-January                 1924). u
+Heavy disruptions       and reparation     payments resulting       from the two World Wars
+led to accelerating       budget deficits      that were financed        by printing      money.
+The German hyperinflation--arguably,             the more heavily       studied    e isode in
+monetary history--reached        monthly rates of inflation           of 32.4x10 3 percent,
+and was, with the exception          of the Russian hyperinflation,            the longest      in
+duration     (16 months).    The world's     record,   according      to Cagan (1989)
+occurred     in Hungary after World War II, when prices             rose an average of
+19,800 percent between August 1945 and July 1946 and 4.2~10~~ percent                         in the
+peak month of July.
+
+        The unifying          theme behind these episodes is how hyperinflation                   was
+successfully        brought under control           by introducing     drastic      fiscal    reforms and
+restoring        convertibility         of the domestic currency        in terms of the dollar           or
+gold, as emphasized by Sargent (1982) in his paper on four of these
+hyperinflations           (Austria,       Germany, Poland, and Hungary after World War I).
+In Sargent's         (1982) interpretation,           these four episodes illustrate             how a
+change in policy            regime,     if believed     by the public,     is enough to stop
+inflation        at once with no major disruptions.                As discussed       in detail     in
+Section      IV, Sargent's          (1982) views have not gone unchallenged,               most notably
+by Sachs (1986, 1987) and Dornbusch (1988).                      Dornbusch (1988) argues that,
+at least       in the German case, the stabilization                was a much more diffuse            and
+accidental        matter than claimed by Sargent (1982).                  Sargent's      (1982)
+interpretation          of the small        costs,  in terms of output,        suffered     by these
+four economies has also been disputed                    by Wicker (1986).
+
+
+
+
+  1/    Dates indicate     approximate   beginning    and end as reported    by Cagan
+(1956).       Cagan (1956), Yeager (1981),      Sargent (1982),   Dornbusch and Fischer
+(1986),    and Siklos    (1989),   among many others,    have studied   these episodes
+exhaustively.
+                                                     - 8 -
+
+
+
+b.     Taiwanese      Hnerinflation        I/
+
+      The Taiwanese hyperinflation      is much less known compared to its
+European counterparts.     Our interest    in this episodes derives       from the fact
+that it is relevant    for the discussion     on Sargent's  (1982) views,        concerning
+the importance   of a change in policy     regime in stopping    hyperinflation.
+
+         In November 1945 Taiwan reverted                  to Chinese sovereignty.         The Chinese
+national       government        attempted    to isolate       Taiwan from the hyperinflation
+taking place on the mainland by letting                      Taiwan be an independent        currency
+area,      Inflationary           finance,   however, led to hyperinflation            in Taiwan as
+well.      In terms of monthly inflation                 rates,    however,    the Taiwanese
+hyperinflation           was the mildest        of the hyperinflations.           Average monthly
+inflation       rates during 1946, 1947, and 1948 were 11.3 percent,                       18.5 percent,
+and 22.5 percent,             respectively.        During the first        five months of 1949,
+before the June 15 stabilization,                   prices     rose at an average monthly rate of
+53 percent.          Inflation        did not stop immediately          but it did slowed down
+dramatically.            Inflation       from the middle of June through December was 82
+percent      compared to 729 percent             in the first       five months.      During 1950,
+inflation       was 89 percent.
+
+        An interesting         aspect of the Taiwanese stabilization               is that,    according
+to Makinen and Woodward (1989),                 it apparently        took place not only without
+any fiscal        adjustment,      but, more importantly,           with no prospects      of any
+future     fiscal      adjustment.      Neither      a major tax increase,        nor the ability       to
+refuse the government's             requests      for credit     took place,     as was the case in
+the European hyperinflations.                The key measure was to restore             public
+confidence        in a new currency        by making it convertible           into gold and foreign
+exchange.         As a result,      the authorities         reduced money creation       by financing
+the deficit         with reserves.       It was only in mid-1952 that massive aid from
+the United States helped in closing                   the budget deficit.         Thus, although      the
+Taiwanese stabilization             could be interpreted           along Sargent's     (1982)
+lines--the        public    perceived    a change in regime, and inflation              came down with
+mild costs--Makinen           and Woodward (1989) argue that such a change in regime
+cannot possibly          have been perceived,           since it ultimately       depended on an
+unforeseen        event (the United States aid prompted by the Korean War).
+
+C.     The Bolivian       hvperinflation        2/
+
+       The Bolivian      hyperinflation     was the first     hyperinflation      in thirty-five
+years.    During 1984-5, inflation           in Bolivia    was the highest     in Latin
+American history        and, according     to Sachs (1986),      the seventh largest        in the
+20th century.       Inflation       during the first    half of 1985 averaged roughly            60
+percent   a month, with a peak of 183 percent              in February.      When foreign
+
+
+  1/     The discussion    of the Taiwanese hyperinflstion                 draws on Makinen        and
+Woodward (1989).
+  z/     See Sachs (1986, 1987) and Morales (1988).                   Figure    5 illustrates       the
+Bolivian    stabilization.
+                                                                           -   8a   -
+
+
+                            Figure                  5.          Bolivian                           Stabilization
+
+                       Deva uation          Rate                                                                                 Inflation          Rate
+
+
+
+
+                                                                                             -MM               1984               1985              1986             1987
+
+
+
+
+ Devaluation          and      Inflation     (post-stabilization)                                                  Real       Effective         Exchange       Rate
+
+                                                                                             1000
+
+
+
+
+                                                                                        B     750
+
+
+                                                                                        i
+
+                                                                                        d     500
+
+                                                                                        :
+
+                                                                                        f     2x)
+
+
+                                                                                                                                        -
+                                                                                                    0
+                                                                                                            1983      192-4      19e5        1988    1987     1988      1989
+
+
+
+
+                            Trade      Balance                                                                                Real          GDP Growth
+
+                                                                                               5.0
+
+
+
+                                                                                               2.5
+                                                                                        2
+                                                                                        k
+                                                                                               0.0
+                                                                                        k
+
+                                                                                        2K -25
+
+                                                                                        CI
+                                                                                             -5.0
+
+
+
+                                                                                             -7:
+    19m        lSs4     1985         1988    198:        1988       1989                             195s          1984           El         1986      1987      1988          1 Bs
+
+
+
+
+Source:    IFS
+                                                 -   9   -
+
+
+
+
+capital      inflows      stopped in early 1982, the government resorted               to domestic
+credit     to finance        its deficit,    thus setting    off the inflationary         process.
+After     several     failed     attempts,   the program announced on August 29, 1985
+succeeded.         After only 10 days, inflation          dropped from 36 percent           in the
+first     w&      of September to 4.6 percent          in the second week.        Inflation      in
+October and November was -1.9 percent                and 3.2 percent,     respectively.         After
+a resurgence         of inflation       in December 1985 and January 1986, inflation               was
+held to an annual rate below 26 percent between February and September.
+Inflation        remained below 20 percent during           1988 and 1989.
+
+       The key components of the stabilization                program were a drastic          fiscal
+correction,        unification     of exchange rates,      and a return       to full
+convertibility--capital            controls   had been in place since late 1982. Unlike
+the European stabilization             plans of the 1920's which were based on a fixed
+exchange rate,           the exchange rate system in Bolivia          during    the stabilization
+plan is best characterized             as a "dirty"   floating.       Private     agents were
+allowed      to buy and sell foreign         exchange freely,      but the Central       Bank would
+sell foreign         exchange rate to the public        in a daily     auction     and buy foreign
+exchange at the average price fixed in the last auction.                        For each auction,
+the central        bank would fix both a base price at which it would sell foreign
+exchange and the amount that it would offer;                  bidders    would not know
+beforehand        either     the base price or the amount offered           by the central       bank.
+
+       Upon unification        of the exchange rate markets,     the official    exchange
+rate depreciated       by 1600 percent      in one day (see Figure 5), thus eliminating
+overnight   the parallel        market premium.     The exchange rate stabilized
+immediately    after      this initial   adjustment   providing  a de facto anchor to the
+system, although        the program did not seek to use the exchange rate as the
+nominal anchor.         Rather,    the commitment of the authorities      was to
+drastically    reduce money creation          that was not backed by reserve holdings.
+
+       Sachs (1986, 1987) argues, based on the Bolivian         case, that a regime
+change is not necessary        for the initial  success in stopping       hyperinflation.
+Credibility,    Sachs (1987) argues, was established      after    inflation       was
+stopped abruptly     by stabilizing    the exchange rate.    Sachs's (1987)
+arguments,   therefore,    reinforce   those of Dornbusch (1988) and Makinen and
+Woodward (1989),     mentioned above.
+
+2.     Chronic    inflations
+
+       The episodes of chronic     inflation     that serve as background         for the
+theoretical    discussion    can be divided     as follows:    (a)    Latin-American
+heterodox   programs of the 1960's;         (b)  Southern-Cone     stabilization     programs
+of the late 1970's;       and (c)  Heterodox programs of the mid-1980's
+                                                 - 10 -
+
+
+
+a.     Heterodox     programs    of the 1960's
+
+        These programs include         the 1967 Argentinean      Plan (the Krieger-Vasena
+stabilization),          the 1964 Brazilian     plan, and the Uruguayan plan of
+1968. 1;/ 2/         The common elements of these plans are, first,            the use of
+the exchange rate as the nominal anchor and, second, the use of incomes
+policies        in varying    degrees.    While price controls      were mainly voluntary            in
+Argentina         and Brazil,   in Uruguay there was a comprehensive         freeze similar            to
+that of the heterodox           programs of the mid-80's.      2/
+
+        The short-run     reduction     in inflation         in the three cases was important,
+particularly       in Uruguay where inflation           fell    from 13.5 percent         in June 1968
+to just over half a percentage            point     in July and turned negative             in August
+(see Figure 7 for the quarterly            behavior       of inflation        in Uruguay).     Only in
+Brazil,      however, was the reduction         in inflation        sustained,      lasting   well into
+the 1970's,       and reaching     12.7 percent       in 1973.      In Argentina       and Uruguay,
+inflation      resumed after     two years, primarily           due to a loss of fiscal
+discipline.        In Uruguay,     for example, the fiscal            deficit    jumped from 1.3 to
+5.8 percent       of GDP in 1971 (see Figure 7).
+
+       These three programs also shared other important           characteristics.        The
+fall   in inflation    at the beginning     of the programs was accompanied by high
+rates of growth of GDP and consumption.             The trade balance deteriorated
+during    the programs.    After an initial    real depreciation     due to step
+adjustments      at the time of the implementation        of the programs,      the real
+exchange rate appreciated        (see Figures    6 and 7).    Real wages fell      at the
+beginning     of the programs and recovered       later.
+
+       Real interest    rates were negative         in Argentina       at the beginning    of the
+program but turned highly       positive     later     (Figure     6). &/ In Brazil,      growth
+continued   for over six years.         This combination          of low inflation    and high
+rates of growth has become known as the "Brazilian                    Miracle."    In Uruguay,
+the resumption     of inflation   that marked the end of the program was
+accompanied by a sharp fall       in output        (Figure    7).
+
+
+   L/     Figures    6 and 7 illustrate           the Argentinean      and Uruguayan plans.         See
+Kiguel and Liviatan            (1989) for a comparison           of the heterodox     programs of the
+1960's with those of the 1980's.                   On the Uruguayan 1968 stabilization            plan,
+see Finch (1979),           Vegh Villegas        (1970) and Viana (1990).          The Brazilian     1964
+plan is discussed           by Kakfa (1964),         Pazos (1972),     and Foxley (1980).        The
+Argentinean       stabilization        of 1967 is discussed         by de Pablo (1970, 1974).
+   2/     Another heterodox         program of interest          in Argentina    is the Peronist
+stabilization        of 1973-5 (see di Tella            (1989)).     This program made use of
+comprehensive        wage and price controls,            but was not supported        by a fiscal
+adjustment.
+   A/ In Brazil,          however,     incentives      were provided     for firms to comply with
+the suggested price guidelines                 (Foxley    (1980)).
+   k/     Lack of data on curb markets in Uruguay and Brazil                    makes it difficult
+to assess      what   happened to real interest             rates in these countries.
+                                                                                                             - 10a -
+
+                                 Figure                           6. Argentinean                                                1967 Stabilization
+
+                                              Devalu       atlon          Rate                                                                          Four-Quarter                 Inflation              Rate
+
+          40-                                                                                                                  80
+
+
+
+          30.
+5
+                                                                                                                        2 60
+z         20.                                                                                                           k 50
+k
+
+:          10.
+    f
+    ti
+            o..j       Jo            r!“l.    -
+                                                                                                                                10                                            ?
+                                                                                                                                                                                         ‘L---J
+         -IO*                                                                                                                       0
+                                                                                                                                                                                                   r
+                      1965         1966       1967    1968        1989      1970        1971     1972                                        63        64    65          66   87‘
+
+
+                            Real          Exchange           Rate         (for        Imports)                                                                            Trade      Balance
+
+
+
+
+           80-
+                                                                                                                                        63        64        65       66       67    68      69         70    7’1   72
+
+
+
+
+                                              Real        GDP Growth                                                                                               Real        Interest           Rates
+
+
+
+
+                                                                                                                             -sol
+                 63         64       65       66     67      68      69          70     71     72       73                              e7.03                     1967
+
+
+
+
+                Source:                      IFS, Fundarian                            hlediter-r-anew,                and              De Pablo                     (lS7U)
+                                                                                                       - lOtI -
+
+                                         Figure                          7.          1 kuguayan                        1968 Stabilization
+
+                                                  Devaluation                 Rate                                                               Inflation       Rate
+
+
+
+
+                                               Real   Encharlgr                Rate                                                             Trade        Balance
+
+    160
+
+    150
+
+i 140
+ E
+ :. 1X                                                        ~1.
+                                                                 ‘\. \
+ :
+T
+.c 1;:c
+
+    JIO
+
+    IOC
+      lSti5                      1967          196%   19w            1970       1971    19x     1973
+
+
+
+
+                                                                                                                                                Fiscal       Surplus
+
+   10 0                                                                                                                     0
+
+    75                                                                                                                 -I
+                                                                                                                  2
+           s                                                                                                      v    -2
+                                                                                                                  b
+           \                                                                                                       t; -3
+               \                                                                                                   I
+                   i.
+                     \                                                                                            ‘.
+                         \                                                                                        it   -4
+
+                             \            ,,
+  -25                                                                                                                  -5
+                                   \/’
+
+
+  -50                                                                                                                  -6
+         1SW                     1st’;     1968       19ti9          IWO        19: I   19:;:   1                           I   i   19by   I’
+                                                          - 11 -
+
+
+
+b.      Southern-Cone          stabilizations           of the late         70's.
+
+         This group comprises             stabilizations             in Argentina         (December 1978-March
+1981), Chile           (July 1976-June 1982), and Uruguay (October                             1978-November
+1982)) which are illustrated                   in Figures          8 through       10. 1J a          By the mid-
+1970's,      all three Southern Cone countries                        had highly-protected               economies,
+large budget deficits,                high inflation,            balance-of-payments             problems,          and
+extensive        government       intervention.             At that time, all three countries
+launched liberalization                 and stabilization              programs.        While the sequencing               of
+liberalization           measures differed             among the three countries,                  the fight
+against      inflation       followed      a similar          path in that the money supply was used
+in a first         stage and then there was a switch to controlling                                the nominal
+exchange rate as the key policy                      instrument.          J/     The exchange-rate             policy
+consisted        of announcing          a devaluation           schedule of the domestic currency
+against      the dollar        (the so-called            "tablita"),         with a decreasing             rate of
+devaluation.            The "tablita"        represented           a dramatic        turnaround        in policy;         up
+until     that time, the exchange rate had been basically                                 adjusted       to past
+inflation        to prevent       the real exchange rate from appreciating.                               Unlike       the
+stabilization           programs of Argentina,                Brazil,       and Israel       in the 1980's,           all
+these programs were "orthodox"                     in the sense that wage and price controls
+were not part of the programs.                       The response of the different                     macroeconomic
+variables        in the three countries                to the devaluation              schedule was remarkably
+similar.         Inflation       decreased only slowly,                 a sudden increase            in real
+economic activity            was observed,           the real exchange rate appreciated,                          the
+trade balance deteriorated,                  and real interest               rates declined          (see Figures          8
+through      10). &/ After an initial                    success,       however, all three countries
+were again in crisis              in the early 1980's.                  The Argentine          experience         inspired
+a highly       influential        paper by Rodriguez               (1982), which presented                a model with
+adaptive       expectations         that was consistent               with the main stylized                 facts of
+the Southern Cone experiences                    just described.               In particular,          the model
+explained        the appreciation          of the real exchange rate,                    which was at the time
+the most important             issue in policy             discussions.           This paper also popularized
+in academic and business                 communities          the notion         of "recession         now versus
+
+
+   L/     The Chilean        stabilization       consisted     of two stages.         From July 1976 to
+January 1978, the exchange rate started                    to be explicitly          used for
+stabilization.             Beginning      in January 1978, a lasting           preannounced         schedule
+was introduced           (see Corbo (1985)).
+   2/     These episodes are discussed,               among many others,           by Harberger        (1982),
+Corbo (1985),          Hanson and de Melo (1985),            Fernandez (1985),         Ramos (1986),
+Kiguel      and Liviatan         (1988),    and Edwards and Edwards (1991).                Another
+orthodox       stabilization         program of interest         is the Frondizi        stabilization         in
+Argentina       during      1959-62 ( named after        President     Frondizi);       see Petrecolla
+(1989).
+   j/     Argentina        and Uruguay opened first          the capital       account and only later
+reduced tariffs,            while Chile began by a comprehensive                 trade liberalization
+program and opened the capital                  account at a later         stage.
+   &/ The evidence             for Argentina      on the initial       fall    in real interest           rates
+is not clear.
+                                                   - 12 -
+
+
+
+recession    later"      in comparing      money-based       stabilization       with    exchange-rate-
+based stabilization.         u
+
+        The Southern-Cone      experiences      thus brought     forth      the issues of real
+exchange rate appreciation,           low real interest       rates,      and increased       real
+economic activity       as a result      of exchange-rate-based           stabilization.         The
+problem of the real appreciation             was the issue that received                the most
+attention.      The programs were based on the belief                that the inflation          rate
+would quickly      converge to the world inflation            plus the preset rate of
+devaluation.       However, to the surprise          of policymakers,          such convergence       was
+remarkably     slow.    Eventually,      the appreciation       of the real exchange rate
+proved to be deadly,        because it fueled speculation              that the programs were
+unsustainable.        "Guesstimates"       of the "atraso     cambiario"         (the extent     of the
+real appreciation)       were one of the most popular            pastimes.          Soon the public
+had decided that the programs were unsustainable                   and the question          switched
+to when the "tablita"         would be abandoned rather          than if it would be
+abandoned.      These experiences        undoubtedly    play an important             role in the
+decision     of policymakers      in the late 1980's to impose price controls                    to
+combat the "inertial"         component of inflation.
+
+C.     Heterodox       programs    of the mid-1980's.
+
+         This group comprises          the Austral          Plan in Argentina           (June 1985), the
+Cruzado Plan in Brazil             (February        1986), the Israeli            Plan (July 1985), and
+the Mexican Plan (December 1987). 2/ While the Israeli                                  and Mexican
+program have been successful,                 the other two failed.                 The four programs were
+implemented         after   many years of high inflation                  and balance of payments
+crisis.       Argentina      had suffered         from three-digit           inflation       since the mid-
+1970's.       On a quarterly        basis,      inflation         reached its peak in the second
+quarter      of 1985--1,898       percent       at an annual rate--just                before the Austral
+plan was implemented.            2/    Brazil's        inflation       rate doubled in 1979 from 50
+percent      to 100 percent       and then doubled again in 1983 to reach 200 percent.
+Israel's       inflation     rate reached the three-digit                  threshold       in 1979.      On a
+quarterly        basis,   the highest      inflation          rate was 535.9 percent             in the third
+quarter      of 1984.      Mexico was hit hard by the 1986 oil shock which resulted
+in an rise in inflation             from 64 percent             in 1985 to 106 percent             in 1986.
+
+       A key common element of the four plans was the use of wage and price
+controls.    Price controls     were viewed as an important      element in the program
+in that they would stop the inertial         component of inflation.     Policymakers
+vi.ew the traditional    fiscal   adjustment   as a necessary    but not sufficient
+
+
+   1;/ See Fernandez       (1985) and Calvo and Vegh (1990a).
+   2/   Figures    11 through    13 illustrate    the Israeli,  Austral,   and Mexican
+plans.     Discussions    of these programs are contained       in, among many others,
+Dornbusch and Simonsen (1987),           Kiguel and Liviatan   (1989),   and Helpman and
+Leiderman     (1988),   as well as the papers in Bruno, Di Tella,         Dornbusch,   and
+Fischer    (1988).
+   u    See Machinea and Fanelli          (1988).
+                                                                             - 12a -
+
+                      Figure                     8. Argentinean                                          Tablita
+
+                  Devaluation                   Rate                                                          lZ-Month              Inflation                  Rate
+
+
+
+
+           1978               1979                      1980                                            1978          1979            1980              1981         1982
+
+
+
+
+     Real         Effective          Exchange                   Rate                                                      Trade        Balance
+
+
+
+
+                                                                                                                                             \                 I
+                                                                                         .ij -500.
+                                                                                         :                                                          ‘\J
+                                                                                          E
+                                                                                             -1000 4                  ,                  ,                                    ,
+         1978       1979          1980           1981             1982                                  1978                 1979                1980                1981
+
+
+
+
+                Consumption                     Growth                                                   Real         Deposit            Interest                  Rate
+                                                                                                10 -
+
+
+                                                                                                 5.
+
+
+
+                                                                                                                ,I?
+
+
+
+                                                                                           -2
+                                                                                            g -10.
+                                                                                            B
+                                                                                              -15.
+
+
+                                                                                              -2oy     ,        , . .
+  1977     1978     1979   1980          1981     1982         1983      198-l                         1977       1978         1979          1980          1981        19&1
+
+
+
+
+Source:         IFS, Balino              (1987),         and Fund                staff      estimates
+                                                                                                   -   12b   -
+
+
+                                              Figure                               9.         Chilean                               Tablita
+
+                              Devaluation                      Rate                                                                            12-Month                           Inflation                          Rate
+      80
+
+      70
+                                                                                                                            400
+ 8    60
+5:                                                                                                                   .”
+a     50                                                                                                             ::
+5                                                                                                                           300
+     40                                                                                                              $
+
+             ‘1                                                                                                   -2
+                                                                                                                   E 200
+-2
+ g    20
+                         \                                                                                           Li
+8     10                                                                                                                     100
+       0
+
+     -10 L                                                                                                                     0
+              74    75       76   77     78      79      80      81           82     83      8.                                         75         76        77        78        79        80        81         82           83        84
+
+
+
+
+                  Real       Effect.ive               Exchange                       Rate                                                                         Trade                Balance
+
+
+
+
+                                                                                                                               OJ---                                                                                     ,
+                                                                                                                                                                                                                     I
+                                                                                                                 P
+
+                                                                                                                 ; -1000.                                                                                        I
+
+      90.                                                             ‘.\,.    :”                                : -2000.
+                                                                                                                 --                                                                                         I
+                                                                                                                  E
+
+      80,                                                                                                                 -3ooo,              ,                                                                                              ,
+        19-4             1936
+                   19575 1976
+                   1975           1977    1978        1979     19’8G 1981
+                                                               1980                  19&Z     1983                                 74        75
+                                                                                                                                             7’5        76        77        78        79        8b
+                                                                                                                                                                                                80        8’1
+                                                                                                                                                                                                          81         82           83        84
+
+
+
+
+                         Consuniption                          Growth                                                                        Real              Deposit                     Interest                      Rate
+
+
+
+
+            74     7’5   76       77     78      79      8’0     81            82       87        84                               1975       1976           1977      1978           1979      19’80       1981             19&Z       1983
+
+
+
+
+ Source:                 IFS, Banco                    Central                      de Chile,            and         Ramos                         (1986)
+                                                                                                                -   12c   -
+
+
+
+                                           Figure                               10.                      Uruguayan                            Tablita
+
+                                       Devaluation                            Rate                                                           4-Quarter                    Inflation             Rate
+            12.5                                                                                                                80~
+
+
+t           10.0
+t
+    zl
+    e           7.5
+
+$
+E               54
+    K
+    !i
+                2.5
+
+
+                0.0                              I   ”             I      I     I.         ”         I
+                                                     1979              1980              1981             19
+
+         Nak:         Devaluation     in 19824       was 155 percent
+
+
+
+                           Real       Effective               Exchange                          Rate                                                      Trade               Balance
+                150
+
+    s           140
+
+     II         130
+
+    Q           120
+    2
+    i           110
+
+      2         100
+      E
+      2          90
+     -G
+      c          *o
+
+                 70                                                                  I           z
+                          1978      1979    1980            1981         1982            1983            1984                     1977       1978     1979             1980    1981      1982        1983                   1984
+
+
+
+
+                                       Real          GDP Growth                                                                          Real         Deposit                 Interest              Rate
+
+
+
+
+                                                                                                                                                                                                                           I”,,
+                                                                                                                                                                                                                          1’ ‘t
+                                                                                                                                                                                                      k...            !       ‘\
+                                                                                                                                                                                                          \
+                                                                                                                                                                                                              :, i’
+                                                                                                                                                                                                               i
+
+
+
+
+                                                                                                                               -3o>    ,      , ,     ,          , ,          , , , , ,         ,              ,               1
+                                                                                                                                      1977     1978       1979         1980    1981     198;:       1983           1984
+
+
+
+
+          Source                    IFS, Perez-Car~~lpar-1erc1                                           and        Leone     (1991),        and      Fund                staf’f’ estimates
+.
+
+
+
+
+                                                                                                    - 12d -
+
+
+                                                       Figure                  11. Israeli                          St abilization
+
+                                          Devaluation                     Rate                                                            Inflation           Rate
+           80
+                                                                                                    1
+           70.                                                                                                       60.
+     8 w.
+    f                                                                                                          4 50.
+      ;w
+      w
+                                                                                                               ;
+                                                                                                               =     40.
+         40.
+                                                                                                               ir
+    k       30.
+    2
+     f      20.
+     tl     10.
+                                                                                                                     10.
+              0.
+
+          -lo~...,...,...,...,...,...,...,...,.~
+                   1983           1984          1985    1988     1981     1988      1989     1990                           1983   1984   1985     1986    1987   1988   1989   1990
+
+
+
+
+                     Real              Effective                Exchange                Rate                                                Trade         Bal ante
+           105-
+
+
+
+
+             80.     1,        ,            ,      . .,.      .,    ,I,       ,,,...,               +
+                    1983           1984         1985     1986    1987      1988       1989   1990
+
+
+
+
+                                    Consumption                           Growth                                               Real       Lending          Interest       Rate
+                                                                                                                      60.
+
+
+
+
+          Source:                     IFS, Bruno                    and        Meridor              (1990),   and Fund              staff        estimates
+                                                                                                                               - 12e -
+
+
+                                                            Figure                                              12. Austral                        Plan
+
+                                      Devaluation                         Rate                                                                             Inflation      Rate
+
+
+
+
+                                                                                                                                         5,   25
+                                                                                                                                         E
+                                                                                                                                              20
+                                                                                                                                         @k
+                                                                                                                                         s 15
+
+                                                                                                                                         !
+                                                                                                                                         ti   lo
+
+
+
+
+                     Real            Effective             Exchange                            Rate                                                        Trade       Balance
+
+
+
+
+             19s3              1994            1985                 1986                  1987                  1988
+
+
+
+
+                                    Real       GDP (quarterly)                                                                                      Real   Deposit     Interest   Rate
+
+45000 -
+44000.                                                                                                ,P\
+43030
+                                                                               i\                /\
+42030                t                                                     /        \ I/.\,,                q
+
+4!Ooc-          I\                                    \             fi/              Li                           \        /
+                               A.
+                           :
+40030. ,i\               ti                               \\I                                                         \J
+
+39000
+
+38000                                             I
+37000
+
+36ow-,
+36oa3-,                  /                 ,                    ,                    ,                      ,       . ,
+             1981              1984            1985                 1986                  1987                   1988
+
+
+
+
+     Source:                    IFS and                   Fund                       staff                  estimates
+                                                      - 12f -
+
+
+               Figure              13.           Mexican        Stabilizahn
+
+              Devaluation       Rate                                              Inflation      Rate
+
+
+
+
+                                                                   1985    198u       1981       1988      198   1990
+
+
+
+
+      Real    Effective     Exchange      Rate                                    Trade       Balance
+
+
+
+
+                                                                          Real     Treasury       Bill   Rate
+
+
+
+
+Source:      IFS and        Fund       staff     estimates
+                                                  - 13 -
+
+
+
+condition      for a successful   stabilization  attempt. lJ    The failure   of the
+Southern Cone programs of the late 70's led some analysts           (for instance,
+Dornbusch (1982))      to conclude    that wage and price controls    should be part                  of
+a stabilization      package.
+
+        In spite of the fact that the Israeli          and the Mexican plans were the
+only successful        ones in terms of reducing     inflation     on a long-term    basis    ,
+the response of the economy to the stabilization               plans was remarkably
+similar    in the four cases.         As happened in the Southern-Cone        programs,    there
+was an initial       expansion    accompanied by real exchange rate appreciation             and
+current    account deficits.        Later in the program a recession        set in. 2J
+The Israeli      boom-and-recession      cycle was the one that commanded the most
+attention,      probably   because the recession     could not be attributed        to the
+failure    of the program.
+
+        Real domestic       interest      rates increased      in response to the heterodox
+programs of the mid-80's,             unlike    the Southern-Cone      programs where real
+domestic     interest     rates fell.         The behavior     of real interest    rates has been
+somewhat overlooked           in the literature,         and remains a challenging      and
+particularly       important      analytical      issue.
+
+3.      Stvlized   facts   in chronic-inflation        stabilization
+
+     Having reviewed several      stabilizations       in chronic-inflation    countries,
+it is useful  to highlight     the stylized      facts that can be inferred     from them.
+These are the features     that the theory should try to explain.           3J
+
+       i>       Real activity    increases   at the beginning        of the vrozram and later
+contracts.        This is the conclusion      reached by Kiguel        and Liviatan   (1990),
+who study a sample of 12 stabilization               programs.     A/ A recessionary      phase
+arises     later    in the program.      The pattern     of an initial     boom and later
+recession       appears in both successful        and failed   plans.
+
+       ii)   The current account goes into deficit.                    It is generally     observed
+in exchange-rate-based   stabilization      programs that              the current    account
+balance worsens at the beginning       of the program.
+
+        iii)     The real exchange rate apnreciates.       Although   when the program                is
+first      implemented,   there may be a real depreciation       as a result  of a step
+
+
+   1/     The fiscal      adjustment     was all but absent, however,         in Brazil     and soon
+deteriorated       in Argentina.
+    2/    In the Mexican case, it is still              to early to characterize        late stages
+of the program.
+   J/     See Kiguel      and Liviatan      (1990) for a detailed    discussion      of the
+stylized     facts associated         with exchange-rate-based      stabilization         in chronic-
+inflation      countries.
+    &/ Kiguel      and Liviatan       conclude    that the expansionary       phase remains so
+even when characterized            as deviations      from trend.
+                                                                   - 14 -
+
+
+
+devaluation,             the    real         exchange       rate   usually     appreciates       once the program     is
+under way.
+
+       iv)   Real domestic     interest       rates mav rise or fall.     In the Southern
+Cone tablitas,     real interest       rates fell     at the beginning   of the
+programs.    l.J In fact,    the expansion         in economic activity   was attributed
+to the fall     in real interest       rates.      However, real domestic   interest     rates
+rose in the heterodox      programs of the 1980's.           2/
+
+
+                                                   III.     The Analytical        Model
+
+       This section     presents    an analytical            framework due to Calvo and VCgh
+(1991) within      which some of the basic issues that arise in exchange-rate-
+based stabilization        can be addressed.             Since the model is described    in
+detail    elsewhere,    most   formal derivations              will be bypassed and emphasis will
+be placed on the results          and their       intuition.
+
+     Consider   a small open economy with predetermined      exchange rates.                                       There
+are two (non-storable)      goods: a tradable   good (c") and a non-tradable                                      (or
+home) good (c).      The representative   consumer maximizes
+
+
+
+(1)            Ja [log(ct)                   + log(ct*)lexp(-Pt)dt,
+                0
+
+
+where   p denotes              the constant               and positive       subjective      discount   rate.
+
+       The consumer is required                            to use money to carry          out purchases.        The
+cash-in-advance    constraint   is                         thus
+
+
+(2)            a(ct/et           +     ct)     =   mt,     c&O,
+
+
+
+where e denotes the relative      price of traded goods in terms of home goods;
+that is, e=EP*/P, where E is the nominal exchange rate (in units           of domestic
+currency per unit   of foreign    currency),    P" is the (constant) price   of the
+traded good in foreign    currency,     and P is the domestic price of the home
+
+
+
+
+    l.J See Ramos (1986, p. 154),      Corbo (1985, p. 900), Hanson and de Melo
+(1985),   and Fernandez   (1985, p. 876).
+    2J It is worth emphasizing     that these are ex-post      real interest  rates,
+which may not be a good proxy for ex-ante        real interest     rates if, say,
+inflation   falls  more than expected.
+                                                - 15 -
+
+
+
+good. l.J Therefore,   e denotes what is commonly referred to as the real
+exchange rate.    Real money balances in terms of traded goods are denoted                       by
+m; that is, m=M/EP*, where M stands for nominal domestic money balances.
+2/a/
+
+        The consumer holds an internationally    traded bond, b, which bears a
+constant    real interest   rate (in terms of traded goods) equal to r.    Real
+financial    wealth,   a, is thus
+
+
+(3)          at = mt + b,.
+
+
+      The lifetime      constraint     faced    by the consumer      is
+
+
+              02
+
+(4)   a0 + S (yt/et      + Yt + rt)exp(-rt)dt         = JQ(ct/et    + c: + itmt)exp(-rt)dt,
+            0                                            0
+
+
+where a0 denotes initial  real financial    wealth, y and y* stand for output                      of
+home and traded goods, respectively;     7 denotes real transfers      from the
+government;  and i stands for the domestic nominal interest       rate.
+
+       Equation     (4) constrains   the consumer's      lifetime      expenditure   not to
+exceed lifetime        resources.   The consumer's      expenditure       includes the "rental"
+cost of real money balances,          im.  Substituting        the cash-in-advance
+constraint      (2) into the lifetime     budget constraint         (4) yields
+
+
+              4)
+
+
+(5)   a0 + s (Y&t        + yt + Tt)exp(-rt)dt         = JQ(ct/et    + cE)(l+ait)exp(-rt)dt.
+            0                                            0
+
+
+
+     The cozsumer's  optimization   problem consists               in choosing optimal     paths
+of ct and ct to maximize his lifetime     utility  (1)             subject   to the inter-
+
+
+
+   I/     Equation    (2) already        incorporates        the fact that the cash-in-advance
+constraint      will    hold with equality           at an optimum given that the analysis
+will    be restricted        to equilibrium         paths along which the nominal interest
+rate is positive.
+   2/ Unless otherwise           noted,      "real"     means in terms of traded goods.
+   L3/ Calvo and Vegh (1990a) include                   foreign   money in the cash-in-advance
+constraint       (2) to capture        the effects        of currency   substitution  on
+stabilization        policy.
+                                                           - 16 -
+
+
+
+temporal budget constraint                    (5), given     his initial     real financial       wealth     a0
+and the paths of yt, yt,                rt,      and et.     The first-order      conditions      are
+
+
+(6)            1/c; = X(1 + ai,)
+(7)                 Ct = etc:
+
+
+where X is the (time-invariant)                Lagrange multiplier       associated          with
+constraint       (5), which can be interpreted              as the marginal      utility        of wealth.
+1/ 2~' Equation        (6) is the familiar          condition     whereby the consumer
+equates the marginal          utility      of consumption      of traded goods to the marginal
+utility     of wealth times          the "price"    of traded goods.        In the present
+context,     the relevant       "price"     of the traded good--which          will      be referred       to
+as the effective        price--consists          of the market price       (unity)        plus the
+opportunity       cost of holding        the a units of real money balances                  that are
+necessary      to purchase the good, ai.              Equation    (7) indicates         that the
+consumer equates the marginal               rate of substitution        between traded and home
+goods to the relative           price of traded goods in terms of home goods (that                         is,
+the real exchange rate).
+
+       Perfect        capital     mobility       implies     that
+
+
+(8)            it     = r + et,
+
+
+so that the nominal             interest        falls   one-to-one     with   reductions       in the rate        of
+devaluation.
+
+        The supply side of the economy is now introduced.                            The economy is
+endowed with a flow endowment of a tradable     good, y*.                          The supply of the
+home good follows     the staggered-prices model of Calvo                         (1983). 3/   Calvo
+(1983) shows that the rate of chance of the inflation                             rate is negatively
+related    to excess demand.    Formally,
+
+
+   I/    The expression       "time-invariant,"       when applied        to a given variable,
+means that,      at points      in time    at which   the path of the variable             is
+continuous,      the time-derivative           is zero (i.e.,       the time profile       is "flat").
+Naturally,     the variable       may still      jump discretely.
+   2/    To ensure the existence           of a steady-state,          it has been assumed that
+B=r.
+   A/ For simplicity,           it is assumed that only the price of the home good is
+sticky.     Alternatively,         it can be assumed that both traded and home goods
+are produced by means of a neo-classical                 production       function    with labor as
+the only input,        and that wages are subject            to Calvo's      (1983) staggering
+set-up.     As shown       in Calvo and Vegh (1991),           the same results       would obtain.
+The present      formulation,        however, simplifies         the analysis      considerably.
+                                                             - 17 -
+
+
+
+
+(9)            7r = -BD,,
+               't
+
+where T( =P/P) is the rate of inflation                          of home goods and D, a measure           of
+excess demand in the home goods market,                          is defined as
+
+
+(10)                Dt = Yt - y,
+
+where 7 can be interpreted               as the "full-employment"           level     of output.        In
+Calve's    (1983) set-up,         firms set prices          in a non-synchronous            manner taking
+into account the expected future                path of excess demand and of the average
+price prevailing       in the economy.            At any point in time, only firms that
+receive    a random signal          can change prices.           This may reflect           a situation        in
+which it is too costly            to change prices          or it takes time        to verify        a change
+in the state of the market.                 The intuition      behind equation           (9) is as
+follows.     The higher     is excess demand at time t, the higher                        is the
+individual     price set by those firms that revise                   their    prices       at time t.
+Hence, the higher will            inflation     be at time t.         However, excess demand at
+time t will     not be taken into account by those firms revising                             prices    at time
+t'(t'>t).      Therefore,     the higher        is excess demand at time              t,    for a given
+excess demand at time         t',      the larger      will   be the fall      in inflation          at   time
+t, which is what equation               (9) asserts.
+
+       Imposing        equilibrium in the home-goods market (i.e.,  ct = yt) and using
+equation    (7),       excess demand, given by equation  (lo), may be rewritten as
+
+
+(11)           D = etct        - r
+
+
+       Substituting           equation         (11)   into    (9) yields   the dynamic    equation
+
+                .     = *<y    -     e&
+(12)           “t
+
+       Using the definition                of the real exchange rate,   e=EP*/P, differentia-
+tion   with respect   to time              yields (recalling  that P* is assumed constant)
+
+
+(13)           et      = (et       - 7rt)et.
+                                                      - 18 -
+
+
+
+       For a given path      of c*,        equations         (12)   and (13)   form a dynamic   system
+fornande.        lJ2J
+
+
+        To close the model, we need to consider    aggregate   resource      constraints.
+Assuming that the government transfers     back to the public       interest     on net
+foreign    assets and revenues from money creation,      it can be shown (see Calvo
+and Vegh (1991))    that the economy's resource    constraint    is
+
+
+                                                     a0
+
+
+(14)        k0 +   JQytexp(-rt)dt            =   s        cFexp(-rt)dt,
+                    0                                0
+
+
+where k0 denotes the economy's initial      stock of foreign  bonds.   Equation
+(14) states  that the present value of tradable     resources  must equal the
+present value of consumption    of traded goods.    Under the assumption    that
+domestic credit   just compensates the consumer for the depreciation      of
+nominal money balances,   the current   account is given by
+
+
+(15)         k, - y: + rkt      -   C*t.
+
+
+
+
+       Consider now a permanent reduction        in the rate of devaluation.
+Specifically,     suppose that at time 0 (the "present"),        policymakehrs    an;ounce
+that the rate of devaluation       will   be reduced immediately      from c to E .
+More importantly,      the announcement is fully      credible;  that is, the public
+expects the rate of devaluation         to remain at the lower level      cR forever.
+
+       At time 0, the nominal interest             falls    by the same amount as the rate of
+devaluation       does, as indicated      by equation        (8).    Because the policy     is fully
+credible,      the nominal interest        rate is expected to remain at the lower level
+r+ER forever.        This implies    that the consumption           of traded goods does not
+change.       The reason is that,      a constant        nominal interest      rate,  no matter
+what the level        is, implies,   by first-order         condition     (6), that consumption
+of traded goods is constant          over time.          Even if the effective       price of
+consumption       is reduced,    the fact that it remains constant              over time implies
+that there are no incentives           to engage in intertemporal             consumption
+substitution.        Since tradable      resources       do not change, consumption        of traded
+goods must remain at the same level.
+
+
+  IJ    The determinant       of the matrix associated     with the linear    approximation
+of the system (12) and (13) is negative,            which indicates    the existence     of
+saddle-path    stability.
+  2/    The existence       of an "inverse" Phillips-curve      as a result   of temporary
+changes in policy         is emphasized by Calvo and Vegh (199Oc) in the context            of
+a closed-economy.
+                                                   - 19 -
+
+
+
+         From the system (12) and (13), it follows            that, given that c* is not
+affected     by permanent changes in the rate of devaluation,               a fall in A that
+exactly     matches the fall       in E immediately     moves the system to a new steady-
+state.       Naturally,    the (average)     inflation    rate of the economy, which is a
+weighted     average of the inflation        rate of home goods, R and that of traded
+goods, E, also falls         instantaneously      to its new level    Ea . Therefore,    an
+exchange-rate-based       stabilization      vrogram that is fully       credible  reduces the
+inflation     rate instantaneous1       y at no real costs. lJ
+
+        It is worth emphasizing           that,      in spite of the fact that the price          level
+is sticky     and that individual           prices     are set in a staggered      manner, there
+are no real effects          associated       with a reduction     in the devaluation       rate that
+is perceived      as being permanent.              This shows, as emphasized by Calvo and
+VCgh (1991),      that price       level    rigidity      does not imply,   by itself,    stickiness
+in the inflation        rate.      The reason is that firms act in a forward              looking
+manner.      As will   be discussed         in Section VI, the presence of inflation              rate
+stickiness      in the present        framework must be due to backward looking
+behavior.      This is an important             point   to bear in mind because it is some-
+times argued that either             backward indexation        or staggered   contracts     will
+prevent    the inflation        rate to come down to zero if the nominal exchange rate
+is fixed.       In the context        of the present model, the tight          link between the
+exchange rate and the inflation                 rate is indeed broken by the presence of
+backward-indexation          (see Section VI) but is not affected             by the presence of
+staggered-price       setting,       which does not prevent        an abrupt halt to inflation.
+2/
+
+
+                                  IV.   Stopping     Hyoerinflation
+
+       Despite   its simplicity,       the exercise       concerning    the effects    of a
+permanent reduction        in the rate of devaluation           just undertaken     provides     a
+useful   conceptual     framework to discuss          the end of hyperinflations.          There
+seems to be two distinguishing            characteristics       of hyperinflations      that make
+it reasonable      to identify--if       only as a crude approximation--this            analytical
+exercise    with experiences       stopping    hyperinflation:       the absence of backward-
+looking   behavior    and the presence of a high degree of credibility.
+
+
+
+   I/    The cash-in-advance       specification         of the model implies       that real money
+demand does not increase          as a result       of the fall    in the nominal        interest
+rate.     The re-monetization       usually      observed in actual       episodes could be
+captured    by introducing      money as an argument in the utility               function.        In
+                                        .     . the rate of devaluation
+that case, a permanent reduction              In                                 would increase
+real money balances,        while still       leaving     the consumption     of either       good
+unchanged (see Obstfeld          (1985)).
+   LX/ This need not be the case in other models of staggered                       contracts,        For
+instance,    in Fischer's      (1986b) model, a permanent reduction               in the rate of
+devaluation     causes real effects,          because the price established            in the
+contract    does not remain fixed during              the life  of the contract.
+                                                       - 20 -
+
+
+
+1.      Absence           of backward-looking    behavior
+
+         The disappearance            of long-term          nominal contracts          in hyperinflation
+episodes         is a recurrent          theme in the literature                (see, for instance,         Cagan
+(1989)).           Furthermore,       it is commonly argued that a key characteristic                           of
+hyperinflations             is that there comes a time when all prices                        become indexed to
+the nominal exchange rate.                      Wage contracts,          for instance,       are renegotiated
+more frequently             as inflation          accelerates.         At first,      wage readjustments          are
+based on a cost-of-living                    index.      As the interval          between readjustments
+becomes shorter,              however,       the cost-of-living            index must be replaced           by
+another        index that is available                on a weekly or even daily basis.                   The
+quotation          of a foreign       currency--usually,              the dollar--provides           such an
+index;       the dollar        quotation        is available         on a continuous       basis and is widely
+circulated.            As Dornbusch (1988, p.419) has suggested,                         "perhaps      it is this
+shift      to foreign-exchange-based                  pricing      that is the ultimate           element in the
+shift      toward hyperinflation."                   Pazos (1972, p. 93) stresses               that "the
+reduction          of intervals        [for setting         wages and prices]          to their      shortest
+possible         duration      and the pegging of wage readjustments--both                         upwards and
+downwards--to            the freely        fluctuating        quotations        of a foreign      currency     give
+hyperinflation             a mechanism entirely             different        from that of intermediate
+inflation."            Sachs (1987, p. 281), in his analysis                        of the Bolivian
+hyperinflation             of 1984-5, points           out that
+
+              .   by August 1985, the U.S. dollar
+                  .   .                                  and not the Bolivian     peso was
+         satisfying      two of the three classic      roles of money: the unit of
+         account and the store of value (though it was not the medium of
+         exchange for most transactions).           Prices were set either
+         explicitly      or implicitly  in dollars,     with transactions     continuing
+         to take place in peso notes,       at prices      determined   by the dollar
+         prices     converted   at the spot exchange rate."
+
+         The de facto indexation         of all prices      in the economy to the foreign
+exchange implies        that nominal contracts        virtually      cease to exist.       Thus, all
+backward-looking        behavior    is eradicated     from the economy.         Based on this,     it
+has been argued that fixing            the exchange rate is sufficient            to ensure price
+stability      (see, for instance,        Sachs (1987)).        Furthermore,    Sargent (1982)
+has argued that the halt in inflation               should be achieved with negligible
+costs (Sargent       (1982)),    provided    the change in policy         is credible.      Because
+one of the key features          of the model presented          in Section   III    is precisely
+the absence of backward-looking             behavior,     the model can be taken to apply to
+hyperinflation       episodes.
+
+2.      Credibilitv
+
+         It      has been argued, most notably   by Kiguel                and Liviatan        (1988), that
+there         are two characteristics  of hyperinflationary                  processes        that make a
+                                                     - 21 -
+
+
+
+stabilization        attempt     more credible        than    attempts      to stop     chronic
+inflation.      I/
+
+         First,     the need for seigniorage               (i.e.,     revenues from money creation)              as
+the cause of high inflation                    comes across more clearly             in hyperinflations
+than in chronic            inflations.          Because the fiscal         nature of the inflationary
+process is more obvious,                 the public      may become more easily            convinced        that
+closing       the budget deficit             is enough to ensure price stability.                  2J In the
+case of Bolivia,             for instance,        Table 2 indicates          that the increase          in
+inflation        from 29 percent           in 1981 to 1,281 percent              in 1984 was accompanied
+by a rise in seigniorage                 from 1.6 percent         of GDP to 15.9 percent             of GDP. In
+contrast,        in chronic-inflation             countries,      the relationship        between inflation
+and revenue from money creation                    is less clear,         which may raise doubts in the
+minds of the public               as to whether a fiscal            reform--even       if successfully
+implemented--may             be enough to halt inflation.               3/     In the case of Brazil,
+Table 2 shows how seigniorage                    as a percentage         of GDP remained basically
+stable      through      the period 1979-85--it              even declined         somewhat--in      spite of
+the fact that inflation                increased      four-fold.         Thus, given that in
+hyperinflations            the source of the inflationary                 process is easily          identified
+and widely         agreed upon, the announcement of a stabilization                         program that
+includes        a fiscal       reform should command a high degree of credibility.
+
+        The second factor          that may increase     the credibility      of a stabilization
+program is that hyperinflation               brings  about such a chaotic        social    and
+economic environment           that the public      becomes convinced      that the situation           is
+unsustainable.          This sense of urgency in tackling            the problem is likely          to
+lend more credibility            to a stabilization     program.       In contrast,     chronic
+inflation      countries     learn how to live with high inflation             by adopting
+various    indexation       mechanisms.       As emphasized by Kiguel        and Liviatan       (1988),
+an example of this ability              to adapt to chronic     inflation     can be observed         in
+
+
+
+
+   I/    This issue should be distinguished                from the argument over whether the
+existence      of credibility        at the moment the program is implemented                  is a
+necessary      condition      for a successful      stabilization,           which is discussed     later
+in the section.
+   2/    Cagan (1956) and Sargent (1982) emphasize the need to finance
+expenditures       in the difficult        periods   after      the two World Wars as the clear
+cause of the European hyperinflations.                  Kiguel and Liviatan           (1988) emphasize
+the case of Bolivia           discussed    in the text.
+   Z3/ In fact,        the lack of a strong positive              correlation     between budget
+deficits      and inflation       played an important         role in the policy        discussions
+surrounding      the heterodox        programs of the 1980's in Argentina,                Brazil,   and
+Israel.     It should be kept in mind, however,                 that the lack of contemporaneous
+correlation      between budget deficits           and inflation          does not mean that budget
+deficits      may not be the cause of inflation.                  As suggested by Drazen and
+Helpman (1990),          the relationship      between budget deficits            and inflation     will
+depend on how the budget deficit                is expected to be closed in the future.
+                                                                                - 22 -
+
+
+
+
+Table         2.     Inflation,   Revenues,          and   Seigniorage   in Argentina,   Bolivia,   and    Brazil
+
+
+/ Country                                                       1979        1980         1981             1982      1983    1984     1985
+
+    Argentina
+    Inflation  (percent)                                          159        101          104              165       344     627      672
+    Public sector revenues
+      (percent   of GDP)                                            29         31           32              28        29       31       32
+    Seigniorage      (percentage           of GDP)                 5.9        4.8          3.5             7.8       8.6      7.1      6.5
+
+ Bolivia
+/Inflation   (percent)                                             20          47           29             133       269    1,281   11,750
+‘Revenues       of central government
+   (percent    of GDP)                                            9.4         9.6          9.4             4.6        2.6    2.6       1.3
+/Seigniorage       (percentage   of GDP)                          1.1         3.2          1.6            12.1       10.0   15.9       8.8
+I
+ Brazil
+ Inflation  (percent)                                              53          83         106               98       142     197      227
+‘Total receipts     of general         government
+   (percent   of GDP)                                              28          28           31              34        32       30       33
+ Seigniorage      (percentage              of GDP)                3.3          2.0          2.0            2.1        2.0     2.7      2.7
+
+
+
+    Source:        Kiguel   and Liviatan     (1 988)
+                                                  - 23 -
+
+
+
+
+the behavior       of real   revenues      from taxation.       In hyperinflations,     the
+Olivera-Tanzi       effect   drastically       reduces real     revenues from taxation.     lo
+
+        As illustrated      by Table 2 real revenues in Bolivia             declined    from 9.4
+percent    of GDP to 2.6 percent          of GDP in a three-year       period     (1981-83)    as
+inflation      accelerated     from 29 percent      to 269 percent.       In Argentina,       on the
+other hand, real revenues actually             increased      from 29 percent      of GDP to 32
+percent    of GDP over the seven-year          period    (1979-1985)    during which inflation
+increased      from 159 percent       to 672 percent.      The sudden and explosive           nature
+of hyperinflations         usually    implies  that either       those mechanisms cannot be
+created    in time or, if they are, they are not effective.                   For instance,       in
+1945 Hungary introduced            a scheme to collect      taxes in a constant-purchasing-
+power unit of account,           but the experiment     was only temporary         successful     (see
+Nogaro (1948)).
+
+        In summary, the idea is that the inability                   of an economy to cope with a
+sudden and explosive          burst of inflation            makes an attempt      to stabilize       more
+credible.       In chronic-inflation            countries,     the economy keeps functioning            in
+spite of high inflation,             which makes the public          believe--probably
+correctly--that       the incentives          to go through a stabilization            program are not
+as high so that,        at the slightest           sign of political       or social    pressures,      the
+program will      be abandoned.          Therefore,        one may consider      an exercise     that
+assumes full      credibility        on the part of the public            as a reasonable      first
+approximation       to studying       stabilization         in episodes of hyperinflation.
+
+3.     Matchinp.    theory   with   evidence
+
+       Having argued that the analytical        experiment   undertaken in Section   III
+may be suited    to understanding  stabilization       programs designed to stopping
+hyperinflations,    we now proceed to try to match the predictions         of the model
+with the available    evidence.
+
+        If full   credibility      is assumed, the model predicts        that the stabili-
+zation     program should lead to an abrupt halt in inflation               at negligible
+costs.       What does the evidence        show? As regards the sudden and abrupt halt
+to inflation      in hyperinflations,         the evidence seems to support rather
+clearly      this contention.        As Sargent (1982),    among others,     has noted,    the
+hyperinflation       in several      European countries    in the 1920's ended abruptly.
+After having risen dramatically             in the months before the stabilization           plans
+were introduced,        the price level       stabilized  immediately    in Austria
+
+
+   1/   In his paper on the European hyperinflations,           Cagan (1956, p. 85))
+already   emphasized this point.       In his words, "as the rate of price increase
+rose . . . the real value of whatever funds were raised by other taxes
+undoubtedly    diminished,    and during the later     stages of hyperinflation    these
+funds must have become nearly worthless         owing to delays in collection      them."
+The Olivera-Tanzi      effect  is named after Olivera      (1967) and Tanzi (1977);    see
+also Aghevli    and Khan (1978) and Dixit      (1990).
+                                                       - 24 -
+
+
+
+(September 1922), Hungary (March 1924), Poland (January                1924), and Germany
+(November 1923).        Similarly,      the Hungarian hyperinflation       ended abruptly in
+August 1946 (Siklos         (1989)).      The same is true of the Bolivian      hyper-
+inflation,      where inflation      was halted within    ten days of the announcement of
+the stabilization       program, on September 29, 1985. I/           There seems to be
+enough evidence      to conclude      that the prediction    that inflation     can be
+stopped abruptly      has been observed in practice.
+
+         The picture        that emerges from the output costs of stopping              hyper-
+inflations        is less clear-cut,          but the consensus seems to be that hyper-
+inflations        have been stopped at relatively             small costs.    Sargent (1982)
+suggests that although               there were unemployment losses in Austria,           Hungary,
+Poland, and Germany, these costs were small compared to estimates                          of
+stopping      inflation        in the U.S. circulating        at the time. u      Sargent's
+(1982) suggestion,             however, has not gone unchallenged.          Garber (1982, p. 12)
+concludes       that "there        is substantial     evidence of large-scale      negative    real
+effects     in the aftermath            of the German hyperinflation."         Wicker (1986)
+argues that unemployment                rates in Austria,     Poland, and Hungary reached
+substantial         levels.      In the Bolivian      case, Kiguel and Liviatan        (1988)
+suggest that the stabilization                 did not have any discernible       effect    on output
+(see Figure 5). y
+
+4.    Ex-ante     versus     ex-post     credibilitv
+
+        An important        discussion        that has arisen         in the context          of terminating
+hyperinflations          is related       to the role of credibility.                    In the model
+presented       in Section      III,    credibility        is viewed as an exogenous event;
+credibility         is either     present       (that   is, the public           perceives      the reduction
+in the rate of devaluation               as permanent)          or it is absent (the public               views
+the reduction          in the rate of devaluation               as temporary).             The model therefore
+does not address the issue of why credibility                           may or may not be there,             which
+is certainly          an area that warrants           further      research.         More pertinent       to our
+discussion        is the fact that credibility                is viewed as something unrelated                  to
+what will      happen after          the stabilization          plan is implemented.               This school
+of thought will          be referred        to as "ex-ante         credibility"--as           opposed to "ex-
+postll credibility--to            stress      the fact that credibility                is viewed as a factor
+that must precede the actual                  implementation         of the plan.           Furthermore,     the
+
+
+         1/  Not all attempts       to stop hyperinflation        have been successful
+though.      The most notable       exception   is Greece after World War II, where two
+attempts     failed      (see Makinen (1984)).
+       u    Sargent (1982, p. 42) argues that "an implication               of [the rational
+expectations]         view is that inflation      can be stopped much more quickly          than
+advocates      of the "momentum" view have indicated            and that their    estimates      of
+the length of time and the costs of stopping               inflation    in terms of foregone
+output      (220 billion      of GNP for one percentage       point   in the inflation      rate)
+are erroneous."           The expression    "momentum" view refers      to the presence of
+inflation      inertia.
+    1/ Morales (1988) takes a less sanguine view.
+                                                  - 25 -
+
+
+
+success or failure           of the plan hinges entirely         on whether credibility         is
+there or not.          Sargent's     (1982) paper clearly      reflects    this position.         His
+argument is basically            that a necessary     and sufficient      condition     for a
+successful      stabilization        is that there exist     a change in policy         regime,    in
+the sense that there must be an "abrupt                change in the continuing           government
+policy,      or strategy,      for setting   deficits    now and in the future          that is
+sufficiently       binding     so as to be widely believed"           (p. 42).     Sargent (1982,
+p. 89) concludes          that
+
+        .   .the essential
+                .              measures that ended hyperinflation           in each of
+      Germany, Austria,      Hungary, and Poland were, first,            the creation  of
+      an independent     central   bank that was legally        committed to refuse
+      the government's     demand for additional        unsecured credit       and,
+      second a simultaneous       alteration     in the fiscal    policy    regime...  In
+      each case that we have studied,           once it became widely understood
+      that the government would not rely on the central                bank for its
+      finances,   the inflation      terminated    and the exchanges stabilized."
+
+       Unfortunately,     because "credibility"         cannot be observed, Sargent's
+(1982) main proposition--a         credible     regime change leads to an abrupt and
+almost costless       stop in inflation--cannot         be tested.  More importantly,   it
+does not provide       any policy    guidance because it cannot be established        a
+priori   how credible     announcements will        be.
+
+        In contrast    to Sargent's     (1982) position,    it has been argued by
+Dornbusch (1988) and Sachs (1986, 1987) that credibility                is neither a
+necessary    nor a sufficient       condition  for a successful    stabilization.     In
+this section,       we deal with the notion      that credibility    is not a necessary
+condition.     lJ
+
+          The view of Dornbusch and Sachs will      be referred    to as "ex-post"
+credibility,      because it emphasizes the fact that,       in stopping
+hyperinflations,       credibility can be established     after  the program has been
+implemented.       Dornbusch (1988, p. 410) argues that
+
+        .   . the central
+                .               weakness of the Sargent position              is to present
+      "credibility"         as some objective,       unquestionable       fact--as        if
+      passing a budget law or instituting                an independent         central      bank is
+      by itself        enough to ensure that these institutions                 will    in fact
+      become what they represent             on paper...     We argue that exchange rate
+      and interest        rate policy     in the transition       have traditionally
+      formed the vehicle          for establishing       that credibility          by a de facto
+      stabilization.           De facto stabilization        in turn pays an immediate
+      dividend       via the recovery       of the real tax yield,          thereby creating
+      the potential         for a virtuous     cycle."
+
+
+   1/    That credibility      is not     a sufficient      condition    will     be dealt with in
+Section VI, where the effects             of inflation      inertia   arising      from backward
+indexation    will    be discussed.
+                                                    - 26 -
+
+
+
+          Sachs (1986) argues that two pieces of evidence support                             the
+proposition         that,    in the successful      Bolivian      stabilization,          price
+stabilization          nreceded the credibilitv          of the program bv several                months.
+First,      interest      rates on peso-denominated          loans remained much higher                than
+comparable        dollar-denominated        loan rates in the months after                  the
+stabilization.            Second, real money balances           recovered        only gradually        after
+inflation        had been stopped.        While Sachs (1986) stresses                that a fundamental
+change in fiscal           policy    is needed for the program to be sustainable                     in the
+long run- -along the lines of Sargent (1982)--Sachs                         (1986) views the
+exchange-rate          pegging or stabilization         as the key feature             of the program in
+the short run.            The difference      with chronic-inflation             countries,       in Sachs's
+(1986) view, is that because of backward indexation                           or staggered-price
+contracts,        immediate disinflation          does not result         from fixing         the exchange
+rate,     as in Chile during 1979-81.
+
+        Another important      difference      between Dornbusch and Sachs, on the one
+hand, and Sargent,        on the other,      is that while Sargent does not believe         that
+the presence of inflation           inertia    should prevent   an economy that undertakes
+a credible     and fundamental        change in regime from achieving      a costless
+disinflation     without    any costs,      both Dornbusch and Sachs view the
+elimination     of inertia     through hyperinflation        as the key feature    that allows
+disinflation     without    major costs.
+
+
+                     V. Temnorarv       Reduction      in the Devaluation         Rate
+
+      This section    examines the effects     of a temporary    reduction     in the rate
+of devaluation.      The way in which we wish to interpret          this experiment    is as
+if the government announced a permanent reduction           in the rate of devalua-
+tion,  but the public    believed  that the stabilization      will     be eventually
+abandoned. I-J Supp;se that initially        (that is, prior     to time 0), the rate
+of devaluation     is E and is expected to remain at that level            forever.   At
+time 0, policymakers     announce the following     policy:
+
+
+
+   lJ      It should be said at the outset             that there is no theory of credibility
+in the model.           The lack of credibility--the           fact that the public             does not
+believe       that the reduction        in the rate of devaluation            will     last
+indefinitely--is           taken as exogenous.         Therefore,     the purpose of the model is
+to show the effects            of lack of credibility,         rather     than to explain          how it is
+generated.         However, it can be argued that the credibility                      enjoyed by a
+program has an exogenous component in the sense that,                         first,      the memory of
+many previous         failed    attempts   influences      the expectations          of how successful
+the new program will            be, and, second, credibility            is heavily        influenced     by
+measures that accompany the reduction                  in the inflation         rate and thus make
+more credible         the government's       commitment.       To the extent         that this
+exogenous component of credibility                plays an important          role--as        opposed to
+credibility        that may be gained or lost after              the program has been
+implemented--the           model should provide        a useful benchmark.
+                                                     -   27   -
+
+
+
+
+(16a)         et = ea,              for     0 I t c T,
+
+(16b)          Et - eh ,             for    t I T,
+
+
+where T>O and E~>E~.             The rate    of devaluation        is reduced     at time     0 but
+increases back to its            original    level  at time       T.
+
+        The lower rate of devaluation        during the period   [O,T)--hereafter
+referred    to as the "transition"--implies,        by the assumption      of perfect
+capital    mobility  (lo),  that the path of the nominal       interest     rate is given
+bY
+
+
+(17a)         it   =r+c,     a      for     0 I t c T,
+
+(17b)              =r+E,     h      for     t 2 T.
+              it
+
+         Since the nominal interest               rate is time-invariant           (that    is, its time
+derivative         is zero),     the first-order        condition        (6) indicates      that
+consumption          of traded goods is time-invariant,                  even though its level         may
+change.        Because the nominal interest                rate is lower during          the transition
+than it is after            T, equation      (6) shows that consumption              of traded goods is
+higher      during     the   transition      than afterwards          (recall   that X does not change
+at T).        The reason is that the effective                 price of consumption           is lower
+during      the transition.            Because the resource          constraint      (14) must be
+satisfied        for any equilibrium          path, consumption           of traded goods during         the
+transition        will     be above initial        permanent income of traded goods, while
+consumption          of traded goods after           T will    be below initial        permanent income
+of traded goods. 1/ Otherwise,                  the resource        constraint     would be
+violated.       2!/
+
+        The path of consumption      of traded goods is illustrated          in Figure 14,
+Panel A. The current        account path, which follows          from the consumption     path
+just described      and equation    (15), is illustrated       in Figure 14, Panel B. At
+time    0, the current    account jumps into deficit        because of the sudden
+ increase    in consumption    of traded goods.       During the transition--that       is,
+between time 0 and time T--the          current  account deteriorates.         Although   the
+gap between consumption        of traded goods and the (constant)          flow endowment of
+traded goods remains constant,          interest   income on net foreign       assets decline
+throughout     this period.     At time T, the current       account jumps into balance.
+
+
+
+
+   I/  Initial     permanent income is given by y*+rbO.
+   Z2/ An explicit      solution for the consumption path                  can be derived        along    the
+lines  of Calvo and Vegh (1990b).
+                                                     - 28 -
+
+
+
+           Figure 14, Panel C, illustrates               the time path of inflation                of home
+goods that results          from a non-credible          reduction       in the devaluation           rate.
+L/     There are two effects            on the inflation        rate on impact.          The first        is
+the effect       of the lower rate of devaluation                 that tends to lower the
+inflation      rate.     The second is the increase               in aggregate        demand (note from
+equation      (6) that,     since e is given on impact,               the increase       in consumption
+of traded goods must be accompanied by a corresponding                            increase     in
+consumption       of home goods), which tends to increase                    inflation.        In the
+absence of the aggregate               demand effect,      inflation       would fall      one-to-one        with
+the rate of devaluation.                However, because of the aggregate                demand effect,
+the rate of inflation            falls      by less than the rate of devaluation                 and could
+even increase.         Inflation        falls    over time at the beginning             of the program
+but later      begins to rise in anticipation                of the expected future            inflation.
+
+         Panel D in Figure 14 illustrates    the behavior    of the real exchange
+rate.       The real exchange rate falls   during    the transition,   because the
+inflation      rate of home goods is always above the rate of devaluation.         At
+time T, when the rate of devaluation       increases    back to its original   level,
+the real exchange rate begins to depreciate.
+
+         The inflation        rate of the economy is a weighted                  average of the
+inflation       rate of traded goods, e, and the rate of inflation                           of home goods,
+K, the weights          depending      on the weight of traded and home goods in the
+utility      function.        Therefore,      the inflation        rate decreases         during     the first
+phase of the transition              and rises later.           The   inflation      rate    falls    more on
+impact than the inflation               of home goods does because, by definition,                      the
+inflation       of tradable        goods falls      one-by-one      with the rate of devaluation.
+At T the inflation            rate will     jump upwards due to the increase                   in the rate of
+devaluation.           As explained      in Calvo and Vegh (1991),               the lower is T (that
+is, the less credible              is the stabilization          program),       the smaller       is the fall
+in the inflation           rate of home goods.             Therefore,       if a program has almost no
+credibility,         the model would predict             that inflation         of home goods remains
+basically       unchanged,        or it could even increase.               However, the inflation            rate
+of tradable         goods always falls          one-for-one      with the rate of devaluation.
+Therefore,        the fall      in the average inflation            rate will       depend both on the
+credibility         of the program and on the degree of openness of the economy.
+
+       Consider    now the time path of consumption        of home goods illustrated      in
+Figure    14, Panel E. On impact,         as already  noted, consumption     of home goods
+                                                                          *
+increases      as follows    from equation   (6) and the increase     in c . Intuitively,
+since the relative        price of home goods in terms of traded goods has not
+changed,     the  consumer     wants to keep the ratio    of consumption    of the two
+
+
+
+
+  lJ     For a formal       derivation,        see Calvo      and Vegh (1991).
+                                 Figure   14
+
+              Temporary    Reduction in Devaluation Rate
+
+
+A. Consumption of traded goods                               B. Current account
+
+
+
+
+                                                     0              T             lime
+                                                                                         *
+                                                      I              I
+                                           0              ---_-
+                                                     I               F
+                                                                     I
+
+                                                     \               I
+
+
+
+
+       C. Inflation rate                                  D. Real exchange rate
+
+                                           E
+                                               t
+
+
+
+
+E. Consumption of home goods                       F. Domestic rc:rl interest rate
+                                                     - 29 -
+
+
+
+goods constant.      I/     Because the real exchange rate appreciates               during     the
+transition,     consumption     of home goods falls         during  the transition.          The
+reason is that the appreciation               of the real exchange rate implies           that home
+goods become more expensive            relative     to traded goods.     Therefore,       consump-
+tion of home goods must decrease relative                 to consumption    of traded goods--
+which remains constant.           If T is large enough, the economy enters                into
+recession   (i.e.,      output falls      below its full-employment       level)     before the
+plan is expected to be discontinued.                  For a small T, output will        remain
+above its full-employment           level     during all of the transition.          At time T,
+consumption     of home goods jumps downwards because consumption                   of traded
+goods jumps downwards. After T, the real exchange rate depreciates                          and
+therefore   consumption       of home goods increases.
+
+        Consider now the time path of the domestic real interest                rate (that     is,
+rd=i-7r),    which is illustrated        in Figure 14, Panel F. The inflation          rate of
+home goods falls         by less on impact than the nominal interest          rate does;
+therefore,      the domestic real interest        rate falls      on impact.  During the
+transition,       the domestic real interest        rate stays below its initial       level,
+decreasing     at first     and rising     later.  At time T, the domestic        real interest
+rate jumps upwards due to the sudden increase                 in the nominal  interest    rate.
+The domestic real interest           rate falls   afterwards      towards its unchanged
+steady-state       value,   given that inflation       increases.
+
+        As suggested earlier,            we wish to interpret               a temporary      reduction      in the
+rate of devaluation             as resulting       from lack of credibility               in the program.
+If policymakers         announce at time 0 that the rate of devaluation                            will   be
+permanently       reduced,       but the public        believes       that at time T the devaluation
+rate will      go back to its initial              higher    level,       the same dynamics as those
+just studied        obtain.       Moreover,      the dynamics during               the transition       do not
+depend on what policymakers                actually      do when time T arrives.                 Put
+differently,        the real effects          during     the transition            do not depend on the
+ultimate     success or failure            of the program;          that is, on whether policymakers
+actually     increase       the rate of devaluation             when time T arrives--thus
+validating      the beliefs        held by the public--or               stick      to the anti-inflationary
+policy.      In fact,       only nominal variables             will    be affected        if, when time T
+arrives,     policymakers         decide to stick          to the lower rate of devaluation                   and
+the public      now believes         that the lower rate of devaluation                     will   last
+forever.       As shown in Calvo and Vegh (1990a),                      if the rate of devaluation              is
+kept at cR at time T, inflation                 of non-tradables             falls    by the amount ch-ea,
+and then increases            towards EI. 2/
+
+
+   I/    The initial     expansion      in the home-goods sector would also occur even
+if the expansion       in the traded-goods       sector is prevented      by, say, the
+presence of binding         quotas or capital     controls    (see Calvo and Vegh (1991)).
+Therefore,     the increase      in traded-goods     consumption    is not a necessary
+condition    for an expansion         in the home-goods to occur.
+   2/    In other words, a permanent change in the devaluation                rate is
+everywhere     superneutral;       that is, it only affects       nominal variables   even if
+the change happens when the system is outside               the steady-state.
+                                                 - 30 -
+
+
+
+       To sununarize,      the main predictions         of the model regarding              a non-
+credible   stabilization       attempt  are the       following:
+
+         a. The inflation   rate falls          at the beginning  of the program,    continues
+to decline    for a while,    and then        increases   back to its original   level.    If
+credibility     is very low, however,           inflation  of home goods may go up on
+impact.
+
+       b.  The real exchange rate goes through a steady                      appreciation
+throughout   the program and depreciates  afterwards;
+
+       C.   The current   account goes into deficit   at the beginning  of the
+program,    continues   to deteriorate during  the program,  and improves
+afterwards;
+
+      d.    There is a boom in the home-goods sector at the beginning     of the
+program.     Towards the end of the program,  the economy enters   into recession.
+The recession    may occur before the program is discontinued    or at the time it
+is discontinued.
+
+       e. The domestic     real interest   rate falls             abruptly     at the beginning      of
+the program,    remains below its original     value            throughout      the transition,      and
+increases   sharply   at the end of the program.
+
+       We can now compare the predictions                of the model with stylized         facts
+concerning        stabilizations.         The results    rest on the assumption      that the
+program is not credible.                As argued earlier,     stabilization    attempts      in
+chronic-inflation             countries   are likely   to suffer      from lack of credibility.
+As Diaz-Alejandro             (1981) put it,
+
+        .   .A plausible
+                .             hypothesis       is that,      ceteris     paribus,    the longer
+      the history      of failed     stabilization         plans,     the smaller      the chances
+      of success (and/or         the greater       the costs of success)           of any new
+      plan.     Besides reading       daily      newspapers,       economic agents carry in
+      their   heads an economic history              inducing      them to discount       any
+      claim that 'inflation         will     be down to zero within             a year,'
+      regardless     of how fiercely         those claims are backed up."
+
+         The evidence     summarized in Section      III  is consistent  with the first
+four predictions         of the model.      Consider   as an example the "tablita"      in
+Argentina      (Figure    8).    The program was announced on December 20, 1978.
+Inflation      actually    increased    in the beginning    of the program,    and decreased
+thereafter       (Figure   8).    GDP grew at the beginning      of the program and began
+to fall     towards the end.         The real exchange rate appreciated      throughout    the
+                                                     - 31 -
+
+
+
+program and depreciated         thereafter.     1/ The trade account deteriorated
+throughout     the program after       improving   briefly  at the beginning.           It should
+be noted tfiat these stylized          facts are, according       to Kiguel and Liviatan
+(1990),    independent     of whether the program ultimately           proved to be
+successful     or not.     This is consistent      with the predictions        of the model
+since,   as argued above, the dynamics during the transition                  do not depend on
+the eventual      decision    of policymakers     to either   validate     the expectations       of
+a return     o high inflation      or to stick    to the disinflationary        policy.
+
+        The predictions  of the model with respect       to the behavior     of the real
+interest    rate seem to hold for the Southern Cone programs but not for the
+rest of the programs.      For the case of the Uruguayan "tablita",            Figure 10
+shows that the real interest      rate fell     in the first   two quarters     of the
+program and began to increase       thereafter,    which is consistent      with the
+prediction     of the model (see Figure 14, Panel F).
+
+
+                          VI.    Policv     Implications      and Conclusions
+
+        The analysis       of the previous        sections    has provided      a conceptual
+framework that should prove useful                 in understanding        exchange rate-based
+stabilizations.           We now turn to the main messages and policy                  implications        of
+the analysis.          The most obvious lesson is the importance                  of credibility       in
+an exchange rate-based            stabilization       program.     Even the best conceived
+program is bound to fail             if the public       is not convinced       that policymakers
+will    stick   to the lower rate of devaluation,               since lack of credibility            may
+become a self-fulfilling             prophecy.       The reason is that the less credible                is
+the program,        the smaller      is the fall      in the inflation       rate of home goods--it
+could even increase --and the more pronounced are the real effects.                              The lack
+of response of inflation             of home goods to the reduction             in the rate of
+devaluation       results    in a substantial         real exchange rate appreciation,              which
+in turn fuels speculation              that the nominal exchange rate target               is not
+sustainable.          The resulting       balance-of-payments       crisis     marks the end of the
+program.
+
+        Naturally,    credibility     cannot be legislated          and there is no obvious way
+in which credibility          can be achieved overnight.            Furthermore,         in countries
+that have a history         of failed    stabilization        attempts,    history       will  certainly
+weigh heavily      against      the success of any new program.              Credibility       can
+certainly      be helped,     however, by providing         clear signals,       especially       on the
+fiscal    side.    Specifically,      the fiscal       adjustment     that is usually         part of
+the stabilization        plan should be viewed by the public               as permanent.          If the
+budget is balanced by means of measures that the public                       perceives       as being
+
+
+  I/    It should be noted that the real exchange rate illustrated      in Figures
+5 through   13 may not coincide exactly   with the definition   of the real
+exchange rate used in the model.      In general, however, different    definitions
+of the real exchange rate during stabilization     programs exhibit   similar
+behavior.
+                                                      - 32 -
+
+
+
+temporary,   the anticipation       of the reversal     of such measures is probably
+enough to make the plan fail.           It may also be useful,      as in the Mexican
+case, to carry out the fiscal         adjustment    before the anti-inflationary       plan
+is put into place,        because it may give policymakers        a chance of establishing
+credibility.     Institutional      changes, such as providing       more independence      to
+the Central    Bank, may also help in rendering           the program more credible.
+
+         Even if it is fully          credible,       an exchange rate-based           stabilization          will
+provoke a recession          and inflation          will   be slow to come down if there is
+widespread      backward indexation             that causes the inflation            rate to be sticky,
+as shown by Calvo and Vegh (1991).1/                      Thus, backward indexation              may render
+very costly        a fully   credible       stabilization         attempt.     The use of price and
+wage controls         has usually      been advocated on the belief               that it would help
+fighting     inflation     inertia.         This was undoubtedly            a key motivation          in the
+heterodox     programs of the mid-80's                discussed      above.    The jury is still             out
+as regards the effectiveness                of such controls.            It has been argued that
+imposing price controls             may contribute         to making the program more credible.
+Edwards (1990) attributes              the relative        ease with which Mexico brought                  down
+inflation     beginning      in 1988--as compared to the Chilean                    case--to       the
+presence of price and wage controls.                      However,       the short-run        benefits       of
+price and wage controls             may be more than offset             by the resulting           distortion
+of relative        prices  and problems with the "flexibilization"                      stage (i.e.,          the
+issue of "when" and "how" to remove controls).                          Too early a removal of price
+controls     may unleash the same credibility                   or inertia     problems that such
+controls     were supposed to address in the first                     place.     Too late a removal
+may result       in highly     distorted       relative      prices with the ensuing real costs.
+
+       It seems fair      to conclude      that,    following       an initial      euphoria    as a
+result     of the success of the Israeli            and (though short-lived)              of the Austral
+plan,    the use of price and wage controls                 has been put once again into
+perspective.         They may certainly       help in combatting           inertial     elements at the
+beginning      of a program, but these benefits                should be weighed against            the
+costs in terms of distorted           relative      prices      and the risks       associated      with
+the "flexibilization"        stage.      More fundamentally,            though,     the use of price
+and wage controls        does not seem to alter             the dynamic adjustment           of an
+economy to an exchange-rate-based               stabilization:        both orthodox        and heterodox
+plans have shared similar          characteristics,            as discussed       in Section    II.      This
+suggests that price and wage controls                  cannot solve the underlying
+fundamental       problems relating      to lack of credibility.                The case of Israel
+has been particularly        revealing       because the recession             at a late stage in the
+program could not be avoided in spite of being a highly                           successful    heterodox
+program.       Thus, one is left with the impression                 that even if one were to
+agree that price and wage controls               are a good policy           measure--which       in
+
+
+    l./   Pazos (1972) and Dornbusch and Simonsen (1987) discuss                  the notion   of
+inflation     inertia     arising   from backward indexation.            Barbosa and McNelis
+(1990) provide         empirical   evidence      linking     the wage indexing   system with
+increasing      inertia      in the inflationary         process in Brazil.     Edwards (1990)
+discusses     the role of backward indexation                in Chile.
+                                                     - 33 -
+
+
+
+itself    is arguable--the      benefits from imposing them has probably        been
+overstated.       Rather than resorting     to price controls,   the best hope is
+probably    to be able to switch from backward-looking         to forward-looking
+indexation;     that is, to adjust wages at the beginning        of the program
+according     to expected   inflation,   rather   than look to the past.
+
+       Unfortunately,     even if the problem of backward indexation            does not
+arise,   the road to price stability         may prove to be very bumpy in the
+presence of lack of credibility.            The model suggests that undesirable
+outcomes may not necessarily        reflect    the fact that the program has been
+badly designed but simply that it is non-credible.              Although     the model does
+not capture      the presence of risk premia in nominal interest           rates,   a large
+divergence      between domestic nominal interest        rates and world nominal
+interest     rates plus the rate of devaluation        is probably    a clear indication
+that the program is collapsing.           The model suggests that the cost of
+embarking on a stabilization       program that is likely       to be highly      non-
+credible    may be substantial.
+
+         The main message of the analysis              is that exchange rate-based
+stabilization         is a risky proposition:          if it is fully           credible,      the payoff
+may be instantaneous;             if it is highly      non-credible,          real effects         may be
+substantial.          Therefore,      the evaluation       of how credible          a program will          be is
+critical      under exchange rate-based            stabilization.           In contrast,         the effects
+of lack of credibility              under money-based stabilizations                (i.e.,     stabilization
+programs based on the control                of the rate of growth of the money supply)                       are
+markedly different.             As suggested in Calvo and Vegh (1990a),                     lack of
+credibility        under money-based stabilization                is much less dramatic             than under
+exchange rate-based           stabilization.        A fully       credible     money-based program
+will     reduce inflation         at the cost of an initial             recession.         A non-credible
+money-based stabilization               plan reduces inflation           by less, but the recession
+is also less pronounced.                In other words, lack of credibility                   gets reflected
+on both smaller         gains and costs.          This suggests that in the presence of a
+highly      skeptical     public,     money-based stabilization             may be preferable.
+
+         In conclusion,        a unified      theoretical      framework has been used to
+interpret       the main stylized         facts associated           with stopping        both
+hyperinflation         and inflation        in chronic-inflation            countries.         The model
+predicts      that,     in the absence of backward indexation,                    a credible
+stabilization         program should stop inflation                abruptly      with no real effects.
+This experiment           was taken as a reasonable            first     approximation         to a hyper-
+inflationary        situation.        While the evidence regarding                the output costs of
+stopping      hyperinflation        is a matter of controversy,                it is generally          agreed
+that inflation         has in fact been stopped suddenly with no major costs.
+Furthermore,        in the absence of backward indexation--a                      reasonable        assumption
+in hyperinflation--it            is not obvious,          from an analytical           point of view, how
+a recession        would be generated by an exchange-rate-based                        stabilization.         As
+the analysis        makes clear,       there are expansionary,              rather     then recessionary,
+forces that come into play.
+                                                     - 34 -
+
+
+
+
+       A non-credible         reduction     in the rate of devaluation           has been used to
+interpret     stabilization        in chronic-inflation         countries.       The model predicts
+a boom-recession          cycle in the home goods sector,              a current    account deficit,
+and real-exchange-rate            appreciation.          This is consistent      with the stylized
+facts.    The model also predicts              a fall     in domestic real interest        rates upon
+implementation        of the program.          This prediction       is borne out in some
+episodes    (i.e.,      the Southern-Cone         stabilization     programs),      but in others
+real interest        rates have risen.
+
+       The model used in this paper, due to Calvo and Vegh (1990a,b),            would
+seem to offer   a reasonably  good description        of reality  and should prove
+useful   as a benchmark for understanding      stabilization     programs.   Naturally,
+many issues remain to be further     analyzed,     but, in our view, two stand out.
+
+       First,    the behavior  of real interest rates has usually   been neglected
+in the literature.        However, this is a key issue in practice.    The fact that
+it seems hard to generate high real interest        rates in models of the type
+studied     in this paper only adds to the analytical     puzzle.
+
+         Second, the role of credibility                 needs to be endogeneized.                   -The model
+analyzed        in the paper takes the existence                 of credibility,            or the lack
+thereof,        as exogenous to the model.               As long as credibility               has an exogenous
+component--given,           for instance,        by past experiences--the                 thrust      of the model
+should not change.             Common sense suggests,              however, that credibility                 is
+gained or lost as a program evolves.                      Sachs (1986) has made the argument
+that in the Bolivian            hyperinflation,          stabilization        preceded the gain of
+credibility.           The large appreciation            of the real exchange rate in the
+Southern Cone programs generated                   loss of credibility             in that it was
+perceived         as a signal     of the unsustainability              of the program.              In the model
+analyzed        in this paper, real exchange appreciation                     is a consequence of an
+initial       lack of credibility.            If the real exchange appreciation                      were, in
+addition,         to cause an "endogenous"            loss of credibility             along the way, the
+failure       of the program would become a self-fulfilling                          prophecy.         This point
+illustrates         the importance       of modelling        credibility         to better        understand
+actual       episodes,    since experience           suggests how critical              credibility        is to
+understanding          the inflationary         process and stabilization.
+                                                    - 35   -
+
+
+
+
+                                                 References
+
+Aghevli,    Bijan and Mohsin              S. Khan, "Government Deficits   and the Inflationary
+       Process in Developing               Countries,"  IMF Staff Papers, Vol. 25 (September
+       1978), pp. 383-416.
+
+Barbosa,     Fernando      de Holanda,    and Paul D. McNelis, "Indexation and
+      Inflationary         Inertia:  Brazil   1964-1985," The World Bank Economic
+      Review, Vol.         3 (1990),   pp. 339-357.
+
+Bruno,     Michael,      Guido   Di Tella,      Rudiger Dornbusch,      and Stanley      Fischer,
+         eds.,    Inflation      Stabilization:       The Experience     of Israel,      Argentina,
+         Brazil.    Bolivia.     and Mexico, MIT Press (1988).
+
+Calvo,      Guillermo   A., "Staggered  Prices in a Utility-Maximizing       Framework,"
+         Journal    of Monetarv Economics, Vol. 12 (1983),      pp. 383-398.
+
+         , "Trying    to Stabilize:   Some Theoretical      Reflections    Based on the Case
+         of Argentina,"     in Pedro Aspe Armella,      Rudiger Dornbusch,        and Maurice
+         Obstfeld,    eds., Financial   Policies    in the World Capital        Market:   The
+         Problem of Latin American Countries          (Chicago:    The University      of Chicago
+         Press, 1983), pp. 199-220
+
+Calvo,     Guillermo  A., and Carlos A. Vegh, (1990a) "Credibility                   and the
+         Dynamics of Stabilization         Policy:  A Basic Framework,"          unpublished
+         manuscript  (1990),    International      Monetary Fund.
+
+         , (199Ob),      "Interest-Rate         Policy in a Small Open Economy: The
+         Predetermined        Exchange      Rates Case," IMF Staff Papers, Vol. 37 (1990),
+         pp. 753-76.
+
+-9          (199Oc) "Money-Supply  and Interest-Rate Policy                in a New-Keynesian
+         Framework,"   IMF Working Paper 90/119 (1990).
+
+         , "Exchange Rate-Based Stabilization:         The Dynamics            of Non-Credible
+         Policy  II unpublished manuscript     (1991),  International            Monetary
+         Fund.
+
+Cagan, Philip,         "The Monetary Dynamics of Hyperinflation,"  in Milton
+      Friedman,        ed., Studies  in the Quantity Theory of Monev (Chicago:
+      University        of Chicago Press, 1956).
+
+Cagan,     Philip, "Hyperinflation,"  in John Eatwell,                 Murray Milgate,       and Peter
+         Newman, eds., Money (New York: The Macmillan                  Press Limited,       19893.
+
+Corbo,     Vittorio,     "Reforms and Macroeconomic  Adjustments  in Chile                 during
+         1974-84,"     World Development,  Vol. 13 (1985),  pp. 893-916.
+                                               - 36 -
+
+
+
+Corbo,     Vittorio,  Jaime de Melo, and James Tybout, "What Went Wrong with the
+         Recent Reforms in the Southern Cone," Economic DeVelODment  and Cultural
+         Chance, Vol. 34 (1986),   pp. 607-640.
+
+De Pablo, Juan Carlos,   Politica  Antiinflacionaria              en la Argentina.        1967-1970
+     (Buenos Aires:   Amorrotu editores,       1970).
+
+         , "Relative   Prices,   Income Distribution,        and Stabilization      Plans: The
+         Argentine   Experience,    1967-1970,"    Journal    of DeveloDment      Economics,
+         Vol. 1 (1974),     pp. 167-89.
+
+Di Tella,   Guido, "Argentina's    Economy under          a Labour-Based    Government,
+      1973-6,"   in Guido Di Tella and Rudiger            Dornbusch,   eds., The Political
+      Economy of Argentina.     1946-83 (London:          McMillan   Press, 1989),
+      pp. 213-246.
+
+Diaz-Alejandro,   Carlos F., "Southern     Cone Stabilization    Plans,   in William   R.
+       Cline and Sidney Weintraub,   eds., Economic Stabilization       in DeveloDinp,
+       Countries (Washington:   The Brookings   Institution,   1981), pp. 119-41.
+
+Dixit,     Avinash,    "The Optimal    Mix of Inflationary       Finance and Commodity
+         Taxation   with Collection     Lags, IMF Working       Paper 90/87 (1990).
+
+Dornbusch,  Rudiger,    "Stabilization   Policies    in Developing           Countries:   What
+      Have We Learned,"     World Development,    Vol. 10 (1982),            pp. 701-708.
+
+         , "Lessons from the German Experience    of the 1920's,"             chapter  20 in
+         Exchange Rates and Inflation (Cambridge,    Massachussets:             MIT Press,
+         1988).
+
+         , "Money,    Interest    Rates and Stabilization,"      Review     of Economic
+         Conditions     in Italy,   Vol. 3 (1986),     pp. 439-453.
+
+Dornbusch,     Rudiger,    and Stanley     Fischer,     "Stopping  Hyperinflations         Past and
+      Present,     "Weltwirtschaftliches        Archiv,     Vol. 72 (1986),     pp.   l-47.
+
+Dornbusch,    Rudiger and Mario H. Simonsen, "Inflation      Stabilization      with
+      Incomes Policy    Support:   A Review of Recent Experience      in Argentina,
+      Brazil,   and Israel,"    Group of Thirty (1987).
+
+Drazen, Allan   and Elhanan Helpman,           "Stabilization     with   Exchange Rate
+      Management,"  Ouarterlv Journal           of Economics,     Vol.   102 (1987),
+      pp. 835-55.
+
+         , "Stabilization  with Exchange Rate Management under Uncertainty,"  in
+         Elhanan Helpman, Assaf Razin, and Efraim Sadka, eds., Economic Effects
+         of the Government Budnet (Cambridge,  Massachussets:  The MIT Press,
+         1988), pp. 310-327.
+                                                  - 37 -
+
+
+
+         , "Inflationary Consequences of Anticipated                  Macroeconomic    Policies,"
+         Review of Economic Studies,  Vol. 57 (1990),                 pp. 147-166.
+
+Edwards, Sebastian,   "Stabilization            and Liberalization         Policies   in Eastern
+      Europe: Lessons from Latin             America,"  unpublished        manuscript    (1990),
+     UCLA.
+
+Edwards, Sebastian   and Alejandra     Cox Edwards,           Monetarism       and Liberalization:
+     The Chilean   Experiment,   revised   edition,           University       of Chicago Press
+      (1991).
+
+Fernandez,    Roque, "The Expectations     Management Approach                to Stabilization        in
+      Argentina   during 1976-82,"    World Development,   Vol.               13 (1985),     pp.    871-
+      892.
+
+Finch,     M.H.J. "Stabilization  Policy  in Uruguay since the 1950's,"    in R.
+         Thorp and L. Whitehead,  eds., Inflation   and Stabilization   in Latin
+         America (New York: Holmes & Meier Publishers,     pp 144-180.
+
+Fischer,    Stanley,  "Indexing   and Inflation,"           Journal      of Monetarv    Economics,
+       Vol. 12 (1983),    pp. 519-42.
+
+         , 1986a, "Contracts,  Credibility,           and Disinflation,      in Stanley  Fischer,
+         Indexing.  Inflation, and Economic           Policy,    (Cambridge,   Massachussets:
+         MIT Press, 1986) chapter   7.
+
+         , 1986b, "Exchange Rate versus Money Targets      in Disinflation,"                 in
+         Stanley  Fischer,   Indexing, Inflation.   and Economic Policv,                  (Cambridge,
+         Massachussets:    MIT Press, 1986), chapter   8.
+
+         , "Real Balances,    The Exchange Rate, and Indexation:                Real Variables        in
+         Disinflation,"    Quarterly Journal of Economics, Vol.                53 (1988),   pp.      27-
+         49.
+
+Foxley,    Alejandro,     "Stabilization        Policies   and Stagflation:        The Cases of
+       Brazil    and Chile,"      World    Development,    Vol. 8 (1980),       pp. 887-912.
+
+Garber,   Peter,     "Transition      from Inflation  to Price          Stability,"  in Carnegie-
+      Rochester      Conference      Series on Public Policv,           Vol. 16 (1982),  pp. ll-
+      42.
+
+Hanson, James and de Melo, Jaime, "External       Shocks, Financial    Reforms, and
+      Stabilization  Attempts   in Uruguay during   1974-1983,"   World Development,
+     Vol. 13 (1985),    pp. 917-939.
+
+Harberger,     Arnold C., "The Chilean        Economy in the 1970's:     Crisis,
+      Stabilization,     Liberalization,       Reform,"  Carnegie-Rochester      Conference
+      Series on Public oolicv          17 (1982),   pp. 115-52.
+                                                  - 38 -
+
+
+
+Helpman, Elhanan,   and Leonardo Leiderman,    "Stabilization      in High Inflation
+      Countries:  Analytical  Foundations   and Recent Experience,'       Carneaie-
+      Rochester  Conference  Series on Public   Policy,      Vol. 18 (1988)'   pp. 9-84.
+
+Helpman, Elhanan and Assaf Razin, "Exchange Rate Management: Intertemporal
+      Tradeoffs, "American Economic Review, Vol. 77 (1987), pp. 107-123.
+
+Kafka,      Alexandre,    "The Brazilian Stabilization            Program     1964-66,'     Journal     of
+          Political    Economy, Vol. 75 (1967)'     pp.       596-634.
+
+Kiguel,       Miguel,   and Nissan Liviatan,       "Inflationary        Rigidities     and Orthodox
+          Stabilization    Policies:  Lessons from Latin America,,,                The World Bank
+          Economic Review, Vol. 2 (1988)'          pp. 273-298.
+-'           "The Old and the New in Heterodox            Stabilization        Programs: Lessons
+from      the 1960's and the 1980's,"        Policy,      Planning,     and Research Working
+          Paper Series No. 323 (1989),        The World Bank.
+
+-'           "The Business     Cycle Associated   with       Exchange Rate Based
+          Stabilization,"      unpublished   manuscript       (March 1990), World         Bank.
+
+Machinea,     Jose L., and Jose M. Fanelli,       'Stopping       Hyperinflation:          The Case
+      of the Austral      Plan in Argentina,     1985-87,'      in Michael          Bruno, Guido di
+      Tella,     Rudiger Dornbusch,    and Stanley     Fischer,     eds.,       Inflation
+      Stabilization:      The ExDerience    of Israel.     Araentina.       Brazil,       Bolivia,
+      and Mexico,      pp. 111-152.
+
+Makinen,   Jose L.,        "The Greek Stabilization          of 1944-1946,'      American     Economic
+      Review, Vol.         74 (1984)' pp. 1067-74.
+
+Makinen,    Jose L. and G. Thomas Woodward,                'The Taiwanese Hyperinflation              and
+      Stabilization    of 1945-1952,' Journal                of Monev. Credit and Banking,             Vol.
+      21 (1989)'    pp. 90-105.
+
+Morales,      Juan Antonio,      'Inflation      Stabilization     in Bolivia,,,     in Michael
+      Bruno, Guido di Tella,              Rudiger Dornbusch,      and Stanley     Fischer,  eds.,
+       Inflation    Stabilization:          The ExDerience      of Israel.    Argentina.   Brazil,
+      Bolivia.     and Mexico, MIT Press (1988),               pp. 307-346.
+
+Morales,   Juan Antonio  and Jeffrey Sachs, "Bolivia's    Economic Crisis,,,  NBER
+      Working Paper No. 2620 (Cambridge,   Massachussets:    National   Bureau of
+      Economic Research,   1988).
+
+Notaro,   Bertrand,    'Hungary's Recent Monetary Crisis  and its Theoretical
+       Meaning,,,   American Economic Review, Vol. 38 (1948),   pp. 526-42.
+
+Obstfeld,     Maurice,   "The Capital      Inflows    Problem Revisited: A Stylized               Model
+       of Southern     Cone Disinflation,'        Review of Economic Studies,    Vol.             52
+       (1985),   pp. 605-625.
+                                                        - 39 -
+
+
+
+Olivera,      Julio,     "Money, Prices,   and Fiscal Lags: A Note on the Dynamics                            of
+       Inflation,,,       Quarterly  Review, Banca Nazionale  de1 Lavoro, Vol. 20
+        (September       1967)' pp. 258-67.
+
+Pazos,      Felipe,     Chronic Inflation             in Latin   America       (New York:     Prager
+          Publishers,     1972).
+
+Perez-Campanero,   Juan and Alfred0    M. Leone, "Liberalization  and Financial
+      Crisis  in Uruguay (1974-1987)"'     IMF Working Paper 91/30 (1997).
+
+Petrecolla,   Alberto, "Unbalanced    Development,  1958-1962," in Guido di Tella
+      and Rudiger Dornbusch,    eds., The Political   Economy of Argentina. 1946-
+      83 (London: McMillan   Press, 1989), pp. 108-25.
+
+Ramos, Joseph, Neoconservative    Economics in the Southern cone of Latin
+     America.  1973-1983 (Baltimore:   The Johns Hopkins University Press,
+     1986).
+
+Rodriguez,        Carlos A., "The Argentine   Stabilization    Plan of December 20th,"
+      World       Development, Vol. 10 (1982),    pp. 801-811.
+
+Sachs, Jeffrey,  "The Bolivian    Hyperinflation       and Stabilization,"                         NBER
+      Working Paper No, 2073 (Cambridge,         Massachussets:     National                      Bureau of
+      Economic Research,   1986).
+
+          , "The Bolivian Hyperinflation                 and Stabilization,"           American    Economic
+          Review Papers and Proceedings,                 Vol. 77 (1987),         pp.   279-283.
+
+Sargent,     1982,      "The End of Four Big Inflations,"                  in Robert.        E. Hall,   ed.
+      Inflation:         Causes and Effects (NBER, 1982),                  pp. 41-95.
+
+Siklos,       Pierre L., "The End of the Hungarian   Hyperinflation                          of 1945-1946,"
+          Journal   of Money. Credit and Banking,  Vol. 21 (1989),                          pp. 135-147.
+
+Solimano,    Andres,        "Inflation and the Costs of Stabilization:                        Country
+      Experiences,          Conceptual Issues, and Policy Lessons,"                      Policy,    Planning,
+      and Research          Working Paper No. 226 (1989)'  The World                     Bank.
+
+Tanzi,      Vito,   "Inflation,        Lags in Collection,  and the Real Value of Tax
+          Revenue,"    IMF Staff       Paoers, Vol. 24 (March 1977), pp. 154-67.
+
+Vegh Villegas,          Alejandro,      "Un Programa de Estabilizacion,"                    Banco de la
+     Republica          Oriental      de1 Uruguay, Vol. 1 (1970).
+
+Viana,      Luis, "Uruguay's          Stabilization         Plan of 1968,"        unpublished      manuscript
+          (CERES, Uruguay),          1990.
+
+Wicker,  Elmus,         "Terminating Hyperinflations                in the Dismembered Habsburg
+      Monarchy,,,        American Economic Review,               Vol. 76 (1986),  pp. 350-64.
+                                           -
+
+
+
+
+                                           - 40 -
+
+
+
+Yeager, Leland B. and associates,      Experiences       with     Stomine   Inflation
+       (Washington: American Enterprise     Institute,          1981).
+

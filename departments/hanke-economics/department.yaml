@@ -1,0 +1,42 @@
+id: hanke-applied-economics
+name: Hanke Applied Economics
+version: 0.1.0
+status: active-development
+mission: Source-locked and adversarial reconstruction, testing, and application of Steve H. Hanke's published economic work.
+non_impersonation: true
+evidence_labels:
+  - HANKE-DIRECT
+  - HANKE-FRAMEWORK
+  - SYSTEM-INFERENCE
+  - SYSTEM-CALCULATION
+  - HISTORICAL-EVIDENCE
+  - EXTERNAL-VIEW
+  - RED-TEAM-CHALLENGE
+  - BLUE-TEAM-RESPONSE
+  - UNRESOLVED
+source_authority:
+  level_1: Original data or primary publication
+  level_2: Official institution
+  level_3: Peer-reviewed research
+  level_4: High-quality research institution
+  level_5: Reputable journalism or interview
+  level_6: Secondary commentary
+  level_7: Unverified source
+departments:
+  - monetary-economics
+  - currency-boards
+  - dollarization
+  - inflation
+  - hyperinflation
+  - banking
+  - credit-liquidity
+  - exchange-rates
+  - sovereign-debt
+  - fiscal-monetary-relations
+  - supply-side-economics
+  - international-economics
+  - economic-history
+  - econometrics
+  - crisis-economics
+  - country-reform
+  - venezuela

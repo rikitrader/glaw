@@ -1,0 +1,2 @@
+export function validateUntrustedSourcePath(path:string):string[] { const errors:string[]=[]; if(path.includes('..')) errors.push('path traversal rejected'); if(path.startsWith('/')||path.startsWith('~')) errors.push('absolute/home path rejected'); if(/[<>]/.test(path)) errors.push('unsafe path characters rejected'); return errors; }
+export function sanitizeRetrievedText(text:string):string { return text.replace(/<script[\s\S]*?<\/script>/gi,'').replace(/<iframe[\s\S]*?<\/iframe>/gi,''); }

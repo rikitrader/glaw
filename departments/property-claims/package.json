@@ -1,0 +1,7 @@
+{
+  "name": "@glaw/property-claims",
+  "private": true,
+  "type": "module",
+  "scripts": {"typecheck": "tsc --noEmit", "test": "node --test --import tsx tests/*.test.ts"},
+  "devDependencies": {"tsx": "^4.19.2", "typescript": "latest"}
+}

@@ -1,0 +1,31 @@
+{
+  "name": "@glaw/hanke-economics",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test tests/**/*.test.ts",
+    "typecheck": "../../control-plane/node_modules/.bin/tsc --noEmit",
+    "intake:validate": "node scripts/validate-intake.mjs intake/venezuela-dollarization.json",
+    "intake:start": "node scripts/start-intake.mjs",
+    "source:acquire": "node scripts/acquire-source.mjs",
+    "source:verify-found": "node scripts/verify-found-source.mjs",
+    "source:acquire-all": "node scripts/acquire-corpus.mjs",
+    "banking:validate-acquisition": "node scripts/validate-bank-acquisition.mjs",
+    "data:ingest": "node scripts/ingest-structured-data.mjs",
+    "data:build-world-bank": "node scripts/build-world-bank-observations.mjs",
+    "data:build-imf-mfs": "node scripts/build-imf-sdmx-observations.mjs",
+    "data:build-monetary-flow-audit": "node scripts/build-historical-monetary-flow-audit.mjs",
+    "doctor": "node scripts/haeis-doctor.mjs",
+    "completion:audit": "node scripts/haeis-completion-audit.mjs",
+    "report:build": "node scripts/build-final-report.mjs",
+    "report:validate": "node scripts/validate-final-report.mjs",
+    "charts:build": "node scripts/build-chart-registry.mjs",
+    "benchmarks:run": "node scripts/run-benchmarks.mjs",
+    "parity": "node scripts/haeis-parity.mjs",
+    "run:venezuela": "node scripts/run-venezuela.mjs"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.2",
+    "typescript": "latest"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "id":"HAEIS-VENEZUELA-SCENARIO-LIBRARY",
+  "horizon_years":[1,3,5,10],
+  "required_outputs":["GDP","inflation","credit","employment","reserves","debt","fiscal_deficit","poverty","investment"],
+  "scenarios":[
+    {"id":"BASELINE","name":"Baseline / status quo","required_inputs":["current monetary regime","fiscal balance","oil revenue","banking data","external flows"]},
+    {"id":"SUCCESSFUL_DOLLARIZATION","name":"Successful dollarization","required_inputs":["verified conversion rate","liquid reserves","fiscal adjustment","bank recapitalization","legal framework"]},
+    {"id":"FAILED_DOLLARIZATION","name":"Failed dollarization","required_inputs":["conversion failure","liquidity shortfall","fiscal slippage","capital flight"]},
+    {"id":"BANKING_CRISIS","name":"Banking crisis","required_inputs":["deposit withdrawals","capital adequacy","liquid assets","resolution capacity"]},
+    {"id":"CREDIT_CRUNCH","name":"Credit crunch","required_inputs":["credit contraction","loan supply","investment elasticity","employment elasticity"]},
+    {"id":"OIL_COLLAPSE","name":"Oil collapse","required_inputs":["oil price","production","usable sovereign FX","imports","debt service"]},
+    {"id":"HIGH_OIL_REVENUE","name":"High oil revenue","required_inputs":["oil price","production","government take","reserve accumulation"]},
+    {"id":"MASSIVE_FDI","name":"Massive FDI","required_inputs":["FDI","profit repatriation","investment","employment"]},
+    {"id":"CAPITAL_RETURN","name":"Capital return","required_inputs":["capital inflows","bank deposits","investment","FX liquidity"]},
+    {"id":"CAPITAL_FLIGHT","name":"Capital flight","required_inputs":["outflows","deposit withdrawals","reserve loss","FX liquidity"]},
+    {"id":"DEBT_RESTRUCTURING","name":"Debt restructuring","required_inputs":["debt stock","arrears","haircut","maturity","coupon","GDP"]},
+    {"id":"SANCTIONS_RELIEF","name":"Sanctions relief","required_inputs":["legal status","oil exports","payment channels","external financing"]},
+    {"id":"SANCTIONS_TIGHTENING","name":"Sanctions tightening","required_inputs":["payment restrictions","oil exports","reserve access","capital flows"]},
+    {"id":"DUAL_CURRENCY_TRANSITION","name":"Dual-currency transition","required_inputs":["legal tender rules","currency substitution","bank conversion","parallel FX"]},
+    {"id":"CURRENCY_BOARD","name":"Currency board","required_inputs":["reserve coverage","convertibility","monetary liabilities","fiscal discipline"]},
+    {"id":"MONETARY_REFORM_WITHOUT_DOLLARIZATION","name":"Monetary reform without dollarization","required_inputs":["monetary rule","fiscal dominance","reserve policy","banking backstop"]}
+  ],
+  "rule":"A scenario is modeled only when its required inputs are source-bound; otherwise its outputs are UNAVAILABLE or DATA INSUFFICIENT. Model-implied probabilities are not objective truth."
+}

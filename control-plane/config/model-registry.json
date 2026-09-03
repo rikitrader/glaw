@@ -1,0 +1,13 @@
+{
+  "schemaVersion": "1.0",
+  "deployments": [],
+  "policy": {
+    "minCitationAccuracy": 0.99,
+    "maxUnsupportedClaimRate": 0.001,
+    "maxSchemaFailureRate": 0.001,
+    "maxP95LatencyMs": 30000,
+    "maxCostPerRunUsd": 8,
+    "maxSecurityAnomalies": 0
+  },
+  "rollout": ["BENCHMARK", "SHADOW", "CANARY_1", "CANARY_5", "CANARY_25", "CANARY_50", "FULL"]
+}

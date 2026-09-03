@@ -1,0 +1,296 @@
+The Realities of
+Modern Hyperinflation
+Despite falling inflation rates worldwide, hyperinflation
+could happen again
+Carmen M. Reinhar t and Miguel A. Savastano
+
+
+
+
+                                       A
+                                                   FTER World War I, a handful of European
+                                                   economies succumbed to hyperinflation. Austria,
+                                                   Germany, Hungary, Poland, and Russia all racked
+                                                   up enormous price increases, with Germany
+                                       recording an astronomical 3.25 million percent in a single
+                                       month in 1923. But, since the 1950s, hyperinflation has been
+                                       confined to the developing world and the transition
+                                       economies. The milder problem of chronic high inflation
+                                       ceased to be a problem in the advanced economies in the
+                                       1980s and in the developing countries in the 1990s (Chart 1).
+                                       In Latin America and the Caribbean, the average rate of infla-
+                                       tion dropped from 233 percent a year in 1990–94 to 7 percent
+                                       in 2000–02. In the transition economies, the decline over the
+                                       same period was even greater, from 363 percent to 16 percent.
+                                       And, in developing Asia, always a low-inflation region by
+                                       developing country standards, inflation has recently stabilized
+                                       at about 5 percent a year.
+                                          The benign inflation environment of recent years may lead
+                                       some to believe that chronic high inflation and hyperinflation
+                                       have been eradicated for good. History suggests that such a
+                                       conclusion is not warranted. Mainly to keep this important
+                                       issue at the forefront of policy debate, this article reviews the
+                                       broad patterns in key macroeconomic policies and outcomes
+                                       in all episodes of hyperinflation that have occurred in market
+                                       economies since the mid-1950s. Following Philip Cagan’s
+                                       classic definition of hyperinflation, published in 1956, we
+                                       define a hyperinflation episode as beginning in the month
+                                       that the rise in prices exceeds 50 percent and as ending the
+                                       month before the monthly rise in prices drops below that rate
+                                       and stays below it for at least a year. Since the late 1950s, all
+                                       episodes of this kind not associated with armed conflicts
+                                       (domestic or foreign) have occurred in countries that already
+                                       had a history of chronically high inflation: Argentina, Bolivia,
+                                       Brazil, and Peru. For comparison, our analysis also includes
+                                       Ukraine, which, of the former Soviet republics, suffered the
+                                       longest-lasting high inflation.
+
+                                       Beginning and end
+                                       Modern episodes of hyperinflation are different from those
+                                       that followed World War I. The hyperinflations of the 1920s
+                                       sprang up swiftly and were rapidly brought to an end,
+
+20   Finance & Development June 2003
+                                                                                               Chart 1
+                                                                                               Vanishing inflation?
+                                                                                               Average annual inflation rates are declining in most regions.
+                                                                                               (percent)
+                                                                                               400
+without much cost to employment and output, after govern-                                                       2000–02
+                                                                                               350
+ments implemented drastic fiscal and monetary reforms that                                                      1995–99
+                                                                                                                1990–94
+restored currency convertibility and gave central banks inde-                                  300
+                                                                                                                1985–89
+pendence to conduct monetary policy.                                                           250
+                                                                                                                1980–84
+   In contrast, modern hyperinflations have not been short                                     200
+and swift. In most cases, they have been preceded by years of
+                                                                                               150
+chronic high inflation. In Argentina, Brazil, and Peru, for
+example, year-over-year inflation remained consistently                                        100
+above 40 percent for 12–15 years before the peak of the                                         50
+hyperinflation (Table 1). Chronic high inflation does not                                        0
+                                                                                                           Africa    Developing        Middle       Transition Latin America
+necessarily degenerate into hyperinflation. But, in the five                                                            Asia            East        economies and Caribbean
+countries reviewed here, hyperinflation did ensue, triggered
+by an uncontrolled expansion in the money supply that was                                        Source: IMF, World Economic Outlook (various years).
+
+fueled by endemic fiscal imbalances.
+   Nor has price stability been restored overnight in modern
+hyperinflations. It took 14 months in Bolivia and more than                                 strict institutional constraints on monetary policy have not
+3 years in Peru for inflation rates to fall below 40 percent. It                            characterized the end of all modern hyperinflations. Except for
+took even longer to reach single-digit inflation rates—three                                Argentina, which adopted a currency board in early 1991,
+and a half years in Argentina and about seven and a half                                    countries have relied on hybrid monetary and exchange
+years in Bolivia. In Brazil, failure to put in place the needed                             regimes to bring high inflation under control. Bolivia and Peru
+fiscal and monetary reforms in 1989–90 caused the country                                   relied on money targets and heavy foreign exchange interven-
+to experience a second, borderline hyperinflation in 1994.                                  tion (“dirty floats”); Brazil and Ukraine retained de jure dual
+   Another difference is that full currency convertibility and                              exchange rates for most of the 1990s.
+
+  Table 1
+  Modern hyperinflation
+  A short history of episodes in five countries
+
+                                                                 Length of time annual
+                                                                   inflation exceeded
+                                                                       40 percent
+                                         Peak 12-month
+                                          inflation rate       Before              After          Main nominal
+  Episode                                   (percent)         the peak           the peak           anchor                            Exchange rate regime
+  Argentina                              20,266               15 years,          1 year,         Exchange rate            Currency board, April 1991–December 1, 2001.
+  May 1989–March 1990                    (March 1990)          2 months         10 months
+
+  Bolivia                                23,447                3 years,          1 year,         Money supply             Dirty float, August 1985–October 1987.
+  April 1984–September 1985              (August 1985)         5 months          2 months                                 De facto crawling peg thereafter.
+
+  Brazil                                  6,821               14 years,          5 years,        Exchange rate            Short-lived disinflation (Collor plan). Inflation
+  December 1989–March 1990               (April 1990)          3 months          1 month                                  rose steadily from July 1991 to June 1994,
+                                                                                                                          when the Real Plan, based on a preannounced
+                                                                                                                          narrow crawling band, was adopted. The band
+                                                                                                                          collapsed in January 1999 and was replaced
+                                                                                                                          by a managed float.
+
+  Peru                                   12,378               12 years,          3 years,        Money supply             Exchange markets were unified in August 1990,
+  July 1990–August 1990                  (August 1990)         5 months          3 months                                 and the exchange rate floated until October 1993.
+                                                                                                                          De facto crawling band thereafter.
+
+  Ukraine                                10,155               11 months          2 years,        Hybrid                   Dual exchange markets with periodic attempts
+  April 1991–November 1994               (December 1993)                        10 months                                 to peg official rate. Exchange markets unified
+                                                                                                                          in September 1998. De facto crawling peg
+                                                                                                                          thereafter.
+
+
+    Sources: IMF, International Financial Statistics; Fischer, Sahay, and Végh (2002); Reinhart and Rogoff (2002); Reinhart and Savastano (2002).
+
+
+
+
+                                                                                                                                Finance & Development June 2003                21
+ Table 2
+ Fiscal roots
+ Reducing fiscal deficits is essential to getting inflation rates down.
+
+                                                               Annual inflation rate
+                                                                (percent, average)
+                                  t–3           t–2            t–1           t         t+1   t+2     t+3                     expect from macroeconomic policies
+  Argentina (1989–90)             90.1          131.3           343.0       2,697.0         171.7      24.9      10.6        after hyperinflations end (Chart 2).
+  Bolivia (1984–85)               32.1          123.5           275.6       6,515.5         276.3      14.6      16.0           One reason the successful disinfla-
+  Brazil (1989–90)              147.1           228.3           629.1       2,189.2         477.4   1,022.5 1,927.4          tions were not immediately followed
+  Peru (1990)                     86.3          667.3        3,398.5        7,485.8         409.5      73.5      48.6        by an economic rebound was the ane-
+  Ukraine (1991–94)                n.a.            2.1            4.2       1,613.7         376.4      80.2      15.9        mic state of the banking sector in the
+                                                                                                                             affected countries. Hyperinflation
+                                                                  Fiscal deficit/GDP 1                                       reduces the size of the financial sector
+                                                                       (percent)
+                                                                                                                             and gradually erodes the efficiency of
+                                   t–3            t–2            t–1             t           t+1        t+2      t+3
+  Argentina (1989–90)               4.2            6.7            8.6             4.9         1.7      –0.4       0.2
+                                                                                                                             the price system and the usefulness of
+  Bolivia (1984–85)                 7.8          14.7            19.1           16.7          2.5        7.4      5.7
+                                                                                                                             domestic money as a store of value,
+  Brazil (1989–90)                11.3           32.3            53.0           56.3         27.2      44.2     58.1
+                                                                                                                             unit of account, and medium of
+     Operational deficit            3.6            5.7            4.8             2.8         0.0      –2.2       0.3        exchange—taking the economy, in the
+  Peru (1990)                       9.0            6.4            7.2             7.4         1.4        2.6      2.7        extreme, to a near state of barter. In
+  Ukraine (1991–94)                n.a.           n.a.            n.a.          14.1          8.7        4.9      3.2        Bolivia, bank deposits fell to a low of
+     Sources: IMF, International Financial Statistics (various years); Reinhart and Savastano (2002).
+                                                                                                                             2 percent of GDP the year after hyper-
+     Note: t refers to the hyperinflation years (in parentheses). n.a. denotes not available.                                inflation began. Although deposits
+     1Nonfinancial public sector or general government. Excludes quasi-fiscal losses.
+                                                                                                                             and monetary aggregates do recover
+                                                                                                                             after hyperinflation ends, intermedia-
+Lingering effects                                                                                 tion remains extremely low by international standards. For
+Major fiscal adjustments have been needed to end all mod-                                         instance, the ratio of bank deposits to GDP in the four Latin
+ern hyperinflations (Table 2). In fact, except for Brazil, coun-                                  American countries ranged from 9 percent to 20 percent
+tries that stopped hyperinflations reduced their fiscal deficits                                  three years after the hyperinflation, which is between one-
+by more than 10 percent of GDP, on average, over a three-                                         third and one-half the comparable ratio for middle-income
+year period.                                                                                      countries with no history of high inflation (Chart 3).
+    Although these countries successfully arrested the collapse                                      Owing to the collapse of financial intermediation, banking
+of economic activity in the wake of an inflation explosion,                                       crises have been a feature of all modern hyperinflations. The
+output growth has been modest in nearly all of them. This                                         large-scale deposit withdrawals and sharp increases in nonper-
+suggests that there are reasons to be cautious about what to                                      forming loans that accompanied economic contraction made
+                                                                                                  these banking crises extremely costly. Modern hyperinflations
+  Table 3                                                                                         have also occurred when the affected countries had no access to
+  Signs of recovery                                                                               international capital markets. Four of the countries reviewed had
+  Parallel market premiums fall and capital flight abates when                                    already defaulted on their foreign currency bank debt when
+  hyperinflation ends.
+                                           Average parallel market premium1
+                                                                                                  hyperinflation began, and hyperinflation triggered new defaults.
+                                                         (percent)                                   The run-up to hyperinflation has been characterized by a
+                                        t–3                   t                   t+3             broad     array of economic distortions, including capital con-
+  Argentina (1989–90)                   66.7                67.7                 10.9             trols, many forms of financial repression, segmented foreign
+  Bolivia (1984–85)                     54.0               119.1                   7.3            exchange markets, and outright corruption. Although many
+  Brazil (1989–90)                    111.5                102.3                 18.1             of these distortions are hard to measure, the parallel
+  Peru (1990)                         278.8                 32.7                   6.4
+                                                                                                  exchange rate market premium has been found to be a useful
+  Ukraine (1991–94)                      n.a.                n.a.                11.1
+                                                                           2
+                                                                                                  proxy. As shown in Table 3, the parallel market premium
+                                                Cumulative capital flight
+                                                      (million dollars)                           during the hyperinflation or the run-up to the hyperinfla-
+                                 From t–3 to t           During t        From t to t+3            tion has consistently remained above 50 percent, and premi-
+  Argentina (1989–90)                 8,662                7,938             –27,434              ums in the hundreds and even thousands have not been
+  Bolivia (1984–85)                       73                 190                   –70            uncommon. Easing or lifting capital controls and unifying
+  Brazil (1989–90)                   38,757              –8,932              –30,476              exchange markets have been critical to reducing some of
+  Peru (1990)                         2,310                 –669             –11,318
+                                                                                                  these distortions during stabilization. These measures—
+     Sources: World Currency Yearbook (various issues); Reinhart and Savastano                    together with strict fiscal policies—have usually led to dra-
+  (2002).                                                                                         matic declines in parallel market premiums.
+     Note: t refers to the hyperinflation years (in parentheses). n.a. denotes not
+  available.
+     1
+                                                                                                     While robust growth has eluded most countries in the years
+      The parallel market premium is defined as 100*(ep-e)/e, where ep is the par-
+  allel market exchange rate, and e is the official exchange rate. For Argentina,
+                                                                                                  immediately      following a bout of hyperinflation, there is mod-
+  Brazil, and Peru, the estimates of capital flight end in 1992 (that is, t+2). n.a.              estly encouraging evidence that, although it may take some
+  denotes not available.
+     2A positive entry indicates capital flight (an outflow); a negative, capital repatria-       time for countries to regain formal access to international cap-
+  tion (an inflow).                                                                               ital markets, an acute financing shortage may be somewhat
+                                                                                                  mitigated by the repatriation of flight capital. Table 3 shows
+
+22    Finance & Development June 2003
+    Chart 2                                                                            Chart 3
+    How large is the rebound?                                                          Collateral damage
+    Stabilization policies can only do so much to redress                              Hyperinflations cripple the banking sector and increase the
+    economic collapse.                                                                 demand for dollar assets.
+    Cumulative percent change in per capita real GDP
+                                                                                       (percent)
+                                                                                                                   Bank deposits/GDP
+     30
+                                                                                        30
+     20                                                                                               t+3
+                                                                                       25             t
+     10
+                                                                                                      t–3
+      0                                                                                20
+    –10                                                                                15
+    –20                                                                                10
+                 From t to t+31
+    –30
+                 From t–1 to t                                                           5
+    –40
+                 From t–4 to t–1                                                         0
+    –50                                                                                       Argentina         Bolivia      Brazil        Peru           Ukraine
+            Argentina      Bolivia         Brazil         Peru          Ukraine              (1989–90)        (1984–85)   (1989–90)1      (1990)        (1991–94)
+           (1989–90)     (1984–85)      (1989–90)        (1990)       (1991–94)
+
+      Sources: IMF, International Financial Statistics (various years) and World                    Foreign currency deposits/Total bank deposits2
+    Economic Outlook (various years).
+      Note: t refers to the hyperinflation years (in parentheses).                    100
+      1From t to t+3, there was no change in per capita real GDP in Bolivia. In                      t+3
+    Brazil, the change was –0.6 percent; in Peru, it was –0.1 percent.                 80            t
+                                                                                                     t–3
+                                                                                       60
+
+that capital flight is sizable before and during hyperinflations.                      40
+Yet once confidence is restored through stabilization, at least
+                                                                                       20
+some of the wealth previously kept outside the country
+returns to the domestic financial system, although not enough                            0
+                                                                                                  Argentina        Bolivia             Peru             Ukraine
+to jump-start growth. Although the return of flight capital                                      (1989–90)       (1984–85)3          (1990)4          (1991–94)
+facilitates financial reintermediation, it rarely increases                              Source: Reinhart and Savastano (2002).
+demand for domestic money or domestic financial assets.                                  Note: t refers to the hyperinflation years (in parentheses). Data were not
+                                                                                       available for Ukraine, t–3.
+Dollarization and other forms of financial indexation are a                              1Excludes government securities held in banks.
+
+lasting legacy of hyperinflation—a legacy that has been                                  2Brazil did not allow banks to offer foreign currency deposits.
+                                                                                         3U.S. dollar deposits were forcibly converted into local currency in 1982.
+extremely difficult to reverse (Chart 3, bottom panel).                                Foreign currency deposits were allowed again in 1985.
+Argentina, Bolivia, and Peru, for example, were far more dol-                            4U.S. dollar deposits were forcibly converted into local currency in 1985.
+                                                                                       Foreign currency deposits were allowed again in 1988.
+larized three years after hyperinflation than they were before.
+
+Seven lessons to remember                                                          returns to the country when high inflation stops, but dollar-
+Policymakers would do well to bear in mind the seven lessons                       ization and other forms of indexation dominate financial
+that emerge from this overview of modern hyperinflations.                          intermediation for many years.
+   1. Hyperinflations seldom materialize overnight and are
+usually preceded by a protracted period of high and variable                       Carmen M. Reinhart is a Deputy Director, and Miguel A.
+inflation.                                                                         Savastano is an Advisor, in the IMF’s Research Department.
+   2. Stabilization may take years if fiscal policies are not
+adjusted appropriately. Even when fiscal adjustment is                             References:
+implemented, it takes time to achieve low inflation, especially                       Cagan, Philip, 1956, “The Monetary Dynamics of Hyperinflation,” in
+when money is used as the nominal anchor.                                          Studies in the Quantity Theory of Money, ed. by Milton Friedman
+   3. Sharp reductions in fiscal deficits are always a critical                    (Chicago: University of Chicago Press), pp. 25–117.
+element of a stabilization program, regardless of the choice
+                                                                                      Fischer, Stanley, Ratna Sahay, and Carlos A. Végh, 2002, “Modern
+of monetary anchor.
+                                                                                   Hyper- and High Inflations,” Journal of Economic Literature, Vol. 40
+   4. Unifying exchange markets and establishing currency
+                                                                                   (September), pp. 837–80.
+convertibility are often essential ingredients of stabilization,
+irrespective of the choice of main nominal anchor.                                    Reinhart, Carmen M., and Kenneth S. Rogoff, 2002, “A Modern History
+   5. Output collapses during, and sometimes in the run-up                         of Exchange Rate Arrangements: A Reinterpretation,” NBER Working
+to, hyperinflation. Although stabilization measures cap the                        Paper 8963 (Cambridge, Massachusetts: National Bureau of Economic
+implosion in economic activity, there is little evidence to sug-                   Research).
+gest that they kindle a robust rebound in economic activity.                          Reinhart, Carmen M., and Miguel A. Savastano, 2002, “Some Lessons
+   6. Hyperinflations are accompanied by an abrupt reduc-                          from Modern Hyperinflation” (unpublished; Washington: International
+tion in financial intermediation.                                                  Monetary Fund).
+   7. Stopping a hyperinflation does not restore demand for                           Sargent, Thomas J., 1982, “The Ends of Four Big Inflations,” in
+domestic money and domestic currency assets to the levels                          Inflation: Causes and Consequences, ed. by Robert E. Hall (Chicago:
+that prevailed before the hyperinflation began. Capital                            University of Chicago Press), pp. 41–97.
+
+
+
+                                                                                                                      Finance & Development June 2003                 23
+

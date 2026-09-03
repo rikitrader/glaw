@@ -1,0 +1,23 @@
+import { readdirSync, readFileSync, writeFileSync, statSync } from 'node:fs';
+import { resolve, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { buildIndexedFinalReport, renderIndexedFinalReport, validateIndexedFinalReport } from '../src/final-report.ts';
+
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const index = JSON.parse(readFileSync(resolve(root, 'reports/final-report-index.json'), 'utf8'));
+const supplied = process.argv[2];
+const runName = supplied ?? readdirSync(resolve(root, 'runs')).filter((name) => name.endsWith('.json') && !name.endsWith('.events.json')).sort((a, b) => statSync(resolve(root, 'runs', b)).mtimeMs - statSync(resolve(root, 'runs', a)).mtimeMs).at(0);
+if (!runName) throw new Error('no workflow run JSON was found');
+const run = JSON.parse(readFileSync(resolve(root, 'runs', runName), 'utf8'));
+const variableInventory = JSON.parse(readFileSync(resolve(root, 'datasets/venezuela-variable-inventory.json'), 'utf8'));
+run.artifacts ??= {};
+run.artifacts.variable_inventory = Object.entries(variableInventory.domains).flatMap(([domain, variables]) => variables.map((variable) => ({ variable, domain, expected_observations: 1 })));
+const contextObservations = JSON.parse(readFileSync(resolve(root, 'datasets/venezuela-world-bank-observations.json'), 'utf8'));
+const monetaryObservations = JSON.parse(readFileSync(resolve(root, 'datasets/venezuela-imf-mfs-observations.json'), 'utf8'));
+run.artifacts.institutional_observations = [...contextObservations.observations, ...monetaryObservations.observations];
+const report = buildIndexedFinalReport(index, run);
+const errors = validateIndexedFinalReport(report, index);
+if (errors.length) throw new Error(`indexed report validation failed: ${errors.join('; ')}`);
+writeFileSync(resolve(root, 'reports', 'venezuela-final-indexed-report.json'), JSON.stringify(report, null, 2));
+writeFileSync(resolve(root, 'reports', 'venezuela-final-indexed-report.md'), renderIndexedFinalReport(report, index), 'utf8');
+console.log(JSON.stringify({ report_id: report.report_id, run_id: report.run_id, status: report.report_status, sections: report.sections.length, charts: report.charts.length, formulas: report.formulas.length, output: 'reports/venezuela-final-indexed-report.md' }, null, 2));

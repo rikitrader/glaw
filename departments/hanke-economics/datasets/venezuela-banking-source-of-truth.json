@@ -1,0 +1,54 @@
+{
+  "dataset_id": "VEN-BANKING-SOURCE-OF-TRUTH-20260825",
+  "country": "Venezuela",
+  "status": "IN_PROGRESS",
+  "primary_hierarchy": ["SUDEBAN", "individual-bank-regulatory-statements", "BCV", "audited-bank-reports"],
+  "secondary_hierarchy": ["Banca y Negocios banking rankings", "UCAB or established research", "IMF historical validation"],
+  "banking_vote_rule": {
+    "critical_required": ["total_deposits", "fx_deposits", "gross_loans", "NPL", "provisions", "liquid_assets", "capital", "capital_adequacy", "government_exposure", "net_FX_position"],
+    "required_or_derived": ["RWA", "maturity_mismatch"],
+    "official_supervisory_stress_test": "NOT_REQUIRED_AND_NOT_PUBLIC",
+    "independent_stress_test": "REQUIRED",
+    "coverage_rule": "If critical variables are missing, banking vote ABSTAINS; if material variables are estimated, vote CONDITIONAL; if coverage is at least 90% and the independent stress engine completes, vote VALID subject to audit."
+  },
+  "field_map": {
+    "deposits": ["captaciones_del_publico", "deposits_demand", "deposits_savings", "deposits_term", "deposits_restricted", "other_demand_obligations", "money_market_obligations"],
+    "loans": ["gross_loans", "current_loans", "restructured_loans", "past_due_loans", "litigation_loans", "loan_loss_provisions", "net_loans"],
+    "assets": ["cash", "BCV_deposits", "domestic_banks", "foreign_banks", "immediate_collection", "securities", "restricted_availability", "other_assets"],
+    "liabilities": ["public_deposits", "BCV_obligations", "other_financing", "restricted_deposits", "other_liabilities"],
+    "capital": ["paid_in_capital", "reserves", "retained_earnings", "operating_result", "total_equity", "regulatory_capital", "capital_adequacy_ratio"],
+    "FX": ["FX_assets", "FX_liabilities", "USD_assets", "USD_liabilities", "EUR_assets", "EUR_liabilities", "on_balance_FX", "off_balance_FX"],
+    "maturity": ["demand", "less_than_7_days", "8_to_30_days", "31_to_90_days", "91_to_180_days", "181_to_365_days", "over_1_year"]
+  },
+  "formulas": {
+    "system_deposits": "sum(deposits_i)",
+    "NPL": "past_due_loans + litigation_loans",
+    "NPL_ratio": "NPL / gross_loans",
+    "coverage_ratio": "loan_loss_provisions / NPL",
+    "basic_liquidity": "(cash + BCV_deposits + domestic_banks + foreign_banks) / public_deposits",
+    "expanded_liquidity": "(cash + BCV_deposits + domestic_banks + foreign_banks + liquid_securities) / public_deposits",
+    "loan_to_deposit": "gross_loans / public_deposits",
+    "sovereign_exposure_ratio": "government_exposure / total_assets",
+    "government_exposure_to_capital": "government_exposure / equity",
+    "net_FX_position": "FX_assets - FX_liabilities",
+    "FX_capital_ratio": "net_FX_position / capital",
+    "liquidity_gap": "assets_bucket - liabilities_bucket",
+    "cumulative_gap": "sum(liquidity_gap through bucket)",
+    "RWA_derived": "regulatory_capital / capital_adequacy_ratio only when definitions match exactly"
+  },
+  "source_leads": [
+    {"source_id":"WEB-BN-RANKING-APR-2026","status":"FOUND_UNREAD","source_url":"https://www.bancaynegocios.com/wp-content/uploads/2026/05/RANKING-BANCARIO-ABR.26-PERIODICO_compressed.pdf","quality_class":"B2","scope":"Monthly banking ranking lead; contains bank-by-bank credit portfolio and banking indicators; must be downloaded, read, hashed, and reconciled."},
+    {"source_id":"WEB-BN-CREDIT-APR-2026","status":"FOUND_UNREAD","source_url":"https://www.bancaynegocios.com/bdv-bbva-provincial-y-banesco-lideraron-aumento-de-la-cartera-de-creditos-en-abril/","quality_class":"B2","scope":"Secondary article describing April 2026 banking credit ranking; context and acquisition lead only."},
+    {"source_id":"WEB-BANESCO-BALANCES-2026","status":"FOUND_UNREAD","source_url":"https://www.banesco.com/somosbanesco/balances/","quality_class":"A2","scope":"Official bank page listing monthly 2026 balance sheets and indicators; acquire each linked monthly file."},
+    {"source_id":"WEB-BANESCO-DOWNLOADS-2026","status":"FOUND_UNREAD","source_url":"https://www.banesco.com/informacion-de-interes/descargas/","quality_class":"A2","scope":"Official Banesco downloads page listing January–July 2026 balance files; exact linked artifacts require acquisition and hash verification."},
+    {"source_id":"WEB-SUDEBAN-MANUALS","status":"FOUND_UNREAD","source_url":"https://sudeban.gob.ve/wp-content/uploads/4.MANUALES_CONTABLES/","quality_class":"A1","scope":"SUDEBAN accounting/manuals route; acquire standardized publication formats and FX subaccount definitions."}
+  ],
+  "next_actions": [
+    "Download and read the April 2026 Banca y Negocios banking ranking PDF.",
+    "Acquire Banesco January–July 2026 official monthly statements and indicators.",
+    "Create equivalent official-source routes for each currently authorized bank.",
+    "Acquire SUDEBAN publication formats and accounting-code manuals.",
+    "Build bank-by-bank normalized observations with original units and denomination.",
+    "Run independent stress engine after critical coverage reaches the declared threshold."
+  ]
+}

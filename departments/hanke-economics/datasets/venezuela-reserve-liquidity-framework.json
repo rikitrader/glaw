@@ -1,0 +1,24 @@
+{
+  "dataset_id": "VEN-RESERVE-LIQUIDITY-FRAMEWORK-20260825",
+  "country": "Venezuela",
+  "status": "IN_PROGRESS",
+  "purpose": "Separate gross reported reserves from legally accessible, liquid, unencumbered FX available for dollarization.",
+  "reserve_buckets": ["GRR_GROSS_REPORTED_RESERVES", "LRR_LIQUID_READILY_REALIZABLE_RESERVES", "NUR_NET_UNENCUMBERED_RESERVES", "EDL_EFFECTIVE_DOLLARIZATION_LIQUIDITY"],
+  "gross_identity": "GrossReserves = Gold + FXDeposits + ForeignSecurities + SDRHoldings + IMFReservePosition + OtherReserveAssets",
+  "waterfall": [
+    "R0 = GrossInternationalReserves",
+    "R1 = R0 - IlliquidGold",
+    "R2 = R1 - FrozenAssets",
+    "R3 = R2 - EncumberedAssets",
+    "R4 = R3 - LegallyContestedAssets",
+    "R5 = R4 - RestrictedSDRs",
+    "R6 = R5 - ShortTermExternalObligations",
+    "EDL = R6 + CommittedExternalFinancing"
+  ],
+  "coverage_formula": "DollarizationCoverage = NetUsableFX / DollarizationLiabilities",
+  "net_usable_fx_formula": "NetUsableFX = CashFX + LiquidForeignSecurities + ConvertibleSDR + UnencumberedGold*Haircut + CommittedFinancing - BlockedAssets - PledgedAssets - ContestedAssets - ShortTermDebtService - EssentialFXBuffer",
+  "asset_fields": ["asset_id", "owner", "asset_type", "custodian", "jurisdiction", "currency", "market_value", "book_value", "haircut", "maturity", "liquidity_days", "encumbrance_status", "pledged", "frozen", "attached", "litigated", "sanctioned", "legal_status", "usable_for_dollarization", "source_id", "citation_anchor", "verification_status"],
+  "asset_types": ["cash_deposit", "foreign_security", "foreign_bond", "money_market_instrument", "SDR", "gold", "IMF_position", "other"],
+  "eligibility_rule": "A reported reserve asset receives 100%, a documented haircut, or 0% immediate-dollarization eligibility only after liquidity, custody, legal access, encumbrance, and sanctions status are documented.",
+  "required_sources": ["BCV_reserves", "BCV_balance_sheet", "IMF_IRFCL", "IMF_SDR", "World_Gold_Council", "Bank_of_England_legal_records", "court_and_arbitration_records", "OFAC_or_applicable_sanctions_records", "oil_and_PDVSA_records", "debt_instrument_registry"]
+}

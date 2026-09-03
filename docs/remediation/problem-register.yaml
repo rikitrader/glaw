@@ -1,0 +1,58 @@
+schema_version: "1.0"
+generated_at: "2026-08-27"
+problems:
+  - id: GLAW-0001
+    component: persistence
+    severity: high
+    category: architecture
+    source: docs/audit/current-architecture.md
+    description: authoritative state is split across local matter folders, intake KV, X402 D1, and control-plane storage
+    root_cause: incremental systems evolved without a canonical persistence contract
+    blast_radius: state divergence, incomplete audit reconstruction, migration ambiguity
+    required_fix: define canonical IDs and persistence adapters; preserve workpaper hashes
+    tests: [cross-store-identity, migration-replay, audit-reconstruction]
+    status: open
+  - id: GLAW-0002
+    component: authorization
+    severity: critical
+    category: security
+    source: docs/audit/security-findings.md
+    description: end-to-end tenant, privilege, conflict, and ethical-wall enforcement before retrieval is not proven
+    root_cause: authorization contracts are distributed rather than enforced by one boundary
+    blast_radius: unauthorized model-context exposure
+    required_fix: authorization graph and mandatory pre-retrieval decision
+    tests: [cross-tenant-denial, ethical-wall-denial, privilege-denial, revoked-session]
+    status: open
+  - id: GLAW-0003
+    component: integrations
+    severity: high
+    category: reliability
+    source: docs/audit/integration-map.md
+    description: no universal command receipt and reconciliation contract is confirmed
+    root_cause: connectors evolved as capability-specific adapters
+    blast_radius: duplicate or unknown external side effects
+    required_fix: command envelope, idempotency, lookup, reconciliation, incident handling
+    tests: [duplicate-submit, timeout-before-effect, timeout-after-effect, webhook-reorder]
+    status: open
+  - id: GLAW-0004
+    component: model-runtime
+    severity: high
+    category: governance
+    source: docs/audit/model-map.md
+    description: canonical model registry, benchmark routing, and canary rollback are not confirmed
+    root_cause: provider configuration exists without a unified policy gateway
+    blast_radius: unmeasured quality, cost, latency, and silent model substitution
+    required_fix: Model Gateway and versioned model registry
+    tests: [model-policy, benchmark-threshold, canary-rollback, schema-failure]
+    status: open
+  - id: GLAW-0005
+    component: registry
+    severity: medium
+    category: maintainability
+    source: docs/audit/debt-register.md
+    description: multiple registry artifacts can drift
+    root_cause: no single validated loader and compatibility contract
+    blast_radius: wrong routing, stale policy, inconsistent UI
+    required_fix: canonical registry package with schema validation and duplicate detection
+    tests: [registry-schema, duplicate-id, compatibility, status-vocabulary]
+    status: open

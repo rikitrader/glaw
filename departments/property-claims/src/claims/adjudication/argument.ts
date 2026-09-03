@@ -1,0 +1,2 @@
+import type { ArgumentEdge, ArgumentNode } from './types.ts';
+export class ArgumentGraph { readonly nodes=new Map<string,ArgumentNode>(); readonly edges:ArgumentEdge[]=[]; addNode(node:ArgumentNode):void { this.nodes.set(node.argumentId,node); } addEdge(edge:ArgumentEdge):void { if(!this.nodes.has(edge.from)||!this.nodes.has(edge.to)) throw new Error('argument edge has dangling node'); this.edges.push(edge); } }

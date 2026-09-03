@@ -1,0 +1,16 @@
+schema_version: 0.1.0
+postures:
+  - {id: hanke, question: What does Hanke's published framework indicate?}
+  - {id: monetarist, question: What do money, velocity, expectations, and rules imply?}
+  - {id: keynesian, question: What do demand, output gaps, unemployment, and multipliers imply?}
+  - {id: new-keynesian, question: What do expectations, nominal rigidities, rates, and credibility imply?}
+  - {id: austrian, question: What do credit creation, capital structure, and price signals imply?}
+  - {id: supply-side, question: What do taxes, incentives, regulation, and productivity imply?}
+  - {id: imf-style-stabilization, question: What do reserves, fiscal sustainability, debt, and balance of payments imply?}
+  - {id: central-banker, question: What happens when conventional monetary tools are lost?}
+  - {id: commercial-bank, question: What happens to deposits, credit, reserves, capital, and mismatches?}
+  - {id: sovereign, question: What happens to fiscal flexibility, seigniorage, debt, and political constraints?}
+  - {id: citizen, question: What happens to wages, savings, pensions, purchasing power, and inclusion?}
+  - {id: business, question: What happens to working capital, pricing, borrowing, and FX risk?}
+  - {id: investor, question: What happens to sovereign, FX, inflation, repatriation, and property-rights risk?}
+  - {id: competing-institutional, question: What credible non-Hanke institutional alternatives exist?}
