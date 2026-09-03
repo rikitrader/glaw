@@ -1,0 +1,244 @@
+{
+  "file name" : "Tasas-pasivas-012026.pdf.pdf",
+  "number of pages" : 1,
+  "author" : "Genesis D. Torres M.",
+  "title" : "Presentación de PowerPoint",
+  "creation date" : "D:20260126105453-04'00'",
+  "modification date" : "D:20260126105453-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 4,
+    "page number" : 1,
+    "bounding box" : [ 539.88, 658.92, 734.76, 698.64 ],
+    "source" : "Tasas-pasivas-012026.pdf_images/imageFile1.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 31,
+    "page number" : 1,
+    "bounding box" : [ 25.44, 648.0, 154.08, 696.72 ],
+    "source" : "Tasas-pasivas-012026.pdf_images/imageFile2.png"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 5,
+    "level" : "Doctitle",
+    "page number" : 1,
+    "bounding box" : [ 561.48, 662.42, 713.328, 690.38 ],
+    "heading level" : 1,
+    "font" : "Calibri,Bold",
+    "font size" : 27.96,
+    "text color" : "[0.204, 0.169, 0.275]",
+    "content" : "Tasas Pasivas"
+  }, {
+    "type" : "caption",
+    "id" : 6,
+    "page number" : 1,
+    "bounding box" : [ 496.27, 638.68, 734.665, 652.72 ],
+    "linked content id" : 4,
+    "font" : "Calibri",
+    "font size" : 14.04,
+    "text color" : "[0.0, 0.125, 0.376]",
+    "content" : "Vigentes a partir del 21 de enero del 2026"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 3,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 559.2, 756.0, 601.44 ],
+    "source" : "Tasas-pasivas-012026.pdf_images/imageFile3.png"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 7,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 609.0, 523.03, 697.849, 538.99 ],
+    "heading level" : 2,
+    "font" : "Calibri,Bold",
+    "font size" : 15.96,
+    "text color" : "[0.0, 0.125, 0.376]",
+    "content" : "Tasa Nominal"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 18,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 40.536, 479.61, 336.562, 495.57 ],
+    "heading level" : 2,
+    "font" : "Calibri,Bold",
+    "font size" : 15.96,
+    "text color" : "[0.0, 0.69, 0.941]",
+    "content" : "Cuentas de Ahorro Clásica, Activa y Platinum"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 9,
+    "page number" : 1,
+    "bounding box" : [ 641.71, 480.16, 665.909, 494.2 ],
+    "font" : "Calibri,Italic",
+    "font size" : 14.04,
+    "text color" : "[0.498]",
+    "content" : "32%"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 11,
+    "page number" : 1,
+    "bounding box" : [ 640.37, 430.31, 664.569, 444.35 ],
+    "font" : "Calibri,Italic",
+    "font size" : 14.04,
+    "text color" : "[0.498]",
+    "content" : "36%"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 19,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 40.272, 427.53, 280.039, 443.49 ],
+    "heading level" : 2,
+    "font" : "Calibri,Bold",
+    "font size" : 15.96,
+    "text color" : "[0.439, 0.678, 0.278]",
+    "content" : "Certificados de Depósito a Plazo Fijo"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 20,
+    "page number" : 1,
+    "bounding box" : [ 47.208, 343.36, 697.436, 391.0 ],
+    "font" : "Calibri",
+    "font size" : 14.04,
+    "text color" : "[0.498]",
+    "content" : "Intereses calculados sobre saldo diario con base a 360 días, abonados al final del mes según Resolución Nº 22-0301 de Banco Central de Venezuela, publicada en la Gaceta Oficial N° 43.298 de fecha 19 de enero 2026. Fondos amparados por FOGADE hasta el límite indicado por la Ley."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 25,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 607.66, 291.38, 696.509, 307.34 ],
+    "heading level" : 2,
+    "font" : "Calibri,Bold",
+    "font size" : 15.96,
+    "text color" : "[0.0, 0.125, 0.376]",
+    "content" : "Tasa Nominal"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 13,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 40.272, 290.92, 216.407, 306.88 ],
+    "heading level" : 2,
+    "font" : "Calibri,Bold",
+    "font size" : 15.96,
+    "text color" : "[0.0, 0.69, 0.941]",
+    "content" : "Cuenta Corriente Platinum"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 24,
+    "page number" : 1,
+    "bounding box" : [ 348.22, 250.0, 385.742, 265.96 ],
+    "font" : "Calibri,Bold",
+    "font size" : 15.96,
+    "text color" : "[0.0, 0.125, 0.376]",
+    "content" : "Hasta"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 21,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 81.936, 249.83, 122.985, 265.79 ],
+    "heading level" : 2,
+    "font" : "Calibri,Bold",
+    "font size" : 15.96,
+    "text color" : "[0.0, 0.125, 0.376]",
+    "content" : "Desde"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 15,
+    "page number" : 1,
+    "bounding box" : [ 81.936, 195.71, 671.66, 212.73 ],
+    "font" : "Calibri,Italic",
+    "font size" : 15.0,
+    "text color" : "[0.498]",
+    "content" : "Bs. 0,01 0,50%"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 26,
+    "page number" : 1,
+    "bounding box" : [ 341.28, 197.35, 388.83, 212.35 ],
+    "font" : "Calibri,Italic",
+    "font size" : 15.0,
+    "text color" : "[0.498]",
+    "content" : "Bs. 0,05"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 16,
+    "page number" : 1,
+    "bounding box" : [ 45.792, 145.6, 671.66, 161.51 ],
+    "font" : "Calibri,Bold",
+    "font size" : 15.0,
+    "text color" : "[0.439, 0.678, 0.278]",
+    "content" : "TarjetasBs.de0,05Crédito 0,75%"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 27,
+    "page number" : 1,
+    "bounding box" : [ 339.29, 143.73, 394.4, 158.73 ],
+    "font" : "Calibri,Italic",
+    "font size" : 15.0,
+    "text color" : "[0.498]",
+    "content" : "Bs. 10,00"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 28,
+    "page number" : 1,
+    "bounding box" : [ 333.22, 95.964, 404.824, 110.988 ],
+    "font" : "Calibri,Italic",
+    "font size" : 15.024,
+    "text color" : "[0.498]",
+    "content" : "En adelante"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 23,
+    "page number" : 1,
+    "bounding box" : [ 81.936, 93.234, 675.635, 109.434 ],
+    "font" : "Calibri,Italic",
+    "font size" : 15.0,
+    "text color" : "[0.498]",
+    "content" : "Bs. 10,00 0, 25%"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 29,
+    "page number" : 1,
+    "bounding box" : [ 47.208, 45.426, 697.385, 59.466 ],
+    "font" : "Calibri",
+    "font size" : 14.04,
+    "text color" : "[0.498]",
+    "content" : "Intereses calculados sobre saldo diario con base a 360 días. Fondos amparados por FOGADE hasta el límite"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 30,
+    "page number" : 1,
+    "bounding box" : [ 47.208, 28.62, 156.374, 42.684 ],
+    "font" : "Calibri",
+    "font size" : 14.064,
+    "text color" : "[0.498]",
+    "content" : "indicado por la Ley."
+  } ]
+}
