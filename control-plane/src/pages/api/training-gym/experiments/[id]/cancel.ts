@@ -1,0 +1,6 @@
+import type { APIRoute } from "astro";
+import { env } from "cloudflare:workers";
+import { apiRouteWithAuth, jsonError } from "../../../../../lib/control-plane/auth";
+import { getControlPlaneDb } from "../../../../../lib/control-plane/db";
+export const prerender=false;
+export const POST:APIRoute=apiRouteWithAuth(async(request,principal)=>{if(!["admin","administrator","researcher","service"].includes(principal.role.toLowerCase()))return jsonError("researcher or administrator role required",403);const id=new URL(request.url).pathname.split("/").at(-2)??"";const db=getControlPlaneDb(env as unknown as Record<string,unknown>);const now=new Date().toISOString();const result=await db.prepare("UPDATE gym_experiments SET status = 'CANCELLING', updated_at = ? WHERE id = ? AND organization_id = ? AND status IN ('DRAFT','RUNNING')").bind(now,id,principal.tenantId).run();if(!result.meta.changes)return jsonError("experiment not found or already terminal",404);await db.prepare("UPDATE gym_episodes SET status = 'CANCELLED', updated_at = ? WHERE experiment_id = ? AND organization_id = ? AND status IN ('QUEUED','RUNNING')").bind(now,id,principal.tenantId).run();return new Response(JSON.stringify({ok:true,experimentId:id,status:"CANCELLING",changedAt:now}),{headers:{"content-type":"application/json","cache-control":"no-store"}});},env as unknown as Record<string,unknown>);

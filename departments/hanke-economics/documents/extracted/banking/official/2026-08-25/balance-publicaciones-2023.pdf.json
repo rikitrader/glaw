@@ -1,0 +1,347 @@
+{
+  "file name" : "balance-publicaciones-2023.pdf.pdf",
+  "number of pages" : 12,
+  "author" : null,
+  "title" : null,
+  "creation date" : null,
+  "modification date" : "D:20240209204739Z",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 2,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 719.28, 959.04 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile1.png"
+  }, {
+    "type" : "text block",
+    "id" : 3,
+    "page number" : 1,
+    "bounding box" : [ 12.6, 894.12, 391.92, 947.28 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 1,
+      "bounding box" : [ 16.44, 893.4, 233.04, 945.24 ],
+      "source" : "balance-publicaciones-2023.pdf_images/imageFile2.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 5,
+    "page number" : 1,
+    "bounding box" : [ 610.92, 875.4, 684.72, 927.0 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile3.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 7,
+    "page number" : 2,
+    "bounding box" : [ 0.0, 0.0, 719.28, 959.04 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile4.png"
+  }, {
+    "type" : "text block",
+    "id" : 8,
+    "page number" : 2,
+    "bounding box" : [ 19.8, 891.72, 399.12, 944.88 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 2,
+      "bounding box" : [ 21.0, 891.0, 237.6, 942.84 ],
+      "source" : "balance-publicaciones-2023.pdf_images/imageFile5.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 10,
+    "page number" : 2,
+    "bounding box" : [ 603.48, 874.92, 677.16, 926.52 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile6.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 12,
+    "page number" : 3,
+    "bounding box" : [ 0.0, 0.0, 719.28, 959.04 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile7.png"
+  }, {
+    "type" : "text block",
+    "id" : 13,
+    "page number" : 3,
+    "bounding box" : [ 11.64, 896.28, 390.84, 949.32 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 3,
+      "bounding box" : [ 13.8, 896.52, 230.4, 948.36 ],
+      "source" : "balance-publicaciones-2023.pdf_images/imageFile8.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 15,
+    "page number" : 3,
+    "bounding box" : [ 609.72, 876.48, 683.4, 928.08 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile9.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 17,
+    "page number" : 4,
+    "bounding box" : [ 0.0, 0.0, 719.28, 959.04 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile10.png"
+  }, {
+    "type" : "text block",
+    "id" : 18,
+    "page number" : 4,
+    "bounding box" : [ 7.56, 892.68, 386.88, 945.84 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 4,
+      "bounding box" : [ 9.84, 893.04, 226.44, 944.88 ],
+      "source" : "balance-publicaciones-2023.pdf_images/imageFile11.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 20,
+    "page number" : 4,
+    "bounding box" : [ 613.68, 875.52, 687.36, 927.12 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile12.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 22,
+    "page number" : 5,
+    "bounding box" : [ 0.0, 0.0, 719.28, 959.04 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile13.png"
+  }, {
+    "type" : "text block",
+    "id" : 23,
+    "page number" : 5,
+    "bounding box" : [ 15.12, 893.52, 394.44, 946.56 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 5,
+      "bounding box" : [ 17.28, 893.88, 234.0, 945.6 ],
+      "source" : "balance-publicaciones-2023.pdf_images/imageFile14.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 25,
+    "page number" : 5,
+    "bounding box" : [ 612.24, 876.96, 685.92, 928.56 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile15.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 27,
+    "page number" : 6,
+    "bounding box" : [ 0.0, 0.0, 719.28, 958.98 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile16.png"
+  }, {
+    "type" : "text block",
+    "id" : 28,
+    "page number" : 6,
+    "bounding box" : [ 8.1, 896.04, 387.3, 949.02 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 6,
+      "bounding box" : [ 10.32, 896.34, 226.92, 948.06 ],
+      "source" : "balance-publicaciones-2023.pdf_images/imageFile17.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 30,
+    "page number" : 6,
+    "bounding box" : [ 603.42, 875.82, 677.16, 927.42 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile18.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 32,
+    "page number" : 7,
+    "bounding box" : [ 3.0, 0.0, 719.22, 958.98 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile19.png"
+  }, {
+    "type" : "text block",
+    "id" : 33,
+    "page number" : 7,
+    "bounding box" : [ 17.69, 889.31, 396.91, 942.37 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 7,
+      "bounding box" : [ 19.92, 891.12, 236.52, 942.9 ],
+      "source" : "balance-publicaciones-2023.pdf_images/imageFile20.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 35,
+    "page number" : 7,
+    "bounding box" : [ 614.7, 870.54, 688.38, 922.14 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile21.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 37,
+    "page number" : 8,
+    "bounding box" : [ 1.62, -0.125, 719.28, 958.26 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile22.png"
+  }, {
+    "type" : "text block",
+    "id" : 38,
+    "page number" : 8,
+    "bounding box" : [ 15.29, 893.51, 394.51, 946.57 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 8,
+      "bounding box" : [ 17.52, 895.32, 234.12, 947.1 ],
+      "source" : "balance-publicaciones-2023.pdf_images/imageFile23.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 40,
+    "page number" : 8,
+    "bounding box" : [ 614.7, 873.54, 688.38, 925.14 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile24.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 42,
+    "page number" : 9,
+    "bounding box" : [ 0.0, 11.16, 719.28, 959.04 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile25.png"
+  }, {
+    "type" : "text block",
+    "id" : 43,
+    "page number" : 9,
+    "bounding box" : [ 15.48, 898.08, 394.68, 951.12 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 9,
+      "bounding box" : [ 18.24, 896.16, 234.84, 948.0 ],
+      "source" : "balance-publicaciones-2023.pdf_images/imageFile26.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 45,
+    "page number" : 9,
+    "bounding box" : [ 620.4, 887.16, 694.2, 938.76 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile27.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 47,
+    "page number" : 10,
+    "bounding box" : [ -0.025, 0.0, 715.008, 959.0 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile28.png"
+  }, {
+    "type" : "text block",
+    "id" : 48,
+    "page number" : 10,
+    "bounding box" : [ 25.127, 892.9, 400.314, 945.929 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 10,
+      "bounding box" : [ 25.937, 890.995, 242.57, 942.759 ],
+      "source" : "balance-publicaciones-2023.pdf_images/imageFile29.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 52,
+    "page number" : 10,
+    "bounding box" : [ 602.892, 870.158, 676.601, 921.754 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile30.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 50,
+    "page number" : 10,
+    "bounding box" : [ 602.892, 868.102, 676.601, 919.698 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile31.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 54,
+    "page number" : 11,
+    "bounding box" : [ 8.04, 0.0, 705.48, 950.16 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile32.png"
+  }, {
+    "type" : "text block",
+    "id" : 55,
+    "page number" : 11,
+    "bounding box" : [ 25.22, 886.7, 400.42, 939.7 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 11,
+      "bounding box" : [ 29.64, 887.04, 246.24, 938.76 ],
+      "source" : "balance-publicaciones-2023.pdf_images/imageFile33.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 59,
+    "page number" : 11,
+    "bounding box" : [ 602.88, 870.72, 676.56, 922.32 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile34.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 57,
+    "page number" : 11,
+    "bounding box" : [ 602.88, 868.2, 676.56, 919.68 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile35.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 61,
+    "page number" : 12,
+    "bounding box" : [ 19.44, -0.12, 705.48, 950.16 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile36.png"
+  }, {
+    "type" : "text block",
+    "id" : 62,
+    "page number" : 12,
+    "bounding box" : [ 29.78, 875.42, 394.66, 928.42 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 12,
+      "bounding box" : [ 33.36, 876.48, 249.96, 928.2 ],
+      "source" : "balance-publicaciones-2023.pdf_images/imageFile37.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 64,
+    "page number" : 12,
+    "bounding box" : [ 592.08, 864.48, 665.76, 916.08 ],
+    "source" : "balance-publicaciones-2023.pdf_images/imageFile38.png"
+  } ]
+}

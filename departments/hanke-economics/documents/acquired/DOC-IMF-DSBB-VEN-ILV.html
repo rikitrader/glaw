@@ -1,0 +1,489 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="cache-control" content="max-age=0" />
+    <meta http-equiv="cache-control" content="no-cache" />
+    <meta http-equiv="expires" content="0" />
+    <meta http-equiv="expires" content="Tue, 01 Jan 1980 1:00:00 GMT" />
+    <meta http-equiv="pragma" content="no-cache" />
+    <meta name="Description" content="The SDDS was established in 1996 to guide countries seeking access to international capital markets in the dissemination of economic and financial data to the public. The e-GDDS was established in 2015 to guide countries in data dissemination by supporting transparency, encouraging statistical development, and helping create strong synergies between data dissemination and surveillance." />
+    <meta name="Keywords" content="imf, fmi, iwf, economic, International Monetary Fund, SDR, Special Drawing Rights, exchange rates, fondo, monetario, internacional, outlook, rate, economy, financial, balance, payments, IMFC, Surveillance, conditionality, Financial assistance, bop, bretton woods institutions, quotas" />
+    <meta name="Language" content="eng" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Dissemination Standards Bulletin Board</title>
+    <script src="/scripts/jquery-3.2.1.min.js"></script>
+    <script src="/scripts/jquery-ui.min.js"></script>
+    <link href="/content/bootstrap-cus.min.css?v=5" rel="stylesheet" />
+    <link href="/content/angular-block-ui.min.css" rel="stylesheet" />
+    <script data-main="/main.js?v=125" src="/scripts/require.js"></script>
+    <link rel="stylesheet" href="/content/css/styles.min.css?v=22" />
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script src="/scripts/modernizr.js"></script>
+    <base href="/" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-G9X66ZC866"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+ 
+    gtag('config', 'G-G9X66ZC866');
+</script>
+    <script async src='https://www.google-analytics.com/analytics.js'></script>
+    <script async src="scripts/autotrack.js"></script>
+    <script type="text/javascript" src="/scripts/sanmarino.js"></script>
+    <script type="text/javascript" src="/scripts/Barbados.js"></script>
+</head>
+<body>
+    <a name="Top" id="Top"></a>
+    <div id="overlay" class="overlay"></div>
+    <input id="staticEditEnable" type="hidden" value="" />
+    <input id="editorUrl" type="hidden" value="" />
+    <input name="__RequestVerificationToken" type="hidden" value="0YBqUgNvqw6evLaqOMXLcNB2OfnO4CKmhxAEFHu77Wus4dMuO0mb0KbGeqgaUGCbVcnkqjLN_2Qf4oJOEZ8wf7-Dpoo1" />
+    <header role="banner">
+        <div class="header-wrap">
+            <a href="https://www.imf.org/external/index.htm">
+                <img src="content/images/header/imf_seal.png" alt="IMF" />
+                <img src="content/images/header/imf.png" alt="International Monetary Fund" class="logo" />
+            </a>
+            <form id="searchform" method="get" action="https://www.imf.org/external/ns/search.aspx">
+                <fieldset>
+                    <input id="NewQuery" name="NewQuery" value="Search IMF" class="text search" type="text" />
+                </fieldset>
+                <button type="submit" class="mag" name="submit"> </button>
+            </form>
+            <a href="https://forms.office.com/r/1MRGiBCYvP" target="_blank" class="feedbk">Send us your Feedback</a>
+        </div>
+    </header>
+    <div class="wrap no-scroll">
+        <nav class="navigation" role="navigation" aria-label="main navigation">
+            <div class="oe_wrapper">
+                <div id="oe_overlay" class="oe_overlay"></div>
+                <ul id="oe_menu" class="oe_menu">
+                    <li class="search">
+                        <form id="searchform2" method="get" action="https://www.imf.org/external/ns/search.aspx">
+                            <fieldset>
+                                <input id="NewQuery" name="NewQuery" class="text search" type="text" />
+                            </fieldset>
+                            <button type="submit" class="mag" name="submit"> </button>
+                        </form>
+                    </li>
+                    <li><a href="https://www.imf.org/external/" title="Home" class="home">Home</a></li>
+                    <li>
+                        <a href="https://www.imf.org/external/about.htm" title="About the IMF" class="about">
+                            About
+                            the IMF
+                        </a>
+                    </li>
+                    <li class="tr">
+                        <a href="https://www.imf.org/external/research/index.aspx" title="Research at the IMF"
+                           class="resIMF">Research</a>
+                        <div class="nv-research">
+                            <ul>
+                                <li><a href="https://www.imf.org/external/pubind.htm">Global Analysis</a></li>
+                                <li><a href="https://www.imf.org/external/np/cv/CV.aspx">Researchers at the IMF</a></li>
+                                <li><a href="https://www.google.com/publicdata/overview?ds=k3s92bru78li6_">Data Visualization</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="https://www.imf.org/external/pubs/cat/createx/Publications.aspx?page=sdn">Staff Discussion Notes</a></li>
+                                <li><a href="https://www.imf.org/external/pubs/cat/wp1_sp.aspx">Latest Working Papers</a></li>
+                                <li><a href="https://www.imf.org/external/pubs/ft/irb/archive.htm">Research Bulletin</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="https://www.palgrave-journals.com/imfer/index.html">Economic Review</a></li>
+                                <li><a href="https://blog-imfdirect.imf.org/">iMFdirect Blog</a></li>
+                                <li><a href="https://www.imf.org/external/np/res/commod/index.aspx">Commodity Prices</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="tr">
+                        <a href="https://www.imf.org/external/country/index.htm" title="Country Info" class="countryinfo"> Countries</a>
+                        <div class="nv-country">
+                            <ul class="country">
+                                <li class="oe_heading">IMF reports and publications by country</li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#A">A</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#B">B</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#C">C</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#D">D</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#E">E</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#F">F</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#G">G</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#H">H</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#I">I</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#J">J</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#K">K</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#L">L</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#M">M</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#N">N</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#O">O</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#P">P</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#Q">Q</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#R">R</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#S">S</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#T">T</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#U">U</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#V">V</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#Y">Y</a></li>
+                                <li><a href="https://www.imf.org/external/country/index.htm#Z">Z</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="tr">
+                        <a class="capacity" href="https://www.imf.org/external/np/ins/english/index.htm">Capacity Development</a>
+                        <div class="cap-menu" style="display: none;">
+                            <ul>
+                                <li class="oe_heading"><a href="https://www.imf.org/external/np/ins/english/capacity_about.htm">About Us</a></li>
+                            </ul>
+                            <ul>
+                                <li class="oe_heading"><a href="https://www.imf.org/external/np/ins/english/capacity_wwd.htm">What We Do</a></li>
+                                <li><a href="https://www.imf.org/external/np/ins/english/capacity_wwd.htm#sub">Public Finances</a></li>
+                                <li><a href="https://www.imf.org/external/np/ins/english/capacity_wwd.htm#sub">Monetary and Financial Systems</a></li>
+                                <li><a href="https://www.imf.org/external/np/ins/english/capacity_wwd.htm#sub">Legislative Frameworks</a></li>
+                                <li><a href="https://www.imf.org/external/np/ins/english/capacity_wwd.htm#sub">Statistics</a></li>
+                                <li><a href="https://www.imf.org/external/np/ins/english/capacity_wwd.htm#sub">Macroeconomic Frameworks</a></li>
+                            </ul>
+                            <ul>
+                                <li class="oe_heading"><a href="https://www.imf.org/external/np/ins/english/capacity_hww.htm">How We Work</a></li>
+                                <li><a href="https://www.imf.org/external/np/ins/english/capacity_hww.htm#rtac">Regional Capacity Development Centers</a></li>
+                                <li><a href="https://www.imf.org/external/np/ins/english/capacity_hww.htm#ot">Online Training </a></li>
+                            </ul>
+                            <ul>
+                                <li class="oe_heading"><a href="https://www.imf.org/external/np/ins/english/capacity_partners.htm">Our Partners</a></li>
+                                <li><a href="https://www.imf.org/external/np/ins/english/capacity_partners.htm#trust">Funds for Capacity Development</a></li>
+                            </ul>
+                            <ul>
+                                <li class="oe_heading"><a href="https://www.imf.org/external/np/ins/english/capacity_countries.htm">Country Examples</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="tr">
+                        <a href="https://www.imf.org/external/news/default.aspx" title="News" class="news">News</a>
+                        <div class="nv-news">
+                            <ul>
+                                <li class="oe_heading">All News</li>
+                                <li><a href="https://www.imf.org/external/pubs/ft/survey/so/home.aspx">IMF News Articles</a></li>
+                                <li><a href="https://www.imf.org/external/news/default.aspx?cm">Communiqués</a></li>
+                                <li><a href="https://www.imf.org/external/news/default.aspx?ms">Mission Concluding Statements</a></li>
+                                <li><a href="https://www.imf.org/external/news/default.aspx?pr">Press Releases</a></li>
+                            </ul>
+                            <ul class="no-left">
+                                <li class="oe_heading empty"></li>
+                                <li><a href="https://www.imf.org/external/news/default.aspx?dm">Statements at Donor Meetings</a></li>
+                                <li><a href="https://www.imf.org/external/news/default.aspx?tr">Transcripts</a></li>
+                                <li><a href="https://www.imf.org/external/news/default.aspx?vc">Views &amp; Commentaries</a></li>
+                            </ul>
+                            <ul>
+                                <li class="oe_heading">See Also:</li>
+                                <li><a href="https://blog-imfdirect.imf.org/" target="_blank">iMFdirect Blog</a></li>
+                                <li><a href="https://www.imf.org/external/np/sec/aiv/index.htm">Article IV Consultations</a></li>
+                                <li><a href="https://www.imf.org/external/np/fsap/fssa.aspx">Financial Sector Assessment Program (FSAP)</a></li>
+                                <li><a href="https://www.imf.org/external/np/exr/seminars/index.htm">Seminars, Conferences, &amp; Other Events</a></li>
+                            </ul>
+                            <ul class="journ">
+                                <li class="oe_heading">For Journalists</li>
+                                <li>
+                                    <strong>Press Center</strong><br />
+                                    The IMF Press Center is a password-protected site for working journalists.
+                                </li>
+                                <li> <a href="https://www-ombc.imf.org/protected/index.aspx" class="btn">Login</a> or <a href="https://www-ombc.imf.org/public/subscription.aspx" class="btn yel"> Register</a> </li>
+                                <li><a href="https://www.imf.org/external/np/exr/imfmbc/index.htm"><strong>Information of interest</strong></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="https://www.imf.org/external/mmedia/index.aspx" title="Videos" class="video">Videos</a></li>
+                    <li class="tr">
+                        <a href="https://www.imf.org/external/data.htm" title="Data and Statistic" class="datastats">Data</a>
+                        <div class="nv-data">
+                            <ul>
+                                <li><a href="https://www.imf.org/external/data.htm#data">Data</a></li>
+                                <li><a href="https://www.imf.org/external/fin.htm">IMF Finances</a></li>
+                                <li><a href="https://www.imf.org/external/data.htm#sc">Standards and Codes</a></li>
+                                <li><a href="https://www.imf.org/external/data.htm#guide">Manuals and Guides</a></li>
+                                <li><a href="https://www.imf.org/external/data.htm#meet">Meetings and Related Statistical Materials</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="https://www.imf.org/external/np/ds/matrix.htm">Additional Data Sources</a></li>
+                                <li><a href="https://www.imf.org/external/ns/cs.aspx?id=28">World Economic Outlook Databases</a></li>
+                                <li><a href="https://data.imf.org">IMF eLibrary-Data</a></li>
+                                <li><a href="https://data.imf.org/IFS">International Financial Statistics</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="http://www.principalglobalindicators.org/">Principal Global Indicators</a></li>
+                                <li><a href="http://www.worldbank.org/qpsd">Public Sector Debt Statistics Online Centralized Database</a></li>
+                                <li><a href="https://www.imf.org/external/np/sta/cofer/eng/index.htm">Currency Composition of Official Foreign Exchange Reserves</a></li>
+                                <li><a href="https://data.imf.org/FAS">Financial Access Survey</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="tr">
+                        <a href="https://www.imf.org/external/publications/index.htm" title="Publications" class="pubs">Publications</a>
+                        <div class="nv-pub">
+                            <ul>
+                                <li><a href="https://www.elibrary.imf.org/">IMF eLibrary</a></li>
+                                <li><a href="https://www.imfbookstore.org/">IMF Bookstore</a></li>
+                                <li><a href="https://www.imf.org/external/publications/pubindadv.htm">Documents &amp; Publications</a></li>
+                                <li><a href="https://www.imf.org/external/pp/ppindex.aspx">Policy Papers</a></li>
+                                <li><a href="https://www.imf.org/external/pubs/cat/createx/Publications.aspx?page=sdn">Staff Discussion Notes</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="https://www.imf.org/external/ns/cs.aspx?id=29">World Economic Outlook</a></li>
+                                <li><a href="https://www.imf.org/external/pubs/ft/gfsr/index.htm">Global Financial Stability Report</a></li>
+                                <li><a href="https://www.imf.org/external/ns/cs.aspx?id=262">Fiscal Monitor</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="https://www.imf.org/external/pubs/ft/reo/reorepts.aspx">Regional Economic Reports</a></li>
+                                <li><a href="https://www.imf.org/external/pubs/ft/ar/index.htm">IMF Annual Report</a></li>
+                                <li><a href="https://www.imf.org/external/pubs/ft/fandd/index.htm">Finance &amp; Development</a></li>
+                                <li></li>
+                                <li><a href="https://www.imf.org/external/publications/pubindadv.htm">Advanced search</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><a href="https://www.imf.org/external/social.htm" title="Social Media Hub" class="social">Social Media Hub</a></li>
+                    <li class="tr">
+                        <a href="https://www.imf.org/external/social.htm" title="Social" class="connect icon-connect"></a>
+                        <div class="nv-soc">
+                            <ul>
+                                <li><a href="https://www.imf.org/external/pubs/ft/survey/so/podcast.aspx" class="icon-podcast">IMF Podcast</a></li>
+                                <li><a href="https://www.twitter.com/imfnews" target="_blank" class="icon-twitter">IMF Twitter</a></li>
+                                <li><a href="https://www.facebook.com/International-Monetary-Fund-152292984850728/" target="_blank" class="icon-facebook">IMF Facebook</a></li>
+                                <li><a href="https://www.linkedin.com/company/international-monetary-fund" target="_blank" class="icon-linkedin">IMF LinkedIn</a></li>
+                                <li><a href="https://www.imf.org/external/rss/rsslist/rsslist.aspx" class="icon-feed4">IMF RSS</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="https://www.youtube.com/imf" target="_blank" class="icon-youtube">IMF YouTube</a></li>
+                                <li><a href="https://www.flickr.com/imfphoto" target="_blank" class="icon-flickr2">IMF Flickr</a></li>
+                                <li><a href="https://www.imf.org/external/cntpst/index.aspx" class="icon-mail">IMF Email Notification</a></li>
+                                <li><a href="https://www.imf.org/external/social.htm" target="_blank" class="icon-share2">IMF Social Media Hub</a></li>
+                            </ul>
+                            <ul>
+                                <li><a href="https://www.imf.org/app" target="_blank" class="icon-apple">IMF App for iOS</a></li>
+                                <li><a href="https://www.imf.org/gapp" target="_blank" class="icon-android">IMF App for Android</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <h1 id="dsbbTitle" class="titlebar">Dissemination Standards Bulletin Board (DSBB)</h1>
+		<h4 id="dsbbnews" class="newsbar" style="
+    margin-top: 5px;
+    background: #739fbf;
+    display: block;
+    padding: 5px 56px 17px;
+    text-align: left;
+    clear: both;
+	font-family: MuseoSansCond-700;
+	color: #3979a6;
+	font-size: large;
+	 margin-bottom: -8px;
+">NEW ►</h4>	<a href="https://cvent.me/rr5XlP" target="_blank" alt="IMF Survey on Country-Level Economic Data" title="IMF Survey on Country-Level Economic Data">
+	<h4 id="dsbbnews" class="newsbar" style="
+    margin-top: -54px;
+    background: white;
+    display: block;
+    padding: 10px 120px 17px;
+    text-align: left;
+    clear: both;
+	font-family: MuseoSansCond-700;
+	color: #3979a6;
+	font-size: large;
+	 margin-bottom: -8px;
+">
+ Do You Use Country-Level Economic Data? The IMF Wants to Hear from You. Click here!
+</h4>
+</a>
+        <main role="main">
+            <div ng-controller="masterController" ng-init="initTheController()">
+                <div id="secondMenu">
+                    <div class="btn-toolbar" role="toolbar">
+                        <div class="rr-intro">
+                            <div class="section group">
+                                <div class="col span_8_of_12">
+                                    <div class="section group">
+                                        <div class="col span_2_of_12">
+                                            <div class="btn-group" role="group">
+                                                <a href="/" title="DSBB Home" class="btn btn-default">DSBB Home</a>
+                                            </div>
+                                        </div>
+                                        <div class="col span_2_of_12" style="width:19.3%">
+                                            <div class="btn-group" role="group">
+                                                <a href="/nsdp" title="Country NSDP" class="btn btn-default">Country NSDP  &nbsp;<span class="caret"></span></a>
+                                                <ul class="dropdown-menu scrollable-menu max-content-width-200">
+                                                    <li ng-repeat="country in allNSDPCounties" ng-if="country.NSDPUrl!=null && country.NSDPUrl.trim().length>0"><a href="{{country.NSDPUrl}}" target="_blank">{{country.CountryName}}</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col span_2_of_12">
+                                            <div class="btn-group" role="group">
+                                                <a href="/sdds-plus" class="btn btn-default">SDDS Plus&nbsp;&nbsp;<span class="caret"></span></a>
+                                                <ul class="dropdown-menu">
+                                                    <li class="disabled"><a class="sub-menu-header" href="">Introduction</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/sdds-plus/overview')" href="/sdds-plus/overview">Overview</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/sdds-plus/statistical-methodology')" href="/sdds-plus/statistical-methodology">Internationally accepted statistical methodologies</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/sdds-plus/annual-observance-reports')" href="/sdds-plus/annual-observance-reports">Annual Observance Reports</a></li>
+                                                    <li class="disabled"><a class="sub-menu-header sub-menu-indent" href="">Important Dates</a></li>
+                                                    <li><a class="sub-menu-indent-more" ng-class="getClass('/sdds-plus/subscription-date')" href="/sdds-plus/subscription-date">Date of Adherence</a></li>
+                                                    <li><a class="sub-menu-indent-more" ng-class="getClass('/sdds-plus/external-debt-publication-date')" href="/sdds-plus/external-debt-publication-date">Dates of first publication of EXD</a></li>
+                                                    <li class="disabled"><a class="sub-menu-header" href="">Metadata</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/sdds-plus/country')" href="/sdds-plus/country">Country</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/sdds-plus/category')" href="/sdds-plus/category">Topic</a></li>
+                                                    
+                                                    <li class="disabled"><a class="sub-menu-header sub-menu-indent" href="">Customized Query</a></li>
+                                                    <li><a class="sub-menu-indent-more" ng-class="getClass('/sdds-plus/query-dimension')" href="/sdds-plus/query-dimension">Query Dimensions</a></li>
+                                                    <li><a class="sub-menu-indent-more" ng-class="getClass('/sdds-plus/query-dqaf-indicators')" href="/sdds-plus/query-dqaf-indicators">Query DQAF Indicator</a></li>
+                                                    <li><a class="sub-menu-indent-more" ng-class="getClass('/sdds-plus/query-advance-release-calendar')" href="/sdds-plus/query-advance-release-calendar">Query Advance Release Calendar</a></li>
+                                                    <li><a class="sub-menu-indent-more" ng-class="getClass('/sdds-plus/query-summary-of-observance')" href="/sdds-plus/query-summary-of-observance">Query Summary of Observance</a></li>
+                                                    <li class="disabled"><a class="sub-menu-header" href="">Data</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/sdds-plus/week-ahead')" href="/sdds-plus/week-ahead">The Week Ahead</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/sdds-plus/nsdp-page')" href="/sdds-plus/nsdp-page">NSDP</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/sdds-plus/external-debt')" href="/sdds-plus/external-debt">External Debt</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a ng-class="getClass('/sdds-plus/contact-us')" href="/sdds-plus/contact-us">Contact Us</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col span_2_of_12">
+                                            <div class="btn-group" role="group">
+                                                <a href="/sdds" class="btn btn-default">SDDS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></a>
+                                                <ul class="dropdown-menu">
+                                                    <li class="disabled"><a class="sub-menu-header" href="">Introduction</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/sdds/overview')" href="/sdds/overview">Overview</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/sdds/statistical-methodology')" href="/sdds/statistical-methodology">Internationally accepted statistical methodologies</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/sdds/quick-start')" href="/sdds/quick-start">Quick Start</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/sdds/research-paper')" href="/sdds/research-paper">Research on SDDS</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/sdds/annual-observance-reports')" href="/sdds/annual-observance-reports">Annual Observance Reports</a></li>
+                                                    <li class="disabled"><a class="sub-menu-header sub-menu-indent" href="">Important Dates</a></li>
+                                                    <li><a class="sub-menu-indent-more" ng-class="getClass('/sdds/subscription-date')" href="/sdds/subscription-date">Dates of Subscription</a></li>
+                                                    <li><a class="sub-menu-indent-more" ng-class="getClass('/sdds/external-debt-publication-date')" href="/sdds/external-debt-publication-date">Dates of first publication of EXD</a></li>
+                                                    <li class="disabled"><a class="sub-menu-header" href="">Metadata</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/sdds/country')" href="/sdds/country">Country</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/sdds/category')" href="/sdds/category">Topic</a></li>
+                                                    <li class="disabled"><a class="sub-menu-header sub-menu-indent" href="">Customized Query</a></li>
+                                                    <li><a class="sub-menu-indent-more" ng-class="getClass('/sdds/query-dimension')" href="/sdds/query-dimension">Query Dimensions</a></li>
+                                                    <li><a class="sub-menu-indent-more" ng-class="getClass('/sdds/query-dqaf-indicators')" href="/sdds/query-dqaf-indicators">Query DQAF Indicator</a></li>
+                                                    <li><a class="sub-menu-indent-more" ng-class="getClass('/sdds/query-advance-release-calendar')" href="/sdds/query-advance-release-calendar">Query Advance Release Calendar</a></li>
+                                                    <li><a class="sub-menu-indent-more" ng-class="getClass('/sdds/query-summary-of-observance')" href="/sdds/query-summary-of-observance">Query Summary of Observance</a></li>
+                                                    <li class="disabled"><a class="sub-menu-header" href="">Data</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/sdds/week-ahead')" href="/sdds/week-ahead">The Week Ahead</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/sdds/nsdp-page')" href="/sdds/nsdp-page">NSDP</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/sdds/reserve-template')" href="/sdds/reserve-template">Reserves Template</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/sdds/international-investment-position')" href="/sdds/international-investment-position">International Investment Position</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/sdds/external-debt')" href="/sdds/external-debt">External Debt</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a ng-class="getClass('/sdds/whats-new')" href="/sdds/whats-new">What's New</a></li>
+                                                    <li><a ng-class="getClass('/sdds/contact-us')" href="/sdds/contact-us">Contact Us</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col span_2_of_12">
+                                            <div class="btn-group" role="group">
+                                                <a href="/e-gdds" class="btn btn-default">e-GDDS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></a>
+                                                <ul class="dropdown-menu">
+                                                    <li class="disabled"><a class="sub-menu-header" href="">Introduction</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/e-gdds/overview')" href="/e-gdds/overview">Overview</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/e-gdds/faq')" href="/e-gdds/faq">FAQs</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/e-gdds/guide')" href="/e-gdds/guide">Guide</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/e-gdds/site-information')" href="/e-gdds/site-information">Site Information</a></li>
+                                                    <li class="disabled"><a class="sub-menu-header sub-menu-indent" href="">Important Dates</a></li>
+                                                    <li><a class="sub-menu-indent-more" ng-class="getClass('/e-gdds/important-dates-history')" href="/e-gdds/important-dates-history">History</a></li>
+                                                    <li class="disabled"><a class="sub-menu-header" href="">Metadata</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/e-gdds/country')" href="/e-gdds/country">Country</a></li>
+                                                    <li><a class="sub-menu-indent" ng-class="getClass('/e-gdds/category')" href="/e-gdds/category">Topic</a></li>
+                                                    <li class="disabled"><a class="sub-menu-header sub-menu-indent" href="">Customized Query</a></li>
+                                                    <li><a class="sub-menu-indent-more" ng-class="getClass('/e-gdds/query-macroeconomic-and-financial-metadata')" href="/e-gdds/query-macroeconomic-and-financial-metadata">Query Macroeconomic and<br /> Financial Metadata</a></li>
+                                                    <li><a class="sub-menu-indent-more" ng-class="getClass('/e-gdds/query-summary-of-dissemination')" href="/e-gdds/query-summary-of-dissemination">Query Summary of <br />Dissemination Practices</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a ng-class="getClass('/e-gdds/whats-new')" href="/e-gdds/whats-new">What's New</a></li>
+                                                    <li><a ng-class="getClass('/e-gdds/contact-us')" href="/e-gdds/contact-us">Contact Us</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col span_2_of_12">
+                                            <div class="btn-group" role="group">
+                                                <a href="/dqrs" title="DQRS" class="btn btn-default">DQRS&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="caret"></span></a>
+                                                <ul class="dropdown-menu">
+                                                    <li><a ng-class="getClass('/dqrs/introduction-to-data-quality')" href="/dqrs/introduction-to-data-quality">Introduction to Data Quality</a></li>
+                                                    <li><a ng-class="getClass('/dqrs/approaches-to-data-quality')" href="/dqrs/approaches-to-data-quality">Approaches to Data Quality</a></li>
+                                                    <li><a ng-class="getClass('/dqrs/reference-material')" href="/dqrs/reference-material">Reference Material</a></li>
+                                                    <li><a ng-class="getClass('/dqrs/work-by-imf-staff')" href="/dqrs/work-by-imf-staff">Work by the IMF Staff</a></li>
+                                                    <li><a ng-class="getClass('/dqrs/conf-meetings-data-quality')" href="/dqrs/conf-meetings-data-quality">Conferences and <br />Meetings on Data Quality</a></li>
+                                                    <li><a ng-class="getClass('/dqrs/links-to-related-sites')" href="/dqrs/links-to-related-sites">Links to Related Sites</a></li>
+                                                    <li><a ng-class="getClass('/dqrs/reports-on-the-observance')" href="/dqrs/reports-on-the-observance">Reports on the Observance</a></li>
+                                                    <li><a ng-class="getClass('/dqrs/DQAF')" href="/dqrs/DQAF">DQAF</a></li>
+                                                    <li role="separator" class="divider"></li>
+                                                    <li><a href="https://www.imf.org/external/np/sta/dsbb/list.htm">Reviews</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="outageMessage.length>0" ng-bind-html="outageMessage" style="color: Red !important; font-weight: bold; text-align: left; margin-left: 8px; margin-right: 8px;"></div>
+                <div style="min-height:630px;" id="ViewPort" ng-view>
+                </div>
+            </div>
+            <div class="rr-intro" ng-controller="gototopController">
+                <a href="" ng-click="gotoAnchor('Top')" class="ar-top" title="Back to Top">Back to Top</a>
+            </div>
+        </main>
+    </div>
+    <footer role="contentInfo" aria-label="site footer">
+        <div class="ft-wrap">
+            <img class="seal" alt="IMF" src="content/images/footer/footer_seal.png">
+            <ul>
+                <li><a title="Home" class="homeBtm" href="https://www.imf.org/external/">Home</a></li>
+                <li><a title="Whats New" class="whatsNewBtm" href="https://www.imf.org/external/what/what.htm">What's New</a></li>
+                <li><a title="Site Map" class="mapBtm" href="https://www.imf.org/external/sitemap.htm">Site Map</a></li>
+                <li><a title="Site Index" class="siteIndexBtm" href="https://www.imf.org/external/siteindex.htm">Site Index</a></li>
+            </ul>
+
+            <ul>
+                <li><a title="About the IMF" class="aboutBtm" href="https://www.imf.org/external/about.htm">About the IMF</a></li>
+                <li><a title="Research at the IMF" class="resIMFBtm" href="https://www.imf.org/external/research/index.aspx">Research</a></li>
+                <li><a title="Country Info" class="countryInfoBtm" href="https://www.imf.org/external/country/index.htm">Countries</a></li>
+                <li><a title="News" class="newsBtm" href="https://www.imf.org/external/news.htm">News</a></li>
+                <li><a title="Events" class="eventsBtm" href="https://www.imf.org/external/np/exr/seminars/index.htm">Events</a></li>
+            </ul>
+
+            <ul>
+                <li><a title="Videos" class="videosBtm last" href="https://www.imf.org/external/mmedia/index.aspx">Videos</a></li>
+                <li><a title="Data and Statistics" class="dataStatsBtm" href="https://www.imf.org/external/data.htm">Data and Statistics</a></li>
+                <li><a title="Publication" class="pubsBtm" href="https://www.imf.org/external/pubind.htm">Publications</a></li>
+                <li><a title="Social Media" class="smhBtm" href="https://www.imf.org/external/social.htm">Social Media Hub</a></li>
+                <li><a title="Copyright and Usage" class="crightBtm" href="https://www.imf.org/external/terms.htm">Copyright and Usage</a></li>
+            </ul>
+
+            <ul>
+                <li><a title="Privacy Policy" class="priBtm" href="https://www.imf.org/external/privacy.htm">Privacy Policy</a></li>
+                <li><a title="How to Contact Us" class="contactBtm" href="https://www.imf.org/external/np/exr/contacts/contacts.aspx">How to Contact Us</a></li>
+                <li><a title="Jobs" class="jobBtm" href="https://www.imf.org/external/np/adm/rec/recruit.htm">Jobs</a></li>
+                <li><a title="Glossary" class="termBtm" href="https://www.imf.org/external/np/exr/glossary/index.asp">Glossary</a></li>
+                <li><a title="Scam Alert" class="scamalertBtm last" href="https://www.imf.org/external/scams.htm">Scam Alert</a></li>
+            </ul>
+
+            <ul class="navlanguage">
+                <li lang="ar" lang="ar" xml:lang="ar"><a title="Arabic" href="https://www.imf.org/external/arabic/index.htm">عربي</a></li>
+                <li lang="ch" lang="ch" xml:lang="ch"><a title="Chinese" href="https://www.imf.org/external/chinese/index.htm">中文</a></li>
+                <li lang="fr" lang="fr" xml:lang="fr"><a title="French" href="https://www.imf.org/external/french/index.htm">Français</a></li>
+                <li lang="ja" lang="ja" xml:lang="ja"><a title="Japanese" href="https://www.imf.org/external/japanese/index.htm">日本語</a></li>
+                <li lang="ru" lang="ru" xml:lang="ru"><a title="Russian" href="https://www.imf.org/external/russian/index.htm">Русский</a></li>
+                <li lang="es" lang="es" xml:lang="es"><a title="Spanish" class="last" href="https://www.imf.org/external/spanish/index.htm">Español</a></li>
+            </ul>
+
+
+        </div>
+    </footer>
+    <script type="text/javascript" src="/scripts/bootstrap-cus.min.js"></script>
+    <script type="text/javascript" src="/scripts/jquery.matchHeight.js"></script>
+    <script type="text/javascript" src="/scripts/script-min.js"></script>
+    <script type="text/javascript" src="/scripts/brselect.js"></script>
+</body>
+</html>
+

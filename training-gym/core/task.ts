@@ -1,0 +1,4 @@
+import type { Criterion, JsonValue, TaskSpec } from '../types.ts';
+import { getPath } from './json.ts';
+export function validateTask(task:TaskSpec):string[]{const errors:string[]=[];if(!task.id||!task.gym)errors.push('task identity required');if(task.maxSteps<1)errors.push('maxSteps must be positive');for(const criterion of task.successCriteria)if(!criterion.path||!criterion.operator)errors.push('criterion path/operator required');return errors;}
+export function evaluateCriteria(state:JsonValue,criteria:Criterion[]):{passed:number;failures:string[]}{const failures:string[]=[];for(const c of criteria){const actual=getPath(state,c.path);const ok=c.operator==='EXISTS'?actual!==undefined&&actual!==null:c.operator==='EQUALS'?JSON.stringify(actual)===JSON.stringify(c.value):c.operator==='NOT_EQUALS'?JSON.stringify(actual)!==JSON.stringify(c.value):false;if(!ok)failures.push(`${c.path} ${c.operator} failed`);}return {passed:criteria.length-failures.length,failures};}

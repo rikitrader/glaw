@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HAEIS Opposition Economics Counsel Review",
+  "type": "object",
+  "required": ["review_id", "report_id", "status", "postures", "final_arbitration"],
+  "properties": {
+    "review_id": {"type": "string"},
+    "report_id": {"type": "string"},
+    "status": {"enum": ["PLANNED", "IN_PROGRESS", "BLOCKED", "COMPLETE"]},
+    "postures": {"type": "array", "items": {"$ref": "#/$defs/posture"}},
+    "final_arbitration": {"$ref": "#/$defs/arbitration"}
+  },
+  "$defs": {
+    "posture": {
+      "type": "object",
+      "required": ["posture_id", "steelman", "attacks", "required_evidence", "falsifiers", "status"],
+      "properties": {
+        "posture_id": {"type": "string"},
+        "steelman": {"type": "string"},
+        "attacks": {"type": "array", "items": {"type": "string"}},
+        "required_evidence": {"type": "array", "items": {"type": "string"}},
+        "falsifiers": {"type": "array", "items": {"type": "string"}},
+        "status": {"enum": ["PENDING_SOURCE_REVIEW", "ASSESSED", "BLOCKED", "UNRESOLVED"]}
+      }
+    },
+    "arbitration": {
+      "type": "object",
+      "required": ["judge_questions", "decision_rule", "status"],
+      "properties": {
+        "judge_questions": {"type": "array", "items": {"type": "string"}},
+        "decision_rule": {"type": "string"},
+        "status": {"enum": ["PENDING", "BLOCKED", "COMPLETE"]}
+      }
+    }
+  }
+}

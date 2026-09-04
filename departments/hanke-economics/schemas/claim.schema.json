@@ -1,0 +1,13 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"haeis/claim",
+  "type":"object",
+  "required":["claim_id","text","label","source_ids","data_ids","calculation_ids","assumptions","counterarguments","confidence","status"],
+  "properties":{
+    "claim_id":{"type":"string"},"text":{"type":"string"},
+    "label":{"enum":["HANKE-DIRECT","HANKE-FRAMEWORK","SYSTEM-INFERENCE","SYSTEM-CALCULATION","HISTORICAL-EVIDENCE","EXTERNAL-VIEW","RED-TEAM-CHALLENGE","BLUE-TEAM-RESPONSE","UNRESOLVED"]},
+    "source_ids":{"type":"array","items":{"type":"string"}},"data_ids":{"type":"array","items":{"type":"string"}},"calculation_ids":{"type":"array","items":{"type":"string"}},
+    "assumptions":{"type":"array","items":{"type":"string"}},"counterarguments":{"type":"array","items":{"type":"string"}},
+    "confidence":{"enum":["VERY HIGH","HIGH","MODERATE","LOW","VERY LOW"]},"status":{"enum":["SUPPORTED","CONDITIONAL","UNRESOLVED","BLOCKED"]}
+  },"additionalProperties":false
+}

@@ -1,0 +1,16 @@
+{
+  "file name" : "balance_noviembre_2016.pdf-3d6771ecc4.pdf",
+  "number of pages" : 1,
+  "author" : null,
+  "title" : "Scanned Document",
+  "creation date" : "D:20161214112232-03'30'",
+  "modification date" : "D:20170331113805-03'30'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 1,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 694.56, 878.88 ],
+    "source" : "balance_noviembre_2016.pdf-3d6771ecc4_images/imageFile1.png"
+  } ]
+}

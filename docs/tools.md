@@ -63,7 +63,7 @@ Run any tool with no arguments for its usage. `bin/glaw-doctor` smoke-tests them
 | `glaw-doc-extract` | `<file\|dir> [-o out]` → text + metadata for local text/DOCX inputs; PDFs use local binaries when installed |
 | `glaw-cites` | `<file>` or `-` (stdin) `[--json]` → extracted/normalized citations (stdlib citation extractor) |
 | `glaw-court-scrape` | `--list [filter]` · `<court_id>` → dockets/opinions (zero-dependency court handoff, 300+ courts + PACER) |
-| `glaw-court-case` | `route --input CASE.json [--json]` · `prepare --input CASE.json --output-dir DIR [--json]` · `handoff --packet MANIFEST.json --output HANDOFF.json [--json]` · `submit --packet MANIFEST.json --live --human-authority NAME --role ROLE [--json]` · `record-receipt --packet MANIFEST.json --receipt RECEIPT.json --actor NAME [--json]` · `service-handoff --packet MANIFEST.json --output HANDOFF.json [--json]` · `record-service --packet MANIFEST.json --proof PROOF.json --actor NAME [--json]`; fail-closed ordinary-civil routing for the national federal baseline, verified M.D. Florida local pack, and all Florida counties/circuits; packet/handoff integrity and human-generated court/service receipts. No live court connector is configured, so `submit --live` remains blocked even when a human authority is named |
+| `glaw-court-case` | `route --input CASE.json [--json]` · `prepare --input CASE.json --output-dir DIR [--online-authority] [--json]` · `handoff --packet MANIFEST.json --output HANDOFF.json [--json]` · `authority-check [--pack PACK.json ...] [--as-of YYYY-MM-DD] [--max-age-days N] [--online] [--timeout-seconds N] [--json]` · `submit --packet MANIFEST.json --live --human-authority NAME --role ROLE [--json]` · `record-receipt --packet MANIFEST.json --receipt RECEIPT.json --actor NAME [--json]` · `service-handoff --packet MANIFEST.json --output HANDOFF.json [--json]` · `record-service --packet MANIFEST.json --proof PROOF.json --actor NAME [--json]`; fail-closed ordinary-civil routing for the national federal baseline, verified M.D. Florida local pack, and all Florida counties/circuits; packet/handoff integrity and human-generated court/service receipts. No live court connector is configured, so `submit --live` remains blocked even when a human authority is named |
 | `glaw-assemble` | `vars <template.docx>` · `<template.docx> <data.json> -o out.docx` using stdlib DOCX merge |
 | `glaw-publish` | `<matter-slug\|dir> [--folder NAME] [--local-only]` → local HTML/manifest publish bundle in the house style |
 
@@ -96,11 +96,17 @@ python-docx, docxtpl, eyecite, juriscraper, jsonschema, or Google SDKs now uses 
 compatibility modules or local stdlib fallbacks. Google Sheets input uses CSV export URLs.
 PDF/OCR bank ingestion uses repo code plus local binaries, not Python packages.
 | `glaw-lane` | `catalog` · `scaffold` · `validate` · `transition`; canonical workpapers, owner/status gates, artifact status, and human-approval state for M&A, public-markets, and assurance lanes |
+| `lib/lane-policies.json` | Department-specific workflow, artifact, reconciliation, source, adversarial, regulatory, and human-approval gates enforced by `glaw-lane` |
+| `test/seat_posture_contract_test.sh` | Contract test requiring every vendored seat to declare identity, soul, domain, report voice, and counter-lens |
 | `glaw-source-ledger` | `add` · `validate`; append-only source paths and SHA-256 provenance for analytical workpapers |
 | `glaw-artifact` | `manifest` · `validate`; hashed JSON/XLSX/PPTX/DOCX/Markdown/HTML artifact manifests |
 | `glaw-registry` | `init` · `register` · `approve` · `validate` · `status`; append-only, hash-chained cross-department artifact/model registry with high-risk human approval gates |
 | `glaw-analytical-review` | `scaffold` · `validate` · `score`; AI analytical-artifact review scorecard with material-error penalties |
 | `glaw-transaction-comps` | `scaffold` · `validate` · `analyze`; precedent transaction multiples and statistics |
+| `glaw-corporate-finance` | `validate` · `run`; unified three-statement, DCF, comps, merger, and waterfall review with reconciliation and sensitivity gates |
+| `glaw-fpa-engine` | `validate` · `run`; budgets, long-range/rolling forecasts, headcount, CapEx payback, variance, profitability, and driver-based revenue planning |
+| `glaw-cross-review` | `start` · `record` · `check`; hash-bound Victor cross-review, Alexandra rebuttal, Victor sur-rebuttal, and independent adjudication protocol |
+| `glaw-dual-attorney` | independent Alexandra/Victor first passes; `--cross-review` initializes the hash-bound adversarial sequence and `--require-complete` blocks unavailable or invalid provider runs |
 | `glaw-cap-table-waterfall` | `scaffold` · `validate` · `analyze`; preference/conversion and holder proceeds waterfall |
 | `glaw-transaction-terms` | `scaffold` · `validate` · `normalize`; certainty-adjusted transaction economics |
 | `glaw-bid-comparison` | transparent weighted bid ranking using value, execution, cash, and terms scores |

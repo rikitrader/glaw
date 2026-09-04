@@ -1,0 +1,27 @@
+{
+  "inventory_id": "VENEZUELA-CRITICAL-VARIABLE-INVENTORY",
+  "version": "1.0.0",
+  "country": "Venezuela",
+  "status_policy": "Every variable starts UNAVAILABLE until a dated, source-bound observation is admitted. UNAVAILABLE is not evidence that the variable is zero.",
+  "domains": {
+    "MACRO": ["nominal_GDP_USD", "real_GDP_growth", "CPI_inflation", "GDP_per_capita_USD", "oil_rents_percent_GDP"],
+    "MONETARY": ["monetary_base", "M0", "M1", "M2", "M3", "currency_in_circulation", "currency_outside_depository_corporations", "broad_money", "central_bank_net_foreign_assets", "central_bank_net_claims_on_government", "central_bank_claims_private_sector", "central_bank_claims_nonresidents", "bank_reserves", "required_reserves", "excess_reserves", "central_bank_credit", "monetary_financing", "central_bank_assets", "central_bank_liabilities"],
+    "FX": ["official_USD_VES", "parallel_USD_VES", "effective_exchange_rate", "REER", "NEER", "FX_market_volume", "FX_interventions", "exchange_rate_spread", "currency_substitution_ratio"],
+    "BANKING": ["total_assets", "total_liabilities", "capital", "risk_weighted_assets", "deposits", "VES_deposits", "FX_deposits", "loans", "historical_MFS_ODC_claims_private_sector", "historical_MFS_ODC_claims_central_bank", "historical_MFS_ODC_transferable_deposits", "historical_MFS_ODC_other_deposits", "historical_MFS_ODC_loans", "historical_MFS_ODC_net_claims_government", "commercial_loans", "consumer_loans", "mortgages", "government_exposure", "NPL_ratio", "provisions", "liquidity", "reserve_requirements", "ROA", "ROE", "net_interest_margin", "loan_to_deposit_ratio", "deposit_concentration"],
+    "RESERVES": ["gross_international_reserves", "liquid_reserves", "gold_reserves", "SDRs", "IMF_reserve_position", "foreign_securities", "bank_deposits_abroad", "encumbered_reserves", "unencumbered_reserves"],
+    "FISCAL": ["central_government_revenue", "oil_revenue", "non_oil_revenue", "VAT", "income_tax", "customs", "royalties", "public_payroll", "pensions", "transfers", "subsidies", "capital_expenditure", "interest_expenditure", "primary_balance", "overall_fiscal_balance", "monetary_financing"],
+    "OIL": ["production", "exports", "domestic_consumption", "realized_export_price", "benchmark_prices", "lifting_costs", "transport_costs", "JV_obligations", "royalties", "taxes", "PDVSA_capex", "rig_count", "refinery_utilization", "export_destinations"],
+    "EXTERNAL": ["exports", "imports", "trade_balance", "services_balance", "current_account", "capital_account", "FDI", "portfolio_flows", "remittances", "remittances_received_USD", "capital_flight", "external_debt_service"],
+    "DEBT": ["Republic_bonds", "PDVSA_bonds", "bilateral_obligations", "China_claims", "Russia_claims", "multilateral_debt", "arbitration_awards", "commercial_claims", "arrears", "interest", "maturity_profile"],
+    "HOUSEHOLDS": ["average_household_income", "median_income", "minimum_wage", "public_wage", "private_wage", "pensions", "food_basket", "poverty", "extreme_poverty", "USD_income_share", "VES_income_share", "remittance_dependence"],
+    "LABOR": ["employment", "unemployment", "underemployment", "labor_force_participation", "informality", "public_employment", "private_employment", "migration"]
+  },
+  "observation_defaults": {
+    "status": "UNAVAILABLE",
+    "source_ids": [],
+    "confidence_score": 0,
+    "verification_status": "UNAVAILABLE",
+    "revision_status": "NOT_APPLICABLE",
+    "notes": "Populate only through the institutional observation contract; preserve publication/retrieval dates, units, transformations, revisions, and conflicts."
+  }
+}

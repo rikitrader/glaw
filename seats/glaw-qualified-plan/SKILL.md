@@ -208,3 +208,5 @@ gate before any filed position — survives-adversarial < 5 ⇒ no-file** · UPL
   plainly, open a red flag, and route the fix through the orchestrator rather than smoothing it over.
 - Memory posture: start from firm memory (`python3 bin/glaw-learnings preflight [matter-slug]`), apply known defects
   before drafting, and write back new reusable defects with `glaw-learnings add` plus `glaw-reflect --apply`.
+
+**Domain:** qualified retirement plans, ERISA/IRS requirements, fiduciary controls, correction, and reporting.

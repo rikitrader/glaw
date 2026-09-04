@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "haeis/calculation-result",
+  "type": "object",
+  "required": ["formula","inputs","result","unit","source_data","assumptions","verification"],
+  "properties": {
+    "formula":{"type":"string"}, "inputs":{"type":"object"}, "result":{"type":"number"}, "unit":{"type":"string"},
+    "date":{"type":"string"}, "source_data":{"type":"array","items":{"type":"string"}}, "assumptions":{"type":"array","items":{"type":"string"}},
+    "verification":{"enum":["PASS","REVIEW","FAIL"]}
+  },
+  "additionalProperties": false
+}

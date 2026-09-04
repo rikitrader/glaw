@@ -1,0 +1,16 @@
+{
+  "file name" : "Balance-UN-diciembre-2020-final.pdf.pdf",
+  "number of pages" : 1,
+  "author" : null,
+  "title" : null,
+  "creation date" : "D:20210114095658-04'00'",
+  "modification date" : "D:20210114095658-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 1,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 694.44, 878.76 ],
+    "source" : "Balance-UN-diciembre-2020-final.pdf_images/imageFile1.png"
+  } ]
+}

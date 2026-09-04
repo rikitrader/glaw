@@ -1,0 +1,10 @@
+{
+  "id":"HAEIS-DOLLARIZATION-READINESS-CONTRACT",
+  "pillars":[
+    {"id":"MONETARY","weight":0.15},{"id":"BANKING","weight":0.20},{"id":"FISCAL","weight":0.15},{"id":"RESERVES","weight":0.15},{"id":"EXTERNAL","weight":0.10},{"id":"DEBT","weight":0.10},{"id":"LEGAL","weight":0.05},{"id":"INSTITUTIONAL","weight":0.05},{"id":"SOCIAL","weight":0.05}
+  ],
+  "bands":[{"min":0,"max":39,"label":"NOT READY"},{"min":40,"max":59,"label":"HIGH RISK"},{"min":60,"max":74,"label":"CONDITIONAL"},{"min":75,"max":89,"label":"READY WITH SAFEGUARDS"},{"min":90,"max":100,"label":"STRONG READINESS"}],
+  "score_status":"NOT_CALCULATED",
+  "required_evidence":"Each pillar requires verified, dated, source-bound evidence before any score may be calculated.",
+  "neutrality_rule":"The readiness rubric does not assume dollarization is desirable or undesirable and cannot override a blocked gate."
+}

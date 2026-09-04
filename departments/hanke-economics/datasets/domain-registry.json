@@ -1,0 +1,8 @@
+{
+  "registry_id":"HAEIS-NORMALIZED-DATASET-DOMAINS",
+  "version":"1.0.0",
+  "common_fields":["country","variable","date","frequency","value","unit","currency","real_or_nominal","source","source_id","publication_date","retrieval_date","verification_status","confidence_score","notes"],
+  "domains":["MACRO","MONETARY","BANKING","FX","FISCAL","OIL","EXTERNAL","TRADE","DEBT","HOUSEHOLDS","LABOR","PRICES","SOCIAL","LEGAL","SANCTIONS","INSTITUTIONS","POLITICAL-RISK","CAPITAL-FLOWS","INVESTMENT","INFRASTRUCTURE"],
+  "raw_data_policy":"Raw data are immutable; transformations occur in code and produce versioned derived observations.",
+  "missing_data_policy":"Missing observations remain UNAVAILABLE and are never silently imputed."
+}

@@ -1,0 +1,1120 @@
+                    BULGARIAN NATIONAL BANK
+
+
+
+
+                    The Currency Board in Bulgaria:
+                    The First Two Years
+
+
+
+
+DISCUSSION PAPERS
+                                           Jeff rey B. Miller
+
+
+
+
+    dp/11/1999                   October 1999
+                 DISCUSSIon PAPERS
+
+dp/11/1999
+                 Editorial Board:
+                 Chairman: Garabed Minassian
+                 Members: Roumen Avramov
+                           Georgi Petrov
+                 Secretary: Lyudmila Dimova
+
+
+
+
+                 © Bulgarian National Bank, October 1999
+
+                 ISBN 954 ≠ 9791 ≠ 28 ≠ 9
+
+                 Received August 1999; accepted September 1999.
+                 Printed in BNB Printing Center
+
+
+                 Views expressed in materials are those of the authors and do not necessarily
+                 reflect Bank policy.
+
+
+                 Send your comments and opinions to:
+                 Publications Division
+                 Bulgarian National Bank
+                 1, Alexander Battenberg Square
+                 1000 Sofia, Bulgaria
+                 E-mail: dimova.l@bnbank.org
+
+                 Web.site: www.bnb.bg
+
+             2
+                                                                                                                 Discussion Papers
+Contents
+
+I.    The Structure of the Currency Board in Bulgaria ..................... 6
+II. Advantages of a Currency Board ................................................. 9
+    Convertibility ..................................................................................... 9
+    Macroeconomic Discipline ............................................................ 11
+    Guaranteed Adjustment Mechanism ............................................. 13
+    Confidence in the Monetary System and Promotion of Trade,
+    Investment and Growth .................................................................. 14
+III. Disadvantages of a Currency Board ..........................................15
+     Transition Problem ......................................................................... 15
+     Adjustment Problem ....................................................................... 17
+     Crisis Problem ................................................................................. 19
+     Political Problem ............................................................................ 20
+IV. Conclusions ..................................................................................20
+Bibliography ........................................................................................ 27
+
+
+
+
+                                                                                                             3
+    dp/11/1999
+4
+                                                                                                Discussion Papers
+SUMMARY: BULGARIA EXPERIENCED A SEVERE FINANCIAL CRISIS IN 1996 AND EARLY
+1997. SEVERAL BANKS WERE CLOSED, INFLATION REACHED HYPERINFLATIONARY LEVELS AND
+OUTPUT DECLINED SHARPLY. DURING THIS PERIOD PROPOSALS WERE PUT FORWARD TO ESTAB-
+LISH A CURRENCY BOARD. IT WAS HOPED THAT A CURRENCY BOARD WOULD RESTORE CONFI-
+DENCE AND HELP STABILIZE THE ECONOMY.
+    T HE CURRENCY BOARD WAS ESTABLISHED IN JULY 1997. IN MANY RESPECTS THE CUR-
+RENCY BOARD HAS BEEN A GREAT SUCCESS. FROM HYPERINFLATIONARY LEVELS IN FEBRUARY
+1997, INFLATION FELL TO VERY LOW LEVELS IN 1998 AND EARLY 1999. T HE DRAMATIC FALL
+IN NOMINAL INTEREST RATES MADE IT POSSIBLE FOR THE GOVERNMENT TO REDUCE LARGE
+GOVERNMENT DEFICITS. THE ECONOMY HAS ALSO BEGUN TO GROW, ALBEIT MORE SLOWLY
+THAN MIGHT BE HOPED DURING A RECOVERY PERIOD.
+    A CURRENCY BOARD ESTABLISHES A FIXED EXCHANGE RATE AND RELIES ON AUTOMATIC
+MECHANISMS TO RESTORE MACROECONOMIC EQUILIBRIUM. IN THEORY, LIKE THE GOLD STAN-
+DARD, THE MONEY SUPPLY WILL AUTOMATICALLY ADJUST WHEN BALANCE OF PAYMENTS DIS-
+EQUILIBRIA ARISE. A CURRENCY BOARD RESTORES CONFIDENCE BY RELYING ON THESE AUTO-
+MATIC MECHANISMS AND SEVERELY LIMITING THE DISCRETION OF POLICYMAKERS.
+    W HAT DISTINGUISHES CURRENCY BOARDS FROM OTHER FIXED EXCHANGE RATE REGIMES
+IS THE CREDIBILITY OF THE EXCHANGE RATE FIX. CONFIDENCE IN THE CURRENCY IS MAIN-
+TAINED BY PROMISING NEVER TO CHANGE THE EXCHANGE RATE AND ALLOWING THE PUBLIC
+TO OPENLY EXCHANGE AS MUCH LOCAL CURRENCY FOR RESERVE CURRENCY AS THEY WISH.
+THE CREDIBILITY OF A CURRENCY BOARD DEPENDS ON BOTH ECONOMIC AND POLITICAL FAC-
+TORS. TO SUSTAIN CONFIDENCE, THE CURRENCY BOARD MUST HAVE SUFFICIENT FOREIGN CUR-
+RENCY RESERVES TO HONOR THE PLEDGE TO EXCHANGE LOCAL CURRENCY FOR RESERVE CUR-
+RENCY. POLITICALLY, THE GOVERNMENT MUST BE PREPARED TO MAINTAIN THE FIXED EX-
+CHANGE RATE WHEN ADVERSE CIRCUMSTANCES ARISE. TO BUILD CONFIDENCE IN THE CUR-
+RENCY BOARD AND MAKE IT DIFFICULT TO CHANGE THE EXCHANGE RATE, THE EXCHANGE
+RATE WAS WRITTEN INTO THE LAW ESTABLISHING THE BULGARIAN CURRENCY BOARD.
+WHETHER THERE IS THE POLITICAL WILL TO SUSTAIN THE BOARD WILL NOT REALLY BE
+KNOWN, HOWEVER, UNTIL THERE IS A REAL TEST. THUS FAR THE BULGARIAN CURRENCY
+BOARD HAS NOT BEEN CONFRONTED WITH A REAL CHALLENGE , BUT GROWING CURRENT AC-
+COUNT IMBALANCES, WHICH ARE LIKELY TO BECOME WORSE BECAUSE OF THE WAR IN
+KOSOVO, MAY CREATE PROBLEMS IN THE NEAR FUTURE.
+    W HILE THE CURRENCY BOARD IN BULGARIA HAS BEEN ENORMOUSLY SUCCESSFUL IN
+BRINGING DOWN INFLATION, IT HAS ONLY BEEN IN PLACE FOR ONLY TWO YEARS. IN THIS PA-
+PER WE TAKE A LONGER-TERM PERSPECTIVE AND ASSESS NOT ONLY THE BOARD’ S IMMEDIATE
+IMPACT, BUT ALSO ITS PROSPECTS FOR THE FUTURE. TWO ISSUES ARE OF SPECIAL CONCERN .
+THE FIRST IS BULGARIA’S LARGE FOREIGN DEBT. BULGARIA HAS BEEN ABLE TO SERVICE THIS
+DEBT SINCE THE CRISIS ENDED IN 1997, BUT THERE IS NOW GREATER DEPENDENCE ON INTER-
+
+
+   Jeffrey B. Miller, University of Delaware, Newark, Delaware 19716 USA, E-mail:
+Millerj@be.udel.edu.
+   The paper benefited from discussions with Nikolay Nenovsky, Kalin Hrsitov, Boris,
+Petrov, Lubomir Christov and Kenneth Koford. Any errors in the paper are the author’s
+responsibility. This paper was prepared for presentation at the conference on Banking Re-
+form in South East European Transitional Economies, Sofia, 23 – 26 June 1999.
+
+                                                                                            5
+dp/11/1999
+                 NATIONAL FINANCIAL INSTITUTIONS. THE SECOND CONCERN IS WHETHER THE AUTOMATIC AD -
+                 JUSTMENT MECHANISMS THAT MAINTAIN BALANCE OF PAYMENTS EQUILIBRIUM UNDER A CUR -
+                 RENCY BOARD ARRANGEMENT WILL BE EFFECTIVE. WITHOUT PROPER ADJUSTMENTS, IT WILL
+                 NOT BE POSSIBLE TO SUSTAIN THE CURRENCY BOARD IN THE LONG RUN.
+                       ANALYSIS OF THESE AND OTHER QUESTIONS RAISED BY THE BULGARIAN EXPERIENCE RE-
+                 QUIRES A MORE DETAILED EXAMINATION OF THE ADVANTAGES AND DISADVANTAGES OF CUR -
+                 RENCY BOARDS. W ILLIAMSON (1995) HAS PROVIDED A FRAMEWORK FOR ANALYZING THESE
+                 ISSUES. IN THE NEXT SECTION WE DESCRIBE THE BASIC STRUCTURE OF THE CURRENCY BOARD
+                 IN BULGARIA. IN SECTION II WE ANALYZE WHETHER FEATURES THAT WILLIAMSON HAS IDEN -
+                 TIFIED AS ADVANTAGES OF A CURRENCY BOARD HAVE INDEED BROUGHT ABOUT THE IMPROVE-
+                 MENTS THAT WOULD BE ANTICIPATED. IN SECTION III WE EXAMINE FEATURES OF CURRENCY
+                 BOARD ARRANGEMENTS WHICH WILLIAMSON CONSIDERS TO BE DISADVANTAGES TO DETER-
+                 MINE WHETHER THEY ARE LIKELY TO CAUSE SERIOUS FUTURE PROBLEMS FOR THE BULGARIAN
+                 ECONOMY. SECTION IV CONCLUDES.
+
+
+
+                           I. The Structure of the Currency Board in Bulgaria
+                     “A currency board is at bottom an arrangement that legislates a par-
+                 ticular monetary rule: a rule that changes in the monetary base will be
+                 equal to the country’s overall balance of payments surplus or deficit.”
+                 (Williamson, 1995, p. 1). A currency board differs from a central bank
+                 in that all its assets are held in liquid reserve-currency assets. The assets
+                 of a currency board do not include domestic assets. 1 Because of this
+                 limitation the currency board cannot hold government debt or act as a
+                 ‘lender of last resort’ which lends money to troubled commercial
+                 banks.
+                     Two factors that contributed to the Bulgarian financial crisis of
+                 1996 −1997 were large government deficits and bad loans on commer-
+                 cial bank balance sheets. An attraction of the currency board is that by
+                 cutting off credit to both the government and commercial banks, the
+                 currency board disciplines both institutions.
+                     When Bulgaria adopted a currency board in July 1997, it chose the
+                 Deutschemark as the reserve currency. This was somewhat controver-
+                 sial because the dollar was widely used and oil imports, which are very
+                 important, are priced in dollars. The Deutschemark had the advantage,
+                 however, that it was soon to be merged with the Euro, and Bulgaria
+                 hopes to join the European Union. With the adoption of the Euro in
+                 January 1999, the Bulgarian lev is now fixed to the Euro.
+                   1
+                    In Argentina the reserve currency is the US dollar and the currency board does hold
+                 some dollar-denominated government debt.
+
+             6
+                                                                                            Discussion Papers
+     The currency board in Bulgaria has a structure similar to the cur-
+rency board established earlier in Estonia where there is a separation
+between the Issue Department and the Banking Department. In Bul-
+garia there is also a third division, the Banking Supervision Depart-
+ment. The Banking Supervision Department is the regulator of com-
+mercial banks. The Banking Department has reserves that can be used
+in a crisis situation to help banks. The heart of the currency board is the
+Issue Department. The balance sheet of the Issue Department for 25
+June 1999 is presented in Table 1. All foreign currency assets are en-
+tered on the balance sheet of the Issue Department. Since the exchange
+rate is fixed at BGL 1000/DEM, the total foreign assets of the currency
+board were approximately DEM 5.1 billion (USD 2.7 billion).
+    An important difference between this balance sheet and the typical
+currency board balance sheet is the presence of government deposits
+and Banking Department deposits on the liability side of the account.
+Theoretically, the only liability of a currency board would be the mon-
+etary base. As Table 1 shows, government deposits and deposits of the
+Banking Department together are actually greater than the monetary
+base (M0).
+    The Banking Department provides a safety valve in the event of cri-
+sis. The high inflation and sharp depreciation of the lev that occurred
+during the financial crisis greatly reduced the value of the money sup-
+ply. With more foreign currency reserves than were needed to provide
+coverage for M0, reserves were set aside for the Banking Department.
+Additional loans from the IMF have also made it possible to increase
+the size of the Banking Department.
+    This structure has important advantages for a country that has an on-
+going IMF program and large foreign debt service obligations. With a
+currency board changes in foreign exchange reserves will affect the
+size of the money supply. With this structure IMF tranches and pay-
+ments of foreign debt obligations do not affect the monetary base. This
+arrangement reduces the volatility of the money supply that would oth-
+erwise be affected by large movements in the BNB’s holding of foreign
+currency reserves.2
+  2
+     IMF tranches actually pass through the Banking Department and borrowings from
+the IMF are a liability of the Banking Department. There is a four-week window after
+the tranche is received where the government can make a decision to borrow this money
+
+                                                                                        7
+dp/11/1999
+                     This arrangement has some additional consequences, however.
+                 First, because of these accounting features, the Bulgarian currency
+                 board does not satisfy Williamson’s definition cited above. Changes in
+                 the monetary base will not be equal to the country’s overall balance of
+                 payments surplus or deficit when the government is engaged in interna-
+                 tional transactions. International activities of the government are ‘spon-
+                 taneously sterilized’ whether they are IMF tranches, foreign debt pay-
+                                                                                     3
+                 ments or receipts from privatization deals with foreign investors.
+                     Second, government deficits will automatically be financed by
+                 printing money. An increase in government spending will increase the
+                 monetary base and have the same effect on the money supply as a deci-
+                 sion by a central bank to buy government bonds when the government
+                 deficit spends. For the same reasons, normal government receipts and
+                 payments will affect the size of the monetary base and create additional
+                 money supply volatility. To reduce this volatility, Nenovsky and Hristov
+                 (1998) have argued that government deposits should be held at a com-
+                 mercial bank instead of the currency board.
+                     There are several trade-offs to be considered here. Government de-
+                 posits were originally placed at the currency board because the banking
+                 system was considered to be too weak (Enoch and Gulde, 1997). If de-
+                 posits were placed at a commercial bank, IMF tranches and debt ser-
+                 vice payments would create more money supply volatility than the
+                 present arrangements. Another alternative would be for the government
+                 to keep deposits at both the currency board and commercial banks. The
+                 deposits at the currency board could be used for IMF tranches and debt
+                 service, and the deposits at commercial banks could be used for normal
+                 government operations. A possible disadvantage of this arrangement is
+                 that the government could influence the size of the monetary base by
+                 moving deposits from one account to another.
+
+                 from the BNB. The government can then make payments from this account to service the
+                 foreign debt. (A special exception was written into the law establishing the currency board
+                 allowing the government to borrow these funds from the BNB.) (Enoch and Gulde, 1997)
+                    Careful consideration is also given to how money from the World Bank affects the
+                 money supply. Money which is passed to the government and eventually spent by the gov-
+                 ernment will affect the money supply, but the World Bank is careful that the original trans-
+                 fer of funds to the government does not significantly affect the monetary base.
+                    3
+                      Sterilization is usually associated with situations where central banks try to stop mon-
+                 etary contractions when balance of payments deficits arise. The situation here is different
+                 since there is no discretionary policy action being taken.
+
+             8
+                                                                                Discussion Papers
+   From the viewpoint of a purist, none of these arrangements is ideal.
+Since the government’s deposits and its international transactions are
+large, government activities will influence the size of the monetary
+base. Under ideal conditions, money supply adjustments under a cur-
+rency board system should reflect only imbalances in the balance of
+payments.
+
+                II. Advantages of a Currency Board
+   Williamson (1995, p. 13) lists four advantages proponents claim for
+currency boards:
+   “[a]that they assure convertibility; [b]that they instill macroeco-
+   nomic discipline; [c]that they provide a guaranteed payments ad-
+   justment mechanism; [d]that because of those three features they
+   create confidence in the monetary system and therefore promote
+   trade, investment and growth.
+
+                           Convertibility
+    A key aspect of a currency board is its guarantee of currency con-
+vertibility at a fixed exchange rate. To assure convertibility there must
+be adequate reserves to cover any demands for foreign currency. Only
+then is there a credible claim that citizens can always exchange the lo-
+cal currency for reserve currency. A standard criteria for judging suffi-
+cient coverage is that the currency board needs sufficient holdings of
+the reserve currency to cover the monetary base (M0). For a currency
+board where commercial banks hold their reserves at the currency
+board, sufficient reserves to cover M0 will be adequate to guarantee the
+fixed exchange rate but insufficient to prevent a banking crisis. Com-
+mercial banks themselves will not have sufficient foreign currency to
+guarantee the convertibility. People will be forced to withdraw money
+from the banks and present their demands for foreign currency at the
+currency board. The currency board will be able to honor these de-
+mands, but the withdrawals will bring about a contraction of bank li-
+abilities and the money supply as banks are forced to call in their loans
+and sell other assets.
+    In Bulgaria gross foreign currency reserves far exceed the minimum
+requirements for coverage of M0. As Table 1 illustrates, the Issue De-
+
+                                                                            9
+dp/11/1999
+             partment has foreign currency reserves of BGL 5.1 trillion and M0 is
+             only BGL 2.2 trillion. At the end of June foreign currency reserves at
+             the BNB were more than twice as large as M1. Indeed the ratio of broad
+             money to foreign currency reserves was only 1.21. These figures sug-
+             gest that the Bulgarian currency board should be able to honor its com-
+             mitments to the exchange rate fix.
+                  While there should be no immediate problems, the longer-term pic-
+             ture is not so rosy. At the end of 1998 Bulgaria’s foreign debt was more
+             than USD 10 billion. (This was a 4% increase over the 1997 end-year
+             figure.) During 1998 debt service was almost USD 1.1 billion. Annual
+             service obligations for 1999 – 2001 are in the same range. To put these
+             figures in context, the government’s deposits in Table 1 represent a
+             little more than one year’s annual payments. The total assets of the Is-
+             sue Department are less than the debt service obligations over the next
+             three years.
+                  The future strength of the currency board depends on the manage-
+             ment of these foreign debt service obligations. It is interesting to note
+             that while servicing more than USD 1 billion in foreign debt in 1998,
+             government balances at the BNB were almost the same in June 1999 as
+             they were in June 1998.
+                  In 1998 the foreign debt was managed largely by borrowing addi-
+             tional funds from official creditors, mainly the international financial
+             institutions (IFIs), i.e. the IMF, World Bank, European Union, etc.
+             While almost USD 500 million of the USD 1.1 billion in service obliga-
+             tions were payments to IFIs, Bulgaria’s total indebtedness to IFIs in-
+             creased by more than USD 300 million. Bulgaria is becoming more de-
+             pendent on the IFIs to finance its foreign debt obligations.
+                  Promises from the IFIs for 1999 fall far well below debt service ob-
+             ligations. IMF and World Bank loans are expected to total about
+             USD 500 million and there are perhaps another USD 100 million from
+             other sources. Recently there have been negotiations for additional
+             loans.
+                  Other potential sources of foreign currency reserves include foreign
+             direct investment, portfolio investment and floating a Eurobond. At-
+             tracting private portfolio money or floating a Eurobond has been made
+             more difficult by the financial crises in emerging markets, especially
+             the crisis in Russia. The war in Kosovo has further highlighted prob-
+
+       10
+                        4
+
+
+
+
+                                                                                                   Discussion Papers
+lems in the region. Efforts to attract foreign direct investment have fo-
+cussed on privatization efforts. In 1997 foreign direct investment was
+USD 636 million, but the pace has slowed in 1998 to USD 436 million.
+The much anticipated sale of the Bulgarian Telecommunications Com-
+pany (BTC) still has not been concluded (OECD, 1999). While the sale
+of BTC should bring in a substantial sum, many state-owned enter-
+prises have deteriorated during the past decade, and their sale is un-
+likely to bring sufficient foreign currency flows to have a substantial
+impact on the underlying foreign debt problems.
+    Current account surpluses are another potential source of foreign
+currency reserves. We discuss these issues in more detail in Section III.
+Suffice it to say here that while the current account was in surplus in
+1997, Bulgaria’s current account fell into deficit in 1998 and the dam-
+age to roads and bridges in Yugoslavia during the war in Kosovo is
+making trade more difficult.
+    The high inflation that preceded the establishment of the currency
+board in Bulgaria created a situation where there were more than
+enough foreign exchange reserves to provide immediate cover for M0,
+but without the support of IFIs, the foreign debt problem could still
+threaten the viability of the board. Because of these debt problems, de-
+pendence on the IFIs has grown over the past two years. It is still too
+early to determine whether the stability provided by the currency board
+will provide sufficient impetus to the private sector to reverse this
+trend, but it is unlikely that these changes will occur quickly.
+
+                         Macroeconomic Discipline
+    Advocates of currency boards argue that they will instill macroeco-
+nomic discipline. Williamson views fiscal policy, in particular, as a po-
+litical problem that may or may not be solved by the establishment of a
+currency board.
+    Very weak commercial bank balance sheets and large government
+deficits helped bring on the Bulgarian financial crisis in 1996 – 1997.
+Proponents of the currency board hoped that the establishment of the
+currency board would signal a change of regime and greater economic
+discipline.
+  4
+    While the war in Kosovo has made it more difficult to attract private capital flows, it has
+strengthened Bulgaria’s position in its negotiations to obtain additional funds from the IFIs.
+
+                                                                                                  11
+dp/11/1999
+                  During the period leading up to the crisis the BNB provided com-
+             mercial banks with refinancing. The banks then loaned the money to
+             enterprises. These loans were a form of implicit subsidy since there was
+             little chance they would be repaid. “Until 1996, commercial credit was
+             expanded to the nonfinancial sector in Bulgaria to a degree that was un-
+             precedented relative to any other European transition economy.”
+             (OECD, 1999, p. 32).
+                  Government attempts to recapitalize the banks failed. The govern-
+             ment replaced bad loans to enterprises with government bonds. Banks
+             then made additional loans, and their balance sheets did not improve.
+             The government bonds increased the level of government debt and the
+             interest obligations on this debt ballooned creating large government
+             deficits. By 1996 interest payments were 17% of GDP.
+                  The currency board has effectively brought an end to these prob-
+             lems. Since the Bulgarian currency board cannot hold domestic debt, it
+             cannot refinance the banks nor can it hold government debt. The high
+             inflation during the crisis reduced the value of the lev-denominated
+             government debt from 70% of GDP in 1996 to less than 15% of GDP at
+             the end of 1998. Interest rates also fell dramatically greatly reducing the
+             servicing burden (OECD, 1999). The fiscal budget was in surplus in
+             1998. For 1999 the government projects a deficit of 2.8%, but the
+             money is to be used to upgrade a badly deteriorating infrastructure.
+                  The situation in the banking sector has also improved dramatically.
+             The banks have reduced their exposure to the nonfinancial sector and
+             the capitalization of the banks rose to 36.7% in 1998 (against the mini-
+             mum requirement of 10%) (OECD, 1999). Initially the banks did little
+             additional lending to the nonenterprise sector and expanded their cash
+             holdings and their holdings of government bonds. As Table 2 illus-
+             trates, more recently banks have taken less conservative positions and
+             have expanded the amount of lending to the nonfinancial sector and re-
+             duced their cash holdings.
+                  After many years of struggling with inflation, inflation has also
+             come down dramatically with the establishment of the currency board.
+             At the end of the financial crisis in February 1997, monthly inflation
+             was 240%. End-period CPI inflation for the year 1998 was 1.0% on an
+             annual basis.
+
+
+       12
+                                                                                        Discussion Papers
+    The experience with output growth has been positive but less spec-
+tacular. Output grew in 1998 by 3.5% after declining by 6.9% in 1997.
+This improvement is less impressive than it first appears. The financial
+crisis ended in the first quarter of 1997 and output was very low. GDP
+recovered some by the third quarter, but output has not grown since
+                     5
+then (OECD, 1999).
+    Evaluating the overall macroeconomic experience in Bulgaria dur-
+ing the first two years, the currency board has to be given high marks.
+The currency board was instituted at a time when people had little faith
+in macroeconomic policymakers and the economy was in a shambles.
+Inflation has come down to reasonable levels, the government’s budget
+has been balanced, and the banks are taking greater care of their assets.
+These are certainly major accomplishments. While the economy has not
+really started to grow, the economy has been stabilized, and it is easier
+for economic decision makers to make new business plans with longer
+horizons.
+
+                  Guaranteed Adjustment Mechanism
+    Under a currency board arrangement balance of payments (BOP)
+equilibrium is maintained through an automatic adjustment mechanism.
+As with the gold standard BOP deficits create outflows of foreign ex-
+change reserves and a reduction of the money supply. The fall in the
+money supply forces interest rates upward and a contraction in the
+economy. This contraction will result in lower output and prices. The
+fall in output should be smaller if the fall in prices is greater. Higher in-
+terest rates create capital inflows. The fall in output depresses import
+demand and the fall in prices increases the competitiveness of exports.
+All three changes help restore BOP equilibrium. When there are BOP
+surpluses, the opposite forces act to restore equilibrium.
+    The long-term sustainability of the currency board depends on this
+mechanism. The automatic nature of the adjustment relies on a close re-
+lationship between foreign exchange reserves and the money supply.
+The Bulgarian currency board is designed to reduce the impact on the
+money supply when there are financial flows from the IMF and major
+debt service payments are made. This structure has the advantage of re-
+  5
+      The IMF’s immediate post-Kosovo war projection for GDP growth in 1999 is 1.5%.
+
+
+                                                                                       13
+dp/11/1999
+             ducing the volatility of M0 which would be caused by these flows, but
+             it also means there is no longer a direct connection between BOP dis-
+             equilibria and adjustments in the money supply. For example, if the
+             BOP were in deficit, large government expenditures could be used to
+             offset what otherwise would be a decline in M0. This would stop the
+             contraction needed to restore BOP equilibrium.
+                 Thus the design of the Bulgarian currency board has important ad-
+             vantages, but it also creates the danger that the additional flexibility be-
+             tween foreign exchange reserves and money supply will hinder the op-
+             eration of the automatic adjustment mechanism which otherwise should
+             ensure BOP equilibrium. In the long run this could affect confidence in
+             the sustainability of the currency board.
+
+               Confidence in the Monetary System and Promotion of
+                          Trade, Investment and Growth
+                 In Williamson’s list of advantages for currency boards, the last point
+             is that a currency board should create confidence and promote trade and
+             growth. A recent empirical study by Ghosh, Gulde and Wolf (1998)
+             finds that economies that adopt currency boards do have better inflation
+             experiences, and this improved inflationary environment does promote
+             better growth.
+                 When the currency board was adopted in July 1997, there were im-
+             mediate indicators of confidence in the exchange rate fix. As illustrated
+             in Figure 1, interest rates fell dramatically as the establishment of the
+             currency board was anticipated. Interest rates reached single-digit an-
+             nualized levels once the board was in place.
+                 These changes are to be expected since speculators will arbitrage
+             between the Deutschemark and Bulgarian lev. The interest rate pre-
+             mium on lev securities is a measure of the additional risk in the Bulgar-
+             ian market. The interest rate differential between the Deutschemark
+             three-month LIBOR and the three-month Bulgarian government bond
+             has been around 2% since the beginning of 1998.
+                 This dramatic fall in nominal interest rates had two important ef-
+             fects. First, lower interest rates greatly reduced the government’s do-
+             mestic debt service obligations and helped the government gain control
+             of its budget. Secondly, the fall in nominal interest rates occurred be-
+
+
+       14
+                                                                                               Discussion Papers
+fore inflation came down. At first real interest rates were negative, al-
+though they have recovered as inflation has also come down.
+    While the currency board has been able to stabilize the exchange
+rate, it has not brought a significant inflow of foreign capital. A number
+of privatization deals were completed in 1997. Foreign direct invest-
+ment climbed, but the crisis in emerging markets and a slowdown in
+privatization reduced the level of foreign investment in 1998. Per
+capita foreign investment is much lower than most other Eastern Euro-
+pean countries and even in 1997 it was still only USD 60 (OECD,
+1999).
+
+                 III. Disadvantages of a Currency Board
+    Williamson lists a number of disadvantages of a currency board. In
+this section we discuss only those problems which are most relevant to
+the Bulgarian case. These are: (a) the transition problem which arises
+when inflation leads to overvaluation of the real exchange rate; (b) the
+adjustment problem caused by BOP disequilibrium; (c) the crisis prob-
+lem in the banking system because there is no lender of last resort; and
+                           6
+(d) the political problem.
+
+                              Transition Problem
+   The transition problem is the problem of bringing inflation down
+quickly enough after the establishment of the currency board. Fixing
+the exchange rate should bring inflation down, but inflation can have a
+momentum that leads to an overvaluation of the real exchange rate. The
+gold standard mechanism will eventually correct the BOP imbalance
+that results, but the adjustment can be long and painful.
+   In Bulgaria there was some inflationary momentum, but it was
+short-lived. Following the very high inflation during the first half of the
+year, the CPI rose only 16% during the second half of 1997 and only
+  6
+    The other issues that Williamson discusses are: seigniorage, the start-up problem and
+the management problem. Currency boards allow countries to collect seigniorage where
+simply using another reserve country’s currency does not. The start-up problem is the
+problem of collecting sufficient foreign currency reserves before establishing the currency
+board. The management problem is the inability of a country with a currency board to
+manage its monetary policy. This last problem is discussed below when the adjustment
+problem is analyzed.
+
+
+                                                                                              15
+dp/11/1999
+             1% in the 1998. During the first four months of 1999, the price level
+             actually fell a little.
+                 To determine whether this inflation would cause an overvaluation of
+             the lev depends on where the nominal exchange rate fix was initially
+             set. Figure 2 plots the real exchange rate (lev/US dollar) deflated by the
+             PPI for the period beginning in January 1990. As can be seen in the
+             graph, the real exchange rate fluctuated dramatically during the period
+             immediately preceding the establishment of the currency board. This
+             made it more difficult to determine an appropriate nominal rate. The
+             nominal exchange rate chosen secured a real rate in the middle of the
+             range during the 1990s. Since the currency board system was imple-
+             mented, the lev has actually depreciated against the dollar in real terms
+             because of the appreciation of the dollar against the Deutschemark.
+                 While the real exchange rate has not appreciated against the dollar,
+             the balance on the current account has moved from surplus to deficit.
+             So a transition problem has arisen. The current account surplus in 1997
+             was USD 426 million and the current account deficit in 1998 was USD
+             272 million. Preliminary figures for the first four months of 1999 show
+             a continuing current account deficit of USD 320 million. The impact of
+             the war in Kosovo is not reflected in these figures.
+                 Most of this shift is occurring in the trade balance. As Table 3 illus-
+             trates, most of the change in the trade balance between 1997 and 1998
+             is due to a fall in exports. A comparison of first quarter statistics shows
+             that the improvement in the economy since the first quarter of 1997 has
+             led to an increase in imports, but the major overall factor leading to the
+             deficit is the decrease in exports. Falling exports to the former Soviet
+             Union (USD 338 million) account for more than half the decline. Ex-
+             ports to Turkey also fell by USD 100 million (22%). On the other hand,
+             exports to the European Union, which now constitute one-half of all ex-
+             ports, were almost unchanged between 1997 and 1998. This suggests
+             that the real appreciation of the lev against the Deutschemark did not
+             have an immediate impact on exports to that region.
+                 According to preliminary figures overall exports declined another
+             24% in 1999, first quarter 1998 to first quarter 1999 (see Table 3). Ex-
+             ports to the European Union fell 9%, and there were further declines in
+             exports to the former Soviet Union. Exports to the former Soviet Union
+             in 1999 were only one-third the level of the comparable period in 1997.
+
+       16
+                                                                              Discussion Papers
+    Thus, Bulgaria has a current account deficit problem as it transitions
+to a currency board, but continuing inflation did not play a central role.
+The BOP problems have different causes. Bulgaria has been hurt by the
+crisis in emerging markets, particularly the crisis in Russia and its af-
+fects on other countries in the region. However, between 1997 and 1998
+the real problem was that Bulgaria was unable to expand its export
+trade in any other major region.
+
+                       Adjustment Problem
+    Unlike other countries that have had a currency board for a longer
+period of time, the currency board in Bulgaria has not really been
+tested. This may soon change with the growing current account deficits.
+While there was no speculation against the lev when the Russian crisis
+occurred, continuing current account deficits could cause a contraction
+in the economy. Williamson refers to this as the adjustment problem.
+    The adjustment process unfolds when BOP deficits lead to a con-
+traction in the monetary base, a fall in the money supply and a decline
+in aggregate demand. Either a fall in output or a decline in prices can
+improve the current account balance. The greater the decline in prices,
+the smaller the decline in output needed to bring about equilibrium.
+    Figure 3 plots the movement of the monetary base over the period of
+the currency board. It is clear from a comparison of Table 3 and the
+changes in Figure 3 that there are more factors affecting the monetary
+base than the changes in the current account. The dramatic increase in
+the monetary base in late 1997 when the currency board was first estab-
+lished reflects a portfolio readjustment following the hyperinflationary
+period that preceded it. Holding levs was a much safer bet than before.
+This created an inflow of foreign currency reserves.
+    Figure 3 also shows an increase in M0 during 1998 in spite of cur-
+rent account deficits. The first six months of 1999 show a sharp decline
+in M0 in January and then a slight decline after that. Because of the
+large swing in M0 in December (for both 1997 and 1998), it may be
+more useful to compare November 1998 and June 1999. Over this pe-
+riod M0 declined by BGL 54 billion (DEM 54 million) or 2.5%. Be-
+cause there was a small increase in the money multiplier over this pe-
+riod the money supply actually increased by BGL 81 billion (DEM 81
+million) or 1.3%. While current account figures are available only
+
+                                                                             17
+dp/11/1999
+             through April 1999, the current account deficit from November to April
+             was USD 385 million.
+                 From these figures it does not appear that the current account deficit
+             is creating a monetary contraction. On the other hand, the decline in ex-
+             ports is reducing aggregate demand. This should slow the growth of the
+             economy. If the money supply contracted, this would reduce aggregate
+             demand even more.
+                 Under a currency board arrangement there is little that can be done
+             to offset these contractionary pressures. In a more flexible environment
+             expansionary fiscal or monetary policy might slow the contraction. If
+             Bulgaria had a floating exchange rate, a depreciation of the real ex-
+             change rate might spur exports. None of these options exist under a cur-
+             rency board.
+                 The impact of contractionary policies on prices can be very impor-
+             tant. If prices are more flexible in a downward direction, the contraction
+             in output should be less severe. Figure 4 shows the relationship between
+             monthly CPI adjustments in Germany and Bulgaria. The increase in the
+             CPI during the first six months of the currency board was higher in Bul-
+             garia, but in 1998 the CPI increases were almost the same: 0.6% in Ger-
+             many and 1.0% in Bulgaria. The volatility of price adjustments in Bul-
+             garia was much greater. In several months Bulgarian prices fell, in part
+             because food prices fell almost 5% in 1998. This suggests that Bulgar-
+             ian prices might indeed fall more during a contraction than a country
+             like Germany. This should ease the output effects of a contraction
+             caused by the adjustment process that will take place under a currency
+             board arrangement.
+                 Current account deficits and BOP deficits are not equivalent. The
+             current account deficit can be offset by increases in foreign investment.
+             This is an alternative mechanism under which a currency board ar-
+             rangement relies on growth in the economy to correct the current ac-
+             count imbalance. Under this scenario, foreign investment will lead to
+             greater growth and an eventual reduction in the current account deficit.
+             With this adjustment mechanism, which appears to be the pattern that is
+             unfolding in Bulgaria, the viability of the currency board depends on
+             the efficient use of foreign investment to increase productivity. It is too
+             early to determine whether these productivity improvements are occur-
+             ring in Bulgaria.
+
+       18
+                                                                                Discussion Papers
+                                   Crisis Problem
+    What Williamson refers to as the crisis problem arises because there
+is no ‘lender of last resort’ under a formal currency board. In Bulgaria
+there is more flexibility. When the currency board was established, a
+Banking Department was created to provide protection during a crisis.
+A substantial amount of money was put aside in the Banking Depart-
+ment and has increased since the board was created. In June 1999 the
+deposits of the Banking Department at the Issue Department were
+140% of bank reserves (Table 1).
+    Offsetting this advantage is the small presence of foreign banks in
+Bulgaria. Most countries with currency boards have been countries
+where foreign banks were dominant, as with the British colonies. Hong
+Kong and Argentina are exceptions, but the presence of foreign banks
+in these countries is also greater than in Bulgaria. Argentina experi-
+enced a run on its banks in 1994 – 1995 during the Mexican debt crisis.
+The exchange rate was maintained, but reserve requirements were re-
+duced by half – a very noncurrency board thing to do. The IMF pro-
+vided large loans, and small banks were absorbed by large banks
+(Williamson, 1995). Since then Argentina has organized large lines of
+credit which can be called upon in the event of another crisis.
+    If banks have lines of credit in foreign currency upon which to draw,
+the contraction will be less severe. Foreign banks should be able to
+draw on their parent banking institutions for resources in the reserve
+currency, especially if their parent is in the reserve currency country.
+For Bulgaria today any bank from Euroland would serve this function.
+At present, foreign banks make up only a small portion of the commer-
+cial banking sector. This could change significantly if Bulbank, for-
+merly the Foreign Trade Bank, is purchased by a foreign bank. Bulbank
+has approximately one-third of commercial banking assets in Bulgaria.
+    It is difficult to judge what will happen during a financial crisis, but
+one can interpret from portfolio behavior what economic agents per-
+ceive the risks to be. Under a currency board the risk of currency de-
+valuation is reduced, but the risk of bank failure is greater. In Figure 5
+the cash-to-deposit ratio is plotted for period beginning in December
+1990.7 As can be seen from the figure, the cash-to-deposit ratio rose
+  7
+      Deposits include both lev and foreign currency deposits.
+
+                                                                               19
+dp/11/1999
+             dramatically when the currency board was established. This rise re-
+             flects the greater confidence in the lev as people exchanged dollars for
+             lev. But confidence in the banks is still weak.
+                 The behavior of banks has also been conservative since the estab-
+             lishment of the currency board. Figure 6 shows the ratio of bank depos-
+             its to reserves. During the currency board period the required reserve
+             ratio (also shown on the graph) was 11%. Until very recently banks
+             have been holding reserves well above this level. As seen in Table 2,
+             recently banks have become more aggressive and have reduced their
+             cash holdings and extended more loans. In part this reflects changes in
+             the procedures for determining compliance with the minimum reserve
+             requirements, but it may also reflect pressures on bank profitability. It is
+             difficult for banks to make profits if they are holding large cash bal-
+             ances and low interest paying government securities.
+
+                                       Political Problem
+                 The last disadvantage that Williamson lists is the political problem.
+             The question he raises is whether the currency board will really impose
+             controls on the fiscal authority. He remains skeptical that this will nec-
+             essarily be the case.
+                 Thus far the currency board in Bulgaria has created an environment
+             where the government has been able to control budget deficits. If there
+             is a political problem, it is the appearance, perhaps, that the currency
+             board is too strong. In political debate the government has used the cur-
+             rency board to deflect demands on the budget. This has created an envi-
+             ronment where the greatest political threat to the currency board is not
+             the fiscal actions of the present government, but the political attacks on
+             the currency board.
+
+                                         IV. Conclusions
+                There are many challenges in the Balkans. After climbing one
+             mountain, there is another mountain in your path. The Bulgarian
+             economy has climbed a high mountain, but there are many challenges
+             ahead. The currency board has brought needed discipline to the
+             economy. The money supply is no longer growing too rapidly. Govern-
+             ment budgets are now under control. Banks’ lending is much more cau-
+
+       20
+                                                                              Discussion Papers
+tious. The result is that inflation has come down dramatically, and the
+economy is beginning to grow.
+    Having met these challenges, there are others that still lie ahead.
+Bulgaria still has a very large foreign debt. The servicing of the debt is
+still a problem, and there is a heavy reliance on the IFIs to provide sup-
+port for these payments. These problems have been made more difficult
+because the current account is now in deficit.
+    The current account deficit may well create serious challenges for
+the currency board. This deficit has arisen in large measure because of
+factors outside Bulgaria. Still declining exports are contractionary, and
+the currency board arrangement provides no mechanism for offsetting
+these forces. At the same time, Bulgaria is being spared an even more
+painful experience since the contraction is smaller than it would have
+been if the money supply had not continued to expand. Even if the
+money supply does not fall, a decline in output at this stage could create
+additional political problems
+    The longer-term solution to these problems, however, is growth. It is
+still too early to determine whether the increased stability brought on
+by the currency board and the inflow of new foreign capital will be suf-
+ficient to increase productivity. If productivity improves, Bulgarian
+goods will become more competitive and the current account will read-
+just. If productivity does not improve, then the long-term viability of
+the board will be in question.
+    The currency board in Bulgaria is beginning to mature as economic
+agents are gaining a better understanding of the constraints they now
+face. The government has more confidence now and has been contem-
+plating a small deficit to improve infrastructure. Banks are beginning to
+lend more as they reduce their holdings of cash and government securi-
+ties. The question now is whether the government and the banks can
+now proceed prudently when the constraints appear to be less severe.
+    The currency board has brought stability to the economy. The next
+stage will test whether these gains can be consolidated and longer-term
+growth can be achieved.
+
+
+
+
+                                                                             21
+dp/11/1999
+                                                                                               Table 1
+
+                       WEEKLY BALANCE SHEET OF ISSUE DEPARTMENT
+                                   AS OF 25 JUNE 1999
+                                                                                        (million BGL)
+             ASSETS                                        LIABILITIES
+
+             Cash and nostro accounts
+             in foreign currency               1 174 463 Currency in circulation          1 623 821
+
+             Monetary gold                       627 509 Bank deposits and
+                                                         current accounts                     552 655
+             Foreign securities                3 291 183 Government deposits
+                                                         and accounts                     2 196 484
+             Accrued interest receivable          57 241 Other depositors’ accounts             367
+                                                         Accrued interest payable               414
+                                                         Banking Department deposit         776 655
+
+             ASSETS                            5 150 396 LIABILITIES                      5 150 396
+
+             Source: BNB.
+
+
+
+
+                                                                                               Table 2
+                                  AGGREGATE BANK BALANCE SHEETS
+                                  (Percentages of major liability categories)
+                                                                                                   (%)
+                                                                1996   1997        1998          1999
+                                                                Dec.   Dec.    June     Dec.     Feb.
+
+             Cash                                                10    19          16    14       12
+             Government securities                               24    24          25    20       21
+             Claims on banks and other financial institutions    24    29          28    32       30
+             Claims on nonfinancial institutions                 39    22          23    27       29
+
+             Source: BNB
+
+
+
+
+       22
+                                                                                                                               Discussion Papers
+                                                                                                           Figure 1
+                 ANNUAL COMPOUND BASE INTEREST RATE
+90
+
+80
+
+70
+
+60
+
+50
+
+40
+
+30
+
+20
+
+10
+
+ 0
+ 1997:V VI   VII VIII IX   X   XI     XII 1998:I II   III   IV     V   VI    VII VIII IX     X    XI   XII 1999:I II    III
+
+
+
+
+Source: BNB.
+                                                                                                           Figure 2
+                               REAL EXCHANGE RATE (PPI)
+                                                                                                                 (USD)
+ 40
+
+ 35
+
+ 30
+
+ 25
+
+ 20
+
+ 15
+
+ 10
+
+ 5
+
+ 0
+      1991        1992         1993          1994           1995            1996           1997        1998            Jan.
+                                                                                                                       1999
+
+
+
+Source: BNB.
+
+                                                                                                                              23
+dp/11/1999
+                                                                               Table 3
+                                BALANCE OF TRADE 1997 − 1998
+                                                                         (million USD)
+                                              Q1       Q2       Q3       Q4     Total
+
+             1997
+              Trade balance                308.8      46.5     97.7    -72.6    380.4
+               Exports, fob               1190.9    1233.5   1272.0   1243.3   4939.7
+               Imports, fob                882.1    1187.0   1174.2   1315.9   4559.3
+
+             1998
+              Trade balance                  1.6     -68.9   -104.3   -157.9   -329.5
+               Exports, fob               1103.4    1113.0   1027.3   1050.2   4294.0
+               Imports, fob               1101.8    1181.9   1131.6   1208.2   4623.5
+
+             1999
+             Trade balance                -165.7
+             Exports, fob                  865.8
+             Imports, fob                 1031.5
+
+             Change between 1997 & 1998
+              Trade balance                -307.2   -115.4   -201.0    -85.3   -709.9
+               Exports, fob                 -87.5   -120.5   -244.7   -193.1   -645.7
+               Imports, fob                 219.7     -5.1    -42.6   -107.7     64.2
+
+             Source: BNB.
+
+
+
+
+       24
+                                                                                                                                                        Discussion Papers
+                                                                                                                                   Figure 3
+                                                        MONETARY BASE
+                                                                                                                              (billion BGL)
+3000.000
+
+
+
+
+2500.000
+
+
+
+
+2000.000
+
+
+
+
+1500.000
+
+
+
+
+1000.000
+
+
+
+
+ 500.000
+
+
+
+
+     0.000
+             5'97 6'97 7'97 8'97 9'97 10'97 11'97 12'97 1'98 2'98 3'98 4'98 5'98 6'98 7'98 8'98 9'98 10'98 11'98 12'98 1'99 2'99 3'99 4'99 5'99 6'99
+
+
+
+
+Source: BNB.
+
+
+                                                                                                                                   Figure 4
+              MONTHLY CPI CHANGES IN BULGARIA AND GERMANY
+6
+
+5
+
+4
+
+3
+
+2
+
+1
+
+0
+
+-1
+
+-2
+
+-3
+        1997 1997 1997 1997 1997 1997 1998 1998 1998 1998 1998 1998 1998 1998 1998 1998 1998 1998
+
+                                                 Bulgarian CPI                                   German CPI
+
+
+Sources: BNB, IMF: International Financial Statistics.
+
+                                                                                                                                                       25
+dp/11/1999
+                                                                                                                                                         Figure 5
+                                                                CASH/DEPOSIT RATIO
+              0.40
+
+
+              0.35
+
+
+              0.30
+
+
+              0.25
+
+
+              0.20
+
+
+              0.15
+
+
+              0.10
+
+
+              0.05
+
+
+              0.00
+                   12'90   06'91   12'91   06'92     12'92     06'93    12'93    06'94    12'94    06'95    12'95    06'96   12'96   06'97   12'97   06'98   12'98   06'99
+
+
+
+             Source: BNB.
+
+
+                                                                                                                                                         Figure 6
+                                                    BANK RESERVE/DEPOSIT RATIO
+             0.7
+
+
+             0.6
+
+
+             0.5
+
+
+             0.4
+
+
+             0.3
+
+
+             0.2
+
+
+             0.1
+
+
+              0
+               12'90   06'91   12'91   06'92       12'92     06'93     12'93    06'94    12'94    06'95    12'95    06'96    12'96   06'97   12'97   06'98   12'98   06'99
+
+                                           Bank Reserve/Deposit Ratio                                                Reserve Requirement Ratio
+
+
+
+
+             Source: BNB.
+
+       26
+                                                                                         Discussion Papers
+                                 Bibliography
+Enoch, C. and Anne-Marie Gulde (1997) Making a Currency Board Operational. IMF
+        Paper on Policy Analysis and Assessment, Monetary and Exchange Affairs
+        Department, International Monetary Fund.
+Ghosh, A., Anne-Marie Gulde, and Holger C. Wolf (1998) Currency Boards: The Ul-
+        timate Fix? Policy Development and Review Department, Monetary and Ex-
+        change Affairs Department, International Monetary Fund, WP/98/8, January
+        1998.
+Nenovsky, N. and Kalin Hristov (1998) Financial Repression and Credit Rationing
+        under Currency Board Arrangement for Bulgaria. Bulgarian National Bank
+        Discussion Papers, DP/2/1998.
+Organization for Economic Cooperation and Development (1999) Economic Sur-
+        vey of Bulgaria, OECD, Paris.
+Williamson, J. (1995) What Role for Currency Boards? Institute for International Eco-
+        nomics, Washington, D.C.
+
+
+
+
+                                                                                        27
+dp/11/1999
+                                      DISCUSSION PAPERS
+                                         NOW AVAILABLE:
+
+              DP/1/1998 The First Year of the Currency Board in Bulgaria
+              Victor Yotzov, Nikolay Nenovsky, Kalin Hristov, Iva Petrova, Boris Petrov
+              DP/2/1998 Financial Repression and Credit Rationing
+              under Currency Board Arrangement for Bulgaria
+              Nikolay Nenovsky, Kalin Hristov
+              DP/3/1999 Investment Incentives in Bulgaria: Assessment
+              of the Net Tax Effect on the State Budget
+              Dobrislav Dobrev, Boyko Tzenov, Peter Dobrev, John Ayerst
+              DP/4/1999 Two Approaches to Fixed Exchange Rate Crises
+              Nikolay Nenovsky, Kalin Hristov, Boris Petrov
+              DP/5/1999 Monetary Sector Modeling in Bulgaria, 1913 – 1945
+              Nikolay Nenovsky, Boris Petrov
+              DP/6/1999 The Role of a Currency Board in Financial Crises:
+              The Case of Bulgaria
+              Roumen Avramov
+              DP/7/1999 The Bulgarian Financial Crisis of 1996 – 1997
+              Zdravko Balyozov
+              DP/8/1999 The Economic Philosophy of Friedrich Hayek
+              (The Centenary of his Birth)
+              Nikolay Nenovsky
+              DP/9/1999 The Currency Board in Bulgaria: Design, Peculiarities
+              and Management of Foreign Exchange Cover
+              Dobrislav Dobrev
+
+
+
+             FOR CONTACT:                    BULGARIAN NATIONAL BANK
+                                             Publications Division
+                                             1, Al. Battenberg Sq.
+                                             1000 Sofia
+                                             BULGARIA
+
+                                             Telephone (+ 359 2) 9145 1351, 9145 1271, 981 1391
+                                             Fax (+ 359 2) 980 2425, 980 6493
+
+
+       28
+

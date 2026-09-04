@@ -1,0 +1,291 @@
+{
+  "file name" : "bnc-fr-rr-fitch-16-12.pdf.pdf",
+  "number of pages" : 2,
+  "author" : "Robert Stoll",
+  "title" : null,
+  "creation date" : "D:20161209144255-05'00'",
+  "modification date" : "D:20161209144255-05'00'",
+  "kids" : [ {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 2,
+    "level" : "Doctitle",
+    "page number" : 1,
+    "bounding box" : [ 72.024, 693.608, 519.072, 719.586 ],
+    "heading level" : 1,
+    "font" : "Times New Roman,Bold",
+    "font size" : 11.52,
+    "text color" : "[0.0]",
+    "content" : "Fitch Affirms IDR at ‘CCC’ and Upgrades Banco Nacional de Credito’s National Rating to ‘BBB(ven)’"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 3,
+    "page number" : 1,
+    "bounding box" : [ 72.024, 623.149, 533.467, 678.162 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Fitch Ratings, New York, 12 December 2016: Fitch Ratings has upgraded Banco Nacional de Credito, C.A., Banco Universal’s (BNC) Long Term National Scale Rating by one notch to ‘BBB(ven)’ and at the same time affirmed BNC’s long-term Issuer Default Rating (IDR) at 'CCC' and Viability Rating (VR) at 'ccc' following Fitch's peer review of Venezuelan Banks. No Outlook is assigned at this rating level. A full list of rating actions follows at the end of this press release."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 4,
+    "page number" : 1,
+    "bounding box" : [ 72.024, 542.629, 538.781, 609.162 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "The upgrade of the National Ratings reflects the improved capitalization, stable asset quality and liquidity metrics that are more in line with its peers. Although these factors did not impact the IDR rating which is constrained by the operating environment, they were deemed relevant enough to favorably impact the National ratings as the National Scale Credit Ratings are an assessment of credit quality relative to the rating of the lowest credit risk in a country. Fitch’s upgrade of BNC’s national long term rating also reflects changing relativities and greater compression of bank ratings on the local scale, as well as increasing uniformity of performance amid shared operating challenges."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 5,
+    "page number" : 1,
+    "bounding box" : [ 72.024, 462.196, 534.527, 519.185 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "KEY RATING DRIVERS – IDRS, VR, AND NATIONAL RATINGS The operating environment continues to be the key factor constraining BNC´s VR, which drives its IDR and does not take into account state support. Like all Venezuelan banks, BNC’s VR is strongly linked to the creditworthiness of the sovereign, given the significant level of government intervention, high level of exposure to sovereign securities and its vulnerability to the government’s policy choices and the country´s economic performance."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 6,
+    "page number" : 1,
+    "bounding box" : [ 72.024, 393.199, 538.473, 450.185 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "BNC’s ratings are also heavily influenced by the bank’s capital, liquidity and funding profile. Although most deposits are available on demand, deposits have been stable, in part due to the government’s capital controls. Furthermore, expansive fiscal and monetary policies continue to drive deposit growth, BNC has a large negative mismatch between short-term assets and liabilities, and access to longer-term funding is limited, as is the case across the Venezuelan banking system."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 7,
+    "page number" : 1,
+    "bounding box" : [ 72.024, 301.136, 532.657, 381.185 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Over the past three years, BNC’s loan growth had consistently exceeded that of the system, and its exposure to the public sector was among the highest compared with other Venezuelan universal/commercial banks rated by Fitch. However, the bank’s corporate focus, conservative lending policies and low-risk products have enabled the bank to report a low impaired loan to gross loan ratio, which compares favorably to its peers. The bank’s reserves for impaired loans to Gross loans improved to 2.2%, however this level was still slightly below the average of the banking system at September 30,2016. In light of the loan concentration and difficult operating environment that continues to impact the bank’s clients, Fitch views this reserve coverage level as weak."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 8,
+    "page number" : 1,
+    "bounding box" : [ 72.024, 232.139, 538.6, 287.152 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "High nominal loan growth has led to tighter capitalization however this was mitigated by fresh capital injections. The bank’s total regulatory capital ratio was slightly below the system’s average although the bank’s tangible common equity to tangible assets ratio was above that of the system. Capital levels are considered weak relative to Latin American peers in highly speculative countries, particularly in light of the low level of reserves compared with the size of the loan portfolio."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 9,
+    "page number" : 1,
+    "bounding box" : [ 72.024, 186.146, 528.294, 220.125 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "BNC’s profitability continued to lag that of its Venezuelan peers. Despite similar margins, the bank’s lower efficiency and limited cross-selling hinders profitability. The bank’s efficiency ratios were partly impacted by the bank’s growth strategy."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 10,
+    "page number" : 1,
+    "bounding box" : [ 72.024, 163.106, 418.236, 174.135 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "KEY RATING DRIVERS – SUPPORT RATING AND SUPPORT RATING FLOOR"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 11,
+    "page number" : 1,
+    "bounding box" : [ 72.024, 117.149, 526.798, 149.122 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "BNC' Support Rating (SR) of '5' and Support Rating Floor (SRF) of 'NF' reflect Fitch's expectation of no support. Support cannot be relied upon given Venezuela's highly speculative rating and lack of a consistent policy on bank support."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 13,
+    "page number" : 2,
+    "bounding box" : [ 72.024, 707.068, 391.382, 719.826 ],
+    "font" : "Times New Roman",
+    "font size" : 11.52,
+    "text color" : "[0.0]",
+    "content" : "RATING SENSITIVITIES – IDRS, VR and NATIONAL RATINGS"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 14,
+    "page number" : 2,
+    "bounding box" : [ 72.024, 670.906, 538.929, 693.455 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Should Venezuela’s macroeconomic/political woes deepen, as reflected in its sovereign ratings, BNC’s ratings could be downgraded. This is the main downside risk for BNC and the rest of Venezuela’s banks."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 15,
+    "page number" : 2,
+    "bounding box" : [ 72.024, 613.426, 515.78, 658.895 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Although not Fitch’s base case, BNC’s VR, National and long-term IDRs could be upgraded if the operating environment improves (more stable economic background, less intrusive regulation) and the bank reduces its exposure to the public sector. A sustained improvement of the bank’s financial profile could be positive for the bank’s national ratings."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 16,
+    "page number" : 2,
+    "bounding box" : [ 72.024, 544.429, 496.31, 601.415 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "RATING SENSITIVITIES – SUPPORT RATING AND SUPPORT RATING FLOOR Venezuela's propensity or ability to provide timely support to these banks is not likely to change given the sovereign's very low speculative-grade ratings. As such, the SR and SRF have no upgrade potential. The rating actions are as follows:"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 17,
+    "level" : "1",
+    "page number" : 2,
+    "bounding box" : [ 72.024, 521.359, 327.87, 530.412 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "--Long-term foreign and local currency IDRs affirmed at 'CCC';"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 18,
+    "level" : "1",
+    "page number" : 2,
+    "bounding box" : [ 72.024, 509.839, 321.246, 518.892 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "--Short-term foreign and local currency ratings affirmed at 'C';"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 19,
+    "level" : "1",
+    "page number" : 2,
+    "bounding box" : [ 72.024, 498.319, 208.692, 507.372 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "--Viability rating affirmed at 'ccc';"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 20,
+    "level" : "1",
+    "page number" : 2,
+    "bounding box" : [ 72.024, 486.919, 199.827, 495.972 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "--Support Rating affirmed at '5';"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 21,
+    "level" : "1",
+    "page number" : 2,
+    "bounding box" : [ 72.024, 475.399, 231.699, 484.452 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "--Support Rating Floor affirmed at 'NF';"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 22,
+    "level" : "1",
+    "page number" : 2,
+    "bounding box" : [ 72.024, 463.879, 377.719, 472.932 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "--Long-term national-scale rating upgraded to 'BBB(ven)' from 'BBB-(ven)';"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 23,
+    "level" : "1",
+    "page number" : 2,
+    "bounding box" : [ 72.024, 394.879, 292.528, 461.412 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "--Short-term national-scale rating affirmed at 'F3(ven)'. Contact: Primary Analyst Robert Stoll Director"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 24,
+    "level" : "2",
+    "page number" : 2,
+    "bounding box" : [ 72.024, 337.379, 147.7, 392.412 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "+1-212-908-9155 Secondary Analyst Mark Narron Director"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 25,
+    "level" : "2",
+    "page number" : 2,
+    "bounding box" : [ 72.024, 325.859, 142.76, 334.912 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "+1-212-908-7898"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 26,
+    "page number" : 2,
+    "bounding box" : [ 72.024, 279.899, 167.779, 311.872 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.051]",
+    "content" : "Committee Chairperson Alejandro Garcia, CFA Managing Director"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 27,
+    "level" : "2",
+    "page number" : 2,
+    "bounding box" : [ 72.024, 256.859, 537.694, 277.432 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.051]",
+    "content" : "+1 212-908-9137 Media Relations: Elizabeth Fogerty, New York, Tel: +1 (212) 908 0526, Email: elizabeth.fogerty@fitchratings.com."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 28,
+    "page number" : 2,
+    "bounding box" : [ 72.024, 210.899, 316.612, 242.872 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.051]",
+    "content" : "Additional information is available on www.fitchratings.com Applicable Criteria"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 30,
+    "page number" : 2,
+    "bounding box" : [ 72.024, 176.309, 271.344, 196.882 ],
+    "font" : "Times New Roman",
+    "font size" : 9.96,
+    "text color" : "[0.051]",
+    "content" : "Global Bank Rating Criteria (pub.25 Nov 2016) National Scale Rating Criteria (pub. 13 Oct 2013)"
+  } ]
+}

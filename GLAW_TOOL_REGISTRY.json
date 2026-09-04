@@ -1,0 +1,8 @@
+{
+  "schemaVersion":"0.1.0",
+  "status":"target-registry",
+  "confirmed":{"repositoryBinCommands":179,"source":"bin/","adapters":["host","MCP","Extism","Claude CLI","Codex CLI"]},
+  "adapterCategories":["llm","legal-research","document","storage","workflow","notification","court-handoff"],
+  "toolContract":{"agent":"agent id","skill":"skill id","adapter":"governed adapter id","authorization":"policy decision","audit":"required","status":"proposed"},
+  "rules":["no direct provider calls from prompts","argv-only execution where applicable","RBAC and conscience checks at host boundary","tool scope must be matter/role aware"]
+}

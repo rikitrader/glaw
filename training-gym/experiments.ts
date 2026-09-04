@@ -1,0 +1,3 @@
+export interface ExperimentSpec { experimentId:string; gym:string; models:string[]; taskIds:string[]; episodes:number; seeds:number[]; metrics:string[]; }
+export interface ExperimentResult { experimentId:string; rows:Array<{model:string;taskId:string;seed:number;success:boolean;reward:number;actions:number}>; }
+export function validateExperiment(spec:ExperimentSpec):string[]{const errors:string[]=[];if(!spec.experimentId||!spec.gym)errors.push('experiment identity required');if(!spec.models.length)errors.push('at least one model required');if(spec.episodes<1)errors.push('episodes must be positive');if(spec.seeds.length<spec.episodes)errors.push('seed count must cover episodes');return errors;}

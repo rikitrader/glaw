@@ -1,0 +1,6 @@
+import type { JurisdictionProfile, LegalIssueCode, SourceRegistry } from '../types/index.ts';
+const STATES=['AL','AK','AZ','AR','CA','CO','CT','DE','FL','GA','HI','ID','IL','IN','IA','KS','KY','LA','ME','MD','MA','MI','MN','MS','MO','MT','NE','NV','NH','NJ','NM','NY','NC','ND','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VT','VA','WA','WV','WI','WY','DC'] as const;
+export const SUPPORTED_JURISDICTIONS:JurisdictionProfile[]=STATES.map((code)=>({code,name:code==='DC'?'District of Columbia':code,level:code==='DC'?'DISTRICT':'STATE',sourceRegistryStatus:'NOT_STARTED',supportedIssues:[]}));
+export function getJurisdiction(code:string):JurisdictionProfile|undefined{return SUPPORTED_JURISDICTIONS.find((item)=>item.code===code.toUpperCase());}
+export function emptySourceRegistry(code:string):SourceRegistry { return {jurisdiction:code.toUpperCase(),legislature:[],administrativeCode:[],supremeCourt:[],appellateCourts:[],insuranceDepartment:[],approvedForms:[],bulletins:[],federalDistricts:[]}; }
+export const CORE_ISSUES:LegalIssueCode[]=['PROMPT_PAYMENT','MATCHING','LABOR_DEPRECIATION','APPRAISAL','BAD_FAITH','ASSIGNMENT','ORDINANCE_LAW','CAUSATION','PROOF_OF_LOSS','ATTORNEY_FEES','CLAIMS_PRACTICES','LATE_NOTICE','LIMITATIONS'];

@@ -1,0 +1,18 @@
+{
+  "intake_id":"INTAKE-YYYY-MM-DD-001",
+  "created_at":"YYYY-MM-DD",
+  "requester":"",
+  "question":"",
+  "user_hypothesis":"",
+  "country":"",
+  "episode":"",
+  "decision_horizon":"",
+  "output_mode":"RESEARCH | ANALYSIS | DEBATE | POLICY | HISTORICAL | CALCULATION | CRISIS | ACADEMIC | EXECUTIVE",
+  "policy_options":["STATUS_QUO"],
+  "required_postures":["hanke","monetarist","keynesian","new-keynesian","austrian","supply-side","imf-style-stabilization","central-banker","commercial-bank","sovereign","citizen","business","investor","competing-institutional"],
+  "data_intake":[],
+  "source_ids":[],
+  "critical_unknowns":[],
+  "requested_deliverables":["standard-economic-report"],
+  "status":"DRAFT"
+}

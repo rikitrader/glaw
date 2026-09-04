@@ -1,0 +1,3052 @@
+{
+  "file name" : "global-ratings---enero-2021.pdf.pdf",
+  "number of pages" : 14,
+  "author" : "Especialista de Riesgo",
+  "title" : "RESUMEN DEL DICTAMEN DE CALIFICACION DE RIESGO",
+  "creation date" : "D:20210121085921-04'00'",
+  "modification date" : "D:20210122134943-04'00'",
+  "kids" : [ {
+    "type" : "text block",
+    "id" : 127,
+    "page number" : 1,
+    "bounding box" : [ 47.76, 706.78, 533.04, 721.32 ],
+    "kids" : [ {
+      "type" : "heading",
+      "pdfua_tag" : "H1",
+      "id" : 1,
+      "level" : "Doctitle",
+      "page number" : 1,
+      "bounding box" : [ 149.42, 708.528, 427.055, 717.871 ],
+      "heading level" : 1,
+      "font" : "Arial,Bold",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "RESUMEN DEL DICTAMEN DE CALIFICACIÓN DE RIESGO"
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 128,
+    "page number" : 1,
+    "bounding box" : [ 58.104, 689.612, 404.847, 697.153 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "EMISOR: Banco Nacional de Crédito, C.A. Banco Universal"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 129,
+    "page number" : 1,
+    "bounding box" : [ 58.104, 618.212, 527.261, 678.553 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "DESCRIPCIÓN DE LOS TÍTULOS: Papeles Comerciales al portador hasta por la cantidad de SIETE MILLONES DE DÓLARES AMERICANOS (USD. 7.000.000,00), y/o su equivalente en bolívares calculados al tipo de cambio oficial, en cualquier momento durante la vigencia de la autorización. emisión 2021-I aprobada en Junta Directiva del Emisor celebrada de fecha 23 de septiembre de 2020 y lo acordado en Asamblea Extraordinaria de Accionistas en fecha 17 de febrero de 2021."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 130,
+    "page number" : 1,
+    "bounding box" : [ 58.104, 581.132, 526.95, 607.153 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "PLAZO DE LOS TÍTULOS: Hasta trescientos sesenta (360) días. USO DE LOS FONDOS: 100% financiamiento de corto plazo a los sectores productivos del país, inversión"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 131,
+    "page number" : 1,
+    "bounding box" : [ 229.13, 570.572, 467.829, 578.113 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "en títulos valores, y en general a las actividades propias del Banco."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 132,
+    "page number" : 1,
+    "bounding box" : [ 58.104, 518.942, 527.314, 558.283 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "INFORMACIÓN ANALIZADA: a) Estados financieros auditados de los semestres finalizados al 30 de junio y al 31 de diciembre de los años 2018, 2019 y al 30 de junio de 2020, auditados por Pacheco, Apostólico y Asociados (Firma miembro de PriceWaterhouseCoopers), más un corte al 31 de octubre de 2020."
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 133,
+    "level" : "1",
+    "page number" : 1,
+    "bounding box" : [ 229.13, 497.822, 384.81, 515.923 ],
+    "numbering style" : "english letters",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 229.13, 508.382, 384.81, 515.923 ],
+      "font" : "Arial",
+      "font size" : 8.04,
+      "text color" : "[0.0]",
+      "content" : "b) Entrevistas con Ejecutivos de la empresa",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 229.13, 497.822, 311.854, 505.363 ],
+      "font" : "Arial",
+      "font size" : 8.04,
+      "text color" : "[0.0]",
+      "content" : "c) Información sectorial",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 134,
+    "page number" : 1,
+    "bounding box" : [ 58.104, 477.662, 91.526, 485.203 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "RIESGO:"
+  }, {
+    "type" : "text block",
+    "id" : 135,
+    "page number" : 1,
+    "bounding box" : [ 226.85, 476.95, 237.89, 487.03 ],
+    "kids" : [ {
+      "type" : "heading",
+      "pdfua_tag" : "H4",
+      "id" : 2,
+      "level" : "Subtitle",
+      "page number" : 1,
+      "bounding box" : [ 227.33, 477.662, 237.32, 485.203 ],
+      "heading level" : 4,
+      "font" : "Arial,Bold",
+      "font size" : 8.04,
+      "text color" : "[0.0]",
+      "content" : "A3"
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 136,
+    "page number" : 1,
+    "bounding box" : [ 247.01, 477.662, 454.735, 485.203 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "La perspectiva de la calificación de largo plazo es positiva."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 137,
+    "page number" : 1,
+    "bounding box" : [ 226.85, 423.902, 527.039, 475.348 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "Categoría: “A” Corresponde a aquellos instrumentos con una buena capacidad de pago de capital e intereses en los términos y plazos pactados, la cual no debería verse afectada ante eventuales cambios en el emisor, en el sector o área a que este pertenece, o en la economía, solo en casos extremos, pudiera afectarse levemente el riesgo del instrumento calificado."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 139,
+    "page number" : 1,
+    "bounding box" : [ 226.73, 360.402, 526.96, 422.428 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "Subcategoría: “A3”: Se trata de instrumentos que presentan para el inversor un muy bajo riesgo. Cuentan con una adecuada capacidad de pago, del capital e intereses, en los términos y plazos pactados. A juicio del calificador, solo en casos extremos, eventuales cambios en la sociedad emisora, en el sector económico a que esta pertenece o en la marcha de la economía en general, podrían incrementar levemente el riesgo del instrumento bajo consideración."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 141,
+    "page number" : 1,
+    "bounding box" : [ 58.104, 308.682, 527.225, 348.143 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "PERIODICIDAD DE LA REVISIÓN: Ciento ochenta (180) días contados a partir del inicio de la oferta pública autorizada por la Superintendencia Nacional de Valores, o cuando GLOBAL RATINGS SOCIEDAD CALIFICADORA DE RIESGO, C.A. tenga conocimiento de hechos que puedan alterar substancialmente el nivel de riesgo de los títulos valores emitidos."
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 146,
+    "page number" : 1,
+    "bounding box" : [ 58.339, 147.145, 220.531, 265.395 ],
+    "source" : "global-ratings---enero-2021.pdf_images/imageFile3.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 147,
+    "page number" : 1,
+    "bounding box" : [ 236.58, 147.653, 378.18, 237.753 ],
+    "source" : "global-ratings---enero-2021.pdf_images/imageFile4.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 148,
+    "page number" : 1,
+    "bounding box" : [ 400.698, 158.147, 534.898, 239.297 ],
+    "source" : "global-ratings---enero-2021.pdf_images/imageFile5.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 143,
+    "page number" : 1,
+    "bounding box" : [ 52.2, 69.319, 227.88, 83.359 ],
+    "source" : "global-ratings---enero-2021.pdf_images/imageFile6.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 145,
+    "page number" : 1,
+    "bounding box" : [ 359.4, 69.319, 535.08, 83.359 ],
+    "source" : "global-ratings---enero-2021.pdf_images/imageFile7.png"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 144,
+    "page number" : 1,
+    "bounding box" : [ 59.424, 74.138, 528.136, 83.263 ],
+    "font" : "Tahoma",
+    "font size" : 7.56,
+    "text color" : "[0.0]",
+    "content" : "Caracas, 21 de enero de 2021 Nº DIC-GR-LA/2021"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 154,
+    "page number" : 2,
+    "bounding box" : [ 85.104, 710.088, 269.912, 719.431 ],
+    "font" : "Arial,Bold",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "FUNDAMENTOS DE LA CALIFICACIÓN"
+  }, {
+    "type" : "text block",
+    "id" : 155,
+    "page number" : 2,
+    "bounding box" : [ 79.224, 307.85, 533.04, 709.78 ],
+    "kids" : [ {
+      "type" : "list",
+      "pdfua_tag" : "L",
+      "id" : 29,
+      "level" : "1",
+      "page number" : 2,
+      "bounding box" : [ 85.104, 311.0, 527.34, 708.388 ],
+      "numbering style" : "unordered",
+      "number of list items" : 10,
+      "list items" : [ {
+        "type" : "list item",
+        "pdfua_tag" : "LI",
+        "page number" : 2,
+        "bounding box" : [ 85.104, 685.45, 526.799, 708.388 ],
+        "font" : "Symbol",
+        "font size" : 9.0,
+        "text color" : "[0.0]",
+        "content" : " El Banco Nacional de Crédito, C.A. es una entidad financiera que inició operaciones en Venezuela en febrero de 2003 como banco comercial y desde el 2004 como banco universal.",
+        "kids" : [ ]
+      }, {
+        "type" : "list item",
+        "pdfua_tag" : "LI",
+        "page number" : 2,
+        "bounding box" : [ 85.104, 649.09, 527.34, 683.908 ],
+        "font" : "Symbol",
+        "font size" : 9.0,
+        "text color" : "[0.0]",
+        "content" : " El emisor se ubica de acuerdo a la SUDEBAN como parte del estrato de bancos medianos, liderando el mismo con una participación mayoritaria, medida en captaciones del público (48%), créditos (32%) y activos (41%).",
+        "kids" : [ ]
+      }, {
+        "type" : "list item",
+        "pdfua_tag" : "LI",
+        "page number" : 2,
+        "bounding box" : [ 85.104, 612.85, 527.244, 647.548 ],
+        "font" : "Symbol",
+        "font size" : 9.0,
+        "text color" : "[0.0]",
+        "content" : " Sus competidores directos son los bancos Venezolano de Crédito, Bancaribe, BOD y Banesco, no obstante, el emisor cuenta con una posición notable en el total de bancos comerciales y universales, en lo que a cuotas de mercado se refiere.",
+        "kids" : [ ]
+      }, {
+        "type" : "list item",
+        "pdfua_tag" : "LI",
+        "page number" : 2,
+        "bounding box" : [ 85.104, 564.61, 527.155, 611.308 ],
+        "font" : "Symbol",
+        "font size" : 9.0,
+        "text color" : "[0.0]",
+        "content" : " La cartera de créditos presenta un crecimiento notable, como resultado del mayor posicionamiento de los créditos netamente comerciales, lo que va en línea con la estrategia que intenta desarrollar el emisor de potenciar desarrollo progresivo de la Banca de Empresa, en vista de que a la fecha es el que aporta el mayor nivel de rentabilidad financiera y sostenibilidad económica a la Institución.",
+        "kids" : [ ]
+      }, {
+        "type" : "list item",
+        "pdfua_tag" : "LI",
+        "page number" : 2,
+        "bounding box" : [ 85.104, 528.22, 527.155, 563.038 ],
+        "font" : "Symbol",
+        "font size" : 9.0,
+        "text color" : "[0.0]",
+        "content" : " La rentabilidad operativa de BNC es significativa para el periodo analizado, lo que es muy relevante, en vista de que históricamente éste ha sido un punto focal para su estrategia de consolidarse en el sistema financiero.",
+        "kids" : [ ]
+      }, {
+        "type" : "list item",
+        "pdfua_tag" : "LI",
+        "page number" : 2,
+        "bounding box" : [ 85.104, 503.86, 527.194, 526.678 ],
+        "font" : "Symbol",
+        "font size" : 9.0,
+        "text color" : "[0.0]",
+        "content" : " La morosidad del banco (4,76%) por debajo de la media de la banca privada (4,98%), con tendencia decreciente en el tiempo.",
+        "kids" : [ ]
+      }, {
+        "type" : "list item",
+        "pdfua_tag" : "LI",
+        "page number" : 2,
+        "bounding box" : [ 85.104, 443.74, 527.182, 502.318 ],
+        "font" : "Symbol",
+        "font size" : 9.0,
+        "text color" : "[0.0]",
+        "content" : " Es importante considerar que la empresa es susceptible a los efectos de la coyuntura actual, principalmente el aumento de las necesidades de liquidez para solventar la emergencia sanitaria, en vista de las limitaciones crediticias de la banca a consecuencia de las medidas regulatorias aplicadas por el ejecutivo (el encaje legal, las restricciones patrimoniales y las regulaciones sobre la cartera de crédito), planteando un escenario de decrecimiento económico, lo que afectará el desempeño del sector.",
+        "kids" : [ ]
+      }, {
+        "type" : "list item",
+        "pdfua_tag" : "LI",
+        "page number" : 2,
+        "bounding box" : [ 85.104, 407.5, 527.047, 442.198 ],
+        "font" : "Symbol",
+        "font size" : 9.0,
+        "text color" : "[0.0]",
+        "content" : " La posición en moneda extranjera neta del emisor es favorable, situación que constituye un paliativo ante la exposición del patrimonio de la compañía ante posibles descalces financieros, consecuencia de la variación en las condiciones económicas o en la legislación vigente.",
+        "kids" : [ ]
+      }, {
+        "type" : "list item",
+        "pdfua_tag" : "LI",
+        "page number" : 2,
+        "bounding box" : [ 85.104, 371.12, 526.954, 405.838 ],
+        "font" : "Symbol",
+        "font size" : 9.0,
+        "text color" : "[0.0]",
+        "content" : " Global Ratings continuará monitoreando el riesgo integral de la empresa dada la evolución del escenario económico actual, con la finalidad de que la calificación otorgada refleje adecuadamente el perfil de riesgo de la compañía.",
+        "kids" : [ ]
+      }, {
+        "type" : "list item",
+        "pdfua_tag" : "LI",
+        "page number" : 2,
+        "bounding box" : [ 85.104, 311.0, 527.229, 369.578 ],
+        "font" : "Symbol",
+        "font size" : 9.0,
+        "text color" : "[0.0]",
+        "content" : " La Junta Calificadora asigna la Categoría “A”, Subcategoría “A3” a la presente emisión 2021-I de Papeles comerciales al portador hasta por un monto de SIETE MILLONES DE DÓLARES AMERICANOS (USD. 7.000.000.000,00), y/o su equivalente en bolívares calculados al tipo de cambio oficial, en cualquier momento durante la vigencia de la autorización. Del Banco Nacional de Crédito, C.A. Banco Universal; La perspectiva de la calificación de largo plazo es positiva.",
+        "kids" : [ ]
+      } ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 156,
+    "level" : "2",
+    "page number" : 2,
+    "bounding box" : [ 62.424, 264.478, 215.649, 285.341 ],
+    "font" : "Arial,Bold",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "1. DESCRIPCIÓN DEL NEGOCIO 1.1 PERFIL DE LA COMPAÑÍA"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 158,
+    "page number" : 2,
+    "bounding box" : [ 62.424, 229.768, 288.425, 262.181 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Banco Nacional de Crédito, C.A., Banco Universal (BNC) es una entidad financiera venezolana de capital privado que inició operaciones en febrero"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 162,
+    "level" : "3",
+    "page number" : 2,
+    "bounding box" : [ 62.424, 92.012, 288.401, 227.711 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 2,
+      "bounding box" : [ 62.424, 218.368, 288.376, 227.711 ],
+      "font" : "Arial",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "de 2003 como banco comercial y desde diciembre",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 2,
+      "bounding box" : [ 62.424, 92.012, 288.401, 216.191 ],
+      "font" : "Arial",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "de 2004 como banco universal; surge de la iniciativa de un grupo de venezolanos integrados por más de sesenta inversionistas ampliamente reconocidos en el medio bancario nacional, que se organizaron para adquirir la sucursal de un banco extranjero (Banco Tequendama) y crear una nueva entidad financiera desarrollada bajo una estrategia de crecimiento dinámico, definiéndose como una institución con un enfoque en la gestión centrada en el cliente, bajo su eslogan \"Donde diste justo en el Banco\". Tiene su sede principal",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 174,
+    "page number" : 2,
+    "bounding box" : [ 323.83, 264.358, 549.659, 285.221 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "en la Torre Sur del Centro Empresarial Caracas de la Urbanización San Bernardino, Caracas."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 176,
+    "page number" : 2,
+    "bounding box" : [ 323.83, 91.892, 549.9, 250.661 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "El Banco se dedica a la actividad de intermediación financiera, que consiste en la captación de recursos, con la finalidad de otorgar créditos o financiamientos y hacer inversiones en títulos valores. Tiene el propósito de mantenerse como una institución financiera sólida y rentable, líder en la prestación de servicios y productos a través de una excelente capacidad de atención, y contando con tecnología de punta que mantenga la calidad de sus servicios. BNC se ha caracterizado por mantener presencia en el mercado de valores venezolano, cotizando sus acciones en la Bolsa de Valores de Caracas, así como realizando emisiones de títulos valores, que"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 229,
+    "page number" : 3,
+    "bounding box" : [ 323.83, 669.49, 549.942, 719.592 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "2003, El banco es adquirido por un grupo de inversionistas venezolanos en febrero de 2003, cambiando el nombre en abril del mismo año a “Banco Nacional de Crédito”, a la fecha contaba con tres agencias."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 182,
+    "page number" : 3,
+    "bounding box" : [ 62.424, 698.328, 288.138, 719.191 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "le han permitido apoyar su expansión y reforzar su estructura patrimonial."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 185,
+    "page number" : 3,
+    "bounding box" : [ 62.424, 663.888, 288.386, 684.751 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Los objetivos estratégicos del BNC se resumen a continuación:"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 234,
+    "level" : "5",
+    "page number" : 3,
+    "bounding box" : [ 323.83, 441.7, 549.882, 667.852 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 3,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 323.83, 648.85, 549.882, 667.852 ],
+      "font" : "Arial,Bold",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : "2007, Aumenta significativamente el número de oficinas hasta llegar a 79 agencias a nivel nacional.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 323.83, 607.45, 549.811, 647.092 ],
+      "font" : "Arial,Bold",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : "2008, En octubre solicita autorización a la Superintendencia de las Instituciones del Sector Bancario (SUDEBAN) para la apertura de una sucursal en la ciudad de Willemstad, Curazao.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 323.83, 441.7, 549.867, 605.692 ],
+      "font" : "Arial,Bold",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : "2009, El 8 de mayo adquiere la totalidad de las acciones de Stanford Bank por $111 millones de dólares. Para el momento de la compra Stanford Bank poseía 15 agencias en Venezuela. Ese mismo año, la SUDEBAN, mediante oficio SBIF-DSB-II-GGTEGEE-07154, y el Banco Central de Curazao y San Martin, mediante Comunicación N° Lcm/ni/2009-001159, autorizan la apertura de la sucursal de Curazao. 2016, Incorpora nuevas agencias y alcanza la cifra de 171 a nivel nacional, con 4.460 cajeros y un aproximado de 1.417.932 clientes. 2019, BNC se enfocó en el ajuste de su portafolio de productos y servicios a las necesidades de sus clientes, a la modernización de sus sistemas, a la continua mejora de la calidad de servicio, y al apoyo de la autogestión para lograr mayor eficiencia.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 188,
+    "level" : "4",
+    "page number" : 3,
+    "bounding box" : [ 65.784, 533.802, 288.433, 663.753 ],
+    "numbering style" : "unordered",
+    "number of list items" : 5,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 65.784, 628.728, 288.433, 663.753 ],
+      "font" : "Symbol",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : " Desarrollar su modelo de negocios, orientado a rentabilizar y fidelizar la relación con sus clientes.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 65.784, 616.392, 285.952, 628.593 ],
+      "font" : "Symbol",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : " Búsqueda de nuevas alternativas de negocio.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 65.784, 569.808, 288.213, 616.473 ],
+      "font" : "Symbol",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : " Fortalecer, ampliar y consolidar el portafolio de productos y servicios en función de las necesidades y condiciones específicas del mercado.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 65.784, 546.138, 288.32, 569.793 ],
+      "font" : "Symbol",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : " Consolidar su presencia en todo el territorio nacional.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 65.784, 533.802, 231.561, 546.003 ],
+      "font" : "Symbol",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : " Afianzar su posición de mercado.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 191,
+    "page number" : 3,
+    "bounding box" : [ 62.424, 476.538, 288.428, 520.321 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Al 31 de octubre de 2020, el BNC cuenta con 138 puntos de atención (agencias) que cubren el territorio nacional, además de una Sucursal en Curazao, con un capital humano integrado por"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 196,
+    "level" : "5",
+    "page number" : 3,
+    "bounding box" : [ 62.424, 143.008, 288.511, 474.361 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 1,
+    "next list id" : 261,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 62.424, 143.008, 288.511, 474.361 ],
+      "font" : "Arial",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "1.686 personas. La mayor parte de los activos del banco están ubicados en Venezuela. Asimismo, la red de cajeros electrónicos cerró con 330 equipos activos a nivel nacional, con instalaciones asociadas a las aperturas de agencias, negociaciones con empresas y ubicaciones estratégicas de negocio, manteniendo el nivel de efectividad de los cajeros automáticos por encima del 70%. El funcionamiento de la red de ATMs fue limitada debido a las restricciones de efectivo recibido por la banca, además, de las circunstancias excepcionales confrontadas a partir del mes de marzo. Adicionalmente, en el primer semestre de 2020, recibieron 1.103 quejas y reclamos por un monto de Bs. 954 millones, favoreciendo a los clientes en un 11% de los casos y generando reintegros por Bs. 78.9 millones, cifra que representa aproximadamente el 10% del monto total de los reclamos recibidos. El origen de las reclamaciones recibidas se concentra en el uso de canales electrónicos, básicamente operaciones relacionadas con el uso de tarjetas de débito en puntos de venta y transferencias electrónicas tradicionales o vía pago móvil. Destaca que el porcentaje de reclamos atendidos dentro del lapso perentorio establecido en la Resolución N° 063.15 emanada de la SUDEBAN se mantienen con una efectividad del 100%.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 239,
+    "page number" : 3,
+    "bounding box" : [ 428.02, 429.526, 549.932, 438.508 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "Fuente: BNC – Elaboración propia"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 241,
+    "level" : "Doctitle",
+    "page number" : 3,
+    "bounding box" : [ 323.83, 406.578, 480.959, 415.921 ],
+    "heading level" : 1,
+    "font" : "Arial,Bold",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "1.2 ESTRUCTURA Y PROPIEDAD"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 242,
+    "page number" : 3,
+    "bounding box" : [ 323.83, 325.918, 549.727, 404.281 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Al 21 de diciembre de 2020, el capital social de Banco Nacional de Crédito, C.A., Banco Universal es de Bs. 5.791.930.000, representado en igual número de acciones comunes, nominativas, no convertibles, al portador, de una misma clase, con valor nominal de Bs. 1,00 cada una, totalmente suscritas y pagadas."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 243,
+    "level" : "Subtitle",
+    "page number" : 3,
+    "bounding box" : [ 323.83, 303.118, 511.081, 312.461 ],
+    "heading level" : 1,
+    "font" : "Arial,Bold",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Tabla 1. Posición Accionaria Junio2020"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 249,
+    "page number" : 3,
+    "bounding box" : [ 318.298, 206.374, 551.476, 300.424 ],
+    "font" : "Arial",
+    "font size" : 7.427,
+    "text color" : "[0.0]",
+    "content" : "Accionistas N° de Acciones (%) Part. Nogueroles García, Jorge Luis 564.313.138 9,74% Valores Torre Casa, C.A. 416.041.332 7,18% Halabi Harb, Anuar 349.899.089 6,04% Sociedad Financiera Intercontinental, Ltd. 306.404.593 5,29% Alintio International, S.L. 287.134.247 4,96% Curbelo Pérez, Juan Ramón 228.690.908 3,95% Zasuma Inversiones, C.A. 222.456.886 3,84% Otros con menor participación 3.416.990.179 59,00% Total 5.791.930.372 100,00%"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 244,
+    "page number" : 3,
+    "bounding box" : [ 428.02, 196.196, 549.928, 205.178 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "Fuente: BNC – Elaboración propia"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 245,
+    "page number" : 3,
+    "bounding box" : [ 323.83, 150.208, 549.404, 182.591 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "La Junta Directiva está conformada los siguientes miembros: Directores Principales:"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 247,
+    "level" : "4",
+    "page number" : 3,
+    "bounding box" : [ 327.19, 77.756, 503.026, 150.073 ],
+    "numbering style" : "unordered",
+    "number of list items" : 5,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 327.19, 126.568, 477.957, 150.073 ],
+      "font" : "Symbol",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : " Jorge Luis Nogueroles García Presidente",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 327.19, 114.232, 427.37, 126.433 ],
+      "font" : "Symbol",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : " Anuar Halabi Harb",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 327.19, 102.112, 494.58, 114.313 ],
+      "font" : "Symbol",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : " Luis Alberto Hinestrosa Pocaterra",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 327.19, 89.876, 503.026, 102.077 ],
+      "font" : "Symbol",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : " Nicolás Alejandro Kozma Solymosy",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 327.19, 77.756, 502.239, 89.957 ],
+      "font" : "Symbol",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : " José Ramón Rotaeche Jaureguízar",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 226,
+    "page number" : 3,
+    "bounding box" : [ 62.424, 86.694, 288.431, 129.572 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "EVOLUCIÓN HISTÓRICA 1977, Abre sus puertas en el estado Táchira como “Banco Tequendama” sucursal del banco del mismo nombre en Colombia."
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 256,
+    "level" : "4",
+    "page number" : 4,
+    "bounding box" : [ 65.784, 696.912, 242.556, 721.233 ],
+    "numbering style" : "unordered",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 65.784, 709.032, 204.758, 721.233 ],
+      "font" : "Symbol",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : " Luisa M. Vollmer de Reuter",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 65.784, 696.912, 242.556, 709.113 ],
+      "font" : "Symbol",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : " Andrés Eduardo Yanes Monteverde",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 265,
+    "page number" : 4,
+    "bounding box" : [ 323.83, 698.328, 549.768, 719.191 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "importancia al 3,5% de la liquidez monetaria, respecto al 7,4% del segundo semestre de 2019."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 257,
+    "page number" : 4,
+    "bounding box" : [ 62.424, 673.968, 157.949, 683.311 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Directores Suplentes:"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 259,
+    "level" : "4",
+    "page number" : 4,
+    "bounding box" : [ 65.784, 600.792, 230.963, 673.953 ],
+    "numbering style" : "unordered",
+    "number of list items" : 6,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 65.784, 661.752, 180.844, 673.953 ],
+      "font" : "Symbol",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : " Martiza Ripanti Flores",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 65.784, 649.512, 230.963, 661.713 ],
+      "font" : "Symbol",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : " Pedro Jorge Mendoza Rodríguez",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 65.784, 637.392, 178.255, 649.593 ],
+      "font" : "Symbol",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : " Antonio Izsak Hecker",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 65.784, 625.152, 201.382, 637.353 ],
+      "font" : "Symbol",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : " Alvar Nelson Ortiz Cusnier",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 65.784, 613.032, 216.564, 625.233 ],
+      "font" : "Symbol",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : " Luis Enrique Fernández Feo *",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 65.784, 600.792, 204.924, 612.993 ],
+      "font" : "Symbol",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : " Eleonora Oropeza Filardo *",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 260,
+    "level" : "5",
+    "page number" : 4,
+    "bounding box" : [ 62.424, 571.172, 251.08, 587.833 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "* Designación pendiente de autorización por parte de SUDEBAN."
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 261,
+    "level" : "5",
+    "page number" : 4,
+    "bounding box" : [ 62.424, 444.618, 288.424, 557.521 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 1,
+    "previous list id" : 196,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 4,
+      "bounding box" : [ 62.424, 444.618, 288.424, 557.521 ],
+      "font" : "Arial,Bold",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "2. ANÁLISIS DEL ENTORNO La actividad económica en Venezuela presentará una caída de 20% este 2020 y de 5% en 2021 en base interanual de acuerdo a nuevas estimaciones del Fondo Monetario Internacional, consecuencia del impacto de las medidas de cuarentena establecidas para contener la pandemia, así como la volatilidad de los precios del petróleo de los que se depende en gran medida para la estabilidad financiera del país.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 262,
+    "page number" : 4,
+    "bounding box" : [ 62.424, 329.518, 288.485, 430.921 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "En el primer semestre de 2020 la economía venezolana se contrajo 20,70% respecto al mismo periodo del año anterior, según estimados de la firma especializada LatinFocus. Para el primer trimestre de este año, la economía se contrajo un 19,9%. Sin embargo, para el segundo trimestre del año la caída fue de 21,5% impactada especialmente por la aparición del Covid-19 y la escasez de la gasolina."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 263,
+    "page number" : 4,
+    "bounding box" : [ 62.424, 214.528, 288.322, 315.941 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "La producción de PDVSA reportada a la OPEP, declinó un 35,77% en promedio acumulado del año hasta octubre 2020, manteniendo la relación cercana entre el petróleo y la actividad económica. El precio del petróleo crudo “Merey” venezolano, disminuyó en promedio acumulado a octubre 2020 42,6%, ubicándose en 26,23 USD por barril, un elevado impacto que se contabilizó en las exportaciones junto a la caída en la producción."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 264,
+    "page number" : 4,
+    "bounding box" : [ 62.424, 76.508, 288.516, 200.831 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "El crecimiento de la liquidez monetaria se desaceleró en 40,8% en el primer semestre de 2020, presentando un aumento de 243,4% frente a 410,9% del segundo semestre de 2019. La causa fundamental de su reducción continúa siendo un menor financiamiento del gasto público con el BCV. El crecimiento de 243,4% de la liquidez monetaria no estuvo equilibrado, debido a que la emisión de billetes solo creció en 63,5% y de los depósitos en 257,8%. Los billetes en circulación al cierre del semestre redujeron su"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 266,
+    "page number" : 4,
+    "bounding box" : [ 323.83, 548.898, 549.842, 684.751 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "En abril 2020, los coeficientes de encaje legal, que representan el porcentaje de las captaciones que los bancos deben mantener inmovilizadas en el BCV, se unificaron a la tasa de 93%, siendo sus valores anteriores 57% de encaje legal ordinario y 100% de encaje legal marginal. En forma agregada significó que por ocho semanas del segundo trimestre desaparecieron los déficits de reservas bancarias en la banca universal y comercial, en comparación con el primer trimestre donde se registró un máximo de déficit de reservas bancarias de 19,2 billones de bolívares."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 267,
+    "page number" : 4,
+    "bounding box" : [ 323.83, 410.898, 549.703, 535.201 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "En el mes de septiembre el Índice de Precios al Consumidor (INPC) tuvo una variación de 27,9%. La inflación acumulada entre enero y septiembre 2020 fue de 844,1%, teniendo un ritmo más acelerado que el crecimiento monetario de 171,8% para el mismo periodo según cifras publicadas por el BCV. Esto genera que Venezuela mantenga un escenario de hiperinflación con una profunda crisis que se expresa adicionalmente en la contracción de la actividad productiva y escasez cíclica de productos de primera necesidad."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 268,
+    "page number" : 4,
+    "bounding box" : [ 323.83, 318.838, 549.649, 397.181 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "El actual escenario es un reto para Venezuela, ya que no depende únicamente de la recuperación de su aparato productivo interno, sino de la reactivación heterogénea del resto de la economía mundial, para que se restablezca la demanda petrolera y se puedan retomar las negociaciones con sus principales socios comerciales."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 269,
+    "page number" : 4,
+    "bounding box" : [ 323.83, 88.892, 549.733, 305.141 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Analizando el desenvolvimiento de la banca universal y comercial, durante el semestre finalizado el 30 de junio de 2020 y el periodo transcurrido hasta octubre 2020, se realizan las siguientes precisiones: los márgenes del estado de resultados han seguido una tendencia favorable, impactados positivamente por los ingresos generados por los créditos, los cuales presentaron un aumento representativo. Por su parte, los gastos financieros se incrementaron menos que proporcionalmente, permitiendo mejorar el margen financiero, lo que se explica en gran parte, por la normativa que limita la exposición patrimonial, en vista de que los bancos prestan a los niveles máximos permitidos para el cumplimento de la legislación, lo que ha traído como consecuencia, que las captaciones han migrado en mayor medida hacia depósitos a la vista."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 275,
+    "page number" : 5,
+    "bounding box" : [ 62.424, 606.408, 288.445, 719.191 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "En lo que se refiere a rentabilidad, el sistema mostró indicios de mejora durante el semestre en curso, en parte relacionado con la flexibilización parcial del marco regulatorio (encaje legal), no obstante, ante la obligatoriedad de encajar el 93% de los nuevos recursos captados del público, provocó que los fondos disponibles fueran dirigidos hacia operaciones de corto plazo, fundamentalmente el financiamiento de la producción y comercialización de alimentos."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 278,
+    "page number" : 5,
+    "bounding box" : [ 323.83, 652.368, 549.613, 719.191 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "correspondiente al 9,00%. Con respecto a los niveles de liquidez, las disponibilidades crecieron, lo que en gran medida se encuentra asociado a los mayores niveles de encaje exigidos por ley a las instituciones financieras, en conjunto con el incremento de los depósitos del público."
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 279,
+    "level" : "6",
+    "page number" : 5,
+    "bounding box" : [ 323.83, 77.372, 549.969, 638.791 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 5,
+      "bounding box" : [ 323.83, 594.888, 549.781, 638.791 ],
+      "font" : "Arial,Bold",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "2.1 ASPECTOS REGULATORIOS Se resumen las disposiciones normativas más relevantes de los últimos meses para el sistema de bancos:",
+      "kids" : [ {
+        "type" : "list",
+        "pdfua_tag" : "L",
+        "id" : 106,
+        "level" : "7",
+        "page number" : 5,
+        "bounding box" : [ 323.83, 445.338, 549.955, 592.831 ],
+        "numbering style" : "arabic numbers",
+        "number of list items" : 2,
+        "list items" : [ {
+          "type" : "list item",
+          "pdfua_tag" : "LI",
+          "page number" : 5,
+          "bounding box" : [ 323.83, 525.858, 549.861, 592.831 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.96,
+          "text color" : "[0.0]",
+          "content" : "Resolución Nº 19-09-01 (05/09/2019): Se establece que los créditos comerciales en moneda nacional a ser otorgados por las instituciones bancarias, deberán ser expresados únicamente mediante el uso de la Unidad de Valor de Crédito Comercial (UVCC).",
+          "kids" : [ ]
+        }, {
+          "type" : "list item",
+          "pdfua_tag" : "LI",
+          "page number" : 5,
+          "bounding box" : [ 323.83, 445.338, 549.955, 523.801 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.96,
+          "text color" : "[0.0]",
+          "content" : "Resolución Nº 20-02-01 (20/02/2020): Se informa al público en general el límite máximo de la comisión flat que las instituciones bancarias podrán cobrar, con ocasión a los créditos que se otorguen en el marco de lo dispuesto en la Resolución N° 20-02-01, será de hasta el 0,50% del monto del crédito.",
+          "kids" : [ ]
+        } ]
+      }, {
+        "type" : "list",
+        "pdfua_tag" : "L",
+        "id" : 107,
+        "level" : "8",
+        "page number" : 5,
+        "bounding box" : [ 323.83, 169.288, 549.862, 443.281 ],
+        "numbering style" : "arabic numbers",
+        "number of list items" : 2,
+        "list items" : [ {
+          "type" : "list item",
+          "pdfua_tag" : "LI",
+          "page number" : 5,
+          "bounding box" : [ 323.83, 399.378, 549.861, 443.281 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.96,
+          "text color" : "[0.0]",
+          "content" : "Resolución Nº 20-02-01 (06/03/2020): Se establece el uso de la Unidad de Valor de Crédito Productivo (UVCP) para los créditos otorgados en el marco de la Cartera Única Productiva Nacional.",
+          "kids" : [ ]
+        }, {
+          "type" : "list item",
+          "pdfua_tag" : "LI",
+          "page number" : 5,
+          "bounding box" : [ 323.83, 169.288, 549.862, 397.301 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.96,
+          "text color" : "[0.0]",
+          "content" : "Resolución Nº 20-03-01 (29/03/2020): Se establece que los bancos deben mantener un encaje legal mínimo del 93% sobre las obligaciones netas e inversiones cedidas, en el caso de las operaciones en moneda extranjera, el encaje mínimo será de 31%, del monto total de las obligaciones netas. Asimismo, la tasa de interés mínima que pagarán los bancos que presenten déficit de encaje será del 138% anual. Decreto Nº 4.168 (23/03/2020): La Superintendencia de Instituciones del Sector Bancario (SUDEBAN) dicta las medidas para la evaluación de la cartera de créditos, la Constitución de Provisión por Categoría de Riesgos; la ejecución de las garantías y condiciones especiales para los créditos otorgados, posteriores a las medidas de Protección Económica de carácter temporal publicadas en la Gaceta Oficial N° 41.965, de fecha 15 de septiembre 2019.",
+          "kids" : [ ]
+        } ]
+      } ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 5,
+      "bounding box" : [ 323.83, 77.372, 549.969, 155.831 ],
+      "font" : "Arial,Bold",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "2.2 ESTRATEGIA Y POSICIONAMIENTO Banco Nacional de Crédito, C.A. está autorizado para realizar actividades financieras en la categoría de banco universal. Opera en los segmentos de crédito (comercial, consumo, productivo, microempresa e hipotecario, entre otros), inversiones, cuentas y medios de pago.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 276,
+    "page number" : 5,
+    "bounding box" : [ 62.424, 213.088, 288.535, 590.431 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "En lo relativo al cumplimiento de las carteras dirigidas a los sectores considerados prioritarios por el Ejecutivo Nacional, a inicios del semestre fueron derogadas las normativas legales y contables relacionadas con los sectores agrícola, turismo, hipotecario y manufactura, eliminándose en consecuencia, los porcentajes de cumplimiento para esas carteras que, hasta el mes de febrero 2020, eran de carácter obligatorio para la banca. En paralelo, en el mes de marzo de 2020 mediante un Decreto Constituyente se crea la Cartera Única Productiva Nacional, conformada por los financiamientos de los sectores antes citados, agroalimentarios, manufacturero, turístico e hipotecario, y se incorpora el sector salud, todo con el fin de promover y fortalecer la producción y comercialización de bienes y servicios en el país, creándose además el Comité Rector de la Cartera Única Productiva Nacional, ente encargado de determinar las prioridades, destino y beneficiarios de los financiamientos. A partir del mes de marzo 2020 y hasta la fecha, la prioridad ha sido al sector agroalimentario. Bajo este nuevo esquema, los financiamientos asociados son expresados en Unidad de Valor de Crédito Productivo (UVCP). Se establecerá, mediante Resolución del Comité Rector, un nuevo porcentaje de cumplimiento obligatorio que será equivalente como mínimo, a un diez por ciento (10%) y un máximo de veinticinco por ciento (25%) de la cartera bruta y de conformidad con los cierres contables de la banca. A la fecha, los porcentajes específicos por actividad aún no han sido establecidos."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 277,
+    "page number" : 5,
+    "bounding box" : [ 62.424, 75.068, 288.355, 199.391 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "En cuanto a la calidad de los activos, se observa una disminución continua en los índices de morosidad simple y ampliada, lo que demuestra que la banca mantiene adecuados controles en su gestión de riesgo de crédito, que se conservan robustos, incluso en un entorno recesivo. En lo que se refiere a la capitalización, es importante acotar que a pesar de la significativa expansión en la estructura del balance durante los últimos períodos, la razón de solvencia patrimonial se ubicó por encima del mínimo exigido por ley,"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 285,
+    "page number" : 6,
+    "bounding box" : [ 62.424, 617.928, 288.439, 719.191 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Proporcionando productos como cuentas de ahorros, cuentas corrientes, depósitos a plazo, cuentas depósito a la vista en moneda extranjera, tarjetas de crédito Visa, MasterCard y corporativa, líneas de crédito, descuento de giros, arrendamiento financiero, fianzas y avales, entre los principales. Por su nivel de activos, la institución está catalogada como parte del estrato de bancos medianos."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H",
+    "id" : 302,
+    "level" : "Subtitle",
+    "page number" : 6,
+    "bounding box" : [ 333.689, 712.014, 547.427, 718.802 ],
+    "heading level" : 8,
+    "font" : "Arial,Bold",
+    "font size" : 7.237,
+    "text color" : "[0.0]",
+    "content" : "Patrimonio Oct2020 Jun2020 Dic2019 Jun2019"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 303,
+    "level" : "10",
+    "page number" : 6,
+    "bounding box" : [ 326.456, 656.814, 539.744, 708.853 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 6,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 6,
+      "bounding box" : [ 326.456, 702.065, 539.737, 708.853 ],
+      "font" : "Arial",
+      "font size" : 7.237,
+      "text color" : "[0.0]",
+      "content" : "1 Venezuela 63,3 64,0 63,5 67,9",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 6,
+      "bounding box" : [ 326.456, 693.015, 539.744, 699.803 ],
+      "font" : "Arial",
+      "font size" : 7.237,
+      "text color" : "[0.0]",
+      "content" : "2 BBVA Provincial 6,1 5,9 6,1 4,9",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 6,
+      "bounding box" : [ 326.456, 683.965, 539.744, 690.753 ],
+      "font" : "Arial",
+      "font size" : 7.237,
+      "text color" : "[0.0]",
+      "content" : "3 Mercantil 4,8 4,7 5,0 3,7",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 6,
+      "bounding box" : [ 326.456, 674.915, 539.744, 681.703 ],
+      "font" : "Arial",
+      "font size" : 7.237,
+      "text color" : "[0.0]",
+      "content" : "4 Occ. de Dcto. 4,6 4,3 3,8 8,8",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 6,
+      "bounding box" : [ 326.456, 665.864, 539.744, 672.653 ],
+      "font" : "Arial",
+      "font size" : 7.237,
+      "text color" : "[0.0]",
+      "content" : "5 Tesoro 3,5 3,3 2,4 0,9",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 6,
+      "bounding box" : [ 326.456, 656.814, 539.744, 663.603 ],
+      "font" : "Arial,Bold",
+      "font size" : 7.237,
+      "text color" : "[0.0]",
+      "content" : "6 Nac. de Crédito 2,5 2,5 2,1 1,7",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 289,
+    "page number" : 6,
+    "bounding box" : [ 380.35, 637.036, 549.866, 653.713 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "Cifras consolidadas con Sucursales del Exterior Fuente: SAIF – Cálculos propios"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 290,
+    "page number" : 6,
+    "bounding box" : [ 323.83, 395.418, 549.925, 623.311 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Las relaciones anteriores exponen para octubre 2020, que las captaciones del público presentan un crecimiento sostenido, con una cuota de mercado de 7,0%, apalancado en el aumento de las cuentas corrientes Sistema Cambiario Libre Convertibilidad, no remuneradas y depósitos de ahorro, que presentaron un incremento significativo, además, de la mejora en el costo de fondeo. Destaca que la estabilidad de estos índices le ha permitido al BNC mantener su participación respecto a sus principales competidores. En concordancia, el emisor registró una expansión del monto de la cartera de créditos bruta, lo que le ubica en el segundo lugar de la banca universal y comercial con una cuota de mercado para este rubro de 15,6%, de manera, que el índice de intermediación crediticia del banco se situó en 22,98%, por encima del promedio de la banca (15,24%) y de sus principales competidores."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 286,
+    "page number" : 6,
+    "bounding box" : [ 62.424, 387.838, 288.4, 604.231 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "La segmentación del negocio en el Banco viene definida de acuerdo al nivel de rentabilidad y la reciprocidad que los clientes aporten a la institución, razón por la cual, encontramos distintos grupos de usuarios que son atendidos de manera diferenciada. Dada la gran diversidad de necesidades que se atienden en el sector bancario, la diversificación de los productos, servicios y canales de atención se hace por estratos, pues ésta, además de ir dirigida a la necesidad que se desea cubrir, no puede estar desligada de los objetivos estratégicos del banco, es así como el mismo, destina sus esfuerzos al desarrollo de una multiplicidad de productos, canales, innovaciones y medios de pagos, priorizando a los segmentos de mercado que aportan los mayores niveles de rentabilidad financiera y sostenibilidad económica a la institución."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 287,
+    "page number" : 6,
+    "bounding box" : [ 62.424, 272.878, 288.507, 374.141 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Con corte a octubre de 2020, BNC posee una participación de 2,30% con relación al total de activos del sistema. Ocupa la quinta (5ª) posición entre 20 bancos privados, su participación es del 10,39% y entre los bancos privados medianos participa con el 41,95% en la posición primera (1ª) de 7. En cada uno de estos grupos, la institución mantuvo su posición respecto al ranking de diciembre de 2019."
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 288,
+    "level" : "9",
+    "page number" : 6,
+    "bounding box" : [ 62.424, 239.6, 265.797, 259.301 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 1,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 6,
+      "bounding box" : [ 62.424, 239.6, 265.797, 259.301 ],
+      "font" : "Arial,Bold",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "Tabla 2. Posición y Cuotas de Mercado (%) (Banca Universal y Comercial)",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 295,
+    "page number" : 6,
+    "bounding box" : [ 72.284, 230.225, 285.913, 236.998 ],
+    "font" : "Arial,Bold",
+    "font size" : 7.221,
+    "text color" : "[0.0]",
+    "content" : "Captaciones de Público Oct2020 Jun2020 Dic2019 Jun2019"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 296,
+    "level" : "10",
+    "page number" : 6,
+    "bounding box" : [ 65.054, 164.462, 286.05, 227.071 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 6,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 6,
+      "bounding box" : [ 65.054, 220.298, 278.226, 227.071 ],
+      "font" : "Arial",
+      "font size" : 7.221,
+      "text color" : "[0.0]",
+      "content" : "1 Venezuela 46,6 74,6 43,3 41,5",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 6,
+      "bounding box" : [ 65.054, 211.267, 278.233, 218.041 ],
+      "font" : "Arial",
+      "font size" : 7.221,
+      "text color" : "[0.0]",
+      "content" : "2 Mercantil 7,8 6,4 6,4 6,7",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 6,
+      "bounding box" : [ 65.054, 201.789, 278.233, 208.562 ],
+      "font" : "Arial",
+      "font size" : 7.221,
+      "text color" : "[0.0]",
+      "content" : "3 BBVA Provincial 7,6 8,1 7,9 8,9",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 6,
+      "bounding box" : [ 65.054, 192.759, 278.233, 199.532 ],
+      "font" : "Arial",
+      "font size" : 7.221,
+      "text color" : "[0.0]",
+      "content" : "4 Banesco 7,4 8,2 9,5 9,4",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 6,
+      "bounding box" : [ 65.054, 183.729, 278.233, 190.502 ],
+      "font" : "Arial,Bold",
+      "font size" : 7.221,
+      "text color" : "[0.0]",
+      "content" : "5 Nac. de Crédito 7,0 5,6 3,9 3,3",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 6,
+      "bounding box" : [ 65.054, 164.462, 286.05, 181.024 ],
+      "font" : "Arial",
+      "font size" : 7.221,
+      "text color" : "[0.0]",
+      "content" : "6 Occ. de Dcto. 5,1 5,0 4,7 4,7 Cartera de Créditos Bruta Oct2020 Jun2020 Dic2019 Jun2019",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 299,
+    "level" : "10",
+    "page number" : 6,
+    "bounding box" : [ 64.988, 109.931, 278.612, 161.389 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 6,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 6,
+      "bounding box" : [ 64.988, 154.791, 278.589, 161.389 ],
+      "font" : "Arial",
+      "font size" : 7.035,
+      "text color" : "[0.0]",
+      "content" : "1 Banesco 16,1 14,1 17,2 11,5",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 6,
+      "bounding box" : [ 64.988, 145.993, 278.612, 152.592 ],
+      "font" : "Arial,Bold",
+      "font size" : 7.035,
+      "text color" : "[0.0]",
+      "content" : "2 Nac. de Crédito 15,6 13,3 8,5 3,6",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 6,
+      "bounding box" : [ 64.988, 136.76, 278.589, 143.358 ],
+      "font" : "Arial",
+      "font size" : 7.035,
+      "text color" : "[0.0]",
+      "content" : "3 Venezuela 11,6 17,7 11,1 12,3",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 6,
+      "bounding box" : [ 64.988, 127.962, 278.589, 134.561 ],
+      "font" : "Arial",
+      "font size" : 7.035,
+      "text color" : "[0.0]",
+      "content" : "4 BBVA Provincial 11,2 9,1 11,9 11,8",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 6,
+      "bounding box" : [ 64.988, 119.165, 278.589, 125.764 ],
+      "font" : "Arial",
+      "font size" : 7.035,
+      "text color" : "[0.0]",
+      "content" : "5 Mercantil 10,4 12,0 10,2 10,2",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 6,
+      "bounding box" : [ 64.988, 109.931, 278.612, 116.53 ],
+      "font" : "Arial",
+      "font size" : 7.035,
+      "text color" : "[0.0]",
+      "content" : "6 Exterior 7,2 7,1 5,7 3,7",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 291,
+    "page number" : 6,
+    "bounding box" : [ 323.83, 234.448, 550.02, 381.821 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "La institución cuenta con un plan estratégico para el periodo 2020 – 2024, el cual tiene como propósito estratégico ubicarse entre los cinco (5) primeros bancos privados del país e incrementar su rentabilidad, brindando a los clientes la mejor experiencia de banca mediante soluciones innovadoras, procesos ágiles y personal altamente comprometido. Se contemplan estrategias por línea de negocio identificando por cada línea los segmentos de mercado y su perfil, los productos y servicios asociados, para lo que se establecen los indicadores que deben ser monitoreados y la meta anual establecida."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 292,
+    "page number" : 6,
+    "bounding box" : [ 323.83, 119.488, 549.81, 220.751 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Mantiene como objetivos fortalecer la posición del banco con respecto a la banca privada, por medio de la mejora de su cuota de mercado, del fortalecimiento de factores cualitativos como la administración integral de riesgos, los procesos internos, la gestión de talento humano y la estructura orgánica y funcional, además de la optimización de los indicadores de rentabilidad y liquidez."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 293,
+    "page number" : 6,
+    "bounding box" : [ 323.83, 73.388, 549.613, 105.795 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Durante el primer semestre del 2020, el BNC continuó con la consolidación de la administración y gestión integral de los riesgos con la"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 324,
+    "level" : "4",
+    "page number" : 7,
+    "bounding box" : [ 327.19, 661.362, 549.949, 721.228 ],
+    "numbering style" : "unordered",
+    "number of list items" : 3,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 7,
+      "bounding box" : [ 327.19, 686.53, 549.949, 721.228 ],
+      "font" : "Symbol",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Desarrollo de nuevas líneas de productos y servicios aprovechando capacidad y tecnología instalada.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 7,
+      "bounding box" : [ 327.19, 673.962, 547.636, 684.988 ],
+      "font" : "Symbol",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Mercado amplio y con espacio para el crecimiento.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 7,
+      "bounding box" : [ 327.19, 661.362, 461.812, 672.388 ],
+      "font" : "Symbol",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Venta cruzada Cross-Selling.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 310,
+    "page number" : 7,
+    "bounding box" : [ 62.424, 571.848, 288.334, 719.191 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "incorporación de nuevas metodologías en sus diferentes tipos, así como validando los existentes; esto con miras a contribuir en la toma de decisiones, generando valor a la institución y alcanzando mayores niveles de eficiencia organizacional. El comité de riesgo trató, entre otros, temas como: mejoras a la determinación de los requerimientos de capital por tipo de riesgo, aumentos de límites en los diversos canales electrónicos y evaluación del plan de continuidad de negocios, e impactos en épocas de tensión (stress testing) de las principales métricas de riesgos."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 325,
+    "level" : "Subtitle",
+    "page number" : 7,
+    "bounding box" : [ 323.83, 649.81, 371.413, 658.252 ],
+    "heading level" : 2,
+    "font" : "Arial,Bold",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Amenazas:"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 327,
+    "level" : "4",
+    "page number" : 7,
+    "bounding box" : [ 327.19, 575.05, 549.643, 648.028 ],
+    "numbering style" : "unordered",
+    "number of list items" : 5,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 7,
+      "bounding box" : [ 327.19, 637.002, 461.716, 648.028 ],
+      "font" : "Symbol",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Marco regulatorio cambiante.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 7,
+      "bounding box" : [ 327.19, 624.522, 473.842, 635.548 ],
+      "font" : "Symbol",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Escenario cambiario restringido.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 7,
+      "bounding box" : [ 327.19, 611.922, 501.745, 622.948 ],
+      "font" : "Symbol",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Contracción de la actividad económica.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 7,
+      "bounding box" : [ 327.19, 599.442, 443.227, 610.468 ],
+      "font" : "Symbol",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Presiones Inflacionarias.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 7,
+      "bounding box" : [ 327.19, 575.05, 549.643, 597.988 ],
+      "font" : "Symbol",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Limitación en la capacidad crediticia de la banca en general.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 330,
+    "page number" : 7,
+    "bounding box" : [ 453.7, 562.052, 549.778, 569.593 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "Fuente: Elaboración propia"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 311,
+    "page number" : 7,
+    "bounding box" : [ 62.424, 364.798, 288.357, 558.241 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "El BNC, orientado a rentabilizar y fidelizar la relación con sus clientes, en un entorno económico complejo, afectado por la inflación y, durante el segundo trimestre del año, por el estado de emergencia sanitaria por el Covid-19, se mantiene en la búsqueda de nuevas alternativas de negocio, a través de fortalecer, ampliar y consolidar el portafolio de productos y servicios en función de las necesidades y condiciones específicas del mercado. La actualización de la plataforma tecnológica, y las oportunidades derivadas del nuevo régimen cambiario y las operaciones de intervención bajo las instrucciones del BCV, le han permitido al banco adaptarse a la nueva realidad y desarrollar opciones para intermediar, en apoyo de las actividades y negocios de sus clientes."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 331,
+    "level" : "Doctitle",
+    "page number" : 7,
+    "bounding box" : [ 323.83, 539.058, 463.651, 548.401 ],
+    "heading level" : 1,
+    "font" : "Arial,Bold",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "3. DESEMPEÑO FINANCIERO"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 332,
+    "page number" : 7,
+    "bounding box" : [ 323.83, 423.978, 549.858, 536.761 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "La información económico-financiera analizada para este informe está basada en los estados financieros auditados de los semestres finalizados al 30 de junio y al 31 de diciembre de los años 2018, 2019 y al 30 de junio de 2020, auditados por Pacheco, Apostólico y Asociados (Firma miembro de PriceWaterhouseCoopers), más un corte al 31 de octubre de 2020. Toda la información se encuentra elaborada según los parámetros establecidos por la SUDEBAN."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 333,
+    "level" : "Subtitle",
+    "page number" : 7,
+    "bounding box" : [ 323.83, 401.058, 448.728, 410.401 ],
+    "heading level" : 1,
+    "font" : "Arial,Bold",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "3.1 CALIDAD DEL ACTIVO"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 334,
+    "page number" : 7,
+    "bounding box" : [ 323.83, 101.968, 549.931, 398.861 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Al 31 de octubre de 2020, BNC cuenta con una cartera neta de créditos de 17.648.944,9 MMBs. generando una variación estimada de 292%, debido a que la cartera vigente mostró incremento notable respecto a junio 2020, que se explica por el mayor posicionamiento de los créditos tanto en la rama industrial como en la comercial, este dado a la expansión de la capacidad de otorgar financiamiento como resultado de la flexibilización de las restricciones de liquidez y patrimonial implementada por el ejecutivo, las colocaciones se destinaron principalmente a la banca de empresas. Del monto de la fracción improductiva de la cartera, 886.440,1 MMBs. se retribuye a la cartera vencida, mostrando esta última un incremento de 190,0% respecto al cierre semestral de junio2020. Es importante acotar que a la cartera de créditos corresponden, tanto a créditos otorgados en USD, como a créditos UVCC (indexados), por consiguiente, la variación en el tipo de cambio durante el periodo comprendido entre octubre – junio de 2020, tiene un efecto importante de variación sobre el monto de la cartera 150%. La entidad no mantiene saldo en cartera reestructurada, presentando una tendencia decreciente en estas soluciones de pago."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 312,
+    "page number" : 7,
+    "bounding box" : [ 62.424, 249.838, 288.465, 351.221 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Como parte de las herramientas para la elaboración del plan estratégico, el emisor identificó sus fortalezas, oportunidades, debilidades y amenazas mediante la realización de un análisis interno y externo, en la que evaluaron la gestión y resultados en función a sus indicadores y metas, además de considerar el entorno económico, político y social, el entorno normativo y la evolución del sector financiero."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 313,
+    "page number" : 7,
+    "bounding box" : [ 62.424, 215.21, 253.422, 236.492 ],
+    "font" : "Arial,Bold",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "POSICIONAMIENTO ESTRATÉGICO: Fortalezas:"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 316,
+    "level" : "4",
+    "page number" : 7,
+    "bounding box" : [ 65.784, 165.65, 288.246, 213.428 ],
+    "numbering style" : "unordered",
+    "number of list items" : 3,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 7,
+      "bounding box" : [ 65.784, 202.402, 286.338, 213.428 ],
+      "font" : "Symbol",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Equipo directivo y gerencial de amplia experiencia.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 7,
+      "bounding box" : [ 65.784, 189.922, 267.032, 200.948 ],
+      "font" : "Symbol",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Crecimiento del negocio (nuevos segmentos).",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 7,
+      "bounding box" : [ 65.784, 165.65, 288.246, 188.468 ],
+      "font" : "Symbol",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Buen desempeño en la gestión y controles internos.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 318,
+    "level" : "Subtitle",
+    "page number" : 7,
+    "bounding box" : [ 62.424, 153.89, 116.001, 162.332 ],
+    "heading level" : 2,
+    "font" : "Arial,Bold",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Debilidades:"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 320,
+    "level" : "4",
+    "page number" : 7,
+    "bounding box" : [ 65.784, 92.334, 288.41, 152.108 ],
+    "numbering style" : "unordered",
+    "number of list items" : 3,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 7,
+      "bounding box" : [ 65.784, 129.29, 288.246, 152.108 ],
+      "font" : "Symbol",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Indicador de solvencia patrimonial ajustado de acuerdo a la proyección del negocio.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 7,
+      "bounding box" : [ 65.784, 116.722, 242.256, 127.748 ],
+      "font" : "Symbol",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Moderada sistematización de procesos.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 7,
+      "bounding box" : [ 65.784, 92.334, 288.41, 115.268 ],
+      "font" : "Symbol",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Necesidad de constante adecuación de plataformas tecnológicas.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 322,
+    "page number" : 7,
+    "bounding box" : [ 62.424, 80.694, 129.465, 89.136 ],
+    "font" : "Arial,Bold",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Oportunidades:"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 340,
+    "page number" : 8,
+    "bounding box" : [ 62.424, 525.858, 288.439, 719.191 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "El 98,7% de la cartera de crédito bruta del banco se encuentra colocado en el sector comercial, mientras a los créditos otorgados al consumo, corresponde solo el 0,5%, y el resto de los sectores menos del 0,8% de la cartera de créditos. En vista de la emergencia sanitaria, a mediados de marzo el gobierno decretó estado de alarma debido a la llegada del Covid-19, además de un conjunto de medidas complementarias para atenuar sus efectos, lo que significó la paralización de la mayor parte del sector productivo, afectando significativamente la producción de ramas como transporte, manufactura, entretenimiento, turismo y restaurantes, entre otros. Por lo tanto, existe una mayor exposición al riesgo de crédito en los sectores económicos tradicionales a dónde se destinan."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 344,
+    "page number" : 8,
+    "bounding box" : [ 323.83, 629.328, 549.878, 719.191 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "de empresas relacionadas entre sí, que representan un 21% de la cartera de créditos, al ser representativa la cuantía del crédito medianobajo para los clientes en cuestión, un eventual deterioro de alguno de los mayores deudores, afectaría sensiblemente los indicadores de calidad de la cartera, misma que está moderadamente concentrada."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 345,
+    "page number" : 8,
+    "bounding box" : [ 323.83, 422.418, 549.858, 615.751 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Se debe tener en cuenta que las empresas conforman el estrato económico más afectado por las medidas aplicadas para frenar la propagación del Covid-19, es por ello que BNC se ha asegurado de mantener niveles de provisiones adecuados, esto a fin de hacer frente a un eventual deterioro de la cartera y evitar así exponer su patrimonio. Es por ello que de conformidad con los requerimientos establecidos por la SUDEBAN, al 30 de junio de 2020, el Banco mantenía una provisión genérica para contingencias de la cartera de créditos y una provisión anticíclica. De igual forma, a octubre2020 esboza una provisión total de cartera de crédito que asciende a 991.226,1 MMBs. y le permiten cubrir sustancialmente la fracción correspondiente a la cartera inmovilizada."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 341,
+    "level" : "Subtitle",
+    "page number" : 8,
+    "bounding box" : [ 62.424, 492.58, 264.6, 512.281 ],
+    "heading level" : 1,
+    "font" : "Arial,Bold",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Tabla 3. Estructura de la cartera de crédito (En millones de dólares)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 349,
+    "page number" : 8,
+    "bounding box" : [ 213.661, 481.757, 295.269, 488.833 ],
+    "font" : "Arial,Bold",
+    "font size" : 7.543,
+    "text color" : "[0.0]",
+    "content" : "10/2020 6/2020 12/2019"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 350,
+    "page number" : 8,
+    "bounding box" : [ 60.861, 409.353, 295.292, 476.757 ],
+    "font" : "Arial",
+    "font size" : 7.543,
+    "text color" : "[0.0]",
+    "content" : "CARTERA DE CRÉDITOS 17,63 11,80 8,48 Créditos Vigentes 18,28 12,15 8,66 Créditos Reestructurados Créditos Vencidos 0,00 0,00 0,00 Créditos en Litigio (Provisión para Cartera de Créditos) -0,65 -0,35 -0,18"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 346,
+    "level" : "Subtitle",
+    "page number" : 8,
+    "bounding box" : [ 323.83, 387.958, 549.612, 408.841 ],
+    "heading level" : 1,
+    "font" : "Arial,Bold",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Tabla 4. Detalle de Inversiones en Títulos Valores (en millones de dólares)"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H",
+    "id" : 351,
+    "level" : "Subtitle",
+    "page number" : 8,
+    "bounding box" : [ 60.861, 397.299, 259.251, 404.375 ],
+    "heading level" : 7,
+    "font" : "Arial,Bold",
+    "font size" : 7.543,
+    "text color" : "[0.0]",
+    "content" : "CARTERA DE CRÉDITOS POR DESTINO DEL CRÉDITO"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 352,
+    "page number" : 8,
+    "bounding box" : [ 64.875, 373.162, 295.284, 392.299 ],
+    "font" : "Arial",
+    "font size" : 7.543,
+    "text color" : "[0.0]",
+    "content" : "Créditos Comerciales 12,00 6,17 Créditos al Consumo 0,06 0,11"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 358,
+    "page number" : 8,
+    "bounding box" : [ 328.795, 367.081, 550.423, 384.507 ],
+    "font" : "Arial,Bold",
+    "font size" : 6.869,
+    "text color" : "[0.0]",
+    "content" : "10/2020 6/2020 12/2019 6/2019 INVERSIONES EN TÍTULOS VALORES 5,48 5,97 4,21 8,79"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 353,
+    "page number" : 8,
+    "bounding box" : [ 68.889, 349.025, 295.284, 368.162 ],
+    "font" : "Arial",
+    "font size" : 7.543,
+    "text color" : "[0.0]",
+    "content" : "Tarjetas de Crédito 0,06 0,11 Créditos al Consumo en Cuotas"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 359,
+    "page number" : 8,
+    "bounding box" : [ 330.535, 348.315, 412.47, 363.455 ],
+    "font" : "Arial",
+    "font size" : 6.869,
+    "text color" : "[0.0]",
+    "content" : "Colocaciones en el B.C.V. y Operaciones Interbancarias"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 360,
+    "page number" : 8,
+    "bounding box" : [ 464.828, 352.902, 550.423, 359.346 ],
+    "font" : "Arial",
+    "font size" : 6.869,
+    "text color" : "[0.0]",
+    "content" : "1,07 1,74 3,49"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 361,
+    "page number" : 8,
+    "bounding box" : [ 330.535, 313.549, 433.139, 346.062 ],
+    "font" : "Arial",
+    "font size" : 6.869,
+    "text color" : "[0.0]",
+    "content" : "Inversiones en Títulos Valores para Negociar Inversiones en Títulos Valores Disponibles para la Venta"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 354,
+    "page number" : 8,
+    "bounding box" : [ 64.875, 324.893, 172.443, 344.024 ],
+    "font" : "Arial",
+    "font size" : 7.543,
+    "text color" : "[0.0]",
+    "content" : "Vehículos Adaptados a medidas especiales"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 362,
+    "level" : "5",
+    "page number" : 8,
+    "bounding box" : [ 464.828, 300.723, 550.423, 324.559 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 8,
+      "bounding box" : [ 464.828, 318.116, 550.423, 324.559 ],
+      "font" : "Arial",
+      "font size" : 6.869,
+      "text color" : "[0.0]",
+      "content" : "0,00 0,00 0,01 0,33",
+      "kids" : [ {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 97,
+        "page number" : 8,
+        "bounding box" : [ 330.535, 296.156, 417.871, 311.296 ],
+        "font" : "Arial",
+        "font size" : 6.869,
+        "text color" : "[0.0]",
+        "content" : "Inversiones en Títulos Valores Mantenidos hasta su Vcto."
+      } ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 8,
+      "bounding box" : [ 464.828, 300.723, 550.423, 307.166 ],
+      "font" : "Arial",
+      "font size" : 6.869,
+      "text color" : "[0.0]",
+      "content" : "1,13 0,87 0,86 1,65",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 355,
+    "page number" : 8,
+    "bounding box" : [ 60.861, 264.547, 295.284, 319.892 ],
+    "font" : "Arial",
+    "font size" : 7.543,
+    "text color" : "[0.0]",
+    "content" : "CRÉDITO SECTOR AGRÍCOLA 0,06 0,76 CRÉDITO SECTOR MICROEMPRESARIAL 0,00 0,06 CRÉDITO SECTOR TURISMO 0,03 0,10 CRÉDITO HIPOTECARIO 0,01 0,03 CRÉDITO MANUFACTURA 1,43"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 363,
+    "page number" : 8,
+    "bounding box" : [ 330.535, 261.369, 550.423, 293.902 ],
+    "font" : "Arial",
+    "font size" : 6.869,
+    "text color" : "[0.0]",
+    "content" : "Inversiones de Disponibilidad Restringida 3,28 3,36 3,35 3,32 Inversiones en Otros Títulos Valores 0,00 0,00 (Provisión para Inversiones en Títulos Valores)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 342,
+    "page number" : 8,
+    "bounding box" : [ 126.86, 235.076, 296.377, 261.023 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "Cifras consolidadas con Sucursales del Exterior Tipo de cambio publicado por el BCV Fuente: SUDEBAN, SAIF – Elaboración propia."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 364,
+    "page number" : 8,
+    "bounding box" : [ 328.795, 232.992, 451.226, 258.201 ],
+    "font" : "Arial",
+    "font size" : 6.869,
+    "text color" : "[0.0]",
+    "content" : "INVERSIONES EN TÍTULOS VALORES TÍTULOS VALORES DEL SECTOR PRIVADO"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 365,
+    "page number" : 8,
+    "bounding box" : [ 487.889, 237.58, 550.423, 244.023 ],
+    "font" : "Arial",
+    "font size" : 6.869,
+    "text color" : "[0.0]",
+    "content" : "5,10 3,35 6,81"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 366,
+    "page number" : 8,
+    "bounding box" : [ 330.535, 152.458, 550.423, 230.739 ],
+    "font" : "Arial",
+    "font size" : 6.869,
+    "text color" : "[0.0]",
+    "content" : "TÍTULOS VALORES DEL ESTADO Letras de Tesoro Bonos de Tesoro Bonos y Obligaciones de la DPN 0,87 0,87 1,98 Bonos y Obligaciones Emitidos por el BCV Otros Títulos Valores Emitidos o Avalados por la Nación Bonos Agrícolas"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 343,
+    "page number" : 8,
+    "bounding box" : [ 62.424, 74.108, 288.419, 221.351 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "A la fecha de corte octubre2020, la morosidad presentó una disminución de 1,55 p.p. con respecto a junio de 2020 al situarse en 4,76%. El banco históricamente se ha caracterizado por presentar bajos niveles de incumplimiento, comportamiento propio del segmento al que estratégicamente se orientan el emisor. No obstante, es importante acotar que al 30 de junio de 2020 la cartera de créditos del banco mantenía concentraciones de riesgos en 6 clientes individuales, los cuales representan un 58% del saldo de la cartera de créditos. Asimismo, presentaba concentraciones de riesgo en 3 grupos"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 367,
+    "page number" : 8,
+    "bounding box" : [ 330.535, 134.608, 429.21, 149.747 ],
+    "font" : "Arial",
+    "font size" : 6.869,
+    "text color" : "[0.0]",
+    "content" : "TOTAL TÍTULOS VALORES DEL ESTADO"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 368,
+    "page number" : 8,
+    "bounding box" : [ 487.889, 139.193, 550.423, 145.636 ],
+    "font" : "Arial",
+    "font size" : 6.869,
+    "text color" : "[0.0]",
+    "content" : "0,87 0,87 1,98"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 369,
+    "page number" : 8,
+    "bounding box" : [ 330.535, 116.758, 443.996, 132.354 ],
+    "font" : "Arial,Bold",
+    "font size" : 6.869,
+    "text color" : "[0.0]",
+    "content" : "TOTAL INVERSIONES EN TÍTULOS VALORES BRUTA"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 370,
+    "page number" : 8,
+    "bounding box" : [ 487.889, 121.343, 550.423, 127.786 ],
+    "font" : "Arial,Bold",
+    "font size" : 6.869,
+    "text color" : "[0.0]",
+    "content" : "5,97 4,21 8,79"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 347,
+    "page number" : 8,
+    "bounding box" : [ 380.35, 87.24, 549.867, 113.153 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "Cifras consolidadas con Sucursales del Exterior Tipo de cambio publicado por el BCV Fuente: SUDEBAN, SAIF – Elaboración propia."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 377,
+    "page number" : 9,
+    "bounding box" : [ 62.424, 617.928, 288.369, 719.191 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Las inversiones en títulos valores participan a octubre2020 en un 4,00% del total del activo (para junio2020 el 14,6% de estas inversiones se encontraba en títulos valores del estado o entidades del sector público, el resto en títulos valores del sector privado alcanzando un monto de 1.042.001,5 MMBs. a la fecha), mientras las disponibilidades netas constituyen el 63,4% del activo."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 380,
+    "page number" : 9,
+    "bounding box" : [ 323.83, 560.328, 549.773, 719.191 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "participación significativa, lo que evidencia que la generación de beneficios se respalda casi de forma exclusiva en el desempeño de la cartera de créditos. Por su parte, los egresos financieros ascendieron a 215.029,0 MMBs. mostrando una variación de +37,9% respecto a junio 2020, en contraposición a la variación presentada por los ingresos; la principal naturaleza de los gastos financieros corresponde a las captaciones de depósitos de 136.308,2 MMBs. las que absorben el 8,2% de los ingresos financieros y cuyo incremento está impulsado por depósitos a la vista, seguidas de los gastos causados de otros financiamientos obtenidos."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 378,
+    "page number" : 9,
+    "bounding box" : [ 62.424, 594.888, 288.428, 604.231 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "El portafolio de inversiones del banco es de"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 379,
+    "level" : "5",
+    "page number" : 9,
+    "bounding box" : [ 62.424, 77.372, 288.504, 592.711 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "next list id" : 410,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 9,
+      "bounding box" : [ 62.424, 341.878, 288.422, 592.711 ],
+      "font" : "Arial",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "2.912.938,7 MMBs. evidenciando una disminución esperada de 45% respecto a diciembre2019, donde el 19,0% de las inversiones se encuentran en operaciones interbancarias y colocaciones en el B.C.V. cuyo monto total asciende a 554.500,0 MMBs.; de forma similar a las inversiones en títulos valores mantenidos hasta su vencimiento corresponde un 20,2% del portafolio, totalizando 588.657,9 MMBs. Al 30 de junio de 2020 el valor de mercado de los títulos valores emitidos o avalados por la República Bolivariana de Venezuela, clasificadas como mantenidas hasta su vencimiento, se ubicó por debajo del costo amortizado, la gerencia del banco considera que está disminución es temporal debido a que existen argumentos legales que permiten su recuperabilidad al vencimiento a través del pago de impuestos y tributos. Adicionalmente, el Banco tiene la capacidad y la intención de retener estos títulos valores hasta su vencimiento. De acuerdo con lo antes mencionado, el Banco no reconoció deterioro sobre estas inversiones al 30 de junio de",
+      "kids" : [ {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 96,
+        "level" : "2",
+        "page number" : 9,
+        "bounding box" : [ 62.424, 261.358, 288.325, 339.701 ],
+        "font" : "Arial",
+        "font size" : 9.96,
+        "text color" : "[0.0]",
+        "content" : "2020. Por su parte, las inversiones en títulos valores de disponibilidad restringida estaban conformadas por los certificados de depósito en JP Morgan Chase Bank y PNC Bank que actúan como colaterales para garantizar las operaciones del BNC con tarjetas de crédito VISA y MasterCard, respectivamente."
+      } ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 9,
+      "bounding box" : [ 62.424, 77.372, 288.504, 247.781 ],
+      "font" : "Arial,Bold",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "3.2 RENTABILIDAD Esquematizando la evolución de la estructura de ingresos y egresos de BNC, a octubre de 2020, los Ingresos financieros se ubicaron en 1.653.017,8 MMBs., lo que implica un aumento semestral que se estima en 117,9%, delineando una tendencia favorable respecto al semestre previo (junio 2020); con el 70,5% de participación, las ganancias por cartera de créditos son la principal fuente de ingresos financieros, con un monto de 1.165.428,5 MMBs. Le sigue en representatividad la cuenta de ingresos por inversiones en títulos valores con 402.029,2 MMBs. (24,3%); las cuentas que componen el porcentaje de ingresos restante no exponen una",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 381,
+    "page number" : 9,
+    "bounding box" : [ 323.83, 249.838, 549.961, 546.721 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "A octubre de 2020 se observa un crecimiento en el margen financiero bruto, pasando de 602.672,9 MMBs. para el primer semestre 2020 a 1.437.988,8 MMBs. para la fecha corte (+138,6%), motivado a la expansión de los ingresos financieros vía cartera de créditos, como resultado de la flexibilización de las regulaciones sobre la liquidez de la banca. El margen financiero neto se ubicó en 1.036.299,2 MMBs. siendo 119,1% superior al obtenido al cierre junio2020. La generación de ganancias del banco como resultado de intermediación suele depender de los otros ingresos operativos; constituidos en un 80% por comisiones por servicios (operaciones de puntos de ventas, transferencias y pago móvil interbancario, entre otros), y comisión por retiro en efectivo en moneda extranjera (el Banco cobra a sus clientes sobre los montos de efectivo en moneda extranjera movilizados a través de sus agencias y taquillas, seguido por las operaciones de puntos de ventas y las comisiones por operación a través del sistema cambiario, devengando un ingreso por este concepto), produciendo una utilidad del ejercicio de 920.549,6 MMBs. con una variación semestral positiva prevista a razón de 2,06 veces."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 382,
+    "page number" : 9,
+    "bounding box" : [ 323.83, 77.372, 549.865, 236.231 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "En cuanto a la intermediación financiera, que mide el porcentaje de depósitos que se destinan a la colocación, a octubre de 2020 se ubicó en 35,4%, registrando una variación positiva (+8,38 p.p.) con respecto a junio de 2020, ubicándose por debajo de la intermediación financiera del sistema de bancos privados que promedió 30,4%. En cuanto a la rentabilidad, el retorno generado por el patrimonio de los accionistas (ROE) se ubicó en 23,6%, evidenciando que el BNC se encuentra por encima de la rentabilidad promedio de los bancos grandes (8,98%), medianos (11,33%) y pequeños (3,72%). El retorno generado por los activos (ROA), mostró una variación representativa (+0,61"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 388,
+    "page number" : 10,
+    "bounding box" : [ 62.424, 525.858, 288.448, 719.191 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "p.p.), ubicándose en 5,23% a octubre de 2020, sin embargo, con comportamiento contrario al ROE, se encuentra bajo la media de los bancos privados (8,24% en promedio). En resumen, la rentabilidad operativa de la banca es significativa con tendencia creciente, a pesar de las medidas implementadas por el estado tanto para mitigar la pandemia como para regular la actividad bancaria, mismas que han afectado de forma drástica el aparato productivo (resultado principalmente de disminución parcial de las restricciones de encaje y patrimonio que limitaban la capacidad de la banca de ejercer su función de intermediación), lo que es muy relevante porque históricamente éste ha sido un punto medular en la estrategia de cada banco para desenvolverse adecuadamente en el sistema financiero."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 391,
+    "page number" : 10,
+    "bounding box" : [ 323.83, 594.888, 549.848, 719.191 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "prudentes de los 20 mayores deudores (éstos concentran el 19,67% de las captaciones del público). Por otro lado, al medir la liquidez a partir de los recursos disponibles con los que cuenta la institución, se obtienen coberturas suficientes para resguardar sus depósitos de mayor exigibilidad, dada la baja volatilidad de las cuentas antes mencionadas, por lo que se evidencia un nivel de liquidez adecuado que cubre el 93,1% del total de los depósitos de clientes para el periodo analizado."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 392,
+    "level" : "Doctitle",
+    "page number" : 10,
+    "bounding box" : [ 323.83, 571.968, 511.365, 581.311 ],
+    "heading level" : 1,
+    "font" : "Arial,Bold",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Tabla 5. Principales Fuentes de Fondeo"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 393,
+    "level" : "Subtitle",
+    "page number" : 10,
+    "bounding box" : [ 323.83, 561.61, 430.522, 570.052 ],
+    "heading level" : 2,
+    "font" : "Arial,Bold",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "(En millones de dólares)."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 399,
+    "page number" : 10,
+    "bounding box" : [ 476.413, 551.929, 555.544, 558.219 ],
+    "font" : "Arial,Bold",
+    "font size" : 6.706,
+    "text color" : "[0.0]",
+    "content" : "10/2020 6/2020 12/2019"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 400,
+    "page number" : 10,
+    "bounding box" : [ 324.958, 466.101, 549.925, 547.489 ],
+    "font" : "Arial",
+    "font size" : 6.706,
+    "text color" : "[0.0]",
+    "content" : "CAPTACIONES DEL PÚBLICO 96,20 81,76 66,51 Depósitos a la Vista 69,69 57,02 39,55 Otras Obligaciones a la Vista 0,06 0,34 0,48 Obligaciones por Operaciones de Mesa de Dinero - - Depósitos de Ahorro 26,10 21,01 25,99 Depósitos a Plazo 0,35 3,39 0,48 Títulos Valores Emitidos por la Institución - - Captaciones del Público Restringidas - - -"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 389,
+    "level" : "5",
+    "page number" : 10,
+    "bounding box" : [ 62.424, 215.368, 288.41, 512.281 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 1,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 10,
+      "bounding box" : [ 62.424, 215.368, 288.41, 512.281 ],
+      "font" : "Arial,Bold",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "3.3 LIQUIDEZ A octubre 2020, BNC cuenta con 46.503.273,7 MMBs. en fondos disponibles, conformados en un 70,4% de fondos locales y el 29,6% de fondos del exterior. La mayor cuota de este monto 56,5% se encuentra concentrada en los recursos en caja que totalizan 27.261.784,5 MMBs. representando el 58,6% del total disponible. Los fondos en bancos corresponsales e instituciones en el exterior ascienden a 13.755.238,7 MMBs. Por su parte, los depósitos en el Banco Central de Venezuela se ubicaron en 5.505.673,9 MMBs. principalmente en cumplimiento de las regulaciones de encaje legal, además de billetes en moneda extranjera bajo custodia del BCV. Resalta que solo el 0,1% de participación corresponde a bancos y otras instituciones financieras locales. Los fondos disponibles muestran una variación positiva de 59,8%, resultado de la reducción a 93% del encaje legal para las captaciones en moneda nacional (sobre las obligaciones netas e inversiones cedidas) a partir del 1 de abril de 2020, que si bien no representa una modificación en la política, constituye una liberación de recursos que afecta a la economía generando un aumento de liquidez.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 394,
+    "page number" : 10,
+    "bounding box" : [ 388.27, 436.366, 557.787, 462.403 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "Cifras consolidadas con Sucursales del Exterior Tipo de cambio publicado por el BCV Fuente: SUDEBAN, SAIF – Elaboración propia."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 395,
+    "page number" : 10,
+    "bounding box" : [ 323.83, 286.918, 549.779, 422.761 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Es importante resaltar, que el mayor volumen de inversiones que realiza la entidad es de Disponibilidad Restringida o Colocaciones en el B.C.V. y Operaciones Interbancarias, sin embargo, los resultados positivos son consecuencia de un efecto combinado de más activos líquidos con mayores niveles de los depósitos cuyo costo de fondeo es inferior (a octubre 2020 las cuentas corrientes sistema cambiario libre convertibilidad componen el 58,9% de los fondos captados, mientras las cuentas corrientes no remuneradas participan en un 11,2%)."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 396,
+    "level" : "Subtitle",
+    "page number" : 10,
+    "bounding box" : [ 323.83, 263.998, 424.801, 273.341 ],
+    "heading level" : 1,
+    "font" : "Arial,Bold",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "3.4 CAPITALIZACIÓN"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 397,
+    "page number" : 10,
+    "bounding box" : [ 323.83, 79.892, 549.858, 261.701 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "En cuanto a la correspondencia contractual entre activos y pasivos, BNC cuenta con brechas positivas importantes a corto plazo. Este comportamiento es habitual en la mayoría de las instituciones bancarias nacionales, quienes exponen su patrimonio efectivo a razón de 2,33 veces respecto a los pasivos de corto plazo (resultado directo de colocar en el tramo de entre 30 a 60 días la totalidad de certificados, depósitos a la vista y ahorro), mostrando un comportamiento estable durante el periodo de análisis. El banco cuenta con inversiones de rápida realización que a octubre2020 totalizan 279,0 MMBs, que mitigan parcialmente el descalce a corto plazo, permitiendo que la exposición del patrimonio disminuya. Adicionalmente, el emisor cuenta con"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 390,
+    "page number" : 10,
+    "bounding box" : [ 62.424, 77.372, 288.559, 201.671 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "La estructura de fondeo del banco corresponde en su mayoría a las obligaciones con el público, que para octubre de 2020 representan el 87,8% del total pasivo, alcanzando un saldo de 49.933.172,3 MMBs. lo que prospecta un incremento de 198,8% respecto a junio2020. Los depósitos a la vista son la principal fuente de apalancamiento del emisor, participando en 72,4% de las captaciones y totalizando 36.173.899,3 MMBs. La estructura de financiamiento del banco ha mejorado en los últimos periodos, registrando concentraciones"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 407,
+    "page number" : 11,
+    "bounding box" : [ 62.424, 675.408, 288.161, 719.191 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "disponibilidad de líneas con otras entidades financieras, a la fecha de corte los financiamientos vigentes en instituciones locales ascienden a 300.075,9 MMBs."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 413,
+    "page number" : 11,
+    "bounding box" : [ 323.83, 548.898, 549.859, 719.191 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "20 mayores deudores concentran el 19,67% de las captaciones del público). Destacan los esfuerzos que ha realizado el grupo en mejorar la estructura de captaciones con el fin de reducir drásticamente los costos de fondeo, además de la implementación de disposiciones puntuales en el área de créditos, como las mejoras llevadas adelante en los procesos y tiempos de respuesta a los clientes, así como lo referente a la cartera de inversiones conformada principalmente por títulos valores emitidos o avalados por la República Bolivariana de Venezuela y otras obligaciones que son altamente líquidas, estrategias que en conjunto conllevaron al crecimiento del negocio, asegurando sus niveles de eficiencia."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 408,
+    "page number" : 11,
+    "bounding box" : [ 62.424, 468.378, 288.411, 661.711 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "El Índice de Adecuación de Patrimonio Contable que determina la porción de activos improductivos que están cubiertos por el patrimonio, para el primer semestre 2020 se situó en 27,8%, con una variación intersemestral de (-2,53 p.p.), superando notablemente el mínimo establecido por la normativa prudencial promulgada por la Superintendencia de las Instituciones del Sector Bancario (SUDEBAN) de 9%; este indicador se ha venido incrementando paulatinamente, por lo que la capacidad de crecimiento de las instituciones se ha visto limitada, a pesar de los recientes incrementos patrimoniales vía revalorización de los principales activos de los bancos, producto de ajustes cambiarios. Por su parte, el Índice de Adecuación Patrimonial se ubicó en 71,48%, también superior al 12% regulatorio."
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 414,
+    "level" : "7",
+    "page number" : 11,
+    "bounding box" : [ 323.83, 100.288, 549.902, 535.321 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 11,
+      "bounding box" : [ 323.83, 307.318, 549.902, 535.321 ],
+      "font" : "Arial,Bold",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "4.4 POSICIÓN PATRIMONIAL: El emisor posee bajos niveles de exposición de patrimonio efectivo, esto como resultado de mantener cuantías prudentes de las brechas negativas a corto plazo, lo cual es inusual en la mayoría de las instituciones financieras y es un punto focal sobre el que se debe mantener seguimiento. No obstante, el riesgo inherente puede verse atenuado mediante un aumento de capital y revalorización de activos; a la fecha 2 de diciembre de 2020, el BNC fue autorizado por la SUDEBAN y SNV para emitir 74.744.552.618.724 nuevas acciones comunes, destinadas a aumentar el capital social en Bs 747.445.526,19. Además del cambio del valor nominal de las acciones de Bs. 0,00001 a un bolívar (Bs. 1) cada una, de conformidad con lo aprobado en Asamblea General Extraordinaria de Accionistas celebrada el 18 de marzo de 2020 y sesión de junta directiva de fecha 11 de noviembre de 2020.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 11,
+      "bounding box" : [ 323.83, 100.288, 549.854, 293.861 ],
+      "font" : "Arial,Bold",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "4.5 JURÍDICO: Al analizar la posibilidad de incumplimientos en el pago a los clientes e inversionistas o de la normativa regulatoria vigente, así como la eventual aplicación de sentencias judiciales derivadas de demandas de posibles perjudicados, se identifica que el riesgo jurídico es mínimo. Durante el año 2020, la Vicepresidencia de Seguridad y Control, ha acometido las iniciativas que se describen a continuación: auditoria de la red comercial y taquillas, control del fraude de cheques, adiestramiento en el área de prevención de fraudes, implementación del sistema de auditoria a distancia, gestiones de investigación de los casos de fraudes surgidos en el banco y mejora de las funciones de monitoreo de la red en el firewall y base de datos.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 409,
+    "level" : "Subtitle",
+    "page number" : 11,
+    "bounding box" : [ 62.424, 445.458, 237.262, 454.801 ],
+    "heading level" : 1,
+    "font" : "Arial,Bold",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "4. FACTORES CRÍTICOS DE RIESGO"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 410,
+    "level" : "5",
+    "page number" : 11,
+    "bounding box" : [ 62.424, 272.878, 288.526, 443.281 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 1,
+    "previous list id" : 379,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 11,
+      "bounding box" : [ 62.424, 272.878, 288.526, 443.281 ],
+      "font" : "Arial,Bold",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "4.1 CALIDAD DE ACTIVOS: Las políticas de riesgos de las carteras crediticias y de inversiones son adecuadas para el entorno económico actual; el indicador de morosidad es 4,76% muy favorable respecto a la media del sistema (5,9%), sin embargo, se considera que la estabilidad de la cartera crediticia es sensible al deterioro de alguno de los mayores deudores, dada la significativa concentración resultado de su estrategia enfocada en el estrato corporativo. Al respecto, la gerencia del banco informa que solicita garantías fiduciarias, hipotecarias y prendarias sobre certificados de depósito, y otros títulos valores, previa evaluación de las características específicas de los prestatarios.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 411,
+    "level" : "6",
+    "page number" : 11,
+    "bounding box" : [ 62.424, 123.328, 288.515, 259.301 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 1,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 11,
+      "bounding box" : [ 62.424, 123.328, 288.515, 259.301 ],
+      "font" : "Arial,Bold",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "4.2 RENTABILIDAD: La rentabilidad operativa del emisor históricamente ha sido significativa, producto de la estrategia de crecimiento emprendida para posicionarse adecuadamente en el sistema financiero local, también es consecuencia de un margen financiero moderado, lo que es común en el sistema financiero dadas las limitaciones a la capacidad de crédito. El emisor prevé incrementar gradualmente su rentabilidad como resultado de la consolidación de su cuota de mercado en captaciones y colocaciones para 2021.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 412,
+    "page number" : 11,
+    "bounding box" : [ 62.424, 77.372, 288.359, 109.751 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "4.3 LIQUIDEZ: Los niveles de liquidez del Banco Nacional de Crédito son notables. Por otro lado, presenta una baja probabilidad de descalce (los"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 420,
+    "level" : "5",
+    "page number" : 12,
+    "bounding box" : [ 62.424, 79.532, 288.433, 719.311 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "next list id" : 447,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 12,
+      "bounding box" : [ 62.424, 583.488, 288.433, 719.311 ],
+      "font" : "Arial,Bold",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "4.6 CAMBIARIO: La posición en moneda extranjera neta del emisor es favorable y corresponde principalmente a efectivo, la cartera de crédito bruta y depósitos en bancos y corresponsales en el exterior, situación que constituye un paliativo ante la exposición del patrimonio de la compañía ante posibles descalces financieros, consecuencia de la variación en las condiciones económicas o en la legislación vigente. Tabla 6. Posición en Moneda Extranjera",
+      "kids" : [ {
+        "type" : "paragraph",
+        "pdfua_tag" : "P",
+        "id" : 95,
+        "page number" : 12,
+        "bounding box" : [ 118.94, 206.036, 288.518, 222.713 ],
+        "font" : "Arial",
+        "font size" : 8.04,
+        "text color" : "[0.0]",
+        "content" : "Cifras consolidadas con Sucursales del Exterior Fuente: BNC – Elaboración propia"
+      } ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 12,
+      "bounding box" : [ 62.424, 79.532, 288.317, 192.431 ],
+      "font" : "Arial,Bold",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "5. PROYECCIONES Siguiendo la metodología de calificación de riesgo de Global Ratings, se elaboraron las proyecciones del comportamiento del Banco Nacional de Crédito, C.A. bajo tres escenarios: 1) Base: condiciones provistas por el emisor; 2) Restricciones Leves: se desmejoran ligeramente ciertas variables; y 3) Restricciones Graves: recoge el posible efecto de una desmejora significativa de algunas condiciones.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 421,
+    "page number" : 12,
+    "bounding box" : [ 323.83, 629.328, 549.774, 719.191 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Para la elaboración de los escenarios se utilizaron dos tipos de premisas, las de tipo macroeconómico y las propias del negocio. Las premisas macroeconómicas se tomaron de fuentes oficiales y las estimaciones contenidas en la política presupuestaria de la nación, estas últimas ajustadas siguiendo criterios propios de la calificadora."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 422,
+    "page number" : 12,
+    "bounding box" : [ 323.83, 445.338, 550.02, 615.751 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "En el caso de un escenario con restricciones leves, se proyectó un menor crecimiento promedio de las captaciones del público (+250%), con un índice de intermediación moderado-bajo y reduciendo la cobertura de Gastos, se reflejan niveles ligeramente perjudicados, manteniendo un indicador de liquidez y rentabilidad satisfactorio. En ese sentido, ante la estrategia de crecimiento planteada por la entidad; los gastos operativos mantienen tendencia creciente, situación similar se presenta para la Solvencia patrimonial que se ubica aún sobre el mínimo exigido por ley. La morosidad se mantendrá en su nivel histórico, para una situación que podría describirse estable, con respecto a los resultados financieros actuales."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 427,
+    "page number" : 12,
+    "bounding box" : [ 63.882, 389.755, 282.056, 581.563 ],
+    "font" : "Arial",
+    "font size" : 6.14,
+    "text color" : "[0.0]",
+    "content" : "Dólares Americanos 31/10/2020 30/06/2020 31/12/2019 Tasas de cambio 505.275 203.907 46.504 ACTIVO Efectivo 44.692.912 33.569.757 3.822.988 BCV 436.200 2.502.200 21.000 Bancos y corresponsales del exterior 18.657.669 15.686.435 11.474.876 (Provisión para disponibilidades) - 95.000 - 95.000 Inversiones en títulos valores 4.667.116 6.277.606 15.304.339 Cartera de crédito bruta 29.876.183 17.632.974 12.437.222 (Provisión para cartera de crédito) - 1.502.518 - 1.329.910 - 1.317.346 Intereses y comisiones por cobrar 2.275.913 1.956.197 1.606.385 (Provisión para rendimientos por cobrar) - 2.120.887 - 1.867.889 - 1.550.857 Bienes de uso 52.678 10.832 14.092 Otros activos brutos 2.197.468 1.513.894 1.567.842 (Provisión para otros activos) - 131.125 - 1.462.552 - 1.457.364 Total Activo 99.006.609 74.394.544 41.923.177 PASIVO Captaciones del público 64.721.654 46.515.633 17.613.771 Otros financiamientos obtenidos 362.890 177.981 Intereses y comisiones por pagar 1.277 2.945 1.736 Acumulaciones y otros pasivos 7.038.096 4.758.920 3.166.901 Total Pasivo 72.123.917 51.455.479 20.782.408 POSICIÓN NETA M/E 26.882.692 22.939.065 21.140.769"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 423,
+    "page number" : 12,
+    "bounding box" : [ 323.83, 330.358, 549.841, 431.761 ],
+    "font" : "Arial",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Con restricciones más pronunciadas, referidas a un aumento de las Captaciones de +50%, combinado con un comportamiento modesto en el crecimiento de la cartera, así como un incremento considerable en los Gastos, se observan indicadores sustancialmente afectados ante cambios adversos. Sin embargo, se prevé que la entidad permanecería en niveles de liquidez y rentabilidad razonables."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 432,
+    "page number" : 12,
+    "bounding box" : [ 63.882, 225.334, 282.042, 386.562 ],
+    "font" : "Arial",
+    "font size" : 6.141,
+    "text color" : "[0.0]",
+    "content" : "Euros 31/10/2020 30/06/2020 31/12/2019 Tasas de cambio 589.747 229.048 52.099 ACTIVO Efectivo 7.764.659 7.410.814 8.768.183 BCV - - 3.529.800 Bancos y corresponsales del exterior 7.608.448 8.160.332 10.669.982 Cartera de crédito bruta 1.856.400 1.856.400 (Provisión para cartera de crédito) - 310.947 - Intereses y comisiones por cobrar 131.186 55.073 (Provisión para rendimientos por cobrar) - 131.186 - Inversiones en filiales, afiliadas y sucursales 97.965 97.966 97.965 Otros activos brutos 788.000 200 21.913 Total Activo 17.804.525 17.580.785 23.087.843 PASIVO Captaciones del público 15.306.667 14.904.123 20.253.569 Acumulaciones y otros pasivos 489.142 291.208 921.030 Total Pasivo 15.795.809 15.195.331 21.174.599 POSICIÓN NETA M/E 2.008.716 2.385.454 1.913.244"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 424,
+    "level" : "Doctitle",
+    "page number" : 12,
+    "bounding box" : [ 330.43, 295.918, 543.123, 316.781 ],
+    "heading level" : 1,
+    "font" : "Arial,Bold",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Tabla 7: Análisis de Sensibilidad: Periodo de proyección 2020-2021"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H6",
+    "id" : 437,
+    "level" : "Subtitle",
+    "page number" : 12,
+    "bounding box" : [ 463.728, 285.853, 550.486, 293.159 ],
+    "heading level" : 6,
+    "font" : "Arial,Bold",
+    "font size" : 7.789,
+    "text color" : "[0.0]",
+    "content" : "Real Leve Grave"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 438,
+    "page number" : 12,
+    "bounding box" : [ 319.847, 187.517, 553.91, 282.442 ],
+    "font" : "Arial",
+    "font size" : 7.789,
+    "text color" : "[0.0]",
+    "content" : "Cart.Inmov.Bruta/Cart.Bruta (%) 4,7555 5,6877 6,8230 Prov.Cart/Cartera.Inmov.Bruta (%) 111,8210 88,2427 58,7697 Act.CortoPlazo/Pas.CortoPlazo (%) 92,5295 89,8950 67,8701 Cartera Neta/Captaciones (%) 35,3451 22,8146 20,4820 ROA (%) 5,2274 2,7357 1,1655 ROE (%) 23,6223 10,7337 3,4427 Gtos.Per+Gtos.Oper/Act.Prod.Pm (%) 31,2401 43,3670 57,8082 Brecha Estructural (%) -0,3305 -0,4510 -0,5327 Patrimonio+Gest.Op/Activo (%) 22,4551 29,8598 36,4337 Pasivos Corto Plazo/Patrimonio (%) 2,3263 2,7084 3,3944"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 425,
+    "page number" : 12,
+    "bounding box" : [ 437.26, 177.132, 549.85, 184.673 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "Fuente: BNC - Cálculos propios"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 445,
+    "level" : "Subtitle",
+    "page number" : 13,
+    "bounding box" : [ 62.424, 687.048, 288.172, 707.791 ],
+    "heading level" : 1,
+    "font" : "Arial,Bold",
+    "font size" : 9.96,
+    "text color" : "[0.0]",
+    "content" : "Tabla 8: Principales indicadores del sistema bancario privado a Octubre 2020."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 452,
+    "page number" : 13,
+    "bounding box" : [ 56.454, 575.016, 299.291, 683.695 ],
+    "font" : "Arial",
+    "font size" : 6.422,
+    "text color" : "[0.0]",
+    "content" : "BNC GRANDES MEDIANOS PEQUEÑOS Cart.Inmov.Bruta/Cart.Bruta (%) 0,01 0,22 14,57 0,15 Prov.Cartera/Cartera Bruta (%) 3,54 2,28 2,34 1,97 Cartera Neta/Captaciones (%) 22,98 23,19 41,34 16,43 Disponibilidades/Captaciones (%) 105,39 120,43 104,48 129,42 ROA (%) 5,83 3,86 4,72 3,77 ROE (%) 14,21 8,98 11,33 3,72 Gtos.Oper+Gtos.Per/Ingr.Financ (%) 94,48 135,47 93,72 95,23 Activos Impro/(Patr.+Gest.Ope) (%) 292,05 242,71 253,53 96,56 Patrimonio+Gest.Op./Activo Tot (%) 24,89 27,93 26,10 62,02 GastosTransform/ActProdBruto (%) 7,45 9,99 10,61 6,76"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 446,
+    "page number" : 13,
+    "bounding box" : [ 182.93, 554.492, 296.397, 571.273 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "Fuente: SAIF - Cálculos propios Cifras no consolidadas"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 447,
+    "level" : "5",
+    "page number" : 13,
+    "bounding box" : [ 62.424, 532.559, 257.987, 541.451 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 1,
+    "previous list id" : 420,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 13,
+      "bounding box" : [ 62.424, 532.559, 257.987, 541.451 ],
+      "font" : "Arial,Bold",
+      "font size" : 9.48,
+      "text color" : "[0.0]",
+      "content" : "6. SUSCEPTIBILIDAD DE CALIFICACIONES",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 448,
+    "level" : "6",
+    "page number" : 13,
+    "bounding box" : [ 62.424, 348.718, 288.128, 530.521 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 13,
+      "bounding box" : [ 62.424, 509.658, 288.128, 530.521 ],
+      "font" : "Arial,Bold",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "6.1 Factores Críticos que Podrían Llevar a un Aumento en la Calificación",
+      "kids" : [ {
+        "type" : "list",
+        "pdfua_tag" : "L",
+        "id" : 94,
+        "level" : "4",
+        "page number" : 13,
+        "bounding box" : [ 62.424, 383.038, 288.448, 509.247 ],
+        "numbering style" : "unordered",
+        "number of list items" : 4,
+        "list items" : [ {
+          "type" : "list item",
+          "pdfua_tag" : "LI",
+          "page number" : 13,
+          "bounding box" : [ 62.424, 475.098, 288.448, 509.247 ],
+          "font" : "Arial",
+          "font size" : 9.96,
+          "text color" : "[0.0]",
+          "content" : "• Disminución significativa en los niveles de concentración con respecto a deudores como a depositantes.",
+          "kids" : [ ]
+        }, {
+          "type" : "list item",
+          "pdfua_tag" : "LI",
+          "page number" : 13,
+          "bounding box" : [ 62.424, 452.058, 288.184, 474.687 ],
+          "font" : "Arial",
+          "font size" : 9.96,
+          "text color" : "[0.0]",
+          "content" : "• Sostenimiento en el crecimiento de los márgenes de rentabilidad.",
+          "kids" : [ ]
+        }, {
+          "type" : "list item",
+          "pdfua_tag" : "LI",
+          "page number" : 13,
+          "bounding box" : [ 62.424, 417.618, 288.402, 451.767 ],
+          "font" : "Arial",
+          "font size" : 9.96,
+          "text color" : "[0.0]",
+          "content" : "• Aumento progresivo en la cuota de mercado de los préstamos del banco con relación al sistema.",
+          "kids" : [ ]
+        }, {
+          "type" : "list item",
+          "pdfua_tag" : "LI",
+          "page number" : 13,
+          "bounding box" : [ 62.424, 383.038, 288.115, 417.207 ],
+          "font" : "Arial",
+          "font size" : 9.96,
+          "text color" : "[0.0]",
+          "content" : "• Estabilidad en los indicadores de calidad de la cartera crediticia y cobertura de los saldos atrasados por medio de provisiones.",
+          "kids" : [ ]
+        } ]
+      } ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 13,
+      "bounding box" : [ 62.424, 348.718, 288.008, 369.581 ],
+      "font" : "Arial,Bold",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "6.2 Factores Críticos que Podrían Llevar a una Disminución en la Calificación",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 449,
+    "level" : "4",
+    "page number" : 13,
+    "bounding box" : [ 62.424, 222.069, 288.304, 348.187 ],
+    "numbering style" : "unordered",
+    "number of list items" : 4,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 13,
+      "bounding box" : [ 62.424, 302.638, 288.214, 348.187 ],
+      "font" : "Arial",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "• Aumento consistente en la morosidad del banco, que a su vez conlleve al uso de reservas, y que impacten en los índices de cobertura y en los resultados del banco.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 13,
+      "bounding box" : [ 62.424, 268.078, 288.304, 302.227 ],
+      "font" : "Arial",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "• Desmejora relevante en los indicadores de rentabilidad tanto en términos absolutos como relativos.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 13,
+      "bounding box" : [ 62.424, 233.608, 288.164, 267.667 ],
+      "font" : "Arial",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "• Aparición de riesgos reputacionales no esperados que afecten la operatividad del banco y su imagen en el mercado.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 13,
+      "bounding box" : [ 62.424, 222.069, 233.226, 233.197 ],
+      "font" : "Arial",
+      "font size" : 9.96,
+      "text color" : "[0.0]",
+      "content" : "• Pérdida de bancos corresponsales.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "text block",
+    "id" : 450,
+    "page number" : 13,
+    "bounding box" : [ 56.544, 152.18, 294.31, 210.38 ],
+    "kids" : [ {
+      "type" : "paragraph",
+      "pdfua_tag" : "P",
+      "id" : 1,
+      "page number" : 13,
+      "bounding box" : [ 62.424, 153.732, 288.446, 207.473 ],
+      "font" : "Arial",
+      "font size" : 8.04,
+      "text color" : "[0.0]",
+      "content" : "ADVERTENCIA Este informe de calificación no implica recomendación para comprar, vender o mantener un título valor, ni implica una garantía de pago del título, sino una evaluación sobre la probabilidad de que el capital del mismo y sus rendimientos sean cancelados oportunamente."
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 458,
+    "page number" : 14,
+    "bounding box" : [ 261.8, 700.17, 351.493, 738.27 ],
+    "source" : "global-ratings---enero-2021.pdf_images/imageFile32.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 460,
+    "page number" : 14,
+    "bounding box" : [ 373.08, 708.6, 534.96, 726.12 ],
+    "source" : "global-ratings---enero-2021.pdf_images/imageFile33.png"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 461,
+    "page number" : 14,
+    "bounding box" : [ 430.18, 710.118, 530.864, 724.707 ],
+    "font" : "Arial",
+    "font size" : 6.96,
+    "text color" : "[0.0]",
+    "content" : "Tlf. Master: (58) (212) 263.43.93 RIF J-30166873-1"
+  }, {
+    "type" : "table",
+    "pdfua_tag" : "Table",
+    "id" : 462,
+    "level" : "6",
+    "page number" : 14,
+    "bounding box" : [ 84.478, 158.626, 527.052, 687.88 ],
+    "number of rows" : 11,
+    "number of columns" : 1,
+    "rows" : [ {
+      "type" : "table row",
+      "row number" : 1,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 14,
+        "bounding box" : [ 85.622, 597.19, 526.194, 686.735 ],
+        "row number" : 1,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 1,
+          "page number" : 14,
+          "bounding box" : [ 93.647, 653.458, 291.481, 672.952 ],
+          "font" : "Arial,Bold",
+          "font size" : 8.573,
+          "text color" : "[0.0]",
+          "content" : "Banco Nacional de Crédito, C.A. Banco Universal INDICADORES FINANCIEROS"
+        }, {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 2,
+          "page number" : 14,
+          "bounding box" : [ 93.647, 631.151, 251.366, 650.073 ],
+          "font" : "Arial",
+          "font size" : 8.573,
+          "text color" : "[0.0]",
+          "content" : "Expresado en Millones de Bolívares Consolidado con Sucursales en el Exterior"
+        }, {
+          "type" : "heading",
+          "pdfua_tag" : "H3",
+          "id" : 3,
+          "level" : "Subtitle",
+          "page number" : 14,
+          "bounding box" : [ 157.198, 609.408, 519.752, 617.45 ],
+          "heading level" : 3,
+          "font" : "Arial,Bold",
+          "font size" : 8.573,
+          "text color" : "[0.0]",
+          "content" : "Ejercicio Finalizado el: Oct2020 Jun2020 Dic2019 Jun2019 Dic2018"
+        }, {
+          "type" : "image",
+          "pdfua_tag" : "Figure",
+          "id" : 4,
+          "page number" : 14,
+          "bounding box" : [ 468.723, 637.588, 508.178, 675.31 ],
+          "source" : "global-ratings---enero-2021.pdf_images/imageFile34.png"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 2,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 14,
+        "bounding box" : [ 85.622, 585.755, 526.194, 597.19 ],
+        "row number" : 2,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 5,
+          "page number" : 14,
+          "bounding box" : [ 89.15, 586.529, 164.132, 594.571 ],
+          "font" : "Arial,Bold",
+          "font size" : 8.573,
+          "text color" : "[0.0]",
+          "content" : "Calidad de Activos"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 3,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 14,
+        "bounding box" : [ 85.622, 509.663, 526.194, 585.755 ],
+        "row number" : 3,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 6,
+          "page number" : 14,
+          "bounding box" : [ 96.02, 509.857, 523.22, 583.119 ],
+          "font" : "Arial",
+          "font size" : 8.573,
+          "text color" : "[0.0]",
+          "content" : "Activos Improductivos/Activos (%) 73,10 76,51 67,78 73,15 51,90 Cart.Inmov.Bruta/Cart.Bruta (%) 4,76 6,31 1,48 9,90 0,77 Cartera Bruta (MM) 18.640.171,03 4.850.856,53 950.358,21 97.931,38 24.663,17 Cartera Inmovilizada Bruta (MM) 886.440,19 305.918,60 14.057,66 9.691,60 191,03 Morosidad Ampliada (%) 4,76 6,31 1,48 9,90 0,77 Prov.Cartera/Cartera Bruta (%) 5,32 7,08 7,33 14,12 16,05 Prov.Cart/Cartera.Inmov.Bruta (%) 111,82 112,30 495,86 142,69 2.072,34"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 4,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 14,
+        "bounding box" : [ 85.622, 498.21, 526.194, 509.663 ],
+        "row number" : 4,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 7,
+          "page number" : 14,
+          "bounding box" : [ 89.053, 498.977, 123.645, 507.019 ],
+          "font" : "Arial,Bold",
+          "font size" : 8.573,
+          "text color" : "[0.0]",
+          "content" : "Liquidez"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 5,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 14,
+        "bounding box" : [ 85.622, 454.733, 526.194, 498.21 ],
+        "row number" : 5,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 8,
+          "page number" : 14,
+          "bounding box" : [ 96.02, 454.927, 523.212, 495.592 ],
+          "font" : "Arial",
+          "font size" : 8.573,
+          "text color" : "[0.0]",
+          "content" : "Act.CortoPlazo/Pas.CortoPlazo (%) 92,53 101,72 90,46 102,44 68,25 Cartera Neta/Captaciones (MM) 35,35 26,97 28,40 17,19 47,87 Disp+Inversiones/Captaciones (%) 98,96 112,67 116,56 132,31 90,02 Disponibilidades/Captaciones (%) 93,13 102,88 93,60 105,33 68,25"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 6,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 14,
+        "bounding box" : [ 85.622, 443.281, 526.194, 454.733 ],
+        "row number" : 6,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 9,
+          "page number" : 14,
+          "bounding box" : [ 89.15, 444.047, 140.03, 452.089 ],
+          "font" : "Arial,Bold",
+          "font size" : 8.573,
+          "text color" : "[0.0]",
+          "content" : "Rentabilidad"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 7,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 14,
+        "bounding box" : [ 85.622, 356.317, 526.194, 443.281 ],
+        "row number" : 7,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 10,
+          "page number" : 14,
+          "bounding box" : [ 96.02, 356.52, 523.22, 440.662 ],
+          "font" : "Arial",
+          "font size" : 8.573,
+          "text color" : "[0.0]",
+          "content" : "Gastos Financieros/Captac.Cost (%) 2,68 4,47 4,87 6,59 3,68 Ingresos Extraordinar/Activos (%) 0,00 0,00 0,00 0,00 23,59 Ingresos por Cartera/Cartera (%) 33,25 47,55 56,03 62,29 47,28 Ingresos por Inversión/Invers (%) 35,82 19,50 18,11 15,77 21,23 Margen Financ. Bruto/Activo (%) 15,38 9,25 20,75 13,36 42,10 Margen Financ. Neto/Activo (%) 16,14 7,26 25,80 24,63 30,55 ROA (%) 5,23 4,62 6,51 18,19 28,58 ROE (%) 23,62 18,67 26,39 83,86 173,22"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 8,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 14,
+        "bounding box" : [ 85.622, 344.865, 526.194, 356.317 ],
+        "row number" : 8,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 11,
+          "page number" : 14,
+          "bounding box" : [ 89.15, 345.64, 180.704, 353.682 ],
+          "font" : "Arial,Bold",
+          "font size" : 8.573,
+          "text color" : "[0.0]",
+          "content" : "Gestión Administrativa"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 9,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 14,
+        "bounding box" : [ 85.622, 236.153, 526.194, 344.865 ],
+        "row number" : 9,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 12,
+          "page number" : 14,
+          "bounding box" : [ 96.02, 236.353, 523.22, 342.255 ],
+          "font" : "Arial",
+          "font size" : 8.573,
+          "text color" : "[0.0]",
+          "content" : "Act.Product/Pasivo.Costo (%) 46,09 42,64 68,89 65,65 134,64 Captaciones con costo (MM) 44.320.165,68 14.164.277,88 2.185.436,17 307.814,74 25.169,09 Gtos.Per+Gtos.Oper/Act.Prod.Pm (%) 31,24 32,29 38,89 30,11 26,58 Gtos.Per+Gtos.Oper/Ing.Financ (%) 86,66 86,20 91,44 71,00 68,49 Gtos.Personal/Captaciones (%) 2,97 3,91 4,94 4,50 6,84 Gtos.Transformac/Captaciones (%) 13,66 15,93 20,73 17,81 21,31 Gtos.Operativos/Captaciones (%) 10,04 11,31 15,16 12,78 14,21 Otros Ing Operativos/Activos (%) 11,42 11,27 15,59 16,13 12,09 Pasivos con Costo (MM) 44.969.346,81 14.546.760,83 2.400.194,03 335.443,02 25.169,45 Brecha Estructural (%) -0,33 -0,33 -0,15 -0,15 0,14"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 10,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 14,
+        "bounding box" : [ 85.622, 224.722, 526.194, 236.153 ],
+        "row number" : 10,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 13,
+          "page number" : 14,
+          "bounding box" : [ 89.15, 225.493, 132.602, 233.535 ],
+          "font" : "Arial,Bold",
+          "font size" : 8.573,
+          "text color" : "[0.0]",
+          "content" : "Patrimonio"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 11,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 14,
+        "bounding box" : [ 85.622, 159.198, 526.194, 224.722 ],
+        "row number" : 11,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 14,
+          "page number" : 14,
+          "bounding box" : [ 96.02, 159.684, 523.22, 222.084 ],
+          "font" : "Arial",
+          "font size" : 8.573,
+          "text color" : "[0.0]",
+          "content" : "Activos Impro/(Patr.+Gest.Ope) (%) 325,52 324,23 283,89 309,82 239,97 Activos Improductivos (MM) 53.614.727,24 19.086.568,82 3.331.499,25 562.295,32 32.287,15 Activos Productivos (MM) 20.724.444,17 6.202.982,00 1.653.383,94 220.224,46 33.887,62 Otros Activ/(Patrim+Gest.Op) (%) 30,85 21,30 24,01 13,97 9,88 Patrimonio+Gest.Op/Activo (%) 22,46 23,60 23,88 23,61 21,63 Pasivos Corto Plazo/Patrimonio (%) 2,33 1,98 1,57 1,41 1,60"
+        } ]
+      } ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 456,
+    "page number" : 14,
+    "bounding box" : [ 63.744, 39.472, 521.715, 56.253 ],
+    "font" : "Arial",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "Esta calificación no implica recomendación para comprar, vender o mantener un título valor, ni implica una garantía de pago del título, sino una evaluación sobre la probabilidad de que el capital del mismo y sus rendimientos sean cancelados oportunamente."
+  } ]
+}

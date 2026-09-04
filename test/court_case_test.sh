@@ -20,7 +20,8 @@ root = Path(sys.argv[1]).resolve()
 tmp = Path(sys.argv[2]).resolve()
 sys.path.insert(0, str(root / "lib"))
 
-from glaw_court import create_handoff, live_submit, prepare_packet, record_receipt, record_service, route_case, service_handoff
+import glaw_court as court
+from glaw_court import authority_freshness, create_handoff, live_submit, prepare_packet, record_receipt, record_service, route_case, service_handoff
 
 passed = 0
 
@@ -56,6 +57,30 @@ base = {
     },
     "jurisdiction_checks": checks(),
 }
+
+from datetime import date
+fresh = authority_freshness(["mdfl-2025.json"], as_of=date(2026, 8, 23), max_age_days=45)
+ok(fresh["status"] == "pass" and fresh["packs"][0]["source_count"] >= 3, "current authority pack passes freshness and source metadata gate")
+stale = authority_freshness(["mdfl-2025.json"], as_of=date(2026, 10, 1), max_age_days=45)
+ok(stale["status"] == "block" and any("days old" in item for item in stale["failures"]), "stale authority pack blocks freshness gate")
+
+class _Response:
+    status = 200
+    def read(self, _size):
+        return b"x"
+    def __enter__(self):
+        return self
+    def __exit__(self, *_args):
+        return False
+
+original_urlopen = court.urlopen
+court.urlopen = lambda *_args, **_kwargs: _Response()
+online = authority_freshness(["mdfl-2025.json"], as_of=date(2026, 8, 23), check_urls=True)
+ok(online["status"] == "pass" and online["check_urls"] is True, "online authority mode passes reachable source URLs")
+court.urlopen = lambda *_args, **_kwargs: (_ for _ in ()).throw(OSError("offline fixture"))
+unreachable = authority_freshness(["mdfl-2025.json"], as_of=date(2026, 8, 23), check_urls=True)
+ok(unreachable["status"] == "block" and any("unreachable" in item for item in unreachable["failures"]), "online authority mode blocks unreachable source URLs")
+court.urlopen = original_urlopen
 
 federal = route_case(base)
 ok(federal["status"] == "pass" and federal["selected"]["court_code"] == "mdfl", "verified federal-question case routes to M.D. Florida")

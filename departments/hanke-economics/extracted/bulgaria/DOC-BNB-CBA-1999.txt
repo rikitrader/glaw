@@ -1,0 +1,2386 @@
+                    BULGARIAN NATIONAL BANK
+
+
+
+
+                    The Currency Board in Bulgaria:
+                    Design, Peculiarities and
+                    Management of Foreign
+
+
+
+
+DISCUSSION PAPERS
+                    Exchange Cover
+
+                                          Dobrislav Dobr ev
+
+
+
+
+    dp/9/1999
+                                 August 1999
+dp/9/1999
+                DISCUSSION PAPERS
+                Editorial Board:
+                Chairman: Garabed Minassian
+                Members: Roumen Avramov
+                           Georgi Petrov
+                Secretary: Lyudmila Dimova
+
+
+
+
+                © Bulgarian National Bank, August 1999
+
+
+
+                ISBN 954 ≠ 9791 ≠ 21 ≠ 1
+
+                Printed in BNB Printing Center
+
+
+                Views expressed in materials are those of the authors and do not necessarily
+                reflect BNB policy.
+
+
+
+
+                Send your comments and opinions to:
+                Publications Division
+                Bulgarian National Bank
+                1, Alexander Battenberg Square
+                1000 Sofia, Bulgaria
+                E-mail: Dimova.L@bnbank.org
+                Web.site: www.bnb.bg
+
+            2
+                                                                                                                 Discussion Papers
+Contents
+
+I.   Reasons to Introduce a Currency Board
+     Arrangement in Bulgaria ............................................................... 5
+
+II. The CBA in Bulgaria versus an Orthodox CBA.......................... 6
+    1. Common Key Features .................................................................. 6
+    2. Main Differences ........................................................................... 7
+    3. Equal Advantages.......................................................................... 9
+
+III. Monetary Policy Operations ........................................................10
+     1. Reserve Requirements ................................................................. 11
+     2. Lender of Last Resort (LLR) ..................................................... 12
+     3. Open Market Operations (OMO) .............................................. 13
+     4. Base Interest Rate........................................................................ 14
+     5. Commissions ................................................................................ 15
+     6. Purchase of Gold ......................................................................... 16
+
+IV. The Financial System under the CBA in Bulgaria .................... 16
+    1. Balance Sheets ............................................................................. 17
+    2. Flow Channels ............................................................................. 18
+    3. Money Supply .............................................................................. 20
+    4. The Government Deposit ............................................................ 21
+
+V. The Role of Reserve Management Operations .............................22
+    1. The Banking Department Deposit.............................................. 24
+    2. Full Foreign Exchange Cover ..................................................... 27
+    3. Unconstrained Exchange of Reserve Currency .......................... 30
+    4. Minimum Level of Revenue........................................................ 30
+
+VI. Conclusions ................................................................................... 31
+
+Appendix .............................................................................................. 33
+
+References ............................................................................................51
+
+
+
+
+                                                                                                             3
+dp/9/1999
+                SUMMARY: T HE PAPER REVIEWS THE DESIGN OF THE CURRENCY BOARD AR-
+                RANGEMENT IN B ULGARIA. A COMPARISON TO AN ORTHODOX CURRENCY BOARD IS
+                MADE. THE MAIN TOOLS OF MONETARY POLICY OPERATIONS ARE EXAMINED TO
+                CHECK CONSISTENCY WITH CURRENCY BOARD RULES . THE PROBLEMS THAT COULD
+                ARISE FROM USING EXISTING POSSIBILITIES FOR SUCH OPERATIONS IN CONTRADICTION
+                WITH THE OPERATING PRINCIPLES OF AN ORTHODOX CURRENCY BOARD ARE DIS-
+                CUSSED. AN APPROPRIATE DIAGRAM OF THE MAIN FLOW CHANNELS AND BALANCE
+                SHEETS IN THE FINANCIAL SYSTEM IS PRESENTED. THE MONEY SUPPLY PROCESS IS
+                EXAMINED IN ORDER TO EXPLAIN THE MAIN PECULIARITIES IN THE DESIGN OF THE
+                CURRENCY BOARD IN BULGARIA. A FUNDAMENTAL EQUATION EXPRESSING THE RE-
+                LATIONSHIP BETWEEN THE FACTORS AFFECTING THE STABILITY OF THE CURRENCY
+                BOARD IS DERIVED. THE ROLE OF RESERVE MANAGEMENT OPERATIONS IN THE FUNC-
+                TIONING OF THE CURRENCY BOARD IS ANALYZED.
+
+
+                KEYWORDS: Currency board, monetary policy, financial system,
+                          reserve management, risk management.
+
+
+
+
+                Dobrislav Dobrev, MSc, Senior Analyst, Treasury Directorate, Issue Department, Bulgarian
+                National Bank, Member of the Investment Committee, E-mail: Dobrev.D@bnbank.org
+                Paper presented at the Operational Monetary Policy Seminar, June 23 ≠ 25, 1999, De
+                Nederlandsche Bank, Amsterdam and is being published after a final revision.
+                The author would like to thank Svetlozar Karaneshev, Dimitar Murdjov, Ivan Mintchev
+                and Plamen Boudjakov from the Treasury Directorate of the BNB for their readiness to
+                discuss any problems that have appeared in the course of work, as well as Nikolay
+                Nenovsky, Kalin Hristov and Boris Petrov from the Economic Research and Projec-
+                tions Directorate of the BNB for their full support and helpful comments. Special thanks
+                are due to Prof. Ratcho Dentchev from Sofia University, Roumen Avramov, Member of
+                the Managing Board of the BNB, Prof. Garabed Minassian, Member of the Managing
+                Board of the BNB, Victor Yotzov from the Economic Research and Projections Direc-
+                torate of the BNB and Zdravko Balyozov from the Statistics Directorate of the BNB who
+                discussed on some of the topics in the paper.
+                All errors and omissions remain the full responsibility of the author.
+                Views expressed in the paper are those of the author and do not necessarily reflect Bank
+                policy.
+
+            4
+                                                                                   Discussion Papers
+             I. Reasons to Introduce a Currency Board
+                     Arrangement in Bulgaria
+    The currency board arrangement (CBA) in Bulgaria was introduced
+after a short episode of hyperinflation in December 1996 ≠ February
+1997 when major stabilization policy efforts failed and key institutions
+lost their credibility. The following sequence of events highlights the pic-
+ture of the Bulgarian economy during that period:
+    ï the government used to fund deficits of bankrupt state enterprises
+       by supplying subsidies;
+    ï the central bank used to fund government deficits by printing Bul-
+       garian levs;
+    ï commercial banks used to fund deficits of bankrupt state enter-
+       prises by supplying loans;
+    ï the central bank used to refinance commercial banks by extending
+       discount loans;
+    ï insolvent commercial banks triggered a severe banking crisis;
+    ï the Bulgarian lev depreciated substantially against all major cur-
+       rencies;
+    ï the economy was driven into a hyperinflationary spiral;
+    ï several stabilization policy attempts failed and key institutions lost
+       their credibility.
+    It became clear that one of the main reasons for the hard economic
+environment was the lack of financial discipline due to noncompliance
+with contemporary laws and regulations. The government, in general be-
+ing ready to fund bankruptcy through the politicized central bank, cre-
+ated a typical moral hazard problem for all economic agents.
+    Thus, the idea to introduce a rule-based instead of a discretionary
+mechanism of money supply regulation originated in a rather natural
+way as an ultimate measure to restore financial system credibility and
+revive the economy. The CBA in Bulgaria was assumed not only as a
+pure stabilization device but also as a tool to impose financial disci-
+pline and market-driven commercial culture upon all economic agents
+(Avramov, 1999, pp. 7 ≠ 8).
+    A more detailed survey on the developments in the Bulgarian
+economy before and after the adoption of the CBA is beyond the scope
+of this study (see Minassian, Nenova, Yotzov, 1998, pp. 5 ≠ 84; Yotzov,
+Nenovsky, Hristov, Petrova, Petrov, 1998, pp. 7 ≠ 21; Gulde, 1999, pp.
+2 ≠ 5; Avramov, 1999, pp. 9 ≠ 16). We would rather focus on the design
+of the financial system under the CBA in Bulgaria and the resulting im-
+
+                                                                               5
+dp/9/1999
+                plications for the role of reserve management operations in the function-
+                ing of the currency board.
+
+                         II. The CBA in Bulgaria versus an Orthodox CBA
+                   The CBA in Bulgaria was introduced with the new Law on the Bul-
+                garian National Bank (BNB) of 10 June 1997, issued by the 38th Na-
+                tional Assembly. The structure of the BNB as defined by Article 19,
+                Section 1 of the Law is comprised of three departments: an Issue De-
+                partment, a Banking Department and a Banking Supervision Depart-
+                ment. The Law sets the monetary functions and operations of the
+                Bank according to the general principles of functioning of a typical cur-
+                rency board. There are, however, some differences rendering the Bulgar-
+                ian CBA to a certain extent more flexible than an orthodox one.
+
+                                            1. Common Key Features
+                   Article 20, Section 1 defines the main function of the Issue Depart-
+                ment is to maintain full foreign exchange cover for the total amount of
+                BNB monetary liabilities by taking actions needed for the efficient man-
+                agement of the Bankís international foreign exchange assets.
+                   Article 29 of the Law sets the official exchange rate of the lev to
+                the Deutschemark at BGL 1,000 per DEM 1 and establishes the rule to
+                be used to determine the official exchange rate of the lev to the Euro
+                when it becomes legal tender in Germany.
+                   Article 45 stipulates that the BNB may not extend credits to the
+                State or any state agency, except credits against purchases of special
+                drawing rights from the IMF according to an established transparent
+                procedure.
+                   Thus the CBA in Bulgaria enjoys the key features of an orthodox
+                CBA, listed in Table 1.
+                                                                                                        Table 1
+                        THE CBA IN BULGARIA VERSUS AN ORTHODOX CBA:
+                                    COMMON KEY FEATURES
+
+                  An Orthodox Currency Board                             The CBA in Bulgaria
+                  Maintains full foreign exchange cover for its note, coin and deposit liabilities as set by law
+                  Maintains a truly fixed exchange rate with respect to the reserve currency as set by law
+                                 Cannot finance domestic government spending as set by law
+
+
+
+            6
+                                                                                                 Discussion Papers
+                                  2. Main Differences
+   Table 2 below lists the main differences between the CBA in Bul-
+garia and a typical currency board (the features of an orthodox CBA
+are defined according to Hanke and Schuler, 1994, pp. 2 ≠10). Most of
+them result from some specific considerations on the efficient function-
+ing and credibility of the arrangement in the case of Bulgaria in view of
+the banking crisis preceding the adoption of the currency board.
+                                                                                   Table 2
+         THE CBA IN BULGARIA VERSUS AN ORTHODOX CBA:
+                       MAIN DIFFERENCES
+
+ An Orthodox Currency Board                        The CBA in Bulgaria
+ Usually supplies only notes and coins      Supplies notes, coins and deposits as well
+ Does not regulate commercial banks         Regulates commercial banks
+ Is not a lender of last resort             Strictly limited lender of last resort
+ Earns all seigniorage only from            Earns almost all seigniorage only from
+ interest on its assets                     interest
+ Full convertibility                        Full current account convertibility but still
+ (both current and capital account)         restricted capital account convertibility
+                                            (due to be changed)
+
+    Article 28, Section 2 defines the monetary liabilities of the BNB as
+consisting of all banknotes and coins in circulation issued by the BNB
+and any balances on accounts held by other parties with the BNB, with
+the exception of the accounts held by the IMF. According to Article 43,
+the BNB is the official depository of the State. By Article 41 commer-
+cial banks are required to keep minimum reserve requirements with the
+BNB. Therefore, the CBA in Bulgaria supplies notes, coins and de-
+posits (the government deposit and commercial bank reserves), while an
+orthodox CBA typically supplies only notes and coins. The reasons for
+this difference are discussed in the sections below with reference to mini-
+mum reserve requirements and the government deposit.
+    Article 20, Section 3 defines the main function of the Banking Super-
+vision Department is to supervise the banking system in accordance
+with the rules provided for by law and the regulations for its enactment.
+According to Article 41, Section 1, the BNB determines by regulation
+the minimum reserve requirements which commercial banks are re-
+quired to keep with the BNB. By Article 41, Section 2 the BNB estab-
+lishes by a regulation any other terms and requirements for the mainte-
+                                                                                             7
+dp/9/1999
+                nance of the stability of the banking system. Currently there are about
+                15 different regulations issued by the BNB such as Regulation No. 21
+                on the Minimum Required Reserves, Regulation No. 6 on Extending
+                Collateralized Loans to Banks, Regulation No. 8 on the Capital Ad-
+                equacy, Regulation No. 11 on Liquidity Management and Supervision,
+                Regulation No. 4 on Foreign Currency Positions, Regulation No. 9 on
+                the Evaluation of Risk Exposures of Banks and the Allocation of Provi-
+                sions to Cover the Risk Related Thereto, et alia. By contrast, a typical
+                currency board does not regulate commercial banks. Banking regula-
+                tions in a currency board are few and are enforced by the ministry of fi-
+                nance or an office of bank regulation (Hanke and Schuler, 1994, p. 7).
+                In Bulgaria, however, the banking crisis that preceded the adoption of
+                the CBA suggested that the soundness of banks would be vital for the vi-
+                ability of the CBA itself. Therefore, a strong office of bank regulation
+                was needed. Given its existing supervisory infrastructure, the BNB ap-
+                peared to be the most appropriate institution for that purpose. Neverthe-
+                less, it is difficult to say whether the following two peculiarities regard-
+                ing the Banking Supervision Department are an advantage or disadvan-
+                tage of this approach:
+                    ï in order to carry out its activities the Banking Supervision Depart-
+                       ment shares both the budget of the BNB and all existing facilities
+                       within the Bank;
+                    ï the activities of the Banking Supervision Department are coordi-
+                       nated to some extent with those of the other departments through
+                       the Managing Board of the BNB.
+                    The most important deviation from the principles of an orthodox
+                currency board in respect of regulation, however, is the maintenance of
+                minimum reserve requirements with the BNB as provided for by the
+                Law (and regulated by the Banking Supervision Department). Its im-
+                pact is discussed in more detail in the section devoted to monetary
+                policy operations.
+                    Article 20, Section 2 of the Law on the BNB states that the Banking
+                Department shall perform the lender of last resort function in case
+                any systemic risk for the stability of the banking system arises. On the
+                contrary, an orthodox CBA is not a lender of last resort (LLR). This
+                difference is also mainly due to the banking crisis that preceded the
+                adoption of the CBA in Bulgaria. A strictly limited LLR function in the
+                case of Bulgaria was assumed to render higher credibility to the ar-
+                rangement than no LLR because of the fragile stability of the banking
+                system. To this end, the Law on the BNB establishes a clear procedure
+                for the LLR function under a systemic risk. It is discussed in more de-
+
+            8
+                                                                                   Discussion Papers
+tail in the section devoted to monetary policy operations.
+    Article 30 gives the BNB the right to charge reserve currency ex-
+change transactions against levs up to 0.5 percent from the official ex-
+change rate. Actually, by a decision of the Managing Board the BNB
+sells Deutschemarks at the official exchange rate of BGL 1,000 per
+DEM 1 and buys them at BGL 995 per DEM 1. Therefore, the CBA in
+Bulgaria earns a small portion of its seigniorage from commissions,
+while a typical currency board earns seigniorage only from interest on
+its assets. In reality, income from commissions is far below 1 percent of
+total income and covers mainly the expenses for servicing transactions
+with the public. Hence, the CBA in Bulgaria earns almost all seignior-
+age only from interest on its assets.
+    The last difference between an orthodox CBA and the CBA in Bul-
+garia (of those listed in Table 2) regards the convertibility of the domes-
+tic currency. Although it has full current account convertibility, the Bul-
+garian lev is not fully convertible yet, because of the restrictions on
+capital account transactions arising from the old Law on Transactions
+                                                           1
+in Foreign Exchange Valuables and Currency Control . By contrast, a
+typical currency board has full convertibility of its currency. This feature
+is important, because it enables market forces alone to determine the
+money supply process through a self-adjusting equilibrium of the bal-
+ance of payments (see Hanke and Schuler, 1994, pp. 29 ≠ 41). Capital
+account liberalization, however, enhances the probability of self-fulfill-
+ing currency crises due to increased mobility of portfolio investments
+(see Nenovsky, Hristov, Petrov, 1999, p. 25). Therefore, it is difficult to
+say whether the CBA in Bulgaria would have benefited or suffered if un-
+restricted capital account transactions had been permitted from the very
+beginning of its functioning.
+
+                               3. Equal Advantages
+   The main advantages of the CBA in Bulgaria are summarized in
+Table 3. Essentially they are the same as the main advantages of an or-
+thodox currency board system. The Law on the BNB provides for a
+maximum transparency on its design and also on its activities, since by
+Article 49 the balance sheet of the Issue Department is published on a
+weekly basis. The CBA was established and fulfilled its main purpose
+quickly, i. e. its adoption resulted in a rapid monetary reform (see
+Yotzov, Nenovsky, Hristov, Petrova, Petrov, 1998, pp. 7 ≠ 8; Gulde,
+1999, pp. 19 ≠ 20). Monetary policy has been bound to the rules
+
+1
+    This is going to be changed with the adoption of an entirely new law.
+
+                                                                               9
+dp/9/1999
+            listed in Table 1, so that the monetary base cannot increase indepen-
+            dently of the monetary authority of the country whose currency has been
+            chosen as reserve and it is impossible to create inflation by discretion-
+            ary issuing of domestic currency. Protection from political pressure
+            has been guaranteed to the extent that hardly there will ever be a con-
+            sensus in the National Assembly to change the Law on the BNB. Yet the
+            design of the CBA in Bulgaria has been flexible enough (Table 2) to ad-
+            dress the specific problems of the banking system that were in place be-
+            fore its adoption. As a result, the adoption of the CBA in Bulgaria was
+            successful and the most important advantage of an orthodox currency
+            board ≠ high credibility ≠ has been achieved.
+                                                                              Table 3
+                   THE CBA IN BULGARIA VERSUS AN ORTHODOX CBA:
+                                 EQUAL ADVANTAGES
+
+               An Orthodox Currency Board                The CBA in Bulgaria
+                                          Transparency
+                                     Rapid monetary reform
+                                   Rule-bound monetary policy
+                                 Protection from political pressure
+                                      Cannot create inflation
+                                          High credibility
+
+               Thus, in the case of Bulgaria the success of the CBA critically de-
+            pended on the special design of the currency board, being both suffi-
+            ciently rule-bound to be credible, while allowing flexibility at the margin
+            on account of the banking crisis (see Gulde, 1999, pp. 14 ≠ 15). All the
+            same, mainly because of the existing small room for monetary policy
+            operations, the CBA in Bulgaria is not considered orthodox but a cur-
+            rency board-like system. It falls in the same group with Argentina and
+            Estonia, whose central banks also mimic currency boards (Hanke and
+            Schuler, 1994, pp. 47 ≠ 57).
+
+                              III. Monetary Policy Operations
+               In a fully liberalized system, including full convertibility (both cur-
+            rent and capital account), the central bank cannot set both an indepen-
+            dent domestic monetary policy and the exchange rate (see Gray and
+
+      10
+                                                                              Discussion Papers
+Hoggarth, 1996, p. 8; Hanke and Schuler, 1994, p. 19; Latter, 1996, p.
+24). Therefore, a typical currency board has to accept the interest rate
+and the quantity of domestic money corresponding to the fixed exchange
+rate and there should be no room for monetary policy operations. It is
+important to know why the Law on the BNB has left some room for
+such operations in the case of Bulgaria, and what kind of problems
+could arise from their use in contradiction with the operating principles
+of an orthodox CBA.
+
+                     1. Reserve Requirements
+    Reserve requirements are subject to Regulation No. 21 on the Mini-
+mum Required Reserves, issued by the BNB according to Article 41 of
+the Law on the BNB. Its main provisions are as follows:
+    ï the basis on which the amount of minimum required reserves is de-
+      termined includes banksí liabilities both in Bulgarian levs and for-
+      eign currency (Article 2);
+    ï banks maintain minimum required reserves in the amount of 11
+      percent of their deposit base (Article 3) either in levs, Euro, US
+      dollars or Swiss francs (Article 4);
+    ï reserve requirements are averaged on a monthly basis (Articles 6 ≠
+      8) but should a bank use over 50 percent of them, it shall pay in-
+      terest for the excess over the 50 percent for each day of use (Ar-
+      ticle 11);
+    ï the BNB may decide to pay interest on the lev component of the
+      minimum required reserves but its rate may not exceed the income
+      which the BNB receives from its investments in Euro (Article 5).
+    The level of reserve requirements has been set at 11 percent and has
+not been changed since the adoption of the CBA in Bulgaria. This is not
+strange in the context of the long-run role of reserve requirements as a
+monetary policy tool to influence the money multiplier and the money
+supply by changing the level of requirements in a discretionary manner,
+which is incompatible with the principles of a currency board. Hence,
+although not provided for by law, the option of changing the level of re-
+serve requirements should be viewed as almost theoretical (maybe exist-
+ing only for severe emergencies generating systemic risk for the stability
+of the banking system).
+    In the case of the CBA in Bulgaria, reserve requirements play pre-
+dominantly their short-run role to suppress excessive volatility of daily
+market interest rates by allowing reserve averaging and permitting
+banks to have an automatic recourse to their cash balances with the
+BNB on a daily basis. However, the BNB currently does not pay interest
+
+                                                                             11
+dp/9/1999
+            on reserve requirements. Less than fully remunerated reserve require-
+            ments are a tax on the banking system, which is absent in a typical cur-
+            rency board. Therefore, the option to remunerate reserves should be
+            used by the BNB in order to minimize distortions and get closer to an
+            orthodox approach. The extent to which remuneration of reserves is pos-
+            sible can be determined with the general equation derived in the section
+            devoted to the role of reserve management.
+                The most radical solution, however, is to eliminate reserve require-
+            ments, leave the banks themselves to determine the amount of reserves
+            held with the BNB for settlement purposes (as suggested in Nenovsky
+            and Hristov, 1998, p. 41) or/and make reserves fully remunerated (as
+            suggested above).
+                               2. Lender of Last Resort (LLR)
+                The strictly limited LLR function of the Banking Department is sub-
+            ject to Regulation No. 6 on Extending Collateralized Loans to Banks as
+            required by Articles 19 and 33 of the Law on the BNB. The main provi-
+            sions are as follows:
+                ï in the event of a liquidity risk affecting the stability of the banking
+                  system the BNB may extend credits to solvent banks experiencing
+                  acute need of liquidity but only against collateral of liquid assets
+                  (Articles 19 and 33 of the Law, Article 2 of the Regulation);
+                ï the existence of a liquidity risk is determined by Articles 4 and 5 of
+                  the Regulation as a function of the delays of settlement transac-
+                  tions in the Banking Integrated System for Electronic Transfer
+                  (BISERA);
+                ï credits may be extended only up to the amount of available funds
+                  on the Banking Department deposit placed with the Issue Depart-
+                  ment (Article 33 of the Law, Article 2 of the Regulation);
+                ï credits may be extended only as a temporary short-term support
+                  with original term of up to 30 days, and renewed no more than
+                  twice (Article 33 of the Law, Article 8 of the Regulation);
+                ï the decisions on loan applications have to be made by the Manag-
+                  ing Board of the BNB under clear lending procedures, described in
+                  Articles 12 ≠ 14 of the Regulation.
+                In a typical currency board system there is no LLR function because
+            foreign exchange transactions may operate as a standing facility ≠ the
+            market can always adjust its holdings of domestic currency reserves by
+            executing foreign exchange transactions against the reserve currency.
+            However, banks may experience liquidity problems for a very short term
+            if foreign exchange transactions can be settled only in two days (which
+
+      12
+                                                                               Discussion Papers
+is the international standard and the normal practice in Bulgaria). Re-
+serve averaging discussed above helps to overcome this problem to a
+certain extent but only when there is no systemic liquidity risk in the
+banking system as a whole. Given the fragile stability of the banking
+system in Bulgaria at the time of CBA adoption, it was reasonable to
+leave this strictly limited LLR function. It is applicable only to systemic
+risk situations as provided for by law and hardly could be used to abuse
+the operating principles of an orthodox currency board. On the contrary,
+the LLR function in the case of Bulgaria has even contributed to the ar-
+rangement credibility.
+
+               3. Open Market Operations (OMO)
+    The Law on the BNB prohibits open market operations, since by Ar-
+ticle 45 the BNB may not extend credits in whatever form to the govern-
+ment except credits against purchases of special drawings rights from
+the IMF. Securities issued or guaranteed by the government are not per-
+missible as reserves (Article 28, Section 3) and can serve only as collat-
+eral against credits according to the LLR function discussed above (Ar-
+ticle 33 of the Law and Article 6 of Regulation No. 6). The abolishment
+of OMO as a monetary policy tool of the BNB is fully in line with the
+principles of an orthodox currency board.
+    However, some small room for OMO-like operations has been left
+to the Ministry of Finance. According to Article 43, Section 3, the BNB
+acts as an agent for government and government guaranteed debt. This
+function is subject to Regulation No. 5 on the Terms and Procedure for
+Issuance, Acquisition and Redemption of Book-entry Government Secu-
+rities. Its main provisions are as follows:
+    ï the BNB organizes the activities in relation to the sale of govern-
+       ment securities on behalf and for the account of the government
+       according to a contract signed with the Ministry of Finance (Ar-
+       ticle 2);
+    ï government securities are acquired in the primary market through
+       auctions organized by the Fiscal Services Department of the BNB
+       according to a predetermined schedule or by a decision of the
+       Minister of Finance as established by Articles 3 ≠ 8;
+    ï secondary market transactions between primary dealers, nonpri-
+       mary dealers and physical and legal persons are registered by the
+       Fiscal Services Department of the BNB according to a set of clear
+       procedures established by Articles 9 ≠ 22;
+    ï the Ministry of Finance provides the necessary funds for the re-
+       demption of the government securities and interest thereon in a
+
+                                                                              13
+dp/9/1999
+                   special account opened with the BNB no later than one working
+                   day prior to redemption (Article 27);
+                ï reverse repurchase of government securities prior to maturity is al-
+                   lowed by a decision of the Minister of Finance at the auctions held
+                   by the BNB by replacing them with government securities of a new
+                   issue or by redemption of the nominal value and interest thereon
+                   (Article 30).
+                It is clear that the role of the Fiscal Services Department of the BNB
+            in the government securities market is a passive one (just an agent of the
+            Ministry of Finance), while the Ministry of Finance plays an active role
+            by determining the schedules of new issues, the amounts issued and the
+            amounts repurchased prior to maturity. This in theory enables the Min-
+            istry of Finance to influence the liquidity of the banking system and
+            money supply in an OMO-like manner, since according to Article 43,
+            Section 1 of the Law on the BNB the funds of the government are depos-
+            ited with the BNB. The problem is discussed in more detail in the sec-
+            tion devoted to the government deposit, because it arises, first of all,
+            from the presence of government funds in the financial system, not from
+            government debt management by the Ministry of Finance.
+
+                                            4. Base Interest Rate
+                The BNB is obliged to announce the base interest rate in compliance
+            with Article 35 of the Law on the BNB, which also gives the Managing
+            Board the right to determine the method to be used. Currently the base
+            interest rate is announced as the average yield on three-month govern-
+            ment treasury bills for each auction held by the Fiscal Services Depart-
+            ment in the primary market (see above)2. As a result, the market is dis-
+            torted in two major respects:
+                ï in order to minimize its costs the Ministry of Finance is interested
+                  in deliberately forcing the yield down (and hence the base interest
+                  rate) by reducing the supply of treasury bills;
+                ï interbank rates may be influenced by the base interest rate an-
+                  nounced by the BNB if banks use it as a benchmark.
+                Although the BNB does not set but only announces the base interest
+            rate, there is a contradiction with the currency board rules. Under a
+            fixed exchange rate regime the market alone should determine interest
+            rates (see Gray and Hoggarth, 1996, p. 8; Hanke and Schuler, 1994, pp.
+            40 ≠ 41; Latter, 1996, p. 24). It is true that reducing the cost of financ-
+            ing of the government could seem a benefit in the short run, but in the
+            2
+                Initially one-week treasury bills were used.
+
+      14
+                                                                                  Discussion Papers
+long run this could become an obstacle to building an efficient financial
+market, since participants tend to avoid markets where prices appear to
+be artificially controlled.
+    One possible solution could be to change the method of announcing
+the base interest rate. For example, it could be driven by the interbank
+market like LIBOR and other similar reference rates. However, this
+could generate other problems because of the underdeveloped interbank
+market in Bulgaria. Another more radical solution is to abolish the base
+interest rate (see Nenovsky and Hristov, 1998, p. 41). But this would re-
+quire changing the Law on the BNB and several other laws that refer to
+the base interest rate announced by the BNB. Therefore, at least for the
+time being, elimination would be rather difficult.
+
+                             5. Commissions
+    The BNB is bound to exchange reserve currency against levs on the
+basis of spot exchange rates, which cannot depart from the official ex-
+change rate by more than 0.5 percent, inclusive any fees and commis-
+sions (Article 30 of the Law on the BNB). The Managing Board has de-
+cided to sell Deutschemarks at BGL 1,000 per DEM 1 and buy at BGL
+995 per DEM 1. In theory the Managing Board has the right to change
+these rates (for example to sell at BGL 1,005 per DEM 1 and buy at
+BGL 1,000 per DEM 1). However, any such change may affect the for-
+eign exchange market and could trigger a shock in the monetary system
+due to changes in capital movements. Therefore, the option to change
+commissions should remain only theoretical, unless maybe a decision on
+charging no commission is taken. In fact, in an orthodox approach com-
+mission fees are supposed to worsen the link to the reserve currency, es-
+pecially for short-term capital movements, because they impose high
+costs relative to the benefits of arbitrage (Hanke and Schuler, 1994, pp.
+76 ≠ 77). Hence, an orthodox currency board does not earn seigniorage
+on fees. To place low limits on commission fees of financial intermedi-
+aries, it is sufficient to give the public the choice of dealing directly with
+the currency board, as it is in the case of the Bulgarian CBA. The so-
+cial benefits are considered to be much higher than the income that
+commission fees could bring to the currency board (Hanke and Schuler,
+1994, pp. 76 ≠ 77). However, there is also a sound objection to this
+statement because short-term capital movements are able to trigger
+shocks in the monetary system. Therefore, social benefits could be higher
+when, by applying permanently fixed low commission fees, the currency
+board discourages short-term arbitrageurs and speculators. Anyway, the
+Bulgarian market has already adjusted to the current commission fees
+
+                                                                                 15
+dp/9/1999
+            and it seems best to avoid any changes.
+
+                                           6. Purchase of Gold
+                According to the old Law on Transactions in Foreign Exchange
+            Valuables and Currency Control, the BNB is permitted to purchase gold
+            extracted in Bulgaria3. By Article 28, Section 6 of the Law on the BNB
+            gold is included in the international foreign exchange reserves covering
+            the monetary liabilities of the BNB. Therefore, the purchase of gold
+            against Bulgarian levs as an operation is quite similar to the purchase
+            of reserve currency against levs as both of them increase the amount of
+            domestic currency in circulation. This feature is absent in a typical cur-
+            rency board. In fact, if the BNB were allowed to both purchase and sell
+            unlimited amounts of gold against Bulgarian levs, then gold could play
+            the role of domestic securities for OMO. In practice, however, the BNB
+            may only purchase gold against levs and after the adoption of the CBA
+            in Bulgaria the amounts purchased have substantially decreased. If mar-
+            ket forces alone determine whether production of gold will result in an
+            increase of the amount of domestic currency in circulation (by exchang-
+            ing gold against reserve currency and then converting it into domestic
+            currency) then there is no contradiction with the rules of an orthodox
+            CBA. Therefore, it would be better to eliminate the right of the BNB to
+            purchase gold against domestic currency. The BNB should be enabled to
+            execute any transactions in gold only against the reserve currency (or
+            other foreign currencies).
+
+                      IV. The Financial System under the CBA in Bulgaria
+               The financial system under the Bulgarian CBA has the following
+            three main layers:
+               1. The Issue Department and the Banking Department of the BNB;
+               2. Commercial banks (supervised by the BNB Banking Supervi-
+            sion Department);
+               3. The public (including nonbanking financial institutions).
+               The government is another special participant in the financial sys-
+            tem:
+               ï it keeps its funds deposited with the Issue Department of the BNB;
+               ï it organizes the market for government securities through the BNB
+                 Fiscal Services Department and services the domestic government
+                 debt;
+
+            3
+                Now this is going to be changed with the adoption of an entirely new law.
+
+      16
+                                                                                             Discussion Papers
+   ï it borrows from the IMF and other international financial institu-
+      tions and services the foreign government debt;
+   ï it collects taxes and spends on salaries, pensions, subsidies, etc. in
+      the budgetary sector;
+   ï it also receives part of the seigniorage earned by the BNB.
+   Because of specific balance sheet items and corresponding flow
+channels, the financial system under the CBA in Bulgaria differs from
+that of an orthodox currency board and from a typical central bank.
+
+                                1. Balance Sheets
+    Figure 1 represents the main items on the aggregated balance sheets
+of the Issue Department, the Banking Department, commercial banks
+and the public (items on the left-hand side are assets, items on the right-
+hand side are liabilities).
+    The balance sheet of the Issue Department contains the following
+items:
+    FX ≠ foreign exchange reserves (as defined by Article 28 of the Law
+         on the BNB);
+    C ≠ currency in circulation;
+    R ≠ reserves of commercial banks;
+                                                            4
+    G ≠ the government deposit with the Issue Department ;
+    B ≠ the Banking Department deposit with the Issue Department (the
+         excess of the lev equivalent of foreign exchange reserves over the
+         total amount of BNB monetary liabilities as defined by Article
+         28 of the Law on the BNB).
+                                                                                 Figure 1
+              MAIN BALANCE SHEET ITEMS IN THE FINANCIAL
+                    SYSTEM OF THE CBA IN BULGARIA
+
+     Issue Department   Banking Department    Commercial Banks               Public
+                                                C
+                                                                       C
+                  C        B                    R
+                                                            D          D
+                  R       Ld          L IMF
+                                                 L                                    L
+      FX                                                   Ld          S
+                  G       RG           ···      S                                     ···
+                                                            ···       FX P
+                  B       ···                  FX B
+                                                                       ···
+                                                ···
+
+
+4
+  Actually, G includes also a negligible amount (less than 1 percent of FX) of nongov-
+ernment deposits. For the sake of simplicity we do not separate them from the funds of
+the government, since their impact on the financial system is only marginal and it is es-
+sentially the same as the effect caused by the funds of the government.
+
+                                                                                            17
+dp/9/1999
+             The balance sheet of the Banking Department includes:
+
+            B      ≠ the Banking Department deposit with the Issue Department;
+              d
+            L      ≠ discount loans extended to commercial banks according to the
+                     strictly limited LLR function of the Banking Department (as
+                     already discussed above);
+            RG ≠ receivables from government (corresponding to government
+                     borrowings from the IMF);
+               IMF
+            L      ≠ borrowings from the IMF;
+            ...    ≠ other items, inherited from the balance sheet of the BNB before
+                     the adoption of the CBA in Bulgaria and not related to its
+                     functioning (on the liability side ≠ capital, reserves, et alia; on
+                     the asset side ≠ IMF quota, et alia).
+
+             The items on the balance sheet of the commercial banks are as follows:
+
+            C   ≠ currency (held by banks);
+            R   ≠ reserves of commercial banks;
+            L   ≠ loans extended to the public;
+            S   ≠ domestic government securities;
+            D   ≠ deposits of the public;
+            L d ≠ borrowings from the Banking Department (discount loans);
+            FXB ≠ net foreign assets held by banks;
+            ... ≠ other items (on the liability side ≠ capital, reserves, et alia; on
+                  the asset side ≠ investments, et alia).
+
+              The main items on the aggregated balance sheet of the public have al-
+            ready appeared above:
+
+            C   ≠ currency (held by the public);
+            D   ≠ deposits with commercial banks;
+            S   ≠ domestic government securities;
+            L   ≠ borrowings from commercial banks;
+            FXP ≠ net foreign assets held by the public;
+            ... ≠ other items.
+
+                                       2. Flow Channels
+               The main flow channels in the financial system correspond to the
+            main items in the balance sheets (FX, C, R, D, L, S, G, LIMF, RG, B,
+            Ld). They are represented in Figure 2 as arrows connecting the different
+            layers in the financial system. The ëplusí and ëminusí signs indicate
+            whether an item appears on the asset or liability side of the balance
+            sheets between which the corresponding flow occurs.
+
+      18
+                                                                                                                                   Discussion Papers
+                                                                                                                     Figure 2
+                         FLOW CHANNELS IN THE FINANCIAL
+                          SYSTEM OF THE CBA IN BULGARIA
+
+      World                                                                                               + Government
+                +                                                                                         –
+      +                                                                                                         –
+                                              L IMF                          G                       RG
+                FX                                                                                                     S
+                                       –                             –        +
+                     +    Issue Department                  – B + Banking Department                       Fiscal Services
+          FX         –    Bulgarian National Bank                          Bulgarian National Bank             Government Agent
+                     +
+                 C                    –                                            +
+                                                                           Ld
+                FX                                  R
+ FX                                                     +                   S
+      C                                                          –                                               S
+      FX        +                                Commercial Banks                                          +
+                                       Bank 1           Bank 2       ···          Bank N
+                                                                                                                           S
+            C                                               –   +
+                                                                                                                  S
+           FX                                               D   L
+                                                              m
+                                                            +   –
+                                 The Public & Nonbanking Institutions
+           +                               Unit 1       Unit 2       ···         Unit M                            +
+
+
+    The Issue Department issues domestic currency (C) against foreign
+exchange reserves (FX), which connect it to the world. It is linked to the
+Banking Department through its deposit (B). The government issues se-
+curities (S) to the commercial banks and the public (the Fiscal Services
+Department of the BNB being just an agent for that purpose) and depos-
+its all of its funds with the Issue Department (G). Government foreign
+debt operations go as flow (G, FX) through the Issue Department but
+borrowings from the IMF (LIMF) also go as a separate item to the
+Banking Department liabilities. Thus, if utilized by the government
+within 90 days (as provided for by Article 45 of the Law on the BNB)
+they increase by equal amounts FX, LIMF as well as the Banking De-
+partment receivables from government (RG) and the government de-
+posit with the Issue Department (G). Otherwise, except FX and LIMF
+they increase only the size of the Banking Department deposit (B) and
+serve as IMF support for the CBA. The commercial banks (supervised
+by the Banking Supervision Department) maintain reserves with the Is-
+sue Department (R) and only in the event of a liquidity risk (as defined
+by the Law on the BNB and Regulation No. 6) they may borrow limited
+amounts from the Banking Department against collateral (Ld, S). The
+flow (D, L), circling between the commercial banks and the public,
+gives rise to a deposit multiplication process characterized by a specific
+
+                                                                                                                                  19
+dp/9/1999
+            money multiplier m. The commercial banks and the public can also ex-
+            change domestic currency (C) and foreign assets (FX), which indepen-
+            dently connect them to the world. Finally, it is important to note that
+            Figure 2 represents only the flow channels in the financial system and
+            not the exact economic events (such as tax collection, salary payments,
+            trade, production, government debt operations, transfer of seigniorage
+            earned by the Issue Department to the government, etc.), which lead to
+            flow generation.
+
+                                       3. Money Supply
+                       b
+              Let M be the monetary base, M ≠ the money supply and m ≠ the
+            money multiplier.
+              Then,
+                M = C + R = FX − G − B ,
+                   b
+
+
+                M = C + D = m⋅ M ,
+                                       b
+
+
+                m = (1 + c ) / (c + r ),
+                where c is the cash to deposits ratio and r is the reserves to deposits
+            ratio.
+                Hence, under the CBA in Bulgaria the money supply is determined
+            by
+                M = m ⋅ [FX − G − B ].
+                From this equation the following important conclusions can be
+            drawn:
+                ï ceteris paribus, changes in FX, which are not related to equal
+            changes in B or G, proportionally cause identical changes in the money
+            supply. Such changes arise from exchange of domestic currency against
+            reserve currency by the public or the commercial banks;
+                ï ceteris paribus, changes in B, which are not related to equal
+            changes in FX, proportionally cause inverse changes in the money sup-
+            ply. Such changes arise from covering the BNB operating and invest-
+            ment costs and possible exercise of the LLR function of the Banking
+            Department;
+                ï ceteris paribus, changes in G, which are not related to equal
+            changes in FX, proportionally cause inverse changes in the money sup-
+            ply (see also Nenovsky and Hristov, 1998, pp. 16 ≠ 18). Such changes
+            arise from issuance and redemption of securities, tax collection, pay-
+            ment of salaries, pensions and subsidies from the state budget and all
+            other types of budgetary operations executed in the domestic market.
+
+      20
+                                                                                        Discussion Papers
+   The first conclusion reveals the exact meaning of the concept of 'rule-
+bound monetary policy', which is one of the key features of any currency
+board system. The second one is not surprising, knowing that in general
+the money supply is positively related to the level of discount loans
+(Mishkin, 1992, p. 350), which is strictly limited in the case of the CBA
+in Bulgaria. The third conclusion, however, is an embarrassing one,
+since it could be interpreted as a possibility to conduct monetary policy
+through the government deposit, which contradicts the currency board
+rules. We address this important issue in a separate section.
+
+                       4. The Government Deposit
+    The presence of the government deposit in the liabilities of the Issue
+Department is something atypical of a currency board. An immediate
+negative consequence, which we have just discussed, is the fact that the
+Ministry of Finance, wittingly or not, conducts monetary policy opera-
+tions by controlling domestic inflows to and outflows from its funds G.
+Solutions have been proposed to switch the government deposit to com-
+mercial banks or even to a separate institution (Nenovsky and Hristov,
+1998, p. 40). However, we would argue that in the case of Bulgaria the
+least dangerous solution for the financial system as a whole is to keep
+all funds of the government deposited with the Issue Department.
+    First of all, let us estimate the relative size of government funds two
+years after the introduction of the currency board: G accounts for about
+30 percent of the money supply5 (broad money) in Bulgaria and about
+40 percent of the foreign exchange reserves FX. Next, let us see what re-
+ally stays behind the opportunity to effect monetary policy operations
+with government funds: the possibility to decide whether to keep money
+invested in the domestic market or abroad. Finally, let us see what hap-
+pens when the funds of the government are deposited with the Issue De-
+partment: according to the currency board rules all funds are invested
+abroad (the international financial markets).
+    Now, let us see what would happen if the funds of the government
+were deposited outside the Issue Department: somebody would be al-
+lowed to decide in a discretionary manner whether to invest the money
+in the domestic market or abroad (no matter whether it would be the
+managing board of a separate institution or a big commercial bank).
+This could be much more dangerous for the financial system, given the
+huge size of funds and the sorry record before the adoption of the CBA
+
+5
+ Note that government funds are not included in the money supply when deposited with
+the Issue Department.
+
+                                                                                       21
+dp/9/1999
+            of conducting monetary policy operations in favor of bankrupt institu-
+            tions seeking for liquid assets.
+                It is interesting to note that the two extreme cases of investing all
+            government funds abroad or investing them in the domestic market are
+            dual in the following sense:
+                ï if all funds are invested abroad, then budgetary operations in the
+                   domestic market cause changes in money supply, while such opera-
+                   tions in the international markets (e. g. foreign debt operations) do
+                   not affect it;
+                ï if all funds are invested in the domestic market, then domestic bud-
+                   getary operations do not affect money supply, while budgetary op-
+                   erations in the international markets cause changes.
+                Investing all funds in the domestic market is only theoretically pos-
+            sible under a currency board and any mixture between the two extreme
+            cases is equivalent to giving somebody else the power to affect the
+            money supply in a discretionary manner. This will not be a problem if
+            there is an efficient market to absorb the huge amount of government
+            funds but this is not the case of Bulgaria. Hence, in our view, the least
+            dangerous solution for the stability of the banking system is to keep the
+            funds of the government deposited with the Issue Department (at least
+            for the time being), despite the ability of the Ministry of Finance to in-
+            fluence money supply by domestic budgetary operations. There is yet an-
+            other advantage of this approach: it provides maximum transparency on
+            the activities of the government because of the weekly publishing of the
+            Issue Department balance sheet.
+                It is clear that monetary policy will always exist in one form or an-
+            other based on rules or discretion (Nenovsky and Hristov, 1998, p. 40).
+            The CBA in Bulgaria just shifts greater responsibility for financial con-
+            ditions from the banking sector to the budgetary policies of the govern-
+            ment.
+
+                     V. The Role of Reserve Management Operations
+                Reserve management operations play a key role in the functioning of
+            a currency board. However, it is not a simple task to describe it without
+            going into rather technical details. It is easier to advise on quite general
+            issues concerning prudence (like Enoch and Gulde 1997, pp. 18 ≠ 20;
+            Hanke and Schuler, 1994, pp. 78 ≠ 80) or to criticize mistaken under-
+            standing (as revenue maximization is criticized in Gulde, 1999, p. 17).
+            Nevertheless, what we have tried to do is to provide a more in-depth
+            cover of this role, avoiding any tremendous sophistication.
+                The main objectives of reserve management operations evolve from
+      22
+                                                                                              Discussion Papers
+the Law on the BNB:
+    ï to guarantee full foreign exchange cover for the monetary liabili-
+      ties of the Issue Department with quality foreign assets (Articles 20
+      and 28);
+    ï to guarantee unconstrained exchange of domestic currency against
+      reserve currency (Article 30);
+    ï to guarantee an annual excess of revenue over expenditure (Article
+      8).
+    These objectives are directly assigned to the Treasury Directorate
+(within the Issue Department), which executes all transactions needed
+for the efficient management of foreign exchange reserves.
+    The Law stipulates the following main restrictions on reserve man-
+agement operations:
+    ï all convertible foreign currencies are permitted (Article 28);
+    ï the currency mismatch in the balance sheet for any foreign cur-
+      rency other than the Deutschemark should not be higher than two
+      percent (Article 31);
+    ï permissible holdings are gold, notes and coins, funds on accounts
+      with foreign central banks or institutions, debt instruments and re-
+      purchase agreements, whereof obligations should be assigned one
+      of the two highest ratings by two international rating agencies (Ar-
+      ticle 28)6.
+    The highest possible ratings prevent from default losses from reserve
+management operations. Thus, the Law eliminates credit risk. For the
+sake of simplicity it could be also assumed that there is no operational
+risk.
+    Therefore, any failure to meet the main objectives of reserve man-
+agement operations could result only from uncontrolled market risk, i. e.
+currency risk and interest rate risk.
+    The presence of more than one foreign currency in the assets of the
+Issue Department is atypical of a currency board and it is due to the pe-
+culiarities in the design of the CBA in Bulgaria:
+    ï the government deposit contains accounts in several foreign curren-
+      cies;
+    ï reserves of commercial banks are also allowed to be in foreign cur-
+      rencies;
+    ï monetary gold is also included in the foreign exchange reserves7.
+6
+  Although formally allowed by the Law, the use of derivatives is strictly limited and, at
+least for the time being, it is virtually prohibited.
+7
+  By Article 28 of the Law on the BNB gold is valued at DEM 500 per troy ounce, or
+at the market value, if lower.
+
+                                                                                             23
+dp/9/1999
+                Currency risk is strictly limited, because of the strictly limited cur-
+            rency mismatch in the balance sheet (only gold could generate substan-
+            tial unrealized losses but they are also limited to the extent that price of
+            gold could not fall below the relatively high worldwide costs of extrac-
+            tion).
+                There are no specific limits set by the Law on interest rate risk.
+                Any negative change in the market value of assets leads to an equal
+            negative change in the excess cover for the monetary liabilities of the Is-
+            sue Department, which is measured by the size of the Banking Depart-
+            ment deposit (B). Since the size of B does not depend only on the effect
+            of reserve management operations but also on other factors, it is appro-
+            priate to apply an A/L approach in order to distinguish between (and
+            measure separately) the effects of all different factors that cause changes
+            to it. This is the starting point for quantification of our analysis.
+
+                            1. The Banking Department Deposit
+               The excess cover for the liabilities of the Issue Department, mea-
+            sured by the size of the Banking Department Deposit, should never fall
+            below a certain lower limit Z ≥ 0, threatening the credibility of the
+            CBA. Let B ≥ Z be the size of the Banking Department deposit at time
+            T (measured in Bulgarian levs) and the currency structure of the bal-
+            ance sheet of the Issue Department (see Figure 3) is defined by:
+
+               i = 1, 2, ..., n ≠ currency number staying for BGL, EUR, USD,
+            JPY, CHF, XAU, et alia;
+               Ai ≥ 0 ≠ the amount of assets in currency number i;
+               Li ≥ 0 ≠ the amount of liabilities in currency number i;
+               ei ≥ 0 ≠ the exchange rate of currency number i against the Bulgar-
+            ian lev.
+
+                                                                                   Figure 3
+                             THE BANKING DEPARTMENT DEPOSIT:
+                            EXCHANGE RATE AND VOLUME EFFECTS
+
+
+                  Issue Department (at Time T)        Issue Department (at Time T+ ∆T)
+
+                                         B                                    B+∆B
+                    A1·e1              L1·e1        [A1+∆A1]·[e1+∆e1]    [L1+∆L 1]·[e1+∆e1]
+                    A2·e2              L2·e2        [A2+∆A2]·[e2+∆e2]    [L2+∆L 2]·[e2+∆e2]
+                     ···                 ···               ···                   ···
+                    An·en              L n·en       [An+∆An]·[en+∆e n]   [Ln+∆Ln]·[en +∆e n]
+
+
+
+      24
+   Let at time T + ∆T the amounts of assets and liabilities and the ex-
+
+
+
+
+                                                                                             Discussion Papers
+change rates have changed to Ai+ ∆ Ai, Li+ ∆ Li and ei+ ∆ei (see Fig-
+ure 3) causing the size of the Banking Department deposit to change to
+B+ ∆B. Then
+
+    B = ∑ [A i − L i ]⋅ e i ,
+           i
+
+
+    B + ∆B = ∑ [A i + ∆A i − L i − ∆L i ]⋅ [e i + ∆e i ].
+                   i
+   Let the average amounts of assets and liabilities and the average
+exchange rates be defined as:
+
+    A i = 0.5 ⋅ [A i + (A i + ∆A i )],
+    L i = 0.5 ⋅ [L i + (L i + ∆L i )],
+    e i = 0.5 ⋅ [e i + (e i + ∆e i )].
+   Then, the change ∆B in the size of the Banking Department deposit
+can be attributed to the exchange rate effect (caused by changes in ex-
+change rates and mismatches in the currency structure of the balance
+sheet) and the volume effect (caused by a change in the volume of assets
+and liabilities) as follows:
+    ∆B = ∑ {[A i − L i ]⋅ ∆e i + [∆A i − ∆L i ]⋅ e i }.
+                                                                 8
+
+
+               i
+    Part of the change in volume is due to external inflows and outflows
+to each currency group of assets and liabilities and the remaining part is
+due to a change in the market value (caused by accrued interest and un-
+realized and realized capital gains and losses). Let ACFi be the net in-
+flow/outflow in currency number i on the asset side and LCFi be the net
+inflow/outflow on the liability side. Then the change in volume of assets
+and liabilities can be separated into a change in market value plus an
+external inflow/outflow as follows (see Figure 4):
+    ∆A i = (∆A i − ACFi ) + ACFi ,
+    ∆L i = (∆L i − LCFi ) + LCFi .
+
+
+8
+ In this equation the mutual effect of the two factors is equally distributed between the
+two terms related to them.
+
+                                                                                            25
+dp/9/1999
+                                                                                                    Figure 4
+                     THE BANKING DEPARTMENT DEPOSIT: MARKET VALUE
+                             AND INFLOW/OUTFLOW EFFECTS
+                                                Issue Department (at Time T+ ∆T)
+
+                                                                                  B+∆B
+                  [A1+(∆A 1-ACF 1)+ACF 1]·[e1+∆e 1]                  [L 1+(∆L 1-LCF 1)+LCF 1]·[e1+∆e 1]
+                  [A2+(∆A 2-ACF 2)+ACF 2]·[e2+∆e 2]                  [L 2+(∆L 2-LCF 2)+LCF 2]·[e2+∆e 2]
+                                  ···                                                ···
+                  [An +(∆An -ACFn )+ACF n]·[e n+∆e n]                [Ln+(∆L n-LCF n)+LCF n]·[en +∆e n]
+
+
+                Hence, the change in the Banking Department deposit can be split
+            further into: exchange rate effect, assets market value effect, liabilities
+            market value effect, and inflow/outflow effect:
+
+                ∆B = ∑ {[A i − L i ]⋅ ∆e i + [∆A i − ACFi ] ⋅ e i −
+
+                        − [∆L i − LCFi ]⋅ e i + [ACFi − LCFi ] ⋅ e i }
+                            i
+
+                                                                                                ,
+               where:
+
+                ∑ [A − L ]⋅ ∆e is the exchange rate effect;
+                 i
+                        i               i       i
+
+
+                ∑ [∆A − ACF ]⋅ e is the assets market value effect;
+                                i           i       i
+                 i
+
+                ∑ [∆L − LCF ] ⋅ e is the liabilities market value effect;
+                            i               i       i
+                 i
+
+                ∑ [ACF − LCF ]⋅ e is the inflow/outflow effect.
+                                    i           i       i
+                 i
+               The final step is to split the inflow/outflow effect by noting that it
+            can be generated in the following ways:
+               ï as a result of asset inflows and outflows (part of ACFi), which are
+                 not matched by equal liability inflows and outflows (part of LCFi).
+                 In this group fall the net operating and investment costs of the
+                 bank paid in foreign currency (e.g. expenditure on equipment, in-
+                 come from commission fees, etc.) and any net borrowings from
+                 the IMF, which have remained unutilized by the government in or-
+                 der to provide support for the CBA.
+               ï as a result of liability inflows and outflows (part of LCFi), which
+                 are not matched by equal asset inflows and outflows (part of
+                 ACFi). In this group fall the net operating and investment costs
+                 of the bank paid in domestic currency (e.g. expenditure on salaries
+                 and office supplies, income from service fees) and also the net
+
+      26
+                                                                               Discussion Papers
+       amount of discount loans extended to commercial banks according
+       to the LLR function of the Banking Department.
+    It is straightforward to identify the LLR net effect among all LCFi
+and also the IMF net effect among all ACFi. The remaining part of the
+inflow/outflow effect equals the BNB operating and investment costs
+net effect. Hence, the final decomposition into different factors of the
+change in the size of the Banking Department deposit is given by the
+following equation:
+      Exchange   Assets Market Liabilitie s Market
+∆B =            +              −                  −
+     Rate Effect  Value Effect   Value Effect 
+      BNB Operating and  LLR   IMF
+    −                    −     +                                 ( *)
+     Investment Costs Net  Net   Net 
+    It is important to note that the exact magnitude of each one of the six
+factors can be computed with the help of the formulas used to derive it,
+given that the exact values of all variables that have appeared so far are
+available (see Figures 3 and 4). In addition, it is not a problem to subdi-
+vide each one of them into subfactors for each different currency (see
+above formulas).
+    The derived fundamental equation (*) gives the exact relationship
+between all different factors that affect the size of the Banking Depart-
+ment deposit and can be used for three main purposes:
+    1. to check the future stability of the CBA in Bulgaria by perform-
+ing scenario simulations for all factors (including worst case scenario);
+    2. to impose limits on the magnitude of one factor by setting the ex-
+pected magnitude of the other ones (i.e. risk management);
+    3. to explain changes in the size of the Banking Department deposit
+in subsequent balance sheets of the Issue Department by measuring the
+magnitude of each separate factor.
+    We will combine the first two of these ideas in order to reveal in a
+more quantitative way the exact role of reserve management operations
+for the successful functioning of the CBA in Bulgaria.
+
+                  2. Full Foreign Exchange Cover
+    Showing that the CBA has full cover for its liabilities with quality
+foreign assets is the key to assuring confidence in the Bulgarian lev and
+is the core objective of reserve management operations as set by Article
+20, Section 1 of the Law on the BNB.
+    Since the critical minimum level of the size of the Banking Depart-
+
+                                                                              27
+dp/9/1999
+            ment deposit has been assumed to be Z ≥ 0, it follows that
+            B + ∆B ≥ Z ≥ 0 (i. e. ∆B ≥ Z ≠ B ≥ ≠B) at any time T+ ∆T. From a re-
+            serve management point of view this means that the maximum amount
+            of potential losses (both realized and unrealized) is strictly limited
+            so that even in a worst case scenario the size of the Banking Depart-
+            ment deposit should not fall below the critical level Z.
+                The maximum amount of potential losses (both realized and unreal-
+            ized) is measured by the worst possible exchange rate effect and assets
+            market value effect in the derived fundamental equation (*). It can be in-
+            terpreted as the maximum value of reserves that has been put at risk dur-
+                                                  9
+            ing reserve management operations . Thus, the above inequality and the
+            link (*) strictly limit the maximum value that can be put at risk dur-
+            ing reserve management operations. The limit can be estimated by pro-
+            jecting the magnitude of the other effects in (*) in a worst case scenario.
+                In a worst case scenario, as already stated above, B should not fall
+            below its credibility margin Z ≥ 0, i. e.
+                 ∆B ≥ Z − B ≥ − B .
+                Ideally, this requirement should be satisfied without borrowing from
+            the IMF, since there should be no need to support the currency board ex-
+            ternally. Thus, the IMF net effect should remain zero10 . From (*) it fol-
+            lows that in order to guarantee the efficient functioning of the currency
+            board without external support from the IMF, the following conditions
+            should be satisfied:
+
+                  Exchange   Assets Market Liabilitie s Market
+            ∆B =             +              −                 −
+                  Rate Effect  Value Effect   Value Effect 
+                    BNB Operating and  LLR 
+                  −                     −                                                  (** )
+                    Investment Costs Net  Net 
+            ∆B ≥ Z − B ≥ − B
+               From (**) it follows that the size of the Banking Department de-
+            posit could be affected negatively by four different types of expenses:
+               ï unrealized and realized losses during reserve management opera-
+                  tions, measured by the exchange rate effect and the assets market
+                  value effect;
+             9
+              This should not be confused with VaR, which excludes worst case scenarios.
+            10
+              The option to have an external backing for the stability of the CBA should be viewed
+            as a special important feature, which contributes for its credibility. But ideally if the
+            functioning of the CBA is efficient it should not be used.
+
+      28
+                                                                              Discussion Papers
+   ï remuneration of funds deposited with the BNB (government funds,
+     bank reserves), measured by the liabilities market value effect;
+   ï BNB net expenses, measured by the BNB operating and invest-
+     ment costs net effect;
+   ï discount loans extended under the strictly limited LLR function of
+     the Banking Department, measured by the LLR net effect.
+   This means that in a worst case scenario the four types of expenses
+have to share the permitted amount of change Z ≠ B. Let H ≥ 0 be a
+projection of the magnitude of both the liabilities market value effect
+and the BNB operating and investment costs net effect from time T to
+time T + ∆T. In reality, given their specifics, these expenses cannot fall
+below a certain limit (i. e. always H > 0).
+   Therefore, the maximum amount available for LLR in a worst case
+scenario depends on the maximum value that has been put at risk for re-
+serve management purposes:
+    LLR             Exchange   Assets Market
+    Net  ≤ B − Z + Rate Effect +  Value Effect  − H
+                                               
+   Conversely, if there is a certain lower limit on the funds that should
+remain available for LLR even in a worst case scenario, then the maxi-
+mum value that could be put at risk for reserve management purposes is
+limited by:
+
+    Exchange   Assets Market                    LLR 
+    Rate Effect +  Value Effect  ≥ Z − B + H +  Net 
+                                                    
+    Thus, the following important conclusion can be drawn:
+    The maximum value that can be put at risk for reserve management
+purposes depends on the desired minimum amount of funds available
+for LLR, the projected liabilities remuneration and BNB operating and
+investment costs (H), the size of the Banking Department deposit (B)
+and its minimum credibility level (Z).
+    Therefore, reserve management operations should be based prima-
+rily on strong risk management techniques. Absolute measures of risk
+should be applied (such as dollar duration) rather than relative mea-
+sures (such as duration) and worst case scenarios should be simulated
+by using the two conditions (**).
+    An important consequence from the last derived inequality is that
+under certain assumptions about the worst case exchange rate effect, the
+permissible worst case assets market value effect can be estimated, i.e.
+a limit on the permissible interest rate risk of the foreign exchange
+
+                                                                             29
+dp/9/1999
+            reserves can be computed. This limit can be expressed in different form
+            for any measure of risk.
+
+                   3. Unconstrained Exchange of Reserve Currency
+                Given that full foreign exchange cover is guaranteed with the help of
+            the techniques developed in the previous section, then in theory the CBA
+            would survive a worst case scenario both in the international and domes-
+            tic financial markets. However, this is still not sufficient from the point
+            of view of the second main objective of reserve management, which is to
+            guarantee unconstrained exchange of domestic against reserve currency.
+            Reserves would be structured in a rather inefficient way if temporary un-
+            realized losses have to be realized in order to meet obligations of the
+            CBA under normal circumstances in the domestic market. The risk to
+            have to realize otherwise unrealized losses during reserve management
+            operations is a liquidity risk. Therefore, the liquidity risk should be
+            strictly limited by applying appropriate maturity constraints on the
+            structure of reserves.
+                This could be done by analyzing the structure of the obligations of
+            the CBA in Bulgaria, which include:
+                ï domestic currency in circulation;
+                ï the government deposit;
+                ï commercial bank reserves.
+                For example, it is important to estimate:
+                ï the so-called ëhard coreí of domestic currency in circulation, which
+                   could never be exchanged against reserve currency;
+                ï the maximum amount of domestic currency that could be ex-
+                   changed against reserve currency in a short period of time (in a
+                   worst case domestic scenario).
+                Similarly, the structure of government funds should be examined.
+            Different funds could be managed more efficiently as separate portfo-
+            lios. However, it should be kept in mind that the assets covering the
+            funds of the government inevitably put at risk part of the size of the
+            Banking Department deposit, because of the interrelationship (*). As a
+            result, a lower value remains to be put at risk for more efficient man-
+            agement of the assets covering the money in circulation and the reserves
+            of commercial banks.
+
+                               4. Minimum Level of Revenue
+               The third main objective of reserve management requires that the
+            revenue over an investment horizon of one year should exceed total
+            BNB expenses, i. e. ∆B ≥ 0 in a year. If we assume that the net LLR ef-
+      30
+                                                                                             Discussion Papers
+fect during the year is zero, from ( **) it follows:
+
+                     Exchange   Assets Market
+                     Rate Effect +  Value Effect  ≥
+                                                 
+       Liabilitie s Market  BNB Operating and 
+      ≥                   +                   ≥H
+        Value Effect   Investment Costs Net
+    Therefore, a certain minimum rate of return (depending on the size
+of reserves) should be achieved with a very high probability (e.g. 95 per-
+cent), meanwhile trying to maximize the expected return (at the cost of
+higher risk). Under certain assumptions about the worst case exchange
+rate effect, the derived inequality implicitly imposes a second upper
+limit on the interest rate risk of foreign exchange reserves (the ëfull
+coverí requirement has imposed the first limit, see above). For different
+measures of risk this limit can be expressed in different form.
+    In order to achieve this objective without failing to meet the other
+objectives11 , the Treasury Directorate of the BNB has developed an ap-
+propriate method for strategic asset allocation (benchmarking). The
+method reflects the main strategic issues discussed above. It is interest-
+ing that, for the time being, the first limit on interest rate risk (the one
+imposed by the ëfull coverí requirement) is slack. With the current size of
+reserves it is less constraining than the one imposed by the ëminimum
+level of revenueí requirement. Thus, foreign exchange reserves have
+been structured according to a benchmark, which guarantees the
+stability of the CBA in Bulgaria even in worst case scenarios.
+
+                                 VI. Conclusions
+    The CBA in Bulgaria shares the key features of an orthodox currency
+board but its design is more flexible in view of the banking crisis that pre-
+ceded its adoption. All the same, it has brought to the Bulgarian
+economy the same advantages as an orthodox currency board, since most
+of the differences tend to enhance rather than undermine its credibility.
+    The design of the currency board could be rendered closer to the or-
+thodox approach by:
+    ï remunerating reserves of commercial banks;
+    ï changing the method of announcing the base interest rate;
+11
+  Note that a portfolio of fixed income securities can generate an acceptable positive
+return for a year but it could have a significant unrealized negative return (threatening
+the full cover for liabilities) in the first several months.
+
+                                                                                            31
+dp/9/1999
+                ï abolishing purchases of gold against domestic currency.
+                The flow channels in the financial system under the CBA in Bul-
+            garia differ from those of an orthodox currency board and a central
+            bank. Since all government funds are deposited with the Issue Depart-
+            ment, money supply is affected, wittingly or not, by budgetary operations
+            in the domestic market. However, this seems to be the best solution for
+            the stability of the financial system (at least until an efficient financial
+            market develops in Bulgaria), despite the fact that the Ministry of Fi-
+            nance could conduct monetary policy operations to a certain extent.
+                The stability of the CBA in Bulgaria depends on the size of the
+            Banking Department deposit with the Issue Department. A fundamental
+            equation expresses the relationship between all the factors affecting the
+            size of the Banking Department deposit. It can be used for three main
+            purposes:
+                1. to check the future stability of the CBA in Bulgaria by performing
+            scenario simulations for all factors (including worst case scenario);
+                2. to impose limits on the magnitude of one factor by setting the ex-
+            pected magnitude of the other ones (i.e. risk management);
+                3. to explain changes in the size of the Banking Department deposit
+            in subsequent balance sheets of the Issue Department by measuring the
+            magnitude of each separate factor.
+                An appropriate analysis of the equation leads to the conclusion that
+            reserve management operations play a key role for the stability of the
+            CBA:
+                ï the maximum value that can be put at risk for reserve management
+                  purposes should be strictly limited in line with the initial size of the
+                  Banking Department deposit, the projected liabilities remunera-
+                  tion and BNB operating and investment costs and the desired
+                  amount of funds available for LLR;
+                ï adequate constraints on the maturity structure of foreign exchange
+                  reserves should be imposed in order to avoid realization of losses
+                  that otherwise could remain unrealized;
+                ï the value put at risk for reserve management purposes should be
+                  strictly limited in line with the requirement to achieve excess of rev-
+                  enues over expenses over a one-year investment horizon with a very
+                  high probability.
+                In order to meet these objectives, an appropriate method for strate-
+            gic asset allocation and benchmark construction has been developed by
+            the Treasury Directorate of the BNB. Foreign exchange reserves have
+            been structured according to a benchmark, which guarantees the stabil-
+            ity of the CBA in Bulgaria even in worst case scenarios.
+
+      32
+                                                                                                                                          Discussion Papers
+                                               Appendix
+Handouts of the Presentation at the Operational Monetary Policy Seminar,
+       June 23 − 25, 1999, De Nederlandsche Bank, Amsterdam
+
+
+
+                 The Role of Reserve Management Operations
+                    in the Functioning of a Currency Board
+
+                  Experience of the Treasury Directorate of the Bulgarian National Bank
+
+
+
+
+                                            Prepared by Dobrislav Dobrev, MSc
+                                   Senior Analyst, Treasury Directorate, Issue Department
+                                           Member of the Investment Committee
+
+
+
+
+                                                      OPER A TIO NA L MON ET A RY POL ICY S EM INA R , D E N ED ER LA N D SC HE BA N K
+     Amsterdam        June 23-25, 1999           11
+
+
+
+
+                                              OBJECTIVES
+      Review the reasons to adopt the CBA in Bulgaria;
+      Compare the CBA in Bulgaria with an orthodox CBA;
+      Examine the main tools of monetary policy operations
+       and check consistency with orthodox currency board rules;
+      Present the flow channels and balance sheets
+       in the financial system under the CBA in Bulgaria;
+      Examine the money supply process and explain the
+       peculiarities in the design of the CBA in Bulgaria;
+      Derive an equation expressing the interrelationship between
+       the factors affecting the stability of the CBA in Bulgaria;
+      Analyze the role of reserve management operations
+       in the functioning of the CBA in Bulgaria.
+                                                      OPER ATIO NAL MON ET ARY POL ICY S EM INAR , D E N ED ER LAN D SC HE BAN K
+     Amsterdam       June 23-25, 1999            22
+
+
+
+                                                                                                                                         33
+dp/9/1999
+                     Main Reasons to Adopt the CBA in Bulgaria
+             The government used to fund deficits of bankrupt state
+              enterprises by supplying subsidies;
+             The central bank used to fund deficits of the government by
+              printing Bulgarian levs ;
+             Commercial banks used to fund deficits of bankrupt state
+              enterprises by supplying loans;
+             The central bank used to refinance commercial banks by
+              extending discount loans;
+             Insolvent commercial banks triggered a banking crisis;
+             The Bulgarian lev depreciated against all major currencies;
+             The economy was driven into a hyperinflationary spiral;
+             Several stabilization policy attempts failed and key
+              institutions lost their credibility.
+                                                  O PER ATI ON A L M O N E TA R Y PO LI C Y S EM I N AR , D E N ED E R L AN D S C H E B AN K
+            Am sterdam   June 23-25, 1999    3
+
+
+
+
+                     Main Reasons to Adopt the CBA in Bulgaria
+
+
+
+                            Central Bank                                                  Government
+
+                                                 Lack of Financial
+                                                    Discipline
+
+                         Commercial Banks                                                 Bankruptcy
+
+
+
+
+                                                  O PER ATI ON AL M O N E TA R Y PO LI C Y S EM I N AR , D E N E D E R L AN D S C HE B AN K
+            Am sterdam   June 23-25, 1 999   4
+
+
+
+      34
+                                                                                                                                    Discussion Papers
+         Main Reasons to Adopt the CBA in Bulgaria
+
+ Introduce a rule-based instead of a discretionary
+  mechanism of money supply regulation;
+ Impose financial discipline and market-driven
+  commercial culture upon all economic agents;
+ Restore financial system credibility;
+ Revive the economy.
+
+
+
+
+                                       O PER ATI ON AL M O N E TA R Y PO LI C Y S EM I N AR , D E N E D E R L AN D S C HE B AN K
+Am sterdam    June 23-25, 1 999    5
+
+
+
+
+       T he C B A in Bulgaria versus an O rthodox C BA
+ T he C BA in B ulgaria was introduced with the new L aw on
+  the B ulgarian National B ank (BN B) of 10 June 1997;
+ T he L aw sets the official exchange rate of the Bulgarian  lev
+  against the D eutschemark at B GL 1,000 per DE M 1;
+ T he L aw defines the structure of the BN B as comprised of
+  three departments:
+       an I ssue D epartment to maintain full foreign exchange cover
+        for the total amount of BNB monetary liabilities;
+       a B anking D ep artment to act as lender of last resort in case
+        of systemic risk for the stability of the banking system;
+       a B anking Sup ervision D ep artment to supervise the banking system;
+ T he L aw sets the monetary functions and operations
+  of the B N B in accordance with the general principles
+  of operation of a currency board.
+                                       OPER ATI ONAL MONETA RY POLI CY SEMI NAR, DE NEDERLANDSCHE BANK
+Am sterdam     June 23-25, 1 999   6
+
+
+
+                                                                                                                                   35
+dp/9/1999
+                   The CBA in Bulgaria versus an Orthodox CBA
+
+
+                                            Common key features:
+                         An Orthodox Currency Board                                            The CBA in Bulgaria
+
+                         Maintains full foreign exchange cover for its note, coin and deposit liabilities as set by law
+
+                          Maintains a truly fixed exchange rate with respect to the reserve currency as set by law
+
+                                         Cannot finance domestic government spending as set by law
+
+
+
+
+                                                                O PER ATI ON A L M ON E T AR Y PO L IC Y S E M IN AR , D E N ED ER L AN D S C H E BAN K
+            Am sterdam          J une 23-2 5, 1999         77
+
+
+
+
+                   The CBA in Bulgaria versus an Orthodox CBA
+
+
+                                                     Main differences:
+                         An Orthodox Currency Board                                            The CBA in Bulgaria
+
+             Usually supplies only notes and coins                          Supplies notes, coins and deposits as well
+             Does not regulate commercial banks                             Regulates commercial banks
+             Is not a lender of last resort                                 Strictly limited lender of last resort
+             Earns all seigniorage only from interest on its assets         Earns almost all seigniorage only from interest
+             Full convertibility (both current and capital account)         Full current account convertibility but still restricted
+                                                                            capital account convertibility (due to be changed)
+
+
+                                 The CBA in Bulgaria is more flexible mainly because of
+                                  the problems in the banking system before its adoption
+
+                                                                O PER ATI ON A L M ON E T AR Y PO L IC Y S E M IN AR , D E N ED ER L AN D S C H E BAN K
+            Am sterdam          J une 23-2 5, 1999         88
+
+
+
+      36
+                                                                                                                                            Discussion Papers
+       The CBA in Bulgaria versus an Orthodox CBA
+
+
+                                       Equal advantages:
+             An Orthodox Currency Board                                        The CBA in Bulgaria
+
+                                                 Transparency
+
+                                            Rapid monetary reform
+
+                                         Rule-bound monetary policy
+
+                                       Protection from political pressure
+
+                                            Cannot create inflation
+
+                                                High credibility
+
+
+
+
+                                               O PER ATI ON AL M O N E TA R Y PO LI C Y S EM I N AR , D E N E D E R L AN D S C HE B AN K
+Am sterdam        June 23-25, 1 999        9
+
+
+
+
+                                  Monetary Policy Tools
+                                 1. Reserve Requirements
+Subject to Regulation No. 21 on the Minimum Required
+Reserves according to Article 41 of the Law on the BNB:
+  11 percent of banks deposit base;
+  both in Bulgarian levs and foreign currency;
+  averaged on a monthly basis but banks have to pay interest
+   for the excess over the 50 percent for each day of use;
+  the BNB may decide to pay interest on the lev component.
+
+Comments on consistency with currency board rules:
+  reserve requirements are a tax on the banking system, which
+   is absent in an orthodox currency board;
+  the option to change the level of requirements should not be used;
+  the option to remunerate reserves should be used as soon as possible;
+  the most radical solution is to eliminate reserve requirements, leave the
+   banks themselves to determine the amount of reserves held with the BNB
+   for settlement purposes and make reserves fully remunerated.
+                                               O PER AT ION A L M ON E T AR Y PO L IC Y S E M IN AR , D E N ED ER LAN D SC H E BA N K
+Am sterdam        J une 23-2 5,
+                             5, 1999
+                                1999      10
+                                          10
+
+
+
+                                                                                                                                           37
+dp/9/1999
+                                     Monetary Policy Tools
+                                2. Lender of Last Resort (LLR)
+            Subject to Regulation No. 6 on Extending        Collateralized Loans
+            to Banks as set by Articles 19 and 33 of the Law on the BNB:
+              only in the event of a liquidity risk and against collateral of liquid assets;
+              only up to the amount of available funds on the Banking Department deposit
+               placed with the Issue Department;
+              only as short term support up to 30 days and renewed no more than twice;
+              liquidity risk is determined by the delays of settlement transactions in the
+               Banking Integrated System for Electronic Transfer (BISERA).
+
+            Comments on consistency with currency board rules:
+              knowing the fragile stability of the banking system in Bulgaria it is
+               reasonable that a strictly limited LLR function has been left;
+              in the case of Bulgaria the LLR function has only contributed to the
+               credibility of the currency board arrangement.
+
+                                                   O PER AT ION A L M ON E T AR Y PO L IC Y S E M IN AR , D E N ED ER LAN D SC H E BA N K
+            Am sterdam   J une 23-2 5,
+                                    5, 1999
+                                       1999   11
+                                              11
+
+
+
+
+                                Monetary Policy Tools
+                          3. Open Market Operations (OMO)
+            The Law on the BNB prohibits OMO, since the BNB may not
+            extend credits in whatever form to the State.
+            However, the Ministry of Finance has some room for OMO:
+              the BNB acts as an agent for government and government guaranteed debt;
+              all auctions are organized by the Fiscal Services Department of the BNB;
+              all transactions are registered by the Fiscal Services Department of the BNB;
+              the Ministry of Finance provides the necessary funds for the redemption of
+               the government securities no later than one working day prior to redemption;
+              reverse repurchase of government securities prior to maturity is allowed by a
+               decision of the Minister of Finance.
+
+            Comments on consistency with currency board rules:
+              the lack of OMO for the BNB is in line with orthodox currency board rules;
+              the Ministry of Finance is able to use OMO only due to the presence of the
+               government deposit in the liabilities of the Issue Department.
+                                                   O PER AT ION A L M ON E T AR Y PO L IC Y S E M IN AR , D E N ED ER LAN D SC H E BA N K
+            Am sterdam   J une 23-2 5,
+                                    5, 1999
+                                       1999   12
+                                              12
+
+
+
+      38
+                                                                                                                                         Discussion Papers
+                                   Monetary Policy Tools
+                                    4. Base Interest Rate
+Subject to Article 35 of the Law on the BNB:
+  the BNB is obliged to announce (not to set!) the base interest rate;
+  the Managing Board has the right to determine the method to be used;
+  currently the base interest rate is announced as the average yield
+   on three-month government treasury bills after each auction held by
+   the Fiscal Services Department in the primary market.
+
+Comments on consistency with currency board rules:
+  currently the market is distorted in two major respects:
+         to minimize its costs the Ministry of Finance is interested
+          in deliberately forcing the yield down by reducing supply of treasury bills;
+         interbank rates may be influenced by the base rate if banks use it as a benchmark
+  in a fixed exchange rate regime the market alone should determine interest
+   rates;
+  hence, at least the method of announcement should be changed (e.g. LIBOR).
+                                            O PER ATI ON AL M O N E TA R Y PO LI C Y S EM I N AR , D E N E D E R L AN D S C HE B AN K
+Am sterdam     June 23-25, 1 999       13
+
+
+
+
+                                   Monetary Policy Tools
+                                     5. Commissions
+Subject to Articles 29 and 30 of the Law on the BNB:
+  the official exchange rate is set at BGL 1,000 per DEM 1 (and the
+   corresponding rate to the Euro when it becomes legal tender in Germany);
+  the BNB is obliged to exchange reserve currency against levs on the basis of
+   spot exchange rates, which cannot depart from the official exchange rate by
+   more than 0.5 percent, inclusive any fees and commissions;
+  the Managing Board has decided to sell Deutschemarks at BGL 1,000 per
+   DEM 1 and buy at BGL 995 per DEM 1.
+
+Comments on consistency with currency board rules:
+  commission fees are supposed to worsen the link to the reserve currency;
+  however, permanent low commission fees discourage short-term arbitrageurs;
+  any change of commission fees would affect short-term capital movements;
+  the market has already adjusted and it seems best to avoid any changes;
+
+                                            O PER ATI ON AL M O N E TA R Y PO LI C Y S EM I N AR , D E N E D E R L AN D S C HE B AN K
+Am sterdam     June 23-25, 1 999       14
+
+
+
+                                                                                                                                        39
+dp/9/1999
+                                            Monetary Policy Tools
+                                             6. Purchase of Gold
+            Subject to the old Law on Transactions in Foreign Exchange
+            Valuables and Currency Control (now to be changed):
+             producers offer the BNB to purchase gold extracted in Bulgaria;
+             gold is included in the international foreign exchange reserves of the BNB;
+             after the adoption of the CBA the amount of gold purchased by the BNB has
+              substantially decreased.
+
+            Comments on consistency with currency board rules:
+             such features are absent in an orthodox currency board;
+             market forces alone should determine whether production of gold results in
+              an increase of domestic currency in circulation (by exchanging gold against
+              the reserve currency and converting it into domestic currency);
+             if the BNB were allowed to both purchase and sell gold against Bulgarian
+              levs, then gold could even play the role of domestic securities for OMO;
+             hence, the right of the BNB to purchase gold against domestic currency
+              should be abolished.
+                                                     O PER ATI ON A L M O N E TA R Y PO LI C Y S EM I N AR , D E N ED E R L AN D S C H E B AN K
+            Am sterdam   June 23-25, 1999       15
+
+
+
+
+                 The Financial System under the CBA in Bulgaria
+            Three main layers:
+                1. The Issue Department and the Banking Department of the BNB;
+                2. Commercial banks (supervised by the Banking Supervision Department);
+                3. The public (together with the nonbanking financial institutions);
+            The Government is another special participant:
+              it keeps its funds deposited with the Issue Department of the BNB;
+              it organizes the market for government securities through the Fiscal Services
+               Department of the BNB and services the domestic government debt;
+              it borrows from the IMF and other international financial institutions and
+               services the foreign government debt;
+              it collects taxes and spends on salaries, pensions, subsidies, etc. in the
+               budgetary sector;
+              it also receives part of the seigniorage earned by the BNB.
+
+                                                     O PER AT ION A L M ON E T AR Y PO L IC Y S E M IN AR , D E N ED ER LAN D SC H E BA N K
+            Am sterdam   J une 23-2 5,
+                                    5, 1999
+                                       1999     16
+                                                16
+
+
+
+      40
+                                                                                                                                                                Discussion Papers
+      The Financial System under the CBA in Bulgaria:
+                       Balance Sheets
+     Issue Department             Banking Department                               Commercial Banks                                    Public
+                                                                                       C
+                                                                                                                              C
+                      C                   B                                            R
+                                                                                                         D                    D
+                      R                  Ld                      L IMF                  L                                                          L
+      FX                                                                                                 Ld                   S
+                      G                  RG                       ···                  S                                                          ···
+                                                                                                         ···                 FX P
+                      B                   ···                                         FX B
+                                                                                                                              ···
+                                                                                       ···
+
+Main balance sheet items:
+  FX  foreign exchange reserves (as set by Article 28 of the Law on the BNB);
+  C  currency in circulation;
+  R  reserves of commercial banks;
+  G  the government deposit with the Issue Department;
+  B  the Banking Department deposit with the Issue Department;
+  Ld  discount loans extended according to the strictly limited LLR function;
+  RG  receivables from government (due to borrowings from the IMF);
+  LIM F  borrowings from the IMF;
+  L  loans extended to the public by commercial banks;
+  D  deposits of the public with commercial banks;
+  S  domestic government securities;
+  ···  other unimportant items. O PER ATI ON AL M O N E TA R Y PO LI C Y S EM I N AR , D E N E D E R L AN D S C HE B AN K
+Am sterdam           June 23-25, 1 999                   17
+
+
+
+
+      The Financial System under the CBA in Bulgaria:
+                        Flow Channels
+      World                                                                                                                    +       Government
+                +                                                                                                              –
+      +                                                                                                                                    –
+                                                       LIMF                                G                     RG
+                FX                                                                                                                            S
+                                                –                                     –       +
+                      +       Issue Department                           –B +      Banking Department                              Fiscal Services
+           FX         –        Bulgarian National Bank                                 Bulgarian National Bank                         Government Agent
+                      +
+                C                           –                                                  +
+                                                                                      Ld
+                FX                                           R
+FX                                                                +                    S
+      C                                                                        –                                                         S
+      FX        +                                            Commercial Banks                                                      +
+                                                Bank 1             Bank 2          · · ·       Bank N
+                                                                                                                                                  S
+           C                                        –     +
+                                                                                                                                          S
+           FX                                       D     L
+                                                       m
+                                                    +     –
+                                      The Public & Nonbanking Institutions
+           +                                        Unit 1            Unit 2       · · ·       Unit M                                     +
+
+
+
+                                                                  O PER ATI ON A L M O N E TA R Y PO LI C Y S EM I N AR , D E N ED E R L AN D S C H E B AN K
+Am sterdam           June 23-25, 1999                    18
+
+
+
+                                                                                                                                                               41
+dp/9/1999
+                The Financial System under the CBA in Bulgaria:
+                                  Money Supply
+            Let M b be the monetary base, M - the money supply and m - the
+            standard money multiplier. Then,
+                         M = C + R = FX − G − B
+                           b
+
+
+                         M = m ⋅ [FX − G − B ]
+            Conclusions:
+             ceteris paribus, changes in FX, which are not related to equal changes
+              in B or G, proportionally cause identical changes in the money supply M
+              (c.f. the rule-bound money supply in an orthodox currency board);
+             ceteris paribus, changes in B, which are not related to equal changes in FX,
+              proportionally cause inverse changes in the money supply M (e.g. LLR);
+             ceteris paribus, changes in G, which are not related to equal changes in FX,
+              proportionally cause inverse changes in the money supply M (i.e. the
+              Ministry of Finance, wittingly or not, conducts monetary policy operations by
+              controlling domestic inflows to and outflows from its funds G).
+                                                     O PER ATI ON AL M O N E TA R Y PO LI C Y S EM I N AR , D E N E D E R L AN D S C HE B AN K
+            Am sterdam     June 23-25, 1 999    19
+
+
+
+
+                The Financial System under the CBA in Bulgaria:
+                            The Government Deposit
+             The two extreme cases of investing all government funds
+              abroad or investing them in the domestic market are dual:
+                   if all funds are invested abroad, then budgetary operations in the domestic
+                    market cause changes in money supply, while such operations in the
+                    international markets (e.g. foreign debt operations) do not affect it;
+                   if all funds are invested in the domestic market (which is possible only
+                    theoretically), then domestic budgetary operations do not affect money
+                    supply, while international operations cause changes;
+             Any mixture between the two extreme cases is equivalent to
+              giving somebody else the power to affect the money supply in
+              a discretionary manner;
+             Hence, the least dangerous solution for the stability of the
+              financial system is to keep the funds of the government
+              deposited with the Issue Department (at least until an
+              efficient financial market develops in Bulgaria).
+                                                     O PER ATI ON A L M ON E T AR Y PO L IC Y S E M IN AR , D E N ED ER L AN D S C H E BAN K
+            Am sterdam     J une 23-2 5, 1999   20
+                                                20
+
+
+
+      42
+                                                                                                                                         Discussion Papers
+        The Role of Reserve Management Operations
+ Main objectives of reserve management operations (Law):
+       to guarantee full foreign exchange cover for the monetary liabilities of the
+        Issue Department with high-quality foreign assets;
+       to guarantee unconstrained exchange of domestic currency against
+        reserve currency;
+       to guarantee an annual excess of revenue over expenditure;
+ Main restrictions on reserve management operations (Law):
+       all convertible foreign currencies are permitted because of the liabilities:
+              the government deposit contains accounts in several foreign currencies;
+              reserves of commercial banks are also allowed to be in foreign currencies;
+              monetary gold is also included in the foreign exchange reserves;
+       the currency mismatch in the balance sheet for any foreign currency
+        other than the Deutschemark should not be higher than two percent;
+       permissible holdings are gold, notes and coins, funds on accounts with
+        foreign central banks or institutions, debt instruments and repurchase
+        agreements, whereof obligations should be assigned one of the two
+        highest ratings by two international rating agencies.
+                                           O PER ATI ON A L M O N E TA R Y PO LI C Y S EM I N AR , D E N ED E R L AN D S C H E B AN K
+Am sterdam       June 23-25, 1999     21
+
+
+
+
+        The Role of Reserve Management Operations
+ Main risks of reserve management operations:
+       credit risk: default losses eliminated due to highest possible ratings;
+       market risk:
+              currency risk: potential losses strictly limited, because of the strictly limited
+               currency mismatch in the balance sheet (gold price could not fall that much!)
+              interest rate risk: potential losses unlimited (at least in theory);
+       other risks (e.g. operational): potential losses assumed to be zero;
+ Any negative change in the market value of the assets leads
+  to an equal negative change in the excess cover for the
+  monetary liabilities of the Issue Department, which is mea-
+  sured by the size of the Banking Department Deposit (B);
+ It is appropriate to apply an A/L approach in order to
+  distinguish between (and measure separately) the effects of
+  all the different factors that cause changes to B    .
+                                           O PER ATI ON AL M O N E TA R Y PO LI C Y S EM I N AR , D E N E D E R L AN D S C HE B AN K
+Am sterdam       June 23-25, 1 999    22
+
+
+
+                                                                                                                                        43
+dp/9/1999
+                    The Role of Reserve Management Operations:
+                         The Banking Department Deposit
+                         Issue Department (at Time T)                          Issue Department (at Time T+ ∆T)
+
+                                                  B                                                                B+∆B
+                          A1·e1                  L1·e1                     [A1+∆A 1]· [e1+∆e1]               [L1+∆L1]· [e1+∆e1]
+                          A2·e2                  L2·e2                     [A2+∆A 2]· [e2+∆e2]               [L2+∆L2]· [e2+∆e2]
+                            ·· ·                  ·· ·                             ·· ·                              ·· ·
+                          A n·en                 Ln·en                     [A n+∆An]· [en+∆en ]              [Ln +∆Ln]· [en +∆en]
+
+
+            Currency Structure of the Balance Sheet of the Issue Department:
+                i = 1, 2, , n  currency number (BGL, EUR, USD, JPY, CHF, XAU,...);
+                Ai  the amount of assets in currency number i;
+                Li  the amount of liabilities in currency number i;
+                ei  the exchange rate of currency number i against the Bulgarian lev;
+                B  size of the Banking Department Deposit;
+                ∆∗  change of variable ∗ from time T to time T+∆T.
+                                                         O PER ATI ON A L M ON E T AR Y PO L IC Y S E M IN AR , D E N ED ER L AN D S C H E BAN K
+            Am sterdam      J une 23-2 5, 1999    23
+                                                  23
+
+
+
+
+                    The Role of Reserve Management Operations:
+                          The Banking Department Deposit
+            Let us define the average amounts of assets and liabilities and
+            the average exchange rates for the time period [T, T+         ∆ T] as:
+
+                                    A i = 0 .5 ⋅ [A i + (A i + ∆ A i )]
+                                    L i = 0. 5 ⋅ [L i + (L i + ∆L i )]
+                                    e i = 0.5 ⋅ [e i + (e i + ∆e i )]
+
+            Then the change in the size of the Banking Department deposit
+            can be attributed to exchange rate effect and volume effect as:
+
+                                           [       ]
+                         ∆ B = ∑ { A i − L i ⋅ ∆ e i + [∆ A i − ∆ L i ]⋅ e i }
+                                     i
+
+
+                                                         O PER ATI ON A L M ON E T AR Y PO L IC Y S E M IN AR , D E N ED ER L AN D S C H E BAN K
+            Am sterdam      J une 23-2 5, 1999    24
+                                                  24
+
+
+
+      44
+                                                                                                                                                Discussion Papers
+        The Role of Reserve Management Operations:
+              The Banking Department Deposit
+                                          Issue Department (at Time T+ ∆T)
+
+                                                                                      B+∆B
+                 [A1+(∆A 1-ACF1)+ACF 1]· [e1+∆e1]                         [L1+(∆L1-LCF 1)+LCF 1]· [e1+∆e1]
+                 [A2+(∆A 2-ACF2)+ACF 2]· [e2+∆e2]                         [L2+(∆L2-LCF 2)+LCF 2]· [e2+∆e2]
+                                ·· ·                                                     ·· ·
+                 [An+( ∆An-ACFn )+ACF n]· [en +∆e n]                     [L n+(∆Ln-LCF n)+LCF n]· [en+∆en]
+
+
+Let ACF i be the net inflow/outflow of currency     i on the asset
+side and LCF i be the net inflow/outflow on the liability side.
+Then the change in volume can be separated into a change in
+market value plus an external inflow/outflow as follows :
+
+                                 ∆A i = (∆ A i − ACF i ) + ACFi
+                                 ∆ L i = (∆ L i − LCF i ) + LCFi
+                                                   O PER ATI ON AL M O N E TA R Y PO LI C Y S EM I N AR , D E N E D E R L AN D S C HE B AN K
+Am sterdam            June 23-25, 1 999       25
+
+
+
+
+        The Role of Reserve Management Operations:
+              The Banking Department Deposit
+Thus, the change in the Banking Department Deposit can be
+further split into: exchange rate effect , assets market value
+effect , liabilities market value effect , and inflow/outflow effect
+as:
+  ∆B = ∑ {[A i − L i ]⋅ ∆e i + [∆A i − ACFi ]⋅ e i − [∆L i − LCFi ]⋅ ei + [ACFi − LCFi ]⋅ e i }
+             i
+
+
+
+
+                     ⇒ ∑ [A i − Li ]⋅ ∆e i is the exchange rate effect;
+                             i
+
+
+                     ⇒ ∑i [∆ A i − ACF i ]⋅ ei is the assets market value effect;
+
+                     ⇒ − ∑i [∆ Li − LCF i ]⋅ e i is the liabilities market value effect;
+
+                     ⇒ ∑ [ACF i − LCFi ]⋅ ei is the inflow/outflow effect.
+                             i
+
+
+
+                                                   O PER ATI ON A L M ON E T AR Y PO L IC Y S E M IN AR , D E N ED ER L AN D S C H E BAN K
+Am sterdam           J une 23-2 5, 1999       26
+                                              26
+
+
+
+                                                                                                                                               45
+dp/9/1999
+                    The Role of Reserve Management Operations:
+                          The Banking Department Deposit
+            The final step is to split the inflow/outflow effect by noting that
+            it can be generated in the following ways:
+             ­ as a result of asset inflows and outflows (part of ACF i ), which are not
+               matched by equal liability inflows and outflows (part of LCF i). In this group
+               fall the net operating and investment costs of the bank paid in foreign
+               currency (e.g. expenditure on equipment, income from commission fees, etc.)
+               and also any net borrowings from the IMF, which have remained unutilized
+               by the government in order to provide support for the CBA;
+             ­ as a result of liability inflows and outflows (part of LCF i), which are not
+               matched by equal asset inflows and outflows (part of ACF i). In this group fall
+               the net operating and investment costs of the bank paid in domestic currency
+               (e.g. expenditure on salaries and office supplies, income from service fees)
+               and also the net amount of discount loans extended to commercial banks
+               according to the LLR function of the Banking Department.
+
+
+                                                      O PER ATI ON AL M O N E TA R Y PO LI C Y S EM I N AR , D E N E D E R L AN D S C HE B AN K
+            Am sterdam     June 23-25, 1 999     27
+
+
+
+
+                    The Role of Reserve Management Operations:
+                          The Banking Department Deposit
+            The final decomposition into different factors of the change in
+            the size of the Banking Department deposit is given by the
+            following fundamental equation:
+                  Exchange   Assets Market   Liabilities Market   BNB Operating and   LLR   IMF 
+            ∆B =              +               −                  −                  −     +     
+                  Rate Effect   Value Effect   Value Effect   Investment Costs Net   Net   Net 
+
+            It gives the exact relationship between all the different factors
+            that affect the size of the Banking Department deposit (i.e. the
+            stability of the CBA) and can be used for three main purposes:
+             1 To check the future stability of the CBA in Bulgaria by performing
+               scenario simulations for all factors (including worst case scenario);
+             2 To impose limits on the magnitude of one factor by setting the
+               expected magnitude of the others (i.e. risk management);
+             3 To explain changes in the size of the Banking Department deposit in
+               subsequent balance sheets of the Issue Department by measuring the
+               magnitude of each separate factor.
+
+                                                      O PER ATI ON A L M ON E T AR Y PO L IC Y S E M IN AR , D E N ED ER L AN D S C H E BAN K
+            Am sterdam     J une 23-2 5, 1999    28
+                                                 28
+
+
+
+      46
+                                                                                                                                       Discussion Papers
+        The Role of Reserve Management Operations:
+                Full Foreign Exchange Cover
+ Ideally, the stability of the CBA should be achieved without
+  external support, i.e. the IMF net effect should remain zero;
+ Let Z ≥ 0 be the critical size of B, threatening the CBA
+  stability;
+ Then, even in a worst case scenario, the following conditions
+  should be satisfied:
+           Exchange   Assets Market  Liabilities Market   BNB Operating and  LLR 
+     ∆B =              +              −                 −                   −    
+           Rate Effect   Value Effect   Value Effect  Investment Costs Net   Net 
+
+     ∆B ≥ Z − B ≥ − B
+
+
+ Thus, the four types of expenses have to share the permitted
+  amount of change Z - B even in a worst case scenario.
+                                          O PER ATI ON AL M O N E TA R Y PO LI C Y S EM I N AR , D E N E D E R L AN D S C HE B AN K
+Am sterdam     June 23-25, 1 999     29
+
+
+
+
+        The Role of Reserve Management Operations:
+                Full Foreign Exchange Cover
+ Let H > 0 be a projection of the magnitude of both the
+  liabilities market value effect and the operating costs net
+  effect from time T to time T+ ∆ T;
+ Then, the maximum amount available for LLR in a worst
+  case scenario depends on the maximum value that has been
+  put at risk for reserve management purposes:
+              LLR              Exchange   Assets Market
+               Net  ≤ B − Z +  Rate Effect +  Value Effect  − H
+                                                           
+
+ Conversely, if there is a certain lower limit on the funds that
+  should always be available for LLR then the maximum value
+  to be put at risk for reserve management purposes is limited:
+               Exchange   AssetsMarket                    LLR 
+              Rate Effect +  Value Effect  ≥ Z − B + H +  Net 
+                                                              
+
+
+                                          O PER ATI ON A L M ON E T AR Y PO L IC Y S E M IN AR , D E N ED ER L AN D S C H E BAN K
+Am sterdam     J une 23-2 5, 1999   30
+                                    30
+
+
+
+                                                                                                                                      47
+dp/9/1999
+                    The Role of Reserve Management Operations:
+                            Full Foreign Exchange Cover
+             The maximum value that can be put at risk for reserve
+              management purposes depends on the desired minimum
+              amount of funds, available for LLR, the projected liabilities
+              remuneration and BNB operating and investment costs (H),
+              the size of the Banking Department deposit (B) and its
+              minimum credibility level (Z);
+             Under certain assumptions about the worst case            exchange
+              rate effect , the permissible worst case asset market value
+              effect can be estimated, i.e. a limit on the permissible interest
+              rate risk of the foreign exchange reserves can be computed;
+             Reserve management operations should be based primarily
+              on strong risk management techniques;
+             Absolute measures of risk should be applied (such as dollar
+              duration) rather than relative measures (such as duration);
+             Worst case scenarios should be simulated (rather than            VaR ).
+                                                        O PER ATI ON A L M ON E T AR Y PO L IC Y S E M IN AR , D E N ED ER L AN D S C H E BAN K
+            Am sterdam       J une 23-2 5, 1999    31
+                                                   31
+
+
+
+
+                    T he R ole of R eserve M anagement O perations:
+                    Unconstrained Exchange of R eserve C urrency
+             R eserves would be structured in a rather inefficient way if
+              temporary unrealized losses have to be realized in order to
+              meet obligations of the C BA under normal circumstances in
+              the domestic market ( liquidity risk );
+             L iquidity risk should be strictly limited by applying
+              adequate maturity constraints on the structure of reserves;
+             T he obligations of the C BA should be carefully analyzed:
+                   domestic currency in circulation:
+                          the so-called hard core should be estimated
+                          the maximum amount that could be exchanged against reserve currency in a
+                           short period of time (in a worst case domestic scenario) should be estimated
+                   the government deposit:
+                          different funds could be managed more efficiently as separate portfolios
+                          it should be kept in mind that the assets covering the government funds put at
+                           risk part of the size of B according to the derived fundamental equation so
+                           that less could be put at risk for efficient management of the other assets
+                   reserves of commercial banks:
+                          ···                          OPER ATI ONA L M ONETARY POLICY SEMINAR, DE NED ERLANDSCHE BAN K
+            Am sterdam        J une 23-2 5, 1999   32
+                                                   32
+
+
+
+      48
+                                                                                                                                     Discussion Papers
+        The Role of Reserve Management Operations:
+                 Minimum Level of Revenue
+ Over an investment horizon of one year revenue should
+  exceed total BNB expenses, i.e.    ∆ B ≥0 in a year;
+ If we assume that the net LLR effect over the year is zero,
+  then from the fundamental equation it follows:
+      Exchange   Assets Market  Liabilities Market  BNB Operating and 
+     Rate Effect  +  Value Effect  ≥  Value Effect  +  InvestmentCosts Net ≥ H
+                                                                          
+
+ Therefore, a certain minimum target level of return
+  (depending on the size of reserves) should be achieved with a
+  very high probability (e.g. 95 percent);
+ Under certain assumptions about the worst case exchange
+  rate effect the derived inequality implicitly imposes a second
+  upper limit on interest rate risk of foreign exchange reserves
+  (as the full cover objective has already done so).
+                                        O PER ATI ON AL M O N E TA R Y PO LI C Y S EM I N AR , D E N E D E R L AN D S C HE B AN K
+Am sterdam     June 23-25, 1 999   33
+
+
+
+
+        The Role of Reserve Management Operations:
+                   Benchmark Construction
+ In order to achieve the three main objectives of reserve
+  management, the Treasury Directorate of the BNB has
+  developed an appropriate method for strategic asset
+  allocation and benchmark construction;
+ The method is consistent with the described strategic issues;
+ It is interesting to note that, for the time being, the first limit
+  on interest rate risk (the one imposed by the full cover
+  requirement) is slack: with the current size of reserves it is
+  less constraining than the one imposed by the minimum
+  level of revenue requirement;
+ Thus, the foreign exchange reserves of the BNB have been
+  structured according to a benchmark,            which guarantees the
+  stability of the CBA in Bulgaria even in worst case scenarios                                                                 .
+                                        O PER ATI ON AL M O N E TA R Y PO LI C Y S EM I N AR , D E N E D E R L AN D S C HE B AN K
+Am sterdam     June 23-25, 1 999   34
+
+
+
+                                                                                                                                    49
+dp/9/1999
+                                                   SUMMARY
+             We have reviewed the reasons to adopt the CBA in Bulgaria;
+             We have compared it with an orthodox CBA;
+             We have examined the main tools of monetary policy
+              operations for consistency with orthodox CBA rules;
+             We have presented the flow channels and balance sheets
+              in the financial system under the CBA in Bulgaria;
+             We have examined the money supply process and explained
+              the peculiarities in the design of the CBA in Bulgaria;
+             We have derived an equation for the interrelationship
+              between the factors affecting the stability of the CBA;
+             We have analyzed the role of reserve management
+              operations in the functioning of the CBA in Bulgaria.
+                                                        O PER ATI ON A L M ON E T AR Y PO L IC Y S E M IN AR , D E N ED ER L AN D S C H E BAN K
+            Am sterdam   J une 23-2 5, 1999        35
+                                                   35
+
+
+
+
+                         INTERNET WEBSITE OF THE BNB:
+                                  WWW.BNB.BG
+                                               LEGAL FRAMEWORK
+                                               PUBLICATIONS
+                                                  DISCUSSION PAPERS
+                                                  ···
+
+                                               STATISTICS
+                                                  BALANCE SHEETS
+                                                  WEEKLY STATISTICAL DATA
+                                                  ···
+                                               CURRENCY
+                                               ···
+                                                        O PER ATI ON A L M ON E T AR Y PO L IC Y S E M IN AR , D E N ED ER L AN D S C H E BAN K
+            Am sterdam   J une 23-2 5, 1999        36
+                                                   36
+
+
+
+      50
+                                                                                Discussion Papers
+                               References
+Avramov, R. (1999) The Role of a Currency Board in Financial Crises: The
+         Case of Bulgaria. BNB Discussion Papers, No. 6.
+Balino, J.T., C. Enoch (1997) Currency Board Arrangements: Issues and
+          Experiences. Washington IMF Occasional Paper No. 151.
+Hanke, S., K. Schuler (1994) Currency Boards for Developing Countries.
+         ICS Press. San Francisco.
+
+Enoch, C., A. Gulde (1997) Making a Currency Board Operational. Washing-
+         ton IMF Paper on Policy Analysis and Assessment 97/10.
+Gray, S., G. Hoggarth (1996) Introduction to Monetary Operations. Bank of
+          England Handbooks in Central Banking, No. 10.
+Gulde, A. (1999) The Role of the Currency Board in Bulgaria’s Stabilization.
+          Washington IMF Policy Discussion Paper 99/3.
+Latter, T. (1996) The Choice of Exchange Rate Regime. Bank of England
+           Handbooks in Central Banking, No. 2.
+Minassian, G., M. Nenova, V. Yotzov (1998) The Currency Board in Bul-
+         garia. GorexPress, S. (in Bulgarian).
+Mishkin, F. (1992) The Economics of Money, Banking and Financial Mar-
+          kets. Third Edition. Harper Collins Publishers. New York.
+Nenovsky, N., K. Hristov (1998) Financial Repression and Credit Rationing
+        under Currency Board Arrangement for Bulgaria. BNB Discussion
+        Papers, No. 2.
+Nenovsky, N., K. Hristov, B. Petrov (1999) Two Approaches to Fixed Ex-
+        change Rate Crises. BNB Discussion Papers, No. 4.
+Osband, K., D. Villanueva (1992) Independent Currency Authorities: An
+        Analytic Primer. Washington IMF Working Papers, vol. 40, No. 1,
+        pp. 202 – 216.
+Schwartz, A. (1993) Currency Boards: Their Past, Present and Possible Fu-
+         ture Role. Carnegie-Rochester Conference Series on Public Policy
+         39, North-Holland, pp. 147 – 187.
+
+Yotzov, V., N. Nenovsky, K. Hristov, I. Petrova, B. Petrov (1998) The First
+           Year of the Currency Board in Bulgaria. BNB Discussion Papers,
+           No. 1.
+
+                                                                               51
+dp/9/1999
+                                      DISCUSSION PAPERS
+                                          NOW AVAILABLE:
+                                                                          PRICE PER COPY
+                                                                     Bulgaria Europe Rest of the World
+              DP/1/1998 The First Year of the Currency Board
+                                                  in Bulgaria        BGN 7.90   EUR 6.5     EUR 10
+                   Victor Yotzov, Nikolay Nenovsky, Kalin Hristov,
+                                         Iva Petrova, Boris Petrov
+                   DP/2/1998 Financial Repression and Credit
+               Rationing under Currency Board Arrangement
+                                                for Bulgaria         BGN 7.90   EUR 6.5     EUR 10
+                                 Nikolay Nenovsky, Kalin Hristov
+                DP/3/1999 Investment Incentives in Bulgaria:
+                Assessment of the Net Tax Effect on the State
+                                                      Budget         BGN 7.90   EUR 6.5     EUR 10
+             Dobrislav Dobrev, Boyko Tzenov, Peter Dobrev, John
+                                                         Ayerst
+               DP/4/1999 Two Approaches to Fixed Exchange
+                                               Rate Crises           BGN 7.90   EUR 6.5     EUR 10
+                    Nikolay Nenovsky, Kalin Hristov, Boris Petrov
+                      DP/5/1999 Monetary Sector Modeling in
+                                       Bulgaria, 1913 – 1945         BGN 7.90   EUR 6.5     EUR 10
+                                  Nikolay Nenovsky, Boris Petrov
+                   DP/6/1999 The Role of a Currency Board in
+                       Financial Crises: The Case of Bulgaria        BGN 7.50   EUR 6.5     EUR 10
+                                               Roumen Avramov
+                  DP/7/1999 The Bulgarian Financial Crisis of
+                                                 1996 – 1997         BGN 7.50   EUR 6.5     EUR 10
+                                               Zdravko Balyozov
+                      DP/8/1999 The Economic Philosophy of
+                 Friedrich Hayek (The Centenary of His Birth)        BGN 2.50   EUR 2.5     EUR 3.5
+                                               Nikolay Nenovsky
+
+
+
+            FOR CONTACT:                     BULGARIAN NATIONAL BANK
+                                             Publications Division
+                                             1, Al. Battenberg Sq.
+                                             1000 Sofia
+                                             BULGARIA
+
+                                             Telephone (+ 359 2) 9145 1351, 9145 1271, 981 1391
+                                             Fax (+ 359 2) 980 2425, 980 6493
+
+
+      52
+

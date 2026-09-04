@@ -1,0 +1,48 @@
+{
+  "dataset_id": "VEN-CURRENT-SECONDARY-LEADS-20260825",
+  "country": "Venezuela",
+  "status": "PROVISIONAL",
+  "source_class": "C2",
+  "source_url": "https://www.bancaynegocios.com/balances/",
+  "source_name": "Banca y Negocios balances page citing BCV/BVC",
+  "retrieval_timestamp": "2026-08-25T20:38:49-04:00",
+  "primary_source": false,
+  "verification_note": "These are secondary web-page leads. They are not promoted to VERIFIED BCV observations until the original BCV publication or file is acquired and reconciled.",
+  "observations": [
+    {
+      "observation_id": "BN-BCV-LIQUIDEZ-2026-08-24",
+      "series_id": "VEN_BCV_LIQUIDEZ",
+      "variable": "BCV-referenced liquidez monetaria",
+      "value": 2448175,
+      "unit": "VES millions as displayed by source",
+      "observation_date": "2026-08-24",
+      "publication_date": null,
+      "revision_date": null,
+      "status": "PROVISIONAL",
+      "quality_class": "C2",
+      "source_ids": ["WEB-BN-BALANCES-20260825"],
+      "citation_anchor": "Banca y Negocios balances table: Liquidez Monetaria (MMBs.), 24/08/2026 column, 2.448.175; source line identifies BCV-BVC",
+      "notes": "Retain the displayed unit and decimal convention until the BCV original is acquired. Do not convert to VES units without recording the transformation."
+    },
+    {
+      "observation_id": "BN-BCV-OFFICIAL-FX-2026-08-24",
+      "series_id": "VEN_OFFICIAL_FX",
+      "variable": "BCV-referenced official USD/VES",
+      "value": 785.0693,
+      "unit": "VES per USD",
+      "observation_date": "2026-08-24",
+      "publication_date": null,
+      "revision_date": null,
+      "status": "PROVISIONAL",
+      "quality_class": "C2",
+      "source_ids": ["WEB-BN-BALANCES-20260825"],
+      "citation_anchor": "Banca y Negocios balances table: Dólar oficial, 24/08/2026 column, 785.0693; source line identifies BCV-BVC",
+      "notes": "Canonical official FX remains BCV. This record is a secondary lead pending original BCV file acquisition."
+    }
+  ],
+  "not_entered_as_facts": [
+    "Any reported 2026 M2 growth percentage until both endpoint observations and publication/vintage data are acquired.",
+    "Any parallel USDT/VES rate not preserved with simultaneous timestamp, market lane, quote type, and liquidity metadata.",
+    "Any physical USD circulation estimate without survey or reconstruction methodology."
+  ]
+}

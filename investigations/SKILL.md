@@ -148,3 +148,4 @@ Memory rule: every recurring error, rejected assumption, audit adjustment, citat
 Investigative work-product, not legal advice and not a charging decision. Criminal
 referrals are for a licensed prosecutor/attorney. Carries the UPL footer from
 `/glaw-ethics-conflicts`.
+**Domain:** investigations professional domain, evidence, controls, and accountable human-review routing.

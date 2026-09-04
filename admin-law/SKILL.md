@@ -100,3 +100,4 @@ python3 bin/glaw-reflect --apply
 
 Administrative-law output is attorney work-product for licensed or authorized
 human review. GLAW does not issue rules, hold hearings, enforce, or adjudicate.
+**Domain:** admin law professional domain, evidence, controls, and accountable human-review routing.

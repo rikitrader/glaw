@@ -1,0 +1,4 @@
+import type { JsonValue } from '../types.ts';
+export interface TwinOrganization { organizationId:string; version:string; employees:{id:string;name:string;department:string}[]; accounts:{id:string;ownerId:string}[]; messages:{id:string;authorId:string;text:string}[]; }
+export function createTwin(seed:number,employees=10):TwinOrganization{const people=Array.from({length:employees},(_,index)=>({id:`emp-${seed}-${index}`,name:`Employee ${index}`,department:index%2?'sales':'operations'}));return {organizationId:`org-${seed}`,version:'1.0.0',employees:people,accounts:[{id:`acct-${seed}-1`,ownerId:people[0].id}],messages:[{id:`msg-${seed}-1`,authorId:people[0].id,text:'Quarterly customer review is due.'}]};}
+export function validateTwin(twin:TwinOrganization):string[]{const ids=new Set(twin.employees.map((employee)=>employee.id));return twin.accounts.filter((account)=>!ids.has(account.ownerId)).map((account)=>`account owner missing: ${account.id}`);}

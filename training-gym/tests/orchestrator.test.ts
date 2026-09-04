@@ -1,0 +1,8 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { ExperimentOrchestrator, EpisodeWorker, InMemoryEpisodeRepository } from '../production/orchestrator.ts';
+import { InMemoryJobQueue } from '../production/jobs.ts';
+import { SpreadsheetGym } from '../gyms/spreadsheet/index.ts';
+
+test('orchestrator expands paired seeds idempotently and worker completes an episode', async () => { const queue = new InMemoryJobQueue(); const repository = new InMemoryEpisodeRepository(); const orchestrator = new ExperimentOrchestrator(queue, repository); const plan = { experimentId:'exp-1', organizationId:'org-1', taskId:'spreadsheet-profit', seeds:[11] }; const first = await orchestrator.expand(plan); const second = await orchestrator.expand(plan); assert.deepEqual(first, second); const worker = new EpisodeWorker(queue, repository, () => new SpreadsheetGym()); const result = await worker.runOnce('worker-1', { async next() { return { tool:'spreadsheet.set_formula', arguments:{ cell:'C2', formula:'=A2-B2' } }; } }); assert.equal(result?.episodeId, 'exp-1:episode:0'); assert.equal(result?.status, 'SUCCEEDED'); assert.equal((await repository.get('exp-1:episode:0','org-1'))?.status, 'SUCCEEDED'); });
+test('episode records cannot be read across organizations', async () => { const repository = new InMemoryEpisodeRepository(); const now = new Date().toISOString(); await repository.create({id:'ep',organizationId:'org-a',experimentId:'x',taskId:'t',status:'PENDING',seed:1,versionPins:{},createdAt:now,updatedAt:now}, 'ep:key'); assert.equal(await repository.get('ep','org-b'), undefined); });

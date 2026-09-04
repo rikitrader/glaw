@@ -1,0 +1,102 @@
+{
+  "schemaVersion":"0.1.0",
+  "nodes":[
+    {"id":"DOC-IMF-001","type":"HANKE PUBLICATION","label":"IMF Working Paper 07/99 — Zimbabwe high inflation"},
+    {"id":"DOC-WB-UKR-001","type":"EXTERNAL SOURCE","label":"World Bank Ukraine country study"},
+    {"id":"DOC-WB-UKR-002","type":"EXTERNAL SOURCE","label":"World Bank Ukraine hyperinflation research paper"},
+    {"id":"DOC-LAW-ARG-23928-ORIGINAL-001","type":"LEGAL INSTRUMENT","label":"Argentina Law 23.928 original text"},
+    {"id":"DOC-LAW-ECU-2000-001","type":"LEGAL INSTRUMENT","label":"Ecuador Law 4 dollarization text"},
+    {"id":"CLM-ZWE-001","type":"RESULT","label":"Zimbabwe high-inflation and stabilization claim"},
+    {"id":"CLM-ZWE-002","type":"RESULT","label":"Fiscal financing and inflation mechanism claim"},
+    {"id":"CLM-UKR-001","type":"RESULT","label":"Ukraine hyperinflation claim"},
+    {"id":"CLM-UKR-002","type":"RESULT","label":"Ukraine black-market depreciation claim"},
+    {"id":"CLM-ARG-LAW-001","type":"RESULT","label":"Argentina convertibility statute claim"}
+    ,{"id":"CLM-ECU-LAW-001","type":"RESULT","label":"Ecuador dollarization statute claim"}
+    ,{"id":"DOC-LAW-BIH-CBBH-1997","type":"LEGAL INSTRUMENT","label":"Bosnia and Herzegovina Central Bank law translation"}
+    ,{"id":"CLM-BIH-LAW-001","type":"RESULT","label":"Bosnia currency-board legal-rule claim"}
+    ,{"id":"DOC-HANKE-ZWE-2017-FORBES","type":"HANKE PUBLICATION","label":"Hanke 2017 Forbes Zimbabwe hyperinflation commentary"}
+    ,{"id":"CLM-HK-ZWE-2017-001","type":"RESULT","label":"Hanke Zimbabwe threshold and PPP-method claim"}
+    ,{"id":"DOC-IMF-009","type":"EXTERNAL SOURCE","label":"IMF Lebanon 2019 Article IV country report"}
+    ,{"id":"CLM-LBN-IMF-2019-001","type":"RESULT","label":"Lebanon debt, deficits, deposits, and adjustment claim"}
+    ,{"id":"CLM-LBN-IMF-2019-002","type":"RESULT","label":"Lebanon deposit inflow and central-bank operations claim"}
+    ,{"id":"DOC-IMF-010","type":"EXTERNAL SOURCE","label":"IMF Lebanon 2023 Article IV country report"}
+    ,{"id":"CLM-LBN-IMF-2023-001","type":"RESULT","label":"Lebanon 2023 sovereign-banking-currency crisis claim"}
+    ,{"id":"PAPER-HANKE-GG-232","type":"HANKE PUBLICATION","label":"SAE 232 United States Golden Growth Rate and Credit Counterparts Analysis"}
+    ,{"id":"PAPER-HANKE-GG-233","type":"HANKE PUBLICATION","label":"SAE 233 United Kingdom Golden Growth Rate and Credit Counterparts Analysis"}
+    ,{"id":"PAPER-HANKE-GG-234","type":"HANKE PUBLICATION","label":"SAE 234 Eurozone Golden Growth Rate and Credit Counterparts Analysis"}
+    ,{"id":"CLM-HK-GG-232-001","type":"RESULT","label":"SAE 232 source-faithful monetary-flow framework claim"}
+    ,{"id":"CLM-HK-GG-233-001","type":"RESULT","label":"SAE 233 source-faithful monetary-flow framework claim"}
+    ,{"id":"CLM-HK-GG-234-001","type":"RESULT","label":"SAE 234 source-faithful monetary-flow framework claim"}
+    ,{"id":"DOC-IMF-006","type":"EXTERNAL SOURCE","label":"IMF Independent Evaluation Office Argentina crisis report"}
+    ,{"id":"CLM-ARG-IMF-2001-001","type":"RESULT","label":"Argentina crisis and convertibility chronology claim"}
+    ,{"id":"CLM-ARG-IMF-2001-002","type":"RESULT","label":"Argentina bank-liquidity scope limitation claim"}
+    ,{"id":"CLM-UKR-WB-001","type":"RESULT","label":"Ukraine monetary expansion and stabilization scope limitation claim"}
+    ,{"id":"DOC-IMF-VEN-REO-2025","type":"EXTERNAL SOURCE","label":"IMF 2025 Western Hemisphere Regional Economic Outlook Venezuela data limitations"}
+    ,{"id":"CLM-VEN-IMF-DATA-001","type":"RESULT","label":"Venezuela data limitation and estimate-status claim"}
+    ,{"id":"DOC-IMF-VEN-1999-SA","type":"EXTERNAL SOURCE","label":"IMF Venezuela Statistical Appendix 1999"}
+    ,{"id":"CLM-VEN-IMF-1999-001","type":"RESULT","label":"Historical Venezuela monetary-system tables claim"}
+    ,{"id":"CLM-VEN-IMF-1999-002","type":"RESULT","label":"Historical Venezuela monetary-data scope limitation claim"}
+    ,{"id":"DOC-IMF-002","type":"EXTERNAL SOURCE","label":"IMF high-inflation stabilization and fiscal-policy chapter"}
+    ,{"id":"CLM-IMF-HIGH-INFLATION-001","type":"RESULT","label":"IMF high-inflation fiscal-monetary interaction claim"}
+    ,{"id":"DOC-IMF-008","type":"EXTERNAL SOURCE","label":"IMF Latin American financial systems and dollarization chapter"}
+    ,{"id":"CLM-IMF-LATAM-BANKING-001","type":"RESULT","label":"IMF Latin American banking and dollarization comparison claim"}
+    ,{"id":"DOC-LAW-ZWE-RBZ-ACT-2009","type":"LEGAL INSTRUMENT","label":"Zimbabwe Reserve Bank Act legal-tender provisions"}
+    ,{"id":"DOC-LAW-ZWE-SI-142-2019","type":"LEGAL INSTRUMENT","label":"Zimbabwe Legal Tender Regulations 2019"}
+    ,{"id":"CLM-ZWE-SI-142-2019-001","type":"RESULT","label":"Zimbabwe 2019 sole-legal-tender transition claim"}
+    ,{"id":"CLM-ZWE-RBZ-ACT-001","type":"RESULT","label":"Zimbabwe foreign-currency legal-tender authority claim"}
+    ,{"id":"DOC-IMF-007","type":"EXTERNAL SOURCE","label":"IMF sovereign debt restructuring and crisis-resolution paper"}
+    ,{"id":"CLM-IMF-CRISIS-2003-001","type":"RESULT","label":"IMF sovereign-bank-currency crisis spillover claim"}
+    ,{"id":"DOC-BNB-ANNUAL-1997","type":"EXTERNAL SOURCE","label":"Bulgarian National Bank 1997 annual report"}
+    ,{"id":"DOC-BNB-ANNUAL-1998","type":"EXTERNAL SOURCE","label":"Bulgarian National Bank 1998 annual report"}
+    ,{"id":"DOC-BNB-YEARBOOK-1998-2002","type":"EXTERNAL SOURCE","label":"Bulgarian National Bank 1998–2002 yearbook"}
+    ,{"id":"DOC-LAW-BGR-BNB-CONSOLIDATED-2021","type":"LEGAL INSTRUMENT","label":"Official BNB consolidated English law translation through 2021"}
+    ,{"id":"CLM-BGR-BNB-1997-001","type":"RESULT","label":"Bulgarian currency-board reserve-coverage claim"}
+    ,{"id":"CLM-BGR-BNB-1998-001","type":"RESULT","label":"Bulgarian 1998 price-stabilization and monetary-counterparts claim"}
+    ,{"id":"CLM-BGR-BNB-YEARBOOK-001","type":"RESULT","label":"Bulgarian legal-framework chronology claim"}
+    ,{"id":"CLM-BGR-LAW-CONSOLIDATED-001","type":"RESULT","label":"Bulgarian consolidated legal reserve and parity claim"}
+    ,{"id":"DOC-BNB-CBA-1999","type":"EXTERNAL SOURCE","label":"Bulgarian National Bank currency-board comparison paper"}
+    ,{"id":"CLM-BGR-BNB-1999-001","type":"RESULT","label":"Bulgarian currency-board institutional comparison claim"}
+    ,{"id":"DOC-BNB-CBA-199911","type":"EXTERNAL SOURCE","label":"Bulgarian National Bank currency-board structure paper"}
+    ,{"id":"CLM-BGR-BNB-199911-001","type":"RESULT","label":"Bulgarian currency-board monetary-base and lender-of-last-resort claim"}
+    ,{"id":"DOC-BGR-CHARLES-MARIE-2017","type":"EXTERNAL SOURCE","label":"Charles and Marie Bulgaria hyperinflation study"}
+    ,{"id":"CLM-BGR-CHARLES-MARIE-2017-001","type":"RESULT","label":"Competing Bulgaria hyperinflation interpretation claim"}
+    ,{"id":"DOC-BOOK-HANKE-CB-OPEN-2021","type":"HANKE PUBLICATION","label":"Open-access 2021 Hanke-Schuler currency-board handbook edition"}
+    ,{"id":"CLM-HK-CB-OPEN-2021-001","type":"RESULT","label":"Hanke-Schuler currency-board definition and reserve-backing claim"}
+  ],
+  "edges":[
+    {"from":"DOC-IMF-001","to":"CLM-ZWE-001","type":"SUPPORTS","locator":"PDF pp. 3, 5, 8–13"},
+    {"from":"DOC-IMF-001","to":"CLM-ZWE-002","type":"SUPPORTS","locator":"PDF p. 5"},
+    {"from":"DOC-WB-UKR-001","to":"CLM-UKR-001","type":"SUPPORTS","locator":"PDF p. 29; chapter text"},
+    {"from":"DOC-WB-UKR-002","to":"CLM-UKR-002","type":"SUPPORTS","locator":"verified PDF pp. 1, 15–16: authorship, monetary expansion, and hyperinflation discussion"},
+    {"from":"DOC-LAW-ARG-23928-ORIGINAL-001","to":"CLM-ARG-LAW-001","type":"SUPPORTS","locator":"original text: Articles 1 and 4"}
+    ,{"from":"DOC-LAW-ECU-2000-001","to":"CLM-ECU-LAW-001","type":"SUPPORTS","locator":"PDF p. 3 and extracted text p. 2: Law 4 metadata and Art. 1"}
+    ,{"from":"DOC-LAW-BIH-CBBH-1997","to":"CLM-BIH-LAW-001","type":"SUPPORTS","locator":"translated statute PDF pp. 1–2: Articles 01–02 and currency-board backing rule"}
+    ,{"from":"DOC-HANKE-ZWE-2017-FORBES","to":"CLM-HK-ZWE-2017-001","type":"SUPPORTS","locator":"verified Forbes HTML: threshold and PPP passages"}
+    ,{"from":"DOC-IMF-009","to":"CLM-LBN-IMF-2019-001","type":"SUPPORTS","locator":"verified PDF pp. 6–9, 16–17"}
+    ,{"from":"DOC-IMF-009","to":"CLM-LBN-IMF-2019-002","type":"SUPPORTS","locator":"verified PDF p. 8; pp. 16–17"}
+    ,{"from":"DOC-IMF-010","to":"CLM-LBN-IMF-2023-001","type":"SUPPORTS","locator":"verified PDF pp. 3–5, 18–20, 38–44"}
+    ,{"from":"PAPER-HANKE-GG-232","to":"CLM-HK-GG-232-001","type":"SUPPORTS","locator":"verified PDF pp. 3–4 and 6–7"}
+    ,{"from":"PAPER-HANKE-GG-233","to":"CLM-HK-GG-233-001","type":"SUPPORTS","locator":"verified PDF pp. 3–4 and 6–7"}
+    ,{"from":"PAPER-HANKE-GG-234","to":"CLM-HK-GG-234-001","type":"SUPPORTS","locator":"verified PDF pp. 3–4 and 8–9"}
+    ,{"from":"DOC-IMF-006","to":"CLM-ARG-IMF-2001-001","type":"SUPPORTS","locator":"verified PDF pp. 4–5 and p. 15"}
+    ,{"from":"DOC-IMF-006","to":"CLM-ARG-IMF-2001-002","type":"SUPPORTS","locator":"verified PDF pp. 4–5 and p. 15"}
+    ,{"from":"DOC-WB-UKR-002","to":"CLM-UKR-WB-001","type":"SUPPORTS","locator":"verified PDF pp. 1, 15–16"}
+    ,{"from":"DOC-IMF-VEN-REO-2025","to":"CLM-VEN-IMF-DATA-001","type":"SUPPORTS","locator":"verified PDF p. 53"}
+    ,{"from":"DOC-IMF-VEN-1999-SA","to":"CLM-VEN-IMF-1999-001","type":"SUPPORTS","locator":"verified scanned PDF pp. 44–48; Tables 34–38"}
+    ,{"from":"DOC-IMF-VEN-1999-SA","to":"CLM-VEN-IMF-1999-002","type":"SUPPORTS","locator":"verified scanned PDF pp. 44–48; source notes and units"}
+    ,{"from":"DOC-IMF-002","to":"CLM-IMF-HIGH-INFLATION-001","type":"SUPPORTS","locator":"verified PDF pp. 2–5 and 12–15"}
+    ,{"from":"DOC-IMF-008","to":"CLM-IMF-LATAM-BANKING-001","type":"SUPPORTS","locator":"verified PDF pp. 7–8 and 11–12"}
+    ,{"from":"DOC-LAW-ZWE-RBZ-ACT-2009","to":"CLM-ZWE-RBZ-ACT-001","type":"SUPPORTS","locator":"verified PDF pp. 15–16: sections 44A and 45"}
+    ,{"from":"DOC-LAW-ZWE-SI-142-2019","to":"CLM-ZWE-SI-142-2019-001","type":"SUPPORTS","locator":"verified PDF pp. 1–2: sections 2(1)–(3), 3(1), and Gazette notice"}
+    ,{"from":"DOC-IMF-007","to":"CLM-IMF-CRISIS-2003-001","type":"SUPPORTS","locator":"verified PDF pp. 6–7, 18–20, and 24–25"}
+    ,{"from":"DOC-BNB-ANNUAL-1997","to":"CLM-BGR-BNB-1997-001","type":"SUPPORTS","locator":"verified PDF pp. 67–68: reserve coverage and end-1997 gross reserves"}
+    ,{"from":"DOC-BNB-ANNUAL-1998","to":"CLM-BGR-BNB-1998-001","type":"SUPPORTS","locator":"verified PDF pp. 21–22, 46: CPI stabilization and monetary counterparts"}
+    ,{"from":"DOC-BNB-YEARBOOK-1998-2002","to":"CLM-BGR-BNB-YEARBOOK-001","type":"SUPPORTS","locator":"verified PDF p. 144: legal-framework chronology and episode dates"}
+    ,{"from":"DOC-LAW-BGR-BNB-CONSOLIDATED-2021","to":"CLM-BGR-LAW-CONSOLIDATED-001","type":"SUPPORTS","locator":"verified PDF pp. 1 and 11–13: amendment history, Articles 28–29, and translation disclaimer"}
+    ,{"from":"DOC-BNB-CBA-1999","to":"CLM-BGR-BNB-1999-001","type":"SUPPORTS","locator":"verified PDF pp. 7, 10"}
+    ,{"from":"DOC-BNB-CBA-199911","to":"CLM-BGR-BNB-199911-001","type":"SUPPORTS","locator":"verified PDF pp. 5–6, 8–9"}
+    ,{"from":"DOC-BGR-CHARLES-MARIE-2017","to":"CLM-BGR-CHARLES-MARIE-2017-001","type":"SUPPORTS","locator":"verified PDF pp. 2, 6, 12, 14–15"}
+    ,{"from":"DOC-BOOK-HANKE-CB-OPEN-2021","to":"CLM-HK-CB-OPEN-2021-001","type":"SUPPORTS","locator":"verified open-access edition PDF pp. 15 and 21"}
+  ],
+  "edgeTypes":["SUPPORTS","CHALLENGES","DERIVES","CALCULATES","ABOUT","RESULTED_IN","CONTRADICTS","REQUIRES"]
+}

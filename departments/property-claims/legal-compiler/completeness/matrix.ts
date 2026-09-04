@@ -1,0 +1,3 @@
+import { CORE_ISSUES, SUPPORTED_JURISDICTIONS } from '../jurisdictions/registry.ts';
+export interface CoverageCell { jurisdiction:string; issue:string; status:'NOT_IMPLEMENTED'|'RESEARCH_REQUIRED'|'PARTIAL'|'COMPLETE_VERIFIED'; sourceCompleteness:number; citationCompleteness:number; testCompleteness:number; humanReviewRequired:boolean; }
+export function emptyCoverageMatrix():CoverageCell[] { return SUPPORTED_JURISDICTIONS.flatMap((jurisdiction)=>CORE_ISSUES.map((issue)=>({jurisdiction:jurisdiction.code,issue,status:'NOT_IMPLEMENTED',sourceCompleteness:0,citationCompleteness:0,testCompleteness:0,humanReviewRequired:true}))); }

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "HAEIS Committee Opinion",
+  "type": "object",
+  "required": ["committee_id", "report_id", "proceedings_status", "roll_call", "hard_stops", "final_disposition"],
+  "properties": {
+    "committee_id": {"type": "string"},
+    "report_id": {"type": "string"},
+    "proceedings_status": {"enum": ["PLANNED", "IN_PROGRESS", "BLOCKED", "COMPLETE"]},
+    "roll_call": {"type": "array", "items": {"$ref": "#/$defs/vote"}},
+    "hard_stops": {"type": "array", "items": {"type": "object", "required": ["id", "status", "reason"]}},
+    "dissenting_opinions": {"type": "array", "items": {"type": "object", "required": ["member_id", "position", "reason"]}},
+    "final_disposition": {"enum": ["PASS_SUPPORTED", "PASS_WITH_CONDITIONS", "FAIL_NOT_SUPPORTED", "NO_DECISION_INSUFFICIENT_EVIDENCE"]}
+  },
+  "$defs": {
+    "vote": {
+      "type": "object",
+      "required": ["member_id", "persona_status", "vote", "confidence", "questions", "evidence_status"],
+      "properties": {
+        "member_id": {"type": "string"},
+        "persona_status": {"enum": ["SIMULATED_ANALYTICAL_PERSONA"]},
+        "vote": {"enum": ["PASS_SUPPORTED", "PASS_WITH_CONDITIONS", "FAIL_NOT_SUPPORTED", "NO_DECISION_INSUFFICIENT_EVIDENCE"]},
+        "confidence": {"enum": ["VERY_HIGH", "HIGH", "MODERATE", "LOW", "VERY_LOW"]},
+        "questions": {"type": "array", "items": {"type": "string"}},
+        "evidence_status": {"enum": ["VERIFIED", "PROVISIONAL", "MODELED", "DISPUTED", "UNAVAILABLE", "UNRESOLVED"]}
+      }
+    }
+  }
+}

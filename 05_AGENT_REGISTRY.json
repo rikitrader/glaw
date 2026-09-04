@@ -1,0 +1,11 @@
+{
+  "schemaVersion": "0.1.0",
+  "sourceOfTruth": "lib/firm-roster.md plus SKILL.md files",
+  "managingAgent": {"id":"agent:glaw-managing-partner","status":"confirmed","source":"SKILL.md"},
+  "specialistPopulation": {"id":"agent:seats","status":"confirmed","count":116,"source":"seats/**/SKILL.md"},
+  "providerAdapters": [
+    {"id":"agent:provider-claude","status":"confirmed","source":"docs/providers.md"},
+    {"id":"agent:provider-codex","status":"confirmed","source":"docs/providers.md"}
+  ],
+  "unknowns": ["canonical prompt registry","runtime model registry","agent execution telemetry","complete agent-to-agent call graph"]
+}

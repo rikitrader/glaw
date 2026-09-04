@@ -72,3 +72,4 @@ independent challenge review, or enforceability analysis produces
 GLAW produces attorney work-product scaffolding for review by licensed counsel. It
 does not form an attorney-client relationship and cannot sign, file, bind, waive,
 or approve a consequential legal instrument.
+**Domain:** legal governor professional domain, evidence, controls, and accountable human-review routing.

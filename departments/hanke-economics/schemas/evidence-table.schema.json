@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "haeis/evidence-table.schema.json",
+  "type": "object",
+  "required": ["claim_id", "claim", "evidence_supporting", "evidence_contradicting", "primary_sources", "model_result", "confidence", "sensitivity", "final_assessment", "uncertainty"],
+  "properties": {
+    "claim_id": {"type": "string", "minLength": 1},
+    "claim": {"type": "string", "minLength": 1},
+    "evidence_supporting": {"type": "array", "items": {"type": "string"}},
+    "evidence_contradicting": {"type": "array", "items": {"type": "string"}},
+    "primary_sources": {"type": "array", "items": {"type": "string"}},
+    "model_result": {"type": ["string", "null"]},
+    "confidence": {"enum": ["VERY HIGH", "HIGH", "MODERATE", "LOW", "VERY LOW", "UNRESOLVED"]},
+    "sensitivity": {"type": "string", "minLength": 1},
+    "final_assessment": {"type": "string", "minLength": 1},
+    "uncertainty": {"type": "string"}
+  }
+}

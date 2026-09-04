@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "haeis/structured-observation",
+  "type": "object",
+  "required": ["name", "status", "value", "unit", "series_id", "observation_date", "release_date", "source_ids", "citation_anchor"],
+  "properties": {
+    "name": {"type": "string", "minLength": 1},
+    "status": {"const": "KNOWN"},
+    "value": {"type": "number"},
+    "unit": {"type": "string", "minLength": 1},
+    "series_id": {"type": "string", "minLength": 1},
+    "observation_date": {"type": "string", "format": "date"},
+    "release_date": {"type": "string", "format": "date"},
+    "revision_date": {"type": "string", "format": "date"},
+    "vintage": {"type": "string"},
+    "source_ids": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+    "citation_anchor": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false
+}

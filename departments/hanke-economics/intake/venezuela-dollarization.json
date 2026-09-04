@@ -1,0 +1,31 @@
+{
+  "intake_id":"INTAKE-VEN-DOLLARIZATION-001",
+  "created_at":"2026-08-24",
+  "requester":"",
+  "question":"Would complete dollarization of Venezuela create monetary stability, or could insufficient liquidity and loss of domestic monetary flexibility produce severe credit contraction or systemic banking stress?",
+  "user_hypothesis":"Complete dollarization may stabilize prices but could create liquidity and credit risks.",
+  "country":"Venezuela",
+  "episode":"current monetary-reform question",
+  "decision_horizon":"T-180 days, Day 0, Year 1, Year 3, Year 5",
+  "output_mode":"POLICY",
+  "policy_options":["STATUS_QUO","IMMEDIATE_DOLLARIZATION","GRADUAL_DOLLARIZATION","CURRENCY_BOARD","DUAL_CURRENCY","MONETARY_REFORM_WITHOUT_DOLLARIZATION"],
+  "required_postures":["hanke","monetarist","keynesian","new-keynesian","austrian","supply-side","imf-style-stabilization","central-banker","commercial-bank","sovereign","citizen","business","investor","competing-institutional"],
+  "data_intake":[
+    {"name":"BCV monetary base","status":"UNAVAILABLE","value":null,"unit":null,"observation_date":null,"source_ids":[]},
+    {"name":"M1","status":"UNAVAILABLE","value":null,"unit":null,"observation_date":null,"source_ids":[]},
+    {"name":"M2","status":"UNAVAILABLE","value":null,"unit":null,"observation_date":null,"source_ids":[]},
+    {"name":"currency in circulation","status":"UNAVAILABLE","value":null,"unit":null,"observation_date":null,"source_ids":[]},
+    {"name":"bank deposits and reserves","status":"UNAVAILABLE","value":null,"unit":null,"observation_date":null,"source_ids":[]},
+    {"name":"bank credit and capitalization","status":"UNAVAILABLE","value":null,"unit":null,"observation_date":null,"source_ids":[]},
+    {"name":"official and parallel USD/VES","status":"UNAVAILABLE","value":null,"unit":null,"observation_date":null,"source_ids":[]},
+    {"name":"international and liquid reserves","status":"UNAVAILABLE","value":null,"unit":null,"observation_date":null,"source_ids":[]},
+    {"name":"fiscal deficit and financing","status":"UNAVAILABLE","value":null,"unit":null,"observation_date":null,"source_ids":[]},
+    {"name":"oil revenue and output","status":"UNAVAILABLE","value":null,"unit":null,"observation_date":null,"source_ids":[]},
+    {"name":"sovereign and PDVSA debt","status":"UNAVAILABLE","value":null,"unit":null,"observation_date":null,"source_ids":[]},
+    {"name":"remittances and USD circulation","status":"UNAVAILABLE","value":null,"unit":null,"observation_date":null,"source_ids":[]}
+  ],
+  "source_ids":["DOC-HANKE-VEN-TESTIMONY-HOUSE-WITNESS-2017","DOC-HANKE-KARGI-MONETARY-BOARDS-2023","DOC-HANKE-KRUS-TABLE-WEB-2026","DOC-IMF-VEN-REO-2025"],
+  "critical_unknowns":["current bank balance sheets","liquid reserve definition","fiscal financing","legal transition authority","USD liquidity available to banks"],
+  "requested_deliverables":["standard-economic-report","policy-decision-matrix","red-blue-red-review","stress-test"],
+  "status":"RESEARCH_INTAKE_ONLY"
+}

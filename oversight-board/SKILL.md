@@ -136,3 +136,4 @@ python3 bin/glaw-reflect --apply
 
 Oversight output is governance work-product for authorized human review. GLAW
 does not become a lawyer, CPA, regulator, court, signer, filer, or payment agent.
+**Domain:** oversight board professional domain, evidence, controls, and accountable human-review routing.

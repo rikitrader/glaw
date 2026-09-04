@@ -14,6 +14,7 @@ from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 from typing import Any
+from urllib.request import Request, urlopen
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -65,6 +66,102 @@ def write_json(path: Path, data: dict[str, Any]) -> None:
 
 def load_pack(name: str) -> dict[str, Any]:
     return load_json(COURT_PACKS / name)
+
+
+def authority_freshness(
+    pack_names: list[str] | None = None,
+    *,
+    as_of: date | None = None,
+    max_age_days: int = 45,
+    check_urls: bool = False,
+    timeout_seconds: float = 5.0,
+) -> dict[str, Any]:
+    """Validate local source-backed freshness metadata for court packs.
+
+    This is deliberately an offline gate. It validates review dates, status,
+    and source metadata; it does not claim that a URL is reachable or that a
+    court has accepted a filing.
+    """
+    if max_age_days < 0:
+        raise ValueError("max_age_days must be non-negative")
+    if timeout_seconds <= 0:
+        raise ValueError("timeout_seconds must be positive")
+    names = pack_names or sorted(path.name for path in COURT_PACKS.glob("*.json"))
+    checked_at = as_of or date.today()
+    packs: list[dict[str, Any]] = []
+    failures: list[str] = []
+    for name in names:
+        try:
+            pack = load_pack(name)
+        except (OSError, ValueError, json.JSONDecodeError) as exc:
+            failures.append(f"{name}: unable to load authority pack: {exc}")
+            continue
+        pack_failures: list[str] = []
+        status = str(pack.get("status") or "").strip().lower()
+        checked_raw = str(pack.get("checked_on") or "").strip()
+        if status not in {"verified", "verified-baseline"}:
+            pack_failures.append("status must be verified or verified-baseline")
+        try:
+            checked_on = date.fromisoformat(checked_raw)
+        except ValueError:
+            checked_on = None
+            pack_failures.append("checked_on must be an ISO date")
+        age_days = None
+        if checked_on is not None:
+            if checked_on > checked_at:
+                pack_failures.append("checked_on cannot be in the future")
+            else:
+                age_days = (checked_at - checked_on).days
+                if age_days > max_age_days:
+                    pack_failures.append(f"authority pack is {age_days} days old; maximum is {max_age_days}")
+        sources = pack.get("sources")
+        if not isinstance(sources, list) or not sources:
+            pack_failures.append("sources must be a non-empty list")
+            sources = []
+        for index, source in enumerate(sources, start=1):
+            if not isinstance(source, dict):
+                pack_failures.append(f"sources[{index}] must be an object")
+                continue
+            for field in ("id", "url", "description"):
+                if not str(source.get(field) or "").strip():
+                    pack_failures.append(f"sources[{index}].{field} is required")
+            if source.get("url") and not str(source["url"]).startswith(("https://", "http://")):
+                pack_failures.append(f"sources[{index}].url must be http(s)")
+            elif check_urls:
+                try:
+                    request = Request(
+                        str(source["url"]),
+                        headers={"Range": "bytes=0-0", "User-Agent": "GLAW-authority-check/1"},
+                    )
+                    with urlopen(request, timeout=timeout_seconds) as response:
+                        status_code = int(getattr(response, "status", 200))
+                        if status_code >= 400:
+                            pack_failures.append(f"sources[{index}] unreachable: HTTP {status_code}")
+                        else:
+                            response.read(1)
+                except Exception as exc:  # network failures must fail closed, never crash the CLI
+                    pack_failures.append(f"sources[{index}] unreachable: {type(exc).__name__}: {exc}")
+        row = {
+            "pack": name,
+            "id": str(pack.get("id") or name),
+            "status": "pass" if not pack_failures else "block",
+            "checked_on": checked_raw,
+            "age_days": age_days,
+            "max_age_days": max_age_days,
+            "source_count": len(sources),
+            "failures": pack_failures,
+        }
+        packs.append(row)
+        failures.extend(f"{name}: {item}" for item in pack_failures)
+    return {
+        "status": "pass" if not failures and packs else "block",
+        "as_of": checked_at.isoformat(),
+        "max_age_days": max_age_days,
+        "check_urls": check_urls,
+        "packs": packs,
+        "failures": failures,
+        "authority_boundary": "Online mode checks configured source URLs for reachability; it does not prove source content is current, replace filing-day rule review, or provide human filing approval.",
+    }
 
 
 def _normalize_county(value: str) -> str:
@@ -241,6 +338,10 @@ def route_case(case_data: dict[str, Any]) -> dict[str, Any]:
 
     district = str(court.get("federal_district") or "").strip().lower()
     federal_failures = list(checks)
+    federal_pack_name = VERIFIED_FEDERAL_DISTRICTS.get(district, "federal-core-2025.json")
+    federal_authority = authority_freshness([federal_pack_name])
+    if federal_authority["status"] != "pass":
+        federal_failures.extend(federal_authority["failures"])
     federal_status = "pass"
     if federal.get("status") != "pass":
         federal_failures.append("no verified federal-question or diversity basis")
@@ -258,11 +359,15 @@ def route_case(case_data: dict[str, Any]) -> dict[str, Any]:
         "basis": federal.get("bases", []),
         "basis_analysis": federal,
         "failures": federal_failures,
-        "authority_pack": VERIFIED_FEDERAL_DISTRICTS.get(district, "federal-core-2025.json"),
+        "authority_pack": federal_pack_name,
+        "authority_freshness": federal_authority,
     })
 
     florida_pack = load_pack("florida-trial-courts-2026.json")
     state_failures = list(checks)
+    florida_authority = authority_freshness(["florida-trial-courts-2026.json"])
+    if florida_authority["status"] != "pass":
+        state_failures.extend(florida_authority["failures"])
     state = str(court.get("state") or "").strip()
     county = _normalize_county(str(court.get("county") or ""))
     circuit = florida_circuit_for_county(county)
@@ -295,6 +400,7 @@ def route_case(case_data: dict[str, Any]) -> dict[str, Any]:
         "basis": ["Florida ordinary civil monetary jurisdiction"],
         "failures": state_failures,
         "authority_pack": "florida-trial-courts-2026.json",
+        "authority_freshness": florida_authority,
     })
 
     allowed = {
@@ -386,13 +492,21 @@ def _document_manifest(case_data: dict[str, Any], base: Path, route: dict[str, A
     return rows, failures
 
 
-def prepare_packet(case_path: Path, output_dir: Path) -> dict[str, Any]:
+def prepare_packet(case_path: Path, output_dir: Path, *, online_authority: bool = False) -> dict[str, Any]:
     case_path = case_path.resolve()
     case_data = load_json(case_path)
     route = route_case(case_data)
     failures: list[str] = []
     if route.get("status") != "pass":
         failures.append("forum routing must pass before packet preparation")
+    selected = route.get("selected") or {}
+    selected_authority = (
+        authority_freshness([str(selected.get("authority_pack"))], check_urls=online_authority)
+        if selected.get("authority_pack")
+        else {"status": "block", "failures": ["selected route has no authority pack"]}
+    )
+    if selected_authority.get("status") != "pass":
+        failures.extend(selected_authority.get("failures", []))
     gates: dict[str, Any] = {}
     gate_data = case_data.get("gate_evidence") if isinstance(case_data.get("gate_evidence"), dict) else {}
     for name in GATE_EVIDENCE:
@@ -403,7 +517,6 @@ def prepare_packet(case_path: Path, output_dir: Path) -> dict[str, Any]:
             gates[name] = verified
     documents, doc_failures = _document_manifest(case_data, case_path.parent, route)
     failures.extend(doc_failures)
-    selected = route.get("selected") or {}
     platform = "CM/ECF" if selected.get("forum") == "federal_district" else "Florida Courts E-Filing Portal"
     packet_id = f"court-packet-{uuid.uuid4()}"
     manifest = {
@@ -414,6 +527,8 @@ def prepare_packet(case_path: Path, output_dir: Path) -> dict[str, Any]:
         "case_source": str(case_path),
         "case_source_sha256": sha256_file(case_path),
         "route": route,
+        "authority_freshness": selected_authority,
+        "online_authority_required": online_authority,
         "gate_evidence": gates,
         "documents": documents,
         "filing": {

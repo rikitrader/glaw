@@ -1,0 +1,27 @@
+{
+  "registry_id": "VEN-BANK-REGISTRY-20260825",
+  "status": "ACQUISITION_QUEUE",
+  "banks": [
+    {"bank_id":"BANCO-DE-VENEZUELA","name":"Banco de Venezuela","statement_source":"ACQUISITION_REQUIRED"},
+    {"bank_id":"BANESCO","name":"Banesco Banco Universal","statement_source":"https://www.banesco.com/somosbanesco/balances/","status":"FOUND_UNREAD"},
+    {"bank_id":"BBVA-PROVINCIAL","name":"BBVA Provincial","statement_source":"ACQUISITION_REQUIRED"},
+    {"bank_id":"MERCANTIL","name":"Mercantil Banco Universal","statement_source":"ACQUISITION_REQUIRED"},
+    {"bank_id":"BNC","name":"Banco Nacional de Crédito","statement_source":"ACQUISITION_REQUIRED"},
+    {"bank_id":"BANCAMIGA","name":"Bancamiga","statement_source":"ACQUISITION_REQUIRED"},
+    {"bank_id":"BANCO-DEL-TESORO","name":"Banco del Tesoro","statement_source":"ACQUISITION_REQUIRED"},
+    {"bank_id":"BANCARIBE","name":"Bancaribe","statement_source":"ACQUISITION_REQUIRED"},
+    {"bank_id":"BANCO-EXTERIOR","name":"Banco Exterior","statement_source":"ACQUISITION_REQUIRED"},
+    {"bank_id":"BANPLUS","name":"Banplus","statement_source":"ACQUISITION_REQUIRED"},
+    {"bank_id":"FONDO-COMUN","name":"Banco Fondo Común","statement_source":"ACQUISITION_REQUIRED"},
+    {"bank_id":"VENEZOLANO-DE-CREDITO","name":"Banco Venezolano de Crédito","statement_source":"ACQUISITION_REQUIRED"},
+    {"bank_id":"BANCO-PLAZA","name":"Banco Plaza","statement_source":"ACQUISITION_REQUIRED"},
+    {"bank_id":"BANCRECER","name":"Bancrecer","statement_source":"ACQUISITION_REQUIRED"},
+    {"bank_id":"SOFITASA","name":"Sofitasa","statement_source":"ACQUISITION_REQUIRED"},
+    {"bank_id":"BANCO-CARONI","name":"Banco Caroní","statement_source":"ACQUISITION_REQUIRED"},
+    {"bank_id":"BANFANB","name":"Banfanb","statement_source":"ACQUISITION_REQUIRED"},
+    {"bank_id":"BANCO-ACTIVO","name":"Banco Activo","statement_source":"ACQUISITION_REQUIRED"},
+    {"bank_id":"BANCO-DELSUR","name":"Banco del Sur","statement_source":"ACQUISITION_REQUIRED"},
+    {"bank_id":"100-BANCO","name":"100% Banco","statement_source":"ACQUISITION_REQUIRED"}
+  ],
+  "rule": "A bank name in this registry is an acquisition target, not evidence that a current statement has been acquired or verified."
+}

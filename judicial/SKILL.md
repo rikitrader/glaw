@@ -102,3 +102,4 @@ python3 bin/glaw-reflect --apply
 
 Judicial-modeling output is attorney work-product for review. GLAW does not
 adjudicate disputes, issue orders, or exercise judicial authority.
+**Domain:** judicial professional domain, evidence, controls, and accountable human-review routing.

@@ -1,0 +1,6 @@
+import type { SourceSnapshot } from '../sources/snapshot.ts';
+import type { HumanLegalReviewRequest, HumanReviewDecision } from '../review/human.ts';
+
+export interface DurableRepository<T extends { [key:string]: unknown }> { put(value:T):Promise<void>; get(id:string):Promise<T|undefined>; list(filter?:Partial<T>):Promise<T[]>; }
+export interface LegalPersistence { snapshots:DurableRepository<SourceSnapshot>; reviews:DurableRepository<HumanLegalReviewRequest>; decisions:DurableRepository<HumanReviewDecision>; }
+export class InMemoryRepository<T extends { [key:string]: unknown }> implements DurableRepository<T> { private readonly values=new Map<string,T>(); private readonly idField:string; constructor(idField:string){ this.idField=idField; } async put(value:T){const id=String(value[this.idField]);if(!id)throw new Error(`missing repository id: ${this.idField}`);if(this.values.has(id))throw new Error(`immutable record already exists: ${id}`);this.values.set(id,structuredClone(value));} async get(id:string){const value=this.values.get(id);return value?structuredClone(value):undefined;} async list(filter?:Partial<T>){return [...this.values.values()].filter((value)=>!filter||Object.entries(filter).every(([key,expected])=>value[key]===expected)).map((value)=>structuredClone(value));} }

@@ -1,0 +1,17 @@
+openapi: 3.0.3
+info:
+  title: GLAW PCLC Legal Compiler API
+  version: 0.1.0
+  description: Source-bound, temporal, jurisdiction-aware property-claims legal compilation.
+paths:
+  /legal/questions: {post: {summary: Register a legal question}}
+  /legal/compile: {post: {summary: Compile verified authority into a claim authority package}}
+  /legal/evaluate: {post: {summary: Evaluate a compiled declarative rule}}
+  /legal/authorities/{id}: {get: {summary: Retrieve an authority}}
+  /legal/rules/{id}: {get: {summary: Retrieve a compiled rule}}
+  /legal/rules/{id}/explain: {get: {summary: Explain source, date, dependencies, and review history}}
+  /legal/jurisdictions/{state}: {get: {summary: Retrieve jurisdiction readiness}}
+  /legal/jurisdictions/{state}/issues/{issue}: {get: {summary: Retrieve issue readiness}}
+  /legal/compare: {get: {summary: Compare jurisdiction/issue cells}}
+  /legal/changes: {get: {summary: Retrieve legal-source changes}}
+  /legal/verify-citation: {post: {summary: Verify a citation}}

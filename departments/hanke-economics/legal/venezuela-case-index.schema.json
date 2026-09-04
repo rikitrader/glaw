@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "haeis/venezuela-case-index",
+  "type": "object",
+  "required": ["schemaVersion", "case_records", "source_registry", "verification_policy"],
+  "properties": {
+    "schemaVersion": { "type": "string" },
+    "case_records": { "type": "array", "items": { "$ref": "#/$defs/case" } },
+    "source_registry": { "type": "array", "items": { "$ref": "#/$defs/source" } },
+    "verification_policy": { "type": "string" }
+  },
+  "$defs": {
+    "case": {
+      "type": "object",
+      "required": ["case_id", "case_matter", "jurisdiction", "case_type", "status", "amounts", "sources", "evidence_items", "overlap_notes"],
+      "properties": {
+        "case_id": { "type": "string" },
+        "case_matter": { "type": "string" },
+        "year": { "type": ["integer", "null"] },
+        "case_number": { "type": ["string", "null"] },
+        "claimants": { "type": "array", "items": { "type": "string" } },
+        "respondents": { "type": "array", "items": { "type": "string" } },
+        "case_type": { "type": "string" },
+        "forum": { "type": "string" },
+        "status": { "enum": ["VERIFIED", "FOUND", "UNVERIFIED", "RESTRICTED", "DISPUTED", "SUPERSEDED"] },
+        "amounts": { "type": "array", "items": { "$ref": "#/$defs/amount" } },
+        "resolution": { "type": ["string", "null"] },
+        "custody_or_sentence": { "type": ["string", "null"] },
+        "political_connection": { "type": ["string", "null"] },
+        "sources": { "type": "array", "items": { "type": "string" } },
+        "evidence_items": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+        "memoranda": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+        "overlap_notes": { "type": "array", "items": { "type": "string" } },
+        "verification_notes": { "type": "string" }
+      }
+    },
+    "amount": {
+      "type": "object",
+      "required": ["amount_id", "value", "currency", "basis", "status"],
+      "properties": {
+        "amount_id": { "type": "string" },
+        "value": { "type": ["number", "null"] },
+        "currency": { "type": ["string", "null"] },
+        "basis": { "type": "string" },
+        "date": { "type": ["string", "null"] },
+        "status": { "enum": ["VERIFIED", "CLAIMED", "ESTIMATED", "DISPUTED", "UNAVAILABLE"] },
+        "source_locator": { "type": ["string", "null"] }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["evidence_id", "kind", "status", "source_id", "locator"],
+      "properties": {
+        "evidence_id": { "type": "string" },
+        "kind": { "enum": ["award", "judgment", "docket", "complaint", "indictment", "plea", "sentencing", "memorandum", "exhibit", "official_database", "press_release", "financial_statement", "bond_document", "other"] },
+        "status": { "enum": ["VERIFIED", "FOUND", "UNVERIFIED", "RESTRICTED"] },
+        "source_id": { "type": "string" },
+        "locator": { "type": "string" },
+        "local_path": { "type": ["string", "null"] },
+        "sha256": { "type": ["string", "null"] },
+        "notes": { "type": "string" }
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["source_id", "name", "url", "source_level", "role"],
+      "properties": {
+        "source_id": { "type": "string" },
+        "name": { "type": "string" },
+        "url": { "type": "string", "format": "uri" },
+        "source_level": { "enum": ["PRIMARY", "AUTHORITATIVE_DATABASE", "REPORTER", "SECONDARY"] },
+        "role": { "type": "string" },
+        "access_status": { "enum": ["AVAILABLE", "RESTRICTED", "UNKNOWN"] }
+      }
+    }
+  }
+}

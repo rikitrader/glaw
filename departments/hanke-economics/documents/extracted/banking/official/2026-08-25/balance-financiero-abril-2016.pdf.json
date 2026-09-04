@@ -1,0 +1,51 @@
+{
+  "file name" : "balance-financiero-abril-2016.pdf.pdf",
+  "number of pages" : 1,
+  "author" : "Banesco",
+  "title" : "Balance Financiero | Abril 2016",
+  "creation date" : "D:20160513134629-04'00'",
+  "modification date" : "D:20180830160505-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 26,
+    "page number" : 1,
+    "bounding box" : [ 525.395, 437.23, 596.75, 481.293 ],
+    "source" : "balance-financiero-abril-2016.pdf_images/imageFile1.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 29,
+    "page number" : 1,
+    "bounding box" : [ 375.881, 420.769, 436.912, 476.249 ],
+    "source" : "balance-financiero-abril-2016.pdf_images/imageFile2.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 27,
+    "page number" : 1,
+    "bounding box" : [ 283.698, 432.353, 374.034, 472.091 ],
+    "source" : "balance-financiero-abril-2016.pdf_images/imageFile3.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 28,
+    "page number" : 1,
+    "bounding box" : [ 447.476, 439.343, 523.833, 462.231 ],
+    "source" : "balance-financiero-abril-2016.pdf_images/imageFile4.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 2,
+    "page number" : 1,
+    "bounding box" : [ -97.045, -40.299, 274.715, 230.901 ],
+    "source" : "balance-financiero-abril-2016.pdf_images/imageFile5.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 31,
+    "page number" : 1,
+    "bounding box" : [ 73.348, 151.41, 100.134, 162.17 ],
+    "source" : "balance-financiero-abril-2016.pdf_images/imageFile6.png"
+  } ]
+}

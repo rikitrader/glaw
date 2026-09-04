@@ -1,0 +1,9 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://glaw.local/schemas/fpa-results-schema.json",
+  "title":"GLAW FP&A Pipeline Result",
+  "type":"object",
+  "required":["schema_version","run_id","plan","driver_forecast","headcount","capex","profitability","validation","status"],
+  "properties":{"schema_version":{"const":"fpa-results/v1"},"run_id":{"type":"string"},"status":{"enum":["PASS","REVIEW","BLOCK"]},"validation":{"type":"object"},"plan":{"type":"object"},"driver_forecast":{"type":"object"},"headcount":{"type":"object"},"capex":{"type":"object"},"profitability":{"type":"object"}},
+  "additionalProperties":true
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion":"0.1.0",
+  "status":"target-registry",
+  "confirmedSources":["SKILL.md","lib/firm-roster.md","seats/**/SKILL.md","docs/providers.md"],
+  "agents":[
+    {"id":"chief-legal-ai","name":"Chief Legal AI","status":"proposed","role":"global orchestration, routing, policy enforcement"},
+    {"id":"matter-orchestrator","name":"Matter Orchestrator","status":"proposed","role":"plan, assign, coordinate, and track matter work"},
+    {"id":"intake-agent","name":"Intake Agent","status":"proposed","role":"classification, jurisdiction, urgency, conflict indicators"},
+    {"id":"legal-research-agent","name":"Legal Research Agent","status":"proposed","role":"research planning and authorized source retrieval"},
+    {"id":"case-law-agent","name":"Case Law Agent","status":"proposed"},
+    {"id":"statutory-research-agent","name":"Statutory Research Agent","status":"proposed"},
+    {"id":"citation-validator","name":"Citation Validator","status":"proposed","requiredForHighRisk":true},
+    {"id":"adverse-authority-agent","name":"Adverse Authority Agent","status":"proposed","requiredForHighRisk":true},
+    {"id":"fact-agent","name":"Fact Agent","status":"proposed"},
+    {"id":"evidence-agent","name":"Evidence Agent","status":"proposed"},
+    {"id":"timeline-agent","name":"Timeline Agent","status":"proposed"},
+    {"id":"strategy-agent","name":"Strategy Agent","status":"proposed"},
+    {"id":"drafting-agent","name":"Drafting Agent","status":"proposed","requiresValidatedInputs":true},
+    {"id":"review-agent","name":"Review Agent","status":"proposed"},
+    {"id":"judge-agent","name":"Judge Agent","status":"proposed"},
+    {"id":"red-team","name":"Red Team","status":"proposed"},
+    {"id":"blue-team","name":"Blue Team","status":"proposed"},
+    {"id":"human-review","name":"Human Review","status":"confirmed","source":"API.md; docs/WORKFLOWS.md"},
+    {"id":"specialist-seats","name":"Existing specialist seats","status":"confirmed","count":116,"source":"seats/**/SKILL.md"}
+  ],
+  "agentValidationRules":["no orphan agents","skills required","bounded tools","matter-scoped RAG permissions","no circular agent loops","human review for high risk"],
+  "departmentAgents":{"department":"hanke-applied-economics","manifest":"departments/hanke-economics/agents/agent-registry.yaml","redBlueRequired":true,"citationAuditorRequired":true,"mathematicalVerifierRequired":true},
+  "propertyClaimsAgents":{"department":"glaw-property-claims","manifest":"departments/property-claims/src/engine.ts","redBlueRequired":true,"whiteTeamRequired":true,"humanReviewRequired":true}
+}

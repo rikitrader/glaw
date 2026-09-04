@@ -1,0 +1,9 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://glaw.local/schemas/fpa-pipeline-schema.json",
+  "title":"GLAW FP&A Pipeline Request",
+  "type":"object",
+  "required":["schema_version","run_id","currency","periods","budget","actuals","drivers","headcount","capex","segments"],
+  "properties":{"schema_version":{"const":"fpa-pipeline/v1"},"run_id":{"type":"string","pattern":"^FPA-"},"currency":{"type":"string","minLength":3,"maxLength":3},"periods":{"type":"array","minItems":1,"items":{"type":"string"}},"budget":{"type":"array"},"actuals":{"type":"array"},"drivers":{"type":"object"},"headcount":{"type":"array"},"capex":{"type":"array"},"segments":{"type":"array"}},
+  "additionalProperties":true
+}

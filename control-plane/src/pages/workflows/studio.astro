@@ -1,0 +1,28 @@
+---
+import WorkflowStudio from "../../components/WorkflowStudio";
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="GLAW visual workflow studio" />
+    <title>GLAW Workflow Studio</title>
+  </head>
+  <body>
+    <WorkflowStudio client:load />
+  </body>
+</html>
+
+<style is:global>
+  :root { color-scheme: light; }
+  html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; background: #f7f9fc; }
+  body { font-family: Arial, sans-serif; }
+  .studio { width: 100vw; height: 100vh; min-height: 0; margin: 0; border: 0; border-radius: 0; box-shadow: none; }
+  .studio-toolbar { padding-left: 20px; padding-right: 20px; }
+  .studio-bottom { min-height: 78px; }
+  @media (max-width: 700px) {
+    .studio { min-height: 100vh; height: 100vh; margin: 0; }
+    .studio-toolbar { padding-left: 12px; padding-right: 12px; }
+  }
+</style>

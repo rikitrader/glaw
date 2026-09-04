@@ -1,0 +1,15 @@
+---
+import ControlPlaneLayout from "../layouts/ControlPlaneLayout.astro";
+import ArchitectureCanvas from "../components/ArchitectureCanvas";
+---
+<ControlPlaneLayout title="Architecture" eyebrow="CONTROL PLANE / ARCHITECTURE" active="architecture" description="GLAW architecture and workflow explorer">
+  <section class="page-intro"><div><p class="eyebrow">ARCHITECTURE EXPLORER</p><h1>Trace the chain of <em>custody.</em></h1></div><div><p class="page-intro-copy">Explore the current baseline and proposed target architecture. Every relationship carries status, evidence, and a recommendation.</p><div class="page-actions"><a class="secondary-action" href="/command-center">Command Center</a><a class="primary-action" href="/architecture?mode=proposed">Proposed mode →</a></div></div></section>
+  <div class="view-tabs"><a class="selected" href="/architecture">Enterprise map</a><a href="/architecture?view=workflow">Workflow</a><a href="/architecture?view=agents">Agents</a><a href="/architecture?view=rag">RAG</a><a href="/architecture?view=cloudflare">Cloudflare</a><span></span><b>Current</b><i>Proposed</i></div>
+  <section class="architecture-meta"><div><p class="eyebrow">CANONICAL GRAPH</p><strong>matter-intake-spine</strong><small>8 nodes · 7 edges · local audit fixture</small></div><div><p class="eyebrow">HEALTH</p><strong class="health-number">68 / 100</strong><small>Target score pending full telemetry</small></div><div><p class="eyebrow">EVIDENCE</p><strong>5 confirmed</strong><small>3 proposed · 0 unknown</small></div></section>
+  <ArchitectureCanvas client:load />
+</ControlPlaneLayout>
+
+<style>
+  .view-tabs { display: flex; align-items: center; gap: 3px; border-bottom: 1px solid rgba(243,240,232,.14); padding-bottom: 0; overflow-x: auto; }.view-tabs a, .view-tabs b, .view-tabs i { padding: 11px 13px; color: #9aa8af; font: 11px monospace; text-decoration: none; white-space: nowrap; }.view-tabs a.selected { color: #f3f0e8; border-bottom: 2px solid #d7a84b; }.view-tabs span { flex: 1; }.view-tabs b { color: #f3f0e8; font-weight: 400; border: 1px solid rgba(243,240,232,.18); border-bottom: 0; }.view-tabs i { color: #72a9e8; font-style: normal; }.architecture-meta { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1px; margin-top: 16px; background: rgba(243,240,232,.12); }.architecture-meta > div { padding: 16px; background: #17232d; }.architecture-meta strong, .architecture-meta small { display: block; }.architecture-meta strong { margin-top: 8px; font: 15px monospace; }.architecture-meta small { color: #9aa8af; font: 10px monospace; margin-top: 5px; }.health-number { color: #e3a84b; }
+  @media (max-width: 800px) { .architecture-meta { grid-template-columns: 1fr; } }
+</style>

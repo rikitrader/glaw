@@ -1,0 +1,8 @@
+{
+  "schema_version": "0.1.0",
+  "dataset_id": "VEN-ENCAJE-LEGAL-EVENTS",
+  "status": "SCHEMA_ONLY",
+  "required_fields": ["event_id","effective_date","resolution_number","reserve_requirement_pct","currency","deposit_type","bank_type","deductions","exceptions","calculation_method","source_document_id","citation_anchor","verification_status"],
+  "verification_statuses": ["VERIFIED","PROVISIONAL","DISPUTED","UNAVAILABLE"],
+  "rule": "Each change in reserve requirements is an event with legal source and effective date; no single percentage is treated as the complete encaje regime."
+}

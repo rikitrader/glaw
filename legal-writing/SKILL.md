@@ -209,3 +209,4 @@ This seat produces attorney work-product, not filed advice. Citation accuracy be
 > review, revision, and signature by a licensed attorney in the relevant jurisdiction. Use of this
 > material does not create an attorney-client relationship. Verify all citations and deadlines
 > independently before filing.
+**Domain:** legal writing professional domain, evidence, controls, and accountable human-review routing.

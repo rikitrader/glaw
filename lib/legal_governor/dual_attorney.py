@@ -269,12 +269,17 @@ def execute_question(root: Path, item: dict, packet: dict, *, blue_provider: str
     return {"benchmark_id": item["id"], "matter_id": matter_id, "snapshot_id": snapshot.snapshot_id, "blue_status": blue_run.status, "red_status": red_run.status, "governor_status": governor["decision"], "reason_codes": reasons, "run_dir": str(outdir)}
 
 
-def execute_pilot(root: Path, items: list[dict], packets: dict[str, dict], *, blue_provider: str = "configured", red_provider: str = "configured", agents: str = "both") -> dict:
+def execute_pilot(root: Path, items: list[dict], packets: dict[str, dict], *, blue_provider: str = "configured", red_provider: str = "configured", agents: str = "both", initialize_cross_review: bool = False) -> dict:
     results, failures = [], []
     for item in items:
         packet = packets.get(item.get("source_packet_id"))
         if not packet: failures.append(f"{item.get('id')}: missing source packet"); continue
-        results.append(execute_question(root, item, packet, blue_provider=blue_provider, red_provider=red_provider, run_blue=agents in {"both", "alexandra"}, run_red=agents in {"both", "victor"}))
+        result = execute_question(root, item, packet, blue_provider=blue_provider, red_provider=red_provider, run_blue=agents in {"both", "alexandra"}, run_red=agents in {"both", "victor"})
+        if initialize_cross_review and result.get("blue_status") == "COMPLETE" and result.get("red_status") == "COMPLETE":
+            from legal_governor.cross_review import start
+            start(Path(result["run_dir"]))
+            result["cross_review"] = "INITIALIZED"
+        results.append(result)
     # EXECUTED means every requested item was processed; it is deliberately
     # distinct from a legal Governor PASS.
     return {"status": "EXECUTED" if not failures else "BLOCK", "count": len(results), "failures": failures, "results": results}

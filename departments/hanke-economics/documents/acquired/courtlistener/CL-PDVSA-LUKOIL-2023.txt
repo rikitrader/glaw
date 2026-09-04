@@ -1,0 +1,418 @@
+USCA11 Case: 22-10675   Document: 94-1    Date Filed: 03/13/2023    Page: 1 of 13
+
+
+
+
+                                                        [PUBLISH]
+
+                                 In the
+
+                 United States Court of Appeals
+                        For the Eleventh Circuit
+
+
+                         ____________________
+
+                              No. 22-10675
+                         ____________________
+
+
+
+        PDVSA US LITIGATION TRUST,
+
+                                                    Plaintiff-Appellant,
+
+        PETROLEOS DE VENEZUELA, S.A. (PDVSA),
+
+                                         Intervenor Plaintiff-Appellant,
+
+        versus
+
+        LUKOIL PAN AMERICAS LLC,
+        LUKOIL PETROLEUM LTD,
+        COLONIAL OIL INDUSTRIES INC.,
+USCA11 Case: 22-10675       Document: 94-1       Date Filed: 03/13/2023      Page: 2 of 13
+
+
+
+
+        2                       Opinion of the Court                   22-10675
+
+        COLONIAL GROUP, INC.,
+        GLENCORE LTD., et al.,
+
+
+                                                        Defendants-Appellees.
+
+
+                              ____________________
+
+                   Appeal from the United States District Court
+                       for the Southern District of Florida
+                      D.C. Docket No. 1:18-cv-20818-DPG
+
+                              ____________________
+
+
+
+        Before WILLIAM PRYOR, Chief Judge, MARCUS, Circuit Judge, and
+        MIZELLE,∗ District Judge.
+
+        WILLIAM PRYOR, Chief Judge:
+
+               This appeal involves a nonjusticiable political question: who
+        has the authority to litigate in the name of the Venezuelan state oil
+        company, Petróleos de Venezuela, S.A. The underlying action,
+        brought by a litigation trust on behalf of Petróleos de Venezuela,
+
+
+        ∗ Honorable Kathryn Kimball Mizelle, United States District Judge for the
+        Middle District of Florida, sitting by designation.
+USCA11 Case: 22-10675      Document: 94-1      Date Filed: 03/13/2023      Page: 3 of 13
+
+
+
+
+        22-10675                Opinion of the Court                         3
+
+        alleged conspiracy, antitrust, cybercrime, and fraud claims against
+        various individuals and entities. After the district court dismissed
+        the action for lack of standing and this Court affirmed, an entity
+        purporting to speak for Petróleos de Venezuela sought to substi-
+        tute itself as the real party in interest. The entity’s board was ap-
+        pointed by Nicolás Maduro, who claims to be the president of Ven-
+        ezuela. But the United States Department of State has concluded
+        that Maduro is not Venezuela’s legitimate political leader. The dis-
+        trict court denied the motion. We affirm because the district court
+        could not grant the motion without addressing a nonjusticiable po-
+        litical question.
+
+                                 I. BACKGROUND
+
+                The action underlying this appeal involves conspiracy, anti-
+        trust, cybercrime, and fraud claims brought on behalf of the Vene-
+        zuelan state oil company, Petróleos de Venezuela, S.A. The plain-
+        tiff was a litigation trust established to pursue these claims. The
+        movant that seeks substitution as the real party in interest purports
+        to speak for Petróleos de Venezuela itself. In its complaint, the trust
+        alleged that a collective of oil companies, oil traders, banks, and
+        corrupt Venezuelan officials conspired to profit at Petróleos de
+        Venezuela’s expense.
+
+                Two key defendants—Venezuelan nationals Francisco Mo-
+        rillo and Leonardo Baquero—along with numerous co-conspira-
+        tors allegedly engaged in a variety of fraudulent and anticompeti-
+        tive activities. Morillo and Baquero purportedly formed an energy
+USCA11 Case: 22-10675       Document: 94-1       Date Filed: 03/13/2023     Page: 4 of 13
+
+
+
+
+        4                       Opinion of the Court                   22-10675
+
+        consulting firm, an energy advisory and trading firm, and a series
+        of shell companies. The complaint alleged that the conspirators
+        bribed Petróleos de Venezuela officials to provide inside infor-
+        mation, fix prices, rig bids, “accept artificially low prices” for sales,
+        “pay inflated prices” for purchases, “overlook” products and ser-
+        vices that Petróleos de Venezuela paid for but never received, and
+        “fraudulently conceal” what was owed to Petróleos de Venezuela.
+        It further alleged that Morillo and Baquero delivered inside infor-
+        mation about competing bids and Petróleos de Venezuela’s future
+        tenders to their oil-company clients, giving those companies an un-
+        fair advantage over their competitors, including competitors in the
+        United States. The clients allegedly compensated Morillo and Ba-
+        quero by paying “commissions.” The complaint alleged violations
+        of various state and federal antitrust, conspiracy, and cybercrime
+        statutes, as well as other theories of civil liability.
+
+               At the outset of this litigation, a trust was “established pur-
+        suant to the laws of New York to investigate and pursue claims
+        against [these] Defendants and others.” The entity that now seeks
+        substitution contends that it initially relied on the trust “so that ef-
+        forts to hold [the alleged conspirators] accountable could proceed
+        without interference from the political and economic instability
+        and rampant corruption in Venezuelan government and society.”
+        In theory, the trust could distribute any damages awarded in a
+        manner consistent with United States sanctions against Venezuela.
+USCA11 Case: 22-10675      Document: 94-1      Date Filed: 03/13/2023      Page: 5 of 13
+
+
+
+
+        22-10675                Opinion of the Court                         5
+
+                But the legitimacy of the trust immediately became a point
+        of contention. Initially, the trust moved for a preliminary injunc-
+        tion and a temporary restraining order to prevent the alleged con-
+        spirators from destroying records and hiding or spending the pro-
+        ceeds of their alleged illegal activity. The alleged conspirators filed
+        a motion to dismiss for lack of standing. The alleged conspirators
+        argued that the trust agreement could not be authenticated and
+        that it was void under New York law in part because it violated the
+        ban on champerty. The law on champerty prohibits the assignment
+        of claims “with the intent and for the primary purpose of bringing
+        a lawsuit.” See Justinian Cap. SPC v. WestLB AG, 65 N.E.3d 1253,
+        1254 (N.Y. 2016). They also argued that the validity of the trust un-
+        der Venezuelan law presented a nonjusticiable political question
+        that, if reached, must be decided against the trust—both because
+        the signatories lacked authority to speak for Petróleos de Vene-
+        zuela and because the agreement was not approved by the Na-
+        tional Assembly.
+
+                The dispute over the agreement’s validity under Venezue-
+        lan law is connected to a broader controversy over the legitimate
+        political leadership of Venezuela. The United States ceased to rec-
+        ognize the government of Nicolás Maduro, who purports to serve
+        as president of Venezuela, in August 2017. See Press Statement,
+        Heather Nauert, Dep’t Spokesperson, U.S. Dep’t of State (Aug. 18,
+        2017). Instead, the United States Department of State recognizes
+        the National Assembly elected in 2015 as “the last remaining demo-
+        cratic institution” in that country. See Press Statement, Ned Price,
+USCA11 Case: 22-10675       Document: 94-1      Date Filed: 03/13/2023      Page: 6 of 13
+
+
+
+
+        6                       Opinion of the Court                  22-10675
+
+        Dep’t Spokesperson, U.S. Dep’t of State (Jan. 3, 2023) [hereinafter
+        Price 2023]; see also Exec. Order No. 13,857, 84 Fed. Reg. 509 (Jan. 30,
+        2019) (recognizing the National Assembly as “the only legitimate
+        branch of government duly elected by the Venezuelan People”). It
+        also recognized the former president of that Assembly, Juan Guaidó,
+        as interim president of Venezuela, see Readout, Ned Price, Dep’t
+        Spokesperson, U.S. Dep’t of State (May 2, 2022), until the Assembly
+        recently voted to remove him and replace his interim government
+        with a committee. Early statements by the Biden Administration in-
+        dicate that the Department of State continues to recognize the Na-
+        tional Assembly. See Price 2023, supra. The executive branch has
+        given no indication that it will change its longstanding position that
+        the Maduro government is illegitimate. See id.
+
+               Two different boards of directors, appointed by the two per-
+        sons who claimed to be the president of Venezuela, purport to gov-
+        ern Petróleos de Venezuela. Maduro officials approved the crea-
+        tion of the purported litigation trust and the commencement of the
+        underlying action. The trust agreement was signed in July 2017,
+        one month before the United States ceased to recognize the Ma-
+        duro government. See Nauert, supra. The initial complaint was
+        filed in March 2018. In April 2018, the National Assembly de-
+        nounced the trust as unconstitutional and stated that Reinaldo
+        Muñoz Pedroza—Maduro’s attorney general and one of the pur-
+        ported signers of the trust agreement—lacked the authority to
+        form the trust.
+USCA11 Case: 22-10675      Document: 94-1      Date Filed: 03/13/2023     Page: 7 of 13
+
+
+
+
+        22-10675               Opinion of the Court                         7
+
+                After a hearing and discovery on the standing question, the
+        magistrate judge recommended dismissal. The trust objected, but
+        the district court adopted the magistrate judge’s report and recom-
+        mendation in part and dismissed the action for lack of subject-mat-
+        ter jurisdiction.
+
+                The district court reasoned that the litigation trust lacked
+        standing because the trust was void and the trust agreement was
+        inadmissible. It ruled that the trust agreement was inadmissible due
+        to a lack of authenticated signatures. And it concluded that even if
+        the agreement were admissible, it violated the New York law
+        against champerty. The district court also stated that in the light of
+        “the National Assembly’s declaration that the Trust Agreement is
+        unconstitutional,” ruling that the trust was valid “would be ruling
+        in direct contravention to a resolution by a foreign sovereign—
+        likely in violation of the Act of State doctrine.” But it declined to
+        rest its judgment on that basis. On appeal, this Court affirmed on
+        the ground that the agreement violated the New York law on
+        champerty. PDVSA US Litig. Tr. v. Lukoil Pan Ams., LLC, 991 F.3d
+        1187, 1193, 1195, 1197 (11th Cir. 2021).
+
+                In response, an entity that purports to speak for Petróleos de
+        Venezuela moved to reopen the judgment and to intervene or be
+        substituted as the real party in interest under Federal Rules of Civil
+        Procedure 60(b), 24(a)(2), and 17(a). The entity’s board was ap-
+        pointed by Maduro, not Guaidó. By the time the Maduro entity
+        filed the motion, nearly three years had passed since the alleged
+USCA11 Case: 22-10675       Document: 94-1      Date Filed: 03/13/2023      Page: 8 of 13
+
+
+
+
+        8                       Opinion of the Court                  22-10675
+
+        conspirators first disputed the trust’s standing and more than two
+        had passed since the district court dismissed the action for lack of
+        standing.
+
+               The district court denied the motion. It stated that “[w]hile
+        a motion to intervene may have been timely and appropriate much
+        earlier in the case, it must be denied because the [district] [c]ourt
+        does not have subject matter jurisdiction.” It reasoned that it had
+        already dismissed the action for lack of jurisdiction, and this Court
+        had affirmed that order. The district court also determined that the
+        motion was untimely under Rule 17.
+
+                           II. STANDARD OF REVIEW
+
+               We review de novo issues of subject-matter jurisdiction. See
+        United States v. Grimon, 923 F.3d 1302, 1305 (11th Cir. 2019). And
+        this Court “may affirm on any ground supported by the record, re-
+        gardless of whether that ground was relied upon or even consid-
+        ered below.” Waldman v. Conway, 871 F.3d 1283, 1289 (11th Cir.
+        2017).
+
+                                  III. DISCUSSION
+
+               The district court could not grant the Maduro entity’s mo-
+        tion to substitute without addressing a nonjusticiable political
+        question. Rule 17 guarantees that “the real party in interest” will be
+        allowed “a reasonable time . . . to ratify, join, or be substituted into
+        the action.” FED. R. CIV. P. 17(a)(3) (emphasis added). Two boards
+USCA11 Case: 22-10675       Document: 94-1       Date Filed: 03/13/2023     Page: 9 of 13
+
+
+
+
+        22-10675                Opinion of the Court                           9
+
+        of directors purport to legally control Petróleos de Venezuela: one
+        appointed by Maduro and one appointed by Guaidó. The Maduro
+        entity asked the district court to determine whether it had the au-
+        thority to prosecute this action in the name of Petróleos de Vene-
+        zuela as the real party in interest. That question is nonjusticiable.
+
+               From the Founding to today, the Supreme Court has
+        acknowledged that some questions can be answered only by the
+        political branches. Chief Justice John Marshall in Marbury v. Madi-
+        son explained that “[b]y the constitution of the United States, the
+        President is invested with certain important political powers, in
+        the exercise of which he is to use his own discretion, and is account-
+        able only to his country in his political character, and to his own
+        conscience.” 5 U.S. (1 Cranch) 137, 165–66 (1803). And the Su-
+        preme Court has repeatedly held that it is the role of the political
+        branches, not the courts, to identify the legitimate political leader-
+        ship of a foreign country. “Who is the sovereign, de jure or de facto,
+        of a territory is not a judicial, but is a political question, the deter-
+        mination of which by the legislative and executive departments of
+        any government conclusively binds the judges . . . .” Oetjen v.
+        Cent. Leather Co., 246 U.S. 297, 302 (1918) (citation omitted); see
+        also Banco Nacional de Cuba v. Sabbatino, 376 U.S. 398, 410 (1964)
+        (“Political recognition is exclusively a function of the Executive.”),
+        superseded on other grounds by statute, 22 U.S.C. § 2370(e)(2); Zi-
+        votofsky ex rel. Zivotofsky v. Kerry, 135 S. Ct. 2076, 2086, 2094
+        (2015) (explaining that because “the Nation must have a single pol-
+        icy regarding which governments are legitimate in the eyes of the
+USCA11 Case: 22-10675      Document: 94-1      Date Filed: 03/13/2023     Page: 10 of 13
+
+
+
+
+        10                      Opinion of the Court                 22-10675
+
+        United States and which are not,” the President’s “power to recog-
+        nize foreign nations and governments” is exclusive).
+
+                For more than five years, the executive branch has taken the
+        position that the Maduro government is illegitimate. See Nauert,
+        supra. And, in its motion, the Maduro entity conceded that its
+        board was appointed by Maduro. The judicial branch is bound to
+        accept the President’s statement that the 2015 National Assembly, not
+        the Maduro government, is the legitimate political authority in Vene-
+        zuela. Oetjen, 246 U.S. at 302; see Price 2023, supra. And under the
+        act-of-state doctrine, the district court is barred “from inquiring
+        into the validity of a recognized foreign sovereign’s public acts
+        committed within its own territory.” Fogade v. ENB Revocable
+        Tr., 263 F.3d 1274, 1293 (11th Cir. 2001) (citation omitted). The dis-
+        trict court cannot question the validity of then-President Guaidó’s
+        appointment of an alternative board of directors. So, under the po-
+        litical-question doctrine, it was powerless to grant the Maduro en-
+        tity’s motion to substitute the entity as the real party in interest in
+        contravention of the position taken by the United States Depart-
+        ment of State.
+
+               The Maduro entity argues that it does not matter which
+        board of directors is authorized to speak for Petróleos de Vene-
+        zuela. It contends that “whether [the] board comprises Maduro ap-
+        pointees or Guaidó appointees is immaterial to this litigation which
+        addresses the multibillion-dollar injury suffered by [Petróleos de
+        Venezuela] as a corporate entity.” It suggests that “this Court
+USCA11 Case: 22-10675      Document: 94-1      Date Filed: 03/13/2023      Page: 11 of 13
+
+
+
+
+        22-10675                Opinion of the Court                         11
+
+        should hold in abeyance the distribution of any recovery in this ac-
+        tion until the recognition of [Petróleos de Venezuela] is resolved.”
+
+                We are not persuaded. To be sure, no one disputes that “Pe-
+        tróleos de Venezuela” is the real party in interest, and no one dis-
+        putes that there is functionally only one “Petróleos de Venezuela.”
+        Instead, the question is whether the Maduro entity had the author-
+        ity to bring suit in Petróleos de Venezuela’s name. A company may
+        be an independent juridical entity, but it can speak only through its
+        officers and directors. The identities of those officers and directors
+        matter. Even if the Guaidó-appointed board might desire the same
+        outcome in this litigation, as the Maduro entity contends, a party
+        is entitled to decide if and how it wishes to litigate. No Guaidó-
+        appointed officials have authorized this suit or the Maduro entity’s
+        motion to substitute, nor has any entity they control opted to bring
+        suit itself.
+
+               The Maduro entity seems to suggest that by granting its mo-
+        tion the district court would simply allow it to serve as a place-
+        holder. It states that it seeks to “preserve the claims asserted . . .
+        against possible expiration of the statute of limitations.” And it sug-
+        gests that the district court could later distribute any “recovery . . .
+        [when] the recognition of [Petróleos de Venezuela] is resolved.”
+
+                 This argument fails. As this Court has explained, “Rule 17
+        was not promulgated to allow lawyers to file placeholder actions
+        . . . to keep a limitations period open while they investigate their
+        claims and track down the proper parties.” In re Engle Cases, 767
+USCA11 Case: 22-10675     Document: 94-1     Date Filed: 03/13/2023    Page: 12 of 13
+
+
+
+
+        12                     Opinion of the Court               22-10675
+
+        F.3d 1082, 1113 (11th Cir. 2014). The district court cannot grant a
+        motion for substitution by an entity that is not authorized to liti-
+        gate in Petróleos de Venezuela’s name in hopes that the proper
+        party will eventually request substitution.
+
+                Finally, the Maduro entity also requests that we remand this
+        action to allow the district court to conduct a further factual in-
+        quiry into “who may properly represent the interests of [Petróleos
+        de Venezuela] in light of the complex and ever-changing political
+        situation within Venezuela” and into the “position of the United
+        States Government.” It suggests that relations between the United
+        States and Maduro’s government are “thawing,” so permitting it to
+        litigate in the name of Petróleos de Venezuela might be consistent
+        with American foreign-policy interests. But federal courts are not
+        empowered to decide what is consistent with American foreign-
+        policy interests. The district court would not have jurisdiction to
+        conduct the requested inquiry on remand. And even if the Depart-
+        ment of State declared today that the Maduro entity is authorized
+        to bring suit in Petróleos de Venezuela’s name, we would still af-
+        firm because, under Article III, a justiciable case or controversy
+        must exist “through all stages of the litigation,” including “at the
+        time the complaint is filed.” Kingdomware Techs., Inc. v. United
+        States, 136 S. Ct. 1969, 1975 (2016) (citation omitted).
+USCA11 Case: 22-10675   Document: 94-1   Date Filed: 03/13/2023   Page: 13 of 13
+
+
+
+
+        22-10675            Opinion of the Court                   13
+
+                             IV. CONCLUSION
+
+             The order denying the motion to reopen and substitute is
+        AFFIRMED.
+

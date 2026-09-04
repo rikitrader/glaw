@@ -1,0 +1,16 @@
+{
+  "file name" : "balance_enero_2017.pdf.pdf",
+  "number of pages" : 1,
+  "author" : null,
+  "title" : "Scanned Document",
+  "creation date" : "D:20170214115028-03'30'",
+  "modification date" : "D:20170331141104-03'30'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 1,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 751.2, 992.16 ],
+    "source" : "balance_enero_2017.pdf_images/imageFile1.png"
+  } ]
+}

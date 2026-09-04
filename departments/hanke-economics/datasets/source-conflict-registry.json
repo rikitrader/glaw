@@ -1,0 +1,7 @@
+{
+  "registry_id":"HAEIS-SOURCE-CONFLICT-REGISTRY",
+  "version":"1.0.0",
+  "records":[],
+  "status":"NO_CONFLICT_RECORDS_ADMITTED",
+  "rule":"Conflicting versions are retained as separate records; an empty registry means no conflicts have yet been admitted in this registry, not that the economy has no conflicting data."
+}

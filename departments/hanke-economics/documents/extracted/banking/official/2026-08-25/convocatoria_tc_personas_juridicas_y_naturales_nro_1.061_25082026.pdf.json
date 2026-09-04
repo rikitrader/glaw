@@ -1,0 +1,1668 @@
+{
+  "file name" : "convocatoria_tc_personas_juridicas_y_naturales_nro_1.061_25082026.pdf.pdf",
+  "number of pages" : 5,
+  "author" : "Yorland Omar Sifonte Fermin",
+  "title" : null,
+  "creation date" : "D:20260824130520-04'00'",
+  "modification date" : "D:20260824130520-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 9,
+    "page number" : 1,
+    "bounding box" : [ 84.6, 640.5, 179.1, 728.15 ],
+    "source" : "convocatoria_tc_personas_juridicas_y_naturales_nro_1.061_25082026.pdf_images/imageFile1.png"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 10,
+    "level" : "Doctitle",
+    "page number" : 1,
+    "bounding box" : [ 195.26, 712.252, 429.602, 725.421 ],
+    "heading level" : 1,
+    "font" : "Arial,Bold",
+    "font size" : 14.04,
+    "text color" : "[0.0]",
+    "content" : "BANCO CENTRAL DE VENEZUELA"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 11,
+    "page number" : 1,
+    "bounding box" : [ 281.931, 703.172, 351.34, 710.713 ],
+    "font" : "Arial,Bold",
+    "font size" : 8.04,
+    "text color" : "[0.0]",
+    "content" : "RIF: G-20000110-0"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 12,
+    "page number" : 1,
+    "bounding box" : [ 195.26, 646.818, 501.652, 673.855 ],
+    "font" : "Arial,Bold",
+    "font size" : 12.96,
+    "text color" : "[0.0]",
+    "content" : "CONVOCATORIA N° 1.061 Personas naturales y personas jurídicas privadas"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 13,
+    "page number" : 1,
+    "bounding box" : [ 195.26, 616.818, 472.42, 628.975 ],
+    "font" : "Arial,Bold",
+    "font size" : 12.96,
+    "text color" : "[0.0]",
+    "content" : "COLOCACIÓN TÍTULO DE COBERTURA (TC)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 14,
+    "page number" : 1,
+    "bounding box" : [ 90.024, 487.9, 522.217, 589.492 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "El Banco Central de Venezuela, en el marco de la competencia constitucional que le ha sido atribuida en lo que refiere a la formulación y ejecución de la política monetaria, y atendiendo a lo previsto en el artículo 7, numerales 1 y 4, en concordancia con lo dispuesto en los artículos 21.2, 58.2, y 59 del Decreto con Rango, Valor y Fuerza de Ley del Banco Central de Venezuela, los cuales lo facultan para emitir títulos valores y venderlos en el mercado primario, ha decidido invitar a las personas naturales y personas jurídicas privadas (en lo sucesivo los Participantes); para que a través de las instituciones bancarias regidas por el Decreto con Rango, Valor y Fuerza de Ley de las Instituciones del Sector Bancario y por leyes especiales, en lo adelante identificadas como Entidades, inscritas en el Registro General del Banco Central de Venezuela para Operaciones con Títulos, participen en la colocación del Instrumento: “Título de Cobertura” denominado en moneda nacional, en los términos y condiciones que se especifican a continuación:"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 15,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 90.024, 467.38, 216.632, 475.822 ],
+    "heading level" : 3,
+    "font" : "Arial,Bold",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Descripción de la colocación:"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 16,
+    "page number" : 1,
+    "bounding box" : [ 90.024, 425.74, 522.079, 456.537 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Los instrumentos “Título de Cobertura” serán nominativos, colocados a la par, según lo determinado por el Directorio del Banco Central de Venezuela; y no serán negociables, a excepción de las operaciones de rescate o cancelación anticipada."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 17,
+    "page number" : 1,
+    "bounding box" : [ 200.54, 405.34, 447.274, 413.782 ],
+    "font" : "Arial,Bold",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "La fecha de esta convocatoria es el 24 de agosto del 2026"
+  }, {
+    "type" : "caption",
+    "id" : 18,
+    "page number" : 1,
+    "bounding box" : [ 90.024, 382.3, 230.48, 390.742 ],
+    "linked content id" : 19,
+    "font" : "Arial,Bold",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Instrumento: Título de Cobertura"
+  }, {
+    "type" : "table",
+    "pdfua_tag" : "Table",
+    "id" : 19,
+    "level" : "1",
+    "page number" : 1,
+    "bounding box" : [ 84.384, 63.984, 501.46, 382.03 ],
+    "number of rows" : 14,
+    "number of columns" : 2,
+    "next table id" : 21,
+    "rows" : [ {
+      "type" : "table row",
+      "row number" : 1,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 84.864, 370.99, 316.847, 381.55 ],
+        "row number" : 1,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 1,
+          "page number" : 1,
+          "bounding box" : [ 90.024, 371.5, 120.606, 379.942 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Emisor"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 316.847, 370.99, 500.98, 381.55 ],
+        "row number" : 1,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 2,
+          "page number" : 1,
+          "bounding box" : [ 322.25, 371.26, 436.838, 379.702 ],
+          "font" : "Arial",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Banco Central de Venezuela"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 2,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 84.864, 360.072, 316.847, 370.99 ],
+        "row number" : 2,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 3,
+          "page number" : 1,
+          "bounding box" : [ 90.024, 360.58, 124.044, 369.022 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Moneda"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 316.847, 360.072, 500.98, 370.99 ],
+        "row number" : 2,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 4,
+          "page number" : 1,
+          "bounding box" : [ 322.25, 360.34, 381.344, 368.782 ],
+          "font" : "Arial",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Bolívares (Bs.)"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 3,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 84.864, 349.25, 316.847, 360.072 ],
+        "row number" : 3,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 5,
+          "page number" : 1,
+          "bounding box" : [ 90.024, 349.76, 149.154, 358.202 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Plazo o Tenor"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 316.847, 349.25, 500.98, 360.072 ],
+        "row number" : 3,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 6,
+          "page number" : 1,
+          "bounding box" : [ 322.25, 349.52, 416.395, 357.962 ],
+          "font" : "Arial",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "14, 28, 42, 56 y 91 días"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 4,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 84.864, 338.33, 316.847, 349.25 ],
+        "row number" : 4,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 7,
+          "page number" : 1,
+          "bounding box" : [ 90.024, 338.96, 234.635, 347.402 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Monto Mínimo de Cotización (Bs.)"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 316.847, 338.33, 500.98, 349.25 ],
+        "row number" : 4,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 8,
+          "page number" : 1,
+          "bounding box" : [ 322.25, 338.72, 349.799, 347.162 ],
+          "font" : "Arial",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "20.000"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 5,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 84.864, 327.53, 316.847, 338.33 ],
+        "row number" : 5,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 9,
+          "page number" : 1,
+          "bounding box" : [ 90.024, 328.04, 166.205, 336.482 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Incrementos (Bs.)"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 316.847, 327.53, 500.98, 338.33 ],
+        "row number" : 5,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 10,
+          "page number" : 1,
+          "bounding box" : [ 322.25, 327.8, 344.867, 336.242 ],
+          "font" : "Arial",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "5.000"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 6,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 84.864, 316.73, 316.847, 327.53 ],
+        "row number" : 6,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 11,
+          "page number" : 1,
+          "bounding box" : [ 90.024, 317.24, 198.51, 325.682 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Modalidad de Colocación"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 316.847, 316.73, 500.98, 327.53 ],
+        "row number" : 6,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 12,
+          "page number" : 1,
+          "bounding box" : [ 322.25, 317.0, 401.893, 325.442 ],
+          "font" : "Arial",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Colocación primaria"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 7,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 84.864, 305.81, 316.847, 316.73 ],
+        "row number" : 7,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 13,
+          "page number" : 1,
+          "bounding box" : [ 90.024, 306.32, 181.617, 314.762 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Forma de Colocación"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 316.847, 305.81, 500.98, 316.73 ],
+        "row number" : 7,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 14,
+          "page number" : 1,
+          "bounding box" : [ 322.25, 306.08, 367.867, 314.522 ],
+          "font" : "Arial",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Al valor par"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 8,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 84.864, 295.01, 316.847, 305.81 ],
+        "row number" : 8,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 15,
+          "page number" : 1,
+          "bounding box" : [ 90.024, 295.52, 159.549, 303.962 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Base de Cálculo"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 316.847, 295.01, 500.98, 305.81 ],
+        "row number" : 8,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 16,
+          "page number" : 1,
+          "bounding box" : [ 322.25, 295.28, 364.784, 303.722 ],
+          "font" : "Arial",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Actual/360"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 9,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 84.864, 273.77, 316.847, 295.01 ],
+        "row number" : 9,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 17,
+          "page number" : 1,
+          "bounding box" : [ 90.024, 274.28, 312.218, 293.162 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Comisión, tarifa y/o recargo máximo que las Entidades podrán cobrar a los Participantes"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 316.847, 273.77, 500.98, 295.01 ],
+        "row number" : 9,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 18,
+          "page number" : 1,
+          "bounding box" : [ 322.25, 284.48, 455.288, 292.922 ],
+          "font" : "Arial",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "0,05% del monto total adjudicado"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 10,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 84.864, 221.57, 316.847, 273.77 ],
+        "row number" : 10,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 19,
+          "page number" : 1,
+          "bounding box" : [ 90.024, 263.48, 188.582, 271.922 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Código de Instrumento"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 316.847, 221.57, 500.98, 273.77 ],
+        "row number" : 10,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 20,
+          "page number" : 1,
+          "bounding box" : [ 322.25, 222.08, 429.364, 271.922 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "TCBS00926- 0820 14 días TCBS00926- 0839 28 días TCBS01026- 0376 42 días TCBS01026- 0385 56 días TCBS01126- 0171 91 días"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 11,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 84.864, 200.327, 316.847, 221.57 ],
+        "row number" : 11,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 21,
+          "page number" : 1,
+          "bounding box" : [ 90.024, 200.84, 312.161, 219.722 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Tasa de interés base anual para las operaciones de absorción (tida)"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 316.847, 200.327, 500.98, 221.57 ],
+        "row number" : 11,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 22,
+          "page number" : 1,
+          "bounding box" : [ 322.25, 200.6, 495.745, 219.482 ],
+          "font" : "Arial",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "4,25%; 4,50%; 4,75%; 5% y 6% a los respectivos plazos."
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 12,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 84.864, 168.74, 316.847, 200.327 ],
+        "row number" : 12,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 23,
+          "page number" : 1,
+          "bounding box" : [ 90.024, 190.04, 194.582, 198.482 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Intereses al vencimiento"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 316.847, 168.74, 500.98, 200.327 ],
+        "row number" : 12,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 24,
+          "page number" : 1,
+          "bounding box" : [ 322.25, 168.92, 495.814, 198.242 ],
+          "font" : "Arial",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Serán calculados sobre el monto que resulte de multiplicar el valor nominal por la troan."
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 13,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 84.864, 157.942, 316.847, 168.74 ],
+        "row number" : 13,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 25,
+          "page number" : 1,
+          "bounding box" : [ 90.024, 158.45, 147.075, 166.892 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Amortización"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 316.847, 157.942, 500.98, 168.74 ],
+        "row number" : 13,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 26,
+          "page number" : 1,
+          "bounding box" : [ 322.25, 158.21, 422.86, 166.652 ],
+          "font" : "Arial",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Pago total al vencimiento"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 14,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 84.864, 64.464, 316.847, 157.942 ],
+        "row number" : 14,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 27,
+          "page number" : 1,
+          "bounding box" : [ 90.024, 147.65, 233.484, 156.092 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Rescate o cancelación anticipada"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 316.847, 64.464, 500.98, 157.942 ],
+        "row number" : 14,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 28,
+          "page number" : 1,
+          "bounding box" : [ 322.25, 64.614, 495.703, 155.852 ],
+          "font" : "Arial",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "El precio del rescate o cancelación anticipada será el generado de aplicar en cada plazo, la tasa de interés base anual obtenida por interpolación lineal de las tasas y plazos referenciales establecidos por el BCV. Para rescates o cancelaciones anticipadas con plazos inferiores al mínimo referencial, se calculará el precio con una tasa de interés base anual de 3,50%."
+        } ]
+      } ]
+    } ]
+  }, {
+    "type" : "table",
+    "pdfua_tag" : "Table",
+    "id" : 21,
+    "level" : "1",
+    "page number" : 2,
+    "bounding box" : [ 84.384, 558.58, 501.46, 728.16 ],
+    "number of rows" : 7,
+    "number of columns" : 2,
+    "previous table id" : 19,
+    "rows" : [ {
+      "type" : "table row",
+      "row number" : 1,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 84.864, 675.7, 316.847, 727.682 ],
+        "row number" : 1,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 1,
+          "page number" : 2,
+          "bounding box" : [ 90.024, 717.63, 133.044, 726.072 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Impuesto:"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 316.847, 675.7, 500.98, 727.682 ],
+        "row number" : 1,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 2,
+          "page number" : 2,
+          "bounding box" : [ 322.25, 675.97, 495.904, 725.832 ],
+          "font" : "Arial",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Exonerado del pago del Impuesto Sobre la Renta según el decreto N° 5.337 publicado en la Gaceta Oficial de la República Bolivariana de Venezuela N° 43.368 del 05/05/2026."
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 2,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 84.864, 633.82, 316.847, 675.7 ],
+        "row number" : 2,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 3,
+          "page number" : 2,
+          "bounding box" : [ 90.024, 655.09, 256.02, 673.852 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Garantía de mantenimiento de valor de la inversión inicial"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 316.847, 633.82, 500.98, 675.7 ],
+        "row number" : 2,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 4,
+          "page number" : 2,
+          "bounding box" : [ 322.25, 634.09, 495.859, 673.612 ],
+          "font" : "Arial",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Al vencimiento del plazo original del TC, el BCV garantiza a sus tenedores el pago de la inversión inicial, cuando la troan sea negativa."
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 3,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 84.864, 622.9, 316.847, 633.82 ],
+        "row number" : 3,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 5,
+          "page number" : 2,
+          "bounding box" : [ 90.024, 623.53, 156.066, 631.972 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Fecha de Pacto"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 316.847, 622.9, 500.98, 633.82 ],
+        "row number" : 3,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 6,
+          "page number" : 2,
+          "bounding box" : [ 322.25, 623.29, 367.354, 631.732 ],
+          "font" : "Arial",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "25/08/2026"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 4,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 84.864, 612.1, 316.847, 622.9 ],
+        "row number" : 4,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 7,
+          "page number" : 2,
+          "bounding box" : [ 90.024, 612.61, 160.181, 621.052 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Fecha Valor (T0)"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 316.847, 612.1, 500.98, 622.9 ],
+        "row number" : 4,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 8,
+          "page number" : 2,
+          "bounding box" : [ 322.25, 612.37, 367.354, 620.812 ],
+          "font" : "Arial",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "25/08/2026"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 5,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 84.864, 590.86, 316.847, 612.1 ],
+        "row number" : 5,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 9,
+          "page number" : 2,
+          "bounding box" : [ 90.024, 601.81, 190.095, 610.252 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Fechas de Vencimiento"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 316.847, 590.86, 500.98, 612.1 ],
+        "row number" : 5,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 10,
+          "page number" : 2,
+          "bounding box" : [ 322.25, 591.25, 470.092, 610.012 ],
+          "font" : "Arial",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "08/09/2026; 22/09/2026; 06/10/2026; 20/10/2026 y 24/11/2026."
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 6,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 84.864, 569.74, 316.847, 590.86 ],
+        "row number" : 6,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 11,
+          "page number" : 2,
+          "bounding box" : [ 90.024, 580.57, 128.589, 589.012 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Custodia"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 316.847, 569.74, 500.98, 590.86 ],
+        "row number" : 6,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 12,
+          "page number" : 2,
+          "bounding box" : [ 322.25, 570.01, 495.635, 588.772 ],
+          "font" : "Arial",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Sistema de Custodia Electrónica de Títulos (SICET)."
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 7,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 84.864, 559.06, 316.847, 569.74 ],
+        "row number" : 7,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 13,
+          "page number" : 2,
+          "bounding box" : [ 90.024, 559.45, 226.428, 567.892 ],
+          "font" : "Arial,Bold",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Moneda de Pago al vencimiento"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 2,
+        "bounding box" : [ 316.847, 559.06, 500.98, 569.74 ],
+        "row number" : 7,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 14,
+          "page number" : 2,
+          "bounding box" : [ 322.25, 559.21, 381.344, 567.652 ],
+          "font" : "Arial",
+          "font size" : 9.0,
+          "text color" : "[0.0]",
+          "content" : "Bolívares (Bs.)"
+        } ]
+      } ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 22,
+    "page number" : 2,
+    "bounding box" : [ 90.024, 516.85, 521.642, 536.062 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "El valor efectivo (capital más intereses) al vencimiento del instrumento, será el resultado de multiplicar el capital invertido por (1+troan):"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 23,
+    "page number" : 2,
+    "bounding box" : [ 95.64, 478.262, 279.47, 492.912 ],
+    "font" : "Cambria Math",
+    "font size" : 12.0,
+    "text color" : "[0.0]",
+    "content" : "troan [( ) ( ) ]"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 26,
+    "page number" : 2,
+    "bounding box" : [ 90.024, 359.74, 498.922, 445.822 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Donde: troan Tasa de rendimiento efectiva de las operaciones de absorción idit Índice de inversión publicado por el BCV vigente para la fecha de pacto y valor de la operación idit+n Índice de inversión publicado por el BCV vigente para la fecha de vencimiento del título tida Tasa de interés base anual para las operaciones de absorción n Plazo del título"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 27,
+    "page number" : 2,
+    "bounding box" : [ 90.024, 313.4, 503.08, 342.602 ],
+    "font" : "Arial,Bold",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "El valor de los intereses se trunca a dos decimales, y el de la troan se redondea a dos decimales. Marco legal:"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 28,
+    "level" : "2",
+    "page number" : 2,
+    "bounding box" : [ 108.02, 230.36, 557.962, 302.5 ],
+    "numbering style" : "unordered",
+    "number of list items" : 3,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 2,
+      "bounding box" : [ 108.02, 292.512, 419.681, 302.5 ],
+      "font" : "Wingdings",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Artículo 318 de la Constitución de la República Bolivariana de Venezuela.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 2,
+      "bounding box" : [ 108.02, 271.76, 557.228, 292.06 ],
+      "font" : "Wingdings",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Artículos 7, numerales 1 y 4, 21.2, 58.2, 59 y 60 del Decreto con Rango, Valor y Fuerza de Ley del Banco Central de Venezuela.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 2,
+      "bounding box" : [ 108.02, 230.36, 557.962, 271.42 ],
+      "font" : "Wingdings",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Decisiones del Directorio del Banco Central de Venezuela adoptadas en sus sesiones Nros. 5.299, 5.307, 5.321, 5.340, 5.394, 5.432 y 5.463 de fechas 17 de marzo de 2022, 12 de mayo de 2022, 18 de agosto de 2022, 29 de diciembre de 2022, 11 de enero de 2024, del 03 de octubre de 2024 y 08 de mayo del 2025, respectivamente.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 29,
+    "level" : "Subtitle",
+    "page number" : 2,
+    "bounding box" : [ 90.024, 209.96, 204.648, 218.402 ],
+    "heading level" : 3,
+    "font" : "Arial,Bold",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Participantes convocados:"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 30,
+    "page number" : 2,
+    "bounding box" : [ 90.024, 168.29, 557.854, 197.402 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Personas naturales y personas jurídicas privadas; a través de las instituciones bancarias regidas por el Decreto con Rango, Valor y Fuerza de Ley de las Instituciones del Sector Bancario y leyes especiales, inscritas en el Registro General del Banco Central de Venezuela para Operaciones con Títulos."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 31,
+    "page number" : 2,
+    "bounding box" : [ 90.024, 137.21, 557.896, 155.972 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Quedan excluidas de la presente Convocatoria las empresas pertenecientes a los sectores bancario y de mercado de valores, así como aquellas empresas en las cuales el sector público tenga alguna participación accionaria."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 32,
+    "level" : "Subtitle",
+    "page number" : 2,
+    "bounding box" : [ 90.024, 116.69, 236.526, 125.132 ],
+    "heading level" : 3,
+    "font" : "Arial,Bold",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Procedimiento para la colocación:"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 33,
+    "page number" : 2,
+    "bounding box" : [ 90.024, 75.174, 557.92, 105.851 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Las Entidades deberán procesar las Órdenes de Compra siguiendo las indicaciones establecidas en el “Instructivo del Usuario Externo del Sistema de Operaciones Especiales en Mercado Abierto (SOEMA)”. Las Entidades deberán iniciar la presentación de las cotizaciones ante el Banco Central de Venezuela a partir de las 12:00 m del día de la"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 35,
+    "page number" : 3,
+    "bounding box" : [ 90.024, 707.55, 557.6, 726.312 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "fecha de pacto de la operación hasta la 1:00 pm del mismo día, pudiendo ser prorrogado por el Banco Central de Venezuela."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 36,
+    "page number" : 3,
+    "bounding box" : [ 90.024, 645.49, 557.92, 695.332 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Es de la exclusiva responsabilidad de las Entidades, que la información y datos de las Órdenes de Compra de sus clientes sea transmitida al Banco Central de Venezuela antes de la 1:00 pm del día de la fecha de pacto de la operación, de forma tal que el Banco Central de Venezuela pueda procesar dichas Órdenes. No se considerarán válidas las Órdenes de Compra transmitidas por las Entidades fuera del horario antes indicado, salvo que ello resulte de una prórroga otorgada por el Instituto con antelación."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 37,
+    "page number" : 3,
+    "bounding box" : [ 90.024, 624.73, 303.513, 633.172 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Las Órdenes de Compra deberán indicar lo siguiente:"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 38,
+    "level" : "2",
+    "page number" : 3,
+    "bounding box" : [ 108.02, 562.682, 540.082, 614.07 ],
+    "numbering style" : "unordered",
+    "number of list items" : 5,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 108.02, 604.082, 211.601, 614.07 ],
+      "font" : "Wingdings",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " El monto de la orden.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 108.02, 593.642, 399.107, 603.63 ],
+      "font" : "Wingdings",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " El nombre y el número de cédula de identidad de la persona natural.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 108.02, 583.322, 353.332, 593.31 ],
+      "font" : "Wingdings",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " El nombre o Razón Social de la persona jurídica privada.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 108.02, 573.002, 331.553, 582.99 ],
+      "font" : "Wingdings",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " El número de Registro Único de Información Fiscal.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 108.02, 562.682, 540.082, 572.67 ],
+      "font" : "Wingdings",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " El número de cuenta bancaria que mantiene en la entidad la persona natural y persona jurídica privada.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 39,
+    "page number" : 3,
+    "bounding box" : [ 90.024, 531.61, 557.812, 550.372 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Las Entidades que presenten el Formato de Transmisión, deberán completar en el SOEMA el Registro de Solicitantes, con la siguiente información:"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 40,
+    "level" : "2",
+    "page number" : 3,
+    "bounding box" : [ 108.02, 438.46, 557.665, 520.8 ],
+    "numbering style" : "unordered",
+    "number of list items" : 6,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 108.02, 510.812, 215.561, 520.8 ],
+      "font" : "Wingdings",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Nombre de la Entidad.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 108.02, 500.492, 278.498, 510.48 ],
+      "font" : "Wingdings",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Nombre de su casa matriz, de tenerla.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 108.02, 490.172, 220.106, 500.16 ],
+      "font" : "Wingdings",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Domicilio de la Entidad.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 108.02, 479.852, 298.505, 489.84 ],
+      "font" : "Wingdings",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Registro Único de Información Fiscal (RIF).",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 108.02, 459.1, 557.665, 479.52 ],
+      "font" : "Wingdings",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Nombre, teléfono y correo electrónico de la persona autorizada por la Entidad para presentar las Órdenes de Compra.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 108.02, 438.46, 557.417, 458.76 ],
+      "font" : "Wingdings",
+      "font size" : 9.0,
+      "text color" : "[0.0]",
+      "content" : " Nombre, teléfono y correo electrónico de la persona responsable por la Entidad de la liquidación de las Órdenes de Compra.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 41,
+    "page number" : 3,
+    "bounding box" : [ 90.024, 397.06, 557.932, 426.142 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Las Entidades por cuenta de los participantes convocados deberán proveer suficientes fondos líquidos en la cuenta corriente mantenida en el Banco Central de Venezuela para que pueda ser liquidado el valor de pago de los TC que hayan sido adjudicados antes de las 2:00 pm."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 42,
+    "level" : "Subtitle",
+    "page number" : 3,
+    "bounding box" : [ 90.024, 376.54, 378.272, 384.982 ],
+    "heading level" : 3,
+    "font" : "Arial,Bold",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Términos y Condiciones de Aceptación de las Órdenes de Compra:"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 43,
+    "page number" : 3,
+    "bounding box" : [ 90.024, 334.88, 557.295, 364.082 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "El ente regulador del sector bancario llevará a cabo las auditorías y revisiones que sean necesarias para verificar la adecuación y cumplimiento de las Órdenes de Compra con los términos y condiciones establecidas en la presente Convocatoria."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 44,
+    "page number" : 3,
+    "bounding box" : [ 90.024, 283.16, 557.914, 322.682 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "La presentación de una Orden de Compra por cuenta de terceros, no genera en ningún momento derecho de adjudicación alguno. Es responsabilidad única y exclusiva de la Entidad en donde el participante convocado colocó su solicitud, que ésta sea debida y oportunamente entregada y procesada en el Banco Central de Venezuela en el horario estipulado en esta Convocatoria."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 45,
+    "page number" : 3,
+    "bounding box" : [ 90.024, 249.8, 557.944, 268.562 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Las Entidades inscritas en el Registro General del Banco Central de Venezuela para Operaciones con Títulos, no podrán participar por cuenta propia ni como clientes a través de otras Entidades."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 46,
+    "page number" : 3,
+    "bounding box" : [ 90.024, 208.4, 557.749, 237.602 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Las Entidades deberán tener a la disposición de sus clientes distintos mecanismos para la recepción de órdenes de compra, desde la publicación de la Convocatoria, hasta antes del cierre del procesamiento de las mismas por parte del Banco Central de Venezuela."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 47,
+    "page number" : 3,
+    "bounding box" : [ 90.024, 177.41, 557.255, 196.202 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Las Entidades deberán informar ampliamente a sus clientes sobre las características y riesgos de la colocación y las condiciones de precio y tasa de la misma."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 48,
+    "page number" : 3,
+    "bounding box" : [ 90.024, 136.01, 557.944, 165.092 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Las Entidades no podrán rechazar injustificadamente ninguna Orden de Compra presentada por un cliente, siempre y cuando éste cumpla con las condiciones para optar a la colocación y tendrán que emitir a cada uno de ellos la correspondiente constancia de recepción."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 49,
+    "page number" : 3,
+    "bounding box" : [ 90.024, 94.614, 557.92, 123.692 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Asimismo, las personas naturales y personas jurídicas privadas deberán tener depositado en su respectiva cuenta en la Entidad a través de la cual participarán en la cotización, un monto equivalente al cien por ciento (100%) del total de su orden, lo cual deberá ser validado por la respectiva Entidad, antes de la hora de la liquidación."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 50,
+    "page number" : 3,
+    "bounding box" : [ 90.024, 63.534, 557.824, 82.296 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Las Entidades deberán mantener suficientes fondos líquidos en la cuenta corriente mantenida en el Banco Central de Venezuela para que pueda ser liquidado el valor de pago de los TC que hayan sido adjudicados a sus clientes."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 52,
+    "page number" : 4,
+    "bounding box" : [ 90.024, 686.89, 557.896, 715.992 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Las Entidades responderán de manera directa a cada uno de sus clientes por cualquier reclamo o solicitud de información que haga el cliente en relación a su Orden de Compra, antes, durante y con posterioridad al proceso de colocación, así como por causas inherentes a la gestión propia de las Entidades."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 53,
+    "page number" : 4,
+    "bounding box" : [ 90.024, 645.49, 557.86, 674.572 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "El Banco Central de Venezuela se reserva el derecho a su sola discreción de rechazar o invalidar cualquier Orden de Compra, sin necesidad de especificar las razones que motivaron dicha decisión. Asimismo, se reserva el derecho de dispensar cualquier discrepancia o error contenido en algún Formato de Transmisión u Orden de Compra."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 54,
+    "page number" : 4,
+    "bounding box" : [ 90.024, 624.73, 400.605, 633.172 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Con la colocación de cualquier Orden de Compra las Entidades declaran que:"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 55,
+    "page number" : 4,
+    "bounding box" : [ 108.02, 583.33, 557.965, 614.127 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "“He suministrado información suficiente a las personas naturales y jurídicas privadas; y manifiesto haber entregado a cada participante constancia de cada Orden de Compra recibida y de su registro en el libro de órdenes interno."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 56,
+    "page number" : 4,
+    "bounding box" : [ 108.02, 541.93, 557.818, 571.132 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "He puesto a disposición de las personas naturales y personas jurídicas privadas la presente Convocatoria, la descripción del proceso operativo relacionado con la colocación de la Orden de Compra, y las restricciones operativas que le hemos impuesto, adicionales a las restricciones descritas en la presente Convocatoria."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 57,
+    "page number" : 4,
+    "bounding box" : [ 108.02, 500.5, 557.74, 529.702 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "He puesto a disposición de las personas naturales y personas jurídicas privadas que represento, a través de al menos dos de los siguientes: (i) medios electrónicos, (ii) facsímiles o (iii) medios impresos, la información contenida en la presente Convocatoria."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 58,
+    "page number" : 4,
+    "bounding box" : [ 108.02, 459.1, 557.902, 488.302 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "He puesto a disposición de las personas naturales y personas jurídicas privadas que represento, una persona contacto donde éstos pueden acudir a plantear sus dudas y despejar sus inquietudes, tanto durante el proceso de cotización, así como con posterioridad al proceso de adjudicación."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 59,
+    "page number" : 4,
+    "bounding box" : [ 108.02, 417.7, 557.701, 446.902 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "He informado a las personas naturales y personas jurídicas privadas los aspectos técnicos y operativos relacionados con el procesamiento de su Orden de Compra, los cargos financieros relacionados con la colocación de ésta, así como aquellos atinentes a la custodia de los respectivos instrumentos, entre otros."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 60,
+    "page number" : 4,
+    "bounding box" : [ 108.02, 365.98, 557.746, 405.502 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "He informado a las personas naturales y personas jurídicas privadas y ambos hemos aceptado, que el pago que haré por cuenta del cliente al momento de la liquidación ante el Banco Central de Venezuela, ha sido recibido directamente del cliente que colocó la orden y que la asignación del instrumento adjudicado se hará exclusivamente a nombre del cliente que hizo la solicitud de la Orden de Compra ante esta entidad bancaria."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 61,
+    "page number" : 4,
+    "bounding box" : [ 108.02, 293.583, 557.851, 353.762 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Certifico que los datos suministrados en las Órdenes de Compra son verdaderos y el Banco Central de Venezuela podrá realizar las validaciones, fiscalizaciones y auditorías, durante el período de colocación o en cualquier momento posterior al mismo, que considere convenientes para verificar su autenticidad y concordancia con cada uno de los términos y condiciones de la aceptación de las Órdenes de Compra. Los procesos de auditoría y control se ejecutarán en cualquier momento, a través de los entes regulatorios especializados en la materia o con aquellos que el Banco Central de Venezuela designe para tal fin”."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 62,
+    "page number" : 4,
+    "bounding box" : [ 90.024, 262.52, 557.716, 281.282 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Queda expresamente entendido que las Entidades no podrán utilizar los TC de los participantes en operaciones con el Banco Central de Venezuela."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 63,
+    "page number" : 4,
+    "bounding box" : [ 90.024, 210.68, 557.767, 250.202 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "El Banco Central de Venezuela, sin menoscabo de la aplicación de las medidas específicas dictadas en la materia, excluirá del Registro General del Banco Central de Venezuela para Operaciones con Títulos a aquellas Entidades que incumplan con algunos de los términos y condiciones de aceptación de las Órdenes de Compra y en la autenticidad de los datos suministrados."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 64,
+    "level" : "Subtitle",
+    "page number" : 4,
+    "bounding box" : [ 90.024, 190.28, 149.586, 198.722 ],
+    "heading level" : 3,
+    "font" : "Arial,Bold",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Adjudicación:"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 65,
+    "page number" : 4,
+    "bounding box" : [ 90.024, 158.93, 557.737, 177.692 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "En la fecha de pacto de la operación el Banco Central de Venezuela anunciará mediante publicación en su página web, o cualquier otro medio de difusión, los resultados de la colocación a la que se refiere la presente Convocatoria."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 66,
+    "page number" : 4,
+    "bounding box" : [ 90.024, 127.97, 557.878, 146.732 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Antes del Anuncio de los Resultados, el Banco Central de Venezuela podrá declarar desierto el acto de considerarlo pertinente. Asimismo, tiene la potestad de modificar los plazos y términos de la colocación a su total discreción."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 67,
+    "page number" : 4,
+    "bounding box" : [ 90.024, 96.894, 557.39, 115.652 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "La presentación o remisión de Órdenes de Compra por cualquier Entidad, por cuenta de terceros, no le genera ningún tipo de derecho de adjudicación, antes, durante o después del proceso de colocación."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 69,
+    "level" : "Subtitle",
+    "page number" : 5,
+    "bounding box" : [ 90.024, 707.79, 143.592, 716.232 ],
+    "heading level" : 3,
+    "font" : "Arial,Bold",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Liquidación:"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 70,
+    "page number" : 5,
+    "bounding box" : [ 90.024, 624.73, 557.851, 695.332 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "El monto de la Oferta que resultase adjudicado será liquidado el día de la fecha valor de la operación antes de las 2:00 pm, de acuerdo con los listados transmitidos por las Entidades y el Banco Central de Venezuela debitará de la cuenta única de las Entidades correspondientes el valor en bolívares del pago. Los TC que componen la oferta serán acreditados por el Banco Central de Venezuela en la respectiva cuenta del SICET del cliente. El incumplimiento por parte de las Entidades, en el pago de Órdenes de Compra adjudicadas, presentadas por cuenta de los Participantes causará la exclusión de la Entidad en el Registro General del Banco Central de Venezuela para Operaciones con Títulos."
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 71,
+    "level" : "Subtitle",
+    "page number" : 5,
+    "bounding box" : [ 90.024, 604.33, 208.59, 612.772 ],
+    "heading level" : 3,
+    "font" : "Arial,Bold",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "Anuncio de los Resultados:"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 72,
+    "page number" : 5,
+    "bounding box" : [ 90.024, 573.01, 557.641, 591.772 ],
+    "font" : "Arial",
+    "font size" : 9.0,
+    "text color" : "[0.0]",
+    "content" : "El Banco Central de Venezuela en la fecha de pacto de la operación, anunciará mediante publicación en su página web, o cualquier otro medio de difusión, los resultados de la colocación a la que se refiere la presente Convocatoria."
+  } ]
+}

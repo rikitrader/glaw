@@ -1,0 +1,62 @@
+schema_version: 0.1.0
+id: venezuela-opposition-counsel-review
+name: Venezuela Dollarization Opposition Counsel Review
+mode: adversarial-independent
+input_report: reports/venezuela-dollarization-thesis.md
+input_index: reports/venezuela-final-indexed-report.json
+posture_registry: postures/opposition-counsel-registry.yaml
+steps:
+  - freeze-record
+  - extract-report-claims
+  - hanke-steelman
+  - posture-counsel
+  - evidence-cross-examination
+  - accounting-and-math-audit
+  - legal-institutional-audit
+  - historical-comparator-audit
+  - stress-test
+  - counterfactual-comparison
+  - second-opposition-pass
+  - evidence-judge
+  - mathematics-judge
+  - theory-judge
+  - final-arbitration
+  - publish-opposition-review
+posture_order:
+  - friedman
+  - cagan
+  - sargent
+  - calvo
+  - reinhart-rogoff
+  - minsky
+  - bagehot
+  - bernanke
+  - goodhart
+  - hausmann
+  - monetarist
+  - keynesian
+  - new-keynesian
+  - austrian
+  - supply-side
+  - imf-style-stabilization
+  - central-banker
+  - commercial-bank
+  - sovereign
+  - citizen
+  - business
+  - investor
+  - competing-institutional
+  - hanke-respondent
+stress_grid:
+  deposit_withdrawals: [0.05, 0.10, 0.15, 0.20, 0.25, 0.30, 0.40, 0.50]
+  credit_contraction: [0.00, 0.10, 0.20, 0.30, 0.40, 0.50]
+  oil_prices_usd: [30, 40, 50, 60, 70, 80, 90, 100, 120, 150]
+  capital_flow_cases: [continued-flight, stabilization, capital-return]
+stop_conditions:
+  - missing-critical-source
+  - unreconciled-math
+  - unsupported-attribution
+  - unverified-current-data
+  - unresolved-legal-authority
+  - catastrophic-banking-risk
+output_schema: schemas/opposition-counsel-review.schema.json

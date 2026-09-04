@@ -1,0 +1,9 @@
+{
+  "$schema": "./architecture/registry/architecture.json",
+  "registry": "architecture/registry/architecture.json",
+  "description": "Canonical current/proposed architecture graph; detailed nodes and edges are in the registry.",
+  "currentNodeIds": ["system:glaw","system:local-runtime","system:public-intake","system:x402","workflow:matter-pipeline","workflow:legal-governor","workflow:x402-paid-work","rag:source-locked","database:matter-workpapers","database:intake-kv","database:x402-d1","security:human-review","security:rbac-conscience"],
+  "currentEdgeIds": ["e:glaw-pipeline","e:intake-kv","e:legal-kv","e:legal-human","e:x402-d1","e:rag-source","e:rag-gate"],
+  "proposedNodeIds": ["cloudflare:astro-app","cloudflare:architecture-worker","cloudflare:architecture-d1","cloudflare:architecture-do","cloudflare:architecture-workflow","cloudflare:architecture-r2","cloudflare:architecture-queue","cloudflare:vectorize","cloudflare:ai-gateway"],
+  "proposedEdgeIds": ["e:proposed-shell","e:proposed-worker-d1","e:proposed-do","e:proposed-workflow","e:proposed-evidence","e:proposed-queue","e:proposed-vector","e:proposed-ai"]
+}

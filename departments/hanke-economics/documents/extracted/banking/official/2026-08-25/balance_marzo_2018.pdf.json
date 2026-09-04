@@ -1,0 +1,30 @@
+{
+  "file name" : "balance_marzo_2018.pdf.pdf",
+  "number of pages" : 1,
+  "author" : null,
+  "title" : "Diario VEA 24,5x 31",
+  "creation date" : "D:20180425103018-04'00'",
+  "modification date" : "D:20180425103018-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 1,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 694.56, 878.64 ],
+    "source" : "balance_marzo_2018.pdf_images/imageFile1.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 2,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 694.56, 878.64 ],
+    "source" : "balance_marzo_2018.pdf_images/imageFile2.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 3,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 694.56, 878.64 ],
+    "source" : "balance_marzo_2018.pdf_images/imageFile3.png"
+  } ]
+}

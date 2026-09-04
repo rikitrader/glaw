@@ -42,6 +42,24 @@ credentials or SDK adapters are unavailable, the run is recorded as
 `AGENT_UNAVAILABLE` and the Governor returns `REVIEW_REQUIRED`; no synthetic
 opinion or gold label is created.
 
+Use `--require-complete` in release automation when both provider passes are a
+hard prerequisite. It exits nonzero with `BLOCKED` if either selected agent is
+unavailable or returns invalid output; exploratory runs may still emit a
+review-required evidence package.
+
 Only released rows enter evaluation. Disagreements require an independent third
 attorney adjudicator. `items.jsonl` contains gold records; model outputs belong
 under a separate run directory and cannot mutate the gold files.
+
+The release gate also verifies reviewer/adjudicator identities, conflict
+attestations, signed row hashes, and that every review authority is contained in
+the item's source-backed authority set. Tampering or out-of-scope citations
+blocks release.
+
+After both first passes complete, initialize the cross-review protocol with
+`bin/glaw-dual-attorney --cross-review`. The resulting run directory is then
+advanced only by the hash-bound sequence
+`bin/glaw-cross-review record`: red cross-review, blue rebuttal, red
+sur-rebuttal, and independent adjudication. `check` remains `BLOCK` until all
+four phases are present and the adjudicator records `RESOLVED`; even then the
+Governor remains `REVIEW_REQUIRED` pending human counsel approval.

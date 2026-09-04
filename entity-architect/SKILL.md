@@ -156,3 +156,4 @@ Memory rule: every recurring error, rejected assumption, audit adjustment, citat
 Attorney work-product, not legal or tax advice. Prepared for review by a licensed
 attorney in the relevant jurisdiction. Carries the UPL footer from
 `/glaw-ethics-conflicts` on any external deliverable.
+**Domain:** entity architect professional domain, evidence, controls, and accountable human-review routing.

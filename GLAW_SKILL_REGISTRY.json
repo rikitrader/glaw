@@ -1,0 +1,10 @@
+{
+  "schemaVersion":"0.1.0",
+  "status":"target-registry",
+  "sourceOfTruth":"SKILL.md frontmatter and repository skill paths",
+  "currentInventory":{"skillFiles":233,"vendoredSeats":116},
+  "skillManifest":{"requiredFields":["id","name","version","department","inputs","outputs","allowed_tools","allowed_sources","models","risk_level","requires_human_review","validators","fallback","tests"],"status":"proposed"},
+  "categories":["research","litigation","contracts","evidence","tax","corporate","compliance","document-intelligence","governance","finance","investigations"],
+  "migrationRule":"normalize existing SKILL.md metadata before creating new skills",
+  "departmentSkills":{"department":"hanke-applied-economics","root":"departments/hanke-economics/skills","count":33,"inventoryTest":"departments/hanke-economics/tests/inventory.test.ts","attributionPolicy":"unverified Hanke claims are blocked"}
+}

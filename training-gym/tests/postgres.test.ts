@@ -1,0 +1,5 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { PostgresEpisodeRepository } from '../production/postgres.ts';
+
+test('Postgres episode repository uses parameterized SQL and tenant predicates', async () => { const calls: {sql:string; values:readonly unknown[]}[] = []; const db = { async query<T>(sql:string, values:readonly unknown[] = []) { calls.push({sql,values}); return { rows:[{id:'ep',organization_id:'org',experiment_id:'x',task_id:'t',status:'PENDING',seed:'3',version_pins:{},created_at:'a',updated_at:'b'}] as T[]}; } }; const repository = new PostgresEpisodeRepository(db); const record = await repository.create({id:'ep',organizationId:'org',experimentId:'x',taskId:'t',status:'PENDING',seed:3,versionPins:{},createdAt:'a',updatedAt:'b'}, 'ep:key'); assert.equal(record.seed,3); await repository.get('ep','org'); await repository.transition('ep','org',{to:'QUEUED'}); assert.equal(calls.length,3); assert.match(calls[1].sql, /organization_id=\$2/); assert.deepEqual(calls[2].values, ['ep','org','QUEUED']); });

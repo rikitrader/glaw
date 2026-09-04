@@ -1,0 +1,1878 @@
+{
+  "file name" : "Balance_General_Abril2026_USD.pdf.pdf",
+  "number of pages" : 1,
+  "author" : "NMadera",
+  "title" : "BALANCE MENSUAL - $ ABRIL 2026_.pdf",
+  "creation date" : "D:20260513182121-04'00'",
+  "modification date" : "D:20260513182121-04'00'",
+  "kids" : [ {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 6,
+    "page number" : 1,
+    "bounding box" : [ 484.265, 819.075, 522.29, 824.082 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 4.481,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "External Auditors:"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 7,
+    "page number" : 1,
+    "bounding box" : [ 484.265, 813.514, 552.168, 818.896 ],
+    "font" : "ArialMT",
+    "font size" : 4.817,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Márquez Perdomo & Asociados"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 112,
+    "page number" : 1,
+    "bounding box" : [ 45.595, 804.009, 85.692, 808.165 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 3.72,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Banco Microfinanciero"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H5",
+    "id" : 8,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 240.322, 799.712, 315.015, 805.094 ],
+    "heading level" : 5,
+    "font" : "Arial-BoldMT",
+    "font size" : 4.817,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "TOTAL EQUITY USD. 24.111.423"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 114,
+    "page number" : 1,
+    "bounding box" : [ 45.622, 800.209, 61.679, 804.131 ],
+    "font" : "Poppins-Light",
+    "font size" : 2.801,
+    "text color" : "[0.746094, 0.679688, 0.669922, 0.898438]",
+    "content" : "J 31637417-3"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 54,
+    "level" : "Doctitle",
+    "page number" : 1,
+    "bounding box" : [ 211.143, 787.786, 357.97, 794.044 ],
+    "heading level" : 1,
+    "font" : "Arial-BoldMT",
+    "font size" : 5.602,
+    "text color" : "[1.0, 1.0, 1.0]",
+    "content" : "PUBLICATION BALANCE SHEET AS OF ABRIL 30, 2026"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 55,
+    "page number" : 1,
+    "bounding box" : [ 251.251, 780.763, 322.834, 786.145 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 4.817,
+    "text color" : "[1.0, 1.0, 1.0]",
+    "content" : "(EXPRESSED IN US DOLLARS)"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 2,
+    "page number" : 1,
+    "bounding box" : [ 39.096, 772.056, 282.984, 781.464 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile1.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 3,
+    "page number" : 1,
+    "bounding box" : [ 282.456, 772.056, 557.304, 781.464 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile2.png"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 56,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 150.163, 773.986, 454.106, 780.244 ],
+    "heading level" : 1,
+    "font" : "Arial-BoldMT",
+    "font size" : 5.602,
+    "text color" : "[1.0, 1.0, 1.0]",
+    "content" : "ASSETS LIABILITIES AND EQUITY"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 58,
+    "page number" : 1,
+    "bounding box" : [ 40.463, 766.191, 119.257, 772.199 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "CASH AND DUE FROM BANKS"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 45,
+    "page number" : 1,
+    "bounding box" : [ 283.849, 759.132, 348.348, 772.199 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "CUSTOMERS' DEPOSITS Demand deposits"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 9,
+    "page number" : 1,
+    "bounding box" : [ 40.448, 714.994, 553.819, 771.75 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "14.495.674 33.104.484 Cash 1.193.712 32.836.056 Central Bank of Venezuela 8.141.510 15.205.963 Banks and other local financial institutions 56 363.041 Banks and correspondent offices abroad 5.160.396 Head Office and Branches - 12.549.943 Clearing House Funds - 4.717.109 (Allowance for cash and due from banks) - -"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 46,
+    "page number" : 1,
+    "bounding box" : [ 289.737, 744.569, 382.797, 757.858 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Noninterest-bearing checking accounts Interest-bearing checking accounts"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 57,
+    "page number" : 1,
+    "bounding box" : [ 289.732, 737.286, 433.364, 743.294 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Current Accounts According to Exchange Agreement No. 20"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 47,
+    "page number" : 1,
+    "bounding box" : [ 289.737, 722.725, 451.514, 736.014 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Demand deposits and certificates Current Accounts According to the Exchange Market System of L.C."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 60,
+    "page number" : 1,
+    "bounding box" : [ 289.715, 715.439, 459.031, 721.447 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Special funds in trust according to the Exchange Market System of L.C."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 63,
+    "page number" : 1,
+    "bounding box" : [ 283.838, 700.877, 401.615, 714.167 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Other demand obligations Obligations from money market desk transactions"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 10,
+    "page number" : 1,
+    "bounding box" : [ 535.765, 707.712, 553.807, 713.72 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "169.188"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 11,
+    "level" : "1",
+    "page number" : 1,
+    "bounding box" : [ 257.089, 680.49, 553.817, 706.439 ],
+    "numbering style" : "unordered",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 538.792, 693.149, 553.817, 706.439 ],
+      "font" : "ArialMT",
+      "font size" : 5.378,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "99.239",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 257.089, 680.49, 547.826, 692.435 ],
+      "font" : "ArialMT",
+      "font size" : 5.378,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "1.685.508 -",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 61,
+    "page number" : 1,
+    "bounding box" : [ 283.849, 686.874, 324.574, 699.603 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Savings deposits Time deposits"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 62,
+    "page number" : 1,
+    "bounding box" : [ 40.456, 674.21, 356.84, 687.051 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "INVESTMENT SECURITIES Securities issued by the Bank Placements in Central Bank of Venezuela and Interbank Transactions Restricted customers' deposits"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 12,
+    "page number" : 1,
+    "bounding box" : [ 40.433, 628.945, 553.812, 680.002 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "834.670 Trading investment securities - Available-for-sale investment securities 847 Held-to-maturity investment securities 849.991 Restricted cash investments 610.996 Other investment securities - Deposits and Obligations with BANAVIH in one year or less 238.044 (Allowance for investment securities) (610.996) -"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 65,
+    "page number" : 1,
+    "bounding box" : [ 283.844, 659.534, 423.043, 672.936 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Rights and shares on securities OBLIGATIONS WITH CENTRAL BANK OF VENEZUELA"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 64,
+    "page number" : 1,
+    "bounding box" : [ 283.844, 648.22, 553.829, 654.228 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "DEPOSITS AND OBLIGATIONS WITH BANAVIH 238.044"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 66,
+    "page number" : 1,
+    "bounding box" : [ 283.849, 629.398, 427.211, 635.405 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Deposits and Obligations with BANAVIH in one year or more"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 59,
+    "page number" : 1,
+    "bounding box" : [ 283.849, 621.89, 342.417, 627.898 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "OTHER BORROWINGS"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 13,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 40.433, 612.56, 553.802, 627.447 ],
+    "heading level" : 2,
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "5.115.790 LOAN PORTFOLIO 44.422.090 5.115.790"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 48,
+    "page number" : 1,
+    "bounding box" : [ 283.796, 556.771, 459.177, 619.023 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Obligations with local financial institutions due in one year or less Obligations with local financial institutions due in one year or more Obligations with foreign financial institutions due in one year or less Obligations with other foreign financial institutions due in one year or more Obligations from other borrowings due in one year or less Obligations from other borrowings due in one year or more OTHER FINANCIAL INTERMEDIATION OBLIGATIONS"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 14,
+    "page number" : 1,
+    "bounding box" : [ 40.434, 564.5, 547.816, 608.819 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Current loans 43.789.179 Restructured loans 2.412.295 Past-due loans 4.398.782 Loans in litigation - (Allowance for loan portfolio) (6.178.166) -"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 15,
+    "level" : "2",
+    "page number" : 1,
+    "bounding box" : [ 547.51, 556.208, 547.806, 562.215 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "-"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 53,
+    "page number" : 1,
+    "bounding box" : [ 283.854, 541.086, 394.488, 554.6 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "INTERESTS AND COMMISSIONS PAYABLE Accrued liabilities from customers' deposits"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 67,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 40.463, 548.591, 160.158, 554.599 ],
+    "heading level" : 2,
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "INTERESTS AND COMMISSIONS RECEIVABLE"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 16,
+    "page number" : 1,
+    "bounding box" : [ 40.42, 507.592, 553.805, 554.148 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "505.328 723.350 Accrued interest receivable from cash and due from banks - 650.362 Accrued interest receivable from investment securities 660.836 Accrued interest receivable from loan portfolio 414.894 Commissions receivable 168.595 72.989 Accrued interest and commissions receivable from other receivables - (Allowance for accrued interest receivable and other) (738.997) -"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 68,
+    "page number" : 1,
+    "bounding box" : [ 283.844, 521.256, 440.523, 540.482 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Accrued liabilities from obligations with Central Bank of Venezuela Accrued liabilities from deposits and obligations with BANAVIH Accrued liabilities from other borrowings"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 49,
+    "page number" : 1,
+    "bounding box" : [ 283.841, 499.859, 434.266, 520.656 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Accrued liabilities from other financial intermediation obligations Accrued liabilities from other obligations Accrued liabilities from subordinated obligations"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 17,
+    "level" : "2",
+    "page number" : 1,
+    "bounding box" : [ 547.495, 499.412, 547.791, 505.42 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "-"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 50,
+    "page number" : 1,
+    "bounding box" : [ 283.841, 483.952, 379.035, 497.241 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "ACCRUALS AND OTHER LIABILITIES SUBORDINATED OBLIGATIONS"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 51,
+    "page number" : 1,
+    "bounding box" : [ 40.463, 490.894, 205.194, 496.902 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "INVESTMENTS IN SUBSIDIARIES, AFFILIATES AND BRANCHES"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 18,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 273.078, 490.787, 553.777, 496.795 ],
+    "heading level" : 2,
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "- 4.142.635"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 19,
+    "page number" : 1,
+    "bounding box" : [ 40.414, 471.517, 553.822, 489.512 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Investments in subsidiaries and affiliates - Investments in branches - (Allowance for investments in subsidiaries, affiliates and branches) - 43.324.303"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 52,
+    "page number" : 1,
+    "bounding box" : [ 283.849, 477.786, 341.319, 483.794 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "OTHER OBLIGATIONS"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 72,
+    "page number" : 1,
+    "bounding box" : [ 283.849, 458.963, 356.12, 478.08 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "TOTAL LIABILITIES OPERATING MANAGEMENT"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 86,
+    "page number" : 1,
+    "bounding box" : [ 40.463, 458.963, 100.622, 464.971 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "FORECLOSED ASSETS"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 20,
+    "level" : "3",
+    "page number" : 1,
+    "bounding box" : [ 261.476, 451.685, 553.839, 464.527 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "- 1.343.343 265.002"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 85,
+    "page number" : 1,
+    "bounding box" : [ 40.463, 452.129, 114.852, 458.137 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "PREMISES AND EQUIPMENT"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 87,
+    "page number" : 1,
+    "bounding box" : [ 40.463, 439.451, 82.237, 451.732 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "OTHER ASSETS TOTAL ASSETS"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 21,
+    "page number" : 1,
+    "bounding box" : [ 254.196, 439.003, 279.519, 451.288 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "7.405.468 68.779.069"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 22,
+    "page number" : 1,
+    "bounding box" : [ 40.46, 405.054, 273.555, 431.341 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "DEBIT CONTINGENT ACCOUNTS TRUST ASSETS OTHER TRUSTS DEBIT ACCOUNTS FROM OTHER TRUSTS -"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 23,
+    "page number" : 1,
+    "bounding box" : [ 46.364, 398.219, 273.564, 404.227 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "(HOUSING AND HABITAT BENEFIT SYSTEM) -"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 73,
+    "page number" : 1,
+    "bounding box" : [ 40.463, 391.388, 198.336, 397.396 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "OTHER DEBIT ACCOUNTS FROM SAVINGS HOUSING FUNDS"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 24,
+    "level" : "4",
+    "page number" : 1,
+    "bounding box" : [ 40.498, 367.519, 555.659, 397.392 ],
+    "numbering style" : "unordered",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 40.498, 377.043, 553.857, 397.392 ],
+      "font" : "Arial-BoldMT",
+      "font size" : 5.378,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "OTHER DEBIT MEMORANDUM ACCOUNTS 97.295.107 TOTAL EQUITY 24.111.423 OTHER DEBIT CONTROL ACCOUNTS -",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 273.178, 367.519, 555.659, 373.527 ],
+      "font" : "Arial-BoldMT",
+      "font size" : 5.378,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "- 68.779.069",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 74,
+    "page number" : 1,
+    "bounding box" : [ 40.474, 364.273, 190.315, 376.558 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "TRUST COMMISSIONS FOR OPERATIONS IN SOVEREIGN CRYPTOACTIVE"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 69,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 256.4, 358.786, 368.098, 373.985 ],
+    "heading level" : 2,
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "TOTAL LIABILITIES AND EQUITY TRUST FUND EQUITY (DETAILS)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 70,
+    "page number" : 1,
+    "bounding box" : [ 335.627, 347.325, 395.435, 357.597 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 4.481,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "STATE, MUNICIPAL AND DC PUBLIC ADM."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 71,
+    "page number" : 1,
+    "bounding box" : [ 408.561, 347.325, 478.01, 357.597 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 4.481,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "DECENTRALIZED ENTITIES AND OTHER SPECIAL REG. ORG."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 26,
+    "page number" : 1,
+    "bounding box" : [ 286.425, 346.877, 324.414, 357.148 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 4.481,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "CENTRAL ADMINISTRATION"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 25,
+    "page number" : 1,
+    "bounding box" : [ 50.546, 349.564, 268.26, 355.019 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 4.481,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "TYPES OF TRUST FUNDS INDIVIDUALS LEGAL ENTITIES"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 27,
+    "page number" : 1,
+    "bounding box" : [ 513.342, 350.013, 527.97, 355.019 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 4.481,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "TOTAL"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 75,
+    "level" : "1",
+    "page number" : 1,
+    "bounding box" : [ 398.887, 317.288, 479.943, 347.632 ],
+    "numbering style" : "unordered",
+    "number of list items" : 6,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 398.887, 326.588, 479.943, 333.181 ],
+      "font" : "CenturyGothic",
+      "font size" : 5.378,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "- -",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 398.887, 321.657, 479.943, 328.25 ],
+      "font" : "CenturyGothic",
+      "font size" : 5.378,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "- -",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 398.922, 317.288, 479.943, 323.881 ],
+      "font" : "CenturyGothic-Bold",
+      "font size" : 5.378,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "- -",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 398.887, 341.039, 479.943, 347.632 ],
+      "font" : "CenturyGothic",
+      "font size" : 5.378,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "- -",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 398.887, 336.11, 479.943, 342.703 ],
+      "font" : "CenturyGothic",
+      "font size" : 5.378,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "- -",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 398.887, 331.293, 479.943, 337.886 ],
+      "font" : "CenturyGothic",
+      "font size" : 5.378,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "- -",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 28,
+    "page number" : 1,
+    "bounding box" : [ 40.463, 317.107, 547.878, 347.092 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Investments - - - Collateral - - - Administration - - - Combined - - - Other - - - TOTAL - - - -"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 43,
+    "page number" : 1,
+    "bounding box" : [ 168.089, 311.178, 428.769, 316.56 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 4.817,
+    "text color" : "[1.0, 1.0, 1.0]",
+    "content" : "PUBLICATION STATEMENT OF PROFIT OR LOSS FOR THE PERIOD FROM JANUARY 01, 2026 TO APRIL 30, 2026"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 44,
+    "page number" : 1,
+    "bounding box" : [ 259.208, 303.17, 336.845, 309.053 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.266,
+    "text color" : "[1.0, 1.0, 1.0]",
+    "content" : "(EXPRESSED IN US DOLLARS)"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 5,
+    "page number" : 1,
+    "bounding box" : [ 39.096, 298.296, 557.304, 308.424 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile3.png"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 29,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 40.47, 292.009, 279.52, 298.017 ],
+    "heading level" : 2,
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "FINANCIAL INCOME 12.631.476"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 80,
+    "page number" : 1,
+    "bounding box" : [ 283.853, 282.824, 345.853, 295.667 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Other operating income Other operating expenses"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 30,
+    "page number" : 1,
+    "bounding box" : [ 40.465, 283.308, 553.832, 295.215 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "2.638.579 Cash and due from banks -"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 31,
+    "page number" : 1,
+    "bounding box" : [ 532.504, 282.372, 555.65, 288.38 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "(250.515)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 32,
+    "page number" : 1,
+    "bounding box" : [ 40.453, 235.073, 555.659, 282.454 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Investment securities 328.316 Loan portfolio 12.303.160 4.621.295 Other receivables Investments in subsidiaries, affiliates and branches. - (2.742.449) Head Office and Branches - Personnel expenses (1.389.043) Other finance income FINANCE EXPENSES (6.089.493) Contributions to the Guarantee Fund for Deposits and Banking Protection (44.566)"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 81,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 283.859, 272.043, 383.379, 278.051 ],
+    "heading level" : 2,
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "FINANCIAL INTERMEDIATION MARGIN"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 76,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 283.849, 259.384, 348.165, 265.391 ],
+    "heading level" : 2,
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "COSTS OF OPERATIONS"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 77,
+    "page number" : 1,
+    "bounding box" : [ 283.849, 244.596, 555.649, 250.603 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "General and administrative expenses (1.245.569)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 78,
+    "page number" : 1,
+    "bounding box" : [ 40.466, 228.688, 89.049, 234.696 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Customers' deposits"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 33,
+    "page number" : 1,
+    "bounding box" : [ 253.713, 228.238, 281.339, 234.246 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "(4.167.018)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 79,
+    "page number" : 1,
+    "bounding box" : [ 40.466, 221.854, 555.657, 231.334 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Contributions to the Superintendency of Banks and Other Financial Institutions (63.272) Obligations with Central Bank of Venezuela"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 34,
+    "level" : "2",
+    "page number" : 1,
+    "bounding box" : [ 273.133, 221.403, 273.542, 227.411 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "-"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 84,
+    "page number" : 1,
+    "bounding box" : [ 40.472, 204.484, 547.854, 221.466 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Deposits and obligations with BANAVIH (57.787) GROSS OPERATING MARGIN Other borrowings Income from foreclosed assets -"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 35,
+    "page number" : 1,
+    "bounding box" : [ 253.709, 204.038, 553.83, 221.028 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "1.878.845 (1.197.942)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 83,
+    "page number" : 1,
+    "bounding box" : [ 40.472, 183.306, 547.865, 204.63 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Other financial intermediation obligations - Income from special programs Subordinated obligations Other obligations"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 37,
+    "page number" : 1,
+    "bounding box" : [ 283.845, 191.498, 343.569, 197.506 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Sundry operating income"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 36,
+    "level" : "2",
+    "page number" : 1,
+    "bounding box" : [ 271.744, 188.465, 273.535, 194.473 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "-"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 38,
+    "page number" : 1,
+    "bounding box" : [ 546.312, 188.465, 553.852, 194.473 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "489"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 39,
+    "level" : "3",
+    "page number" : 1,
+    "bounding box" : [ 273.122, 177.258, 547.895, 190.273 ],
+    "numbering style" : "unordered",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 273.127, 182.861, 547.895, 190.273 ],
+      "font" : "ArialMT",
+      "font size" : 5.378,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "- Expenses from foreclosed assets -",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 273.122, 177.258, 547.89, 183.922 ],
+      "font" : "ArialMT",
+      "font size" : 5.378,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "- Depreciation, amortization and impairment of sundry assets -",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 90,
+    "page number" : 1,
+    "bounding box" : [ 40.463, 176.392, 103.586, 182.399 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Head Office and Branches"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 40,
+    "page number" : 1,
+    "bounding box" : [ 40.452, 168.906, 554.234, 176.318 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Other finance expenses (666.747) Sundry operating expenses (237.014)"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 91,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 40.463, 155.305, 351.129, 167.809 ],
+    "heading level" : 2,
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "GROSS FINANCIAL MARGIN NET OPERATING MARGIN Income from recovery of financial assets"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 41,
+    "page number" : 1,
+    "bounding box" : [ 40.189, 139.506, 553.831, 167.358 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "6.541.983 1.642.320 57.835 Expenses from uncollectible and impaired financial assets (4.366.587) Uncollectible loans and other receivables (4.366.587) 1.642.320"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 82,
+    "page number" : 1,
+    "bounding box" : [ 283.859, 155.305, 334.54, 161.312 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Extraordinary income"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 88,
+    "page number" : 1,
+    "bounding box" : [ 283.849, 139.959, 360.378, 153.808 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Extraordinary expenses GROSS PROFIT BEFORE TAX"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 181,
+    "page number" : 1,
+    "bounding box" : [ 448.296, 116.376, 497.784, 144.264 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile4.png"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 89,
+    "page number" : 1,
+    "bounding box" : [ 40.463, 126.849, 363.015, 140.208 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Recording of allowance and adjustments to cash and due from banks Income tax NET FINANCIAL MARGIN NET PROFIT FOR THE PERIOD"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 189,
+    "page number" : 1,
+    "bounding box" : [ 448.296, 138.936, 497.544, 139.464 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile5.png"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 42,
+    "level" : "4",
+    "page number" : 1,
+    "bounding box" : [ 257.108, 126.399, 555.648, 138.572 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "- (298.978) 2.233.231 1.343.343"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 140,
+    "level" : "2",
+    "page number" : 1,
+    "bounding box" : [ 273.245, 132.564, 273.541, 138.571 ],
+    "font" : "ArialMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "-"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 138,
+    "page number" : 1,
+    "bounding box" : [ 149.976, 78.936, 272.664, 134.664 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile6.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 139,
+    "page number" : 1,
+    "bounding box" : [ 271.656, 133.416, 272.664, 134.664 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile7.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 159,
+    "page number" : 1,
+    "bounding box" : [ 290.616, 79.416, 368.184, 133.944 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile8.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 183,
+    "page number" : 1,
+    "bounding box" : [ 487.176, 133.416, 492.024, 133.944 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile9.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 184,
+    "page number" : 1,
+    "bounding box" : [ 492.936, 133.416, 494.904, 133.944 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile10.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 185,
+    "page number" : 1,
+    "bounding box" : [ 495.816, 133.416, 497.544, 133.944 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile11.png"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 119,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 65.104, 126.85, 104.49, 132.857 ],
+    "heading level" : 3,
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "NCIAL MARGIN"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 161,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 283.849, 126.85, 363.014, 132.857 ],
+    "heading level" : 3,
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "NET PROFIT FOR THE PERIOD"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 117,
+    "page number" : 1,
+    "bounding box" : [ 68.136, 83.976, 150.024, 132.744 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile12.png"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 145,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 255.498, 126.399, 276.498, 132.406 ],
+    "heading level" : 3,
+    "font" : "Arial-BoldMT",
+    "font size" : 5.378,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "2.233.23"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 118,
+    "page number" : 1,
+    "bounding box" : [ 68.136, 127.656, 72.744, 132.264 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile13.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 123,
+    "page number" : 1,
+    "bounding box" : [ 95.016, 127.656, 100.584, 132.264 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile14.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 120,
+    "page number" : 1,
+    "bounding box" : [ 72.936, 127.656, 78.504, 132.024 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile15.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 121,
+    "page number" : 1,
+    "bounding box" : [ 78.216, 127.656, 81.624, 132.024 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile16.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 122,
+    "page number" : 1,
+    "bounding box" : [ 83.016, 127.656, 95.304, 132.024 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile17.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 124,
+    "page number" : 1,
+    "bounding box" : [ 100.776, 127.743, 104.184, 132.024 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile18.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 160,
+    "page number" : 1,
+    "bounding box" : [ 290.616, 127.896, 303.864, 132.024 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile19.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 162,
+    "page number" : 1,
+    "bounding box" : [ 303.816, 127.656, 312.504, 132.024 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile20.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 163,
+    "page number" : 1,
+    "bounding box" : [ 312.456, 127.896, 315.864, 132.024 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile21.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 164,
+    "page number" : 1,
+    "bounding box" : [ 315.576, 127.656, 324.744, 132.024 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile22.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 165,
+    "page number" : 1,
+    "bounding box" : [ 324.936, 127.896, 353.544, 132.024 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile23.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 167,
+    "page number" : 1,
+    "bounding box" : [ 359.256, 127.896, 362.904, 132.024 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile24.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 166,
+    "page number" : 1,
+    "bounding box" : [ 353.736, 127.903, 359.304, 132.024 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile25.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 143,
+    "page number" : 1,
+    "bounding box" : [ 255.336, 127.416, 270.744, 131.544 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile26.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 144,
+    "page number" : 1,
+    "bounding box" : [ 255.336, 127.416, 259.944, 131.544 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile27.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 146,
+    "page number" : 1,
+    "bounding box" : [ 255.336, 127.416, 259.944, 131.544 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile28.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 147,
+    "page number" : 1,
+    "bounding box" : [ 259.896, 127.416, 269.064, 131.544 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile29.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 148,
+    "page number" : 1,
+    "bounding box" : [ 259.896, 127.416, 269.064, 131.544 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile30.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 150,
+    "page number" : 1,
+    "bounding box" : [ 270.216, 127.416, 272.664, 131.544 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile31.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 151,
+    "page number" : 1,
+    "bounding box" : [ 270.216, 127.416, 272.664, 131.544 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile32.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 149,
+    "page number" : 1,
+    "bounding box" : [ 269.016, 127.416, 270.264, 128.664 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile33.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 141,
+    "page number" : 1,
+    "bounding box" : [ 259.896, 127.176, 269.064, 127.944 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile34.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 142,
+    "page number" : 1,
+    "bounding box" : [ 270.216, 127.176, 272.664, 127.944 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile35.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 186,
+    "page number" : 1,
+    "bounding box" : [ 486.456, 127.176, 491.064, 127.704 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile36.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 187,
+    "page number" : 1,
+    "bounding box" : [ 492.216, 127.176, 493.944, 127.704 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile37.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 188,
+    "page number" : 1,
+    "bounding box" : [ 496.536, 127.176, 497.544, 127.704 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile38.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 125,
+    "page number" : 1,
+    "bounding box" : [ 68.136, 126.456, 150.024, 126.984 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile39.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 152,
+    "page number" : 1,
+    "bounding box" : [ 149.976, 126.456, 272.664, 126.984 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile40.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 168,
+    "page number" : 1,
+    "bounding box" : [ 290.616, 126.456, 368.184, 126.984 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile41.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 190,
+    "page number" : 1,
+    "bounding box" : [ 448.296, 126.456, 497.544, 126.984 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile42.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 182,
+    "page number" : 1,
+    "bounding box" : [ 448.296, 89.016, 497.784, 116.904 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile43.png"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 137,
+    "page number" : 1,
+    "bounding box" : [ 75.554, 101.221, 129.802, 106.853 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.042,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Chairman of the Board"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H4",
+    "id" : 107,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 75.554, 100.502, 491.086, 106.853 ],
+    "heading level" : 4,
+    "font" : "Arial-BoldMT",
+    "font size" : 5.042,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Chairman of the Board Director Internal Audit"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 158,
+    "page number" : 1,
+    "bounding box" : [ 199.536, 101.079, 218.836, 106.711 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 5.042,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Director"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 180,
+    "page number" : 1,
+    "bounding box" : [ 290.616, 102.216, 368.184, 106.584 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile44.png"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H4",
+    "id" : 193,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 458.512, 100.502, 491.085, 106.134 ],
+    "heading level" : 4,
+    "font" : "Arial-BoldMT",
+    "font size" : 5.042,
+    "text color" : "[0.642578, 0.568359, 0.556641, 0.349121]",
+    "content" : "Internal Audit"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 136,
+    "page number" : 1,
+    "bounding box" : [ 75.576, 101.976, 129.624, 106.104 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile45.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 157,
+    "page number" : 1,
+    "bounding box" : [ 199.656, 101.736, 219.144, 106.104 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile46.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 192,
+    "page number" : 1,
+    "bounding box" : [ 458.616, 101.256, 491.304, 105.384 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile47.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 179,
+    "page number" : 1,
+    "bounding box" : [ 290.616, 93.576, 368.184, 94.104 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile48.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 191,
+    "page number" : 1,
+    "bounding box" : [ 448.296, 93.576, 497.544, 94.104 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile49.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 135,
+    "page number" : 1,
+    "bounding box" : [ 68.136, 93.336, 150.024, 94.104 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile50.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 156,
+    "page number" : 1,
+    "bounding box" : [ 149.976, 93.336, 272.664, 94.104 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile51.png"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 154,
+    "level" : "2",
+    "page number" : 1,
+    "bounding box" : [ 272.927, 81.408, 274.102, 93.539 ],
+    "font" : "ArialMT",
+    "font size" : 5.042,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "-"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 93,
+    "level" : "1",
+    "page number" : 1,
+    "bounding box" : [ 272.927, 74.909, 554.01, 93.539 ],
+    "numbering style" : "unordered",
+    "number of list items" : 3,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 272.927, 87.907, 554.01, 93.539 ],
+      "font" : "ArialMT",
+      "font size" : 5.042,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "- 50.124.142",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 272.927, 81.408, 548.429, 87.041 ],
+      "font" : "ArialMT",
+      "font size" : 5.042,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "- -",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 272.927, 74.909, 548.429, 80.542 ],
+      "font" : "ArialMT",
+      "font size" : 5.042,
+      "text color" : "[0.0, 0.0, 0.0]",
+      "content" : "- -",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 134,
+    "page number" : 1,
+    "bounding box" : [ 66.655, 87.685, 89.867, 93.317 ],
+    "font" : "ArialMT",
+    "font size" : 5.042,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "vestments"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 96,
+    "page number" : 1,
+    "bounding box" : [ 40.46, 87.685, 89.867, 93.317 ],
+    "font" : "ArialMT",
+    "font size" : 5.042,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Assigned investments"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 98,
+    "page number" : 1,
+    "bounding box" : [ 283.85, 74.8, 460.714, 93.314 ],
+    "font" : "ArialMT",
+    "font size" : 5.042,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Microloans Loans to the tourism sector as per current legislation Mortgage loans as per Special Protection Law of the Housing Mortgage Debtor"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 170,
+    "page number" : 1,
+    "bounding box" : [ 283.85, 74.8, 373.812, 93.314 ],
+    "font" : "ArialMT",
+    "font size" : 5.042,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "Microloans Loans to the tourism sector as perer curre Mortgage loans as per Special Protec"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 133,
+    "page number" : 1,
+    "bounding box" : [ 68.136, 87.576, 90.024, 92.664 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile52.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 169,
+    "page number" : 1,
+    "bounding box" : [ 290.616, 88.536, 308.184, 92.664 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile53.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 153,
+    "page number" : 1,
+    "bounding box" : [ 271.416, 88.776, 272.664, 90.744 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile54.png"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 95,
+    "page number" : 1,
+    "bounding box" : [ 40.463, 81.298, 116.699, 86.93 ],
+    "font" : "ArialMT",
+    "font size" : 5.042,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Agricultural portfolio for the month"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 127,
+    "page number" : 1,
+    "bounding box" : [ 67.18, 81.298, 116.698, 86.93 ],
+    "font" : "ArialMT",
+    "font size" : 5.042,
+    "text color" : "[0.0, 0.0, 0.0, 1.0]",
+    "content" : "portfolio for the month"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 126,
+    "page number" : 1,
+    "bounding box" : [ 68.136, 83.976, 92.904, 86.184 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile55.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 128,
+    "page number" : 1,
+    "bounding box" : [ 92.376, 83.976, 95.784, 86.184 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile56.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 129,
+    "page number" : 1,
+    "bounding box" : [ 92.376, 83.976, 92.904, 86.184 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile57.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 130,
+    "page number" : 1,
+    "bounding box" : [ 95.736, 83.976, 101.304, 86.184 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile58.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 132,
+    "page number" : 1,
+    "bounding box" : [ 106.776, 83.976, 116.664, 86.184 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile59.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 171,
+    "page number" : 1,
+    "bounding box" : [ 290.616, 82.056, 297.624, 86.184 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile60.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 172,
+    "page number" : 1,
+    "bounding box" : [ 297.336, 82.056, 300.744, 86.184 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile61.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 173,
+    "page number" : 1,
+    "bounding box" : [ 300.456, 82.056, 323.064, 86.184 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile62.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 175,
+    "page number" : 1,
+    "bounding box" : [ 329.736, 81.096, 361.224, 86.184 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile63.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 131,
+    "page number" : 1,
+    "bounding box" : [ 101.016, 83.976, 106.824, 85.224 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile64.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 174,
+    "page number" : 1,
+    "bounding box" : [ 323.016, 82.056, 329.784, 85.224 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile65.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 176,
+    "page number" : 1,
+    "bounding box" : [ 360.696, 82.056, 365.064, 85.224 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile66.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 177,
+    "page number" : 1,
+    "bounding box" : [ 360.696, 82.056, 361.224, 85.224 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile67.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 155,
+    "page number" : 1,
+    "bounding box" : [ 271.416, 82.296, 272.664, 84.264 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile68.png"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 97,
+    "page number" : 1,
+    "bounding box" : [ 40.46, 74.798, 111.43, 80.43 ],
+    "font" : "ArialMT",
+    "font size" : 5.042,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Cumulative agricultural portfolio"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 178,
+    "page number" : 1,
+    "bounding box" : [ 290.616, 78.696, 368.184, 79.704 ],
+    "source" : "Balance_General_Abril2026_USD.pdf_images/imageFile69.png"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 94,
+    "page number" : 1,
+    "bounding box" : [ 254.385, 61.019, 554.231, 73.595 ],
+    "font" : "ArialMT",
+    "font size" : 5.042,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "17.044.521 Equity-debt ratio 44,95%"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 99,
+    "page number" : 1,
+    "bounding box" : [ 40.465, 67.852, 360.738, 73.484 ],
+    "font" : "ArialMT",
+    "font size" : 5.042,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Deposits from official entities Loans to the manufacturing sector"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H",
+    "id" : 105,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 485.465, 55.447, 533.142, 59.602 ],
+    "heading level" : 7,
+    "font" : "Arial-BoldMT",
+    "font size" : 3.72,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Alternate Statutory Auditor"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 111,
+    "page number" : 1,
+    "bounding box" : [ 303.628, 55.179, 337.082, 59.334 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 3.72,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Alternate Directors"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 101,
+    "page number" : 1,
+    "bounding box" : [ 73.813, 55.067, 90.964, 59.223 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 3.72,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Chairman"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H6",
+    "id" : 103,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 408.322, 55.021, 455.625, 59.202 ],
+    "heading level" : 6,
+    "font" : "Arial-BoldMT",
+    "font size" : 3.742,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Principal Statutory Auditor"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H",
+    "id" : 108,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 166.485, 55.025, 182.799, 59.18 ],
+    "heading level" : 7,
+    "font" : "Arial-BoldMT",
+    "font size" : 3.72,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Directors"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 109,
+    "page number" : 1,
+    "bounding box" : [ 109.59, 50.743, 216.966, 54.924 ],
+    "font" : "ArialMT",
+    "font size" : 3.742,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Michel J. Goguikian Randolfo Diaz Muñoz José Gerardo Rivas"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 115,
+    "page number" : 1,
+    "bounding box" : [ 257.552, 50.076, 380.312, 54.256 ],
+    "font" : "ArialMT",
+    "font size" : 3.742,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "María de la Concepción Jean Marc Goguikian K Hernando Díaz Candia"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 102,
+    "page number" : 1,
+    "bounding box" : [ 66.21, 49.913, 98.828, 54.093 ],
+    "font" : "ArialMT",
+    "font size" : 3.742,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Michel J. Goguikian"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 106,
+    "page number" : 1,
+    "bounding box" : [ 490.397, 48.792, 528.928, 52.973 ],
+    "font" : "ArialMT",
+    "font size" : 3.742,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Gordy Palmero Castillo"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 104,
+    "page number" : 1,
+    "bounding box" : [ 414.615, 48.35, 449.948, 52.505 ],
+    "font" : "ArialMT",
+    "font size" : 3.72,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Gordy Palmero Luján"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 110,
+    "page number" : 1,
+    "bounding box" : [ 109.586, 42.142, 227.773, 50.6 ],
+    "font" : "ArialMT",
+    "font size" : 3.72,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Asdrúbal Oliveros María Eugenia Lozada Evelyn Rodríguez Branger Vladimir J. Falcón W"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 116,
+    "page number" : 1,
+    "bounding box" : [ 257.546, 41.6, 383.771, 49.873 ],
+    "font" : "ArialMT",
+    "font size" : 3.72,
+    "text color" : "[0.0, 0.0, 0.0]",
+    "content" : "Camilo Feijoo Pérez Álvaro Rodríguez Paz Maritza Meszaros Reyes Rodrigo Moncho Stefani"
+  } ]
+}

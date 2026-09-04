@@ -1,0 +1,36 @@
+{
+  "review_id": "LOCAL-MATERIAL-REVIEW-2026-08-25",
+  "source_directory": "/Users/ricardoprieto/Desktop/INTERNET",
+  "rule": "Local files are reviewed for provenance, scope, licensing, and source-boundary fit before corpus admission.",
+  "materials": [
+    {
+      "filename": "Bulgaria_PCE.HAL.pdf",
+      "sha256": "ccd0398fd649d9ac9161caf4a06ea711fb8b81f2069a80840acaad49286d7eae",
+      "disposition": "INGESTED_VERIFIED",
+      "document_id": "DOC-BGR-CHARLES-MARIE-2017",
+      "reason": "Open HAL deposit; CC BY 4.0 notice; title, authors, DOI, extracted text, and physical anchors verified.",
+      "scope": "Competing research on Bulgaria's 1997 hyperinflation, banking fragility, and foreign exchange."
+    },
+    {
+      "filename": "Second ECRI Report on Bulgaria.pdf",
+      "sha256": "75668a216346deba0ba461329a3ea46eb415123a4c3c41a019648f599dfa0545",
+      "disposition": "REVIEWED_NOT_INGESTED",
+      "reason": "Council of Europe anti-racism report; not a monetary, banking, exchange-rate, fiscal, or legal-authority source for the current HAEIS scope.",
+      "scope": "Potentially relevant only to broader political or institutional context; no economic claim admitted."
+    },
+    {
+      "filename": "lepidus,+02-Edition-n.2_2011.pdf",
+      "sha256": "0d1b49288036fe8bb10bc060307b5d85273d7ac40180635fcf643fbf17e6d103",
+      "disposition": "REVIEWED_NOT_INGESTED",
+      "reason": "Civil-procedure law article; publication provenance and licensing were not established from the local file, and it does not provide monetary or banking evidence for the indexed episodes.",
+      "scope": "Not used for legal conclusions or economic claims."
+    },
+    {
+      "filename": "ssrn-3553746.pdf",
+      "sha256": "99608b991544c691d8ef073a779cf7dd8950db9c6e390e6e50d9ba9ccc9e6bb1",
+      "disposition": "REVIEWED_NOT_INGESTED",
+      "reason": "Article on Bulgarian obligations law; it may inform general legal history but is not an operative monetary statute, court judgment, or source for the current economic cases.",
+      "scope": "No legal or economic claim admitted without an authoritative publication record and defined HAEIS relevance."
+    }
+  ]
+}

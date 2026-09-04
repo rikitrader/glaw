@@ -1,0 +1,9 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"haeis/legal-instrument",
+  "type":"object",
+  "required":["instrument_id","jurisdiction","title","instrument_type","date","official_source_url","status","operative_questions","related_economic_cases","verification_notes"],
+  "properties":{
+    "instrument_id":{"type":"string"},"jurisdiction":{"type":"string"},"title":{"type":"string"},"instrument_type":{"type":"string"},"date":{"type":"string"},"official_source_url":{"type":["string","null"]},"authoritative_source_url":{"type":["string","null"]},"source_class":{"enum":["official","authoritative_reporter_copy","translation","consolidated_text"]},"status":{"enum":["UNVERIFIED","FOUND","VERIFIED","RESTRICTED"]},"local_path":{"type":["string","null"]},"text_path":{"type":["string","null"]},"sha256":{"type":["string","null"]},"citation_anchor":{"type":["string","null"]},"operative_questions":{"type":"array","items":{"type":"string"}},"related_economic_cases":{"type":"array","items":{"type":"string"}},"verification_notes":{"type":"string"}
+  },"additionalProperties":false
+}

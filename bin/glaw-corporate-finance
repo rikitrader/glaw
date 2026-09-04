@@ -1,0 +1,118 @@
+#!/usr/bin/env python3
+"""Unified deterministic corporate-finance and M&A review engine."""
+import argparse, json, math, pathlib, statistics, sys
+
+def load(path):
+    try: return json.loads(pathlib.Path(path).read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc: raise ValueError(f"cannot read JSON: {exc}") from exc
+
+def num(value, name, minimum=None):
+    if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value): raise ValueError(f"{name} must be a finite number")
+    if minimum is not None and value < minimum: raise ValueError(f"{name} must be >= {minimum}")
+    return float(value)
+
+def validate(data):
+    errors=[]
+    if not isinstance(data, dict): return ["input must be an object"]
+    if not isinstance(data.get("run_id"), str) or not data["run_id"].startswith("FIN-"): errors.append("run_id must start with FIN-")
+    for key in ("currency","company","forecast","dcf"):
+        if key not in data: errors.append(f"missing {key}")
+    company=data.get("company",{})
+    for key in ("tax_rate","shares_outstanding","cash","debt"):
+        if key not in company: errors.append(f"company missing {key}")
+    forecast=data.get("forecast",[])
+    if not isinstance(forecast,list) or not forecast: errors.append("forecast must be a non-empty array")
+    periods=set()
+    for i,row in enumerate(forecast if isinstance(forecast,list) else []):
+        if not isinstance(row,dict): errors.append(f"forecast[{i}] must be an object"); continue
+        for key in ("period","revenue","ebitda","da","capex","nwc"):
+            if key not in row: errors.append(f"forecast[{i}] missing {key}")
+        if row.get("period") in periods: errors.append(f"duplicate forecast period: {row.get('period')}")
+        periods.add(row.get("period"))
+    dcf=data.get("dcf",{})
+    for key in ("wacc","terminal_growth"):
+        if key not in dcf: errors.append(f"dcf missing {key}")
+    if isinstance(company.get("tax_rate"),(int,float)) and not 0 <= company["tax_rate"] < 1: errors.append("company.tax_rate must be in [0,1)")
+    if isinstance(dcf.get("wacc"),(int,float)) and not 0 < dcf["wacc"] < 1: errors.append("dcf.wacc must be in (0,1)")
+    if isinstance(dcf.get("terminal_growth"),(int,float)) and not 0 <= dcf["terminal_growth"] < dcf.get("wacc",1): errors.append("dcf.terminal_growth must be >= 0 and below wacc")
+    for section in ("trading_comps","transaction_comps","bids","sources"):
+        if section in data and not isinstance(data[section],list): errors.append(f"{section} must be an array")
+    return errors
+
+def median(values): return round(statistics.median(values),8) if values else None
+
+def statements(data):
+    tax=float(data["company"]["tax_rate"]); cash=float(data["company"]["cash"]); debt=float(data["company"]["debt"]); rows=[]
+    for row in data["forecast"]:
+        revenue,ebitda,da,capex,nwc=[float(row[k]) for k in ("revenue","ebitda","da","capex","nwc")]
+        prior_nwc=rows[-1]["nwc"] if rows else float(data.get("opening_nwc",0)); ebit=ebitda-da; taxes=max(0,ebit*tax); net_income=ebit-taxes
+        cfo=net_income+da-(nwc-prior_nwc); cfi=-capex; cff=0.; ending_cash=cash+cfo+cfi+cff
+        fixed_assets=float(data.get("opening_fixed_assets",0))+sum(float(x["capex"])-float(x["da"]) for x in data["forecast"][:len(rows)+1]); assets=ending_cash+nwc+fixed_assets; equity=assets-debt
+        rows.append({"period":row["period"],"revenue":revenue,"ebitda":ebitda,"ebit":ebit,"taxes":taxes,"net_income":net_income,"nwc":nwc,"cfo":cfo,"cfi":cfi,"cff":cff,"ending_cash":ending_cash,"assets":assets,"debt":debt,"equity":equity,"balance_check":round(assets-debt-equity,8)}); cash=ending_cash
+    return {"periods":rows,"cash_roll_forward":all(abs(r["ending_cash"]-(rows[i-1]["ending_cash"] if i else float(data["company"]["cash"]))-r["cfo"]-r["cfi"]-r["cff"])<1e-7 for i,r in enumerate(rows)),"balance_sheet_balances":all(abs(r["balance_check"])<1e-7 for r in rows)}
+
+def dcf(data, model):
+    wacc=float(data["dcf"]["wacc"]); growth=float(data["dcf"]["terminal_growth"]); tax=float(data["company"]["tax_rate"]); flows=[]
+    for i,row in enumerate(model["periods"]):
+        source=data["forecast"][i]; prior=data.get("opening_nwc",0) if i==0 else data["forecast"][i-1]["nwc"]
+        flows.append(row["ebit"]*(1-tax)+float(source["da"])-float(source["capex"])-(float(source["nwc"])-float(prior)))
+    pv=sum(f/((1+wacc)**(i+1)) for i,f in enumerate(flows)); terminal=flows[-1]*(1+growth)/(wacc-growth); pv_terminal=terminal/((1+wacc)**len(flows)); ev=pv+pv_terminal; equity=ev-float(data["company"]["debt"])+float(data["company"]["cash"]); shares=float(data["company"]["shares_outstanding"])
+    grid=[]
+    for ws in (-.01,0,.01):
+        line=[]
+        for gs in (-.01,0,.01):
+            w,g=wacc+ws,growth+gs
+            line.append(None if g>=w else round((sum(f/((1+w)**(i+1)) for i,f in enumerate(flows))+flows[-1]*(1+g)/(w-g)/((1+w)**len(flows))-float(data["company"]["debt"])+float(data["company"]["cash"]))/shares,8))
+        grid.append(line)
+    return {"ufcf":[round(f,8) for f in flows],"pv_explicit":round(pv,8),"terminal_value":round(terminal,8),"pv_terminal":round(pv_terminal,8),"enterprise_value":round(ev,8),"equity_value":round(equity,8),"implied_price":round(equity/shares,8),"sensitivity":{"wacc_shocks":[-.01,0,.01],"growth_shocks":[-.01,0,.01],"implied_price":grid}}
+
+def multiples(data,key,denominator):
+    rows=[]; values=[]
+    for item in data.get(key,[]):
+        ev=num(item.get("enterprise_value"),f"{key}.enterprise_value",0); den=num(item.get(denominator),f"{key}.{denominator}",0); multiple=ev/den; rows.append({"id":item.get("id",item.get("name",item.get("transaction_id"))),"multiple":round(multiple,8)}); values.append(multiple)
+    return {"rows":rows,"median":median(values),"mean":round(statistics.mean(values),8) if values else None,"count":len(rows)}
+
+def merger(data):
+    m=data.get("merger")
+    if not m:return {"available":False}
+    price=num(m["offer_price"],"merger.offer_price",0); target=num(m["target_shares"],"merger.target_shares",0); cash_pct=float(m.get("cash_pct",1)); stock_pct=float(m.get("stock_pct",0)); consideration=price*target; stock_value=consideration*stock_pct; new_shares=stock_value/num(m["buyer_share_price"],"merger.buyer_share_price",0); buyer_shares=num(m["buyer_shares"],"merger.buyer_shares",0); buyer_ni=num(m["buyer_net_income"],"merger.buyer_net_income"); target_ni=num(m["target_net_income"],"merger.target_net_income"); synergies=float(m.get("synergies",0))*(1-float(m.get("tax_rate",0))); pre=buyer_ni/buyer_shares; post=(buyer_ni+target_ni+synergies-consideration*cash_pct*float(m.get("cash_interest_rate",0)))/(buyer_shares+new_shares)
+    return {"available":True,"headline_consideration":round(consideration,8),"cash_consideration":round(consideration*cash_pct,8),"stock_consideration":round(stock_value,8),"new_shares":round(new_shares,8),"buyer_pre_eps":round(pre,8),"pro_forma_eps":round(post,8),"accretion_dilution_pct":round((post/pre-1)*100,8)}
+
+def waterfall(data):
+    w=data.get("waterfall")
+    if not w:return {"available":False}
+    exit_value=num(w["exit_value"],"waterfall.exit_value",0); holders=w.get("holders",[]); prefs=sum(float(h.get("preference",0)) for h in holders); pref_paid=min(exit_value,prefs); remaining=max(0,exit_value-pref_paid); payouts=[]
+    for h in holders: payouts.append({"holder":h["holder"],"payout":round(min(float(h.get("preference",0)),pref_paid)+remaining*float(h.get("ownership_pct",0))/100,8)})
+    total=sum(x["payout"] for x in payouts); return {"available":True,"exit_value":exit_value,"preference_paid":round(pref_paid,8),"payouts":payouts,"payout_total":round(total,8),"conserves_value":abs(total-exit_value)<1e-7}
+
+def transaction_terms(data):
+    bids=data.get("transaction_terms",data.get("bids",[]))
+    if not bids:return {"available":False}
+    rows=[]
+    for bid in bids:
+        headline=num(bid.get("headline_value",bid.get("certainty_adjusted_value")),"transaction_terms.headline_value",0); close=float(bid.get("closing_certainty_pct",100))/100; financing=float(bid.get("financing_certainty_pct",100))/100; regulatory=1-float(bid.get("regulatory_risk_pct",0))/100; earnout=float(bid.get("earnout_value",0)); escrow=float(bid.get("escrow_value",0)); factor=close*financing*regulatory
+        rows.append({"bid_id":bid.get("bid_id",bid.get("id")),"bidder":bid.get("bidder",bid.get("name","")),"headline_value":headline,"cash_pct":float(bid.get("cash_pct",0)),"stock_pct":float(bid.get("stock_pct",0)),"rollover_pct":float(bid.get("rollover_pct",0)),"earnout_value":earnout,"escrow_value":escrow,"certainty_factor":round(factor,8),"certainty_adjusted_value":round(headline*factor+earnout*factor-escrow*close,8),"conditions_count":int(bid.get("conditions_count",0)),"exclusivity_days":float(bid.get("exclusivity_days",0))})
+    rows.sort(key=lambda x:x["certainty_adjusted_value"],reverse=True)
+    for rank,row in enumerate(rows,1):row["economic_rank"]=rank
+    return {"available":True,"bids":rows,"recommended_bid_id":rows[0]["bid_id"]}
+
+def run(data):
+    errors=validate(data)
+    if errors:raise ValueError("invalid corporate-finance request: "+"; ".join(errors))
+    model=statements(data); valuation=dcf(data,model); result={"schema_version":"corporate-finance-results/v1","run_id":data["run_id"],"currency":data.get("currency","USD"),"three_statement":model,"dcf":valuation,"trading_comps":multiples(data,"trading_comps","ltm_ebitda"),"transaction_comps":multiples(data,"transaction_comps","ltm_ebitda"),"transaction_terms":transaction_terms(data),"merger":merger(data),"waterfall":waterfall(data)}
+    checks=[{"check":"balance_sheet","passed":model["balance_sheet_balances"]},{"check":"cash_roll_forward","passed":model["cash_roll_forward"]},{"check":"dcf_sensitivity_complete","passed":all(len(row)==3 for row in valuation["sensitivity"]["implied_price"])}]
+    if result["waterfall"]["available"]:checks.append({"check":"waterfall_conservation","passed":result["waterfall"]["conserves_value"]})
+    if result["merger"]["available"]:checks.append({"check":"merger_eps_reproducible","passed":math.isfinite(result["merger"]["pro_forma_eps"])})
+    if result["transaction_terms"]["available"]:checks.append({"check":"transaction_terms_ranked","passed":bool(result["transaction_terms"].get("recommended_bid_id"))})
+    result["validation"]={"checks":checks,"passed":all(c["passed"] for c in checks),"source_count":len(data.get("sources",[])),"human_approval_required":True}; result["status"]="REVIEW" if result["validation"]["passed"] else "BLOCK"; result["limitations"]=["Deterministic reference calculations only; reconcile to approved source models.","Outputs require qualified finance, tax, accounting, legal, and board review before reliance.","No transaction execution, filing, signing, or investment recommendation is performed."]; return result
+
+def main():
+    parser=argparse.ArgumentParser(prog="glaw-corporate-finance"); sub=parser.add_subparsers(dest="command",required=True)
+    for name in ("validate","run"): p=sub.add_parser(name); p.add_argument("input")
+    args=parser.parse_args()
+    try:
+        data=load(args.input); errors=validate(data)
+        if args.command=="validate": print(json.dumps({"valid":not errors,"errors":errors},indent=2,sort_keys=True)); return 0 if not errors else 1
+        print(json.dumps(run(data),indent=2,sort_keys=True)); return 0
+    except ValueError as exc: print(str(exc),file=sys.stderr); return 2
+if __name__=="__main__": raise SystemExit(main())

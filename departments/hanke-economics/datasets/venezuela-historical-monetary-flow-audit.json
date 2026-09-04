@@ -1,0 +1,211 @@
+{
+  "dataset_id": "VEN-HISTORICAL-MONETARY-FLOW-AUDIT",
+  "status": "VERIFIED_SOURCE_BOUND_HISTORICAL_ONLY",
+  "rows": [
+    {
+      "year": 2009,
+      "observation_date": "2009-12-31",
+      "previous_observation_date": "2008-12-31",
+      "unit": "XDC (provider-defined)",
+      "source_ids": [
+        "DOC-IMF-MFS-MA-VEN-BM-2026",
+        "DOC-WB-VEN-GDP-GROWTH-2026",
+        "DOC-WB-VEN-INFLATION-2026"
+      ],
+      "inputs": {
+        "observed_money_growth": 0.23331561153943214,
+        "real_growth": -0.030769230769230802,
+        "inflation": 0.27080941446613
+      },
+      "calculation": {
+        "formula": "(1 + real_growth_potential) * (1 + inflation_objective) - 1",
+        "inputs": {
+          "real_growth_potential": -0.030769230769230802,
+          "inflation_objective": 0.27080941446613
+        },
+        "result": 0.23170758632871058,
+        "unit": "ratio",
+        "assumptions": [
+          "The benchmark combines explicitly supplied real-growth and inflation-objective rates.",
+          "Velocity and output behavior are not assumed constant.",
+          "The source literature must define the selected growth and inflation inputs before attribution."
+        ],
+        "source_ids": [
+          "DOC-IMF-MFS-MA-VEN-BM-2026",
+          "DOC-WB-VEN-GDP-GROWTH-2026",
+          "DOC-WB-VEN-INFLATION-2026"
+        ],
+        "observed_money_growth": 0.23331561153943214,
+        "gap": 0.0016080252107215642,
+        "tolerance": 0.005,
+        "interpretation": "ALIGNED_WITHIN_TOLERANCE"
+      },
+      "status": "HISTORICAL_ONLY",
+      "notes": "Deterministic historical comparison only. It does not estimate velocity, establish causality, validate current monetary conditions, or authorize a policy recommendation."
+    },
+    {
+      "year": 2010,
+      "observation_date": "2010-12-31",
+      "previous_observation_date": "2009-12-31",
+      "unit": "XDC (provider-defined)",
+      "source_ids": [
+        "DOC-IMF-MFS-MA-VEN-BM-2026",
+        "DOC-WB-VEN-GDP-GROWTH-2026",
+        "DOC-WB-VEN-INFLATION-2026"
+      ],
+      "inputs": {
+        "observed_money_growth": 0.23546177131465407,
+        "real_growth": -0.015873015873016,
+        "inflation": 0.281874647092039
+      },
+      "calculation": {
+        "formula": "(1 + real_growth_potential) * (1 + inflation_objective) - 1",
+        "inputs": {
+          "real_growth_potential": -0.015873015873016,
+          "inflation_objective": 0.281874647092039
+        },
+        "result": 0.26152743047153026,
+        "unit": "ratio",
+        "assumptions": [
+          "The benchmark combines explicitly supplied real-growth and inflation-objective rates.",
+          "Velocity and output behavior are not assumed constant.",
+          "The source literature must define the selected growth and inflation inputs before attribution."
+        ],
+        "source_ids": [
+          "DOC-IMF-MFS-MA-VEN-BM-2026",
+          "DOC-WB-VEN-GDP-GROWTH-2026",
+          "DOC-WB-VEN-INFLATION-2026"
+        ],
+        "observed_money_growth": 0.23546177131465407,
+        "gap": -0.026065659156876197,
+        "tolerance": 0.005,
+        "interpretation": "BELOW_BENCHMARK"
+      },
+      "status": "HISTORICAL_ONLY",
+      "notes": "Deterministic historical comparison only. It does not estimate velocity, establish causality, validate current monetary conditions, or authorize a policy recommendation."
+    },
+    {
+      "year": 2011,
+      "observation_date": "2011-12-31",
+      "previous_observation_date": "2010-12-31",
+      "unit": "XDC (provider-defined)",
+      "source_ids": [
+        "DOC-IMF-MFS-MA-VEN-BM-2026",
+        "DOC-WB-VEN-GDP-GROWTH-2026",
+        "DOC-WB-VEN-INFLATION-2026"
+      ],
+      "inputs": {
+        "observed_money_growth": 0.4920457293446072,
+        "real_growth": 0.0412186379928315,
+        "inflation": 0.260902123160959
+      },
+      "calculation": {
+        "formula": "(1 + real_growth_potential) * (1 + inflation_objective) - 1",
+        "inputs": {
+          "real_growth_potential": 0.0412186379928315,
+          "inflation_objective": 0.260902123160959
+        },
+        "result": 0.312874791319923,
+        "unit": "ratio",
+        "assumptions": [
+          "The benchmark combines explicitly supplied real-growth and inflation-objective rates.",
+          "Velocity and output behavior are not assumed constant.",
+          "The source literature must define the selected growth and inflation inputs before attribution."
+        ],
+        "source_ids": [
+          "DOC-IMF-MFS-MA-VEN-BM-2026",
+          "DOC-WB-VEN-GDP-GROWTH-2026",
+          "DOC-WB-VEN-INFLATION-2026"
+        ],
+        "observed_money_growth": 0.4920457293446072,
+        "gap": 0.1791709380246842,
+        "tolerance": 0.005,
+        "interpretation": "ABOVE_BENCHMARK"
+      },
+      "status": "HISTORICAL_ONLY",
+      "notes": "Deterministic historical comparison only. It does not estimate velocity, establish causality, validate current monetary conditions, or authorize a policy recommendation."
+    },
+    {
+      "year": 2012,
+      "observation_date": "2012-12-31",
+      "previous_observation_date": "2011-12-31",
+      "unit": "XDC (provider-defined)",
+      "source_ids": [
+        "DOC-IMF-MFS-MA-VEN-BM-2026",
+        "DOC-WB-VEN-GDP-GROWTH-2026",
+        "DOC-WB-VEN-INFLATION-2026"
+      ],
+      "inputs": {
+        "observed_money_growth": 0.5328972380791865,
+        "real_growth": 0.0567986230636832,
+        "inflation": 0.210689956331876
+      },
+      "calculation": {
+        "formula": "(1 + real_growth_potential) * (1 + inflation_objective) - 1",
+        "inputs": {
+          "real_growth_potential": 0.0567986230636832,
+          "inflation_objective": 0.210689956331876
+        },
+        "result": 0.27945547880855726,
+        "unit": "ratio",
+        "assumptions": [
+          "The benchmark combines explicitly supplied real-growth and inflation-objective rates.",
+          "Velocity and output behavior are not assumed constant.",
+          "The source literature must define the selected growth and inflation inputs before attribution."
+        ],
+        "source_ids": [
+          "DOC-IMF-MFS-MA-VEN-BM-2026",
+          "DOC-WB-VEN-GDP-GROWTH-2026",
+          "DOC-WB-VEN-INFLATION-2026"
+        ],
+        "observed_money_growth": 0.5328972380791865,
+        "gap": 0.2534417592706293,
+        "tolerance": 0.005,
+        "interpretation": "ABOVE_BENCHMARK"
+      },
+      "status": "HISTORICAL_ONLY",
+      "notes": "Deterministic historical comparison only. It does not estimate velocity, establish causality, validate current monetary conditions, or authorize a policy recommendation."
+    },
+    {
+      "year": 2013,
+      "observation_date": "2013-12-31",
+      "previous_observation_date": "2012-12-31",
+      "unit": "XDC (provider-defined)",
+      "source_ids": [
+        "DOC-IMF-MFS-MA-VEN-BM-2026",
+        "DOC-WB-VEN-GDP-GROWTH-2026",
+        "DOC-WB-VEN-INFLATION-2026"
+      ],
+      "inputs": {
+        "observed_money_growth": 0.5884307066515175,
+        "real_growth": 0.0130293159609121,
+        "inflation": 0.406394275161589
+      },
+      "calculation": {
+        "formula": "(1 + real_growth_potential) * (1 + inflation_objective) - 1",
+        "inputs": {
+          "real_growth_potential": 0.0130293159609121,
+          "inflation_objective": 0.406394275161589
+        },
+        "result": 0.4247186305382873,
+        "unit": "ratio",
+        "assumptions": [
+          "The benchmark combines explicitly supplied real-growth and inflation-objective rates.",
+          "Velocity and output behavior are not assumed constant.",
+          "The source literature must define the selected growth and inflation inputs before attribution."
+        ],
+        "source_ids": [
+          "DOC-IMF-MFS-MA-VEN-BM-2026",
+          "DOC-WB-VEN-GDP-GROWTH-2026",
+          "DOC-WB-VEN-INFLATION-2026"
+        ],
+        "observed_money_growth": 0.5884307066515175,
+        "gap": 0.16371207611323024,
+        "tolerance": 0.005,
+        "interpretation": "ABOVE_BENCHMARK"
+      },
+      "status": "HISTORICAL_ONLY",
+      "notes": "Deterministic historical comparison only. It does not estimate velocity, establish causality, validate current monetary conditions, or authorize a policy recommendation."
+    }
+  ]
+}

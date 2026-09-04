@@ -1,0 +1,992 @@
+{
+  "registry_id": "VEN-BANK-OFFICIAL-SITES-20260825",
+  "run_date": "2026-08-25",
+  "rule": "Downloaded artifacts remain unreviewed until document-level extraction, date/unit checks, and balance-sheet reconciliation are complete.",
+  "total_banks": 20,
+  "landing_pages": 15,
+  "banks_with_pdfs": 8,
+  "total_pdfs": 66,
+  "results": [
+    {
+      "bank_id": "BANCO-DE-VENEZUELA",
+      "name": "Banco de Venezuela",
+      "financial_page": "https://www.bancodevenezuela.com/index.html%40p%3D5414.html",
+      "landing_page": {
+        "url": "https://www.bancodevenezuela.com/index.html%40p%3D5414.html",
+        "final_url": "https://www.bancodevenezuela.com/index.html%40p%3D5414.html",
+        "http_status": 200,
+        "local_path": "documents/acquired/banking/official/2026-08-25/BANCO-DE-VENEZUELA/financial-information.html",
+        "retrieved_at": "2026-08-26T01:07:35.311Z"
+      },
+      "pdfs": [
+        {
+          "source_url": "https://www.bancodevenezuela.com/files/balances/2016/balance_abril_2016.pdf",
+          "final_url": "https://www.bancodevenezuela.com/files/balances/2016/balance_abril_2016.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 8111395,
+          "sha256": "290bae7c6a928f9044397730852a45fb10cba6d6c283fe92de6c2adf428bf40a",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCO-DE-VENEZUELA/balance_abril_2016.pdf-825b208a14.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.bancodevenezuela.com/files/balances/2016/balance_agosto_2016.pdf",
+          "final_url": "https://www.bancodevenezuela.com/files/balances/2016/balance_agosto_2016.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 7364644,
+          "sha256": "9b839e4f719983841110a3a1d376944c84f0578d24982742c3b5b9d9b9f813a2",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCO-DE-VENEZUELA/balance_agosto_2016.pdf-e33a96401d.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.bancodevenezuela.com/files/balances/2016/balance_diciembre_2016.pdf",
+          "final_url": "https://www.bancodevenezuela.com/files/balances/2016/balance_diciembre_2016.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 10739561,
+          "sha256": "a9191107aa7c3438d3b02c448b9e02d96b9fd7eb743db5eac02accc1c62d7cad",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCO-DE-VENEZUELA/balance_diciembre_2016.pdf-ff1c9e9fa0.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.bancodevenezuela.com/files/balances/2016/balance_enero_2016.pdf",
+          "final_url": "https://www.bancodevenezuela.com/files/balances/2016/balance_enero_2016.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 5733930,
+          "sha256": "4ebd17a98d6926424042e45d5900d5e46e9cbd5d850e424e15ecc192fb8e31e1",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCO-DE-VENEZUELA/balance_enero_2016.pdf-5905024f56.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.bancodevenezuela.com/files/balances/2016/balance_febrero_2016.pdf",
+          "final_url": "https://www.bancodevenezuela.com/files/balances/2016/balance_febrero_2016.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 2178585,
+          "sha256": "40328b871d858ee3a2f12fe6e3da48f84068c7aa51c03c9452feef512919a084",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCO-DE-VENEZUELA/balance_febrero_2016.pdf-6253996ccb.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.bancodevenezuela.com/files/balances/2016/balance_julio_2016.pdf",
+          "final_url": "https://www.bancodevenezuela.com/files/balances/2016/balance_julio_2016.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 11222860,
+          "sha256": "68a94f46002fed60c047bf2ec99207171e0086004ab0a92c2194de6f7e741fe1",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCO-DE-VENEZUELA/balance_julio_2016.pdf-0ddc58a97c.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.bancodevenezuela.com/files/balances/2016/balance_junio_2016.pdf",
+          "final_url": "https://www.bancodevenezuela.com/files/balances/2016/balance_junio_2016.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 9236764,
+          "sha256": "5eadc23a6d4b18365bfb4742ac0ebab1e42ade1212a5054f5fc7b46216ce354f",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCO-DE-VENEZUELA/balance_junio_2016.pdf-9e9d20aaa0.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.bancodevenezuela.com/files/balances/2016/balance_marzo_2016.pdf",
+          "final_url": "https://www.bancodevenezuela.com/files/balances/2016/balance_marzo_2016.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 11820673,
+          "sha256": "3e11bb581c885ff790755c96136f3ab42c3a8b573544540b1db061b5db65dec1",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCO-DE-VENEZUELA/balance_marzo_2016.pdf-47fe7d694b.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.bancodevenezuela.com/files/balances/2016/balance_mayo_2016.pdf",
+          "final_url": "https://www.bancodevenezuela.com/files/balances/2016/balance_mayo_2016.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 6852530,
+          "sha256": "651a9b45a1b01dfce81f119b31d8642f6861298f679366f4fbd28d853455082d",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCO-DE-VENEZUELA/balance_mayo_2016.pdf-dcd44e2269.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.bancodevenezuela.com/files/balances/2016/balance_noviembre_2016.pdf",
+          "final_url": "https://www.bancodevenezuela.com/files/balances/2016/balance_noviembre_2016.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 3175823,
+          "sha256": "1bf55fb88c23d5a03756eda1d65be0c052ecc23ee026b6ea4272e3a763167fb5",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCO-DE-VENEZUELA/balance_noviembre_2016.pdf-3d6771ecc4.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        }
+      ],
+      "errors": [
+        {
+          "url": "https://www.bancodevenezuela.com/files/Tarifario&#32;agosto&#32;2026-3.pdf",
+          "http_status": 200,
+          "content_type": "text/html",
+          "reason": "Response was not a valid PDF artifact; not persisted as evidence."
+        },
+        {
+          "url": "https://www.bancodevenezuela.com/files/Tasas&#32;ALCO&#32;Enero&#32;2026.pdf",
+          "http_status": 200,
+          "content_type": "text/html",
+          "reason": "Response was not a valid PDF artifact; not persisted as evidence."
+        }
+      ],
+      "status": "FOUND_UNREVIEWED"
+    },
+    {
+      "bank_id": "BANESCO",
+      "name": "Banesco Banco Universal",
+      "financial_page": "https://www.banesco.com/somosbanesco/balances/",
+      "landing_page": {
+        "url": "https://www.banesco.com/somosbanesco/balances/",
+        "final_url": "https://www.banesco.com/somosbanesco/balances/",
+        "http_status": 200,
+        "local_path": "documents/acquired/banking/official/2026-08-25/BANESCO/financial-information.html",
+        "retrieved_at": "2026-08-26T01:07:44.999Z"
+      },
+      "pdfs": [
+        {
+          "source_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/01/balance-financiero-diciembre-2024.pdf.pdf",
+          "final_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/01/balance-financiero-diciembre-2024.pdf.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1888412,
+          "sha256": "c8b158015e9ae168dbdf7e399ac00b2038e7e7472a7afddbdcd2b9b7c04b625f",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANESCO/balance-financiero-diciembre-2024.pdf.pdf-0385541fb8.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/02/balance-financiero-enero-2025.pdf",
+          "final_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/02/balance-financiero-enero-2025.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1046575,
+          "sha256": "841106e2c4591ba4eb0a5dfa3b0b1b13a791434a025cfff160c019c7ba522881",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANESCO/balance-financiero-enero-2025.pdf-1182992a78.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/03/balance-financiero-febrero-2025.pdf",
+          "final_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/03/balance-financiero-febrero-2025.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1610824,
+          "sha256": "4e6045fdf4a59a021a4d8a0d909997f15dc21f27186971e864998b4f8afdb925",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANESCO/balance-financiero-febrero-2025.pdf-365619bb17.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/04/balance-financiero-banesco-marzo-2025.pdf",
+          "final_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/04/balance-financiero-banesco-marzo-2025.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1224598,
+          "sha256": "fad9acc91ab1b8c48e7cb5821e25084c5e4106edb493135b2ad7681423e678c5",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANESCO/balance-financiero-banesco-marzo-2025.pdf-65604963ec.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/05/balance-financiero-banesco-abril-2025.pdf",
+          "final_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/05/balance-financiero-banesco-abril-2025.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1574029,
+          "sha256": "3c7ed47eef5ffb8d3533d89ef56f568b1ff96ef80b71f07966be7e92190cd87e",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANESCO/balance-financiero-banesco-abril-2025.pdf-b1154d4268.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/06/balance-financiero-banesco-mayo-2025.pdf",
+          "final_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/06/balance-financiero-banesco-mayo-2025.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1438044,
+          "sha256": "5e26d00aa229413cfd2b144beccc94a16315af6b6a28b2038ff495457b825bde",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANESCO/balance-financiero-banesco-mayo-2025.pdf-3433c1b550.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/07/balance-financiero-banesco-junio-2025.pdf",
+          "final_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/07/balance-financiero-banesco-junio-2025.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1589328,
+          "sha256": "67b4da8365b1367afe1f863724008ceed6d061caff42012bd31d2bb573057469",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANESCO/balance-financiero-banesco-junio-2025.pdf-eeb02fbd64.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/08/balance-financiero-banesco-julio-2025.pdf",
+          "final_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/08/balance-financiero-banesco-julio-2025.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1358196,
+          "sha256": "652b77039d81bb0e4a2a521d398e60609af3bb47321e9c4187656d5e5676ae6a",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANESCO/balance-financiero-banesco-julio-2025.pdf-615519ec63.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/09/balance-financiero-banesco-agosto-2025.pdf",
+          "final_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/09/balance-financiero-banesco-agosto-2025.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1371582,
+          "sha256": "d969f903610ae077dcd0f0e7decdf72f85ce8dfd3a36b126af45a44bfb882e89",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANESCO/balance-financiero-banesco-agosto-2025.pdf-bcd9eb0ecb.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/10/balance-financiero-banesco-septiembre-2025.pdf",
+          "final_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/10/balance-financiero-banesco-septiembre-2025.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 2087967,
+          "sha256": "5ead6b52c98e4401dcc252dd04ec8bc9e468f7cdb75ab8651fdd9844ac26b81a",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANESCO/balance-financiero-banesco-septiembre-2025.pdf-4bc62b74cb.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/11/balance-financiero-banesco-octubre-2025-1.pdf",
+          "final_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/11/balance-financiero-banesco-octubre-2025-1.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1387321,
+          "sha256": "d82d46aed8bd748be18f8e596d152a0b8dcca9c0b7e13d2b48919ec372be3260",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANESCO/balance-financiero-banesco-octubre-2025-1.pdf-a732ea42d2.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/12/balance-financiero-banesco-noviembre-2025.pdf",
+          "final_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/12/balance-financiero-banesco-noviembre-2025.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1283667,
+          "sha256": "d2a4810452513f192a85a64a1cbab8eefc21a3f02c0853f3fa345028eaed45d3",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANESCO/balance-financiero-banesco-noviembre-2025.pdf-ca30956d0b.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        }
+      ],
+      "errors": [],
+      "status": "FOUND_UNREVIEWED"
+    },
+    {
+      "bank_id": "BBVA-PROVINCIAL",
+      "name": "BBVA Provincial",
+      "financial_page": "https://www.provincial.com/personas/informacion-corporativa/informacion-financiera.html",
+      "landing_page": {
+        "url": "https://www.provincial.com/personas/informacion-corporativa/informacion-financiera.html",
+        "final_url": "https://www.provincial.com/personas/informacion-corporativa/informacion-financiera.html",
+        "http_status": 200,
+        "local_path": "documents/acquired/banking/official/2026-08-25/BBVA-PROVINCIAL/financial-information.html",
+        "retrieved_at": "2026-08-26T01:07:49.342Z"
+      },
+      "pdfs": [
+        {
+          "source_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/balance-piblicacion-enero-2026.pdf",
+          "final_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/balance-piblicacion-enero-2026.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1113323,
+          "sha256": "b03fc0ed18f55926515f27611a806972970bff9a74928db425d32b82d5202f65",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BBVA-PROVINCIAL/balance-piblicacion-enero-2026.pdf-d4701c4b5d.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/balance-piblicacion-febrero-2026.pdf",
+          "final_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/balance-piblicacion-febrero-2026.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1100051,
+          "sha256": "588a6c47176117f6fba2d7cfe76cd33b3cb31603b83cf679c7bab008b8d54231",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BBVA-PROVINCIAL/balance-piblicacion-febrero-2026.pdf-7316fbc31f.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/balance-pubicacion-2025.pdf",
+          "final_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/balance-pubicacion-2025.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 13175950,
+          "sha256": "8d2729476df90d3820ffb02d6855259baf5cf804bd71c4638b46418c81a5b84d",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BBVA-PROVINCIAL/balance-pubicacion-2025.pdf-076c73a4d8.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/balance-publicacion-abril-2026.pdf",
+          "final_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/balance-publicacion-abril-2026.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1119711,
+          "sha256": "0cffcbf6f54abc16867f9e99456d43c80e68e8b87db5c69ab3d1e3277ae67872",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BBVA-PROVINCIAL/balance-publicacion-abril-2026.pdf-fbd254dad8.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/balance-publicacion-julio-2026.pdf",
+          "final_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/balance-publicacion-julio-2026.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1076749,
+          "sha256": "f53b55169e356a9013d97fb019d9c51e261df982629d5a0b0d80cc0a12621963",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BBVA-PROVINCIAL/balance-publicacion-julio-2026.pdf-c643824249.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/balance-publicacion-junio-2026.pdf",
+          "final_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/balance-publicacion-junio-2026.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1113743,
+          "sha256": "d5baeb7b07ed384a213ef3f93ba1ca91764664d2f1204a06e9671030c363f16f",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BBVA-PROVINCIAL/balance-publicacion-junio-2026.pdf-fe325a0cb1.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/balance-publicacion-marzo-2026.pdf",
+          "final_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/balance-publicacion-marzo-2026.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1111381,
+          "sha256": "cdaec9e91cd5ded5149a37cb4e72414ed012c09c0c3540c1d9d3569be709f543",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BBVA-PROVINCIAL/balance-publicacion-marzo-2026.pdf-38c3badcf2.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/balance-publicacion-mayo-2026.pdf",
+          "final_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/balance-publicacion-mayo-2026.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1161339,
+          "sha256": "9ca4f7702972096d52d2629ef16999e2190415fd7f4e8e90efa5cd5e82934011",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BBVA-PROVINCIAL/balance-publicacion-mayo-2026.pdf-73ca7700e1.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/convocatoria-asamblea-ordinaria-septiembre-2026.pdf",
+          "final_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/convocatoria-asamblea-ordinaria-septiembre-2026.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 530968,
+          "sha256": "f981e101bfb06f307ee77860a23bbebde3db239cd173606e2b6db8a025a3d8a8",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BBVA-PROVINCIAL/convocatoria-asamblea-ordinaria-septiembre-2026.pdf-36eb9818df.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/informe-financiero-1ersemestre-2025.pdf",
+          "final_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/informe-financiero-1ersemestre-2025.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1909142,
+          "sha256": "69554a326d778b0828d278c87a341b8bf83264efd86dd913fb399e40092f1a67",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BBVA-PROVINCIAL/informe-financiero-1ersemestre-2025.pdf-708ae29e1d.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/informe-financiero-2dosemestre-2025.pdf",
+          "final_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/informe-financiero-2dosemestre-2025.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1813065,
+          "sha256": "58d1d3ac7e73cd34f932e2e5111ee80163436347258711c9c458b330305b3666",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BBVA-PROVINCIAL/informe-financiero-2dosemestre-2025.pdf-69bcacaae1.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/aviso-accionistas-10.08.26.pdf",
+          "final_url": "https://www.provincial.com/content/dam/public-web/venezuela/documents/aviso-accionistas-10.08.26.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 664465,
+          "sha256": "239f7469b75ada8b91d64841571e97a6e2b6d48531602bfe0627602fad32eef9",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BBVA-PROVINCIAL/aviso-accionistas-10.08.26.pdf-9ffc35e745.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        }
+      ],
+      "errors": [],
+      "status": "FOUND_UNREVIEWED"
+    },
+    {
+      "bank_id": "MERCANTIL",
+      "name": "Mercantil Banco Universal",
+      "financial_page": "https://www.mercantilbanco.com/acerca-de-mercantil/informacion-financiera",
+      "landing_page": {
+        "url": "https://www.mercantilbanco.com/acerca-de-mercantil/informacion-financiera",
+        "final_url": "https://www.mercantilbanco.com/acerca-de-mercantil/informacion-financiera",
+        "http_status": 200,
+        "local_path": "documents/acquired/banking/official/2026-08-25/MERCANTIL/financial-information.html",
+        "retrieved_at": "2026-08-26T01:07:59.275Z"
+      },
+      "pdfs": [],
+      "errors": [],
+      "status": "LANDING_PAGE_ACQUIRED"
+    },
+    {
+      "bank_id": "BNC",
+      "name": "Banco Nacional de Crédito",
+      "financial_page": "https://d3q4nr72nuserl.cloudfront.net/Reportes-Financieros-BNC",
+      "landing_page": {
+        "url": "https://d3q4nr72nuserl.cloudfront.net/Reportes-Financieros-BNC",
+        "final_url": "https://d3q4nr72nuserl.cloudfront.net/Reportes-Financieros-BNC",
+        "http_status": 200,
+        "local_path": "documents/acquired/banking/official/2026-08-25/BNC/financial-information.html",
+        "retrieved_at": "2026-08-26T01:07:59.894Z"
+      },
+      "pdfs": [
+        {
+          "source_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/annual-financial-statements-audited/es/diciembre-2025.pdf?sfvrsn=27996595_2",
+          "final_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/annual-financial-statements-audited/es/diciembre-2025.pdf?sfvrsn=27996595_2",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 4623063,
+          "sha256": "51c7d6fee05e7ac8864c880017aaf3173afc8b8fdaee7590e50176a8c8b55eb0",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BNC/diciembre-2025.pdf-ffc219410b.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/annual-reports/diciembre-2025.pdf?sfvrsn=dafc9f7c_2",
+          "final_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/annual-reports/diciembre-2025.pdf?sfvrsn=dafc9f7c_2",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 29062123,
+          "sha256": "3e02aef3f3df187a38889ab1b0b688a6bf0c7b16034ffbd007c125baaaa3b66b",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BNC/diciembre-2025.pdf-725133248d.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/half-year-financial-statements-audited/es/junio--2025.pdf?sfvrsn=4aa5d9b8_2",
+          "final_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/half-year-financial-statements-audited/es/junio--2025.pdf?sfvrsn=4aa5d9b8_2",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 817441,
+          "sha256": "ab3752c28be3bca16f14c58b4babb19f97037f9997035b29055816230ed6a4e0",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BNC/junio--2025.pdf-b3d2d68d96.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/half-year-financial-statements-audited/es/junio--2026.pdf?sfvrsn=633860ae_2",
+          "final_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/half-year-financial-statements-audited/es/junio--2026.pdf?sfvrsn=633860ae_2",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 847902,
+          "sha256": "5cc87eaed942889b1ad6d1cebb1bb4f7e11159f506172d44e9ea8c128fd6ca19",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BNC/junio--2026.pdf-ffb5541f8b.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/half-year-reports/junio--2026.pdf?sfvrsn=4725697a_2",
+          "final_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/half-year-reports/junio--2026.pdf?sfvrsn=4725697a_2",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 26062903,
+          "sha256": "a307a08deeaccc47fd5af6015a5fa71e59da0b8a50c45fc620d4282bb3c95908",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BNC/junio--2026.pdf-9816bade36.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/monthly-balances/2023/febrero-2026.pdf?sfvrsn=6d2393a9_2",
+          "final_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/monthly-balances/2023/febrero-2026.pdf?sfvrsn=6d2393a9_2",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 831560,
+          "sha256": "8919af23a54192521d408b2cfd2dac5d14cfe97ee3898122958c224687fde948",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BNC/febrero-2026.pdf-70d38b99c2.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/monthly-balances/2023/julio-2026.pdf?sfvrsn=6d546d59_2",
+          "final_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/monthly-balances/2023/julio-2026.pdf?sfvrsn=6d546d59_2",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 2302051,
+          "sha256": "44155b0f22a373e7b368444272c541a5a73a6384ac356f0a5765f626c1a340f6",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BNC/julio-2026.pdf-5badfe9d25.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/monthly-balances/2023/junio-2026.pdf?sfvrsn=e703eedb_2",
+          "final_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/monthly-balances/2023/junio-2026.pdf?sfvrsn=e703eedb_2",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1817166,
+          "sha256": "29341d874e4620087e72333c51a4914b572ae56c3aa20cd287f99d8a35a9a0c8",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BNC/junio-2026.pdf-e594176b11.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/monthly-balances/2023/marzo-2026.pdf?sfvrsn=88e99e8d_2",
+          "final_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/monthly-balances/2023/marzo-2026.pdf?sfvrsn=88e99e8d_2",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1166421,
+          "sha256": "d39c72169bfcd805a191d7c4f81a3ce14a79c59ae32c1318cc9acea10f250328",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BNC/marzo-2026.pdf-7cf866ee03.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/monthly-balances/2023/mayo-2026.pdf?sfvrsn=4fed7156_2",
+          "final_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/monthly-balances/2023/mayo-2026.pdf?sfvrsn=4fed7156_2",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 10591096,
+          "sha256": "0f2963fe6ef53ee6168f8d2aa9524badcdba78dd13fcf97397619aa793cb686c",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BNC/mayo-2026.pdf-add5d7aa92.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/annual-financial-statements-audited/es/diciembre-2020.pdf?sfvrsn=a882cda3_2",
+          "final_url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/annual-financial-statements-audited/es/diciembre-2020.pdf?sfvrsn=a882cda3_2",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 931561,
+          "sha256": "1fba0e3fa83409b75f5f9e3e3c3da58a30b36bfda400b0a40e2ff9c466c642b0",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BNC/diciembre-2020.pdf-3909d29e97.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        }
+      ],
+      "errors": [
+        {
+          "url": "https://d3q4nr72nuserl.cloudfront.net/docs/default-source/documents/finalcial-reports/half-year-reports/junio--2025.pdf?sfvrsn=cf69b521_2",
+          "error": "terminated"
+        }
+      ],
+      "status": "FOUND_UNREVIEWED"
+    },
+    {
+      "bank_id": "BANCAMIGA",
+      "name": "Bancamiga",
+      "financial_page": "https://www.bancamiga.com/",
+      "landing_page": {
+        "url": "https://www.bancamiga.com/",
+        "final_url": "https://www.bancamiga.com/",
+        "http_status": 403,
+        "local_path": "documents/acquired/banking/official/2026-08-25/BANCAMIGA/financial-information.html",
+        "retrieved_at": "2026-08-26T01:10:43.119Z"
+      },
+      "pdfs": [],
+      "errors": [],
+      "status": "LANDING_PAGE_ACQUIRED"
+    },
+    {
+      "bank_id": "BANCO-DEL-TESORO",
+      "name": "Banco del Tesoro",
+      "financial_page": "https://www.bt.gob.ve/",
+      "landing_page": null,
+      "pdfs": [],
+      "errors": [
+        {
+          "url": "https://www.bt.gob.ve/",
+          "error": "fetch failed"
+        }
+      ],
+      "status": "ACQUISITION_REQUIRED"
+    },
+    {
+      "bank_id": "BANCARIBE",
+      "name": "Bancaribe",
+      "financial_page": "https://www.bancaribe.com.ve/cifras-e-informes",
+      "landing_page": {
+        "url": "https://www.bancaribe.com.ve/cifras-e-informes",
+        "final_url": "https://www.bancaribe.com.ve/cifras-e-informes",
+        "http_status": 200,
+        "local_path": "documents/acquired/banking/official/2026-08-25/BANCARIBE/financial-information.html",
+        "retrieved_at": "2026-08-26T01:10:44.162Z"
+      },
+      "pdfs": [
+        {
+          "source_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2025/02/Banco_del-Caribe_C.A._Banco_Universal_Semestral_Dic-Jun2024-003.pdf",
+          "final_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2025/02/Banco_del-Caribe_C.A._Banco_Universal_Semestral_Dic-Jun2024-003.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 2176463,
+          "sha256": "0aade58355ad83f1917b9d5a92e4a4998e47eaefa32be4d543a819f8f50faa5c",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCARIBE/Banco_del-Caribe_C.A._Banco_Universal_Semestral_Dic-Jun2024-003.pdf-347aebc608.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2025/03/Bancaribe-Memoria-y-Cuenta-II-semestre-2024.pdf",
+          "final_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2025/03/Bancaribe-Memoria-y-Cuenta-II-semestre-2024.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 15154177,
+          "sha256": "42a2d6aef7aeb6050967751bbe7cfcce5c2319247fb8b39ef21157231ed0f6d6",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCARIBE/Bancaribe-Memoria-y-Cuenta-II-semestre-2024.pdf-a9fda7a572.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2025/08/Informe_Individual_Auditado_Jun-2025_Dic-2024.pdf",
+          "final_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2025/08/Informe_Individual_Auditado_Jun-2025_Dic-2024.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1938372,
+          "sha256": "809028f1c24306253aa9a611659b257791c8ffd4c60645effe67f8f5b3fd0d2f",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCARIBE/Informe_Individual_Auditado_Jun-2025_Dic-2024.pdf-a0885cdb90.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2025/09/Bancaribe-MYC-ISEM25.pdf",
+          "final_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2025/09/Bancaribe-MYC-ISEM25.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 7693051,
+          "sha256": "ba0f1a9d6dcaafdaf2f35a4386b71d6adc77e3f86ea7ece62f78649d4fa94126",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCARIBE/Bancaribe-MYC-ISEM25.pdf-c93ecd9b72.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2026/02/Informe_Individual_Auditado-al-31-12-2025.pdf",
+          "final_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2026/02/Informe_Individual_Auditado-al-31-12-2025.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1783586,
+          "sha256": "1304167ee747446d06a5dd00279dd499f9b2d6398620aee2b0139ff8d4f3ed95",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCARIBE/Informe_Individual_Auditado-al-31-12-2025.pdf-0b3c47beba.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2026/02/Memoria-y-Cuenta-2do.-Semestre-2025-2.pdf",
+          "final_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2026/02/Memoria-y-Cuenta-2do.-Semestre-2025-2.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 10659159,
+          "sha256": "e882ba3bcd87f090b6fdddbaeb9d214e3c09995e3697f5a35fa6e2cce0f376c0",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCARIBE/Memoria-y-Cuenta-2do.-Semestre-2025-2.pdf-bddd47245c.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2026/03/Balance-Bancaribe_Febrero.pdf",
+          "final_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2026/03/Balance-Bancaribe_Febrero.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 4386033,
+          "sha256": "43ddea4c2c99519acad6e03c175d1536aad571c681d24b41f2944cfad6638790",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCARIBE/Balance-Bancaribe_Febrero.pdf-34ac421858.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2026/04/Balance-Bancaribe_Marzo.pdf",
+          "final_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2026/04/Balance-Bancaribe_Marzo.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 4486778,
+          "sha256": "e45166f420a09f270d18dafe7f133711cb033a6383d1f64d0d48f3a7325a2f9b",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCARIBE/Balance-Bancaribe_Marzo.pdf-5f56fb5e7e.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2026/05/Balance-Bancaribe-Abril.pdf",
+          "final_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2026/05/Balance-Bancaribe-Abril.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 155306,
+          "sha256": "4f827894a88639794c28345728773012a6271cae2ca3747960a8af5b1afe38b1",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCARIBE/Balance-Bancaribe-Abril.pdf-2bcf91fcf0.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2026/06/Balance-Bancaribe_Mayo.pdf",
+          "final_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2026/06/Balance-Bancaribe_Mayo.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 175664,
+          "sha256": "af18fea333c4cd8de804271bff6d68db006c63f5afe36ca44f4029a40c25b640",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCARIBE/Balance-Bancaribe_Mayo.pdf-e188fccdd3.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2026/07/Balance-Bancaribe_Junio_2026.pdf",
+          "final_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2026/07/Balance-Bancaribe_Junio_2026.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 1861716,
+          "sha256": "fd038eda6a1f772a7bb3eb0b3df0f768debc96df46c7a96572c4f556fb072063",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCARIBE/Balance-Bancaribe_Junio_2026.pdf-b6e4742b6d.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2026/08/Balance-Bancaribe_Julio.pdf",
+          "final_url": "https://d3olc33sy92l9e.cloudfront.net/wp-content/uploads/2026/08/Balance-Bancaribe_Julio.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 3067126,
+          "sha256": "09180553ff948a117808e73ccedcb549db48362f0d2ffeffde1bf3ff31cf567b",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCARIBE/Balance-Bancaribe_Julio.pdf-66d23e6a27.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        }
+      ],
+      "errors": [],
+      "status": "FOUND_UNREVIEWED"
+    },
+    {
+      "bank_id": "BANCO-EXTERIOR",
+      "name": "Banco Exterior",
+      "financial_page": "https://www.bancoexterior.com/",
+      "landing_page": {
+        "url": "https://www.bancoexterior.com/",
+        "final_url": "https://www.bancoexterior.com/",
+        "http_status": 200,
+        "local_path": "documents/acquired/banking/official/2026-08-25/BANCO-EXTERIOR/financial-information.html",
+        "retrieved_at": "2026-08-26T01:10:51.133Z"
+      },
+      "pdfs": [],
+      "errors": [],
+      "status": "LANDING_PAGE_ACQUIRED"
+    },
+    {
+      "bank_id": "BANPLUS",
+      "name": "Banplus",
+      "financial_page": "https://www.banplus.com/estados-financieros/",
+      "landing_page": {
+        "url": "https://www.banplus.com/estados-financieros/",
+        "final_url": "https://www.banplus.com/estados-financieros/",
+        "http_status": 200,
+        "local_path": "documents/acquired/banking/official/2026-08-25/BANPLUS/financial-information.html",
+        "retrieved_at": "2026-08-26T01:10:52.261Z"
+      },
+      "pdfs": [
+        {
+          "source_url": "https://www.banplus.com/wp-content/uploads/2025/02/Terminos-y-Condiciones-de-Website-Banplus.pdf",
+          "final_url": "https://www.banplus.com/wp-content/uploads/2025/02/Terminos-y-Condiciones-de-Website-Banplus.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 529591,
+          "sha256": "b7a834e1ebfc9bc4657eae0c85ea3ec6b7788f9938625956ed2ff1879dddba8f",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANPLUS/Terminos-y-Condiciones-de-Website-Banplus.pdf-0ebd594faf.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.banplus.com/wp-content/uploads/2026/01/Tasas-pasivas-012026.pdf",
+          "final_url": "https://www.banplus.com/wp-content/uploads/2026/01/Tasas-pasivas-012026.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 586115,
+          "sha256": "f349d678c1b553b8d346ec752c5951afe27bea5de3e88821ea4f84096d28fc4a",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANPLUS/Tasas-pasivas-012026.pdf-73653bc65d.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.banplus.com/wp-content/uploads/2026/02/Tasas-activas-012026.pdf",
+          "final_url": "https://www.banplus.com/wp-content/uploads/2026/02/Tasas-activas-012026.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 607311,
+          "sha256": "3ffff2b181769531663704f1a10b1101038c7ef8490851bdc633ed66bc9f1eb8",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANPLUS/Tasas-activas-012026.pdf-3a8f49ee39.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://www.banplus.com/wp-content/uploads/2026/08/Tarifas-y-comisiones-31072026-Web.pdf",
+          "final_url": "https://www.banplus.com/wp-content/uploads/2026/08/Tarifas-y-comisiones-31072026-Web.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 614315,
+          "sha256": "e1b00698f185093abd12fdeba6420c91fa23a3edb399d88026ea30f7eef9d461",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANPLUS/Tarifas-y-comisiones-31072026-Web.pdf-e662969b9e.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        }
+      ],
+      "errors": [],
+      "status": "FOUND_UNREVIEWED"
+    },
+    {
+      "bank_id": "FONDO-COMUN",
+      "name": "Banco Fondo Común",
+      "financial_page": "https://www.bfc.com.ve/",
+      "landing_page": {
+        "url": "https://www.bfc.com.ve/",
+        "final_url": "https://www.bfc.com.ve/",
+        "http_status": 200,
+        "local_path": "documents/acquired/banking/official/2026-08-25/FONDO-COMUN/financial-information.html",
+        "retrieved_at": "2026-08-26T01:10:56.978Z"
+      },
+      "pdfs": [],
+      "errors": [],
+      "status": "LANDING_PAGE_ACQUIRED"
+    },
+    {
+      "bank_id": "VENEZOLANO-DE-CREDITO",
+      "name": "Banco Venezolano de Crédito",
+      "financial_page": "https://www.bvc.com.ve/",
+      "landing_page": null,
+      "pdfs": [],
+      "errors": [
+        {
+          "url": "https://www.bvc.com.ve/",
+          "error": "fetch failed"
+        }
+      ],
+      "status": "ACQUISITION_REQUIRED"
+    },
+    {
+      "bank_id": "BANCO-PLAZA",
+      "name": "Banco Plaza",
+      "financial_page": "https://www.bancoplaza.com/tu-banco/informacion-financiera/estados-financieros/",
+      "landing_page": {
+        "url": "https://www.bancoplaza.com/tu-banco/informacion-financiera/estados-financieros/",
+        "final_url": "https://www.bancoplaza.com/tu-banco/informacion-financiera/estados-financieros/",
+        "http_status": 200,
+        "local_path": "documents/acquired/banking/official/2026-08-25/BANCO-PLAZA/financial-information.html",
+        "retrieved_at": "2026-08-26T01:11:00.629Z"
+      },
+      "pdfs": [
+        {
+          "source_url": "https://plaza-portal-prod-2026.s3.amazonaws.com/wp-content/uploads/2026/06/Reporte-Social-Banco-Plaza-2025-1.pdf",
+          "final_url": "https://plaza-portal-prod-2026.s3.amazonaws.com/wp-content/uploads/2026/06/Reporte-Social-Banco-Plaza-2025-1.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 2584832,
+          "sha256": "04905265ffc9548b5639457eb211cba4aca41d275bf546d92e43c8f02eb46782",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCO-PLAZA/Reporte-Social-Banco-Plaza-2025-1.pdf-90433cd5ef.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        }
+      ],
+      "errors": [],
+      "status": "FOUND_UNREVIEWED"
+    },
+    {
+      "bank_id": "BANCRECER",
+      "name": "Bancrecer",
+      "financial_page": "https://www.bancrecer.com.ve/",
+      "landing_page": {
+        "url": "https://www.bancrecer.com.ve/",
+        "final_url": "https://validate.perfdrive.com/119b26c11a5150c6c640fb785b44ed88/?ssa=591ef598-18fd-4e74-88fc-5c0fe09240a4&ssb=66629277871&ssc=https%3A%2F%2Fwww.bancrecer.com.ve%2F&ssi=2bba4794-czd2-467c-891a-186734b7fe56&ssk=botmanager_support@radware.com&ssm=67040659584073080104991541432322&ssn=e57a2884cc24d216fb4697c053ee8ee5ec5bf6f1b9aa-c057-412e-8ba245&sso=ba60d9c4-cb3dc377832394ae58f2acb2496a362527878e9c1a1da72c&ssp=42215241441787759161178771108261835&ssq=58011440666195421876306661652176121096538&ssr=MjQuNzMuMTk1LjIzOA==&sst=node&ssu=&ssv=&ssw=&ssx=eyJyZCI6ImJhbmNyZWNlci5jb20udmUiLCJfX3V6bWYiOiI3ZjkwMDBmNmYxYjlhYS1jMDU3LTQxMmUtODljNC1jYjNkYzM3NzgzMjMxLTE3ODc3MDY2NjE2MzYwLTAwNGEwNzYxNTVkZTBiMGRkNGExMCIsInV6bXgiOiI3ZmMwMDBhYTAwN2NiYS1hZjNmLTQzNjItYTc1Yi1jNzcwMTFlYzRlNDExLTE3ODc3MDY2NjE2MzUwLTAwMmJlMDk0NDFhMGEyN2QzNTQxMCJ9",
+        "http_status": 200,
+        "local_path": "documents/acquired/banking/official/2026-08-25/BANCRECER/financial-information.html",
+        "retrieved_at": "2026-08-26T01:11:01.797Z"
+      },
+      "pdfs": [],
+      "errors": [],
+      "status": "LANDING_PAGE_ACQUIRED"
+    },
+    {
+      "bank_id": "SOFITASA",
+      "name": "Sofitasa",
+      "financial_page": "https://www.sofitasa.com/",
+      "landing_page": {
+        "url": "https://www.sofitasa.com/",
+        "final_url": "https://www.sofitasa.com/",
+        "http_status": 200,
+        "local_path": "documents/acquired/banking/official/2026-08-25/SOFITASA/financial-information.html",
+        "retrieved_at": "2026-08-26T01:11:02.187Z"
+      },
+      "pdfs": [],
+      "errors": [],
+      "status": "LANDING_PAGE_ACQUIRED"
+    },
+    {
+      "bank_id": "BANCO-CARONI",
+      "name": "Banco Caroní",
+      "financial_page": "https://www.bancocaroni.com.ve/",
+      "landing_page": {
+        "url": "https://www.bancocaroni.com.ve/",
+        "final_url": "https://www.bancocaroni.com.ve/",
+        "http_status": 403,
+        "local_path": "documents/acquired/banking/official/2026-08-25/BANCO-CARONI/financial-information.html",
+        "retrieved_at": "2026-08-26T01:11:02.250Z"
+      },
+      "pdfs": [],
+      "errors": [],
+      "status": "LANDING_PAGE_ACQUIRED"
+    },
+    {
+      "bank_id": "BANFANB",
+      "name": "Banfanb",
+      "financial_page": "https://www.banfanb.com.ve/",
+      "landing_page": null,
+      "pdfs": [],
+      "errors": [
+        {
+          "url": "https://www.banfanb.com.ve/",
+          "error": "fetch failed"
+        }
+      ],
+      "status": "ACQUISITION_REQUIRED"
+    },
+    {
+      "bank_id": "BANCO-ACTIVO",
+      "name": "Banco Activo",
+      "financial_page": "https://www.bancoactivo.com/",
+      "landing_page": {
+        "url": "https://www.bancoactivo.com/",
+        "final_url": "https://www.bancoactivo.com/",
+        "http_status": 200,
+        "local_path": "documents/acquired/banking/official/2026-08-25/BANCO-ACTIVO/financial-information.html",
+        "retrieved_at": "2026-08-26T01:11:12.998Z"
+      },
+      "pdfs": [
+        {
+          "source_url": "https://contacto.bancoactivo.com/files/varios/Calendario%20Bancario%20Activo%202026.pdf",
+          "final_url": "https://contacto.bancoactivo.com/files/varios/Calendario%20Bancario%20Activo%202026.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 885412,
+          "sha256": "99d409ebe91ea85f225bfc2d686358c016215d4e5607d9696e033f52d17cf385",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCO-ACTIVO/Calendario_20Bancario_20Activo_202026.pdf-c9ddcb54da.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://contacto.bancoactivo.com/files/varios/2807%20DEF%20Oferta%20publica%202023%20servicios%20ACTIVOS%20Y%20PASIVOS%20RV%20CJ%20MARGENES.pdf",
+          "final_url": "https://contacto.bancoactivo.com/files/varios/2807%20DEF%20Oferta%20publica%202023%20servicios%20ACTIVOS%20Y%20PASIVOS%20RV%20CJ%20MARGENES.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 640551,
+          "sha256": "132bcda6cf18785a01d0c4c7cd6d7ca956d9c2c4f536bcf6395864cbc1eae034",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCO-ACTIVO/2807_20DEF_20Oferta_20publica_202023_20servicios_20ACTIVOS_20Y_20PASIVOS_20RV_20CJ_20MARGENES.pdf-09c3da5426.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://contacto.bancoactivo.com/files/varios/2807%20oferta%20publica%20servicios%20electronicos%20con%20logo%2021072023%20RV%20CJ%20MARGENES.pdf",
+          "final_url": "https://contacto.bancoactivo.com/files/varios/2807%20oferta%20publica%20servicios%20electronicos%20con%20logo%2021072023%20RV%20CJ%20MARGENES.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 752701,
+          "sha256": "92345656de6047074c721ac3b106b0f3e47b297f71e45f1d736b6c0be519b6ce",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCO-ACTIVO/2807_20oferta_20publica_20servicios_20electronicos_20con_20logo_2021072023_20RV_20CJ_20MARGENES.pdf-c8da1682dd.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        },
+        {
+          "source_url": "https://contacto.bancoactivo.com/files/varios/Tips%20de%20seguridad%20Activo%20Banco%20Universal.pdf",
+          "final_url": "https://contacto.bancoactivo.com/files/varios/Tips%20de%20seguridad%20Activo%20Banco%20Universal.pdf",
+          "http_status": 200,
+          "content_type": "application/pdf",
+          "bytes": 102228,
+          "sha256": "3aaeaa576bd190395d447155a7baf7eb77a2353fbb473dadb2442a67902507c0",
+          "local_path": "documents/acquired/banking/official/2026-08-25/BANCO-ACTIVO/Tips_20de_20seguridad_20Activo_20Banco_20Universal.pdf-aa42f45a66.pdf",
+          "verification_status": "DOWNLOADED_UNREVIEWED"
+        }
+      ],
+      "errors": [],
+      "status": "FOUND_UNREVIEWED"
+    },
+    {
+      "bank_id": "BANCO-DELSUR",
+      "name": "Banco del Sur",
+      "financial_page": "https://www.delsur.com.ve/",
+      "landing_page": null,
+      "pdfs": [],
+      "errors": [
+        {
+          "url": "https://www.delsur.com.ve/",
+          "error": "fetch failed"
+        }
+      ],
+      "status": "ACQUISITION_REQUIRED"
+    },
+    {
+      "bank_id": "100-BANCO",
+      "name": "100% Banco",
+      "financial_page": "https://www.100banco.com/",
+      "landing_page": null,
+      "pdfs": [],
+      "errors": [
+        {
+          "url": "https://www.100banco.com/",
+          "error": "fetch failed"
+        }
+      ],
+      "status": "ACQUISITION_REQUIRED"
+    }
+  ]
+}

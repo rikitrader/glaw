@@ -1,0 +1,2 @@
+export function safeJsonParse<T>(input:string):T { try { return JSON.parse(input) as T; } catch { throw new Error('invalid JSON source; rejected before rule evaluation'); } }
+export function rejectExecutableRulePayload(input:Record<string,unknown>):string[] { const text=JSON.stringify(input); const errors:string[]=[]; if(/eval\s*\(|Function\s*\(|javascript:/i.test(text)) errors.push('executable code in rule payload rejected'); if(Object.keys(input).some((key)=>key.startsWith('__'))) errors.push('prototype-pollution key rejected'); return errors; }

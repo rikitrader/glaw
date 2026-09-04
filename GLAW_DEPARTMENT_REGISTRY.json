@@ -1,0 +1,24 @@
+{
+  "schemaVersion":"0.1.0",
+  "status":"target-registry",
+  "sourceOfTruth":"lib/firm-roster.md plus department/skill files",
+  "departments":[
+    {"id":"firm-management","name":"Firm Management","status":"confirmed"},
+    {"id":"corporate","name":"Corporate","status":"confirmed"},
+    {"id":"securities-funds","name":"Securities and Funds","status":"confirmed"},
+    {"id":"tax","name":"Tax and IRS","status":"confirmed"},
+    {"id":"accounting-finance","name":"Accounting and Finance","status":"confirmed"},
+    {"id":"litigation","name":"Litigation and Disputes","status":"confirmed"},
+    {"id":"investigations","name":"Investigations Bureau","status":"confirmed"},
+    {"id":"intelligence","name":"Intelligence Super-Structure","status":"confirmed"},
+    {"id":"regulatory-compliance","name":"Regulatory and Compliance","status":"confirmed"},
+    {"id":"private-client","name":"Private Client and Restructuring","status":"confirmed"},
+    {"id":"legal-research","name":"Legal Research","status":"confirmed"},
+    {"id":"evidence","name":"Evidence and Document Intelligence","status":"proposed"},
+    {"id":"insurance-risk","name":"Insurance and Risk","status":"confirmed"},
+    {"id":"property-claims","name":"GLAW Property Claims","status":"active-development","path":"departments/property-claims","humanReviewRequired":true},
+    {"id":"arbitration-appeals","name":"Arbitration and Appeals","status":"proposed"}
+  ],
+  "pluginContract": {"requiredPacks":["agents","skills","workflows","rag","documents","validators"],"status":"proposed"},
+  "departmentPacks":[{"id":"hanke-applied-economics","name":"Hanke Applied Economics","path":"departments/hanke-economics","status":"active-development","humanReviewRequired":true}]
+}

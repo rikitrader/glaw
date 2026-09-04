@@ -1,0 +1,315 @@
+{
+  "file name" : "balance-publicacion-2021.pdf.pdf",
+  "number of pages" : 12,
+  "author" : null,
+  "title" : null,
+  "creation date" : null,
+  "modification date" : "D:20220211214216Z",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 8,
+    "page number" : 1,
+    "bounding box" : [ -0.021, 0.04, 719.246, 959.04 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile1.png"
+  }, {
+    "type" : "text block",
+    "id" : 9,
+    "page number" : 1,
+    "bounding box" : [ 15.681, 893.6, 394.891, 946.629 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 1,
+      "bounding box" : [ 13.253, 893.94, 229.883, 945.704 ],
+      "source" : "balance-publicacion-2021.pdf_images/imageFile2.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 10,
+    "page number" : 1,
+    "bounding box" : [ 610.65, 886.03, 690.162, 920.444 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile3.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 12,
+    "page number" : 2,
+    "bounding box" : [ -0.09, 0.648, 719.076, 959.281 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile4.png"
+  }, {
+    "type" : "text block",
+    "id" : 13,
+    "page number" : 2,
+    "bounding box" : [ 10.806, 893.6, 390.016, 946.629 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 2,
+      "bounding box" : [ 13.253, 893.94, 229.883, 945.704 ],
+      "source" : "balance-publicacion-2021.pdf_images/imageFile5.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 14,
+    "page number" : 2,
+    "bounding box" : [ 610.65, 886.03, 690.162, 920.444 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile6.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 16,
+    "page number" : 3,
+    "bounding box" : [ -0.02, 0.646, 719.145, 959.279 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile7.png"
+  }, {
+    "type" : "text block",
+    "id" : 17,
+    "page number" : 3,
+    "bounding box" : [ 10.806, 893.6, 390.016, 946.629 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 3,
+      "bounding box" : [ 13.253, 893.94, 229.883, 945.704 ],
+      "source" : "balance-publicacion-2021.pdf_images/imageFile8.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 18,
+    "page number" : 3,
+    "bounding box" : [ 610.65, 886.03, 690.162, 920.444 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile9.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 21,
+    "page number" : 4,
+    "bounding box" : [ -0.02, 0.646, 719.145, 959.279 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile10.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 24,
+    "page number" : 5,
+    "bounding box" : [ -0.02, 0.646, 719.145, 959.279 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile13.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 26,
+    "page number" : 6,
+    "bounding box" : [ 0.0, 0.04, 719.25, 959.04 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile16.png"
+  }, {
+    "type" : "text block",
+    "id" : 27,
+    "page number" : 6,
+    "bounding box" : [ 12.806, 895.1, 392.016, 948.129 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 6,
+      "bounding box" : [ 13.753, 894.69, 230.383, 946.454 ],
+      "source" : "balance-publicacion-2021.pdf_images/imageFile17.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 28,
+    "page number" : 6,
+    "bounding box" : [ 596.55, 890.28, 676.062, 924.694 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile18.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 31,
+    "page number" : 7,
+    "bounding box" : [ 0.0, 8.273, 719.25, 959.043 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile19.png"
+  }, {
+    "type" : "text block",
+    "id" : 32,
+    "page number" : 7,
+    "bounding box" : [ 14.806, 897.9, 394.016, 950.929 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 7,
+      "bounding box" : [ 16.953, 898.19, 233.583, 949.954 ],
+      "source" : "balance-publicacion-2021.pdf_images/imageFile20.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 33,
+    "page number" : 7,
+    "bounding box" : [ 602.55, 891.48, 682.062, 925.894 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile21.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 34,
+    "page number" : 7,
+    "bounding box" : [ 9.26, 11.606, 703.46, 75.475 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile22.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 36,
+    "page number" : 8,
+    "bounding box" : [ 0.0, 20.276, 719.25, 959.036 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile23.png"
+  }, {
+    "type" : "text block",
+    "id" : 37,
+    "page number" : 8,
+    "bounding box" : [ 14.806, 893.32, 394.016, 946.349 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 8,
+      "bounding box" : [ 16.953, 891.34, 233.583, 943.104 ],
+      "source" : "balance-publicacion-2021.pdf_images/imageFile24.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 38,
+    "page number" : 8,
+    "bounding box" : [ 602.55, 890.34, 682.062, 924.754 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile25.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 39,
+    "page number" : 8,
+    "bounding box" : [ 6.974, 12.749, 703.444, 76.618 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile26.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 44,
+    "page number" : 9,
+    "bounding box" : [ 9.0, 0.0, 64.92, 792.0 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile27.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 43,
+    "page number" : 9,
+    "bounding box" : [ 64.92, 0.0, 199.44, 792.0 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile28.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 42,
+    "page number" : 9,
+    "bounding box" : [ 199.44, 0.0, 333.96, 792.0 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile29.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 41,
+    "page number" : 9,
+    "bounding box" : [ 333.96, 0.0, 468.48, 792.0 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile30.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 40,
+    "page number" : 9,
+    "bounding box" : [ 468.48, 0.0, 603.0, 792.0 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile31.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 46,
+    "page number" : 10,
+    "bounding box" : [ 0.0, 0.04, 719.25, 959.04 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile32.png"
+  }, {
+    "type" : "text block",
+    "id" : 47,
+    "page number" : 10,
+    "bounding box" : [ 14.56, 896.91, 393.77, 949.939 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 10,
+      "bounding box" : [ 16.708, 894.93, 233.338, 946.694 ],
+      "source" : "balance-publicacion-2021.pdf_images/imageFile33.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 48,
+    "page number" : 10,
+    "bounding box" : [ 608.97, 893.05, 688.482, 927.464 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile34.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 50,
+    "page number" : 11,
+    "bounding box" : [ 0.1, 0.04, 719.25, 959.0 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile35.png"
+  }, {
+    "type" : "text block",
+    "id" : 51,
+    "page number" : 11,
+    "bounding box" : [ 13.06, 896.41, 392.27, 949.439 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 11,
+      "bounding box" : [ 16.708, 894.93, 233.338, 946.694 ],
+      "source" : "balance-publicacion-2021.pdf_images/imageFile36.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 52,
+    "page number" : 11,
+    "bounding box" : [ 614.64, 893.05, 694.152, 927.464 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile37.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 54,
+    "page number" : 12,
+    "bounding box" : [ 0.1, 0.079, 719.25, 959.039 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile38.png"
+  }, {
+    "type" : "text block",
+    "id" : 55,
+    "page number" : 12,
+    "bounding box" : [ 12.806, 895.1, 392.016, 948.129 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 12,
+      "bounding box" : [ 13.753, 894.69, 230.383, 946.454 ],
+      "source" : "balance-publicacion-2021.pdf_images/imageFile39.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 56,
+    "page number" : 12,
+    "bounding box" : [ 603.3, 890.28, 682.812, 924.694 ],
+    "source" : "balance-publicacion-2021.pdf_images/imageFile40.png"
+  } ]
+}

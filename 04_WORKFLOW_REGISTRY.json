@@ -1,0 +1,9 @@
+{
+  "schemaVersion": "0.1.0",
+  "workflows": [
+    {"id":"workflow:matter-pipeline","status":"confirmed","trigger":"matter new / local operator","steps":["intake","strategy","structure","draft","adversarial","file","docket","matter-retro"],"execution":"local CLI and skills"},
+    {"id":"workflow:legal-governor","status":"confirmed","trigger":"authenticated Worker API","steps":["analyze","research","verify","red-team","human-review"],"execution":"Worker records evidence; local CLI performs provider work"},
+    {"id":"workflow:x402-paid-work","status":"confirmed","trigger":"REST or MCP request","steps":["catalog","quote","charge","settle","authorize","execute"],"execution":"Cloudflare Worker + D1"},
+    {"id":"workflow:agent-life-cron","status":"confirmed","trigger":"Cloudflare cron 0 5 * * *","steps":["scan paid-agent state","apply life rules","persist result"],"execution":"Cloudflare Worker"}
+  ]
+}

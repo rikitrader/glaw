@@ -1,0 +1,13 @@
+levels:
+  1: Original data or primary publication
+  2: Official institution
+  3: Peer-reviewed research
+  4: High-quality research institution
+  5: Reputable journalism or interview
+  6: Secondary commentary
+  7: Unverified source
+rules:
+  - A Hanke attribution requires a source authored or co-authored by Hanke and a verified citation anchor.
+  - A quotation requires page or section when available; otherwise attribution is blocked pending verification.
+  - Data values retain source, unit, date, vintage, and revision metadata.
+  - Conflicting primary sources remain conflicting; do not silently select a preferred value.

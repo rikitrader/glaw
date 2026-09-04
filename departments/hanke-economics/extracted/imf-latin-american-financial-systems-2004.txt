@@ -1,0 +1,1158 @@
+V            Latin American Financial Systems:
+             Crises and Reforms
+
+
+
+     imited access to bank credit and uncertainty
+L    about financial system stability have been seri-
+ous constraints on Latin America’s growth and have
+                                                             Figure 5.1. Latin America: Boom and Bust
+                                                             in Credit Growth
+contributed to volatility during the past decade. Fi-        (In percent)
+nancial liberalization and the promise of reforms
+spurred credit growth during the early part of the
+1990s, but bank lending slowed after a series of                400
+banking crises in the mid-1990s (Figure 5.1). Subse-            350
+quently, bank restructuring and regulatory reforms
+were successful in strengthening banking systems in             300
+a number of countries. Reforms were less successful             250
+in others, however, particularly in addressing the
+specific vulnerabilities associated with dollarization          200
+of banks’ assets and liabilities. Another round of              150
+pressures hit many Latin American banking systems
+                                                                100
+in the late 1990s and early in the present decade.
+   This section seeks to explain how these financial             50
+sector developments have been related to the struc-                0
+tural characteristics of Latin American economies,                     1991      93          95         97         99        2001
+and to highlight the channels through which finan-
+cial sector shortcomings may have affected Latin                  Source: IMF, International Financial Statistics, various issues.
+America’s macroeconomic performance. The eco-
+nomic literature has long recognized the existence of
+a close connection between financial development
+and economic growth, although the long-running de-
+bate about the direction of causality of this linkage      structural weaknesses that affected most countries in
+has yet to be fully resolved.115 The analysis pre-         the region during the 1990s. The following subsec-
+sented here does not attempt a formal econometric          tion explains how many of these weaknesses were at
+investigation of this relationship, but it provides fur-   the source of the banking crises in the 1990s. The
+ther evidence that financial systems do matter for         section finally draws some lessons from Latin Amer-
+economic performance. Hence, a critical element of         ica’s experience about the best way to promote fi-
+a strategy to strengthen Latin America’s growth            nancial system stability and intermediation, which
+going forward must be continued efforts to ensure fi-      are key ingredients for sustained growth.
+nancial system soundness and promote deeper finan-
+cial intermediation.
+   This section opens by presenting the key features       Key Characteristics of Latin
+of financial intermediation in Latin America today.
+Banking systems are highly concentrated, intermedi-
+                                                           American Financial Systems
+ation margins are high, and the scale of bank lending      Market Structure
+is low relative to economic activity. It then discusses
+how the shape of banking systems in Latin America             Latin American financial systems are still largely
+today is the result of a number of underlying, often       bank-based, with security markets mostly small and
+                                                           illiquid. In an environment of uncertainty and eco-
+                                                           nomic instability, banks have retained a comparative
+  115See the recent discussion in Fischer (2003).          advantage in the costly collection and processing of
+
+
+                                                                                                                                     63
+
+
+                         ©International Monetary Fund. Not for Redistribution
+     V            LATIN AMERICAN FINANCIAL SYSTEMS: CRISES AND REFORMS
+
+
+
+
+         Table 5.1. International Comparison: Financial Systems, 2003
+         (In percent of GDP)
+
+
+
+                                                                                          Outstanding Domestic Debt
+                                                                                             Securities, by Issuer2
+                                                                                    __________________________________
+                                              Banking System1
+                                      ____________________________                                        Financial Public              Stock Market       Money
+                                      Deposits     Loans      Assets                Total   Corporate institutions sector               Capitalization      (M2)
+
+            Argentina                    25.3            14.2          44.8          25.2           8.4          4.6           12.2         144.4           30.1
+            Brazil                       30.6            21.5          74.6          47.2           0.4          8.8           38.0          41.0           29.7
+            Chile                        38.1            68.5          79.8          52.9           9.9         14.0           29.0         100.0           38.4
+            Colombia                     19.7            19.7          37.9           ...           ...          ...            ...          12.5           29.1
+            Ecuador3                     16.8            15.1          22.0          24.8           2.5          ...           22.4          15.7           23.4
+            Mexico                       25.5            16.1          52.3          13.9           1.3          0.6           12.0          23.9           29.1
+            Paraguay                     24.6            17.6          31.7           ...           ...          ...            ...           5.5           31.4
+            Peru                         14.5            13.7          19.2           7.1           2.3          1.6            3.0          23.9           29.6
+            Uruguay                      36.4            64.3          82.6           ...           ...          ...            ...           1.6           67.7
+            Venezuela3                   20.0             8.1          23.9           1.3           ...          ...            1.3           9.2           22.1
+            Memorandum items:
+            Advanced economies
+            United States                31.7            60.8          67.7         155.3          23.1         89.0           43.2         123.0          66.7
+            Japan                       121.2           122.9         146.5         169.8          18.9         29.1          121.7          67.9         133.5
+            Euro area                    85.4           140.6         303.9          97.1           7.4         32.4           57.3          50.8          92.2
+            Emerging markets
+            Malaysia                     96.0           117.7         129.6          86.9          39.9         11.1           35.7         157.0         102.6
+            Thailand                     90.5            90.9         106.2          37.4           5.1          9.4           22.9          76.8          96.7
+            Korea, Republic of           76.6            98.9         114.0          82.5          29.0         32.8           20.7          53.5          76.7
+
+               Sources: National bank supervisory agencies and central banks; Bankscope (industrial countries’ banking systems); Bank for International Settlements
+            (outstanding domestic debt securities, except for Chile and Ecuador); Federación Iberoamericana de Bolsas de Valores.
+               1Only deposit-taking commercial banks are considered.
+               2At book value, except for Chile and Ecuador, for which market values are provided. (For these two countries, the corporate figures include financial
+
+            institutions.)
+               3Domestic debt securities data are as of 2000.
+
+
+
+
+     information that is central to financial intermedia-                                   resents no more than a third of bank assets. Again
+     tion. International experience suggests that market-                                   excepting Chile, the ratio of bank credit to economic
+     based finance typically develops only after banking                                    activity remains much smaller than in the bank-
+     systems have matured, information has become                                           based financial systems of the advanced economies
+     more easily available, and financial operations and                                    of the euro area and Japan, or of the emerging mar-
+     services have turned more complex.116 In most Latin                                    ket economies of Asia.
+     American countries, the private sector’s use of bond                                      The pattern of credit growth in Latin America has
+     and equity markets to raise finance remains limited,                                   been marked by boom-bust cycles. Credit growth
+     relative to its recourse to banks, although, in some                                   was particularly rapid in the early 1990s in most
+     countries, pension reforms have begun to encourage                                     countries, but collapsed in many cases after banking
+     broader capital market development.                                                    crises in the mid-1990s and has since remained sub-
+        Despite their prominence, banking systems re-                                       dued (see Figure 5.1). Argentina, Brazil, and Mexico
+     main relatively small compared with GDP, and the                                       all follow this pattern, although in Mexico the
+     depth of intermediation is particularly low (Ta-                                       growth of other sources of financial intermediation
+     ble 5.1). Deposit-to-GDP ratios are less than 50 per-                                  has partly compensated for the lack of bank activity
+     cent, compared with typical ratios of 90 percent in                                    (Box 5.1). Chile has managed to achieve a more
+     East Asian emerging markets. Moreover, bank credit                                     even pattern of credit growth, because of its longer
+     represents only a fraction of bank assets. In most                                     track record of macroeconomic stability and earlier
+     countries, excepting Chile and Ecuador, lending rep-                                   financial sector reform.
+                                                                                               Over this period, a rising share of bank balance
+                                                                                            sheets has been absorbed by government securities.
+         116See, for example, Rojas-Suarez and Weisbrod (1994).                             During the second half of the 1990s, many banks in
+
+
+64
+
+
+                                   ©International Monetary Fund. Not for Redistribution
+                                                      Key Characteristics of Latin American Financial Systems
+
+
+
+
+                     Box 5.1. Finance for Growth: Experiences in Chile and Mexico
+
+   Chile and Mexico, the fastest-growing Latin Ameri-          dearth of creditworthy private clients made it easier and
+can economies in the 1990s, provide useful case studies        more cost-effective for banks to concentrate on a few
+of the role of banks in the financing of the economy. The      clients (the government and large corporations) than to
+large, developed Chilean banking system has assets             take on additional credit risk via broad-based lending.
+about the size of the country’s GDP. The rapid adoption        This has not been the case in Chile, where the low level
+of a strong institutional framework following a banking        of public debt ensures that private borrowers do not
+crisis in the early 1980s helped credit to recover quickly     have to compete with the public sector for bank fi-
+and expand by more than a third during the 1990s, to           nance. Finally, institutional factors and judicial proce-
+reach 70 percent of GDP in 2000, while financial liberal-      dures have in the past complicated loan recovery in
+ization and innovation continued. In Mexico, the bank-         Mexico, hampering lending, especially to lesser-known
+ing crisis of the mid-1990s cut the size of the banking        small and medium-sized enterprises (SMEs). Legisla-
+system by more than half. Credit to the private sector de-     tion enacted in early 2003 aims at providing creditors
+clined drastically, from 45 percent to 14 percent of GDP       with greater legal certainty by improving their ability to
+during 1994–2002, and is only now beginning to recover         recover collateral. In addition, the resolution of issues
+in the wake of continued financial sector reforms.             related to banks’ restructuring of debt in mid-2004 has
+   In both countries, weak regulatory structures were at       removed an important source of uncertainty in the fi-
+the root of banking crises. In Chile (in the mid-1970s)        nancial system.
+and in Mexico (in the late 1980s and early 1990s), in-            Strong and tightly regulated Chilean banks are en-
+terest rates were liberalized, entry barriers removed, the     gaged in financing across the corporate sector. In
+banking system privatized, and restrictions on capital         Chile, SMEs have as much access to banks for finance
+flows reduced. In each country, financial liberalization       as large firms (see table). This has not been the case in
+was followed by a large jump in bank credit to the pri-        Mexico, where bank credit has so far remained princi-
+vate sector. This credit boom, however, occurred in the        pally reserved for large firms. In Mexico, access to
+context of a weak regulatory and supervisory frame-            credit is available mainly to high-grade borrowers,
+work, leading to banking crises, in the early 1980s in         with most of the financing short term and, thus, not
+Chile (at a cost now estimated at 30 percent of GDP)           available for the financing of investment. In Chile as
+and in the mid-1990s in Mexico (at a cost now esti-            well, short-term lending represents a large share of
+mated at 20 percent of GDP). In both cases, the crises         banks’ credit portfolios, mostly as a result of tight
+contributed to a decline in bank credit and spurred re-        prudential regulation to limit maturity mismatches.
+structuring and consolidation in the sector, with in-          Banks’ high degree of risk aversion limits the access
+creasing participation by foreign banks.                       of other segments of the economy to credit in both
+   Banking crises required an overhaul of banking regu-        countries. The availability of mortgage credit from
+lation. Drawing on the lessons learned from mistakes           banks in Mexico has fallen short of what is needed to
+that led to the crisis, Chile adopted a stringent banking      satisfy its acute housing needs. However, mortgage
+law in 1986 that seriously limits risk taking by banks by      lending (including through specialized institutions)
+restricting related lending, requiring banks to rate the       has recently begun to grow rapidly.
+quality of their investments, and strengthening capital-          Sources of financing other than bank credit have come
+adequacy requirements. The law also sets clear workout         to play a significant role in the expansion of activity in
+procedures for the resolution of bank insolvencies and         both countries (see figure). In Mexico, in particular,
+stipulates that lender-of-last-resort facilities will not be   nonbank institutions—including mutual funds, pension
+used to bail out distressed banks. Market discipline is
+also encouraged through strong disclosure requirements
+for banks and a limited deposit-insurance system. In
+Mexico, the regulatory regime initially focused on mea-          Chile and Mexico: Beneficiaries of Bank Credit
+sures aimed at averting a collapse of the banking sys-           (In percent of total)
+tem, including provision of financial assistance to dis-
+tressed banks and debtor-support programs. Since 1999,
+Mexico has embarked on a new round of structural re-                                          Chile              Mexico
+forms, accelerating the resolution of troubled banks and
+bringing the regulatory framework closer to best inter-             Large firms                 34                  44
+national practices.                                                 SMEs                        31                  13
+   Structural impediments have delayed the resumption               Consumers                    8                  15
+of bank lending in Mexico. The lack of liquidity of the             Mortgage                    17                  22
+notes issued by the government to banks in exchange                 Other                       10                   6
+for nonperforming loans following the crisis restricted
+                                                                       Sources: Central banks of Chile and Mexico.
+the pool of loanable funds and, thus, credit and eco-
+                                                                       Note: SMEs denotes small and medium-sized enterprises.
+nomic activity. In addition, the sizable demand for re-
+sources from the public sector and the perception of a
+
+
+
+
+                                                                                                                                65
+
+
+                    ©International Monetary Fund. Not for Redistribution
+     V         LATIN AMERICAN FINANCIAL SYSTEMS: CRISES AND REFORMS
+
+
+
+
+                                                           Box 5.1 (concluded)
+
+         funds, leasing and factoring firms, and savings and loan
+         cooperatives—have grown rapidly in recent years, sig-            Mexico and Chile: Sources of Financing
+         nificantly increasing their shares of credit to the con-         (Percent)
+         sumer sector and for mortgages. Large exporters rely
+         heavily on foreign financing, including from parent
+         companies. Not surprisingly, the sectors that led growth
+         in the second half of the 1990s were those with access             100
+         to credit—the export and consumer sectors. In other                                        Others
+         sectors, suppliers remain the main source of financing              80                     Equity-investment
+         for most firms. More than 80 percent of firms granted                                      funds
+         some type of financing to clients at the start of 2003. In                                 Suppliers
+         Chile as well, nonbank financial institutions participate           60                     Bank credit
+                                                                                                    Retained earnings
+         significantly in financing activity. Private pension funds
+         are major collectors of savings and now hold assets in              40
+         excess of 50 percent of GDP. Although large shares of
+         this portfolio are invested in the banking system and in
+                                                                             20
+         public debt, a small but increasing share is going into
+         bonds issued by Chilean companies. Again, finance re-
+         mains reserved for large firms in the tradable sectors,               0
+                                                                                      Mexico                            Chile
+         leaving whole segments of the economy with limited
+         access to finance for growth. Equity markets represent a
+         larger source of funding for Chilean than for Mexican                 Source:World Bank (2003).
+         companies. In both countries, retained earnings still
+         play a major part in the funding of investment.
+
+
+
+
+     Latin America replaced nonperforming loans with                    of fresh capital and new management rather than
+     sizable portfolios of government bonds. For public                 opening new institutions. In Brazil, for example, for-
+     banks, this typically occurred through restructuring,              eign banks grew from an insignificant presence in
+     with bad credits being replaced by government secu-                the mid-1990s to hold one-fifth of deposits and pro-
+     rities—for example, in Mexico after the 1994 bank-                 vide one-fourth of credit by the end of 2000. In Ar-
+     ing crisis. In the private sector, this shift was often a          gentina, Chile, Mexico, Paraguay, Peru, and
+     reaction to experience with high default rates on                  Venezuela, foreign banks owned more than half of
+     lending to households and corporations and to a                    banking-system assets by 2000 (Table 5.2).
+     tightening of supervisory standards after setbacks to                 A few large banks typically account for the lion’s
+     stabilization and reforms in the mid-1990s. As banks               share of the system’s assets. Bank restructuring that
+     shared in the costs of these crises, they sought to                occurred during the course of the 1990s also led to
+     hold significant amounts of high-yielding, appar-                  increasing concentration. Typically, more than two-
+     ently safer government bonds. For example, Argen-                  thirds of bank assets are concentrated in the 10
+     tine banks’ holdings of such bonds more than dou-                  largest institutions, which hold about 70 percent of
+     bled in 1995; and in Brazil, about a third of banks’               deposits and provide 75 percent of credit.
+     assets were invested in government bonds by                           The largest institutions often remain in govern-
+     2000.117                                                           ment hands, however. This is particularly true of
+        The process of bank restructuring that occurred                 Brazil and Argentina, where a few public banks still
+     during the 1990s led to rising foreign ownership of                account for a significant share of banking-system as-
+     Latin American banking systems. During this                        sets and credit, notwithstanding privatization during
+     process, legal and regulatory limitations on the activ-            the 1990s (Table 5.3). As in many banking systems
+     ities of foreign banks were relaxed or eliminated in               around the world, a long history of government in-
+     most countries. Foreign banks gained market shares,                tervention has left traces that are still pervasive
+     mostly by taking control of domestic banks in need                 today. Many Latin American public banks were en-
+                                                                        dowed with the role of providing credit to targeted
+                                                                        segments of the economy, often poorer regions and
+                                                                        sectors that had been left outside conventional chan-
+       117See Catão (1997) for a detailed discussion of the Argentine   nels of financing (e.g., housing, regional develop-
+     experience.                                                        ment, agriculture). Such operations remain impor-
+
+
+66
+
+
+                             ©International Monetary Fund. Not for Redistribution
+                                                                      Key Characteristics of Latin American Financial Systems
+
+
+
+
+ Table 5.2. Selected Latin American Countries: Structure of Banking Systems
+
+                                    Argentina      Brazil     Chile    Colombia Ecuador          Mexico      Paraguay        Peru   Uruguay Venezuela
+
+    Institutions
+       Number of banks                   71         135        28           32         40           35           22          15            23     39
+                                                                                        (In percent)
+    Concentration—Top 10 banks
+      Share of total assets              62          70        76           67         82           95           79           95           87     81
+      Share of total deposits            71          77        78           68         79           90           79           96           85     36
+      Share of total credit              66          70        80           65         78           93           59           94           88     64
+    Foreign bank participation
+      Number of banks1                   28          27        18           11         ...          20           17           12           16     21
+                                                                                        (In percent)
+    Share of total assets                54          28        60           21         ...          82           81          64            35     68
+    Share of total deposits              48          21        47           20         ...          82           86          62            34     67
+    Share of total credit                46          25        45           21         ...          77           74          62            35     72
+
+      Sources: National central banks and bank supervisory agencies; and IMF staff calculations.
+      Note:This table considers only deposit-taking universal banks. Data are for 2000, except for Uruguay and Mexico, for which 2002 data are used.
+      1Domestic banks with foreign participation or control. Offshore banks are not included.
+
+
+
+
+tant, although questions have been raised about the
+cost-effectiveness and governance of such activities,                                 Table 5.3. Selected Latin American
+and alternative mechanisms—including community-                                       Countries: Assets and Loans of Public Banks
+based microfinance—are being developed to deliver                                     (In percent of total banking system)
+credit to such sectors.
+   The high degree of concentration suggests that
+lack of competition among banks may be a concern                                                                         Assets                   Loans
+(Box 5.2). It is generally agreed in the economics lit-
+erature that banks need to enjoy some degree of mar-                                     Costa Rica                        66                          66
+                                                                                         Brazil                            33                          38
+ket power to earn rents that compensate them for risk                                    Argentina                         23                          23
+taking in the financing of projects on which they                                        Colombia                          21                          16
+have only imperfect information, and that economies                                      Chile                             16                          12
+of scale are important in containing costs and taking                                    Mexico                             7                           9
+full advantage of new information technologies. A
+                                                                                             Source: National bank supervisory agencies.
+lack of competition, however, may also result in ex-
+cessively high prices or quantity rationing for cus-
+tomers. In small, advanced economies, too, the
+banking system is often highly concentrated, but
+banks typically face strong competition from securi-                              Chile’s experience has demonstrated, such reforms
+ties markets and nonbank financial intermediaries,                                can accelerate the development of domestic equity
+as well as offshore markets. In Latin America, how-                               and corporate bond markets by providing a substan-
+ever, financing from securities markets is usually                                tial and growing local investor base. These pension
+available to only a limited range of top-quality cor-                             funds can, however, also be highly vulnerable targets
+porate borrowers.                                                                 for governments looking for financing. For example,
+   Reforms to introduce private pension systems pro-                              Argentina’s pension funds have suffered heavy
+vided an important impetus to financial system de-                                losses after being forced to invest sizable shares of
+velopment in Latin America during the 1990s. Chile                                their portfolios in government paper.
+was the first to replace a state-run, pay-as-you-go
+pension system with a privately managed, individu-
+ally funded system in 1981. Its lead was subse-                                   Bank Profitability
+quently followed in Argentina, Bolivia, Brazil,                                     Latin American banks’ profitability improved dur-
+Colombia, Ecuador, Mexico, and elsewhere. As                                      ing the 1990s, but their returns on assets and equity
+
+
+                                                                                                                                                            67
+
+
+                          ©International Monetary Fund. Not for Redistribution
+     V          LATIN AMERICAN FINANCIAL SYSTEMS: CRISES AND REFORMS
+
+
+
+
+                                                      Box 5.2. Do Brazilian Banks Compete?
+
+            The Brazilian banking system is large, with the                 banks has gradually declined in Brazil, by a quarter
+         share of its assets in GDP comparable to that in the               since 1995, and market concentration in the provision
+         United States, but it provides less than half the loans            of credit is high. The 10 largest institutions account
+         in proportion to GDP (see table). Brazilian banks are              for about two-thirds of bank assets and provide three-
+         significant players in capital markets and invest about            quarters of all loans, and foreign banks account for
+         30 percent of their assets in securities, which is about           about one-fifth of deposits.
+         the same as the share of loans in their portfolio. Secu-              Despite the relatively small size of their loan portfo-
+         rity financing is mainly directed to the public sector,            lio, banks rely on interest-earning activities as a major
+         since most of these securities are government debt is-             source of income. Bank margins relative to assets are
+         sues bearing attractively high yields. The number of               high compared with those in other Latin American
+                                                                            economies. They are much higher than those in the
+                                                                            United States and the euro area, where heightened
+                                                                            competition triggered by the globalization of banking
+           Bank Profitability, 2000                                         services has driven spreads down.
+           (In percent of assets)                                              Concentration and the high interest margins in the
+                                                                            Brazilian banking sector suggest the possibility that
+                                                                            noncompetitive forces are at work. Using panel data,
+                                             Latin United                   Belaisch (2003) finds that banks’ revenues are not par-
+                                     Brazil America1 States EU-11           ticularly sensitive to their costs, suggesting that banks
+                                                                            are under limited pressure from competition. Size is
+              Loans                  30.00   68.00      68.00    52.00      found to be an important determinant of bank revenues,
+              Net interest                                                  a finding that is consistent with the presence of market
+                margin                5.20     4.20      3.10      1.90     power. This would make it difficult for small banks to
+              Pretax profit           1.12     1.08      1.83      0.70     compete and be profitable. There is also evidence of
+                                                                            noncompetitive behavior by the system’s largest, state-
+                 Source: Belaisch (2003).
+                                                                            owned banks.
+                 Note: EU-11 denotes the following 11 countries that were
+              members of the European Union in 2000: Austria, Belgium,
+                                                                               Elements of a noncompetitive market structure in the
+              Finland, France, Germany, Ireland, Italy, Luxembourg, the     Brazilian banking system could contribute to explain-
+              Netherlands, Portugal, and Spain.                             ing why intermediation is relatively low and costly.
+                 1Argentina, Chile, Colombia, Mexico, and Peru.             When banks enjoy market power, their incentives to
+                                                                            offer lower interest spreads are small, thus discourag-
+                                                                            ing higher lending volumes.
+
+
+
+     remain below those in industrial countries (Ta-                        missions from asset management and fees from secu-
+     ble 5.4). This has occurred despite high interest mar-                 rities trading. In most of Latin America, these lines of
+     gins on private lending. Interest spreads on lending                   business remain limited.
+     to the private sector have declined somewhat during                       Cost inefficiencies have also depressed profitabil-
+     the past decade but remain high by international                       ity. In times of high inflation, buoyant bank revenues
+     standards. Intermediation margins—the difference                       from holdings of government bonds indexed to the
+     between banks’ revenues from lending and the remu-                     overnight interest rate far exceeded the less frequently
+     neration of deposits—averaged more than 50 per-                        adjusted interest rate paid on deposits, providing
+     centage points in Brazil, Peru, and Uruguay during                     banks with an easy source of profits. Although incen-
+     the 1990s (Figure 5.2).                                                tives for cost reduction have increased since inflation
+        In part, the weak profitability performance reflects                was brought down across the region, banks’ operating
+     a continued reliance on interest earnings, both from                   costs remain high, amounting to more than 90 percent
+     lending and from large holdings of government bonds                    of operating income, about a third higher than in
+     as the main source of revenue (see Table 5.4). In in-                  banks in advanced countries. Part of the explanation
+     dustrial countries, heightened competition triggered                   for higher costs is that banking is labor intensive and
+     by the opening of financial systems and the globaliza-                 labor productivity has been low: in Brazilian banks,
+     tion of banking services has driven spreads down on                    for example, productivity was estimated at only about
+     most traditional income-generating activities. Interest                40 percent of that in U.S. banks.118 Labor costs absorb
+     margins have also declined relative to other sources of                a large part of banks’ revenues, even compared with
+     revenue in emerging Asia. To offset the impact of
+     lower intermediation margins on profitability, banks
+     diversified into other sources of income, such as com-                   118McKinsey and Company (1998).
+
+
+
+
+68
+
+
+                                    ©International Monetary Fund. Not for Redistribution
+                                                                       Key Characteristics of Latin American Financial Systems
+
+
+
+
+  Table 5.4. International Comparison: Bank Performance Indicators1
+
+                                                                                                                             United
+                                          Argentina Brazil       Chile Colombia Mexico Paraguay               Peru Venezuela States Japan                Europe2
+
+                                                                                  (In percent of operating income)
+     Source of revenue3
+     Net interest margin                     110        87        92         97        90           ...       100           97          82        86           67
+     Other net income4                       –10        13         8          3         2           ...         0            3          18        14           33
+     Efficiency
+     Operating costs                          74        76        53         78        92           89         94           99          61        61           67
+       Personnel costs                        68        42        32         36        43           44         42           42          24         7           33
+     Provisions                               26        23        29         43        27           63         66            9          ...       ...          ...
+
+                                                                                     (In percent of total loans)
+     Asset quality
+     Nonperforming loans                      ...      9.5       7.8       11.9        5.8         16.2        7.6        2.8          0.9       6.1           1.2
+
+                                                                                             (In percent)
+     Profitability
+     Return on assets                         0.4      0.0       0.5       –1.4        0.3          1.4        0.4        1.4          1.8       0.1           0.7
+     Return on equity                         3.2     –0.4       ...        ...        ...         12.4        2.8        ...          22      –30.4          16.8
+
+       Sources: National central banks and bank supervisory agencies for Latin American countries; Belaisch and others (2001) for industrial countries; and
+     IMF staff calculations. Data are for 2000.
+       Note: Selected sample includes only deposit-taking universal banks.
+       1Performance indicators may differ from traditional definitions to improve cross-country comparability. Operating income usually includes extraordi-
+
+     nary income, but the latter is not included here to provide a more accurate assessment of bank performance. Operating costs exclude provisions, which
+     are year and bank specific.
+       2The 11 European Union countries included are Austria, Belgium, Finland, France, Germany, Ireland, Italy, Luxembourg, the Netherlands, Portugal, and
+
+     Spain. Aggregate data are for 1998.
+       3Operating income is defined as the sum of the two items below.
+       4Sum of net commission income (from asset management and other services) and net fee income (from foreign exchange trading and underwriting).
+
+
+
+
+the euro area, where banks have traditionally suffered
+from high labor costs.                                                                  Figure 5.2. Interest Spread in Latin
+   In the uncertain economic environment, nonper-                                       America1
+forming loans have been an additional burden on                                         (Standard deviation band around mean, in percent)
+bank costs. Although restructuring since the mid-
+1990s—including by the government swapping bad
+loans for public securities—improved the quality of
+                                                                                              60
+bank lending, nonperforming loans continue to rep-
+resent a much larger share of loan portfolios than is                                         50                                      +1 standard deviation
+standard in advanced economies. This has required
+                                                                                              40
+high rates of loan-loss provisioning and the setup of
+large collection and legal departments to recover                                             30
+collateral, adding to banks’ costs.                                                           20
+                                                                                                            Median spread
+                                                                                              10
+Dollarization119
+                                                                                               0
+  In a number of countries, a large and rising share
+of both bank deposits and credits have been denomi-                                          –10                                       –1 standard deviation
+nated in U.S. dollars. Most of these countries have                                          –20
+been subject to a market-driven process of currency                                                1993 94      95     96        97   98      99 2000 01         02
+
+substitution. For example, in Bolivia, dollar deposits
+                                                                                              Source: IMF, International Financial Statistics, various issues.
+                                                                                              1Difference between lending and deposit rates.
+  119Section VI addresses issues associated with dollarization in
+Latin America.
+
+
+
+                                                                                                                                                                      69
+
+
+                            ©International Monetary Fund. Not for Redistribution
+     V       LATIN AMERICAN FINANCIAL SYSTEMS: CRISES AND REFORMS
+
+
+
+     ratcheted up from 65 percent of total deposits in
+     1990 to 74 percent in 2001 and to about 95 percent          Figure 5.3. Comparative Savings and Loan
+     in 2003. In some countries, formal dollarization was        Ratios in Mid-1990s1
+     deliberately used to provide a nominal anchor for the
+     economy. In 1991, Argentina adopted a currency
+     board guaranteeing full convertibility between dol-           Loans/GDP, in percent
+                                                                   140
+     lars and pesos, and the bulk of intermediation was
+                                                                                                                                Thailand
+     increasingly denominated in dollars until the col-            120
+     lapse of the regime in 2002. Ecuador in 1999 and El
+                                                                                                                                  Japan
+     Salvador in 2001 chose full dollarization to bolster          100
+     monetary policy credibility and price stability.               80                                                                Korea
+        Some countries avoided dollarization altogether or
+                                                                                                          United     Chile
+     were able to reduce it. Brazil and, to some extent,            60                        Bolivia
+                                                                                                          States
+     Mexico have prohibited most holdings of foreign cur-
+     rency deposits for nontransactions purposes, while             40                              Paraguay
+                                                                                                               Brazil
+                                                                                          Uruguay
+     Chile and Colombia have used strict prudential guide-          20                                           Peru
+                                                                                                                             Mexico
+                                                                                                               Ecuador
+     lines to reduce the incentives to hold foreign currency                                      Colombia
+                                                                                                           Argentina         Venezuela
+     deposits. Placing a ban on foreign currency deposits            0
+                                                                         0         5         10        15       20       25           30      35
+     or discouraging their use, however, also served to en-                                       Saving/GDP, in percent
+     courage the shifting of financial assets offshore. For        Loans/GDP, in percent
+     example, deposits held by Venezuelans in the United           140
+     States now amount to more than 200 percent of                 120                       Thailand
+     Venezuela’s broad money.                                                                                                         Japan
+                                                                   100
+                                                                    80
+     Underlying Weaknesses                                                                    Korea
+                                                                                  Chile                                         United
+                                                                    60
+       These key features of the Latin American financial                                                                       States
+                                                                           Colombia
+     systems today reflect a series of underlying weak-             40      Peru          Brazil
+                                                                                           Uruguay
+                                                                         Ecuador
+     nesses common to most countries in the region.                                       Argentina
+                                                                    20              Mexico
+                                                                             Paraguay   Venezuela
+     Low Savings                                                     0
+                                                                         0         5         10     15         20       25        30          35
+                                                                                       Per Capita GDP, in thousands of U.S. dollars
+        Low saving rates hindered the deepening of domes-
+     tic financial markets in Latin America in the 1990s.
+     Cross-country data clearly show that in the second               Sources: IMF, International Financial Statistics and World Eco-
+                                                                   nomic Outlook databases; and IMF staff calculations.
+     half of the last decade, countries with higher saving            Notes: ▲ refers to selected Asian countries.
+     rates also had larger loan-to-GDP ratios (Figure 5.3).                   ● refers to selected Latin American countries.
+                                                                              ■ refers to selected industrial countries.
+     At the same time, however, low bank intermediation               1Loans are to the private sector. Savings refer to gross national
+     coexisted with a wide range of saving rates; and, sim-        savings. Data are for 1997.
+     ilarly, loan ratios and saving rates did not seem to be
+     consistently determined by per capita GDP.
+        This observation suggests that other variables,
+     both at the macroeconomic and microeconomic lev-
+     els, have played an important role in determining the     1990s, strains and vulnerabilities persisted: inflexi-
+     depth of bank intermediation.                             ble exchange rate regimes and excessive fiscal
+                                                               deficits continued to undermine confidence and con-
+     Macroeconomic Instability                                 tributed to the persistence of instability.
+                                                                  Informal dollarization has developed, particularly
+        In most Latin American countries, an unstable          in countries with histories of hyperinflation. In such
+     macroeconomic environment has been a critical fac-        countries, confidence in the value of the local cur-
+     tor holding back financial system development.            rency is severely undermined, and long periods of
+     Throughout much of the postwar period, chronic in-        improved monetary management will be required
+     flation, periodic external crises, and intermittent de-   before it can begin to recover. Indeed, allowing in-
+     posit freezes have imposed heavy losses on holders        formal dollarization was sometimes seen as a conve-
+     of financial assets. Even after success in bringing       nient way to remonetize the economy and restore in-
+     down inflation across Latin America in the early          termediation, which had often contracted sharply
+
+
+70
+
+
+                          ©International Monetary Fund. Not for Redistribution
+                                                                                                     Underlying Weaknesses
+
+
+
+
+                        Box 5.3.Taxation of Financial Transactions in Latin America1
+     Financial transactions taxes (FTTs) are currently in
+  place in several Latin American countries: Argentina,            Bank Debit Taxes, 2004
+  Bolivia, Brazil, Colombia, Peru, and Venezuela. The              (In percent)
+  tax has generally been introduced in the context of seri-
+  ous fiscal stress where short-run considerations related
+  to the need for a quick source of revenue and ease of                                                         Tax Rate
+  collection outweighed concerns about the efficiency of
+  the tax. Typically, the tax is levied on bank debits at             Argentina                                   0.601
+  rates below 1 percent (see table).                                  Bolivia                                     0.301
+     FTTs are likely to be highly inefficient, inequitable,           Brazil                                      0.38
+  and subject to diminishing returns, although tax author-            Colombia                                    0.40
+                                                                      Peru                                        0.101
+  ities see some advantages in using them to strengthen
+                                                                      Venezuela2                                  0.501
+  tax administration.
+     • Efficiency. The cascading nature of the tax can dis-             Source: Coelho, Ebrill, and Summers (2001).
+       tort the chain of production. It is likely to stimulate          1On each side of a transaction.
+
+       inefficient behavior to evade the tax, including in-             2Data for Venezuela are for 1999–2000.
+
+       terenterprise netting arrangements, increased use of
+       cash, and recourse to offshore transactions. The tax
+       may also lead to disintermediation if the nonbank
+       financial sector is exempted from the tax. Also, if         • Tax administration. In some countries, however, the
+       applied to capital and exchange market transac-               authorities have found the financial transactions tax
+       tions, the tax can severely reduce trading volumes.           to be a useful tool for the administration of other
+     • Equity. The tax cascades through the commercial               taxes, in particular income taxes, since it provides in-
+       structure, and, therefore, the impact on prices can           formation on individual bank account transactions.
+       exceed that suggested by the “low” rate, adversely
+       affecting the poor. Moreover, the tax is relatively       Empirical Evidence
+       easily evaded by larger, more sophisticated firms,          • In Colombia, in the two years following the intro-
+       owing to their access to offshore operations or               duction of the FTT in 1999, the yield of the tax fell
+       complex derivative transactions.                              28 percent, and the share of M3 in GDP fell from
+     • Yield. The yield of FTTs tends to fall over time as           36 percent to 31 percent. Moreover, the volume of
+       tax evasion takes hold. When this occurs, the temp-           transactions in the interbank and treasury bill mar-
+       tation is to raise rates, which could temporarily re-         kets also fell substantially following introduction of
+       coup revenue collections but, in time, create even            the tax.
+       more evasion. Eventually, this evasion spills over to       • In Brazil, where an FTT is considered by the au-
+       the administration of other taxes. For example,               thorities to have helped tax administration, the ratio
+       value-added-tax (VAT) collections can be affected             of revenues to GDP has increased since the tax was
+       as transactions move offshore or into the informal            introduced in 1997. However, such gains have
+       sector.                                                       come at a cost of bank disintermediation, as bank
+                                                                     deposits as a share of GDP fell from 25.6 percent to
+                                                                     24.1 percent during 1998–2001, as investors likely
+    1Further information is provided in Coelho, Ebrill, and          redirected resources toward the tax-exempt mutual
+  Summers (2001).                                                    fund industry.
+
+
+
+after a full-blown crisis. Heavily managed or pegged             demand deposits during 1997–99) reduced banks’ re-
+exchange rate regimes, which obscured the risks of               sources available to supply credit, curtailed incen-
+borrowing in foreign currency, also encouraged the               tives to mobilize deposits, and added to banks’ inter-
+development of dollarized financial systems.                     mediation margins. Similarly, a number of countries
+   The policies required to deal with this macroeco-             have resorted to financial transaction taxes, which
+nomic instability also affected the efficiency of bank           have tended to discourage intermediation through the
+intermediation. High short-term interest rates—                  banking system (Box 5.3).
+reflecting fiscal crowding out and efforts to combat
+inflation or defend the exchange rate—added to                   Risk Perceptions
+banks’ funding costs and increased loan-default rates.
+Moreover, high unremunerated reserve requirements                   Latin American banks have also had to cope with
+(amounting, for example, in Brazil to 75 percent on              a range of structural factors, mostly microeconomic
+
+
+                                                                                                                                71
+
+
+                      ©International Monetary Fund. Not for Redistribution
+     V          LATIN AMERICAN FINANCIAL SYSTEMS: CRISES AND REFORMS
+
+
+
+                                                                           restored their deposit bases soon after the Mexican
+         Table 5.5.Three Latin American Countries:                         crisis, more cautious lending practices resulted in a
+         Bankruptcy Frameworks                                             credit contraction. Banks’ decisions to move away
+                                                                           from risky corporate assets into the apparently
+                                 Original          Recent Reforms
+                                                                           safer assets of public sector debt is documented in
+                                                                           Braun and Levy Yeyati (2000). Berróspide and
+           Argentina               1972               1995, 2002           Dorich (2001) found that, in Peru, credit slow-
+           Brazil                  1945                  . . .1            downs in the second part of the 1990s were supply
+           Mexico                  1943                 2000               determined and associated with an increase in
+             1 A new bankruptcy law is currently being considered in
+                                                                           banks’ risk perceptions. Similar reactions were ob-
+           congress.
+                                                                           served from Asian banks in the aftermath of the
+                                                                           1997–98 crisis (Kim, 1999; Agénor, Aizenman, and
+                                                                           Hoffmaister, 2000).
+
+     and institutional, that increased perceptions of pro-                 Volatile Capital Flows
+     ject and country risk, and deterred banks from en-                       Latin American financial systems have had to
+     gaging in lending to the private sector:                              cope with highly volatile capital inflows. The imple-
+         • The repeated sequence of crises followed by                     mentation of exchange rate-based stabilization pro-
+           deep restructuring has resulted in a lack of ade-               grams, the introduction of structural reforms, and
+           quate information on potential borrowers. Many                  often high domestic interest rates triggered a rapid
+           longtime bank customers disappeared; and the                    buildup of short-term capital inflows to Latin Amer-
+           new ones who emerged did not have long credit                   ica during the early 1990s.121 Investors’ overshoot-
+           histories, were not able to present sound busi-                 ing optimism drove an increase in private inflows to
+           ness plans, or did not have good collateral.120                 Latin America up from a yearly average of US$10
+                                                                           billion during 1983–90 to US$22 billion in 1991 and
+         • Inadequate auditing and accounting standards                    to US$62 billion by 1996 (Burki and Perry, 1997).
+           and practices hampered banks’ ability to monitor                Increasingly, foreign capital substituted for domestic
+           both financial and nonfinancial companies. For                  savings to finance the upsurge in demand associated
+           example, credit assessment was too often based                  with exchange rate-based stabilization and the re-
+           on valuation of collateral or personal relation-                form process.
+           ships, rather than forward-looking project evalu-                  Capital inflows were accompanied by rapid ex-
+           ations. The development of sound accounting                     pansions of bank credit and consumption booms—
+           practices has been hampered by periods of high                  and strong contractions and busts when they re-
+           inflation, the prevalence of family-owned firms,                versed. The availability of short-term external
+           and the low level of development of securities                  funding stimulated Latin American financial sys-
+           markets.                                                        tems to lend excessive amounts during the first half
+         • Legislative frameworks typically did not support                of the 1990s, inflating the prices of financial as-
+           the enforceability of creditors’ rights once loans              sets. 122 Initially, the performance of the region’s
+           became overdue. Outmoded bankruptcy laws                        banks improved, contributing to even higher lend-
+           made the recovery of collateral long and costly                 ing. This process helped, however, to inflate bub-
+           (Table 5.5). In some countries, even after laws                 bles in the stock and real estate markets, which
+           were reformed, inefficient judiciaries under-                   eventually collapsed in the face of shifts in investor
+           mined the legal certainties needed to foster fi-                sentiment, with sell-offs triggered by setbacks
+           nancial intermediation.                                         in domestic policies or external shocks (includ-
+                                                                           ing fluctuations in international interest rates and
+       These structural risk factors increased banks’                      contagion from events in other major emerging
+     aversion to lending throughout the region. Al-                        markets).123
+     though credit demand may have been high, the as-
+     sociated risks have been high, too, so that the sup-
+     ply of loans could not fully satisfy demand. Catão                       121Attractive domestic factors were reinforced by the slowdown
+     (1997) finds that in Argentina, even though banks                     in industrial countries in the early 1990s and the decline in their
+                                                                           interest rates.
+                                                                              122Forty percent of all inflows during 1993–96 were in the form
+       120Carrasquilla, Galindo, and Vásquez (2000) find that the se-      of short-term foreign currency lending to banks and equity port-
+     vere credit contraction observed in Colombia after 1998 was           folio flows.
+     mainly due to banks’ inability, rather than their unwillingness, to      123Herrera and Perry (2003) discuss the interaction between ex-
+     lend.                                                                 cessive credit creation and bubble formation in Latin America.
+
+
+
+72
+
+
+                               ©International Monetary Fund. Not for Redistribution
+                                                                                     Banking Crises and Reforms
+
+
+
+Banking Crises and Reforms                                its on the central bank’s ability to provide emergency
+                                                          credit to illiquid banks under the Convertibility Law,
+   Over the past ten years, banking-system fragilities    and the political sustainability of tight policies in the
+have contributed to a series of crises that spurred re-   face of a systemic bank run. Thus, following the
+structuring and reform efforts. A first wave of crises    sharp depreciation of the Mexican peso, 18 percent
+hit several Latin American countries during the mid-      of deposits were withdrawn from Argentine banks in
+1990s, starting in 1994 with Bolivia, Brazil, Mexico,     the first three months of 1995. In the end, the author-
+and Venezuela, followed by Argentina and Paraguay         ities tightened fiscal and monetary policies aggres-
+in 1995, and Ecuador in 1996. Banks were restruc-         sively, and confidence was restored, but at the cost of
+tured and/or recapitalized, often at great fiscal cost,   a sharp recession.
+while regulatory systems were overhauled. In many            Microeconomic influences, such as poor bank
+cases, these reforms were successful in strengthening     management and weak prudential regulation and
+banking systems and averting banking crises when          bank supervision, were also responsible for bank
+domestic or external shocks hit again. In others, how-    problems in a number of countries. Banking crises in
+ever, reforms were less successful, and a second wave     Venezuela and Bolivia in 1994, Paraguay in 1996,
+of crises hit several banking systems, including those    and the Dominican Republic in 2003 can be directly
+in Ecuador in 1999, Argentina in 2001, Uruguay in         related to such influences. Typical features of poorly
+2002, and the Dominican Republic in 2003. Bolivia         managed banks included overextension of credit,
+has experienced banking-system stress more recently,      poor loan evaluation, excessive loan concentration,
+in 2003–2004, in the context of wider social and polit-   cronyism (i.e., connected lending and political inter-
+ical pressures.                                           ference), maturity and currency mismatches, poor
+   The wave of bank failures in Mexico in December        loan recovery, weak internal control, and outright
+1994 followed a period of financial liberalization        fraud.
+and rapidly expanding bank credit in the absence of          Notwithstanding the heavy costs involved, Latin
+proper bank regulation and supervision. The situa-        American crises were typically not as expensive to
+tion was further exacerbated by expansionary fiscal       resolve as those that afflicted Asia in 1997–98
+policy and an overvalued exchange rate. When the          (Table 5.6).124 The most costly crises in Latin Amer-
+poor quality of Mexican banks’ loan portfolios be-        ica during the 1990s (in Ecuador, Mexico, and
+came evident, currency, stock, and real estate prices     Venezuela) cost around 20 percent of GDP to resolve,
+fell sharply, reducing collateral values and imposing     large amounts to be sure, but still significantly less
+large losses on banks. These losses were exacerbated      than the costs of dealing with the crises in Indonesia,
+by the substantial portion of corporate borrowing in      Korea, and Thailand.125 In East Asian emerging mar-
+foreign currency, both onshore and offshore.              kets, the long period of sustained growth and the per-
+   In other countries, too, an unbalanced policy mix      ception of implicit government guarantees implied by
+of lax fiscal policy and tight monetary policy con-       the close relations between the corporate and govern-
+tributed to banking booms and busts. In Brazil, the       ment sectors encouraged the region’s banks to lend
+sharp reduction in inflation associated with the 1994     excessively (Krugman, 1998). The costs of resolution
+real plan deprived banks of the inflation tax that had    in the Asian countries were exacerbated by the very
+allowed them to support cost inefficiencies, thereby      high leverage of Asian banks compared with their
+reducing the banking sector’s contribution to GDP         counterparts in Latin America.126
+from 12 percent in 1994 to 7 percent in 1995 (IBGE,          To deal with these banking crises, governments
+1997). It also accentuated state governments’ arrears     across Latin America implemented a series of
+to public banks. To maintain their profits, banks re-     banking-system reforms aimed at resolving weak
+sponded by pumping up credit operations in the con-       banks and strengthening regulation and supervision
+text of the fast growth resulting from exchange rate-     (Figure 5.4).
+based stabilization. The slowdown in the pace of
+economic growth in the second quarter of 1995, fol-
+lowing the adoption of a highly restrictive monetary         124For comprehensive discussions of the costs of banking
+
+and credit policy after the Mexican crisis, led, how-     crises, see Caprio and Klingebiel (2003) and Hoelscher and Quin-
+ever, to a collapse of asset prices and widespread        tyn (2003).
+                                                             125The total cost of the Argentina crisis of 2001–2002 has yet to
+banking distress.                                         be determined, but it is unlikely to exceed 20 percent of GDP.
+   The experience of the mid-1990s clearly demon-            126Pimintel Puga (1999) estimates that in the year before the
+strated the potential for rapid contagion across bor-     Asian crisis, loans made by Korea’s largest banks amounted to
+ders. In the wake of the 1994 Mexico crisis, Argen-       more than 800 percent of net equity; those in Indonesia averaged
+tine banks were seen as particularly exposed because      more than 900 percent; and in Thailand, they averaged 1,400 per-
+                                                          cent. In comparison, the average credit-to-equity ratio for the top
+of continuing questions about the government’s abil-      five banks in the year before their banking crisis was 480 percent
+ity to defend the currency board, given technical lim-    in Brazil and 550 percent in Argentina.
+
+
+
+                                                                                                                                 73
+
+
+                     ©International Monetary Fund. Not for Redistribution
+     V             LATIN AMERICAN FINANCIAL SYSTEMS: CRISES AND REFORMS
+
+
+
+                                                                                       ing by raising significant external credit to pro-
+         Table 5.6. Latin America: Fiscal Costs of                                     vide emergency liquidity if needed (Argentina) or
+         Banking Crises in 1990s                                                       providing them with authority to demand new in-
+         (In percent of GDP)                                                           jections of funds from shareholders or restructur-
+                                                                                       ing through incorporation, merger, or split-up
+                                                                                       (Brazil).
+                                                   Years            Cost
+                                                                                     • Prudential regulation was reinforced by raising
+            Bolivia                                1994              4.2               initial capital requirements for the opening of
+            Brazil                                 1995              9.3               new banks (Brazil); setting prudential capital ra-
+            Venezuela                            1994–95            18.0
+            Mexico                                 1995             20.0
+                                                                                       tios above minimum Basel requirements (Ar-
+            Argentina                              1995              0.3               gentina, Brazil, and Venezuela); introducing lim-
+            Paraguay                             1996–99            13.0               its on insider lending (Venezuela and Mexico);
+            Ecuador                                1998             20.0               and requiring banks to implement internal risk-
+            Peru                                   1998              1.6               control systems (Brazil and Mexico).
+            Memorandum items:
+            Indonesia                        1997–present           40.0             • Bank supervision was strengthened and made
+            Korea, Republic of               1997–present           28.0               more independent (Argentina, Brazil, Mexico,
+            Thailand                         1997–present           34.8               and Venezuela).
+              Sources: Caprio and Klingebiel (2003); and IMF staff estimates.        • Controls were tightened over offshore operations
+                                                                                       (Brazil and others; see Box 5.4).
+                                                                                     • Deposit-insurance schemes were introduced to
+                                                                                       protect small depositors (Argentina and Brazil)
+                                                                                       or enhanced (Mexico).
+         Figure 5.4. Strength of Financial Regulatory
+         Environment in Selected Countries                                           • The broader institutional framework was strength-
+         (Index from 0 to 1)1                                                          ened, including by improving accounting stan-
+                                                                                       dards (Mexico and Venezuela); establishing dis-
+                                                                                       closure requirements (Mexico); imposing strict
+                                                                                       rotation rules on external auditors (Brazil and
+           1.0                                                                         Mexico); reforming the legal and regulatory
+                                Argentina
+                                                                                       framework for bankruptcy (Argentina and Mex-
+           0.8                                                                         ico); and establishing a market for the securitiza-
+                              Chile
+                                                                                       tion of credit, facilitating the recovery of nonper-
+                                                                                       forming loans (Brazil).
+           0.6                              Latin America
+                                                                                      These reforms played an important role in the
+           0.4
+                                                                                   consolidation of banking systems. Restructuring was
+                                                 Ecuador                           most successful when it included broader measures
+                                                                  Jamaica          aimed at improving the profitability of viable banks.
+           0.2                                                                     In Brazil, for example, the banking business was
+                                                                                   also reformed: banks were allowed to collect fees for
+             0                                                                     the traditional account-management services they
+                 1985    87       89        91      93      95     97       1999   provided, as well as for more sophisticated services.
+                                                                                   Banks became involved in the trading of currency-
+              Source: Lora (2001).
+              1The index takes into account minimum Basle capital require-
+                                                                                   derivatives contracts, which were hedged by their
+            ments, the strength of creditors’ rights, reserve requirements, and    holdings of indexed government securities, thereby
+            banks’ freedom to set interest rates.                                  protecting their customers against oscillations in in-
+                                                                                   terest and exchange rates. For public banks, federal
+                                                                                   assistance was conditional on their liquidation or
+                                                                                   privatization. The few banks that remained in the
+         • Many private banks were closed or merged; oth-                          public sector were transformed into development
+           ers were restructured and/or recapitalized at high                      agencies or restricted to transparent, arm’s-length re-
+           costs; and state-owned banks were liquidated or                         lationships with state governments.
+           privatized.                                                                Banking sectors were also widely opened to for-
+                                                                                   eign participation. In Brazil, the failure of a large do-
+         • The power of central banks and supervisors to                           mestic bank was resolved through its sale to a for-
+           deal with problem banks was increased, includ-                          eign bank. Similarly, in Argentina and Mexico, there
+
+
+74
+
+
+                                      ©International Monetary Fund. Not for Redistribution
+                                                                                       Banking Crises and Reforms
+
+
+
+
+                                Box 5.4. Vulnerabilities from Offshore Banking
+
+     In Latin America, as elsewhere, poorly regulated or      tures or to revoke existing authorizations. For example,
+  unregulated offshore financial institutions (OFIs) pre-     in Panama and Brazil, it is very difficult for banks to be
+  sent a potential risk to the financial systems within       granted licenses if they are chartered in jurisdictions
+  which they operate. In some cases, nonregulated OFIs        where local supervisors are not able to perform consol-
+  operate effectively as parallel banking structures that     idated supervision. In Guatemala, where OFIs account
+  are part of larger financial entities. These entities may   for 30 percent of the local private banking sector, new
+  increase banking system vulnerability by exploiting         regulations introduced in 2002 will prohibit the opera-
+  regulatory arbitrage opportunities by, for example,         tion of OFIs not formally associated with locally li-
+  transferring nonperforming assets from the regulated        censed financial conglomerates. In addition, OFIs must
+  bank to the unregulated bank. A focus on only the regu-     comply with their home-country prudential regulations
+  lated bank could lead to erroneous conclusions about        or those of Guatemala, whichever are stricter.
+  the risk exposure of the banking system. The problem           There has also been growing consolidated supervision
+  may be exacerbated if a regulator is not aware of the       of financial entities and formal information-exchange
+  links between two financial entities or does not have       agreements. Supervisors in Central America are improv-
+  the legal capacity to supervise one of them, which          ing the level of communication among themselves.
+  could lead to the risk of contagion being seriously un-     Panama, for example, has exchange-of-information
+  derestimated. In Ecuador, for instance, the 1998–99         agreements with many other countries in Latin America,
+  banking crisis turned out to be more serious than origi-    and its supervisors perform on-site inspections through-
+  nally envisaged after apparently sound onshore banks        out Central America of banks that are chartered in
+  were discovered to be much weaker when supervisors          Panama and have activities in those jurisdictions. In addi-
+  performed consolidated supervision that included            tion, supervisors in the region are moving toward consol-
+  closely linked but poorly regulated OFIs. In Uruguay,       idated supervision of conglomerates. Beginning in 2001,
+  the absence of consolidated supervision and formal in-      Brazil has conducted consolidated supervision of Brazil-
+  formation sharing between Uruguayan and Argentine           ian banks, including those that have activities in foreign
+  supervisors contributed to an underestimation of the        jurisdictions. To further strengthen the supervision of
+  vulnerability of the Uruguayan banking system and,          parallel banking structures that operate in several juris-
+  subsequently, to the seriousness of the 2002 crisis.        dictions, it would be important for the relevant supervi-
+     In order to minimize the risks associated with OFIs,     sory bodies to appoint, where possible, a lead supervisor
+  supervisors in Latin America have sought to impose          to supervise the multinational structure on a consolidated
+  conditions or restrictions on them to facilitate more ad-   basis. Alternatively, a supervisor should consider either
+  equate supervision. A number of jurisdictions have leg-     forcing a group restructuring or limiting as much as pos-
+  islation that permits supervisors to refuse authorization   sible the exposure of a domestic bank to related parallel
+  to those banks with “unsupervisable” corporate struc-       banks or members of the corporate group.
+
+
+
+was little protection of large domestic banks from            stead, banks tended to hold government securities,
+foreign ownership, in contrast with the experience in         reflecting either their recapitalization or a decision
+earlier decades or even that in industrial countries.         to reallocate loan portfolios toward safer assets. In
+Internationalization was also seen as a way of im-            Brazil, large portfolios of interest rate- and exchange
+porting good regulation and supervision as embod-             rate-indexed government debt insulated banks
+ied in the business practices of foreign banks operat-        against the monetary policy tightening implemented
+ing in developing countries. The high degree of               to defend the exchange rate band after the Russian
+international financial integration in Central Amer-          default in 1998, as well as against the large devalua-
+ica has resulted in part from such considerations,            tions that accompanied the subsequent float of the
+though it has also created new risks (Box 5.5). It was        currency in 1999, the impact of the Argentina crisis
+also expected that foreign banks would have better            in 2001, and the election-related confidence crisis in
+access to external finance than domestic ones when            2002.
+access to capital markets closed.                                In a number of countries, however, risks related to
+   These reforms were successful in helping most              dollarization received little attention in these re-
+Latin American countries avoid banking crises dur-            forms, and several dollarized banking systems even-
+ing the Asian crisis in late 1997 and 1998. The               tually suffered a second wave of crises. During
+strengthening of prudential regulation, restructur-           2001, concerns about public debt sustainability and
+ings, and privatizations helped to raise the quality of       an extended recession in Argentina triggered a sys-
+banks’ balance sheets, while a more cautious ap-              temic bank run and loss of reserves, ended only by
+proach to lending in the wake of the crisis in the            the abandonment of the convertibility regime and a
+mid-1990s also lessened banks’ credit exposures. In-          comprehensive deposit freeze. The high capitaliza-
+
+
+                                                                                                                            75
+
+
+                     ©International Monetary Fund. Not for Redistribution
+     V          LATIN AMERICAN FINANCIAL SYSTEMS: CRISES AND REFORMS
+
+
+
+
+                        Box 5.5. Cross-Border Financial Integration: Banking in Central America
+
+            The changing structure and concentration of the
+         banking system in Central America has been accompa-                 Cross-Border Banking Relationships in
+         nied by growing foreign participation. Central Ameri-               Central America
+         can governments opened their banking systems to the                 (In percent of system assets)
+         entry of foreign banks during the 1990s, removing re-
+         strictions on foreign ownership. Although, according to
+         legal criteria, foreign ownership in banking would not                                         Foreign            Foreign
+         appear to be very widespread, extensive cross-border                                          Ownership         Relationship
+         integration has taken place through informal “owner-
+         ship relations” between local and foreign banks (see                   Panama                       59                70
+         table).1 Banks have also become increasingly inter-                    El Salvador                  13                89
+         twined with other financial and nonfinancial institu-                  Costa Rica                   19                31
+         tions, including the in-house financing arms of large                  Guatemala                     4                82
+                                                                                Honduras                      4                35
+         conglomerates.
+                                                                                Nicaragua                     4                61
+            The process of internationalization and consolidation
+         entails important benefits as well as potential risks.                    Sources: National bank supervisory agencies; and Bank for
+         Larger, more international banks enjoy economies of                    International Settlements.
+         scale and scope, and may be able to better diversify
+         risks across asset classes and countries, both of which
+         help enhance profitability and soundness. Risk expo-
+         sure may initially increase, however, as banks engage
+         in new activities in different countries and under differ-          • conflicts of interest, since banks that are part of
+         ent regulatory regimes. In particular, these risks might              conglomerates may engage in excessive in-house
+         arise from                                                            lending with inadequate risk management.
+           • a lack of comprehensive prudential regulation and                Given that banking-system vulnerabilities have
+             oversight, while regulatory and supervisory frame-            increased, efforts are needed to ensure benefits from
+             works adjust to the complexities (not helped by the           financial integration. Empirical analysis suggests that
+             lack of transparency) and new risks entailed by               although consolidation has improved bank profitability
+             consolidation, conglomeration, and international-             in recent years, the probability of individual bankrupt-
+             ization;                                                      cies remains high in some countries.2 Greater efforts
+           • heightened contagion created as substantial losses            are needed to address and contain the heightened risks
+             in one country lead banks to change their strategies          associated with cross-border financial integration and
+             and operations in other countries where they oper-            to deliver the intended benefits. In particular, legal
+             ate; and                                                      frameworks need to be strengthened to allow banking
+                                                                           supervisors to implement comprehensive consolidated
+                                                                           supervision. It is also crucial to increase regional coop-
+            1A number of “ownership relationship” indicators signal
+                                                                           eration among supervisors and move toward the harmo-
+         that a local bank may be part of a parallel banking structure     nization of regulatory and supervisory standards across
+         including foreign financial institutions (BIS, 2003): the adop-   countries.
+         tion by a domestic bank of a particular strategy similar to
+         that of a foreign bank; an unusually high level of reciprocal
+         correspondent banking between a domestic bank and a for-
+         eign bank; or similar names of a domestic bank and a foreign
+         bank.                                                               2Druck and Prat (2003).
+
+
+
+
+     tion of Argentine banks, extensive foreign owner-                     Argentines held accounts and where Uruguayan res-
+     ship, and earlier regulatory reforms meant that the                   idents quickly became concerned about a deposit
+     banking system was able to withstand heavy pres-                      freeze in their own heavily dollarized banking sys-
+     sures for an extended period, but, in the end, these                  tem. Bolivia and Paraguay also suffered episodes of
+     could not prevent the crisis.127 In early 2002, the de-               heavy pressures from deposit withdrawals in the fol-
+     posit run spread to Uruguayan banks, where many                       lowing months. By contrast, the Peruvian banking
+                                                                           system was much less affected despite its high dol-
+                                                                           larization, reflecting the strong macroeconomic
+       127For more details on the unfolding of the crisis and the policy   framework, including reserve coverage of dollar de-
+     response, see Collyns and Kincaid (2003) and IMF (2003).              posits exceeding 100 percent.
+
+
+76
+
+
+                               ©International Monetary Fund. Not for Redistribution
+                                                                                                          References
+
+
+
+Lessons, Policy Responses, and                                propriate role for the public sector in potentially
+Challenges                                                    cushioning losses, often in the face of binding fis-
+                                                              cal constraints. The uncertainties that linger while
+   Experience since the early 1990s has clearly               such sick financial institutions remain unresolved,
+demonstrated the key importance of achieving sound            however, can hold back the growth of healthier
+and resilient financial systems to reduce Latin               ones as well as delay restructuring by borrowers.
+America’s vulnerability to crisis and to support sus-         Also, in several countries, an important task is to
+tained economic growth. Notwithstanding efforts to            make sure that remaining publicly owned banks are
+strengthen financial systems, many countries have             efficiently and transparently run and do not provide
+sustained major crises that have undermined confi-            a source of future quasi-fiscal losses (for example,
+dence and precipitated severe economic contractions.          in Argentina).
+Moreover, even after the financial system is stabi-              A broader range of initiatives is also needed, and
+lized, credit growth has remained limited, seriously          efforts are under way to encourage the expansion of
+constraining investment and economic activity.                more efficient and longer-term credit intermediation.
+   Against this background, most Latin American               These include the development of more effective in-
+countries are continuing their efforts to strengthen          formation-sharing mechanisms for credit assessment
+bank supervision and regulation. Often these efforts          (in Brazil), strengthening bankruptcy legislation and
+have drawn on Financial Sector Assessment Pro-                judicial procedures to enhance recovery of value
+grams (FSAPs) prepared by the staffs of the IMF and           from bad loans (in Bolivia, Brazil, and Mexico), and
+the World Bank.128 A key task has been to tighten             encouraging the expansion of microfinancing (in
+loan-classification and provisioning standards,               Bolivia, Brazil, and Peru). Another necessary task is
+which ideally should involve more forward-looking             to reduce current distortionary taxation of financial
+(instead of historical) risk models. Moreover,                intermediation, which will require the development
+capital-adequacy guidelines have been tightened,              of alternative sources of revenue.
+with the aim of achieving Basel standards; and                   Continuing efforts are needed to deepen capital
+prompt corrective-action frameworks are being in-             markets. Important progress is being made in a num-
+troduced to ensure faster responses to emerging               ber of countries (including Brazil, Chile, Colombia,
+problems (e.g., in Argentina, Bolivia, Brazil, and            and Mexico). Pension reforms have helped to estab-
+Ecuador). Also, the power and independence of fi-             lish a group of large institutional investors, but it will
+nancial regulators are being bolstered, including to          be important to ensure that pension funds have ade-
+provide greater immunities from prosecution in the            quate scope to invest their assets to maximize returns
+execution of their duties and to extend their jurisdic-       and are not unduly subject to requirements to invest
+tions to cover nonbank financial activities and to pay        in potentially high-risk government paper. Strides
+greater attention to tasks related to cross-border fi-        are also being made toward the development of
+nancial integration.                                          deeper and more efficient government debt markets,
+   At the same time, greater use needs to be made of          which can provide useful benchmarks for corporate
+market mechanisms, complementing the role of the              debt as well as a stable means of meeting govern-
+financial regulators, to ensure prudent behavior. Key         ment’s financial requirements, especially using local
+steps in this regard include limiting coverage of             currency-denominated paper.
+deposit-insurance systems and improving the avail-               The particular problems faced by dollarized fi-
+ability of information on financial institutions              nancial systems may pose the greatest challenges,
+through stronger accounting and auditing standards            since such systems are particularly prone to insta-
+(e.g., in Brazil and Mexico).                                 bility. These issues are discussed in detail in the
+   Countries that have experienced systemic bank-             next section.
+ing crises in recent years will need to continue their
+efforts to rehabilitate or resolve weak or failed
+banks, recover value from the efficient disposal of           References
+nonperforming loans (e.g., Argentina, Ecuador, and
+Uruguay), and thus reduce the high exposure of the            Agénor, Pierre-Richard, Joshua Aizenman, and Alexander
+public sector (e.g., Argentina). These tasks are                  Hoffmaister, 2000, “The Credit Crunch in East Asia:
+often slow, given the complexity of the issues in-                What Can Bank Excess Liquidity Assets Tell Us?”
+                                                                  NBER Working Paper No. 7951 (Cambridge, Massa-
+volved, including allocating losses fairly among                  chusetts: National Bureau of Economic Research).
+depositors and creditors, and determining the ap-             Bank for International Settlements, 2003, Quarterly Re-
+                                                                  view (June).
+                                                              Basel Committee on Banking Supervision, 2003, Parallel-
+  128So far, FSAPs have been completed or planned for in 16       Owned Banking Structures (Basel, Switzerland: Bank
+Latin American countries.                                         for International Settlements).
+
+
+                                                                                                                           77
+
+
+                      ©International Monetary Fund. Not for Redistribution
+     V        LATIN AMERICAN FINANCIAL SYSTEMS: CRISES AND REFORMS
+
+
+
+     Belaisch, Agnès, 2003, “Do Brazilian Banks Compete?”              Futures Exchange, Campos do Jordao, Brazil,
+         IMF Working Paper 03/113 (Washington: Interna-                August 21.
+         tional Monetary Fund).                                   Herrera, Santiago, and Guillermo Perry, 2003, “Tropical
+     ———, Laura Kodres, Joaquim Levy, and Angel Ubide,                 Bubbles: Asset Prices in Latin America,” in Asset
+         2001, “Euro Area Banking at the Crossroads,” IMF              Price Bubbles, ed. by W. Hunter, G. Kaufman, and
+         Working Paper 01/28 (Washington: International                Michael Pomerleano (Cambridge, Massachusetts:
+         Monetary Fund).                                               MIT Press), pp. 127–62.
+     Berróspide, J., and J. Dorich, 2001, “Aspectos Micro-        Hoelscher, David, and Marc Quintyn, 2003, Managing
+         económicos de la Restricción Crediticia en el Perú:           Systemic Banking Crises, Occasional Paper No. 224
+         1997–2000” (Lima: Banco Central de Reserva del                (Washington: International Monetary Fund).
+         Perú).                                                   Instituto Brasileiro de Geografia e Estatísticas (IBGE),
+     Braun, Miguel, and Eduardo Levy Yeyati, 2000, “The Role           1997, “Sistema Financeiro: Uma Análise a Partir das
+         of Banks in the Transmission of Shocks: Micro Evi-            Contas Nacionais—1990/1995” (unpublished; Rio de
+         dence from Argentina, 1996–1999” (unpublished;                Janeiro, Brazil).
+         Buenos Aires: Universidad Torcuato Di Tella).            International Monetary Fund (IMF), 2003, “Lessons from
+     Burki, Shahid Javed, and Guillermo E. Perry, 1997, The            the Crisis in Argentina” (Washington: International
+         Long March: A Reform Agenda for Latin America                 Monetary Fund).
+         and the Caribbean in the Next Decade (Washington:        Kim, Hyun, 1999, “Was Credit Channel a Key Monetary
+         World Bank).                                                  Transmission Following the Recent Financial Crisis
+     Caprio, Gerard, and Daniela Klingebiel, 2003, “Episodes           in the Republic of Korea?” World Bank Policy Re-
+         of Systemic and Borderline Financial Crises” (unpub-          search Working Paper No. 2103 (Washington: World
+         lished; Washington: World Bank).                              Bank).
+     Carrasquilla, Alberto, A. Galindo, and D. Vásquez, 2000,     Krugman, Paul, 1998, “What Happened to Asia?” (unpub-
+         “El Gran Apretón Crediticio en Colombia: Una Inter-           lished; Cambridge, Massachusetts: Massachusetts In-
+         pretación,” Coyuntura Económica, Vol. 30 (March),             stitute of Technology, Department of Economics).
+         pp. 1–9.                                                 Labán, Raúl, and Felipe Larraín, 1998, “The Return of Pri-
+     Catão, Luis, 1997, “Bank Credit in Argentina in the After-        vate Capital to Chile in the 1990s: Causes, Effects,
+         math of the Mexican Crisis: Supply or Demand Con-             and Policy Reactions,” Development Discussion
+         strained?” IMF Working Paper 97/32 (Washington:               Paper No. 627 (Cambridge, Massachusetts: Harvard
+         International Monetary Fund).                                 Institute for International Development).
+     Coelho, Isaias, Liam Ebrill, and Victoria Summers, 2001,     Lora, Eduardo, 2001, “Las reformas estructurales en
+         “Bank Debit Taxes in Latin America: An Analysis of            América Latina: Qué se ha Reformado y Cómo
+         Recent Trends,” IMF Working Paper 01/67 (Washing-             Medirlo,” IADB Working Paper No. 462 (Washing-
+         ton: International Monetary Fund).                            ton: Inter-American Development Bank).
+     Collyns, Charles, and G. Russell Kincaid, 2003, Managing     McKinsey & Company, 1998, Productivity—The Key to an
+         Financial Crises: Recent Experiences and Lessons              Accelerated Development Path for Brazil (São Paulo,
+         from Latin America, IMF Occasional Paper No. 217              Brazil: McKinsey Global Institute).
+         (Washington: International Monetary Fund).               Pimintel Puga, F., 1999, “The Brazilian Financial System:
+     Druck, Pablo, and Jordi Prat, 2003, “Banking System Ef-           Recent Restructuring, International Comparisons, and
+         fects of Financial Integration in Central America”            Vulnerability to the Exchange Rate Crisis” (unpub-
+         (unpublished; Washington: International Monetary              lished; Rio de Janeiro, Brazil: Brazilian Development
+         Fund).                                                        Bank).
+     Federación Iberoamericana de Bolsas de Valores, 2002,        Rojas-Suarez, Liliana, and Steven R. Weisbrod, 1994,
+         Estadísticas Anuales (Buenos Aires).                          “Financial Market Fragilities in Latin America: From
+     Fischer, Stanley, 2003, “The Importance of Financial              Banking Crisis Resolution to Current Policy Chal-
+         Markets in Economic Growth,” paper presented                  lenges,” IMF Working Paper 94/117 (Washington:
+         at the International Derivatives and Financial                International Monetary Fund).
+         Markets Conference of the Brazilian Mercantile and       World Bank, 2003, Investment Climate Survey (Washington).
+
+
+
+
+78
+
+
+                           ©International Monetary Fund. Not for Redistribution
+

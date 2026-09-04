@@ -1,0 +1,10 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"HAEIS Institutional Observation",
+  "type":"object",
+  "required":["country","variable","date","frequency","value","unit","currency","real_or_nominal","source","source_id","publication_date","retrieval_date","dataset_id","methodology","transformation_applied","confidence_score","verification_status","revision_status","domain"],
+  "properties":{
+    "country":{"type":"string","minLength":1},"variable":{"type":"string","minLength":1},"date":{"type":"string","format":"date"},"frequency":{"type":"string","minLength":1},"value":{"type":["number","null"]},"unit":{"type":"string","minLength":1},"currency":{"type":["string","null"]},"real_or_nominal":{"enum":["REAL","NOMINAL","NOT_APPLICABLE","UNKNOWN"]},"source":{"type":"string","minLength":1},"source_id":{"type":"string","minLength":1},"publication_date":{"type":["string","null"],"format":"date"},"retrieval_date":{"type":"string","format":"date"},"dataset_id":{"type":"string","minLength":1},"methodology":{"type":"string","minLength":1},"transformation_applied":{"type":"array","items":{"type":"string"}},"confidence_score":{"type":["number","null"],"minimum":0,"maximum":1},"verification_status":{"enum":["VERIFIED","PROVISIONAL","ESTIMATED","MODELED","IMPUTED","DISPUTED","STALE","UNAVAILABLE"]},"revision_status":{"enum":["INITIAL","REVISED","FINAL","NOT_APPLICABLE","UNKNOWN"]},"domain":{"type":"string"},"notes":{"type":"string"}
+  },
+  "additionalProperties":false
+}

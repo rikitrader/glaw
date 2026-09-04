@@ -1,0 +1,10 @@
+{
+  "jurisdiction": "FL",
+  "name": "Florida",
+  "status": "PARTIAL",
+  "research_date": "2026-09-01",
+  "official_source_registry": "PARTIAL",
+  "production_ready": false,
+  "human_review_required": ["bad faith", "temporal statutory history", "policy-specific coverage doctrines"],
+  "known_gaps": ["complete historical versions", "controlling case corpus", "administrative regulations", "policy-form dependencies", "all required issue benchmarks"]
+}

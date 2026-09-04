@@ -1,0 +1,11 @@
+{
+  "schemaVersion":"0.1.0",
+  "status":"target-registry",
+  "confirmedPipelines":[{"id":"source-locked-legal-rag","status":"confirmed","retrieval":["lexical","citation-graph"],"semantic":"unavailable unless configured"}],
+  "collections":["global-legal-knowledge","jurisdiction-knowledge","department-knowledge","client-knowledge","matter-knowledge","private-documents","evidence"],
+  "permissionInputs":["user","organization","matter","role","privilege","document-classification","source-authorization"],
+  "targetPipeline":["source","ingest","classify","OCR/parse","normalize","metadata","chunk","embed","Vectorize","retrieve","permission-filter","rerank","context","validator","agent"],
+  "vectorizeStatus":"proposed; must not bypass provenance or permissions",
+  "departmentCollections":[{"id":"hanke-primary-corpus","path":"departments/hanke-economics/rag/source-registry.json","provenanceRequired":true},{"id":"hanke-counter-corpus","path":"departments/hanke-economics/rag/source-authority.yaml","provenanceRequired":true}],
+  "hankeControls":["lawful-public-source-only","source-status-tracking","citation-anchor-required","historical-vintage-preservation","attribution-block-on-failure"]
+}

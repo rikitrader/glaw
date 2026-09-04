@@ -1,0 +1,411 @@
+{
+  "committee_id": "haeis-congressional-economic-review-committee",
+  "report_id": "venezuela-dollarization-thesis",
+  "generated_at": "2026-08-26T00:33:29.034Z",
+  "proceedings_status": "BLOCKED",
+  "persona_rule": "Each member is a simulated analytical persona derived from public scholarship, not the actual economist or a claim about private beliefs.",
+  "record_rule": "No member may convert missing data into a favorable or adverse factual finding.",
+  "hanke_response_rule": "Only HANKE-DIRECT, HANKE-FRAMEWORK, SYSTEM-INFERENCE, SOURCE_REQUIRED, or CONCEDE responses are permitted.",
+  "roll_call": [
+    {
+      "member_id": "friedman",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "money-demand",
+        "velocity",
+        "rule-operability",
+        "inflation-expectations"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "cagan",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "currency-demand",
+        "hyperinflation-feedback",
+        "stabilization-break",
+        "fiscal-backing"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "sargent",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "expectations",
+        "fiscal-regime",
+        "legal-commitment",
+        "policy-reversal"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "calvo",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "sudden-stop",
+        "reserves",
+        "capital-flows",
+        "liability-dollarization"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "reinhart-rogoff",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "debt-stock",
+        "arrears",
+        "restructuring",
+        "default-history",
+        "debt-service"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "minsky",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "leverage",
+        "maturity-mismatch",
+        "bank-run",
+        "endogenous-fragility"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "bagehot",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "eligible-collateral",
+        "emergency-lending",
+        "facility-size",
+        "panic-containment"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "bernanke",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "credit-channel",
+        "collateral",
+        "bank-capital",
+        "investment",
+        "employment"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "goodhart",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "BCV-role",
+        "supervision",
+        "resolution",
+        "payment-system",
+        "macroprudential-policy"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "hausmann",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "productivity",
+        "infrastructure",
+        "oil-capacity",
+        "capabilities",
+        "diversification"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "hanke-respondent",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "verified-Hanke-position",
+        "currency-board-definition",
+        "framework-boundary",
+        "concessions"
+      ],
+      "hanke_response_status": "SOURCE_REQUIRED",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "monetarist",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "money-growth",
+        "rules",
+        "expectations",
+        "alternative-anchor"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "keynesian",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "output-gap",
+        "multiplier",
+        "unemployment",
+        "fiscal-compression"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "new-keynesian",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "expectations",
+        "rigidity",
+        "interest-rate",
+        "credibility"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "austrian",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "credit-distortion",
+        "malinvestment",
+        "price-signals",
+        "intervention"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "supply-side",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "tax",
+        "regulation",
+        "investment",
+        "productivity"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "imf-style-stabilization",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "reserves",
+        "fiscal-sustainability",
+        "debt",
+        "BOP",
+        "banking"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "central-banker",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "LLR",
+        "reserves",
+        "settlement",
+        "banking-emergency",
+        "transmission"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "commercial-bank",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "deposits",
+        "loans",
+        "capital",
+        "FX-mismatch",
+        "reserves"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "sovereign",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "seigniorage",
+        "debt",
+        "tax",
+        "spending",
+        "political-constraints"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "citizen",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "wages",
+        "pensions",
+        "savings",
+        "purchasing-power",
+        "inclusion"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "business",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "working-capital",
+        "credit",
+        "pricing",
+        "imports",
+        "exports"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "investor",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "sovereign-risk",
+        "FX-risk",
+        "repatriation",
+        "property-rights"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    },
+    {
+      "member_id": "competing-institutional",
+      "persona_status": "SIMULATED_ANALYTICAL_PERSONA",
+      "vote": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+      "confidence": "LOW",
+      "questions": [
+        "currency-board",
+        "dual-currency",
+        "managed-float",
+        "counterfactual"
+      ],
+      "hanke_response_status": "REFERRED_TO_HANKE_RESPONDENT",
+      "evidence_status": "UNRESOLVED",
+      "rationale": "The committee preserves the question and refuses to invent a substantive finding before the required evidence is verified."
+    }
+  ],
+  "hard_stops": [
+    {
+      "id": "critical-current-data-unavailable",
+      "status": "OPEN",
+      "reason": "Current BCV, SUDEBAN, liquid-reserve, fiscal, oil-FX, debt, and USD-circulation evidence remains incomplete or disputed."
+    },
+    {
+      "id": "citation-unverified",
+      "status": "OPEN",
+      "reason": "The full Hanke and 80-case source universe is not fully acquired and read with locators."
+    },
+    {
+      "id": "math-unreconciled",
+      "status": "OPEN",
+      "reason": "Current conversion, reserve-coverage, banking, and fiscal values cannot be reproduced without the missing current inputs."
+    },
+    {
+      "id": "bank-solvency-or-liquidity-unresolved",
+      "status": "OPEN",
+      "reason": "Current system-level and bank-level liquidity and capital evidence remains incomplete."
+    },
+    {
+      "id": "legal-conversion-authority-unknown",
+      "status": "OPEN",
+      "reason": "The complete legal authority and operational conversion framework has not been independently established."
+    }
+  ],
+  "dissenting_opinions": [],
+  "final_disposition": "NO_DECISION_INSUFFICIENT_EVIDENCE",
+  "chair_statement": "The committee cannot pass or fail the substantive policy application yet. It can only identify the questions, required evidence, and open gates."
+}

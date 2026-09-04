@@ -245,11 +245,79 @@ def validate(root: Path, *, require_released: bool = False) -> list[str]:
             failures.append(f"{row.get('id')} is not released")
     if not any(row.get("trap_types") for row in rows):
         failures.append("benchmark has no typed challenge cases")
+    item_map = {str(row.get("id")): row for row in rows}
+    reviewer_rows = read_jsonl(p["reviewers"])
+    reviewer_map = _reviewer_map(p)
+    if len(reviewer_map) != len(reviewer_rows):
+        failures.append("reviewers.jsonl contains duplicate reviewer IDs")
+    for reviewer in reviewer_rows:
+        rid = str(reviewer.get("reviewer_id") or "<missing>")
+        if not rid or reviewer.get("role") != "attorney":
+            failures.append(f"{rid} must be a named attorney reviewer")
+        if not reviewer.get("conflict_attestation"):
+            failures.append(f"{rid} lacks conflict attestation")
+        if row_hash(reviewer) != reviewer.get("record_hash"):
+            failures.append(f"{rid} reviewer record_hash mismatch")
+    review_pairs: set[tuple[str, str]] = set()
+    for review in read_jsonl(p["reviews"]):
+        bid = str(review.get("benchmark_id") or "")
+        item = item_map.get(bid)
+        if not item:
+            failures.append(f"review references unknown benchmark item: {bid or '<missing>'}")
+            continue
+        pair = (bid, str(review.get("reviewer_id") or ""))
+        if pair in review_pairs:
+            failures.append(f"duplicate review for {bid} by {pair[1] or '<missing>'}")
+        review_pairs.add(pair)
+        error = _review_failure(review, item, reviewer_map.get(pair[1]))
+        if error:
+            failures.append(error)
+    for adjudication in read_jsonl(p["adjudications"]):
+        bid = str(adjudication.get("benchmark_id") or "")
+        item = item_map.get(bid)
+        if not item:
+            failures.append(f"adjudication references unknown benchmark item: {bid or '<missing>'}")
+            continue
+        if row_hash(adjudication) != adjudication.get("record_hash"):
+            failures.append(f"{bid} adjudication record_hash mismatch")
+        if adjudication.get("decision") not in DECISIONS:
+            failures.append(f"{bid} adjudication has invalid decision")
+        if not str(adjudication.get("adjudication_reason") or "").strip():
+            failures.append(f"{bid} adjudication requires a reason")
+        adjudicator = str(adjudication.get("adjudicator") or "")
+        if adjudicator not in reviewer_map or reviewer_map[adjudicator].get("role") != "attorney":
+            failures.append(f"{bid} adjudicator lacks a registered attorney identity")
+        item_reviewers = {rid for review_bid, rid in review_pairs if review_bid == bid}
+        if adjudicator in item_reviewers:
+            failures.append(f"{bid} adjudicator must be independent from item reviewers")
     return sorted(set(failures))
 
 
 def _reviewer_map(p: dict) -> dict[str, dict]:
     return {str(row.get("reviewer_id")): row for row in read_jsonl(p["reviewers"])}
+
+
+def _review_failure(review: dict, item: dict, reviewer: dict | None) -> str | None:
+    bid = str(review.get("benchmark_id") or item.get("id") or "<missing>")
+    rid = str(review.get("reviewer_id") or "<missing>")
+    if reviewer is None or reviewer.get("role") != "attorney":
+        return f"{bid} review by {rid} lacks a registered attorney identity"
+    if row_hash(review) != review.get("record_hash"):
+        return f"{bid} review by {rid} record_hash mismatch"
+    if review.get("decision") not in DECISIONS:
+        return f"{bid} review by {rid} has invalid decision"
+    if review.get("materiality") not in MATERIALITY:
+        return f"{bid} review by {rid} has invalid materiality"
+    if review.get("conflict_attestation") is not True:
+        return f"{bid} review by {rid} requires conflict_attestation=true"
+    authorities = review.get("authorities")
+    if not isinstance(authorities, list) or not authorities:
+        return f"{bid} review by {rid} requires authorities"
+    if not set(authorities).issubset(set(item.get("gold_authorities") or [])):
+        return f"{bid} review by {rid} cites authority outside the item source packet"
+    if not str(review.get("reasoning_summary") or "").strip():
+        return f"{bid} review by {rid} requires reasoning_summary"
+    return None
 
 
 def register_reviewer(root: Path, reviewer: dict) -> dict:
@@ -323,14 +391,23 @@ def add_review(root: Path, review: dict) -> dict:
         raise ValueError(f"unknown benchmark id: {bid}")
     if item.get("status") == "RELEASED":
         raise ValueError("released benchmark rows are immutable")
+    if item.get("status") not in {"SOURCE_LOADED", "REVIEWED", "ADJUDICATED"}:
+        raise ValueError("review requires a source-loaded benchmark item")
     if reviewer_id not in _reviewer_map(p):
         raise ValueError(f"reviewer is not registered: {reviewer_id}")
+    reviewer = _reviewer_map(p)[reviewer_id]
+    if reviewer.get("role") != "attorney":
+        raise ValueError("reviewer must be registered as an attorney")
     if review.get("decision") not in DECISIONS:
         raise ValueError("review decision must be PASS, REVIEW_REQUIRED, or BLOCK")
     if review.get("materiality") not in MATERIALITY:
         raise ValueError("review materiality is invalid")
     if not review.get("authorities") or not str(review.get("reasoning_summary", "")).strip():
         raise ValueError("review requires authorities and reasoning_summary")
+    if review.get("conflict_attestation") is not True:
+        raise ValueError("review requires conflict_attestation=true")
+    if not set(review.get("authorities", [])).issubset(set(item.get("gold_authorities") or [])):
+        raise ValueError("review authorities must be contained in the item's source-backed gold authorities")
     current = [row for row in read_jsonl(p["reviews"]) if row.get("benchmark_id") == bid and row.get("reviewer_id") == reviewer_id]
     if current:
         raise ValueError("reviewer may submit only one review per benchmark item")
@@ -344,14 +421,30 @@ def add_review(root: Path, review: dict) -> dict:
 def adjudicate(root: Path, decision: dict) -> dict:
     p = paths(root)
     bid = str(decision.get("benchmark_id", ""))
+    item = next((row for row in read_jsonl(p["items"]) if row.get("id") == bid), None)
+    if not item:
+        raise ValueError(f"unknown benchmark id: {bid}")
+    if item.get("status") not in {"SOURCE_LOADED", "REVIEWED", "ADJUDICATED"}:
+        raise ValueError("adjudication requires a source-loaded benchmark item")
     reviews = [row for row in read_jsonl(p["reviews"]) if row.get("benchmark_id") == bid]
-    if len(reviews) < 2 or reviews[0].get("decision") == reviews[1].get("decision"):
+    reviewer_map = _reviewer_map(p)
+    if (
+        len(reviews) < 2
+        or reviews[0].get("reviewer_id") == reviews[1].get("reviewer_id")
+        or len({row.get("reviewer_id") for row in reviews}) < 2
+    ):
+        raise ValueError("adjudication requires two independent reviews")
+    for review in reviews[:2]:
+        error = _review_failure(review, item, reviewer_map.get(str(review.get("reviewer_id"))))
+        if error:
+            raise ValueError(error)
+    if reviews[0].get("decision") == reviews[1].get("decision"):
         raise ValueError("adjudication is required only when two independent reviews disagree")
     if decision.get("decision") not in DECISIONS or not str(decision.get("adjudication_reason", "")).strip():
         raise ValueError("adjudication requires a valid decision and reason")
     if decision.get("adjudicator") in {row.get("reviewer_id") for row in reviews}:
         raise ValueError("adjudicator must be independent from both reviewers")
-    if decision.get("adjudicator") not in _reviewer_map(p):
+    if decision.get("adjudicator") not in reviewer_map or reviewer_map[decision.get("adjudicator")].get("role") != "attorney":
         raise ValueError("adjudicator is not registered")
     row = dict(decision)
     row["adjudicated_at"] = now()

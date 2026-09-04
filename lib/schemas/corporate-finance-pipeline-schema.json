@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://glaw.local/schemas/corporate-finance-pipeline-schema.json",
+  "title": "GLAW Corporate Finance Pipeline Request",
+  "type": "object",
+  "required": ["schema_version", "run_id", "currency", "company", "forecast", "dcf"],
+  "properties": {
+    "schema_version": {"const": "corporate-finance-pipeline/v1"},
+    "run_id": {"type": "string", "pattern": "^FIN-"},
+    "currency": {"type": "string", "minLength": 3, "maxLength": 3},
+    "valuation_date": {"type": "string", "format": "date"},
+    "company": {"type": "object", "required": ["tax_rate", "shares_outstanding", "cash", "debt"], "properties": {"tax_rate": {"type": "number", "minimum": 0, "exclusiveMaximum": 1}, "shares_outstanding": {"type": "number", "exclusiveMinimum": 0}, "cash": {"type": "number", "minimum": 0}, "debt": {"type": "number", "minimum": 0}}, "additionalProperties": true},
+    "forecast": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["period", "revenue", "ebitda", "da", "capex", "nwc"], "properties": {"period": {"type": "string"}, "revenue": {"type": "number"}, "ebitda": {"type": "number"}, "da": {"type": "number"}, "capex": {"type": "number"}, "nwc": {"type": "number"}}, "additionalProperties": true}},
+    "dcf": {"type": "object", "required": ["wacc", "terminal_growth"], "properties": {"wacc": {"type": "number", "exclusiveMinimum": 0, "exclusiveMaximum": 1}, "terminal_growth": {"type": "number", "minimum": 0}}, "additionalProperties": true},
+    "trading_comps": {"type": "array"}, "transaction_comps": {"type": "array"}, "merger": {"type": "object"}, "waterfall": {"type": "object"}, "sources": {"type": "array"}
+  },
+  "additionalProperties": true
+}

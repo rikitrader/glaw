@@ -1,0 +1,4 @@
+import type { CompiledLegalRule } from '../types/index.ts';
+const ORDER=['DRAFT','SOURCE_VERIFIED','AUTHORITY_VERIFIED','RED_BLUE_REVIEWED','WHITE_APPROVED','APPELLATE_VERIFIED','HUMAN_APPROVED_IF_REQUIRED','PRODUCTION','DEPRECATED','SUPERSEDED'] as const;
+export function canPublish(rule:CompiledLegalRule):{ok:boolean;reasons:string[]} { const reasons:string[]=[]; if(!rule.authorityRefs.length) reasons.push('authority references required'); if(rule.status==='DRAFT'||rule.status==='DEPRECATED'||rule.status==='SUPERSEDED') reasons.push('rule is not publishable at current status'); if(rule.confidence<80) reasons.push('confidence below production threshold'); return {ok:!reasons.length,reasons}; }
+export function lifecycleRank(status:CompiledLegalRule['status']):number{return ORDER.indexOf(status);}

@@ -1,0 +1,1323 @@
+Would “Cold Turkey” Work in Turkey?
+Oya Celasun, R. Gaston Gelos, and Alessandro Prati1
+January 2003
+Abstract
+Persistently high inflation rates have led many to believe that inflation in Turkey has become
+“inertial,” posing an obstacle to disinflation. We assess the empirical validity of this argument.
+We find that the current degree of inflation persistence in Turkey is lower than that of Brazil
+and Uruguay prior to their successful stabilization programs. More significantly, expectations of
+future inflation are more important than past inflation in shaping the inflation process, providing
+little evidence of “backward-looking” behavior. Using survey data, we find that inflation
+expectations, in turn, depend largely on the evolution of fiscal variables.
+JEL Classification Numbers: E31, E52
+Keywords: Inflation, inertia, price rigidities, stabilization
+Authors E-Mail Addresses: ocelasun@imf.org, ggelos@imf.org, aprati@imf.org
+
+1
+
+Research Department, International Monetary Fund. The authors wish to thank Richard
+Clarida, Mark Griffiths, Juha Kähkönen, Ratna Sahay, Antonio Spilimbergo, and Carlos Végh
+for helpful discussions, and the Research Department of the Central Bank of Turkey for useful
+comments and suggestions.
+
+-2-
+
+Contents
+
+Page
+
+I. Introduction ............................................................................................................................3
+II. What Do We Know About Wage and Price Indexation?......................................................4
+III. Persistence: A Univariate Analysis......................................................................................5
+IV. The Relative Importance of Backward Versus Forward-Looking Behavior.......................8
+A. Empirical Model .............................................................................................................9
+B. Estimates with Actual Future Inflation .........................................................................10
+C. Estimates with Survey Inflation Forecasts ....................................................................11
+V. What Determines Inflation Expectations? ..........................................................................14
+VI. Conclusion .........................................................................................................................16
+References................................................................................................................................17
+Text Tables
+1. CPI Inflation Regressions with Survey Data .......................................................................13
+2. Determinants of CPI Inflation Expectations ........................................................................15
+Figures
+1. Inflation Inertia and the Components of the CPI...................................................................7
+2. Inflation Persistence in Turkey, Uruguay, and Brazil............................................................8
+3. Turkey, Backward-Looking Behavior in CPI......................................................................12
+
+-3I. INTRODUCTION
+Bringing down inflation from persistently high levels while avoiding economic
+disruption remains one of the most important challenges for policymakers in many
+developing countries. The critical question in a disinflation attempt is how quickly inflation
+will respond to a tightening in monetary policy. If agents are predominantly forward looking
+and the monetary tightening is credible, actual and expected inflation will quickly adjust to
+the new regime and the output costs will be small, even if disinflation is rapid—that is if a
+“cold turkey” policy is adopted.2 By contrast, if agents’ price-setting behavior is backward
+looking because of wage and price indexation or adaptive expectations, disinflation will need
+to be more gradual to minimize output losses. For this reason, it is important to be able to
+assess the extent to which inflation has an “inertial” component. Methodological questions
+on how to address this problem have therefore received significant attention in the academic
+literature.3
+Turkey is an ideal case study for these issues, because is has experienced persistently
+high inflation since the 1970s. In contrast to many other high-inflation countries, which at
+some point experienced hyperinflation, Turkey’s inflation has never exploded, with annual
+inflation rates hovering around stable but gradually increasing plateaus ranging from
+40 percent to 120 percent over the last decade. This persistence has led many to believe that
+inflation is largely driven by inertia, with entrenched inflation expectations posing an
+obstacle to any disinflation attempt. In fact, the failure of the 2000 IMF stabilization program
+has been attributed by many to the presence of inflation inertia.4
+We find little empirical support for this argument. First, the univariate properties of
+inflation dynamics show that the current degree of inflation persistence in Turkey is lower
+than that of Brazil and Uruguay prior to their successful stabilization programs. Second,
+using a framework similar to that in Galí and Gertler (1999), and employing both price and
+survey data, we find that expectations of future inflation are more important than past
+inflation in shaping the inflation process. Third, an examination of the determinants of
+inflation expectations shows that expectations depend largely on the evolution of fiscal
+variables.
+
+2
+
+The literature on stabilization is too large to be discussed here. See Sargent (1982) for a
+study of the process of ending hyperinflations and Calvo and Vegh (1999) for an extensive
+discussion of inflation stabilization in developing countries. Fischer, Sahay, and Vegh (2002)
+provide an overview of modern hyper- and high inflations, including disinflation episodes.
+Hamann and Prati (2002) study why many inflation stabilizations succeed only temporarily.
+3
+
+See, among many others, the discussions in Chadha, Masson, and Meredith (1992),
+Celasun (2001), Dotsey (2002), and Galí and Gertler (1999).
+
+4
+
+See the conference report of the 2001 NBER conference on Turkey under
+http://www.nber.org/crisis/turkey_report.html.
+
+-4Contrary to a widely held view, these findings suggest that backward-looking
+contracts do not pose a serious constraint to the disinflation process. Indeed, authorities could
+effectively control the speed of the disinflation by adopting and maintaining policies that
+influence expectations of future inflation. Moreover, since inflation is determined to a large
+extent by forward-looking behavior, output costs associated with a rapid disinflation program
+are likely to be relatively low. A credible fiscal consolidation is probably the key to reducing
+inflation since inflation, expectations will decline only if the public perceives that the need to
+monetize fiscal deficits or inflate away the debt stock has come to an end.
+On methodological grounds, our paper innovates by making extensive use of survey
+data. While survey data have previously been used in the literature, we go one step further by
+attempting to explain the formation of expectations, explicitly distinguishing between fiscal
+and monetary factors.5
+The main aim of this paper, however, is to answer a policy question; for this reason,
+we do not restrict ourselves to a single empirical approach, but present the results from
+various alternative methods, hoping to assemble a body of convincing evidence supporting
+our conclusion.
+II. WHAT DO WE KNOW ABOUT WAGE AND PRICE INDEXATION?
+While there is a perception that a significant share of wage and price contracts in
+Turkey are indexed to past inflation, there is little comprehensive documentation of the
+nature of indexation in various sectors of the economy. The contract length in the small
+fraction of the private sector covered by collective bargaining (about 350,000 workers) is
+typically two years with six-month backward indexation. The wages of the vast majority of
+workers are negotiated on a firm-by-firm basis and little is known about their nature, except
+that their length is usually six months. The 2000 program agreed with the IMF included a
+shift in the inflation adjustment of civil service sector wages and pensions from a backwardlooking mechanism to a forward-looking adjustment in line with projected inflation rates,
+with catch-up clauses. Currently, civil servant salaries and blue-collar workers in the public
+sector are adjusted twice a year. Little is documented about other indexation mechanisms in
+the economy. Interestingly, Shiller (1997) cites Turkey as a puzzling example of a country
+with high and variable inflation without substantial indexing.
+There is some inertia in public sector price adjustments, possibly contributing to
+inflation persistence. The government budget uses a backward-looking revaluation
+coefficient based on the average annual increase in the WPI to determine many taxes and
+user fees. Prices of utilities, medical supplies, and many food items are controlled by the
+government, the exact extent to which inflation adjustments in these areas are characterized
+by systematic inertial (i.e. backward-looking) behavior is not fully clear.
+5
+
+For an example of the use of survey data in the estimation of the Phillips curve, see
+Roberts (1995).
+
+-5-
+
+The time-series behavior of CPI subindices suggests that, in important nontradable
+sectors of the economy, prices tend to be adjusted with several month lags. We find that
+housing, health, and education prices appear to be the most sluggish, while prices of food,
+clothing, and houseware are the most flexible.6 The nontradable sector price increases seem
+to be set largely based on past inflation. The left-hand panels in Figure 1 show, as we would
+expect in such a case, that the ratio of the index of slowly-adjusting prices (housing, health,
+education) to the overall CPI increases as inflation declines from end-1997 to end-2000 and
+diminish when inflation accelerates in 2001. The right-hand panels in Figure 1 show that the
+ratios of those price categories that are more flexible than the average move in the same
+direction as the inflation rate.
+III. PERSISTENCE: A UNIVARIATE ANALYSIS
+How important is inflation persistence in the aggregate? A univariate analysis of
+inflation dynamics indicates that inflation persistence in Turkey during 1994–2002 was small
+in both relative and absolute terms. We first estimated a simple regression of monthly CPI
+inflation on its lag and a linear trend for the period January 1994–February 2002. We then
+computed Andrews’ (1993) median unbiased estimator of the first order autoregressive
+parameter and obtained the half-life estimates shown in Figure 2 by replicating this
+procedure on rolling samples of 60 observations. 7 The estimated half-life of a unit shock to
+CPI inflation (the length of time needed to halve the magnitude of the original shock) is
+only about one month and has been relatively stable over time, remaining between 0.8 and
+1.3 months over the last three years (top panel of Figure 2).8
+
+6
+
+Food prices carry the largest weight in the CPI (31 percent), followed by housing
+(26 percent), clothing (9.8 percent), transportation (9.3 percent), houseware (9 percent),
+health (2.9 percent), entertainment (2.9 percent), hotels and restaurants (2.8 percent),
+education (1.6 percent), and miscellaneous (4.5 percent.)
+7
+
+Stock (2001), in a comment on Cogley and Sargent (2001) notes: “There are a variety of
+ways to measure persistence, none perfect.” He then goes on to use a median-unbiased
+estimation method similar to the one employed here.
+8
+
+We also repeated the analysis on quarterly data obtaining analogous results. For all these
+calculations, we modified a program that was originally written by Antonio Spilimbergo.
+
+-6-
+
+Figure 1: Inflation Inertia and the Components of the CPI Index
+INERTIAL COMPONENTS
+
+FLEXIBLE COMPONENTS
+1.3
+
+ratio of s.a. HOUSING prices
+to s.a. CPI (right axis)
+
+1.10
+ratio of s.a. FOOD prices
+to s.a. CPI (right axis)
+
+1.2
+1.1
+
+100
+
+1.05
+1.00
+0.95
+
+100
+
+1.0
+
+80
+
+0.9
+
+80
+0.90
+60
+
+0.85
+
+60
+40
+20
+1995
+
+1996
+
+1997
+
+1998
+
+1999
+
+2000
+
+0.80
+
+year-on-year CPI inflation (left axis)
+
+40
+
+year-on-year CPI inflation (left axis)
+
+20
+
+2001
+
+1995
+
+1996
+
+1997
+
+1998
+
+1999
+
+2000
+
+2001
+
+1.3
+ratio of s.a. HEALTH prices
+to s.a. CPI (right axis)
+
+1.2
+
+1.1
+ratio of s.a. CLOTHING prices
+to s.a. CPI (right axis)
+
+100
+
+1.0
+
+1.1
+100
+
+1.0
+
+80
+
+0.9
+
+80
+
+0.9
+
+60
+
+0.8
+
+60
+40
+
+40
+
+0.7
+
+year-on-year CPI inflation (left axis)
+
+year-on-year CPI inflation (left axis)
+
+20
+
+20
+1995
+
+1996
+
+1997
+
+1998
+
+1999
+
+2000
+
+2001
+
+1995
+
+1996
+
+1997
+
+1998
+
+1999
+
+2000
+
+2001
+
+1.6
+ratio of s.a. EDUCATION prices
+to s.a. CPI (right axis)
+
+1.00
+ratio of s.a. HOUSEWARE prices
+to s.a. CPI (right axis)
+
+1.4
+1.2
+
+100
+
+1.0
+
+80
+
+0.8
+
+0.95
+
+100
+
+0.90
+0.85
+
+80
+
+0.80
+60
+
+0.75
+
+60
+
+0.70
+
+40
+
+40
+
+year-on-year CPI inflation (left axis)
+
+year-on-year CPI inflation (left axis)
+
+20
+
+20
+1995
+
+1996
+
+1997
+
+1998
+
+1999
+
+2000
+
+2001
+
+1995
+
+1996
+
+Note: The abbreviation “s.a.” denotes seasonally adjusted.
+
+1997
+
+1998
+
+1999
+
+2000
+
+2001
+
+-7-
+
+Figure 2. Inflation Persistence in Turkey, Uruguay, and Brazil
+(median unbiased half-life estimates of a unit shock and 90 percent confidence band)
+3.5
+Turkey
+
+Half-life in MONTHS
+
+3.0
+2.5
+2.0
+1.5
+1.0
+0.5
+0.0
+1999
+
+2000
+2001
+End of 5-year rolling sample
+
+6
+
+Half-life in MONTHS
+
+5
+Uruguay
+4
+3
+2
+1
+0
+1991
+1992
+End of 5-year rolling sample
+
+8
+Brazil
+
+Half-life in MONTHS
+
+7
+6
+5
+4
+3
+2
+1
+1991
+1992
+End of 5-year rolling sample
+
+1993
+
+-8CPI inflation in Turkey is also less persistent than in Uruguay and Brazil prior to their
+successful inflation stabilizations. Uruguay like Turkey had a history of high but relatively
+stable inflation before embarking on a successful stabilization program at the beginning of
+the 1990s after inflation reached a peak of 140 percent. The middle panel in Figure 2 shows
+that in Uruguay the half-life of a unit shock prior to stabilization was similar or marginally
+higher than that of Turkey in February 2002. The case of Brazil is also of interest because it
+was a country with extensive backward wage and price indexation before the 1994
+stabilization. This is reflected in half-life estimates between four and seven months (bottom
+panel in Figure 2).9
+While inflation persistence in Turkey is small, half-life estimates are always
+significantly different from zero (top panel in Figure 2), suggesting that further analysis is
+warranted. Univariate persistence may be due to backward-looking price setting, , but it is
+also consistent with forward-looking behavior. Serial correlation in the variables that drive
+inflation, such as exchange rate depreciation or money growth, would reconcile univariate
+persistence and forward-looking behavior. The next section assesses the relative importance
+of backward and forward-looking behavior by estimating a multivariate regression that nests
+both hypotheses.
+IV. THE RELATIVE IMPORTANCE OF BACKWARD VERSUS FORWARD-LOOKING
+BEHAVIOR
+The distinction between backward- and forward-looking price setting behaviors is
+important from a policy point of view because the output costs of a rapid disinflation would
+tend to be higher with backward-looking behavior.10 By contrast, forward-looking price
+setters would quickly take into account the implications for inflation of a credible change in
+the monetary regime, thus making the costs of disinflation relatively small. In this section,
+after describing the empirical model, we use two alternative measures of inflation
+expectations, actual future inflation and survey inflation forecasts, to assess the degree of
+forward-looking pricing behavior in Turkey. We find that, while past inflation contributes to
+explain current inflation dynamics, expectations of future inflation play a much more
+important role.
+
+9
+
+The bottom panel of Figure 2 does not show the upper bound of the confidence interval for
+the half-life of a shock to inflation in Brazil because the corresponding median unbiased
+estimator of the autoregressive parameter was 1, suggesting that the Brazilian CPI inflation
+series could be nonstationary, as shown in other studies (see, for example, Durevall (1999)).
+10
+
+See, for example, the discussions in Ball (1994), Celasun (2001), or Buiter and Grafe
+(2001).
+
+-9A. Empirical Model
+We estimate an empirical model that nests the possibility of both backward- and forwardlooking price-setting behavior. Traditional models of price stickiness with purely forwardlooking agents do not generate inflation persistence. The Calvo (1983) model can be
+modified by assuming that only a fraction of the firms in the economy is forward looking,
+while the rest is backward looking.11 As in the original Calvo (1983) model, only a fraction
+of firms are assumed to change prices every period while the rest keep prices constant.
+Forward-looking firms have rational expectations, and backward-looking price setters use a
+rule of thumb: they update the average new price in the most recent round of price
+adjustments by the most recently observed inflation rate. The resulting inflation rate in period
+t, πt equals:
+
+π t = (1 − δ )π t −1 + δEt π t +1 + λ (Vt* − Pt )
+
+(1)
+
+where Vt * corresponds to the logarithm of the price a forward looking firm would select for
+period t, if it were able to reset its price in each period, and Pt is the logarithm of the
+aggregate price level. The firms are assumed to be monopolistically competitive, and
+therefore choose Vt * as the (logarithm) of a markup over nominal marginal costs, in
+deviation from steady state. The term Vt *- Pt then corresponds to the level of real marginal
+cost, and is often proxied by the level of excess demand.12 We extend Celasun’s (2001)
+specification for the nontradables component of the Turkish CPI to the overall CPI, and
+include in the equation terms proxying for marginal costs for tradable goods as well as the
+excess demand for nontradable goods and services. The degree of inflation inertia is
+governed by the parameter 1-δ. The higher is the share of backward-looking price setters the
+larger is the weight 1-δ on the lagged inflation term. Similar equations can be motivated by
+other models that explain inflation persistence, such as Chadha, Masson, and Meredith
+(1992), Fuhrer and Moore (1995), Jadresic (2000), Driscoll and Holden (2001).13
+
+11
+
+Similar specifications have been used by Obstfeld (1995), Galí and Gertler (1999),
+Ghezzi (2001), and Celasun (2001).
+12
+
+Galí and Gertler (1999) argue that proxies for marginal costs should be used instead of an
+excess demand/output gap variable. See also the discussion in Celasun (2001). We will use
+both approaches below.
+Chadha, Masson, and Meredith (1992) show that when δ is greater than 0.5 there is a
+money growth rate that keeps the output gap at zero along the disinflation path.
+13
+
+- 10 B. Estimates with Actual Future Inflation
+We first estimate equations for Turkish CPI inflation, proxying expected future inflation rates
+by actual future inflation rates. Given that the measurement error introduced by using such a
+proxy is not orthogonal to the actual future realization of the inflation rate, the appropriate
+estimation technique involves using instrumental variables that are orthogonal to the
+expectational error. Moreover, the error term in this case follows a MA(1) process and is not
+necessarily homoskedastic, so we use the generalized method of moments (GMM) to take
+into account the structure of the error term. In addition to the lagged and future inflation
+terms, we include terms proxying for the marginal costs and the excess demand of the
+tradable and nontradable components of the CPI, respectively: the real wage (rwage) and the
+real exchange rate (rer), and, as a proxy for nontradables excess demand, the relative price of
+tradables with respect to nontradables in the CPI index (trntr) and the imports-to-GDP ratio
+(imp).14 15 We do not impose any restrictions on the coefficients of these terms, letting them
+to be determined by the data.16 Our set of instruments include three lags of inflation and all
+the other variables in the equation, three lags of the nominal interest rate, and a dummy
+variable for the second quarter of 1994 to account for the effect of the April 1994 crisis. The
+constant term in the equation is allowed to vary in the two subsamples 1990:Q1–1994:Q1
+and 1994:Q2–1998:Q1. The equation estimated for 1990:Q1–1998:Q1 is as follows, with
+standard errors in parantheses:17
+
+π t = 0.38π t −1 + 0.62 Etπ t +1 + 0.44 rert + 0.34 rwaget + 0.62 trntrt + 0.39 impt
+(0.08**)
+
+(0.11**)
+
+(0.09**)
+
+(0.17**)
+
+(0.05**)
+
+(1.1)
+
+The weight on expected future inflation is significant and positive but below one, and not
+statistically distinct from 0.5. All the four driving variables also enter the equation in a
+statistically significant manner, with the expected sign. Hansen’s J-statistic has a p-value of
+0.378, implying that the instruments and the model are valid. To examine whether the degree
+of inflation inertia changed over time as a result of the recent disinflation efforts, we extend
+the sample by adding recursively one quarter of observations at a time through 2001:Q4.
+14
+
+See Celasun (2001) on the motivation for the measure used to proxy nontradables excess
+demand.
+
+15
+
+All variables are in logarithms, and except for the real wage, in deviation from a linear
+trend. For the logarithm of the real wage, the quadratic trend was also statistically significant,
+and therefore was used along with the linear one in detrending.
+
+16
+
+The presence of the real exchange rate term accounts for the possibility that a share of
+firms, most likely in the tradables sector, “index” their prices to the current and expected
+future domestic level of foreign prices (i.e. the exchange rate multiplied by foreign prices).
+We plan to test in future work whether some price setters index to the exchange rate in a
+backward-looking manner.
+
+17
+
+** Denotes significance at the 1 percent level.
+
+- 11 -
+
+Figure 3. Turkey: Backward-Looking Behavior in CPI
+(recursive GMM estimates of lagged inflation coefficient and 95 percent confidence band)
+
+lagged inflation coefficient
+
+.6
+
+ERBS
+stabilization
+
+.5
+.4
+.3
+.2
+.1
+.0
+-.1
+
+1998
+
+1999
+
+2000
+
+2001
+
+End of sample beginning in 1990:Q1
+
+Figure 3 presents the estimates of the backward-looking coefficient 1-δ for CPI
+inflation obtained by gradually extending the sample period.18 The estimates show some
+evidence of inflation inertia, but the weight on lagged inflation falls from about 40 percent in
+the 1990:Q1–1998:Q1 sample to less than 15 percent in the full sample, suggesting that price
+setters’ behavior has become increasingly forward-looking. Possibly, this is the result of the
+disinflation strategy followed in recent years, in particular the switch to forward-looking
+wage setting in the public sector mentioned above.19
+C. Estimates with Survey Inflation Forecasts
+
+We obtain broadly similar results when estimating equations in which survey CPI
+inflation expectations from Consensus Forecasts are used in lieu of expected inflation.20
+18
+
+The estimated coefficient on the relative price of tradables with respect to nontradables
+(trntr) is statistically indistinguishable from zero in samples that end after 1999:Q3, but all
+other variables in the equation remain statistically significant in driving inflation.
+
+19
+
+The results are broadly in line with findings by Dibooglu (2001) based on the GDP
+deflator.
+
+20
+
+We used the mean forecast of 15 different economic forecasters, including 13 Turkish and
+foreign private financial institutions, Istanbul Bilgi University, and the Turkish Industrialists’
+and Businessmen’s Association.
+
+- 12 Survey data allow us to depart from the rational expectations assumption made above and
+bypass the need to use the GMM. For Turkey, Consensus forecasts for average inflation in
+the current year and the following year are available on a monthly basis for the period
+1995:1–1998:05 and bimonthly since then. In addition, since 1998:05, Consensus has been
+providing expectations data for the six individual months ahead, on a bimonthly basis. We
+estimate regressions for seasonally adjusted monthly and bi-monthly inflation for 1998:052002:02 and semiannual and annual inflation for 1995:01–2002:02.21 For the inflation
+regressions for monthly or bi-monthly inflation, Consensus data exist only for two years at a
+bimonthly frequency, reducing the number of observations. For those regressions that assume
+either six-month or one-year contracts, we have over seven years of data at a monthly
+frequency. 22 As a measure of excess demand, we use a seasonally adjusted series of capacity
+utilization, which is available on a monthly basis.
+In most specifications, the estimates using survey forecast data reinforce the notion
+that inflation persistence does not have its main origin in backward looking behavior
+(Table 1). The coefficient of expected future inflation is statistically indistinguishable from
+one in the regressions using six-monthly and annual data, whereas lagged inflation is
+statistically insignificant. 23 While the coefficient on lagged inflation is statistically and
+quantitatively significant in the regressions using monthly and bi-monthly data, these
+
+21
+
+The specification remains constant across the estimations. The equation for, say, nmonthly inflation includes n-months lagged (n-monthly) inflation, expected n-month ahead
+inflation, and the n-month average of capacity utilization, as well as a constant term. We
+restrict the sum of the coefficients of lagged and expected future inflation to one, as in the
+GMM regressions.
+
+22
+
+Six-month and one-year average inflation expectations are computed using a weighted
+average of this year’s and next year’s expected inflation rate. In the case of six-month
+inflation, we assume that expected inflation was equal for the whole 12-month horizon.
+Given that these data are available only at a bimonthly frequency since May 1998, we
+interpolate data for the missing months.
+23
+
+In finite sample regressions, the coefficient on the lagged dependent variable is biased
+downwards. This bias is larger the closer the estimate is to one. In our case, the estimated
+coefficients on the lagged dependent variable are mostly close to zero or 0.5, so that this
+problem is less severe. Nonetheless, we also report results from two-stage least squares
+(2SLS) regressions, where we instrument lagged inflation with lags of capacity utilization.
+As the empirical model, the frequency, and the sample period of the regressions in Table 1
+are different from those of the previous regressions with actual inflation, we also estimated
+the specifications of Table 1 with GMM techniques and actual future inflation in place of
+survey expectations (not shown). The forward-looking term was always statistically
+significant whereas lagged inflation was always insignificant.
+
+- 13 regressions have small sample size and low explanatory power relative to those with sixmonthly and annual inflation, casting doubt on the reliability of the estimates.24
+Table 1. CPI Inflation Regressions with Survey Data
+(Newey-West standard errors in parenthesis)
+Forecast
+Horizon
+Lagged
+inflation
+
+One
+month
+0.529*
+(0.069)
+
+One
+month
+0.655*
+(0.129)
+
+Two
+months
+0.527*
+(0.184)
+
+Two
+months
+0.868*
+(0.184)
+
+Six
+months
+0.016
+(0.166)
+
+Six
+months
+-0.240
+(0.148)
+
+One
+year
+-0.128
+(0.010)
+
+One
+year
+-0.243
+(0.136)
+
+Inflation
+Forecast
+
+0.471*
+(0.069)
+
+0.345*
+(0.129)
+
+0.473*
+(0.184)
+
+0.132
+(0.184)
+
+0.984*
+(0.166)
+
+1.240*
+(0.148)
+
+1.128*
+(0.099)
+
+1.243*
+(0.136)
+
+Capacity
+utilization
+(seasonally
+adj.)
+Constant
+
+0.176*
+(0.046)
+
+0.172*
+(0.046)
+
+0.003
+(0.145)
+
+-0.067
+(0.174)
+
+-0.106
+(0.305)
+
+0.130
+(0.296)
+
+0.057
+(0.679)
+
+0.661
+(0.831)
+
+-13.55*
+(3.330)
+
+-12.831*
+(3.332)
+
+-0.246
+(10.759)
+
+4.962
+(13.23)
+
+12.257
+(23.073)
+
+-5.144
+(22.25)
+
+10.445
+(53.24)
+
+-36.961
+(61.725)
+
+Estimation
+frequency
+
+bimonthly
+
+bimonthly
+
+bimonthly
+
+bimonthly
+
+Monthly
+
+monthly
+
+monthly
+
+monthly
+
+Instrumental
+Variables
+
+no
+
+yes
+
+no
+
+yes
+
+No
+
+yes
+
+no
+
+yes
+
+Estimation
+Period
+No. of obs.
+
+5:19982:2002
+23
+
+5:19982:2002
+23
+
+5:19982:2002
+23
+
+5:19982:2002
+23
+
+1:19952:2002
+86
+
+1:19952:2002
+75
+
+1:19952:2002
+86
+
+1:19952:2002
+51
+
+R2
+
+0.31
+
+0.24
+
+0.00
+
+0.00
+
+0.55
+
+0.58
+
+0.60
+
+0.70
+
+Notes: *Denotes significance at the 5 percent confidence level. The set of instrumental variables include the
+constant term, inflation forecast, the current value, and three lags of the capacity utilization rate.
+
+Granger-causality tests provide another indication that price setters are forward
+looking. Granger-causality tests are essentially tests of temporal precedence. If price setters
+were mainly backward-looking, then changes in inflation would Granger-cause changes in
+inflation expectations and not vice-versa. However, the pattern is the opposite: for all
+horizons, we cannot reject the hypothesis that inflation expectations Granger-cause actual
+
+24
+
+The recursive estimates of the coefficient of lagged inflation (not shown) are quite stable
+since mid-1997.
+
+- 14 inflation, while the hypothesis that actual inflation Granger-causes inflation expectations
+can be rejected at the usual confidence levels (not shown).
+V. WHAT DETERMINES INFLATION EXPECTATIONS?
+
+As inflation expectations appear to play a dominant role in the price setting
+mechanism, we conduct an empirical investigation of their determinants. We run two types
+of regressions to explain Consensus forecasts of average inflation over the following 12
+months. In the first set of regressions (first two columns of Table 2), we try to explain
+inflation expectations with a set of standard variables: monetary growth, the difference
+between the overnight rate and the deposit rate (to measure the stance of monetary policy),
+capacity utilization (to proxy for excess demand), lagged inflation, and exchange rate
+changes. 25 26 In addition, to assess whether inflation expectations are driven by expectations
+of monetization of fiscal deficits, we include the primary balance and the change in the
+nominal debt stock (both as ratios to GDP) as fiscal variables. In the second set of
+regressions (last two columns in Table 2), we relate inflation expectations to expectations
+about the size of the fiscal deficit. Since data on fiscal expectations are available only since
+May 1998 at a bimonthly frequency, the number of observations in this case is much smaller.
+Moreover, given that fiscal balance expectations might be endogenous (at a minimum
+because inflation expectations affect interest rates and, thus, expected fiscal balances), we
+also estimate this specification with instrumental variables.27
+There is evidence that fiscal variables play an important role in determining inflation
+expectations. The results suggest that market participants closely follow fiscal developments
+when forming inflation expectations. In particular, in the first two columns of Table 2, the
+primary balance and changes in the debt (lagged one month) do have the expected sign
+(higher debt and deficits are associated with higher inflation expectations) and are significant
+
+25
+
+We did not address the separate question of whether inflation expectations are rational.
+A quick examination suggests that survey forecasts are unbiased, but not efficient. The fact
+that lagged inflation helps explain expectations is not inconsistent with the earlier results in
+which expectations of future inflation drive current inflation. It suggests that a reduced form
+equation could express current inflation as a function of lagged inflation, an excess
+demand/marginal cost term, and other variables explaining expectation formation.
+
+26
+
+Including the exchange rate, as an explanatory variable is problematic, since, at least in
+periods in which it is floating, the exchange rate is a jump variable that captures inflation
+expectations. The qualitative results presented below are not affected by the exclusion of the
+exchange-rate variable.
+
+27
+
+We use past changes in the debt stock as instruments for the forecast of the fiscal balance.
+
+- 15 -
+
+Table 2. Determinants of CPI Inflation Expectations
+(Dependent variable: mean Consensus forecast of average inflation over the following 12-months;
+Newey-West standard errors in parenthesis)
+
+Specification I
+
+Specification II
+
+Specification III
+
+Specification IV
+
+Inflation (lagged)
+
+0.486*
+(0.095)
+
+0.790*
+(0.196)
+
+0.982*
+(0.112)
+
+1.223*
+(0.260)
+
+Capacity utilization
+(lagged, seasonally
+adjusted)
+Expected
+consolidated fiscal
+balance (as % of
+GNP)
+Change in debt stock
+(in % of GDP,
+seasonally adj., yearon-year, lagged one
+month)
+Primary balance (as
+% of GDP, seasonally
+adj., lagged one
+month)
+Overnight rate minus
+deposit rate (lagged)
+
+0.917*
+(0.212)
+
+0.452
+(0.515)
+
+-1.133
+(0.637)
+
+-0.841
+(0.880)
+
+-
+
+-
+
+-2.687*
+(0.693)
+
+-4.484*
+(1.617)
+
+0.022*
+(0.006)
+
+0.030*
+(0.006)
+
+-
+
+-
+
+-0.104*
+(0.025)
+
+-0.085*
+(0.022)
+
+-
+
+-
+
+0.005
+(0.012)
+
+0.017
+(0.011)
+
+-
+
+-
+
+Year-on-year M1
+growth (lagged)
+
+-0.003
+(0.061)
+
+-0.019
+(0.093)
+
+-
+
+-
+
+Year-on-year
+exchange-rate
+change (lagged)
+Constant
+
+0.629*
+(0.165)
+
+0.758*
+(0.171)
+
+-
+
+-
+
+-44.127*
+(17.575)
+
+33.990
+(31.455)
+
+49.213
+(50.895)
+
+-5.775
+(78.752)
+
+Instrumental variables
+for lagged inflation?
+R2
+
+No
+
+Yes
+
+No
+
+Yes
+
+0.79
+
+0.69
+
+0.80
+
+0.71
+
+Number of obs.
+
+82
+
+82
+
+23
+
+23
+
+Estimation frequency
+Breusch-Godfrey
+serial correlation test
+(p-value)
+
+monthly
+0.00
+
+monthly
+0.00
+
+bimonthly
+0.00
+
+bimonthly
+0.01
+
+*Denotes significance at the 5 percent confidence level.
+
+- 16 at the 5 percent level, even after controlling for a broad set of variables.28 29 The two fiscal
+variables alone explain 43 percent of the variation in inflation expectations (not shown).
+These results are confirmed by the second set of regressions (last two columns in Table 2),
+where the expectation about fiscal deficits significantly enters the regression even when
+instrumented. Moreover, expected fiscal deficits remain significant in regressions explaining
+survey expectations even when we include expected M2 growth and expected GDP growth
+over the next 12 months as explanatory variables (not shown). The latter finding suggests
+that fiscal deficits affect inflation expectations not only because higher fiscal deficits increase
+expected money growth over a 12-month horizon. In addition, they increase the probability
+of monetization over a longer horizon, thereby augmenting, with a sufficiently forwardlooking money demand, expected inflation also in the short run.
+VI. CONCLUSION
+
+Backward-looking behavior does not seem to pose a major obstacle to reducing inflation in
+Turkey. Instead, credible fiscal consolidation appears to be crucial for a lasting disinflation.
+Inflation expectations are likely to decline only if the public perceives that the temptation to
+monetize fiscal deficits or inflate away the debt stock has come to an end. The fact that the
+recent improvements in the non-interest fiscal balance have coincided with a marked drop in
+inflation expectations lends support to this view, although the lack of demand pressures
+following the February 2001 crisis is also likely to have contributed to the disinflation and
+the downward adjustment of inflation expectations. Concurrently, the authorities could
+consider policies aimed at eliminating residual forms of backward indexation in wages and
+prices (such as housing rents and health and education prices), which are likely to account for
+the remaining role of past inflation found in the attached econometric analysis.
+
+28
+
+Several studies have analyzed econometrically the relationship between public sector
+deficits and inflation in Turkey (see, for example, Metin (1998).) See also Alper and
+Ucer (1998) and Lim and Papi (1997).
+
+29
+
+One might wonder whether the lagged inflation term is the regressor that explains most of
+the variation in inflation expectations. This does not seem to be the case. For example, in
+specification I, the R2 excluding lagged inflation is 0.55.
+
+- 17 -
+
+References
+
+Alper, Emre and Murat Ucer, 1998, “Some Observations on Turkish Inflation: A “Random
+Walk Down the Past Decade,” paper presented at the conference “Stabilization in an
+Emerging Market: The Case of Turkey” (Istanbul, Turkey: Bogazici University).
+Andrews, Donald, 1993, “Exactly Median-Unbiased Estimation of First Order
+Autoregressive/Unit Root Models,” Econometrica, Vol. 61, No. 1, pp. 139–65.
+Ball, Lawrence, 1994, “What Determines the Sacrifice Ratio?” in Monetary Policy, ed. by
+G. Mankiw (Chicago: University Chicago Press).
+Buiter, Willem H., and Clemes Grafe, (2001), “No Pain, No Gain?: The Simple Analytics
+of Efficient Disinflation in Open Economies,” CEPR Discussion Paper No. 3038,
+(London: Center for Economic Policy Research).
+Calvo, Guillermo, 1983, “Staggered Prices in a Utility Maximizing Framework, “Journal
+of Monetary Economics, Vol. 12, No. 3, pp. 383-98.
+———, and Carlos Végh, 1999, “Inflation Stabilization and BOP Crises in Developing
+Countries,” in Handbook of Macroeconomics, ed. by John Taylor and Michael
+Woodford (Amsterdam: North-Holland), pp. 1531–614.
+Celasun, Oya, 2001, “Price Setting and Inflation Dynamics in Small Open Economies,”
+Ph. D. Dissertation, (College Park, Maryland: University of Maryland).
+Chadha, Bankim, Paul Masson, and Guy Meredith, 1992, “Models of Inflation and Costs
+of Disinflation,” Staff Papers, International Monetary Fund, Vol. 39 (June),
+pp. 395–431.
+Cogley, Timothy, and Thomas J. Sargent, 2001, “Evolving Post-World War II U.S. Inflation
+Dynamics,” in NBER Macroeconomics Annual, (Cambridge, Massachusetts: MIT
+Press.)
+Dibooğlu, Selahattin, 2001, “Inflationary Expectations and Costs of Disinflation: A Case for
+Costless Disinflation in Turkey?” in Inflation and Disinflation in Turkey, ed. by
+A. Kibritcioglu, L. Rittenberg, and F. Selcuk, (Aldershot, England: Ashgate.)
+Dotsey, Michael, 2002, “Pitfalls in Interpreting Tests of Backward-Looking Pricing in
+New Keynesian Models,” Economic Quarterly, Federal Reserve Bank of Richmond,
+Vol. 88, No. 1 (Winter).
+
+Durevall, Dick, (1999), “Inertial Inflation, Indexation, and Price Stickiness: Evidence from
+Brazil,” Journal of Development Economics, Vol. 60, pp. 407-21.
+Erlat, Haluk, (2001), “Long Memory in Turkish Inflation Rates,” in A. Kibritcioglu,
+L. Rittenberg, and F. Selcuk (eds.), Inflation and Disinflation in Turkey,
+Aldershot: Ashgate.
+Fischer, Stanley, Ratna Sahay, and Carlos Végh, (2002), “Modern Hyper- and High
+Inflations,” Journal of Economic Literature, September, pp. 837-80.
+Fuhrer, Jeffrey and Gerald Moore, (1995), “Inflation Persistence,” Quarterly Journal of
+Economics, CX, pp. 127-60.
+Gali, Jordi and Mark Gertler, (1999), “Inflation Dynamics: A Structural Econometric
+Analysis,” Journal of Monetary Economics, No. 44), pp. 195-222.
+Ghezzi, Piero, (2001), “Backward-looking Indexation, Credibility and Inflation Persistence,”
+Journal of International Economics, Vol. 53, No. 1, pp. 127-147.
+Hamann, A. Javier and Alessandro Prati, (2002), “Why Do Many Disinflations Fail?”
+(forthcoming), IMF Working Paper,
+Holden, Steinar and John C. Driscoll, (2001), “A Note on Inflation Persistence,” NBER
+Working Paper No. 8690.
+Jadresic, Esteban, (2000), “Can Staggered Price Setting Explain Short-Run Inflation
+Dynamics?” mimeo, (Washington: International Monetary Fund).
+Kibritçioğlu, Aykut, (2001), “Causes of Inflation in Turkey: A Literature Survey with
+Special Reference to Theories of Inflation,” in: Kibritcioglu, A., L. Rittenberg, and
+F. Selcuk (eds.), Inflation and Disinflation in Turkey, Aldershot: Ashgate.
+Lim, Cheng Hoon, and Laura Papi, (1997), “An Econometric Analysis of the Determinants
+of Inflation in Turkey,” IMF Working Paper 97/170 (Washington: International
+Monetary Fund).
+Metin, Kivilcim, (1998), “The Relationship Between Inflation and the Budget Deficit in
+Turkey,” Journal of Business and Economic Statistics, Vol. 16, No. 4, pp. 412-22.
+Obstfeld, Maurice, (1995), “International Currency Experience: New Lessons and Lessons
+Relearned,” Brookings Papers on Economic Activity, 1:1995, pp. 119-96.
+
+Roberts, John M., (1995), “New Keynesian Economics and the Phillips Curve,” Journal
+of Money, Credit, and Banking, Vol. 27, No. 4, pp. 975-84.
+Roberts, John M., (1997), “Is Inflation Sticky?,” Journal of Monetary Economics, No. 39,
+pp. 173-96.
+Sargent, Thomas J., (1982), “The End sof Four Big Hyperinflations,” in Inflation: Causes and
+Consequences, Robert E. Hall (ed.), (Chicago: Chicago University Press), pp. 41-97.
+Shiller, Robert, (1997), “Public Resistance to Indexation: A Puzzle,” Brookings Papers on
+Economic Activity, No. 1, pp.159-228.
+Stock, James H., (2001), Discussion of Cogley and Sargent “Evolving Post-World War II
+Inflation Dynamics,” in NBER Macroeconomics Annual .
+
+CHECKLIST FOR SUBMISSION OF WORKING PAPERS TO EXR
+Title of Working Paper: Would Cold Turkey Work in Turkey?
+Author(s): Oya Celasun, R. Gaston Gelos and Alessandro Prati
+Authorized for Issuance By:
+Department: Research
+Contact Person:
+
+Gaston Gelos
+
+Tel. Ext. 39427
+
+1. Either
+
+x
+
+This WP has been reviewed by staff in the following departments, given its
+coverage of topics or issues relevant to them: EU1 and WHD
+This WP, in our judgment, does not need review by staff in other
+departments.
+
+or
+
+2. Either
+
+x
+
+The following Executive Directors have been notified of the intention to
+publish this WP, because of its significant references to their respective
+member countries: Turkey, Brazil, Uruguay
+This WP, in our judgment, does not require advance notification to any
+Executive Directors.
+
+or
+
+Date Sent to EXR:
+
+[
+
+]
+
+Comments by Authoring Department:
+
+[
+
+]
+
+

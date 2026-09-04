@@ -154,3 +154,4 @@ Assurance work-product, not an audit opinion and not legal or tax advice. GLAW c
 issue an independent audit opinion; this prepares the client for one. Prepared for review
 by a licensed CPA / attorney and carries the UPL footer from `/glaw-ethics-conflicts` on
 any external deliverable.
+**Domain:** audit assurance professional domain, evidence, controls, and accountable human-review routing.

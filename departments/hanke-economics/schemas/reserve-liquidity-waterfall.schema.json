@@ -1,0 +1,10 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "title":"Venezuela Reserve Liquidity Waterfall",
+  "type":"object",
+  "required":["gross_reported_reserves","deductions","committed_financing","net_usable_fx","dollarization_liabilities","coverage","status"],
+  "properties":{
+    "gross_reported_reserves":{"type":["number","null"]},"deductions":{"type":"array","items":{"type":"object","required":["category","amount","source_ids","status"]}},"committed_financing":{"type":"number"},"net_usable_fx":{"type":["number","null"]},"dollarization_liabilities":{"type":"object","required":["currency","base_plus_reserves","M1","M2"]},"coverage":{"type":"object","required":["base_plus_reserves","M1","M2"]},"status":{"enum":["UNAVAILABLE","PROVISIONAL","MODELED","VERIFIED","BLOCKED"]}
+  },
+  "rule":"Gross reserves cannot be used as dollarization liquidity without component, custody, legal, encumbrance, and obligation adjustments."
+}

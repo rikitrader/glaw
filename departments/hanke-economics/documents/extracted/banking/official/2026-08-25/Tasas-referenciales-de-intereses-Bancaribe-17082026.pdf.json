@@ -1,0 +1,5122 @@
+{
+  "file name" : "Tasas-referenciales-de-intereses-Bancaribe-17082026.pdf.pdf",
+  "number of pages" : 1,
+  "author" : "Dirección de Tecnología",
+  "title" : "",
+  "creation date" : "D:20260814172441-04'00'",
+  "modification date" : "D:20260814172441-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 24,
+    "page number" : 1,
+    "bounding box" : [ 147.68, 575.96, 384.74, 599.579 ],
+    "source" : "Tasas-referenciales-de-intereses-Bancaribe-17082026.pdf_images/imageFile1.png"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 26,
+    "level" : "Doctitle",
+    "page number" : 1,
+    "bounding box" : [ 52.128, 582.181, 113.587, 593.004 ],
+    "heading level" : 1,
+    "font" : "ArialNarrow-Bold",
+    "font size" : 9.432,
+    "text color" : "[0.0, 0.612, 0.639]",
+    "content" : "Boletin de Tasas"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 18,
+    "page number" : 1,
+    "bounding box" : [ 198.05, 546.314, 485.761, 561.821 ],
+    "font" : "ArialNarrow-Bold",
+    "font size" : 5.88,
+    "text color" : "[0.0, 0.612, 0.639]",
+    "content" : "(Las tasas máximas están conformes con las disposiciones del Banco Central de Venezuela y de otros organismos públicos). (Vigentes a partir del 17/08/2026)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 19,
+    "page number" : 1,
+    "bounding box" : [ 138.5, 538.634, 427.586, 545.381 ],
+    "font" : "ArialNarrow-Bold",
+    "font size" : 5.88,
+    "text color" : "[1.0]",
+    "content" : "Cuenta Corriente Depósitos a Plazo Fijo **"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 14,
+    "page number" : 1,
+    "bounding box" : [ 105.5, 533.837, 107.142, 537.968 ],
+    "font" : "ArialNarrow",
+    "font size" : 3.6,
+    "text color" : "[0.0]",
+    "content" : "1"
+  }, {
+    "type" : "table",
+    "pdfua_tag" : "Table",
+    "id" : 1,
+    "level" : "1",
+    "page number" : 1,
+    "bounding box" : [ 16.944, 485.86, 176.33, 533.044 ],
+    "number of rows" : 6,
+    "number of columns" : 3,
+    "rows" : [ {
+      "type" : "table row",
+      "row number" : 1,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 524.642, 175.487, 531.964 ],
+        "row number" : 1,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 3,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 1,
+          "page number" : 1,
+          "bounding box" : [ 79.104, 526.87, 114.959, 531.689 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "CUENTA CORRIENTE"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 2,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 517.14, 108.2, 524.642 ],
+        "row number" : 2,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 2,
+          "page number" : 1,
+          "bounding box" : [ 48.624, 518.71, 77.747, 523.529 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "CANTIDADES Bs."
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 108.2, 517.14, 141.32, 524.642 ],
+        "row number" : 2,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 3,
+          "page number" : 1,
+          "bounding box" : [ 114.98, 518.71, 135.186, 523.529 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% NOMINAL"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 141.32, 517.14, 175.487, 524.642 ],
+        "row number" : 2,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 4,
+          "page number" : 1,
+          "bounding box" : [ 148.34, 518.71, 169.525, 523.529 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% EFECTIVA"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 3,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 509.46, 108.2, 517.14 ],
+        "row number" : 3,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 5,
+          "page number" : 1,
+          "bounding box" : [ 18.504, 510.688, 42.204, 516.058 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0,01 a 100,00"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 108.2, 509.46, 141.32, 517.14 ],
+        "row number" : 3,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 6,
+          "page number" : 1,
+          "bounding box" : [ 119.54, 510.688, 130.501, 516.058 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 141.32, 509.46, 175.487, 517.14 ],
+        "row number" : 3,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 7,
+          "page number" : 1,
+          "bounding box" : [ 153.29, 510.688, 164.251, 516.058 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.00%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 4,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 501.76, 108.2, 509.46 ],
+        "row number" : 4,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 8,
+          "page number" : 1,
+          "bounding box" : [ 18.504, 502.988, 46.518, 508.358 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "100,01 a 500,00"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 108.2, 501.76, 141.32, 509.46 ],
+        "row number" : 4,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 9,
+          "page number" : 1,
+          "bounding box" : [ 119.54, 502.988, 130.501, 508.358 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 141.32, 501.76, 175.487, 509.46 ],
+        "row number" : 4,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 10,
+          "page number" : 1,
+          "bounding box" : [ 153.29, 502.988, 164.251, 508.358 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.00%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 5,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 494.08, 108.2, 501.76 ],
+        "row number" : 5,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 11,
+          "page number" : 1,
+          "bounding box" : [ 18.504, 495.308, 49.752, 500.678 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "500,01 a 2.500,00"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 108.2, 494.08, 141.32, 501.76 ],
+        "row number" : 5,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 12,
+          "page number" : 1,
+          "bounding box" : [ 119.54, 495.308, 130.501, 500.678 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 141.32, 494.08, 175.487, 501.76 ],
+        "row number" : 5,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 13,
+          "page number" : 1,
+          "bounding box" : [ 153.29, 495.308, 164.251, 500.678 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.00%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 6,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 486.7, 108.2, 494.08 ],
+        "row number" : 6,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 14,
+          "page number" : 1,
+          "bounding box" : [ 18.504, 487.628, 54.896, 492.998 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "2.500,01 en adelante"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 108.2, 486.7, 141.32, 494.08 ],
+        "row number" : 6,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 15,
+          "page number" : 1,
+          "bounding box" : [ 119.54, 487.628, 130.501, 492.998 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 141.32, 486.7, 175.487, 494.08 ],
+        "row number" : 6,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 16,
+          "page number" : 1,
+          "bounding box" : [ 153.29, 487.628, 164.251, 492.998 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.00%"
+        } ]
+      } ]
+    } ]
+  }, {
+    "type" : "table",
+    "pdfua_tag" : "Table",
+    "id" : 2,
+    "level" : "2",
+    "page number" : 1,
+    "bounding box" : [ 182.69, 485.86, 298.37, 533.044 ],
+    "number of rows" : 6,
+    "number of columns" : 3,
+    "rows" : [ {
+      "type" : "table row",
+      "row number" : 1,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 183.77, 524.642, 297.53, 531.964 ],
+        "row number" : 1,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 3,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 17,
+          "page number" : 1,
+          "bounding box" : [ 212.21, 526.87, 269.641, 531.689 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "CUENTA CORRIENTE - MAESTRA*"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 2,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 183.77, 517.14, 230.27, 524.642 ],
+        "row number" : 2,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 18,
+          "page number" : 1,
+          "bounding box" : [ 192.53, 518.71, 221.653, 523.529 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "CANTIDADES Bs."
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 230.27, 517.14, 263.39, 524.642 ],
+        "row number" : 2,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 19,
+          "page number" : 1,
+          "bounding box" : [ 237.05, 518.71, 257.256, 523.529 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% NOMINAL"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 263.39, 517.14, 297.53, 524.642 ],
+        "row number" : 2,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 20,
+          "page number" : 1,
+          "bounding box" : [ 270.41, 518.71, 291.595, 523.529 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% EFECTIVA"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 3,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 183.77, 509.46, 230.27, 517.14 ],
+        "row number" : 3,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 21,
+          "page number" : 1,
+          "bounding box" : [ 184.25, 510.688, 207.95, 516.058 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0,01 a 100,00"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 230.27, 509.46, 263.39, 517.14 ],
+        "row number" : 3,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 22,
+          "page number" : 1,
+          "bounding box" : [ 241.61, 510.688, 252.571, 516.058 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 263.39, 509.46, 297.53, 517.14 ],
+        "row number" : 3,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 23,
+          "page number" : 1,
+          "bounding box" : [ 275.33, 510.688, 286.291, 516.058 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.00%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 4,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 183.77, 501.76, 230.27, 509.46 ],
+        "row number" : 4,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 24,
+          "page number" : 1,
+          "bounding box" : [ 184.25, 502.988, 212.264, 508.358 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "100,01 a 500,00"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 230.27, 501.76, 263.39, 509.46 ],
+        "row number" : 4,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 25,
+          "page number" : 1,
+          "bounding box" : [ 241.61, 502.988, 252.571, 508.358 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 263.39, 501.76, 297.53, 509.46 ],
+        "row number" : 4,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 26,
+          "page number" : 1,
+          "bounding box" : [ 275.33, 502.988, 286.291, 508.358 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 5,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 183.77, 494.08, 230.27, 501.76 ],
+        "row number" : 5,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 27,
+          "page number" : 1,
+          "bounding box" : [ 184.25, 495.308, 215.498, 500.678 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "500,01 a 2.500,00"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 230.27, 494.08, 263.39, 501.76 ],
+        "row number" : 5,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 28,
+          "page number" : 1,
+          "bounding box" : [ 241.61, 495.308, 252.571, 500.678 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 263.39, 494.08, 297.53, 501.76 ],
+        "row number" : 5,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 29,
+          "page number" : 1,
+          "bounding box" : [ 275.33, 495.308, 286.291, 500.678 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 6,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 183.77, 486.7, 230.27, 494.08 ],
+        "row number" : 6,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 30,
+          "page number" : 1,
+          "bounding box" : [ 184.25, 487.628, 220.642, 492.998 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "2.500,01 en adelante"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 230.27, 486.7, 263.39, 494.08 ],
+        "row number" : 6,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 31,
+          "page number" : 1,
+          "bounding box" : [ 241.61, 487.628, 252.571, 492.998 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 263.39, 486.7, 297.53, 494.08 ],
+        "row number" : 6,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 32,
+          "page number" : 1,
+          "bounding box" : [ 275.33, 487.628, 286.291, 492.998 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      } ]
+    } ]
+  }, {
+    "type" : "table",
+    "pdfua_tag" : "Table",
+    "id" : 3,
+    "level" : "3",
+    "page number" : 1,
+    "bounding box" : [ 320.59, 478.18, 477.67, 533.044 ],
+    "number of rows" : 7,
+    "number of columns" : 3,
+    "rows" : [ {
+      "type" : "table row",
+      "row number" : 1,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 524.28, 477.01, 531.962 ],
+        "row number" : 1,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 3,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 33,
+          "page number" : 1,
+          "bounding box" : [ 356.23, 526.87, 442.729, 531.689 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "RENOVACIONES DE FONDOS Y FONDOS NUEVOS**"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 2,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 509.162, 409.99, 524.28 ],
+        "row number" : 2,
+        "column number" : 1,
+        "row span" : 2,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 34,
+          "page number" : 1,
+          "bounding box" : [ 351.19, 515.35, 380.313, 520.169 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "CANTIDADES Bs."
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 409.99, 516.6, 477.01, 524.28 ],
+        "row number" : 2,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 2,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 35,
+          "page number" : 1,
+          "bounding box" : [ 436.75, 519.19, 450.77, 524.009 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[0.0]",
+          "content" : "360 Dias"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 3,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 409.99, 509.162, 442.63, 516.6 ],
+        "row number" : 3,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 36,
+          "page number" : 1,
+          "bounding box" : [ 416.35, 511.03, 436.556, 515.849 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% NOMINAL"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 442.63, 509.162, 477.01, 516.6 ],
+        "row number" : 3,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 37,
+          "page number" : 1,
+          "bounding box" : [ 449.71, 511.03, 470.895, 515.849 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% EFECTIVA"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 4,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 501.76, 409.99, 509.162 ],
+        "row number" : 4,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 38,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 502.988, 353.997, 508.358 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "De 10,00 a 250,00"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 409.99, 501.76, 442.63, 509.162 ],
+        "row number" : 4,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 39,
+          "page number" : 1,
+          "bounding box" : [ 419.83, 502.988, 432.948, 508.358 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "36.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 442.63, 501.76, 477.01, 509.162 ],
+        "row number" : 4,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 40,
+          "page number" : 1,
+          "bounding box" : [ 453.55, 502.988, 466.668, 508.358 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "42.58%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 5,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 494.08, 409.99, 501.76 ],
+        "row number" : 5,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 41,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 495.308, 359.754, 500.678 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "De 250,01 A 1.000,00"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 409.99, 494.08, 442.63, 501.76 ],
+        "row number" : 5,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 42,
+          "page number" : 1,
+          "bounding box" : [ 419.83, 495.308, 432.948, 500.678 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "36.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 442.63, 494.08, 477.01, 501.76 ],
+        "row number" : 5,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 43,
+          "page number" : 1,
+          "bounding box" : [ 453.55, 495.308, 466.668, 500.678 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "42.58%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 6,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 486.4, 409.99, 494.08 ],
+        "row number" : 6,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 44,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 487.628, 362.988, 492.998 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "De 1.000,01 A 2.500,00"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 409.99, 486.4, 442.63, 494.08 ],
+        "row number" : 6,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 45,
+          "page number" : 1,
+          "bounding box" : [ 419.83, 487.628, 432.948, 492.998 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "36.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 442.63, 486.4, 477.01, 494.08 ],
+        "row number" : 6,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 46,
+          "page number" : 1,
+          "bounding box" : [ 453.55, 487.628, 466.668, 492.998 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "42.58%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 7,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 479.02, 409.99, 486.4 ],
+        "row number" : 7,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 47,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 479.948, 364.532, 485.318 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "De 2.500,01 en adelante"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 409.99, 479.02, 442.63, 486.4 ],
+        "row number" : 7,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 48,
+          "page number" : 1,
+          "bounding box" : [ 419.83, 479.948, 432.948, 485.318 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "36.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 442.63, 479.02, 477.01, 486.4 ],
+        "row number" : 7,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 49,
+          "page number" : 1,
+          "bounding box" : [ 453.55, 479.948, 466.668, 485.318 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "42.58%"
+        } ]
+      } ]
+    } ]
+  }, {
+    "type" : "table",
+    "pdfua_tag" : "Table",
+    "id" : 4,
+    "level" : "4",
+    "page number" : 1,
+    "bounding box" : [ 16.944, 424.42, 176.33, 479.26 ],
+    "number of rows" : 6,
+    "number of columns" : 3,
+    "rows" : [ {
+      "type" : "table row",
+      "row number" : 1,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 463.18, 175.487, 478.18 ],
+        "row number" : 1,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 3,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 50,
+          "page number" : 1,
+          "bounding box" : [ 79.584, 465.41, 114.415, 470.229 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "PERSONA NATURAL"
+        }, {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 51,
+          "page number" : 1,
+          "bounding box" : [ 65.064, 473.09, 126.888, 477.909 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "CUENTA CORRIENTE REMUNERADA"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 2,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 455.68, 108.2, 463.18 ],
+        "row number" : 2,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 52,
+          "page number" : 1,
+          "bounding box" : [ 48.624, 457.25, 77.747, 462.069 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "CANTIDADES Bs."
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 108.2, 455.68, 141.32, 463.18 ],
+        "row number" : 2,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 53,
+          "page number" : 1,
+          "bounding box" : [ 114.98, 457.25, 135.186, 462.069 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% NOMINAL"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 141.32, 455.68, 175.487, 463.18 ],
+        "row number" : 2,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 54,
+          "page number" : 1,
+          "bounding box" : [ 148.34, 457.25, 169.525, 462.069 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% EFECTIVA"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 3,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 448.0, 108.2, 455.68 ],
+        "row number" : 3,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 55,
+          "page number" : 1,
+          "bounding box" : [ 18.504, 449.228, 42.204, 454.598 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0,01 a 100,00"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 108.2, 448.0, 141.32, 455.68 ],
+        "row number" : 3,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 56,
+          "page number" : 1,
+          "bounding box" : [ 119.54, 449.228, 130.501, 454.598 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 141.32, 448.0, 175.487, 455.68 ],
+        "row number" : 3,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 57,
+          "page number" : 1,
+          "bounding box" : [ 153.29, 449.228, 164.251, 454.598 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.00%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 4,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 440.32, 108.2, 448.0 ],
+        "row number" : 4,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 58,
+          "page number" : 1,
+          "bounding box" : [ 18.504, 441.548, 46.518, 446.918 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "100,01 a 500,00"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 108.2, 440.32, 141.32, 448.0 ],
+        "row number" : 4,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 59,
+          "page number" : 1,
+          "bounding box" : [ 119.54, 441.548, 130.501, 446.918 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 141.32, 440.32, 175.487, 448.0 ],
+        "row number" : 4,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 60,
+          "page number" : 1,
+          "bounding box" : [ 153.29, 441.548, 164.251, 446.918 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 5,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 432.64, 108.2, 440.32 ],
+        "row number" : 5,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 61,
+          "page number" : 1,
+          "bounding box" : [ 18.504, 433.868, 49.752, 439.238 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "500,01 a 2.500,00"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 108.2, 432.64, 141.32, 440.32 ],
+        "row number" : 5,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 62,
+          "page number" : 1,
+          "bounding box" : [ 119.54, 433.868, 130.501, 439.238 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 141.32, 432.64, 175.487, 440.32 ],
+        "row number" : 5,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 63,
+          "page number" : 1,
+          "bounding box" : [ 153.29, 433.868, 164.251, 439.238 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 6,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 425.26, 108.2, 432.64 ],
+        "row number" : 6,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 64,
+          "page number" : 1,
+          "bounding box" : [ 18.504, 426.188, 54.896, 431.558 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "2.500,01 en adelante"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 108.2, 425.26, 141.32, 432.64 ],
+        "row number" : 6,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 65,
+          "page number" : 1,
+          "bounding box" : [ 119.54, 426.188, 130.501, 431.558 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 141.32, 425.26, 175.487, 432.64 ],
+        "row number" : 6,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 66,
+          "page number" : 1,
+          "bounding box" : [ 153.29, 426.188, 164.251, 431.558 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      } ]
+    } ]
+  }, {
+    "type" : "table",
+    "pdfua_tag" : "Table",
+    "id" : 5,
+    "level" : "5",
+    "page number" : 1,
+    "bounding box" : [ 182.69, 424.42, 298.37, 479.26 ],
+    "number of rows" : 6,
+    "number of columns" : 3,
+    "rows" : [ {
+      "type" : "table row",
+      "row number" : 1,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 183.77, 463.18, 297.53, 478.18 ],
+        "row number" : 1,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 3,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 67,
+          "page number" : 1,
+          "bounding box" : [ 208.97, 465.41, 270.794, 477.909 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "CUENTA CORRIENTE REMUNERADA PERSONA JURÍDICA"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 2,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 183.77, 455.68, 230.27, 463.18 ],
+        "row number" : 2,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 68,
+          "page number" : 1,
+          "bounding box" : [ 192.53, 457.25, 221.653, 462.069 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "CANTIDADES Bs."
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 230.27, 455.68, 263.39, 463.18 ],
+        "row number" : 2,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 69,
+          "page number" : 1,
+          "bounding box" : [ 237.05, 457.25, 257.256, 462.069 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% NOMINAL"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 263.39, 455.68, 297.53, 463.18 ],
+        "row number" : 2,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 70,
+          "page number" : 1,
+          "bounding box" : [ 270.41, 457.25, 291.595, 462.069 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% EFECTIVA"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 3,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 183.77, 448.0, 230.27, 455.68 ],
+        "row number" : 3,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 71,
+          "page number" : 1,
+          "bounding box" : [ 184.25, 449.228, 207.95, 454.598 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0,01 a 100,00"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 230.27, 448.0, 263.39, 455.68 ],
+        "row number" : 3,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 72,
+          "page number" : 1,
+          "bounding box" : [ 241.61, 449.228, 252.571, 454.598 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 263.39, 448.0, 297.53, 455.68 ],
+        "row number" : 3,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 73,
+          "page number" : 1,
+          "bounding box" : [ 275.33, 449.228, 286.291, 454.598 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.00%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 4,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 183.77, 440.32, 230.27, 448.0 ],
+        "row number" : 4,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 74,
+          "page number" : 1,
+          "bounding box" : [ 184.25, 441.548, 212.264, 446.918 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "100,01 a 500,00"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 230.27, 440.32, 263.39, 448.0 ],
+        "row number" : 4,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 75,
+          "page number" : 1,
+          "bounding box" : [ 241.61, 441.548, 252.571, 446.918 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 263.39, 440.32, 297.53, 448.0 ],
+        "row number" : 4,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 76,
+          "page number" : 1,
+          "bounding box" : [ 275.33, 441.548, 286.291, 446.918 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 5,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 183.77, 432.64, 230.27, 440.32 ],
+        "row number" : 5,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 77,
+          "page number" : 1,
+          "bounding box" : [ 184.25, 433.868, 215.498, 439.238 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "500,01 a 2.500,00"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 230.27, 432.64, 263.39, 440.32 ],
+        "row number" : 5,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 78,
+          "page number" : 1,
+          "bounding box" : [ 241.61, 433.868, 252.571, 439.238 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 263.39, 432.64, 297.53, 440.32 ],
+        "row number" : 5,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 79,
+          "page number" : 1,
+          "bounding box" : [ 275.33, 433.868, 286.291, 439.238 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 6,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 183.77, 425.26, 230.27, 432.64 ],
+        "row number" : 6,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 80,
+          "page number" : 1,
+          "bounding box" : [ 184.25, 426.188, 220.642, 431.558 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "2.500,01 en adelante"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 230.27, 425.26, 263.39, 432.64 ],
+        "row number" : 6,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 81,
+          "page number" : 1,
+          "bounding box" : [ 241.61, 426.188, 252.571, 431.558 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 263.39, 425.26, 297.53, 432.64 ],
+        "row number" : 6,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 82,
+          "page number" : 1,
+          "bounding box" : [ 275.33, 426.188, 286.291, 431.558 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      } ]
+    } ]
+  }, {
+    "type" : "text block",
+    "id" : 21,
+    "page number" : 1,
+    "bounding box" : [ 320.59, 462.82, 606.34, 471.58 ],
+    "kids" : [ {
+      "type" : "paragraph",
+      "pdfua_tag" : "P",
+      "id" : 225,
+      "page number" : 1,
+      "bounding box" : [ 380.35, 464.454, 547.533, 471.201 ],
+      "font" : "ArialNarrow-Bold",
+      "font size" : 5.88,
+      "text color" : "[1.0]",
+      "content" : "Depósito con Rendimiento a la Vista / Persona Natural - Persona Juridica"
+    } ]
+  }, {
+    "type" : "table",
+    "pdfua_tag" : "Table",
+    "id" : 6,
+    "level" : "6",
+    "page number" : 1,
+    "bounding box" : [ 320.59, 440.02, 606.34, 456.22 ],
+    "number of rows" : 2,
+    "number of columns" : 4,
+    "rows" : [ {
+      "type" : "table row",
+      "row number" : 1,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 448.0, 409.57, 455.14 ],
+        "row number" : 1,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 83,
+          "page number" : 1,
+          "bounding box" : [ 358.99, 448.614, 372.581, 455.361 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 5.88,
+          "text color" : "[1.0]",
+          "content" : "7 días"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 409.57, 448.0, 477.13, 455.14 ],
+        "row number" : 1,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 84,
+          "page number" : 1,
+          "bounding box" : [ 435.67, 449.094, 451.901, 455.841 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 5.88,
+          "text color" : "[1.0]",
+          "content" : "15 días"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 448.0, 543.64, 455.14 ],
+        "row number" : 1,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 85,
+          "page number" : 1,
+          "bounding box" : [ 502.66, 449.094, 518.891, 455.841 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 5.88,
+          "text color" : "[1.0]",
+          "content" : "21 días"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 543.64, 448.0, 605.915, 455.14 ],
+        "row number" : 1,
+        "column number" : 4,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 86,
+          "page number" : 1,
+          "bounding box" : [ 567.1, 448.614, 583.331, 455.361 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 5.88,
+          "text color" : "[1.0]",
+          "content" : "29 días"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 2,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 440.32, 409.57, 448.0 ],
+        "row number" : 2,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 87,
+          "page number" : 1,
+          "bounding box" : [ 357.67, 440.934, 373.834, 447.681 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 5.88,
+          "text color" : "[0.0]",
+          "content" : "30.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 409.57, 440.32, 477.13, 448.0 ],
+        "row number" : 2,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 88,
+          "page number" : 1,
+          "bounding box" : [ 435.67, 441.414, 451.834, 448.161 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 5.88,
+          "text color" : "[0.0]",
+          "content" : "35.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 440.32, 543.64, 448.0 ],
+        "row number" : 2,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 89,
+          "page number" : 1,
+          "bounding box" : [ 502.66, 441.414, 518.824, 448.161 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 5.88,
+          "text color" : "[0.0]",
+          "content" : "40.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 543.64, 440.32, 605.915, 448.0 ],
+        "row number" : 2,
+        "column number" : 4,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 90,
+          "page number" : 1,
+          "bounding box" : [ 567.1, 440.934, 583.264, 447.681 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 5.88,
+          "text color" : "[0.0]",
+          "content" : "45.00%"
+        } ]
+      } ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 22,
+    "page number" : 1,
+    "bounding box" : [ 322.39, 432.91, 437.844, 438.79 ],
+    "font" : "Calibri-Bold",
+    "font size" : 5.88,
+    "text color" : "[0.0]",
+    "content" : "Monto minimo de colocaciones es de 15.000 Bs"
+  }, {
+    "type" : "table",
+    "pdfua_tag" : "Table",
+    "id" : 7,
+    "level" : "7",
+    "page number" : 1,
+    "bounding box" : [ 16.944, 362.95, 176.33, 417.82 ],
+    "number of rows" : 6,
+    "number of columns" : 3,
+    "rows" : [ {
+      "type" : "table row",
+      "row number" : 1,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 401.737, 175.487, 416.737 ],
+        "row number" : 1,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 3,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 91,
+          "page number" : 1,
+          "bounding box" : [ 60.744, 403.73, 132.56, 416.229 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "CUENTA CORRIENTE BANCA PRIVADA PERSONAS NATURALES"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 2,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 394.21, 108.2, 401.737 ],
+        "row number" : 2,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 92,
+          "page number" : 1,
+          "bounding box" : [ 48.624, 395.78, 77.747, 400.599 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "CANTIDADES Bs."
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 108.2, 394.21, 141.32, 401.737 ],
+        "row number" : 2,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 93,
+          "page number" : 1,
+          "bounding box" : [ 114.98, 395.78, 135.186, 400.599 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% NOMINAL"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 141.32, 394.21, 175.487, 401.737 ],
+        "row number" : 2,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 94,
+          "page number" : 1,
+          "bounding box" : [ 148.34, 395.78, 169.525, 400.599 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% EFECTIVA"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 3,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 386.53, 108.2, 394.21 ],
+        "row number" : 3,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 95,
+          "page number" : 1,
+          "bounding box" : [ 18.504, 387.758, 42.204, 393.128 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0,01 a 100,00"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 108.2, 386.53, 141.32, 394.21 ],
+        "row number" : 3,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 96,
+          "page number" : 1,
+          "bounding box" : [ 119.54, 387.758, 130.501, 393.128 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 141.32, 386.53, 175.487, 394.21 ],
+        "row number" : 3,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 97,
+          "page number" : 1,
+          "bounding box" : [ 153.29, 387.758, 164.251, 393.128 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.00%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 4,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 378.85, 108.2, 386.53 ],
+        "row number" : 4,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 98,
+          "page number" : 1,
+          "bounding box" : [ 18.504, 380.078, 46.518, 385.448 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "100,01 a 500,00"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 108.2, 378.85, 141.32, 386.53 ],
+        "row number" : 4,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 99,
+          "page number" : 1,
+          "bounding box" : [ 119.54, 380.078, 130.501, 385.448 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 141.32, 378.85, 175.487, 386.53 ],
+        "row number" : 4,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 100,
+          "page number" : 1,
+          "bounding box" : [ 153.29, 380.078, 164.251, 385.448 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 5,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 371.17, 108.2, 378.85 ],
+        "row number" : 5,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 101,
+          "page number" : 1,
+          "bounding box" : [ 18.504, 372.398, 49.752, 377.768 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "500,01 a 2.500,00"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 108.2, 371.17, 141.32, 378.85 ],
+        "row number" : 5,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 102,
+          "page number" : 1,
+          "bounding box" : [ 119.54, 372.398, 130.501, 377.768 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 141.32, 371.17, 175.487, 378.85 ],
+        "row number" : 5,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 103,
+          "page number" : 1,
+          "bounding box" : [ 153.29, 372.398, 164.251, 377.768 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 6,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 363.79, 108.2, 371.17 ],
+        "row number" : 6,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 104,
+          "page number" : 1,
+          "bounding box" : [ 18.504, 364.718, 54.896, 370.088 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "2.500,01 en adelante"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 108.2, 363.79, 141.32, 371.17 ],
+        "row number" : 6,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 105,
+          "page number" : 1,
+          "bounding box" : [ 119.54, 364.718, 130.501, 370.088 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 141.32, 363.79, 175.487, 371.17 ],
+        "row number" : 6,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 106,
+          "page number" : 1,
+          "bounding box" : [ 153.29, 364.718, 164.251, 370.088 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.01%"
+        } ]
+      } ]
+    } ]
+  }, {
+    "type" : "table",
+    "pdfua_tag" : "Table",
+    "id" : 8,
+    "level" : "8",
+    "page number" : 1,
+    "bounding box" : [ 320.59, 124.82, 544.18, 379.39 ],
+    "number of rows" : 33,
+    "number of columns" : 3,
+    "rows" : [ {
+      "type" : "table row",
+      "row number" : 1,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 370.63, 543.515, 378.31 ],
+        "row number" : 1,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 3,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 107,
+          "page number" : 1,
+          "bounding box" : [ 409.03, 372.264, 456.44, 379.011 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 5.88,
+          "text color" : "[1.0]",
+          "content" : "Operaciones Activas"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 2,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 363.19, 477.13, 370.63 ],
+        "row number" : 2,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 108,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 365.318, 369.703, 370.688 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.68,
+          "text color" : "[1.0]",
+          "content" : "LÍNEA AUTO BANCARIBE"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 363.19, 509.2, 370.63 ],
+        "row number" : 2,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 109,
+          "page number" : 1,
+          "bounding box" : [ 483.46, 365.06, 503.666, 369.879 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% NOMINAL"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 363.19, 543.515, 370.63 ],
+        "row number" : 2,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 110,
+          "page number" : 1,
+          "bounding box" : [ 516.22, 365.06, 537.405, 369.879 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% EFECTIVA"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 3,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 355.81, 477.13, 363.19 ],
+        "row number" : 3,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 111,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 357.038, 371.908, 362.408 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "Crédito Línea Auto (PN y PJ)"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 355.81, 509.2, 363.19 ],
+        "row number" : 3,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 112,
+          "page number" : 1,
+          "bounding box" : [ 486.82, 357.038, 499.938, 362.408 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "16.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 355.81, 543.515, 363.19 ],
+        "row number" : 3,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 113,
+          "page number" : 1,
+          "bounding box" : [ 520.06, 357.038, 533.178, 362.408 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "17.23%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 4,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 347.89, 477.13, 355.81 ],
+        "row number" : 4,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 114,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 349.358, 363.741, 354.728 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "Comisión Flat Vehículos"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 347.89, 509.2, 355.81 ],
+        "row number" : 4,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 115,
+          "page number" : 1,
+          "bounding box" : [ 487.9, 349.358, 498.861, 354.728 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.50%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 347.89, 543.515, 355.81 ],
+        "row number" : 4,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 116,
+          "page number" : 1,
+          "bounding box" : [ 521.14, 349.358, 532.101, 354.728 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.50%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 5,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 340.15, 477.13, 347.89 ],
+        "row number" : 5,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 117,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 342.278, 372.919, 347.648 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.68,
+          "text color" : "[1.0]",
+          "content" : "PRODUCTOS A PERSONAS"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 340.15, 509.2, 347.89 ],
+        "row number" : 5,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 118,
+          "page number" : 1,
+          "bounding box" : [ 483.46, 342.02, 503.666, 346.839 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% NOMINAL"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 340.15, 543.515, 347.89 ],
+        "row number" : 5,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 119,
+          "page number" : 1,
+          "bounding box" : [ 516.22, 342.02, 537.405, 346.839 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% EFECTIVA"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 6,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 332.77, 477.13, 340.15 ],
+        "row number" : 6,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 120,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 333.998, 380.14, 339.368 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "Crédito Línea Personal Bancaribe"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 332.77, 509.2, 340.15 ],
+        "row number" : 6,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 121,
+          "page number" : 1,
+          "bounding box" : [ 486.82, 333.998, 499.938, 339.368 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "16.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 332.77, 543.515, 340.15 ],
+        "row number" : 6,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 122,
+          "page number" : 1,
+          "bounding box" : [ 520.06, 333.998, 533.178, 339.368 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "17.23%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 7,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 324.85, 477.13, 332.77 ],
+        "row number" : 7,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 123,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 326.318, 345.751, 331.688 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "Comisión Flat"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 324.85, 509.2, 332.77 ],
+        "row number" : 7,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 124,
+          "page number" : 1,
+          "bounding box" : [ 487.9, 326.318, 498.861, 331.688 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.50%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 324.85, 543.515, 332.77 ],
+        "row number" : 7,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 125,
+          "page number" : 1,
+          "bounding box" : [ 521.14, 326.318, 532.101, 331.688 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.50%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 8,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 317.112, 477.13, 324.85 ],
+        "row number" : 8,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 126,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 319.238, 392.355, 324.608 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.68,
+          "text color" : "[1.0]",
+          "content" : "CARTERA HIPOTECARIA BANCARIBE"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 317.112, 509.2, 324.85 ],
+        "row number" : 8,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 127,
+          "page number" : 1,
+          "bounding box" : [ 483.46, 318.98, 503.666, 323.799 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% NOMINAL"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 317.112, 543.515, 324.85 ],
+        "row number" : 8,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 128,
+          "page number" : 1,
+          "bounding box" : [ 516.22, 318.98, 537.405, 323.799 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% EFECTIVA"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 9,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 309.73, 477.13, 317.112 ],
+        "row number" : 9,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 129,
+          "level" : "1",
+          "page number" : 1,
+          "bounding box" : [ 322.15, 310.958, 426.928, 316.328 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "* Créditos Hipotecarios para la Adquisición Vivienda Principal"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 309.73, 509.2, 317.112 ],
+        "row number" : 9,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 130,
+          "page number" : 1,
+          "bounding box" : [ 486.82, 310.958, 499.938, 316.328 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "12.66%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 309.73, 543.515, 317.112 ],
+        "row number" : 9,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 131,
+          "page number" : 1,
+          "bounding box" : [ 520.06, 310.958, 533.178, 316.328 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "13.42%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 10,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 302.05, 477.13, 309.73 ],
+        "row number" : 10,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 132,
+          "level" : "1",
+          "page number" : 1,
+          "bounding box" : [ 322.15, 303.278, 435.193, 308.648 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "* Créditos Hipotecarios para la Construcción de Vivienda Principal"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 302.05, 509.2, 309.73 ],
+        "row number" : 10,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 133,
+          "page number" : 1,
+          "bounding box" : [ 486.82, 303.278, 499.938, 308.648 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "12.66%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 302.05, 543.515, 309.73 ],
+        "row number" : 10,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 134,
+          "page number" : 1,
+          "bounding box" : [ 520.06, 303.278, 533.178, 308.648 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "13.42%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 11,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 294.37, 477.13, 302.05 ],
+        "row number" : 11,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 135,
+          "level" : "1",
+          "page number" : 1,
+          "bounding box" : [ 322.15, 295.598, 440.416, 300.968 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "* Créditos Hipotecarios para Auto-Construcción de Vivienda Principal"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 294.37, 509.2, 302.05 ],
+        "row number" : 11,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 136,
+          "page number" : 1,
+          "bounding box" : [ 486.82, 295.598, 499.938, 300.968 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "12.66%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 294.37, 543.515, 302.05 ],
+        "row number" : 11,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 137,
+          "page number" : 1,
+          "bounding box" : [ 520.06, 295.598, 533.178, 300.968 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "13.42%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 12,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 286.67, 477.13, 294.37 ],
+        "row number" : 12,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 138,
+          "level" : "1",
+          "page number" : 1,
+          "bounding box" : [ 322.15, 287.898, 437.346, 293.268 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "* Créditos Hipotecarios para la Remodelación de Vivienda Principal"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 286.67, 509.2, 294.37 ],
+        "row number" : 12,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 139,
+          "page number" : 1,
+          "bounding box" : [ 486.82, 287.898, 499.938, 293.268 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "12.66%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 286.67, 543.515, 294.37 ],
+        "row number" : 12,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 140,
+          "page number" : 1,
+          "bounding box" : [ 520.06, 287.898, 533.178, 293.268 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "13.42%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 13,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 278.75, 477.13, 286.67 ],
+        "row number" : 13,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 141,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 280.218, 408.824, 285.588 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "Comisión Flat Línea Hipotecaria Vivienda Principal"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 278.75, 509.2, 286.67 ],
+        "row number" : 13,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 142,
+          "page number" : 1,
+          "bounding box" : [ 487.9, 280.218, 498.861, 285.588 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.50%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 278.75, 543.515, 286.67 ],
+        "row number" : 13,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 143,
+          "page number" : 1,
+          "bounding box" : [ 521.14, 280.218, 532.101, 285.588 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.50%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 14,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 271.01, 477.13, 278.75 ],
+        "row number" : 14,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 144,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 273.138, 367.115, 278.508 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.68,
+          "text color" : "[1.0]",
+          "content" : "TARJETAS DE CRÉDITO"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 271.01, 509.2, 278.75 ],
+        "row number" : 14,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 145,
+          "page number" : 1,
+          "bounding box" : [ 483.46, 272.88, 503.666, 277.699 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% NOMINAL"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 271.01, 543.515, 278.75 ],
+        "row number" : 14,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 146,
+          "page number" : 1,
+          "bounding box" : [ 516.22, 272.88, 537.405, 277.699 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% EFECTIVA"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 15,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 263.63, 477.13, 271.01 ],
+        "row number" : 15,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 147,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 264.858, 360.988, 270.228 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "Tarjetas de Crédito (2)"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 263.63, 509.2, 271.01 ],
+        "row number" : 15,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 148,
+          "page number" : 1,
+          "bounding box" : [ 486.82, 264.858, 499.938, 270.228 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "60.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 263.63, 543.515, 271.01 ],
+        "row number" : 15,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 149,
+          "page number" : 1,
+          "bounding box" : [ 520.06, 264.858, 533.178, 270.228 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "79.59%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 16,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 255.95, 477.13, 263.63 ],
+        "row number" : 16,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 150,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 257.178, 377.257, 262.548 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "Tarjetas de Crédito Garantizada"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 255.95, 509.2, 263.63 ],
+        "row number" : 16,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 151,
+          "page number" : 1,
+          "bounding box" : [ 486.82, 257.178, 499.938, 262.548 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "60.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 255.95, 543.515, 263.63 ],
+        "row number" : 16,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 152,
+          "page number" : 1,
+          "bounding box" : [ 520.06, 257.178, 533.178, 262.548 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "79.59%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 17,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 248.27, 477.13, 255.95 ],
+        "row number" : 17,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 153,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 249.498, 382.41, 254.868 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "Compra Deuda Tarjetas de Crédito"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 248.27, 509.2, 255.95 ],
+        "row number" : 17,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 154,
+          "page number" : 1,
+          "bounding box" : [ 486.82, 249.498, 499.938, 254.868 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "60.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 248.27, 543.515, 255.95 ],
+        "row number" : 17,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 155,
+          "page number" : 1,
+          "bounding box" : [ 520.06, 249.498, 533.178, 254.868 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "79.59%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 18,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 240.59, 477.13, 248.27 ],
+        "row number" : 18,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 156,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 241.818, 395.944, 247.188 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "Extra Financiamiento de Tarjeta de Crédito"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 240.59, 509.2, 248.27 ],
+        "row number" : 18,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 157,
+          "page number" : 1,
+          "bounding box" : [ 486.82, 241.818, 499.938, 247.188 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "60.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 240.59, 543.515, 248.27 ],
+        "row number" : 18,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 158,
+          "page number" : 1,
+          "bounding box" : [ 520.06, 241.818, 533.178, 247.188 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "79.59%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 19,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 232.67, 477.13, 240.59 ],
+        "row number" : 19,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 159,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 234.138, 365.033, 239.508 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "Línea Efectivo Bancaribe"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 232.67, 509.2, 240.59 ],
+        "row number" : 19,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 160,
+          "page number" : 1,
+          "bounding box" : [ 486.82, 234.138, 499.938, 239.508 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "60.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 232.67, 543.515, 240.59 ],
+        "row number" : 19,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 161,
+          "page number" : 1,
+          "bounding box" : [ 520.06, 234.138, 533.178, 239.508 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "79.59%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 20,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 224.927, 477.13, 232.67 ],
+        "row number" : 20,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 162,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 227.058, 361.411, 232.428 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.68,
+          "text color" : "[1.0]",
+          "content" : "OTROS PRODUCTOS"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 224.927, 509.2, 232.67 ],
+        "row number" : 20,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 163,
+          "page number" : 1,
+          "bounding box" : [ 483.46, 226.8, 503.666, 231.619 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% NOMINAL"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 224.927, 543.515, 232.67 ],
+        "row number" : 20,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 164,
+          "page number" : 1,
+          "bounding box" : [ 516.22, 226.8, 537.405, 231.619 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% EFECTIVA"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 21,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 217.55, 477.13, 224.927 ],
+        "row number" : 21,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 165,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 218.778, 387.099, 224.148 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "Convenio Compras Gubernamentales"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 217.55, 509.2, 224.927 ],
+        "row number" : 21,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 166,
+          "page number" : 1,
+          "bounding box" : [ 486.82, 218.778, 499.938, 224.148 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "50.08%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 217.55, 543.515, 224.927 ],
+        "row number" : 21,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 167,
+          "page number" : 1,
+          "bounding box" : [ 520.06, 218.778, 533.178, 224.148 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "63.34%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 22,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 209.87, 477.13, 217.55 ],
+        "row number" : 22,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 168,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 211.098, 408.192, 216.468 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "Créditos UVC Modalidad Comercial y Microcrédito"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 209.87, 509.2, 217.55 ],
+        "row number" : 22,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 169,
+          "page number" : 1,
+          "bounding box" : [ 486.82, 211.098, 499.938, 216.468 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "16.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 209.87, 543.515, 217.55 ],
+        "row number" : 22,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 170,
+          "page number" : 1,
+          "bounding box" : [ 520.06, 211.098, 533.178, 216.468 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "17.23%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 23,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 202.19, 477.13, 209.87 ],
+        "row number" : 23,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 171,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 203.418, 424.89, 208.788 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "Créditos UVC Modalidad Cartera Productiva Unica Nacional"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 202.19, 509.2, 209.87 ],
+        "row number" : 23,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 172,
+          "page number" : 1,
+          "bounding box" : [ 486.82, 203.418, 499.938, 208.788 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "12.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 202.19, 543.515, 209.87 ],
+        "row number" : 23,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 173,
+          "page number" : 1,
+          "bounding box" : [ 520.06, 203.418, 533.178, 208.788 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "12.68%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 24,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 194.51, 477.13, 202.19 ],
+        "row number" : 24,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 174,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 195.738, 384.572, 201.108 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "Créditos UVC Modalidad Credimujer"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 194.51, 509.2, 202.19 ],
+        "row number" : 24,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 175,
+          "page number" : 1,
+          "bounding box" : [ 487.9, 195.738, 498.861, 201.108 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "6.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 194.51, 543.515, 202.19 ],
+        "row number" : 24,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 176,
+          "page number" : 1,
+          "bounding box" : [ 521.14, 195.738, 532.101, 201.108 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "6.17%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 25,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 186.8, 477.13, 194.51 ],
+        "row number" : 25,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 177,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 188.058, 378.015, 193.428 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "Intereses de Mora Créditos UVC"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 186.8, 509.2, 194.51 ],
+        "row number" : 25,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 178,
+          "page number" : 1,
+          "bounding box" : [ 487.9, 188.058, 498.861, 193.428 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.80%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 186.8, 543.515, 194.51 ],
+        "row number" : 25,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 179,
+          "page number" : 1,
+          "bounding box" : [ 521.14, 188.058, 532.101, 193.428 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.80%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 26,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 178.88, 477.13, 186.8 ],
+        "row number" : 26,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 180,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 180.348, 345.751, 185.718 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "Comisión Flat"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 178.88, 509.2, 186.8 ],
+        "row number" : 26,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 181,
+          "page number" : 1,
+          "bounding box" : [ 487.9, 180.348, 498.861, 185.718 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.50%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 178.88, 543.515, 186.8 ],
+        "row number" : 26,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 182,
+          "page number" : 1,
+          "bounding box" : [ 521.14, 180.348, 532.101, 185.718 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "0.50%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 27,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 171.14, 477.13, 178.88 ],
+        "row number" : 27,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 183,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 173.268, 330.513, 178.638 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.68,
+          "text color" : "[1.0]",
+          "content" : "TAM"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 171.14, 509.2, 178.88 ],
+        "row number" : 27,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 184,
+          "page number" : 1,
+          "bounding box" : [ 483.46, 173.01, 503.666, 177.829 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% NOMINAL"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 171.14, 543.515, 178.88 ],
+        "row number" : 27,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 185,
+          "page number" : 1,
+          "bounding box" : [ 516.22, 173.01, 537.405, 177.829 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% EFECTIVA"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 28,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 163.76, 477.13, 171.14 ],
+        "row number" : 28,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 186,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 164.988, 346.612, 170.358 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "TAM Semanal"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 163.76, 509.2, 171.14 ],
+        "row number" : 28,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 187,
+          "page number" : 1,
+          "bounding box" : [ 486.82, 164.988, 499.938, 170.358 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "58.92%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 163.76, 543.515, 171.14 ],
+        "row number" : 28,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 188,
+          "page number" : 1,
+          "bounding box" : [ 520.06, 164.988, 533.178, 170.358 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "77.75%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 29,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 155.84, 477.13, 163.76 ],
+        "row number" : 29,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 189,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 157.308, 346.013, 162.678 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "TAM Mensual"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 155.84, 509.2, 163.76 ],
+        "row number" : 29,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 190,
+          "page number" : 1,
+          "bounding box" : [ 486.82, 157.308, 499.938, 162.678 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "59.04%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 155.84, 543.515, 163.76 ],
+        "row number" : 29,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 191,
+          "page number" : 1,
+          "bounding box" : [ 520.06, 157.308, 533.178, 162.678 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "77.95%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 30,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 148.1, 477.13, 155.84 ],
+        "row number" : 30,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 192,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 150.228, 335.858, 155.598 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.68,
+          "text color" : "[1.0]",
+          "content" : "OTROS"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 148.1, 509.2, 155.84 ],
+        "row number" : 30,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 193,
+          "page number" : 1,
+          "bounding box" : [ 483.46, 149.97, 503.666, 154.789 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% NOMINAL"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 148.1, 543.515, 155.84 ],
+        "row number" : 30,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 194,
+          "page number" : 1,
+          "bounding box" : [ 516.22, 149.97, 537.405, 154.789 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% EFECTIVA"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 31,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 140.72, 477.13, 148.1 ],
+        "row number" : 31,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 195,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 141.948, 359.253, 147.318 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "Intereses de Mora (3)"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 140.72, 509.2, 148.1 ],
+        "row number" : 31,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 196,
+          "page number" : 1,
+          "bounding box" : [ 487.9, 141.948, 498.861, 147.318 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "3.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 140.72, 543.515, 148.1 ],
+        "row number" : 31,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 197,
+          "page number" : 1,
+          "bounding box" : [ 521.14, 141.948, 532.101, 147.318 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "3.04%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 32,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 133.04, 477.13, 140.72 ],
+        "row number" : 32,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 198,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 134.268, 383.388, 139.638 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "Tasa de Interés Aplicar a Reclamos"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 133.04, 509.2, 140.72 ],
+        "row number" : 32,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 199,
+          "page number" : 1,
+          "bounding box" : [ 486.82, 134.268, 499.938, 139.638 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "21.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 133.04, 543.515, 140.72 ],
+        "row number" : 32,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 200,
+          "page number" : 1,
+          "bounding box" : [ 520.06, 134.268, 533.178, 139.638 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "23.14%"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 33,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 321.67, 125.66, 477.13, 133.04 ],
+        "row number" : 33,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 201,
+          "page number" : 1,
+          "bounding box" : [ 322.15, 127.068, 340.847, 132.438 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "Sobregiros"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 477.13, 125.66, 509.2, 133.04 ],
+        "row number" : 33,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 202,
+          "page number" : 1,
+          "bounding box" : [ 486.82, 126.588, 499.938, 131.958 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "36.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 509.2, 125.66, 543.515, 133.04 ],
+        "row number" : 33,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 203,
+          "page number" : 1,
+          "bounding box" : [ 520.06, 126.588, 533.178, 131.958 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "42.58%"
+        } ]
+      } ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 20,
+    "page number" : 1,
+    "bounding box" : [ 137.54, 349.224, 178.359, 355.971 ],
+    "font" : "ArialNarrow-Bold",
+    "font size" : 5.88,
+    "text color" : "[1.0]",
+    "content" : "Cuenta de Ahorro"
+  }, {
+    "type" : "table",
+    "pdfua_tag" : "Table",
+    "id" : 9,
+    "level" : "9",
+    "page number" : 1,
+    "bounding box" : [ 16.944, 316.87, 176.33, 340.99 ],
+    "number of rows" : 3,
+    "number of columns" : 3,
+    "rows" : [ {
+      "type" : "table row",
+      "row number" : 1,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 332.59, 175.487, 339.91 ],
+        "row number" : 1,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 3,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 204,
+          "page number" : 1,
+          "bounding box" : [ 69.624, 334.82, 124.304, 339.639 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "AHORRO - PERSONA NATURAL*"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 2,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 325.03, 108.2, 332.59 ],
+        "row number" : 2,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 205,
+          "page number" : 1,
+          "bounding box" : [ 48.624, 326.66, 77.747, 331.479 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "CANTIDADES Bs."
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 108.2, 325.03, 141.32, 332.59 ],
+        "row number" : 2,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 206,
+          "page number" : 1,
+          "bounding box" : [ 114.98, 326.66, 135.186, 331.479 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% NOMINAL"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 141.32, 325.03, 175.487, 332.59 ],
+        "row number" : 2,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 207,
+          "page number" : 1,
+          "bounding box" : [ 148.34, 326.66, 169.525, 331.479 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% EFECTIVA"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 3,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 317.71, 108.2, 325.03 ],
+        "row number" : 3,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 208,
+          "page number" : 1,
+          "bounding box" : [ 18.504, 318.638, 53.337, 324.008 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "De 0,01 en adelante"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 108.2, 317.71, 141.32, 325.03 ],
+        "row number" : 3,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 209,
+          "page number" : 1,
+          "bounding box" : [ 118.46, 318.638, 131.578, 324.008 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "32.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 141.32, 317.71, 175.487, 325.03 ],
+        "row number" : 3,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 210,
+          "page number" : 1,
+          "bounding box" : [ 152.18, 318.638, 165.298, 324.008 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "37.14%"
+        } ]
+      } ]
+    } ]
+  }, {
+    "type" : "table",
+    "pdfua_tag" : "Table",
+    "id" : 10,
+    "level" : "10",
+    "page number" : 1,
+    "bounding box" : [ 182.69, 316.87, 298.37, 340.99 ],
+    "number of rows" : 3,
+    "number of columns" : 3,
+    "rows" : [ {
+      "type" : "table row",
+      "row number" : 1,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 183.77, 332.59, 297.53, 339.91 ],
+        "row number" : 1,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 3,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 211,
+          "page number" : 1,
+          "bounding box" : [ 207.17, 334.82, 274.488, 339.639 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "AHORRO CLASS* - PERSONA NATURAL"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 2,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 183.77, 325.03, 230.27, 332.59 ],
+        "row number" : 2,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 212,
+          "page number" : 1,
+          "bounding box" : [ 192.53, 326.66, 221.653, 331.479 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "CANTIDADES Bs."
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 230.27, 325.03, 263.39, 332.59 ],
+        "row number" : 2,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 213,
+          "page number" : 1,
+          "bounding box" : [ 237.05, 326.66, 257.256, 331.479 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% NOMINAL"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 263.39, 325.03, 297.53, 332.59 ],
+        "row number" : 2,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 214,
+          "page number" : 1,
+          "bounding box" : [ 270.41, 326.66, 291.595, 331.479 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% EFECTIVA"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 3,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 183.77, 317.71, 230.27, 325.03 ],
+        "row number" : 3,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 215,
+          "page number" : 1,
+          "bounding box" : [ 184.25, 318.638, 219.083, 324.008 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "De 0,01 en adelante"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 230.27, 317.71, 263.39, 325.03 ],
+        "row number" : 3,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 216,
+          "page number" : 1,
+          "bounding box" : [ 240.53, 318.638, 253.648, 324.008 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "32.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 263.39, 317.71, 297.53, 325.03 ],
+        "row number" : 3,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 217,
+          "page number" : 1,
+          "bounding box" : [ 274.25, 318.638, 287.368, 324.008 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "37.14%"
+        } ]
+      } ]
+    } ]
+  }, {
+    "type" : "table",
+    "pdfua_tag" : "Table",
+    "id" : 11,
+    "level" : "11",
+    "page number" : 1,
+    "bounding box" : [ 16.944, 286.13, 176.33, 310.274 ],
+    "number of rows" : 3,
+    "number of columns" : 3,
+    "rows" : [ {
+      "type" : "table row",
+      "row number" : 1,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 301.872, 175.487, 309.192 ],
+        "row number" : 1,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 3,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 218,
+          "page number" : 1,
+          "bounding box" : [ 80.184, 304.1, 113.763, 308.919 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "AHORRO INFANTIL*"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 2,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 294.312, 108.2, 301.872 ],
+        "row number" : 2,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 219,
+          "page number" : 1,
+          "bounding box" : [ 48.624, 295.94, 77.747, 300.759 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "CANTIDADES Bs."
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 108.2, 294.312, 141.32, 301.872 ],
+        "row number" : 2,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 220,
+          "page number" : 1,
+          "bounding box" : [ 114.98, 295.94, 135.186, 300.759 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% NOMINAL"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 141.32, 294.312, 175.487, 301.872 ],
+        "row number" : 2,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 221,
+          "page number" : 1,
+          "bounding box" : [ 148.34, 295.94, 169.525, 300.759 ],
+          "font" : "ArialNarrow-Bold",
+          "font size" : 4.2,
+          "text color" : "[1.0]",
+          "content" : "% EFECTIVA"
+        } ]
+      } ]
+    }, {
+      "type" : "table row",
+      "row number" : 3,
+      "cells" : [ {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 18.024, 286.97, 108.2, 294.312 ],
+        "row number" : 3,
+        "column number" : 1,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 222,
+          "page number" : 1,
+          "bounding box" : [ 18.504, 287.898, 53.337, 293.268 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "De 0,01 en adelante"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 108.2, 286.97, 141.32, 294.312 ],
+        "row number" : 3,
+        "column number" : 2,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 223,
+          "page number" : 1,
+          "bounding box" : [ 118.46, 287.898, 131.578, 293.268 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "32.00%"
+        } ]
+      }, {
+        "type" : "table cell",
+        "pdfua_tag" : "TD",
+        "page number" : 1,
+        "bounding box" : [ 141.32, 286.97, 175.487, 294.312 ],
+        "row number" : 3,
+        "column number" : 3,
+        "row span" : 1,
+        "column span" : 1,
+        "kids" : [ {
+          "type" : "paragraph",
+          "pdfua_tag" : "P",
+          "id" : 224,
+          "page number" : 1,
+          "bounding box" : [ 152.18, 287.898, 165.298, 293.268 ],
+          "font" : "ArialNarrow",
+          "font size" : 4.68,
+          "text color" : "[0.0]",
+          "content" : "37.14%"
+        } ]
+      } ]
+    } ]
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 15,
+    "level" : "12",
+    "page number" : 1,
+    "bounding box" : [ 18.384, 265.2, 135.619, 277.699 ],
+    "numbering style" : "unordered",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 18.384, 272.88, 135.619, 277.699 ],
+      "font" : "ArialNarrow",
+      "font size" : 4.2,
+      "text color" : "[0.0]",
+      "content" : "* Los intereses son calculados sobre el saldo diario y abonados a fin de mes",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 18.384, 265.2, 74.14, 270.019 ],
+      "font" : "ArialNarrow",
+      "font size" : 4.2,
+      "text color" : "[0.0]",
+      "content" : "** No aplica por Conexión Bancaribe",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 16,
+    "level" : "13",
+    "page number" : 1,
+    "bounding box" : [ 18.384, 211.44, 230.66, 262.339 ],
+    "numbering style" : "english letters",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 18.384, 257.52, 162.888, 262.339 ],
+      "font" : "ArialNarrow",
+      "font size" : 4.2,
+      "text color" : "[0.0]",
+      "content" : "a.- Las tasas o rendimientos nominales, se consideran fijos para el lapso de un año (360 días).",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 18.384, 211.44, 230.66, 254.659 ],
+      "font" : "ArialNarrow",
+      "font size" : 4.2,
+      "text color" : "[0.0]",
+      "content" : "b.- Las tasas o rendimientos efectivos suponen que el cliente ha reinvertido (capitalizado) los intereses o rendimientos mensuales que le ha pagado el Banco, durante un año. Base del Cálculo para todas las operaciones: 360 días. El Banco del Caribe se reserva el derecho de celebrar o rechazar operaciones activas o pasivas con cualquier persona o entidad.También se reserva el derecho a pactar tasas de interés nominal o rendimientos diferentes a los cobrados en ésta Tabla, mediante acuerdos privados y particulares con cada cliente. (*) Saldos no amparados por FOGADE.",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 17,
+    "level" : "14",
+    "page number" : 1,
+    "bounding box" : [ 18.384, 173.01, 207.648, 208.579 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 5,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 18.384, 203.76, 179.928, 208.579 ],
+      "font" : "ArialNarrow",
+      "font size" : 4.2,
+      "text color" : "[0.0]",
+      "content" : "(1) La tasa nominal es igual a la tasa efectiva, cuando los intereses se cobran al final del plazo del crédito.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 18.384, 196.08, 207.648, 200.899 ],
+      "font" : "ArialNarrow",
+      "font size" : 4.2,
+      "text color" : "[0.0]",
+      "content" : "(2) La comisión flat cobrada por los avances de efectivo de Tarjeta de Crédito no esta incluida en la tasa nominal ni efectiva.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 18.384, 188.4, 110.658, 193.219 ],
+      "font" : "ArialNarrow",
+      "font size" : 4.2,
+      "text color" : "[0.0]",
+      "content" : "(3) Esta tasa se aplica adicional a la tasa de interés nominal.",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 18.384, 180.69, 47.036, 185.509 ],
+      "font" : "ArialNarrow",
+      "font size" : 4.2,
+      "text color" : "[0.0]",
+      "content" : "(4) Mes Anticipado",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 1,
+      "bounding box" : [ 18.384, 173.01, 43.437, 177.829 ],
+      "font" : "ArialNarrow",
+      "font size" : 4.2,
+      "text color" : "[0.0]",
+      "content" : "(5) Mes Vencido",
+      "kids" : [ ]
+    } ]
+  } ]
+}

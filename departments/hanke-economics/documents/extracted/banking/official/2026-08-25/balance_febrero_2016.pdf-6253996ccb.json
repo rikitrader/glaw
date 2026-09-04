@@ -1,0 +1,16 @@
+{
+  "file name" : "balance_febrero_2016.pdf-6253996ccb.pdf",
+  "number of pages" : 1,
+  "author" : "Yvelc",
+  "title" : "balance_febrero_2016.jpg",
+  "creation date" : "D:20200220120216-04'00'",
+  "modification date" : "D:20200220120216-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 2,
+    "page number" : 1,
+    "bounding box" : [ 0.0, -5.999, 612.154, 797.25 ],
+    "source" : "balance_febrero_2016.pdf-6253996ccb_images/imageFile1.png"
+  } ]
+}

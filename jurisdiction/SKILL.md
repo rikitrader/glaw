@@ -135,3 +135,4 @@ python3 bin/glaw-reflect --apply
 Jurisdiction packs are attorney work-product for licensed/local counsel review.
 GLAW does not practice law, file, sign, serve, transmit, charge, pay, or bind a
 client or tribunal.
+**Domain:** jurisdiction professional domain, evidence, controls, and accountable human-review routing.

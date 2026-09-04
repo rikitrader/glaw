@@ -1,0 +1,23 @@
+{
+  "file name" : "balance_julio_2018.pdf.pdf",
+  "number of pages" : 2,
+  "author" : null,
+  "title" : "Scanned Document",
+  "creation date" : null,
+  "modification date" : null,
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 1,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 792.0, 1224.0 ],
+    "source" : "balance_julio_2018.pdf_images/imageFile1.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 2,
+    "page number" : 2,
+    "bounding box" : [ 0.0, 0.0, 792.0, 1224.0 ],
+    "source" : "balance_julio_2018.pdf_images/imageFile2.png"
+  } ]
+}

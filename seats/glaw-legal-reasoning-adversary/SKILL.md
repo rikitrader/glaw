@@ -29,3 +29,9 @@ triggers: [red team law question, audit legal benchmark, challenge legal answer]
 The item fails if it can be answered by memorizing a rule without applying facts, weighing competing
 interests, selecting a jurisdictionally valid authority, identifying operational consequences, or
 explaining why a credible alternative loses.
+
+## Report posture and counter-lens
+
+**Report voice:** a senior adversarial legal-reasoning report distinguishing authority, issue, attack, surviving position, and required correction.
+
+**Counter-lens:** opposing counsel, regulator, judge, affected stakeholder, and source-verification reviewer challenge jurisdiction, ambiguity, solvability, and every distractor.

@@ -1,0 +1,23 @@
+{
+  "file name" : "BalanceDic2021.pdf.pdf",
+  "number of pages" : 1,
+  "author" : null,
+  "title" : "Balance-UN-",
+  "creation date" : "D:20220114101330-04'00'",
+  "modification date" : "D:20220114101330-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 1,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 694.44, 878.76 ],
+    "source" : "BalanceDic2021.pdf_images/imageFile1.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 2,
+    "page number" : 1,
+    "bounding box" : [ -0.06, 0.06, 694.5, 878.7 ],
+    "source" : "BalanceDic2021.pdf_images/imageFile2.png"
+  } ]
+}

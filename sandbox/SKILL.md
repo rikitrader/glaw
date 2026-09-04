@@ -106,3 +106,4 @@ python3 bin/glaw-reflect --apply
 Sandbox output is internal QA work-product for authorized human review. It does
 not authorize legal, accounting, filing, payment, signature, service, or
 transmission acts.
+**Domain:** sandbox professional domain, evidence, controls, and accountable human-review routing.

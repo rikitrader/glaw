@@ -132,3 +132,4 @@ python3 bin/glaw-reflect --apply
 Compliance output is attorney/CPA/compliance work-product for authorized human
 review. It does not create legal advice, audit opinion, tax opinion, filing
 authority, or regulator/court approval.
+**Domain:** compliance professional domain, evidence, controls, and accountable human-review routing.

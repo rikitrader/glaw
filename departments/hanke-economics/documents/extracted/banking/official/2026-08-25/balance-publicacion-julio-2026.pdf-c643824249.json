@@ -1,0 +1,36 @@
+{
+  "file name" : "balance-publicacion-julio-2026.pdf-c643824249.pdf",
+  "number of pages" : 1,
+  "author" : "vp32067",
+  "title" : "Diapositiva 1",
+  "creation date" : "D:20260812101848-04'00'",
+  "modification date" : "D:20260812101848-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 2,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 719.28, 959.04 ],
+    "source" : "balance-publicacion-julio-2026.pdf-c643824249_images/imageFile1.png"
+  }, {
+    "type" : "text block",
+    "id" : 3,
+    "page number" : 1,
+    "bounding box" : [ 24.14, 889.46, 385.78, 937.54 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 1,
+      "bounding box" : [ 33.96, 897.24, 359.64, 936.6 ],
+      "source" : "balance-publicacion-julio-2026.pdf-c643824249_images/imageFile2.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 4,
+    "page number" : 1,
+    "bounding box" : [ 603.48, 871.08, 682.8, 916.08 ],
+    "source" : "balance-publicacion-julio-2026.pdf-c643824249_images/imageFile3.png"
+  } ]
+}

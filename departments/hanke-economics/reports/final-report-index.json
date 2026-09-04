@@ -1,0 +1,108 @@
+{
+  "index_id": "HAEIS-VENEZUELA-DOLLARIZATION-FINAL-REPORT",
+  "version": "1.0.0",
+  "title": "Venezuela Dollarization and Monetary Reform — Institutional Final Report",
+  "required_data_statuses": ["VERIFIED", "PROVISIONAL", "ESTIMATED", "MODELED", "IMPUTED", "DISPUTED", "STALE", "UNAVAILABLE"],
+  "required_claim_labels": ["HANKE-DIRECT", "HANKE-FRAMEWORK", "SYSTEM-INFERENCE", "SYSTEM-CALCULATION", "HISTORICAL-EVIDENCE", "EXTERNAL-VIEW", "RED-TEAM-CHALLENGE", "BLUE-TEAM-RESPONSE", "UNRESOLVED"],
+  "report_rules": {
+    "no_unlabeled_numbers": true,
+    "no_unverified_hanke_attribution": true,
+    "no_prose_override_of_blocked_gate": true,
+    "missing_data_must_be_explicit": true,
+    "every_material_claim_requires_evidence_or_uncertainty": true,
+    "data_completeness_dashboard_required": true,
+    "evidence_table_required": true,
+    "no_unverified_model_output": true,
+    "policy_recommendation_requires_all_critical_gates_pass": true,
+    "red_blue_red_required_for_policy_assessment": true,
+    "human_review_is_post_run_only": true
+  },
+  "parts": [
+    {"id":"I","title":"EXECUTIVE POLICY ASSESSMENT","page_target":"4–6","sections":[
+      {"id":"1.1","title":"Purpose of the Study"},{"id":"1.2","title":"Principal Findings"},{"id":"1.3","title":"Policy Verdict"},{"id":"1.4","title":"Conditions Required Before Dollarization"}
+    ]},
+    {"id":"II","title":"THE VENEZUELAN MACROECONOMIC BASELINE","page_target":"10–13","sections":[
+      {"id":"2.1","title":"GDP and Economic Composition"},{"id":"2.2","title":"Historical Economic Contraction"},{"id":"2.3","title":"Productivity and Capital Stock"},{"id":"2.4","title":"Labor Market"},{"id":"3.1","title":"Bolívar Monetary Regimes"},{"id":"3.2","title":"Currency Devaluations"},{"id":"3.3","title":"Hyperinflation"},{"id":"3.4","title":"Monetary Credibility Collapse"}
+    ]},
+    {"id":"III","title":"WHAT DOLLARIZATION ACTUALLY MEANS","page_target":"4–5","sections":[
+      {"id":"4.1","title":"Informal Dollarization"},{"id":"4.2","title":"Partial Dollarization"},{"id":"4.3","title":"Currency Board"},{"id":"4.4","title":"Full Official Dollarization"},{"id":"4.5","title":"Synthetic Dollarization"},{"id":"4.6","title":"Stablecoin or Tokenized Dollar Layer"}
+    ]},
+    {"id":"IV","title":"THE BALANCE-SHEET QUESTION","page_target":"13–15","sections":[
+      {"id":"5.1","title":"Monetary Base Conversion"},{"id":"5.2","title":"Currency-in-Circulation Conversion"},{"id":"5.3","title":"Demand Deposits"},{"id":"5.4","title":"M1 Conversion"},{"id":"5.5","title":"M2 Conversion"},{"id":"5.6","title":"Partial Conversion Scenarios"},{"id":"5.7","title":"Conversion-Rate Sensitivity"},{"id":"6.1","title":"Reported BCV Reserves"},{"id":"6.2","title":"Gross vs. Liquid Reserves"},{"id":"6.3","title":"Encumbered Assets"},{"id":"6.4","title":"Reserve Adequacy"}
+    ]},
+    {"id":"V","title":"THE BANKING SYSTEM","page_target":"8–10","sections":[
+      {"id":"7.1","title":"Banking-System Balance Sheet"},{"id":"7.2","title":"Deposit Composition"},{"id":"7.3","title":"Bank Capitalization"},{"id":"7.4","title":"Asset Quality"},{"id":"7.5","title":"Dollarization Conversion Risk"},{"id":"8.1","title":"How Bolívar Credit Works Today"},{"id":"8.2","title":"What Changes Under Dollarization"},{"id":"8.3","title":"Credit Compression"},{"id":"8.4","title":"Bank Liquidity Stress"},{"id":"8.5","title":"Credit-to-GDP Comparisons"}
+    ]},
+    {"id":"VI","title":"LENDER OF LAST RESORT","page_target":"4–6","sections":[
+      {"id":"9.1","title":"Traditional Lender of Last Resort"},{"id":"9.2","title":"Dollarized Economies"},{"id":"9.3","title":"Venezuela Liquidity Stability Fund"},{"id":"9.4","title":"Stress Test"}
+    ]},
+    {"id":"VII","title":"FISCAL POLICY","page_target":"7–8","sections":[
+      {"id":"10.1","title":"Government Revenue"},{"id":"10.2","title":"Expenditure"},{"id":"10.3","title":"Deficit"},{"id":"10.4","title":"Monetary Financing"},{"id":"10.5","title":"Dollarization Removes Inflation Tax"},{"id":"10.6","title":"Required Fiscal Adjustment"}
+    ]},
+    {"id":"VIII","title":"OIL AND EXTERNAL ACCOUNTS","page_target":"11–12","sections":[
+      {"id":"11.1","title":"Production"},{"id":"11.2","title":"Export Volumes"},{"id":"11.3","title":"Realized Oil Price"},{"id":"11.4","title":"Government Take"},{"id":"11.5","title":"Dollar Liquidity from Oil"},{"id":"11.6","title":"Oil Price Stress Scenarios"},{"id":"12.1","title":"Current Account"},{"id":"12.2","title":"Trade Balance"},{"id":"12.3","title":"Services"},{"id":"12.4","title":"Remittances"},{"id":"12.5","title":"Capital Account"},{"id":"12.6","title":"Capital Flight"},{"id":"12.7","title":"Balance-of-Payments Constraint"}
+    ]},
+    {"id":"IX","title":"DEBT","page_target":"6–8","sections":[
+      {"id":"13.1","title":"Debt Stock"},{"id":"13.2","title":"Arrears"},{"id":"13.3","title":"Debt Sustainability"},{"id":"13.4","title":"Debt Restructuring"},{"id":"13.5","title":"Dollarization Interaction"}
+    ]},
+    {"id":"X","title":"HOUSEHOLDS AND SOCIAL IMPACT","page_target":"6","sections":[
+      {"id":"14.1","title":"Wage Conversion"},{"id":"14.2","title":"Purchasing Power"},{"id":"14.3","title":"Wage Compression"},{"id":"14.4","title":"Informal Employment"},{"id":"15.1","title":"Pensions and Social Security"},{"id":"16.1","title":"Poverty and Distribution"}
+    ]},
+    {"id":"XI","title":"BUSINESS AND INVESTMENT","page_target":"6–8","sections":[
+      {"id":"17.1","title":"SMEs"},{"id":"17.2","title":"Large Companies"},{"id":"17.3","title":"Importers"},{"id":"17.4","title":"Exporters"},{"id":"17.5","title":"Foreign Investment"},{"id":"17.6","title":"Property Markets"},{"id":"17.7","title":"Banking and Fintech"}
+    ]},
+    {"id":"XII","title":"PRICE STABILITY AND INFLATION","page_target":"4–6","sections":[
+      {"id":"18.1","title":"Inflation Under Dollarization"}
+    ]},
+    {"id":"XIII","title":"INTERNATIONAL CASE STUDIES","page_target":"8","sections":[
+      {"id":"19.1","title":"Panama"},{"id":"20.1","title":"Ecuador"},{"id":"21.1","title":"El Salvador"},{"id":"22.1","title":"Zimbabwe"},{"id":"23.1","title":"Argentina Convertibility"},{"id":"24.1","title":"Montenegro and Kosovo"}
+    ]},
+    {"id":"XIV","title":"ECONOMIC SCHOOLS OF THOUGHT","page_target":"7","sections":[
+      {"id":"25.1","title":"Hanke / Currency-Board Perspective"},{"id":"26.1","title":"Monetarist Perspective"},{"id":"27.1","title":"Keynesian Perspective"},{"id":"28.1","title":"New Keynesian Perspective"},{"id":"29.1","title":"Austrian Perspective"},{"id":"30.1","title":"IMF-Style Framework"},{"id":"31.1","title":"Central-Banker Perspective"}
+    ]},
+    {"id":"XV","title":"LEGAL AND CONSTITUTIONAL ANALYSIS","page_target":"5","sections":[
+      {"id":"32.1","title":"Venezuelan Constitutional Framework"},{"id":"33.1","title":"Central Bank Reform"},{"id":"34.1","title":"Contract Conversion Law"}
+    ]},
+    {"id":"XVI","title":"IMPLEMENTATION ARCHITECTURE","page_target":"8–10","sections":[
+      {"id":"35.1","title":"Dollarization Transition Timeline"},{"id":"36.1","title":"Conversion Mechanics"},{"id":"37.1","title":"Banking Recapitalization"},{"id":"38.1","title":"Emergency Liquidity Facility"}
+    ]},
+    {"id":"XVII","title":"QUANTITATIVE MODELS","page_target":"10","sections":[
+      {"id":"39.1","title":"Baseline Macroeconomic Model"},{"id":"40.1","title":"DSGE Model"},{"id":"41.1","title":"Monte Carlo Simulation"},{"id":"42.1","title":"Banking Stress Model"},{"id":"43.1","title":"System-Dynamics Model"},{"id":"44.1","title":"Agent-Based Simulation"}
+    ]},
+    {"id":"XVIII","title":"SCENARIOS","page_target":"8","sections":[
+      {"id":"45.1","title":"Successful Dollarization"},{"id":"46.1","title":"Dollarization + Credit Crunch"},{"id":"47.1","title":"Banking Crisis"},{"id":"48.1","title":"Oil Shock"},{"id":"49.1","title":"Dollarization + Massive FDI"},{"id":"50.1","title":"Dual-Currency Transition"}
+    ]},
+    {"id":"XIX","title":"PROS AND CONS","page_target":"4","sections":[
+      {"id":"51.1","title":"Potential Advantages"},{"id":"52.1","title":"Potential Disadvantages"}
+    ]},
+    {"id":"XX","title":"POLICY ALTERNATIVES","page_target":"8","sections":[
+      {"id":"53.1","title":"Full Dollarization"},{"id":"54.1","title":"Currency Board"},{"id":"55.1","title":"Managed Float"},{"id":"56.1","title":"Dual Currency"},{"id":"57.1","title":"Inflation-Targeting Bolívar"},{"id":"58.1","title":"Commodity-Backed Regime"},{"id":"59.1","title":"USD/VES Currency Basket"},{"id":"60.1","title":"Digital Dollar / Tokenized Deposit System"}
+    ]},
+    {"id":"XXI","title":"POLICY SCORECARD","page_target":"4","sections":[
+      {"id":"61.1","title":"Weighted Decision Matrix"}
+    ]},
+    {"id":"XXII","title":"POLICY RECOMMENDATION","page_target":"4","sections":[
+      {"id":"62.1","title":"Decision Framework"}
+    ]},
+    {"id":"XXIII","title":"IMPLEMENTATION CHECKLIST","page_target":"4","sections":[
+      {"id":"63.1","title":"Readiness Dashboard"}
+    ]},
+    {"id":"XXIV","title":"DATA APPENDIX","page_target":"20–40","sections":[
+      {"id":"A","title":"Monetary Dataset"},{"id":"B","title":"FX Dataset"},{"id":"C","title":"Banking Dataset"},{"id":"D","title":"Fiscal Dataset"},{"id":"E","title":"Oil Dataset"},{"id":"F","title":"Debt Dataset"},{"id":"G","title":"Trade Dataset"},{"id":"H","title":"Remittances"},{"id":"I","title":"Prices"},{"id":"J","title":"Employment"}
+    ]}
+  ],
+  "required_data_domains": [
+    "GDP and economic composition", "real GDP history 1998–2026", "productivity and capital stock", "labor and informality", "monetary regimes and VES/USD official and parallel rates", "inflation and hyperinflation", "BCV M0/M1/M2 and currency in circulation", "bank deposits, loans, reserves, capital, NPLs and FX positions", "liquid and gross international reserves with encumbrances", "fiscal revenue, expenditure, deficit and monetary financing", "oil production, exports, prices, government take and net FX", "balance of payments, remittances and capital flight", "Republic and PDVSA debt, arrears and restructuring", "wages, pensions, poverty and distribution", "legal and constitutional authorities", "historical comparison data for Panama, Ecuador, El Salvador, Zimbabwe, Argentina, Montenegro and Kosovo"
+  ],
+  "required_formulas": [
+    "USD_required = monetary_base_VES / conversion_rate", "M1 = currency + demand_deposits", "M2 = M1 + savings + time_deposits", "reserve_coverage = liquid_FX_reserves / dollarization_requirement", "capital_adequacy = regulatory_capital / risk_weighted_assets", "FX_conversion_gap = USD_liabilities - USD_assets", "liquidity_coverage = HQLA / 30-day_net_outflows", "fiscal_balance = revenue - expenditure", "seigniorage ≈ change_in_monetary_base / price_level", "net_oil_FX = gross_oil_revenue - imports - operating_costs - debt_payments", "debt_to_GDP", "interest_to_revenue", "annual_pension_cost = pensioners × monthly_pension × 12", "inflation = monetary + supply + imported + fiscal + structural", "M × V = P × Y"
+  ],
+  "required_derived_indicators": [
+    "inflation_yoy", "inflation_mom", "real_interest_rate", "real_wage_growth", "money_velocity", "monetization_ratio", "M2_to_GDP", "credit_to_GDP", "deposit_to_GDP", "loan_to_deposit", "reserves_to_imports", "reserves_to_M0", "reserves_to_M1", "reserves_to_M2", "debt_to_GDP", "debt_to_revenue", "interest_to_revenue", "fiscal_deficit_to_GDP", "oil_revenue_to_GDP", "oil_revenue_to_fiscal_revenue", "current_account_to_GDP", "remittances_to_GDP", "FDI_to_GDP", "bank_capital_to_assets", "NPL_ratio", "liquid_assets_to_deposits", "dollarization_ratio", "currency_substitution", "physical_cash_requirement", "bank_reserve_requirement", "liquidity_stabilization_fund", "deposit_insurance_reserve", "bank_recapitalization_requirement", "government_operating_cash_buffer", "total_dollarization_financing_package", "fair_value_conversion_rate_low", "fair_value_conversion_rate_base", "fair_value_conversion_rate_high", "post_conversion_capital_ratio", "post_conversion_FX_mismatch", "post_conversion_liquidity_ratio", "post_conversion_solvency_ratio", "bank_run_liquid_assets_exhausted", "bank_run_emergency_liquidity_needed", "credit_contraction", "credit_to_GDP_elasticity", "lender_of_last_resort_buffer", "required_tax_adjustment", "required_spending_adjustment", "required_external_financing", "required_oil_revenue", "pension_annual_cost", "public_sector_wage_cost", "gross_oil_revenue", "usable_sovereign_FX_inflow", "oil_break_even_price_production", "net_domestic_USD_liquidity", "capital_flight_liquidity_effect", "FDI_liquidity_effect", "gross_financing_need", "external_debt_service", "inflation_pass_through", "REER_misalignment", "household_purchasing_power_change", "corporate_FX_exposure", "model_implied_policy_success_probability"
+  ],
+  "required_charts": [
+    "real GDP 1998–2026", "GDP per capita", "inflation", "monetary base", "M1", "M2", "M2/GDP", "currency in circulation", "official VES/USD", "parallel VES/USD", "FX spread", "international reserves", "liquid reserves", "gold reserves", "bank deposits", "dollar deposits", "bank credit", "credit/GDP", "capitalization", "NPLs", "fiscal revenue", "fiscal expenditure", "fiscal deficit", "monetary financing", "oil production 1970–2026", "oil exports", "oil prices", "oil revenue", "imports", "exports", "current account", "remittances", "sovereign debt", "PDVSA debt", "debt/GDP", "pensions", "wages", "poverty", "unemployment", "informality", "reserve coverage vs M0", "reserve coverage vs M1", "reserve coverage vs M2", "dollarization funding gap", "banking liquidity stress", "credit-crunch scenarios", "oil-price stress", "Monte Carlo results", "regime scorecard", "implementation timeline"
+  ],
+  "chart_registry_count": 200,
+  "page_allocation": {"main_report_target_pages": 116, "appendix_target_pages":"30–100"}
+}

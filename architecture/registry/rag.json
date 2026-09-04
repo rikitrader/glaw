@@ -1,0 +1,1 @@
+{"schemaVersion":"0.1.0","pipelines":[{"id":"rag:source-locked","name":"Source-locked legal RAG","status":"confirmed","sources":"matter workpapers/source universe","retrieval":["lexical","citation-graph"],"semanticStatus":"UNAVAILABLE unless provider configured","vectorStore":"unknown/currently absent","citationValidation":"confirmed"}]}

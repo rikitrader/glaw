@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://glaw.local/schemas/evidence-packet.schema.json",
+  "title": "GLAW Evidence Packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["conclusionId", "proposition", "conclusionType", "supportingEvidence", "contraryEvidence", "unsupportedElements", "freshness", "confidenceSignals", "generatedBy"],
+  "properties": {
+    "conclusionId": { "type": "string", "minLength": 1 },
+    "proposition": { "type": "string", "minLength": 1 },
+    "conclusionType": { "enum": ["fact", "law", "analysis", "prediction", "recommendation"] },
+    "jurisdiction": { "type": "string" },
+    "supportingEvidence": { "type": "array", "items": { "$ref": "#/$defs/evidenceReference" } },
+    "contraryEvidence": { "type": "array", "items": { "$ref": "#/$defs/evidenceReference" } },
+    "unsupportedElements": { "type": "array", "items": { "type": "string" } },
+    "freshness": {
+      "type": "object",
+      "required": ["checkedAt", "staleRisk"],
+      "properties": { "checkedAt": { "type": "string", "format": "date-time" }, "currentThrough": { "type": "string" }, "staleRisk": { "type": "boolean" } }
+    },
+    "confidenceSignals": { "type": "object" },
+    "generatedBy": { "type": "object", "required": ["model", "modelVersion", "workflowVersion", "skillVersion"] }
+  },
+  "$defs": {
+    "evidenceReference": {
+      "type": "object",
+      "required": ["evidenceId", "sourceId", "sourceVersion", "documentHash", "authorityClass", "accessScope"],
+      "properties": {
+        "evidenceId": { "type": "string" },
+        "sourceId": { "type": "string" },
+        "sourceVersion": { "type": "integer", "minimum": 1 },
+        "documentHash": { "type": "string", "minLength": 1 },
+        "authorityClass": { "type": "string" },
+        "jurisdiction": { "type": "string" },
+        "accessScope": { "type": "string" },
+        "locator": { "type": "object" }
+      }
+    }
+  }
+}

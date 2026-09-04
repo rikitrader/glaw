@@ -1,0 +1,102 @@
+{
+  "schemaVersion": "0.1.0",
+  "status": "ACTIVE_EVIDENCE_LEDGER",
+  "case_records": [
+    {
+      "case_id": "CASE-CL-CRYSTALLEX-2019",
+      "case_matter": "Crystallex International Corp. v. Bolivarian Republic of Venezuela / PDVSA enforcement",
+      "year": 2019,
+      "case_number": "18-2797; 18-3124; 18-2889",
+      "claimants": ["Crystallex International Corp."],
+      "respondents": ["Bolivarian Republic of Venezuela", "PDVSA-related interests"],
+      "case_type": "Judgment enforcement / appellate opinion",
+      "forum": "United States Court of Appeals for the Third Circuit",
+      "status": "VERIFIED",
+      "amounts": [
+        { "amount_id": "CRBF-001", "value": 1200000000, "currency": "USD", "basis": "Court-described arbitration award plus interest", "date": "2019-07-29", "status": "VERIFIED", "source_locator": "PDF p. 5" },
+        { "amount_id": "CRBF-002", "value": 1400000000, "currency": "USD", "basis": "Court-described federal judgment", "date": "2019-07-29", "status": "VERIFIED", "source_locator": "PDF p. 5" }
+      ],
+      "resolution": "Opinion addresses attachment and execution issues; the underlying claim, award, judgment, and enforcement steps must remain separate ledger objects.",
+      "custody_or_sentence": null,
+      "political_connection": "State-owned oil-company and sovereign-asset enforcement context; no party affiliation inferred.",
+      "sources": ["SRC-CL-CRYSTALLEX-2019"],
+      "evidence_items": [{ "evidence_id": "EVI-CL-CRYSTALLEX-2019", "kind": "judgment", "status": "VERIFIED", "source_id": "SRC-CL-CRYSTALLEX-2019", "locator": "PDF pp. 1–45", "local_path": "documents/acquired/courtlistener/CL-CRYSTALLEX-2019.pdf", "sha256": "c266da162e33a5b712a63dfb25546fdd65584016ac2de5d4adfc3e7e5e64eca5", "notes": "Official Third Circuit PDF indexed by CourtListener; text extracted locally." }],
+      "memoranda": [],
+      "overlap_notes": ["Do not add the award and federal judgment; they represent different stages of the same matter.", "Do not add the reported PDVSA bond figures from the opinion to current debt totals without bond-document verification."],
+      "verification_notes": "Verified legal record and extracted monetary facts are in data/derived/court-record-balance-sheet-facts.json."
+    },
+    {
+      "case_id": "CASE-CL-OI-EUROPEAN-2023",
+      "case_matter": "OI European Group BV v. Bolivarian Republic of Venezuela",
+      "year": 2023,
+      "case_number": "23-1647",
+      "claimants": ["OI European Group B.V."],
+      "respondents": ["Bolivarian Republic of Venezuela", "PDVSA-related interests"],
+      "case_type": "Award enforcement / appellate opinion",
+      "forum": "United States Court of Appeals for the Third Circuit",
+      "status": "VERIFIED",
+      "amounts": [{ "amount_id": "CRBF-007", "value": 1200000000, "currency": "USD", "basis": "Court-described PDVSA bond payment reference", "date": "2023-07-07", "status": "VERIFIED", "source_locator": "PDF p. 29" }],
+      "resolution": "Appellate enforcement record; bond-default reference is preserved as a legal lead and not a complete debt series.",
+      "custody_or_sentence": null,
+      "political_connection": "State and PDVSA asset-enforcement context; no party affiliation inferred.",
+      "sources": ["SRC-CL-OI-EUROPEAN-2023"],
+      "evidence_items": [{ "evidence_id": "EVI-CL-OI-EUROPEAN-2023", "kind": "judgment", "status": "VERIFIED", "source_id": "SRC-CL-OI-EUROPEAN-2023", "locator": "PDF pp. 1–39", "local_path": "documents/acquired/courtlistener/CL-OI-EUROPEAN-2023.pdf", "sha256": "ab61ec6e212bbcaade540152b854cf498fec929a8f7d798e8f9b1138f2a3d791", "notes": "Official Third Circuit PDF indexed by CourtListener; text extracted locally." }],
+      "memoranda": [],
+      "overlap_notes": ["The award, bond payment, and enforcement action are separate financial/legal objects."],
+      "verification_notes": "Verified CourtListener-indexed opinion; no claim is made that the cited payment equals current PDVSA debt outstanding."
+    },
+    {
+      "case_id": "CASE-CL-PDVSA-LUKOIL-2023",
+      "case_matter": "PDVSA US Litigation Trust v. Lukoil Pan Americas LLC",
+      "year": 2023,
+      "case_number": "22-10675",
+      "claimants": ["PDVSA US Litigation Trust", "PDVSA"],
+      "respondents": ["Lukoil Pan Americas LLC", "Lukoil Petroleum Ltd."],
+      "case_type": "Appellate commercial / standing and litigation-trust matter",
+      "forum": "United States Court of Appeals for the Eleventh Circuit",
+      "status": "VERIFIED",
+      "amounts": [],
+      "resolution": "Published appellate opinion; exact monetary relief is not imported without a judgment or damages locator.",
+      "custody_or_sentence": null,
+      "political_connection": "PDVSA/state-oil-sector context; no party affiliation inferred.",
+      "sources": ["SRC-CL-PDVSA-LUKOIL-2023"],
+      "evidence_items": [{ "evidence_id": "EVI-CL-PDVSA-LUKOIL-2023", "kind": "judgment", "status": "VERIFIED", "source_id": "SRC-CL-PDVSA-LUKOIL-2023", "locator": "PDF pp. 1–13", "local_path": "documents/acquired/courtlistener/CL-PDVSA-LUKOIL-2023.pdf", "sha256": "e9cc2c0d02ecef2a65ca24f579fcf1f205d8b0fdcb399cbf24635e0e5a41783c", "notes": "Official Eleventh Circuit PDF indexed by CourtListener; text extracted locally." }],
+      "memoranda": [],
+      "overlap_notes": [],
+      "verification_notes": "Verified opinion artifact; monetary amount unavailable from the bounded ingestion."
+    },
+    {
+      "case_id": "CASE-CL-PETROSAUDI-2023",
+      "case_matter": "United States v. Petrosaudi Oil Services (Venezuela) Ltd.",
+      "year": 2023,
+      "case_number": "21-56228",
+      "claimants": ["United States"],
+      "respondents": ["PetroSaudi Oil Services (Venezuela) Ltd."],
+      "case_type": "Forfeiture / attachment appellate opinion",
+      "forum": "United States Court of Appeals for the Ninth Circuit",
+      "status": "VERIFIED",
+      "amounts": [
+        { "amount_id": "CRBF-008", "value": 380000000, "currency": "USD", "basis": "Court-described arbitration award fund", "date": "2023-06-13", "status": "VERIFIED", "source_locator": "PDF p. 3" },
+        { "amount_id": "CRBF-010", "value": 329000000, "currency": "USD", "basis": "Court-described approximate escrow balance at ruling", "date": "2023-06-13", "status": "VERIFIED", "source_locator": "PDF p. 11" }
+      ],
+      "resolution": "Appellate opinion addresses in-rem jurisdiction over the award fund.",
+      "custody_or_sentence": null,
+      "political_connection": "Venezuelan oil-services and asset-forfeiture context; no party affiliation inferred.",
+      "sources": ["SRC-CL-PETROSAUDI-2023"],
+      "evidence_items": [{ "evidence_id": "EVI-CL-PETROSAUDI-2023", "kind": "judgment", "status": "VERIFIED", "source_id": "SRC-CL-PETROSAUDI-2023", "locator": "PDF pp. 1–26", "local_path": "documents/acquired/courtlistener/CL-PETROSAUDI-2023.pdf", "sha256": "1d8fb83ed2e0353a62f083346a4eeac8e477323929962ec86d3711bd93ff38d0", "notes": "Official Ninth Circuit PDF indexed by CourtListener; text extracted locally." }],
+      "memoranda": [],
+      "overlap_notes": ["Award fund, ordered placement, and escrow balance are not Venezuelan sovereign debt or reserves."],
+      "verification_notes": "Verified legal record with case-specific monetary facts only."
+    }
+  ],
+  "source_registry": [
+    { "source_id": "SRC-UNCTAD-ISDS", "name": "UNCTAD ISDS Navigator", "url": "https://investmentpolicy.unctad.org/investment-dispute-settlement", "source_level": "AUTHORITATIVE_DATABASE", "role": "Investment-dispute case metadata and awards; verify each matter at case level.", "access_status": "AVAILABLE" },
+    { "source_id": "SRC-ICSID-DATABASE", "name": "ICSID Case Database", "url": "https://icsid.worldbank.org/cases/case-database", "source_level": "PRIMARY", "role": "ICSID case, award, procedural, and document source.", "access_status": "AVAILABLE" },
+    { "source_id": "SRC-USDOJ", "name": "U.S. Department of Justice", "url": "https://www.justice.gov/", "source_level": "PRIMARY", "role": "Indictments, pleas, sentencing releases, forfeiture, and criminal-case leads.", "access_status": "AVAILABLE" },
+    { "source_id": "SRC-ICC-VENEZUELA-I", "name": "International Criminal Court — Venezuela I", "url": "https://www.icc-cpi.int/venezuela-i", "source_level": "PRIMARY", "role": "Situation-level proceedings and official ICC materials.", "access_status": "AVAILABLE" },
+    { "source_id": "SRC-ICJ-171", "name": "International Court of Justice — General List No. 171", "url": "https://www.icj-cij.org/case/171", "source_level": "PRIMARY", "role": "Guyana–Venezuela state-to-state case documents and procedural status.", "access_status": "AVAILABLE" },
+    { "source_id": "SRC-DDEL", "name": "U.S. District Court, District of Delaware", "url": "https://www.ded.uscourts.gov/", "source_level": "PRIMARY", "role": "Crystallex, PDVSA, PDV Holding, and enforcement docket materials.", "access_status": "AVAILABLE" },
+    { "source_id": "SRC-COURTLISTENER", "name": "CourtListener", "url": "https://www.courtlistener.com/", "source_level": "REPORTER", "role": "Search, opinion metadata, RECAP records, and public reporter copies; local artifact and hash required for VERIFIED status.", "access_status": "AVAILABLE" }
+  ],
+  "verification_policy": "No amount, resolution, political connection, sentence, or legal proposition is final unless tied to an identified primary or authoritative source, local artifact where available, hash, and locator. User-supplied rows remain UNVERIFIED until audited. Related proceedings and aggregate rows must never be summed with their underlying awards or cases."
+}

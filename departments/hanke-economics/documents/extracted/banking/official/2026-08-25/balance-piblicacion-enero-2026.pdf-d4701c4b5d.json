@@ -1,0 +1,36 @@
+{
+  "file name" : "balance-piblicacion-enero-2026.pdf-d4701c4b5d.pdf",
+  "number of pages" : 1,
+  "author" : "vp32067",
+  "title" : "Diapositiva 1",
+  "creation date" : "D:20260212095020-04'00'",
+  "modification date" : "D:20260212095020-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 2,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 719.28, 967.2 ],
+    "source" : "balance-piblicacion-enero-2026.pdf-d4701c4b5d_images/imageFile1.png"
+  }, {
+    "type" : "text block",
+    "id" : 3,
+    "page number" : 1,
+    "bounding box" : [ 18.98, 892.34, 380.62, 945.1 ],
+    "kids" : [ {
+      "type" : "image",
+      "pdfua_tag" : "Figure",
+      "id" : 1,
+      "page number" : 1,
+      "bounding box" : [ 21.24, 904.8, 379.56, 944.16 ],
+      "source" : "balance-piblicacion-enero-2026.pdf-d4701c4b5d_images/imageFile2.png"
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 4,
+    "page number" : 1,
+    "bounding box" : [ 603.48, 877.68, 682.8, 922.68 ],
+    "source" : "balance-piblicacion-enero-2026.pdf-d4701c4b5d_images/imageFile3.png"
+  } ]
+}

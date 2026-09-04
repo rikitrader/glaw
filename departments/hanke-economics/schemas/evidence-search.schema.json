@@ -1,0 +1,11 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"haeis/evidence-search",
+  "type":"object",
+  "required":["claim_id","searches"],
+  "properties":{
+    "claim_id":{"type":"string","minLength":1},
+    "searches":{"type":"array","items":{"type":"object","required":["lane","query","source_ids","result_status","notes"],"properties":{"lane":{"enum":["SUPPORTING","CONTRADICTORY","ALTERNATIVE_EXPLANATION"]},"query":{"type":"string"},"source_ids":{"type":"array","items":{"type":"string"}},"result_status":{"enum":["FOUND","NO_RESULT","RESTRICTED","PENDING"]},"notes":{"type":"string"}},"additionalProperties":false}}
+  },
+  "additionalProperties":false
+}

@@ -1,0 +1,10 @@
+{
+  "schema_version": "0.1.0",
+  "dataset_id": "VEN-FX-PARALLEL-COMPOSITE",
+  "status": "SCHEMA_ONLY",
+  "lanes": ["USDT_P2P", "OTHER_P2P", "CASH_MARKET", "MERCHANT_QUOTES", "MARKET_MARKERS"],
+  "required_fields": ["observation_id", "lane", "exchange_or_marker", "quote_type", "best_bid", "best_ask", "median", "volume", "merchant_count", "payment_method", "min_order", "max_order", "observation_timestamp", "source_url", "source_quality", "verification_status"],
+  "derived_fields": ["liquidity_weighted_median", "official_timestamp", "parallel_timestamp", "fx_spread", "spread_quality_score"],
+  "formula": "FXSpread = (Parallel - Official) / Official * 100",
+  "rule": "Never compare official and parallel rates without timestamp matching or an explicit time-difference flag."
+}

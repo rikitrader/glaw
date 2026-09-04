@@ -154,6 +154,26 @@ MeF via EFIN/approved software, NOT this tool. W-2 → SSA BSO.
 filler, run under the bookkeeping local source runner (reporting-disabled PDF helper). Blank IRS PDFs are a manual drop-in per each seat's
 `forms/README.md` — the seat computes the values, the filler stamps them onto the real form.
 
+## Corporate Finance, FP&A, M&A, Public Markets, and Analytical Assurance Division
+
+The corporate-finance department owns valuation, planning, transaction execution,
+public-company communications, and analytical assurance. Its source-of-truth lane
+catalog is `lib/lane-catalog.json`; department policy gates are in
+`lib/lane-policies.json`. Reference engines are deterministic reasonableness checks
+and always return a human-approval requirement.
+
+| Capability | Owner / engine | Control posture |
+|------|-------|--------|
+| Three-statement, DCF, trading/transaction comps, merger accretion-dilution, cap table, and waterfall | `glaw-fs-*` seats + `bin/glaw-corporate-finance` | reconciliation, sensitivity, independent review, human approval |
+| Annual budget, long-range plan, rolling reforecast, variance, revenue drivers, headcount, CapEx, and segment profitability | `glaw-fs-financial-plan` + `bin/glaw-fpa-engine` | driver documentation, pacing, payback, allocation methodology, CFO/FP&A/controller approval |
+| Transaction process, diligence, board materials, closing, synergies, carve-out, and 100-day integration | `glaw-fs-ma-*` seats | source, process, calculation, review, and approval gates |
+| Earnings, guidance, IR, AGM, ownership, activist, and capital return | `glaw-fs-*` public-markets seats | disclosure, reconciliation, adversarial, review, and human approval gates |
+| AI analytical artifact, investment recommendation, head-to-head, model quality, and scenario review | `glaw-fs-*` assurance seats | blind comparison, material-error penalties, adversarial review, and escalation |
+
+Production definition: no finance lane is treated as approved merely because a
+seat or template exists; the workpaper must satisfy its department policy, carry
+the required artifacts, reconcile its numbers, and record qualified human approval.
+
 ## M&A, Public Markets, and Analytical Assurance Division
 
 The expansion is tracked in `docs/MA-PUBLIC-MARKETS-ASSURANCE-TODO.md`. New seats must not

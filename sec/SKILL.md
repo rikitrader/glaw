@@ -131,3 +131,4 @@ Memory rule: every recurring error, rejected assumption, audit adjustment, citat
 ## Not legal advice
 Securities-enforcement work-product for licensed securities counsel; not a charging or
 settlement decision. UPL footer: `/glaw-ethics-conflicts`.
+**Domain:** sec professional domain, evidence, controls, and accountable human-review routing.

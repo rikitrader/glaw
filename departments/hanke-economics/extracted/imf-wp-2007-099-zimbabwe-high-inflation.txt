@@ -1,0 +1,814 @@
+                                           WP/07/99
+
+
+
+
+Lessons from High Inflation Episodes for
+ Stabilizing the Economy in Zimbabwe
+       Sharmini Coorey, Jens R. Clausen,
+         Norbert Funke, Sònia Muñoz,
+           and Bakar Ould-Abdallah
+  © 2007 International Monetary Fund                                                             WP/07/99
+
+                                          IMF Working Paper
+
+                                           African Department
+
+        Lessons from High Inflation Episodes for Stabilizing the Economy in Zimbabwe
+
+            Prepared by Sharmini Coorey, Jens R. Clausen, Norbert Funke, Sònia Muñoz,
+                                   and Bakar Ould-Abdallah1
+
+                             Authorized for distribution by Sharmini Coorey
+
+                                                 April 2007
+
+                                                  Abstract
+
+This Working Paper should not be reported as representing the views of the IMF.
+The views expressed in this Working Paper are those of the author(s) and do not necessarily represent
+those of the IMF or IMF policy. Working Papers describe research in progress by the author(s) and are
+published to elicit comments and to further debate.
+
+  Zimbabwe has currently the highest rate of inflation in the world (an annual rate of
+  1,730 percent in February, 2007). The high rates of inflation have contributed to the
+  contraction of the economy, which has declined by about 30 percent since 1999. This paper
+  examines the stabilization experience of countries that experienced similar rates of inflation
+  (above 1,000 percent) during 1980-2005 and draws lessons for Zimbabwe. First, with
+  appropriate stabilization policies, the fall in inflation can be very rapid and output normally
+  recovers within the first year or two of stabilization. Second, while reforms need to be
+  comprehensive, a strong upfront fiscal consolidation, including elimination of quasi-fiscal
+  activities, is a critical element of a successful stabilization program. Third, although
+  stabilization itself can be done without significant external financing in the first year, most
+  countries benefited from external policy advice and technical support, including from the
+  IMF, during stabilization and from an increase in financial assistance in subsequent years.
+
+  JEL Classification Numbers: E63, E65, E31
+
+  Keywords: High Inflation, Macroeconomic Stabilization, International Experience
+
+  Author’s E-Mail Address: scoorey@imf.org
+
+  1
+   The authors would like to thank Tamim Bayoumi, Andrea Schaechter, and Athanasios Vamvakidis for helpful
+  suggestions and clarifications on an earlier draft.
+                                                                     2
+
+
+                                                             Contents                                                                Page
+
+I. Introduction ............................................................................................................................3
+
+II. High Inflation Episodes: Some Stylized Facts......................................................................5
+
+III. Critical Reform Elements and Sequence .............................................................................6
+
+IV. Achieving Macroeconomic Stabilization in Zimbabwe ......................................................8
+
+V. The Role of External Support .............................................................................................12
+
+VI. Conclusions........................................................................................................................14
+
+References................................................................................................................................16
+
+Tables
+Table 1. High Inflation Periods (Annual Inflation>1,000 percent): 1980-2005 ........................5
+Table 2. Sequencing of Reforms1 ..............................................................................................7
+Table 3. Adjusted Fiscal Position ..............................................................................................9
+
+Figures
+Figure 1. Official and Private Inflation......................................................................................4
+Figure 2. Stylized Facts..............................................................................................................6
+Figure 3. Disinflation and External Financing.........................................................................13
+Figure 4. External Inflows .......................................................................................................13
+
+Appendix Tables
+Appendix Table 1. Disinflation and External Financial Constraints........................................15
+                                                      3
+
+
+                                              I. INTRODUCTION
+
+
+Hyperinflations are largely a modern and rare phenomenon generally associated with printing
+money to finance large fiscal deficits due to wars, revolutions, the end of empires, and the
+establishment of new states. According to Cagan’s (1956) definition, hyperinflation begins in
+the month inflation first exceeds 50 percent (per month) and ends in the month before the
+monthly inflation rate drops below 50 percent for at least a year. By this definition, during
+1920 and 1946 there were eight hyperinflations, while between 1947 and 1984 there were
+none. Since 1984, however, there have been fifteen hyperinflation cases.2
+
+Zimbabwe has currently by far the highest rate of inflation in the world. Inflation, as
+measured by the official CPI, soared to 1,730 in February 2007. Since monthly inflation is
+still officially under 50 percent, Zimbabwe currently does not qualify formally as a
+hyperinflation case by Cagan’s definition. To closely align the cross-country experience with
+the current situation of Zimbabwe, this paper uses a 12-month inflation rate of 1,000
+percent—rather than hyperinflations, strictly defined—as the threshold for identifying
+periods of very high inflation. While the 1,000 percent threshold may be somewhat arbitrary,
+the move from three-digit to four-digit rates of inflation can be seen as passing a
+psychological barrier.
+
+It is worth mentioning, however, that the official CPI in Zimbabwe is likely to substantially
+understate inflation because about a third of the basket reflects price-controlled items and the
+consumption weights are outdated. Many in the private sector believe that the true rate of
+annual inflation was closer to 3,000 percent in February 2007. Monthly inflation rates in
+informal private indices—which are more heavily weighted by food—have exceeded
+50 percent for several months. To the extent that the fall in real incomes has shifted the
+average consumption basket towards food, transport, and other basic items that move in line
+with the rapidly depreciating parallel market rate the understatement of inflation by the
+official CPI is likely to have increased over time.
+
+
+
+
+2
+    See Fisher, Sahay, and Végh (2002) for details.
+                                                                   4
+
+
+                                    Figure 1. Official and Private Inflation
+
+                 4,500                                                                                            4,500
+                                                                            Poverty datum line index
+                 4,000                           Private food index I 1                                           4,000
+                 3,500                           Private food index II                                            3,500
+                 3,000                                                                                            3,000
+                                  Private overall index 2
+                 2,500                                                                                            2,500
+                 2,000                                                                                            2,000
+                 1,500                                                                                            1,500
+                 1,000                                                                                            1,000
+                  500                                                                                             500
+                                                                       Official overall index
+                    0                                                                                             0
+
+                         Jan-05     Apr-05       Jul-05   Oct-05   Jan-06    Apr-06   Jul-06    Oct-06   Jan-07
+                                   1         2
+                          Note: and refer to a basket consumed by lower-income
+
+
+
+Another distinct feature of Zimbabwe’s economy is the sustained contraction in output. Real
+GDP is estimated to have declined by about 30 percent since 1999. While the initial output
+collapse is widely attributed to the chaotic seizure of commercial farms—the backbone of the
+economy—other factors have also contributed in recent years: (i) high and accelerating
+inflation; (ii) price distortions due to extensive controls and regulation, particularly relating
+to the exchange rate which is fixed by the Reserve Bank of Zimbabwe (RBZ) at a highly
+overvalued rate; (iii) the collapse of investor confidence due to unpredictable policies and
+lack of respect for property rights, particularly in agriculture and mining; and (iv) minimal
+external financing because of poor relations with creditors and donors and deteriorating
+economic and social conditions.
+
+Without an immediate stabilization package and comprehensive medium-term structural
+reforms, prospects are for Zimbabwe’s inflation to continue accelerating and for the
+economic crisis to deepen. Do the countries that have gone through similar episodes of high
+inflation in recent decades have lessons to offer for Zimbabwe? Section II of this paper
+examines high inflation episodes internationally during 1980-2005 and presents some
+stylized facts of successful stabilization programs. Section III analyzes reform elements that
+have been particularly critical for successful stabilization in other cases. Guided by these
+findings, Section IV identifies a set of policy actions specific to Zimbabwe that are essential,
+as a first step, to stabilize the economy. Section V looks at the role of official external
+financing during the stabilization process. Section VI concludes.
+                                                      5
+
+
+                     II. HIGH INFLATION EPISODES: SOME STYLIZED FACTS
+
+
+Using a 12-month inflation rate of 1,000 percent as the threshold for defining a period of
+high inflation, we identify 30 such inflation episodes in 24 countries between 1980 and
+2005.3 Our sample comprises 5 Latin American countries, 17 Central and Eastern European
+countries / former Soviet Union (FSU) countries, and 2 African countries (see Appendix
+Table 1). Six countries (Argentina; Brazil; Democratic Republic of Congo; Macedonia,
+FYR/SFRY; Nicaragua; and Tajikistan) out of the 24 countries experienced two periods of
+high inflation, for a total of 30 high inflation episodes.
+
+          Table 1. High Inflation Periods (Annual Inflation>1,000 percent): 1980-2005
+                                                        Total        Central and    Latin          Others
+                                                                   Eastern Europe/ America
+                                                                   Former Soviet
+                                                                        Union
+     Number of episodes                                       30                19           8             3
+     Number of countries                                      24                17           5             2
+     Minimum length (months)                                   2                 2           3             5
+     Median length (months)                                   13                11          23            20
+     Max length (months)                                      34                25          34            24
+     Maximum annual inflation rate (percent)              91,253            27,020      63,776        91,253
+
+     Source: IMF International Financial Statistics and World Economic Outlook.
+
+
+
+The median length of high inflation periods in the whole sample exceeded one year, though
+the duration and severity of high inflation differed significantly across countries and regions.
+High inflation periods tended to be shorter in Central and Eastern European countries and the
+FSU (close to one year),4 while in Latin American economies the median was twice as long.
+In almost a third of the cases inflation exceeded 10,000 percent; in two cases (Democratic
+Republic of Congo, Nicaragua) it exceeded 60,000 percent.5
+
+
+
+
+3
+  Our sample includes all countries that pass this threshold for which data are available. All data are taken from
+the IMF’s International Financial Statistics and World Economic Outlook database, except for the data on
+external official financing, which is obtained from the World Bank’s World Development Indicator database.
+Baumann (2000), Fischer, Sahay, and Végh (2002), and Reinhart and Savastano (2003), among others, provide
+selective reviews of high and hyperinflation periods.
+4
+  In Central and Eastern European and FSU countries, the period of high inflation was related mainly to the
+transition to a market-oriented economy and the initial price liberalization.
+5
+  Serbia’s inflation peaked at a monthly rate of 175,093 percent in the period February 1993–January 1994, but
+is not included in this sample due to the lack of data.
+                                                           6
+
+
+The stylized facts show that in a successful stabilization inflation tends to fall very rapidly
+while output recovers within the first or second year of stabilization (Figure 2).6 The median
+annual inflation fell from a peak of about 1,600 percent to 180 percent 12 months after the
+peak. While the period of accelerating inflation was typically characterized by declining real
+GDP, the median output decline slowed significantly, from some -7 percent to about
+- ½ percent, in the first year of stabilization and positive output growth in the second year of
+stabilization. The evidence thus suggests that high inflation can be brought down rapidly
+without substantial output costs, and even with output gains.7 This is likely because—as well
+established in the literature and confirmed in Figure 2—high inflation is highly damaging to
+output, so that the reduction of inflation itself has a positive effect on output.
+
+                                                  Figure 2. Stylized Facts
+            Median inflation declines quickly…                     …and median output recovers fast.
+
+                  Annual average CPI                                                    GDP growth
+    1,800                                                         4.0
+    1,600
+                                                                  2.0     (percent)
+    1,400      (percent)
+                                                                  0.0
+    1,200
+    1,000                                                        -2.0
+
+      800                                                        -4.0
+      600
+                                                                 -6.0
+      400
+                                                                 -8.0
+      200
+
+        0                                                       -10.0
+             t-5 t-4 t-3 t-2 t-1 t=0 t+1 t+2 t+3 t+4 t+5                t-5 t-4 t-3 t-2 t-1 t=0 t+1 t+2 t+3 t+4 t+5
+
+
+
+               Note: t=0 is the inflation peak.                          Note: t=0 is the inflation peak.
+
+
+
+
+                           III. CRITICAL REFORM ELEMENTS AND SEQUENCE
+
+This section examines more closely the most common reform sequence of successful
+stabilization programs within the sample, and compares it with previous evidence on
+sequencing for developing countries and transition economies in the literature8 (Table 2).
+Following the literature, we identify several broad areas of reform. Using IMF Country
+Reports, we identify each country’s reform sequence by ranking it according to the starting
+time of reforms. Number 1 denotes the highest priority reform area (i.e., the area where
+action was taken first) and number 5 the lowest (i.e., the area where action was taken last).
+
+6
+  In Figure 2, t=0 is the year of the inflation peak, t–5 the fifth year before the peak, and t+5 the fifth year after
+the peak, etc.
+7
+  This finding is supported by the literature (Sargent, 1982; Fischer, Sahay, and Végh, 2002; Easterly, 1996).
+8
+  For a more detailed discussion of sequencing issues, see, for example, Nsouli, Rached, and Funke (2005).
+                                                                       7
+
+
+We then establish a “most common” sequence for the sample of high inflation episodes.9
+More than one ranking in Table 2 indicates that the distribution of rankings for that reform
+area was more widespread. An identical ranking between reform areas indicates that reforms
+in these areas were initiated at roughly the same time.
+
+                                                Table 2. Sequencing of Reforms1
+
+                                              Institutional      Fiscal/      Domestic          Domestic
+                                                Reform
+                                                        2      Monetary         Price           Financial   Privati-   Trade    Capital Flow
+                                                              Stabilization Liberalization       System     zation     Reform   Liberalization
+
+Developing Countries
+Edwards (1990)                                     ...             1              ...              2          ...        3            4
+
+Economies in Transition
+Fischer/Sahay (2000)                                1              1              1                4          1/3        2            5
+
+High Inflation Countries
+Sample of 24 countries (most common)
+                                    3               1              1              1               1/2/3      1/2/3      1/2/4         ...
+
+Source: As indicated, and IMF staff research.
+1
+  The number 1 denotes the highest priority reform area, number 5 the lowest.
+2
+  Refers to reforms in the public sector, labor market, central bank, and in property rights.
+3
+  Based on the interpretation of IMF staff reports for each of the countries in the sample.
+
+
+The analysis of the cross-country sample10 as well as the literature suggests:
+
+a.         Most successful stabilization programs were characterized by fairly broad-based
+           reform agendas. Institutional reforms as well as a program of fiscal stabilization and
+           price liberalization were started at the same time. To restore confidence and establish
+           credibility, a dramatic shift in policy was needed.
+
+b.         Fiscal and monetary tightening was critical for a successful stabilization program.
+           A sharp reduction in the fiscal deficit was needed to end periods of very high
+           inflation. For example, in Nicaragua the adjustment of the primary fiscal deficit was
+           23 percentage points of GDP within one year, while Armenia achieved an adjustment
+           of 9 percentage points of GDP within one year. In Bolivia, the general government
+           fiscal deficit (excluding quasi-fiscal deficits) declined in two years from 27 percent of
+           GDP to 3 percent. A recent cross-country study (Tsibouris et al., 2006) confirms that
+           large upfront fiscal adjustments were the most successful in reducing inflation. Large
+
+
+
+
+9
+  Needless to say that such an effort involves some judgment calls. The ranking refers to the starting point of
+reforms. Different reform steps may overlap. If one specific ranking is found in more than half of the cases in the
+sample, this ranking is established to be “most common”. If the distribution of rankings within our sample is more
+widespread, the three most frequently found rankings are provided in Table 2.
+10
+   Country examples below relate to the disinflation periods in Appendix Table 1.
+                                                      8
+
+
+         adjustments, unlike small consolidations, generally had a positive macroeconomic
+         impact (with output recovering within one to two years).11
+
+c.       Fiscal consolidation needs to include the reduction and elimination of quasi-fiscal
+         activities, which played an important role in more than half of the 30 countries in our
+         sample.12 Before stabilization, quasi-fiscal deficits had frequently arisen because
+         central banks had provided financial support to loss-making state-owned enterprises
+         (e.g., in Bolivia; Croatia; and Macedonia, FYR/SFRY) or bailed out banks in distress
+         (e.g., in Angola and Bulgaria). Enforcing greater discipline on state-owned
+         enterprises through hard budget constraints was therefore an important step in
+         reducing the public financing requirement.
+
+d.       Besides fiscal and monetary stabilization, price and exchange regime liberalization
+         was often a high priority (e.g., in Azerbaijan and Bolivia). Although liberalization
+         may have contributed to a one-time increase in the price level, it helped allocate
+         resources more efficiently and stopped the government from providing subsidies that
+         had previously fueled inflation.
+
+e.       In the majority of cases, particularly in transition economies, institutional reforms,
+         such as improvements in the rule of law, reforms of the public sector, the central
+         bank, and the labor market, were started immediately (countries such as Nicaragua
+         and Peru also initiated similar reforms). These reforms helped make the stabilization
+         package credible and boosted the confidence of domestic and external investors.
+
+f.       Countries differed on the timing of reforms of the financial system, privatization of
+         state-owned enterprises, and trade reform. While some countries initiated reform
+         steps in these areas at the start (e.g., Nicaragua and Georgia), others postponed them
+         (e.g., Turkmenistan and Ukraine).
+
+
+
+               IV. ACHIEVING MACROECONOMIC STABILIZATION IN ZIMBABWE
+
+Accelerating inflation in Zimbabwe has been fueled by high rates of money growth reflecting
+rising fiscal and quasi-fiscal deficits. Quasi-fiscal losses reported by the RBZ, which have
+increased sharply since 2004, have reflected mainly large foreign exchange subsidies to
+public enterprises and government, price supports to exporters (to partially compensate them
+
+
+11
+   The sample in Tsibouris et al. (2006) covers 165 countries from 1971 through 2001 and indicates a median
+tightening of the primary fiscal balance of about 12.5 percentage points of GDP (and a range of 6.3-
+29.9 percentage points of GDP) in one year.
+12
+   The extent of fiscal adjustment may be understated in the sample, to the extent that the fiscal data did not
+systematically include the quasi-fiscal activity of the central bank and other public entities, which in many cases
+was sharply reduced during stabilization.
+                                                      9
+
+
+for the highly overvalued exchange rate), and interest payments on open market operations.13
+These losses now dwarf the traditionally measured government deficit. For instance,
+although the government reported a small primary surplus of around 2 percent in 2006, when
+the fiscal accounts are adjusted to include the quasi-fiscal activities (QFAs) of the RBZ, the
+adjusted primary balance shifts to a deficit of almost 25 percent of GDP—a more accurate
+picture of the true fiscal position (Table 3). The adjusted overall fiscal deficit or financing
+requirement, including government and RBZ interest payments, is estimated to have
+amounted to about 80 percent of GDP in 2006.14 These large and rising deficits have been
+partly financed through money creation, giving rise to accelerating rates of inflation. In fact,
+money growth and inflation in 2006 would have been even higher without the implicit
+taxation of the banking system via a lengthening of the maturity of treasury and RBZ bills
+and payment of highly negative real interest rates on these bills.
+
+                                      Table 3. Adjusted Fiscal Position
+                                                (Percent of GDP)
+                                                          2004        2005        2006
+                                                                                  Est.
+
+                       Central government
+                        Revenue                             33.8           43.7      51.3
+                        Expenditure                         41.5           49.6      58.6
+                         Of which : wage bill               15.3           18.1      17.1
+                                        1
+                        Overall balance                      -4.7          -3.1       -5.4
+                        Primary balance                      -1.7           3.7        2.3
+
+                       Adjusted fiscal position
+                        Primary balance                     -26.9       -17.2       -24.7
+                        Financing requirement               -29.9       -64.3       -80.3
+                       Sources: Zimbabwean authorities; IMF staff estimates and
+                       projections.
+                       1
+                           Including grants, excluding interest arrears.
+
+
+
+The 2007 budget substantially increased government spending in real terms. In his budget
+speech, the Minister of Finance also announced that all QFAs would be transferred to the
+budget, with the RBZ no longer undertaking new QFAs. However, no measures were
+announced to credibly lower QFAs, even though the budget itself made only minimal
+provision for the newly-absorbed QFAs. Total spending in 2007 is likely to increase (via
+supplementary budgets) beyond the amount stated in the current budget. There is no evidence
+so far that the RBZ has refrained from QFAs in 2007. The recent announcement by the RBZ
+
+13
+  The RBZ’s quasi-fiscal activities are discussed in greater detail in Muñoz (2007).
+14
+  Interest payments include the effects of inflation. The adjusted financing requirement gives an indication of
+the overall deficit that must be financed by creating money or issuing domestic treasury bills; external financing
+of public sector deficits is limited in Zimbabwe.
+                                                  10
+
+
+that it would create a fully-owned subsidiary called FISCORP to carry out QFAs, possibly on
+a transitory basis, would not address the fundamental issue—the massive price and exchange
+rate distortions and poor governance in the public sector (including public enterprises) that
+place an unsustainable burden on the public finances.
+
+The international experience suggests that in countries such as Zimbabwe, with high inflation
+and extensive relative price distortions, strong upfront adjustment through a broad-based
+policy package is needed to establish credibility and minimize the cost of adjustment. For
+Zimbabwe, we identify five interrelated elements that would be necessary in an initial
+stabilization package:
+
+1.       Transparent transfer of quasi-fiscal activities to the government budget, as
+announced by the 2007 budget.15 No entity outside the budget should undertake any activity
+of a fiscal nature (including interest payments, subsidized credits etc.) without offsetting
+transfers transparently provided for in the budget. For instance, any QFAs carried out
+through the RBZ, FISCORP, the Industrial Development Bank of Zimbabwe or any other
+public entity should be covered via budgetary transfers. The purpose of this step, which by
+itself would not reduce inflation, is to increase transparency and accountability and
+strengthen fiscal governance by having actions of a fiscal nature subjected to normal
+budgetary scrutiny and procedures.
+
+2.      Substantial fiscal tightening, including the newly-absorbed QFAs of the RBZ or
+any other public entity. For instance, estimates based on preliminary data for 2006 suggest
+that a reduction of at least 10 percentage points of GDP in the adjusted primary balance
+(including the newly-absorbed QFAs) relative to the outcome in 2006 would be needed to
+lower inflation by about 800 percentage points. A tightening of this order of magnitude or
+more would be in line with large fiscal adjustments made by other countries, as discussed
+above. This tightening could be achieved by reduction in the government wage bill—which
+is large by regional standards—and capital expenditure—which more than doubled in real
+terms in 2006—as well as from cuts in (former) QFAs, particularly subsidies to public
+enterprises.16 Complementary measures, such as price and exchange rate liberalization (see
+below), would be needed to ensure that QFAs are durably reduced. In addition, fiscal
+expenditure would need to be prioritized (within a tighter envelope) to ensure food security,
+rehabilitate the collapsing health infrastructure, and provide a targeted social safety net to
+
+
+
+
+15
+   It is the new flows of activity previously done by the RBZ (or any other such entity) that need to be
+transferred, not the stock of losses from past QFAs. Unrealized exchange losses can remain in the RBZ’s
+balance sheet until recapitalization following stabilization.
+16
+   Government revenue ratios have been relatively high in Zimbabwe (around 30-52 percent in 2004-06). Hence
+the tightening needs to come mainly from reductions in expenditure which are very large in relation to GDP.
+Adjusted primary expenditure is estimated to have amounted to some 75 percent of GDP in 2006, of which
+non-interest QFAs of the RBZ amounted to some 27 percent of GDP. Zimbabwe’s high government wage bill
+may reflect excessively large numbers of workers rather than an excessively high level of real wages.
+                                                    11
+
+
+protect vulnerable groups, including those affected by HIV/AIDS and “Operation
+Murambatsvina”.17
+
+3.      Liberalizing the exchange regime by unifying the exchange rate and removing
+restrictions on current international payments and transfers. The interbank exchange
+rate would need to be substantially devalued promptly and all multiple exchange rates
+eliminated. The interbank rate should then be depreciated steadily toward the parallel market
+rate (which would appreciate as fiscal and monetary policies are tightened), and the unified
+exchange rate subsequently floated.
+
+4.      Deregulating prices and imposing a hard budget constraint on public
+enterprises. Enterprises need a hard budget constraint that requires them to cut costs and
+operate at preset levels of budget subsidies and agreed pricing formulas. Deregulating prices
+and allowing public enterprises to introduce cost-recovery pricing would be an essential
+element of a plan to move the operation of these enterprises to a commercial footing. Price
+deregulation would likely lead to a one-off spike in prices, but strong fiscal adjustment would
+ultimately reduce inflation pressures.
+
+5.      Establishing a strong money anchor to reduce inflation and inflation
+expectations. Once exchange rates are unified and the RBZ disengages from QFAs, a broad
+money anchor and a flexible exchange regime could be established, with reserve money as
+the operational target. (An exchange rate anchor would be difficult to implement because
+international reserves are low). To ensure that monetary policy is effective and reduce
+liquidity risks in the banking system, interest rates would need to be gradually moved to
+market determined levels.
+
+Achieving sustained growth in Zimbabwe will require—in addition to stabilization—
+comprehensive structural reform and better governance over the medium term. The ongoing
+output collapse in the country is consistent with the stylized facts from cross-country
+experience, which shows that very high inflation is usually accompanied by a sharp output
+contraction. The cross-country evidence also shows that in a successful stabilization, output
+recovers quite quickly—usually within the first year or two of stabilization. In the case of
+Zimbabwe, we may surmise that there can be an initial positive output response if inflation is
+brought down rapidly and prices are liberalized because the damaging effects of uncertainty
+and price distortions would be greatly reduced. However, sustained output growth after
+stabilization will depend on addressing fundamental structural problems. Public enterprise
+and civil service reform, central bank reform, as well as public expenditure and tax reform
+will be important to sustain the fiscal adjustment and stimulate output growth. Improving
+governance, including by protecting private property rights and increasing policy
+predictability, will be essential for reinvigorating investor confidence. Zimbabwe’s situation
+with respect to agriculture—a key sector of the economy—may be unique in that property
+rights issues relating to security of land tenure remain unresolved and may not be easy to
+17
+   “Operation Murambatsvina” is the government campaign that demolished unauthorized dwellings and
+structures across the country in 2005. The U.N. estimates that some 700,000 people lost their home or source of
+livelihood, or both, and that a further 2.4 million people were indirectly affected in varying degrees.
+                                                   12
+
+
+resolve even if consensus can be reached on stabilization and other structural reform policies.
+At present, commercial bank lending to the sector remains limited in part because existing
+arrangements, including the recently-introduced 99-year leases, do not provide adequate
+security of land tenure. A broad-based agreement among stakeholders on land tenure may be
+needed to achieve sustained growth in agriculture and in the economy more generally.
+
+
+
+                               V. THE ROLE OF EXTERNAL SUPPORT
+
+The lack of external financing is an issue for Zimbabwe, but cross-country evidence does not
+indicate this is a reason by itself to delay the implementation of a stabilization program. Even
+with limited external support, decisive policy action led to positive stabilization gains in
+several cases. In all 30 of the stabilization cases between 1980 and 2005, inflation had fallen
+by more than 600 percentage points 12 months after the peak of inflation. Of these, more
+than a third (12 cases) had official external financing18 at levels comparable to that of
+Zimbabwe (less than 4 percent of GDP) and had no Fund arrangement in the main year of
+disinflation19 (see Appendix Table 1). However, in almost all these cases there was external
+support in the form of close policy advice and technical assistance. The experience thus
+suggests that while several countries began significant stabilization even without large
+amounts of external financing, they benefited during this period from nonfinancial forms of
+external support. Within the subgroup that had limited external financing in the first year of
+stabilization, 9 cases subsequently had either a Fund arrangement or some other form of
+close engagement with the Fund, such as a staff-monitored program (SMP) or a rights
+accumulation program (RAP). The remaining three cases were exceptional: Brazil (two
+episodes covering May 1990-April 1991 and July 1994-June 1995) and Turkmenistan, which
+received technical assistance from the Fund. Overall, the evidence thus indicates that
+successful stabilization was followed by external financial and technical support, if not in the
+first year of stabilization, then in subsequent years.
+
+
+
+
+18
+   Defined as “Official development assistance and official aid” in the World Development Indicators (World
+Bank).
+19
+   Some transition economies drew small amounts under the Systemic Transformation Facility (STF), which
+was not formally a Fund arrangement.
+                                                                                                          13
+
+
+                                                                               Figure 3. Disinflation and External Financing
+
+
+                                                                 100,000
+
+
+
+
+               Disinflation 12 months after the peak (percent)
+                                                                  90,000
+
+                                                                  80,000
+
+                                                                  70,000
+
+                                                                  60,000
+
+                                                                  50,000
+
+                                                                  40,000
+
+                                                                  30,000
+
+                                                                  20,000
+
+                                                                  10,000
+
+                                                                      0
+                                                                           0     4    8    12   16   20   24   28    32     36    40    44     48     52     56    60
+                                                                               Size of official development assistance and official aid (percent of GDP)
+
+
+
+
+The international experience also suggests that private capital flows tend to follow successful
+stabilization. Thus, better policies and stronger governance, over time, attract private capital.
+As reforms progressed, foreign direct investment (FDI) tended to increase gradually from
+negligible levels. Some countries, including those with significant natural resources (e.g.,
+Kazakhstan, Angola), were particularly successful in quickly attracting FDI.
+
+                                                                                           Figure 4. External Inflows
+
+                                                                    Median FDI                                 Median official development assistance and official aid
+    2.5                                                                                                           2.5
+           (percent of GDP)                                                                                               (percent of GDP)
+
+    2.0                                                                                                           2.0
+
+
+    1.5                                                                                                           1.5
+
+
+    1.0                                                                                                           1.0
+
+
+    0.5                                                                                                           0.5
+
+
+    0.0                                                                                                           0.0
+          t-5 t-4 t-3 t-2 t-1 t=0 t+1 t+2 t+3 t+4 t+5                                                                   t-5 t-4 t-3 t-2 t-1 t=0 t+1 t+2 t+3 t+4 t+5
+                                Note: t=0 is the inflation peak.                                                                    Note: t=0 is the inflation peak.
+
+
+
+
+For Zimbabwe, strengthening relations with donors and mobilizing external financing would
+ease the burden of the initial adjustment needed for a strong, upfront reduction in inflation.
+The more financing that is available, the less drastic the initial fiscal adjustment needed to
+                                              14
+
+
+obtain a given reduction in inflation and the greater the room to address the possible social
+dislocation from the reduction in the size of the public sector (including public enterprises).
+External policy advice and technical support would also be essential to implement a broad-
+based stabilization package. Longer term financing would also be needed to support a
+medium term structural reform program to address the extensive distortions and ensure that
+the stabilization is sustained. At the same time, if a credible stabilization package is
+implemented upfront and followed by reforms to restore investor confidence, Zimbabwe’s
+economy is sufficiently diversified and its long-term potential strong enough to be able, most
+likely, to attract significant private capital inflows over the medium term.
+
+                                      VI. CONCLUSIONS
+
+The international experience suggests that periods of high inflation can last for a considerable
+time and there is little to prevent inflation from spiraling higher and higher if no reforms are
+undertaken. Periods of very high inflation have typically been characterized by widespread
+economic distortions, including very loose fiscal and quasi-fiscal policies, relative price
+distortions, segmented foreign exchange markets, declining domestic financial
+intermediation, and poor governance. They have also been associated with a sharp and
+sustained decline in economic activity.
+
+Gains from stabilization—in the form of a rapid decline in inflation and recovery of output—
+can be achieved relatively quickly once a broad-based package of policies is implemented.
+An appropriate stabilization program needs to tackle the underlying causes of high inflation.
+A large fiscal adjustment upfront that especially reduces quasi-fiscal activities—if they
+exist—is at the core of such a package. Although international support helps to ease the
+adjustment burden, several countries have achieved initial stabilization without an upfront
+increase in official external financing. Structural reforms over the medium term are necessary
+to sustain stabilization and achieve growth.
+
+In the case of Zimbabwe a comprehensive and credible policy package to stabilize the
+economy is needed without delay. Such a package should include several mutually-
+reinforcing actions centered on fiscal tightening, and price and exchange regime
+liberalization. The main elements would be: (i) a transfer of all quasi-fiscal activities to the
+government budget; (ii) strong fiscal adjustment, including newly-absorbed QFAs;
+(iii) exchange rate unification and full liberalization of the exchange regime for current
+international payments and transfers; (iv) liberalization of price controls and imposition of
+hard budget constraints on public enterprises; and (v) a strong monetary anchor.
+
+Achieving sustained growth in Zimbabwe will require—in addition to stabilization—better
+governance and comprehensive structural reform over the medium term. Improvements in
+governance, including a more predictable policy environment and a strengthening of property
+rights, will be essential to restore investor confidence. Structural priorities include public
+enterprise reform; civil service reform to sustain a real reduction in the government wage
+bill; expenditure management and tax reform; central bank reform and recapitalization; and
+land and agriculture reform. Strengthening relations with creditors and donors would help
+mobilize external financial and technical support for the domestic reform efforts needed for
+Zimbabwe to achieve stabilization, sustained growth, and poverty reduction.
+                                              Appendix Table 1. Disinflation and External Financial Constraints
+
+
+
+Country                                 Disinflation Period           Main Disinflation Years            Inflation Rate         Official Development   Fund Arrangement
+                                                                                                        Peak        12 Months    Assistance and Aid     in the 12 Months
+                                                                                                                                                  2
+                                                                                                                  After Peak     (Percent of GDP)       After the Peak?
+
+Angola                            December 1996–January 1998                   1997                 2,660.8            131.5             4.6                 No
+Argentina                             July 1985–June 1986                   1985–1986               1,128.9             50.1          0.0/0.08               Yes
+Argentina                             April 1990–June 1994                  1990–1991              20,266.0            287.3          0.1/0.1                Yes
+Armenia                             June 1994–February 1997                 1994–1995              27,019.7            196.7         14.5/14.8                   3
+                                                                                                                                                             No
+Azerbaijan, Rep. of              December 1994–February 1997                   1995                 1,898.4            173.6            3.9                        3
+                                                                                                                                                             No
+Bolivia                          October 1985–September 1987                1985–1986              23,447.0             94.1          6.3/8.4                Yes
+Brazil                                May 1990–July 1991                    1990–1991               6,821.3            375.2          0.0/0.0                No
+Brazil                              July 1994–February 1997                 1994–1995               4,922.6             33.0          0.0/0.0                No
+Bulgaria                           April 1997–November 1998                 1997–1998               2,019.5             22.1          2.1/1.9                Yes
+Congo, Dem. Rep. of               October 1992–October 1993                 1992–1993               7,689.2            486.2            1.7                  No
+Congo, Dem. Rep. of              October 1994–September 1995                1994–1995              91,253.1            330.2          4.2/3.5                    4
+                                                                                                                                                             No
+Croatia                            July 1993–November 1994                  1993–1994              19,449.5            209.7            0.8                      3
+                                                                                                                                                             No
+Estonia                                       1993                             1993                 1,069.0             89.0            1.1                       3
+                                                                                                                                                             Yes
+Georgia                          February 1995–September 1995                  1995                    2,667.8           42.9           7.8                        3
+                                                                                                                                                             Yes
+Kazakhstan                         August 1994–March 1999                   1994–1995                  3,121.4         156.1          0.3/0.3                Yes
+Kyrgyz Republic                  September 1993–February 1996               1993–1994                  1,311.8         169.6          5.5/10.3                     3
+                                                                                                                                                             Yes
+Macedonia, FYR/SFRY
+                           1                 1990                              1990                    1,239.9         608.4            n.a.                 Yes
+                                                                                                                                                                           15
+Macedonia, FYR                  November 1992–December 1996                    1993                 2,100.5             241.7           0.1                  No
+Moldova                                      1994                              1994                 2,705.7             104.6           3.2                       3
+                                                                                                                                                             Yes
+Nicaragua                          February 1989–March 1990                    1989                43,033.7           1,074.4          24.1                  No
+Nicaragua                            April 1991–April 1992                     1991                63,775.7              24.2          56.3                  Yes
+Peru                            September 1990–September 1995               1990–1991              12,377.8             230.4         1.5/1.8                No
+Poland                              March 1990–March 1992                   1990–1991               1,173.3              90.9         2.2/3.3                Yes
+Russia                           October 1993–November 1994                 1993–1994               1,066.7             221.1         0.6/0.5                    3
+                                                                                                                                                             No
+                   1                                                           1990                 3,450.0              51.2           n.a.                 Yes
+Slovenia/SFRY                      February 1990–March 1991
+Tajikistan                        January 1994–December 1994                   1994                 7,344.0               1.1           5.0                  No
+Tajikistan                          March 1996–March 1997                   1996–1997               2,266.8              13.4         9.8/9.3                Yes
+Turkmenistan                        July 1996–February 1998                 1996–1997               1,633.6              98.4         1.0/0.5                No
+Ukraine                           January 1994–November 1997                1994–1995              10,155.0             401.1         0.6/0.7                    3
+                                                                                                                                                             No
+Uzbekistan                        November 1994–October 1996                   1995                 1,844.2             189.4           0.6                      3
+                                                                                                                                                             No
+
+Sources: IMF database and World Bank, World Development Indicators.
+1
+    Slovenia, before June 1991, and Macedonia, before September 1991, were part of the Socialist Federal Republic of Yugoslavia (SFRY).
+2
+    The official development assistance and official aid data refers to the main disinflation years.
+3
+    These countries made drawings under the Systemic Transformation Facility (STF).
+4
+    Democratic Republic of Congo had a staff-monitored program (SMP) from January 1994 to December 1996 that did not involve financing.
+                                             16
+
+
+                                     REFERENCES
+
+Braumann, B., 2000, “Real Effects of High Inflation,” IMF Working Paper No. 00/85
+      (Washington: International Monetary Fund).
+
+Cagan, P., 1956, “The Monetary Dynamics of Hyperinflation,” in Studies in the Quantity
+       Theory of Money, ed. by Milton Friedman (Chicago: University of Chicago Press),
+       pp. 25–117.
+
+Easterly, W., 1996, “When Is Stabilization Expansionary? Evidence from High Inflation,”
+       Economic Policy, Vol. 22, pp. 67–107.
+
+Edwards, S., 1990, “The Sequencing of Economic Reform: Analytical Issues and Lessons
+      from Latin American Experiences,” World Economy, Vol. 13, pp. 1–14.
+
+Fischer, S. and R. Sahay, 2000, “The Transition Economies After Ten Years,” NBER
+       Working Paper No. 7664 (Cambridge: National Bureau of Economic Research).
+
+Fischer, S., R. Sahay, and C. A. Végh, 2002, “Modern Hyper- and High Inflations,” Journal
+       of Economic Literature, Vol. 40, pp. 837–880.
+
+Muñoz, S., 2007, “Central Bank Quasi-fiscal Losses and High Inflation in Zimbabwe: A
+      Note,” IMF Working Paper No. 07/98 (Washington: International Monetary Fund).
+
+Nsouli, S. M., M. Rached, and N. Funke, 2005, “The Speed of Adjustment and the
+       Sequencing of Economic Reforms: Issues and Guidelines for Policymakers,”
+       International Journal of Social Economics, Vol. 32, pp. 740–766.
+
+Reinhart, C. M. and M. A. Savastano, 2003, “The Realities of Modern Hyperinflation,”
+       Finance & Development, Vol. 40, pp. 20–23 (Washington: International Monetary
+       Fund).
+
+Sargent, T. J., 1982, “The Ends of Four Big Hyperinflations,” in Inflation: Causes and
+       Effects, ed. by Robert E. Hall (Chicago: University of Chicago Press), pp. 41– 97.
+
+Tsibouris, G. C., M. A. Horton, M. J. Flanagan, and W. S. Maliszewski, 2006, “Experience
+       with Large Fiscal Adjustments,” IMF Occasional Paper No. 246 (Washington:
+       International Monetary Fund).
+

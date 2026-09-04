@@ -1,0 +1,16 @@
+{
+  "schemaVersion":"0.1.0",
+  "status":"target-registry",
+  "policies":[
+    {"id":"no-unsourced-authority","severity":"critical"},
+    {"id":"no-fabricated-citations","severity":"critical"},
+    {"id":"no-silent-fact-assumptions","severity":"high"},
+    {"id":"no-cross-matter-retrieval","severity":"critical"},
+    {"id":"no-original-evidence-mutation","severity":"critical"},
+    {"id":"no-suppressed-adverse-authority","severity":"high"},
+    {"id":"human-review-high-risk-release","severity":"critical"},
+    {"id":"no-hidden-red-team-failures","severity":"critical"},
+    {"id":"bounded-agent-tool-access","severity":"high"}
+  ],
+  "trafficLight":{"green":"configured validators pass","yellow":"human review required","red":"do not rely upon or release"}
+}

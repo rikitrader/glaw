@@ -12,3 +12,8 @@ binding = "ASSETS"
 [[kv_namespaces]]
 binding = "INTAKE_KV"
 id = "879f3d111bbb4957a670b9039105c114"
+
+# Set LEGAL_API_TOKEN (single tenant) or LEGAL_TENANT_TOKENS (multi-tenant JSON)
+# as an encrypted Worker secret before enabling /legal/*.
+# The legal workflow uses this KV namespace with legal:request: and
+# legal:audit: prefixes; audit rows are append-only and independently keyed.

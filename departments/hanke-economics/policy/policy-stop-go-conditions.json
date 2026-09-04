@@ -1,0 +1,19 @@
+{
+  "id":"HAEIS-DOLLARIZATION-POLICY-GATES",
+  "no_go":[
+    "insufficient liquid reserves","unresolved banking insolvency","unfunded deposit conversion","unfunded emergency liquidity facility","fiscal deficit above sustainable threshold","unmanageable external arrears","no legal conversion regime","payment-system instability","major unresolved statistical gaps"
+  ],
+  "go_requirements":[
+    "verified monetary aggregates","audited BCV","audited banks","adequate liquid reserves","bank recapitalization completed","fiscal adjustment enacted","emergency liquidity facility funded","deposit insurance funded","debt restructuring path established","legal framework enacted","payment systems tested"
+  ],
+  "decision_tree":[
+    {"question":"Are monetary statistics independently verified?","no":"STOP","yes":"reserve_check"},
+    {"question":"Are liquid reserves sufficient?","no":"secure financing or choose another regime","yes":"bank_solvency_check"},
+    {"question":"Are banks solvent?","no":"recapitalize before conversion","yes":"fiscal_check"},
+    {"question":"Is fiscal financing sustainable without monetary issuance?","no":"fiscal stabilization first","yes":"liquidity_check"},
+    {"question":"Is emergency liquidity funded?","no":"establish facility","yes":"debt_check"},
+    {"question":"Is debt restructuring manageable?","no":"resolve debt path","yes":"legal_check"},
+    {"question":"Is the legal framework ready?","no":"legislative phase","yes":"operational conversion may proceed"}
+  ],
+  "rule":"Any unresolved critical trigger blocks a final recommendation; the system must return DATA INSUFFICIENT or DECISION BLOCKED rather than infer readiness."
+}

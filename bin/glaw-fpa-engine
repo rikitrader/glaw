@@ -1,0 +1,89 @@
+#!/usr/bin/env python3
+"""Deterministic FP&A planning, reforecast, variance, and driver engine."""
+import argparse, json, math, pathlib, sys
+
+def load(path):
+    try: return json.loads(pathlib.Path(path).read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError) as exc: raise ValueError(f"cannot read JSON: {exc}") from exc
+
+def finite(value, name, minimum=None):
+    if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value): raise ValueError(f"{name} must be a finite number")
+    if minimum is not None and value < minimum: raise ValueError(f"{name} must be >= {minimum}")
+    return float(value)
+
+def validate(data):
+    errors=[]
+    if not isinstance(data,dict): return ["input must be an object"]
+    if not isinstance(data.get("run_id"),str) or not data["run_id"].startswith("FPA-"): errors.append("run_id must start with FPA-")
+    for key in ("currency","periods","budget","actuals","drivers","headcount","capex","segments"):
+        if key not in data: errors.append(f"missing {key}")
+    periods=data.get("periods",[])
+    if not isinstance(periods,list) or not periods: errors.append("periods must be a non-empty array")
+    if isinstance(periods,list) and len(set(periods)) != len(periods): errors.append("periods must be unique")
+    for section in ("budget","actuals"):
+        rows=data.get(section,[])
+        if not isinstance(rows,list): errors.append(f"{section} must be an array"); continue
+        seen=set()
+        for i,row in enumerate(rows):
+            if not isinstance(row,dict): errors.append(f"{section}[{i}] must be an object"); continue
+            if row.get("period") not in periods: errors.append(f"{section}[{i}].period must be in periods")
+            if row.get("period") in seen: errors.append(f"duplicate {section} period: {row.get('period')}")
+            seen.add(row.get("period"))
+            for key in ("revenue","cogs","opex","capex","nwc"):
+                if key not in row: errors.append(f"{section}[{i}] missing {key}")
+    if not isinstance(data.get("drivers"),dict): errors.append("drivers must be an object")
+    for section in ("headcount","capex","segments"):
+        if not isinstance(data.get(section),list): errors.append(f"{section} must be an array")
+    return errors
+
+def row_map(rows): return {r["period"]:r for r in rows}
+
+def driver_forecast(data):
+    d=data["drivers"]; base=finite(d.get("base_units"),"drivers.base_units",0); price=finite(d.get("price_per_unit"),"drivers.price_per_unit",0); growth=float(d.get("unit_growth",0)); price_growth=float(d.get("price_growth",0)); coverage=finite(d.get("pipeline_coverage"),"drivers.pipeline_coverage",0); demand=float(d.get("demand_signal",1)); rows=[]
+    for i,period in enumerate(data["periods"]):
+        units=base*((1+growth)**i)*demand; unit_price=price*((1+price_growth)**i); rows.append({"period":period,"units":round(units,8),"price_per_unit":round(unit_price,8),"revenue":round(units*unit_price,8),"pipeline_coverage":coverage,"demand_signal":demand})
+    return {"rows":rows,"coverage_ok":coverage>=float(d.get("minimum_pipeline_coverage",1)),"drivers_documented":all(k in d for k in ("base_units","price_per_unit","unit_growth","price_growth","pipeline_coverage","demand_signal"))}
+
+def plan(data):
+    budget=row_map(data["budget"]); actual=row_map(data["actuals"]); rows=[]
+    for period in data["periods"]:
+        b=budget.get(period,{}); a=actual.get(period,{}); revenue=float(b.get("revenue",0)); cogs=float(b.get("cogs",0)); opex=float(b.get("opex",0)); capex=float(b.get("capex",0)); nwc=float(b.get("nwc",0)); ebitda=revenue-cogs-opex
+        item={"period":period,"budget_revenue":revenue,"budget_cogs":cogs,"budget_opex":opex,"budget_ebitda":ebitda,"budget_capex":capex,"budget_cash_generation":ebitda-capex-nwc}
+        if a:
+            actual_ebitda=float(a.get("revenue",0))-float(a.get("cogs",0))-float(a.get("opex",0)); item.update({"actual_revenue":float(a.get("revenue",0)),"actual_ebitda":actual_ebitda,"revenue_variance":round(float(a.get("revenue",0))-revenue,8),"ebitda_variance":round(actual_ebitda-ebitda,8)})
+        rows.append(item)
+    return {"periods":rows,"budget_total_revenue":round(sum(x["budget_revenue"] for x in rows),8),"budget_total_ebitda":round(sum(x["budget_ebitda"] for x in rows),8),"actualized_periods":sum(1 for x in rows if "actual_revenue" in x)}
+
+def headcount(data):
+    rows=[]
+    for item in data["headcount"]:
+        start=finite(item.get("starting_fte"),"headcount.starting_fte",0); hires=finite(item.get("planned_hires",0),"headcount.planned_hires",0); exits=finite(item.get("planned_exits",0),"headcount.planned_exits",0); cost=finite(item.get("annual_cost_per_fte"),"headcount.annual_cost_per_fte",0); rows.append({"period":item["period"],"ending_fte":start+hires-exits,"planned_hires":hires,"planned_exits":exits,"annualized_cost":round((start+hires-exits)*cost,8),"hiring_pacing_ok":hires<=finite(item.get("approved_hires",hires),"headcount.approved_hires",0)})
+    return {"rows":rows,"annualized_cost_total":round(sum(x["annualized_cost"] for x in rows),8),"hiring_pacing_ok":all(x["hiring_pacing_ok"] for x in rows)}
+
+def capex(data):
+    rows=[]
+    for item in data["capex"]:
+        spend=finite(item.get("spend"),"capex.spend",0); benefit=finite(item.get("annual_benefit",0),"capex.annual_benefit",0); rows.append({"project":item["project"],"spend":spend,"annual_benefit":benefit,"payback_years":None if benefit==0 else round(spend/benefit,8),"approved":bool(item.get("approved",False)),"priority":item.get("priority","unranked"),"within_budget":bool(item.get("within_budget",True))})
+    ranked=sorted(rows,key=lambda x:(x["payback_years"] is None,x["payback_years"] if x["payback_years"] is not None else math.inf)); return {"projects":ranked,"total_spend":round(sum(x["spend"] for x in rows),8),"prioritized":True,"all_within_budget":all(x["within_budget"] for x in rows)}
+
+def profitability(data):
+    rows=[]
+    for item in data["segments"]:
+        revenue=finite(item.get("revenue"),"segments.revenue",0); direct=finite(item.get("direct_cost",0),"segments.direct_cost",0); allocated=finite(item.get("allocated_cost",0),"segments.allocated_cost",0); rows.append({"segment":item["segment"],"revenue":revenue,"direct_cost":direct,"allocated_cost":allocated,"contribution_profit":round(revenue-direct,8),"fully_allocated_profit":round(revenue-direct-allocated,8),"allocation_method":item.get("allocation_method","unspecified")})
+    return {"segments":rows,"allocation_method_documented":all(x["allocation_method"]!="unspecified" for x in rows)}
+
+def run(data):
+    errors=validate(data)
+    if errors: raise ValueError("invalid FP&A request: "+"; ".join(errors))
+    result={"schema_version":"fpa-results/v1","run_id":data["run_id"],"currency":data["currency"],"plan":plan(data),"driver_forecast":driver_forecast(data),"headcount":headcount(data),"capex":capex(data),"profitability":profitability(data)}
+    checks=[{"check":"drivers_documented","passed":result["driver_forecast"]["drivers_documented"]},{"check":"pipeline_coverage","passed":result["driver_forecast"]["coverage_ok"]},{"check":"hiring_pacing","passed":result["headcount"]["hiring_pacing_ok"]},{"check":"capex_budget","passed":result["capex"]["all_within_budget"]},{"check":"allocation_methodology","passed":result["profitability"]["allocation_method_documented"]}]
+    result["validation"]={"checks":checks,"passed":all(x["passed"] for x in checks),"human_approval_required":True,"approval_roles":["CFO","FP&A owner","business owner","controller where financial reporting is affected"]}; result["status"]="REVIEW" if result["validation"]["passed"] else "BLOCK"; result["limitations"]=["Reference planning engine; reconcile to approved ERP, consolidation, payroll, and planning systems.","No autonomous budget approval, hiring authorization, purchase authorization, or external reporting is performed."]; return result
+
+def main():
+    parser=argparse.ArgumentParser(prog="glaw-fpa-engine"); sub=parser.add_subparsers(dest="command",required=True); v=sub.add_parser("validate"); v.add_argument("input"); r=sub.add_parser("run"); r.add_argument("input"); args=parser.parse_args()
+    try:
+        data=load(args.input); errors=validate(data)
+        if args.command=="validate": print(json.dumps({"valid":not errors,"errors":errors},indent=2,sort_keys=True)); return 0 if not errors else 1
+        print(json.dumps(run(data),indent=2,sort_keys=True)); return 0
+    except ValueError as exc: print(str(exc),file=sys.stderr); return 2
+if __name__=="__main__": raise SystemExit(main())

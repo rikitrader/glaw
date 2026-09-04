@@ -1,0 +1,411 @@
+{
+  "file name" : "Tasas-activas-012026.pdf.pdf",
+  "number of pages" : 1,
+  "author" : "Genesis D. Torres M.",
+  "title" : "Presentación de PowerPoint",
+  "creation date" : "D:20260210115907-04'00'",
+  "modification date" : "D:20260210115907-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 47,
+    "page number" : 1,
+    "bounding box" : [ 23.28, 932.52, 143.04, 977.76 ],
+    "source" : "Tasas-activas-012026.pdf_images/imageFile1.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 5,
+    "page number" : 1,
+    "bounding box" : [ 526.56, 929.4, 721.44, 969.24 ],
+    "source" : "Tasas-activas-012026.pdf_images/imageFile2.png"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 6,
+    "level" : "Doctitle",
+    "page number" : 1,
+    "bounding box" : [ 562.78, 936.02, 692.232, 960.02 ],
+    "heading level" : 1,
+    "font" : "Calibri,Bold",
+    "font size" : 24.0,
+    "text color" : "[0.204, 0.169, 0.275]",
+    "content" : "Tasas Activas"
+  }, {
+    "type" : "caption",
+    "id" : 7,
+    "page number" : 1,
+    "bounding box" : [ 486.0, 903.74, 719.513, 917.78 ],
+    "linked content id" : 5,
+    "font" : "Calibri",
+    "font size" : 14.04,
+    "text color" : "[0.0, 0.125, 0.376]",
+    "content" : "Vigentes a parir del 21 de enero del 2026"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 4,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 830.16, 756.0, 872.4 ],
+    "source" : "Tasas-activas-012026.pdf_images/imageFile3.png"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 9,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 47.208, 777.26, 701.624, 829.12 ],
+    "heading level" : 3,
+    "font" : "Calibri,Italic",
+    "font size" : 15.0,
+    "text color" : "[0.498]",
+    "content" : "Créditos Comerciales a través de: Tasa Nominal Comisión Pagaré y Crédito por cuotas expresado en la Unidad de Valor de Crédito (UVC)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 11,
+    "page number" : 1,
+    "bounding box" : [ 555.1, 786.95, 629.568, 800.99 ],
+    "font" : "Calibri,Italic",
+    "font size" : 14.04,
+    "text color" : "[0.498]",
+    "content" : "Mínimo 13 %"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 13,
+    "page number" : 1,
+    "bounding box" : [ 649.99, 786.95, 696.49, 800.99 ],
+    "font" : "Calibri,Bold",
+    "font size" : 14.04,
+    "text color" : "[0.498]",
+    "content" : "Hasta el"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 12,
+    "page number" : 1,
+    "bounding box" : [ 555.22, 770.144, 629.45, 784.208 ],
+    "font" : "Calibri,Italic",
+    "font size" : 14.064,
+    "text color" : "[0.498]",
+    "content" : "Máximo 16%"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 14,
+    "page number" : 1,
+    "bounding box" : [ 649.39, 770.144, 700.189, 784.208 ],
+    "font" : "Calibri,Bold",
+    "font size" : 14.064,
+    "text color" : "[0.498]",
+    "content" : "0,5% flat"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 17,
+    "page number" : 1,
+    "bounding box" : [ 553.7, 719.44, 628.168, 750.28 ],
+    "font" : "Calibri,Italic",
+    "font size" : 14.04,
+    "text color" : "[0.498]",
+    "content" : "Mínimo 13 % Máximo 16%"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 18,
+    "page number" : 1,
+    "bounding box" : [ 647.98, 719.44, 698.805, 750.28 ],
+    "font" : "Calibri,Bold",
+    "font size" : 14.04,
+    "text color" : "[0.498]",
+    "content" : "Hasta el 0,5% flat"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 16,
+    "page number" : 1,
+    "bounding box" : [ 45.792, 726.57, 527.787, 741.57 ],
+    "font" : "Calibri,Italic",
+    "font size" : 15.0,
+    "text color" : "[0.498]",
+    "content" : "Línea de Crédito expresada en UVC movilizada a través de un medio electrónico"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 19,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 47.208, 685.65, 127.158, 700.65 ],
+    "heading level" : 2,
+    "font" : "Calibri,Bold",
+    "font size" : 15.0,
+    "text color" : "[0.439, 0.678, 0.278]",
+    "content" : "Microcrédito"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 22,
+    "page number" : 1,
+    "bounding box" : [ 553.7, 638.44, 628.168, 669.28 ],
+    "font" : "Calibri,Italic",
+    "font size" : 14.04,
+    "text color" : "[0.498]",
+    "content" : "Mínimo 13 % Máximo 16%"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 23,
+    "page number" : 1,
+    "bounding box" : [ 647.98, 638.44, 698.805, 669.28 ],
+    "font" : "Calibri,Bold",
+    "font size" : 14.04,
+    "text color" : "[0.498]",
+    "content" : "Hasta el 0,5% flat"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 21,
+    "page number" : 1,
+    "bounding box" : [ 45.792, 645.55, 427.947, 660.55 ],
+    "font" : "Calibri,Italic",
+    "font size" : 15.0,
+    "text color" : "[0.498]",
+    "content" : "Microcrédito expresado en la Unidad de Valor de Crédito (UVC)"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 24,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 44.832, 610.12, 166.467, 625.12 ],
+    "heading level" : 2,
+    "font" : "Calibri,Bold",
+    "font size" : 15.0,
+    "text color" : "[0.0, 0.69, 0.941]",
+    "content" : "Crédito al Consumo"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 27,
+    "page number" : 1,
+    "bounding box" : [ 647.28, 562.29, 698.105, 593.13 ],
+    "font" : "Calibri,Bold",
+    "font size" : 14.04,
+    "text color" : "[0.498]",
+    "content" : "Hasta el 0,5% flat"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 26,
+    "page number" : 1,
+    "bounding box" : [ 47.088, 569.39, 602.359, 584.39 ],
+    "font" : "Calibri,Italic",
+    "font size" : 15.0,
+    "text color" : "[0.498]",
+    "content" : "Créditos al Consumo cuyo monto es menor a 20.400 UVC 60%"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 51,
+    "page number" : 1,
+    "bounding box" : [ 553.7, 519.924, 628.197, 533.988 ],
+    "font" : "Calibri,Italic",
+    "font size" : 14.064,
+    "text color" : "[0.498]",
+    "content" : "Mínimo 13 %"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 29,
+    "page number" : 1,
+    "bounding box" : [ 43.944, 500.78, 502.539, 533.78 ],
+    "font" : "Calibri,Italic",
+    "font size" : 15.0,
+    "text color" : "[0.498]",
+    "content" : "Préstamos otorgados a través de tarjetas de crédito y otras modalidades de crédito al consumo cuyo monto es igual o mayor a 20.400 UVC"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 30,
+    "page number" : 1,
+    "bounding box" : [ 644.9, 500.11, 695.725, 530.95 ],
+    "font" : "Calibri,Bold",
+    "font size" : 14.04,
+    "text color" : "[0.498]",
+    "content" : "Hasta el 0,5% flat"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 52,
+    "page number" : 1,
+    "bounding box" : [ 553.82, 503.11, 628.049, 517.15 ],
+    "font" : "Calibri,Italic",
+    "font size" : 14.04,
+    "text color" : "[0.498]",
+    "content" : "Máximo 16%"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 31,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 44.832, 392.8, 683.055, 481.51 ],
+    "heading level" : 2,
+    "font" : "Calibri,Bold",
+    "font size" : 15.0,
+    "text color" : "[0.0, 0.69, 0.941]",
+    "content" : "Tarjetas de Crédito Tarjetas de Crédito 60% 0% Cartera Productiva Única Nacional"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 34,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 47.088, 334.87, 526.923, 367.87 ],
+    "heading level" : 3,
+    "font" : "Calibri,Italic",
+    "font size" : 15.0,
+    "text color" : "[0.498]",
+    "content" : "Dirigido al sector Agrícola, Manufacturero, Turismo e Hipotecario expresado en Unidad de Valor de Crédito (UVC)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 36,
+    "page number" : 1,
+    "bounding box" : [ 646.54, 335.92, 697.365, 366.76 ],
+    "font" : "Calibri,Bold",
+    "font size" : 14.04,
+    "text color" : "[0.498]",
+    "content" : "Hasta el 0,5% flat"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 35,
+    "page number" : 1,
+    "bounding box" : [ 578.5, 344.42, 602.699, 358.46 ],
+    "font" : "Calibri,Italic",
+    "font size" : 14.04,
+    "text color" : "[0.498]",
+    "content" : "12%"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 50,
+    "page number" : 1,
+    "bounding box" : [ 642.6, 276.91, 693.425, 307.75 ],
+    "font" : "Calibri,Bold",
+    "font size" : 14.04,
+    "text color" : "[0.498]",
+    "content" : "Hasta el 0,5% flat"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 49,
+    "page number" : 1,
+    "bounding box" : [ 41.184, 284.024, 595.036, 299.288 ],
+    "font" : "Calibri,Italic",
+    "font size" : 15.024,
+    "text color" : "[0.498]",
+    "content" : "Emprende Mujer 6%"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 37,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 47.208, 229.31, 223.96, 244.31 ],
+    "heading level" : 2,
+    "font" : "Calibri,Bold",
+    "font size" : 15.0,
+    "text color" : "[0.439, 0.678, 0.278]",
+    "content" : "Tasa de Interés Anual - Mora"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 39,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 47.088, 181.55, 496.803, 214.55 ],
+    "heading level" : 3,
+    "font" : "Calibri,Italic",
+    "font size" : 15.0,
+    "text color" : "[0.498]",
+    "content" : "Tasa de Interés Mora créditos expresados en la Unidad de Valor de Crédito (UVC)"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H4",
+    "id" : 40,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 580.37, 192.854, 615.066, 206.918 ],
+    "heading level" : 4,
+    "font" : "Calibri,Italic",
+    "font size" : 14.064,
+    "text color" : "[0.498]",
+    "content" : "0,8%*"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 43,
+    "level" : "Subtitle",
+    "page number" : 1,
+    "bounding box" : [ 45.792, 126.83, 611.571, 159.83 ],
+    "heading level" : 3,
+    "font" : "Calibri,Italic",
+    "font size" : 15.0,
+    "text color" : "[0.498]",
+    "content" : "Tasa de Interés Mora créditos distintos a los expresados en la Unidad de Valor de Crédito (UVC) 3%*"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 44,
+    "page number" : 1,
+    "bounding box" : [ 56.184, 58.734, 415.77, 80.694 ],
+    "font" : "Calibri",
+    "font size" : 9.96,
+    "text color" : "[0.498]",
+    "content" : "Tasas vigentes según resolución del BCV, publicado en Gaceta Oficial N° 43.298 de fecha 19 de enero 2026. Intereses calculados sobre saldo deudor con base a 360 días."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 41,
+    "level" : "1",
+    "page number" : 1,
+    "bounding box" : [ 513.79, 60.864, 699.613, 71.904 ],
+    "font" : "Calibri",
+    "font size" : 11.04,
+    "text color" : "[1.0]",
+    "content" : "* La tasa de mora es adicional a la tasa de"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 42,
+    "page number" : 1,
+    "bounding box" : [ 513.79, 47.658, 574.664, 58.722 ],
+    "font" : "Calibri",
+    "font size" : 11.064,
+    "text color" : "[1.0]",
+    "content" : "interés anual."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 45,
+    "page number" : 1,
+    "bounding box" : [ 57.36, 39.24, 388.006, 49.224 ],
+    "font" : "Calibri",
+    "font size" : 9.984,
+    "text color" : "[0.498]",
+    "content" : "Comisión vigente según Gaceta Oficial N°43.231 de fecha 09 de octubre de 2025."
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 46,
+    "page number" : 1,
+    "bounding box" : [ 57.36, 27.222, 403.0, 37.182 ],
+    "font" : "Calibri",
+    "font size" : 9.96,
+    "text color" : "[0.498]",
+    "content" : "Comisión Flat vigente según Gaceta Oficial N°43.231 de fecha 09 de octubre de 2025."
+  } ]
+}

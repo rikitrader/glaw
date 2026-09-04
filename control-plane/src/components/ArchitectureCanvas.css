@@ -1,0 +1,32 @@
+.canvas-wrap { margin-top: 16px; border: 1px solid rgba(243,240,232,.14); background: #121d25; }
+.canvas-toolbar { min-height: 48px; display: flex; align-items: center; gap: 8px; padding: 9px 12px; border-bottom: 1px solid rgba(243,240,232,.12); color: #9aa8af; font: 10px monospace; }
+.canvas-toolbar span { margin-right: auto; }
+.canvas-toolbar button { background: #17232d; color: #f3f0e8; border: 1px solid rgba(243,240,232,.14); padding: 6px 9px; border-radius: 3px; font: 10px monospace; }
+.canvas-body { display: grid; grid-template-columns: minmax(0, 1fr) 240px; height: 520px; }
+.react-flow { background: #121d25; min-width: 0; }
+.canvas-inspector { border-left: 1px solid rgba(243,240,232,.12); padding: 18px; background: #17232d; }
+.canvas-inspector .eyebrow { margin: 0; color: #9aa8af; font: 10px monospace; letter-spacing: .14em; text-transform: uppercase; }
+.canvas-inspector h3 { margin: 8px 0; color: #f3f0e8; font: 22px Georgia, serif; }
+.inspector-status { display: inline-block; color: #57c1b5; font: 9px monospace; text-transform: uppercase; }
+.inspector-status.proposed { color: #72a9e8; }
+.canvas-inspector dl { margin: 24px 0; }
+.canvas-inspector dt { color: #687982; font: 9px monospace; text-transform: uppercase; margin-top: 12px; }
+.canvas-inspector dd { margin: 3px 0 0; color: #f3f0e8; font-size: 12px; }
+.canvas-inspector a { color: #d7a84b; font: 10px monospace; text-decoration: none; }
+.arch-node { position: relative; min-width: 170px; padding: 10px 13px; background: #1d2c38; border: 1px solid rgba(243,240,232,.2); border-left: 3px solid #57c1b5; border-radius: 4px; color: #f3f0e8; box-shadow: 0 8px 20px rgba(0,0,0,.18); }
+.arch-node.proposed { border-left-color: #72a9e8; }
+.arch-node .node-type, .arch-node .node-status, .arch-node small { display: block; }
+.arch-node .node-type { color: #d7a84b; font: 9px monospace; letter-spacing: .1em; }
+.arch-node strong { display: block; margin: 5px 0 4px; font-size: 12px; font-weight: 500; }
+.arch-node small { color: #9aa8af; font: 9px monospace; white-space: nowrap; }
+.arch-node .node-status { margin-top: 8px; color: #57c1b5; font: 9px monospace; text-transform: uppercase; }
+.arch-node.proposed .node-status { color: #72a9e8; }
+.react-flow__handle { width: 6px; height: 6px; border: 1px solid #d7a84b; background: #111820; }
+.react-flow__controls { border: 1px solid rgba(243,240,232,.18); }
+.react-flow__controls-button { background: #17232d; border-bottom-color: rgba(243,240,232,.12); fill: #f3f0e8; }
+.react-flow__minimap { background: #17232d; }
+@media (max-width: 800px) {
+  .canvas-body { display: block; height: auto; }
+  .canvas-body .react-flow { height: 470px; }
+  .canvas-inspector { border-left: 0; border-top: 1px solid rgba(243,240,232,.12); }
+}

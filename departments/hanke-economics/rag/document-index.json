@@ -1,0 +1,2344 @@
+{
+  "schemaVersion": "0.1.0",
+  "downloadRule": "Store only lawful public documents that pass MIME and PDF integrity checks; retain restricted URLs as metadata, never as evidence.",
+  "documents": [
+    {
+      "document_id": "DOC-IMF-MFS-ODC-VEN-ODCORP_A_ACO_PS_ODCS-2026",
+      "title": "IMF MFS_ODC Venezuela claims on private sector — historical SDMX response",
+      "author": [
+        "International Monetary Fund Data"
+      ],
+      "publisher": "International Monetary Fund Data API",
+      "year": 2026,
+      "document_type": "official-sdmx-json-response",
+      "source_url": "https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.STA/MFS_ODC/10.0.0/VEN.ODCORP_A_ACO_PS_ODCS.XDC.M?startPeriod=1990-01&endPeriod=2026-12",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-MFS-ODC-VEN-ODCORP_A_ACO_PS_ODCS-2026.json",
+      "sha256": "6d64dc99efd1cbde6df0849a068bb7f69e8b60affe9e256fe92b15bec227f0f2",
+      "citation_anchor": "SDMX JSON dimensions: COUNTRY=VEN, INDICATOR=ODCORP_A_ACO_PS_ODCS, TYPE_OF_TRANSFORMATION=XDC, FREQUENCY=M; 169 non-null observations from 2001-M12 through 2015-M12",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official IMF MFS_ODC response, historical only. The provider-defined claims-on-private-sector series is not relabeled as current bank credit; per-observation release dates are not provided and the series cannot satisfy current Venezuela banking intake."
+    },
+    {
+      "document_id": "DOC-IMF-MFS-ODC-VEN-ODCORP_A_F21_ACO_S121_ODCS-2026",
+      "title": "IMF MFS_ODC Venezuela currency claims on central bank — historical SDMX response",
+      "author": [
+        "International Monetary Fund Data"
+      ],
+      "publisher": "International Monetary Fund Data API",
+      "year": 2026,
+      "document_type": "official-sdmx-json-response",
+      "source_url": "https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.STA/MFS_ODC/10.0.0/VEN.ODCORP_A_F21_ACO_S121_ODCS.XDC.M?startPeriod=1990-01&endPeriod=2026-12",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-MFS-ODC-VEN-ODCORP_A_F21_ACO_S121_ODCS-2026.json",
+      "sha256": "5c82874ca01968525461e6954d13e934e4558474fcbc8d40eae2acb707905d19",
+      "citation_anchor": "SDMX JSON dimensions: COUNTRY=VEN, INDICATOR=ODCORP_A_F21_ACO_S121_ODCS, TYPE_OF_TRANSFORMATION=XDC, FREQUENCY=M; 169 non-null observations from 2001-M12 through 2015-M12",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official IMF MFS_ODC response, historical only. This provider-defined currency claim on the central bank is not substituted for current bank reserves; per-observation release dates are not provided."
+    },
+    {
+      "document_id": "DOC-IMF-MFS-ODC-VEN-ODCORP_L_F22_IBM_ODCS-2026",
+      "title": "IMF MFS_ODC Venezuela transferable deposits included in broad money — historical SDMX response",
+      "author": [
+        "International Monetary Fund Data"
+      ],
+      "publisher": "International Monetary Fund Data API",
+      "year": 2026,
+      "document_type": "official-sdmx-json-response",
+      "source_url": "https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.STA/MFS_ODC/10.0.0/VEN.ODCORP_L_F22_IBM_ODCS.XDC.M?startPeriod=1990-01&endPeriod=2026-12",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-MFS-ODC-VEN-ODCORP_L_F22_IBM_ODCS-2026.json",
+      "sha256": "d1e3ac33ae8549543c2a4fcd1802094868e77c10258f82cb3efbffc52c0dc854",
+      "citation_anchor": "SDMX JSON dimensions: COUNTRY=VEN, INDICATOR=ODCORP_L_F22_IBM_ODCS, TYPE_OF_TRANSFORMATION=XDC, FREQUENCY=M; 169 non-null observations from 2001-M12 through 2015-M12",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official IMF MFS_ODC response, historical only. This is the provider-defined transferable-deposit component included in broad money; it is not relabeled as current M1 or M2 and has no per-observation release dates."
+    },
+    {
+      "document_id": "DOC-IMF-MFS-ODC-VEN-ODCORP_L_F29_IBM_ODCS-2026",
+      "title": "IMF MFS_ODC Venezuela other deposits included in broad money — historical SDMX response",
+      "author": [
+        "International Monetary Fund Data"
+      ],
+      "publisher": "International Monetary Fund Data API",
+      "year": 2026,
+      "document_type": "official-sdmx-json-response",
+      "source_url": "https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.STA/MFS_ODC/10.0.0/VEN.ODCORP_L_F29_IBM_ODCS.XDC.M?startPeriod=1990-01&endPeriod=2026-12",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-MFS-ODC-VEN-ODCORP_L_F29_IBM_ODCS-2026.json",
+      "sha256": "f050e74e3dd4c2d299667be6b0b98d0964857e3417d5bf6aa676cc2431f0887d",
+      "citation_anchor": "SDMX JSON dimensions: COUNTRY=VEN, INDICATOR=ODCORP_L_F29_IBM_ODCS, TYPE_OF_TRANSFORMATION=XDC, FREQUENCY=M; 169 non-null observations from 2001-M12 through 2015-M12",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official IMF MFS_ODC response, historical only. This is the provider-defined other-deposit component included in broad money; it is not relabeled as current M2 and has no per-observation release dates."
+    },
+    {
+      "document_id": "DOC-IMF-MFS-ODC-VEN-ODCORP_L_F4_ODCS-2026",
+      "title": "IMF MFS_ODC Venezuela loans — historical SDMX response",
+      "author": [
+        "International Monetary Fund Data"
+      ],
+      "publisher": "International Monetary Fund Data API",
+      "year": 2026,
+      "document_type": "official-sdmx-json-response",
+      "source_url": "https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.STA/MFS_ODC/10.0.0/VEN.ODCORP_L_F4_ODCS.XDC.M?startPeriod=1990-01&endPeriod=2026-12",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-MFS-ODC-VEN-ODCORP_L_F4_ODCS-2026.json",
+      "sha256": "4b827b018a2ca1a5e5862d88b20d38abd3f61e2560f3ada3af4e5757d6d1e2d5",
+      "citation_anchor": "SDMX JSON dimensions: COUNTRY=VEN, INDICATOR=ODCORP_L_F4_ODCS, TYPE_OF_TRANSFORMATION=XDC, FREQUENCY=M; 169 non-null observations from 2001-M12 through 2015-M12",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official IMF MFS_ODC response, historical only. This provider-defined loan liability series is not relabeled as current bank credit or lending without sector reconciliation; per-observation release dates are not provided."
+    },
+    {
+      "document_id": "DOC-IMF-MFS-ODC-VEN-ODCORP_NETAL_NCO_S1311MIXED_ODCS-2026",
+      "title": "IMF MFS_ODC Venezuela net claims on central government — historical SDMX response",
+      "author": [
+        "International Monetary Fund Data"
+      ],
+      "publisher": "International Monetary Fund Data API",
+      "year": 2026,
+      "document_type": "official-sdmx-json-response",
+      "source_url": "https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.STA/MFS_ODC/10.0.0/VEN.ODCORP_NETAL_NCO_S1311MIXED_ODCS.XDC.M?startPeriod=1990-01&endPeriod=2026-12",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-MFS-ODC-VEN-ODCORP_NETAL_NCO_S1311MIXED_ODCS-2026.json",
+      "sha256": "06d9ffb4f91315c6df3c26b6765b08e25fd08f39f4b308136ea739720dfb09b6",
+      "citation_anchor": "SDMX JSON dimensions: COUNTRY=VEN, INDICATOR=ODCORP_NETAL_NCO_S1311MIXED_ODCS, TYPE_OF_TRANSFORMATION=XDC, FREQUENCY=M; 169 non-null observations from 2001-M12 through 2015-M12",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official IMF MFS_ODC response, historical only. This provider-defined net-claims-on-central-government series is not relabeled as current fiscal financing; per-observation release dates are not provided."
+    },
+    {
+      "document_id": "DOC-IMF-MFS-CBS-META",
+      "title": "Monetary and Financial Statistics — Central Bank dataset metadata",
+      "author": [
+        "International Monetary Fund"
+      ],
+      "publisher": "International Monetary Fund Data",
+      "year": null,
+      "document_type": "official-data-metadata-html",
+      "source_url": "https://data.imf.org/Datasets/MFS_CBS",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-MFS-CBS-META.html",
+      "sha256": "b8545cb1a94b153b902786d044a9a4fd76b97f30e824ed297a9f4dbaebc8b525",
+      "citation_anchor": "verified HTML: MFS_CBS title and dataset description; metadata states the dataset focuses on the central-bank balance sheet, monetary base, and relationships with other sectors and nonresidents",
+      "authority_level": 1,
+      "primary_source": false,
+      "notes": "Official IMF dataset page acquired over HTTPS and verified as content-bearing HTML. Verified scope is dataset metadata only; a country/series query and hashable response artifact are required before observations can enter HAEIS. This record cannot support a numerical Venezuela claim."
+    },
+    {
+      "document_id": "DOC-IMF-IRFCL-META",
+      "title": "International Reserves and Foreign Currency Liquidity dataset metadata",
+      "author": [
+        "International Monetary Fund"
+      ],
+      "publisher": "International Monetary Fund Data",
+      "year": null,
+      "document_type": "official-data-metadata-html",
+      "source_url": "https://data.imf.org/Datasets/IRFCL",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-IRFCL-META.html",
+      "sha256": "3643770e9772dedeee8fd31370d509394c562534049083312a66c037dd72812e",
+      "citation_anchor": "verified HTML: IRFCL title and dataset description; official reserve assets, other foreign-currency assets, short-term foreign-currency obligations, common template/currency, and non-endorsement disclaimer",
+      "authority_level": 1,
+      "primary_source": false,
+      "notes": "Official IMF dataset page acquired over HTTPS and verified as content-bearing HTML. Verified scope is dataset metadata only; country observations require a separately queried and hashable response artifact. Gross reserves must not be substituted for liquid eligible reserves."
+    },
+    {
+      "document_id": "DOC-IMF-IRFCL-VEN-QUERY-2026",
+      "title": "IMF IRFCL Venezuela query response — no observations returned",
+      "author": [
+        "International Monetary Fund Data"
+      ],
+      "publisher": "International Monetary Fund Data API",
+      "year": 2026,
+      "document_type": "official-sdmx-json-query-response",
+      "source_url": "https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.STA/IRFCL/11.0.0/VEN...M?startPeriod=2000-01&endPeriod=2026-12",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-IRFCL-VEN-QUERY-2026.json",
+      "sha256": "1f546bfe60462d05bdb8c40f7a9416ee807c4399bb69f7ac8cb2112f903d7c40",
+      "citation_anchor": "SDMX JSON data.structures.dimensions contains zero values for COUNTRY, INDICATOR, SECTOR, and FREQUENCY; dataSets[0] contains no series or observations",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official IMF SDMX query response acquired over HTTPS and locally hash-verified. This records the result of the exact query route only; it is not evidence that Venezuela has no IRFCL data elsewhere, and it cannot populate reserve or liquidity intake."
+    },
+    {
+      "document_id": "DOC-IMF-DSBB-VEN-ILV",
+      "title": "Venezuela international-liquidity dissemination metadata",
+      "author": [
+        "International Monetary Fund Dissemination Standards Bulletin Board"
+      ],
+      "publisher": "International Monetary Fund",
+      "year": null,
+      "document_type": "official-statistical-metadata-html",
+      "source_url": "https://dsbb.imf.org/e-gdds/dqaf-base/country/VEN/category/ILV00",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official IMF metadata record for Venezuela reserve definitions, periodicity, release lag, revisions, and BCV dissemination locations. Metadata cannot substitute for the underlying observations."
+    },
+    {
+      "document_id": "DOC-IMF-DSBB-VEN-ILV-WEB-2026",
+      "title": "Venezuela official reserve assets — DSBB metadata page",
+      "author": [
+        "International Monetary Fund Dissemination Standards Bulletin Board"
+      ],
+      "publisher": "International Monetary Fund",
+      "year": 2005,
+      "document_type": "official-statistical-metadata-html",
+      "source_url": "https://dsbb.imf.org/e-gdds/dqaf-base/country/VEN/category/ILV00",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "The direct HTTP response is only the JavaScript application shell; rendered country metadata is not present in the local artifact. The web page is retained as a restricted lead and cannot support a citation or current reserve observation."
+    },
+    {
+      "document_id": "DOC-IMF-MFS-CBS-VEN-EXPLORER-2026",
+      "title": "IMF MFS_CBS Venezuela Data Explorer route — observation availability check",
+      "author": [
+        "International Monetary Fund Data"
+      ],
+      "publisher": "International Monetary Fund Data",
+      "year": 2026,
+      "document_type": "official-data-explorer-html",
+      "source_url": "https://data.imf.org/en/Data%20Explorer?datasetUrn=IMF.STA%3AMFS_CBS%2824.0.0%29",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-MFS-CBS-VEN-EXPLORER-2026.html",
+      "sha256": "d63ab94eb50d14f807f66f42d1108c4cb7a264e4166a39a56690a65f9d893950",
+      "citation_anchor": "verified HTML query route: datasetUrn IMF.STA:MFS_CBS(24.0.0); captured anonymous Data Explorer response contains route metadata but no admitted Venezuela observation rows",
+      "authority_level": 1,
+      "primary_source": false,
+      "notes": "Official IMF Data Explorer response acquired over HTTPS and hash-verified. Verified scope is the query route and captured response state only; it is not a verified observation artifact and cannot populate HAEIS data intake. A country/series response with values, dates, units, release metadata, and hash remains required."
+    },
+    {
+      "document_id": "DOC-IMF-MFS-CBS-VEN-CURRENCY-2026",
+      "title": "IMF MFS_CBS Venezuela currency in circulation — historical SDMX response",
+      "author": [
+        "International Monetary Fund Data"
+      ],
+      "publisher": "International Monetary Fund Data API",
+      "year": 2026,
+      "document_type": "official-sdmx-json-response",
+      "source_url": "https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.STA/MFS_CBS/24.0.0/VEN.S121_L_CIC_IMB_CBS.XDC.M?startPeriod=2015-01&endPeriod=2026-12",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-MFS-CBS-VEN-CURRENCY-2026.json",
+      "sha256": "b239761bb75cd676fa7cdf31c59508af04c0e1bc33cb1ae6ee1677aede360c01",
+      "citation_anchor": "SDMX JSON data.structures.dimensions: COUNTRY=VEN, INDICATOR=S121_L_CIC_IMB_CBS, TYPE_OF_TRANSFORMATION=XDC, FREQUENCY=M; dataSets[0].series[0:0:0:0].observations and TIME_PERIOD values; 153 non-null monthly observations from 2001-M12 through 2014-M08",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official IMF SDMX 3.0 response acquired over HTTPS and locally hash-verified. This is a historical artifact only: the returned series ends at 2014-M08, the response does not provide per-observation release dates, and XDC identifies source-defined domestic currency without independently asserting a named unit. It may support bounded historical analysis but cannot satisfy current Venezuela intake requirements."
+    },
+    {
+      "document_id": "DOC-IMF-MFS-CBS-VEN-NFA-2026",
+      "title": "IMF MFS_CBS Venezuela net foreign assets — historical SDMX response",
+      "author": [
+        "International Monetary Fund Data"
+      ],
+      "publisher": "International Monetary Fund Data API",
+      "year": 2026,
+      "document_type": "official-sdmx-json-response",
+      "source_url": "https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.STA/MFS_CBS/24.0.0/VEN.S121_N_NFRA_CBS.XDC.M?startPeriod=2001-01&endPeriod=2026-12",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-MFS-CBS-VEN-S121_N_NFRA_CBS-2026.json",
+      "sha256": "00446f0580d401e34c5bb4d31bea230a8da2fb6f391a1536106ca226c6ee9ca1",
+      "citation_anchor": "SDMX JSON dimensions: COUNTRY=VEN, INDICATOR=S121_N_NFRA_CBS, TYPE_OF_TRANSFORMATION=XDC, FREQUENCY=M; 153 non-null observations from 2001-M12 through 2014-M08",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official IMF SDMX response, historical only. The series is net foreign assets in the provider's source-defined transformation; per-observation release dates are not provided, and no current observation or named currency unit is asserted."
+    },
+    {
+      "document_id": "DOC-IMF-MFS-CBS-VEN-NCG-2026",
+      "title": "IMF MFS_CBS Venezuela net claims on central government — historical SDMX response",
+      "author": [
+        "International Monetary Fund Data"
+      ],
+      "publisher": "International Monetary Fund Data API",
+      "year": 2026,
+      "document_type": "official-sdmx-json-response",
+      "source_url": "https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.STA/MFS_CBS/24.0.0/VEN.S121_N_NCO_S1311MIXED_CBS.XDC.M?startPeriod=2001-01&endPeriod=2026-12",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-MFS-CBS-VEN-S121_N_NCO_S1311MIXED_CBS-2026.json",
+      "sha256": "58167ffdfe43298c531c466537f673ed841528725f1467afba159f1da02e0f0b",
+      "citation_anchor": "SDMX JSON dimensions: COUNTRY=VEN, INDICATOR=S121_N_NCO_S1311MIXED_CBS, TYPE_OF_TRANSFORMATION=XDC, FREQUENCY=M; 153 non-null observations from 2001-M12 through 2014-M08",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official IMF SDMX response, historical only. This is the provider-defined net claims-on-central-government series; per-observation release dates are not provided, it is not independently relabeled as fiscal deficit financing, and it cannot satisfy current fiscal intake requirements."
+    },
+    {
+      "document_id": "DOC-IMF-MFS-CBS-VEN-PSCLAIMS-2026",
+      "title": "IMF MFS_CBS Venezuela claims on private sector — historical SDMX response",
+      "author": [
+        "International Monetary Fund Data"
+      ],
+      "publisher": "International Monetary Fund Data API",
+      "year": 2026,
+      "document_type": "official-sdmx-json-response",
+      "source_url": "https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.STA/MFS_CBS/24.0.0/VEN.S121_A_ACO_PS_CBS.XDC.M?startPeriod=2001-01&endPeriod=2026-12",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-MFS-CBS-VEN-S121_A_ACO_PS_CBS-2026.json",
+      "sha256": "87f4abc950a69b4b7ef6297b1d5d9fbf675758c3a46d1da68d3798d3e060b984",
+      "citation_anchor": "SDMX JSON dimensions: COUNTRY=VEN, INDICATOR=S121_A_ACO_PS_CBS, TYPE_OF_TRANSFORMATION=XDC, FREQUENCY=M; 153 non-null observations from 2001-M12 through 2014-M08",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official IMF SDMX response, historical only. Per-observation release dates are not provided; this provider-defined claims-on-private-sector series is not relabeled as bank credit and cannot satisfy current banking intake requirements without reconciliation to the relevant banking-sector dataset."
+    },
+    {
+      "document_id": "DOC-IMF-MFS-CBS-VEN-NRESCLAIMS-2026",
+      "title": "IMF MFS_CBS Venezuela claims on nonresidents — historical SDMX response",
+      "author": [
+        "International Monetary Fund Data"
+      ],
+      "publisher": "International Monetary Fund Data API",
+      "year": 2026,
+      "document_type": "official-sdmx-json-response",
+      "source_url": "https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.STA/MFS_CBS/24.0.0/VEN.S121_A_ACO_NRES_CBS.XDC.M?startPeriod=2001-01&endPeriod=2026-12",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-MFS-CBS-VEN-S121_A_ACO_NRES_CBS-2026.json",
+      "sha256": "f592a4dbbf827f994c8fb85d7100e20c76b97480e6b961c72a42abe369391197",
+      "citation_anchor": "SDMX JSON dimensions: COUNTRY=VEN, INDICATOR=S121_A_ACO_NRES_CBS, TYPE_OF_TRANSFORMATION=XDC, FREQUENCY=M; 153 non-null observations from 2001-M12 through 2014-M08",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official IMF SDMX response, historical only. Per-observation release dates are not provided. This is provider-defined claims on nonresidents and is not substituted for international or liquid reserves; reserve classification requires the separate reserve dataset and reconciliation."
+    },
+    {
+      "document_id": "DOC-IMF-MFS-MA-VEN-BM-2026",
+      "title": "IMF MFS_MA Venezuela broad money — historical SDMX response",
+      "author": [
+        "International Monetary Fund Data"
+      ],
+      "publisher": "International Monetary Fund Data API",
+      "year": 2026,
+      "document_type": "official-sdmx-json-response",
+      "source_url": "https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.STA/MFS_MA/10.0.1/VEN.BM_MAI.XDC.M",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-MFS-MA-VEN-BM_MAI-2026.json",
+      "sha256": "46780afbbede0948c6e1fde3e81e723c58818fb259e10fe51bf7051c62a88517",
+      "citation_anchor": "SDMX JSON dimensions: COUNTRY=VEN, INDICATOR=BM_MAI, UNIT=XDC, FREQUENCY=M; 153 non-null observations from 2001-M12 through 2014-M08",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official IMF MFS_MA response, historical only. Per-observation release dates are not provided; XDC is the provider unit code and no current broad-money observation is asserted."
+    },
+    {
+      "document_id": "DOC-IMF-MFS-MA-VEN-BASE-2026",
+      "title": "IMF MFS_MA Venezuela national-definition base money — historical SDMX response",
+      "author": [
+        "International Monetary Fund Data"
+      ],
+      "publisher": "International Monetary Fund Data API",
+      "year": 2026,
+      "document_type": "official-sdmx-json-response",
+      "source_url": "https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.STA/MFS_MA/10.0.1/VEN.NDMBM_MAI.XDC.M",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-MFS-MA-VEN-NDMBM_MAI-2026.json",
+      "sha256": "06c31a41820f72bbea808dbed7883aa68785a6db2d0b9959ddb0777af2c04ac8",
+      "citation_anchor": "SDMX JSON dimensions: COUNTRY=VEN, INDICATOR=NDMBM_MAI, UNIT=XDC, FREQUENCY=M; 239 non-null observations from 1996-M07 through 2016-M05",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official IMF MFS_MA response, historical only. This is the provider-defined national-definition base-money series; per-observation release dates are not provided and it cannot satisfy current intake requirements."
+    },
+    {
+      "document_id": "DOC-IMF-MFS-MA-VEN-CURRENCY-2026",
+      "title": "IMF MFS_MA Venezuela currency outside depository corporations — historical SDMX response",
+      "author": [
+        "International Monetary Fund Data"
+      ],
+      "publisher": "International Monetary Fund Data API",
+      "year": 2026,
+      "document_type": "official-sdmx-json-response",
+      "source_url": "https://api.imf.org/external/sdmx/3.0/data/dataflow/IMF.STA/MFS_MA/10.0.1/VEN.CIC_OUTDCORP_MAI.XDC.M",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-MFS-MA-VEN-CIC_OUTDCORP_MAI-2026.json",
+      "sha256": "e3b43de9e5b249173088e8e2690a00f900fc403506eaffe4a3c53e08a84f1c18",
+      "citation_anchor": "SDMX JSON dimensions: COUNTRY=VEN, INDICATOR=CIC_OUTDCORP_MAI, UNIT=XDC, FREQUENCY=M; 153 non-null observations from 2001-M12 through 2014-M08",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official IMF MFS_MA response, historical only. Per-observation release dates are not provided; the provider-defined series is not substituted for current physical or digital USD circulation."
+    },
+    {
+      "document_id": "DOC-WB-VEN-GDP-2026",
+      "title": "Venezuela GDP (current US$) — World Bank API response",
+      "author": [
+        "World Bank Group"
+      ],
+      "publisher": "World Bank Open Data API",
+      "year": 2026,
+      "document_type": "official-api-json",
+      "source_url": "https://api.worldbank.org/v2/country/VEN/indicator/NY.GDP.MKTP.CD?format=json&per_page=100",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-WB-VEN-GDP-2026.json",
+      "sha256": "3e49cbe71885ea4f6c36542ca40e3a1f7242644cea183e90de1f997bf7e7e1ae",
+      "citation_anchor": "JSON[0].source and JSON[1]: NY.GDP.MKTP.CD, Venezuela, 66 annual rows; latest returned observation 2025; value field and date fields preserved without transformation",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official World Bank API response acquired over HTTPS and locally hash-verified on 25 August 2026. Verified scope is the returned GDP series and response metadata. Macro context only; it does not replace BCV monetary, banking, reserve, or fiscal data."
+    },
+    {
+      "document_id": "DOC-WB-VEN-GDP-GROWTH-2026",
+      "title": "Venezuela GDP growth (annual %) — World Bank API response",
+      "author": [
+        "World Bank Group"
+      ],
+      "publisher": "World Bank Open Data API",
+      "year": 2026,
+      "document_type": "official-api-json",
+      "source_url": "https://api.worldbank.org/v2/country/VEN/indicator/NY.GDP.MKTP.KD.ZG?format=json&per_page=100",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-WB-VEN-GDP-GROWTH-2026.json",
+      "sha256": "1ac6aa33b4ad0bdbfde142004b1850efd8ce82cb661787e932d6f44783e0541a",
+      "citation_anchor": "JSON[0].source and JSON[1]: NY.GDP.MKTP.KD.ZG, Venezuela, 66 annual rows including one null value; latest returned observation 2025; value and date fields preserved",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official World Bank API response acquired over HTTPS and locally hash-verified on 25 August 2026. Verified scope is the returned annual growth series; null observations remain null. Macro context only and not a substitute for current fiscal or monetary accounts."
+    },
+    {
+      "document_id": "DOC-WB-VEN-INFLATION-2026",
+      "title": "Venezuela consumer-price inflation (annual %) — World Bank API response",
+      "author": [
+        "World Bank Group"
+      ],
+      "publisher": "World Bank Open Data API",
+      "year": 2026,
+      "document_type": "official-api-json",
+      "source_url": "https://api.worldbank.org/v2/country/VEN/indicator/FP.CPI.TOTL.ZG?format=json&per_page=100",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-WB-VEN-INFLATION-2026.json",
+      "sha256": "66c197f8a4417bb65c70ad9d5401d2ca9043ca31b8f60a1d5a6cf99ac0bd6f12",
+      "citation_anchor": "JSON[0].source and JSON[1]: FP.CPI.TOTL.ZG, Venezuela; returned annual rows preserve null coverage; latest non-null returned observation is 2016; no monthly hyperinflation inference permitted",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official World Bank API response acquired over HTTPS and locally hash-verified on 25 August 2026. Verified scope is the returned annual CPI-inflation series and its incomplete coverage. It is not a replacement for Hanke-Krus monthly hyperinflation measurement."
+    },
+    {
+      "document_id": "DOC-WB-VEN-OIL-RENTS-2026",
+      "title": "Venezuela oil rents (% of GDP) — World Bank API response",
+      "author": [
+        "World Bank Group"
+      ],
+      "publisher": "World Bank Open Data API",
+      "year": 2026,
+      "document_type": "official-api-json",
+      "source_url": "https://api.worldbank.org/v2/country/VEN/indicator/NY.GDP.PETR.RT.ZS?format=json&per_page=100",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-WB-VEN-OIL-RENTS-2026.json",
+      "sha256": "6fee20ed8552c00498eef999b9e82aee204b5e362c19d7e1d4a557e9d25f5ac1",
+      "citation_anchor": "JSON[0].source and JSON[1]: NY.GDP.PETR.RT.ZS, Venezuela; returned annual rows preserve null coverage; latest non-null returned observation is 2014",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official World Bank API response acquired over HTTPS and locally hash-verified on 25 August 2026. Verified scope is oil rents as a share of GDP, a macro proxy only; it must not be relabeled as PDVSA revenue or oil output."
+    },
+    {
+      "document_id": "DOC-WB-VEN-REMITTANCES-2026",
+      "title": "Venezuela personal remittances received — World Bank API response",
+      "author": [
+        "World Bank Group"
+      ],
+      "publisher": "World Bank Open Data API",
+      "year": 2026,
+      "document_type": "official-api-json",
+      "source_url": "https://api.worldbank.org/v2/country/VEN/indicator/BX.TRF.PWKR.CD.DT?format=json&per_page=100",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-WB-VEN-REMITTANCES-2026.json",
+      "sha256": "85894de98a701d6f2f1f95bc1e6e777932b578421e5759a2cf22472b20d82d7b",
+      "citation_anchor": "JSON[0].source and JSON[1]: BX.TRF.PWKR.CD.DT, Venezuela; returned annual rows preserve null coverage; latest non-null returned observation is 2016",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Official World Bank API response acquired over HTTPS and locally hash-verified on 25 August 2026. Verified scope is personal remittances received in current US$; it is not a measure of physical USD circulation or bank dollar deposits."
+    },
+    {
+      "document_id": "DOC-CONGRESS-VEN-HEARING-2017",
+      "title": "Venezuela's Tragic Meltdown — Hearing Transcript",
+      "author": [
+        "Steve H. Hanke (witness)",
+        "U.S. House Committee on Foreign Affairs"
+      ],
+      "publisher": "U.S. Government Publishing Office / House Committee on Foreign Affairs",
+      "year": 2017,
+      "document_type": "official-hearing-transcript",
+      "source_url": "https://www.congress.gov/115/chrg/CHRG-115hhrg24831/CHRG-115hhrg24831.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-CONGRESS-VEN-HEARING-2017.pdf",
+      "text_path": "extracted/venezuela/DOC-CONGRESS-VEN-HEARING-2017.txt",
+      "sha256": "5d5fdcc71e69dea3393728075c7f3e368f79f54d99f714b756e476ce08261f5d",
+      "citation_anchor": "PDF pp. 9–10 / transcript pp. 6–7: Hanke witness statement and answers on currency boards and dollarization; PDF pp. 14–15: prepared statement on Venezuela inflation and monetary reform",
+      "authority_level": 1,
+      "primary_source": true,
+      "bounded_replacement_for": [
+        "DOC-HANKE-CATO-VEN-TESTIMONY-2017",
+        "DOC-HANKE-VEN-TESTIMONY-2017"
+      ],
+      "notes": "Official congressional hearing transcript acquired over HTTPS; PDF magic bytes, SHA-256, extracted text, authorship-as-witness, and physical page anchors verified. This is a government hearing record containing Hanke testimony, not a Hanke-authored publication; bounded replacement applies only to the testimony as entered in the official hearing record, not to the inaccessible JHU file as a file object."
+    },
+    {
+      "document_id": "DOC-HANKE-VEN-TESTIMONY-HOUSE-WITNESS-2017",
+      "title": "Venezuela's Tragic Meltdown — Hanke prepared witness statement",
+      "author": [
+        "Steve H. Hanke"
+      ],
+      "publisher": "U.S. House Committee on Foreign Affairs / docs.house.gov",
+      "year": 2017,
+      "document_type": "official-witness-statement-pdf",
+      "source_url": "https://docs.house.gov/meetings/FA/FA07/20170328/105703/HHRG-115-FA07-Wstate-HankeS-20170328-U2.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-HANKE-VEN-TESTIMONY-HOUSE-WITNESS-2017.pdf",
+      "text_path": "extracted/venezuela/DOC-HANKE-VEN-TESTIMONY-HOUSE-WITNESS-2017.txt",
+      "sha256": "05fa9fb0d096b8f9a1f26dba8132f834b1cd039669b2d6e10e37fffdb254499e",
+      "citation_anchor": "verified PDF p. 1: title, witness, committee, and 28 March 2017 date; PDF pp. 1–2: inflation, fiscal/monetary discipline, and BCV data discussion; PDF pp. 4–7: hyperinflation threshold, currency-board design, dollarization, and Argentina qualification; PDF p. 8: Venezuela policy response",
+      "authority_level": 1,
+      "primary_source": true,
+      "bounded_replacement_for": [
+        "DOC-HANKE-CATO-VEN-TESTIMONY-2017",
+        "DOC-HANKE-VEN-TESTIMONY-2017"
+      ],
+      "access_basis": "official House-hosted public witness-statement PDF",
+      "notes": "Official House-hosted 10-page witness-statement PDF acquired over HTTPS; PDF magic bytes, SHA-256, extraction, authorship, title/date, and physical-page anchors verified. It is a distinct lawful government copy from the restricted JHU PDF. Bounded replacement applies to the prepared testimony as entered in the official hearing record; the restricted JHU file remains separately visible and is not relabeled as downloaded."
+    },
+    {
+      "document_id": "DOC-IMF-003-HTML-1991",
+      "title": "Stopping High Inflation — Official IMF eLibrary HTML",
+      "author": [
+        "Carlos A. Végh Gramont"
+      ],
+      "publisher": "International Monetary Fund",
+      "year": 1991,
+      "document_type": "official-imf-html",
+      "source_url": "https://www.elibrary.imf.org/view/journals/001/1991/107/article-A001-en.xml",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 2,
+      "primary_source": true,
+      "notes": "Official IMF eLibrary HTML alternate identified; local acquisition and marker/hash verification remain required. It is a separate HTML record and does not silently replace the restricted PDF record."
+    },
+    {
+      "document_id": "DOC-IMF-004-HTML-2003",
+      "title": "The Realities of Modern Hyperinflation — Official IMF eLibrary HTML",
+      "author": [
+        "Carmen Reinhart",
+        "Miguel A. Savastano"
+      ],
+      "publisher": "International Monetary Fund Finance & Development",
+      "year": 2003,
+      "document_type": "official-imf-html",
+      "source_url": "https://www.elibrary.imf.org/view/journals/022/0040/002/article-A007-en.xml",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 2,
+      "primary_source": true,
+      "notes": "Official IMF eLibrary HTML alternate identified; local acquisition and marker/hash verification remain required. It is a separate HTML record and does not silently replace the restricted PDF record."
+    },
+    {
+      "document_id": "DOC-HANKE-FORBES-VEN-DOLLAR-2017",
+      "title": "Stop Venezuela's Economic Death Spiral — Dollarize, Now",
+      "author": [
+        "Steve H. Hanke"
+      ],
+      "publisher": "Forbes",
+      "year": 2017,
+      "document_type": "public-commentary",
+      "source_url": "https://www.forbes.com/sites/stevehanke/2017/08/15/stop-venezuelas-economic-death-spiral-dollarize-now/",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-HANKE-FORBES-VEN-DOLLAR-2017.html",
+      "sha256": "b38613b2ed187df91178d42bbe17b9872707af6d6860cad8217c3e9fcb36fc1f",
+      "citation_anchor": "verified HTML: headline, Steve Hanke byline, publication date 15 August 2017; article body includes the proposed Venezuela dollarization model statute and discussion of official dollarization",
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Forbes article page acquired over HTTPS and verified as content-bearing HTML with title, author, date, and article-body markers. The page declares metered/non-free access; use is limited to citation metadata and short lawful quotations, with no redistribution of the full article. This is Hanke commentary, not peer-reviewed research or current Venezuela data."
+    },
+    {
+      "document_id": "DOC-HANKE-CATO-VEN-TESTIMONY-2017",
+      "title": "Venezuela's Tragic Meltdown — Cato testimony copy",
+      "author": [
+        "Steve H. Hanke"
+      ],
+      "publisher": "Cato Institute",
+      "year": 2017,
+      "document_type": "public-testimony-html",
+      "source_url": "https://www.cato.org/testimony/venezuelas-tragic-meltdown",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Cato-hosted Hanke testimony copy identified as a lawful public HTML alternate to the restricted JHU PDF and official congressional transcript; local HTML hash and exact anchors remain required."
+    },
+    {
+      "document_id": "DOC-HANKE-WEJ-VEN-HYPER-2017",
+      "title": "On Measuring Hyperinflation: Venezuela's Episode — publisher record",
+      "author": [
+        "Steve H. Hanke",
+        "Charles Bushnell"
+      ],
+      "publisher": "World Economics",
+      "year": 2017,
+      "document_type": "bibliographic-record",
+      "source_url": "https://www.world-economics-journal.com/Papers/Details.aspx?ID=673",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-HANKE-WEJ-VEN-HYPER-2017.html",
+      "sha256": "8331e2a21b21333f0bf7a66e82d76268a9643bababfd7273711c064cc0100a04",
+      "citation_anchor": "Publisher record: title and authors; 18-page paper listing; abstract states the Hanke–Krus qualifying criteria and reports Venezuela's stated peak monthly rate of 219.7% on 30 November 2016",
+      "authority_level": 1,
+      "primary_source": false,
+      "notes": "Publisher-hosted record acquired over HTTPS and independently checked as substantive HTML, not an access-denied placeholder. Verified scope is bibliographic metadata and the displayed abstract only. The full article is subscriber-only; no full-text quotation, page-level article claim, or unrestricted PDF availability is asserted."
+    },
+    {
+      "document_id": "DOC-HK-001",
+      "title": "The Hanke-Krus Hyperinflation Table",
+      "author": [
+        "Steve H. Hanke",
+        "Nicholas Krus"
+      ],
+      "publisher": "Cato Institute",
+      "year": null,
+      "document_type": "working-paper-table",
+      "source_url": "https://www.cato.org/sites/cato.org/files/pubs/pdf/hanke-krus-hyperinflation-table.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": "table; page number not established",
+      "authority_level": 1,
+      "sha256": null,
+      "notes": "Public URL found; publication year and local PDF remain unverified because the host returned anti-bot HTML."
+    },
+    {
+      "document_id": "DOC-HANKE-KRUS-TABLE-WEB-2026",
+      "title": "The Hanke-Krus World Hyperinflation Table — current web table",
+      "author": [
+        "Steve H. Hanke",
+        "Nicholas Krus"
+      ],
+      "publisher": "Steve Hanke official website",
+      "year": 2026,
+      "document_type": "official-hanke-hyperinflation-table-html",
+      "source_url": "https://stevehanke.com/hyperinflation/the-hanke-krus-world-hyperinflation-table",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-HANKE-KRUS-TABLE-WEB-2026.html",
+      "citation_anchor": "verified HTML title and embedded table: Cagan threshold of at least 50% inflation per month; Venezuela and Lebanon rows; page description states current table scope (62 documented cases)",
+      "authority_level": 1,
+      "primary_source": true,
+      "sha256": "d7d4571fccae62ab4a31cb9f5a03acdc047ae7795887154b197f80fd606a8456",
+      "supersedes": [
+        "DOC-HK-001"
+      ],
+      "notes": "Separate current web-table version acquired over HTTPS and verified as content-bearing HTML with required table markers. It supersedes the restricted Cato PDF only for bounded current-table and definition claims; the exact Cato PDF remains restricted and this record does not establish a Venezuela causal or policy conclusion."
+    },
+    {
+      "document_id": "DOC-IMF-001",
+      "title": "Lessons from High Inflation Episodes for Stabilizing the Economy in Zimbabwe",
+      "author": [
+        "Sharmini Coorey",
+        "Jens R. Clausen",
+        "Norbert Funke",
+        "Sònia Muñoz",
+        "Bakar Ould-Abdallah"
+      ],
+      "publisher": "IMF Working Paper 07/99",
+      "year": 2007,
+      "document_type": "working-paper",
+      "source_url": "https://www.imf.org/-/media/websites/imf/imported-full-text-pdf/external/pubs/ft/wp/2007/_wp0799.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/imf-wp-2007-099-zimbabwe-high-inflation.pdf",
+      "citation_anchor": "PDF pages 10–16: money growth, fiscal financing, and Zimbabwe stabilization measures",
+      "authority_level": 2,
+      "sha256": "198b9330bc10f00a42100e4690da49cc713ef3c98f9039644315b5ac97f210cc"
+    },
+    {
+      "document_id": "DOC-WB-UKR-001",
+      "title": "Ukraine: Restoring Growth with Equity / World Bank Document",
+      "author": [
+        "World Bank Group"
+      ],
+      "publisher": "World Bank",
+      "year": 1997,
+      "document_type": "country-economic-report",
+      "source_url": "https://documents1.worldbank.org/curated/en/131241468781763797/pdf/multi-page.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/world-bank-ukraine-hyperinflation.pdf",
+      "citation_anchor": "PDF pages 30–34 and 42: 1992–94 hyperinflation, monetary policy, and stabilization context",
+      "authority_level": 2,
+      "sha256": "d62a0148ba1e52582a91bd591db1a78fd0583ca9fd0b5e234a476d42b1c7b43e"
+    },
+    {
+      "document_id": "DOC-IMF-002",
+      "title": "High Inflation, Heterodox Stabilization, and Fiscal Policy",
+      "author": [
+        "Mario I. Blejer",
+        "Adrienne Cheasty"
+      ],
+      "publisher": "IMF",
+      "year": 1989,
+      "document_type": "book-chapter",
+      "source_url": "https://www.elibrary.imf.org/downloadpdf/display/book/9781557750341/ch005.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-002.pdf",
+      "text_path": "extracted/imf-high-inflation-heterodox-1989.txt",
+      "sha256": "0374352fc6e093da4c34f92d0b06fb454faf06cd169c107e4125a2a044ce562c",
+      "citation_anchor": "verified PDF pp. 2–5: high-inflation stabilization and money/fiscal-policy interactions; pp. 12–15: expectations, comprehensive programs, and fiscal-policy implications",
+      "authority_level": 2,
+      "notes": "Official IMF eLibrary chapter PDF acquired over HTTPS; PDF magic bytes, SHA-256, extracted text, title/authors, and physical page anchors verified. External IMF source; not Hanke attribution. Landing page: https://www.elibrary.imf.org/display/book/9781557750341/ch005.xml"
+    },
+    {
+      "document_id": "DOC-IMF-003",
+      "title": "Stopping High Inflation",
+      "author": [
+        "NOT VERIFIED — official authorship record required"
+      ],
+      "publisher": "IMF Staff Papers 1991/107",
+      "year": 1991,
+      "document_type": "research-article",
+      "source_url": "https://www.elibrary.imf.org/downloadpdf/view/journals/001/1991/107/article-A001-en.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 2,
+      "notes": "Official IMF eLibrary PDF endpoint returned HTTP 403 during current acquisition attempts; no article text is admitted."
+    },
+    {
+      "document_id": "DOC-IMF-003-ARCHIVES-PDF-1991",
+      "title": "Stopping High Inflation: An Analytical Overview",
+      "author": [
+        "Carlos A. Végh"
+      ],
+      "publisher": "International Monetary Fund Archives",
+      "year": 1991,
+      "document_type": "official-imf-archive-pdf",
+      "source_url": "https://stoprdcom01e2.blob.core.windows.net/allfiles/IG/Production%20Hosting/Adlib/Public%20Documents/EB/85450.PDF",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-003-ARCHIVES-PDF-1991.pdf",
+      "text_path": "extracted/imf/DOC-IMF-003-ARCHIVES-PDF-1991.txt",
+      "citation_anchor": "OCR-assisted physical PDF anchors: p. 1 title/author/date and abstract; pp. 2 and 19 Bolivian hyperinflation references; pp. 3 and 20 Bolivian stabilization references; p. 2 hyperinflation stopping section",
+      "authority_level": 1,
+      "primary_source": true,
+      "sha256": "ad776bd61a657b513f17309366b80d07e106474111b19b90cf0643160c2bf45a",
+      "supersedes": [
+        "DOC-IMF-003"
+      ],
+      "bounded_replacement_for": [
+        "DOC-IMF-003-HTML-1991"
+      ],
+      "notes": "Separate IMF Archives public electronic-record copy of WP/91/107, acquired over HTTPS and verified with PDF magic bytes, SHA-256, 72-page physical scope, OCR extraction, title/author/date, and historical anchors. The bounded replacement covers the article's verified title, authorship, historical hyperinflation, and stabilization content; it does not assert byte identity with the restricted eLibrary HTML. It supports bounded external stabilization evidence only; it does not establish Hanke attribution."
+    },
+    {
+      "document_id": "DOC-IMF-004",
+      "title": "The Realities of Modern Hyperinflation",
+      "author": [
+        "NOT VERIFIED — official authorship record required"
+      ],
+      "publisher": "Finance & Development",
+      "year": 2003,
+      "document_type": "research-article",
+      "source_url": "https://www.elibrary.imf.org/downloadpdf/view/journals/022/0040/002/article-A007-en.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 2,
+      "notes": "Official IMF eLibrary PDF endpoint returned HTTP 403 during current acquisition attempts; no article text is admitted."
+    },
+    {
+      "document_id": "DOC-IMF-004-FANDD-PDF-2003",
+      "title": "The Realities of Modern Hyperinflation",
+      "author": [
+        "Carmen M. Reinhart",
+        "Miguel A. Savastano"
+      ],
+      "publisher": "International Monetary Fund — Finance & Development",
+      "year": 2003,
+      "document_type": "official-imf-fandd-pdf",
+      "source_url": "https://www.imf.org/external/pubs/ft/fandd/2003/06/pdf/reinhard.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-004-FANDD-PDF-2003.pdf",
+      "text_path": "extracted/imf/DOC-IMF-004-FANDD-PDF-2003.txt",
+      "citation_anchor": "verified physical PDF: p. 1 title and authors; pp. 1–2 Cagan definition and modern episodes; p. 2 currency convertibility and stabilization regimes; p. 4 lessons and conclusions",
+      "authority_level": 1,
+      "primary_source": true,
+      "sha256": "347b8b5da75cd54426018d772b2cbcf60fc17ba7ccb9fe2a972a688c148f738f",
+      "supersedes": [
+        "DOC-IMF-004"
+      ],
+      "bounded_replacement_for": [
+        "DOC-IMF-004-HTML-2003"
+      ],
+      "notes": "Separate IMF Finance & Development public PDF copy acquired over HTTPS and verified with PDF magic bytes, SHA-256, four-page physical scope, text extraction, title/authors, and bounded historical anchors. The bounded replacement covers the article's verified title, authorship, hyperinflation definition, episodes, and stabilization content; it does not assert byte identity with the restricted eLibrary HTML. It supports external-view hyperinflation/stabilization claims only and does not establish Hanke attribution."
+    },
+    {
+      "document_id": "DOC-IMF-005",
+      "title": "Modern Hyper- and High Inflations",
+      "author": [
+        "NOT VERIFIED — official authorship record required"
+      ],
+      "publisher": "IMF Staff Papers 2002/197",
+      "year": 2002,
+      "document_type": "research-article",
+      "source_url": "https://www.elibrary.imf.org/downloadpdf/view/journals/001/2002/197/article-A001-en.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 2,
+      "notes": "Official IMF eLibrary PDF endpoint returned HTTP 403 during current acquisition attempts; no article text is admitted."
+    },
+    {
+      "document_id": "DOC-IMF-WP02197-CORRECTED-2002",
+      "title": "Modern Hyper- and High Inflations",
+      "author": [
+        "Stanley Fischer",
+        "Ratna Sahay",
+        "Carlos Végh"
+      ],
+      "publisher": "IMF Working Paper 02/197 (corrected public PDF)",
+      "year": 2002,
+      "document_type": "working-paper",
+      "source_url": "https://www.imf.org/external/pubs/ft/wp/2002/wp02197.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-WP02197-CORRECTED-2002.pdf",
+      "text_path": "extracted/imf-modern-hyper-2002.txt",
+      "sha256": "80e7eb513a70bc92cab2dd6c40f574f0a409bff408933c431e1554ac90264926",
+      "citation_anchor": "image-reviewed/OCR-assisted PDF pp. 1–2: authors, Cagan definition, sample and headline findings; pp. 4–6: historical hyperinflation episodes including China October 1947–March 1948; pp. 15–38: money, exchange rates, fiscal deficits, seigniorage, and inflation mechanisms; pp. 39–59: real effects and stabilization; pp. 60–62: stylized conclusions",
+      "authority_level": 2,
+      "supersedes": [
+        "DOC-IMF-005"
+      ],
+      "notes": "Official IMF corrected public working-paper PDF acquired over HTTPS; PDF magic bytes, 69-page integrity, SHA-256, cover authorship, and image-reviewed/OCR-assisted anchors verified. External historical/economic evidence only; not Hanke attribution. OCR was required because the PDF has no usable text layer; exact quotations are not admitted from OCR alone."
+    },
+    {
+      "document_id": "DOC-IMF-006",
+      "title": "Evaluation Report: The Argentine Crisis of 2000–02",
+      "author": [
+        "IMF Independent Evaluation Office"
+      ],
+      "publisher": "IMF",
+      "year": 2004,
+      "document_type": "evaluation-report",
+      "source_url": "https://www.elibrary.imf.org/downloadpdf/display/book/9781589063808/9781589063808.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-006.pdf",
+      "citation_anchor": "PDF pages 4–5: convertibility and inflation; page 15: Argentina crisis chronology",
+      "authority_level": 2,
+      "sha256": "a3b0c5f212c03808b8057888956af024042d01401211ecfbfce6b2308c90d465",
+      "notes": "Official IMF Independent Evaluation Office report locally acquired over HTTPS; PDF magic bytes, hash, and physical page anchors verified."
+    },
+    {
+      "document_id": "DOC-IMF-007",
+      "title": "Crisis Resolution in the Context of Sovereign Debt Restructuring",
+      "author": [
+        "International Monetary Fund"
+      ],
+      "publisher": "IMF",
+      "year": 2003,
+      "document_type": "policy-paper",
+      "source_url": "https://www.imf.org/external/np/pdr/sdrm/2003/012803.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-007.pdf",
+      "text_path": "extracted/imf-crisis-resolution-debt-2003.txt",
+      "sha256": "19a1e43b2dcfbe02f2f96447366e160346f58e45b41fbb034b81bca94079d1ff",
+      "citation_anchor": "verified PDF pp. 6–7: recent sovereign restructurings including Ecuador and Argentina; pp. 18–20: banking and currency-crisis spillovers; pp. 24–25: deposit freezes, capital controls, and Argentina/Ecuador chronology",
+      "authority_level": 2,
+      "notes": "Official IMF PDF acquired over HTTPS; PDF metadata, SHA-256, extracted text, title, and physical page anchors verified. External IMF evidence only; not Hanke attribution."
+    },
+    {
+      "document_id": "DOC-IMF-008",
+      "title": "Latin American Financial Systems: Crises and Reforms",
+      "author": [
+        "Agnes A. Belaisch",
+        "Charles Collyns",
+        "Paula De Masi",
+        "Guy M. Meredith",
+        "Anoop Singh",
+        "Reva Krieger",
+        "Robert Rennhack"
+      ],
+      "publisher": "IMF",
+      "year": 2004,
+      "document_type": "book-chapter",
+      "source_url": "https://www.elibrary.imf.org/downloadpdf/display/book/9781589062504/ch05.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-008.pdf",
+      "text_path": "extracted/imf-latin-american-financial-systems-2004.txt",
+      "sha256": "4cc40091128083ea79eabb1b35a2831f03e6a8b6119633610cff9e94bb1e700e",
+      "citation_anchor": "verified PDF pp. 7–8: dollarization, Argentina convertibility, and Ecuador's 1999 dollarization; pp. 11–12: Venezuela and Latin American banking-crisis context",
+      "authority_level": 2,
+      "notes": "Official IMF eLibrary chapter PDF acquired over HTTPS; PDF magic bytes, SHA-256, extracted text, title/authors, and physical page anchors verified. External IMF source; not Hanke attribution. Landing page: https://www.elibrary.imf.org/display/book/9781589062504/ch05.xml"
+    },
+    {
+      "document_id": "DOC-IMF-009",
+      "title": "Lebanon: 2019 Article IV Consultation",
+      "author": [
+        "IMF staff"
+      ],
+      "publisher": "IMF Country Report 19/312",
+      "year": 2019,
+      "document_type": "country-report",
+      "source_url": "https://www.imf.org/-/media/Files/Publications/CR/2019/1LBNEA2019001.ashx",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-009.pdf",
+      "sha256": "897d00d8630fc50eb0366b21f906ecfbf98de23cdfa6bb7553a51f9f90b6e2c5",
+      "citation_anchor": "PDF pp. 1–2: Country Report No. 19/312 and October 2019; PDF pp. 6–7: public debt and twin deficits; PDF pp. 8–9: deposit inflows and USD deposits; PDF pp. 16–17: deposit dollarization",
+      "authority_level": 2,
+      "notes": "Official IMF PDF acquired over HTTPS; PDF magic bytes, SHA-256, title/date, and text anchors independently checked. The source supports IMF historical evidence only, not Hanke attribution."
+    },
+    {
+      "document_id": "DOC-IMF-010",
+      "title": "Lebanon: 2023 Article IV Consultation",
+      "author": [
+        "IMF staff"
+      ],
+      "publisher": "IMF Country Report 23/237",
+      "year": 2023,
+      "document_type": "country-report",
+      "source_url": "https://www.imf.org/-/media/Files/Publications/CR/2023/English/1LBNEA2023002.ashx",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-010.pdf",
+      "sha256": "cd52f77a7bf237de3d5ad83491a51116425ddd20d47ed2e50cbd0f022a9a6383",
+      "citation_anchor": "PDF pp. 1–2: Country Report No. 23/237 and June 1, 2023; PDF pp. 3–5: sovereign-banking-currency crisis and policy priorities; PDF pp. 18–20: exchange-rate unification, deposit restrictions, and debt sustainability; PDF pp. 38–44: debt sustainability analysis",
+      "authority_level": 2,
+      "notes": "Official IMF PDF acquired over HTTPS; PDF magic bytes, SHA-256, title/date, and text anchors independently checked. The source supports IMF historical evidence only, not Hanke attribution."
+    },
+    {
+      "document_id": "DOC-IMF-011",
+      "title": "Would Cold Turkey Work in Turkey?",
+      "author": [
+        "Oya Celasun",
+        "R. Gaston Gelos",
+        "Alessandro Prati"
+      ],
+      "publisher": "IMF Staff Papers, Vol. 51 No. 3",
+      "year": 2004,
+      "document_type": "research-article",
+      "source_url": "https://www.imf.org/external/pubs/ft/staffp/2004/03/celasun.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": "PDF title and authors; Turkey inflation persistence, expectations, fiscal variables, and 2000–01 banking/liquidity context",
+      "authority_level": 2,
+      "notes": "The current IMF legacy URL returned an HTTP-200 branded 404 HTML page; the retrieval firewall now records it as restricted. No article text is admitted."
+    },
+    {
+      "document_id": "BOOK-HANKE-CB-2015",
+      "title": "Currency Boards for Developing Countries: A Handbook",
+      "author": [
+        "Steve H. Hanke",
+        "Kurt Schuler"
+      ],
+      "publisher": "ICS Press",
+      "year": 2015,
+      "document_type": "book-public-pdf",
+      "source_url": "https://sites.krieger.jhu.edu/iae/files/2017/06/Currency_Boards_for_Developing_Countries-1.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": "public Johns Hopkins text link; revised edition 2015; title and authors verified from JHU book-series record",
+      "authority_level": 1,
+      "notes": "Official public URL identified, but current downloader received HTTP 403; no full text admitted."
+    },
+    {
+      "document_id": "DOC-BOOK-HANKE-CB-OPEN-2021",
+      "title": "Currency Boards for Developing Countries: A Handbook",
+      "author": [
+        "Steve H. Hanke",
+        "Kurt Schuler"
+      ],
+      "publisher": "KSP Books / EconSciences",
+      "year": 2021,
+      "document_type": "book-open-access-edition",
+      "source_url": "https://econsciences.com/wp-content/uploads/2023/02/978-625-7501-15-6.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-BOOK-HANKE-CB-OPEN-2021.pdf",
+      "text_path": "extracted/hanke/DOC-BOOK-HANKE-CB-OPEN-2021.txt",
+      "sha256": "1924a0d358d12bd8b30cb4941d699cd8cbd0593e718ad4ec2e806c8b914ee277",
+      "citation_anchor": "PDF pp. 2, 6, 15, 21, 85–105: open-access edition metadata; currency-board definition; reserve backing; lender-of-last-resort limits; establishment design",
+      "authority_level": 1,
+      "license": "CC BY 4.0",
+      "bounded_replacement_for": [
+        "BOOK-HANKE-CB-2015"
+      ],
+      "notes": "Open-access 2021 edition acquired from the publisher link indexed by EconSciences; separate from the restricted JHU 2015 URL. Bounded replacement covers framework and design claims in the verified 2021 edition only; it does not relabel the restricted 2015 file or assert edition-level identity. Full-text attribution must use this edition's year, publisher, page anchors, and license."
+    },
+    {
+      "document_id": "DOC-HANKE-VEN-TESTIMONY-2017",
+      "title": "On Venezuela's Tragic Meltdown",
+      "author": [
+        "Steve H. Hanke"
+      ],
+      "publisher": "Johns Hopkins Institute for Applied Economics / U.S. House testimony",
+      "year": 2017,
+      "document_type": "testimony-primary",
+      "source_url": "https://sites.krieger.jhu.edu/iae/files/2017/04/On_Venezuelas_Tragic_Meltdown.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 1,
+      "notes": "Exact public Johns Hopkins PDF discovered by site/filetype search; local acquisition returned HTTP 403. Search-result text is not admitted as a citation or Hanke position."
+    },
+    {
+      "document_id": "DOC-HANKE-BUSHNELL-VEN-2017",
+      "title": "On Error and Deception",
+      "author": [
+        "Steve H. Hanke",
+        "Charles Bushnell"
+      ],
+      "publisher": "World Economics",
+      "year": 2017,
+      "document_type": "article-primary",
+      "source_url": "https://sites.krieger.jhu.edu/iae/files/2018/02/Hanke-Bushnell_Venezuela.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 1,
+      "notes": "Exact public Johns Hopkins PDF discovered by site/filetype search; local acquisition returned HTTP 403. No search-snippet text is admitted as evidence."
+    },
+    {
+      "document_id": "DOC-HANKE-VEN-SUPPLY-2017",
+      "title": "On Venezuela's Supply-Side Potential",
+      "author": [
+        "Steve H. Hanke",
+        "Jason Yin"
+      ],
+      "publisher": "Johns Hopkins Institute for Applied Economics, Studies in Supply-Side Economics",
+      "year": 2017,
+      "document_type": "working-paper-primary",
+      "source_url": "https://sites.krieger.jhu.edu/iae/files/2017/04/On_Venezuelas_SupplySide_Potential.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 1,
+      "notes": "Exact public Johns Hopkins PDF discovered by site/filetype search; local acquisition returned HTTP 403. No supply-side claim is admitted until the document is locally verified."
+    },
+    {
+      "document_id": "DOC-HANKE-VEN-REMEMBRANCES",
+      "title": "A Short Sketch of a Currency Reformer's Activities in the 1990s",
+      "author": [
+        "Steve H. Hanke"
+      ],
+      "publisher": "Johns Hopkins Institute for Applied Economics",
+      "year": 2019,
+      "document_type": "memoir-primary",
+      "source_url": "https://sites.krieger.jhu.edu/iae/files/2019/10/Remembrances-Amended.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 1,
+      "notes": "Exact public Johns Hopkins PDF discovered by site/filetype search; local acquisition returned HTTP 403. It is indexed as a lead only and cannot establish a direct Venezuela recommendation."
+    },
+    {
+      "document_id": "DOC-HANKE-ECUADOR-RULELAW-2015",
+      "title": "Reflections on the Rule of Law and Dollarization in Ecuador",
+      "author": [
+        "Steve H. Hanke"
+      ],
+      "publisher": "Johns Hopkins Institute for Applied Economics",
+      "year": 2015,
+      "document_type": "working-paper-primary",
+      "source_url": "https://sites.krieger.jhu.edu/iae/files/2017/04/Hanke_Rule-of-Law_Dollarization_Ecuador.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 1,
+      "notes": "Exact public Johns Hopkins PDF discovered by site/filetype search; local acquisition returned HTTP 403. No Ecuador dollarization claim is admitted from search-result text."
+    },
+    {
+      "document_id": "DOC-HANKE-VEN-HYPER-2016",
+      "title": "Venezuela Enters the Record Book: The 57th Entry in the Hanke-Krus World Hyperinflation Table",
+      "author": [
+        "Steve H. Hanke",
+        "Charles Bushnell"
+      ],
+      "publisher": "Johns Hopkins Institute for Applied Economics",
+      "year": 2016,
+      "document_type": "working-paper-primary",
+      "source_url": "https://sites.krieger.jhu.edu/iae/files/2017/04/Venezuela_Enters_the_Record_Book.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 1,
+      "notes": "Exact public Johns Hopkins PDF discovered by site/filetype and RePEc searches; local acquisition returned HTTP 403. The Hanke-Krus classification remains unverified in this corpus."
+    },
+    {
+      "document_id": "DOC-WU-VEN-REFORM-2016",
+      "title": "Issues in Venezuelan Monetary and Economic Reform",
+      "author": [
+        "María Belén Wu"
+      ],
+      "publisher": "Johns Hopkins Institute for Applied Economics",
+      "year": 2016,
+      "document_type": "working-paper-primary",
+      "source_url": "https://sites.krieger.jhu.edu/iae/files/2017/04/Issues-in-Venezuelan-Monetary-and-Economic-Reform.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 1,
+      "notes": "Exact public Johns Hopkins PDF discovered by site/filetype and RePEc searches; local acquisition returned HTTP 403. Metadata indicates a Venezuela monetary-reform paper, but no full text or claim is admitted."
+    },
+    {
+      "document_id": "BOOK-HANKE-JUNTAS-2015",
+      "title": "Juntas Monetarias para países en desarrollo: Dinero, inflación y estabilidad económica",
+      "author": [
+        "Steve H. Hanke",
+        "Kurt Schuler"
+      ],
+      "publisher": "Cedice Libertad",
+      "year": 2015,
+      "document_type": "book-public-pdf",
+      "source_url": "https://sites.krieger.jhu.edu/iae/files/2017/06/Juntas_Monetarias_para_paises_en_desarrollo_Hanke_Schuler.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": "public Johns Hopkins Spanish text link; second edition 2015; title and authors verified from JHU book-series record",
+      "authority_level": 1,
+      "notes": "Official public URL identified, but current downloader received HTTP 403; no full text admitted."
+    },
+    {
+      "document_id": "BOOK-HANKE-JUNTAS-CATO-2015",
+      "title": "Juntas Monetarias para países en desarrollo: Dinero, inflación y estabilidad económica",
+      "author": [
+        "Steve H. Hanke",
+        "Kurt Schuler"
+      ],
+      "publisher": "Cedice Libertad / Cato Institute public mirror",
+      "year": 2015,
+      "document_type": "book-public-pdf-mirror",
+      "source_url": "https://www.elcato.org/sites/default/files/libro_hanke_schuler_ready.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 1,
+      "notes": "Separate public Cato-domain mirror candidate discovered; no claim is admitted until PDF integrity, edition metadata, authorship, extracted text, and page anchors are verified. Public hosting does not establish a reuse license."
+    },
+    {
+      "document_id": "BOOK-HANKE-JUNTAS-CEDICE-2015",
+      "title": "Juntas Monetarias para países en desarrollo: Dinero, inflación y estabilidad económica",
+      "author": [
+        "Steve H. Hanke",
+        "Kurt Schuler"
+      ],
+      "publisher": "Cedice Libertad",
+      "year": 2015,
+      "document_type": "book-public-pdf-publisher-copy",
+      "source_url": "https://libreriacedice.org.ve/wp-content/uploads/2022/08/Libro-Hanke-Schuler-ready.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/BOOK-HANKE-JUNTAS-CEDICE-2015.pdf",
+      "text_path": "extracted/hanke/BOOK-HANKE-JUNTAS-CEDICE-2015.txt",
+      "sha256": "9cac48e8b96a1c3403ff4b5ab823c33fece12825a8593cb31727c29674fb729b",
+      "citation_anchor": "verified 173-page PDF: cover/edition metadata PDF pp. 1–6; Hanke-authored Spanish preface dated 30 December 2014, PDF pp. 12–15 (printed pp. 13–15), including currency-board, dollarization, Ecuador, Argentina, and Venezuela discussion; Chapter 1 begins PDF p. 16",
+      "authority_level": 1,
+      "access_basis": "public Cedice publisher-hosted copy",
+      "bounded_replacement_for": [
+        "BOOK-HANKE-JUNTAS-2015",
+        "BOOK-HANKE-JUNTAS-CATO-2015"
+      ],
+      "notes": "Cedice-hosted public PDF acquired over HTTPS; PDF magic bytes, 173-page integrity, SHA-256, QuarkXPress metadata, authorship, edition/ISBN markers, extracted text, and physical/printed-page anchors verified. It is used as the verified 2015 Spanish edition for bounded book-content claims; exact restricted URLs remain separate records. Public access is recorded, but no separate reuse license is asserted. Hanke-direct claims are limited to the identified preface and are not treated as current Venezuela data or an automatic policy recommendation."
+    },
+    {
+      "document_id": "BOOK-HANKE-RCF-TRANSLATION-2014",
+      "title": "Russian Currency and Finance: A Currency Board Approach to Reform — Russian translation",
+      "author": [
+        "Steve H. Hanke",
+        "Lars Jonung",
+        "Kurt Schuler"
+      ],
+      "publisher": "Johns Hopkins Institute for Applied Economics public archive",
+      "year": 2014,
+      "document_type": "translated-book-public-pdf",
+      "source_url": "https://sites.krieger.jhu.edu/iae/files/2017/04/Russian_Currency_and_Finance_Translation.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": "SAE No. 12; translation notice identifies original English book and authors",
+      "authority_level": 1,
+      "notes": "Official public URL identified, but current downloader received HTTP 403; no full text admitted."
+    },
+    {
+      "document_id": "DOC-LUND-RCF-CONTENTS-2026",
+      "title": "Russian Currency and Finance — university repository contents record",
+      "author": [
+        "Steve H. Hanke",
+        "Lars Jonung",
+        "Kurt Schuler"
+      ],
+      "publisher": "Lund University Research Portal",
+      "year": 1993,
+      "document_type": "repository-contents-pdf",
+      "source_url": "https://lucris.lub.lu.se/ws/portalfiles/portal/69554144/133_List_of_contents_of_Steve_Hanke_Lars_Jonung_and_Kurt_Schuler_Russian_Currency_and_Finance_A_Currency_board_approach_to_reform_1993.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 2,
+      "notes": "Lawful university repository artifact lead. If acquired and verified, it may support only bibliographic metadata and contents scope; it cannot replace the restricted full Russian translation or establish full-text access."
+    },
+    {
+      "document_id": "BOOK-HANKE-CUBA-1992",
+      "title": "Currency Reform for a Market-Oriented Cuba",
+      "author": [
+        "Steve H. Hanke",
+        "Kurt Schuler"
+      ],
+      "publisher": "Blue Ribbon Commission on the Economic Reconstruction of Cuba",
+      "year": 1992,
+      "document_type": "book-public-pdf",
+      "source_url": "https://papers.ssrn.com/sol3/Delivery.cfm/SSRN_ID2258025_code76830.pdf?abstractid=2258025",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": "SSRN record identifies title, authors, 1992 commission publication, and abstract",
+      "authority_level": 1,
+      "notes": "A lawful SSRN download lead is recorded, but the SSRN access page states all-rights-reserved terms; acquire only for permitted private research and do not admit or redistribute text without a rights review. The original JHU public URL remains recorded in source history."
+    },
+    {
+      "document_id": "BOOK-HANKE-JAMAICA-1995",
+      "title": "Alternative Monetary Regimes for Jamaica",
+      "author": [
+        "Steve H. Hanke",
+        "Kurt Schuler"
+      ],
+      "publisher": "Private Sector Organisation of Jamaica",
+      "year": 1995,
+      "document_type": "study-public-pdf",
+      "source_url": "https://sites.krieger.jhu.edu/iae/files/2017/06/Alternative-Monetary-Regimes-for-Jamaica.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": "public Johns Hopkins text; study for the Private Sector Organisation of Jamaica, August 1995; title and authors verified",
+      "authority_level": 1,
+      "notes": "Official public URL identified, but current downloader received HTTP 403; no full text admitted."
+    },
+    {
+      "document_id": "DOC-BOOK-HANKE-JAMAICA-PSOJ-1995",
+      "title": "Alternative Monetary Regimes for Jamaica",
+      "author": [
+        "Steve H. Hanke",
+        "Kurt Schuler"
+      ],
+      "publisher": "Private Sector Organisation of Jamaica",
+      "year": 1995,
+      "document_type": "study-public-pdf-ocr-verified",
+      "source_url": "https://www.psoj.org/wp-content/uploads/2017/05/RS-Steven-H.-Hanke-and-Kurt-Schuler-Alternative-Monetary-Regimes-for-Jamaica.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-BOOK-HANKE-JAMAICA-PSOJ-1995.pdf",
+      "text_path": "extracted/hanke/DOC-BOOK-HANKE-JAMAICA-PSOJ-1995-ocr.txt",
+      "sha256": "f53288cb1b6f927d4966d0a1c74a2eee7213aaac1a809a41bda62aad7235c124",
+      "citation_anchor": "OCR-verified PDF p. 1: title, authors, and PSOJ publication; PDF p. 4: contents; PDF pp. 18–20: dollarization and currency-board definitions; PDF pp. 81–85: currency-board implementation; PDF pp. 70–77: dollarization discussion",
+      "authority_level": 1,
+      "primary_source": true,
+      "access_basis": "public publisher-hosted copy; no explicit reuse license located",
+      "bounded_replacement_for": [
+        "BOOK-HANKE-JAMAICA-1995"
+      ],
+      "notes": "Public PSOJ-hosted PDF acquired over HTTPS; 115-page PDF, SHA-256, OCR text, title/authorship, contents, and physical page anchors verified. This source is text-verified for research citation, but reuse/redistribution rights are not asserted. It is a separate public copy from the restricted JHU URL and is the bounded text source for the same 1995 study."
+    },
+    {
+      "document_id": "PAPER-HANKE-GG-232",
+      "title": "United States: A Golden Growth Rate and Credit Counterparts Analysis",
+      "author": [
+        "Steve H. Hanke",
+        "John Greenwood",
+        "Qiqin Sun"
+      ],
+      "publisher": "Johns Hopkins Institute for Applied Economics",
+      "year": 2023,
+      "document_type": "working-paper-primary",
+      "source_url": "https://www.dropbox.com/scl/fi/1tuvzza9l0aynxhsgsph7/US-GGR-CC.pdf?rlkey=464ijskijyuglycvwbtqc6120&dl=1",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/PAPER-HANKE-GG-232.pdf",
+      "text_path": "extracted/hanke/PAPER-HANKE-GG-232.txt",
+      "sha256": "f7c01f460bdaca6c0daf419cb8cb13023868469f2827b58abb78ba995abf78ac",
+      "citation_anchor": "PDF pp. 3–4: percent-change QTM and US GGR calculation; PDF p. 6: asset-side Credit Counterpart identity; PDF p. 7: lending, securities, reserve/cash, and residual categories",
+      "authority_level": 1,
+      "notes": "Public PDF acquired from the exact Dropbox file linked by the official Johns Hopkins SAE listing; PDF magic bytes, SHA-256, extracted text, author/title, and physical page anchors verified."
+    },
+    {
+      "document_id": "PAPER-HANKE-GG-233",
+      "title": "United Kingdom: A Golden Growth Rate and Credit Counterparts Analysis",
+      "author": [
+        "Steve H. Hanke",
+        "John Greenwood",
+        "Mike Hyo Jae An"
+      ],
+      "publisher": "Johns Hopkins Institute for Applied Economics",
+      "year": 2023,
+      "document_type": "working-paper-primary",
+      "source_url": "https://www.dropbox.com/scl/fi/vhkt5nu4dabo7nvpdw01t/UK-GGR-and-CC-Memo-93.pdf?rlkey=282qnm878b8ao5ur1d2176j14&dl=1",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/PAPER-HANKE-GG-233.pdf",
+      "text_path": "extracted/hanke/PAPER-HANKE-GG-233.txt",
+      "sha256": "79764b1d0b511019cdc81cff4247542fafe9776c833bbe04fe3ea053c3d8201e",
+      "citation_anchor": "PDF pp. 3–4: percent-change QTM and UK GGR calculation; PDF pp. 6–7: asset-side Credit Counterpart identity and categories; PDF p. 7: residual definition",
+      "authority_level": 1,
+      "notes": "Public PDF acquired from the exact Dropbox file linked by the official Johns Hopkins SAE listing; PDF magic bytes, SHA-256, extracted text, author/title, and physical page anchors verified."
+    },
+    {
+      "document_id": "PAPER-HANKE-GG-234",
+      "title": "The Eurozone: A Golden Growth Rate and Credit Counterparts Analysis",
+      "author": [
+        "Steve H. Hanke",
+        "John Greenwood",
+        "Jingxing Zou"
+      ],
+      "publisher": "Johns Hopkins Institute for Applied Economics",
+      "year": 2023,
+      "document_type": "working-paper-primary",
+      "source_url": "https://www.dropbox.com/scl/fi/xuurc8y48d5lehaj2x3h4/Eurozone-CC-and-GGR-memo-Edited-1.pdf?rlkey=61qufhili7bua6wh88vztg0s4&dl=1",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/PAPER-HANKE-GG-234.pdf",
+      "text_path": "extracted/hanke/PAPER-HANKE-GG-234.txt",
+      "sha256": "a42044f04decf2b3bf3b666df81f7051b09c823ba8c0d210d03c6947d25efc8d",
+      "citation_anchor": "PDF pp. 3–4: percent-change QTM and Eurozone GGR calculation; PDF p. 8: asset-side Credit Counterpart identity and categories; PDF pp. 8–9: residual definition",
+      "authority_level": 1,
+      "notes": "Public PDF acquired from the exact Dropbox file linked by the official Johns Hopkins SAE listing; PDF magic bytes, SHA-256, extracted text, author/title, and physical page anchors verified."
+    },
+    {
+      "document_id": "DOC-BNB-ANNUAL-1997",
+      "title": "Bulgarian National Bank 1997 Annual Report",
+      "author": [
+        "Bulgarian National Bank"
+      ],
+      "publisher": "Bulgarian National Bank",
+      "year": 1998,
+      "document_type": "official-central-bank-report",
+      "source_url": "https://www.bnb.bg/bnbweb/groups/public/documents/bnb_publication/p_anualreports_1997_en.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-BNB-ANNUAL-1997.pdf",
+      "text_path": "extracted/bulgaria/DOC-BNB-ANNUAL-1997.txt",
+      "sha256": "75aec6d843dabd386d0a21f7611ad5df45d441a844c7a1a1b5eec67a467df500",
+      "citation_anchor": "PDF pp. 7, 58, 67, 84: initial stabilization results; monetary sector; reserve coverage; commercial-bank refinancing",
+      "authority_level": 1,
+      "bounded_replacement_for": [
+        "DOC-BNB-1997-ANNUAL-001"
+      ],
+      "notes": "Official BNB PDF acquired over HTTPS; PDF magic bytes, SHA-256, extracted text, and physical page anchors verified. Historical source only; it does not by itself establish current policy or Venezuela comparability."
+    },
+    {
+      "document_id": "DOC-BNB-ANNUAL-1998",
+      "title": "Bulgarian National Bank 1998 Annual Report",
+      "author": [
+        "Bulgarian National Bank"
+      ],
+      "publisher": "Bulgarian National Bank",
+      "year": 1999,
+      "document_type": "official-central-bank-report",
+      "source_url": "https://www.bnb.bg/bnbweb/groups/public/documents/bnb_publication/p_anualreports_1998_en.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-BNB-ANNUAL-1998.pdf",
+      "text_path": "extracted/bulgaria/DOC-BNB-ANNUAL-1998.txt",
+      "sha256": "4ef789643fdcc6636a936b1fcb5b35b965e724de55213e408df9c33f44fc5f3f",
+      "citation_anchor": "PDF pp. 21–22: 1998 CPI inflation of 1% and currency-board price stabilization; PDF p. 46: broad-money change and reserve-money/asset counterparts; PDF pp. 58–60: net foreign-exchange reserves",
+      "authority_level": 1,
+      "notes": "Official BNB PDF acquired over HTTPS; PDF magic bytes, SHA-256, extracted text, title, and physical page anchors verified. Historical institutional evidence only; no contemporaneous public-release date is asserted beyond the report year."
+    },
+    {
+      "document_id": "DOC-BNB-YEARBOOK-1998-2002",
+      "title": "Annual of the Bulgarian National Bank, Volume 2: 1998–2002",
+      "author": [
+        "Bulgarian National Bank"
+      ],
+      "publisher": "Bulgarian National Bank",
+      "year": 2003,
+      "document_type": "official-institutional-yearbook",
+      "source_url": "https://www.bnb.bg/bnbweb/groups/public/documents/bnb_publication/pubp_bnbannual_1998-2002_en.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-BNB-YEARBOOK-1998-2002.pdf",
+      "text_path": "extracted/bulgaria/DOC-BNB-YEARBOOK-1998-2002.txt",
+      "sha256": "4d37d754a295f69c92b3b24ff5e15b821d1ee48d35fdd1858346554da5f65881",
+      "citation_anchor": "PDF p. 144: institutional account states the currency board was introduced by the 10 June 1997 Law on the BNB, describes subsequent banking-law implementation, and dates the hyperinflationary episode to December 1996–February 1997",
+      "authority_level": 1,
+      "notes": "Official BNB yearbook acquired over HTTPS; PDF magic bytes, SHA-256, extracted text, title scope, and physical page anchor verified. This is institutional historical evidence and is not treated as the operative statute or a substitute for the missing law text."
+    },
+    {
+      "document_id": "DOC-LAW-BGR-BNB-CONSOLIDATED-2021",
+      "title": "Law on the Bulgarian National Bank — official consolidated English translation through 2021",
+      "author": [
+        "Bulgarian National Bank"
+      ],
+      "publisher": "Bulgarian National Bank",
+      "year": 2021,
+      "document_type": "official-consolidated-law-translation",
+      "source_url": "https://www.bnb.bg/bnbweb/groups/public/documents/bnb_law/laws_bnb_en~36.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-LAW-BGR-BNB-CONSOLIDATED-2021.pdf",
+      "text_path": "extracted/legal/DOC-LAW-BGR-BNB-CONSOLIDATED-2021.txt",
+      "sha256": "3eca7c34d61b1347ba89e5dcc858b56561725d54b9c49651d3d17793170a9819",
+      "citation_anchor": "PDF p. 1: 5 June 1997 adoption and 10 June 1997 publication plus amendment history; PDF pp. 11–13: Articles 28–29 monetary-liability reserve ceiling, eligible reserves, and parity; PDF p. 1 translation disclaimer",
+      "authority_level": 1,
+      "bounded_replacement_for": [
+        "DOC-BNB-001"
+      ],
+      "notes": "Official BNB-hosted PDF locally acquired over HTTPS; integrity, hash, extracted text, amendment chronology, and article anchors verified. Later consolidated English translation: bounded replacement covers the later legal framework and cited Articles 28–29; it does not establish the exact original BNB web record or unamended 1997 wording. Exact State Gazette language remains separately restricted."
+    },
+    {
+      "document_id": "DOC-LAW-BGR-BNB-BG-CONSOLIDATED-2023",
+      "title": "Закон за Българската народна банка — official Bulgarian-language consolidated text",
+      "author": [
+        "Bulgarian National Bank"
+      ],
+      "publisher": "Bulgarian National Bank",
+      "year": 2023,
+      "document_type": "official-consolidated-law-text",
+      "source_url": "https://xn--b1af2aain.xn--90ae/upload/225/laws_bnb_bg.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-LAW-BGR-BNB-BG-CONSOLIDATED-2023.pdf",
+      "text_path": "extracted/legal/DOC-LAW-BGR-BNB-BG-CONSOLIDATED-2023.txt",
+      "sha256": "a958ab4a5974f05ac30ea5d8761246c6b2dcccd0ffafba3a91816d86282876b4",
+      "citation_anchor": "PDF p. 1: 5 June 1997 adoption and 10 June 1997 State Gazette publication; PDF pp. 16–17: Articles 28–29 reserve backing and parity; PDF p. 19: liquidity-risk support; PDF p. 31: provisions entering into force 1 July 1997",
+      "authority_level": 1,
+      "bounded_replacement_for": [
+        "DOC-BNB-001"
+      ],
+      "notes": "Official Bulgarian National Bank PDF acquired over HTTPS and locally verified with SHA-256, extracted text, and bounded anchors. This bounded replacement covers the later consolidated Bulgarian-language legal framework and cited reserve/parity provisions; it is not a scanned copy of State Gazette issue 46/1997 and does not establish the exact unamended 1997 wording by itself."
+    },
+    {
+      "document_id": "DOC-BNB-CBA-1999",
+      "title": "The Currency Board in Bulgaria: A Comparison with an Orthodox Currency Board",
+      "author": [
+        "Bulgarian National Bank"
+      ],
+      "publisher": "Bulgarian National Bank",
+      "year": 1999,
+      "document_type": "official-discussion-paper",
+      "source_url": "https://www.bnb.bg/bnbweb/groups/public/documents/bnb_publication/discussion_199909_en.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-BNB-CBA-1999.pdf",
+      "text_path": "extracted/bulgaria/DOC-BNB-CBA-1999.txt",
+      "sha256": "bca5399116614d63bef84af25f7e1cb5e711ac32f7f99face0e72ee4a1ae4fa6",
+      "citation_anchor": "PDF pp. 7, 10: strictly limited lender-of-last-resort function; high credibility; Bulgaria's arrangement not considered orthodox but currency-board-like",
+      "authority_level": 1,
+      "notes": "Official BNB-hosted PDF acquired over HTTPS; PDF magic bytes, SHA-256, extracted text, and physical page anchors verified. This is an institutional discussion paper, not a legal instrument and not a Hanke-authored source."
+    },
+    {
+      "document_id": "DOC-BNB-CBA-199911",
+      "title": "The Currency Board in Bulgaria: Design, Peculiarities and Management of Foreign Exchange Cover",
+      "author": [
+        "Bulgarian National Bank"
+      ],
+      "publisher": "Bulgarian National Bank",
+      "year": 1999,
+      "document_type": "official-discussion-paper",
+      "source_url": "https://www.bnb.bg/bnbweb/groups/public/documents/bnb_publication/discussion_199911_en.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-BNB-CBA-199911.pdf",
+      "text_path": "extracted/bulgaria/DOC-BNB-CBA-199911.txt",
+      "sha256": "3db8153ebf05777b5e8488e81eb83ee72d6f6c750bda85598175ef4453520621",
+      "citation_anchor": "PDF pp. 5–6, 8–9: reserve currency, monetary-base rule, government-deficit financing mechanism, lender-of-last-resort limits",
+      "authority_level": 1,
+      "notes": "Official BNB-hosted PDF acquired over HTTPS; PDF magic bytes, SHA-256, extracted text, and physical page anchors verified. Institutional discussion evidence only; it is not the 1997 operative statute and not a Hanke-authored source."
+    },
+    {
+      "document_id": "DOC-BGR-CHARLES-MARIE-2017",
+      "title": "Bulgaria's Hyperinflation in 1997: Transition, Banking Fragility and Foreign Exchange",
+      "author": [
+        "Sébastien Charles",
+        "Jonathan Marie"
+      ],
+      "publisher": "Post-Communist Economies / HAL open archive",
+      "year": 2017,
+      "document_type": "peer-reviewed-journal-article",
+      "source_url": "https://sorbonne-paris-nord.hal.science/hal-01573503v1",
+      "source_doi": "10.1080/14631377.2017.1339476",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-BGR-CHARLES-MARIE-2017.pdf",
+      "text_path": "extracted/bulgaria/DOC-BGR-CHARLES-MARIE-2017.txt",
+      "sha256": "ccd0398fd649d9ac9161caf4a06ea711fb8b81f2069a80840acaad49286d7eae",
+      "citation_anchor": "PDF pp. 2, 6, 12, 14–15: abstract; transition to hyperinflation; banking fragility; foreign-exchange dynamics; currency-board transition",
+      "authority_level": 3,
+      "license": "CC BY 4.0",
+      "notes": "User-provided HAL deposit copy; title, authors, DOI, HAL identifier, license notice, PDF bytes, SHA-256, extracted text, and physical page anchors verified. This is external competing research, not a Hanke attribution."
+    },
+    {
+      "document_id": "DOC-IMF-VEN-REO-2025",
+      "title": "Regional Economic Outlook: Western Hemisphere — Venezuela data limitations",
+      "author": [
+        "IMF staff"
+      ],
+      "publisher": "International Monetary Fund",
+      "year": 2025,
+      "document_type": "regional-economic-outlook",
+      "source_url": "https://www.imf.org/-/media/Files/Publications/REO/WHD/2025/October/English/text.ashx",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-VEN-REO-2025.pdf",
+      "text_path": "extracted/venezuela/DOC-IMF-VEN-REO-2025.txt",
+      "sha256": "b8942e69016a0e340631a07d5fa738a0fa89653486f8126bf70b38c0cb830161",
+      "citation_anchor": "PDF p. 53: Venezuela section; latest Article IV consultation in 2004; incomplete metadata; difficulties reconciling indicators; 2018–24 indicators are IMF staff estimates; macro indicators should be interpreted with caution",
+      "authority_level": 2,
+      "notes": "Official IMF PDF acquired over HTTPS; PDF magic bytes, SHA-256, extracted text, title, and physical page 53 anchors verified. This source documents data limitations and estimates; it is not a substitute for current BCV series."
+    },
+    {
+      "document_id": "DOC-IMF-VEN-1999-SA",
+      "title": "Venezuela: Statistical Appendix — IMF Staff Country Report 1999/111",
+      "author": [
+        "IMF staff"
+      ],
+      "publisher": "International Monetary Fund",
+      "year": 1999,
+      "document_type": "historical-statistical-appendix",
+      "source_url": "https://www.imf.org/-/media/websites/imf/imported-full-text-pdf/external/pubs/ft/scr/1999/_cr99111.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-VEN-1999-SA.pdf",
+      "text_path": "extracted/venezuela/DOC-IMF-VEN-1999-SA-ocr.txt",
+      "sha256": "4c0b58a937727c509419dbe1b94e3d1cbab1f12aac2707ddb4591f73757afc44",
+      "citation_anchor": "Scanned PDF pp. 44–48: Tables 34–38; central-bank base money and reserve accounts, M2/private-sector claims, commercial-bank accounts, and consolidated monetary-system accounts for 1994–98",
+      "authority_level": 2,
+      "notes": "Official IMF PDF acquired over HTTPS; PDF metadata, 63-page count, MIME, SHA-256, and page-level OCR/table anchors verified. Historical source only: observed/estimated table status is retained from the report, and these values must not be used as current Venezuela data."
+    },
+    {
+      "document_id": "DOC-IMF-012",
+      "title": "Turkey: IMF Staff Country Report 2002/137",
+      "author": [
+        "IMF staff"
+      ],
+      "publisher": "IMF",
+      "year": 2002,
+      "document_type": "country-report",
+      "source_url": "https://www.elibrary.imf.org/downloadpdf/view/journals/002/2002/137/article-A001-en.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 2,
+      "notes": "Official IMF eLibrary PDF endpoint returned HTTP 403 during current acquisition attempts; no report text is admitted."
+    },
+    {
+      "document_id": "DOC-IMF-012-LEGACY-PDF-2002",
+      "title": "Turkey: 2002 Article IV Consultation and First Review — legacy IMF PDF",
+      "author": [
+        "International Monetary Fund staff"
+      ],
+      "publisher": "International Monetary Fund",
+      "year": 2002,
+      "document_type": "official-country-report-scanned-pdf",
+      "source_url": "https://www.imf.org/external/pubs/ft/scr/2002/cr02137.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-012-LEGACY-PDF-2002.pdf",
+      "text_path": "extracted/imf/DOC-IMF-012-LEGACY-PDF-2002-pages1-5.txt",
+      "sha256": "b42ce86c9eedcc5ed4ae6d130778513c1191c72fbfc54a6017a281ac9e6f7e9a",
+      "citation_anchor": "image-reviewed/OCR-assisted PDF p. 1: IMF Country Report No. 02/137, July 2002, report scope, authorship, and publication policy; image-reviewed/OCR-assisted PDF pp. 2–5: staff report identity, March–April 2002 Turkey discussions, program, inflation, monetary, and banking context",
+      "authority_level": 1,
+      "primary_source": true,
+      "bounded_replacement_for": [
+        "DOC-IMF-012"
+      ],
+      "notes": "Official IMF-hosted 119-page scanned PDF acquired over HTTPS; PDF magic bytes, SHA-256, cover-page and first-five-page OCR/image review verified. The PDF has no usable text layer; exact claims are limited to the image-reviewed/OCR-assisted anchors. Bounded replacement covers the report content under the official legacy route and does not assert byte identity with the restricted eLibrary URL."
+    },
+    {
+      "document_id": "DOC-WB-BIH-001",
+      "title": "Bosnia and Herzegovina: Country Economic Memorandum / Transition Report",
+      "author": [
+        "World Bank Group"
+      ],
+      "publisher": "World Bank",
+      "year": 1996,
+      "document_type": "country-report",
+      "source_url": "https://documents1.worldbank.org/curated/en/682101468769460337/pdf/multi0page.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-WB-BIH-001.pdf",
+      "citation_anchor": "PDF pages 5–6: fiscal structure and banking-sector conditions; page 51: banking-sector restructuring chapter",
+      "authority_level": 2,
+      "sha256": "68df85e718f3b0186a3d49f6c5d6bbdc8619c7f5fd3359a18920773e20ac9ece",
+      "notes": "Official World Bank country study locally acquired over HTTPS; PDF magic bytes, hash, and physical page anchors verified."
+    },
+    {
+      "document_id": "DOC-BNB-001",
+      "title": "Law on the Bulgarian National Bank / 1997 currency-board legal framework",
+      "author": [
+        "Bulgarian National Bank legal framework record"
+      ],
+      "publisher": "Bulgarian National Bank",
+      "year": 1997,
+      "document_type": "central-bank-law-reference",
+      "source_url": "https://www.bnb.bg/AboutUs/AULegalFramework/AUNationalLegalFramework/AULFSearch/index.htm?dRubric=Resolution+of+Banks",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 2,
+      "notes": "Official BNB legal-framework page located, but current retrieval returned provider access/error HTML; no article-level text is admitted. Verified later consolidated English and Bulgarian texts provide a bounded legal-framework replacement, but do not establish the exact original web record or unamended 1997 wording."
+    },
+    {
+      "document_id": "DOC-WB-UKR-002",
+      "title": "The Road to Hyperinflation in Ukraine",
+      "author": [
+        "Simon Johnson"
+      ],
+      "publisher": "World Bank Document",
+      "year": 1993,
+      "document_type": "research-paper",
+      "source_url": "https://documents1.worldbank.org/curated/en/306351468914523835/pdf/multi0page.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-WB-UKR-002.pdf",
+      "citation_anchor": "PDF page 1: title and authorship; pages 15–16: monetary expansion and hyperinflation discussion",
+      "authority_level": 2,
+      "sha256": "ee7564dde5f97f3314c5e8c1a1081f1d0a4362742e45369652cfb2fc31fdaa45",
+      "notes": "Official World Bank research paper locally acquired over HTTPS; PDF magic bytes, hash, and physical page anchors verified."
+    },
+    {
+      "document_id": "DOC-WB-MKD-001",
+      "title": "Former Yugoslav Republic of Macedonia: economic reform and stabilization",
+      "author": [
+        "World Bank Group"
+      ],
+      "publisher": "World Bank Document",
+      "year": 1995,
+      "document_type": "country-report",
+      "source_url": "https://documents1.worldbank.org/curated/en/923481468756940398/pdf/multi-page.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-WB-MKD-001.pdf",
+      "citation_anchor": "PDF page 3: report identity; pages 10–17: inflation and Money and Banking sections",
+      "authority_level": 2,
+      "sha256": "2ab575d63f5cb1caa0a7f6496da0f451d52e05b3aec595dc39022a1c7f49139",
+      "notes": "Official World Bank country report locally acquired over HTTPS; PDF magic bytes, hash, and physical page anchors verified."
+    },
+    {
+      "document_id": "DOC-IAE-001",
+      "title": "Hanke–Bushnell Venezuela hyperinflation analysis",
+      "author": [
+        "Steve H. Hanke",
+        "R. K. Bushnell"
+      ],
+      "publisher": "Institute for Applied Economics, Johns Hopkins University",
+      "year": 2018,
+      "document_type": "working-paper",
+      "source_url": "https://sites.krieger.jhu.edu/iae/files/2018/02/Hanke-Bushnell_Venezuela.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 1,
+      "notes": "JHU IAE PDF endpoint returned HTTP 403 during approved network retry; no local artifact was admitted."
+    },
+    {
+      "document_id": "DOC-HANKE-BUSHNELL-VEN-CATO-2017",
+      "title": "On Measuring Hyperinflation: Venezuela's Episode",
+      "author": [
+        "Steve H. Hanke",
+        "Charles Bushnell"
+      ],
+      "publisher": "World Economics / Cato public object host",
+      "year": 2017,
+      "document_type": "hanke-coauthored-journal-article-pdf",
+      "source_url": "https://object.cato.org/sites/cato.org/files/articles/hanke-world-economics-july-2017.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Separate public object-host copy linked by Hanke's official publication page. It must pass PDF integrity, authorship, extraction, and physical-anchor verification before supporting Hanke-direct claims; it does not silently replace the restricted JHU record DOC-IAE-001."
+    },
+    {
+      "document_id": "DOC-LAW-ARG-23928-ORIGINAL-001",
+      "title": "Ley 23.928 — Convertibilidad del Austral, texto original",
+      "author": [
+        "Honorable Congreso de la Nación Argentina"
+      ],
+      "publisher": "Argentina.gob.ar",
+      "year": 1991,
+      "document_type": "official-statute-text",
+      "source_url": "https://www.argentina.gob.ar/normativa/nacional/norma-328/texto",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-LAW-ARG-23928-ORIGINAL-001.html",
+      "citation_anchor": "Ley Nº 23.928; ARTICULO 1º; ARTICULO 4º; ARTICULO 13",
+      "authority_level": 2,
+      "sha256": "6cf15b5ee4c34458da05a9279f9e80bf5202485d86263e25deccff770fbe7add",
+      "notes": "Official Argentina.gob.ar original text locally acquired over HTTPS; hash and article anchors verified. This is the original 1991 text, not a current amended-text consolidation."
+    },
+    {
+      "document_id": "DOC-LAW-ECU-2000-001",
+      "title": "Ley para la Transformación Económica del Ecuador — Law 4",
+      "author": [
+        "Congreso Nacional del Ecuador"
+      ],
+      "publisher": "Banco Central del Ecuador",
+      "year": 2000,
+      "document_type": "official-statute-pdf",
+      "source_url": "https://www.bce.fin.ec/micrositio20dolarizacion/documentos/Ley-marzo-2000.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-LAW-ECU-2000-001.pdf",
+      "text_path": "extracted/legal/DOC-LAW-ECU-2000-001.txt",
+      "citation_anchor": "Ley 4; Registro Oficial Suplemento 34; Art. 1.-; 25.000,00",
+      "authority_level": 2,
+      "sha256": "dfe1db1c0c3b3fc0ba68c642a4851ab6c2b79c72e4d342464170c9700f2dd4ba",
+      "notes": "Official BCE-hosted PDF locally acquired over HTTPS; PDF magic bytes, hash, and extracted-text anchors verified. PDF reports encryption metadata but text extraction and anchor verification succeeded. This is not a current consolidated text."
+    },
+    {
+      "document_id": "DOC-BNB-1997-ANNUAL-001",
+      "title": "Bulgarian National Bank Annual Report 1997 — currency-board implementation",
+      "author": [
+        "Bulgarian National Bank"
+      ],
+      "publisher": "Bulgarian National Bank",
+      "year": 1997,
+      "document_type": "official-central-bank-report",
+      "source_url": "https://www.bnb.bg/bnbweb/groups/public/documents/bnb_publication/p_anualreports_1997_en.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 2,
+      "notes": "Official BNB annual report lead; current downloader received a provider error HTML page with HTTP 200. Institutional evidence remains unavailable locally and is not a substitute for the operative 1997 statute."
+    },
+    {
+      "document_id": "DOC-LAW-BIH-CBBH-1997",
+      "title": "Law on the Central Bank of Bosnia and Herzegovina — Official Gazette BiH 1/97",
+      "author": [
+        "Parliamentary Assembly of Bosnia and Herzegovina"
+      ],
+      "publisher": "Central Bank of Bosnia and Herzegovina",
+      "year": 1997,
+      "document_type": "official-statute-pdf",
+      "source_url": "https://www.cbbh.ba/content/DownloadAttachment/?id=6fd90820-4d04-4f05-8fd4-c547b4c6e739&langTag=en",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-LAW-BIH-CBBH-1997.pdf",
+      "text_path": "extracted/legal/DOC-LAW-BIH-CBBH-1997.txt",
+      "sha256": "97a22a6bba692ac79dbc9e9abe361a9f886fcb2c750642451bf0d66384c4ea81",
+      "citation_anchor": "Chapter I; Article 01. Establishment of the Central Bank; Article 02. Objective and basic tasks of the Central Bank; currency board; full backing in freely convertible foreign exchange",
+      "authority_level": 1,
+      "notes": "Official CBBH-hosted English translation locally acquired over HTTPS; PDF magic bytes, hash, and extracted-text anchors verified. The English translation does not replace the Official Gazette language for jurisdiction-specific legal conclusions."
+    },
+    {
+      "document_id": "DOC-HANKE-VEN-2017-001",
+      "title": "On Measuring Hyperinflation: Venezuela's Episode",
+      "author": [
+        "Steve H. Hanke",
+        "Charles Bushnell"
+      ],
+      "publisher": "World Economics / Cato Institute",
+      "year": 2017,
+      "document_type": "peer-reviewed-journal-article",
+      "source_url": "https://object.cato.org/sites/cato.org/files/articles/hanke-world-economics-july-2017.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 1,
+      "notes": "First-party publication record identifies the article, but the Cato PDF mirror returned an access/error HTML response. No local article evidence was admitted."
+    },
+    {
+      "document_id": "DOC-HANKE-VEN-2017-REPEC",
+      "title": "On Measuring Hyperinflation: Venezuela's Episode — RePEc record",
+      "author": [
+        "Steve H. Hanke",
+        "Charles Bushnell"
+      ],
+      "publisher": "EconPapers / RePEc",
+      "year": 2017,
+      "document_type": "bibliographic-record",
+      "source_url": "https://econpapers.repec.org/RePEc:wej:wldecn:673",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-HANKE-VEN-2017-REPEC.html",
+      "sha256": "b48582dfd38e2d650ad1ac18eb7b84e546d935b91080c4e5ea9029c3b09cb77d",
+      "citation_anchor": "On Measuring Hyperinflation; Steve Hanke; Charles Bushnell; World Economics; Venezuela now exhibits the 57th historic episode",
+      "authority_level": 4,
+      "notes": "RePEc bibliographic HTML record locally acquired over HTTPS; hash and metadata/abstract anchors verified. This is metadata and abstract evidence only, not the primary article PDF, and cannot support HANKE-DIRECT full-text quotation."
+    },
+    {
+      "document_id": "DOC-HANKE-ZWE-2017-CATO",
+      "title": "Zimbabwe Hyperinflates Again, Entering the Record Books for a Second Time in Less Than a Decade",
+      "author": [
+        "Steve H. Hanke"
+      ],
+      "publisher": "Cato Institute",
+      "year": 2017,
+      "document_type": "public-commentary",
+      "source_url": "https://www.cato.org/commentary/zimbabwe-hyperinflates-again-entering-record-books-second-time-less-decade",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 1,
+      "notes": "Public Hanke-authored Cato commentary; downloader received provider error HTML and admitted no artifact."
+    },
+    {
+      "document_id": "DOC-HANKE-ZWE-2017-FORBES",
+      "title": "Zimbabwe Hyperinflates Again, Entering the Record Books for a Second Time in Less Than a Decade",
+      "author": [
+        "Steve H. Hanke"
+      ],
+      "publisher": "Forbes",
+      "year": 2017,
+      "document_type": "public-commentary",
+      "source_url": "https://www.forbes.com/sites/stevehanke/2017/10/28/zimbabwe-hyperinflates-again-entering-the-record-books-for-a-second-time-in-less-than-a-decade/",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-HANKE-ZWE-2017-FORBES.html",
+      "sha256": "a318cb41f24dbb417dbf3f3ffabbd30b0cbf25431e49fdfa02c7734d08ff4725",
+      "citation_anchor": "Zimbabwe Hyperinflates Again; Steve Hanke; 50% per month; September 14, 2017; Purchasing Power Parity; 77%; 348%",
+      "authority_level": 1,
+      "bounded_replacement_for": [
+        "DOC-HANKE-ZWE-2017-CATO"
+      ],
+      "notes": "Public Hanke-authored Forbes HTML locally acquired over HTTPS; hash and exact metadata/body anchors verified. Bounded replacement covers the verified Hanke commentary content under the Forbes publication scope; the inaccessible Cato URL remains a separate record. This is not the Hanke–Krus table or a peer-reviewed PDF."
+    },
+    {
+      "document_id": "DOC-LAW-ZWE-FINANCE-NO2-2009-VERITAS",
+      "title": "Finance (No. 2) Act, 2009 (No. 5) — authoritative legal-reporter copy",
+      "author": [
+        "Parliament of Zimbabwe"
+      ],
+      "publisher": "Veritas Zimbabwe",
+      "year": 2009,
+      "document_type": "authoritative-law-reporter-pdf",
+      "source_url": "https://www.veritaszim.net/sites/veritas_d/files/Finance%20%28No.%202%29%2C%202009.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-LAW-ZWE-FINANCE-NO2-2009-VERITAS.pdf",
+      "text_path": "extracted/legal/DOC-LAW-ZWE-FINANCE-NO2-2009-VERITAS.txt",
+      "sha256": "d51a2031c6b28a4b7f7a2adc884bf3bbd1de62d5c01765a1a1d21a1b40cd9bb8",
+      "citation_anchor": "OCR PDF p. 8: Part VII section 17; section 44A legal tender of foreign currencies; deemed 1 February 2009 legal-tender effect",
+      "authority_level": 3,
+      "primary_source": false,
+      "access_basis": "public authoritative legal-reporter copy; no official government-hosted copy located",
+      "notes": "Public Veritas PDF acquired over HTTPS; PDF integrity, SHA-256, OCR extraction, title, section 17, section 44A, and 1 February 2009 anchors verified. This is an authoritative reporter copy, not an official government-hosted copy; it supports bounded legal analysis of the 2009 multicurrency basis and does not establish every implementing notice or the complete gazette chronology."
+    },
+    {
+      "document_id": "DOC-HANKE-KARGI-MONETARY-BOARDS-2023",
+      "title": "Monetary Policy and Currency Boards: Latin America and Caribbean Countries Examples, Vol. 2",
+      "author": [
+        "Steve H. Hanke",
+        "Bilal Kargı"
+      ],
+      "publisher": "KSP Books",
+      "year": 2023,
+      "document_type": "open-access-edited-volume",
+      "source_url": "https://econsciences.com/wp-content/uploads/2023/03/978-625-8190-80-9.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-HANKE-KARGI-VEN-CHAPTER-2023.pdf",
+      "text_path": "extracted/hanke/DOC-HANKE-KARGI-VEN-CHAPTER-2023.txt",
+      "sha256": "a8d2b15ca819da0c5b8a8213291dc931ace650fc7ec37b8ad3a4bf318af75b8b",
+      "citation_anchor": "PDF pp. 3–4: ISBN, editors, and CC BY-NC 4.0 IGO terms; PDF pp. 14–30: Hanke and Bushnell Venezuela hyperinflation chapter; PDF pp. 78–108: Venezuela monetary-reform chapter by María Belén Wu",
+      "authority_level": 1,
+      "primary_source": true,
+      "license": "CC BY-NC 4.0 IGO",
+      "access_basis": "publisher-hosted open-access PDF",
+      "bounded_replacement_for": [
+        "DOC-HANKE-VEN-HYPER-2016",
+        "DOC-HANKE-BUSHNELL-VEN-2017",
+        "DOC-HANKE-BUSHNELL-VEN-CATO-2017",
+        "DOC-HANKE-VEN-2017-001",
+        "DOC-IAE-001",
+        "DOC-WU-VEN-REFORM-2016"
+      ],
+      "notes": "Open-access edited volume acquired over HTTPS and locally hash-verified. The bounded replacement covers two separately scoped chapters: PDF pp. 14–30 is the Hanke/Bushnell Venezuela hyperinflation chapter and supports only its verified definition, threshold, episode qualification, and Venezuela peak/measurement discussion; PDF pp. 78–108 is María Belén Wu's Venezuela monetary-reform chapter and supports only that author's reform analysis. These chapters provide bounded content replacements for the restricted leads but do not assert file or edition identity, nor support unrelated Hanke/Venezuela articles. Steve Hanke is an editor and coauthor of the chapter beginning at PDF p. 14; the chapter beginning at PDF p. 78 must not be attributed directly to Hanke. Noncommercial license terms are preserved."
+    },
+    {
+      "document_id": "DOC-LAW-BGR-BNB-1997-CIELA",
+      "title": "Закон за Българската народна банка от 1997 г. — Ciela Gazette-archive copy with later amendments",
+      "author": [
+        "National Assembly of Bulgaria"
+      ],
+      "publisher": "Ciela Norma / Bulgarian State Gazette archive",
+      "year": 1997,
+      "document_type": "authoritative-law-database-html",
+      "source_url": "https://www.ciela.net/svobodna-zona-darjaven-vestnik/document/2134138370/issue/359/zakon-za-balgarskata-narodna-banka-ot-1997-g",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-LAW-BGR-BNB-1997-CIELA.html",
+      "text_path": "extracted/legal/DOC-LAW-BGR-BNB-1997-CIELA.txt",
+      "sha256": "ae4d23b0e226230ab41ec9ef22173b699e096b63073494cd9373b165e63dde36",
+      "citation_anchor": "HTML/text title: State Gazette issue 46 of 10 June 1997; Article 28; Article 29; text notes denomination on 5 July 1999 and later amendments",
+      "authority_level": 3,
+      "primary_source": false,
+      "access_basis": "public legal-database archive",
+      "notes": "Public Ciela archive page acquired over HTTPS and locally hash-verified. It identifies the 1997 State Gazette issue and exposes Bulgarian Articles 28–29, but the page is an amended/denominated legal-database copy and is not treated as the exact unamended State Gazette text or as an official government-hosted scan."
+    },
+    {
+      "document_id": "DOC-BLS-CPI-API-2026",
+      "title": "BLS CPI-U series response for CUSR0000SA0 (2020–2021 API retrieval)",
+      "author": [
+        "U.S. Bureau of Labor Statistics"
+      ],
+      "publisher": "Bureau of Labor Statistics Public Data API",
+      "year": 2026,
+      "document_type": "official-api-response",
+      "source_url": "https://api.bls.gov/publicAPI/v2/timeseries/data/CUSR0000SA0?startyear=2020&endyear=2021",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-BLS-CPI-API-2026.json",
+      "sha256": "d609aa60438b2c7b89d9ccd5973b208acf87f95869fc5c8ea793a5ec03ab8bc3",
+      "citation_anchor": "JSON Results.series[0].data: CUSR0000SA0, 2020–2021 monthly observations; 2021 M12 value 280.845",
+      "authority_level": 2,
+      "notes": "Official BLS API response acquired over HTTPS and locally hash-verified. This is a later API retrieval/current vintage and is not treated as the contemporaneous January 2022 release vintage; it cannot be substituted for that release in the Hanke 2021 forecast audit."
+    },
+    {
+      "document_id": "DOC-CBBH-ANNUAL-2000",
+      "title": "Central Bank of Bosnia and Herzegovina 2000 Annual Report",
+      "author": [
+        "Central Bank of Bosnia and Herzegovina"
+      ],
+      "publisher": "Central Bank of Bosnia and Herzegovina",
+      "year": 2001,
+      "document_type": "official-central-bank-report",
+      "source_url": "https://www.cbbh.ba/content/DownloadAttachment/?id=8b5c004b-f07a-4743-9664-724221bcc969&langTag=en",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-CBBH-ANNUAL-2000.pdf",
+      "sha256": "0ff4bddacde983aa0260d510b2094f75a15681b5eb7a8ba50f388a5c5a586abb",
+      "citation_anchor": "adopted at 5th meeting; 29 March 2001; end of 2000; KM 48 million; Net foreign reserves",
+      "authority_level": 1,
+      "notes": "Official CBBH-hosted PDF locally acquired over HTTPS; PDF hash and extracted-text anchors verified. The report's board-adoption date is retained as the benchmark release-date basis; public dissemination timing is not independently established."
+    },
+    {
+      "document_id": "DOC-LAW-ZWE-SI-142-2019",
+      "title": "Reserve Bank of Zimbabwe (Legal Tender) Regulations, 2019 — Statutory Instrument 142 of 2019",
+      "author": [
+        "Minister of Finance and Economic Development, Zimbabwe"
+      ],
+      "publisher": "Reserve Bank of Zimbabwe / Government Printer",
+      "year": 2019,
+      "document_type": "official-regulation-pdf",
+      "source_url": "https://www.rbz.co.zw/documents/acts/SIs/S.-I.-142-of-2019-Reserve-Bank-of-Zim-Legal-Tender-Regulations-2019--1.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-LAW-ZWE-SI-142-2019.pdf",
+      "text_path": "extracted/legal/DOC-LAW-ZWE-SI-142-2019.txt",
+      "sha256": "1db079b6b2480ce102e7b822dffa1e0106e3e4476859e5eb42430cf7ca760550",
+      "citation_anchor": "verified PDF pp. 1–2: SI 142 of 2019 title; sections 2(1)–(3), 3(1); effective 24 June 2019; Gazette notice",
+      "authority_level": 1,
+      "notes": "Official RBZ-hosted PDF locally acquired over HTTPS; two-page PDF, hash, extracted text, and legal-tender/effective-date anchors verified. This is a 2019 legal-tender instrument, not the 2009 multicurrency-introduction instrument; it documents the later transition to sole Zimbabwe-dollar legal tender with stated savings and exceptions."
+    },
+    {
+      "document_id": "DOC-LAW-ZWE-RBZ-ACT-2009",
+      "title": "Reserve Bank of Zimbabwe Act — legal-tender and monetary-policy provisions",
+      "author": [
+        "Law Development Commission, Zimbabwe"
+      ],
+      "publisher": "Reserve Bank of Zimbabwe",
+      "year": 2009,
+      "document_type": "official-statute-pdf",
+      "source_url": "https://www.rbz.co.zw/documents/acts/rbz-act.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-LAW-ZWE-RBZ-ACT-2009.pdf",
+      "text_path": "extracted/legal/DOC-LAW-ZWE-RBZ-ACT-2009.txt",
+      "sha256": "5b381dbfd911ac57e2bc229d2e3b0959e97a7fceed95b3e8fd3fa41e39a8b62a",
+      "citation_anchor": "44A Legal tender of foreign currencies; 45 Bank’s responsibility for monetary policy; Section inserted by Act 5 of 2009",
+      "authority_level": 1,
+      "notes": "Official RBZ-hosted PDF acquired over HTTPS; PDF magic bytes, SHA-256, extracted text, title, and physical pp. 15–16 anchors verified. The document is a consolidated/amended text and supports the quoted statutory provisions; historical multicurrency implementation still requires separate regulations and effective-date sources."
+    },
+    {
+      "document_id": "DOC-COURT-ZWE-MAKONI-2015",
+      "title": "Makoni v Sea Harvest (REF SC 19 of 2008) [2015] ZWHHC 197",
+      "author": [
+        "High Court of Zimbabwe"
+      ],
+      "publisher": "SheriaHub legal-reporter mirror",
+      "year": 2015,
+      "document_type": "authoritative-judgment-reporter-copy",
+      "source_url": "https://sheriahub.com/cases/zw/caselaw/makoni-v-sea-harvest-ref-sc-19-of-2008-2015-zwhhc-197-24-february-2015.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-COURT-ZWE-MAKONI-2015.pdf",
+      "text_path": "extracted/legal/DOC-COURT-ZWE-MAKONI-2015.txt",
+      "sha256": "2bbb11337e2b2d2b2d444e2b4145c56611b0328843d54e8182435c275e2989c6",
+      "citation_anchor": "verified PDF p. 3: 2009 multicurrency regime; pp. 4–5: jurisdictional issues; p. 13: application dismissed with costs",
+      "authority_level": 3,
+      "notes": "13-page judgment copy acquired from an authoritative legal-reporter mirror; PDF magic bytes, SHA-256, extracted text, title, case number, date, and bounded anchors verified. This is not an official court-hosted copy; the ZimLII endpoint remained inaccessible and is recorded in retrieval-attempts.jsonl. Reliance is limited to the reproduced judgment text and cited holding."
+    },
+    {
+      "document_id": "DOC-CBBH-ANNUAL-2001",
+      "title": "Central Bank of Bosnia and Herzegovina 2001 Annual Report",
+      "author": [
+        "Central Bank of Bosnia and Herzegovina"
+      ],
+      "publisher": "Central Bank of Bosnia and Herzegovina",
+      "year": 2002,
+      "document_type": "official-central-bank-report",
+      "source_url": "https://www.cbbh.ba/content/DownloadAttachment/?id=0481f01f-515c-4693-9a80-ac3cef587c9d&langTag=en",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-CBBH-ANNUAL-2001.pdf",
+      "sha256": "d6f7e51c620ab5e3f6ff86402484895a8da7462197eb7384c2b21b9aa246a30c",
+      "citation_anchor": "adopted at 7. meeting; 27 March 2002; end of 2001; KM 75 million; free foreign exchange reserves",
+      "authority_level": 1,
+      "notes": "Official CBBH-hosted PDF locally acquired over HTTPS; PDF hash and extracted-text anchors verified. The report's board-adoption date is retained as the benchmark release-date basis; public dissemination timing is not independently established."
+    },
+    {
+      "document_id": "DOC-COURT-ZWE-MBUNDIRE-2011",
+      "title": "Mbundire v Buttress (SC 13 of 2011, Civil Appeal 114 of 2009) [2011] ZWSC 13",
+      "author": [
+        "Supreme Court of Zimbabwe"
+      ],
+      "publisher": "SheriaHub legal-reporter mirror",
+      "year": 2011,
+      "document_type": "authoritative-judgment-reporter-copy",
+      "source_url": "https://sheriahub.com/cases/zw/caselaw/mbundire-v-buttress-sc-13-of-2011-civil-appeal-114-of-2009-2011-zwsc-13-23-may-2011.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-COURT-ZWE-MBUNDIRE-2011.pdf",
+      "text_path": "extracted/legal/DOC-COURT-ZWE-MBUNDIRE-2011.txt",
+      "sha256": "aff43afa92f378e23bd2f8b0590511050597fa168c95866426ab56b148ba2fa2",
+      "citation_anchor": "verified PDF pp. 7–8: February 2009 multiple-currency system; p. 9: S.I. 6/2009; p. 10: Finance (No. 2) Act 2/09 and legal-tender effect",
+      "authority_level": 3,
+      "notes": "Nine-page Supreme Court judgment copy acquired from a legal-reporter mirror; PDF integrity, SHA-256, extracted text, case identity, and bounded anchors verified. It is evidence of the Court's account of the 2009 transition, not a substitute for the underlying statutory instruments."
+    },
+    {
+      "document_id": "DOC-IMF-PERU-HISTORY-2015",
+      "title": "Peru: Recent Economic History — hyperinflation and the Great Stabilization",
+      "author": [
+        "Renzo Rossini",
+        "Alejandro Santos"
+      ],
+      "publisher": "IMF / Peru: Staying the Course of Economic Reforms",
+      "year": 2015,
+      "document_type": "book-chapter-pdf-excerpt",
+      "source_url": "https://www.imf.org/-/media/websites/imf/imported-events/staticfiles/misc/pdf/_peruextractenpdf.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-PERU-HISTORY-2015.pdf",
+      "text_path": "extracted/imf-peru-history-2015.txt",
+      "sha256": "6fe4bba03592bb1ba8d15b5854ccee07880f806146198ff404021b03680f7db0",
+      "citation_anchor": "verified PDF p. 26: Chapter 2 title/authors and 1989–90 crisis context; pp. 31–35: 1985–90 indicators, 1990 stabilization, exchange-rate reform, and reserves; PDF p. 33: fiscal, monetary, and foreign-exchange measures",
+      "authority_level": 2,
+      "access_basis": "official IMF-hosted public excerpt PDF",
+      "notes": "Official IMF-hosted 96-page excerpt acquired over HTTPS; PDF magic bytes, SHA-256, title/authors, extraction, and physical page anchors verified. The file identifies itself as an excerpt from an IMF volume and uncorrected page proofs; it is used only for the bounded historical statements and does not establish Hanke attribution or replace the published volume."
+    },
+    {
+      "document_id": "DOC-IMF-NIC-PRSP-2000",
+      "title": "A Strengthened Poverty Reduction Strategy — Nicaragua",
+      "author": [
+        "Government of Nicaragua"
+      ],
+      "publisher": "IMF public archive",
+      "year": 2000,
+      "document_type": "government-strategy-pdf",
+      "source_url": "https://www.imf.org/external/np/prsp/2000/nic/01/nic.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-NIC-PRSP-2000.pdf",
+      "text_path": "extracted/imf-nicaragua-prsp-2000.txt",
+      "sha256": "bfb4e30939b9d0ca7b71bccf2c1910efe6565bbfc6e6c3168aa243e70a099fc9",
+      "citation_anchor": "verified PDF p. 8: post-1990 abatement of hyperinflation and transition; p. 25: 1984–89 output decline and 33,000 percent 1988 inflation peak; p. 26: 1990s stabilization and reform; pp. 27–28: reserve requirements and central-bank fiscal-financing restrictions",
+      "authority_level": 2,
+      "access_basis": "official IMF-hosted public archive PDF",
+      "notes": "Official IMF-hosted 61-page government strategy PDF acquired over HTTPS; PDF magic bytes, SHA-256, extraction, title, and physical-page anchors verified. This is Nicaragua's government strategy document preserved in the IMF public archive; it is not automatically an IMF analytical conclusion and does not establish Hanke attribution."
+    },
+    {
+      "document_id": "DOC-IMF-RUS-MONETARY-INSTRUMENTS-1997",
+      "title": "Evolution of Monetary Policy Instruments in Russia",
+      "author": [
+        "Tomás J. T. Baliño",
+        "David S. Hoelscher",
+        "Jakob Horder"
+      ],
+      "publisher": "IMF Working Paper WP/97/180",
+      "year": 1997,
+      "document_type": "working-paper-scanned-pdf",
+      "source_url": "https://www.imf.org/external/pubs/ft/wp/wp97180.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-RUS-MONETARY-INSTRUMENTS-1997.pdf",
+      "sha256": "b490c74300eef0c8518753a1ac1f371c3d36c3d178faba9437032485def4559c",
+      "citation_anchor": "image-reviewed PDF p. 1: WP/97/180 title, authors, December 1997, abstract, and January 1992–December 1995 study period; image-reviewed PDF p. 15: Table 3, Russia monetary-policy implementation and reserve-money counterparts",
+      "authority_level": 2,
+      "access_basis": "official IMF-hosted public PDF",
+      "notes": "Official IMF 39-page scanned PDF acquired over HTTPS; PDF magic bytes, SHA-256, cover-page metadata/abstract, and Table 3 page image were independently reviewed. The PDF has no usable text layer and OCR did not produce a reproducible extraction; claims are limited to image-reviewed page anchors and no verbatim text is reproduced."
+    },
+    {
+      "document_id": "DOC-IMF-GEO-HYPER-1999",
+      "title": "The Georgian Hyperinflation and Stabilization",
+      "author": [
+        "Jian-Ye Wang"
+      ],
+      "publisher": "IMF Working Paper WP/99/65",
+      "year": 1999,
+      "document_type": "working-paper-scanned-pdf",
+      "source_url": "https://www.imf.org/external/pubs/ft/wp/1999/wp9965.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-GEO-HYPER-1999.pdf",
+      "sha256": "2348d81c42756ff31ab22e4e0886a91eca0f6d4e740cdfe251c675ae48bc7f09",
+      "citation_anchor": "image-reviewed PDF p. 1: WP/99/65 title, author, May 1999, abstract, and Georgian 1993–94 hyperinflation/stabilization scope",
+      "authority_level": 2,
+      "access_basis": "official IMF-hosted public PDF",
+      "notes": "Official IMF 34-page scanned PDF acquired over HTTPS; PDF magic bytes, SHA-256, cover-page metadata/abstract, and physical page image were independently reviewed. The PDF has no usable text layer; claims are limited to the image-reviewed page and no OCR-only quotation is admitted."
+    },
+    {
+      "document_id": "DOC-IMF-YUG-FRY-2001",
+      "title": "Federal Republic of Yugoslavia: Membership and Request for Emergency Postconflict Assistance",
+      "author": [
+        "IMF staff"
+      ],
+      "publisher": "IMF Staff Country Report 01/07",
+      "year": 2001,
+      "document_type": "staff-country-report-scanned-pdf",
+      "source_url": "https://www.imf.org/external/pubs/ft/scr/2001/cr0107.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-YUG-FRY-2001.pdf",
+      "sha256": "a196d9b9bd627dc2ff9593770c73339267819231b0d3069e424c073d22aee701",
+      "citation_anchor": "image-reviewed PDF p. 1: January 2001 Country Report No. 01/07 identity and scope; image-reviewed PDF p. 8: Figure 2 prices/exchange rates/wages, January 1994–November 2001, and note that January 1994 monthly inflation peaked at 300 billion percent",
+      "authority_level": 2,
+      "access_basis": "official IMF-hosted public PDF",
+      "notes": "Official IMF 43-page scanned PDF acquired over HTTPS; PDF magic bytes, SHA-256, cover-page identity, and page 8 chart/footnote were independently reviewed. The PDF has no usable text layer; claims are limited to image-reviewed page anchors and the later 2001 reporting scope. No OCR-only quotation is admitted."
+    },
+    {
+      "document_id": "DOC-NBP-POLAND-ZLOTY-2022",
+      "title": "The History of the Polish Złoty",
+      "author": [
+        "Narodowy Bank Polski"
+      ],
+      "publisher": "National Bank of Poland",
+      "year": 2022,
+      "document_type": "official-central-bank-history-pdf",
+      "source_url": "https://nbp.pl/wp-content/uploads/2022/11/bankoteka_dzieje_zlotego.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 1,
+      "notes": "Official National Bank of Poland public PDF identified for the 1923–24 hyperinflation and 1924 currency reform episode; local artifact integrity, extraction, language/scope review, and physical-page anchors remain to be verified."
+    },
+    {
+      "document_id": "DOC-NBER-DORNBUSCH-FISCHER-POLAND-1986",
+      "title": "Stopping Hyperinflations Past and Present",
+      "author": [
+        "Rudiger Dornbusch",
+        "Stanley Fischer"
+      ],
+      "publisher": "National Bureau of Economic Research",
+      "year": 1986,
+      "document_type": "working-paper-pdf",
+      "source_url": "https://www.nber.org/system/files/working_papers/w1810/w1810.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-NBER-DORNBUSCH-FISCHER-POLAND-1986.pdf",
+      "text_path": "extracted/nber-stopping-hyperinflations-1986.txt",
+      "sha256": "e68216886c85a3a64eb3436f732871ec377e76499a3df2f7eaf18877db09bc94",
+      "citation_anchor": "verified PDF p. 1: title, authors, NBER Working Paper 1810, January 1986; pp. 23–30 (printed pagination): Polish monetary fragmentation, 1921–24 hyperinflation, failed 1921 stabilization, 1924 zloty reform, and 1925–27 subsequent stabilization problems; extracted Table 10 and Table 11 references",
+      "authority_level": 3,
+      "access_basis": "NBER public working-paper PDF acquired over HTTPS",
+      "bounded_replacement_for": [
+        "DOC-NBP-POLAND-ZLOTY-2022"
+      ],
+      "notes": "Public NBER working paper locally acquired with PDF magic-byte, SHA-256, extraction, title/author, and physical-page-scope verification. Bounded replacement covers the documented Poland 1921–27 episode facts needed by the historical benchmark; it is not the NBP history file, does not establish NBP institutional wording, and is not Hanke attribution."
+    },
+    {
+      "document_id": "DOC-DHM-WEIMAR-REFORM-1923",
+      "title": "Die Währungsreform 1923",
+      "author": [
+        "Arnulf Scriba"
+      ],
+      "publisher": "Deutsches Historisches Museum / LeMO",
+      "year": 2015,
+      "document_type": "historical-museum-html",
+      "source_url": "https://www.dhm.de/lemo/kapitel/weimarer-republik/innenpolitik/waehrungsreform-1923",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-DHM-WEIMAR-REFORM-1923.html",
+      "text_path": "extracted/dhm-weimar-reform-1923.txt",
+      "sha256": "f2f46da3d7ca453d9bb1a10864a873959e88362dad58c888fbb219dd0d9b6482",
+      "citation_anchor": "verified HTML: title and author; reform context; Deutsche Rentenbank and 3.2 billion Rentenmark mortgage basis; 15 November 1923 Rentenmark issuance and 1 trillion Papiermark conversion; 30 August 1924 Reichsmark transition",
+      "authority_level": 2,
+      "access_basis": "Deutsches Historisches Museum public HTML acquired over HTTPS; text CC BY NC SA 4.0",
+      "notes": "Content-bearing HTML locally captured and verified with SHA-256, required historical markers, extracted text, author, explicit CC BY NC SA 4.0 license, and scope. This is bounded external historical evidence and does not establish Hanke attribution."
+    },
+    {
+      "document_id": "DOC-MNB-FORINT-70Y-2016",
+      "title": "Post-war Inflation and the Introduction of Forint",
+      "author": [
+        "Zoltán Eperjesi",
+        "Zoltán Horváth",
+        "Kitti Vajda"
+      ],
+      "publisher": "Magyar Nemzeti Bank",
+      "year": 2016,
+      "document_type": "official-central-bank-history-pdf",
+      "source_url": "https://www.mnb.hu/letoltes/mnb-70-years-of-the-forint-road-from-hyperinflation-to-price-stability.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-MNB-FORINT-70Y-2016.pdf",
+      "text_path": "extracted/mnb-forint-70y-2016.txt",
+      "sha256": "bfb5026c9930a8e6716c9bf3a04c40d13b8e7ce15838d86470b370726a5bec5f",
+      "citation_anchor": "verified PDF pp. 6–7: post-war hyperinflation and 1 August 1946 forint introduction; pp. 10–11: political/economic context and reconstruction; pp. 19–20: 1946 pengő collapse, 10 July 1946 record daily devaluation, and hyperinflation data context",
+      "authority_level": 1,
+      "access_basis": "Magyar Nemzeti Bank public PDF acquired over HTTPS",
+      "notes": "Official central-bank historical volume locally acquired with PDF integrity, SHA-256, extraction, named chapter authors, and physical page anchors verified. The source supports bounded historical evidence only; it does not establish Hanke attribution or a Venezuela policy result."
+    },
+    {
+      "document_id": "DOC-STATE-DEPT-CHINA-HYPER-1945",
+      "title": "Memorandum by the Chargé in China to General Marshall",
+      "author": [
+        "U.S. Department of State, Office of the Historian"
+      ],
+      "publisher": "Foreign Relations of the United States, 1945, The Far East, Volume VII",
+      "year": 1945,
+      "document_type": "official-government-historical-html",
+      "source_url": "https://history.state.gov/historicaldocuments/frus1945v07/d562",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-STATE-DEPT-CHINA-HYPER-1945.html",
+      "text_path": "extracted/state-dept-china-hyper-1945.txt",
+      "sha256": "c5130aa59edd83bcfe09119681b613e147815c1aa96d2da2922e3a10a75c74ab",
+      "citation_anchor": "verified HTML/text: Chungking, 19 December 1945; contemporaneous description of wartime currency hyperinflation, note issue, prices, monthly interest rates, CN$900 billion note issue, and fiscal-financing explanation",
+      "authority_level": 1,
+      "access_basis": "U.S. Department of State Office of the Historian public HTML acquired over HTTPS",
+      "notes": "Official government historical document locally captured and verified with HTML integrity, SHA-256, extracted text, date, and bounded page-equivalent anchors. It is contemporaneous external evidence and does not establish Hanke attribution or a Venezuela policy result."
+    },
+    {
+      "document_id": "DOC-STATE-DEPT-CHINA-GOLD-YUAN-1949",
+      "title": "The Ambassador in China to the Secretary of State — Progress of Inflation and Gold Yuan Reform",
+      "author": [
+        "U.S. Department of State, Office of the Historian"
+      ],
+      "publisher": "Foreign Relations of the United States, 1949, The Far East, Volume IX",
+      "year": 1949,
+      "document_type": "official-government-historical-html",
+      "source_url": "https://history.state.gov/historicaldocuments/frus1949v09/d684",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-STATE-DEPT-CHINA-GOLD-YUAN-1949.html",
+      "text_path": "extracted/state-dept-china-gold-yuan-1949.txt",
+      "sha256": "ad886633e1c8fc02e4670d81016e54d0fb20537ac1bb7267c415dfbb775d0806",
+      "citation_anchor": "verified HTML/text: Nanking, 4 January 1949; 19 August 1948 Gold Yuan conversion and USD parity; reserve composition; budget imbalance; black-market depreciation and documented reform failure",
+      "authority_level": 1,
+      "access_basis": "U.S. Department of State Office of the Historian public HTML acquired over HTTPS",
+      "notes": "Official government historical document locally captured and verified with HTML integrity, SHA-256, extracted text, date, and bounded page-equivalent anchors. It is contemporaneous external evidence and does not establish Hanke attribution or a Venezuela policy result."
+    },
+    {
+      "document_id": "DOC-BOG-GREECE-HYPER-2015",
+      "title": "Economic Bulletin 41 — Greek hyperinflation episode 1943–44",
+      "author": [
+        "Bank of Greece"
+      ],
+      "publisher": "Bank of Greece",
+      "year": 2015,
+      "document_type": "official-central-bank-bulletin-pdf",
+      "source_url": "https://www.bankofgreece.gr/Publications/4120150704_en.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-BOG-GREECE-HYPER-2015.pdf",
+      "text_path": "extracted/bank-of-greece-hyperinflation-2015.txt",
+      "sha256": "799c1684c7e824d4cd3220001383b1be2a59ea48f8110e9061297a4e0d09b9f4",
+      "citation_anchor": "verified PDF pp. 17–18: Greek hyperinflation section and Chart 9, November 1943–November 1944; p. 19: Chart 10 seigniorage revenue, 1939–1948",
+      "authority_level": 1,
+      "access_basis": "official Bank of Greece public PDF",
+      "notes": "Official Bank of Greece 21-page bulletin acquired over HTTPS; PDF magic bytes, SHA-256, extracted text, title, and physical-page anchors verified. The source supports bounded Bank of Greece historical evidence and does not establish Hanke attribution."
+    },
+    {
+      "document_id": "DOC-LUND-RCF-METADATA-2026",
+      "title": "Russian Currency and Finance — university repository metadata record",
+      "author": [
+        "Steve H. Hanke",
+        "Lars Jonung",
+        "Kurt Schuler"
+      ],
+      "publisher": "Lund University Research Portal",
+      "year": 1993,
+      "document_type": "repository-metadata-pdf",
+      "source_url": "https://lucris.lub.lu.se/ws/portalfiles/portal/69554144/133_List_of_contents_of_Steve_Hanke_Lars_Jonung_and_Kurt_Schuler_Russian_Currency_and_Finance_A_Currency_board_approach_to_reform_1993.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-LUND-RCF-CONTENTS-2026.pdf",
+      "text_path": "extracted/hanke/DOC-LUND-RCF-CONTENTS-2026.txt",
+      "sha256": "12251b8baa5576b69c67a21d6d780297928b566f2298086b3a91c74c8d6e78de",
+      "citation_anchor": "PDF pp. 1–2: title, authors, 1993 Routledge publisher record, version-of-record statement, and repository rights terms; remaining pages are blank/download metadata pages.",
+      "authority_level": 2,
+      "primary_source": false,
+      "access_basis": "university-repository public PDF; private-study/download terms preserved",
+      "bounded_replacement_for": [
+        "BOOK-HANKE-RCF-TRANSLATION-2014",
+        "DOC-LUND-RCF-CONTENTS-2026"
+      ],
+      "notes": "Verified university-repository metadata artifact, not the full book and not a chapter-text source. It supports only bibliographic identity, authorship, publisher/year, version-of-record, and repository-rights scope. It is a separate verified capture of the same metadata lead and does not replace or authorize redistribution of the restricted full Russian Currency and Finance text; it must not be used for full-book quotations or page-level substantive claims."
+    },
+    {
+      "document_id": "DOC-VEN-BANESCO-H1-2025",
+      "title": "Informe Financiero Banesco — Primer Semestre 2025",
+      "author": [
+        "Banesco Banco Universal"
+      ],
+      "publisher": "Banesco Banco Universal",
+      "year": 2025,
+      "document_type": "secondary-bank-financial-report",
+      "source_url": "https://banesco-prod-2020.s3.amazonaws.com/wp-content/uploads/2025/08/informe-primer-semestre-2025-espanol.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-VEN-BANESCO-H1-2025.pdf",
+      "text_path": "extracted/venezuela/DOC-VEN-BANESCO-H1-2025.txt",
+      "sha256": "73e1c1b087476d4b8249a0a91ae73384549cea3dd4f48b7f6a4c1b9847bcacca",
+      "citation_anchor": "PDF p. 8: base monetaria and liquidez (M2) discussion/graphic; PDF pp. 6, 8–9: BCV-attributed monetary context",
+      "authority_level": 5,
+      "primary_source": false,
+      "notes": "Public secondary bank report acquired over HTTPS; PDF magic bytes, SHA-256, extracted text, and physical-page anchors verified. It is not a primary BCV statistical response and remains disputed context."
+    },
+    {
+      "document_id": "DOC-VEN-BDV-H2-2024",
+      "title": "Banco de Venezuela — Informe II Semestre 2024 de la Junta Directiva",
+      "author": [
+        "Banco de Venezuela"
+      ],
+      "publisher": "Banco de Venezuela",
+      "year": 2024,
+      "document_type": "secondary-bank-financial-report",
+      "source_url": "https://www.bancodevenezuela.com/files/informesgestion/Informe%20II%20Semestre%202024%20Informe%20de%20la%20Junta%20Directiva.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-VEN-BDV-H2-2024.pdf",
+      "text_path": "extracted/venezuela/DOC-VEN-BDV-H2-2024.txt",
+      "sha256": "e449e96ce5407255a606c7e288c849c388d9b33f50469c6cd7ae663f1cafd010",
+      "citation_anchor": "PDF pp. 6–7: liquidez monetaria M2 and base monetaria figures through 27 December 2024",
+      "authority_level": 5,
+      "primary_source": false,
+      "notes": "Public bank report acquired over HTTPS; PDF magic bytes, SHA-256, extracted text, and physical-page anchors verified. It is secondary BCV-referenced context, not a primary statistical response."
+    },
+    {
+      "document_id": "DOC-VEN-CEDICE-DEC-2024",
+      "title": "Venezuela: Informe de coyuntura económica, diciembre 2024",
+      "author": [
+        "CEDICE Libertad"
+      ],
+      "publisher": "CEDICE Libertad",
+      "year": 2024,
+      "document_type": "secondary-economic-report",
+      "source_url": "https://cedice.org.ve/ogp/wp-content/uploads/2025/01/CI-2025_compressed.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-VEN-CEDICE-DEC-2024.pdf",
+      "text_path": "extracted/venezuela/DOC-VEN-CEDICE-DEC-2024.txt",
+      "sha256": "3a78ea87c25269131e7619960ac85cddcd22f7ae3c668e3041ac7cde67f5708f",
+      "citation_anchor": "PDF pp. 5–7: BCV-referenced international reserves, base money, and M2 context for year-end 2024",
+      "authority_level": 5,
+      "primary_source": false,
+      "notes": "Public CEDICE report acquired over HTTPS; PDF magic bytes, SHA-256, extracted text, and physical-page anchors verified. It is secondary evidence; gross versus liquid reserves are not reconciled."
+    },
+    {
+      "document_id": "DOC-VEN-UNDP-Q3-2025",
+      "title": "Venezuela: Reporte macroeconómico — Q3 2025 context",
+      "author": [
+        "United Nations Development Programme"
+      ],
+      "publisher": "UNDP Venezuela",
+      "year": 2025,
+      "document_type": "secondary-international-organization-report",
+      "source_url": "https://www.undp.org/sites/g/files/zskgke326/files/2025-12/reporte_macroeconomico_nov25_digital.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-VEN-UNDP-Q3-2025.pdf",
+      "text_path": "extracted/venezuela/DOC-VEN-UNDP-Q3-2025.txt",
+      "sha256": "0d3d9edb3d6ec4e81c15e17e48d94d02ec94e1c252af44671a62eb7057fe9321",
+      "citation_anchor": "PDF pp. 6 and 26: BCV-referenced M0/M2 and reserve context; pp. 5–7 and 25–26: macroeconomic context",
+      "authority_level": 5,
+      "primary_source": false,
+      "notes": "Public UNDP report acquired over HTTPS; PDF magic bytes, SHA-256, extracted text, and physical-page anchors verified. It is secondary BCV-referenced context, not a BCV statistical response."
+    },
+    {
+      "document_id": "DOC-IMF-011-ECOMOD-COPY-2003",
+      "title": "Would Cold Turkey Work in Turkey? — public conference copy",
+      "author": [
+        "Oya Celasun",
+        "R. Gaston Gelos",
+        "Alessandro Prati"
+      ],
+      "publisher": "International Monetary Fund authors / Ecomod conference archive",
+      "year": 2003,
+      "document_type": "working-paper-public-copy",
+      "source_url": "https://ecomod.net/sites/default/files/document-conference/ecomod2003/Celasun.pdf",
+      "status": "VERIFIED",
+      "local_path": "documents/acquired/DOC-IMF-011-ECOMOD-COPY-2003.pdf",
+      "text_path": "extracted/imf/DOC-IMF-011-ECOMOD-COPY-2003.txt",
+      "citation_anchor": "verified PDF pp. 1–2: title, authors, abstract, and January 2003 date; pp. 3–5: Turkey inflation persistence and stabilization context; pp. 14–16: fiscal determinants of inflation expectations and conclusion",
+      "authority_level": 3,
+      "primary_source": true,
+      "sha256": "263d32f592add4a906dd58fc8e3d2397ba38a556aae05c1874adbcb04a30c7a4",
+      "access_basis": "public conference-archive PDF copy",
+      "bounded_replacement_for": [
+        "DOC-IMF-011"
+      ],
+      "notes": "Public 20-page PDF copy acquired over HTTPS; PDF magic bytes, SHA-256, extraction, title/authorship, and physical-page anchors verified. It is a separate public copy from the inaccessible IMF legacy endpoint and is used under its own publisher/access scope; bounded replacement covers the verified working-paper content only and does not assert file equivalence to the IMF-published version."
+    },
+    {
+      "document_id": "DOC-HANKE-REMEMBRANCES-CATO-2015",
+      "title": "A short sketch of a Currency Reformer’s Activities in the 1990s — Cato mirror",
+      "author": [
+        "Steve H. Hanke"
+      ],
+      "publisher": "Cato Institute public mirror",
+      "year": 2015,
+      "document_type": "memoir-primary-pdf-mirror",
+      "source_url": "https://www.cato.org/sites/cato.org/files/articles/remembrances_of_a_currency_reformer.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Lawful Cato-domain mirror lead discovered by exact-title search. It is separate from the restricted JHU URL; local PDF integrity, extracted text, and page anchors are required before use."
+    },
+    {
+      "document_id": "BOOK-HANKE-CUBA-JHU-2017",
+      "title": "Currency Reform for a Market-Oriented Cuba — JHU public PDF copy",
+      "author": [
+        "Steve H. Hanke",
+        "Kurt Schuler"
+      ],
+      "publisher": "Johns Hopkins Institute for Applied Economics",
+      "year": 1992,
+      "document_type": "book-public-pdf-copy",
+      "source_url": "https://sites.krieger.jhu.edu/iae/files/2017/06/Currency-Reform-for-a-Market-Oriented-Cuba.pdf",
+      "status": "RESTRICTED",
+      "local_path": null,
+      "citation_anchor": null,
+      "authority_level": 1,
+      "primary_source": true,
+      "notes": "Exact Johns Hopkins public PDF copy discovered by title search. It is a separate file from the restricted SSRN delivery record; local integrity, page anchors, and access terms must be verified before use."
+    }
+  ]
+}

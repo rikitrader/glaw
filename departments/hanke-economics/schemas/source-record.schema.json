@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "haeis/source-record",
+  "type": "object",
+  "required": ["document_id", "author", "title", "document_type", "country", "topic", "primary_source", "authority_level", "confidence", "status"],
+  "properties": {
+    "document_id": {"type":"string","minLength":1},
+    "author": {"type":"string","minLength":1},
+    "coauthors": {"type":"array","items":{"type":"string"}},
+    "title": {"type":"string","minLength":1},
+    "publication_date": {"type":"string"},
+    "year": {"type":"integer","minimum":1800},
+    "source_url": {"type":"string","format":"uri"},
+    "document_type": {"type":"string"},
+    "country": {"type":"array","items":{"type":"string"}},
+    "topic": {"type":"array","items":{"type":"string"}},
+    "primary_source": {"type":"boolean"},
+    "authority_level": {"type":"integer","minimum":1,"maximum":7},
+    "confidence": {"type":"number","minimum":0,"maximum":1},
+    "status": {"enum":["KNOWN","FOUND","INGESTED","INDEXED","VERIFIED","MISSING","RESTRICTED"]}
+  },
+  "additionalProperties": true
+}

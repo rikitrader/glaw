@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://glaw.local/schemas/registry-entry.schema.json",
+  "title": "GLAW Registry Entry",
+  "type": "object",
+  "required": ["id", "name", "status", "source"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1, "pattern": "^[a-z0-9][a-z0-9._:-]*$" },
+    "name": { "type": "string", "minLength": 1 },
+    "type": { "type": "string", "minLength": 1 },
+    "status": { "enum": ["confirmed", "inferred", "proposed", "unknown", "deprecated"] },
+    "source": {
+      "type": "object",
+      "required": ["kind", "path"],
+      "properties": {
+        "kind": { "enum": ["repository", "registry", "runtime", "external", "unknown"] },
+        "path": { "type": "string", "minLength": 1 },
+        "lineStart": { "type": "integer", "minimum": 1 },
+        "lineEnd": { "type": "integer", "minimum": 1 }
+      },
+      "additionalProperties": false
+    },
+    "owner": { "type": ["string", "null"] },
+    "organizationId": { "type": ["string", "null"] },
+    "matterId": { "type": ["string", "null"] },
+    "version": { "type": "string" },
+    "metadata": { "type": "object" },
+    "relationships": { "type": "array", "items": { "type": "object" } }
+  },
+  "additionalProperties": true
+}

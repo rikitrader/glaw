@@ -1,0 +1,13 @@
+{
+  "id":"HAEIS-SOURCE-HIERARCHY",
+  "levels":[
+    {"level":1,"name":"PRIMARY_VENEZUELAN","providers":["BCV","INE Venezuela","Ministry of Finance","SENIAT","PDVSA","SUDEBAN","National Assembly","Official Gazette","Ministry of Petroleum","Ministry of Labor","central government budget"]},
+    {"level":2,"name":"MULTILATERAL","providers":["IMF","World Bank","IDB","CAF","BIS","OPEC","UN","UNCTAD","ECLAC/CEPAL","ILO","FAO","WHO"]},
+    {"level":3,"name":"FOREIGN_GOVERNMENT","providers":["U.S. Treasury","OFAC","Federal Reserve","EIA","BEA","BLS","U.S. Census","SEC","Eurostat","Bank of England","ECB"]},
+    {"level":4,"name":"MARKET_DATA","providers":["Bloomberg","LSEG/Refinitiv","S&P Global","ICE","CME","Trading Economics"]},
+    {"level":5,"name":"ACADEMIC","providers":["NBER","SSRN","JSTOR","RePEc","universities","peer-reviewed journals"]},
+    {"level":6,"name":"SPECIALIST_VENEZUELA","providers":["Ecoanalítica","OVF","Síntesis Financiera","credible domestic banking analysts"]},
+    {"level":7,"name":"NEWS_SECONDARY","providers":["Reuters","Bloomberg News","Financial Times","Wall Street Journal","AP"]}
+  ],
+  "rule":"Trace secondary numbers to the original producer whenever possible; source level does not by itself establish verification."
+}

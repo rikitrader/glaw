@@ -1,0 +1,34 @@
+---
+import ControlPlaneLayout from "../layouts/ControlPlaneLayout.astro";
+
+const metrics = [
+  { label: "Open matters", value: "01", note: "1 active / local seed", tone: "good" },
+  { label: "Active workflows", value: "01", note: "1 confirmed definition", tone: "good" },
+  { label: "Approvals", value: "01", note: "attorney review pending", tone: "warn" },
+  { label: "Critical findings", value: "02", note: "architecture baseline", tone: "bad" },
+  { label: "Upcoming deadlines", value: "—", note: "no deadline telemetry", tone: "" },
+  { label: "RAG health", value: "LOCKED", note: "source-locked baseline", tone: "good" }
+];
+const stages = [
+  ["01", "Intake", "conflict gate"], ["02", "Strategy", "work plan"], ["03", "Structure", "matter map"], ["04", "Draft", "work product"],
+  ["05", "Adversarial", "RED → BLUE"], ["06", "File", "citation gate"], ["07", "Docket", "deadlines"], ["08", "Retro", "close + learn"]
+];
+---
+
+<ControlPlaneLayout title="Command Center" eyebrow="OPERATIONS / 00" active="command" description="GLAW legal AI operating system command center">
+  <section class="page-intro">
+    <div><p class="eyebrow">CONTROL PLANE STATUS</p><h1>See what requires <em>attention.</em></h1></div>
+    <div><p class="page-intro-copy">A registry-backed operating view for matters, workflows, agents, evidence, approvals, and architecture health.</p><div class="page-actions"><a class="secondary-action" href="/architecture">Inspect architecture</a><a class="primary-action" href="/matters">Open matter queue →</a></div></div>
+  </section>
+  <section class="metrics" aria-label="Operational metrics">
+    {metrics.map((metric) => <article class="metric"><p class="metric-label">{metric.label}</p><strong class="metric-value">{metric.value}</strong><span class:list={["metric-note", metric.tone]}>{metric.note}</span></article>)}
+  </section>
+  <section class="content-grid">
+    <article class="panel tall"><div class="panel-head"><div><p class="eyebrow">PRIORITIZED WORK</p><h2>Matter queue</h2></div><a href="/matters">View all →</a></div><table class="table"><thead><tr><th>Matter</th><th>Department</th><th>Status</th><th>Risk</th><th>Next action</th></tr></thead><tbody><tr><td><a href="/matters/matter-local-001"><strong>GLAW-LOCAL-001</strong><small class="mono">Local Control Plane Smoke Matter</small></a></td><td>Litigation</td><td><span class="pill good">Active</span></td><td><span class="pill warn">Yellow</span></td><td class="mono">Attorney approval</td></tr></tbody></table></article>
+    <article class="panel tall"><div class="panel-head"><div><p class="eyebrow">GOVERNANCE</p><h2>Approval queue</h2></div><a href="/governance">Open →</a></div><ul class="list"><li><div><strong>Attorney review</strong><small>Local Control Plane Smoke Matter</small></div><span class="pill warn">Pending</span></li><li><div><strong>Release gate</strong><small>Required before final output</small></div><span class="pill info">Policy</span></li></ul></article>
+  </section>
+  <section class="content-grid">
+    <article class="panel"><div class="panel-head"><div><p class="eyebrow">WORKFLOW / CONFIRMED BASELINE</p><h2>Eight-stage matter spine</h2></div><a href="/workflows">Open builder →</a></div><div class="stage-grid">{stages.map(([number, name, note]) => <div class="stage"><b>{number}</b>{name}<small>{note}</small></div>)}</div></article>
+    <article class="panel"><div class="panel-head"><div><p class="eyebrow">ARCHITECTURE DOCTOR</p><h2>Known gaps</h2></div><a href="/architecture">Review →</a></div><ul class="list finding-list"><li><span class="tag critical">CRITICAL</span><span>Graph renderer absent</span></li><li><span class="tag critical">CRITICAL</span><span>Enterprise execution bindings absent</span></li><li><span class="tag warning">WARNING</span><span>Astro shell needs deployment verification</span></li><li><span class="tag info">INFO</span><span>RAG is source-locked lexical baseline</span></li></ul></article>
+  </section>
+</ControlPlaneLayout>

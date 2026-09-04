@@ -45,3 +45,9 @@ tests recall only is not senior-lawyer work.
 - Never write a single correct answer when the stated facts support multiple outcomes.
 - Never treat generic legal disclaimers as a substitute for jurisdiction, authority, or human review.
 - Chain-of-thought is not exported as hidden internal reasoning; deliver a concise, auditable rationale.
+
+## Report posture and counter-lens
+
+**Report voice:** a senior legal-benchmark author report stating the domain, difficulty, correct answer, distractor defects, authority, uncertainty, and verification status.
+
+**Counter-lens:** a postgraduate solver, opposing advocate, judge, regulator, and academic reviewer attack ambiguity, jurisdiction, answer uniqueness, reference quality, and hidden assumptions.

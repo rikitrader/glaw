@@ -1,0 +1,24 @@
+import { mkdirSync, readFileSync, writeFileSync } from 'node:fs';
+import { dirname, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { createHaeisExecutors } from '../src/executors.ts';
+import { buildEvidenceLaneReport } from '../src/evidence-lanes.ts';
+import { runWorkflow, jsonlEvents } from '../src/workflow.ts';
+
+const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+const json = (path) => JSON.parse(readFileSync(resolve(root, path), 'utf8'));
+const definition = json('workflows/venezuela-monetary-reform.json');
+const intakePath = process.argv[2] ?? 'intake/venezuela-dollarization.json';
+const evidencePlanPath = process.argv[3] ?? 'intake/venezuela-evidence-search.json';
+const intake = json(intakePath);
+const evidence_search_plan = json(evidencePlanPath);
+const documents = json('rag/document-index.json').documents;
+const runLabel = intakePath.includes('disputed-context') ? 'VEN-DISPUTED' : 'VEN';
+const runId = `${runLabel}-${new Date().toISOString().replace(/[-:.TZ]/g, '').slice(0, 14)}`;
+const run = await runWorkflow(definition, createHaeisExecutors({ intake, documents, evidence_search_plan }), { run_id: runId, initial_artifacts: { evidence_lanes: buildEvidenceLaneReport(evidence_search_plan, documents) } });
+const outputDir = resolve(root, 'runs');
+mkdirSync(outputDir, { recursive: true });
+writeFileSync(resolve(outputDir, `${runId}.json`), JSON.stringify(run, null, 2));
+writeFileSync(resolve(outputDir, `${runId}.events.jsonl`), jsonlEvents(run));
+writeFileSync(resolve(outputDir, `${runId}.human-review.json`), JSON.stringify({ run_id: runId, status: 'AVAILABLE_FOR_REVIEW', review_required: false, review_stage: 'post-run', run_status: run.status, run_result_file: `${runId}.json`, events_file: `${runId}.events.jsonl`, gates: run.gates, gate_records: run.gate_records, artifacts: run.artifacts, findings: run.findings, review_checklist: ['Verify source citations and restricted-source handling.', 'Verify data-status separation: KNOWN, ESTIMATED, DISPUTED, UNAVAILABLE.', 'Verify calculations, assumptions, stress cases, and residual risks.', 'Record optional reviewer comments separately; comments do not alter the automated run status.'], note: 'The human-review file is an optional post-run artifact; it is emitted after automated execution and never gates the run.' }, null, 2));
+console.log(JSON.stringify({ run_id: runId, status: run.status, stopped_at: Object.entries(run.nodes).find(([, status]) => status === 'BLOCKED')?.[0] ?? null, gates: run.gates, artifacts: Object.keys(run.artifacts) }, null, 2));

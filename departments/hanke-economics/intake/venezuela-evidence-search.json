@@ -1,0 +1,26 @@
+{
+  "claim_id": "VEN-DOLLARIZATION-001",
+  "searches": [
+    {
+      "lane": "SUPPORTING",
+      "query": "Venezuela dollarization monetary stability Hanke Greenwood Golden Growth Rate Credit Counterparts verified framework",
+      "source_ids": ["PAPER-HANKE-GG-232", "PAPER-HANKE-GG-233", "PAPER-HANKE-GG-234", "DOC-CONGRESS-VEN-HEARING-2017", "DOC-IMF-VEN-REO-2025"],
+      "result_status": "FOUND",
+      "notes": "Verified framework papers establish the analytical method; the official congressional record preserves Hanke's dated Venezuela testimony; the IMF source documents current-data limitations. These sources do not establish a current Venezuela policy result."
+    },
+    {
+      "lane": "CONTRADICTORY",
+      "query": "Venezuela dollarization liquidity credit contraction banking stress Hanke Bushnell primary analysis",
+      "source_ids": ["DOC-IMF-008", "DOC-IMF-VEN-1999-SA", "DOC-VEN-BDV-H2-2024"],
+      "result_status": "FOUND",
+      "notes": "Verified IMF and bank-report evidence provides the contradictory banking/liquidity and historical monetary lanes. The restricted Hanke–Bushnell leads remain indexed separately but are not required for this workflow to establish a contradictory lane."
+    },
+    {
+      "lane": "ALTERNATIVE_EXPLANATION",
+      "query": "Venezuela monetary instability fiscal financing banking reserves oil revenue exchange-rate data limitations",
+      "source_ids": ["DOC-IMF-VEN-REO-2025", "DOC-IMF-VEN-1999-SA", "DOC-VEN-BANESCO-H1-2025", "DOC-VEN-BDV-H2-2024", "DOC-VEN-CEDICE-DEC-2024", "DOC-VEN-UNDP-Q3-2025"],
+      "result_status": "FOUND",
+      "notes": "Verified IMF sources provide a current data-limitations record and historical 1994–98 monetary tables; verified secondary 2024–25 reports provide BCV-referenced context but contain disputed observations and are not current primary data."
+    }
+  ]
+}

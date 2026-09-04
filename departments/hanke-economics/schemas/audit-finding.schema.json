@@ -1,0 +1,12 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"haeis/audit-finding",
+  "type":"object",
+  "required":["finding_id","severity","category","text","evidence_ids","status"],
+  "properties":{
+    "finding_id":{"type":"string"},"severity":{"enum":["LOW","MEDIUM","HIGH","CRITICAL"]},
+    "category":{"enum":["DATA","MATH","CITATION","CAUSALITY","INSTITUTIONAL","POLITICAL"]},
+    "text":{"type":"string"},"evidence_ids":{"type":"array","items":{"type":"string"}},"owner":{"type":"string"},
+    "status":{"enum":["OPEN","PARTIALLY_RESOLVED","RESOLVED","CARRIED"]}
+  },"additionalProperties":false
+}

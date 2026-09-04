@@ -1,0 +1,16 @@
+{
+  "file name" : "balance_marzo_2016.pdf.pdf",
+  "number of pages" : 1,
+  "author" : null,
+  "title" : "Scanned Document",
+  "creation date" : "D:20160414103120-03'30'",
+  "modification date" : "D:20161017110010-03'30'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 1,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 791.76, 1012.8 ],
+    "source" : "balance_marzo_2016.pdf_images/imageFile1.png"
+  } ]
+}

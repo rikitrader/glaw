@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "haeis/data-completeness.schema.json",
+  "type": "object",
+  "required": ["variable", "domain", "coverage_percentage", "expected_observations", "observed_observations", "missing_observations", "latest_observation", "reporting_lag_days", "source_count", "confidence", "status_counts", "quality", "notes"],
+  "properties": {
+    "variable": {"type": "string", "minLength": 1},
+    "domain": {"type": "string", "minLength": 1},
+    "coverage_percentage": {"type": "number", "minimum": 0, "maximum": 100},
+    "expected_observations": {"type": "integer", "minimum": 1},
+    "observed_observations": {"type": "integer", "minimum": 0},
+    "missing_observations": {"type": "integer", "minimum": 0},
+    "latest_observation": {"type": ["string", "null"]},
+    "reporting_lag_days": {"type": ["integer", "null"], "minimum": 0},
+    "source_count": {"type": "integer", "minimum": 0},
+    "confidence": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+    "status_counts": {"type": "object"},
+    "quality": {"enum": ["GREEN", "YELLOW", "ORANGE", "RED"]},
+    "notes": {"type": "string", "minLength": 1}
+  }
+}

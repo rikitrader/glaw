@@ -1,0 +1,73 @@
+schema_version: 0.1.0
+id: haeis-congressional-economic-review-committee
+name: HAEIS Congressional-Style Economic Review Committee
+mandate: examine and vote on the Venezuela dollarization report using independent economist personas and auditable evidence
+authority: simulated analytical review only; no governmental or legal authority
+report_under_review: reports/venezuela-dollarization-thesis.md
+committee_chair:
+  id: chief-economist-chair
+  duties: [enforce-record, recognize-speakers, preserve-dissent, apply-stop-conditions, publish-final-opinion]
+  cannot: [invent-evidence, override-math-audit, override-source-audit, impersonate-named-economist]
+members:
+  - {id: friedman, seat: monetary-rules, vote_weight: 1, hard_questions: [money-demand, velocity, rule-operability, inflation-expectations]}
+  - {id: cagan, seat: hyperinflation, vote_weight: 1, hard_questions: [currency-demand, hyperinflation-feedback, stabilization-break, fiscal-backing]}
+  - {id: sargent, seat: regime-credibility, vote_weight: 1, hard_questions: [expectations, fiscal-regime, legal-commitment, policy-reversal]}
+  - {id: calvo, seat: external-vulnerability, vote_weight: 1, hard_questions: [sudden-stop, reserves, capital-flows, liability-dollarization]}
+  - {id: reinhart-rogoff, seat: sovereign-debt, vote_weight: 1, hard_questions: [debt-stock, arrears, restructuring, default-history, debt-service]}
+  - {id: minsky, seat: financial-instability, vote_weight: 1, hard_questions: [leverage, maturity-mismatch, bank-run, endogenous-fragility]}
+  - {id: bagehot, seat: liquidity-backstop, vote_weight: 1, hard_questions: [eligible-collateral, emergency-lending, facility-size, panic-containment]}
+  - {id: bernanke, seat: credit-transmission, vote_weight: 1, hard_questions: [credit-channel, collateral, bank-capital, investment, employment]}
+  - {id: goodhart, seat: central-bank-institutions, vote_weight: 1, hard_questions: [BCV-role, supervision, resolution, payment-system, macroprudential-policy]}
+  - {id: hausmann, seat: development-and-production, vote_weight: 1, hard_questions: [productivity, infrastructure, oil-capacity, capabilities, diversification]}
+  - {id: hanke-respondent, seat: respondent, vote_weight: 1, hard_questions: [verified-Hanke-position, currency-board-definition, framework-boundary, concessions]}
+  - {id: monetarist, seat: monetary-alternative, vote_weight: 1, hard_questions: [money-growth, rules, expectations, alternative-anchor]}
+  - {id: keynesian, seat: demand-and-employment, vote_weight: 1, hard_questions: [output-gap, multiplier, unemployment, fiscal-compression]}
+  - {id: new-keynesian, seat: nominal-rigidity, vote_weight: 1, hard_questions: [expectations, rigidity, interest-rate, credibility]}
+  - {id: austrian, seat: capital-structure, vote_weight: 1, hard_questions: [credit-distortion, malinvestment, price-signals, intervention]}
+  - {id: supply-side, seat: incentives-and-growth, vote_weight: 1, hard_questions: [tax, regulation, investment, productivity]}
+  - {id: imf-style-stabilization, seat: stabilization-program, vote_weight: 1, hard_questions: [reserves, fiscal-sustainability, debt, BOP, banking]}
+  - {id: central-banker, seat: monetary-authority, vote_weight: 1, hard_questions: [LLR, reserves, settlement, banking-emergency, transmission]}
+  - {id: commercial-bank, seat: bank-balance-sheet, vote_weight: 1, hard_questions: [deposits, loans, capital, FX-mismatch, reserves]}
+  - {id: sovereign, seat: public-finance, vote_weight: 1, hard_questions: [seigniorage, debt, tax, spending, political-constraints]}
+  - {id: citizen, seat: household-impact, vote_weight: 1, hard_questions: [wages, pensions, savings, purchasing-power, inclusion]}
+  - {id: business, seat: enterprise-impact, vote_weight: 1, hard_questions: [working-capital, credit, pricing, imports, exports]}
+  - {id: investor, seat: capital-allocation, vote_weight: 1, hard_questions: [sovereign-risk, FX-risk, repatriation, property-rights]}
+  - {id: competing-institutional, seat: alternative-regimes, vote_weight: 1, hard_questions: [currency-board, dual-currency, managed-float, counterfactual]}
+judges:
+  - {id: evidence-judge, mandate: source quality, citation fidelity, observation status, contradiction handling}
+  - {id: mathematics-judge, mandate: units, formulas, dates, transformations, reproducibility, sensitivity}
+  - {id: theory-judge, mandate: mechanism, assumptions, causal claims, institutional consistency, falsifiers}
+proceedings:
+  - record-freeze
+  - written-testimony
+  - opening-statements
+  - Hanke-steelman
+  - cross-examination
+  - witness-response
+  - rebuttal
+  - evidence-hearing
+  - math-hearing
+  - legal-institutional-hearing
+  - historical-comparator-hearing
+  - stress-test-hearing
+  - counterfactual-hearing
+  - closing-statements
+  - roll-call-vote
+  - dissenting-opinions
+  - judge-rulings
+  - chair-arbitration
+  - publication
+vote_options: [PASS_SUPPORTED, PASS_WITH_CONDITIONS, FAIL_NOT_SUPPORTED, NO_DECISION_INSUFFICIENT_EVIDENCE]
+quorum:
+  minimum_members: 12
+  minimum_judges: 3
+  respondent_required: true
+hard_stops:
+  - critical-current-data-unavailable
+  - citation-unverified
+  - math-unreconciled
+  - bank-solvency-or-liquidity-unresolved
+  - legal-conversion-authority-unknown
+  - catastrophic-stress-risk-unresolved
+decision_rule: majority opinion is advisory; any hard stop prevents a production PASS and forces NO_DECISION unless the final status is explicitly conditional and all residual risks are disclosed
+output: counsel/committee/final-committee-opinion.json

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://glaw.local/schemas/legal-command.schema.json",
+  "title": "GLAW Legal Command",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["commandId", "idempotencyKey", "tenantId", "actor", "authority", "action", "payload", "riskClass", "evidenceRefs", "approvalRefs", "createdAt"],
+  "properties": {
+    "commandId": { "type": "string", "minLength": 1 },
+    "idempotencyKey": { "type": "string", "minLength": 1 },
+    "tenantId": { "type": "string", "minLength": 1 },
+    "clientId": { "type": "string", "minLength": 1 },
+    "matterId": { "type": "string", "minLength": 1 },
+    "actor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actorId", "actorType", "role"],
+      "properties": {
+        "actorId": { "type": "string", "minLength": 1 },
+        "actorType": { "enum": ["human", "agent", "service"] },
+        "role": { "type": "string", "minLength": 1 }
+      }
+    },
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policyId", "policyVersion"],
+      "properties": {
+        "policyId": { "type": "string", "minLength": 1 },
+        "policyVersion": { "type": "string", "minLength": 1 },
+        "grantId": { "type": "string", "minLength": 1 }
+      }
+    },
+    "action": { "type": "string", "minLength": 1 },
+    "payload": {},
+    "riskClass": { "enum": ["LOW", "MODERATE", "HIGH", "CRITICAL"] },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "approvalRefs": { "type": "array", "items": { "type": "string" } },
+    "expectedExternalEffect": { "type": "string" },
+    "createdAt": { "type": "string", "format": "date-time" },
+    "expiresAt": { "type": "string", "format": "date-time" }
+  }
+}

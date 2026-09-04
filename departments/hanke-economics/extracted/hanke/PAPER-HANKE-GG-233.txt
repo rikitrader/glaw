@@ -1,0 +1,390 @@
+                                SAE./No.232/April 2023
+                               /October 2021
+
+
+
+
+UNITED KINGDOM: A GOLDEN GROWTH
+ RATE AND CREDIT COUNTERPARTS
+            ANALYSIS
+
+
+Steve H. Hanke, John Greenwood, & Mike Hyo Jae An
+ United Kingdom: A Golden Growth Rate and Credit Counterparts Analysis
+
+                   By Steve H. Hanke, John Greenwood, and Mike Hyo Jae An
+
+                                         About the Series
+
+The Studies in Applied Economics series is under the general direction of Prof. Steve H. Hanke,
+Founder and Co-Director of the Johns Hopkins Institute for Applied Economics, Global Health
+and the Study of Business Enterprise (hanke@jhu.edu). The views expressed in each working
+paper are those of the authors and not necessarily those of the institutions’ that the authors are
+affiliated with.
+
+
+                                        About the Authors
+
+Steve H. Hanke is a Professor of Applied Economics and Founder & Co-Director of The Johns
+Hopkins Institute for Applied Economics, Global Health, and the Study of Business Enterprise in
+Baltimore. Prof. Hanke is a well-known currency reformer, and a currency and commodity trader.
+Prof. Hanke served on President Reagan’s Council of Economic Advisers, has been an adviser to
+five foreign heads of state and five foreign cabinet ministers, and has held a cabinet-level rank as
+a state counselor in both Lithuania and Montenegro. He has been awarded seven honorary
+doctorate degrees and is an Honorary Professor at four foreign institutions. He was President of
+Toronto Trust Argentina in Buenos Aires in 1995, when it was the world’s best-performing mutual
+fund. Currently, he serves as Chairman of the Supervisory Board of Advanced Metallurgical Group
+N.V. in Amsterdam. In 1998, he was named one of the twenty-five most influential people in the
+world by World Trade Magazine. In 2020, Prof. Hanke was named a Knight of the Order of the
+Flag.
+
+
+John Greenwood was until December 2021 the Chief Economist of Invesco Ltd., a global asset
+management company. As editor of the Asian Monetary Monitor over the period 1977-96, he is
+widely credited as the designer of the restored currency board system in Hong Kong at the time of
+the currency crisis in 1983, a model for numerous subsequent currency board systems. Holding an
+MA and Honorary Doctorate from the University of Edinburgh, he is the author of “Hong Kong’s
+
+                                                  1
+Link to the US Dollar – Origins and Evolution” (Hong Kong University Press, 2007 and 2022).
+He has been a Fellow at the Johns Hopkins Institute for Applied Economics, Global Health, and
+the Study of Business Enterprise since June 2016.
+
+
+Mike Hyo Jae An (han9@jhu.edu) is a junior at the Johns Hopkins University in Baltimore,
+pursuing majors in applied mathematics and statistics and economics, with a minor in financial
+economics. He contributed to this paper as an undergraduate research assistant at the Institute for
+Applied Economics, Global Health, and the Study of Business Enterprise in Spring 2023. He will
+graduate in May 2024.
+
+
+                                            Abstract
+
+
+This paper conducts a Golden Growth Rate (GGR) analysis for the United Kingdom (UK) for the
+2010-2019 period. A credit counterpart analysis for the 2010-2022 period is also presented to
+examine the monetary growth of the Bank of England and its monetary policy.
+
+
+
+
+                                                2
+SECTION 1: Golden Growth Analysis1
+The GGR is the growth rate of the money supply that would allow the central bank to hit its
+inflation target. The UK’s GGR covers the 2010-2019 period and disregards the subsequent
+years to avoid the effects of the central bank’s stimulus program caused by the COVID-19
+pandemic.
+
+To calculate the GGR, we used the income form of the Quantity Theory of Money (QTM). The
+QTM states that MV = Py, where “M” is the money supply, “V” is the velocity of money, “P” is
+the price level, and “y” is real GDP.
+
+The percent-change form of the QTM is used to calculate the GGR: ∆" + ∆$ = ∆& +
+∆', 2 or, equivalently, ∆" = ∆& + ∆' − ∆$. ∆" is the estimated GGR of the broad money
+supply, M4x,3 to keep inflation at the target rate. ∆& is the central bank’s inflation target.4 ∆' is
+the average of the YoY change in real GDP over the period.5
+
+To calculate ∆$, first divide each year’s nominal GDP6 by its broad money supply and obtain the
+                                                  !"#$%"&' )*+,&#- ./0
+money velocity for the 2009-2019 period as V =        !"#$%"&' 123
+                                                                       . Then, calculate the YoY
+change of money velocity for the 2010-2019 period. Lastly, an average of money velocity
+throughout the duration results in the change of money velocity, ∆$.
+
+SECTION 2: UK’s Golden Growth Rate Calculation
+The Bank of England’s target inflation is 2% and used as ∆&. From 2010 through 2019, the
+UK’s average annual real GDP growth was 2.03%, and the average change of money velocity
+was -0.04%. Thus, based on the percent-change-form of the QTM, the GGR for M4x is ∆" =
+∆& + ∆' − ∆$ = 2% + 2.03% - (-0.04%) = 4.07% per year. The actual M4x growth during the
+same duration was 3.81%, implying that the Bank of England has been increasing its money
+supply nearly in par with its golden growth rate. Not surprisingly, the UK’s average actual
+annual inflation between 2010-2019 (2.01%) was almost the same as the Bank of England’s
+target of 2%.
+
+The graphs below compare the UK’s golden growth rate with its actual annual money supply
+(M4x) growth (Figure 1), and its inflation target with its realized inflation rate (Figure 2).
+
+
+
+1
+  For treatment of the Quantity Theory of Money as it relates to Golden Growth Rates, see Greenwood-Hanke
+(2021) https://onlinelibrary.wiley.com/doi/abs/10.1111/jacf.12479
+2
+  For a derivation of the percent change form, see: Friedman 1987
+https://miltonfriedman.hoover.org/internal/media/dispatcher/214346/full
+3
+  Bank of England. Further details about M4 excluding intermediate other financial corporations (OFCs) data.
+https://www.bankofengland.co.uk/statistics/details/further-details-about-m4-excluding-intermediate-other-
+financial-corporations-data
+4
+  Bank of England. Inflation and the 2% target. https://www.bankofengland.co.uk/monetary-policy/inflation
+5
+  Economist Intelligence Unit. Real GDP (% change pa).
+https://viewpoint.eiu.com/data/results?searchId=889550fb-938c-4367-9f76-9fd25669d3e1
+6
+  Economist Intelligence Unit. Nominal GDP (LCU). https://viewpoint.eiu.com/data/results?searchId=2d588e88-
+aa34-469a-bf4e-581d6cdc72ca
+
+                                                       3
+4
+SECTION 3: Credit Counterparts Analysis7
+Credit counterpart analysis examines the factors that drive the money supply change. The broad
+money supply (here, M4x) is composed of currencies issued by the Bank of England and
+deposits from the commercial banks.8 While currencies are a liability of the central bank, they
+are also an asset of the nonbank public by the credit counterpart. Similarly, deposits are liabilities
+to commercial banks, but assets to the nonbank public. Thus, counterparts of these liabilities that
+show up on the central bank’s balance sheet equal the sum of commercial bank lending, plus the
+reserves of banks held at the central bank, plus residual items that fill the discrepancy. In terms
+of changes, both the liability side of the central bank and asset side of commercial banks can be
+expressed as the following:
+
+Liability side (of the central bank):
+   1. Δ Broad Money = Δ Cash in circulation of the public + Δ Bank deposits
+
+Asset side (of commercial banks):
+
+
+
+7
+  For logic of the Credit Counterpart Analysis, see: Hanke (2017). https://www.e-elgar.com/shop/usd/money-in-
+the-great-recession-9781784717827.html
+8
+  The Bank of England defines M4x as the sum of: (1) households’ M4 (seasonally adjusted) + (2) private non-
+financial corporations’ M4 (seasonally adjusted) + (3) non-intermediate other financial corporations’ M4
+(seasonally adjusted). https://www.bankofengland.co.uk/statistics/details/further-details-about-m4-excluding-
+intermediate-other-financial-corporations-data
+
+                                                       5
+    2. Δ Broad Money = Δ Commercial Bank Lending + Δ Commercial Bank reserves at the
+       central bank +/- Δ Other Items (net)
+
+A credit counterpart analysis determines the change in money supply (M4x) from the asset side
+of commercial banks. In this memo, both annual and monthly data from 2010 through 2022 are
+presented. The annual data outline an overview of the Bank of England’s monetary operations,
+while the monthly data provide a more detailed look into changes that enable us to analyze the
+impact of significant events such as the European Debt Crisis, Brexit Referendum, and the
+COVID-19 pandemic.
+
+The assets of the UK’s commercial banks are categorized as follows:
+   (1) Reserves (commercial bank deposits at the central bank)
+       The Bank of England uses the term “Reserve balances” that are “weekly amounts
+       outstanding of Central Bank sterling reserve balance liabilities.” This can be found from
+       the Bank of England’s Bankstats tables at the B1.1.2 section with the code B56A.9
+   (2) Lending (Loans)
+       The Bank of England refers to commercial bank lending as “Monthly amounts
+       outstanding of UK resident monetary financial institutions’ (excluding the Central Bank)
+       sterling net lending to the private sector excluding intermediate OFCs.” This can be
+       found from the Bank of England’s Bankstats tables at the A2.2.3 section with the code
+       B57Q.10
+   (3) Residuals
+       This is the difference between the money supply (M4x) and the previous two categories
+       (Reserves and Lending). The money supply (M4x) is referred to as “Monthly amounts
+       outstanding of M4x (monetary financial institutions’ sterling M4 liabilities to private
+       sector excluding intermediate OFCs).” This can be found from the Bank of England’s
+       Bankstats tables at the A2.2.3 section with the code B53Q.11
+
+Figure 3 below shows the UK’s M4x absolute levels and its three components that together
+contribute to M4x growth from 2010 through 2022. Figure 4 then shows the annual growth of
+M4x and its components in percentage form and how each component contributes to M4x. For
+instance, in 2020, M4x increased by 13.84%. The contributors to this change were: bank lending
+
+9
+  Bank of England Database. Weekly amounts outstanding of Central Bank sterling reserve balance liabilities (in
+sterling millions).
+https://www.bankofengland.co.uk/boeapps/database/fromshowcolumns.asp?Travel=NIxSUx&FromSeries=1&ToS
+eries=50&DAT=RNG&FD=1&FM=Jan&FY=2010&TD=31&TM=Dec&TY=2022&FNY=&CSVF=TT&html.x=89&html.y=2
+6&C=IRU&Filter=N
+10
+   Bank of England Database. Monthly amounts outstanding of UK resident monetary financial institutions’ (excl.
+Central Bank) sterling net lending to Private sector excluding intermediate OFCs (in sterling millions).
+https://www.bankofengland.co.uk/boeapps/database/fromshowcolumns.asp?Travel=NIxSUx&FromSeries=1&ToS
+eries=50&DAT=RNG&FD=1&FM=Jan&FY=2010&TD=31&TM=Dec&TY=2022&FNY=&CSVF=TT&html.x=150&html.y=
+5&C=JVI&Filter=N
+11
+   Bank of England Database. Monthly amounts outstanding of UK resident monetary financial institutions’ sterling
+M4 liabilities to Private Sector excluding intermediate OFCs (in sterling millions).
+https://www.bankofengland.co.uk/boeapps/database/fromshowcolumns.asp?Travel=NIxSUx&FromSeries=1&ToS
+eries=50&DAT=RNG&FD=1&FM=Jan&FY=2010&TD=31&TM=Dec&TY=2022&FNY=&CSVF=TT&html.x=64&html.y=7
+&C=JVC&Filter=N
+
+                                                        6
+(3.89%), reserves (13.08%), and residuals (-3.12%) that together sum to the M4x growth rate
+(13.84%).
+
+
+
+
+                                               7
+SECTION 4: The Bank of England’s Monetary Operations
+To better understand the Bank of England’s monetary policies and the reasons behind the
+changes in its money supply, we have analyzed the Bank of England’s monthly M4x change with
+its credit counterpart components as presented in Figure 5 below and provided background
+information with four key stages.
+
+
+
+
+                                            8
+     1. European Debt Crisis QE2 and QE3 (Quantitative Easing), 2011-201212
+     In response to the Euro Crisis, the Bank of England initiated QE2 in October 2011 and
+     completed 125 billion pounds of gilts purchases in May 2012. With the economic outlook
+     still gloomy and in an attempt to prevent a double-dip recession, the central bank decided to
+     purchase an additional 50 billion pounds of gilts in July 2012 that lasted until November
+     2012. As Figure 5 shows, this quantitative easing led to a dramatic increase in the
+     contribution of reserves to M4x in October 2011. The contribution reached its peak with a
+     9.1% contribution in October 2012 when it was the biggest contributor to increases in M4x.
+     As the concerns about the European Debt Crisis faded, and the QE2 and QE3 periods came
+     to an end, the monthly growth in reserves dropped to 0% at the end of 2014.
+
+     2. Brexit Referendum Stimulus, 2015-2017
+     To mitigate the market turmoil from the UK’s vote to leave the European Union, the Bank of
+     England announced that it would allow banks to reduce their amount of capital holdings and
+
+
+
+12
+  Bank of England. “The Bank of England’s unconventional monetary policies: why, what and how”.
+https://www.ecb.europa.eu/events/pdf/conferences/130607/PanelDiscussion_joyce.pdf?9b7c697afa3b9dce8045
+43b2b4538d5b
+
+                                                  9
+     lend as much as 150 billion pounds to households and corporations in July 2016.13
+     Additionally, it deployed 60 billion pounds of government bond purchases over six months,
+     starting in August 2016.14 As Figure 5 indicates, in June 2016, the monthly change of M4x
+     surpassed 6%, mainly driven by commercial bank lending.
+
+     3. COVID-19 Pandemic QE, 2020-202115
+     To support and save the economy from the COVID-19 Pandemic, the Bank of England
+     offered unlimited QE in March 2020. The amount of QE during the pandemic is estimated to
+     be around 450 billion pounds. As demonstrated in Figure 5, the monthly change in reserves
+     began to increase in April 2020 and skyrocketed to 14.3% in February 2021 with the growth
+     of M4x reaching its peak around the same time.
+
+     4. QT (Quantitative Tightening), 2021-202216
+     As the inflation rate soared from the massive QE program, the Bank of England, for the first
+     time since the COVID-19 pandemic outbreak, hiked its interest rate from its historic low of
+     0.1% in December 2021 to 0.25%. Additionally, the Bank of England begun to sell some of
+     its bonds in November 2022 to unwind QE. While the Bank of England started the process of
+     QT in February 2022 by not reinvesting maturing bonds, November’s operation was the first
+     “active” QT through bond selling. As presented in Figure 5, from January 2022 to December
+     2022, the rate of change in reserves continuously fell. Furthermore, reserves contracted at an
+     unprecedented pace, hitting a first negative growth (-0.6%) in November 2022, driving a fall
+     in M4x.
+
+
+
+
+13
+   Chattanooga Times Free Press. “The Latest: UK central bank acts to support lending”.
+https://www.timesfreepress.com/news/2016/jul/05/latest-uk-central-bank-acts-support-lending/
+14
+   Reuters. “Bank of England wields stimulus ‘sledgehammer’ to beat Brexit Blues”.
+https://www.reuters.com/article/us-britain-eu-boe/bank-of-england-wields-stimulus-sledgehammer-to-beat-
+brexit-blues-idUSKCN10E2SX
+15
+   Bloomberg. “Bank of England Chief Economist Suggests Pandemic QE a Mistake”.
+https://www.bloomberg.com/news/articles/2022-11-08/bank-of-england-chief-economist-suggests-pandemic-qe-
+a-mistake
+16
+   Financial Times. “Bank of England begins selling bonds as it unwinds QE Programme”.
+https://www.ft.com/content/64e5dcdd-42a8-4013-a3bd-75a62cf8e6dc
+
+                                                  10
+Sources
+
+      Bloomberg. Aldrick, P., & Atkinson, A. (2022, November 8). “Bank of England chief
+           economist suggests pandemic QE a mistake”. Retrieved from
+           https://www.bloomberg.com/news/articles/2022-11-08/bank-of-england-chief-
+           economist-suggests-pandemic-qe-a-mistake
+
+      Bank of England.
+
+             Further details about M4 excluding intermediate other financial corporations
+                    (OFCs) data. Retrieved from
+                    https://www.bankofengland.co.uk/statistics/details/further-details-about-
+                    m4-excluding-intermediate-other-financial-corporations-data
+
+             Inflation and the 2% target. Retrieved from
+                     https://www.bankofengland.co.uk/monetary-policy/inflation
+
+             “The Bank of England’s unconventional monetary policies: why, what and how”.
+                   Retrieved from
+                   https://www.ecb.europa.eu/events/pdf/conferences/130607/PanelDiscussio
+                   n_joyce.pdf?9b7c697afa3b9dce804543b2b4538d5b
+
+      Bank of England Database.
+
+             Weekly amounts outstanding of Central Bank sterling reserve balance liabilities
+                   (in sterling millions). Retrieved from
+                   https://www.bankofengland.co.uk/boeapps/database/fromshowcolumns.as
+                   p?Travel=NIxSUx&FromSeries=1&ToSeries=50&DAT=RNG&FD=1&F
+                   M=Jan&FY=2010&TD=31&TM=Dec&TY=2022&FNY=&CSVF=TT&h
+                   tml.x=89&html.y=26&C=IRU&Filter=N
+
+             Monthly amounts outstanding of UK resident monetary financial institutions’
+                   (excl. Central Bank) sterling net lending to Private sector excluding
+                   intermediate OFCs (in sterling millions). Retrieved from
+                   https://www.bankofengland.co.uk/boeapps/database/fromshowcolumns.as
+                   p?Travel=NIxSUx&FromSeries=1&ToSeries=50&DAT=RNG&FD=1&F
+                   M=Jan&FY=2010&TD=31&TM=Dec&TY=2022&FNY=&CSVF=TT&h
+                   tml.x=150&html.y=5&C=JVI&Filter=N
+
+             Monthly amounts outstanding of UK resident monetary financial institutions’
+                   sterling M4 liabilities to Private Sector excluding intermediate OFCs (in
+                   sterling millions). Retrieved from
+                   https://www.bankofengland.co.uk/boeapps/database/fromshowcolumns.as
+
+                                             11
+              p?Travel=NIxSUx&FromSeries=1&ToSeries=50&DAT=RNG&FD=1&F
+              M=Jan&FY=2010&TD=31&TM=Dec&TY=2022&FNY=&CSVF=TT&h
+              tml.x=64&html.y=7&C=JVC&Filter=N
+
+Chattanooga Times Free Press. (2016, July 5). “The Latest: UK central bank acts to
+      support lending”. Retrieved from
+      https://www.timesfreepress.com/news/2016/jul/05/latest-uk-central-bank-acts-
+      support-lending/
+
+CME Group. “GB: M4 Money Supply”. Retrieved from
+     https://www.cmegroup.com/education/events/econoday/2022/07/feed544588.html
+
+Economist Intelligence Unit.
+
+       Real GDP (% change pa). Retrieved from
+             https://viewpoint.eiu.com/data/results?searchId=889550fb-938c-4367-
+             9f76-9fd25669d3e1
+
+       Nominal GDP (LCU). Retrieved from
+             https://viewpoint.eiu.com/data/results?searchId=2d588e88-aa34-469a-
+             bf4e-581d6cdc72ca
+
+Financial Times. Stubbington, T. (2022, November 1). “Bank of England begins selling
+      bonds as it unwinds QE Programme”. Retrieved from
+      https://www.ft.com/content/64e5dcdd-42a8-4013-a3bd-75a62cf8e6dc
+
+Friedman, Milton. Quantity Theory of Money. In The New Palgrave: A Dictionary of
+      Economics, edited by John Eatwell, Murray Milgate, and Peter Newman, vol. 4,
+      pp. 3-20. New York: Stockton Press; and London: Macmillan, 1987. © Palgrave
+      Macmillan.
+      https://miltonfriedman.hoover.org/internal/media/dispatcher/214346/full
+
+Greenwood, J. and Hanke, S.H. (2021), On Monetary Growth and Inflation in Leading
+     Economies, 2021-2022: Relative Prices and the Overall Price Level. Journal of
+     Applied Corporate Finance, 33: 39-51. https://doi.org/10.1111/jacf.12479
+
+Hanke, S. (2017), Money in the Great Recession. Congdon, Tim, ed. Institute of
+      International Monetary Research. https://www.e-elgar.com/shop/usd/money-in-
+      the-great-recession-9781784717827.html
+
+Reuters. Milliken, D., & Costa, A. N. da. (2016, August 3). “Bank of England wields
+      stimulus 'sledgehammer' to beat Brexit Blues”. Retrieved from
+
+
+                                      12
+https://www.reuters.com/article/us-britain-eu-boe/bank-of-england-wields-
+stimulus-sledgehammer-to-beat-brexit-blues-idUSKCN10E2SX
+
+
+
+
+                               13
+
