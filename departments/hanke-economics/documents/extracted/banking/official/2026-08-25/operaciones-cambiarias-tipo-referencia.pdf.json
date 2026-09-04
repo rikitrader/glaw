@@ -1,0 +1,68 @@
+{
+  "file name" : "operaciones-cambiarias-tipo-referencia.pdf.pdf",
+  "number of pages" : 1,
+  "author" : "JORGE_BERNARDO_ DE ABREU_SILVA",
+  "title" : null,
+  "creation date" : "D:20260825124954-04'00'",
+  "modification date" : "D:20260825124954-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 8,
+    "page number" : 1,
+    "bounding box" : [ 82.32, 527.36, 250.14, 550.123 ],
+    "source" : "operaciones-cambiarias-tipo-referencia.pdf_images/imageFile1.png"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 5,
+    "level" : "Doctitle",
+    "page number" : 1,
+    "bounding box" : [ 265.85, 393.002, 467.843, 406.171 ],
+    "heading level" : 1,
+    "font" : "Arial-BoldMT",
+    "font size" : 14.04,
+    "text color" : "[1.0]",
+    "content" : "Tipos de cambio de referencia"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 6,
+    "page number" : 1,
+    "bounding box" : [ 294.65, 368.59, 439.022, 379.846 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 12.0,
+    "text color" : "[1.0]",
+    "content" : "Sistema Mesa de Cambio"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 2,
+    "page number" : 1,
+    "bounding box" : [ 153.26, 345.992, 595.931, 356.347 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 11.04,
+    "text color" : "[0.0235, 0.0549, 0.275]",
+    "content" : "Fecha Tasa compra (Bid) Tasa venta (Ask)"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 3,
+    "page number" : 1,
+    "bounding box" : [ 142.58, 317.71, 577.51, 328.966 ],
+    "font" : "ArialMT",
+    "font size" : 12.0,
+    "text color" : "[0.0235, 0.0549, 0.275]",
+    "content" : "25/8/2026 785,0692 785,0521"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 4,
+    "page number" : 1,
+    "bounding box" : [ 578.23, 267.162, 645.895, 274.703 ],
+    "font" : "Arial-BoldMT",
+    "font size" : 8.04,
+    "text color" : "[0.498]",
+    "content" : "RIF: J-00002967-9"
+  } ]
+}

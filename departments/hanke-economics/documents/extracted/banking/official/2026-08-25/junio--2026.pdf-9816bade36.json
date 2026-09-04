@@ -1,0 +1,1241 @@
+{
+  "file name" : "junio--2026.pdf-9816bade36.pdf",
+  "number of pages" : 96,
+  "author" : null,
+  "title" : "MEMORIA 1 SEM 2026 D",
+  "creation date" : "D:20260819134115-04'00'",
+  "modification date" : "D:20260819134116-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 201,
+    "page number" : 1,
+    "bounding box" : [ 0.551, 0.07, 612.551, 792.07 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile1.png"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H2",
+    "id" : 215,
+    "level" : "Subtitle",
+    "page number" : 2,
+    "bounding box" : [ 57.413, 612.94, 135.005, 627.568 ],
+    "heading level" : 2,
+    "font" : "Montserrat-Bold",
+    "font size" : 12.0,
+    "text color" : "[0.2569924592971802, 0.2679941952228546, 0.27499809861183167]",
+    "content" : "CONTENIDO"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 213,
+    "level" : "Doctitle",
+    "page number" : 2,
+    "bounding box" : [ 346.96, 652.76, 557.298, 732.116 ],
+    "heading level" : 1,
+    "font" : "Montserrat-Bold",
+    "font size" : 65.1,
+    "text color" : "[1.0, 1.0, 1.0]",
+    "content" : "Índice"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 205,
+    "page number" : 2,
+    "bounding box" : [ 57.459, 521.333, 262.619, 601.523 ],
+    "font" : "Montserrat-Regular",
+    "font size" : 10.0,
+    "text color" : "[0.2569924592971802, 0.2679941952228546, 0.27499809861183167]",
+    "content" : "ASPECTOS RELEVANTES Ranking Balance General y Estado de Resultado Canales Alternos y Proximidad Comercial Indicadores Financieros"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 216,
+    "page number" : 2,
+    "bounding box" : [ 538.575, 572.122, 552.492, 585.619 ],
+    "font" : "Montserrat-SemiBold",
+    "font size" : 11.072,
+    "text color" : "[0.10299839824438095, 0.17099259793758392, 0.3349965810775757]",
+    "content" : "05"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 217,
+    "level" : "1",
+    "page number" : 2,
+    "bounding box" : [ 538.575, 486.872, 553.245, 569.045 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 4,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 2,
+      "bounding box" : [ 538.575, 555.548, 552.492, 569.045 ],
+      "font" : "Montserrat-SemiBold",
+      "font size" : 11.072,
+      "text color" : "[0.10299839824438095, 0.17099259793758392, 0.3349965810775757]",
+      "content" : "05",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 2,
+      "bounding box" : [ 538.575, 537.867, 552.968, 551.363 ],
+      "font" : "Montserrat-SemiBold",
+      "font size" : 11.072,
+      "text color" : "[0.10299839824438095, 0.17099259793758392, 0.3349965810775757]",
+      "content" : "06",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 2,
+      "bounding box" : [ 538.575, 521.293, 552.758, 534.789 ],
+      "font" : "Montserrat-SemiBold",
+      "font size" : 11.072,
+      "text color" : "[0.10299839824438095, 0.17099259793758392, 0.3349965810775757]",
+      "content" : "07",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 2,
+      "bounding box" : [ 538.575, 486.872, 553.245, 516.942 ],
+      "font" : "Montserrat-SemiBold",
+      "font size" : 11.072,
+      "text color" : "[0.10299839824438095, 0.17099259793758392, 0.3349965810775757]",
+      "content" : "08 08",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 206,
+    "page number" : 2,
+    "bounding box" : [ 67.459, 487.333, 366.419, 516.523 ],
+    "font" : "Montserrat-Regular",
+    "font size" : 10.0,
+    "text color" : "[0.2569924592971802, 0.2679941952228546, 0.27499809861183167]",
+    "content" : "Indicadores de Liquidez, Solvencia, E ciencia y Rentabilidad Posición del C   ciente de Adecuación de Capital"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 218,
+    "level" : "1",
+    "page number" : 2,
+    "bounding box" : [ 538.575, 429.389, 553.245, 483.639 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 2,
+      "bounding box" : [ 538.575, 470.143, 553.245, 483.639 ],
+      "font" : "Montserrat-SemiBold",
+      "font size" : 11.072,
+      "text color" : "[0.10299839824438095, 0.17099259793758392, 0.3349965810775757]",
+      "content" : "08",
+      "kids" : [ {
+        "type" : "list",
+        "pdfua_tag" : "L",
+        "id" : 199,
+        "level" : "1",
+        "page number" : 2,
+        "bounding box" : [ 538.575, 143.766, 552.536, 208.092 ],
+        "numbering style" : "arabic numbers",
+        "number of list items" : 2,
+        "list items" : [ {
+          "type" : "list item",
+          "pdfua_tag" : "LI",
+          "page number" : 2,
+          "bounding box" : [ 538.575, 194.595, 551.75, 208.092 ],
+          "font" : "Montserrat-SemiBold",
+          "font size" : 11.072,
+          "text color" : "[0.10299839824438095, 0.17099259793758392, 0.3349965810775757]",
+          "content" : "27",
+          "kids" : [ ]
+        }, {
+          "type" : "list item",
+          "pdfua_tag" : "LI",
+          "page number" : 2,
+          "bounding box" : [ 538.575, 143.766, 552.536, 191.517 ],
+          "font" : "Montserrat-SemiBold",
+          "font size" : 11.072,
+          "text color" : "[0.10299839824438095, 0.17099259793758392, 0.3349965810775757]",
+          "content" : "28 32 34",
+          "kids" : [ ]
+        } ]
+      }, {
+        "type" : "list",
+        "pdfua_tag" : "L",
+        "id" : 200,
+        "level" : "1",
+        "page number" : 2,
+        "bounding box" : [ 538.575, 59.545, 553.61, 139.415 ],
+        "numbering style" : "arabic numbers",
+        "number of list items" : 2,
+        "list items" : [ {
+          "type" : "list item",
+          "pdfua_tag" : "LI",
+          "page number" : 2,
+          "bounding box" : [ 538.575, 125.919, 551.961, 139.415 ],
+          "font" : "Montserrat-SemiBold",
+          "font size" : 11.072,
+          "text color" : "[0.10299839824438095, 0.17099259793758392, 0.3349965810775757]",
+          "content" : "36",
+          "kids" : [ ]
+        }, {
+          "type" : "list item",
+          "pdfua_tag" : "LI",
+          "page number" : 2,
+          "bounding box" : [ 538.575, 59.545, 553.61, 122.841 ],
+          "font" : "Montserrat-SemiBold",
+          "font size" : 11.072,
+          "text color" : "[0.10299839824438095, 0.17099259793758392, 0.3349965810775757]",
+          "content" : "37 40 42 44",
+          "kids" : [ ]
+        } ]
+      } ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 2,
+      "bounding box" : [ 538.575, 429.389, 552.968, 442.885 ],
+      "font" : "Montserrat-SemiBold",
+      "font size" : 11.072,
+      "text color" : "[0.9459983110427856, 0.3680018186569214, 0.16499580442905426]",
+      "content" : "09",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 207,
+    "page number" : 2,
+    "bounding box" : [ 57.459, 470.333, 137.969, 482.523 ],
+    "font" : "Montserrat-Regular",
+    "font size" : 10.0,
+    "text color" : "[0.2569924592971802, 0.2679941952228546, 0.27499809861183167]",
+    "content" : "Carga Tributaria"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H4",
+    "id" : 208,
+    "level" : "Subtitle",
+    "page number" : 2,
+    "bounding box" : [ 57.459, 429.333, 144.139, 441.523 ],
+    "heading level" : 4,
+    "font" : "Montserrat-Bold",
+    "font size" : 10.0,
+    "text color" : "[0.9430075287818909, 0.32500189542770386, 0.13600365817546844]",
+    "content" : "CONVOCATORIA"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 209,
+    "page number" : 2,
+    "bounding box" : [ 57.459, 274.333, 375.289, 405.523 ],
+    "font" : "Montserrat-Regular",
+    "font size" : 10.0,
+    "text color" : "[0.2569924592971802, 0.2679941952228546, 0.27499809861183167]",
+    "content" : "INFORME DE LA JUNTA DIRECTIVA Resultados Primer Semestre 2026 Rentabilidad Crecimiento Operaciones activas que exceden el porcentaje permitido sobre el patrimonio de la institución Acción BNC Reconocimientos"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 219,
+    "page number" : 2,
+    "bounding box" : [ 538.575, 376.179, 549.237, 389.675 ],
+    "font" : "Montserrat-SemiBold",
+    "font size" : 11.072,
+    "text color" : "[0.061005569994449615, 0.5880064368247986, 0.28099489212036133]",
+    "content" : "13"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 220,
+    "level" : "1",
+    "page number" : 2,
+    "bounding box" : [ 538.575, 342.079, 549.735, 372.337 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 2,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 2,
+      "bounding box" : [ 538.575, 358.841, 549.259, 372.337 ],
+      "font" : "Montserrat-SemiBold",
+      "font size" : 11.072,
+      "text color" : "[0.061005569994449615, 0.5880064368247986, 0.28099489212036133]",
+      "content" : "15",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 2,
+      "bounding box" : [ 538.575, 342.079, 549.735, 355.575 ],
+      "font" : "Montserrat-SemiBold",
+      "font size" : 11.072,
+      "text color" : "[0.061005569994449615, 0.5880064368247986, 0.28099489212036133]",
+      "content" : "16",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 221,
+    "page number" : 2,
+    "bounding box" : [ 538.575, 308.355, 550.012, 321.851 ],
+    "font" : "Montserrat-SemiBold",
+    "font size" : 11.072,
+    "text color" : "[0.061005569994449615, 0.5880064368247986, 0.28099489212036133]",
+    "content" : "18"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 222,
+    "level" : "1",
+    "page number" : 2,
+    "bounding box" : [ 538.575, 247.495, 552.47, 304.923 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 3,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 2,
+      "bounding box" : [ 538.575, 291.427, 550.012, 304.923 ],
+      "font" : "Montserrat-SemiBold",
+      "font size" : 11.072,
+      "text color" : "[0.061005569994449615, 0.5880064368247986, 0.28099489212036133]",
+      "content" : "18",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 2,
+      "bounding box" : [ 538.575, 273.878, 549.735, 287.375 ],
+      "font" : "Montserrat-SemiBold",
+      "font size" : 11.072,
+      "text color" : "[0.061005569994449615, 0.5880064368247986, 0.28099489212036133]",
+      "content" : "19",
+      "kids" : [ ]
+    }, {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 2,
+      "bounding box" : [ 538.575, 247.495, 552.47, 260.991 ],
+      "font" : "Montserrat-SemiBold",
+      "font size" : 11.072,
+      "text color" : "[0.061005569994449615, 0.5880064368247986, 0.28099489212036133]",
+      "content" : "20",
+      "kids" : [ ]
+    } ]
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 210,
+    "page number" : 2,
+    "bounding box" : [ 57.459, 248.333, 156.649, 260.523 ],
+    "font" : "Montserrat-Regular",
+    "font size" : 10.0,
+    "text color" : "[0.2569924592971802, 0.2679941952228546, 0.27499809861183167]",
+    "content" : "Entorno económico"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 211,
+    "page number" : 2,
+    "bounding box" : [ 57.459, 59.333, 286.879, 224.523 ],
+    "font" : "Montserrat-Regular",
+    "font size" : 10.0,
+    "text color" : "[0.2569924592971802, 0.2679941952228546, 0.27499809861183167]",
+    "content" : "GOBIERNO CORPORATIVO Junta Directiva Gobierno Corporativo Conformación de los Comités Sostenibilidad Responsabilidad Social Empresarial Informe de Auditoría Interna Unidad de Administración Integral de Riesgos Prevención y Control de LC/FT/FPADM Seguridad de la Información - Ciberseguridad"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 226,
+    "page number" : 3,
+    "bounding box" : [ 57.897, 695.512, 245.317, 741.701 ],
+    "font" : "Montserrat-Regular",
+    "font size" : 10.0,
+    "text color" : "[0.2569924592971802, 0.2679941952228546, 0.27499809861183167]",
+    "content" : "RECLAMOS Y DENUNCIAS Atención al Cliente Defensor del Cliente y el Usuario BNC"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 234,
+    "page number" : 3,
+    "bounding box" : [ 539.223, 711.892, 553.682, 725.389 ],
+    "font" : "Montserrat-SemiBold",
+    "font size" : 11.072,
+    "text color" : "[0.9430075287818909, 0.32500189542770386, 0.13600365817546844]",
+    "content" : "49"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 233,
+    "page number" : 3,
+    "bounding box" : [ 542.998, 695.562, 553.682, 709.058 ],
+    "font" : "Montserrat-SemiBold",
+    "font size" : 11.072,
+    "text color" : "[0.9430075287818909, 0.32500189542770386, 0.13600365817546844]",
+    "content" : "51"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 232,
+    "page number" : 3,
+    "bounding box" : [ 540.042, 671.659, 553.682, 685.155 ],
+    "font" : "Montserrat-Bold",
+    "font size" : 11.072,
+    "text color" : "[0.01100175455212593, 0.5889982581138611, 0.28099489212036133]",
+    "content" : "59"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 227,
+    "page number" : 3,
+    "bounding box" : [ 57.897, 398.511, 306.417, 683.701 ],
+    "font" : "Montserrat-Regular",
+    "font size" : 10.0,
+    "text color" : "[0.2569924592971802, 0.2679941952228546, 0.27499809861183167]",
+    "content" : "OFICIOS SUDEBAN CRÉDITO Y PLAN DE NEGOCIOS Informes de Riesgo Crediticio Participación en sectores productivos Plan de Negocios INFORMES COMPLEMENTARIOS Fideicomiso Soluciones de Clientes y Servicios Digitales Calidad de Servicio Recursos Humanos y Cultura Organizacional Ingeniería Tecnológica Seguridad Bancaria y prevención del fraude ESTADOS FINANCIEROS ESTADOS FINANCIEROS CONSOLIDADOS COMENTARIOS DE LOS ESTADOS FINANCIEROS"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 231,
+    "page number" : 3,
+    "bounding box" : [ 540.386, 629.687, 553.727, 643.183 ],
+    "font" : "Montserrat-SemiBold",
+    "font size" : 11.072,
+    "text color" : "[0.10299839824438095, 0.17099259793758392, 0.3349965810775757]",
+    "content" : "63"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 230,
+    "page number" : 3,
+    "bounding box" : [ 539.312, 612.769, 553.727, 626.266 ],
+    "font" : "Montserrat-SemiBold",
+    "font size" : 11.072,
+    "text color" : "[0.10299839824438095, 0.17099259793758392, 0.3349965810775757]",
+    "content" : "64"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 229,
+    "page number" : 3,
+    "bounding box" : [ 540.275, 596.14, 553.682, 609.636 ],
+    "font" : "Montserrat-SemiBold",
+    "font size" : 11.072,
+    "text color" : "[0.10299839824438095, 0.17099259793758392, 0.3349965810775757]",
+    "content" : "65"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 235,
+    "page number" : 3,
+    "bounding box" : [ 539.433, 538.325, 553.682, 568.594 ],
+    "font" : "Montserrat-SemiBold",
+    "font size" : 11.072,
+    "text color" : "[0.9430075287818909, 0.32500189542770386, 0.13600365817546844]",
+    "content" : "71 74"
+  }, {
+    "type" : "list",
+    "pdfua_tag" : "L",
+    "id" : 236,
+    "level" : "1",
+    "page number" : 3,
+    "bounding box" : [ 539.732, 520.843, 553.682, 534.339 ],
+    "numbering style" : "arabic numbers",
+    "number of list items" : 1,
+    "list items" : [ {
+      "type" : "list item",
+      "pdfua_tag" : "LI",
+      "page number" : 3,
+      "bounding box" : [ 539.732, 520.843, 553.682, 534.339 ],
+      "font" : "Montserrat-SemiBold",
+      "font size" : 11.072,
+      "text color" : "[0.9430075287818909, 0.32500189542770386, 0.13600365817546844]",
+      "content" : "78",
+      "kids" : [ {
+        "type" : "list",
+        "pdfua_tag" : "L",
+        "id" : 198,
+        "level" : "1",
+        "page number" : 3,
+        "bounding box" : [ 539.512, 398.065, 553.683, 500.654 ],
+        "numbering style" : "arabic numbers",
+        "number of list items" : 2,
+        "list items" : [ {
+          "type" : "list item",
+          "pdfua_tag" : "LI",
+          "page number" : 3,
+          "bounding box" : [ 540.021, 487.158, 553.683, 500.654 ],
+          "font" : "Montserrat-SemiBold",
+          "font size" : 11.072,
+          "text color" : "[0.9430075287818909, 0.32500189542770386, 0.13600365817546844]",
+          "content" : "82",
+          "kids" : [ {
+            "type" : "paragraph",
+            "pdfua_tag" : "P",
+            "id" : 196,
+            "page number" : 3,
+            "bounding box" : [ 540.099, 503.676, 553.728, 517.172 ],
+            "font" : "Montserrat-SemiBold",
+            "font size" : 11.072,
+            "text color" : "[0.9430075287818909, 0.32500189542770386, 0.13600365817546844]",
+            "content" : "79"
+          } ]
+        }, {
+          "type" : "list item",
+          "pdfua_tag" : "LI",
+          "page number" : 3,
+          "bounding box" : [ 539.512, 398.065, 553.683, 483.748 ],
+          "font" : "Montserrat-SemiBold",
+          "font size" : 11.072,
+          "text color" : "[0.9430075287818909, 0.32500189542770386, 0.13600365817546844]",
+          "content" : "83 87 92 99",
+          "kids" : [ ]
+        } ]
+      } ]
+    } ]
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 237,
+    "page number" : 4,
+    "bounding box" : [ 0.837, -0.508, 612.837, 791.492 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile2.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 238,
+    "page number" : 5,
+    "bounding box" : [ 1.028, -0.063, 613.027, 791.937 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile3.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 242,
+    "page number" : 6,
+    "bounding box" : [ 0.544, 0.202, 612.544, 792.202 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile4.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 246,
+    "page number" : 7,
+    "bounding box" : [ 1.061, 0.202, 613.061, 792.202 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile5.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 250,
+    "page number" : 8,
+    "bounding box" : [ 0.639, 0.07, 612.639, 792.07 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile6.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 254,
+    "page number" : 9,
+    "bounding box" : [ 1.114, 0.67, 613.114, 792.67 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile7.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 259,
+    "page number" : 9,
+    "bounding box" : [ 245.496, 276.398, 368.437, 326.0 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile8.png"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 256,
+    "page number" : 9,
+    "bounding box" : [ 57.445, 23.972, 133.609, 31.33 ],
+    "font" : "Montserrat-Bold",
+    "font size" : 6.035,
+    "text color" : "[0.9459983110427856, 0.3680018186569214, 0.16499580442905426]",
+    "content" : "MEMORIA 1ER SEMESTRE"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 257,
+    "level" : "Subtitle",
+    "page number" : 9,
+    "bounding box" : [ 105.266, 12.227, 560.038, 29.829 ],
+    "heading level" : 3,
+    "font" : "Montserrat-Bold",
+    "font size" : 6.826,
+    "text color" : "[0.9459983110427856, 0.3680018186569214, 0.16499580442905426]",
+    "content" : "2026 CONVOCATORIA 09"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 260,
+    "page number" : 10,
+    "bounding box" : [ 0.268, -0.159, 612.268, 791.841 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile9.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 261,
+    "page number" : 11,
+    "bounding box" : [ -0.026, 2.405, 611.974, 794.405 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile10.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 265,
+    "page number" : 12,
+    "bounding box" : [ 0.226, 2.345, 612.226, 794.345 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile11.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 269,
+    "page number" : 13,
+    "bounding box" : [ -0.257, 2.405, 611.743, 794.405 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile12.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 273,
+    "page number" : 14,
+    "bounding box" : [ 1.196, 0.142, 613.196, 792.142 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile13.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 277,
+    "page number" : 15,
+    "bounding box" : [ 1.917, 0.877, 613.917, 792.877 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile14.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 281,
+    "page number" : 16,
+    "bounding box" : [ 1.929, -0.314, 613.929, 791.686 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile15.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 285,
+    "page number" : 17,
+    "bounding box" : [ 1.951, -0.593, 613.951, 791.407 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile16.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 289,
+    "page number" : 18,
+    "bounding box" : [ 1.468, -0.593, 613.468, 791.407 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile17.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 293,
+    "page number" : 19,
+    "bounding box" : [ 2.72, 0.142, 614.72, 792.142 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile18.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 297,
+    "page number" : 20,
+    "bounding box" : [ 1.789, 0.763, 613.789, 792.763 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile19.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 298,
+    "page number" : 21,
+    "bounding box" : [ 1.283, 0.347, 613.283, 792.347 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile20.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 302,
+    "page number" : 22,
+    "bounding box" : [ -0.502, -0.763, 611.498, 791.237 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile21.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 303,
+    "page number" : 23,
+    "bounding box" : [ -0.329, -0.032, 611.671, 791.968 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile22.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 307,
+    "page number" : 24,
+    "bounding box" : [ -0.138, 0.429, 611.862, 792.429 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile23.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 308,
+    "page number" : 25,
+    "bounding box" : [ -0.165, 1.388, 611.835, 793.388 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile24.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 312,
+    "page number" : 26,
+    "bounding box" : [ -0.398, -0.171, 611.602, 791.829 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile25.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 316,
+    "page number" : 27,
+    "bounding box" : [ -0.573, 0.701, 611.427, 792.701 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile26.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 317,
+    "page number" : 28,
+    "bounding box" : [ -0.162, 0.62, 611.838, 792.62 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile27.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 318,
+    "page number" : 29,
+    "bounding box" : [ -1.497, 0.782, 610.503, 792.782 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile28.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 322,
+    "page number" : 30,
+    "bounding box" : [ 0.301, 0.287, 612.301, 792.287 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile29.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 326,
+    "page number" : 31,
+    "bounding box" : [ -0.813, 0.975, 611.187, 792.975 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile30.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 330,
+    "page number" : 32,
+    "bounding box" : [ -0.587, 0.527, 611.413, 792.527 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile31.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 334,
+    "page number" : 33,
+    "bounding box" : [ -0.233, 0.965, 611.767, 792.965 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile32.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 338,
+    "page number" : 34,
+    "bounding box" : [ -0.443, -0.319, 611.557, 791.681 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile33.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 339,
+    "page number" : 35,
+    "bounding box" : [ -0.158, 0.045, 611.842, 792.045 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile34.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 343,
+    "page number" : 36,
+    "bounding box" : [ -0.05, 0.205, 611.95, 792.205 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile35.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 347,
+    "page number" : 37,
+    "bounding box" : [ 0.985, 1.32, 612.985, 793.32 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile36.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 351,
+    "page number" : 38,
+    "bounding box" : [ -0.834, -0.424, 611.166, 791.576 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile37.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 355,
+    "page number" : 39,
+    "bounding box" : [ -0.009, -0.147, 611.991, 791.853 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile38.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 359,
+    "page number" : 40,
+    "bounding box" : [ -0.137, -0.02, 611.863, 791.98 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile39.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 360,
+    "page number" : 41,
+    "bounding box" : [ -1.032, 0.089, 610.968, 792.089 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile40.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 364,
+    "page number" : 42,
+    "bounding box" : [ 1.476, 0.062, 613.476, 792.062 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile41.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 365,
+    "page number" : 43,
+    "bounding box" : [ -0.519, -1.494, 611.481, 790.506 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile42.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 366,
+    "page number" : 44,
+    "bounding box" : [ 0.733, -0.024, 612.733, 791.976 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile43.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 370,
+    "page number" : 45,
+    "bounding box" : [ 0.422, -1.473, 612.422, 790.527 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile44.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 374,
+    "page number" : 46,
+    "bounding box" : [ 0.102, 0.091, 612.102, 792.091 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile45.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 378,
+    "page number" : 47,
+    "bounding box" : [ 0.292, -0.151, 612.292, 791.849 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile46.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 382,
+    "page number" : 48,
+    "bounding box" : [ 0.11, -0.144, 612.11, 791.856 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile47.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 386,
+    "page number" : 49,
+    "bounding box" : [ 0.203, -0.043, 612.203, 791.957 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile48.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 390,
+    "page number" : 50,
+    "bounding box" : [ 2.469, 0.69, 614.469, 792.69 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile49.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 391,
+    "page number" : 51,
+    "bounding box" : [ 0.428, 0.04, 612.428, 792.04 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile50.png"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 393,
+    "page number" : 51,
+    "bounding box" : [ 56.378, 24.53, 132.542, 31.887 ],
+    "font" : "Montserrat-Bold",
+    "font size" : 6.035,
+    "text color" : "[0.04499885439872742, 0.6200045943260193, 0.287998765707016]",
+    "content" : "MEMORIA 1ER SEMESTRE"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 394,
+    "level" : "Subtitle",
+    "page number" : 51,
+    "bounding box" : [ 104.2, 12.784, 555.068, 30.386 ],
+    "heading level" : 3,
+    "font" : "Montserrat-Bold",
+    "font size" : 6.826,
+    "text color" : "[0.04499885439872742, 0.6200045943260193, 0.287998765707016]",
+    "content" : "2026 OFICIOS SUDEBAN 59"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 396,
+    "page number" : 52,
+    "bounding box" : [ 3.024, -0.021, 615.024, 791.979 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile51.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 397,
+    "page number" : 53,
+    "bounding box" : [ -0.194, -1.072, 611.806, 790.928 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile52.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 401,
+    "page number" : 54,
+    "bounding box" : [ -0.678, -1.072, 611.322, 790.928 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile53.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 405,
+    "page number" : 55,
+    "bounding box" : [ -0.426, 0.398, 611.574, 792.398 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile54.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 409,
+    "page number" : 56,
+    "bounding box" : [ 0.011, -2.022, 612.011, 789.978 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile55.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 410,
+    "page number" : 57,
+    "bounding box" : [ -1.266, -0.903, 610.734, 791.097 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile56.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 411,
+    "page number" : 58,
+    "bounding box" : [ -0.801, 0.02, 611.199, 792.02 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile57.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 412,
+    "page number" : 59,
+    "bounding box" : [ -0.832, -0.42, 611.168, 791.58 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile58.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 413,
+    "page number" : 60,
+    "bounding box" : [ 0.548, 2.34, 612.548, 794.34 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile59.png"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 415,
+    "page number" : 60,
+    "bounding box" : [ 55.861, 26.686, 132.026, 34.043 ],
+    "font" : "Montserrat-Bold",
+    "font size" : 6.035,
+    "text color" : "[0.9459983110427856, 0.3680018186569214, 0.16499580442905426]",
+    "content" : "MEMORIA 1ER SEMESTRE"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 416,
+    "level" : "Subtitle",
+    "page number" : 60,
+    "bounding box" : [ 103.682, 14.939, 551.529, 32.541 ],
+    "heading level" : 3,
+    "font" : "Montserrat-Bold",
+    "font size" : 6.826,
+    "text color" : "[0.9459983110427856, 0.3680018186569214, 0.16499580442905426]",
+    "content" : "2026 INFORMES COMPLEMENTARIOS 71"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 418,
+    "page number" : 61,
+    "bounding box" : [ -1.484, 1.415, 610.516, 793.415 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile60.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 419,
+    "page number" : 62,
+    "bounding box" : [ -1.395, 1.732, 610.605, 793.733 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile61.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 420,
+    "page number" : 63,
+    "bounding box" : [ -0.356, 2.77, 611.644, 794.77 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile62.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 421,
+    "page number" : 64,
+    "bounding box" : [ -0.5, 0.0, 611.5, 792.0 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile63.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 422,
+    "page number" : 65,
+    "bounding box" : [ -0.664, 0.249, 611.336, 792.249 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile64.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 423,
+    "page number" : 66,
+    "bounding box" : [ -0.946, 0.919, 611.054, 792.919 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile65.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 427,
+    "page number" : 67,
+    "bounding box" : [ -0.586, 0.919, 611.414, 792.919 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile66.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 433,
+    "page number" : 68,
+    "bounding box" : [ -1.114, -0.305, 610.886, 791.695 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile67.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 435,
+    "page number" : 69,
+    "bounding box" : [ -0.054, 0.391, 611.946, 792.391 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile68.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 439,
+    "page number" : 70,
+    "bounding box" : [ -0.802, -0.501, 611.198, 791.499 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile69.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 443,
+    "page number" : 71,
+    "bounding box" : [ -0.129, -0.922, 611.871, 791.078 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile70.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 447,
+    "page number" : 72,
+    "bounding box" : [ 0.388, 0.078, 612.388, 792.078 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile71.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 451,
+    "page number" : 73,
+    "bounding box" : [ -0.939, -0.079, 611.061, 791.921 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile72.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 455,
+    "page number" : 74,
+    "bounding box" : [ -1.115, -0.367, 610.885, 791.633 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile73.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 456,
+    "page number" : 75,
+    "bounding box" : [ -0.216, -0.273, 611.784, 791.727 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile74.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 460,
+    "page number" : 76,
+    "bounding box" : [ 0.036, 0.197, 612.036, 792.197 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile75.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 464,
+    "page number" : 77,
+    "bounding box" : [ -0.182, -0.538, 611.818, 791.462 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile76.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 468,
+    "page number" : 78,
+    "bounding box" : [ 0.07, -0.538, 612.07, 791.462 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile77.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 472,
+    "page number" : 79,
+    "bounding box" : [ 1.321, -0.538, 613.321, 791.462 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile78.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 476,
+    "page number" : 80,
+    "bounding box" : [ 0.18, -2.223, 612.18, 789.777 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile79.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 480,
+    "page number" : 81,
+    "bounding box" : [ -0.303, -0.019, 611.697, 791.981 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile80.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 484,
+    "page number" : 82,
+    "bounding box" : [ -0.521, -0.284, 611.479, 791.716 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile81.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 488,
+    "page number" : 83,
+    "bounding box" : [ -0.269, -0.488, 611.73, 791.512 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile82.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 492,
+    "page number" : 84,
+    "bounding box" : [ -0.753, -0.488, 611.247, 791.512 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile83.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 496,
+    "page number" : 85,
+    "bounding box" : [ -0.766, -0.488, 611.234, 791.512 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile84.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 500,
+    "page number" : 86,
+    "bounding box" : [ 4.06, 5.779, 616.06, 797.779 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile85.png"
+  }, {
+    "type" : "paragraph",
+    "pdfua_tag" : "P",
+    "id" : 502,
+    "page number" : 86,
+    "bounding box" : [ 60.877, 30.047, 137.041, 37.404 ],
+    "font" : "Montserrat-Bold",
+    "font size" : 6.035,
+    "text color" : "[0.11000228673219681, 0.16400396823883057, 0.35500115156173706]",
+    "content" : "MEMORIA 1ER SEMESTRE"
+  }, {
+    "type" : "heading",
+    "pdfua_tag" : "H3",
+    "id" : 503,
+    "level" : "Subtitle",
+    "page number" : 86,
+    "bounding box" : [ 108.698, 18.3, 560.544, 35.903 ],
+    "heading level" : 3,
+    "font" : "Montserrat-Bold",
+    "font size" : 6.826,
+    "text color" : "[0.11000228673219681, 0.16400396823883057, 0.35500115156173706]",
+    "content" : "2026 CONSOLIDADOSESTADOS FINANCIEROS 99"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 505,
+    "page number" : 87,
+    "bounding box" : [ 3.576, 5.779, 615.576, 797.779 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile86.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 509,
+    "page number" : 88,
+    "bounding box" : [ 4.406, 5.779, 616.406, 797.779 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile87.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 513,
+    "page number" : 89,
+    "bounding box" : [ -3.816, -0.051, 608.184, 791.949 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile88.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 517,
+    "page number" : 90,
+    "bounding box" : [ -3.215, 0.358, 608.785, 792.358 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile89.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 521,
+    "page number" : 91,
+    "bounding box" : [ -4.014, 0.262, 607.986, 792.262 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile90.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 525,
+    "page number" : 92,
+    "bounding box" : [ -4.976, -0.123, 607.024, 791.877 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile91.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 529,
+    "page number" : 93,
+    "bounding box" : [ -4.407, -0.375, 607.593, 791.625 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile92.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 533,
+    "page number" : 94,
+    "bounding box" : [ -4.89, 0.469, 607.11, 792.469 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile93.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 537,
+    "page number" : 95,
+    "bounding box" : [ -4.06, 0.625, 607.94, 792.625 ],
+    "source" : "junio--2026.pdf-9816bade36_images/imageFile94.png"
+  } ]
+}
