@@ -1,0 +1,23 @@
+{
+  "file name" : "balance_agosto_2018.pdf.pdf",
+  "number of pages" : 1,
+  "author" : null,
+  "title" : "Scanned Document",
+  "creation date" : "D:20180914161112-04'00'",
+  "modification date" : "D:20180921151617-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 1,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 792.0, 1224.0 ],
+    "source" : "balance_agosto_2018.pdf_images/imageFile1.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 2,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 792.0, 1224.0 ],
+    "source" : "balance_agosto_2018.pdf_images/imageFile2.png"
+  } ]
+}

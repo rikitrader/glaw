@@ -1,0 +1,112 @@
+{
+  "file name" : "balance-publicaciones-2013.pdf.pdf",
+  "number of pages" : 13,
+  "author" : "vp43333",
+  "title" : "Balance de publicacion 2013",
+  "creation date" : "D:20140320185551Z",
+  "modification date" : "D:20200517083041Z",
+  "kids" : [ {
+    "type" : "heading",
+    "pdfua_tag" : "H1",
+    "id" : 1,
+    "level" : "Doctitle",
+    "page number" : 1,
+    "bounding box" : [ 143.3, 730.868, 468.352, 751.467 ],
+    "heading level" : 1,
+    "font" : "Arial,Bold",
+    "font size" : 21.96,
+    "text color" : "[0.0, 0.69, 0.941]",
+    "content" : "Balance de Publicaciones 2013"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 2,
+    "page number" : 1,
+    "bounding box" : [ 49.5, 58.116, 563.828, 716.913 ],
+    "source" : "balance-publicaciones-2013.pdf_images/imageFile1.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 3,
+    "page number" : 2,
+    "bounding box" : [ 40.75, -79.3, 649.0, 789.6 ],
+    "source" : "balance-publicaciones-2013.pdf_images/imageFile2.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 4,
+    "page number" : 2,
+    "bounding box" : [ 40.75, 15.75, 582.45, 789.6 ],
+    "source" : "balance-publicaciones-2013.pdf_images/imageFile3.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 5,
+    "page number" : 3,
+    "bounding box" : [ 37.5, -32.478, 569.26, 755.999 ],
+    "source" : "balance-publicaciones-2013.pdf_images/imageFile4.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 6,
+    "page number" : 4,
+    "bounding box" : [ 37.5, -83.198, 577.496, 756.04 ],
+    "source" : "balance-publicaciones-2013.pdf_images/imageFile5.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 7,
+    "page number" : 5,
+    "bounding box" : [ 37.5, -83.198, 577.496, 756.04 ],
+    "source" : "balance-publicaciones-2013.pdf_images/imageFile6.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 8,
+    "page number" : 6,
+    "bounding box" : [ 37.5, -83.198, 577.496, 756.04 ],
+    "source" : "balance-publicaciones-2013.pdf_images/imageFile7.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 9,
+    "page number" : 7,
+    "bounding box" : [ 37.5, -83.198, 577.496, 756.04 ],
+    "source" : "balance-publicaciones-2013.pdf_images/imageFile8.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 10,
+    "page number" : 8,
+    "bounding box" : [ 37.5, -83.198, 577.496, 756.04 ],
+    "source" : "balance-publicaciones-2013.pdf_images/imageFile9.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 11,
+    "page number" : 9,
+    "bounding box" : [ 37.5, -62.948, 564.464, 755.986 ],
+    "source" : "balance-publicaciones-2013.pdf_images/imageFile10.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 12,
+    "page number" : 10,
+    "bounding box" : [ 37.5, 0.0, 539.95, 777.0 ],
+    "source" : "balance-publicaciones-2013.pdf_images/imageFile11.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 13,
+    "page number" : 11,
+    "bounding box" : [ 37.5, -0.229, 539.92, 755.997 ],
+    "source" : "balance-publicaciones-2013.pdf_images/imageFile12.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 14,
+    "page number" : 13,
+    "bounding box" : [ 39.987, -0.229, 542.407, 755.997 ],
+    "source" : "balance-publicaciones-2013.pdf_images/imageFile13.png"
+  } ]
+}

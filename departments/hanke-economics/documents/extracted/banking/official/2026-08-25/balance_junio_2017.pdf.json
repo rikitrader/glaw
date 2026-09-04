@@ -1,0 +1,16 @@
+{
+  "file name" : "balance_junio_2017.pdf.pdf",
+  "number of pages" : 1,
+  "author" : null,
+  "title" : null,
+  "creation date" : "D:20170714111152-04'00'",
+  "modification date" : "D:20170714111229-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 1,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 694.56, 878.64 ],
+    "source" : "balance_junio_2017.pdf_images/imageFile1.png"
+  } ]
+}

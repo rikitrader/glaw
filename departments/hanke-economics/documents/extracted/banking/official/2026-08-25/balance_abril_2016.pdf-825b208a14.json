@@ -1,0 +1,16 @@
+{
+  "file name" : "balance_abril_2016.pdf-825b208a14.pdf",
+  "number of pages" : 1,
+  "author" : null,
+  "title" : "Scanned Document",
+  "creation date" : "D:20160513101249-04'00'",
+  "modification date" : "D:20161017110033-03'30'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 1,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 680.4, 892.8 ],
+    "source" : "balance_abril_2016.pdf-825b208a14_images/imageFile1.png"
+  } ]
+}

@@ -1,0 +1,16 @@
+{
+  "file name" : "balance_marzo_2017.pdf.pdf",
+  "number of pages" : 1,
+  "author" : "Yvelc",
+  "title" : "balance_marzo_2017.jpg",
+  "creation date" : "D:20200220120642-04'00'",
+  "modification date" : "D:20200220120642-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 2,
+    "page number" : 1,
+    "bounding box" : [ -14.25, 0.0, 627.015, 792.0 ],
+    "source" : "balance_marzo_2017.pdf_images/imageFile1.png"
+  } ]
+}

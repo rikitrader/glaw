@@ -1,0 +1,23 @@
+{
+  "file name" : "balance_diciembre_2018.pdf.pdf",
+  "number of pages" : 1,
+  "author" : null,
+  "title" : null,
+  "creation date" : "D:20190114120318-04'00'",
+  "modification date" : "D:20190114143738-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 1,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 792.0, 1224.0 ],
+    "source" : "balance_diciembre_2018.pdf_images/imageFile1.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 2,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 792.0, 1224.0 ],
+    "source" : "balance_diciembre_2018.pdf_images/imageFile2.png"
+  } ]
+}

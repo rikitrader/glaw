@@ -1,0 +1,16 @@
+{
+  "file name" : "balance_mayo_2018.pdf.pdf",
+  "number of pages" : 1,
+  "author" : null,
+  "title" : "Adobe Photoshop PDF",
+  "creation date" : "D:20180314090038-04'00'",
+  "modification date" : "D:20180620092701-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 1,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 694.56, 878.64 ],
+    "source" : "balance_mayo_2018.pdf_images/imageFile1.png"
+  } ]
+}

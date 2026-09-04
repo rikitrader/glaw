@@ -1,0 +1,16 @@
+{
+  "file name" : "balance_diciembre_2016.pdf-ff1c9e9fa0.pdf",
+  "number of pages" : 1,
+  "author" : null,
+  "title" : null,
+  "creation date" : "D:20170113093957-04'00'",
+  "modification date" : "D:20170331140809-03'30'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 1,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 694.56, 878.88 ],
+    "source" : "balance_diciembre_2016.pdf-ff1c9e9fa0_images/imageFile1.png"
+  } ]
+}
