@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS providers (id TEXT PRIMARY KEY, display_name TEXT NOT NULL, jurisdictions_json TEXT NOT NULL, capabilities_json TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'unknown', config_json TEXT NOT NULL DEFAULT '{}', updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS cases (id TEXT PRIMARY KEY, provider TEXT NOT NULL, source_url TEXT NOT NULL, court TEXT NOT NULL, decided_at TEXT, docket_number TEXT, neutral_citation TEXT, payload_json TEXT NOT NULL, retrieved_at TEXT NOT NULL);
+CREATE INDEX IF NOT EXISTS idx_cases_citation ON cases(neutral_citation); CREATE INDEX IF NOT EXISTS idx_cases_docket ON cases(docket_number); CREATE INDEX IF NOT EXISTS idx_cases_court_date ON cases(court, decided_at);
+CREATE TABLE IF NOT EXISTS case_sources (case_id TEXT NOT NULL, provider TEXT NOT NULL, source_url TEXT NOT NULL, content_hash TEXT, retrieved_at TEXT NOT NULL, PRIMARY KEY(case_id, provider, source_url));
+CREATE TABLE IF NOT EXISTS citations (id TEXT PRIMARY KEY, citation TEXT NOT NULL, citation_type TEXT NOT NULL, verified INTEGER NOT NULL DEFAULT 0, source_url TEXT);
+CREATE TABLE IF NOT EXISTS citation_edges (from_case_id TEXT NOT NULL, to_case_id TEXT NOT NULL, relationship TEXT NOT NULL, evidence_json TEXT NOT NULL, PRIMARY KEY(from_case_id, to_case_id, relationship));
+CREATE TABLE IF NOT EXISTS authority_status (case_id TEXT PRIMARY KEY, status TEXT NOT NULL, confidence REAL NOT NULL, evidence_json TEXT NOT NULL, updated_at TEXT NOT NULL);
+CREATE TABLE IF NOT EXISTS ingestion_events (id INTEGER PRIMARY KEY AUTOINCREMENT, request_id TEXT NOT NULL, provider TEXT NOT NULL, kind TEXT NOT NULL, payload_json TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS audit_logs (id INTEGER PRIMARY KEY AUTOINCREMENT, request_id TEXT NOT NULL, action TEXT NOT NULL, tenant_id TEXT, matter_id TEXT, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);

@@ -1,0 +1,17 @@
+flowchart TD
+  Q[User or Agent] --> H[Hono Worker Gateway]
+  H --> J[Deterministic Jurisdiction Resolver]
+  J --> R[Provider Router]
+  R --> CL[CourtListener Adapter]
+  R --> RE[RECAP Adapter]
+  R --> G[Approved Generic Adapters]
+  CL --> N[Normalize + Canonical ID]
+  RE --> N
+  G --> N
+  N --> A[Authority Score + Citation Checks]
+  N --> D1[(D1 metadata)]
+  N --> R2[(R2 provenance artifacts)]
+  N --> KV[(KV cache)]
+  N --> Q2[Queue ingestion]
+  Q2 --> D1
+  H --> DO[Durable Object coordination]

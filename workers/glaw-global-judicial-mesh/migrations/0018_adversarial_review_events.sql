@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS judge_adversarial_reviews (id INTEGER PRIMARY KEY AUTOINCREMENT, tenant_id TEXT NOT NULL, review_id TEXT NOT NULL, judge_id TEXT NOT NULL, reviewer TEXT NOT NULL, decision TEXT NOT NULL, notes TEXT NOT NULL, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE INDEX IF NOT EXISTS idx_judge_adversarial_reviews_scope ON judge_adversarial_reviews(tenant_id, review_id, created_at);

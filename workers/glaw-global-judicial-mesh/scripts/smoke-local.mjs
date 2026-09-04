@@ -1,0 +1,75 @@
+const baseUrl = (process.env.GLAW_SMOKE_BASE_URL ?? 'http://127.0.0.1:8788').replace(/\/$/, '');
+
+async function expectStatus(path, init, status) {
+  const response = await fetch(`${baseUrl}${path}`, init);
+  if (response.status !== status) throw new Error(`${path}: expected ${status}, received ${response.status}`);
+  return response;
+}
+
+const health = await expectStatus('/health', undefined, 200);
+const healthBody = await health.json();
+if (healthBody.status !== 'ok') throw new Error('/health did not return status ok');
+const ready = await expectStatus('/ready', undefined, 200);
+const readyBody = await ready.json();
+if (readyBody.status !== 'ready' || Object.values(readyBody.checks ?? {}).some((value) => value !== 'ok')) throw new Error('/ready did not verify all local bindings');
+await expectStatus('/v1/judges/smoke/profile', undefined, 400);
+const audit = await expectStatus('/v1/matters/smoke/discovery-audit', { headers: { 'x-tenant-id': 'smoke-tenant' } }, 200);
+const auditBody = await audit.json();
+if (auditBody.audit?.status !== 'REQUIRES_RECORD') throw new Error('discovery audit did not fail closed for an unknown matter');
+const tenantId = 'smoke-tenant';
+const matterId = `smoke-${Date.now()}`;
+const adminHeaders = { 'content-type': 'application/json', authorization: 'Bearer local-smoke-admin', 'x-tenant-id': tenantId };
+await expectStatus('/v1/matters', { method: 'POST', headers: adminHeaders, body: JSON.stringify({ matterId, judgeId: 'smoke-judge', status: 'ACTIVE' }) }, 201);
+const sourceResponse = await expectStatus('/v1/judges/smoke-judge/sources', { method: 'POST', headers: adminHeaders, body: JSON.stringify({ sourceClass: 'user-record', title: 'Local evidence fixture', content: 'Evidence fixture for local smoke validation.' }) }, 201);
+const sourceBody = await sourceResponse.json();
+if (sourceBody.source?.verificationStatus !== 'UNVERIFIED') throw new Error('new source was not forced to unverified');
+await expectStatus('/v1/judges/smoke-judge/source-reviews', { method: 'POST', headers: adminHeaders, body: JSON.stringify({ sourceId: sourceBody.source.id, reviewer: 'local-smoke-reviewer', decision: 'VERIFIED', notes: 'checked against local evidence fixture', verificationSourceUrl: 'https://example.test/local-source-evidence' }) }, 200);
+const identityResponse = await expectStatus('/v1/judges/smoke-judge/identity', { method: 'POST', headers: adminHeaders, body: JSON.stringify({ judgeName: 'Smoke Judge', court: 'Florida court', county: 'Orange', judicialCircuit: 'Ninth', division: '77', profileAsOf: '2026-01-01', status: 'CURRENT' }) }, 201);
+const identityBody = await identityResponse.json();
+if (identityBody.identity?.status !== 'NEEDS_VERIFICATION') throw new Error('new judge identity was not forced to needs verification');
+await expectStatus('/v1/judges/smoke-judge/identity-reviews', { method: 'POST', headers: adminHeaders, body: JSON.stringify({ reviewer: 'local-smoke-reviewer', decision: 'CURRENT', notes: 'checked against local identity fixture', verificationSourceUrl: 'https://example.test/local-identity-evidence' }) }, 200);
+const directory = await expectStatus('/v1/judges?county=Orange&judicialCircuit=Ninth', { headers: { 'x-tenant-id': tenantId } }, 200);
+if (!(await directory.json()).judges?.some((judge) => judge.judgeId === 'smoke-judge' && judge.status === 'CURRENT')) throw new Error('judge directory did not return the reviewed identity');
+const identityReviews = await expectStatus('/v1/judges/smoke-judge/profile-reviews', { headers: { 'x-tenant-id': tenantId } }, 200);
+if (!(await identityReviews.json()).reviews?.some((review) => review.verification_source_url === 'https://example.test/local-identity-evidence')) throw new Error('identity review ledger was not readable');
+const eventResponse = await expectStatus(`/v1/matters/${matterId}/events`, { method: 'POST', headers: adminHeaders, body: JSON.stringify({ eventType: 'MEET_AND_CONFER', eventDate: '2026-01-02', status: 'VERIFIED', payload: { recorded: true } }) }, 201);
+const eventBody = await eventResponse.json();
+if (eventBody.event?.status !== 'UNVERIFIED') throw new Error('new procedural event was not forced to unverified');
+await expectStatus(`/v1/matters/${matterId}/events/${eventBody.event.id}/reviews`, { method: 'POST', headers: adminHeaders, body: JSON.stringify({ reviewer: 'local-smoke-reviewer', decision: 'VERIFIED', notes: 'checked against local evidence fixture', verificationSourceUrl: 'https://example.test/local-event-evidence' }) }, 200);
+const eventReviews = await expectStatus(`/v1/matters/${matterId}/events/${eventBody.event.id}/reviews`, { headers: { 'x-tenant-id': tenantId } }, 200);
+if ((await eventReviews.json()).reviews?.length !== 1) throw new Error('procedural event review ledger was not readable');
+const discoveryResponse = await expectStatus(`/v1/matters/${matterId}/discovery`, { method: 'POST', headers: adminHeaders, body: JSON.stringify({ kind: 'REQUEST_FOR_PRODUCTION', requestNumber: '1', exactText: 'Produce responsive documents.', responseText: 'Produced.', servedAt: '2026-01-01', responseDue: '2026-01-31', productionStatus: 'PRODUCED', sourceId: sourceBody.source.id, status: 'UNVERIFIED' }) }, 201);
+const discoveryBody = await discoveryResponse.json();
+if (discoveryBody.object?.status !== 'UNVERIFIED') throw new Error('new discovery object was not forced to unverified');
+await expectStatus(`/v1/matters/${matterId}/discovery/${discoveryBody.object.id}/reviews`, { method: 'POST', headers: adminHeaders, body: JSON.stringify({ reviewer: 'local-smoke-reviewer', decision: 'VERIFIED', notes: 'checked against local evidence fixture', verificationSourceUrl: 'https://example.test/local-discovery-evidence' }) }, 200);
+const discoveryReviews = await expectStatus(`/v1/matters/${matterId}/discovery/${discoveryBody.object.id}/reviews`, { headers: { 'x-tenant-id': tenantId } }, 200);
+if ((await discoveryReviews.json()).reviews?.length !== 1) throw new Error('discovery review ledger was not readable');
+const completeAudit = await expectStatus(`/v1/matters/${matterId}/discovery-audit`, { headers: { 'x-tenant-id': tenantId } }, 200);
+const completeAuditBody = await completeAudit.json();
+if (completeAuditBody.audit?.status !== 'REQUIRES_AUTHORITY') throw new Error('complete discovery audit did not remain authority-gated');
+if (completeAuditBody.audit?.requestFindings?.[0]?.deadline?.candidateDueDate !== '2026-01-31') throw new Error('deadline candidate was not recorded');
+const engineResponse = await expectStatus(`/v1/judges/smoke-judge/engine`, { method: 'POST', headers: adminHeaders, body: JSON.stringify({ issue: 'discovery scheduling', matterId }) }, 200);
+const engineBody = await engineResponse.json();
+if (!engineBody.predictionId || !engineBody.adversarialId || !engineBody.id) throw new Error('engine did not return durable record identifiers');
+await expectStatus('/v1/judges/smoke-judge/profile-reviews', { method: 'POST', headers: adminHeaders, body: JSON.stringify({ predictionId: engineBody.predictionId, reviewer: 'local-smoke-reviewer', decision: 'APPROVED', notes: 'Reviewed the cited evidence, limitations, and uncertainty.' }) }, 200);
+const profileResponse = await expectStatus('/v1/judges/smoke-judge/profile', { headers: { 'x-tenant-id': tenantId } }, 200);
+const profileBody = await profileResponse.json();
+if (profileBody.predictions?.some((item) => item.id === engineBody.predictionId) || profileBody.adversarialRuns?.some((item) => item.id === engineBody.adversarialId) || profileBody.engineReports?.some((item) => item.id === engineBody.id)) throw new Error('matter-private profile records leaked into the global profile');
+const matterProfileResponse = await expectStatus(`/v1/judges/smoke-judge/profile?matterId=${encodeURIComponent(matterId)}`, { headers: { 'x-tenant-id': tenantId } }, 200);
+const matterProfileBody = await matterProfileResponse.json();
+const approvedPrediction = matterProfileBody.predictions?.find((item) => item.id === engineBody.predictionId);
+if (!approvedPrediction || approvedPrediction.humanReview !== 'APPROVED' || !matterProfileBody.adversarialRuns?.some((item) => item.id === engineBody.adversarialId) || !matterProfileBody.engineReports?.some((item) => item.id === engineBody.id)) throw new Error('engine records were not durably persisted or human-approved in the authorized matter profile');
+const authorityEdges = await expectStatus(`/v1/judges/smoke-judge/authority-edges?matterId=${encodeURIComponent(matterId)}`, { headers: { 'x-tenant-id': tenantId } }, 200);
+if ((await authorityEdges.json()).humanReview !== 'REQUIRED') throw new Error('authority-edge graph was not review-gated');
+const filingResponse = await expectStatus(`/v1/matters/${matterId}/filings`, { method: 'POST', headers: adminHeaders, body: JSON.stringify({ kind: 'OPPOSITION_TO_MOTION_TO_COMPEL' }) }, 201);
+const filingBody = await filingResponse.json();
+await expectStatus(`/v1/matters/${matterId}/filings/${filingBody.artifact.id}/advance`, { method: 'POST', headers: adminHeaders, body: JSON.stringify({ nextStatus: 'FACT_CHECK', evidenceIds: [`discovery:${discoveryBody.object.id}`] }) }, 200);
+const gateEvents = await expectStatus(`/v1/matters/${matterId}/filings/${filingBody.artifact.id}/gate-events`, { headers: { 'x-tenant-id': tenantId } }, 200);
+const gateEventsBody = await gateEvents.json();
+if (gateEventsBody.events?.length !== 1 || gateEventsBody.events[0]?.to_status !== 'FACT_CHECK') throw new Error('filing gate event was not persisted');
+for (const nextStatus of ['AUTHORITY_CHECK', 'RED_TEAM', 'BLUE_TEAM', 'PROCEDURAL_CHECK', 'EXHIBIT_CHECK', 'RELIEF_CHECK', 'HUMAN_REVIEW_REQUIRED']) {
+  await expectStatus(`/v1/matters/${matterId}/filings/${filingBody.artifact.id}/advance`, { method: 'POST', headers: adminHeaders, body: JSON.stringify({ nextStatus, evidenceIds: [`source:${sourceBody.source.id}`] }) }, 200);
+}
+const readyResponse = await expectStatus(`/v1/matters/${matterId}/filings/${filingBody.artifact.id}/advance`, { method: 'POST', headers: adminHeaders, body: JSON.stringify({ nextStatus: 'READY_TO_FILE', reviewer: 'local-human-reviewer', humanConfirmed: true }) }, 200);
+if ((await readyResponse.json()).artifact?.status !== 'READY_TO_FILE') throw new Error('filing did not reach READY_TO_FILE after explicit human confirmation');
+console.log(`Local smoke checks passed at ${baseUrl}`);

@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS filing_gate_events (id INTEGER PRIMARY KEY AUTOINCREMENT, tenant_id TEXT NOT NULL, matter_id TEXT NOT NULL, artifact_id TEXT NOT NULL, from_status TEXT NOT NULL, to_status TEXT NOT NULL, evidence_ids_json TEXT NOT NULL, blocked_reasons_json TEXT NOT NULL, reviewer TEXT, human_confirmed INTEGER NOT NULL DEFAULT 0, created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE INDEX IF NOT EXISTS idx_filing_gate_events_scope ON filing_gate_events(tenant_id, matter_id, artifact_id, created_at);

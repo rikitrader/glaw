@@ -1,0 +1,2 @@
+CREATE TABLE IF NOT EXISTS authority_edges (id TEXT PRIMARY KEY, tenant_id TEXT NOT NULL, from_authority_id TEXT NOT NULL, to_authority_id TEXT NOT NULL, relationship TEXT NOT NULL, evidence_note TEXT NOT NULL, source_id TEXT, status TEXT NOT NULL DEFAULT 'UNVERIFIED', created_at TEXT NOT NULL, payload_json TEXT NOT NULL);
+CREATE INDEX IF NOT EXISTS idx_authority_edges_scope ON authority_edges(tenant_id, from_authority_id, to_authority_id, status);
