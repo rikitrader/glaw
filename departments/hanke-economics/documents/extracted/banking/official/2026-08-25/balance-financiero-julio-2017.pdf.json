@@ -1,0 +1,58 @@
+{
+  "file name" : "balance-financiero-julio-2017.pdf.pdf",
+  "number of pages" : 1,
+  "author" : "Banesco",
+  "title" : "Balance Finaciero Julio 2017 | Banesco",
+  "creation date" : "D:20170810160030-04'00'",
+  "modification date" : "D:20170811161700-04'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 482,
+    "page number" : 1,
+    "bounding box" : [ 515.73, 436.256, 614.87, 482.525 ],
+    "source" : "balance-financiero-julio-2017.pdf_images/imageFile1.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 478,
+    "page number" : 1,
+    "bounding box" : [ 352.981, 426.959, 461.795, 477.743 ],
+    "source" : "balance-financiero-julio-2017.pdf_images/imageFile2.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 480,
+    "page number" : 1,
+    "bounding box" : [ 283.768, 429.199, 382.98, 475.502 ],
+    "source" : "balance-financiero-julio-2017.pdf_images/imageFile3.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 481,
+    "page number" : 1,
+    "bounding box" : [ 441.401, 429.475, 530.984, 471.284 ],
+    "source" : "balance-financiero-julio-2017.pdf_images/imageFile4.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 490,
+    "page number" : 1,
+    "bounding box" : [ 73.348, 151.41, 100.134, 162.169 ],
+    "source" : "balance-financiero-julio-2017.pdf_images/imageFile5.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 472,
+    "page number" : 1,
+    "bounding box" : [ 63.265, 19.522, 181.585, 137.362 ],
+    "source" : "balance-financiero-julio-2017.pdf_images/imageFile6.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 388,
+    "page number" : 1,
+    "bounding box" : [ 89.748, 46.31, 154.987, 110.841 ],
+    "source" : "balance-financiero-julio-2017.pdf_images/imageFile7.png"
+  } ]
+}

@@ -1,0 +1,23 @@
+{
+  "file name" : "bal-octubre2022-UN.pdf.pdf",
+  "number of pages" : 1,
+  "author" : null,
+  "title" : null,
+  "creation date" : "D:20181114093858-04'00'",
+  "modification date" : "D:20221114141726-05'00'",
+  "kids" : [ {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 1,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 694.44, 878.76 ],
+    "source" : "bal-octubre2022-UN.pdf_images/imageFile1.png"
+  }, {
+    "type" : "image",
+    "pdfua_tag" : "Figure",
+    "id" : 2,
+    "page number" : 1,
+    "bounding box" : [ 0.0, 0.0, 694.44, 878.76 ],
+    "source" : "bal-octubre2022-UN.pdf_images/imageFile2.png"
+  } ]
+}

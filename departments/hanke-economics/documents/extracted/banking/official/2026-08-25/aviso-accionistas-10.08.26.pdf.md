@@ -1,0 +1,18 @@
+BANCO PROVINCIAL, S.A. BANCO UNIVERSAL Domicilio: Caracas-Venezuela RIF: J- 00002967-9
+
+# COMUNICADO A LOS ACCIONISTAS
+
+El BANCO PROVINCIAL, S.A. BANCO UNIVERSAL notifica a sus accionistas, que la Superintendencia de las Instituciones del Sector Bancario, mediante Oficio N° SIB-II-GGRGA-05543, de fecha 15 de julio de 2026, ha emitido autorización a favor de esta institución bancaria para llevar a cabo el cambio del valor nominal de las acciones y la reforma del Artículo 4° de sus Estatutos Sociales, en los términos aprobados por la Asamblea General Extraordinaria de Accionistas del Banco Provincial, S.A. Banco Universal, celebrada en fecha 18 de septiembre de 2025, en la cual se adoptaron las siguientes decisiones: a) Se aprobó la modificación del valor nominal actual de la acción del Banco Provincial, aumentando de diez céntimos de bolívar (Bs. 0,10), a la cantidad de diez bolívares (Bs. 10,00). Con el cambio del valor nominal de la acción, en la “fecha de canje”; de las acciones se le entregaría al accionista una (1) nueva acción de diez bolívares (Bs. 10,00) por cada cien (100) acciones de diez céntimos de bolívar (Bs. 0,10) en tenencia. Para facilitar el proceso de cambio del valor nominal de la acción se aprobó que la compañía Inversiones Baproba, C.A., adquiera y pague todas las fracciones que resulten de dividir entre 100 las posiciones individuales de los accionistas. De igual modo, Inversiones Baproba, C.A., asumió la obligación de venderle, en la “Fecha de Canje”, a todo aquel accionista minoritario que para esa fecha sea titular de menos de una (1) acción con valor nominal de diez bolívares (Bs. 10,00), y que así lo solicite, las fracciones de acción que sean necesarias para completar una (1) acción con valor nominal de diez bolívares (Bs. 10,00). b) Se aprobó la consecuente reforma del artículo 4º de los Estatutos Sociales del Banco Provincial, S.A., Bz bolívares (Bs. 10,00). Con el cambio del valor nominal de la acción, en la "fecha de canje" de las acciones se le entregaría al accionista una (1) nueva acción de diez bolívares (Bs. 10,00) por cada cien (100) acciones de diez céntimos de bolívar (Bs. 0,10) en tenencia. c) Se aprobó delegar al Consejo de Administración del Banco Provincial las facultades de fijar la “fecha de cierre” y la “fecha de canje” de las acciones con la obligación a cargo del Consejo de Administración de cumplir, cuando corresponda hacerlo.
+
+En consecuencia, el Consejo de Administración del Banco Provincial, S.A., Banco Universal, en ejercicio de las facultades que le fueron conferidas en la referida Asamblea General Extraordinaria de Accionistas de fecha 18 de septiembre de 2025, aprobó en su reunión de fecha 7 de agosto de 2026, las fechas de cierre y canje.
+
+Igualmente, se ha solicitado a la Superintendencia Nacional de Valores la autorización necesaria para la emisión de las nuevas acciones con valor nominal de diez bolívares (Bs. 10,00) cada una. Una vez obtenida tal autorización, se informará a los accionistas las respectivas fechas, mediante nuevo Aviso, todo en cumplimiento de lo establecido en las
+
+“Normas Relativas a la Información sobre Pago de Dividendos que deben suministrar las Empresas que hacen Oferta Pública de sus Acciones” y las “Normas Relativas a la Oferta Pública, Colocación y Publicación de las emisiones de Valores”.
+
+Para cualquier información adicional los accionistas podrán dirigirse a la Oficina de Atención al Accionista ubicada en el piso 14 del Centro Financiero Provincial situado en la Avenida Este O, San Bernardino, o a través del Teléfono: (0212) 504.6354.
+
+El Consejo de Administración
+
+Caracas, 10 de agosto de 2026.
+
