@@ -7,7 +7,8 @@ import sys
 root=Path(sys.argv[1])
 required=("Identity:", "Soul:", "Domain:", "Report voice:", "Counter-lens:")
 rows=[]
-paths=[p for p in root.rglob("SKILL.md") if ".git" not in p.parts and not any(part in p.parts for part in (".codex", ".claude"))]
+generated_or_dependencies=(".codex", ".claude", "node_modules", "dist", ".astro", ".vite", ".mf", ".wrangler")
+paths=[p for p in root.rglob("SKILL.md") if ".git" not in p.parts and not any(part in p.parts for part in generated_or_dependencies)]
 for path in sorted(paths):
     text=path.read_text(encoding="utf-8")
     missing=[field for field in required if field not in text]
