@@ -20,7 +20,7 @@
   "devDependencies": {
     "@cloudflare/workers-types": "latest",
     "@types/node": "^26.2.0",
-    "wrangler": "^4.104.0"
+    "wrangler": "^4.154.0"
   },
   "engines": {
     "node": ">=20"
