@@ -20,6 +20,10 @@ if [ "$mode" = "pre-commit" ]; then
   fi
 fi
 
+# Hooks export GIT_DIR/GIT_INDEX_FILE (always set inside a linked worktree);
+# left in place they hijack the temp git repos the doctor's tests create.
+unset GIT_DIR GIT_INDEX_FILE GIT_WORK_TREE GIT_PREFIX
+
 doctor_env=()
 if [ "$mode" = "pre-commit" ]; then
   echo "GLAW commit gate ($mode): running CORE doctor"

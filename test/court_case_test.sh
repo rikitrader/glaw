@@ -82,6 +82,14 @@ unreachable = authority_freshness(["mdfl-2025.json"], as_of=date(2026, 8, 23), c
 ok(unreachable["status"] == "block" and any("unreachable" in item for item in unreachable["failures"]), "online authority mode blocks unreachable source URLs")
 court.urlopen = original_urlopen
 
+# Pin the routing/packet freshness clock so this fixture test does not expire with
+# wall-clock time (packs checked_on 2026-08-13, 45-day max). Production stays fail-closed.
+_real_freshness = court.authority_freshness
+def _pinned_freshness(*args, **kwargs):
+    kwargs.setdefault("as_of", date(2026, 8, 23))
+    return _real_freshness(*args, **kwargs)
+court.authority_freshness = _pinned_freshness
+
 federal = route_case(base)
 ok(federal["status"] == "pass" and federal["selected"]["court_code"] == "mdfl", "verified federal-question case routes to M.D. Florida")
 
