@@ -34,7 +34,8 @@ fi
 
 echo "═══ GLAW SKILL-CONTRACT TEST ═══"
 total=0
-for f in $(find -H "$GLAW" -name SKILL.md | sort); do
+# departments/*/skills/ are department capability specs (own schema + TS tests), not /glaw-* commands.
+for f in $(find -H "$GLAW" -name SKILL.md -not -path "$GLAW/departments/*" | sort); do
   rel="${f#$GLAW/}"
   dir="${rel%/SKILL.md}"
   total=$((total+1))
