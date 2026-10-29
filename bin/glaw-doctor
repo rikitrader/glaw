@@ -69,6 +69,19 @@ roots = [
     ("Codex", pathlib.Path(sys.argv[2]).expanduser()),
     ("Claude", pathlib.Path(sys.argv[3]).expanduser()),
 ]
+# Deploys point at the canonical checkout; from a linked worktree, accept the
+# same relative path under the canonical root.
+import subprocess
+canonical = glaw
+try:
+    common = subprocess.run(
+        ["git", "-C", str(glaw), "rev-parse", "--path-format=absolute", "--git-common-dir"],
+        capture_output=True, text=True, check=True,
+    ).stdout.strip()
+    if common:
+        canonical = pathlib.Path(common).resolve().parent
+except Exception:
+    pass
 exceptions_path = glaw / "lib" / "deploy-parity-exceptions.json"
 exceptions = {}
 if exceptions_path.exists():
@@ -113,6 +126,12 @@ for label, root in roots:
         if not skill.exists():
             continue
         resolved = skill.resolve()
+        if resolved != target and canonical != glaw:
+            try:
+                if resolved == canonical / target.relative_to(glaw):
+                    continue
+            except ValueError:
+                pass
         if resolved != target:
             exception = exceptions.get(name)
             if exception and all(exception.get(field) for field in ("owner", "reason", "review_by", "source", "production_reliance")):
